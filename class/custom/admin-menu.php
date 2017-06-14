@@ -1,0 +1,408 @@
+<?php
+
+
+
+/*
+* xem thêm quyền hạn của các loại tài khoản: https://codex.wordpress.org/Roles_and_Capabilities
+*/
+
+
+
+
+/*
+* admin menu
+
+$page_title: tiêu đề page (nội dung thẻ title) khi lựa chọn vào menu.
+$menu_title: tên hiển thị của menu.
+$capability: quyền hạn quyết định menu này hiển thị với những user nào?
+$menu_slug: slug của menu hiển thị trên url. Từ phiên bản wordpress 3.0 trở lên tham số này có thể là 1 file php. Nếu không chỉ định tham số $function thì tham số này sẽ trỏ tới file php để làm nội dung của menu.
+$function: hàm hiển thị nội dung của menu.
+$icon_url: URL ảnh để làm icon cho menu. Mặc định không chỉ định. Kích thước của icon là 20×20 hoặc nhỏ hơn. Có thể sử dụng hàm plugin_dir_url( __FILE__ ) để lấy đường dẫn của thư mục plugin của bạn và trỏ vào 1 file ảnh.
+$position (integer): Chỉ số Thứ tự hiển thị menu so với các menu khác. Theo mặc định thì menu sẽ hiển thị ở phía dưới cùng. Chú ý nếu 2 menu sử dụng cùng chỉ số thứ tự thì chỉ hiển thị menu thứ 2. Do vậy để tránh nhầm lẫn và theo quy ước các chỉ số bạn nên sử dụng số thập phân thay vì dùng số nguyên, e.g: 24.5 thay vì dùng 24. Và dùng giá trị chuỗi ‘24.5’ cho tham số này.
+
+*/
+
+
+
+/*
+* admin sub-menu
+
+$parent_slug: chỉ định tên menu lớn, menu con này sẽ hiển thị dưới menu lớn này. Với những parent menu hệ thống thì sử dụng tên file php. ví dụ: options.php (menu Settings), edit.php (menu Posts),..Bạn có thể tham khảo tại đây: http://codex.wordpress.org/Function_Reference/add_submenu_page. Nếu $parent_slug=NULL thì mặc định tham số này là “options.php”
+$page_title: tiêu đề trang là thẻ title.
+$menu_title: tên hiển thị menu con này.
+$capability: quyền hạn quyết định menu này hiển thị với những user nào?
+$menu_slug: page slug của menu này.
+$function: hàm hiển thị nội dung của menu. Khi lựa chọn menu thì sẽ gọi hàm này để hiển thị nội dung. Hàm được gọi theo 2 cách: Hàm là thành viên của class thì được gọi theo dạng array( $this, ‘function_name’ ) or hàm tự do nằm ngoài class thì cung tên nguyên tên hàm là đủ.
+
+*/
+
+
+
+//
+function func_include_eb_private_code () {
+	include ECHBAY_PRI_CODE . 'index.php';
+}
+
+function register_mysettings() {
+	register_setting( 'mfpd-settings-group', 'mfpd_option_name' );
+}
+
+// tạo menu admin
+function echbay_create_admin_menu() {
+	$parent_slug = 'eb-order';
+	
+	/*
+	* EchBay menu -> mọi người đều có thể nhìn thấy menu này
+	*/
+	add_menu_page('Danh sách đơn hàng', 'EchBay.com', 'read', $parent_slug, 'func_include_eb_private_code', NULL, 6);
+	
+	
+	/*
+	* submenu -> Super Admin, Administrator, Contributor
+	*/
+	add_submenu_page( $parent_slug, 'Danh sách đơn hàng', 'Đơn hàng', 'delete_posts', $parent_slug, 'func_include_eb_private_code' );
+	
+//	add_submenu_page( $parent_slug, 'Danh sách banner quảng cáo', 'Quảng cáo', 'manage_options', 'eb-ads', 'func_include_eb_private_code' );
+	
+	
+	/*
+	* Super Admin, Administrator
+	*/
+	add_submenu_page( $parent_slug, 'Cấu hình website', 'Cấu hình website', 'manage_options', 'eb-config', 'func_include_eb_private_code' );
+	
+	add_submenu_page( $parent_slug, 'Lịch sử các thay đổi dữ liệu hệ thống', 'Lịch sử', 'manage_options', 'eb-log', 'func_include_eb_private_code' );
+	
+	add_submenu_page( $parent_slug, 'Các chức năng danh cho kỹ thuật viên', 'Kỹ thuật', 'manage_options', 'eb-coder', 'func_include_eb_private_code' );
+	
+	add_submenu_page( $parent_slug, 'Cài đặt và chỉnh sửa giao diện mặc định', 'Cài đặt giao diện', 'manage_options', 'eb-config_theme', 'func_include_eb_private_code' );
+	
+//	add_submenu_page( $parent_slug, 'Công cụ tạo sơ đồ website tự động', 'Sitemap', 'administrator', 'eb-sitemap', 'func_include_eb_private_code' );
+	
+//	add_submenu_page( $parent_slug, 'Kiểm tra độ chuẩn của HTML cơ bản', 'Kiểm tra mã HTML', 'administrator', 'eb-check-html', 'func_include_eb_private_code' );
+	
+//	add_submenu_page( $parent_slug, 'Thông tin server', 'Thông tin server', 'administrator', 'eb-server-info', 'func_include_eb_private_code' );
+	
+//	add_submenu_page( $parent_slug, 'Dọn dẹp các dữ liệu tạm trong quá trình sử dụng website', 'Xóa bộ nhớ tạm', 'administrator', 'eb-cleanup-cache', 'func_include_eb_private_code' );
+	
+	
+	/*
+	* Mọi người đều có thể nhìn thấy menu này
+	*/
+	add_submenu_page( $parent_slug, 'Giới thiệu về tác giả', 'Giới thiệu', 'read', 'eb-about', 'func_include_eb_private_code' );
+	
+	
+	//
+//	add_action( 'admin_init', 'register_mysettings' );
+}
+
+add_action('admin_menu', 'echbay_create_admin_menu');
+
+
+
+
+/*
+* Tải file theo thời gian thực
+*/
+function EBE_admin_set_realtime_for_file ( $arr ) {
+	foreach ( $arr as $k => $v ) {
+		$arr[$k] = $v . '?v=' . filemtime( str_replace( EB_URL_OF_PLUGIN, EB_THEME_PLUGIN_INDEX, $v ) );
+	}
+	return $arr;
+}
+
+
+
+/*
+* Nhúng css cho phần admin
+*/
+function echbay_admin_styles() {
+	
+//	global $func;
+	
+	// lấy thời gian cập nhật cuối của file css -> update lại toàn bộ các file khác
+//	$last_update_js = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/eb.js' ) );
+//	$last_update_css = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'css/default.css' ) );
+	
+	//
+	_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
+//		web_link . 'wp-content/echbaydotcom/outsource/fonts/font-awesome.css',
+		EB_URL_OF_PLUGIN . 'outsource/fonts/font-awesome.css',
+		EB_URL_OF_PLUGIN . 'css/default.css',
+		EB_URL_OF_PLUGIN . 'css/admin.css',
+//		EB_URL_OF_PLUGIN . 'css/admin.css',
+	) ), 'link' );
+	
+	
+	//
+	_eb_add_full_js( EBE_admin_set_realtime_for_file ( array(
+//		web_link . 'wp-includes/js/jquery/jquery.js',
+//		EB_URL_OF_PLUGIN . 'javascript/eb_wp.js',
+		EB_URL_OF_PLUGIN . 'javascript/eb.js',
+//		EB_URL_OF_THEME . 'javascript/eb.js',
+		EB_URL_OF_PLUGIN . 'javascript/all.js',
+//		EB_URL_OF_PLUGIN . 'javascript/a.js',
+	) ), 'add' );
+	
+	//
+	echo '<link href="' . web_link . eb_default_vaficon . '" rel="shortcut icon" type="image/png" />';
+	
+	//
+	echo _eb_del_line( '<script type="text/javascript">
+	var web_link = "' . web_link . '";
+	</script>' );
+	
+}
+add_action('admin_head', 'echbay_admin_styles');
+
+
+
+//
+function echbay_admin_footer_styles() {
+	
+//	global $func;
+	
+	
+	
+	// giới thiệu chung về cách phân quyền trong code
+	echo '<div id="echbay_role_user_note" class="d-none">';
+	include ECHBAY_PRI_CODE . 'role_user.php';
+	echo '</div>';
+	
+	
+	//
+	echo file_get_contents( ECHBAY_PRI_CODE . 'html/size_edit.html', 1 );
+	
+	
+	
+	
+	// lấy thời gian cập nhật cuối của file css -> update lại toàn bộ các file khác
+//	$last_update_js = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/eb.js' ) );
+//	$last_update_css = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'css/default.css' ) );
+//	$last_update_js = date_time;
+	
+	_eb_add_full_js( EBE_admin_set_realtime_for_file ( array(
+		EB_URL_OF_PLUGIN . 'javascript/a.js',
+//		EB_URL_OF_PLUGIN . 'javascript/a.js',
+	) ), 'add' );
+	
+}
+add_action('admin_footer', 'echbay_admin_footer_styles');
+
+
+
+
+
+// Thay footer trong wp bằng link của echbay
+function eb_change_footer_admin () {
+	echo 'Designed by <a href="http://echbay.com" target="_blank" rel="nofollow">EchBay.com</a> using <a href="https://wordpress.org/" target="_blank" rel="nofollow">WordPress</a> CMS.</span>';
+}
+add_filter('admin_footer_text', 'eb_change_footer_admin');
+
+
+
+
+
+
+// kích hoạt các nút soạn thảo ẩn
+function ilc_mce_buttons($buttons){
+	array_push($buttons,
+		"backcolor",
+		"anchor",
+		"hr",
+		"sub",
+		"sup",
+		"fontselect",
+		"fontsizeselect",
+		"styleselect",
+		"cleanup"
+	);
+	return $buttons;
+}
+add_filter("mce_buttons_3", "ilc_mce_buttons");
+
+
+
+
+
+// thêm cột cho post
+// https://hocwp.net/guide/them-cot-vao-bang-quan-ly-bai-viet-wordpress/
+function eb_add_post_column_head($columns) {
+	$columns ['gia'] = 'Giá cũ/ Mới';
+	$columns ['img'] = 'Ảnh';
+	$columns ['stt'] = 'STT';
+	
+	return $columns;
+}
+
+// thêm cột cho blog
+function eb_add_blog_column_head($columns) {
+	$columns ['img'] = 'Ảnh';
+	$columns ['stt'] = 'STT';
+	
+	return $columns;
+}
+
+// thêm cột cho ads
+function eb_add_ads_column_head($columns) {
+	$columns ['ads_status'] = 'Trạng thái';
+	$columns ['img'] = 'Ảnh';
+	$columns ['stt'] = 'STT';
+	
+	return $columns;
+}
+
+// hàm xử lý nội dung và tạo cột
+function eb_run_post_column_content($column, $post_id) {
+//	global $func;
+	
+	// giá bán
+	if ('gia' == $column) {
+//		$a = _eb_get_post_meta ( $post_id, '_eb_product_oldprice', true, 0 );
+		$a = _eb_float_only( _eb_get_post_object ( $post_id, '_eb_product_oldprice', 0 ) );
+//		$b = _eb_get_post_meta ( $post_id, '_eb_product_price', true, 0 );
+		$b = _eb_float_only( _eb_get_post_object ( $post_id, '_eb_product_price', 0 ) );
+		
+		echo number_format( $a ) . '/ ' . number_format( $b );
+	}
+	// ảnh đại diện
+	else if ($column == 'img') {
+//		$a = _eb_get_post_img ( $post_id, 'thumbnail' );
+		
+		//
+//		echo '<div class="eb-wp-admin-list-img" style="background-image:url(\'' . $a . '\');">&nbsp;</div>';
+		
+		//
+		$a = _eb_get_post_img ( $post_id );
+		echo '<div><img src="' . $a . '" height="60" /></div>';
+	}
+	// trạng thái
+	else if ($column == 'ads_status') {
+		global $arr_eb_ads_status;
+		
+//		$a = _eb_get_post_meta ( $post_id, '_eb_ads_status', true, 0 );
+		$a = _eb_get_post_object ( $post_id, '_eb_ads_status', 0 );
+		
+		//
+		if ( isset( $arr_eb_ads_status[$a] ) ) {
+			echo '<span class="small">' . $arr_eb_ads_status[$a] . '</span>';
+		} else {
+			echo '<em>NULL</em>';
+		}
+	}
+	// trạng thái
+	else if ($column == 'stt') {
+		global $post;
+		
+		//
+		echo '<span>' . $post->menu_order . '</span>';
+	}
+}
+
+
+
+// để cho nhẹ code, chỉ chạy chức năng tương ứng với request
+if ( strstr( $_SERVER['REQUEST_URI'], '/edit.php' ) == true ) {
+	// cho quảng cáo
+	if ( strstr( $_SERVER['REQUEST_URI'], 'post_type=ads' ) == true ) {
+		$post_type = 'ads';
+		
+		add_filter ( 'manage_' . $post_type . '_posts_columns', 'eb_add_ads_column_head' );
+		add_action ( 'manage_' . $post_type . '_posts_custom_column', 'eb_run_post_column_content', 10, 2 );
+	}
+	// cho blog
+	else if ( strstr( $_SERVER['REQUEST_URI'], 'post_type=blog' ) == true ) {
+		$post_type = 'blog';
+		
+		add_filter ( 'manage_' . $post_type . '_posts_columns', 'eb_add_blog_column_head' );
+		add_action ( 'manage_' . $post_type . '_posts_custom_column', 'eb_run_post_column_content', 10, 2 );
+	}
+	// cho post
+	else {
+		$post_type = 'post';
+		
+		add_filter ( 'manage_' . $post_type . '_posts_columns', 'eb_add_post_column_head' );
+		add_action ( 'manage_' . $post_type . '_posts_custom_column', 'eb_run_post_column_content', 10, 2 );
+	}
+}
+
+
+
+
+
+
+/*
+function eb_custom_dashboard_widgets() {
+	global $wp_meta_boxes;
+	
+	wp_add_dashboard_widget('eb_custom_help_widget', 'EchBay Theme Support', 'eb_custom_dashboard_help');
+}
+
+function eb_custom_dashboard_help() {
+	
+}
+
+add_action('wp_dashboard_setup', 'eb_custom_dashboard_widgets');
+*/
+
+
+
+
+
+
+
+/**
+* Loại bỏ tiếng Việt có dấu ở trong tên của file upload lên
+*/
+//$global_file_name_after_upload = array();
+
+function __eb_sanitize_file_name( $filename ) {
+//	global $global_file_name_after_upload;
+	
+	$a = _eb_non_mark_seo( $filename );
+	
+//	$global_file_name_after_upload[] = $a;
+	
+	//
+	/*
+	$arr = wp_upload_dir();
+//	print_r( $arr );
+	
+	// kiểm tra nếu có file rồi -> đổi tên file luôn
+	$path = $arr['path'] . '/' . $a;
+	if ( file_exists( $path ) ) {
+		$arr_file = explode( '.', $a );
+		$file_type = $arr_file[ count($arr_file) - 1 ];
+		for ( $i = 0; $i < 50; $i++ ) {
+			$a2 = $arr_file;
+			$a2[ count( $a2 ) - 1 ] = '-' . $i . '.' . $file_type;
+			$a2 = implode( '.', $a2 );
+			if ( ! file_exists( $a2 ) ) {
+				$a = $a2;
+				break;
+			}
+		}
+	}
+	*/
+	
+	//
+//	_eb_create_file( $arr['path'] . '/z.txt', $a . "\n", 1 );
+	
+	return $a;
+}
+ 
+add_filter( 'sanitize_file_name', '__eb_sanitize_file_name', 10, 1 );
+
+
+//
+/*
+function EBE_resizeafter_upload_media($attachment_ID) {          
+}
+
+add_action("add_attachment", 'EBE_resizeafter_upload_media');
+*/
+
+
+
+
+
+

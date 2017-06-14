@@ -1,0 +1,117 @@
+<div class="{tmp.custom_blog_css}">
+	<div class="cart-pro-phet">
+		<form name="frm_cart" method="post" action="process/?set_module=booking" target="target_eb_iframe" onsubmit="return _global_js_eb.check_cart();">
+			<div id="oi_cart" class="d-none">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cart-table cart-count-tr">
+					<tr class="cart-table-subject">
+						<td>Danh sách Sản phẩm</td>
+						<td class="hide-if-mobile">Giá</td>
+						<td>Số lượng</td>
+						<td class="hide-if-mobile">Cộng</td>
+					</tr>
+					{tmp.cart_list}
+				</table>
+				<div class="cart-table-total upper bold">Tổng số: {tmp.cart_total}</div>
+			</div>
+			<div id="cart_null" class="text-center">Không có sản phẩm nào trong giỏ hàng của bạn</div>
+			<br>
+			<div class="cf"><a href="./" class="cart-table-prev d-block lf">&laquo; Tiếp tục mua hàng</a></div>
+			<br>
+			<br>
+			<div id="oi_send_invoice" class="d-none"> 
+				<!--
+				<div class="cart-table-title upper bold medium cf">
+					<div class="lf f62">Thông tin khách hàng</div>
+					<div class="lf f38">Hình thức thanh toán</div>
+				</div>
+				-->
+				<div class="cf">
+					<div class="lf f62 fullsize-if-mobile">
+						<div class="right-menu-space">
+							<div class="cart-table-title upper bold medium">Thông tin khách hàng</div>
+							<div id="cart_user_agent" class="d-none"></div>
+							<ul class="cart-ultable">
+								<li class="cf">
+									<div class="lf f25">Họ và tên</div>
+									<div class="lf f75">
+										<input type="text" name="t_ten" id="t_ten" value="" />
+									</div>
+								</li>
+								<li class="cf">
+									<div class="lf f25">Điện thoại <span class="redcolor">*</span></div>
+									<div class="lf f75">
+										<input type="text" name="t_dienthoai" id="t_dienthoai" value="" aria-required="true" required />
+									</div>
+								</li>
+								<li class="cf eb-global-cart-email">
+									<div class="lf f25">Email</div>
+									<div class="lf f75">
+										<input type="text" name="t_email" id="t_email" value="" />
+									</div>
+								</li>
+								<li class="cf">
+									<div class="lf f25">Địa chỉ</div>
+									<div class="lf f75">
+										<input type="text" name="t_diachi" id="t_diachi" value="" placeholder="Địa chỉ nhận hàng." />
+									</div>
+								</li>
+								<li class="cf eb-global-cart-ghichu">
+									<div class="lf f25">Ghi chú</div>
+									<div class="lf f75">
+										<textarea name="t_ghichu" id="t_ghichu"></textarea>
+									</div>
+								</li>
+								<li class="cf">
+									<div class="lf f25">&nbsp;</div>
+									<div>
+										<input type="submit" id="sb_submit_cart" value="Gửi đơn hàng" class="cart-mua-button upper cur" />
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="lf f38 fullsize-if-mobile">
+						<div class="cart-table-title upper bold medium">Hình thức thanh toán</div>
+						<div class="cart-pay-method">
+							<div>
+								<input id="cart_tt_tructiep" type="radio" name="t_thanhtoan" value="tructiep" checked>
+								<label for="cart_tt_tructiep">Thanh toán trực tiếp tại cửa hàng</label>
+							</div>
+							<div>
+								<input id="cart_tt_cod" type="radio" name="t_thanhtoan" value="cod">
+								<label for="cart_tt_cod">Thanh toán khi nhận hàng (COD)</label>
+							</div>
+							<div>
+								<input id="cart_tt_bank" type="radio" name="t_thanhtoan" value="bank">
+								<label for="cart_tt_bank">Thanh toán trực tuyến qua ngân hàng</label>
+							</div>
+							<div class="d-none">
+								<input id="cart_tt_bk" type="radio" name="t_thanhtoan" value="bk">
+								<label for="cart_tt_bk">Thanh toán trực tuyến qua Bảo Kim</label>
+							</div>
+							<div class="d-none">
+								<input id="cart_tt_nl" type="radio" name="t_thanhtoan" value="nl">
+								<label for="cart_tt_nl">Thanh toán trực tuyến qua Ngân Lượng</label>
+							</div>
+						</div>
+						<hr>
+						<br>
+						<ul class="cart-table-free cf">
+							<li class="lf f50 fullsize-if-mobile">
+								<div><i class="fa fa-truck"></i> Miễn phí giao hàng<br>
+									<span class="upper">Toàn Quốc</span></div>
+							</li>
+							<li class="lf f50 fullsize-if-mobile">
+								<div><i class="fa fa-check"></i> Đồng kiểm khi<br>
+									<span class="upper">Nhận hàng</span></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+{tmp.js}
+</script> 

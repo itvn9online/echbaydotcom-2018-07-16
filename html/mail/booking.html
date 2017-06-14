@@ -1,0 +1,37 @@
+<div style="line-height:19px;">
+	<div align="center" style="color:#0075B2;font-size:23px;padding:0;margin:0">Thông tin đơn hàng của bạn</div>
+	<br />
+	<div>Chào bạn {tmp.t_ten},</div>
+	<div>Bạn hoặc ai đó đã sử dụng email {tmp.t_email} để đặt hàng tại website <a href="{tmp.web_link}">{tmp.web_name}</a></div>
+	<br />
+	<div style="font-size:12pt">Mã đơn hàng <strong style="color:#0075B2">{tmp.hd_mahoadon}</strong>.</div>
+	<p>(Ngày gửi: {tmp.date_oder})</p>
+	<h4 style="padding:3pt 0;margin:0">Tóm tắt thông tin đơn hàng:</h4>
+	<div>--------------------------------------------</div>
+	<div>{tmp.product_list}</div>
+	<table border="0" cellpadding="8" cellspacing="0">
+		<tr>
+			<td align="right">Thuế</td>
+			<td><em>Chưa bao gồm</em></td>
+		</tr>
+		<tr>
+			<td align="right">Phí vận chuyển</td>
+			<td><em>Tính toán sau</em></td>
+		</tr>
+		<tr>
+			<td align="right">Tổng cộng</td>
+			<td><strong style="font-size:23px;color:#f00">{tmp.t_amount}đ</strong></td>
+		</tr>
+	</table>
+	<br>
+	<hr />
+	<br>
+	<div><strong>Thông tin người đặt hàng:</strong><br />
+		<div>Họ và tên: {tmp.t_ten}<br />
+			Email: {tmp.t_email}<br />
+			Điện thoại: {tmp.t_dienthoai}<br />
+			Địa chỉ: {tmp.t_diachi}<br />
+			Ghi chú: {tmp.t_ghichu}</div>
+	</div>
+	<br>
+</div>

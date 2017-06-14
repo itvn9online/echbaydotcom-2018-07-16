@@ -1,0 +1,37 @@
+.home-hot-bg {
+	background: #F2F2F2;
+	padding: 10px 0 20px 0;
+}
+.home-hot-bg .thread-list-mobilebg { background: #fff; }
+.home-hot-bg .thread-list-giamgia { line-height: 35px; }
+.home-hot-title {
+	border-bottom: 3px #EBEBEB solid;
+	position: relative;
+	line-height: 30px;
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+}
+.home-hot-title:before {
+	width: 10%;
+	height: 3px;
+	content: "";
+	background: #f00;
+	position: absolute;
+	bottom: -3px;
+	left: 45%;
+}
+/*
+.home-hot-title i {
+	display: inline-block;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	background: #00A651;
+	text-align: center;
+	color: #fff;
+	border: 2px #fff solid;
+	border-radius: 50%;
+}
+*/

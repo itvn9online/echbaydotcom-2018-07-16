@@ -1,0 +1,223 @@
+@charset "utf-8";
+/* CSS Document */
+.eb-admin-tab {
+	line-height: 35px;
+	padding: 0;
+	margin: 15px 0 20px 0;
+}
+.eb-admin-tab li {
+	float: left;
+	padding: 0;
+	margin: 5px 10px 0 0;
+}
+.eb-admin-tab a {
+	display: block;
+	padding: 0 15px;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: bold;
+	background: #e5e5e5;
+	border: 1px #ccc solid;
+	border-radius: 5px;
+}
+.eb-admin-tab li:hover a { background: none; }
+.eb-admin-tab a.selected {
+	background: #333 !important;
+	color: #fff;
+}
+.eb-admin-config {
+	line-height: 30px;
+	margin: 15px 0;
+}
+.eb-admin-config li {
+	float: left;
+	margin: 0 5px 5px 0;
+	border: 1px #666 solid;
+	border-radius: 3px;
+	background: #ccc;
+	padding: 0 15px;
+	cursor: pointer;
+}
+.eb-admin-config li.selected {
+	background: #333;
+	color: #fff;
+}
+/* product size */
+.eb-admin-product-size li {
+	line-height: 30px;
+	min-width: 20px;
+	padding: 0 5px;
+	text-align: center;
+	font-size: 11pt;
+	color: #333;
+	cursor: pointer;
+	float: left;
+	border: 1px #ccc solid;
+	margin-right: 5px;
+}
+.eb-input-edit-product-size {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 1px #ccc solid;
+	background: rgba( 255, 255, 255, .9 );
+	padding: 10px;
+	border-radius: 3px;
+	display: none;
+	z-index: 999;
+}
+.eb-input-edit-product-size input[type="text"] {
+	width: 200px;
+	display: block;
+	margin-bottom: 15px;
+}
+.eb-input-edit-product-size button {
+	background: #f2f2f2;
+	color: #000;
+	border: 1px #999 solid;
+	border-radius: 3px;
+	height: 26px;
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 10px;
+}
+.eb-input-edit-product-size button[data-action="save"] {
+	background: #3366FF;
+	color: #fff;
+}
+input[id="_eb_category_order"] { width: 90px; }
+.eb-wp-admin-list-img {
+	overflow: hidden;
+	max-width: 110px;
+	background: left no-repeat;
+	background-size: auto 100%;
+	height: 60px;
+}
+.eb-warning-site-config {
+	border: 1px #ccc solid;
+	background: #f5f5f5;
+	padding: 15px;
+	width: 95%;
+}
+.eb-warning-site-config div { margin: 5px 0; }
+.eb-admin-wp-submit {
+	padding: 10px 20px;
+	cursor: pointer;
+	position: fixed;
+	bottom: 40px;
+	right: 20px;
+	z-index: 9;
+}
+/* .ip-invoice-alert td:first-child { border-left: 5px #ccc solid; } */
+.hd_status0,
+.hd_status0 a {
+	font-weight: bold;
+	color: #000;
+}
+.hd_status0 td:first-child { }
+.hd_status1,
+.hd_status1 a { color: #00F; }
+.hd_status1 td:first-child { }
+.hd_status2,
+.hd_status2 a { color: #F90; }
+.hd_status2 td:first-child { }
+.hd_status3,
+.hd_status3 a { color: #090; }
+.hd_status3 td:first-child { }
+.hd_status4,
+.hd_status4 a {
+	color: #ccc;
+	text-decoration: line-through;
+	font-size: 11px;
+}
+.hd_status4 td { padding: 3px 6px; }
+.hd_status4 td:first-child { }
+.hd_status4:hover,
+.hd_status4:hover a {
+	color: #333;
+	text-decoration: none;
+}
+.hd_status5,
+.hd_status5 a { color: #C0F; }
+.hd_status5 td:first-child { }
+.hd_status6,
+.hd_status6 a { color: #F0F; }
+.hd_status6 td:first-child { }
+.hd_status7,
+.hd_status7 a { color: #600; }
+.hd_status7 td:first-child { }
+.hd_status8,
+.hd_status8 a { color: #60F; }
+.hd_status8 td:first-child { }
+.hd_status9,
+.hd_status9 a { color: #f00; }
+.hd_status9 td:first-child { }
+.disable-edit-thumb-small { position: relative; }
+.div-edit-thumb-small {
+	position: absolute;
+	background: rgba( 255, 255, 255, .5 );
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.admin-part-page strong,
+.admin-part-page a {
+	display: inline-block;
+	line-height: 28px;
+	min-width: 28px;
+	border-radius: 4px;
+	text-align: center;
+	margin: 0 3px;
+}
+.admin-part-page a {
+	border: 1px #ccc solid;
+	color: #333;
+}
+.admin-part-page strong {
+	border: 1xp #000 solid;
+	background: #333;
+	color: #fff;
+}
+/* wordpress menu */
+/*
+#adminmenuwrap {
+	float: none;
+	width: auto;
+	left: 0;
+	right: 0;
+}
+#adminmenu {
+	width: auto;
+	border: 1px #f00 solid;
+}
+#adminmenu li {
+	float: left;
+	width: 5%;
+	overflow: hidden;
+	height: 30px;
+}
+*/
+.eb-widget-fixed { display: none; }
+.ebe-color-picker {
+	padding: 0;
+	margin: 0;
+	height: 30px;
+	line-height: 30px;
+	width: 90px;
+}
+
+@media screen and (min-width:775px) {
+.open .eb-widget-fixed {
+	display: block;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	max-width: 260px;
+	background: #fff;
+	z-index: 99999;
+	padding: 10px 20px;
+	overflow: auto;
+}
+}

@@ -1,0 +1,37 @@
+.thread-home-c2 {
+	position: relative;
+	height: 34px;
+	border-bottom: 2px #ccc solid;
+	margin-bottom: 15px;
+}
+.thread-home-c2:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	border-bottom: 2px #F60 solid;
+	width: 25%;
+	min-width: 50px;
+}
+.thread-home-c2 a {
+	display: inline-block;
+	padding: 0 10px;
+	border-right: 1px #ccc solid;
+	line-height: 20px;
+	margin: 7px 0;
+	color: #333;
+	font-size: 14px;
+}
+.thread-home-c2 a:first-child {
+	line-height: 34px;
+	margin: 0;
+	border: 0 none;
+	font-size: 16px;
+	border-radius: 5px 5px 0 0;
+	padding: 0 20px;
+	color: #fff;
+	font-weight: bold;
+	background: #f60;
+}
+.thread-home-c2 a:last-child { }
+.home-count-cat { display: none; }

@@ -1,0 +1,210 @@
+<p><em>* Với công cụ này, chúng tôi sẽ hỗ trợ bạn chuyển dữ liệu từ website cũ sang hệ thống website của Ếch Bay một cách nhanh gọn nhất. Việc của bạn cần làm chỉ đơn giản là kiểm tra và ra soát lại dữ liệu mới sau khi chuyển giao.</em></p>
+<div>
+	<div><em>Bạn cần hiểu về cấu trúc HTML của site gốc, từ đó bạn mới có thể đưa ra cấu trúc cụ thể cho phân mềm bóc tách URL chi tiết sản phẩm từ phân nhóm.<br>
+		* Lưu ý: cấu trúc được sử dụng cho bộ mã nguồn mở jQuery.</em><br>
+		<br>
+		<div><strong>Ví dụ về cấu trúc đầu vào:</strong></div>
+		<br>
+		Dữ liệu nhập vào:
+		<pre><code>#products li a.thumb</code></pre>
+		-> Câu lệnh thực thi:<br>
+		<br>
+		Đối với đường link:
+		<pre><code>$('#products li a.thumb').attr('href') hoặc $('#products li a.thumb').attr('data-href')</code></pre>
+		Đối với hình ảnh:
+		<pre><code>$('#products li a.thumb').attr('data-old-src') hoặc $('#products li a.thumb').attr('data-src') hoặc $('#products li a.thumb').attr('src')</code></pre>
+		Mặc định:
+		<pre><code>$('#products li a.thumb').html()</code></pre>
+	</div>
+	<br>
+	<br>
+	<br>
+	<div class="ui-sortable-handle"><span class="bold">URL Phân nhóm sản phẩm</span>
+		<input type="checkbox" id="this_id_url_product_detail">
+		<label for="this_id_url_product_detail">Đây là URL của trang chi tiết</label>
+	</div>
+	<div class="ui-sortable-input">
+		<textarea id="categories_url" placeholder="URL source categories" style="width:99%;height:90px;"></textarea>
+	</div>
+	<div><em>Nhập URL phân nhóm sản phẩm ở trang gốc, sau đó thiết lập cấu trúc bóc tách dữ liệu để lấy URL trang chi tiết sản phẩm.</em></div>
+	<ol id="categories_list_finish" class="l19">
+	</ol>
+	<ol id="categories_list_url" class="l19">
+	</ol>
+	<br>
+	<br>
+	<div class="ui-sortable-handle">Cấu trúc bóc tách URL sản phẩm</div>
+	<div class="ui-sortable-input">
+		<input type="text" id="categories_tags" value="" placeholder="HTML ID or class for details URL" style="width:99%;" />
+	</div>
+	<br>
+	<br>
+	<div>
+		<button type="button" class="click-submit-url-categories cur">Bắt đầu lấy danh sách sản phẩm</button>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="ui-sortable-handle">Danh sách sản phẩm tìm được</div>
+	<ol id="details_finish_url" class="l19">
+	</ol>
+	<ol id="details_list_url" class="l19">
+	</ol>
+	<div><em>Ở đây sẽ liệt kê danh sách sản phẩm tìm sau khi bạn nhập URL phân nhóm ở trên, nếu không có danh sách này, có thể URL hoặc cấu trúc HTML bạn nhập sai, hoặc trang không có sản phẩm...</em></div>
+	<br>
+	<br>
+	<div class="ui-sortable-handle bold">Phân nhóm sản phẩm</div>
+	<div class="cf">
+		<div id="oiAnt" class="lf f30">{tmp.list_cat}</div>
+	</div>
+	<div id="oiBlogAnt" class="d-none">{tmp.list_blog_cat}</div>
+	<br>
+	<br>
+	<div class="ui-sortable-handle bold">Tự động hoàn thành</div>
+	<div>
+		<input type="checkbox" id="leech_data_auto_next" />
+		<label for="leech_data_auto_next">Tự động tiếp tục</label>
+	</div>
+	<div><em>Sau khi nhấn nút Submit, hệ thống sẽ tự tìm sản phẩm tiếp theo và lấy (nếu có).<br>
+		<span class="redcolor">* Chỉ nên đánh dấu chọn sau khi đã thử nghiệm việc bóc tách dữ liệu đúng ý muốn.</span></em></div>
+	<br>
+	<br>
+	<div>
+		<input type="checkbox" id="bai_viet_nay_duoc_lay_theo_id" />
+		<label for="bai_viet_nay_duoc_lay_theo_id">Xác định bài viết dựa theo ID (thường sẽ xác định theo URL, nếu có ID thì check vào đây để lọc theo ID sẽ chuẩn hơn)</label>
+	</div>
+	<br>
+	<div>
+		<input type="checkbox" id="loai_bo_url_trong_noi_dung" />
+		<label for="loai_bo_url_trong_noi_dung">Loại bỏ url trong nội dung (nếu clone nội dung từ site của đơn vị khác, kích hoạt chức năng này để loại bỏ outlink)</label>
+	</div>
+	<br>
+	<div>
+		<button type="button" class="click-submit-url-details cur">Bắt đầu lấy chi tiết sản phẩm</button>
+	</div>
+	<br>
+	<br>
+	<form name="frm_leech_data" method="post" action="{tmp.web_link}process/?set_module=leech_data" target="target_eb_iframe" onSubmit="return check_lech_data_submit();">
+		<table cellpadding="0" cellspacing="0" width="100%" border="0" class="eb-public-table fix-textarea-height">
+			<tr>
+				<td class="t">URL details</td>
+				<td class="i"><input type="text" name="t_source" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">ID</td>
+				<td class="i"><input type="text" name="t_id" value="" class="n" /></td>
+			</tr>
+			<tr>
+				<td class="t">Định dạng bài viết</td>
+				<td class="i"><select name="post_tai">
+						<option value="post">post</option>
+						<option value="blog">blog</option>
+						<option value="page">page</option>
+					</select></td>
+			</tr>
+			<tr>
+				<td class="t">Phân nhóm</td>
+				<td class="i"><input type="number" name="t_ant" value="" class="s" /></td>
+			</tr>
+			<tr>
+				<td class="t">Tiêu đề</td>
+				<td class="i"><input type="text" name="t_tieude" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_title" value="" placeholder="HTML tags (thường là thẻ H1)" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">SEO</td>
+				<td class="i"><input type="text" name="t_seo" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">Mã sản phẩm</td>
+				<td class="i"><input type="text" name="t_masanpham" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_masanpham" value="" placeholder="HTML tags" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">IMG</td>
+				<td class="i"><input type="text" name="t_img" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_img" value="" placeholder="HTML tags (kết thúc phải là thẻ IMG)" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">Youtube Video</td>
+				<td class="i"><input type="text" name="t_youtube_url" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_youtube_url" value="" placeholder="HTML tags (kết thúc phải là thẻ IFRAME)" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">Giá cũ</td>
+				<td class="i"><input type="text" name="t_giacu" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_giacu" value="" placeholder="HTML tags" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">Giá mới</td>
+				<td class="i"><input type="text" name="t_giamoi" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_giamoi" value="" placeholder="HTML tags" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">Mô tả ngắn</td>
+				<td class="i"><textarea name="t_goithieu" style="width:99%;height:90px;"></textarea></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_goithieu" value="" placeholder="HTML tags" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">Nội dung</td>
+				<td class="i"><textarea name="t_noidung" style="width:99%;height:300px;"></textarea></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_noidung" value="" placeholder="HTML tags" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">Điều kiện/ Điểm nổi bật</td>
+				<td class="i"><textarea name="t_dieukien" style="width:99%;height:300px;"></textarea></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_dieukien" value="" placeholder="HTML tags" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">Thư viện ảnh</td>
+				<td class="i"><textarea name="t_gallery" style="width:99%;height:90px;"></textarea></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_gallery" value="" placeholder="HTML tags (kết thúc phải là thẻ img)" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">Kích thước</td>
+				<td class="i"><textarea name="t_size_list" placeholder="Sử dụng vòng lặp riêng để tạo ra danh sách size dưới dạng mảng javascript" style="width:99%;height:90px;"></textarea></td>
+			</tr>
+		</table>
+		<div class="cf" style="position:fixed;bottom:35px;right:45px;">
+			<input type="submit" value="Gửi" class="blue-button admin-big-button" />
+		</div>
+	</form>
+</div>
+<br>
+<div class="d-none2">
+	<div id="leech_data_html"></div>
+	<br>
+	<div id="leech_data_fix_content"></div>
+</div>
+<script type="text/javascript" src="{tmp.admin_js_uri}leech_data.js?v={tmp.web_version}"></script> 

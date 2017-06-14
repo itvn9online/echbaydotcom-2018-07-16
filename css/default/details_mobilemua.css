@@ -1,0 +1,37 @@
+.thread-details-mobilemua {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba( 255, 255, 255, .9 );
+	border-top: 2px #f2f2f2 solid;
+	line-height: 19px;
+	z-index: 999;
+	font-size: 11px;
+	height: 46px;
+	overflow: hidden;
+}
+.thread-details-mobilemua ul {
+	max-width: 999px;
+	margin: 0 auto;
+}
+.thread-details-mobilemua li {
+	float: left;
+	width: 22%;
+	cursor: pointer;
+}
+.thread-details-mobilemua i,
+.thread-details-phonemua a:before {
+	display: block;
+	line-height: 25px;
+	font-size: 25px;
+}
+.thread-details-mobilemua span { display: none; }
+.thread-details-mobilemua,
+.thread-details-mobilemua a { color: #333; }
+.thread-details-phonemua a { display: none; }
+.thread-details-phonemua a:first-child { display: block; }
+.thread-details-phonemua a:before {
+	content: "\f095";
+	font-family: FontAwesome;
+}
