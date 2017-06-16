@@ -197,25 +197,25 @@ if ( mtv_id == 1 ) {
 				if ($zip->open( $destination_path ) === TRUE) {
 					$zip->extractTo( EB_THEME_CACHE );
 					$zip->close();
-					echo '<div>Giải nén tệp tin: ' . EB_THEME_CACHE . '</div>'; 
+					echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
 				} else {
-					echo '<div>Không giải nén được tệp tin, cập nhật thất bại!</div>';
+					echo '<div>Do not unzip file, update faild!</div>';
 				}
 				
 				//
 				/*
 				$unzipfile = unzip_file( $destination_path, EB_THEME_CACHE );
 				if ( $unzipfile == true ) {
-					echo '<div>Giải nén tệp tin: ' . EB_THEME_CACHE . '</div>'; 
+					echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
 				} else {
-					echo '<div>Không giải nén được tệp tin, cập nhật thất bại!</div>';
+					echo '<div>Do not unzip file, update faild!</div>';
 				}
 				/* */
 				
 				
 				//
 				unlink( $destination_path );
-				echo '<div>Xóa tệp zip sau khi giải nén.</div>';
+				echo '<div>Remove zip file after unzip.</div><br>' . "\n";
 				
 				
 				/*
@@ -243,6 +243,7 @@ if ( mtv_id == 1 ) {
 				
 				//
 				EBE_update_file_via_ftp();
+				
 			}
 			else {
 				echo '<h3>Không tồn tại file zip để giải nén!</h3>';
