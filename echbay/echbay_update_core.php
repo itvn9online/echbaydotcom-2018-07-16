@@ -187,7 +187,7 @@ if ( mtv_id == 1 ) {
 		}
 		
 		//
-		if ( date_time - $lats_update_file_test > 60 ) {
+		if ( date_time - $lats_update_file_test > 300 ) {
 			
 			// tạo file cache để quá trình này không diễn ra liên tục
 			_eb_create_file( $file_cache_test, date_time );
