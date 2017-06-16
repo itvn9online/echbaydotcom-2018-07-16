@@ -161,7 +161,7 @@ function EBE_update_file_via_ftp () {
 	
 	
 	// lất ngược mảng để xóa thư mục
-	array_reverse( $list_dir_for_update_eb_core );
+	$list_dir_for_update_eb_core = array_reverse( $list_dir_for_update_eb_core );
 	print_r( $list_dir_for_update_eb_core );
 	
 	
