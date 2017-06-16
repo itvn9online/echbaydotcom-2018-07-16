@@ -57,7 +57,7 @@ function EBE_update_file_via_ftp () {
 	
 	// Tạo file trong thư mục cache
 	$file_test = EB_THEME_CACHE . 'test_ftp.txt';
-	$file_cache_update = $file_test;
+//	$file_cache_update = $file_test;
 //	echo $file_test . " - \n";
 //	$file_source_test = $list_file_for_update_eb_core[0];
 //	$file_source_test = EB_THEME_CACHE . 'cat.js';
@@ -128,7 +128,7 @@ function EBE_update_file_via_ftp () {
 	//
 //	print_r( $list_file_for_update_eb_core );
 	foreach ( $list_file_for_update_eb_core as $v ) {
-		_eb_create_file( $file_cache_update, file_get_contents( $v, 1 ) );
+//		_eb_create_file( $file_cache_update, file_get_contents( $v, 1 ) );
 		
 		$v2 = str_replace( $dir_source_update, EB_THEME_PLUGIN_INDEX, $v );
 		$v2 = '.' . strstr( $v2, '/' . $ftp_dir_root . '/' );
@@ -138,12 +138,14 @@ function EBE_update_file_via_ftp () {
 		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
 //		echo $file_test . ' - file cache<br>' . "\n";
 		
+		/*
 		if( ftp_nlist($conn_id, $file_test) == false ) {
 			die( 'File not exist: ' . $file_test );
 		}
 		if( ftp_nlist($conn_id, $v2) == false ) {
 			die( 'File not exist: ' . $v2 );
 		}
+		*/
 		
 		// upload file
 		ftp_put($conn_id, $v2, $v, FTP_ASCII) or die( 'ERROR upload file to server #' . $v );
