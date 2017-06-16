@@ -76,7 +76,7 @@ if ( $switch_taxonomy != '' ) {
 	//
 //	$__cf_row ['cf_title'] = $__category->name;
 	
-	$group_go_to[] = ' <li>' . $__category->name . '</li>';
+//	$group_go_to[] = ' <li>' . $__category->name . '</li>';
 	
 	// tìm nhóm cha (nếu có)
 	$parent_parent_cat = _eb_create_html_breadcrumb( $__category );

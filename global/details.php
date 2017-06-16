@@ -151,7 +151,7 @@ if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
 else {
 	$post_categories = wp_get_post_categories( $pid );
 }
-//print_r( $post_categories );
+//if ( mtv_id == 1 ) print_r( $post_categories );
 
 
 //
@@ -160,6 +160,7 @@ $cats_child = array();
 $ant_link = '';
 $ant_ten = '';
 $ant_id = 0;
+$bnt_id = 0;
 
 //
 if ( isset( $post_categories[0] ) ) {
@@ -184,6 +185,10 @@ if ( isset( $post_categories[0] ) ) {
 		}
 		// child
 		else {
+			if ( $bnt_id == 0 ) {
+				$bnt_id = $cat->term_id;
+			}
+			
 			$cats_child[] = $cat;
 		}
 	}
@@ -198,7 +203,7 @@ if ( isset( $post_categories[0] ) ) {
 	}
 	
 }
-//print_r( $cats );
+//if ( mtv_id == 1 ) print_r( $cats );
 
 //
 if ( isset( $cats[0] ) ) {
@@ -208,6 +213,9 @@ if ( isset( $cats[0] ) ) {
 	
 	// tìm nhóm cha (nếu có)
 	_eb_create_html_breadcrumb( $cats[0] );
+} else if ( $bnt_id > 0 ) {
+	$ant_id = $bnt_id;
+	$cid = $bnt_id;
 }
 
 
@@ -399,7 +407,7 @@ if ( $structured_data_detail != '' ) {
 
 
 //
-$group_go_to[] = ' <li>' . $__post->post_title . '</li>';
+//$group_go_to[] = ' <li>' . $__post->post_title . '</li>';
 //echo $group_go_to;
 //print_r($group_go_to);
 

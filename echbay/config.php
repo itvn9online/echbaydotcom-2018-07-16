@@ -247,6 +247,8 @@ $str_cf_page_column_style = __eb_create_select_checked_config(
 //
 $arr_cf_product_thumbnail_size = array(
 	'medium' => 'Thu gọn (medium)',
+	'medium_large' => 'Trung bình (medium_large)',
+	'large' => 'Lớn (large)',
 	'full' => 'Đầy đủ (bản gốc)',
 );
 //print_r($arr_cf_product_thumbnail_size);
@@ -262,10 +264,7 @@ foreach ( $arr_cf_product_thumbnail_size as $k => $v ) {
 
 
 //
-$arr_cf_product_thumbnail_table_size = array(
-	'medium' => 'Thu gọn (medium)',
-	'full' => 'Đầy đủ (bản gốc)',
-);
+$arr_cf_product_thumbnail_table_size = $arr_cf_product_thumbnail_size;
 //print_r($arr_cf_product_thumbnail_table_size);
 $str_cf_product_thumbnail_table_size = '';
 foreach ( $arr_cf_product_thumbnail_table_size as $k => $v ) {
@@ -282,9 +281,9 @@ foreach ( $arr_cf_product_thumbnail_table_size as $k => $v ) {
 $arr_cf_product_thumbnail_mobile_size = array(
 	'thumbnail' => 'Bản cắt gọn (thumbnail)',
 	'ebmobile' => 'Tối ưu cho mobile (khuyên dùng)',
-	'medium' => 'Thu gọn (medium)',
-	'full' => 'Đầy đủ (bản gốc)',
-);
+//	'medium' => 'Thu gọn (medium)',
+//	'full' => 'Đầy đủ (bản gốc)',
+) + $arr_cf_product_thumbnail_size;
 //print_r($arr_cf_product_thumbnail_mobile_size);
 $str_cf_product_thumbnail_mobile_size = '';
 foreach ( $arr_cf_product_thumbnail_mobile_size as $k => $v ) {
