@@ -212,8 +212,10 @@ function EBE_update_file_via_ftp () {
 		}
 		*/
 		
-		// upload file
-		ftp_put($conn_id, $v2, $v, FTP_ASCII) or die( 'ERROR upload file to server #' . $v );
+		// upload file FTP_BINARY or FTP_ASCII -> nên sử dụng FTP_BINARY
+//		ftp_put($conn_id, $v2, $v, FTP_ASCII) or die( 'ERROR upload file to server #' . $v );
+		ftp_put($conn_id, $v2, $v, FTP_BINARY) or die( 'ERROR upload file to server #' . $v );
+//		ftp_put($conn_id, $v2, $v) or die( 'ERROR upload file to server #' . $v );
 //		ftp_put($conn_id, $v2, $file_cache_update, FTP_ASCII) or die( 'ERROR upload file to server #' . $v );
 		
 		unlink( $v );
