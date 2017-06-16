@@ -293,6 +293,8 @@ if ( mtv_id == 1 ) {
 			// Giải nén file
 			if ( file_exists( $destination_path ) ) {
 				if ( class_exists( 'ZipArchive' ) ) {
+					echo '<div>Using: <strong>ZipArchive</strong></div>'; 
+					
 					$zip = new ZipArchive;
 					if ($zip->open( $destination_path ) === TRUE) {
 						$zip->extractTo( EB_THEME_CACHE );
@@ -303,6 +305,8 @@ if ( mtv_id == 1 ) {
 					}
 				}
 				else {
+					echo '<div>Using: <strong>unzip_file (wordpress)</strong></div>'; 
+					
 					$unzipfile = unzip_file( $destination_path, EB_THEME_CACHE );
 					if ( $unzipfile == true ) {
 						echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
