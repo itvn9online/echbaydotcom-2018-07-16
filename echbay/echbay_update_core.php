@@ -255,6 +255,9 @@ function EBE_get_text_version ( $str ) {
 //
 if ( mtv_id == 1 ) {
 	if ( isset( $_GET['confirm_process'] ) ) {
+		
+		set_time_limit( 0 );
+		
 		$file_cache_test = EB_THEME_CACHE . 'eb_update_core.txt';
 		
 		//
