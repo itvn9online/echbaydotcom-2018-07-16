@@ -166,6 +166,9 @@ function EBE_update_file_via_ftp () {
 	foreach ( $list_dir_for_update_eb_core as $v ) {
 		rmdir( $v );
 	}
+	if ( file_exists( $dir_source_update . '.gitattributes' ) ) {
+		unlink( $dir_source_update . '.gitattributes' );
+	}
 	rmdir( $dir_source_update, true );
 	
 	
