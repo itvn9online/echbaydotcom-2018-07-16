@@ -166,6 +166,7 @@ function EBE_update_file_via_ftp () {
 	foreach ( $list_dir_for_update_eb_core as $v ) {
 		rmdir( $v );
 	}
+	rmdir( $dir_source_update, true );
 	
 	
 	// close the connection
