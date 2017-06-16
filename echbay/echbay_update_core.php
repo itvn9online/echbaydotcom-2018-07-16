@@ -316,6 +316,7 @@ if ( mtv_id == 1 ) {
 						echo '<div>Do not unzip file, update faild!</div>';
 					}
 				}
+				echo '<br>' . "\n";
 				
 				
 				/*
@@ -346,7 +347,7 @@ if ( mtv_id == 1 ) {
 					
 					// xóa file download để lần sau còn ghi đè lên
 					unlink( $destination_path );
-					echo '<div>Remove zip file after unzip.</div><br>' . "\n";
+					echo '<br><div>Remove zip file after unzip.</div><br>' . "\n";
 					
 					// tạo file cache để quá trình này không diễn ra liên tục
 					_eb_create_file( $file_cache_test, date_time );
@@ -386,7 +387,7 @@ if ( mtv_id == 1 ) {
 		echo '<br>';
 		
 		//
-		echo '<h2><a href="#" class="click-connect-to-echbay-update-wp-core">Bấm vào đây để cập nhật lại core cho EchBay!</a></h2>';
+		echo '<h2><a href="#" class="click-connect-to-echbay-update-wp-core">Bấm vào đây để cập nhật lại core cho EchBay!</a>. Lần cập nhật trước: ' . date( 'r', filemtime( EB_THEME_PLUGIN_INDEX . 'readme.txt' ) ) . '</h2>';
 	}
 	
 }
