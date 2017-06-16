@@ -352,8 +352,7 @@ if ( mtv_id == 1 ) {
 		}
 		
 		// Phiên bản hiện tại
-		$version_current = file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 );
-		$version_current = EBE_get_text_version( $version_current );
+		$version_current = EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) );
 		
 		//
 		if ( $version_in_github != $version_current ) {
