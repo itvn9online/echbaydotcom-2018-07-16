@@ -222,6 +222,9 @@ function EBE_update_file_via_ftp () {
 }
 
 function EBE_remove_dir_after_update ( $dir, $arr ) {
+	
+	echo '<br><br>' . "\n\n";
+	
 	// lật ngược mảng để xóa thư mục
 	$arr = array_reverse( $arr );
 //	print_r( $list_dir_for_update_eb_core );
@@ -328,22 +331,29 @@ if ( mtv_id == 1 ) {
 	else {
 		
 		// Kiểm tra phiên bản trên github
-		$version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/readme.txt' );
-		
-		$version_current = file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 );
-		
-		//
-		if ( $version_in_github != $version_current ) {
+		$strCacheFilter = 'github_version';
+		$version_in_github = _eb_get_static_html ( $strCacheFilter, '', '', 300 );
+		if ( $version_in_github == false ) {
+			$version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/readme.txt' );
+			
 			$version_in_github = explode( 'Stable tag:', $version_in_github );
 			$version_in_github = explode( "\n", $version_in_github[1] );
 			$version_in_github = trim( $version_in_github[0] );
 			
-			$version_current = explode( 'Stable tag:', $version_current );
-			$version_current = explode( "\n", $version_current[1] );
-			$version_current = trim( $version_current[0] );
-			
-			//
+			_eb_get_static_html ( $strCacheFilter, $version_in_github, '', 60 );
+		}
+		
+		// Phiên bản hiện tại
+		$version_current = file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 );
+		$version_current = explode( 'Stable tag:', $version_current );
+		$version_current = explode( "\n", $version_current[1] );
+		$version_current = trim( $version_current[0] );
+		
+		//
+		if ( $version_in_github != $version_current ) {
 			echo '<h3>* Phiên bản mới nhất <strong>' . $version_in_github . '</strong> đã được phát hành, phiên bản hiện tại của bạn là <strong>' . $version_current . '</strong>.</h3>';
+		} else {
+			echo '<h3>Xin chúc mừng! Phiên bản <strong>' . $version_current . '</strong> bạn đang sử dụng là phiên bản mới nhất.</h3>';
 		}
 		
 		//
