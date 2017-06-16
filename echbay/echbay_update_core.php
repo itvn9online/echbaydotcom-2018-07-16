@@ -360,6 +360,7 @@ if ( mtv_id == 1 ) {
 		} else {
 			echo '<h3>Xin chúc mừng! Phiên bản <strong>' . $version_current . '</strong> bạn đang sử dụng là phiên bản mới nhất.</h3>';
 		}
+		echo '<br>';
 		
 		//
 		echo '<h2><a href="#" class="click-connect-to-echbay-update-wp-core">Bấm vào đây để cập nhật lại core cho EchBay!</a></h2>';
@@ -376,6 +377,8 @@ else {
 <script type="text/javascript">
 jQuery('.click-connect-to-echbay-update-wp-core').attr({
 	href : window.location.href.split('&confirm_process=')[0] + '&confirm_process=1'
+}).click(function () {
+	$(this).hide();
 });
 
 //
