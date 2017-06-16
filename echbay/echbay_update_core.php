@@ -115,7 +115,7 @@ function EBE_update_file_via_ftp () {
 	
 	
 	//
-//	print_r( $list_dir_for_update_eb_core );
+	print_r( $list_dir_for_update_eb_core );
 	foreach ( $list_dir_for_update_eb_core as $v ) {
 		$v2 = str_replace( $dir_source_update, EB_THEME_PLUGIN_INDEX, $v );
 		
@@ -158,6 +158,11 @@ function EBE_update_file_via_ftp () {
 		
 		unlink( $v );
 	}
+	
+	
+	// lất ngược mảng để xóa thư mục
+	array_reverse( $list_dir_for_update_eb_core );
+	print_r( $list_dir_for_update_eb_core );
 	
 	
 	// close the connection
