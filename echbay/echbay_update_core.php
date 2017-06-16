@@ -34,6 +34,11 @@ function EBE_get_list_file_update_echbay_core ( $dir, $arr_dir = array(), $arr_f
 
 function EBE_update_file_via_ftp () {
 	
+	// update file thông qua ftp -> nếu không có dữ liệu -> hủy luôn
+	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
+		return false;
+	}
+	
 	//
 	$dir_source_update = EB_THEME_CACHE . 'echbaydotcom-master/';
 	
@@ -42,7 +47,11 @@ function EBE_update_file_via_ftp () {
 	$list_file_for_update_eb_core = $a[1];
 	
 	// tạo kết nối tới FTP
-	$ftp_server = FTP_HOST;
+	if ( ! defined('FTP_HOST') ) {
+		$ftp_server = $_SERVER['SERVER_ADDR'];
+	} else {
+		$ftp_server = FTP_HOST;
+	}
 	$ftp_user_name = FTP_USER;
 	$ftp_user_pass = FTP_PASS;
 	
