@@ -2775,9 +2775,9 @@ function _eb_create_file ($file_, $content_, $add_line = '') {
 	}
 	//
 	else {
-//			file_put_contents( $file_, $content_, LOCK_EX ) or die('ERROR: write to file');
+//		file_put_contents( $file_, $content_, LOCK_EX ) or die('ERROR: write to file');
 		file_put_contents( $file_, $content_ ) or die('ERROR write to file:' . $file_);
-//			chmod($file_, 0777);
+//		chmod($file_, 0777);
 	}
 	
 	
