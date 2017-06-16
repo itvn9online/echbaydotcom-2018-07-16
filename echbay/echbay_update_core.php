@@ -278,24 +278,24 @@ if ( mtv_id == 1 ) {
 			
 			// Giải nén file
 			if ( file_exists( $destination_path ) ) {
-				$zip = new ZipArchive;
-				if ($zip->open( $destination_path ) === TRUE) {
-					$zip->extractTo( EB_THEME_CACHE );
-					$zip->close();
-					echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
-				} else {
-					echo '<div>Do not unzip file, update faild!</div>';
+				if ( class_exists( 'ZipArchive' ) ) {
+					$zip = new ZipArchive;
+					if ($zip->open( $destination_path ) === TRUE) {
+						$zip->extractTo( EB_THEME_CACHE );
+						$zip->close();
+						echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
+					} else {
+						echo '<div>Do not unzip file, update faild!</div>';
+					}
 				}
-				
-				//
-				/*
-				$unzipfile = unzip_file( $destination_path, EB_THEME_CACHE );
-				if ( $unzipfile == true ) {
-					echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
-				} else {
-					echo '<div>Do not unzip file, update faild!</div>';
+				else {
+					$unzipfile = unzip_file( $destination_path, EB_THEME_CACHE );
+					if ( $unzipfile == true ) {
+						echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
+					} else {
+						echo '<div>Do not unzip file, update faild!</div>';
+					}
 				}
-				/* */
 				
 				
 				//
