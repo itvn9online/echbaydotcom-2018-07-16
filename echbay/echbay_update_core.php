@@ -135,7 +135,7 @@ function EBE_update_file_via_ftp () {
 		
 //		$v = '.' . strstr( $v, '/' . $ftp_dir_root . '/' );
 		
-		echo '<strong>from</strong>' . $v . ' - <strong>to</strong>' . $v2 . '<br>' . "\n";
+		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
 //		echo $file_test . ' - file cache<br>' . "\n";
 		
 		if( ftp_nlist($conn_id, $file_test) == false ) {
