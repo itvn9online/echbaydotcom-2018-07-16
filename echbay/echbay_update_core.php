@@ -66,12 +66,20 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file ) {
 	//
 	EBE_remove_dir_after_update( $dir_source, $arr_dir );
 	
+	return true;
+	
 }
 
 function EBE_update_file_via_ftp () {
 	
 	// Thư mục sau khi download và giải nén file zip
 	$dir_source_update = EB_THEME_CACHE . 'echbaydotcom-master/';
+	
+	//
+	if ( ! is_dir( $dir_source_update ) ) {
+		echo 'dir not found: ' . $dir_source_update;
+		return false;
+	}
 	
 	// lấy danh sách file và thư mục
 	$a = EBE_get_list_file_update_echbay_core( $dir_source_update );
@@ -83,9 +91,9 @@ function EBE_update_file_via_ftp () {
 	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
 		
 		// update thông qua hàm cơ bản của php
-		EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core );
+		return EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core );
 		
-		return false;
+//		return false;
 	}
 	
 	
@@ -219,6 +227,10 @@ function EBE_update_file_via_ftp () {
 	//
 	EBE_remove_dir_after_update( $dir_source_update, $list_dir_for_update_eb_core );
 	
+	
+	//
+	return true;
+	
 }
 
 function EBE_remove_dir_after_update ( $dir, $arr ) {
@@ -273,8 +285,10 @@ if ( mtv_id == 1 ) {
 			$destination_path = EB_THEME_CACHE . '/echbaydotcom.zip';
 			
 			// download từ github
-			copy( 'https://github.com/itvn9online/echbaydotcom/archive/master.zip', $destination_path );
-			chmod( $destination_path, 0777 );
+			if ( ! file_exists( $destination_path ) ) {
+				copy( 'https://github.com/itvn9online/echbaydotcom/archive/master.zip', $destination_path );
+				chmod( $destination_path, 0777 );
+			}
 			
 			// Giải nén file
 			if ( file_exists( $destination_path ) ) {
@@ -296,11 +310,6 @@ if ( mtv_id == 1 ) {
 						echo '<div>Do not unzip file, update faild!</div>';
 					}
 				}
-				
-				
-				//
-				unlink( $destination_path );
-				echo '<div>Remove zip file after unzip.</div><br>' . "\n";
 				
 				
 				/*
@@ -327,10 +336,15 @@ if ( mtv_id == 1 ) {
 				*/
 				
 				//
-				EBE_update_file_via_ftp();
-				
-				// tạo file cache để quá trình này không diễn ra liên tục
-				_eb_create_file( $file_cache_test, date_time );
+				if ( EBE_update_file_via_ftp() == true ) {
+					
+					// xóa file download để lần sau còn ghi đè lên
+					unlink( $destination_path );
+					echo '<div>Remove zip file after unzip.</div><br>' . "\n";
+					
+					// tạo file cache để quá trình này không diễn ra liên tục
+					_eb_create_file( $file_cache_test, date_time );
+				}
 				
 			}
 			else {
