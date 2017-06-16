@@ -32,19 +32,60 @@ function EBE_get_list_file_update_echbay_core ( $dir, $arr_dir = array(), $arr_f
 	);
 }
 
-function EBE_update_file_via_ftp () {
+function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file ) {
 	
-	// update file thông qua ftp -> nếu không có dữ liệu -> hủy luôn
-	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
-		return false;
+	//
+	foreach ( $arr_dir as $v ) {
+		$v2 = str_replace( $dir_source, EB_THEME_PLUGIN_INDEX, $v );
+		
+		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
+		
+		// tạo thư mục nếu chưa có
+		if ( ! is_dir( $v2 ) ) {
+			echo '<strong>Create dir:</strong> ' . $v2 . '<br>' . "\n";
+			mkdir($v2, 0755) or die('mkdir error');
+			// server window ko cần chmod
+			chmod($v2, 0755) or die('chmod ERROR');
+		}
 	}
 	
 	//
+	foreach ( $list_file_for_update_eb_core as $v ) {
+		$v2 = str_replace( $dir_source, EB_THEME_PLUGIN_INDEX, $v );
+		
+		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
+		
+		// upload file
+		copy( $v, $v2 );
+		
+		unlink( $v );
+	}
+	
+	//
+	EBE_remove_dir_after_update( $dir_source, $arr_dir );
+	
+}
+
+function EBE_update_file_via_ftp () {
+	
+	// Thư mục sau khi download và giải nén file zip
 	$dir_source_update = EB_THEME_CACHE . 'echbaydotcom-master/';
 	
+	// lấy danh sách file và thư mục
 	$a = EBE_get_list_file_update_echbay_core( $dir_source_update );
 	$list_dir_for_update_eb_core = $a[0];
 	$list_file_for_update_eb_core = $a[1];
+	
+	
+	// update file thông qua ftp -> nếu không có dữ liệu -> hủy luôn
+	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
+		
+		// update thông qua hàm cơ bản của php
+		EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core );
+		
+		return false;
+	}
+	
 	
 	// tạo kết nối tới FTP
 	if ( ! defined('FTP_HOST') ) {
@@ -85,7 +126,7 @@ function EBE_update_file_via_ftp () {
 		die('ERROR create test file!');
 	}
 	
-	//
+	// Tìm thư mục gốc của tài khoản FTP này
 //	if ( ! ftp_put($conn_id, '.' . $file_test, '.' . $file_source_test, FTP_ASCII) ) {
 		$ftp_root_dir = explode( '/', $file_test );
 		
@@ -169,24 +210,29 @@ function EBE_update_file_via_ftp () {
 	}
 	
 	
-	// lất ngược mảng để xóa thư mục
-	$list_dir_for_update_eb_core = array_reverse( $list_dir_for_update_eb_core );
-//	print_r( $list_dir_for_update_eb_core );
-	foreach ( $list_dir_for_update_eb_core as $v ) {
-		rmdir( $v );
-		echo '<strong>remove dir</strong>: ' . $v . '<br>' . "\n";
-	}
-	if ( file_exists( $dir_source_update . '.gitattributes' ) ) {
-		unlink( $dir_source_update . '.gitattributes' );
-		echo '<strong>remove file</strong>: ' . $dir_source_update . '.gitattributes<br>' . "\n";
-	}
-	rmdir( $dir_source_update );
-	echo '<strong>remove dir</strong>: ' . $dir_source_update . '<br>' . "\n";
-	
-	
 	// close the connection
 	ftp_close($conn_id);
 	
+	
+	//
+	EBE_remove_dir_after_update( $dir_source_update, $list_dir_for_update_eb_core );
+	
+}
+
+function EBE_remove_dir_after_update ( $dir, $arr ) {
+	// lật ngược mảng để xóa thư mục
+	$arr = array_reverse( $arr );
+//	print_r( $list_dir_for_update_eb_core );
+	foreach ( $arr as $v ) {
+		rmdir( $v );
+		echo '<strong>remove dir</strong>: ' . $v . '<br>' . "\n";
+	}
+	if ( file_exists( $dir . '.gitattributes' ) ) {
+		unlink( $dir . '.gitattributes' );
+		echo '<strong>remove file</strong>: ' . $dir . '.gitattributes<br>' . "\n";
+	}
+	rmdir( $dir );
+	echo '<strong>remove dir</strong>: ' . $dir . '<br>' . "\n";
 }
 
 
