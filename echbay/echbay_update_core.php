@@ -1,5 +1,7 @@
 <h1>Cập nhật bộ plugin tổng của EchBay.com (webgiare.org)</h1>
 <br>
+<p>* Xin lưu ý! các tính năng được cập nhật là xây dựng và phát triển cho phiên bản trả phí, nên với phiên bản miễn phí, một số tính năng sẽ không tương thích hoặc phải chỉnh lại giao diện sau khi cập nhật.</p>
+<br>
 <?php
 
 
