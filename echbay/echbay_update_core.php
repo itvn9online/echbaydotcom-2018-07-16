@@ -326,6 +326,27 @@ if ( mtv_id == 1 ) {
 		}
 	}
 	else {
+		
+		// Kiểm tra phiên bản trên github
+		$version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/readme.txt' );
+		
+		$version_current = file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 );
+		
+		//
+		if ( $version_in_github != $version_current ) {
+			$version_in_github = explode( 'Stable tag:', $version_in_github );
+			$version_in_github = explode( "\n", $version_in_github[1] );
+			$version_in_github = trim( $version_in_github[0] );
+			
+			$version_current = explode( 'Stable tag:', $version_current );
+			$version_current = explode( "\n", $version_current[1] );
+			$version_current = trim( $version_current[0] );
+			
+			//
+			echo '<h3>* Phiên bản mới nhất <strong>' . $version_in_github . '</strong> đã được phát hành, phiên bản hiện tại của bạn là <strong>' . $version_current . '</strong>.</h3>';
+		}
+		
+		//
 		echo '<h2><a href="#" class="click-connect-to-echbay-update-wp-core">Bấm vào đây để cập nhật lại core cho EchBay!</a></h2>';
 	}
 	
