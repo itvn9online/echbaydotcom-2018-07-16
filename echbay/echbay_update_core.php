@@ -118,12 +118,17 @@ function EBE_update_file_via_ftp () {
 //	print_r( $list_dir_for_update_eb_core );
 	foreach ( $list_dir_for_update_eb_core as $v ) {
 		$v2 = str_replace( $dir_source_update, EB_THEME_PLUGIN_INDEX, $v );
-//		echo $v . "\n";
-//		echo $v2 . "\n";
 		
-		// upload file
-//		ftp_put($conn_id, $v2, $v, FTP_ASCII) or die( 'ERROR upload file to server' );
+		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
+		
+		// tạo thư mục nếu chưa có
+		if ( ! is_dir( $v2 ) ) {
+			$create_dir = '.' . strstr( $v2, '/' . $ftp_dir_root . '/' );
+			echo '<strong>Create dir:</strong> ' . $create_dir . '<br>' . "\n";
+			ftp_mkdir($conn_id, $create_dir);
+		}
 	}
+//	exit();
 	
 	//
 //	print_r( $list_file_for_update_eb_core );
