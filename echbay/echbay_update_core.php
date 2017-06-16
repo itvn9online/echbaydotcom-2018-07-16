@@ -169,7 +169,7 @@ function EBE_update_file_via_ftp () {
 	if ( file_exists( $dir_source_update . '.gitattributes' ) ) {
 		unlink( $dir_source_update . '.gitattributes' );
 	}
-	rmdir( $dir_source_update, true );
+	rmdir( $dir_source_update );
 	
 	
 	// close the connection
