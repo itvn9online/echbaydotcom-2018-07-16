@@ -165,11 +165,14 @@ function EBE_update_file_via_ftp () {
 //	print_r( $list_dir_for_update_eb_core );
 	foreach ( $list_dir_for_update_eb_core as $v ) {
 		rmdir( $v );
+		echo '<strong>remove dir</strong>: ' . $v . '<br>' . "\n";
 	}
 	if ( file_exists( $dir_source_update . '.gitattributes' ) ) {
 		unlink( $dir_source_update . '.gitattributes' );
+		echo '<strong>remove file</strong>: ' . $dir_source_update . '.gitattributes<br>' . "\n";
 	}
 	rmdir( $dir_source_update );
+	echo '<strong>remove dir</strong>: ' . $dir_source_update . '<br>' . "\n";
 	
 	
 	// close the connection
