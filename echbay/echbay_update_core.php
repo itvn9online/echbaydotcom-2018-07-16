@@ -281,4 +281,9 @@ else {
 jQuery('.click-connect-to-echbay-update-wp-core').attr({
 	href : window.location.href.split('&confirm_process=')[0] + '&confirm_process=1'
 });
+
+//
+if ( window.location.href.split('&confirm_process=').length > 1 ) {
+	window.history.pushState("", '', window.location.href.split('&confirm_process=')[0]);
+}
 </script>
