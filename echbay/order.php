@@ -94,6 +94,8 @@
 		// tạo file cache để quá trình này không diễn ra liên tục
 		_eb_create_file( $file_cache_test, date_time );
 		
+		
+		
 		// xóa file test trước đó nếu có
 		if ( file_exists( $file_test ) ) {
 			unlink( $file_test );
@@ -109,6 +111,21 @@
 		$str_eb_warning .= '
 		<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Hệ thống có thể tạo vào ghi nội dung file bất kỳ vào website, điều này không an toàn cho web khi bị dính mã độc.</div>';
 	}
+	
+	
+	
+	
+	
+	
+	//
+	$dir_robots_txt = ABSPATH . 'robots.txt';
+	if ( ! file_exists( $dir_robots_txt ) ) {
+		$str_eb_warning .= '
+		<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Bạn chưa tạo file robots.txt cho website, hãy <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab=robots" target="_blank">nhấn vào đây</a> để tạo.</div>';
+	}
+	
+	
+	
 	
 	
 	

@@ -2770,6 +2770,8 @@ function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 			if ( $ftp == 1 ) {
 				return EBE_ftp_create_file( $file_, $content_, $add_line );
 			}
+			
+			//
 			echo 'ERROR create file: ' . $file_;
 			return false;
 		}
@@ -2795,7 +2797,8 @@ function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 	//
 	if ( ! $aa ) {
 		if ( EBE_ftp_create_file( $file_, $content_, $add_line ) != true ) {
-			die('ERROR write to file:' . $file_);
+			echo 'ERROR write to file:' . $file_;
+			return false;
 		}
 	}
 	
@@ -2844,6 +2847,7 @@ function EBE_get_ftp_root_dir () {
 
 // Tạo file thông qua tài khoản FTP
 function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
+	
 	if ( ! file_exists( $file_ ) && ! is_dir( dirname( $file_ ) ) ) {
 		echo 'ERROR FTP: dir not found';
 		return false;
@@ -2910,12 +2914,18 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 	
 	//
 	if ( $ftp_dir_root == '' ) {
+		echo 'ERROR FTP: ftp_dir_root not found';
 		ftp_close($conn_id);
 		return false;
 	}
 	
+	
 	// upload file
-	ftp_put($conn_id, '.' . strstr( $file_, '/' . $ftp_dir_root . '/' ) , $cache_for_ftp, FTP_BINARY);
+	if ( ! ftp_put($conn_id, '.' . strstr( $file_, '/' . $ftp_dir_root . '/' ) , $cache_for_ftp, FTP_BINARY) ) {
+		echo 'ERROR FTP: ftp_put error';
+		ftp_close($conn_id);
+		return false;
+	}
 	
 	
 	// close the connection
