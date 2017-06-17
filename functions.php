@@ -2782,14 +2782,21 @@ function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 	
 	//
 	if ( $add_line != '' ) {
-		file_put_contents( $file_, $content_, FILE_APPEND ) or die('ERROR: add to file: ' . $file_);
+		$aa = file_put_contents( $file_, $content_, FILE_APPEND );
 //		chmod($file_, 0777);
 	}
 	//
 	else {
 //		file_put_contents( $file_, $content_, LOCK_EX ) or die('ERROR: write to file');
-		file_put_contents( $file_, $content_ ) or die('ERROR write to file:' . $file_);
+		$aa = file_put_contents( $file_, $content_ );
 //		chmod($file_, 0777);
+	}
+	
+	//
+	if ( ! $aa ) {
+		if ( EBE_ftp_create_file( $file_, $content_, $add_line ) != true ) {
+			die('ERROR write to file:' . $file_);
+		}
 	}
 	
 	
@@ -2837,6 +2844,11 @@ function EBE_get_ftp_root_dir () {
 
 // Tạo file thông qua tài khoản FTP
 function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
+	if ( ! file_exists( $file_ ) && ! is_dir( dirname( $file_ ) ) ) {
+		echo 'ERROR FTP: dir not found';
+		return false;
+	}
+	
 	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
 		echo 'ERROR FTP: FTP_USER or FTP_PASS not found';
 		return false;
@@ -2868,6 +2880,8 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 	
 	// tạo file trong cache
 	$cache_for_ftp = EB_THEME_CACHE . 'cache_for_ftp.txt';
+	
+	// Tạo một file bằng hàm của PHP thường -> không dùng FTP
 	if ( _eb_create_file( $cache_for_ftp, $content_, '', 0 ) != true ) {
 		return false;
 	}
@@ -2879,7 +2893,7 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 //	print_r( $a );
 	foreach ( $a as $v ) {
 //		echo $v . "\n";
-		if ( $v != '' ) {
+		if ( $ftp_dir_root == '' && $v != '' ) {
 			$file_test = strstr( $cache_for_ftp, '/' . $v . '/' );
 //			echo $file_test . " - \n";
 			
