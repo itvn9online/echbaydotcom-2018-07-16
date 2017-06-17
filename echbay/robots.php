@@ -36,7 +36,6 @@ if ( file_exists( $dir_robots_txt ) ) {
 // tạo file robots nếu chưa có
 if ( ! file_exists( $dir_robots_txt ) || $robots_txt_content == '' ) {
 	
-	
 	/*
 	// ưu tiên tạo bằng FTP trước
 	$cache_robots_txt = EB_THEME_CACHE . 'robots.txt';
@@ -54,7 +53,8 @@ if ( ! file_exists( $dir_robots_txt ) || $robots_txt_content == '' ) {
 	if ( defined('FTP_HOST') ) {
 		$ftp_server = FTP_HOST;
 	} else {
-		$ftp_server = $_SERVER['HTTP_HOST'];
+//		$ftp_server = $_SERVER['HTTP_HOST'];
+		$ftp_server = $_SERVER['SERVER_ADDR'];
 	}
 	if ( defined('FTP_USER') ) {
 		$ftp_user_name = FTP_USER;
@@ -64,19 +64,40 @@ if ( ! file_exists( $dir_robots_txt ) || $robots_txt_content == '' ) {
 	}
 	
 	//
-	if ( $ftp_server != '' && $ftp_user_name != '' && $ftp_user_pass != '' ) {
+	if ( $ftp_user_name != '' && $ftp_user_pass != '' ) {
 		
 		// tạo kết nối
-		$conn_id = ftp_connect($ftp_server);
+		$conn_id = ftp_connect($ftp_server) or die('ERROR connect to server');
 		
 		
 		// đăng nhập
-		ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+		ftp_login($conn_id, $ftp_user_name, $ftp_user_pass)or die('AutoBot login false');
+		
+		
+		// lấy thư mục gốc
+		$ftp_root_dir = explode( '/', $cache_robots_txt );
+//		print_r( $ftp_root_dir );
+		foreach ( $ftp_root_dir as $v ) {
+//			echo $v . "\n";
+			if ( $v != '' ) {
+				$file_test = strstr( $cache_robots_txt, $v );
+//				echo $file_test . " - \n";
+				
+				//
+				if ( $file_test != '' ) {
+					if ( ftp_nlist($conn_id, './' . $file_test) != false ) {
+						$ftp_dir_root = $v;
+						break;
+					}
+				}
+			}
+		}
+//		echo $ftp_dir_root . '<br>' . "\n";
 		
 		
 		// upload file
 //		ftp_put($conn_id, $dir_robots_txt, $cache_robots_txt, FTP_ASCII);
-		ftp_put($conn_id, './robots.txt', './' . strstr( $cache_robots_txt, 'wp-content/' ), FTP_ASCII);
+		ftp_put($conn_id, './' . $ftp_dir_root . '/robots.txt', $cache_robots_txt, FTP_BINARY);
 //		echo './' . strstr( $cache_robots_txt, 'wp-content/' ) . '<br>' . "\n";
 		
 		
@@ -97,7 +118,7 @@ if ( ! file_exists( $dir_robots_txt ) || $robots_txt_content == '' ) {
 ?>
 
 <div class="l25">
-	<p class="bold">Nội dung file robots.txt hiện tại:</p>
+	<p class="bold">Nội dung file robots.txt hiện tại: <a href="<?php echo web_link; ?>robots.txt" target="_blank" rel="nofollow">Xem chi tiết</a></p>
 	<div>
 		<textarea style="width:90%;max-width:800px;height:300px;"><?php echo $robots_txt_content; ?></textarea>
 	</div>

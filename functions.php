@@ -2758,19 +2758,31 @@ function _eb_bs_link($id, $seo = '') {
 
 
 
-function _eb_create_file ($file_, $content_, $add_line = '') {
+function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 	
 	//
 	if ( ! file_exists( $file_ ) ) {
 		$filew = fopen( $file_, 'x+' );
-		// nhớ set 777 cho file
-		chmod($file_, 0777);
+		
+		// nếu không tạo được file
+		if ( ! $filew ) {
+			// thử tạo bằng ftp
+			if ( $ftp == 1 ) {
+				return EBE_ftp_create_file( $file_, $content_, $add_line );
+			}
+			echo 'ERROR create file: ' . $file_;
+			return false;
+		}
+		else {
+			// nhớ set 777 cho file
+			chmod($file_, 0777);
+		}
 		fclose($filew);
 	}
 	
 	//
 	if ( $add_line != '' ) {
-		file_put_contents( $file_, $content_, FILE_APPEND ) or die('ERROR: add to file');
+		file_put_contents( $file_, $content_, FILE_APPEND ) or die('ERROR: add to file: ' . $file_);
 //		chmod($file_, 0777);
 	}
 	//
@@ -2814,6 +2826,91 @@ function _eb_create_file ($file_, $content_, $add_line = '') {
 	// close
 	fclose($fh) or die('ERROR: close');
 	*/
+	
+	return true;
+}
+
+/*
+function EBE_get_ftp_root_dir () {
+}
+*/
+
+// Tạo file thông qua tài khoản FTP
+function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
+	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
+		echo 'ERROR FTP: FTP_USER or FTP_PASS not found';
+		return false;
+	}
+	if ( defined('FTP_HOST') ) {
+		$ftp_server = FTP_HOST;
+	} else {
+//		$ftp_server = $_SERVER['HTTP_HOST'];
+		$ftp_server = $_SERVER['SERVER_ADDR'];
+	}
+	$ftp_user_name = FTP_USER;
+	$ftp_user_pass = FTP_PASS;
+	
+	
+	// tạo kết nối
+	$conn_id = ftp_connect($ftp_server);
+	if ( ! $conn_id ) {
+		echo 'ERROR FTP connect to server';
+		return false;
+	}
+	
+	
+	// đăng nhập
+	if ( ! ftp_login($conn_id, $ftp_user_name, $ftp_user_pass) ) {
+		echo 'ERROR FTP login false';
+		return false;
+	}
+	
+	
+	// tạo file trong cache
+	$cache_for_ftp = EB_THEME_CACHE . 'cache_for_ftp.txt';
+	if ( _eb_create_file( $cache_for_ftp, $content_, '', 0 ) != true ) {
+		return false;
+	}
+	
+	
+	// lấy thư mục gốc của tài khoản FTP
+	$a = explode( '/', $cache_for_ftp );
+	$ftp_dir_root = '';
+//	print_r( $a );
+	foreach ( $a as $v ) {
+//		echo $v . "\n";
+		if ( $v != '' ) {
+			$file_test = strstr( $cache_for_ftp, '/' . $v . '/' );
+//			echo $file_test . " - \n";
+			
+			//
+			if ( $file_test != '' ) {
+				if ( ftp_nlist($conn_id, '.' . $file_test) != false ) {
+					$ftp_dir_root = $v;
+					break;
+				}
+			}
+		}
+	}
+//	echo $ftp_dir_root . '<br>' . "\n";
+	
+	//
+	if ( $ftp_dir_root == '' ) {
+		ftp_close($conn_id);
+		return false;
+	}
+	
+	// upload file
+	ftp_put($conn_id, '.' . strstr( $file_, '/' . $ftp_dir_root . '/' ) , $cache_for_ftp, FTP_BINARY);
+	
+	
+	// close the connection
+	ftp_close($conn_id);
+	
+	
+	//
+	return true;
+	
 }
 
 
