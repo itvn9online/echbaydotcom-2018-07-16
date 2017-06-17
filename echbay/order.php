@@ -71,6 +71,7 @@
 	
 	// kiểm tra quyền đọc ghi qua FTP
 	if ( defined('FTP_USER') && defined('FTP_PASS') && defined('FTP_HOST') ) {
+//	if ( defined('FTP_USER') && defined('FTP_PASS') ) {
 		$str_eb_warning .= '
 		<div class="orgcolor"><i class="fa fa-warning redcolor"></i> NGUY HIỂM: Bạn đang cho phép website được update hoặc ghi file thông qua tài khoản FTP. Điều này làm giảm khả năng bảo mật của website khi bị dính mã độc hại. Chúng tôi khuyên bạn <strong>HÃY NHẬP THỦ CÔNG NẾU CÓ THỂ</strong>.</div>';
 	}
@@ -121,7 +122,7 @@
 	$dir_robots_txt = ABSPATH . 'robots.txt';
 	if ( ! file_exists( $dir_robots_txt ) ) {
 		$str_eb_warning .= '
-		<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Bạn chưa tạo file robots.txt cho website, hãy <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab=robots" target="_blank">nhấn vào đây</a> để tạo.</div>';
+		<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Bạn chưa tạo file robots.txt cho website, hãy <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab=robots" target="_blank"><u>nhấn vào đây</u></a> để tạo.</div>';
 	}
 	
 	
