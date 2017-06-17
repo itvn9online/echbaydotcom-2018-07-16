@@ -99,11 +99,8 @@
 			unlink( $file_test );
 		}
 		
-		// tạo thử file test để xem có tạo được không
-		$filew = fopen( $file_test, 'x+' );
-		// nhớ set 777 cho file
-		chmod($file_test, 0777);
-		fclose($filew);
+		// tạo file ở root
+		_eb_create_file( $file_test, date_time, '', 0 );
 		
 	}
 	
