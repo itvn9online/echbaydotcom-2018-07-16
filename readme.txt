@@ -109,7 +109,7 @@ I - Thiết lập cài đặt cho website (lưu ý, thay www.webgiare.org bằng
 
 
 === CÁC PLUGINS KHUYÊN DÙNG ===
-- Thông thường, các tính năng được chúng tôi viết dưới dạng plugin nhằm mục đích phục vụ cả các website không sử dụng theme của EchBay, các plugins này được liệt kê tại đây https://www.webgiare.org/wp-admin/plugin-install.php?s=itvn9online&tab=search&type=author.
+- Thông thường, các tính năng được chúng tôi viết dưới dạng plugin nhằm mục đích phục vụ cả các website không sử dụng theme của EchBay, các plugins này được liệt kê tại đây http://www.webgiare.org/wp-admin/plugin-install.php?s=itvn9online&tab=search&type=author.
 Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này gần như là cần thiết hết. Bạn yên tâm là các plugin được viết dưới dạng short code nên rất nhẹ, ngoài ra còn hệ thống cache đi kèm nên không có sự ảnh hưởng nào tới độ trễ webiste của bạn.
 
 

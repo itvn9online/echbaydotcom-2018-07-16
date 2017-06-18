@@ -3,7 +3,8 @@
 
 
 //
-if ( mtv_id == 1 ) {
+//if ( mtv_id == 1 ) {
+if ( current_user_can('manage_options') )  {
 	if ( isset( $_GET['confirm_process'] ) ) {
 		$file_cache_test = EB_THEME_CACHE . 'wp_update_core.txt';
 		

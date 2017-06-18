@@ -267,7 +267,8 @@ function EBE_get_text_version ( $str ) {
 
 
 //
-if ( mtv_id == 1 ) {
+//if ( mtv_id == 1 ) {
+if ( current_user_can('manage_options') )  {
 	if ( isset( $_GET['confirm_process'] ) ) {
 		
 		set_time_limit( 0 );
