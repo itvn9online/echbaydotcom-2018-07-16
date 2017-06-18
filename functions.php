@@ -26,7 +26,8 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	$post->trv_id = $post->ID;
 	$post->trv_masanpham = _eb_get_post_object( $post->ID, '_eb_product_sku', $post->ID );
 	$post->trv_gioithieu = $post->post_excerpt;
-	$post->ngaycapnhat = date( 'd/m/Y', strtotime( $post->post_modified ) );
+//	$post->ngaycapnhat = date( 'd/m/Y', strtotime( $post->post_modified ) );
+	$post->ngaycapnhat = date( 'd/m/Y', strtotime( $post->post_date ) );
 	
 	$post->trv_mua = (int) _eb_get_post_object( $post->ID, '_eb_product_buyer', 0 );
 	

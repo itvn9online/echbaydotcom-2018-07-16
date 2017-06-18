@@ -70,10 +70,18 @@
 	
 	
 	// kiểm tra quyền đọc ghi qua FTP
-	if ( defined('FTP_USER') && defined('FTP_PASS') && defined('FTP_HOST') ) {
-//	if ( defined('FTP_USER') && defined('FTP_PASS') ) {
+//	if ( defined('FTP_USER') && defined('FTP_PASS') && defined('FTP_HOST') ) {
+	if ( defined('FTP_USER') && defined('FTP_PASS') ) {
 		$str_eb_warning .= '
 		<div class="orgcolor"><i class="fa fa-warning redcolor"></i> NGUY HIỂM: Bạn đang cho phép website được update hoặc ghi file thông qua tài khoản FTP. Điều này làm giảm khả năng bảo mật của website khi bị dính mã độc hại. Chúng tôi khuyên bạn <strong>HÃY NHẬP THỦ CÔNG NẾU CÓ THỂ</strong>.</div>';
+	}
+	else {
+		$str_eb_warning .= '
+		<div class="graycolor"><i class="fa fa-lightbulb-o orgcolor"></i> LƯU Ý: trong một số trường hợp, bạn không thể update được wordpress cho permission của hosting không cho phép, hãy nhập cấu hình qua tài khoản FTP trog file wp-config.php theo mẫu sau:
+			<pre><code>define( \'FTP_HOST\', $_SERVER[\'SERVER_ADDR\'] );</code></pre>
+			<pre><code>define( \'FTP_USER\', \'\' );</code></pre>
+			<pre><code>define( \'FTP_PASS\', \'\' );</code></pre>
+		</div>';
 	}
 	
 	
