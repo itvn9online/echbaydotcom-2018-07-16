@@ -16,9 +16,13 @@ Donate link: https://paypal.me/itvn9online/5
 
 === HƯỚNG DẪN CÀI ĐẶT ===
 1. Download plugin chính tại địa chỉ https://github.com/itvn9online/echbaydotcom/archive/master.zip, sau đó giải nén file zip sẽ thu được thư mục `echbaydotcom` hoặc `echbaydotcom-master`, copy thư mục này vào thư mục `wp-content` của wordpress rồi đổi tên thành `echbaydotcom`.
+
 2. Download theme mặc định (mẫu) tại địa chỉ https://github.com/itvn9online/echbaytwo/archive/master.zip, sau đó giải nén và cho vào thư mục `wp-content/themes/`
+
 3. Trong admin của wordpress, vào phần `Giao diện` hoặc `Appearance` (bản tiếng Anh), chọn và kích hoạt theme `EchBay Two` để bắt đầu sử dụng plugin này.
+
 4. Hình ảnh và các tệp tin khác sẽ được wordpress lưu tại thư mục `wp-content/uploads`, nếu kiểm tra thấy chưa có thư mục này thì bạn chủ động tạo và set permission 777 cho nó.
+
 5. Sử dụng web, mọi vấn đề thắc mắc hoặc yêu cầu trợ giúp vui lòng gửi qua email: lienhe@echbay.com
 
 
@@ -74,14 +78,31 @@ I - Thiết lập cài đặt cho website (lưu ý, thay www.webgiare.org bằng
 			- Chức năng tạo và cập nhật nội dung cho file robots.txt
 	
 	4. Cài đặt giao diện http://www.webgiare.org/wp-admin/admin.php?page=eb-config_theme&tab=theme-chung:
+		a. Chung http://www.webgiare.org/wp-admin/admin.php?page=eb-config_theme&tab=theme-chung:
+			- Thiết lập chiều rộng mặc định cho website, các module không được liệt kê trong danh sách tiếp theo sẽ sử dụng chiều rộng được thiết lập ở đây.
+		b. Trang chủ (Home) http://www.webgiare.org/wp-admin/admin.php?page=eb-config_theme&tab=theme-home:
+			- Thiết lệp chiều rộng và bố cục website ở `Trang chủ`.
+		c. Danh sách sản phẩm (Category) http://www.webgiare.org/wp-admin/admin.php?page=eb-config_theme&tab=theme-list:
+			- Thiết lệp chiều rộng và bố cục website ở trang `Danh sách sản phẩm`.
+		d. Chi tiết sản phẩm (Post) http://www.webgiare.org/wp-admin/admin.php?page=eb-config_theme&tab=theme-details:
+			- Thiết lệp chiều rộng và bố cục website ở trang `Chi tiết sản phẩm`.
+		e. Blog/ Tin tức http://www.webgiare.org/wp-admin/admin.php?page=eb-config_theme&tab=theme-blog:
+			- Thiết lệp chiều rộng và bố cục website ở trang `Blog/ Tin tức`.
+		f. Chi tiết Blog/ Tin tức http://www.webgiare.org/wp-admin/admin.php?page=eb-config_theme&tab=theme-blog-detais:
+			- Thiết lệp chiều rộng và bố cục website ở trang `Chi tiết Blog/ Tin tức`.
+		g. Trang tĩnh (Page) http://www.webgiare.org/wp-admin/admin.php?page=eb-config_theme&tab=theme-page:
+			- Thiết lệp chiều rộng và bố cục website ở trang `Trang tĩnh`.
 
 
 === BẢN QUYỀN ===
 1. Nếu không có gì bất cập, vui lòng không xóa các link liên quan đến tác giả và website của tác giả. Các link này (nếu có), tác giả đã cố gắng đặt các thuộc tính như rel="nofollow", target="_blank" để tránh ảnh hưởng đến website của khách hàng.
+
 2. Mã nguồn của các bên thứ ba được sử dụng chung chủ yếu là các mã nguồn nổi tiếng và đảm bảo bởi một tổ chức uy tín như GitHub (PHPMailler), Google (jQuery, Font Awesome). Các mã nguồn này sẽ được đặt trong thư mục có tên là outsource để khách hàng tiện kiểm tra, đối chiếu hoặc tự cập nhật mã nguồn lên phiên bản mới hơn nếu cần thiết.
+
 3. Khách hàng có thể nhân bản web lên thành nhiều bản, tuy nhiên, chỉ các bản trả phí mới nhận được hỗ trợ và bảo hành, các bản khác khách hàng chủ động quản lý và cập nhật theo.
 
 
-=== CẬP NHẬT MIỄN PHÍ PHẦN MỀM ===
+=== CẬP NHẬT MÃ NGUỒN ===
 - Plugin: mã nguồn có hỗ trợ cập nhật miễn phí thông qua chức năng cập nhật core: http://www.webgiare.org/wp-admin/admin.php?page=eb-coder&tab=echbay_update_core, bạn có thể cập nhật hoặc cài đặt lại bất cứ khi nào bạn muốn.
+
 - Theme: mặc định, theme không được hỗ trợ cập nhật tự động hoặc thông qua module riêng, chỉ có thể cập nhật thủ công bởi code.
