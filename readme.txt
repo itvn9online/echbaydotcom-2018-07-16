@@ -25,6 +25,7 @@ Donate link: https://paypal.me/itvn9online/5
 === HƯỚNG DẪN SỬ DỤNG ===
 I - Thiết lập cài đặt cho website (lưu ý, thay webgiare.org bằng tên miền chính của bạn):
 	1. Menu chính: https://www.webgiare.org/wp-admin/admin.php?page=eb-order: đây là hệ thống quản trị đơn hàng trên website.
+	
 	2. Cấu hình website:
 		a. Cài đặt chung https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=meta-home:
 			- Chế độ kiểm thử: là chế độ khi website trong quá trình test, các file tĩnh sẽ được in ra dưới dạng kiểm thử để code kiểm tra lỗi dễ dàng hơn.
@@ -53,6 +54,26 @@ I - Thiết lập cài đặt cho website (lưu ý, thay webgiare.org bằng tê
 		h. Mã nhúng ngoài https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=outsource:
 			- Thông thường trong mỗi website, ngoài các mã chính thì còn bao gồm cả các mã nhúng khác như Re-marketing, widget chat... bạn có thể nhập mã đó vào đây để sử dụng. Tùy theo yêu cầu, mã nào quan trọng thì nhúng vào phần HEAD, mã nào không quan trọng thì nhúng vào phần BODY.
 			* Module này bị giới hạn bởi độ linh động, nên chúng tôi phát triển riêng một plugin khác cho việc gắn mã nhúng, bạn có thể download tại đây: https://wordpress.org/plugins/echbay-tag-manager/, sau khi cài đặt xong, việc điều khiển mã nhúng sẽ diễn ra tại liên kết này: https://www.webgiare.org/wp-admin/admin.php?page=echbay-tag-manager
+		i. Vị trí địa lý https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=map:
+			- Chức năng dành cho việc SEO localtion, áp dụng cho trường hợp sử dụng Plugin SEO by EchBay. Mặc định, khi sử dụng các trình duyệt đời mới thì có thể nhấn nút `Tự động định vị` để hệ thống tự làm, còn không, bạn hãy tự điền thủ công.
+		j. Tính năng khác https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=permalinks:
+			- Chia sẻ dữ liệu qua JSON: tính năng này sẽ hữu dụng khi bạn có hệ thống website vệ tinh phục vụ SEO. Trường hợp bạn chỉ có một website thì có thể tắt nó đi hoặc để nguyên cũng không ảnh hưởng gì.
+			- Xóa URL phân nhóm cha: mặc định, URL category sẽ xuất hiện, điều này được wordpress khuyên dùng vì nó tốt cho SEO, nếu bạn thấy vướng víu, có thể sử dụng module này để loại bỏ nó đi.
+			- EchBay SEO plugin: là plugin SEO được viết riêng cho theme của EchBay, tuy nhiên, về độ mở rộng thì chưa ăn được các plugin SEO chuyên biệt khác như Yoast SEO, SEO Ultimate... trường hợp bạn muốn sử dụng plugin SEO khác, hãy tắt plugin SEO by EchBay đi để tránh xung đột.
+			- Cung cấp bởi Ếch Bay: mọi theme viết bởi EchBay đều có chữ `Cung cấp bởi Ếch Bay` ở cuối trang, sử dụng chức năng này để ẩn hiện dòng chữ đó.
+			- AMP cho danh mục sản phẩm, AMP cho danh mục blogs, AMP cho chi tiết blog: tính năng AMP có thể bật tắt tùy theo nhu cầu riêng của mỗi khách hàng.
+
+	3. Kỹ thuật https://www.webgiare.org/wp-admin/admin.php?page=eb-coder:
+		a. Ngôn ngữ https://www.webgiare.org/wp-admin/admin.php?page=eb-coder&tab=languages:
+			- Tính năng chưa hoàn thiện.
+		b. 404 Monitor https://www.webgiare.org/wp-admin/admin.php?page=eb-coder&tab=404_monitor:
+			- Dùng để theo dõi các URL bị 404 trên website, phục vụ cho việc SEO được dễ dàng hơn.
+		c. Sitemap https://www.webgiare.org/wp-admin/admin.php?page=eb-coder&tab=sitemap:
+			- Chức năng tự động tạo sitemap cho website, tự động cập nhật mỗi 6 tiếng một lần.
+		d. Robots https://www.webgiare.org/wp-admin/admin.php?page=eb-coder&tab=robots:
+			- Chức năng tạo và cập nhật nội dung cho file robots.txt
+	
+	4. Cài đặt giao diện https://www.webgiare.org/wp-admin/admin.php?page=eb-config_theme&tab=theme-chung:
 
 
 === BẢN QUYỀN ===
