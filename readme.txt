@@ -14,15 +14,17 @@ Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 
 
-=== Hướng dẫn cài đặt ===
+=== HƯỚNG DẪN CÀI ĐẶT ===
 1. Download plugin chính tại địa chỉ https://github.com/itvn9online/echbaydotcom/archive/master.zip, sau đó giải nén file zip sẽ thu được thư mục `echbaydotcom` hoặc `echbaydotcom-master`, copy thư mục này vào thư mục `wp-content` của wordpress rồi đổi tên thành `echbaydotcom`.
 2. Download theme mặc định (mẫu) tại địa chỉ https://github.com/itvn9online/echbaytwo/archive/master.zip, sau đó giải nén và cho vào thư mục `wp-content/themes/`
 3. Trong admin của wordpress, vào phần `Giao diện` hoặc `Appearance` (bản tiếng Anh), chọn và kích hoạt theme `EchBay Two` để bắt đầu sử dụng plugin này.
+4. Hình ảnh và các tệp tin khác sẽ được wordpress lưu tại thư mục `wp-content/uploads`, nếu kiểm tra thấy chưa có thư mục này thì bạn chủ động tạo và set permission 777 cho nó.
+5. Sử dụng web, mọi vấn đề thắc mắc hoặc yêu cầu trợ giúp vui lòng gửi qua email: lienhe@echbay.com
 
 
-=== Hướng dẫn sử dụng ===
+=== HƯỚNG DẪN SỬ DỤNG ===
 I - Thiết lập cài đặt cho website (lưu ý, thay webgiare.org bằng tên miền chính của bạn):
-	1. Menu chính: http://www.webgiare.org/wp-admin/admin.php?page=eb-order: đây là hệ thống quản trị đơn hàng trên website.
+	1. Menu chính: https://www.webgiare.org/wp-admin/admin.php?page=eb-order: đây là hệ thống quản trị đơn hàng trên website.
 	2. Cấu hình website:
 		a. Cài đặt chung https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=meta-home:
 			- Chế độ kiểm thử: là chế độ khi website trong quá trình test, các file tĩnh sẽ được in ra dưới dạng kiểm thử để code kiểm tra lỗi dễ dàng hơn.
@@ -46,4 +48,19 @@ I - Thiết lập cài đặt cho website (lưu ý, thay webgiare.org bằng tê
 			- EchBay.com free e-mail: tính năng dành riêng cho khách hàng sử dụng hosting cung cấp bởi Ếch Bay, email được cung cấp bởi các nhà cung cấp dịch vụ Email hàng đầu nên chất lượng email cũng tốt hơn.
 			- Email nhận thông báo: mặc định, email thông báo sẽ được gửi thông qua email liên hệ (trong phần: https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=contact), trường hợp muốn thông báo gửi về email khác, hãy nhập email mới vào đây.
 			- Các trường dữ liệu khác: là thông tin tài khoản SMTP để hệ thống sử dụng và gửi email thông qua trình PHPMailler.
+		g. Mạng xã hội https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=social:
+			- Bao gồm các thiết lập liên quan đến Fanpage Facebook, Google+, Youtube... dùng để hiển thị các trang, liên kết mạng xã hội lên website của bạn.
+		h. Mã nhúng ngoài https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=outsource:
+			- Thông thường trong mỗi website, ngoài các mã chính thì còn bao gồm cả các mã nhúng khác như Re-marketing, widget chat... bạn có thể nhập mã đó vào đây để sử dụng. Tùy theo yêu cầu, mã nào quan trọng thì nhúng vào phần HEAD, mã nào không quan trọng thì nhúng vào phần BODY.
+			* Module này bị giới hạn bởi độ linh động, nên chúng tôi phát triển riêng một plugin khác cho việc gắn mã nhúng, bạn có thể download tại đây: https://wordpress.org/plugins/echbay-tag-manager/, sau khi cài đặt xong, việc điều khiển mã nhúng sẽ diễn ra tại liên kết này: https://www.webgiare.org/wp-admin/admin.php?page=echbay-tag-manager
 
+
+=== BẢN QUYỀN ===
+1. Nếu không có gì bất cập, vui lòng không xóa các link liên quan đến tác giả và website của tác giả. Các link này (nếu có), tác giả đã cố gắng đặt các thuộc tính như rel="nofollow", target="_blank" để tránh ảnh hưởng đến website của khách hàng.
+2. Mã nguồn của các bên thứ ba được sử dụng chung chủ yếu là các mã nguồn nổi tiếng và đảm bảo bởi một tổ chức uy tín như GitHub (PHPMailler), Google (jQuery, Font Awesome). Các mã nguồn này sẽ được đặt trong thư mục có tên là outsource để khách hàng tiện kiểm tra, đối chiếu hoặc tự cập nhật mã nguồn lên phiên bản mới hơn nếu cần thiết.
+3. Khách hàng có thể nhân bản web lên thành nhiều bản, tuy nhiên, chỉ các bản trả phí mới nhận được hỗ trợ và bảo hành, các bản khác khách hàng chủ động quản lý và cập nhật theo.
+
+
+=== CẬP NHẬT MIỄN PHÍ PHẦN MỀM ===
+- Plugin: mã nguồn có hỗ trợ cập nhật miễn phí thông qua chức năng cập nhật core: https://www.webgiare.org/wp-admin/admin.php?page=eb-coder&tab=echbay_update_core, bạn có thể cập nhật hoặc cài đặt lại bất cứ khi nào bạn muốn.
+- Theme: mặc định, theme không được hỗ trợ cập nhật tự động hoặc thông qua module riêng, chỉ có thể cập nhật thủ công bởi code.
