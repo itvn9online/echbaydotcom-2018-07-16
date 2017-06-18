@@ -8,7 +8,8 @@ var EBE_current_first_domain = '',
 	source_url = '',
 	current_url = '',
 	// giãn cách cập nhật tin
-	gian_cach_submit = 2 * 1000;
+	gian_cach_submit = 2 * 1000,
+	firts_img_in_content = '';
 
 
 
@@ -77,7 +78,8 @@ function function_rieng_theo_domain () {
 	
 	// nếu vẫn không có -> thử lấy trong nội dung
 	if ( f.t_img.value == '' ) {
-		f.t_img.value = $('#leech_data_fix_content img:first').attr('data-src') || '';
+//		f.t_img.value = $('#leech_data_fix_content img:first').attr('data-src') || '';
+		f.t_img.value = firts_img_in_content;
 //		console.log($('#leech_data_fix_content img:first').attr('data-src'));
 	}
 	
@@ -579,6 +581,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			}
 			
 			// hình ảnh
+			firts_img_in_content = '';
 			$('#leech_data_fix_content img').each(function() {
 				var a = $(this).attr('data-src') || '';
 //				console.log(a);
@@ -590,6 +593,11 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 					}
 					a = source_url + a;
 //					console.log(a);
+					
+					//
+					if ( firts_img_in_content == '' ) {
+						firts_img_in_content = a;
+					}
 					
 					// chưa có thì gán thêm vào
 					$(this).attr({
@@ -620,6 +628,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 //			console.log($('#leech_data_fix_content').html());
 			
 			// URL
+			/*
 			if ( dog('loai_bo_url_trong_noi_dung').checked == true ) {
 				$('#leech_data_fix_content a').each(function() {
 					var a = $(this).attr('href') || '';
@@ -651,6 +660,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 					});
 				}
 			});
+			*/
 //			console.log($('#leech_data_fix_content').html());
 			
 			//
