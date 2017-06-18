@@ -106,3 +106,11 @@ I - Thiết lập cài đặt cho website (lưu ý, thay www.webgiare.org bằng
 - Plugin: mã nguồn có hỗ trợ cập nhật miễn phí thông qua chức năng cập nhật core: http://www.webgiare.org/wp-admin/admin.php?page=eb-coder&tab=echbay_update_core, bạn có thể cập nhật hoặc cài đặt lại bất cứ khi nào bạn muốn.
 
 - Theme: mặc định, theme không được hỗ trợ cập nhật tự động hoặc thông qua module riêng, chỉ có thể cập nhật thủ công bởi code.
+
+
+=== CÁC PLUGINS KHUYÊN DÙNG ===
+- Thông thường, các tính năng được chúng tôi viết dưới dạng plugin nhằm mục đích phục vụ cả các website không sử dụng theme của EchBay, các plugins này được liệt kê tại đây https://www.webgiare.org/wp-admin/plugin-install.php?s=itvn9online&tab=search&type=author.
+Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này gần như là cần thiết hết. Bạn yên tâm là các plugin được viết dưới dạng short code nên rất nhẹ, ngoài ra còn hệ thống cache đi kèm nên không có sự ảnh hưởng nào tới độ trễ webiste của bạn.
+
+
+* BY EchBay.com - Webgiare.org
