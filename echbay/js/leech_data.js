@@ -698,6 +698,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 
 //
 function check_lech_data_submit ( _alert ) {
+	
 	var f = document.frm_leech_data;
 	
 	// ID phân nhóm
@@ -714,6 +715,19 @@ function check_lech_data_submit ( _alert ) {
 		return false;
 	}
 	
+	// nếu có dữ liệu cache chưa được lưu -> lưu xong mới tiếp tục đoạn này
+	if ( auto_submit_save_domain_cookies == true ) {
+		EBE_auto_save_domain_cookie();
+		
+		//
+		setTimeout(function () {
+			document.frm_leech_data.submit();
+		}, 5000);
+		
+		return false;
+	}
+	
+	//
 	return true;
 }
 
@@ -851,9 +865,7 @@ function EBE_save_cookie_to_data_base () {
 }
 
 
-
-//
-setInterval(function () {
+function EBE_auto_save_domain_cookie () {
 	if ( auto_submit_save_domain_cookies == true ) {
 		console.log( 'Auto save, while 60 secondes' );
 		auto_submit_save_domain_cookies = false;
@@ -861,6 +873,13 @@ setInterval(function () {
 		//
 		document.frm_leech_data_save.submit();
 	}
+}
+
+
+
+//
+setInterval(function () {
+	EBE_auto_save_domain_cookie();
 //}, 5000);
 }, 60 * 1000);
 
