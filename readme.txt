@@ -38,4 +38,12 @@ I - Thiết lập cài đặt cho website (lưu ý, thay webgiare.org bằng tê
 			- Phân trang cho Trang chi tiết Sản phẩm: đây là số bài viết đi kèm, bài viết liên quan trong mục Chi tiết sản phẩm hoặc Chi tiết bài viết (blog).
 		d. Dữ liệu và Đồng bộ https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=cache:
 			- Thời gian lưu cache: cache là chế độ tạo file tĩnh, giúp website chạy mượt mà hơn nhiều lần. Trong trường hợp cần kiểm thử lỗi, hãy chọn `Không sử dụng` để tắt tạm thời tính năng này đi. Hoặc khi đăng nhập bằng tài khoản quản trị, tính năng cache cũng bị bỏ qua.
+			- Dọn sạch bộ nhớ đệm: trong một số trường hợp, bộ nhớ đệm bị lỗi hoặc bạn muốn dọn sạch bộ nhớ đệm, hãy sử dụng chức năng này.
+			- DNS prefetch: nếu bạn có hệ thống CDN riêng, hãy nhập URL của CDN để sử dụng cho các tệp trong mục Media của website.
+		e. Thông tin liên hệ https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=contact:
+			- Là các thông tin riêng về đơn vị chủ quản của website, phục vụ cho việc trình bày giao diện website.
+		f. Thiết lập gửi mail https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=smtp:
+			- EchBay.com free e-mail: tính năng dành riêng cho khách hàng sử dụng hosting cung cấp bởi Ếch Bay, email được cung cấp bởi các nhà cung cấp dịch vụ Email hàng đầu nên chất lượng email cũng tốt hơn.
+			- Email nhận thông báo: mặc định, email thông báo sẽ được gửi thông qua email liên hệ (trong phần: https://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=contact), trường hợp muốn thông báo gửi về email khác, hãy nhập email mới vào đây.
+			- Các trường dữ liệu khác: là thông tin tài khoản SMTP để hệ thống sử dụng và gửi email thông qua trình PHPMailler.
 
