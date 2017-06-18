@@ -735,7 +735,7 @@ function click_remove_style_of_img_content () {
 			'position' : 'fixed',
 			'bottom': '20px',
 			'right' : '20px',
-			'z-index' : 9
+			'z-index' : 99
 		});
 		
 	}
