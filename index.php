@@ -179,7 +179,7 @@ if ( ! defined('WP_SITEURL') ) {
 }
 //echo WP_SITEURL . '<br>';
 if ( ! defined('WP_HOME') ) {
-	define( 'WP_HOME', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+	define( 'WP_HOME', WP_SITEURL );
 }
 //echo WP_HOME . '<br>'; exit();
 

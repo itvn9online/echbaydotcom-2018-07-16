@@ -2,10 +2,32 @@
 
 
 
-var source_url = '',
+//
+var EBE_current_first_domain = '',
+	auto_submit_save_domain_cookies = false,
+	source_url = '',
 	current_url = '',
 	// giãn cách cập nhật tin
 	gian_cach_submit = 2 * 1000;
+
+
+
+//
+if ( arr_for_save_domain_config != '' ) {
+	arr_for_save_domain_config = $.parseJSON( unescape( arr_for_save_domain_config ) );
+	
+	for ( var x in arr_for_save_domain_config ) {
+		if ( EBE_current_first_domain == '' ) {
+			EBE_current_first_domain = x;
+		}
+		else {
+			break;
+		}
+	}
+} else {
+	arr_for_save_domain_config = {};
+}
+console.log( arr_for_save_domain_config );
 
 
 
@@ -717,6 +739,7 @@ function ket_thuc_lay_du_lieu ( id, m, lnk ) {
 
 
 
+
 $('#categories_url').off('change').change(function () {
 	var a = $(this).val() || '';
 	console.log(a);
@@ -748,6 +771,12 @@ $('#categories_url').off('change').change(function () {
 		a[i] = g_func.trim( a[i] );
 		
 		if ( a[i] != '' ) {
+			if ( EBE_current_first_domain == '' ) {
+//				console.log( a[i] );
+				EBE_current_first_domain = a[i];
+			}
+			
+			//
 			str += '<li>' + a[i] + '</li>';
 		}
 	}
@@ -767,7 +796,74 @@ $('#categories_url').off('change').change(function () {
 	//
 	$('#categories_list_url').append( str );
 	$('#categories_url').val( '' ).focus();
+	
+	
+	
+	//
+	EBE_save_cookie_to_data_base();
+	
+	// nạp lại dữ liệu nếu người dùng thay đổi URL
+	for ( var x in arr_cookie_lamviec ) {
+		if ( $( '#' + x ).length > 0 ) {
+			$( '#' + x ).val( arr_for_save_domain_config[EBE_current_first_domain][x] );
+		}
+	}
+	
 });
+
+
+function EBE_save_cookie_to_data_base () {
+	
+	//
+	if ( EBE_current_first_domain == '' ) {
+		console.log( 'EBE_current_first_domain not found' );
+		return false;
+	}
+	
+	// Chạy vòng lặp để tạo mảng lưu cookie vào database
+	console.log( EBE_current_first_domain );
+	if ( EBE_current_first_domain.split('//').length > 1 ) {
+		EBE_current_first_domain = EBE_current_first_domain.split('//')[1].split('/')[0];
+		console.log( EBE_current_first_domain );
+		EBE_current_first_domain = EBE_current_first_domain.replace(/\./gi, '_');
+		console.log( EBE_current_first_domain );
+	}
+	
+	//
+	if ( typeof arr_for_save_domain_config[EBE_current_first_domain] != 'object' ) {
+		arr_for_save_domain_config[EBE_current_first_domain] = arr_cookie_lamviec;
+	}
+	console.log( arr_for_save_domain_config );
+	
+	//
+	for ( var x in arr_cookie_lamviec ) {
+		arr_for_save_domain_config[EBE_current_first_domain][x] = $( '#' + x ).val() || '';
+	}
+	console.log( arr_for_save_domain_config );
+	
+	
+	//
+	document.frm_leech_data_save.t_noidung.value = escape( JSON.stringify( arr_for_save_domain_config ) );
+	
+	//
+	auto_submit_save_domain_cookies = true;
+	
+}
+
+
+
+//
+setInterval(function () {
+	if ( auto_submit_save_domain_cookies == true ) {
+		console.log( 'Auto save, while 60 secondes' );
+		auto_submit_save_domain_cookies = false;
+		
+		//
+		document.frm_leech_data_save.submit();
+	}
+//}, 5000);
+}, 60 * 1000);
+
 
 //
 (function () {
@@ -995,6 +1091,8 @@ var arr_cookie_lamviec = {
 			// lưu cookies mới khi có sự thay đổi
 			$( '#' + x ).off('change').change(function () {
 				leech_data_save_cookie( $(this).attr('cname'), $(this).val() || '' );
+				
+				EBE_save_cookie_to_data_base();
 			});
 		}
 	}

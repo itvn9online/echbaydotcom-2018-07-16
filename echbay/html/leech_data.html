@@ -1,4 +1,12 @@
 <p><em>* Với công cụ này, chúng tôi sẽ hỗ trợ bạn chuyển dữ liệu từ website cũ sang hệ thống website của Ếch Bay một cách nhanh gọn nhất. Việc của bạn cần làm chỉ đơn giản là kiểm tra và ra soát lại dữ liệu mới sau khi chuyển giao.</em></p>
+<div class="d-none">
+	<form name="frm_leech_data_save" method="post" action="{tmp.web_link}process/?set_module=leech_data_save" target="target_eb_iframe">
+		<textarea name="t_noidung" style="width:99%;height:150px;"></textarea>
+		<div>
+			<input type="submit" value="Cập nhật" />
+		</div>
+	</form>
+</div>
 <div>
 	<div><em>Bạn cần hiểu về cấu trúc HTML của site gốc, từ đó bạn mới có thể đưa ra cấu trúc cụ thể cho phân mềm bóc tách URL chi tiết sản phẩm từ phân nhóm.<br>
 		* Lưu ý: cấu trúc được sử dụng cho bộ mã nguồn mở jQuery.</em><br>
@@ -207,4 +215,7 @@
 	<br>
 	<div id="leech_data_fix_content"></div>
 </div>
-<script type="text/javascript" src="{tmp.admin_js_uri}leech_data.js?v={tmp.web_version}"></script> 
+<script type="text/javascript">
+{tmp.js}
+</script>
+<script type="text/javascript" src="{tmp.admin_js_uri}leech_data.js?v={tmp.media_version}"></script> 
