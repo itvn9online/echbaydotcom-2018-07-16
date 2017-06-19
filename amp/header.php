@@ -1,7 +1,17 @@
+<?php
+$url_for_amp_favicon = $__cf_row ['cf_favicon'];
+if ( strstr( $url_for_amp_favicon, '//' ) == false ) {
+	if ( substr( $url_for_amp_favicon, 0, 1 ) == '/' ) {
+		$url_for_amp_favicon = substr( $url_for_amp_favicon, 1 );
+	}
+	$url_for_amp_favicon = web_link . $url_for_amp_favicon;
+}
+?>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 <?php echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] ); ?>
+<link href="<?php echo $url_for_amp_favicon; ?>" rel="shortcut icon" type="image/png" />
 <link rel="canonical" href="<?php echo $url_og_url; ?>" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
 <script src="https://cdn.ampproject.org/v0.js" async></script>
@@ -46,9 +56,26 @@ echo $f_content;
 echo $structured_data_detail;
 
 
+$str_for_amp_logo = web_name;
+$url_for_amp_logo = '';
+$css_for_amp_logo = '';
+if ( $__cf_row['cf_on_off_amp_logo'] == 1 ) {
+	$url_for_amp_logo = $__cf_row['cf_logo'];
+	if ( strstr( $url_for_amp_logo, '//' ) == false ) {
+		if ( substr( $url_for_amp_logo, 0, 1 ) == '/' ) {
+			$url_for_amp_logo = substr( $url_for_amp_logo, 1 );
+		}
+		$url_for_amp_logo = web_link . $url_for_amp_logo;
+	}
+	$css_for_amp_logo = '.amp-wp-header .amp-wp-logo {background-image:url(' . $url_for_amp_logo . ');}';
+	
+	$str_for_amp_logo = '<span class="amp-wp-logo">' . web_name . '</span>';
+}
+
+
 ?>
 <style amp-custom>
-<?php echo $eb_amp->add_css ( array( 'css/amp-custom.css', ) );
+<?php echo $eb_amp->add_css ( array( 'css/amp-custom.css', ) ) . $css_for_amp_logo;
 ?>
 </style>
 </head>

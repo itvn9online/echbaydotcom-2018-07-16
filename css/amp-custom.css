@@ -80,6 +80,8 @@ blockquote p:last-child { margin-bottom: 0; }
 	background: left no-repeat;
 	background-size: auto 90%;
 	display: block;
+	text-indent: -9999px;
+	outline: 0;
 }
 /* Site Icon */
 
