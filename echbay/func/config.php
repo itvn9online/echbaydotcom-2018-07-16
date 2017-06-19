@@ -62,8 +62,16 @@ if ( ! isset( $_POST['cf_on_off_echbay_logo'] ) || $_POST['cf_on_off_echbay_logo
 	$_POST['cf_on_off_echbay_logo'] = 0;
 }
 
+if ( ! isset( $_POST['cf_on_off_amp_logo'] ) || $_POST['cf_on_off_amp_logo'] == '' ) {
+	$_POST['cf_on_off_amp_logo'] = 0;
+}
+
 if ( ! isset( $_POST['cf_on_off_amp_category'] ) || $_POST['cf_on_off_amp_category'] == '' ) {
 	$_POST['cf_on_off_amp_category'] = 0;
+}
+
+if ( ! isset( $_POST['cf_on_off_amp_product'] ) || $_POST['cf_on_off_amp_product'] == '' ) {
+	$_POST['cf_on_off_amp_product'] = 0;
 }
 
 if ( ! isset( $_POST['cf_on_off_amp_blogs'] ) || $_POST['cf_on_off_amp_blogs'] == '' ) {

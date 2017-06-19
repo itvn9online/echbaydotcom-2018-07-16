@@ -264,7 +264,9 @@ $__cf_row_default = array(
 	'cf_on_off_echbay_logo' => 1,
 	
 	// on/ off AMP
+	'cf_on_off_amp_logo' => 0,
 	'cf_on_off_amp_category' => 1,
+	'cf_on_off_amp_product' => 0,
 	'cf_on_off_amp_blogs' => 1,
 	'cf_on_off_amp_blog' => 1,
 	

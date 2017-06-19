@@ -288,7 +288,10 @@ show_note_for_checkbox_config( 'cf_on_off_json' );
 show_note_for_checkbox_config( 'cf_remove_category_base' );
 show_note_for_checkbox_config( 'cf_on_off_echbay_seo' );
 show_note_for_checkbox_config( 'cf_on_off_echbay_logo' );
+
+show_note_for_checkbox_config( 'cf_on_off_amp_logo' );
 show_note_for_checkbox_config( 'cf_on_off_amp_category' );
+show_note_for_checkbox_config( 'cf_on_off_amp_product' );
 show_note_for_checkbox_config( 'cf_on_off_amp_blogs' );
 show_note_for_checkbox_config( 'cf_on_off_amp_blog' );
 

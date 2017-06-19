@@ -143,13 +143,19 @@ if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
 	$post_categories = get_the_terms( $pid, EB_BLOG_POST_LINK );
 	
 	//
-	$dynamic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
+	if ( $__cf_row['cf_on_off_amp_blog'] == 1 ) {
+		$dynamic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
+	}
 	
 	$id_for_get_sidebar = 'blog_details_sidebar';
 }
 // post, page
 else {
 	$post_categories = wp_get_post_categories( $pid );
+	
+	if ( $__post->post_type == 'post' && $__cf_row['cf_on_off_amp_product'] == 1 ) {
+		$dynamic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
+	}
 }
 //if ( mtv_id == 1 ) print_r( $post_categories );
 
@@ -422,10 +428,11 @@ $schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, $__pos
 
 
 // tự làm amp cho khách hàng
-if ( $__post->post_type == EB_BLOG_POST_TYPE
-&& isset($_GET['amp'])
-&& $__cf_row['cf_on_off_amp_blog'] == 1 ) {
-	include EB_THEME_PLUGIN_INDEX . 'amp.php';
+if ( isset($_GET['amp']) ) {
+	if ( ( $__post->post_type == EB_BLOG_POST_TYPE && $__cf_row['cf_on_off_amp_blog'] == 1 )
+	|| ( $__post->post_type == 'post' && $__cf_row['cf_on_off_amp_product'] == 1 ) ) {
+		include EB_THEME_PLUGIN_INDEX . 'amp.php';
+	}
 }
 
 

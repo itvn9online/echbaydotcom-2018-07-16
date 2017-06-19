@@ -68,12 +68,18 @@ blockquote p:last-child { margin-bottom: 0; }
 	font-weight: 400;
 	margin: 0 auto;
 	max-width: calc(840px - 32px);
-	padding: .875em 16px;
+	padding: 0 16px;
 	position: relative;
+	line-height: 50px;
 }
 .amp-wp-header a {
 	color: #fff;
 	text-decoration: none;
+}
+.amp-wp-header .amp-wp-logo {
+	background: left no-repeat;
+	background-size: auto 90%;
+	display: block;
 }
 /* Site Icon */
 
