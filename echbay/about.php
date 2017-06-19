@@ -8,7 +8,17 @@
 <br>
 <?php
 include ECHBAY_PRI_CODE . 'role_user.php';
+
+
+if ( current_user_can('manage_options') )  {
+	include ECHBAY_PRI_CODE . 'echbay_update_core.php';
+}
+
+
+
 ?>
 <br>
 <br>
 Trân trọng hợp tác.<br>
+<br>
+<br>

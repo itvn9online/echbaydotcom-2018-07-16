@@ -1,7 +1,6 @@
-<h1>Cập nhật bộ plugin tổng của EchBay.com (webgiare.org)</h1>
 <br>
-<p>* Xin lưu ý! các tính năng được cập nhật là xây dựng và phát triển cho phiên bản trả phí, nên với phiên bản miễn phí, một số tính năng sẽ không tương thích hoặc phải chỉnh lại giao diện sau khi cập nhật.</p>
-<br>
+<p>Mọi hướng dẫn cũng như các bản cập nhật mới nhất sẽ được giới thiệu tại liên kết này: <a href="https://github.com/itvn9online/echbaydotcom" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom</a></p>
+<!-- <h1>Cập nhật bộ plugin tổng của EchBay.com (webgiare.org)</h1> -->
 <?php
 
 
@@ -381,14 +380,14 @@ if ( current_user_can('manage_options') )  {
 		
 		//
 		if ( $version_in_github != $version_current ) {
-			echo '<h3>* Phiên bản mới nhất <strong>' . $version_in_github . '</strong> đã được phát hành, phiên bản hiện tại của bạn là <strong>' . $version_current . '</strong>.</h3>';
+			echo '<h3>* Phiên bản mới nhất <strong>' . $version_in_github . '</strong> đã được phát hành, phiên bản hiện tại của bạn là <strong>' . $version_current . '</strong>!</h3>';
 		} else {
 			echo '<h3>Xin chúc mừng! Phiên bản <strong>' . $version_current . '</strong> bạn đang sử dụng là phiên bản mới nhất.</h3>';
 		}
 		echo '<br>';
 		
 		//
-		echo '<h2><a href="#" class="click-connect-to-echbay-update-wp-core">Bấm vào đây để cập nhật lại core cho EchBay!</a>. Lần cập nhật trước: ' . date( 'r', filemtime( EB_THEME_PLUGIN_INDEX . 'readme.txt' ) ) . '</h2>';
+		echo '<h2><center><a href="#" class="click-connect-to-echbay-update-wp-core">[ Bấm vào đây để cập nhật lại mã nguồn cho EchBay! ]</a></center></h2>';
 	}
 	
 }
@@ -399,6 +398,8 @@ else {
 
 
 ?>
+<p><em>* Xin lưu ý! các tính năng được cập nhật là xây dựng và phát triển cho phiên bản trả phí, nên với phiên bản miễn phí, một số tính năng sẽ không tương thích hoặc phải chỉnh lại giao diện sau khi cập nhật. Lần cập nhật trước: <strong><?php echo date( 'r', filemtime( EB_THEME_PLUGIN_INDEX . 'readme.txt' ) ); ?></strong></em></p>
+<br>
 <script type="text/javascript">
 jQuery('.click-connect-to-echbay-update-wp-core').attr({
 	href : window.location.href.split('&confirm_process=')[0] + '&confirm_process=1'
