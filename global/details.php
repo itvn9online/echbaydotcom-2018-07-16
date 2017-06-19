@@ -600,7 +600,7 @@ else {
 			$other_option_list .= '
 <tr>
 	<td>' . $parent_name->name . '</td>
-	<td>' . $v->name . '</td>
+	<td><a href="' . _eb_c_link( $v->term_id, $v->taxonomy ) . '" target="_blank">' . $v->name . '</a></td>
 </tr>';
 		}
 	}

@@ -1306,12 +1306,20 @@ color: #333;
 	font-size: 15px;
 	text-align: justify;
 	line-height: 25px;
+	/*
 	height: 100px;
 	overflow: hidden;
+	*/
 	-moz-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
+}
+.viewmore-cats-description {
+	display: none;
+	font-size: 14px;
+	text-align: center;
+	margin-bottom: 10px;
 }
 .global-cats-description-active {
 	height: auto;

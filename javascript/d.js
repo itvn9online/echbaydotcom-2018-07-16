@@ -2467,9 +2467,15 @@ if (press_esc_to_quickvideo_close == false) {
 
 
 //
-$('.click-viewmore-cats-description').click(function () {
-	$('.global-cats-description').toggleClass('global-cats-description-active');
-});
+(function ( a ) {
+	if ( a != '' ) {
+		$('.click-viewmore-cats-description').show().click(function () {
+			$('.global-cats-description').toggleClass('global-cats-description-active');
+		});
+	} else {
+		$('.global-cats-description').hide();
+	}
+})( $('.global-cats-description').html() || '' );
 
 
 
