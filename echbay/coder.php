@@ -18,7 +18,7 @@ $arr_order_tab = array(
 	'leech_data' => 'Leech data',
 	'install_demo' => 'Install demo',
 	'cleanup_database' => 'Dọn dẹp website',
-	'wordpress_update_core' => 'Cập nhật WordPress',
+//	'wordpress_update_core' => 'Cập nhật WordPress',
 //	'echbay_update_core' => 'Cập nhật EchBay',
 );
 
@@ -43,7 +43,7 @@ $include_tab = ECHBAY_PRI_CODE . $eb_get_tab . '.php';
 
 
 // nếu không có file -> module lỗi -> hủy bỏ
-if ( ! file_exists( $include_tab ) ) {
+if ( ! file_exists( $include_tab ) || ! isset( $arr_order_tab[$eb_get_tab] ) ) {
 	die('Module <strong>' . $eb_get_tab . '</strong> not found');
 }
 

@@ -206,6 +206,24 @@ input[id="_eb_category_order"] { width: 90px; }
 	line-height: 30px;
 	width: 90px;
 }
+#the-list .column-description { visibility: hidden; }
+#the-list .show-column-description { visibility: visible; }
+#the-list .column-description div.eb-fixed-content-height {
+	height: 38px;
+	overflow: hidden;
+}
+#the-list .column-description:hover div.eb-fixed-content-height {
+	position: absolute;
+	height: auto;
+	overflow: auto;
+	border: 1px #ccc solid;
+	background: #fff;
+	padding: 10px 15px;
+}
+
+@media screen and (max-width:775px) {
+#the-list .column-description div.eb-fixed-content-height { display: none; }
+}
 
 @media screen and (min-width:775px) {
 .open .eb-widget-fixed {

@@ -1,4 +1,4 @@
-<br>
+<hr>
 <p>Mọi hướng dẫn cũng như các bản cập nhật mới nhất sẽ được giới thiệu tại liên kết này: <a href="https://github.com/itvn9online/echbaydotcom" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom</a></p>
 <!-- <h1>Cập nhật bộ plugin tổng của EchBay.com (webgiare.org)</h1> -->
 <?php
@@ -267,8 +267,8 @@ function EBE_get_text_version ( $str ) {
 
 //
 //if ( mtv_id == 1 ) {
-if ( current_user_can('manage_options') )  {
-	if ( isset( $_GET['confirm_process'] ) ) {
+//if ( current_user_can('manage_options') )  {
+	if ( isset( $_GET['confirm_eb_process'] ) ) {
 		
 		set_time_limit( 0 );
 		
@@ -384,16 +384,18 @@ if ( current_user_can('manage_options') )  {
 		} else {
 			echo '<h3>Xin chúc mừng! Phiên bản <strong>' . $version_current . '</strong> bạn đang sử dụng là phiên bản mới nhất.</h3>';
 		}
-		echo '<br>';
+//		echo '<br>';
 		
 		//
-		echo '<h2><center><a href="#" class="click-connect-to-echbay-update-wp-core">[ Bấm vào đây để cập nhật lại mã nguồn cho EchBay! ]</a></center></h2>';
+		echo '<br><h2><center><a href="#" class="click-connect-to-github-update-eb-core">[ Bấm vào đây để cập nhật lại mã nguồn cho EchBay! ]</a></center></h2>';
 	}
-	
+
+/*	
 }
 else {
 	echo 'Supper admin only access!';
 }
+*/
 
 
 
@@ -401,14 +403,14 @@ else {
 <p><em>* Xin lưu ý! các tính năng được cập nhật là xây dựng và phát triển cho phiên bản trả phí, nên với phiên bản miễn phí, một số tính năng sẽ không tương thích hoặc phải chỉnh lại giao diện sau khi cập nhật. Lần cập nhật trước: <strong><?php echo date( 'r', filemtime( EB_THEME_PLUGIN_INDEX . 'readme.txt' ) ); ?></strong></em></p>
 <br>
 <script type="text/javascript">
-jQuery('.click-connect-to-echbay-update-wp-core').attr({
-	href : window.location.href.split('&confirm_process=')[0] + '&confirm_process=1'
+jQuery('.click-connect-to-github-update-eb-core').attr({
+	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1'
 }).click(function () {
 	$(this).hide();
 });
 
 //
-if ( window.location.href.split('&confirm_process=').length > 1 ) {
-	window.history.pushState("", '', window.location.href.split('&confirm_process=')[0]);
+if ( window.location.href.split('&confirm_eb_process=').length > 1 ) {
+	window.history.pushState("", '', window.location.href.split('&confirm_eb_process=')[0]);
 }
 </script>

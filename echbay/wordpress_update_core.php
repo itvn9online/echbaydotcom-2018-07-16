@@ -1,11 +1,13 @@
-<h1 class="l35">* Lưu ý: tính năng chỉ dành cho các website sử dụng hosting cung cấp bởi EchBay.com</h1>
+<hr>
+<div class="l19">* Trong trường hợp website của bạn đang sử dụng hosting cung cấp bởi <a href="https://www.echbay.com/cart" target="_blank" rel="next">EchBay.com</a>, bạn có thể sử dụng chức năng cập nhật mã nguồn cho WordPress tại đây. Chức năng cập nhật được tối ưu theo hệ thống server nên sẽ ổn định hơn so với cập nhật qua module sẵn có của WordPress.</div>
+<br>
 <?php
 
 
 //
 //if ( mtv_id == 1 ) {
-if ( current_user_can('manage_options') )  {
-	if ( isset( $_GET['confirm_process'] ) ) {
+//if ( current_user_can('manage_options') )  {
+	if ( isset( $_GET['confirm_wp_process'] ) ) {
 		$file_cache_test = EB_THEME_CACHE . 'wp_update_core.txt';
 		
 		//
@@ -28,18 +30,25 @@ if ( current_user_can('manage_options') )  {
 		}
 	}
 	else {
-		echo '<h2><a href="#" class="click-connect-to-echbay-update-wp-core">Bấm vào đây để cập nhật lại core cho wordpress!</a></h2>';
+		echo '<h2><center><a href="#" class="click-connect-to-echbay-update-wp-core">[ Bấm vào đây để cập nhật lại core cho WordPress! ]</a></center></h2>';
 	}
+	/*
 }
 else {
 	echo 'Supper admin only access!';
 }
+*/
 
 
 
 ?>
 <script type="text/javascript">
 jQuery('.click-connect-to-echbay-update-wp-core').attr({
-	href : window.location.href.split('&confirm_process=')[0] + '&confirm_process=1'
+	href : window.location.href.split('&confirm_wp_process=')[0] + '&confirm_wp_process=1'
 });
+
+//
+if ( window.location.href.split('&confirm_wp_process=').length > 1 ) {
+	window.history.pushState("", '', window.location.href.split('&confirm_wp_process=')[0]);
+}
 </script>
