@@ -475,7 +475,7 @@ function click_remove_style_of_img_content () {
 
 // tạo url chung cho các module
 //$(document).ready(function() {
-(function () {
+(function ( admin_body_class ) {
 	
 	
 	//
@@ -799,15 +799,19 @@ function click_remove_style_of_img_content () {
 	
 	
 	// fix chiều cao cho cột mô tả -> vì nó dài quá
-	$('#the-list .column-description').each(function(index, element) {
-		var a = $(this).html() || '';
-		if ( a != '' ) {
-			$(this).html( '<div class="eb-fixed-content-height">' + a + '</div>' );
-		}
-	}).addClass('show-column-description');
+	if ( admin_body_class.split('edit-tags-php').length > 1 ) {
+		$('#the-list').addClass('eb-hide-description');
+		
+		$('#the-list .column-description').each(function(index, element) {
+			var a = $(this).html() || '';
+			if ( a != '' ) {
+				$(this).html( '<div class="eb-fixed-content-height">' + a + '</div>' );
+			}
+		}).addClass('show-column-description');
+	}
 	
 	
 //});
-})();
+})( $('body').attr('class') || '' );
 
 
