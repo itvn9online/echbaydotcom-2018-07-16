@@ -318,7 +318,7 @@ $__cf_row_default = array(
 	'cf_page_column_style' => '',
 	
 	
-	'cf_web_version' => '1.0',
+	'cf_web_version' => 1.0,
 	'cf_ngay' => date_time,
 );
 
