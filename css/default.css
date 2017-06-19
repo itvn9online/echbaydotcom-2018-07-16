@@ -1404,3 +1404,19 @@ color: #333;
 	position: relative;
 	border-radius: 2px;
 }
+.aligncenter .wp-caption-text { text-align: center; }
+.thread-details-options {
+	min-width: 250px;
+	max-width: 600px;
+}
+.thread-details-options td {
+	border-bottom: 1px #fff solid;
+	padding: 8px 0 8px 6px;
+}
+.thread-details-options tr td:first-child {
+	width: 38%;
+	background: #f2f2f2;
+}
+.thread-details-options tr td:last-child { width: 62%; }
+.thread-details-options a { color: #000; }
+.thread-details-options a:hover { text-decoration: underline; }

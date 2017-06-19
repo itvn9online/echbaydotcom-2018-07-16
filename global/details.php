@@ -161,6 +161,7 @@ $ant_link = '';
 $ant_ten = '';
 $ant_id = 0;
 $bnt_id = 0;
+$other_option_list = '';
 
 //
 if ( isset( $post_categories[0] ) ) {
@@ -587,6 +588,26 @@ else {
 	
 	
 	
+	// Tạo menu cho post option
+	$arr_post_options = wp_get_object_terms( $pid, 'post_options' );
+//	if ( mtv_id == 1 ) print_r($arr_post_options);
+	foreach ( $arr_post_options as $v ) {
+		if ( $v->parent > 0 ) {
+			$parent_name = get_term_by( 'id', $v->parent, $v->taxonomy );
+//			if ( mtv_id == 1 ) print_r( $parent_name );
+			
+			//
+			$other_option_list .= '
+<tr>
+	<td>' . $parent_name->name . '</td>
+	<td>' . $v->name . '</td>
+</tr>';
+		}
+	}
+	
+	
+	
+	
 	// tag of post
 	$arr_list_tag = get_the_tags( $pid );
 	
@@ -753,7 +774,7 @@ $arr_main_content = array(
 	'tmp.blog_list_medium' => $blog_list_medium,
 	'tmp.product_list_medium' => $product_list_medium,
 	'tmp.other_post_right' => $other_post_right,
-	'tmp.other_option_list' => '',
+	'tmp.other_option_list' => $other_option_list,
 	
 	'tmp.rating_value_img' => $rating_value_img,
 	'tmp.str_tags' => substr( $str_tags, 1 ),

@@ -1069,6 +1069,12 @@ function ___eb_big_banner () {
 	global_chantrang_len = Math.ceil( global_chantrang_len ) - 1;
 //	console.log( global_chantrang_len );
 	
+	// nếu nhiều hơn so với số LI thật -> gán lại giá trị mới
+	if ( global_chantrang_len > len ) {
+		global_chantrang_len = len;
+	}
+//	console.log( global_chantrang_len );
+	
 	//
 	$('.banner-chan-trang:first li').width( ( 100/ global_chantrang_len ) + '%' );
 	_global_js_eb.auto_margin();
