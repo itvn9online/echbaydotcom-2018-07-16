@@ -8,7 +8,7 @@ if ( current_user_can('publish_posts') )  {
 }
 // mặc định chỉ cho xem dashboard
 else {
-	echo '<h2>Permission ERROR!</h2>';
+	echo '<br><br><h2>Permission ERROR!</h2>';
 }
 
 
