@@ -8,7 +8,7 @@ if ( current_user_can('publish_posts') )  {
 }
 // mặc định chỉ cho xem dashboard
 else {
-	include ECHBAY_PRI_CODE . 'dashboard.php';
+	echo '<h2>Permission ERROR!</h2>';
 }
 
 
