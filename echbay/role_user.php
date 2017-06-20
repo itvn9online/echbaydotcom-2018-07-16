@@ -1,6 +1,6 @@
 * Sơ lược về cách phân quyền trong hệ thống plugin của EchBay.com như sau:<br>
 <ol>
-	<li><strong>Đơn hàng</strong>: các tài khoản có quyền Quản lý, Biên tập viên (<em>Super Admin, Administrator, Contributor</em>).</li>
+	<li><strong>Đơn hàng</strong>: các tài khoản có quyền Quản lý, Biên tập viên (<em>Super Admin, Administrator, Author</em>).</li>
 	<li><strong>Cấu hình website</strong>: các tài khoản có quyền Quản lý (<em>Super Admin, Administrator</em>).</li>
 	<li><strong>Lịch sử</strong>: các tài khoản có quyền Quản lý (<em>Super Admin, Administrator</em>).</li>
 	<li><strong>Kỹ thuật</strong>: các tài khoản có quyền Quản lý (<em>Super Admin, Administrator</em>).</li>
