@@ -166,6 +166,7 @@ add_action('admin_head', 'echbay_admin_styles');
 function echbay_admin_footer_styles() {
 	
 //	global $func;
+	global $__cf_row;
 	
 	
 	
