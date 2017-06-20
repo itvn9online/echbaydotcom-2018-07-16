@@ -182,6 +182,11 @@ function echbay_admin_footer_styles() {
 //	$last_update_css = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'css/default.css' ) );
 //	$last_update_js = date_time;
 	
+	
+	//
+	echo '<script type="text/javascript">var cf_chu_de_chinh= "' . str_replace( '"', '\"', $__cf_row['cf_chu_de_chinh']  ). '";</script>';
+	
+	//
 	_eb_add_full_js( EBE_admin_set_realtime_for_file ( array(
 		EB_URL_OF_PLUGIN . 'javascript/a.js',
 //		EB_URL_OF_PLUGIN . 'javascript/a.js',

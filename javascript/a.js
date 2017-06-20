@@ -16,7 +16,9 @@ if ( typeof $ != 'function' ) {
 
 
 //
-jQuery('#menu-posts .wp-menu-name').html('Sản phẩm');
+if ( cf_chu_de_chinh != '' ) {
+	jQuery('#menu-posts .wp-menu-name').html( cf_chu_de_chinh );
+}
 
 
 
