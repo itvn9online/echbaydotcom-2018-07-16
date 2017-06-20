@@ -60,7 +60,9 @@ function echbay_create_admin_menu() {
 	/*
 	* submenu -> Super Admin, Administrator, Author
 	*/
-	add_submenu_page( $parent_slug, 'Danh sách đơn hàng', 'Đơn hàng', 'publish_posts', $parent_slug, 'func_include_eb_private_code' );
+	if ( current_user_can('publish_posts') )  {
+		add_submenu_page( $parent_slug, 'Danh sách đơn hàng', 'Đơn hàng', 'publish_posts', $parent_slug, 'func_include_eb_private_code' );
+	}
 	
 //	add_submenu_page( $parent_slug, 'Danh sách banner quảng cáo', 'Quảng cáo', 'manage_options', 'eb-ads', 'func_include_eb_private_code' );
 	
