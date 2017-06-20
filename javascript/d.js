@@ -186,7 +186,7 @@ function ___eb_details_slider_v2 () {
 		data_get = 'data-src';
 	
 	//
-	console.log( slider_len );
+//	console.log( slider_len );
 	
 	// nếu slider chính không có ảnh -> lấy ảnh từ nội dung
 	if ( slider_len == 0 ) {
@@ -236,6 +236,22 @@ function ___eb_details_slider_v2 () {
 	$('.thread-details-mobileAvt').html('<ul class="cf">' + str + '</ul>').css({
 		'background-image' : ''
 	});
+	
+	
+	
+	
+	// tải slider theo code mới
+	jEBE_slider( '.thread-details-mobileAvt', {
+		sliderArrow: true,
+//		buttonListNext: false,
+//		autoplay : true,
+		thumbnail : 'ul li',
+		size : $('.thread-details-mobileAvt').attr('data-size') || ''
+	});
+	
+	return false;
+	
+	
 	
 	// Xác định xem có thuộc tính tự động chuyển ảnh không
 	var auto_next_details_slider = $('.thread-details-mobileAvt').attr('data-auto-next') || 0;

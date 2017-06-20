@@ -203,6 +203,7 @@ a.eb-btn {
 #oi_scroll_top:hover { background: #ff7e00; }
 .ebfixed-top-menu #oi_scroll_top { display: block; }
 /* post details */
+/*
 .thread-details-mobileCenter { position: relative; }
 .thread-details-mobileLeft,
 .thread-details-mobileRight {
@@ -235,9 +236,7 @@ a.eb-btn {
 	background: #fff center no-repeat;
 	background-size: 100% auto;
 }
-.thread-details-mobileAvt li { /*
-	float: left;
-	*/
+.thread-details-mobileAvt li {
 	display: inline-block;
 	width: 99%;
 }
@@ -259,6 +258,7 @@ a.eb-btn {
 }
 .pdetail-slider-btn li:hover { color: #fff; }
 .pdetail-slider-btn li.selected { color: #c00; }
+*/
 .product-details-thumb,
 .home-jcarousel-control { position: relative; }
 .jcarousel-control-prev,

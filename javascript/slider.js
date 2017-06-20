@@ -19,8 +19,9 @@ function jEBE_slider ( jd, conf ) {
 		console.log( jd + ' not found' );
 		return false;
 	}
-	var jd_to_class = '.' + jd.substr( 1 ).replace( /\.|\#|\s/g, '-' );
-	var jd_class = jd_to_class.substr(1);
+	console.log('Create slider for ' + jd);
+	var jd_class = 'child-' + jd.substr( 1 ).replace( /\.|\#|\s/g, '-' );
+	var jd_to_class = '.' + jd_class;
 	
 	
 	if ( typeof conf != 'object' ) {
@@ -87,6 +88,18 @@ function jEBE_slider ( jd, conf ) {
 	set_default_conf( 'thumbnailWidth', 90 );
 	set_default_conf( 'thumbnailHeight', conf['thumbnailWidth'] );
 	
+	// Số LI hiển thị một lúc
+	set_default_conf( 'visible', 1 );
+	
+	// Bấm chuyển ảnh trên slider
+	set_default_conf( 'sliderArrow', false );
+	// nút bấm
+	set_default_conf( 'sliderArrowLeft', 'fa-angle-left' );
+	set_default_conf( 'sliderArrowRight', 'fa-angle-right' );
+	// font-size
+	set_default_conf( 'sliderArrowSize', 30 );
+	
+	// conf['sliderArrow']
 	console.log( conf );
 	
 	
@@ -100,12 +113,6 @@ function jEBE_slider ( jd, conf ) {
 	}
 	
 	
-	// chỉ có 1 ảnh -> thoát
-	if ( len == 1 ) {
-		return false;
-	}
-	
-	
 	// chiều cao cho slide
 	var wit = $(jd).width(),
 		hai = wit * eval( conf['size'] ) - 1;
@@ -113,6 +120,13 @@ function jEBE_slider ( jd, conf ) {
 	$(jd).height( hai ).css({
 		'line-height' : hai + 'px'
 	});
+	
+	// chỉ có 1 ảnh -> thoát
+	if ( len == 1 ) {
+		return false;
+	}
+	
+	//
 	$(window).resize(function(e) {
 		// chỉnh lại chiều cao cho slide
 		$(jd).height( hai ).css({
@@ -126,7 +140,7 @@ function jEBE_slider ( jd, conf ) {
 		var str_btn = '',
 			i = 0;
 		$(jd + ' ' + conf['thumbnail']).each(function() {
-			var img = $(this).attr('data-img') || $(this).attr('src') || '';
+			var img = $(this).attr('data-img') || $(this).attr('data-src') || $(this).attr('src') || '';
 			if ( img != '' ) {
 				img = get_thumbnail( img );
 			}
@@ -184,7 +198,7 @@ function jEBE_slider ( jd, conf ) {
 }\
 ' + jd + ' li {\
 	float: left;\
-	width: ' + ( 100/ len ) + '%;\
+	width: ' + ( 100/ len/ conf['visible'] ) + '%;\
 }\
 	' );
 	
@@ -212,13 +226,14 @@ function jEBE_slider ( jd, conf ) {
 		$('.' + jd_class + ' li').removeClass('selected');
 		$('.' + jd_class + ' li[data-i="' + i + '"]').addClass('selected');
 	});
+	$(jd + ' li[data-i="0"]').click();
 	
 	
 	//
 	$('.' + jd_class + ' li').click(function () {
 		var i = $(this).attr('data-i') || 0;
-		console.log(i);
-		console.log(jd);
+//		console.log(i);
+//		console.log(jd);
 		
 		if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
 			i = 0;
@@ -254,6 +269,69 @@ function jEBE_slider ( jd, conf ) {
 				$(jd + ' li[data-i="' + i + '"]').click();
 			}
 		}, conf['speedNext']);
+	} else {
+		jEBE_slider_cache_option[jd] = {
+			autoplay: false
+		};
+	}
+	
+	
+	//
+	if ( conf['sliderArrow'] == true ) {
+		$(jd).append('<div class="jEBE_slider-toLeft"><i class="fa ' + conf['sliderArrowLeft'] + '"></i></div>\
+		<div class="jEBE_slider-toRight text-right"><i class="fa ' + conf['sliderArrowRight'] + '"></i></div>');
+		
+		//
+		$(jd + ' .jEBE_slider-toLeft').click(function () {
+			var i = $(jd).attr('data-i') || 0;
+			i += -1;
+//			console.log(i);
+//			console.log(jd);
+			
+			if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+				i = $(jd + ' li').length - 1;
+			}
+			
+			$(jd + ' li[data-i="' + i + '"]').click();
+		});
+		
+		$(jd + ' .jEBE_slider-toRight').click(function () {
+			var i = $(jd).attr('data-i') || 0;
+			i -= -1;
+//			console.log(i);
+//			console.log(jd);
+			
+			if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+				i = 0;
+			}
+			
+			$(jd + ' li[data-i="' + i + '"]').click();
+		});
+		
+		// tạo css cho nut next
+		inner_css( '\
+.jEBE_slider-toLeft,\
+.jEBE_slider-toRight {\
+	position: absolute;\
+	font-size: ' + conf['sliderArrowSize'] + 'px;\
+	z-index: 1;\
+	cursor: pointer;\
+}\
+.jEBE_slider-toLeft {\
+	left: 0;\
+	width: 40%;\
+}\
+.jEBE_slider-toRight {\
+	left: 40%;\
+	width: 60%;\
+}\
+.jEBE_slider-toLeft i {\
+	margin-left: 10px;\
+}\
+.jEBE_slider-toRight i {\
+	margin-right: 10px;\
+}\
+		' );
 	}
 	
 }
