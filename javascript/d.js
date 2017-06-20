@@ -862,6 +862,17 @@ var big_banner_timeout1 = null;
 
 (function () {
 	
+	// tải slider theo code mới
+	jEBE_slider( '#oi_big_banner', {
+		autoplay : true,
+//		thumbnail : '.banner-ads-media',
+		size : $('#oi_big_banner li:first .ti-le-global').attr('data-size') || ''
+	});
+	
+	
+	return false;
+	
+	
 	// slider
 	var slider_len = $('#oi_big_banner li').length || 0;
 	

@@ -730,7 +730,7 @@ var _global_js_eb = {
 		
 		
 		//
-		_global_js_eb.big_banner();
+//		_global_js_eb.big_banner();
 		
 	},
 	

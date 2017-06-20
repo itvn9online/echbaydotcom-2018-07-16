@@ -110,8 +110,17 @@ function create_deault_css () {
 	
 	// chiều cao của big_banner -> chỉ áp dụng cho bản PC
 	a = f.cf_top_banner_size.value.split('/')[0];
-	a -= 50;
+//	a -= 50;
+	str += '#oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;}';
+	
+	// table
+	a = a/ 2;
 	str += '@media screen and (min-width:775px) { #oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
+	
+	// mobile
+	a = a/ 2;
+	str += '@media screen and (min-width:350px) { #oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
+	
 	
 	// body
 	a = f.cf_default_body_bg.value;

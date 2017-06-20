@@ -669,6 +669,7 @@ color: #333;
 	background: center no-repeat;
 	background-size: 100% auto;
 }
+/*
 #oi_big_banner {
 	height: 250px;
 	line-height: 250px;
@@ -684,6 +685,7 @@ color: #333;
 	-webkit-transition: all 0.8s ease;
 	transition: all 0.8s ease;
 }
+*/
 .big-banner-button { position: relative; }
 .big-banner-button ul {
 	position: absolute;
