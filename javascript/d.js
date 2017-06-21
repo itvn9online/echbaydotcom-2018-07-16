@@ -1445,7 +1445,7 @@ function ___eb_fix_left_right_menu () {
 	//
 	$(window).resize(function () {
 		___eb_func_fix_right_menu();
-//	}).load(function() {
+//	}).on('load', function() {
 //		___eb_func_fix_right_menu();
 	}).scroll(function() {
 //		console.log( fix_right_left_menu );
@@ -1940,7 +1940,7 @@ $(window).resize(function() {
 	*/
 	
 	_global_js_eb.auto_margin();
-//}).load(function(e) {
+//}).on('load', function(e) {
 	/*
 	if (pid <= 0 && qc_2ben.length > 0 && $(window).width() > 1100) {
 		load_ads_2ben = true;

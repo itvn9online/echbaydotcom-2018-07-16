@@ -91,10 +91,11 @@ EBE_add_js_compiler_in_cache( array(
 	
 	// Bản hỗ trợ chuyển đổi từ jQuery thấp lên jQuery cao hơn
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery-migrate-1.4.1.min.js',
-//	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery-migrate-3.0.0.min.js',
+	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery-migrate-3.0.0.min.js',
 	
 	// jquery cho bản mobile -> đang gây lỗi cho bản PC nên thôi
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.mobile-1.4.5.min.js',
+//	ABSPATH . 'wp-includes/js/jquery/jquery.ui.touch-punch.js',
 	
 	// jQuery plugin
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jcarousellite.js',

@@ -1510,7 +1510,7 @@ var _global_js_eb = {
 		sb_submit_cart_disabled = 1;
 		
 		// khi load xong sẽ cho submit trở lại
-		$('#target_eb_iframe').load(function () {
+		$('#target_eb_iframe').on('load', function () {
 			$('rME').css({
 				opacity: 1
 			});
