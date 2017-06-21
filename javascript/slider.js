@@ -371,6 +371,78 @@ function jEBE_slider ( jd, conf, callBack ) {
 		}
 		*/
 		
+		
+		
+		// https://coderwall.com/p/bxxjfq/detecting-swipe-using-jquery
+		if ( $(window).width() < 750 ) {
+			$(jd + ' .jEBE_slider-toLeft, ' + jd + ' .jEBE_slider-toRight')
+//			.on('mousedown touchstart', function (e) {
+			.on('touchstart', function (e) {
+//			.on('click', function (e) {
+//			.click(function(e) {
+//			.on('mousedown', function (e) {
+//			.mousedown(function(e) {
+//			.on('mouseover', function (e) {
+//				console.log( e.originalEvent.touches[0] );
+//				console.log("Start: (x,y) = (" + e.pageX + "," + e.pageY +")");
+				xDown = e.pageX || 0;
+				yDown = e.pageY || 0;
+			})
+//			.on('mouseup touchend',function (e) {
+			.on('touchend',function (e) {
+//			.touchend(function(e) {
+//			.on('mouseup',function (e) {
+//			.on('mouseout',function (e) {
+//				console.log( e.originalEvent.changedTouches[0] );
+//				console.log("End: (x,y) = (" + e.pageX + "," + e.pageY +")");
+				xUp = e.pageX || 0;
+				yUp = e.pageY || 0;
+				
+				var xDiff = xDown - xUp;
+				var yDiff = yDown - yUp;
+				
+				// most significant
+				if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
+//				if ( xDiff > yDiff ) {
+					if ( xDiff > 0 ) {
+						// left swipe
+//						console.log('left');
+						$(jd + ' .jEBE_slider-toLeft').click();
+					} else {
+						// right swipe
+//						console.log('right');
+						$(jd + ' .jEBE_slider-toRight').click();
+					}
+					/*
+				} else {
+					if ( yDiff > 0 ) {
+						// up swipe
+						console.log('up');
+						$(jd + ' .jEBE_slider-toLeft').click();
+					} else { 
+						// down swipe
+						console.log('down');
+						$(jd + ' .jEBE_slider-toRight').click();
+					}
+					*/
+				}
+				
+				//
+//				$(this)
+//				.mouseout()
+//				.mousedown()
+//				.mouseover()
+//				;
+				
+				return true;
+				
+			})
+			;
+		}
+		
+		
+		//
+		
 	}
 	
 	

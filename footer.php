@@ -83,7 +83,8 @@ echo '<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/java
 
 // các file compiler trước khi xuất ra
 EBE_add_js_compiler_in_cache( array(
-	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.js',
+//	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.js',
+	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery-3.2.1.min.js',
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.mobile-1.4.5.min.js',
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jcarousellite.js',
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/lazyload.js',
