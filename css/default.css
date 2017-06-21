@@ -990,10 +990,20 @@ color: #333;
 .echbay-blog-marginright { padding-right: 15px; }
 .echbay-blog-margintop { padding-top: 8px; }
 .echbay-blog-marginbottom { padding-bottom: 8px; }
+.echbay-blog-title {
+	margin-bottom: 3px;
+	height: 38px;
+	overflow: hidden;
+}
 .echbay-blog-title a {
 	font-weight: bold;
 	color: #333;
 	font-size: 14px;
+}
+.echbay-blog-infos {
+	margin: 3px 0;
+	overflow: hidden;
+	height: 19px;
 }
 .echbay-blog-avt {
 	background: center no-repeat url(../images-global/noavatar.png);
@@ -1004,9 +1014,9 @@ color: #333;
 .echbay-blog-gioithieu,
 .echbay-blog-ngay { color: #999; }
 .echbay-blog-gioithieu {
-	line-height: 20px;
-	height: 40px;
+	height: 38px;
 	overflow: hidden;
+	margin-top: 3px;
 }
 .echbay-blog-cat a { color: #666; }
 .echbay-blog-left { width: 40%; }
