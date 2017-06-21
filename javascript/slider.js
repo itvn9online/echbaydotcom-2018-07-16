@@ -438,12 +438,12 @@ function jEBE_slider ( jd, conf, callBack ) {
 			})
 			;
 		}
+		*/
 		
 		
 		//
 		
 	}
-	*/
 	
 	
 	//

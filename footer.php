@@ -81,11 +81,22 @@ echo '<script type="text/javascript" src="' . $__cf_row['cf_dns_prefetch'] . 'wp
 echo '<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery.js"></script>';
 */
 
+//
+$file_jquery_js = 'jquery-3.2.1.min';
+
 // các file compiler trước khi xuất ra
 EBE_add_js_compiler_in_cache( array(
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.js',
-	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery-3.2.1.min.js',
+	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/' . $file_jquery_js . '.js',
+	
+	// Bản hỗ trợ chuyển đổi từ jQuery thấp lên jQuery cao hơn
+	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery-migrate-1.4.1.min.js',
+//	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery-migrate-3.0.0.min.js',
+	
+	// jquery cho bản mobile -> đang gây lỗi cho bản PC nên thôi
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.mobile-1.4.5.min.js',
+	
+	// jQuery plugin
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jcarousellite.js',
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/lazyload.js',
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/swiper.min.js',
@@ -94,9 +105,9 @@ EBE_add_js_compiler_in_cache( array(
 EBE_add_js_compiler_in_cache( $arr_for_add_js, 'async', 1 );
 
 // jquery map
-$file_jquery_map = EB_THEME_CACHE . 'jquery-3.2.1.min.map';
+$file_jquery_map = EB_THEME_CACHE . $file_jquery_js . '.map';
 if ( ! file_exists( $file_jquery_map ) ) {
-	copy( EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery-3.2.1.min.map', $file_jquery_map );
+	copy( EB_THEME_PLUGIN_INDEX . 'outsource/javascript/' . $file_jquery_js . '.map', $file_jquery_map );
 	chmod( $file_jquery_map, 0777 );
 }
 
