@@ -1112,9 +1112,11 @@ function ___eb_big_banner () {
 	$('.banner-chan-trang:first li').width( ( 100/ global_chantrang_len ) + '%' );
 	_global_js_eb.auto_margin();
 	
+	//
+//	$('.home-next-chantrang, .home-prev-chantrang').hide();
+	
 	// không đủ thì thôi, ẩn nút next
 	if ( len <= global_chantrang_len ) {
-		$('.home-next-chantrang, .home-prev-chantrang').hide();
 		
 		$('.banner-chan-trang:first').height('auto').css({
 			'line-height' : $('.banner-chan-trang:first').height() + 'px'
@@ -1130,6 +1132,27 @@ function ___eb_big_banner () {
 		li_fo_scroll = global_chantrang_len;
 	}
 	*/
+//	console.log( global_chantrang_len );
+	
+	//
+//	$('.home-next-chantrang, .home-prev-chantrang').hide();
+	
+	jEBE_slider( '.banner-chan-trang', {
+		sliderArrow: true,
+		buttonListNext: false,
+//		autoplay : true,
+		visible : global_chantrang_len,
+		
+//		sliderArrowWidthLeft : '40%',
+//		sliderArrowWidthRight : '60%',
+		
+//		thumbnail : 'ul li',
+//		sliderArrowLeft : 'fa-chevron-circle-left',
+//		sliderArrowRight : 'fa-chevron-circle-right',
+		size : $('.banner-chan-trang li:first .ti-le-global').attr('data-size') || ''
+	});
+	
+	return false;
 	
 	$('.banner-chan-trang:first').height('auto').jCarouselLite({
 		btnNext: ".home-next-chantrang",

@@ -16,10 +16,10 @@ function jEBE_slider ( jd, conf ) {
 	
 	//
 	if ( typeof jd == 'undefined' || jd == '' || $(jd).length == 0 ) {
-		console.log( jd + ' not found' );
+		console.log( 'jEBE_slider! ' + jd + ' not found' );
 		return false;
 	}
-	console.log('Create slider for ' + jd);
+	console.log('jEBE_slider! Create slider ' + jd);
 	var jd_class = 'child-' + jd.substr( 1 ).replace( /\.|\#|\s/g, '-' );
 	var jd_to_class = '.' + jd_class;
 	
@@ -108,6 +108,7 @@ function jEBE_slider ( jd, conf ) {
 	
 	// kiểm tra có li nào ở trong không
 	var len = $(jd + ' li').length || 0;
+//	console.log( len );
 	if ( len == 0 ) {
 		if ( conf['hide_if_null'] == true ) {
 			$(jd).hide();
@@ -118,24 +119,29 @@ function jEBE_slider ( jd, conf ) {
 	
 	// chiều cao cho slide
 	var wit = $(jd).width(),
-		hai = wit * eval( conf['size'] ) - 1;
+		hai = wit * eval( conf['size'] )/ conf['visible'] - 1;
 	
-	$(jd).height( hai ).css({
+	$(jd).height( hai ).attr({
+		'data-size' : conf['size']
+	}).css({
 		'line-height' : hai + 'px'
 	});
 	
 	// chỉ có 1 ảnh -> thoát
-	if ( len == 1 ) {
+//	if ( len == 1 ) {
+	if ( len < conf['visible'] ) {
 		return false;
 	}
 	
 	//
+	/*
 	$(window).resize(function(e) {
 		// chỉnh lại chiều cao cho slide
 		$(jd).height( hai ).css({
 			'line-height' : hai + 'px'
 		});
 	});
+	*/
 	
 	
 	//
@@ -156,20 +162,9 @@ function jEBE_slider ( jd, conf ) {
 		
 		// tạo css cho thumbmail
 		inner_css( '\
-' + jd_to_class + ' .jEBE_slider-thumbnail {\
-	text-align: center;\
-	margin-top: 5px;\
-}\
-' + jd_to_class + ' .jEBE_slider-thumbnail li {\
-	display: inline-block;\
-	cursor: pointer;\
-}\
 ' + jd_to_class + ' .jEBE_slider-thumbnail div {\
 	width: ' + conf['thumbnailWidth'] + 'px;\
 	height: ' + conf['thumbnailHeight'] + 'px;\
-	background: #ccc center no-repeat;\
-	background-size: auto 100%;\
-	margin: 0 5px 5px 0;\
 }\
 		' );
 	}
@@ -185,40 +180,43 @@ function jEBE_slider ( jd, conf ) {
 	}
 	
 	// tạo css cho slider
-	inner_css( '\
-' + jd + ' {\
-	position: relative;\
-	overflow: hidden;\
-}\
-' + jd + ' ul {\
-	position: absolute;\
-	left: 0;\
-	width: ' + ( len * 100 ) + '%;\
-	-moz-transition: all ' + conf['speed'] + 's ease;\
-	-o-transition: all ' + conf['speed'] + 's ease;\
-	-webkit-transition: all ' + conf['speed'] + 's ease;\
-	transition: all ' + conf['speed'] + 's ease;\
-}\
-' + jd + ' li {\
-	float: left;\
-	width: ' + ( 100/ len/ conf['visible'] ) + '%;\
-}\
-	' );
+	$(jd).css({
+		position: 'relative',
+		overflow: 'hidden'
+	});
+	$(jd + ' ul').css({
+		position: 'absolute',
+		left: 0,
+		width: ( 100 * len/ conf['visible'] ) + '%',
+		'-moz-transition': 'all ' + conf['speed'] + 's ease',
+		'-o-transition': 'all ' + conf['speed'] + 's ease',
+		'-webkit-transition': 'all ' + conf['speed'] + 's ease',
+		transition: 'all ' + conf['speed'] + 's ease'
+	});
+	$(jd + ' li').css({
+//		width: ( 100/ len/ conf['visible'] ) + '%',
+		width: ( 100/ len ) + '%',
+		float: 'left'
+	});
 	
 	
 	// hiệu ứng khi click vào thẻ LI
-	var  i =0;
+	var  i = 0;
 	$(jd + ' li').each(function() {
 		$(this).attr({
 			'data-i' : i
 		});
 		
-		i++;
+		i += 1;
 	}).click(function () {
 		var i = $(this).attr('data-i') || 0;
+		if ( i * conf['visible'] >= $(jd + ' li').length ) {
+			i = 0;
+		}
 		
 		$(jd + ' ul').css({
 			left: ( 0 - i * 100 ) + '%'
+//			left: ( 0 - i * 100/ conf['visible'] ) + '%'
 		});
 		
 		$(jd).attr({
@@ -263,6 +261,7 @@ function jEBE_slider ( jd, conf ) {
 			if ( jEBE_slider_cache_option[jd]['autoplay'] == true ) {
 				var i = $(jd).attr('data-i') || 0;
 				i -= -1;
+//				i -= 0 - conf['visible'];
 //				console.log(i);
 //				console.log(jd);
 				
@@ -282,7 +281,7 @@ function jEBE_slider ( jd, conf ) {
 	
 	
 	//
-	if ( conf['sliderArrow'] == true ) {
+	if ( conf['sliderArrow'] == true && len > conf['visible'] ) {
 		$(jd).append('<div class="jEBE_slider-toLeft"><i class="fa ' + conf['sliderArrowLeft'] + '"></i></div>\
 		<div class="jEBE_slider-toRight text-right"><i class="fa ' + conf['sliderArrowRight'] + '"></i></div>');
 		
@@ -290,6 +289,7 @@ function jEBE_slider ( jd, conf ) {
 		$(jd + ' .jEBE_slider-toLeft').click(function () {
 			var i = $(jd).attr('data-i') || 0;
 			i -= 1;
+//			i -= conf['visible'];
 //			console.log(i);
 //			console.log(jd);
 			
@@ -303,6 +303,7 @@ function jEBE_slider ( jd, conf ) {
 		$(jd + ' .jEBE_slider-toRight').click(function () {
 			var i = $(jd).attr('data-i') || 0;
 			i -= -1;
+//			i -= 0 - conf['visible'];
 //			console.log(i);
 //			console.log(jd);
 			
@@ -318,24 +319,13 @@ function jEBE_slider ( jd, conf ) {
 		inner_css( '\
 ' + jd + ' .jEBE_slider-toLeft,\
 ' + jd + ' .jEBE_slider-toRight {\
-	position: absolute;\
 	font-size: ' + conf['sliderArrowSize'] + 'px;\
-	z-index: 1;\
-	cursor: pointer;\
 }\
 ' + jd + ' .jEBE_slider-toLeft {\
-	left: 0;\
 	width: ' + conf['sliderArrowWidthLeft'] + ';\
 }\
 ' + jd + ' .jEBE_slider-toRight {\
-	right: 0;\
 	width: ' + conf['sliderArrowWidthRight'] + ';\
-}\
-' + jd + ' .jEBE_slider-toLeft i {\
-	margin-left: 10px;\
-}\
-' + jd + ' .jEBE_slider-toRight i {\
-	margin-right: 10px;\
 }\
 		' );
 	}
