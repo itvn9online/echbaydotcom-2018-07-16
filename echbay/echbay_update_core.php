@@ -281,7 +281,10 @@ function EBE_get_text_version ( $str ) {
 		}
 		
 		//
-		if ( date_time - $lats_update_file_test > 300 ) {
+		$time_limit_update = 60;
+		
+		//
+		if ( date_time - $lats_update_file_test > $time_limit_update ) {
 			
 			// nơi lưu file zip
 			$destination_path = EB_THEME_CACHE . '/echbaydotcom.zip';
@@ -359,7 +362,7 @@ function EBE_get_text_version ( $str ) {
 			}
 		}
 		else {
-			echo '<h3>Giãn cách mỗi lần update core tối thiểu là 5 phút</h3>';
+			echo '<h3>Giãn cách mỗi lần update core tối thiểu là ' . ( $time_limit_update/ 60 ) . ' phút</h3>';
 		}
 	}
 	else {

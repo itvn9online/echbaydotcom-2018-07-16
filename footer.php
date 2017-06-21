@@ -84,10 +84,11 @@ echo '<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/java
 // các file compiler trước khi xuất ra
 EBE_add_js_compiler_in_cache( array(
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.js',
+//	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.mobile-1.4.5.min.js',
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jcarousellite.js',
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/lazyload.js',
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/swiper.min.js',
-	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.touchSwipe.min.js',
+//	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.touchSwipe.min.js',
 ) );
 EBE_add_js_compiler_in_cache( $arr_for_add_js, 'async', 1 );
 

@@ -40,13 +40,14 @@ function jEBE_slider ( jd, conf, callBack ) {
 			return ___eb_set_img_to_thumbnail( img );
 		}
 		return img;
-	}
+	};
 	var remove_thumbnail = function ( img ) {
 		if ( typeof ___eb_set_thumb_to_fullsize == 'function' ) {
 			return ___eb_set_thumb_to_fullsize( img );
 		}
 		return img;
-	}
+	};
+	/*
 	var inner_css = function ( str ) {
 		if ( document.getElementById('jEBE_slider_css') == null ) {
 //			$('head').append('<style id="jEBE_slider_css"></style>');
@@ -67,6 +68,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		
 		$('#jEBE_slider_css').append( $.trim( new_str ) );
 	};
+	*/
 	
 	// mặc định là ẩn nếu không có LI nào
 	set_default_conf( 'hide_if_null', true );
@@ -80,8 +82,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 	// tự động chạy
 	set_default_conf( 'autoplay', false );
 	// tốc độ chuyển slide ( mini giây )
-	set_default_conf( 'speed', 800 );
-	conf['speed'] = conf['speed']/ 1000;
+	set_default_conf( 'speed', 0 );
+	if ( conf['speed'] > 0 ) {
+		conf['speed'] = conf['speed']/ 1000;
+	}
 	// giãn cách chuyển slide (mini giây)
 	set_default_conf( 'speedNext', 5000 );
 	
@@ -167,12 +171,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 		$(jd).after('<div class="' + jd_class + '"><div class="jEBE_slider-thumbnail"><ul class="cf">' + str_btn + '</ul></div></div>');
 		
 		// tạo css cho thumbmail
-		inner_css( '\
-' + jd_to_class + ' .jEBE_slider-thumbnail div {\
-	width: ' + conf['thumbnailWidth'] + 'px;\
-	height: ' + conf['thumbnailHeight'] + 'px;\
-}\
-		' );
+		$(jd_to_class + ' .jEBE_slider-thumbnail div').css({
+			width: conf['thumbnailWidth'] + 'px',
+			height: conf['thumbnailHeight'] + 'px'
+		});
 	}
 	
 	
@@ -187,25 +189,27 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// tạo css cho slider
 	$(jd).addClass('jEBE_slider-position');
+	
 	/*
 	$(jd).css({
 		position: 'relative',
 		overflow: 'hidden'
 	});
 	*/
-	$(jd + ' ul').css({
-		position: 'absolute',
-		left: 0,
-		width: ( 100 * len/ conf['visible'] ) + '%',
-		'-moz-transition': 'all ' + conf['speed'] + 's ease',
-		'-o-transition': 'all ' + conf['speed'] + 's ease',
-		'-webkit-transition': 'all ' + conf['speed'] + 's ease',
-		transition: 'all ' + conf['speed'] + 's ease'
-	});
+	
+	$(jd + ' ul').width( ( 100 * len/ conf['visible'] ) + '%' );
+	if ( conf['speed'] > 0 ) {
+		$(jd + ' ul').css({
+			'-moz-transition': 'all ' + conf['speed'] + 's ease',
+			'-o-transition': 'all ' + conf['speed'] + 's ease',
+			'-webkit-transition': 'all ' + conf['speed'] + 's ease',
+			transition: 'all ' + conf['speed'] + 's ease'
+		});
+	}
+	
 	$(jd + ' li').css({
 //		width: ( 100/ len/ conf['visible'] ) + '%',
-		width: ( 100/ len ) + '%',
-		float: 'left'
+		width: ( 100/ len ) + '%'
 	});
 	
 	
@@ -325,18 +329,15 @@ function jEBE_slider ( jd, conf, callBack ) {
 		});
 		
 		// tạo css cho nut next
-		inner_css( '\
-' + jd + ' .jEBE_slider-toLeft,\
-' + jd + ' .jEBE_slider-toRight {\
-	font-size: ' + conf['sliderArrowSize'] + 'px;\
-}\
-' + jd + ' .jEBE_slider-toLeft {\
-	width: ' + conf['sliderArrowWidthLeft'] + ';\
-}\
-' + jd + ' .jEBE_slider-toRight {\
-	width: ' + conf['sliderArrowWidthRight'] + ';\
-}\
-		' );
+		$( jd + ' .jEBE_slider-toLeft, ' + jd + ' .jEBE_slider-toRight' ).css({
+			'font-size': conf['sliderArrowSize'] + 'px'
+		});
+		$( jd + ' .jEBE_slider-toLeft' ).css({
+			'width': conf['sliderArrowWidthLeft']
+		});
+		$( jd + ' .jEBE_slider-toRight' ).css({
+			'width': conf['sliderArrowWidthRight']
+		});
 		
 		
 		// sử dụng swipe
@@ -356,6 +357,18 @@ function jEBE_slider ( jd, conf, callBack ) {
 			// Default is 75px, set to 0 for demo so any distance triggers swipe
 			threshold:0
 		});
+		*/
+		
+		
+		// https://www.w3schools.com/jquerymobile/jquerymobile_events_touch.asp
+		/*
+		if ( $(window).width() < 750 ) {
+			$(jd + ' .jEBE_slider-toLeft, ' + jd + ' .jEBE_slider-toRight').on("swiperight", function() {
+				$(jd + ' .jEBE_slider-toLeft').click();
+			}).on("swipeleft",function(){
+				$(jd + ' .jEBE_slider-toRight').click();
+			});
+		}
 		*/
 		
 	}
