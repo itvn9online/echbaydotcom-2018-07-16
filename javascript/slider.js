@@ -98,6 +98,9 @@ function jEBE_slider ( jd, conf ) {
 	set_default_conf( 'sliderArrowRight', 'fa-angle-right' );
 	// font-size
 	set_default_conf( 'sliderArrowSize', 30 );
+	// Kích thước nút bấm slider
+	set_default_conf( 'sliderArrowWidthLeft', 'auto' );
+	set_default_conf( 'sliderArrowWidthRight', 'auto' );
 	
 	// conf['sliderArrow']
 	console.log( conf );
@@ -235,9 +238,10 @@ function jEBE_slider ( jd, conf ) {
 //		console.log(i);
 //		console.log(jd);
 		
-		if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
-			i = 0;
-		}
+//		if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+//		if ( i >= $(jd + ' li').length ) {
+//			i = 0;
+//		}
 		
 		$(jd + ' li[data-i="' + i + '"]').click();
 		
@@ -262,7 +266,8 @@ function jEBE_slider ( jd, conf ) {
 //				console.log(i);
 //				console.log(jd);
 				
-				if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+//				if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+				if ( i >= $(jd + ' li').length ) {
 					i = 0;
 				}
 				
@@ -284,11 +289,11 @@ function jEBE_slider ( jd, conf ) {
 		//
 		$(jd + ' .jEBE_slider-toLeft').click(function () {
 			var i = $(jd).attr('data-i') || 0;
-			i += -1;
+			i -= 1;
 //			console.log(i);
 //			console.log(jd);
 			
-			if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+			if ( i < 0 ) {
 				i = $(jd + ' li').length - 1;
 			}
 			
@@ -301,7 +306,8 @@ function jEBE_slider ( jd, conf ) {
 //			console.log(i);
 //			console.log(jd);
 			
-			if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+//			if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+			if ( i >= $(jd + ' li').length ) {
 				i = 0;
 			}
 			
@@ -310,25 +316,25 @@ function jEBE_slider ( jd, conf ) {
 		
 		// tạo css cho nut next
 		inner_css( '\
-.jEBE_slider-toLeft,\
-.jEBE_slider-toRight {\
+' + jd + ' .jEBE_slider-toLeft,\
+' + jd + ' .jEBE_slider-toRight {\
 	position: absolute;\
 	font-size: ' + conf['sliderArrowSize'] + 'px;\
 	z-index: 1;\
 	cursor: pointer;\
 }\
-.jEBE_slider-toLeft {\
+' + jd + ' .jEBE_slider-toLeft {\
 	left: 0;\
-	width: 40%;\
+	width: ' + conf['sliderArrowWidthLeft'] + ';\
 }\
-.jEBE_slider-toRight {\
-	left: 40%;\
-	width: 60%;\
+' + jd + ' .jEBE_slider-toRight {\
+	right: 0;\
+	width: ' + conf['sliderArrowWidthRight'] + ';\
 }\
-.jEBE_slider-toLeft i {\
+' + jd + ' .jEBE_slider-toLeft i {\
 	margin-left: 10px;\
 }\
-.jEBE_slider-toRight i {\
+' + jd + ' .jEBE_slider-toRight i {\
 	margin-right: 10px;\
 }\
 		' );

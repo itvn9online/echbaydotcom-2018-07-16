@@ -245,7 +245,13 @@ function ___eb_details_slider_v2 () {
 		sliderArrow: true,
 //		buttonListNext: false,
 //		autoplay : true,
+		
+		sliderArrowWidthLeft : '40%',
+		sliderArrowWidthRight : '60%',
+		
 		thumbnail : 'ul li',
+		sliderArrowLeft : 'fa-chevron-circle-left',
+		sliderArrowRight : 'fa-chevron-circle-right',
 		size : $('.thread-details-mobileAvt').attr('data-size') || ''
 	});
 	
