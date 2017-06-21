@@ -374,6 +374,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		
 		
 		// https://coderwall.com/p/bxxjfq/detecting-swipe-using-jquery
+		/*
 		if ( $(window).width() < 750 ) {
 			$(jd + ' .jEBE_slider-toLeft, ' + jd + ' .jEBE_slider-toRight')
 //			.on('mousedown touchstart', function (e) {
@@ -413,7 +414,6 @@ function jEBE_slider ( jd, conf, callBack ) {
 //						console.log('right');
 						$(jd + ' .jEBE_slider-toRight').click();
 					}
-					/*
 				} else {
 					if ( yDiff > 0 ) {
 						// up swipe
@@ -424,7 +424,6 @@ function jEBE_slider ( jd, conf, callBack ) {
 						console.log('down');
 						$(jd + ' .jEBE_slider-toRight').click();
 					}
-					*/
 				}
 				
 				//
@@ -444,6 +443,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		//
 		
 	}
+	*/
 	
 	
 	//
