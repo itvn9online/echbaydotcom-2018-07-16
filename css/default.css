@@ -671,11 +671,11 @@ color: #333;
 	background: center no-repeat;
 	background-size: 100% auto;
 }
+#oi_big_banner { overflow: hidden; }
 /*
 #oi_big_banner {
 	height: 250px;
 	line-height: 250px;
-	overflow: hidden;
 	position: relative;
 }
 #oi_big_banner ul {
@@ -1478,4 +1478,8 @@ color: #333;
 .jEBE_slider-toRight i {
 	display: inline-block;
 	padding: 0 10px;
+}
+.jEBE_slider-position {
+	position: relative;
+	overflow: hidden;
 }

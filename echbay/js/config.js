@@ -111,7 +111,7 @@ function create_deault_css () {
 	// chiều cao của big_banner -> chỉ áp dụng cho bản PC
 	a = f.cf_top_banner_size.value.split('/')[0];
 	a -= Math.ceil(a/ 10);
-	str += '#oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;overflow: hidden;}';
+	str += '#oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;}';
 	
 	// table
 	a = Math.ceil(a/ 2);

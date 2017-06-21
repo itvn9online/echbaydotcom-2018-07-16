@@ -3,7 +3,7 @@
 
 var jEBE_slider_cache_option = {};
 
-function jEBE_slider ( jd, conf ) {
+function jEBE_slider ( jd, conf, callBack ) {
 	
 	// kiểm tra và nạp jQuery
 	if ( typeof jQuery != 'function' ) {
@@ -38,6 +38,12 @@ function jEBE_slider ( jd, conf ) {
 	var get_thumbnail = function ( img ) {
 		if ( typeof ___eb_set_img_to_thumbnail == 'function' ) {
 			return ___eb_set_img_to_thumbnail( img );
+		}
+		return img;
+	}
+	var remove_thumbnail = function ( img ) {
+		if ( typeof ___eb_set_thumb_to_fullsize == 'function' ) {
+			return ___eb_set_thumb_to_fullsize( img );
 		}
 		return img;
 	}
@@ -180,10 +186,13 @@ function jEBE_slider ( jd, conf ) {
 	}
 	
 	// tạo css cho slider
+	$(jd).addClass('jEBE_slider-position');
+	/*
 	$(jd).css({
 		position: 'relative',
 		overflow: 'hidden'
 	});
+	*/
 	$(jd + ' ul').css({
 		position: 'absolute',
 		left: 0,
@@ -328,6 +337,33 @@ function jEBE_slider ( jd, conf ) {
 	width: ' + conf['sliderArrowWidthRight'] + ';\
 }\
 		' );
+		
+		
+		// sử dụng swipe
+		// https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
+		// http://labs.rampinteractive.co.uk/touchSwipe/demos/Basic_swipe.html
+		/*
+		$(jd).swipe( {
+			// Generic swipe handler for all directions
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+				if ( direction == 'left' ) {
+					$(jd + ' .jEBE_slider-toLeft').click();
+				}
+				else if ( direction == 'right' ) {
+					$(jd + ' .jEBE_slider-toRight').click();
+				}
+			},
+			// Default is 75px, set to 0 for demo so any distance triggers swipe
+			threshold:0
+		});
+		*/
+		
+	}
+	
+	
+	//
+	if ( typeof callBack == 'function' ) {
+		callBack();
 	}
 	
 }

@@ -253,6 +253,13 @@ function ___eb_details_slider_v2 () {
 		sliderArrowLeft : 'fa-chevron-circle-left',
 		sliderArrowRight : 'fa-chevron-circle-right',
 		size : $('.thread-details-mobileAvt').attr('data-size') || ''
+	}, function () {
+		$('.thread-details-mobileAvt li').click(function () {
+			$(this).css({
+				'background-image': 'url("' + ___eb_set_thumb_to_fullsize( $(this).attr('data-src') || '' ) + '")'
+			});
+		});
+		$('.thread-details-mobileAvt li:first').click();
 	});
 	
 	return false;

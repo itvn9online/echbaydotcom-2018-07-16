@@ -86,6 +86,8 @@ EBE_add_js_compiler_in_cache( array(
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.js',
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jcarousellite.js',
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/lazyload.js',
+//	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/swiper.min.js',
+	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.touchSwipe.min.js',
 ) );
 EBE_add_js_compiler_in_cache( $arr_for_add_js, 'async', 1 );
 
