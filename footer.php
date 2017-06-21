@@ -93,6 +93,13 @@ EBE_add_js_compiler_in_cache( array(
 ) );
 EBE_add_js_compiler_in_cache( $arr_for_add_js, 'async', 1 );
 
+// jquery map
+$file_jquery_map = EB_THEME_CACHE . 'jquery-3.2.1.min.map';
+if ( ! file_exists( $file_jquery_map ) ) {
+	copy( EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery-3.2.1.min.map', $file_jquery_map );
+	chmod( $file_jquery_map, 0777 );
+}
+
 
 
 

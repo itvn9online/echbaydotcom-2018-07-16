@@ -334,7 +334,8 @@ function EBE_add_js_compiler_in_cache ( $arr_eb_add_full_js, $async = '', $optim
 	$file_name_cache .= '.js';
 	
 	//
-	$file_in_cache = ABSPATH . 'wp-content/uploads/ebcache/' . $file_name_cache;
+//	$file_in_cache = ABSPATH . 'wp-content/uploads/ebcache/' . $file_name_cache;
+	$file_in_cache = EB_THEME_CACHE . $file_name_cache;
 	if ( file_exists( $file_in_cache ) ) {
 		echo '<script type="text/javascript" src="' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
 		
