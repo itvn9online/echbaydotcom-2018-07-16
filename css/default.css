@@ -1028,6 +1028,12 @@ color: #333;
 	font-weight: bold;
 	color: #f00;
 }
+.thread-list100 .echbay-blog-title,
+.thread-list100 .echbay-blog-infos,
+.thread-list100 .echbay-blog-gioithieu {
+	height: auto;
+	overflow: hidden;
+}
 /* custom flex blogs */
 .blogs_menu_noidung {
 	display: -webkit-flex; /* Safari */

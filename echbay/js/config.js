@@ -114,12 +114,12 @@ function create_deault_css () {
 	str += '#oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;}';
 	
 	// table
-	a = a/ 2;
-	str += '@media screen and (min-width:775px) { #oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
+	a = Math.ceil(a/ 2);
+	str += '@media screen and (max-width:775px) { #oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
 	
 	// mobile
-	a = a/ 2;
-	str += '@media screen and (min-width:350px) { #oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
+	a = Math.ceil(a/ 2);
+	str += '@media screen and (max-width:350px) { #oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
 	
 	
 	// body
