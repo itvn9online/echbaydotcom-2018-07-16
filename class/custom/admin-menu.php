@@ -118,11 +118,34 @@ function EBE_admin_set_realtime_for_file ( $arr ) {
 
 
 
+//
+$str_list_wordpress_rule = '';
+if ( mtv_id > 0 && strstr( $_SERVER['REQUEST_URI'], '/options-permalink.php' ) == true ) {
+	add_filter('rewrite_rules_array', 'get_all_rules_for_nginx');
+	
+	function get_all_rules_for_nginx($rules){
+		global $str_list_wordpress_rule;
+		
+//		print_r( $rules );
+		
+		$str_list_wordpress_rule = '<script type="text/javascript">' . "\n";
+		$str_list_wordpress_rule .= 'var arr_wordpress_rules = {};' . "\n";
+		foreach ( $rules as $k => $v ) {
+			$str_list_wordpress_rule .= 'arr_wordpress_rules["' . $k . '"] = "' . $v . '";' . "\n";
+		}
+		$str_list_wordpress_rule .= '</script>';
+		
+		return $rules;
+	}
+}
+
+
+
 /*
 * Nhúng css cho phần admin
 */
 function echbay_admin_styles() {
-	
+	global $str_list_wordpress_rule;
 //	global $func;
 	
 	// lấy thời gian cập nhật cuối của file css -> update lại toàn bộ các file khác
@@ -157,28 +180,12 @@ function echbay_admin_styles() {
 	var web_link = "' . web_link . '";
 	</script>' );
 	
+	
+	//
+	echo $str_list_wordpress_rule;
+	
 }
 add_action('admin_head', 'echbay_admin_styles');
-
-
-
-//
-if ( mtv_id > 0 && strstr( $_SERVER['REQUEST_URI'], '/options-permalink.php' ) == true ) {
-	add_filter('rewrite_rules_array', 'get_all_rules_for_nginx');
-	
-	function get_all_rules_for_nginx($rules){
-//		print_r( $rules );
-		
-		echo '<script type="text/javascript">' . "\n";
-		echo 'var arr_wordpress_rules = {};' . "\n";
-		foreach ( $rules as $k => $v ) {
-			echo 'arr_wordpress_rules["' . $k . '"] = "' . $v . '";' . "\n";
-		}
-		echo '</script>';
-		
-		return $rules;
-	}
-}
 
 
 
