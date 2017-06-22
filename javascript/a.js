@@ -495,7 +495,7 @@ function EBE_set_default_title_for_seo () {
 	if ( $('#snippet-editor-title').length > 0 ) {
 		tit = $('#snippet-editor-title').val() || '';
 		
-		if ( tit == '' ) {
+		if ( tit == '' || tit == str_title ) {
 			$('#snippet-editor-title').val( '%%title%%' );
 		}
 	}
@@ -506,7 +506,7 @@ function EBE_set_default_title_for_seo () {
 //		if ( des == '' && str_excerpt != '' ) {
 //			$('#snippet-editor-meta-description').val( str_excerpt );
 //		}
-		if ( des == '' ) {
+		if ( des == '' || des == str_excerpt ) {
 			$('#snippet-editor-meta-description').val( '%%excerpt%%' );
 		}
 	}
