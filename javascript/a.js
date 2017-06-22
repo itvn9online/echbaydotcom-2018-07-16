@@ -484,14 +484,28 @@ function EBE_set_default_title_for_seo () {
 	}
 	
 	//
-	var str_excerpt = $('#excerpt').val() || '',
+	var str_title = $('#title').val() || '',
+		tit = '',
+		str_excerpt = $('#excerpt').val() || '',
 		des = '';
-	// Yoast SEO
+	
+	/*
+	* Yoast SEO
+	*/
+	if ( $('#snippet-editor-title').length > 0 ) {
+		tit = $('#snippet-editor-title').val() || '';
+		
+		if ( tit == '' && str_title != '' ) {
+			$('#snippet-editor-title').val( '%%title%%' );
+		}
+	}
+	
 	if ( $('#snippet-editor-meta-description').length > 0 ) {
 		des = $('#snippet-editor-meta-description').val() || '';
 		
 		if ( des == '' && str_excerpt != '' ) {
-			$('#snippet-editor-meta-description').val( str_excerpt );
+//			$('#snippet-editor-meta-description').val( str_excerpt );
+			$('#snippet-editor-meta-description').val( '%%excerpt%%' );
 		}
 	}
 	console.log(str_excerpt);
