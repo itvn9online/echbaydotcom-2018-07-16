@@ -208,6 +208,8 @@ $__cf_row_default = array(
 	'cf_default_bg' => '#ff4400',
 	'cf_default_2bg' => '#555555',
 	'cf_default_bg_color' => '#ffffff',
+	'cf_default_amp_bg' => '',
+	
 	
 	'cf_product_size' => '1',
 	'cf_product_mobile_size' => '140',

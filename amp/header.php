@@ -73,9 +73,16 @@ if ( $__cf_row['cf_on_off_amp_logo'] == 1 ) {
 }
 
 
+
+//
+if ( $__cf_row['cf_default_amp_bg'] == '' ) {
+	$__cf_row['cf_default_amp_bg'] = $__cf_row['cf_default_bg'];
+}
+
+
 ?>
 <style amp-custom>
-<?php echo $eb_amp->add_css ( array( 'css/amp-custom.css', ) ) . $css_for_amp_logo;
+<?php echo $eb_amp->add_css ( array( 'css/amp-custom.css', ) ) . $css_for_amp_logo . '.amp-wp-header { background-color: ' . $__cf_row['cf_default_amp_bg'] . '; }';
 ?>
 </style>
 </head>

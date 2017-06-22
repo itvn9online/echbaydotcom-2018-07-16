@@ -108,6 +108,11 @@ function create_deault_css () {
 		f = document.frm_config,
 		a = '';
 	
+	
+	// màu nền của AMP chính là màu nền cơ bản
+	$('#cf_default_amp_bg').val( $('#cf_default_bg').val() || '' );
+	
+	
 	// chiều cao của big_banner -> chỉ áp dụng cho bản PC
 	a = f.cf_top_banner_size.value.split('/')[0];
 	a -= Math.ceil(a/ 10);
