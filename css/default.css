@@ -1343,8 +1343,8 @@ color: #333;
 	margin-bottom: 10px;
 }
 .global-cats-description-active {
-	height: auto;
-	overflow: auto;
+	height: auto !important;
+	overflow: auto !important;
 }
 .global-cats-description h2,
 .global-cats-description h3,
