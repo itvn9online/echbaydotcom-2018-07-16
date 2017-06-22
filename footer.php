@@ -98,7 +98,7 @@ EBE_add_js_compiler_in_cache( array(
 //	ABSPATH . 'wp-includes/js/jquery/jquery.ui.touch-punch.js',
 	
 	// jQuery plugin
-	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jcarousellite.js',
+//	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jcarousellite.js',
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/lazyload.js',
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/swiper.min.js',
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.touchSwipe.min.js',

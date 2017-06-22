@@ -130,12 +130,13 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// chiều cao cho slide
 	var wit = $(jd).width(),
-		hai = wit * eval( conf['size'] )/ conf['visible'] - 1;
+		hai = conf['size'] == '' ? $(jd + ' li:first').height() : wit * eval( conf['size'] )/ conf['visible'] - 1;
+	set_default_conf( 'lineHeight', hai + 'px' );
 	
 	$(jd).height( hai ).attr({
 		'data-size' : conf['size']
 	}).css({
-		'line-height' : hai + 'px'
+		'line-height' : conf['lineHeight']
 	});
 	
 	// chỉ có 1 ảnh -> thoát
@@ -149,7 +150,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	$(window).resize(function(e) {
 		// chỉnh lại chiều cao cho slide
 		$(jd).height( hai ).css({
-			'line-height' : hai + 'px'
+			'line-height' : conf['lineHeight']
 		});
 	});
 	*/
@@ -360,7 +361,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// tạo css cho nut next
 		$( jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight' ).css({
 			'font-size': conf['sliderArrowSize'] + 'px',
-			'line-height' : hai + 'px'
+			'line-height' : conf['lineHeight']
 		}).height( hai );
 		
 		// chỉ căn chiều rộng trên bản pc -> mobile còn để touch
