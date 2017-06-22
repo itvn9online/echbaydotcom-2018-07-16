@@ -163,6 +163,27 @@ add_action('admin_head', 'echbay_admin_styles');
 
 
 //
+if ( mtv_id > 0 && strstr( $_SERVER['REQUEST_URI'], '/options-permalink.php' ) == true ) {
+	add_filter('rewrite_rules_array', 'get_all_rules_for_nginx');
+	
+	function get_all_rules_for_nginx($rules){
+//		print_r( $rules );
+		
+		echo '<script type="text/javascript">' . "\n";
+		echo 'var arr_wordpress_rules = {};' . "\n";
+		foreach ( $rules as $k => $v ) {
+			echo 'arr_wordpress_rules["' . $k . '"] = "' . $v . '";' . "\n";
+		}
+		echo '</script>';
+		
+		return $rules;
+	}
+}
+
+
+
+
+//
 function echbay_admin_footer_styles() {
 	
 //	global $func;

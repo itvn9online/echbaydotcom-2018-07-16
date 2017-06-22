@@ -740,6 +740,37 @@ function click_remove_style_of_img_content () {
 			'z-index' : 99
 		});
 		
+		
+		
+		//
+		$(window).on('load', function () {
+			if ( dog('postexcerpt-hide').checked == false ) {
+				$('#postexcerpt-hide').click();
+				if ( dog('postexcerpt-hide').checked == false ) {
+					dog('postexcerpt-hide').checked = true;
+				}
+			}
+			
+			//
+			var str_excerpt = $('#excerpt').val() || '',
+				des = '';
+			// Yoast SEO
+			if ( $('#snippet-editor-meta-description').length > 0 ) {
+				des = $('#snippet-editor-meta-description').val() || '';
+				
+				if ( des == '' && str_excerpt != '' ) {
+					$('#snippet-editor-meta-description').val( str_excerpt );
+				}
+			}
+			console.log(str_excerpt);
+			console.log(des);
+			
+			//
+			if ( str_excerpt == '' && des != '' ) {
+				$('#excerpt').val( des );
+			}
+		});
+		
 	}
 	// danh sách post, page, custom post type
 	else if ( win_href.split('/edit.php').length > 1 ) {
@@ -773,6 +804,54 @@ function click_remove_style_of_img_content () {
 	// không cho người dùng chỉnh sửa kích thước ảnh thumb -> để các câu lệnh dùng thumb sẽ chính xác hơn
 	else if ( win_href.split('/options-media.php').length > 1 ) {
 		$('#wpbody-content .form-table tr:first td:last').addClass('disable-edit-thumb-small').append('<div class="div-edit-thumb-small">&nbsp;</div>');
+	}
+	// chuyển rule wordpress sang nginx cho nó mượt
+	else if ( win_href.split('/options-permalink.php').length > 1 ) {
+//		console.log( arr_wordpress_rules.length );
+		console.log( arr_wordpress_rules );
+		
+		var str = '';
+		for ( var x in arr_wordpress_rules ) {
+			var rule = x,
+				rewrite = arr_wordpress_rules[x];
+			
+			if ( rule.substr( rule.length - 1 ) != '$' ) {
+				rule += '$';
+			}
+			if ( rule.substr( 0, 1 ) != '^' ) {
+				rule = '^' + rule;
+			}
+			
+			if ( rewrite.substr( 0, 1 ) != '/' ) {
+				rewrite = '/' + rewrite;
+			}
+			
+			str += 'rewrite ' + rule + ' ' + rewrite + ';' + "\n";
+		}
+		
+		// Thay tham số của wordpress bằng tham số nginx
+		str = str.replace( /\$matches\[1\]/gi, '$1' );
+		str = str.replace( /\$matches\[2\]/gi, '$2' );
+		str = str.replace( /\$matches\[3\]/gi, '$3' );
+		str = str.replace( /\$matches\[4\]/gi, '$4' );
+		str = str.replace( /\$matches\[5\]/gi, '$5' );
+		str = str.replace( /\$matches\[6\]/gi, '$6' );
+		str = str.replace( /\$matches\[7\]/gi, '$7' );
+		str = str.replace( /\$matches\[8\]/gi, '$8' );
+		str = str.replace( /\$matches\[9\]/gi, '$9' );
+		str = str.replace( /\$matches\[10\]/gi, '$10' );
+		
+//		str = str.replace( /\{1\,\}/gi, '{1,10}' );
+		str = str.replace( /\{1\,\}/gi, '?' );
+		str = str.replace( /\{4\}/gi, '(4)' );
+		str = str.replace( /\{1,2\}/gi, '(1,2)' );
+		str = str.replace( /\{4\}/gi, '(4)' );
+		str = str.replace( /\{4\}/gi, '(4)' );
+		str = str.replace( /\{4\}/gi, '(4)' );
+		
+//		console.log(str);
+		
+		$('form[name="form"]').after( '<textarea style="width:99%;height:600px;">' + str + '</textarea>' );
 	}
 	
 	
