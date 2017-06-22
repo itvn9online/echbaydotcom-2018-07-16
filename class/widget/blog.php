@@ -26,7 +26,8 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			'post_cloumn' => '',
 			'post_type' => EB_BLOG_POST_TYPE,
 			'ads_eb_status' => 0,
-			'post_eb_status' => 0
+			'post_eb_status' => 0,
+			'custom_style' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		
@@ -121,6 +122,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$html_node = isset( $instance ['html_node'] ) ? $instance ['html_node'] : '';
 		$html_node = str_replace( '.html', '', $html_node );
 		$ads_eb_status = isset( $instance ['ads_eb_status'] ) ? $instance ['ads_eb_status'] : 0;
+		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
 		
 		//
@@ -218,6 +220,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		
 		//
+		echo '<div class="' . $custom_style . '">';
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_link' => $cat_link == '' ? 'javascript:;' : $cat_link,
 			'tmp.num_line' => $num_line,
@@ -227,6 +230,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			'tmp.widget_title' => _eb_get_echo_widget_title( $cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>', 'echbay-widget-blogs-title', $before_title ),
 			'tmp.content' => $content,
 		) );
+		echo '</div>';
 		
 		//
 		echo $after_widget;

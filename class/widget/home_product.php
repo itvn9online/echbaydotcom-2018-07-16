@@ -31,7 +31,8 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			'post_cloumn' => '',
 			'post_type' => 'post',
 			'ads_eb_status' => 0,
-			'post_eb_status' => 0
+			'post_eb_status' => 0,
+			'custom_style' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		
@@ -73,6 +74,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		$post_type = isset( $instance ['post_type'] ) ? $instance ['post_type'] : '';
 		$html_node = isset( $instance ['html_node'] ) ? $instance ['html_node'] : '';
 		$html_node = str_replace( '.html', '', $html_node );
+		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
@@ -176,6 +178,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		
 		
 		//
+		echo '<div class="' . $custom_style . '">';
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_id' => $cat_ids,
 			'tmp.cat_link' => $cat_link ? $cat_link : 'javascript:;',
@@ -199,6 +202,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			'tmp.num_post_line' => $num_line,
 			'tmp.max_width' => $max_width,
 		) );
+		echo '</div>';
 		
 		
 		//

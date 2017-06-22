@@ -146,6 +146,10 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	_eb_widget_list_html_file_plugin_theme( $field_name['html_node'], $html_node, 'node' );
 	
 	
+	//
+	echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '"/></p>';
+	
+	
 	
 	//
 	echo '</div>';
