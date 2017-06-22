@@ -1,7 +1,8 @@
 
 
 
-var jEBE_slider_cache_option = {};
+var jEBE_slider_cache_option = {},
+	jEBE_slider_dang_scroll = false;
 
 function jEBE_slider ( jd, conf, callBack ) {
 	
@@ -188,7 +189,30 @@ function jEBE_slider ( jd, conf, callBack ) {
 	}
 	
 	// tạo css cho slider
-	$(jd).addClass('jEBE_slider-position');
+	$(jd)
+	/*
+	.scroll(function(e) {
+		if ( jEBE_slider_dang_scroll == true ) {
+			return false;
+		}
+		jEBE_slider_dang_scroll = true;
+		
+		var a = $(this).attr('data-scroll') || 0,
+			b = $(this).scrollLeft(),
+			i = $(this).attr('data-i') || 0;
+//		console.log( b );
+		if ( a - b > 0 ) {
+			i -= 1;
+			console.log('left');
+		} else {
+			i -= -1;
+			console.log('right');
+		}
+		console.log( i );
+		$(jd + ' li[data-i="' + i + '"]').click();
+	})
+	*/
+	.addClass('jEBE_slider-position');
 	
 	/*
 	$(jd).css({
@@ -232,9 +256,14 @@ function jEBE_slider ( jd, conf, callBack ) {
 //			left: ( 0 - i * 100/ conf['visible'] ) + '%'
 		});
 		
-		$(jd).attr({
-			'data-i' : i
+		$(jd)
+//		.scrollLeft(0)
+		.attr({
+			'data-i' : i,
+			'data-scroll' : i * $(jd).width()
 		});
+		
+		jEBE_slider_dang_scroll = false;
 		
 		//
 		$('.' + jd_class + ' li').removeClass('selected');
@@ -297,14 +326,9 @@ function jEBE_slider ( jd, conf, callBack ) {
 	if ( conf['sliderArrow'] == true && len > conf['visible'] ) {
 		$(jd).before('<div class="' + jd_class + '"><div class="jEBE_slider-toCenter"><div class="jEBE_slider-toLeft"><i class="fa ' + conf['sliderArrowLeft'] + '"></i></div> <div class="jEBE_slider-toRight text-right"><i class="fa ' + conf['sliderArrowRight'] + '"></i></div></div></div>');
 		
-		// căn chỉnh chiều cao cho nút bấm này
-		$( jd_class + ' .jEBE_slider-toLeft, ' + jd_class + ' .jEBE_slider-toRight').css({
-			'line-height' : hai + 'px'
-		}).height( hai );
-		
 		
 		//
-		$(jd + ' .jEBE_slider-toLeft').click(function () {
+		$(jd_to_class + ' .jEBE_slider-toLeft').click(function () {
 			var i = $(jd).attr('data-i') || 0;
 			i -= 1;
 //			i -= conf['visible'];
@@ -318,7 +342,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 			$(jd + ' li[data-i="' + i + '"]').click();
 		});
 		
-		$(jd + ' .jEBE_slider-toRight').click(function () {
+		$(jd_to_class + ' .jEBE_slider-toRight').click(function () {
 			var i = $(jd).attr('data-i') || 0;
 			i -= -1;
 //			i -= 0 - conf['visible'];
@@ -334,15 +358,20 @@ function jEBE_slider ( jd, conf, callBack ) {
 		});
 		
 		// tạo css cho nut next
-		$( jd + ' .jEBE_slider-toLeft, ' + jd + ' .jEBE_slider-toRight' ).css({
-			'font-size': conf['sliderArrowSize'] + 'px'
-		});
-		$( jd + ' .jEBE_slider-toLeft' ).css({
-			'width': conf['sliderArrowWidthLeft']
-		});
-		$( jd + ' .jEBE_slider-toRight' ).css({
-			'width': conf['sliderArrowWidthRight']
-		});
+		$( jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight' ).css({
+			'font-size': conf['sliderArrowSize'] + 'px',
+			'line-height' : hai + 'px'
+		}).height( hai );
+		
+		// chỉ căn chiều rộng trên bản pc -> mobile còn để touch
+		if ( $(window).width() > 750 ) {
+			$( jd_to_class + ' .jEBE_slider-toLeft' ).css({
+				'width': conf['sliderArrowWidthLeft']
+			});
+			$( jd_to_class + ' .jEBE_slider-toRight' ).css({
+				'width': conf['sliderArrowWidthRight']
+			});
+		}
 		
 		
 		// sử dụng swipe
@@ -353,10 +382,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 			// Generic swipe handler for all directions
 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				if ( direction == 'left' ) {
-					$(jd + ' .jEBE_slider-toLeft').click();
+					$(jd_to_class + ' .jEBE_slider-toLeft').click();
 				}
 				else if ( direction == 'right' ) {
-					$(jd + ' .jEBE_slider-toRight').click();
+					$(jd_to_class + ' .jEBE_slider-toRight').click();
 				}
 			},
 			// Default is 75px, set to 0 for demo so any distance triggers swipe
@@ -368,10 +397,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// https://www.w3schools.com/jquerymobile/jquerymobile_events_touch.asp
 		/*
 		if ( $(window).width() < 750 ) {
-			$(jd + ' .jEBE_slider-toLeft, ' + jd + ' .jEBE_slider-toRight').on("swiperight", function() {
-				$(jd + ' .jEBE_slider-toLeft').click();
+			$(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').on("swiperight", function() {
+				$(jd_to_class + ' .jEBE_slider-toLeft').click();
 			}).on("swipeleft",function(){
-				$(jd + ' .jEBE_slider-toRight').click();
+				$(jd_to_class + ' .jEBE_slider-toRight').click();
 			});
 		}
 		*/
@@ -381,7 +410,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// https://coderwall.com/p/bxxjfq/detecting-swipe-using-jquery
 		/*
 		if ( $(window).width() < 750 ) {
-			$(jd + ' .jEBE_slider-toLeft, ' + jd + ' .jEBE_slider-toRight')
+			$(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight')
 //			.on('mousedown touchstart', function (e) {
 			.on('touchstart', function (e) {
 //			.on('click', function (e) {
@@ -413,21 +442,21 @@ function jEBE_slider ( jd, conf, callBack ) {
 					if ( xDiff > 0 ) {
 						// left swipe
 //						console.log('left');
-						$(jd + ' .jEBE_slider-toLeft').click();
+						$(jd_to_class + ' .jEBE_slider-toLeft').click();
 					} else {
 						// right swipe
 //						console.log('right');
-						$(jd + ' .jEBE_slider-toRight').click();
+						$(jd_to_class + ' .jEBE_slider-toRight').click();
 					}
 				} else {
 					if ( yDiff > 0 ) {
 						// up swipe
 						console.log('up');
-						$(jd + ' .jEBE_slider-toLeft').click();
+						$(jd_to_class + ' .jEBE_slider-toLeft').click();
 					} else { 
 						// down swipe
 						console.log('down');
-						$(jd + ' .jEBE_slider-toRight').click();
+						$(jd_to_class + ' .jEBE_slider-toRight').click();
 					}
 				}
 				

@@ -2532,7 +2532,8 @@ if (press_esc_to_quickvideo_close == false) {
 //
 (function ( a ) {
 	if ( a != '' ) {
-		$('.click-viewmore-cats-description').show().click(function () {
+		$('.viewmore-cats-description').show();
+		$('.click-viewmore-cats-description').click(function () {
 			$('.global-cats-description').toggleClass('global-cats-description-active');
 		});
 	} else {

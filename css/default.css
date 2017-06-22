@@ -1470,6 +1470,7 @@ color: #333;
 	position: absolute;
 	z-index: 9;
 	cursor: pointer;
+	font-size: 30px;
 }
 .jEBE_slider-toLeft { left: 0; }
 .jEBE_slider-toRight { right: 0; }
