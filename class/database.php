@@ -283,8 +283,8 @@ $__cf_row_default = array(
 	
 	
 	// danh sách tin -> tổng quan
-	'cf_home_column_style' => 'w99',
-	'cf_home_class_style' => 'noidung_menu',
+	'cf_home_class_style' => 'w99',
+	'cf_home_column_style' => 'noidung_menu',
 	
 	
 	// danh sách tin -> tổng quan
