@@ -27,7 +27,8 @@ body {
 .left-menu-space { padding-left: 0; }
 .mobile-zero-margin,
 .echbay-blog,
-.thread-list { margin: 0 !important; }
+.thread-list,
+.widget-search-advanced { margin: 0 !important; }
 .thread-list li { width: 50%; }
 /* fix search mobile */
 /*

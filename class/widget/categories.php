@@ -23,6 +23,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			'cat_ids' => 0,
 			'cat_status' => 0,
 			'cat_type' => 'category',
+			'list_tyle' => '',
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -99,6 +100,15 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		checked( $instance[ 'show_count' ], 'on' );
 		echo '><label for="' . $input_name . '">Hiện số bài viết</label></p>';
 		
+		
+		//
+		$input_name = $this->get_field_name ( 'list_tyle' );
+//		echo $instance[ 'show_count' ];
+		
+		echo '<p><input type="checkbox" class="checkbox" id="' . $input_name . '" name="' . $input_name . '" ';
+		checked( $instance[ 'list_tyle' ], 'on' );
+		echo '><label for="' . $input_name . '">Hiển thị dưới dạng Select Box</label></p>';
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -120,9 +130,14 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		$cat_ids = isset( $instance ['cat_ids'] ) ? $instance ['cat_ids'] : 0;
 		$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : 'category';
 		$cat_status = isset( $instance ['cat_status'] ) ? $instance ['cat_status'] : 0;
+		$list_tyle = isset( $instance ['list_tyle'] ) ? $instance ['list_tyle'] : 'off';
+		$list_tyle = $list_tyle == 'on' ? 'widget-category-selectbox' : '';
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
+		
+		//
+		echo '<div class="' . $list_tyle . '">';
 		
 		//
 		_eb_echo_widget_title( $title, 'echbay-widget-category-title', $before_title );
@@ -167,6 +182,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		}
 		
 		echo '</ul>';
+		echo '</div>';
 		
 		//
 		echo $after_widget;
