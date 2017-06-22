@@ -19,6 +19,7 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 			'max_price' => '1000000',
 			'line_price' => 5,
 			'custom_price' => '',
+			'list_tyle' => '',
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -42,6 +43,15 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		3000000<br>
 		5000000<br>
 		10000000</p>';
+		
+		
+		//
+		$input_name = $this->get_field_name ( 'list_tyle' );
+//		echo $instance[ 'show_count' ];
+		
+		echo '<p><input type="checkbox" class="checkbox" id="' . $input_name . '" name="' . $input_name . '" ';
+		checked( $instance[ 'list_tyle' ], 'on' );
+		echo '><label for="' . $input_name . '">Hiển thị dưới dạng Select Box</label></p>';
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -60,10 +70,15 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		$line_price = isset( $instance ['line_price'] ) ? $instance ['line_price'] : 5;
 		$custom_price = isset( $instance ['custom_price'] ) ? $instance ['custom_price'] : '';
 //		echo $custom_price;
+		$list_tyle = isset( $instance ['list_tyle'] ) ? $instance ['list_tyle'] : 'off';
+		$list_tyle = $list_tyle == 'on' ? 'widget-category-selectbox' : '';
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
 //		echo $custom_price;
+		
+		//
+		echo '<div class="' . $list_tyle . '">';
 		
 		//
 		_eb_echo_widget_title( $title, 'echbay-widget-price-title', $before_title );
@@ -166,6 +181,7 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		
 		//
 		echo '</ul>';
+		echo '</div>';
 		
 		//
 		echo $after_widget;

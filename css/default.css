@@ -929,17 +929,15 @@ color: #333;
 	width: 33%;
 	min-width: 50px;
 }
-.widget-category-selectbox .widget_echbay_category a,
-.widget-category-selectbox .widget_echbay_price a {
+.widget-category-selectbox {
+	position: relative;
+	margin: 5px 0;
+}
+.widget-category-selectbox a {
 	color: #333;
 	display: block;
 	padding: 0 5px 0 15px;
 	line-height: 35px;
-}
-.widget-category-selectbox .widget_echbay_category,
-.widget-category-selectbox .widget_echbay_price {
-	position: relative;
-	margin: 5px 0;
 }
 .widget-category-selectbox ul {
 	position: absolute;
@@ -955,13 +953,14 @@ color: #333;
 	box-shadow: 2px 2px 2px #ccc;
 	display: none;
 }
-.widget-category-selectbox .widget_echbay_category:hover ul,
-.widget-category-selectbox .widget_echbay_price:hover ul { display: block; }
+.widget-category-selectbox:hover ul { display: block; }
 .widget-category-selectbox li {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	border-bottom: 1px #f2f2f2 solid;
 }
+.widget-category-selectbox li:hover { background: #f5f5f5; }
 .widget-category-selectbox .echbay-widget-title {
 	padding: 0 8px;
 	line-height: 35px;
@@ -986,8 +985,21 @@ color: #333;
 	font-size: 14px;
 }
 .widget-category-selectbox .children { display: none !important; }
-.widget-category-selectbox li { border-bottom: 1px #f2f2f2 solid; }
-.widget-category-selectbox li:hover { background: #f5f5f5; }
+.global-button-for-seach-advanced { position: relative; }
+a.search-advanced-btn {
+	padding: 0;
+	background: #c00;
+	border-radius: 3px;
+	color: #fff !important;
+	font-weight: bold;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	line-height: 37px;
+	text-align: center;
+	margin: 5px 10px 0 10px;
+}
 .widget_random_home_post:nth-child(odd) { background-color: #f9f9f9; }
 /* login, register */
 #oi_popup {
