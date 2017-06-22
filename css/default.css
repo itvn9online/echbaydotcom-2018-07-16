@@ -1464,6 +1464,7 @@ color: #333;
 	background-repeat: no-repeat;
 	margin: 0 5px 5px 0;
 }
+.jEBE_slider-toCenter { position: relative; }
 .jEBE_slider-toLeft,
 .jEBE_slider-toRight {
 	position: absolute;
