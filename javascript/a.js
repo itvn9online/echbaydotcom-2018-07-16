@@ -490,7 +490,7 @@ function EBE_set_default_title_for_seo () {
 		des = '';
 	
 	/*
-	* Yoast SEO
+	* Yoast SEO default value
 	*/
 	if ( $('#snippet-editor-title').length > 0 ) {
 		tit = $('#snippet-editor-title').val() || '';
