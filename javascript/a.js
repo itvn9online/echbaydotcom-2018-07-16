@@ -495,7 +495,7 @@ function EBE_set_default_title_for_seo () {
 	if ( $('#snippet-editor-title').length > 0 ) {
 		tit = $('#snippet-editor-title').val() || '';
 		
-		if ( tit == '' && str_title != '' ) {
+		if ( tit == '' ) {
 			$('#snippet-editor-title').val( '%%title%%' );
 		}
 	}
@@ -503,8 +503,10 @@ function EBE_set_default_title_for_seo () {
 	if ( $('#snippet-editor-meta-description').length > 0 ) {
 		des = $('#snippet-editor-meta-description').val() || '';
 		
-		if ( des == '' && str_excerpt != '' ) {
+//		if ( des == '' && str_excerpt != '' ) {
 //			$('#snippet-editor-meta-description').val( str_excerpt );
+//		}
+		if ( des == '' ) {
 			$('#snippet-editor-meta-description').val( '%%excerpt%%' );
 		}
 	}
