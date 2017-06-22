@@ -474,6 +474,37 @@ function click_remove_style_of_img_content () {
 
 
 
+//
+function EBE_set_default_title_for_seo () {
+	if ( dog('postexcerpt-hide').checked == false ) {
+		$('#postexcerpt-hide').click();
+		if ( dog('postexcerpt-hide').checked == false ) {
+			dog('postexcerpt-hide').checked = true;
+		}
+	}
+	
+	//
+	var str_excerpt = $('#excerpt').val() || '',
+		des = '';
+	// Yoast SEO
+	if ( $('#snippet-editor-meta-description').length > 0 ) {
+		des = $('#snippet-editor-meta-description').val() || '';
+		
+		if ( des == '' && str_excerpt != '' ) {
+			$('#snippet-editor-meta-description').val( str_excerpt );
+		}
+	}
+	console.log(str_excerpt);
+	console.log(des);
+	
+	//
+	if ( str_excerpt == '' && des != '' ) {
+		$('#excerpt').val( des );
+	}
+}
+
+
+
 
 // tạo url chung cho các module
 //$(document).ready(function() {
@@ -738,37 +769,15 @@ function click_remove_style_of_img_content () {
 			'bottom': '20px',
 			'right' : '20px',
 			'z-index' : 99
+		}).click(function () {
+			EBE_set_default_title_for_seo();
 		});
 		
 		
 		
 		//
 		$(window).on('load', function () {
-			if ( dog('postexcerpt-hide').checked == false ) {
-				$('#postexcerpt-hide').click();
-				if ( dog('postexcerpt-hide').checked == false ) {
-					dog('postexcerpt-hide').checked = true;
-				}
-			}
-			
-			//
-			var str_excerpt = $('#excerpt').val() || '',
-				des = '';
-			// Yoast SEO
-			if ( $('#snippet-editor-meta-description').length > 0 ) {
-				des = $('#snippet-editor-meta-description').val() || '';
-				
-				if ( des == '' && str_excerpt != '' ) {
-					$('#snippet-editor-meta-description').val( str_excerpt );
-				}
-			}
-			console.log(str_excerpt);
-			console.log(des);
-			
-			//
-			if ( str_excerpt == '' && des != '' ) {
-				$('#excerpt').val( des );
-			}
+			EBE_set_default_title_for_seo();
 		});
 		
 	}
