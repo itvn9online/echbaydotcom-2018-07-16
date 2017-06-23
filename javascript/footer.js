@@ -301,13 +301,16 @@ function add_fb_messages_for_page () {
 			if (lnk != '') {
 				$('.' + clat + ' div').each(function() {
 					var w = $(this).attr('data-width') || $(this).width() || 0;
-					if ( w > 0 ) {
+					if ( w == 0 ) {
+						w = 180;
+					} else {
 						w = Math.ceil(w) - 1;
-						$(this).attr({
-							'data-width': w,
-							'data-href': lnk
-						});
 					}
+					
+					$(this).attr({
+						'data-width': w,
+						'data-href': lnk
+					});
 				});
 			}
 		},
