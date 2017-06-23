@@ -130,6 +130,28 @@ define( 'EB_BLOG_POST_LINK', EB_BLOG_POST_TYPE . 's' );
 
 
 
+//
+$arr_to_add_menu = array(
+	'nav-for-mobile' => 'NAV for mobile',
+	
+	'top-menu-01' => 'Top menu 01',
+	'top-menu-02' => 'NAV menu',
+	'top-menu-03' => 'Top menu 03',
+	'top-menu-04' => 'Top menu 04',
+	'top-menu-05' => 'Top menu 05',
+	'top-menu-06' => 'Top menu 06',
+	
+	'footer-menu-01' => 'Footer menu 01',
+	'footer-menu-02' => 'Footer menu 02',
+	'footer-menu-03' => 'Footer menu 03',
+	'footer-menu-04' => 'Footer menu 04',
+	'footer-menu-05' => 'Footer menu 05',
+	'footer-menu-06' => 'Footer menu 06'
+);
+
+
+
+
 
 
 // hệ thống ngôn ngữ mặc định -> các ngôn ngữ khác người dùng sẽ thay đổi trong cài đặt
@@ -382,6 +404,9 @@ define( 'id_default_for_get_sidebar', 'main_sidebar' );
 @ Thiết lập các chức năng sẽ được theme hỗ trợ
 **/
 function echbay_theme_setup() {
+	
+	global $arr_to_add_menu;
+	
 	/*
 	* Thiết lập theme có thể dịch được
 	*/
@@ -444,23 +469,6 @@ function echbay_theme_setup() {
 	/*
 	* Tạo menu cho theme, cứ dựa theo giao diện, thứ tự menu từ trái -> phải, trên -> dưới
 	*/
-	$arr_to_add_menu = array(
-		'nav-for-mobile' => 'NAV for mobile',
-		
-		'top-menu-01' => 'Top menu 01',
-		'top-menu-02' => 'NAV menu',
-		'top-menu-03' => 'Top menu 03',
-		'top-menu-04' => 'Top menu 04',
-		'top-menu-05' => 'Top menu 05',
-		'top-menu-06' => 'Top menu 06',
-		
-		'footer-menu-01' => 'Footer menu 01',
-		'footer-menu-02' => 'Footer menu 02',
-		'footer-menu-03' => 'Footer menu 03',
-		'footer-menu-04' => 'Footer menu 04',
-		'footer-menu-05' => 'Footer menu 05',
-		'footer-menu-06' => 'Footer menu 06'
-	);
 	foreach ( $arr_to_add_menu as $k => $v ) {
 		register_nav_menu ( $k, $v );
 	}

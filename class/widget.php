@@ -29,6 +29,10 @@ function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_home_hot_content' );
 	
+	register_widget ( '___echbay_widget_get_menu' );
+	
+	register_widget ( '___echbay_widget_logo_favicon' );
+	
 //	register_widget ( '___echbay_widget_search_advanced' );
 	
 }
@@ -187,8 +191,8 @@ function _eb_widget_list_html_file_by_dir ( $dir = EB_THEME_HTML ) {
 
 
 
-function _eb_widget_echo_widget_input_title ( $select_name, $select_val ) {
-	echo '<p>Title: <input type="text" class="widefat" name="' . $select_name . '" value="' . $select_val . '"/></p>';
+function _eb_widget_echo_widget_input_title ( $select_name, $select_val, $menu_name = 'Title:' ) {
+	echo '<p>' . $menu_name . ' <input type="text" class="widefat" name="' . $select_name . '" value="' . $select_val . '"/></p>';
 }
 
 
@@ -368,6 +372,34 @@ function __eb_widget_load_select ( $arr, $select_name, $select_val ) {
 	}
 	
 	echo '</select>';
+}
+
+
+function _eb_menu_width_form_for_widget ( $select_name, $select_val ) {
+	echo '<p>Chiều rộng: ';
+	
+	__eb_widget_load_select( array(
+		'f100' => '100%',
+		'f90' => '90%',
+		'f80' => '80%',
+		'f75' => '75%',
+		'f70' => '70%',
+		'f65' => '65%',
+		'f62' => '62%',
+		'f60' => '60%',
+		'f55' => '55%',
+		'f50' => '50%',
+		'f45' => '45%',
+		'f40' => '40%',
+		'f38' => '38%',
+		'f35' => '35%',
+		'f30' => '30%',
+		'f25' => '25%',
+		'f20' => '20%',
+		'f10' => '10%',
+	), $select_name, $select_val );
+	
+	echo '</p>';
 }
 
 
@@ -606,6 +638,8 @@ include EB_THEME_CORE . 'widget/home_hot.php';
 //include EB_THEME_CORE . 'widget/search_advanced.php';
 include EB_THEME_CORE . 'widget/categories.php';
 include EB_THEME_CORE . 'widget/price.php';
+include EB_THEME_CORE . 'widget/menu.php';
+include EB_THEME_CORE . 'widget/logo.php';
 
 
 
