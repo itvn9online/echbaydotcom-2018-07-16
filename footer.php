@@ -1,20 +1,12 @@
-<!-- mobile menu -->
-<?php
-
-// kiểm tra NAV mobile theo theme, nếu không có -> dùng bản dùng chung
-echo EBE_html_template( EBE_get_page_template( 'search_nav_mobile' ), array(
-	'tmp.str_nav_mobile_top' => $str_nav_mobile_top,
-	
-	'tmp.cf_logo' => $__cf_row['cf_logo'],
-	'tmp.cf_dienthoai' => $__cf_row['cf_dienthoai'],
-	'tmp.cf_call_dienthoai' => $__cf_row['cf_call_dienthoai'],
-	'tmp.cf_hotline' => $__cf_row['cf_hotline'],
-	'tmp.cf_call_hotline' => $__cf_row['cf_call_hotline'],
-) );
-
-
-?>
-<!-- end mobile menu -->
+<div class="eb-footer">
+	<div class="<?php echo $__cf_row['cf_blog_class_style']; ?>">
+		<?php
+		// footer menu dưới dạng widget
+		echo _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0 );
+		?>
+	</div>
+</div>
+<!-- end mobile menu --> 
 <!-- ajax post -->
 <iframe id="target_eb_iframe" name="target_eb_iframe" src="about:blank" width="750" height="600">AJAX form</iframe>
 <!-- quick view video -->
@@ -31,7 +23,21 @@ echo EBE_html_template( EBE_get_page_template( 'search_nav_mobile' ), array(
 <div id="oi_scroll_top" class="fa fa-chevron-up default-bg"></div>
 <div id="fb-root"></div>
 <div id="oi_popup"></div>
+<!-- mobile menu -->
 <?php
+
+
+
+// kiểm tra NAV mobile theo theme, nếu không có -> dùng bản dùng chung
+echo EBE_html_template( EBE_get_page_template( 'search_nav_mobile' ), array(
+	'tmp.str_nav_mobile_top' => $str_nav_mobile_top,
+	
+	'tmp.cf_logo' => $__cf_row['cf_logo'],
+	'tmp.cf_dienthoai' => $__cf_row['cf_dienthoai'],
+	'tmp.cf_call_dienthoai' => $__cf_row['cf_call_dienthoai'],
+	'tmp.cf_hotline' => $__cf_row['cf_hotline'],
+	'tmp.cf_call_hotline' => $__cf_row['cf_call_hotline'],
+) );
 
 
 
@@ -161,6 +167,9 @@ echo $__cf_row['cf_js_allpage'];
 if ( eb_code_tester == true ) {
 	echo implode( "\n", $arr_for_show_html_file_load );
 }
+
+
+
 
 
 

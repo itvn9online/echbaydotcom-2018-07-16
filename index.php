@@ -444,21 +444,26 @@ function echbay_theme_setup() {
 	/*
 	* Tạo menu cho theme, cứ dựa theo giao diện, thứ tự menu từ trái -> phải, trên -> dưới
 	*/
-	register_nav_menu ( 'nav-for-mobile', 'NAV for mobile' );
-	
-	register_nav_menu ( 'top-menu-01', 'Top menu 01' );
-	register_nav_menu ( 'top-menu-02', 'NAV menu' );
-	register_nav_menu ( 'top-menu-03', 'Top menu 03' );
-	register_nav_menu ( 'top-menu-04', 'Top menu 04' );
-	register_nav_menu ( 'top-menu-05', 'Top menu 05' );
-	register_nav_menu ( 'top-menu-06', 'Top menu 06' );
-	
-	register_nav_menu ( 'footer-menu-01', 'Footer menu 01' );
-	register_nav_menu ( 'footer-menu-02', 'Footer menu 02' );
-	register_nav_menu ( 'footer-menu-03', 'Footer menu 03' );
-	register_nav_menu ( 'footer-menu-04', 'Footer menu 04' );
-	register_nav_menu ( 'footer-menu-05', 'Footer menu 05' );
-	register_nav_menu ( 'footer-menu-06', 'Footer menu 06' );
+	$arr_to_add_menu = array(
+		'nav-for-mobile' => 'NAV for mobile',
+		
+		'top-menu-01' => 'Top menu 01',
+		'top-menu-02' => 'NAV menu',
+		'top-menu-03' => 'Top menu 03',
+		'top-menu-04' => 'Top menu 04',
+		'top-menu-05' => 'Top menu 05',
+		'top-menu-06' => 'Top menu 06',
+		
+		'footer-menu-01' => 'Footer menu 01',
+		'footer-menu-02' => 'Footer menu 02',
+		'footer-menu-03' => 'Footer menu 03',
+		'footer-menu-04' => 'Footer menu 04',
+		'footer-menu-05' => 'Footer menu 05',
+		'footer-menu-06' => 'Footer menu 06'
+	);
+	foreach ( $arr_to_add_menu as $k => $v ) {
+		register_nav_menu ( $k, $v );
+	}
 	
 	
 	
@@ -486,6 +491,12 @@ function echbay_theme_setup() {
 		'blog_content_details_sidebar' => 'Sidebar cho phần nội dung của trang chi tiết tin (blog details)',
 		
 		'search_product_options' => 'Options cho phần tìm kiếm nâng cao',
+		
+		'eb_top_global' => 'Sidebar cho phần TOP của website',
+		'eb_footer_global' => 'Sidebar cho phần FOOTER của website',
+		
+		'eb_z1_custom_site' => 'Sidebar dự phòng cho một số site sử dụng module riêng',
+//		'eb_z2_custom_site' => 'Sidebar dự phòng cho một số site sử dụng module riêng',
 	);
 	
 	// chạy vòng lặp add sidebat
