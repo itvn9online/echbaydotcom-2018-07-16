@@ -20,7 +20,7 @@ $arr_order_tab = array(
 	'cleanup_database' => 'Dọn dẹp website',
 //	'wordpress_update_core' => 'Cập nhật WordPress',
 //	'echbay_update_core' => 'Cập nhật EchBay',
-	'wordpress_rules' => 'WordPress rules',
+//	'wordpress_rules' => 'WordPress rules',
 );
 
 echo '<ul class="cf eb-admin-tab">';

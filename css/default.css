@@ -711,6 +711,9 @@ color: #333;
 	border-bottom: 1px #dadada solid;
 }
 .home-prev-chantrang,
+.home-next-chantrang { display: none; }
+/*
+.home-prev-chantrang,
 .home-next-chantrang {
 	position: absolute;
 	font-size: 20px;
@@ -734,8 +737,8 @@ color: #333;
 	text-align: right;
 }
 .home-next-chantrang i { right: 0; }
+*/
 .banner-chan-trang {
-	padding: 10px 0;
 	line-height: 50px;
 	height: 50px;
 	overflow: hidden;
@@ -744,7 +747,10 @@ color: #333;
 	float: left;
 	width: 20%;
 }
-.banner-chan-trang .banner-ads-media { margin: 0 14px; }
+.banner-chan-trang .banner-ads-media {
+	margin: 0 14px;
+	background-size: auto 95%;
+}
 /* search */
 .thread-search { }
 .thread-search li {

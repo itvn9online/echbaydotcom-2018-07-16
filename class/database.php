@@ -279,40 +279,40 @@ $__cf_row_default = array(
 	* giao diện HTML mặc định
 	*/
 	// class bao viền (w99, w90)
-	'cf_blog_class_style' => 'w99',
+	'cf_blog_class_style' => '',
 	
 	
 	// danh sách tin -> tổng quan
-	'cf_home_class_style' => 'w99',
-	'cf_home_column_style' => 'noidung_menu',
+	'cf_home_class_style' => '',
+	'cf_home_column_style' => '',
 	
 	
 	// danh sách tin -> tổng quan
-	'cf_cats_class_style' => 'w99',
-	'cf_cats_column_style' => 'noidung_menu',
+	'cf_cats_class_style' => '',
+	'cf_cats_column_style' => '',
 	// danh sách tin -> html cho phần node
 	'cf_cats_node_html' => '',
 	// danh sách tin -> số tin trên mỗi dòng
 	'cf_cats_num_line' => '',
 	
 	// chi tiết -> tổng quan
-	'cf_post_class_style' => 'w99',
-	'cf_post_column_style' => 'noidung_menu',
+	'cf_post_class_style' => '',
+	'cf_post_column_style' => '',
 	// chi tiết -> html cho phần node
 	'cf_post_node_html' => '',
 	
 	
 	// danh sách tin -> tổng quan
-	'cf_blogs_class_style' => 'w99',
-	'cf_blogs_column_style' => 'noidung_menu',
+	'cf_blogs_class_style' => '',
+	'cf_blogs_column_style' => '',
 	// danh sách tin -> html cho phần node
 	'cf_blogs_node_html' => '',
 	// danh sách tin -> số tin trên mỗi dòng
 	'cf_blogs_num_line' => '',
 	
 	// chi tiết -> tổng quan
-	'cf_blogd_class_style' => 'w99',
-	'cf_blog_column_style' => 'noidung_menu',
+	'cf_blogd_class_style' => '',
+	'cf_blog_column_style' => '',
 	// chi tiết -> html cho phần node
 	'cf_blog_node_html' => '',
 	'cf_blog_num_line' => '',
