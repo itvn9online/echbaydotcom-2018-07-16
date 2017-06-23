@@ -300,10 +300,14 @@ function add_fb_messages_for_page () {
 	var f = function(lnk, clat) {
 			if (lnk != '') {
 				$('.' + clat + ' div').each(function() {
-					$(this).attr({
-						'data-width': $(this).attr('data-width') || $(this).width() || 0,
-						'data-href': lnk
-					});
+					var w = $(this).attr('data-width') || $(this).width() || 0;
+					if ( w > 0 ) {
+						w = Math.ceil(w) - 1;
+						$(this).attr({
+							'data-width': w,
+							'data-href': lnk
+						});
+					}
 				});
 			}
 		},
