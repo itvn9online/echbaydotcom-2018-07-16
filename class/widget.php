@@ -33,6 +33,15 @@ function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_logo_favicon' );
 	
+	register_widget ( '___echbay_widget_set_copyright' );
+	
+	register_widget ( '___echbay_widget_menu_open_tag' );
+	register_widget ( '___echbay_widget_menu_close_tag' );
+	
+	register_widget ( '___echbay_widget_set_social_menu' );
+	
+	register_widget ( '___echbay_widget_set_contact_menu' );
+	
 //	register_widget ( '___echbay_widget_search_advanced' );
 	
 }
@@ -191,8 +200,12 @@ function _eb_widget_list_html_file_by_dir ( $dir = EB_THEME_HTML ) {
 
 
 
-function _eb_widget_echo_widget_input_title ( $select_name, $select_val, $menu_name = 'Title:' ) {
-	echo '<p>' . $menu_name . ' <input type="text" class="widefat" name="' . $select_name . '" value="' . $select_val . '"/></p>';
+function _eb_widget_echo_widget_input_title ( $select_name, $select_val, $menu_name = 'Title:', $pla = '' ) {
+	if ( $pla == '' ) {
+		$pla = $menu_name;
+	}
+	
+	echo '<p>' . $menu_name . ' <input type="text" class="widefat" name="' . $select_name . '" value="' . $select_val . '" placeholder="' . $pla . '" /></p>';
 }
 
 
@@ -640,6 +653,11 @@ include EB_THEME_CORE . 'widget/categories.php';
 include EB_THEME_CORE . 'widget/price.php';
 include EB_THEME_CORE . 'widget/menu.php';
 include EB_THEME_CORE . 'widget/logo.php';
+include EB_THEME_CORE . 'widget/copyright.php';
+include EB_THEME_CORE . 'widget/tags_open.php';
+include EB_THEME_CORE . 'widget/tags_close.php';
+include EB_THEME_CORE . 'widget/social.php';
+include EB_THEME_CORE . 'widget/contact.php';
 
 
 

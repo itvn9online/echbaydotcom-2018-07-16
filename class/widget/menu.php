@@ -19,6 +19,7 @@ class ___echbay_widget_get_menu extends WP_Widget {
 			'title' => 'EchBay Menu',
 			'menu' => '',
 			'width' => '',
+			'tag_menu' => '',
 			'custom_style' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
@@ -41,6 +42,13 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		
 		
 		//
+		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'tag_menu' ), $tag_menu, 'Tag HTML:' );
+		echo '<p><em>* Thường dùng cho footer. Nhập vào tag HTML để lấy cả tên menu. Ví dụ:</em><br>
+		<strong>div class="footer-title upper"</strong><br>
+		<em>(không bao gồm cặp dấu <strong>&lt;&gt;</strong>)</em></p>';
+		
+		
+		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'custom_style' ), $custom_style, 'Custom CSS:' );
 		
 	}
@@ -59,11 +67,24 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
 		$menu = isset( $instance ['menu'] ) ? $instance ['menu'] : '';
 		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
+		
+		$tag_menu = isset( $instance ['tag_menu'] ) ? trim( $instance ['tag_menu'] ) : '';
+		$tag_end_menu = '';
+		$tag_menu = str_replace( '<', '', $tag_menu );
+		$tag_menu = str_replace( '>', '', $tag_menu );
+		if ( $tag_menu != '' ) {
+			$tag_end_menu = explode( ' ', $tag_menu );
+			$tag_end_menu = '</' . $tag_end_menu[0] . '>';
+			
+			$tag_menu = '<' . $tag_menu . '>';
+		}
+		
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
 		
 		//
-		_eb_echo_widget_name( $this->name, $before_widget );
+//		_eb_echo_widget_name( $this->name, $before_widget );
+		echo '<!-- ' . $this->name . ' -->';
 		
 		//
 		echo '<div class="lf top-footer-css ' . $width . '">';
@@ -76,7 +97,7 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		echo '<div class="' . $custom_style . '">';
 		
 		if ( $menu != '' ) {
-			echo _eb_echbay_menu( $menu );
+			echo _eb_echbay_menu( $menu, array(), 0, $tag_menu, $tag_end_menu );
 		} else {
 			echo 'Select menu for widget';
 		}
@@ -85,7 +106,7 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		echo '</div>';
 		
 		//
-		echo $after_widget;
+//		echo $after_widget;
 	}
 }
 

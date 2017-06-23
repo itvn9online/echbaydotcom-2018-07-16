@@ -500,8 +500,8 @@ function echbay_theme_setup() {
 		
 		'search_product_options' => 'Options cho phần tìm kiếm nâng cao',
 		
-		'eb_top_global' => 'Sidebar cho phần TOP của website',
-		'eb_footer_global' => 'Sidebar cho phần FOOTER của website',
+		'eb_top_global' => 'Sidebar cho phần TOP của website (* Sử dụng zEchBay Open/ zEchBay Close Tag Tag để tạo các bộ thẻ đóng mở cho từng khối HTML).',
+		'eb_footer_global' => 'Sidebar cho phần FOOTER của website (* Sử dụng zEchBay Open Tag/ zEchBay Close Tag để tạo các bộ thẻ đóng mở cho từng khối HTML).',
 		
 		'eb_z1_custom_site' => 'Sidebar dự phòng cho một số site sử dụng module riêng',
 //		'eb_z2_custom_site' => 'Sidebar dự phòng cho một số site sử dụng module riêng',

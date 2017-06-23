@@ -5,10 +5,10 @@
 /*
 * Widget blog ngẫu nhiên
 */
-class ___echbay_widget_logo_favicon extends WP_Widget {
+class ___echbay_widget_set_copyright extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'get_logo_favicon', 'zEchBay Logo', array (
-				'description' => 'Thiết lập Logo và Favicon cho website' 
+		parent::__construct ( 'echbay_set_copyright', 'zEchBay copyright', array (
+				'description' => 'Nhúng menu copyright (Cung cấp bởi ***) vào website' 
 		) );
 	}
 	
@@ -16,9 +16,7 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 		global $arr_to_add_menu;
 		
 		$default = array (
-			'title' => 'EchBay Logo',
-			'logo' => '',
-//			'favicon' => '',
+			'title' => 'EchBay.com',
 			'width' => '',
 			'custom_style' => ''
 		);
@@ -31,12 +29,6 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 		
 		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'title' ), $title );
-		
-		
-		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'logo' ), $logo, 'Logo:' );
-		
-		
-//		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'favicon' ), $favicon, 'Favicon:' );
 		
 		
 		//
@@ -54,16 +46,14 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
-		global $__cf_row;
+		global $str_fpr_license_echbay;
+		global $year_curent;
 		
 		extract ( $args );
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
 		if ( $title == '' ) $title = web_name;
-		$logo = isset( $instance ['logo'] ) ? $instance ['logo'] : '';
-		if ( $logo == '' ) $logo = $__cf_row['cf_logo'];
-//		$favicon = isset( $instance ['favicon'] ) ? $instance ['favicon'] : '';
 		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
@@ -80,11 +70,8 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 		
 		
 		//
-		echo '<div class="' . $custom_style . '">';
+		echo '<div class="footer-site-info ' . $custom_style . '">Bản quyền &copy; ' . $year_curent . ' <span>' . $title . '</span> - Toàn bộ phiên bản. ' . $str_fpr_license_echbay . '</div>';
 		
-		echo '<a title="' . $title . '" href="' . web_link . '" class="web-logo d-block" style="background-image:url(\'' . $logo . '\');">&nbsp;</a>';
-		
-		echo '</div>';
 		echo '</div>';
 		
 		//
