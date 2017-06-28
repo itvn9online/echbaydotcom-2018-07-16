@@ -421,6 +421,7 @@ function _eb_menu_width_form_for_widget ( $select_name, $select_val ) {
 		'f40' => '40%',
 		'f38' => '38%',
 		'f35' => '35%',
+		'f33' => '33%',
 		'f30' => '30%',
 		'f25' => '25%',
 		'f20' => '20%',
