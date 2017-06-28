@@ -86,7 +86,7 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
 		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
-		$hide_mobile = $hide_mobile == 'on' ? 'hide-if-mobile' : '';
+		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
 		
 		
 		//
@@ -94,7 +94,7 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		echo '<!-- ' . $this->name . ' -->';
 		
 		//
-		echo '<div class="lf top-footer-css ' . $width . '">';
+		echo '<div class="lf top-footer-css ' . $width . $hide_mobile . '">';
 		
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
