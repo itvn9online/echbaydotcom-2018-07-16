@@ -19,7 +19,7 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 			'title' => 'EchBay Logo',
 			'logo' => '',
 //			'favicon' => '',
-			'width' => '',
+			'width' => 'f100',
 			'custom_style' => '',
 			'hide_mobile' => ''
 		);

@@ -18,7 +18,7 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		$default = array (
 			'title' => 'EchBay Menu',
 			'menu' => '',
-			'width' => '',
+			'width' => 'f100',
 			'tag_menu' => '',
 			'custom_style' => '',
 			'hide_mobile' => ''

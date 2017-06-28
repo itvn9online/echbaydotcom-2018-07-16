@@ -17,7 +17,7 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		
 		$default = array (
 			'title' => 'EchBay Footer Contact',
-			'width' => '',
+			'width' => 'f100',
 			'custom_style' => '',
 			'hide_mobile' => ''
 		);

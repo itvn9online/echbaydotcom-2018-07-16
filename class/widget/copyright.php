@@ -17,7 +17,7 @@ class ___echbay_widget_set_copyright extends WP_Widget {
 		
 		$default = array (
 			'title' => 'EchBay.com',
-			'width' => '',
+			'width' => 'f100',
 			'custom_style' => '',
 			'hide_mobile' => ''
 		);
