@@ -29,6 +29,7 @@ function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_home_hot_content' );
 	
+	//
 	register_widget ( '___echbay_widget_get_menu' );
 	
 	register_widget ( '___echbay_widget_logo_favicon' );
@@ -197,6 +198,14 @@ function _eb_widget_list_html_file_by_dir ( $dir = EB_THEME_HTML ) {
 	return $new_array;
 }
 
+
+
+
+function _eb_widget_echo_widget_input_checkbox ( $select_name, $select_val, $menu_name = '' ) {
+	echo '<p><input type="checkbox" class="checkbox" id="' . $select_name . '" name="' . $select_name . '" ';
+	checked( $select_val, 'on' );
+	echo '><label for="' . $select_name . '">' . $menu_name . '</label></p>';
+}
 
 
 

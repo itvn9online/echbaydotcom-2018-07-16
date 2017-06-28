@@ -20,7 +20,8 @@ class ___echbay_widget_get_menu extends WP_Widget {
 			'menu' => '',
 			'width' => '',
 			'tag_menu' => '',
-			'custom_style' => ''
+			'custom_style' => '',
+			'hide_mobile' => 0
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -51,6 +52,9 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'custom_style' ), $custom_style, 'Custom CSS:' );
 		
+		
+		_eb_widget_echo_widget_input_checkbox( $this->get_field_name ( 'hide_mobile' ), $hide_mobile, 'Ẩn trên mobile' );
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -80,6 +84,9 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		}
 		
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
+		
+		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
+		$hide_mobile = $hide_mobile == 'on' ? 'hide-if-mobile' : '';
 		
 		
 		//
