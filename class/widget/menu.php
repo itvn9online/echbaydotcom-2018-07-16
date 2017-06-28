@@ -53,7 +53,7 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'custom_style' ), $custom_style, 'Custom CSS:' );
 		
 		
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name ( 'hide_mobile' ), $hide_mobile, 'Ẩn trên mobile' );
+		_eb_widget_echo_widget_hide_mobile( $this->get_field_name ( 'hide_mobile' ), $hide_mobile );
 		
 	}
 	

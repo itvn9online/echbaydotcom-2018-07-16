@@ -201,6 +201,12 @@ function _eb_widget_list_html_file_by_dir ( $dir = EB_THEME_HTML ) {
 
 
 
+function _eb_widget_echo_widget_hide_mobile ( $select_name, $select_val ) {
+	_eb_widget_echo_widget_input_checkbox( $select_name, $select_val, 'Ẩn trên mobile. Mặc định, module này sẽ được hiển thị trên mọi thiết bị, tích vào đây nếu muốn nó bị ẩn trên mobile.' );
+}
+
+
+
 function _eb_widget_echo_widget_input_checkbox ( $select_name, $select_val, $menu_name = '' ) {
 	echo '<p><input type="checkbox" class="checkbox" id="' . $select_name . '" name="' . $select_name . '" ';
 	checked( $select_val, 'on' );
