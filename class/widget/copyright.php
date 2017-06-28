@@ -7,7 +7,7 @@
 */
 class ___echbay_widget_set_copyright extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'echbay_set_copyright', 'zEchBay copyright', array (
+		parent::__construct ( 'echbay_set_copyright', 'zEchBay Copyright', array (
 				'description' => 'Nhúng menu copyright (Cung cấp bởi ***) vào website' 
 		) );
 	}

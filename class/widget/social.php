@@ -56,7 +56,7 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 		
 		//
 		echo '
-		<div class="footer-social-title d-none">Kết nối với chúng tôi</div>
+		<div class="footer-social-title d-none">' . $title . '</div>
 		<ul class="footer-social text-center cf">
 			<li class="footer-social-fb"><a href="javascript:;" class="ahref-to-facebook" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
 			<li class="footer-social-tw"><a href="javascript:;" class="each-to-twitter-page" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>
