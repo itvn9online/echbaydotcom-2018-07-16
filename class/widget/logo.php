@@ -20,7 +20,8 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 			'logo' => '',
 //			'favicon' => '',
 			'width' => '',
-			'custom_style' => ''
+			'custom_style' => '',
+			'hide_mobile' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -46,6 +47,9 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'custom_style' ), $custom_style, 'Custom CSS:' );
 		
+		
+		_eb_widget_echo_widget_hide_mobile( $this->get_field_name ( 'hide_mobile' ), $hide_mobile );
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -67,13 +71,16 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
+		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
+		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
+		
 		
 		//
 //		_eb_echo_widget_name( $this->name, $before_widget );
 		echo '<!-- ' . $this->name . ' -->';
 		
 		//
-		echo '<div class="lf top-footer-css ' . $width . '">';
+		echo '<div class="lf top-footer-css ' . $width . $hide_mobile . '">';
 		
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );

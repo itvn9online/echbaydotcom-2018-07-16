@@ -21,7 +21,7 @@ class ___echbay_widget_get_menu extends WP_Widget {
 			'width' => '',
 			'tag_menu' => '',
 			'custom_style' => '',
-			'hide_mobile' => 0
+			'hide_mobile' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {

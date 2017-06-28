@@ -16,7 +16,8 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 		global $arr_to_add_menu;
 		
 		$default = array (
-			'title' => 'EchBay Social'
+			'title' => 'EchBay Social',
+			'hide_mobile' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -27,6 +28,9 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 		
 		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'title' ), $title, 'Ghi chú:' );
+		
+		
+		_eb_widget_echo_widget_hide_mobile( $this->get_field_name ( 'hide_mobile' ), $hide_mobile );
 		
 	}
 	
@@ -41,6 +45,9 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		
+		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
+		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
 		
 		
 		//
