@@ -17,6 +17,8 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		
 		$default = array (
 			'title' => 'EchBay Footer Contact',
+			'width' => '',
+			'custom_style' => '',
 			'hide_mobile' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
@@ -28,6 +30,14 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		
 		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'title' ), $title );
+		
+		
+		//
+		_eb_menu_width_form_for_widget( $this->get_field_name ( 'width' ), $width );
+		
+		
+		//
+		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'custom_style' ), $custom_style, 'Custom CSS:' );
 		
 		
 		_eb_widget_echo_widget_hide_mobile( $this->get_field_name ( 'hide_mobile' ), $hide_mobile );
@@ -47,6 +57,8 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
+		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
 		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
 		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
@@ -54,18 +66,23 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		
 		//
 //		_eb_echo_widget_name( $this->name, $before_widget );
-		echo '<!-- ' . $this->name . ' (' . $title . ') -->';
+		echo '<!-- ' . $this->name . ' -->';
+		
+		//
+		echo '<div class="lf top-footer-css ' . $width . $hide_mobile . '">';
 		
 		//
 		echo '
-		<div class="footer-contact">
+		<div class="footer-contact ' . $custom_style . '">
 			<div class="footer-contact-title">' . $__cf_row['cf_ten_cty'] . '</div>
-			<ul>
-				<li><i class="fa fa-map-marker"></i> ' . nl2br( $__cf_row['cf_diachi'] ) . '</li>
-				<li><i class="fa fa-phone"></i> ' . $__cf_row['cf_call_hotline'] . ' - <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></li>
-				<li><i class="fa fa-envelope-o"></i> <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></li>
+			<ul class="footer-contact-content">
+				<li><strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i> ' . nl2br( $__cf_row['cf_diachi'] ) . '</li>
+				<li><strong>Điện thoại:</strong> <i class="fa fa-phone"></i> ' . $__cf_row['cf_call_hotline'] . ' - <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></li>
+				<li><strong>Email:</strong> <i class="fa fa-envelope-o"></i> <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></li>
 			</ul>
 		</div>';
+		
+		echo '</div>';
 		
 		//
 //		echo $after_widget;
