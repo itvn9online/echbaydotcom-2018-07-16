@@ -2,7 +2,7 @@
 // footer menu dưới dạng widget
 $eb_footer_widget = _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0 );
 
-//
+// nếu không có nội dung trong widget -> lấy theo thiết kế mặc định
 if ( $eb_footer_widget == '' ) {
 	include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
 }
@@ -10,7 +10,7 @@ else {
 ?>
 
 <div class="eb-footer">
-	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>"> <?php echo $eb_footer_widget; ?> </div>
+	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>"><?php echo $eb_footer_widget; ?></div>
 </div>
 <?php
 }
