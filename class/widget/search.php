@@ -14,7 +14,7 @@ class ___echbay_widget_add_search_form extends WP_Widget {
 	
 	function form($instance) {
 		$default = array (
-			'title' => 'EchBay.com',
+			'title' => 'Tìm',
 			'width' => 'f100',
 			'custom_style' => '',
 			'hide_mobile' => ''
@@ -54,7 +54,6 @@ class ___echbay_widget_add_search_form extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
-		if ( $title == '' ) $title = web_name;
 		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
