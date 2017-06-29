@@ -118,11 +118,27 @@ function ___eb_set_thumb_to_fullsize ( s ) {
 	if ( typeof s == 'undefined' || s == '' ) {
 		return '';
 	}
+//	console.log(s);
 	
-	var t = s.split('-').pop();
-//	console.log( t );
-	if ( t.split('.').length == 2 && t.split('.')[0].split('x').length == 2 ) {
-		s = s.replace( '-' + t, '.' + t.split('.')[1] );
+	//
+	if ( s.split('wp-content/uploads/').length > 1 ) {
+		var t = s.split('-');
+		t = t[ t.length - 1 ];
+//		console.log( t );
+		
+		if ( t.split('.').length == 2 ) {
+			t = t.split('.')[0].split('x');
+			
+			if ( t.length == 2 ) {
+				var re = /^\d+$/;
+				
+				// nếu đang là thumbnail hoặc ảnh thu nhỏ -> thì mới cần chuyển sang ảnh to
+				if ( re.test( t[ 0 ] ) == true
+				&& re.test( t[ 1 ] ) == true ) {
+					s = s.replace( '-' + t[ 0 ] + 'x' + t[ 1 ] + '.', '.' );
+				}
+			}
+		}
 	}
 //	console.log(s);
 	
@@ -134,6 +150,7 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 	if ( typeof sr == 'undefined' || sr == '' ) {
 		return '';
 	}
+//	console.log( sr );
 	
 	// nếu có tham số này -> site không sử dụng thumb hoặc không có thumb
 	if ( typeof eb_disable_auto_get_thumb != 'undefined' && eb_disable_auto_get_thumb == 1 ) {
@@ -142,27 +159,56 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 	// lấy thumb để làm ảnh slider -> load cho nhanh
 	else if ( sr.split('wp-content/uploads/').length > 1 ) {
 		// cắt lấy chuỗi cuối cùng của ảnh để kiểm tra xem có phải thumb hay không
+		var file_name = sr.split('/');
+		file_name = file_name[ file_name.length - 1 ];
+//		console.log( file_name );
+		
 //		var is_thumb = sr.split('/').pop().split('-').pop().split('.')[0];
-		var is_thumb = sr.split('-').pop();
+		var is_thumb = file_name.split('-');
+		is_thumb = is_thumb[ is_thumb.length - 1 ];
 //		console.log( is_thumb );
 		
 		//
 		if ( is_thumb.split('.').length == 2 ) {
+			var file_type = file_name.split('.');
+			file_type = file_type[ file_type.length - 1 ];
+//			console.log( file_type );
+			
+			var thumbnail = '-150x150.' + file_type;
+//			console.log( thumbnail );
+			
+			is_thumb = is_thumb.split('.')[0];
+//			console.log( is_thumb );
+			
 			// có chữ x -> có thể là thumb
-			if ( is_thumb.split('.')[0].split('x').length == 2 ) {
-				sr = sr.replace( '-' + is_thumb, '-150x150.' + is_thumb.split('.')[1] );
+			if ( is_thumb.split('x').length > 1 ) {
+				var re = /^\d+$/;
+				is_thumb = is_thumb.split('x');
+				
+				// nếu đang là thumbnail hoặc ảnh thu nhỏ
+				if ( re.test( is_thumb[ is_thumb.length - 2 ] ) == true
+				&& re.test( is_thumb[ is_thumb.length - 1 ] ) == true ) {
+//					console.log( is_thumb[ is_thumb.length - 2 ] );
+//					console.log( is_thumb[ is_thumb.length - 1 ] );
+					
+					sr = sr.replace( '-' + is_thumb[ is_thumb.length - 2 ] + 'x' + is_thumb[ is_thumb.length - 1 ] + '.' + file_type, thumbnail );
+				}
+				// nếu không phải thumbnail -> tạo thumbnail luôn
+				else {
+					sr = sr.replace( '.' + file_type, thumbnail );
+				}
 			}
 			// nếu không có chữ x -> không phải thumb
 			else {
 //			if ( is_thumb.split('x').length != 2 ) {
 				// -> thêm thumb
-				var img_type = sr.split('.').pop();
+//				var img_type = sr.split('.').pop();
 				
-				sr = sr.replace( '.' + img_type, '-150x150.' + img_type );
+				sr = sr.replace( '.' + file_type, thumbnail );
 			}
 		}
-//		console.log( sr );
 	}
+//	console.log( sr );
 	
 	return sr;
 }
@@ -194,7 +240,8 @@ function ___eb_details_slider_v2 () {
 		html_for_get = '#content_img_product img';
 		data_get = 'src';
 	}
-//	console.log( slider_len );
+	console.log( slider_len );
+	console.log( html_for_get );
 	
 	// -> nếu vẫn không có -> hủy slider
 	if ( slider_len < 1 ) {
@@ -209,6 +256,7 @@ function ___eb_details_slider_v2 () {
 		
 		//
 		sr = ___eb_set_img_to_thumbnail( sr );
+//		console.log( sr );
 		
 		//
 		str += '<li data-node="' +i+ '" data-src="' + sr + '" style="background-image:url(\'' + sr + '\')">&nbsp;</li>';
