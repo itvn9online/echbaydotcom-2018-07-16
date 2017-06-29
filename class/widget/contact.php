@@ -17,7 +17,7 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		
 		$default = array (
 			'title' => 'EchBay Footer Contact',
-			'width' => 'f100',
+			'width' => '',
 			'custom_style' => '',
 			'hide_mobile' => ''
 		);
@@ -57,11 +57,15 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		
 		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
+		if ( $width != '' ) $width .= ' lf';
+		
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
 		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
-		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
+//		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
+		if ( $hide_mobile == 'on' ) $width .= ' hide-if-mobile';
 		
 		
 		//
@@ -69,7 +73,7 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		echo '<!-- ' . $this->name . ' -->';
 		
 		//
-		echo '<div class="lf top-footer-css ' . $width . $hide_mobile . '">';
+		echo '<div class="top-footer-css ' . $width . '">';
 		
 		//
 		echo '

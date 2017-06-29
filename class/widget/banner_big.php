@@ -5,16 +5,16 @@
 /*
 * Widget blog ngẫu nhiên
 */
-class ___echbay_widget_add_search_form extends WP_Widget {
+class ___echbay_widget_banner_big extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'echbay_add_search_form', 'zEchBay Search Form', array (
-				'description' => 'Nhúng form search vào website' 
+		parent::__construct ( 'echbay_banner_big', 'zEchBay Big Banner', array (
+				'description' => 'Nhúng banner loại lớn vào website' 
 		) );
 	}
 	
 	function form($instance) {
 		$default = array (
-			'title' => 'Tìm',
+			'title' => 'Big Banner',
 			'width' => '',
 			'custom_style' => '',
 			'hide_mobile' => ''
@@ -48,13 +48,12 @@ class ___echbay_widget_add_search_form extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
-		global $current_search_key;
+		global $str_big_banner;
 		
 		extract ( $args );
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
-		
 		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
 		if ( $width != '' ) $width .= ' lf';
 		
@@ -77,18 +76,10 @@ class ___echbay_widget_add_search_form extends WP_Widget {
 		
 		
 		//
-		echo '
-		<div class="div-search-margin">
-			<div class="div-search">
-				<form role="search" method="get" action="' . web_link. '">
-					<input type="search" placeholder="Tìm kiếm sản phẩm" value="' . $current_search_key . '" name="s" aria-required="true" required>
-					<input type="hidden" name="post_type" value="post" />
-					<button type="submit" class="cur default-bg"><i class="fa fa-search"></i> ' . $title . '</button>
-				</form>
-			</div>
-			<div id="oiSearchAjax"></div>
-		</div>';
+		echo '<div class="oi_big_banner">' . $str_big_banner . '</div>';
 		
+		
+		//
 		echo '</div>';
 		
 		//

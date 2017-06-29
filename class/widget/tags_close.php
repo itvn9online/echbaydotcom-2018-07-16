@@ -46,6 +46,7 @@ class ___echbay_widget_menu_close_tag extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		
 		$tag = isset( $instance ['tag'] ) ? $instance ['tag'] : '';
 		$tag = str_replace( '<', '', $tag );
 		$tag = str_replace( '>', '', $tag );

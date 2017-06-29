@@ -281,9 +281,11 @@ if ( $__cf_row ['cf_title'] == '' ) {
 
 
 // thêm ID cho phần banner chính
+/*
 if ( $str_big_banner != '' ) {
 	$str_big_banner = '<div id="oi_big_banner">' . $str_big_banner . '</div>';
 }
+*/
 
 
 

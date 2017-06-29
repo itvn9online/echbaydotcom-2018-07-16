@@ -47,7 +47,8 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
 		
 		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
-		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
+//		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
+//		if ( $hide_mobile == 'on' ) $width .= ' hide-if-mobile';
 		
 		
 		//

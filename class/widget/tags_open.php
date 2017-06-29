@@ -19,7 +19,8 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 			'title' => 'EchBay Open Tag',
 			'tag' => 'div',
 			'width' => '',
-			'custom_style' => ''
+			'custom_style' => '',
+			'hide_mobile' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -43,6 +44,9 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'custom_style' ), $custom_style, 'Custom CSS:' );
 		
+		
+		_eb_widget_echo_widget_hide_mobile( $this->get_field_name ( 'hide_mobile' ), $hide_mobile );
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -56,12 +60,20 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		
 		$tag = isset( $instance ['tag'] ) ? $instance ['tag'] : '';
 		$tag = str_replace( '<', '', $tag );
 		$tag = str_replace( '>', '', $tag );
 		if ( $tag == '' ) $tag = 'div';
+		
 		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
+		if ( $width != '' ) $width .= ' lf';
+		
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
+		
+		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
+//		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
+		if ( $hide_mobile == 'on' ) $width .= ' hide-if-mobile';
 		
 		
 		//
@@ -69,7 +81,7 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		echo '<!-- ' . $this->name . ' (' . $title . ') -->';
 		
 		//
-		echo '<' . $tag . ' class="cf lf ' . $width . ' ' . $custom_style . '">';
+		echo '<' . $tag . ' class="cf ' . $width . ' ' . $custom_style . '">';
 		
 		//
 //		echo $after_widget;

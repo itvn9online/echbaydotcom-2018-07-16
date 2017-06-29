@@ -45,6 +45,8 @@ function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_add_search_form' );
 	
+	register_widget ( '___echbay_widget_banner_big' );
+	
 //	register_widget ( '___echbay_widget_search_advanced' );
 	
 }
@@ -409,7 +411,7 @@ function _eb_menu_width_form_for_widget ( $select_name, $select_val ) {
 	echo '<p>Chiều rộng: ';
 	
 	__eb_widget_load_select( array(
-		'f100' => '100%',
+		'' => '100%',
 		'f90' => '90%',
 		'f80' => '80%',
 		'f75' => '75%',
@@ -677,6 +679,7 @@ include EB_THEME_CORE . 'widget/tags_close.php';
 include EB_THEME_CORE . 'widget/social.php';
 include EB_THEME_CORE . 'widget/contact.php';
 include EB_THEME_CORE . 'widget/search.php';
+include EB_THEME_CORE . 'widget/banner_big.php';
 
 
 
