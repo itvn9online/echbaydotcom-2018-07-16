@@ -69,14 +69,14 @@ class ___echbay_widget_banner_big extends WP_Widget {
 		echo '<!-- ' . $this->name . ' -->';
 		
 		//
-		echo '<div class="top-footer-css ' . $width . '">';
+		echo '<div class="' . str_replace( '  ', ' ', 'top-footer-css ' . $width ) . '">';
 		
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
 		
 		
 		//
-		echo '<div class="oi_big_banner ' . $custom_style . '">' . $str_big_banner . '</div>';
+		echo '<div class="' . str_replace( '  ', ' ', 'oi_big_banner ' . $custom_style ) . '">' . $str_big_banner . '</div>';
 		
 		
 		//

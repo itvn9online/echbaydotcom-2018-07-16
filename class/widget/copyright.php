@@ -72,14 +72,14 @@ class ___echbay_widget_set_copyright extends WP_Widget {
 		echo '<!-- ' . $this->name . ' -->';
 		
 		//
-		echo '<div class="top-footer-css ' . $width . '">';
+		echo '<div class="' . str_replace( '  ', ' ', 'top-footer-css ' . $width ) . '">';
 		
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
 		
 		
 		//
-		echo '<div class="footer-site-info ' . $custom_style . '">Bản quyền &copy; ' . $year_curent . ' <span>' . $title . '</span> - Toàn bộ phiên bản. ' . $str_fpr_license_echbay . '</div>';
+		echo '<div class="' . str_replace( '  ', ' ', 'footer-site-info ' . $custom_style ) . '">Bản quyền &copy; ' . $year_curent . ' <span>' . $title . '</span> - Toàn bộ phiên bản. ' . $str_fpr_license_echbay . '</div>';
 		
 		echo '</div>';
 		

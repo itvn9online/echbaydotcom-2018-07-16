@@ -671,6 +671,8 @@ include EB_THEME_CORE . 'widget/home_hot.php';
 //include EB_THEME_CORE . 'widget/search_advanced.php';
 include EB_THEME_CORE . 'widget/categories.php';
 include EB_THEME_CORE . 'widget/price.php';
+
+//
 include EB_THEME_CORE . 'widget/menu.php';
 include EB_THEME_CORE . 'widget/logo.php';
 include EB_THEME_CORE . 'widget/copyright.php';

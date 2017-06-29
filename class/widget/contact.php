@@ -73,11 +73,11 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		echo '<!-- ' . $this->name . ' -->';
 		
 		//
-		echo '<div class="top-footer-css ' . $width . '">';
+		echo '<div class="' . str_replace( '  ', ' ', 'top-footer-css ' . $width ) . '">';
 		
 		//
 		echo '
-		<div class="footer-contact ' . $custom_style . '">
+		<div class="' . str_replace( '  ', ' ', 'footer-contact ' . $custom_style ) . '">
 			<div class="footer-contact-title">' . $__cf_row['cf_ten_cty'] . '</div>
 			<ul class="footer-contact-content">
 				<li><strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i> ' . nl2br( $__cf_row['cf_diachi'] ) . '</li>

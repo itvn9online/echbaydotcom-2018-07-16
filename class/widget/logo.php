@@ -86,7 +86,7 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 		echo '<!-- ' . $this->name . ' -->';
 		
 		//
-		echo '<div class="top-footer-css ' . $width . '">';
+		echo '<div class="' . str_replace( '  ', ' ', 'top-footer-css ' . $width ) . '">';
 		
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
