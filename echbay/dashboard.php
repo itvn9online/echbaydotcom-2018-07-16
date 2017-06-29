@@ -21,12 +21,14 @@ if ( ! defined('WP_DEBUG') || WP_DEBUG == true ) {
 
 
 // Nên tắt WP_AUTO_UPDATE_CORE = true
+/*
 if ( ! defined('WP_AUTO_UPDATE_CORE') || WP_AUTO_UPDATE_CORE != false ) {
 	$str_eb_warning .= '
 	<div><i class="fa fa-warning orgcolor"></i> CẢNH BÁO: Không nên sử dụng tính năng tự động update của wordpress. Trong mọi trường hợp, nên update thủ công và backup dữ liệu trước khi update để tránh sự cố đáng tiếc nếu có. Khuyên dùng:
 		<pre><code>define( \'WP_AUTO_UPDATE_CORE\', false );</code></pre>
 	</div>';
 }
+*/
 
 
 // cảnh báo người dùng 1 số tính năng nên bật
@@ -160,12 +162,12 @@ if ( ( defined('DISALLOW_FILE_EDIT') && DISALLOW_FILE_EDIT == true )
 // kiểm tra quyền đọc ghi qua FTP
 if ( ( defined('WP_AUTO_UPDATE_CORE') && WP_AUTO_UPDATE_CORE == true ) ) {
 	$str_eb_warning .= '
-	<div class="graycolor"><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang được BẬT, điều này chỉ nên áp dụng cho các website không quan trọng (site vệ tinh). Với các site chính, ưu tiên việc update thủ công để còn kiểm tra lỗi sau mỗi lần update. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-config&tab=permalinks" target="_blank">Cấu hình website</a>:
+	<div><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang được BẬT, điều này chỉ nên áp dụng cho các website không quan trọng (site vệ tinh). Với các site chính, ưu tiên việc update thủ công để còn kiểm tra lỗi sau mỗi lần update. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-config&tab=permalinks" target="_blank">Cấu hình website</a>:
 		<pre><code>define( \'WP_AUTO_UPDATE_CORE\', false );</code></pre>
 	</div>';
 } else {
 	$str_eb_warning .= '
-	<div class="graycolor"><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang bị TẮT, nếu đây là site vệ tinh hoặc bạn không có nhiều thời gian chăm sóc cho nó, chúng tôi khuyên bạn hãy bật nó lên. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-config&tab=permalinks" target="_blank">Cấu hình website</a>:
+	<div><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang bị TẮT, nếu đây là site vệ tinh hoặc bạn không có nhiều thời gian chăm sóc cho nó, chúng tôi khuyên bạn hãy bật nó lên. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-config&tab=permalinks" target="_blank">Cấu hình website</a>:
 		<pre><code>define( \'WP_AUTO_UPDATE_CORE\', true );</code></pre>
 	</div>';
 }
