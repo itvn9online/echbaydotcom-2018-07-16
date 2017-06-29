@@ -5,10 +5,10 @@
 /*
 * Widget blog ngẫu nhiên
 */
-class ___echbay_widget_set_copyright extends WP_Widget {
+class ___echbay_widget_add_search_form extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'echbay_set_copyright', 'zEchBay Copyright', array (
-				'description' => 'Nhúng menu copyright (Cung cấp bởi ***) vào website' 
+		parent::__construct ( 'echbay_add_search_form', 'zEchBay Search Form', array (
+				'description' => 'Nhúng form search vào website' 
 		) );
 	}
 	
@@ -48,8 +48,7 @@ class ___echbay_widget_set_copyright extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
-		global $str_fpr_license_echbay;
-		global $year_curent;
+		global $current_search_key;
 		
 		extract ( $args );
 		
@@ -75,7 +74,17 @@ class ___echbay_widget_set_copyright extends WP_Widget {
 		
 		
 		//
-		echo '<div class="footer-site-info ' . $custom_style . '">Bản quyền &copy; ' . $year_curent . ' <span>' . $title . '</span> - Toàn bộ phiên bản. ' . $str_fpr_license_echbay . '</div>';
+		echo '
+		<div class="div-search-margin">
+			<div class="div-search">
+				<form role="search" method="get" action="' . web_link. '">
+					<input type="search" placeholder="Tìm kiếm sản phẩm" value="' . $current_search_key . '" name="s" aria-required="true" required>
+					<input type="hidden" name="post_type" value="post" />
+					<button type="submit" class="cur default-bg"><i class="fa fa-search"></i> ' . $title . '</button>
+				</form>
+			</div>
+			<div id="oiSearchAjax"></div>
+		</div>';
 		
 		echo '</div>';
 		
