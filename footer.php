@@ -1,5 +1,5 @@
 <div class="eb-footer">
-	<div class="<?php echo $__cf_row['cf_blog_class_style']; ?>">
+	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
 		<?php
 		// footer menu dưới dạng widget
 		echo _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0 );

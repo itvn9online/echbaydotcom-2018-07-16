@@ -548,6 +548,21 @@ $arr_for_set_template['cf_blog_num_line'] = __eb_create_select_checked_config(
 
 
 
+// top & footer
+$arr_for_set_template['cf_top_class_style'] = __eb_create_select_checked_config(
+	$arr_cf_blog_class_style,
+	$__cf_row['cf_top_class_style'],
+	'cf_top_class_style'
+);
+
+$arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_config(
+	$arr_cf_blog_class_style,
+	$__cf_row['cf_footer_class_style'],
+	'cf_footer_class_style'
+);
+
+
+
 // -> HTML
 $main_content = EBE_arr_tmp( $arr_for_set_template, $main_content );
 

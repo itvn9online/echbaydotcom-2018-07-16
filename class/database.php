@@ -280,6 +280,8 @@ $__cf_row_default = array(
 	*/
 	// class bao viền (w99, w90)
 	'cf_blog_class_style' => '',
+	'cf_top_class_style' => '',
+	'cf_footer_class_style' => '',
 	
 	
 	// danh sách tin -> tổng quan
