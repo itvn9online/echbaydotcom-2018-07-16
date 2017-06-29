@@ -1,9 +1,11 @@
 <?php
 // footer menu dưới dạng widget
-$eb_footer_widget = _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0 );
+$eb_footer_widget = _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0, 1 );
 
 // nếu không có nội dung trong widget -> lấy theo thiết kế mặc định
-if ( $eb_footer_widget == '' || count( explode( "\n", trim( $eb_footer_widget ) ) ) == 1 ) {
+if ( $eb_footer_widget == '' ) {
+//	echo $eb_footer_widget;
+	
 	include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
 }
 else {

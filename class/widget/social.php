@@ -17,6 +17,8 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 		
 		$default = array (
 			'title' => 'EchBay Social',
+			'width' => '',
+			'custom_style' => '',
 			'hide_mobile' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
@@ -24,13 +26,15 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 			$$k = esc_attr ( $v );
 		}
 		
-		
-		
 		//
-		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'title' ), $title, 'Ghi chú:' );
+		$arr_field_name = array();
+		foreach ( $default as $k => $v ) {
+			$arr_field_name[ $k ] = $this->get_field_name ( $k );
+		}
 		
 		
-		_eb_widget_echo_widget_hide_mobile( $this->get_field_name ( 'hide_mobile' ), $hide_mobile );
+		// form dùng chung cho phần top, footer
+		_eb_top_footer_form_for_widget( $instance, $arr_field_name );
 		
 	}
 	

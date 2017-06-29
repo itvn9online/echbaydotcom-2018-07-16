@@ -28,10 +28,15 @@ class ___echbay_widget_get_menu extends WP_Widget {
 			$$k = esc_attr ( $v );
 		}
 		
-		
-		
 		//
-		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'title' ), $title );
+		$arr_field_name = array();
+		foreach ( $default as $k => $v ) {
+			$arr_field_name[ $k ] = $this->get_field_name ( $k );
+		}
+		
+		
+		// form dùng chung cho phần top, footer
+		_eb_top_footer_form_for_widget( $instance, $arr_field_name );
 		
 		
 		//
@@ -39,21 +44,10 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		
 		
 		//
-		_eb_menu_width_form_for_widget( $this->get_field_name ( 'width' ), $width );
-		
-		
-		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'tag_menu' ), $tag_menu, 'Tag HTML:' );
 		echo '<p><em>* Thường dùng cho footer. Nhập vào tag HTML để lấy cả tên menu. Ví dụ:</em><br>
 		<strong>div class="footer-title upper"</strong><br>
 		<em>(không bao gồm cặp dấu <strong>&lt;&gt;</strong>)</em></p>';
-		
-		
-		//
-		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'custom_style' ), $custom_style, 'Custom CSS:' );
-		
-		
-		_eb_widget_echo_widget_hide_mobile( $this->get_field_name ( 'hide_mobile' ), $hide_mobile );
 		
 	}
 	

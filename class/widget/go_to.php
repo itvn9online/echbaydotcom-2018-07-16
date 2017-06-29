@@ -24,21 +24,15 @@ class ___echbay_widget_go_to extends WP_Widget {
 			$$k = esc_attr ( $v );
 		}
 		
-		
-		
 		//
-		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'title' ), $title );
+		$arr_field_name = array();
+		foreach ( $default as $k => $v ) {
+			$arr_field_name[ $k ] = $this->get_field_name ( $k );
+		}
 		
 		
-		//
-		_eb_menu_width_form_for_widget( $this->get_field_name ( 'width' ), $width );
-		
-		
-		//
-		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'custom_style' ), $custom_style, 'Custom CSS:' );
-		
-		
-		_eb_widget_echo_widget_hide_mobile( $this->get_field_name ( 'hide_mobile' ), $hide_mobile );
+		// form dùng chung cho phần top, footer
+		_eb_top_footer_form_for_widget( $instance, $arr_field_name );
 		
 	}
 	

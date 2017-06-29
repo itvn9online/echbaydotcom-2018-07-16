@@ -54,6 +54,28 @@ function ___add_echbay_widget() {
 }
 
 
+
+function _eb_top_footer_form_for_widget ( $instance, $field_name = array() ) {
+	foreach ( $instance as $k => $v ) {
+		$$k = esc_attr ( $v );
+	}
+	
+	
+	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
+	
+	
+	_eb_menu_width_form_for_widget( $field_name['width'], $width );
+	
+	
+	_eb_widget_echo_widget_input_title( $field_name['custom_style'], $custom_style, 'Custom CSS:' );
+	
+	
+	_eb_widget_echo_widget_hide_mobile( $field_name['hide_mobile'], $hide_mobile );
+	
+}
+
+
+
 function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	global $arr_eb_product_status;
@@ -208,15 +230,15 @@ function _eb_widget_list_html_file_by_dir ( $dir = EB_THEME_HTML ) {
 
 
 function _eb_widget_echo_widget_hide_mobile ( $select_name, $select_val ) {
-	_eb_widget_echo_widget_input_checkbox( $select_name, $select_val, 'Ẩn trên mobile. Mặc định, module này sẽ được hiển thị trên mọi thiết bị, tích vào đây nếu muốn nó bị ẩn trên mobile.' );
+	_eb_widget_echo_widget_input_checkbox( $select_name, $select_val, 'Ẩn trên mobile', 'Mặc định, module này sẽ được hiển thị trên mọi thiết bị, tích vào đây nếu muốn nó bị ẩn trên mobile.' );
 }
 
 
 
-function _eb_widget_echo_widget_input_checkbox ( $select_name, $select_val, $menu_name = '' ) {
+function _eb_widget_echo_widget_input_checkbox ( $select_name, $select_val, $menu_name = '', $menu_title = '' ) {
 	echo '<p><input type="checkbox" class="checkbox" id="' . $select_name . '" name="' . $select_name . '" ';
 	checked( $select_val, 'on' );
-	echo '><label for="' . $select_name . '">' . $menu_name . '</label></p>';
+	echo '><label title="' . $menu_title . '" for="' . $select_name . '">' . $menu_name . '</label></p>';
 }
 
 

@@ -979,7 +979,7 @@ function _eb_echbay_get_sidebar( $slug ) {
 	
 }
 
-function _eb_echbay_sidebar( $slug, $css = '', $div = 'div', $in_cache = 1, $load_main_sidebar = 1) {
+function _eb_echbay_sidebar( $slug, $css = '', $div = 'div', $in_cache = 1, $load_main_sidebar = 1, $return_null = 0 ) {
 	global $arr_for_show_html_file_load;
 	
 	/*
@@ -1009,6 +1009,9 @@ function _eb_echbay_sidebar( $slug, $css = '', $div = 'div', $in_cache = 1, $loa
 			// nếu không phải sidebar mặc định -> lấy sidebar mặc định luôn
 			&& $slug != id_default_for_get_sidebar ) {
 				$a = _eb_echbay_sidebar( id_default_for_get_sidebar, $css, $div, $in_cache );
+			}
+			else if ( $return_null == 1 ) {
+				$a = '';
 			}
 		} else {
 			$a = str_replace( '/./', '/', $a );
