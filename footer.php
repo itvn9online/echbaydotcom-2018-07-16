@@ -3,7 +3,7 @@
 $eb_footer_widget = _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0 );
 
 // nếu không có nội dung trong widget -> lấy theo thiết kế mặc định
-if ( $eb_footer_widget == '' ) {
+if ( $eb_footer_widget == '' || count( explode( "\n", trim( $eb_footer_widget ) ) ) == 1 ) {
 	include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
 }
 else {
