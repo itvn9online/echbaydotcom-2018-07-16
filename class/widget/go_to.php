@@ -17,6 +17,7 @@ class ___echbay_widget_go_to extends WP_Widget {
 			'title' => 'BreadCrumb',
 			'width' => '',
 			'custom_style' => '',
+			'full_mobile' => '',
 			'hide_mobile' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
@@ -56,6 +57,9 @@ class ___echbay_widget_go_to extends WP_Widget {
 		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
 //		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
 		if ( $hide_mobile == 'on' ) $width .= ' hide-if-mobile';
+		
+		$full_mobile = isset( $instance ['full_mobile'] ) ? $instance ['full_mobile'] : 'off';
+		if ( $full_mobile == 'on' ) $width .= ' fullsize-if-mobile';
 		
 		
 		//

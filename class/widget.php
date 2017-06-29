@@ -70,7 +70,10 @@ function _eb_top_footer_form_for_widget ( $instance, $field_name = array() ) {
 	_eb_widget_echo_widget_input_title( $field_name['custom_style'], $custom_style, 'Custom CSS:' );
 	
 	
-	_eb_widget_echo_widget_hide_mobile( $field_name['hide_mobile'], $hide_mobile );
+	_eb_widget_echo_widget_input_checkbox( $field_name['hide_mobile'], $hide_mobile, 'Ẩn trên mobile', 'Mặc định, module này sẽ được hiển thị trên mọi thiết bị, tích vào đây nếu muốn nó bị ẩn trên mobile.' );
+	
+	
+	_eb_widget_echo_widget_input_checkbox( $field_name['full_mobile'], $full_mobile, 'Fullsize if mobile', 'Module này sẽ chuyển sang dạng tràn khung trên các thiết bị mobile nếu tích vào.' );
 	
 }
 
@@ -224,13 +227,6 @@ function _eb_widget_list_html_file_by_dir ( $dir = EB_THEME_HTML ) {
 	
 	//
 	return $new_array;
-}
-
-
-
-
-function _eb_widget_echo_widget_hide_mobile ( $select_name, $select_val ) {
-	_eb_widget_echo_widget_input_checkbox( $select_name, $select_val, 'Ẩn trên mobile', 'Mặc định, module này sẽ được hiển thị trên mọi thiết bị, tích vào đây nếu muốn nó bị ẩn trên mobile.' );
 }
 
 
