@@ -892,10 +892,10 @@ var big_banner_timeout1 = null;
 (function () {
 	
 	// tải slider theo code mới
-	jEBE_slider( '#oi_big_banner', {
+	jEBE_slider( '.oi_big_banner', {
 		autoplay : true,
 //		thumbnail : '.banner-ads-media',
-		size : $('#oi_big_banner li:first .ti-le-global').attr('data-size') || ''
+		size : $('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''
 	});
 	
 	
@@ -903,12 +903,12 @@ var big_banner_timeout1 = null;
 	
 	
 	// slider
-	var slider_len = $('#oi_big_banner li').length || 0;
+	var slider_len = $('.oi_big_banner li').length || 0;
 	
 	// không có slider -> thoát
 	if ( slider_len < 1 ) {
 //		if ( slider_len == 0 ) {
-			$('#oi_big_banner').hide();
+			$('.oi_big_banner').hide();
 //		}
 		return false;
 	}
@@ -921,19 +921,19 @@ var big_banner_timeout1 = null;
 	// không đủ slider -> thoát
 	if ( slider_len < 2 ) {
 		var wit = $(window).width(),
-			img = $('#oi_big_banner div.banner-ads-media').attr('data-img') || '';
+			img = $('.oi_big_banner div.banner-ads-media').attr('data-img') || '';
 		
 		// mobile
 		/*
 		if ( wit < 250 ) {
-			img = $('#oi_big_banner div.banner-ads-media').attr('data-mobile-img') || img || '';
+			img = $('.oi_big_banner div.banner-ads-media').attr('data-mobile-img') || img || '';
 		}
 		// table
 		else */ if ( wit < 768 ) {
-			img = $('#oi_big_banner div.banner-ads-media').attr('data-table-img') || img || '';
+			img = $('.oi_big_banner div.banner-ads-media').attr('data-table-img') || img || '';
 		}
 		
-		$('#oi_big_banner div.banner-ads-media').css({
+		$('.oi_big_banner div.banner-ads-media').css({
 			'background-image': 'url(\'' + img + '\')'
 		});
 		
@@ -944,7 +944,7 @@ var big_banner_timeout1 = null;
 		
 		// table
 		if ( $(window).width() > 250 ) {
-			var img = $('#oi_big_banner div.banner-ads-media').attr('data-img') || '';
+			var img = $('.oi_big_banner div.banner-ads-media').attr('data-img') || '';
 			
 			if ( img == 'speed' ) {
 				// chuyển ảnh to nếu là bản pc
@@ -953,12 +953,12 @@ var big_banner_timeout1 = null;
 				// table
 				else {
 				}
-				var img_table = $('#oi_big_banner div.banner-ads-media').attr('data-table-img') || '',
-					img_mobile = $('#oi_big_banner div.banner-ads-media').attr('data-mobile-img') || img_table || '';
-				$('#oi_big_banner div.banner-ads-media').addClass(img_mobile);
+				var img_table = $('.oi_big_banner div.banner-ads-media').attr('data-table-img') || '',
+					img_mobile = $('.oi_big_banner div.banner-ads-media').attr('data-mobile-img') || img_table || '';
+				$('.oi_big_banner div.banner-ads-media').addClass(img_mobile);
 			}
 			else if (img != '') {
-				$('#oi_big_banner div.banner-ads-media').css({
+				$('.oi_big_banner div.banner-ads-media').css({
 					'background-image': 'url(\'' + img + '\')'
 				});
 			}
@@ -969,18 +969,18 @@ var big_banner_timeout1 = null;
 	
 	//
 	var change_banner_first_home = function(x) {
-		if (typeof x == 'undefined' || x >= $('#oi_big_banner li').length) {
+		if (typeof x == 'undefined' || x >= $('.oi_big_banner li').length) {
 			x = 0;
 		}
 		
 		//
-//		$('#oi_big_banner ul').animate({
-		$('#oi_big_banner ul').css({
-//			top: 0 - $('#oi_big_banner').height() * x + 10
-//			top: 0 - $('#oi_big_banner li:first').height() * x
+//		$('.oi_big_banner ul').animate({
+		$('.oi_big_banner ul').css({
+//			top: 0 - $('.oi_big_banner').height() * x + 10
+//			top: 0 - $('.oi_big_banner li:first').height() * x
 			top: ( 0 - 100 * x ) + '%'
 		}, 'slow');
-//		console.log( $('#oi_big_banner li:first').height() );
+//		console.log( $('.oi_big_banner li:first').height() );
 		
 		//
 		$('.big-banner-button li').removeClass('selected');
@@ -990,9 +990,9 @@ var big_banner_timeout1 = null;
 		
 		
 		// chuyển ảnh từ ảnh mờ sang ảnh nét
-		var img = $('#oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').attr('data-img') || '',
-			img_table = $('#oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').attr('data-table-img') || img || '',
-			img_mobile = $('#oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').attr('data-mobile-img') || img_table || '';
+		var img = $('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').attr('data-img') || '',
+			img_table = $('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').attr('data-table-img') || img || '',
+			img_mobile = $('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').attr('data-mobile-img') || img_table || '';
 		
 		//
 		/*
@@ -1000,7 +1000,7 @@ var big_banner_timeout1 = null;
 			// mặc định đang sử dụng ảnh cho bản mobile -> nếu là PC -> chuyển sang ảnh cho PC
 			if ( $(window).width() > 768 ) {
 //				console.log(img_mobile);
-				$('#oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').addClass(img_mobile);
+				$('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').addClass(img_mobile);
 			}
 		}
 		else */ if (img != '') {
@@ -1014,7 +1014,7 @@ var big_banner_timeout1 = null;
 			}
 			
 			//
-			$('#oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').css({
+			$('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').css({
 				'background-image': 'url(\'' + img + '\')'
 			}).attr({
 				'data-img' : '',
@@ -1035,7 +1035,7 @@ var big_banner_timeout1 = null;
 		str_btn = '';
 	
 	//
-	$('#oi_big_banner li').each(function() {
+	$('.oi_big_banner li').each(function() {
 		$(this).attr({
 			'data-i' : i
 		});
@@ -1048,7 +1048,7 @@ var big_banner_timeout1 = null;
 	});
 	
 	//
-	$('#oi_big_banner').after('<div class="big-banner-button"><ul>' + str_btn + '</ul></div>');
+	$('.oi_big_banner').after('<div class="big-banner-button"><ul>' + str_btn + '</ul></div>');
 	
 	//
 	$('.big-banner-button li').click(function () {

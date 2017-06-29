@@ -735,12 +735,12 @@ var _global_js_eb = {
 	},
 	
 	big_banner : function () {
-		var a = $('#oi_big_banner li:first').height();
+		var a = $('.oi_big_banner li:first').height();
 		
-		$('#oi_big_banner, #oi_big_banner li').height( a ).css({
+		$('.oi_big_banner, .oi_big_banner li').height( a ).css({
 			'line-height' : a + 'px'
 		});
-//		$('#oi_big_banner').height( a );
+//		$('.oi_big_banner').height( a );
 	},
 	
 	money_format_keyup: function() {

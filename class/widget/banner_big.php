@@ -76,7 +76,7 @@ class ___echbay_widget_banner_big extends WP_Widget {
 		
 		
 		//
-		echo '<div class="oi_big_banner">' . $str_big_banner . '</div>';
+		echo '<div class="oi_big_banner ' . $custom_style . '">' . $str_big_banner . '</div>';
 		
 		
 		//

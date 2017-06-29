@@ -668,13 +668,13 @@ color: #333;
 	background: center no-repeat;
 	background-size: 100% auto;
 }
-#oi_big_banner {
+.oi_big_banner {
 	height: 250px;
 	line-height: 250px;
 	overflow: hidden;
 	position: relative;
 }
-#oi_big_banner ul {
+.oi_big_banner ul {
 	position: absolute;
 	left: 0;
 	right: 0;
