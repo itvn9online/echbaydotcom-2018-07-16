@@ -81,7 +81,7 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		echo '<!-- ' . $this->name . ' (' . $title . ') -->';
 		
 		//
-		echo '<' . $tag . ' class="' . str_replace( '  ', ' ', 'cf ' . $width . ' ' . $custom_style ) . '">';
+		echo '<' . $tag . ' class="' . str_replace( '  ', ' ', trim( 'cf ' . $width . ' ' . $custom_style ) ) . '">';
 		
 		//
 //		echo $after_widget;
