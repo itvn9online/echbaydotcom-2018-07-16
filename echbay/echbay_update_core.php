@@ -401,9 +401,26 @@ else {
 */
 
 
+//
+$last_time_update_eb = filemtime( EB_THEME_PLUGIN_INDEX . 'readme.txt' );
+
+
+function EBE_eb_update_time_to_new_time ( $t ) {
+	$t = date_time - $t;
+	
+	if ( $t < 3600 ) {
+		$t = 'Khoảng ' . ceil( $t/ 60 ) . ' phút trước';
+	}
+	else {
+		$t = 'Khoảng ' . ceil( $t/ 3600 ) . ' giờ trước';
+	}
+	
+	return $t;
+}
+
 
 ?>
-<p><em>* Xin lưu ý! các tính năng được cập nhật là xây dựng và phát triển cho phiên bản trả phí, nên với phiên bản miễn phí, một số tính năng sẽ không tương thích hoặc phải chỉnh lại giao diện sau khi cập nhật. Lần cập nhật trước: <strong><?php echo date( 'r', filemtime( EB_THEME_PLUGIN_INDEX . 'readme.txt' ) ); ?></strong></em></p>
+<p><em>* Xin lưu ý! các tính năng được cập nhật là xây dựng và phát triển cho phiên bản trả phí, nên với phiên bản miễn phí, một số tính năng sẽ không tương thích hoặc phải chỉnh lại giao diện sau khi cập nhật. Lần cập nhật trước: <strong><?php echo date( 'r', $last_time_update_eb ); ?> (<?php echo EBE_eb_update_time_to_new_time( $last_time_update_eb ); ?>)</strong></em></p>
 <br>
 <script type="text/javascript">
 jQuery('.click-connect-to-github-update-eb-core').attr({
