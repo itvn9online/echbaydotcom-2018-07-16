@@ -69,6 +69,11 @@ class ___echbay_widget_banner_big extends WP_Widget {
 		echo '<!-- ' . $this->name . ' -->';
 		
 		//
+		if ( $str_big_banner == '' ) {
+			return false;
+		}
+		
+		//
 		echo '<div class="' . str_replace( '  ', ' ', trim( 'top-footer-css ' . $width ) ) . '">';
 		
 		//
