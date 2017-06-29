@@ -47,6 +47,8 @@ function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_banner_big' );
 	
+	register_widget ( '___echbay_widget_go_to' );
+	
 //	register_widget ( '___echbay_widget_search_advanced' );
 	
 }
@@ -682,6 +684,7 @@ include EB_THEME_CORE . 'widget/social.php';
 include EB_THEME_CORE . 'widget/contact.php';
 include EB_THEME_CORE . 'widget/search.php';
 include EB_THEME_CORE . 'widget/banner_big.php';
+include EB_THEME_CORE . 'widget/go_to.php';
 
 
 
