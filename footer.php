@@ -1,11 +1,20 @@
+<?php
+// footer menu dưới dạng widget
+$eb_footer_widget = _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0 );
+
+//
+if ( $eb_footer_widget == '' ) {
+	include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
+}
+else {
+?>
+
 <div class="eb-footer">
-	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
-		<?php
-		// footer menu dưới dạng widget
-		echo _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0 );
-		?>
-	</div>
+	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>"> <?php echo $eb_footer_widget; ?> </div>
 </div>
+<?php
+}
+?>
 <!-- end mobile menu --> 
 <!-- ajax post -->
 <iframe id="target_eb_iframe" name="target_eb_iframe" src="about:blank" width="750" height="600">AJAX form</iframe>
@@ -167,6 +176,7 @@ echo $__cf_row['cf_js_allpage'];
 if ( eb_code_tester == true ) {
 	echo implode( "\n", $arr_for_show_html_file_load );
 }
+
 
 
 
