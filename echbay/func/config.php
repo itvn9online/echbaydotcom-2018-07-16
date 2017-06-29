@@ -42,44 +42,48 @@ if ( $_POST ['cf_smtp_host'] != ''
 
 
 //
-if ( ! isset( $_POST['cf_tester_mode'] ) || $_POST['cf_tester_mode'] == '' ) {
+if ( ! isset( $_POST['cf_tester_mode'] ) || (int) $_POST['cf_tester_mode'] != 1 ) {
 	$_POST['cf_tester_mode'] = 0;
 }
 
-if ( ! isset( $_POST['cf_on_off_json'] ) || $_POST['cf_on_off_json'] == '' ) {
+if ( ! isset( $_POST['cf_on_off_json'] ) || (int) $_POST['cf_on_off_json'] != 1 ) {
 	$_POST['cf_on_off_json'] = 0;
 }
 
-if ( ! isset( $_POST['cf_remove_category_base'] ) || $_POST['cf_remove_category_base'] == '' ) {
+if ( ! isset( $_POST['cf_remove_category_base'] ) || (int) $_POST['cf_remove_category_base'] != 1 ) {
 	$_POST['cf_remove_category_base'] = 0;
 }
 
-if ( ! isset( $_POST['cf_on_off_echbay_seo'] ) || $_POST['cf_on_off_echbay_seo'] == '' ) {
+if ( ! isset( $_POST['cf_on_off_echbay_seo'] ) || (int) $_POST['cf_on_off_echbay_seo'] != 1 ) {
 	$_POST['cf_on_off_echbay_seo'] = 0;
 }
 
-if ( ! isset( $_POST['cf_on_off_echbay_logo'] ) || $_POST['cf_on_off_echbay_logo'] == '' ) {
+if ( ! isset( $_POST['cf_on_off_echbay_logo'] ) || (int) $_POST['cf_on_off_echbay_logo'] != 1 ) {
 	$_POST['cf_on_off_echbay_logo'] = 0;
 }
 
-if ( ! isset( $_POST['cf_on_off_amp_logo'] ) || $_POST['cf_on_off_amp_logo'] == '' ) {
+if ( ! isset( $_POST['cf_on_off_amp_logo'] ) || (int) $_POST['cf_on_off_amp_logo'] != 1 ) {
 	$_POST['cf_on_off_amp_logo'] = 0;
 }
 
-if ( ! isset( $_POST['cf_on_off_amp_category'] ) || $_POST['cf_on_off_amp_category'] == '' ) {
+if ( ! isset( $_POST['cf_on_off_amp_category'] ) || (int) $_POST['cf_on_off_amp_category'] != 1 ) {
 	$_POST['cf_on_off_amp_category'] = 0;
 }
 
-if ( ! isset( $_POST['cf_on_off_amp_product'] ) || $_POST['cf_on_off_amp_product'] == '' ) {
+if ( ! isset( $_POST['cf_on_off_amp_product'] ) || (int) $_POST['cf_on_off_amp_product'] != 1 ) {
 	$_POST['cf_on_off_amp_product'] = 0;
 }
 
-if ( ! isset( $_POST['cf_on_off_amp_blogs'] ) || $_POST['cf_on_off_amp_blogs'] == '' ) {
+if ( ! isset( $_POST['cf_on_off_amp_blogs'] ) || (int) $_POST['cf_on_off_amp_blogs'] != 1 ) {
 	$_POST['cf_on_off_amp_blogs'] = 0;
 }
 
-if ( ! isset( $_POST['cf_on_off_amp_blog'] ) || $_POST['cf_on_off_amp_blog'] == '' ) {
+if ( ! isset( $_POST['cf_on_off_amp_blog'] ) || (int) $_POST['cf_on_off_amp_blog'] != 1 ) {
 	$_POST['cf_on_off_amp_blog'] = 0;
+}
+
+if ( ! isset( $_POST['cf_on_off_auto_update_wp'] ) || (int) $_POST['cf_on_off_auto_update_wp'] != 1 ) {
+	$_POST['cf_on_off_auto_update_wp'] = 0;
 }
 
 

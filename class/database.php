@@ -274,6 +274,9 @@ $__cf_row_default = array(
 	'cf_on_off_amp_blogs' => 1,
 	'cf_on_off_amp_blog' => 1,
 	
+	// tự động cập nhật mã nguồn wordpress
+	'cf_on_off_auto_update_wp' => 0,
+	
 	
 	/*
 	* giao diện HTML mặc định

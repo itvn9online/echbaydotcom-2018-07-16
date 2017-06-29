@@ -192,7 +192,11 @@ define(
 
 // Tắt chức năng auto update, web ít dùng thì cần quái gì update, hay dùng thì nên update thủ công
 if ( ! defined('WP_AUTO_UPDATE_CORE') ) {
-	define( 'WP_AUTO_UPDATE_CORE', false );
+	if ( $__cf_row['cf_on_off_auto_update_wp'] == 1 ) {
+		define( 'WP_AUTO_UPDATE_CORE', true );
+	} else {
+		define( 'WP_AUTO_UPDATE_CORE', false );
+	}
 }
 
 // cấu hình URL dạng tĩnh -> khuyên dùng
