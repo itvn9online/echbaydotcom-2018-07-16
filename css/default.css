@@ -113,15 +113,16 @@ label,
 .bborder { border-bottom: 1px #ccc solid; }
 .lborder { border-left: 1px #ccc solid; }
 .rborder { border-right: 1px #ccc solid; }
-.w99 {
-	width: 999px;
+.w99,
+.w90 {
+	float: none;
 	margin: 0 auto;
 }
+.w99 { width: 999px; }
 .w90 {
 	width: 90%;
 	min-width: 999px;
 	max-width: 1366px;
-	margin: 0 auto;
 }
 /*
 .global-w99 {
