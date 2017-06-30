@@ -487,7 +487,8 @@ function EBE_set_default_title_for_seo () {
 	var str_title = $('#title').val() || '',
 		tit = '',
 		str_excerpt = $('#excerpt').val() || '',
-		des = '';
+		des = '',
+		des_default = '%%excerpt%%';
 	
 	/*
 	* Yoast SEO default value
@@ -507,14 +508,14 @@ function EBE_set_default_title_for_seo () {
 //			$('#snippet-editor-meta-description').val( str_excerpt );
 //		}
 		if ( des == '' || des == str_excerpt ) {
-			$('#snippet-editor-meta-description').val( '%%excerpt%%' );
+			$('#snippet-editor-meta-description').val( des_default );
 		}
 	}
 	console.log(str_excerpt);
 	console.log(des);
 	
 	//
-	if ( str_excerpt == '' && des != '' ) {
+	if ( str_excerpt == '' && des != '' && des != des_default ) {
 		$('#excerpt').val( des );
 	}
 }

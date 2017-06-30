@@ -166,4 +166,8 @@ body {
 	overflow-y: hidden;
 	overflow-x: auto;
 }
+/*
+.thread-details-mobileLeft,
+.thread-details-mobileRight { line-height: 150px; }
+*/
 }

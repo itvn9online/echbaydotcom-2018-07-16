@@ -310,6 +310,169 @@ function ___eb_details_slider_v2 () {
 		$('.thread-details-mobileAvt li:first').click();
 	});
 	
+	return false;
+	
+	
+	
+	// Xác định xem có thuộc tính tự động chuyển ảnh không
+	var auto_next_details_slider = $('.thread-details-mobileAvt').attr('data-auto-next') || 0;
+	
+	//
+	if ( slider_len > 1 ) {
+		$('.product-details-thumb, .thread-details-mobileLeft, .thread-details-mobileRight').removeClass('d-none').show();
+		
+		// Mặc định thì ẩn đoạn nút này, sau muốn show ra thì dùng style riêng
+		$('.pdetail-slider-btn').html( '<ul class="cf">' + slider_btn + '</ul>' );
+	}
+	
+	
+	
+	//
+	var slider_details_width = $('#export_img_product li div').width();
+	if ( slider_details_width > 80 ) {
+		slider_details_width = 80;
+	}
+//	console.log( slider_details_width );
+	$('.details-thumb-center, .details-thumb-left, .details-thumb-right').css({
+		'line-height' : slider_details_width + 'px'
+	});
+	$('.details-thumb-center').height( slider_details_width + 5 );
+	
+	
+	//
+	var num_img_line = 4;
+	
+	//
+//	if (num_img_line > 1 && arr_img_content.length > num_img_line) {
+	if (slider_len > num_img_line) {
+		$('.details-thumb-left, .details-thumb-right').show();
+		
+		//
+		$('#export_img_product').jCarouselLite({
+			btnNext: ".details-thumb-right",
+			btnPrev: ".details-thumb-left",
+			scroll: num_img_line,
+			visible: num_img_line,
+			start: 0,
+			speed: 700
+		});
+	}
+	
+	
+	
+	//
+	$('#export_img_product li').click(function() {
+		var a = $(this).attr('data-src') || '',
+			i = $(this).attr('data-node') || 0;
+		if (a != '') {
+			a = ___eb_set_thumb_to_fullsize( a );
+			
+			// thay background mới
+			$('.thread-details-mobileAvt li[data-node="' + i + '"]').css({
+				'background-image' : 'url(\'' + a + '\')'
+			});
+			
+			/*
+			$('.thread-details-avt').css({
+				'background-image': 'url("' + a + '")'
+			});
+			*/
+			$('#export_img_product li, #export_img_product div').removeClass('selected');
+			$(this).addClass('selected');
+			
+			//
+			$('.pdetail-slider-btn li').removeClass('selected');
+			$('.pdetail-slider-btn li[data-node="' + i + '"]').addClass('selected');
+			
+			//
+//			console.log(i);
+			$('.thread-details-mobileAvt').animate({
+//				scrollTop : $('.thread-details-mobileAvt').height() * i
+				scrollLeft : $('.thread-details-mobileAvt').width() * i
+			});
+			
+			
+			
+			// tự động chuyển slider
+			if ( auto_next_details_slider > 0 ) {
+				clearTimeout(time_next_details_slider);
+//				console.log(1)
+				
+				//
+				time_next_details_slider = setTimeout(function () {
+					$('.thread-details-mobileRight').click();
+				}, auto_next_details_slider);
+			}
+			
+			
+			//
+			$('.thread-details-mobileLeft, .thread-details-mobileRight').css({
+				'line-height' : $('.thread-details-mobileAvt').height() + 'px'
+			});
+		}
+	});
+	
+	
+	//
+	$('.pdetail-slider-btn li').click(function () {
+		var i = $(this).attr('data-node') || 0;
+		
+		$('#export_img_product li[data-node="' + i + '"]').click();
+	});
+	
+	
+	
+	//
+	$('.thread-details-mobileLeft').click(function () {
+		var i = $('#export_img_product li.selected').attr('data-node') || 0;
+//		console.log(i);
+		i--;
+//		console.log(i);
+		if ( i < 0 ) {
+			i = $('.thread-details-mobileAvt li').length - 1;
+		}
+//		console.log(i);
+		$('#export_img_product li[data-node="' +i+ '"]:first').click();
+	});
+	
+	//
+	$('.thread-details-mobileRight').click(function () {
+		var i = $('#export_img_product li.selected').attr('data-node') || 0;
+
+//		console.log(i);
+		i++;
+//		console.log(i);
+		if ( i >= $('.thread-details-mobileAvt li').length ) {
+			i = 0;
+		}
+//		console.log(i);
+		$('#export_img_product li[data-node="' +i+ '"]:first').click();
+	});
+	
+	
+	
+	// tự động chuyển slider
+	if ( auto_next_details_slider > 0 ) {
+		time_next_details_slider = setTimeout(function () {
+			$('.thread-details-mobileRight').click();
+		}, auto_next_details_slider);
+	}
+	
+	
+	//
+	$('.thread-details-mobileLeft, .thread-details-mobileRight').css({
+		'line-height' : $('.thread-details-mobileAvt').height() + 'px'
+	});
+	
+	
+	//
+//	$('#export_img_product li:first').click();
+//	console.log('first click');
+	
+	$('.thread-details-mobileAvt li[data-node="0"]').css({
+		'background-image' : 'url(\'' + ___eb_set_thumb_to_fullsize ( $('.thread-details-mobileAvt li[data-node="0"]').attr('data-src') || '' ) + '\')'
+	});
+	
 }
 
 
@@ -783,6 +946,167 @@ var big_banner_timeout1 = null;
 		size : $('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''
 	});
 	
+	
+	return false;
+	
+	
+	// slider
+	var slider_len = $('.oi_big_banner li').length || 0;
+	
+	// không có slider -> thoát
+	if ( slider_len < 1 ) {
+//		if ( slider_len == 0 ) {
+			$('.oi_big_banner').hide();
+//		}
+		return false;
+	}
+	
+	//
+//	if ( act == '' ) {
+//		$('.global-nav').addClass('global-nav-selected');
+//	}
+	
+	// không đủ slider -> thoát
+	if ( slider_len < 2 ) {
+		var wit = $(window).width(),
+			img = $('.oi_big_banner div.banner-ads-media').attr('data-img') || '';
+		
+		// mobile
+		/*
+		if ( wit < 250 ) {
+			img = $('.oi_big_banner div.banner-ads-media').attr('data-mobile-img') || img || '';
+		}
+		// table
+		else */ if ( wit < 768 ) {
+			img = $('.oi_big_banner div.banner-ads-media').attr('data-table-img') || img || '';
+		}
+		
+		$('.oi_big_banner div.banner-ads-media').css({
+			'background-image': 'url(\'' + img + '\')'
+		});
+		
+		return false;
+		
+		
+		
+		
+		// table
+		if ( $(window).width() > 250 ) {
+			var img = $('.oi_big_banner div.banner-ads-media').attr('data-img') || '';
+			
+			if ( img == 'speed' ) {
+				// chuyển ảnh to nếu là bản pc
+				if ( $(window).width() > 768 ) {
+				}
+				// table
+				else {
+				}
+				var img_table = $('.oi_big_banner div.banner-ads-media').attr('data-table-img') || '',
+					img_mobile = $('.oi_big_banner div.banner-ads-media').attr('data-mobile-img') || img_table || '';
+				$('.oi_big_banner div.banner-ads-media').addClass(img_mobile);
+			}
+			else if (img != '') {
+				$('.oi_big_banner div.banner-ads-media').css({
+					'background-image': 'url(\'' + img + '\')'
+				});
+			}
+		}
+		
+		return false;
+	}
+	
+	//
+	var change_banner_first_home = function(x) {
+		if (typeof x == 'undefined' || x >= $('.oi_big_banner li').length) {
+			x = 0;
+		}
+		
+		//
+//		$('.oi_big_banner ul').animate({
+		$('.oi_big_banner ul').css({
+//			top: 0 - $('.oi_big_banner').height() * x + 10
+//			top: 0 - $('.oi_big_banner li:first').height() * x
+			top: ( 0 - 100 * x ) + '%'
+		}, 'slow');
+//		console.log( $('.oi_big_banner li:first').height() );
+		
+		//
+		$('.big-banner-button li').removeClass('selected');
+		$('.big-banner-button li[data-i="' + x + '"]').addClass('selected');
+		
+		
+		
+		
+		// chuyển ảnh từ ảnh mờ sang ảnh nét
+		var img = $('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').attr('data-img') || '',
+			img_table = $('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').attr('data-table-img') || img || '',
+			img_mobile = $('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').attr('data-mobile-img') || img_table || '';
+		
+		//
+		/*
+		if ( img == 'speed' ) {
+			// mặc định đang sử dụng ảnh cho bản mobile -> nếu là PC -> chuyển sang ảnh cho PC
+			if ( $(window).width() > 768 ) {
+//				console.log(img_mobile);
+				$('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').addClass(img_mobile);
+			}
+		}
+		else */ if (img != '') {
+			// sử dụng ảnh cho bản mobile
+			/*
+			if ( $(window).width() < 250 && img_mobile != '' ) {
+				img = img_mobile;
+			}
+			else */ if ( $(window).width() < 768 && img_table != '' ) {
+				img = img_table;
+			}
+			
+			//
+			$('.oi_big_banner ul li[data-i="' + x + '"] div.banner-ads-media').css({
+				'background-image': 'url(\'' + img + '\')'
+			}).attr({
+				'data-img' : '',
+				'data-table-img' : '',
+				'data-mobile-img' : ''
+			});
+		}
+		
+		//
+		clearTimeout(big_banner_timeout1);
+		big_banner_timeout1 = setTimeout(function() {
+			change_banner_first_home(x + 1);
+		}, 5 * 1000);
+	};
+	
+	//
+	var i = 0,
+		str_btn = '';
+	
+	//
+	$('.oi_big_banner li').each(function() {
+		$(this).attr({
+			'data-i' : i
+		});
+		
+		//
+		str_btn += '<li title="' + ( $(this).attr('title') || '' ) + '" data-i="' +i+ '"><i class="fa fa-circle"></i></li>';
+		
+		//
+		i++;
+	});
+	
+	//
+	$('.oi_big_banner').after('<div class="big-banner-button"><ul>' + str_btn + '</ul></div>');
+	
+	//
+	$('.big-banner-button li').click(function () {
+		change_banner_first_home( $(this).attr('data-i') || 0 );
+	});
+	
+	//
+	setTimeout(function () {
+		change_banner_first_home();
+	}, 800);
 })();
 
 function ___eb_big_banner () {
@@ -883,6 +1207,16 @@ function ___eb_big_banner () {
 		size : $('.banner-chan-trang li:first .ti-le-global').attr('data-size') || ''
 	});
 	
+	return false;
+	
+	$('.banner-chan-trang:first').height('auto').jCarouselLite({
+		btnNext: ".home-next-chantrang",
+		btnPrev: ".home-prev-chantrang",
+		scroll: li_fo_scroll,
+		visible: global_chantrang_len,
+		start: 0,
+		speed: 700
+	});
 })();
 
 function ___eb_logo_doitac_chantrang ( so_the_li_mong_muon, li_fo_scroll ) {
