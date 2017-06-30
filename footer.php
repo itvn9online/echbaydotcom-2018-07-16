@@ -7,8 +7,14 @@
 if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 //	echo $eb_footer_widget;
 	
-	include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
+//	include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
+	
+	//
+	foreach ( $arr_includes_footer_file as $v ) {
+		include $v;
+	}
 }
+// footer menu dưới dạng widget
 else {
 ?>
 

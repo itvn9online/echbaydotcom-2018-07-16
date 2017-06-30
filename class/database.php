@@ -292,9 +292,9 @@ $__cf_row_default = array(
 	
 	'cf_using_footer_default' => 1,
 	'cf_footer_class_style' => '',
-//	'cf_footer1_include_file' => '',
-//	'cf_footer2_include_file' => '',
-//	'cf_footer3_include_file' => '',
+	'cf_footer1_include_file' => '',
+	'cf_footer2_include_file' => '',
+	'cf_footer3_include_file' => '',
 	
 	
 	// danh sách tin -> tổng quan

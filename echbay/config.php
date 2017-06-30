@@ -567,75 +567,85 @@ $arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_conf
 
 
 
-// load danh sách file TOP
-$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . 'top/*.{php}', GLOB_BRACE );
-//print_r( $arr_file_name );
-
-$arr_top_include_file = array();
-for ( $i = 1; $i < 10; $i++ ) {
-	$j = 'top' . $i;
-	if ( isset( $__cf_row_default[ 'cf_' . $j . '_include_file' ] ) ) {
-		$arr_top_include_file[ $j ] = array(
-			'' => 'Chọn file thiết kế cho phần ' . $j
-		);
-	} else {
-		break;
-	}
-}
-
-foreach ( $arr_file_name as $v ) {
-	$v = basename( $v );
-	$node = explode( '-', $v );
-//	print_r( $node );
-	$node = $node[0];
-//	echo $node . "\n";
+// load danh sách file TOP, FOOTER
+function EBE_config_load_top_footer_include ( $type = 'top' ) {
+	global $__cf_row_default;
+	global $__cf_row;
 	
-	//
-//	if ( ! empty( $arr_top_include_file[ $node ] ) ) {
-//		$arr_top_include_file[ $node ] = array();
-//	} else {
-//		echo $v . "\n";
-		$arr_top_include_file[ $node ][$v] = 1;
-//	}
-}
-//print_r( $arr_top_include_file );
-
-$str_top_include_file = '';
-$i = 0;
-foreach ( $arr_top_include_file as $k => $v ) {
-//	print_r($v);
+	$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . $type . '/*.{php}', GLOB_BRACE );
+//	print_r( $arr_file_name );
 	
-	$label_name = 'cf_' . $k . '_include_file';
-	
-	foreach ( $v as $k2 => $v2 ) {
-		$label_id = $label_name . $i;
-		
-		if ( $k2 == '' ) {
-			$str_top_include_file .= '<hr>';
-			$val = '';
-			$text = '[' . $v2 . ']';
+	$arr_top_include_file = array();
+	for ( $i = 1; $i < 10; $i++ ) {
+		$j = $type . $i;
+		if ( isset( $__cf_row_default[ 'cf_' . $j . '_include_file' ] ) ) {
+			$arr_top_include_file[ $j ] = array(
+				'' => 'Chọn file thiết kế cho phần ' . $j
+			);
 		} else {
-			$val = $k2;
-			$text = 'Mẫu #' . str_replace( '.php', '', $k2 );
+			break;
 		}
-		
-		$ck = '';
-		if ( $val == $__cf_row[ $label_name ] ) {
-			$ck = ' checked="checked"';
-		}
-		
-		$str_top_include_file .= '
-		<div data-val="' . $val . '" title="' . $text . '">
-			<input type="radio" name="' . $label_name . '" id="' .$label_id. '" value="' .$val. '" ' . $ck . '>
-			<label for="' .$label_id. '">' .$text. '</label>
-		</div>';
-		
-		$i++;
 	}
+	
+	foreach ( $arr_file_name as $v ) {
+		$v = basename( $v );
+		$node = explode( '-', $v );
+//		print_r( $node );
+//		$node = $node[0];
+		$node = str_replace( '.php', '', $node[1] );
+//		echo $node . "\n";
+		
+		//
+	//	if ( ! empty( $arr_top_include_file[ $node ] ) ) {
+	//		$arr_top_include_file[ $node ] = array();
+	//	} else {
+	//		echo $v . "\n";
+			$arr_top_include_file[ $node ][$v] = 1;
+	//	}
+	}
+//	print_r( $arr_top_include_file );
+	
+	$str_top_include_file = '';
+	$i = 0;
+	foreach ( $arr_top_include_file as $k => $v ) {
+	//	print_r($v);
+		
+		$label_name = 'cf_' . $k . '_include_file';
+		
+		foreach ( $v as $k2 => $v2 ) {
+			$label_id = $label_name . $i;
+			
+			if ( $k2 == '' ) {
+				$str_top_include_file .= '<hr>';
+				$val = '';
+				$text = '[' . $v2 . ']';
+			} else {
+				$val = $k2;
+				$text = 'Mẫu #' . str_replace( '.php', '', $k2 );
+			}
+			
+			$ck = '';
+			if ( $val == $__cf_row[ $label_name ] ) {
+				$ck = ' checked="checked"';
+			}
+			
+			$str_top_include_file .= '
+			<div data-val="' . $val . '" title="' . $text . '">
+				<input type="radio" name="' . $label_name . '" id="' .$label_id. '" value="' .$val. '" ' . $ck . '>
+				<label for="' .$label_id. '">' .$text. '</label>
+			</div>';
+			
+			$i++;
+		}
+	}
+//	echo $str_top_include_file;
+	
+	return $str_top_include_file;
+	
 }
-//echo $str_top_include_file;
 
-$arr_for_set_template['str_top_include_file'] = $str_top_include_file;
+$arr_for_set_template['str_top_include_file'] = EBE_config_load_top_footer_include();
+$arr_for_set_template['str_footer_include_file'] = EBE_config_load_top_footer_include('footer');
 
 
 

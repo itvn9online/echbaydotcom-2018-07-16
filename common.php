@@ -141,7 +141,34 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 }
 
 if ( $__cf_row['cf_using_footer_default'] == 1 ) {
-	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/footer_default.css' ] = 1;
+//	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/footer_default.css' ] = 1;
+	
+	// Kiểm tra và load các file top tương ứng
+	if ( $__cf_row['cf_footer1_include_file'] != '' ) {
+		$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row['cf_footer1_include_file'];
+		
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/' . str_replace( '.php', '.css', $__cf_row['cf_footer1_include_file'] ) ] = 1;
+	}
+	if ( $__cf_row['cf_footer2_include_file'] != '' ) {
+		$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row['cf_footer2_include_file'];
+		
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/' . str_replace( '.php', '.css', $__cf_row['cf_footer2_include_file'] ) ] = 1;
+	}
+	if ( $__cf_row['cf_footer3_include_file'] != '' ) {
+		$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row['cf_footer3_include_file'];
+		
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/' . str_replace( '.php', '.css', $__cf_row['cf_footer3_include_file'] ) ] = 1;
+	}
+	
+	//
+	if ( count( $arr_includes_footer_file ) == 0 ) {
+		include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
+		
+		//
+		foreach ( $arr_includes_footer_file as $v ) {
+			$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/' . str_replace( '.php', '.css', basename( $v ) ) ] = 1;
+		}
+	}
 }
 
 
