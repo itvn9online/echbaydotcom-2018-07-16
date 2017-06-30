@@ -240,8 +240,8 @@ function ___eb_details_slider_v2 () {
 		html_for_get = '#content_img_product img';
 		data_get = 'src';
 	}
-	console.log( slider_len );
-	console.log( html_for_get );
+//	console.log( slider_len );
+//	console.log( html_for_get );
 	
 	// -> nếu vẫn không có -> hủy slider
 	if ( slider_len < 1 ) {
