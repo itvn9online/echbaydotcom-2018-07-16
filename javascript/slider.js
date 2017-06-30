@@ -141,7 +141,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// chỉ có 1 ảnh -> thoát
 //	if ( len == 1 ) {
-	if ( len < conf['visible'] ) {
+	if ( len <= conf['visible'] ) {
 		return false;
 	}
 	
