@@ -15,15 +15,11 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 		include $v;
 	}
 }
+// Bổ sung thêm một số module dưới dạng widget cho phần top
 // top menu dưới dạng widget
-else {
+//else {
 ?>
 
 <div class="eb-top">
-	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>"><?php echo _eb_echbay_sidebar( 'eb_top_global', 'eb-widget-top cf', 'div', 1, 0 ); ?></div>
+	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>"><?php echo _eb_echbay_sidebar( 'eb_top_global', 'eb-widget-top cf', 'div', 1, 0, 1 ); ?></div>
 </div>
-<?php
-}
-
-
-

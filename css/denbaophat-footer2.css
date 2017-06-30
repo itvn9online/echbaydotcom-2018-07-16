@@ -1,21 +1,6 @@
-.bottom-slogan {
-	background: #fafbfc;
-	border-top: 2px #f40 solid;
+.footer-copyright {
+	padding: 20px 0;
+	font-size: 9pt;
+	line-height: 19px;
 }
-.bottom-slogan ul { border-right: 1px #e5e5e5 solid; }
-.bottom-slogan li {
-	float: left;
-	width: 25%;
-	position: relative;
-}
-.bottom-slogan li div {
-	padding: 25px 0 25px 75px;
-	border-left: 1px #e5e5e5 solid;
-}
-.bottom-slogan i {
-	position: absolute;
-	left: 25px;
-	font-size: 40px;
-	line-height: 40px;
-	color: #f40;
-}
+.footer-copyright a { text-decoration: underline; }

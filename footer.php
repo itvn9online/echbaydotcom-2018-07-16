@@ -1,3 +1,6 @@
+<div class="eb-footer">
+	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>"><?php echo _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0, 1 ); ?></div>
+</div>
 <?php
 // footer menu dưới dạng widget
 //$eb_footer_widget = _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0, 1 );
@@ -13,15 +16,6 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 	foreach ( $arr_includes_footer_file as $v ) {
 		include $v;
 	}
-}
-// footer menu dưới dạng widget
-else {
-?>
-
-<div class="eb-footer">
-	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>"><?php echo _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0 ); ?></div>
-</div>
-<?php
 }
 ?>
 <!-- end mobile menu --> 
