@@ -101,9 +101,14 @@ $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/default.css' ] = 1;
 $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/mobile.css' ] = 1;
 $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/guest.css' ] = 1;
 
+// Mảng list các file dùng để tạo top, footer
+$arr_includes_top_file = array();
+$arr_includes_footer_file = array();
+
 // Nạp CSS mặc định cho top và footer
 if ( $__cf_row['cf_using_top_default'] == 1 ) {
-	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/top_default.css' ] = 1;
+//	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/top_default.css' ] = 1;
+	include EB_THEME_PLUGIN_INDEX . 'top_default.php';
 }
 if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/footer_default.css' ] = 1;

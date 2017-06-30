@@ -4,10 +4,16 @@
 
 // nếu không có nội dung trong widget -> lấy theo thiết kế mặc định
 //if ( $eb_top_widget == '' ) {
-if ( $__cf_row['cf_using_top_default'] == 1 ) {
+//if ( $__cf_row['cf_using_top_default'] == 1 ) {
+if ( count( $arr_includes_top_file ) > 0 ) {
 //	echo $eb_top_widget;
 	
-	include EB_THEME_PLUGIN_INDEX . 'top_default.php';
+//	include EB_THEME_PLUGIN_INDEX . 'top_default.php';
+	
+	//
+	foreach ( $arr_includes_top_file as $v ) {
+		include $v;
+	}
 }
 else {
 ?>

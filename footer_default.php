@@ -49,7 +49,7 @@ $arr_tmp_footer_menu[] = _eb_echbay_menu(
 ?>
 <footer id="footer">
 	<div class="bottom-slogan">
-		<div class="<?php echo $__cf_row['cf_blog_class_style']; ?>">
+		<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
 			<ul data-width="240" class="fix-li-wit cf l19 bold upper">
 				<li>
 					<div><i class="fa fa-refresh"></i> Đổi hàng<br />
@@ -71,7 +71,7 @@ $arr_tmp_footer_menu[] = _eb_echbay_menu(
 		</div>
 	</div>
 	<div class="site-footer-inner default-2bg">
-		<div class="<?php echo $__cf_row['cf_blog_class_style']; ?>">
+		<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
 			<div class="cf">
 				<div class="lf f25 fullsize-if-mobile">
 					<div class="footer-title upper"><?php echo $__cf_row['cf_ten_cty']; ?></div>

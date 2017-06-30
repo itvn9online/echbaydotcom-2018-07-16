@@ -1,0 +1,112 @@
+#nav {
+	text-transform: uppercase;
+	text-align: center;
+}
+#nav li {
+	position: relative;
+	background: #000;
+	font-size: 15px;
+}
+#nav li i.fa-bars {
+	position: absolute;
+	right: 11px;
+	font-size: 16px;
+}
+#nav a {
+	color: #fff;
+	display: block;
+	padding: 0 15px;
+}
+/*
+#nav a:hover {
+	background-color: #fff;
+	color: #333;
+}
+*/
+#nav .sub-menu {
+	position: absolute;
+	left: 0;
+	right: 0;
+	display: none;
+	z-index: 99;
+	text-transform: none;
+	line-height: 19px;
+	background: rgba(255, 255, 255, .68);
+	padding: 5px 5px 0 0;
+	text-align: left;
+}
+#nav .sub-menu li {
+	background: #fff;
+	border-right: 5px #f40 solid;
+	line-height: 35px;
+	position: initial;
+}
+#nav .sub-menu li:last-child { border-bottom: 5px #f40 solid; }
+#nav .sub-menu li:hover { background-color: #f40; }
+#nav .sub-menu .sub-menu li:hover { background-color: #fff; }
+#nav .sub-menu li:hover a { color: #fff; }
+#nav .sub-menu li:hover .sub-menu a { color: #666; }
+#nav .sub-menu li .sub-menu a:hover { color: #f40; }
+#nav .sub-menu a {
+	color: #000;
+	background: none;
+}
+#nav .sub-menu .sub-menu {
+	left: 97%;
+	width: 100%;
+	top: 5px;
+	bottom: 0;
+	background: #fff;
+	display: none !important;
+	border: 1px #f40 solid;
+	border-left: 0 none;
+}
+#nav .sub-menu .sub-menu li {
+	/*
+	display: inline-block;
+	width: 26%;
+	*/
+	border: 0 none;
+	font-size: 13px;
+	line-height: 30px;
+}
+#nav .sub-menu a { }
+#nav li:hover .sub-menu { display: block; }
+#nav .sub-menu li:hover .sub-menu { display: block !important; }
+.nav-about { font-size: 14px; }
+.nav-about li {
+	float: left;
+	position: relative;
+}
+.nav-about a {
+	display: block;
+	padding: 0 15px;
+	color: #fff;
+}
+.nav-about a:hover { background: rgba( 255, 255, 255, .2 ); }
+.nav-about .sub-menu {
+	display: none;
+	position: absolute;
+	background: #fff;
+	line-height: 19px;
+	min-width: 200px;
+	z-index: 1;
+	font-size: 13px;
+}
+.nav-about li:hover .sub-menu { display: block; }
+.nav-about .sub-menu .sub-menu { display: none !important; }
+.nav-about .sub-menu li { float: none; }
+.nav-about .sub-menu a {
+	color: #000;
+	padding: 5px 15px;
+}
+.nav-about .sub-menu a:hover { background: rgba( 0, 0, 0, .2 ); }
+.top-nav { line-height: 40px; }
+.ebfixed-top-menu .top-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 99;
+}
+.ebfixed-top-menu .show-if-scroll { display: block; }
