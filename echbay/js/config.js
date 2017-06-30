@@ -309,6 +309,8 @@ show_note_for_checkbox_config( 'cf_on_off_amp_product' );
 show_note_for_checkbox_config( 'cf_on_off_amp_blogs' );
 show_note_for_checkbox_config( 'cf_on_off_amp_blog' );
 show_note_for_checkbox_config( 'cf_on_off_auto_update_wp' );
+show_note_for_checkbox_config( 'cf_using_top_default' );
+show_note_for_checkbox_config( 'cf_using_footer_default' );
 
 
 
