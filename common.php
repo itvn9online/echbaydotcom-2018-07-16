@@ -109,6 +109,11 @@ $arr_includes_footer_file = array();
 if ( $__cf_row['cf_using_top_default'] == 1 ) {
 //	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/top_default.css' ] = 1;
 	include EB_THEME_PLUGIN_INDEX . 'top_default.php';
+	
+	//
+	foreach ( $arr_includes_top_file as $v ) {
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/' . str_replace( '.php', '.css', basename( $v ) ) ] = 1;
+	}
 }
 if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/footer_default.css' ] = 1;

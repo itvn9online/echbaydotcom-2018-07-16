@@ -11,9 +11,3 @@
 		</div>
 	</div>
 </div>
-<?php
-
-
-$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/top3-1.css' ] = 1;
-
-
