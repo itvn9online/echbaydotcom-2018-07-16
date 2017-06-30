@@ -1,0 +1,88 @@
+.footer-title {
+	font-weight: bold;
+	margin-bottom: 10px;
+	font-size: 16px;
+	position: relative;
+	padding-bottom: 12px;
+}
+.footer-title:before {
+	position: absolute;
+	border-bottom: 1px solid #bfa733;
+	left: 0;
+	width: 100px;
+	content: "";
+	bottom: 0;
+}
+.bottom-node a,
+.bottom-contact a,
+.bottom-nav a { }
+.bottom-node a:before,
+.bottom-contact a:before {
+	content: "\f0da";
+	font-family: FontAwesome;
+	color: #f90;
+	display: inline-block;
+	margin-right: 5px;
+}
+.bottom-nav li { display: inline-block; }
+.bottom-slogan {
+	background: #fafbfc;
+	border-top: 2px #f40 solid;
+}
+.bottom-slogan ul { border-right: 1px #e5e5e5 solid; }
+.bottom-slogan li {
+	float: left;
+	width: 25%;
+	position: relative;
+}
+.bottom-slogan li div {
+	padding: 25px 0 25px 75px;
+	border-left: 1px #e5e5e5 solid;
+}
+.bottom-slogan i {
+	position: absolute;
+	left: 25px;
+	font-size: 40px;
+	line-height: 40px;
+	color: #f40;
+}
+.site-footer-inner {
+	font-size: 13px;
+	padding-top: 70px;
+}
+.site-footer-inner,
+.site-footer-inner a { color: #888e98; }
+hr.one-line {
+	height: 1px;
+	padding: 0;
+	margin: 5px 0;
+	border: 0 none;
+	border-bottom: 1px #ccc solid;
+}
+hr.orgborder { border-color: #F90; }
+.footer-site-info {
+	background-color: #161618;
+	padding: 12px 0;
+}
+.footer-site-info,
+.footer-site-info a { color: #888e98; }
+.footer-social li {
+	background: #666;
+	float: left;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 50%;
+	margin: 0 10px 10px 0;
+}
+/*
+li.footer-social-fb { background-color: #3A589B; }
+li.footer-social-tw { background-color: #25AAE1; }
+li.footer-social-yt { background-color: #CA3737; }
+li.footer-social-gg { background-color: #DE4B39; }
+*/
+.footer-social a {
+	font-size: 20px;
+	color: #fff;
+}
+.footer-social a:hover { opacity: .6; }

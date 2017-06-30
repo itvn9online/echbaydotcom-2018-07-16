@@ -101,6 +101,14 @@ $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/default.css' ] = 1;
 $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/mobile.css' ] = 1;
 $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/guest.css' ] = 1;
 
+// Nạp CSS mặc định cho top và footer
+if ( $__cf_row['cf_using_top_default'] == 1 ) {
+	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/top_default.css' ] = 1;
+}
+if ( $__cf_row['cf_using_footer_default'] == 1 ) {
+	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/footer_default.css' ] = 1;
+}
+
 $arr_for_add_theme_css[ EB_THEME_THEME . 'css/style.css' ] = 1;
 // css phục vụ việc điều chỉnh kích thước LI
 $arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
