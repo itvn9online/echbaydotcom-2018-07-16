@@ -576,7 +576,7 @@ for ( $i = 1; $i < 10; $i++ ) {
 	$j = 'top' . $i;
 	if ( isset( $__cf_row_default[ 'cf_' . $j . '_include_file' ] ) ) {
 		$arr_top_include_file[ $j ] = array(
-			'' => 'Chọn file cho phần ' . $j
+			'' => 'Chọn file thiết kế cho phần ' . $j
 		);
 	} else {
 		break;
