@@ -2988,6 +2988,14 @@ function _eb_text_only($str = '') {
 
 
 
+function EBE_get_file_in_folder($open_folder, $type = '', $brace = '') {
+	if ($brace != '') {
+		$arr = glob ( $open_folder . $brace, GLOB_BRACE );
+	} else {
+		$arr = glob ( $open_folder . '*' );
+	}
+}
+
 function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0) {
 //		echo $dir . '<br>'; exit();
 	

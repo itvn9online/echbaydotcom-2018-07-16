@@ -312,6 +312,33 @@ show_note_for_checkbox_config( 'cf_on_off_auto_update_wp' );
 show_note_for_checkbox_config( 'cf_using_top_default' );
 show_note_for_checkbox_config( 'cf_using_footer_default' );
 
+//
+$('#cf_using_top_default').click(function () {
+	if ( dog('cf_using_top_default').checked == true ) {
+		$('.show-if-using-top-default').show();
+	} else {
+		$('.show-if-using-top-default').hide();
+	}
+});
+if ( dog('cf_using_top_default').checked == true ) {
+	$('.show-if-using-top-default').show();
+} else {
+	$('.show-if-using-top-default').hide();
+}
+
+$('#cf_using_footer_default').click(function () {
+	if ( dog('cf_using_footer_default').checked == true ) {
+		$('.show-if-using-footer-default').show();
+	} else {
+		$('.show-if-using-footer-default').hide();
+	}
+});
+if ( dog('cf_using_footer_default').checked == true ) {
+	$('.show-if-using-footer-default').show();
+} else {
+	$('.show-if-using-footer-default').hide();
+}
+
 
 
 
