@@ -241,8 +241,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	border-color: #999;
 	border-right: 3px #c00 solid;
 	opacity: 1;
-	padding: 0;
-	background-size: 100% auto;
+	padding: 1px;
+	background-size: 99.8% auto;
 }
 .preview-in-ebdesign label {
 	position: absolute;
