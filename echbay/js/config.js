@@ -340,6 +340,25 @@ if ( dog('cf_using_footer_default').checked == true ) {
 }
 
 
+// Căn chỉnh lại size cho phần chọn thiết kế
+$('.preview-in-ebdesign').each(function(index, element) {
+	var a = $(this).attr('data-size') || '';
+	if ( a != '' ) {
+		$(this).height( $(this).width() * eval(a) );
+	}
+});
+
+
+// đổi hiệu ứng slected khi người dụng chọn design
+$('.click-add-class-selected').click(function () {
+	var a = $(this).attr('data-key') || '';
+	if ( a != '' ) {
+		$('.click-add-class-selected[data-key="' + a + '"]').removeClass('selected');
+		$(this).addClass('selected');
+	}
+});
+
+
 
 
 

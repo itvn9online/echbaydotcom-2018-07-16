@@ -162,7 +162,7 @@ $__cf_row_default = array(
 	
 	'cf_sys_email' => 0,
 	
-	'cf_logo' => EB_URL_TUONG_DOI . 'logo.png',
+	'cf_logo' => EB_URL_TUONG_DOI . 'images-global/echbay-wp-logo.png',
 	'cf_favicon' => eb_default_vaficon,
 	
 	'cf_ten_cty' => '',

@@ -1,6 +1,4 @@
-<div class="eb-footer">
-	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>"><?php echo _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0, 1 ); ?></div>
-</div>
+<div class="eb-footer"><?php echo _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0, 1 ); ?></div>
 <?php
 // footer menu dưới dạng widget
 //$eb_footer_widget = _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0, 1 );
@@ -179,6 +177,7 @@ echo $__cf_row['cf_js_allpage'];
 if ( eb_code_tester == true ) {
 	echo implode( "\n", $arr_for_show_html_file_load );
 }
+
 
 
 

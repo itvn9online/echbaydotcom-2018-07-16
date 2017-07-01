@@ -629,8 +629,25 @@ function EBE_config_load_top_footer_include ( $type = 'top' ) {
 				$ck = ' checked="checked"';
 			}
 			
+			// kiểm tra và lấy hình nền nếu có
+			$bg = '';
+			$css_class = '';
+			if ( $val != '' ) {
+				$bg_file = EB_THEME_PLUGIN_INDEX . 'images-global/design/' . str_replace( '.php', '.jpg', $val );
+				if ( file_exists( $bg_file ) ) {
+					$css_class = 'preview-in-ebdesign';
+					if ( $ck != '' ) {
+						$css_class .= ' selected';
+					}
+					
+					$file_info = getimagesize( $bg_file );
+					
+					$bg = ' data-size="' . $file_info[1] . '/' . $file_info[0] . '" style="height: ' . $file_info[1] . 'px;background-image:url(\'' . str_replace( EB_THEME_PLUGIN_INDEX, EB_URL_OF_PLUGIN, $bg_file ) . '\');"';
+				}
+			}
+			
 			$str_top_include_file .= '
-			<div data-val="' . $val . '" title="' . $text . '">
+			<div data-key="' . $k . '" data-val="' . $val . '" title="' . $text . '" class="click-add-class-selected ' . $css_class . '" ' . $bg . '>
 				<input type="radio" name="' . $label_name . '" id="' .$label_id. '" value="' .$val. '" ' . $ck . '>
 				<label for="' .$label_id. '">' .$text. '</label>
 			</div>';
