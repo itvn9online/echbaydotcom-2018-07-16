@@ -2,6 +2,30 @@
 
 
 
+function EBE_widget_categories_get_child( $term_id, $cat_type, $show_count, $widget_id ) {
+	$arrs_child_cats = get_categories( array(
+		'taxonomy' => $cat_type,
+		'parent' => $term_id,
+	) );
+//	print_r($arrs_child_cats);
+	
+	if ( count( $arrs_child_cats ) > 0 ) {
+		echo '<ul class="sub-menu">';
+		
+		foreach ( $arrs_child_cats as $v2 ) {
+			$hien_thi_sl = '';
+			if ( $show_count == 'on' ) {
+				$hien_thi_sl = ' (' . $v->count . ')';
+			}
+			
+			echo '<li class="cat-item cat-item-' . $v2->term_id . '"><a data-taxonomy="' . $cat_type . '" data-id="' . $v2->term_id . '" data-parent="' . $term_id . '" data-node-id="' . $widget_id . '" title="' . $v2->name . '" href="' . _eb_c_link( $v2->term_id ) . '" >' . $v2->name . '</a></li>';
+		}
+		
+		echo '</ul>';
+	}
+}
+
+
 
 /*
 * Widget danh mục sản phẩm hiện tại đang xem
@@ -24,6 +48,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			'cat_status' => 0,
 			'cat_type' => 'category',
 			'list_tyle' => '',
+			'get_child' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -96,18 +121,21 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		$input_name = $this->get_field_name ( 'show_count' );
 //		echo $instance[ 'show_count' ];
 		
-		echo '<p><input type="checkbox" class="checkbox" id="' . $input_name . '" name="' . $input_name . '" ';
-		checked( $instance[ 'show_count' ], 'on' );
-		echo '><label for="' . $input_name . '">Hiện số bài viết</label></p>';
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'show_count' ], 'Hiện số bài viết' );
 		
 		
 		//
 		$input_name = $this->get_field_name ( 'list_tyle' );
-//		echo $instance[ 'show_count' ];
+//		echo $instance[ 'list_tyle' ];
 		
-		echo '<p><input type="checkbox" class="checkbox" id="' . $input_name . '" name="' . $input_name . '" ';
-		checked( $instance[ 'list_tyle' ], 'on' );
-		echo '><label for="' . $input_name . '">Hiển thị dưới dạng Select Box</label></p>';
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'list_tyle' ], 'Hiển thị dưới dạng Select Box' );
+		
+		
+		//
+		$input_name = $this->get_field_name ( 'get_child' );
+//		echo $instance[ 'get_child' ];
+		
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'get_child' ], 'Lấy danh sách nhóm con' );
 		
 	}
 	
@@ -124,14 +152,20 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		extract ( $args );
 		
 		$title = apply_filters ( 'widget_title', $instance ['title'] );
+		
 		$show_count = isset( $instance ['show_count'] ) ? $instance ['show_count'] : 'off';
 //		echo $show_count;
 		$show_count = $show_count == 'on' ? true : false;
+		
 		$cat_ids = isset( $instance ['cat_ids'] ) ? $instance ['cat_ids'] : 0;
 		$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : 'category';
 		$cat_status = isset( $instance ['cat_status'] ) ? $instance ['cat_status'] : 0;
+		
 		$list_tyle = isset( $instance ['list_tyle'] ) ? $instance ['list_tyle'] : 'off';
 		$list_tyle = $list_tyle == 'on' ? 'widget-category-selectbox' : '';
+		
+		$get_child = isset( $instance ['get_child'] ) ? $instance ['get_child'] : 'off';
+		$get_child = $get_child == 'on' ? true : false;
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
@@ -164,7 +198,14 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 					}
 					
 					//
-					echo '<li class="cat-item cat-item-' . $v->term_id . '"><a data-taxonomy="' . $v->taxonomy . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a></li>';
+					echo '<li class="cat-item cat-item-' . $v->term_id . '"><a data-taxonomy="' . $v->taxonomy . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>';
+					
+					//
+					if ( $get_child == true ) {
+						EBE_widget_categories_get_child( $v->term_id, $cat_type, $show_count, $this->id );
+					}
+					
+					echo '</li>';
 				}
 			}
 		}
@@ -177,7 +218,14 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 				}
 				
 				//
-				echo '<li class="cat-item cat-item-' . $v->term_id . '"><a data-taxonomy="' . $v->taxonomy . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a></li>';
+				echo '<li class="cat-item cat-item-' . $v->term_id . '"><a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>';
+				
+				//
+				if ( $get_child == true ) {
+					EBE_widget_categories_get_child( $v->term_id, $cat_type, $show_count, $this->id );
+				}
+				
+				echo '</li>';
 			}
 		}
 		

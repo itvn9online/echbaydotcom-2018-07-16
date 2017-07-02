@@ -296,6 +296,9 @@ $__cf_row_default = array(
 	'cf_footer2_include_file' => '',
 	'cf_footer3_include_file' => '',
 	
+	// khung sản phẩm
+	'cf_thread_node_include_file' => '',
+	
 	
 	// danh sách tin -> tổng quan
 	'cf_home_class_style' => '',

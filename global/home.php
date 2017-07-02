@@ -16,6 +16,14 @@ $id_for_get_sidebar = 'home_sidebar';
 
 
 
+//
+$str_big_banner = EBE_get_big_banner( 5, array(
+	'category__not_in' => '',
+) );
+
+
+
+
 // cache
 /*
 $strCacheFilter = 'home';
@@ -97,14 +105,6 @@ if ($main_content == false) {
 
 // loại bỏ chức năng bỏ qua sản phẩm đã lấy, để custom code còn hoạt động được
 $___eb_post__not_in = '';
-
-
-
-
-//
-$str_big_banner = EBE_get_big_banner( 5, array(
-	'category__not_in' => '',
-) );
 
 
 

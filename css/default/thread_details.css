@@ -79,6 +79,7 @@
 .thread-details-tab {
 	line-height: 35px;
 	border-bottom: 2px #333 solid;
+	margin-bottom: 19px;
 }
 .thread-details-tab,
 .thread-details-tab a { color: #333; }

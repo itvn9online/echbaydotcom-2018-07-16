@@ -47,11 +47,10 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		
 		//
 		$input_name = $this->get_field_name ( 'list_tyle' );
-//		echo $instance[ 'show_count' ];
+//		echo $instance[ 'list_tyle' ];
 		
-		echo '<p><input type="checkbox" class="checkbox" id="' . $input_name . '" name="' . $input_name . '" ';
-		checked( $instance[ 'list_tyle' ], 'on' );
-		echo '><label for="' . $input_name . '">Hiển thị dưới dạng Select Box</label></p>';
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'list_tyle' ], 'Hiển thị dưới dạng Select Box' );
+		
 	}
 	
 	function update($new_instance, $old_instance) {

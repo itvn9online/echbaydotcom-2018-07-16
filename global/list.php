@@ -38,6 +38,13 @@ $id_for_get_sidebar = 'category_sidebar';
 
 
 
+//
+$str_big_banner = EBE_get_big_banner( 5, array(
+	'category__in' => '',
+) );
+
+
+
 // Chỉ nhận bài viết với định dạng được hỗ trợ
 if ( $switch_taxonomy != '' ) {
 	
@@ -477,13 +484,6 @@ else {
 
 // loại bỏ chức năng bỏ qua sản phẩm đã lấy, để custom code còn hoạt động được
 $___eb_post__not_in = '';
-
-
-
-//
-$str_big_banner = EBE_get_big_banner( 5, array(
-	'category__in' => '',
-) );
 
 
 
