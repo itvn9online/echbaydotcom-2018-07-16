@@ -1,0 +1,207 @@
+<br>
+<div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">{tmp.config_module_name}</a></div>
+<p class="show-if-module-config_theme l19">* Tùy theo thiết kế của theme là chiều rộng dạng bo viền, tràn khung hoặc tính theo tỉ lệ phần trăm (tương đối) mà lựa chọn kích thước tiêu chuẩn chung một cách hớp lý nhất.<br>
+	* Giao diện trang mặc định được bố trí với một số bố cục cơ bản để bạn có thể lựa chọn và sử dụng nhiều <a href="{tmp.web_link}wp-admin/widgets.php" target="_blank" class="redcolor"><strong>widget</strong></a> nhất có thể. Trường hợp không tìm được bố cục hợp lý hoặc muốn thiết kế giao diện riêng, vui lòng liên hệ để thuê thiết kế riêng (có thể sẽ mất phí).<br>
+	* Trong mọi trường hợp, widget có tên là <strong>main sidebar</strong> sẽ được gọi ra, nếu widget tương ứng theo từng module không khả dụng<br>
+	<span class="redcolor">* Tính năng chỉ hỗ trợ các giao diện sử dụng trang thiết kế mặc định, các giao diện có thiết kế riêng sẽ không khả dụng.</span></p>
+<ul id="list-tab-eb-admin-config" class="eb-admin-config cf">
+</ul>
+<form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();">
+	<div class="d-none"> </div>
+	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table fix-textarea-height">
+		<tbody title="Chung" id="eb-admin-config-theme-chung" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Chiều rộng khung (chung)</td>
+				<td class="i">{tmp.cf_blog_class_style}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Thiết kế phần TOP</td>
+				<td class="i"><input type="checkbox" name="cf_using_top_default" id="cf_using_top_default" value="{tmp.cf_using_top_default}" />
+					<label for="cf_using_top_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small" style="line-height:19px;">Chọn từng khối thiết kế cho phần TOP hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-top-default border-file-design">{tmp.str_top_design_preview}</div>
+					<div data-key="top" class="change-eb-design-fixed">
+						<div class="change-eb-design-padding">
+							<div align="right">
+								<button type="button" class="cur click-to-exit-design">Đóng [x]</button>
+							</div>
+							<p><em>* Nếu bạn không muốn chọn file thiết kế cho mục này, hãy bẩm chọn ô đầu tiên.</em></p>
+							<div>{tmp.str_top_include_file}</div>
+						</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng top</td>
+				<td class="i">{tmp.cf_top_class_style}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Thiết kế phần FOOTER</td>
+				<td class="i"><input type="checkbox" name="cf_using_footer_default" id="cf_using_footer_default" value="{tmp.cf_using_footer_default}" />
+					<label for="cf_using_footer_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small" style="line-height:19px;">Chọn từng khối thiết kế cho phần FOOTER hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-footer-default border-file-design">{tmp.str_footer_design_preview}</div>
+					<div data-key="footer" class="change-eb-design-fixed">
+						<div class="change-eb-design-padding">
+							<div align="right">
+								<button type="button" class="cur click-to-exit-design">Đóng [x]</button>
+							</div>
+							<p><em>* Nếu bạn không muốn chọn file thiết kế cho mục này, hãy bẩm chọn ô đầu tiên.</em></p>
+							<div>{tmp.str_footer_include_file}</div>
+						</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng footer</td>
+				<td class="i">{tmp.cf_footer_class_style}</td>
+			</tr>
+		</tbody>
+		<tbody title="Trang chủ (Home)" id="eb-admin-config-theme-home" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>home sidebar</li>
+						<li>home content sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_home_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang chủ</td>
+				<td class="i">{tmp.cf_home_column_style}</td>
+			</tr>
+		</tbody>
+		<tbody title="Danh sách sản phẩm (Category)" id="eb-admin-config-theme-list" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>category sidebar</li>
+						<li>category content sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_cats_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang danh sách sản phẩm</td>
+				<td class="i">{tmp.cf_cats_column_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục chỉ mục sản phẩm (node)</td>
+				<td class="i">{tmp.cf_cats_node_html}</td>
+			</tr>
+			<tr>
+				<td class="t">Số sản phẩm trên mỗi dòng</td>
+				<td class="i">{tmp.cf_cats_num_line}</td>
+			</tr>
+		</tbody>
+		<tbody title="Chi tiết sản phẩm (Post)" id="eb-admin-config-theme-details" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>post sidebar</li>
+						<li>post content sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_post_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang chi tiết sản phẩm</td>
+				<td class="i">{tmp.cf_post_column_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục sản phẩm liên quan (node)</td>
+				<td class="i">{tmp.cf_post_node_html}</td>
+			</tr>
+		</tbody>
+		<tbody title="Blog/ Tin tức" id="eb-admin-config-theme-blog" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>blog sidebar</li>
+						<li>blog content sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_blogs_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang danh sách tin</td>
+				<td class="i">{tmp.cf_blogs_column_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục chỉ mục tin (node)</td>
+				<td class="i">{tmp.cf_blogs_node_html}</td>
+			</tr>
+			<tr>
+				<td class="t">Số tin trên mỗi dòng</td>
+				<td class="i">{tmp.cf_blogs_num_line}</td>
+			</tr>
+		</tbody>
+		<tbody title="Chi tiết Blog/ Tin tức" id="eb-admin-config-theme-blog-detais" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>blog details sidebar</li>
+						<li>blog content details sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_blogd_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang chi tiết</td>
+				<td class="i">{tmp.cf_blog_column_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục tin liên quan (node)</td>
+				<td class="i">{tmp.cf_blog_node_html}</td>
+			</tr>
+			<tr>
+				<td class="t">Số tin trên mỗi dòng</td>
+				<td class="i">{tmp.cf_blog_num_line}</td>
+			</tr>
+		</tbody>
+		<tbody title="Trang tĩnh (Page)" id="eb-admin-config-theme-page" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_page_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang riêng (Page)</td>
+				<td class="i">{tmp.cf_page_column_style}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<input type="submit" value="Cập nhật" class="eb-admin-wp-submit" />
+	</div>
+</form>
+<script type="text/javascript">
+{tmp.js}
+</script> 
+<script type="text/javascript" src="{tmp.admin_js_uri}config.js?v={tmp.js_version}"></script> 
+<script type="text/javascript" src="{tmp.admin_js_uri}config_theme.js?v={tmp.js_version}"></script> 

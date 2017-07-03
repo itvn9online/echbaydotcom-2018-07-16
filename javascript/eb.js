@@ -234,6 +234,18 @@ var g_func = {
 		g_func.setc(name, "", -1);
 	},
 	
+	text_only: function(str) {
+		if (typeof str == 'undefined' || str == '') {
+			return '';
+		}
+		str = str.toString().replace(/[^a-zA-Z]/g, '');
+		
+		if (str == '') {
+			return '';
+		}
+		
+		return str;
+	},
 	number_only: function(str) {
 		if (typeof str == 'undefined' || str == '') {
 			return 0;

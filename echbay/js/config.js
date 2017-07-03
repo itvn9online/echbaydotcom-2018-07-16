@@ -58,6 +58,10 @@ function xu_ly_du_lieu_js(fun) {
 	return str;
 }
 
+function check_update_config_theme () {
+	return true;
+}
+
 function check_update_config() {
 	
 	var f = document.frm_config;
@@ -99,6 +103,7 @@ function check_update_config() {
 	create_deault_css();
 	
 	//
+//	return false;
 	return true;
 }
 
@@ -297,66 +302,22 @@ function show_note_for_checkbox_config ( key ) {
 	click_on_off_eb_cf_json( key, $('#' + key).val() );
 }
 
-show_note_for_checkbox_config( 'cf_tester_mode' );
-show_note_for_checkbox_config( 'cf_on_off_json' );
-show_note_for_checkbox_config( 'cf_remove_category_base' );
-show_note_for_checkbox_config( 'cf_on_off_echbay_seo' );
-show_note_for_checkbox_config( 'cf_on_off_echbay_logo' );
 
-show_note_for_checkbox_config( 'cf_on_off_amp_logo' );
-show_note_for_checkbox_config( 'cf_on_off_amp_category' );
-show_note_for_checkbox_config( 'cf_on_off_amp_product' );
-show_note_for_checkbox_config( 'cf_on_off_amp_blogs' );
-show_note_for_checkbox_config( 'cf_on_off_amp_blog' );
-show_note_for_checkbox_config( 'cf_on_off_auto_update_wp' );
-show_note_for_checkbox_config( 'cf_using_top_default' );
-show_note_for_checkbox_config( 'cf_using_footer_default' );
-
-//
-$('#cf_using_top_default').click(function () {
-	if ( dog('cf_using_top_default').checked == true ) {
-		$('.show-if-using-top-default').show();
-	} else {
-		$('.show-if-using-top-default').hide();
-	}
-});
-if ( dog('cf_using_top_default').checked == true ) {
-	$('.show-if-using-top-default').show();
-} else {
-	$('.show-if-using-top-default').hide();
+// config
+if ( current_module_config != 'config_theme' ) {
+	show_note_for_checkbox_config( 'cf_tester_mode' );
+	show_note_for_checkbox_config( 'cf_on_off_json' );
+	show_note_for_checkbox_config( 'cf_remove_category_base' );
+	show_note_for_checkbox_config( 'cf_on_off_echbay_seo' );
+	show_note_for_checkbox_config( 'cf_on_off_echbay_logo' );
+	
+	show_note_for_checkbox_config( 'cf_on_off_amp_logo' );
+	show_note_for_checkbox_config( 'cf_on_off_amp_category' );
+	show_note_for_checkbox_config( 'cf_on_off_amp_product' );
+	show_note_for_checkbox_config( 'cf_on_off_amp_blogs' );
+	show_note_for_checkbox_config( 'cf_on_off_amp_blog' );
+	show_note_for_checkbox_config( 'cf_on_off_auto_update_wp' );
 }
-
-$('#cf_using_footer_default').click(function () {
-	if ( dog('cf_using_footer_default').checked == true ) {
-		$('.show-if-using-footer-default').show();
-	} else {
-		$('.show-if-using-footer-default').hide();
-	}
-});
-if ( dog('cf_using_footer_default').checked == true ) {
-	$('.show-if-using-footer-default').show();
-} else {
-	$('.show-if-using-footer-default').hide();
-}
-
-
-// Căn chỉnh lại size cho phần chọn thiết kế
-$('.preview-in-ebdesign').each(function(index, element) {
-	var a = $(this).attr('data-size') || '';
-	if ( a != '' ) {
-		$(this).height( $(this).width() * eval(a) );
-	}
-});
-
-
-// đổi hiệu ứng slected khi người dụng chọn design
-$('.click-add-class-selected').click(function () {
-	var a = $(this).attr('data-key') || '';
-	if ( a != '' ) {
-		$('.click-add-class-selected[data-key="' + a + '"]').removeClass('selected');
-		$(this).addClass('selected');
-	}
-});
 
 
 

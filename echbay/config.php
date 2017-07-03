@@ -383,7 +383,7 @@ foreach ( $arr_file_for_lang as $v ) {
 
 
 //
-$main_content = EBE_str_template( 'html/config.html', array(
+$main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	'tmp.js' => 'var cf_timezone="' . $__cf_row['cf_timezone'] . '",current_module_config="' . $include_page . '";',
 	
 	'tmp.config_module_name' => $include_page == 'config_theme' ? 'Cài đặt giao diện' : 'Cấu hình Website',
@@ -572,6 +572,9 @@ function EBE_config_load_top_footer_include ( $type = 'top' ) {
 	global $__cf_row_default;
 	global $__cf_row;
 	
+	//
+	$str_top_design_preview = '';
+	
 	$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . $type . '/*.{php}', GLOB_BRACE );
 //	print_r( $arr_file_name );
 	
@@ -616,7 +619,7 @@ function EBE_config_load_top_footer_include ( $type = 'top' ) {
 			$label_id = $label_name . $i;
 			
 			if ( $k2 == '' ) {
-				$str_top_include_file .= '<hr>';
+//				$str_top_include_file .= '<hr>';
 				$val = '';
 				$text = '[' . $v2 . ']';
 			} else {
@@ -632,22 +635,28 @@ function EBE_config_load_top_footer_include ( $type = 'top' ) {
 			// kiểm tra và lấy hình nền nếu có
 			$bg = '';
 			$css_class = '';
+			$img = '';
 			if ( $val != '' ) {
 				$bg_file = EB_THEME_PLUGIN_INDEX . 'images-global/design/' . str_replace( '.php', '.jpg', $val );
 				if ( file_exists( $bg_file ) ) {
-					$css_class = 'preview-in-ebdesign';
-					if ( $ck != '' ) {
-						$css_class .= ' selected';
-					}
-					
 					$file_info = getimagesize( $bg_file );
 					
-					$bg = ' data-size="' . $file_info[1] . '/' . $file_info[0] . '" style="height: ' . $file_info[1] . 'px;background-image:url(\'' . str_replace( EB_THEME_PLUGIN_INDEX, EB_URL_OF_PLUGIN, $bg_file ) . '\');"';
+					$img = str_replace( EB_THEME_PLUGIN_INDEX, EB_URL_OF_PLUGIN, $bg_file );
+					
+					$css_class = 'preview-bg-ebdesign';
+					if ( $ck != '' ) {
+						$css_class .= ' selected';
+						
+//						$str_top_design_preview .= '<div title="Click to change design" data-key="' . $k . '" data-size="' . $file_info[1] . '/' . $file_info[0] . '" class="click-to-change-file-design preview-file-design" style="background-image:url(\'' . $img . '\');">&nbsp;</div>';
+//						echo $bg_file;
+					}
+					
+					$bg = ' data-size="' . $file_info[1] . '/' . $file_info[0] . '" style="height: ' . $file_info[1] . 'px;background-image:url(\'' . $img . '\');"';
 				}
 			}
 			
 			$str_top_include_file .= '
-			<div data-key="' . $k . '" data-val="' . $val . '" title="' . $text . '" class="click-add-class-selected ' . $css_class . '" ' . $bg . '>
+			<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>
 				<input type="radio" name="' . $label_name . '" id="' .$label_id. '" value="' .$val. '" ' . $ck . '>
 				<label for="' .$label_id. '">' .$text. '</label>
 			</div>';
@@ -657,12 +666,45 @@ function EBE_config_load_top_footer_include ( $type = 'top' ) {
 	}
 //	echo $str_top_include_file;
 	
+	/*
+	return array(
+		'list' => $str_top_include_file,
+		'preview' => $str_top_design_preview
+	);
+	*/
+	
 	return $str_top_include_file;
 	
 }
 
+//
+/*
+$arr_design_preview = EBE_config_load_top_footer_include();
+$arr_for_set_template['str_top_include_file'] = $arr_design_preview['list'];
+$arr_for_set_template['str_top_design_preview'] = $arr_design_preview['preview'];
+*/
+
 $arr_for_set_template['str_top_include_file'] = EBE_config_load_top_footer_include();
+$str_top_design_preview = '';
+for ( $i = 1; $i < 4; $i++ ) {
+	$str_top_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="top' . $i . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+}
+$arr_for_set_template['str_top_design_preview'] = $str_top_design_preview;
+
+
+//
+/*
+$arr_design_preview = EBE_config_load_top_footer_include('footer');
+$arr_for_set_template['str_footer_include_file'] = $arr_design_preview['list'];
+$arr_for_set_template['str_footer_design_preview'] = $arr_design_preview['preview'];
+*/
+
 $arr_for_set_template['str_footer_include_file'] = EBE_config_load_top_footer_include('footer');
+$str_footer_design_preview = '';
+for ( $i = 1; $i < 4; $i++ ) {
+	$str_footer_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="footer' . $i . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+}
+$arr_for_set_template['str_footer_design_preview'] = $str_footer_design_preview;
 
 
 

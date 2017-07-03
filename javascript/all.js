@@ -818,6 +818,11 @@ function auto_get_user_position ( current_position ) {
 		return false;
 	}
 	
+	if ( dog('mapholder') == null ) {
+		console.log('mapholder not found');
+		return false;
+	}
+	
 	var f = document.frm_config;
 	
 	//
