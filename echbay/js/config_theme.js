@@ -100,8 +100,8 @@ $(document).keydown(function(e) {
 $('.click-to-change-file-design').click(function () {
 	var key = $(this).attr('data-key') || '',
 		text = g_func.text_only(key);
-	console.log(key);
-	console.log(text);
+//	console.log(key);
+//	console.log(text);
 	
 	$('.change-eb-design-fixed').hide();
 	$('.change-eb-design-fixed[data-key="' + text + '"]').show();

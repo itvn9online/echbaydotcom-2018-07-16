@@ -269,13 +269,12 @@ input[id="_eb_category_order"] { width: 90px; }
 	font-style: italic;
 	color: #999;
 	overflow: hidden;
-	background: #fff left no-repeat;
+	background: #fff center no-repeat;
 	background-size: auto 100%;
 	cursor: pointer;
 	font-size: 13px;
 }
 .preview-file-design:hover {
-	background-position: center;
 	-moz-transition: all 0.2s ease;
 	-o-transition: all 0.2s ease;
 	-webkit-transition: all 0.2s ease;

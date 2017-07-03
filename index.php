@@ -168,28 +168,31 @@ include EB_THEME_CORE . 'database.php';
 
 
 // cáu trúc chính của trang sản phẩm
-//define( '__eb_thread_template', file_get_contents( EB_THEME_HTML . 'thread_node.html', 1 ) );
+//define( '__eb_thread_template', file_get_contents( EB_THEME_HTML . 'threadnode.html', 1 ) );
 
 // Nếu có chọn file thiết kế -> sử dụng nguyên mẫu
-if ( $__cf_row['cf_thread_node_include_file'] != '' ) {
-	$inc_thread_node = EB_THEME_PLUGIN_INDEX . 'thread_node/' . $__cf_row['cf_thread_node_include_file'];
+if ( $__cf_row['cf_threadnode_include_file'] != '' ) {
+	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'threadnode/' . $__cf_row['cf_threadnode_include_file'];
 	
-	if ( file_exists($inc_thread_node) ) {
-		$arr_for_show_html_file_load[] = '<!-- config HTML: ' . $__cf_row['cf_thread_node_include_file'] . ' -->';
+	if ( file_exists($inc_threadnode) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML: ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
 		
-		define( '__eb_thread_template', file_get_contents( $inc_thread_node, 1 ) );
+		define( '__eb_thread_template', file_get_contents( $inc_threadnode, 1 ) );
 		
 		// dùng chung thì gán CSS dùng chung luôn (nếu có)
-		$css_thread_node = EB_THEME_PLUGIN_INDEX . 'css/' . str_replace( '.html', '.css', $__cf_row['cf_thread_node_include_file'] );
-//		echo $css_thread_node;
-		if ( file_exists( $css_thread_node ) ) {
-			$arr_for_add_theme_css[ $css_thread_node ] = 1;
+		/*
+		$css_threadnode = EB_THEME_PLUGIN_INDEX . 'css/' . str_replace( '.html', '.css', $__cf_row['cf_threadnode_include_file'] );
+//		echo $css_threadnode;
+		if ( file_exists( $css_threadnode ) ) {
+			$arr_for_add_theme_css[ $css_threadnode ] = 1;
 			
-			$arr_for_show_html_file_load[] = '<!-- config CSS: ' . $__cf_row['cf_thread_node_include_file'] . ' -->';
+			$arr_for_show_html_file_load[] = '<!-- config CSS: ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
 		}
+		*/
+		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row['cf_threadnode_include_file'] ) ] = 1;
 	}
 	else {
-		define( '__eb_thread_template', 'File ' . $inc_thread_node . ' not exist' );
+		define( '__eb_thread_template', 'File ' . $inc_threadnode . ' not exist' );
 	}
 }
 else {

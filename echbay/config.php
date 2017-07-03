@@ -388,7 +388,8 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	
 	'tmp.config_module_name' => $include_page == 'config_theme' ? 'Cài đặt giao diện' : 'Cấu hình Website',
 	'tmp.include_page' => $include_page,
-	'tmp.js_version' => date( 'Ymd-His', filemtime( ECHBAY_PRI_CODE . 'js/config.js' ) ),
+//	'tmp.js_version' => date( 'Ymd-His', filemtime( ECHBAY_PRI_CODE . 'js/config.js' ) ),
+	'tmp.js_version' => time(),
 	
 //	'tmp.ex_dns_prefetch' => $_SERVER['HTTP_HOST'],
 	'tmp.timezone_wp_full' => $timezone_wp_full,
@@ -568,14 +569,14 @@ $arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_conf
 
 
 // load danh sách file TOP, FOOTER
-function EBE_config_load_top_footer_include ( $type = 'top' ) {
+function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php' ) {
 	global $__cf_row_default;
 	global $__cf_row;
 	
 	//
 	$str_top_design_preview = '';
 	
-	$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . $type . '/*.{php}', GLOB_BRACE );
+	$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . $type . '/*.{' . substr( $file_type, 1 ) . '}', GLOB_BRACE );
 //	print_r( $arr_file_name );
 	
 	$arr_top_include_file = array();
@@ -586,6 +587,11 @@ function EBE_config_load_top_footer_include ( $type = 'top' ) {
 				'' => 'Chọn file thiết kế cho phần ' . $j
 			);
 		} else {
+			if ( isset( $__cf_row_default[ 'cf_' . $type . '_include_file' ] ) ) {
+				$arr_top_include_file[ $type ] = array(
+					'' => 'Chọn file thiết kế cho phần ' . $type
+				);
+			}
 			break;
 		}
 	}
@@ -595,7 +601,11 @@ function EBE_config_load_top_footer_include ( $type = 'top' ) {
 		$node = explode( '-', $v );
 //		print_r( $node );
 //		$node = $node[0];
-		$node = str_replace( '.php', '', $node[1] );
+		if ( count( $node ) == 1 ) {
+			$node = str_replace( '_', '', $type );
+		} else {
+			$node = str_replace( $file_type, '', $node[1] );
+		}
 //		echo $node . "\n";
 		
 		//
@@ -624,7 +634,7 @@ function EBE_config_load_top_footer_include ( $type = 'top' ) {
 				$text = '[' . $v2 . ']';
 			} else {
 				$val = $k2;
-				$text = 'Mẫu #' . str_replace( '.php', '', $k2 );
+				$text = 'Mẫu #' . str_replace( $file_type, '', $k2 );
 			}
 			
 			$ck = '';
@@ -637,7 +647,7 @@ function EBE_config_load_top_footer_include ( $type = 'top' ) {
 			$css_class = '';
 			$img = '';
 			if ( $val != '' ) {
-				$bg_file = EB_THEME_PLUGIN_INDEX . 'images-global/design/' . str_replace( '.php', '.jpg', $val );
+				$bg_file = EB_THEME_PLUGIN_INDEX . 'images-global/design/' . str_replace( $file_type, '.jpg', $val );
 				if ( file_exists( $bg_file ) ) {
 					$file_info = getimagesize( $bg_file );
 					
@@ -705,6 +715,16 @@ for ( $i = 1; $i < 4; $i++ ) {
 	$str_footer_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="footer' . $i . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
 }
 $arr_for_set_template['str_footer_design_preview'] = $str_footer_design_preview;
+
+
+
+
+//
+$arr_for_set_template['str_threadnode_include_file'] = EBE_config_load_top_footer_include('threadnode', '.html');
+
+$str_threadnode_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="threadnode" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+
+$arr_for_set_template['str_threadnode_design_preview'] = $str_threadnode_design_preview;
 
 
 
