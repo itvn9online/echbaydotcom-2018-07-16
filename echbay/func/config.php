@@ -86,14 +86,6 @@ if ( ! isset( $_POST['cf_on_off_auto_update_wp'] ) || (int) $_POST['cf_on_off_au
 	$_POST['cf_on_off_auto_update_wp'] = 0;
 }
 
-if ( ! isset( $_POST['cf_using_top_default'] ) || (int) $_POST['cf_using_top_default'] != 1 ) {
-	$_POST['cf_using_top_default'] = 0;
-}
-
-if ( ! isset( $_POST['cf_using_footer_default'] ) || (int) $_POST['cf_using_footer_default'] != 1 ) {
-	$_POST['cf_using_footer_default'] = 0;
-}
-
 
 
 
