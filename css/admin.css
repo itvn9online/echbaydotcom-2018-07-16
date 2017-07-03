@@ -267,19 +267,22 @@ input[id="_eb_category_order"] { width: 90px; }
 	line-height: 21px;
 	text-align: center;
 	font-style: italic;
+	color: #999;
 	overflow: hidden;
-	background: #fff center no-repeat;
+	background: #fff left no-repeat;
 	background-size: auto 100%;
 	cursor: pointer;
 	font-size: 13px;
 }
 .preview-file-design:hover {
+	background-position: center;
 	-moz-transition: all 0.2s ease;
 	-o-transition: all 0.2s ease;
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;
-	background-size: auto 90%;
+	background-size: auto 95%;
 	font-size: 11px;
+	color: #000;
 }
 .change-eb-design-fixed {
 	position: fixed;
