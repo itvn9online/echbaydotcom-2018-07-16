@@ -1,3 +1,4 @@
+.thread-list { margin: 0 -10px; }
 .thread-list-padding {
 	background: #fff;
 	margin: 0 10px 20px 10px;
@@ -11,7 +12,7 @@
 	overflow: hidden;
 	height: 70px;
 	width: 70px;
-	top: 8px;
+	top: 0;
 	left: 8px;
 }
 .thread-logo-giamgia div {
@@ -48,7 +49,10 @@
 	font-size: 14px;
 	color: #333;
 }
-.thread-list-gia { line-height: 25px; }
+.thread-list-gia {
+	height: 36px;
+	line-height: 18px;
+}
 .thread-list-gia span {
 	display: inline-block;
 	margin: 0 5px;
@@ -76,3 +80,7 @@
 }
 .thread-list-mua { border-style: solid; }
 .thread-list-more { color: #000; }
+
+@media screen and (max-width:775px) {
+.thread-list { margin: 0; }
+}
