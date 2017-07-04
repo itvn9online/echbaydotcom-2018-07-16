@@ -1,9 +1,10 @@
 .site-footer-inner {
 	font-size: 13px;
 	padding-top: 70px;
+	background: #666;
 }
 .site-footer-inner,
-.site-footer-inner a { color: #888e98; }
+.site-footer-inner a { color: #fff; }
 .footer-title {
 	font-weight: bold;
 	margin-bottom: 10px;
@@ -19,6 +20,7 @@
 	content: "";
 	bottom: 0;
 }
+.bottom-node li { margin-bottom: 8px; }
 .bottom-node a,
 .bottom-contact a,
 .bottom-nav a { }
@@ -30,6 +32,10 @@
 	display: inline-block;
 	margin-right: 5px;
 }
+.bottom-contact li {
+	margin-bottom: 6px;
+	line-height: 19px;
+}
 .bottom-nav li { display: inline-block; }
 hr.one-line {
 	height: 1px;
@@ -39,3 +45,5 @@ hr.one-line {
 	border-bottom: 1px #ccc solid;
 }
 hr.orgborder { border-color: #F90; }
+.footer-social li { background: #fff; }
+.footer-social a { color: #666; }
