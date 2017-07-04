@@ -1,0 +1,6 @@
+.footer-copyright {
+	padding: 20px 0;
+	font-size: 9pt;
+	line-height: 19px;
+}
+.footer-copyright a { text-decoration: underline; }
