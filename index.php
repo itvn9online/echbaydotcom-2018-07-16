@@ -47,6 +47,14 @@ $arr_for_add_css = array();
 $arr_for_add_theme_css = array();
 
 
+// Load các CSS ưu tiên mặc định
+// loại css add thẳng vào html chỉ dành cho trang đầu tiên
+$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/default.css' ] = 1;
+$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/mobile.css' ] = 1;
+$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/guest.css' ] = 1;
+
+
+
 // mảng dùng để thông báo các module HTML được load ra
 $arr_for_show_html_file_load = array();
 
