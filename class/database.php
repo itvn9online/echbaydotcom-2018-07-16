@@ -165,7 +165,7 @@ $__cf_row_default = array(
 	'cf_logo' => EB_URL_TUONG_DOI . 'images-global/echbay-wp-logo.png',
 	'cf_favicon' => eb_default_vaficon,
 	
-	'cf_ten_cty' => '',
+	'cf_ten_cty' => 'Thiết kế web giá rẻ',
 //	'web_name' => '',
 	
 	'cf_email' => 'lienhe@echbay.com',
