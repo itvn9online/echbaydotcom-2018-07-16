@@ -33,7 +33,7 @@ function EBE_get_list_file_update_echbay_core ( $dir, $arr_dir = array(), $arr_f
 	);
 }
 
-function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file ) {
+function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_dir, $arr_old_file ) {
 	
 	//
 	foreach ( $arr_dir as $v ) {
@@ -49,6 +49,51 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file ) {
 			chmod($v2, 0755) or die('chmod ERROR');
 		}
 	}
+	
+	
+	// tìm và xóa các file không tồn tại trong bản mới
+	foreach ( $arr_old_file as $v ) {
+		
+//		echo $v . "\n";
+		
+		// chuyển sang file ở thư mục update
+		$v2 = str_replace( EB_THEME_PLUGIN_INDEX, $dir_source, $v );
+//		echo $v2 . "\n";
+		
+		// kiểm tra xem có file ở thư mục update không -> không có -> xóa luôn file hiện tại
+		if ( ! file_exists( $v2 ) ) {
+			if ( unlink( $v ) ) {
+				echo $v . ' <strong>deleted successful</strong><br>' . "\n";
+			} else {
+				echo '<strong>could not delete</strong> ' . $v . '<br>' . "\n";
+			}
+//			echo $v . "\n";
+		}
+	}
+//	exit();
+	
+	
+	// tìm và xóa các thư mục không tồn tại trong bản mới (thực hiện sau khi xóa file)
+	foreach ( $arr_old_dir as $v ) {
+		
+//		echo $v . "\n";
+		
+		// chuyển sang thư mục ở thư mục update
+		$v2 = str_replace( EB_THEME_PLUGIN_INDEX, $dir_source, $v );
+//		echo $v2 . "\n";
+		
+		// kiểm tra xem có thư mục ở thư mục update không -> không có -> xóa luôn thư mục hiện tại
+		if ( ! file_exists( $v2 ) ) {
+			if ( rmdir( $v ) ) {
+				echo $v . ' <strong>deleted successful</strong><br>' . "\n";
+			} else {
+				echo '<strong>could not delete</strong> ' . $v . '<br>' . "\n";
+			}
+//			echo $v . "\n";
+		}
+	}
+//	exit();
+	
 	
 	//
 	foreach ( $list_file_for_update_eb_core as $v ) {
@@ -80,17 +125,28 @@ function EBE_update_file_via_ftp () {
 		return false;
 	}
 	
-	// lấy danh sách file và thư mục
+	// lấy danh sách file và thư mục (thư mục mới)
 	$a = EBE_get_list_file_update_echbay_core( $dir_source_update );
 	$list_dir_for_update_eb_core = $a[0];
 	$list_file_for_update_eb_core = $a[1];
+//	print_r( $list_dir_for_update_eb_core );
+//	print_r( $list_file_for_update_eb_core );
+//	exit();
+	
+	// lấy danh sách file và thư mục (thư mục cũ) -> để so sánh và xóa các file không còn tồn tại
+	$a = EBE_get_list_file_update_echbay_core( EB_THEME_PLUGIN_INDEX );
+	$list_dir_for_update_old_core = $a[0];
+	$list_file_for_update_old_core = $a[1];
+//	print_r( $list_dir_for_update_old_core );
+//	print_r( $list_file_for_update_old_core );
+//	exit();
 	
 	
 	// update file thông qua ftp -> nếu không có dữ liệu -> hủy luôn
 	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
 		
 		// update thông qua hàm cơ bản của php
-		return EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core );
+		return EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core, $list_dir_for_update_old_core, $list_file_for_update_old_core );
 		
 //		return false;
 	}
@@ -189,6 +245,56 @@ function EBE_update_file_via_ftp () {
 	}
 //	exit();
 	
+	
+	// tìm và xóa các file không tồn tại trong bản mới
+	foreach ( $list_file_for_update_old_core as $v ) {
+		
+//		echo $v . "\n";
+		
+		// chuyển sang file ở thư mục update
+		$v2 = str_replace( EB_THEME_PLUGIN_INDEX, $dir_source_update, $v );
+//		echo $v2 . "\n";
+		
+		// kiểm tra xem có file ở thư mục update không -> không có -> xóa luôn file hiện tại
+		if ( ! file_exists( $v2 ) ) {
+			$v = '.' . strstr( $v, '/' . $ftp_dir_root . '/' );
+			
+			if ( ftp_delete($conn_id, $v) ) {
+				echo $v . ' <strong>deleted successful</strong><br>' . "\n";
+			} else {
+				echo '<strong>could not delete</strong> ' . $v . '<br>' . "\n";
+			}
+//			echo $v . "\n";
+		}
+	}
+//	exit();
+	
+	
+	// tìm và xóa các thư mục không tồn tại trong bản mới (thực hiện sau khi xóa file)
+	foreach ( $list_dir_for_update_old_core as $v ) {
+		
+//		echo $v . "\n";
+		
+		// chuyển sang thư mục ở thư mục update
+		$v2 = str_replace( EB_THEME_PLUGIN_INDEX, $dir_source_update, $v );
+//		echo $v2 . "\n";
+		
+		// kiểm tra xem có thư mục ở thư mục update không -> không có -> xóa luôn thư mục hiện tại
+		if ( ! file_exists( $v2 ) ) {
+			$v = '.' . strstr( $v, '/' . $ftp_dir_root . '/' );
+			
+			if ( ftp_rmdir($conn_id, $v) ) {
+				echo $v . ' <strong>deleted successful</strong><br>' . "\n";
+			} else {
+				echo '<strong>could not delete</strong> ' . $v . '<br>' . "\n";
+			}
+//			echo $v . "\n";
+		}
+	}
+//	exit();
+	
+	
+	
 	//
 //	print_r( $list_file_for_update_eb_core );
 	foreach ( $list_file_for_update_eb_core as $v ) {
@@ -219,6 +325,14 @@ function EBE_update_file_via_ftp () {
 		
 		unlink( $v );
 	}
+	
+	
+	
+	// xóa thư mục sau khi update
+//	foreach ( $list_dir_for_update_eb_core as $v ) {
+//	}
+	
+	
 	
 	
 	// close the connection
