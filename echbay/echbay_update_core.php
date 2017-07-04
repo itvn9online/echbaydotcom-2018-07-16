@@ -420,6 +420,11 @@ function EBE_get_text_version ( $str ) {
 						$zip->close();
 						echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
 					} else {
+						
+						// nếu không unzip được -> có thể do lỗi permission -> xóa đi để tải lại
+						EBE_ftp_remove_file( $destination_path );
+						
+						//
 						echo '<div>Do not unzip file, update faild!</div>';
 					}
 				}

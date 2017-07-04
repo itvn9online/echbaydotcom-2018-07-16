@@ -342,6 +342,11 @@ $__cf_row_default = array(
 	'cf_page_column_style' => '',
 	
 	
+	
+	// thư mục gốc của tài khoản FTP
+	'cf_ftp_root_dir' => '',
+	
+	
 	'cf_web_version' => 1.0,
 	'cf_ngay' => date_time,
 );

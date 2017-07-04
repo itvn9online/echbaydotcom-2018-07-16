@@ -2768,6 +2768,21 @@ function _eb_bs_link($id, $seo = '') {
 
 
 
+function _eb_remove_file ($file_, $ftp = 1) {
+	if ( file_exists( $file_ ) ) {
+		if ( ! unlink( $ffile_ ) ) {
+			// thử xóa bằng ftp
+			if ( $ftp == 1 ) {
+				return EBE_ftp_remove_file($file_);
+			}
+		} else {
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 	
 	//
@@ -2850,28 +2865,39 @@ function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 	return true;
 }
 
-/*
-function EBE_get_ftp_root_dir () {
-}
-*/
-
-// Tạo file thông qua tài khoản FTP
-function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
-	
-	if ( ! file_exists( $file_ ) && ! is_dir( dirname( $file_ ) ) ) {
-		echo 'ERROR FTP: dir not found';
-		return false;
-	}
+function EBE_check_ftp_account () {
 	
 	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
 		echo 'ERROR FTP: FTP_USER or FTP_PASS not found';
 		return false;
 	}
+	
 	if ( defined('FTP_HOST') ) {
 		$ftp_server = FTP_HOST;
 	} else {
 //		$ftp_server = $_SERVER['HTTP_HOST'];
 		$ftp_server = $_SERVER['SERVER_ADDR'];
+	}
+	
+	return $ftp_server;
+}
+
+function EBE_get_config_ftp_root_dir () {
+	global $__cf_row;
+	
+	if ( $__cf_row['cf_ftp_root_dir'] == '' ) {
+		$__cf_row['cf_ftp_root_dir'] = EBE_get_ftp_root_dir();
+	}
+	
+	return $__cf_row['cf_ftp_root_dir'];
+}
+
+function EBE_get_ftp_root_dir () {
+	
+	$ftp_server = EBE_check_ftp_account();
+	if ( $ftp_server == false ) {
+		echo 'FTP account not found';
+		return '';
 	}
 	$ftp_user_name = FTP_USER;
 	$ftp_user_pass = FTP_PASS;
@@ -2881,14 +2907,14 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 	$conn_id = ftp_connect($ftp_server);
 	if ( ! $conn_id ) {
 		echo 'ERROR FTP connect to server';
-		return false;
+		return '';
 	}
 	
 	
 	// đăng nhập
 	if ( ! ftp_login($conn_id, $ftp_user_name, $ftp_user_pass) ) {
 		echo 'ERROR FTP login false';
-		return false;
+		return '';
 	}
 	
 	
@@ -2897,7 +2923,7 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 	
 	// Tạo một file bằng hàm của PHP thường -> không dùng FTP
 	if ( _eb_create_file( $cache_for_ftp, $content_, '', 0 ) != true ) {
-		return false;
+		return '';
 	}
 	
 	
@@ -2923,18 +2949,62 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 //	echo $ftp_dir_root . '<br>' . "\n";
 	
 	//
+	ftp_close($conn_id);
+	
+	//
 	if ( $ftp_dir_root == '' ) {
 		echo 'ERROR FTP: ftp_dir_root not found';
-		ftp_close($conn_id);
+	}
+	
+	return $ftp_dir_root;
+}
+
+// Tạo file thông qua tài khoản FTP
+function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
+	
+	$ftp_dir_root = EBE_get_config_ftp_root_dir();
+	
+	
+	if ( ! file_exists( $file_ ) && ! is_dir( dirname( $file_ ) ) ) {
+		echo 'ERROR FTP: dir not found';
+		return false;
+	}
+	
+	$ftp_server = EBE_check_ftp_account();
+	if ( $ftp_server == false ) {
+		echo 'FTP account not found';
+		return false;
+	}
+	$ftp_user_name = FTP_USER;
+	$ftp_user_pass = FTP_PASS;
+	
+	
+	// tạo kết nối
+	$conn_id = ftp_connect($ftp_server);
+	if ( ! $conn_id ) {
+		echo 'ERROR FTP connect to server';
 		return false;
 	}
 	
 	
-	// upload file
-	if ( ! ftp_put($conn_id, '.' . strstr( $file_, '/' . $ftp_dir_root . '/' ) , $cache_for_ftp, FTP_BINARY) ) {
-		echo 'ERROR FTP: ftp_put error';
-		ftp_close($conn_id);
+	// đăng nhập
+	if ( ! ftp_login($conn_id, $ftp_user_name, $ftp_user_pass) ) {
+		echo 'ERROR FTP login false';
 		return false;
+	}
+	
+	
+	//
+	$file_for_ftp = $file_;
+	if ( $ftp_dir_root == '' ) {
+		$file_for_ftp = strstr( $file_, '/' . $ftp_dir_root . '/' );
+	}
+	
+	// upload file
+	$result = true;
+	if ( ! ftp_put($conn_id, '.' . $file_for_ftp , $cache_for_ftp, FTP_BINARY) ) {
+		echo 'ERROR FTP: ftp_put error';
+		$result = false;
 	}
 	
 	
@@ -2943,7 +3013,60 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 	
 	
 	//
-	return true;
+	return $result;
+	
+}
+
+// Xóa file thông qua tài khoản FTP
+function EBE_ftp_remove_file ($file_) {
+	
+	$ftp_dir_root = EBE_get_config_ftp_root_dir();
+	
+	
+	$ftp_server = EBE_check_ftp_account();
+	if ( $ftp_server == false ) {
+		echo 'FTP account not found';
+		return false;
+	}
+	$ftp_user_name = FTP_USER;
+	$ftp_user_pass = FTP_PASS;
+	
+	
+	// tạo kết nối
+	$conn_id = ftp_connect($ftp_server);
+	if ( ! $conn_id ) {
+		echo 'ERROR FTP connect to server';
+		return false;
+	}
+	
+	
+	// đăng nhập
+	if ( ! ftp_login($conn_id, $ftp_user_name, $ftp_user_pass) ) {
+		echo 'ERROR FTP login false';
+		return false;
+	}
+	
+	
+	//
+	$file_for_ftp = $file_;
+	if ( $ftp_dir_root == '' ) {
+		$file_for_ftp = strstr( $file_, '/' . $ftp_dir_root . '/' );
+	}
+	
+	// upload file
+	$result = true;
+	if ( ftp_delete($conn_id, $file_for_ftp) ) {
+		echo 'ERROR FTP: ftp_delete error';
+		$result = false;
+	}
+	
+	
+	// close the connection
+	ftp_close($conn_id);
+	
+	
+	//
+	return $result;
 	
 }
 

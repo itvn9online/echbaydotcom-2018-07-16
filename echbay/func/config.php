@@ -179,6 +179,12 @@ foreach( $_POST as $k => $v ) {
 }
 
 
+
+// FTP root dir
+_eb_set_config( 'cf_ftp_root_dir', EBE_get_ftp_root_dir() );
+
+
+
 // thời gian update cache
 _eb_set_config( 'cf_ngay', date_time );
 //$arr_for_update_eb_config[ 'cf_ngay' ] = date_time;

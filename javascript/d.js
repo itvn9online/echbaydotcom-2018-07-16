@@ -244,7 +244,7 @@ function ___eb_details_slider_v2 () {
 //	console.log( html_for_get );
 	
 	// -> nếu vẫn không có -> hủy slider
-	if ( slider_len < 1 ) {
+	if ( slider_len <= 1 ) {
 		$('.hide-if-slider-null').hide();
 		return false;
 	}
@@ -274,9 +274,9 @@ function ___eb_details_slider_v2 () {
 	
 	
 	//
-	if ( slider_len < 1 ) {
-		return false;
-	}
+//	if ( slider_len <= 1 ) {
+//		return false;
+//	}
 //	$('.thread-details-mobileLeft, .thread-details-mobileRight').show();
 	
 	
