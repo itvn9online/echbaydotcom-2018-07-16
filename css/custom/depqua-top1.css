@@ -1,0 +1,15 @@
+.top-top-login {
+	background: #1179bc;
+	line-height: 25px;
+	font-size: 14px;
+}
+.top-top-login,
+.top-top-login a { color: #fff; }
+.top-top-login ul { }
+.top-top-login li {
+	float: left;
+	margin-left: 25px;
+}
+.top-top-ul ul { float: left; }
+#oi_member_func a { margin-left: 15px; }
+#oi_member_func a:first-child { }
