@@ -76,11 +76,11 @@ function echbay_create_admin_menu() {
 	*/
 	add_submenu_page( $parent_slug, 'Cấu hình website', 'Cấu hình website', 'manage_options', 'eb-config', 'func_include_eb_private_code' );
 	
-	add_submenu_page( $parent_slug, 'Lịch sử các thay đổi dữ liệu hệ thống', 'Lịch sử', 'manage_options', 'eb-log', 'func_include_eb_private_code' );
+	add_submenu_page( $parent_slug, 'Cài đặt và chỉnh sửa giao diện mặc định', 'Cài đặt giao diện', 'manage_options', 'eb-config_theme', 'func_include_eb_private_code' );
 	
 	add_submenu_page( $parent_slug, 'Các chức năng danh cho kỹ thuật viên', 'Kỹ thuật', 'manage_options', 'eb-coder', 'func_include_eb_private_code' );
 	
-	add_submenu_page( $parent_slug, 'Cài đặt và chỉnh sửa giao diện mặc định', 'Cài đặt giao diện', 'manage_options', 'eb-config_theme', 'func_include_eb_private_code' );
+	add_submenu_page( $parent_slug, 'Lịch sử các thay đổi dữ liệu hệ thống', 'Lịch sử', 'manage_options', 'eb-log', 'func_include_eb_private_code' );
 	
 //	add_submenu_page( $parent_slug, 'Công cụ tạo sơ đồ website tự động', 'Sitemap', 'administrator', 'eb-sitemap', 'func_include_eb_private_code' );
 	

@@ -273,6 +273,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	background-size: auto 100%;
 	cursor: pointer;
 	font-size: 13px;
+	border-bottom: 1px #fafafa solid;
 }
 .preview-file-design:hover {
 	-moz-transition: all 0.2s ease;
@@ -301,7 +302,10 @@ input[id="_eb_category_order"] { width: 90px; }
 	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
 }
 .change-eb-design-padding { padding: 19px 25px; }
-.border-threadnode-design { background-color: #fff; }
+.border-threadnode-design {
+	background-color: #fff;
+	max-width: 350px;
+}
 .border-threadnode-design .preview-file-design {
 	height: 250px !important;
 	background-position: left !important;
