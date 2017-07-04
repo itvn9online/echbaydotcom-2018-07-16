@@ -104,7 +104,7 @@ $('.click-to-change-file-design').click(function () {
 //	console.log(text);
 	
 	$('.change-eb-design-fixed').hide();
-	$('.change-eb-design-fixed[data-key="' + text + '"]').show();
+	$('.change-eb-design-fixed[data-key="' + text + '"]').show().addClass('selected');
 	
 	// Căn chỉnh lại size cho phần chọn thiết kế
 	$('.preview-in-ebdesign').hide();
@@ -115,6 +115,11 @@ $('.click-to-change-file-design').click(function () {
 			$(this).height( $(this).width() * eval(a) );
 		}
 	});
+	
+	// xóa class định hình sau khi xong việc
+	setTimeout(function () {
+		$('.change-eb-design-fixed').removeClass('selected');
+	}, 600);
 });
 
 
