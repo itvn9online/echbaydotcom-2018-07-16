@@ -421,11 +421,13 @@ function EBE_get_text_version ( $str ) {
 						echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
 					} else {
 						
-						// nếu không unzip được -> có thể do lỗi permission -> xóa đi để tải lại
-						EBE_ftp_remove_file( $destination_path );
-						
 						//
 						echo '<div>Do not unzip file, update faild!</div>';
+						
+						// nếu không unzip được -> có thể do lỗi permission -> xóa đi để tải lại
+						if ( EBE_ftp_remove_file( $destination_path ) == true ) {
+							echo '<div>Remove zip file via FTP!</div>';
+						}
 					}
 				}
 				else {
