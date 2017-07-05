@@ -303,7 +303,7 @@ if ($__eb_cache_time > $time_for_update_cache) {
 //			'web_name' => '\'' . $__cf_row ['web_name'] . '\'',
 //			'service_name' => '\'' . $service_name . '\'',
 			
-			'eb_disable_auto_get_thumb' => '\'' . $__cf_row ['cf_disable_auto_get_thumb'] . '\'',
+			'eb_disable_auto_get_thumb' => (int) $__cf_row ['cf_disable_auto_get_thumb'],
 			
 			'cf_facebook_page' => '\'' . $__cf_row ['cf_facebook_page'] . '\'',
 			'__global_facebook_id' => '\'' . $__cf_row ['cf_facebook_id'] . '\'',
