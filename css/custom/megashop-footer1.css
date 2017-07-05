@@ -1,0 +1,31 @@
+#megashop-footer1 { padding: 10px 0; }
+#megashop-footer1 .footer-social li {
+	margin: 0 2px 0 3px;
+	border-radius: 3px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+}
+#megashop-footer1 .footer-social a {
+	font-size: 15px;
+	display: block;
+	border-radius: 3px;
+}
+#megashop-footer1 .footer-social a.fa-facebook { background-color: #3c599f; }
+#megashop-footer1 .footer-social a.fa-twitter { background-color: #5eaade; }
+#megashop-footer1 .footer-social a.fa-youtube { background-color: #cb2027; }
+#megashop-footer1 .footer-social a.fa-google-plus { background-color: #dd4c39; }
+#megashop-footer1 .bottom-nav {
+	line-height: 19px;
+	font-size: 14px;
+	padding-top: 5px;
+}
+#megashop-footer1 .bottom-nav li { float: left; }
+#megashop-footer1 .bottom-nav a {
+	color: #000;
+	display: block;
+	border-right: 1px #ccc solid;
+	padding: 0 10px;
+}
+#megashop-footer1 .bottom-nav a:hover { text-decoration: underline; }
+#megashop-footer1 .bottom-nav .sub-menu { display: none; }

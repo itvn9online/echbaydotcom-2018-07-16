@@ -1,0 +1,28 @@
+#megashop-top1 .top-top-login {
+	background-color: #333;
+	padding: 6px 0;
+	font-size: 12px;
+	line-height: 20px;
+}
+#megashop-top1 .top-top-login,
+#megashop-top1 .top-top-login a { color: #bbb; }
+#megashop-top1 .top-top-ul li { float: left; }
+#megashop-top1 .top-top-ul a {
+	display: inline-block;
+	margin-left: 15px;
+}
+#megashop-top1 .btn-to-cart {
+	background: #3ab54a;
+	border-radius: 3px;
+	padding: 0 10px;
+	color: #fff !important;
+}
+#megashop-top1 .top-top-login .fa-phone {
+	display: inline-block;
+	color: #000;
+	background: #0C3;
+	width: 20px;
+	border-radius: 50%;
+	text-align: center;
+	margin-right: 2px;
+}

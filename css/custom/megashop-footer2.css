@@ -1,0 +1,19 @@
+#megashop-footer2 {
+	background: #333;
+	padding: 25px 0 15px;
+	font-size: 14px;
+}
+#megashop-footer2,
+#megashop-footer2 a { color: #fff; }
+#megashop-footer2 .sub-menu { display: none; }
+#megashop-footer2 .footer-title {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+#megashop-footer2 .bottom-node li { margin-bottom: 8px; }
+#megashop-footer2 .bottom-node a { display: inline-block; }
+#megashop-footer2 .bottom-node a:before {
+	display: inline-block;
+	content: "-";
+	margin-right: 5px;
+}

@@ -27,8 +27,8 @@
 }
 .div-search:hover { background-color: #fff; }
 .web-logo {
-	line-height: 77px;
+	line-height: 68px;
 	background: left no-repeat;
-	background-size: auto 80%;
+	background-size: 90% auto;
 }
 .web-top-logo { padding: 10px 0; }

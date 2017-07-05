@@ -1,0 +1,83 @@
+#megashop-top2 .web-top-logo {
+	padding: 10px 0;
+	background: #f6f6f6;
+}
+#megashop-top2 .web-logo {
+	line-height: 68px;
+	background: left no-repeat;
+	background-size: 90% auto;
+}
+#megashop-top2 .nav-mobile-hotline {
+	line-height: 38px;
+	font-size: 25px;
+	margin-top: 20px;
+}
+#megashop-top2 .div-search-margin { margin-top: 20px; }
+#megashop-top2 .div-search {
+	border: 0 none;
+	background: none;
+}
+#megashop-top2 .div-search form { }
+#megashop-top2 .div-search input[type=search],
+#megashop-top2 .div-search button {
+	border: 0 none;
+	outline: none;
+}
+#megashop-top2 .div-search input[type=search] {
+	background: none;
+	height: 34px;
+	width: 80%;
+	border: 1px #ccc solid;
+	background: #fff;
+	padding-left: 5px;
+}
+#megashop-top2 .div-search button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	font-size: 20px;
+	color: #fff;
+	width: 20%;
+	border-left: 5px #f6f6f6 solid;
+}
+#megashop-top2 .nav {
+	text-transform: uppercase;
+	margin-top: 20px;
+	line-height: 20px;
+	padding: 8px 0;
+	font-weight: bold;
+}
+#megashop-top2 .nav li {
+	float: left;
+	position: relative;
+}
+#megashop-top2 .nav a {
+	padding: 0 15px;
+	color: #333;
+	border-right: 1px #333 dotted;
+}
+#megashop-top2 .nav .sub-menu {
+	position: absolute;
+	min-width: 200px;
+	border-top: 3px solid #3ab54a;
+	box-shadow: 0px 0px 16px -3px #999;
+	text-transform: none;
+	line-height: 26px;
+	background: #fff;
+	font-weight: normal;
+	padding: 10px 0;
+	font-size: 14px;
+	display: none;
+	z-index: 10;
+}
+#megashop-top2 .nav li:hover .sub-menu { display: block; }
+#megashop-top2 .nav .sub-menu li { float: none; }
+#megashop-top2 .nav .sub-menu a {
+	border: 0 none;
+	display: block;
+}
+#megashop-top2 .nav .sub-menu a:hover { text-decoration: underline; }
+#megashop-top2 .nav .sub-menu .sub-menu { display: none; }
+#megashop-top2 .nav .sub-menu .sub-menu li { }
+#megashop-top2 .nav .sub-menu .sub-menu a { }
