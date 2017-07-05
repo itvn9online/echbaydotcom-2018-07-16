@@ -141,7 +141,7 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 		
 		if ( isset( $__cf_row_default[ $j ] ) ) {
 			if ( $__cf_row[ $j ] != '' ) {
-				$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row[ $j ];
+				$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row[ $j ];
 				
 				$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = 1;
 			}
