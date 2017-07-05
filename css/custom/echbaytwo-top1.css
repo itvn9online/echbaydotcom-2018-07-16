@@ -1,16 +1,16 @@
-#oi_member_func a { margin-left: 15px; }
-#oi_member_func a:first-child { }
-.top-top-ul ul { float: left; }
-.top-top-login {
+#echbaytwo-top1 .oi_member_func a { margin-left: 15px; }
+#echbaytwo-top1 .oi_member_func a:first-child { }
+#echbaytwo-top1 .top-top-ul ul { float: left; }
+#echbaytwo-top1 .top-top-login {
 	line-height: 55px;
 	height: 55px;
 	overflow: hidden;
 	font-size: 15px;
 }
-.top-top-login,
-.top-top-login a { color: #adb2bc; }
-.top-top-login ul { }
-.top-top-login li {
+#echbaytwo-top1 .top-top-login,
+#echbaytwo-top1 .top-top-login a { color: #adb2bc; }
+#echbaytwo-top1 .top-top-login ul { }
+#echbaytwo-top1 .top-top-login li {
 	float: left;
 	margin-left: 25px;
 }

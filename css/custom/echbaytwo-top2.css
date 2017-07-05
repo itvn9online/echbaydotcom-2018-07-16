@@ -1,22 +1,22 @@
-.nav-mobile-hotline {
+#echbaytwo-top2 .nav-mobile-hotline {
 	line-height: 38px;
 	font-size: 25px;
 	margin-top: 20px;
 }
-.div-search-margin { margin-top: 20px; }
-.div-search { border-width: 2px; }
-.div-search form { padding-left: 6px }
-.div-search input[type=search],
-.div-search button {
+#echbaytwo-top2 .div-search-margin { margin-top: 20px; }
+#echbaytwo-top2 .div-search { border-width: 2px; }
+#echbaytwo-top2 .div-search form { padding-left: 6px }
+#echbaytwo-top2 .div-search input[type=search],
+#echbaytwo-top2 .div-search button {
 	border: 0 none;
 	outline: none;
 }
-.div-search input[type=search] {
+#echbaytwo-top2 .div-search input[type=search] {
 	background: none;
 	height: 36px;
 	width: 85%;
 }
-.div-search button {
+#echbaytwo-top2 .div-search button {
 	position: absolute;
 	top: -1px;
 	right: -1px;
@@ -25,10 +25,10 @@
 	color: #fff;
 	width: 68px;
 }
-.div-search:hover { background-color: #fff; }
-.web-logo {
+#echbaytwo-top2 .div-search:hover { background-color: #fff; }
+#echbaytwo-top2 .web-logo {
 	line-height: 68px;
 	background: left no-repeat;
 	background-size: 90% auto;
 }
-.web-top-logo { padding: 10px 0; }
+#echbaytwo-top2 .web-top-logo { padding: 10px 0; }
