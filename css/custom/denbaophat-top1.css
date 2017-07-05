@@ -1,20 +1,20 @@
-.top-utility {
+#denbaophat-top1 .top-utility {
 	background: top left repeat-x;
 	background-size: auto 100%;
 	height: 32px;
 	line-height: 32px;
 }
 /*
-.top-utility,
-.top-utility a { color: #fff; }
+#denbaophat-top1 .top-utility,
+#denbaophat-top1 .top-utility a { color: #fff; }
 */
-.menutophd li {
+#denbaophat-top1 .menutophd li {
 	float: left;
 	margin-left: 25px;
 }
-#oi_member_func a:first-child { margin-right: 15px }
-#oi_member_func a:hover { text-decoration: underline }
-.top-top-ul li {
+#denbaophat-top1 .oi_member_func a:first-child { margin-right: 15px }
+#denbaophat-top1 .oi_member_func a:hover { text-decoration: underline }
+#denbaophat-top1 .top-top-ul li {
 	float: left;
 	margin-right: 15px;
 }
