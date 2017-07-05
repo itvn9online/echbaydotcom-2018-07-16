@@ -292,6 +292,7 @@ $__cf_row_default = array(
 	'cf_top1_include_file' => '',
 	'cf_top2_include_file' => '',
 	'cf_top3_include_file' => '',
+	'cf_top4_include_file' => '',
 	
 	'cf_using_footer_default' => 1,
 	'cf_footer_class_style' => '',

@@ -696,8 +696,12 @@ $arr_for_set_template['str_top_design_preview'] = $arr_design_preview['preview']
 
 $arr_for_set_template['str_top_include_file'] = EBE_config_load_top_footer_include();
 $str_top_design_preview = '';
-for ( $i = 1; $i < 4; $i++ ) {
-	$str_top_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="top' . $i . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+for ( $i = 1; $i < 10; $i++ ) {
+	if ( isset( $__cf_row_default[ 'cf_top' . $i . '_include_file' ] ) ) {
+		$str_top_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="top' . $i . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+	} else {
+		break;
+	}
 }
 $arr_for_set_template['str_top_design_preview'] = $str_top_design_preview;
 
@@ -711,8 +715,12 @@ $arr_for_set_template['str_footer_design_preview'] = $arr_design_preview['previe
 
 $arr_for_set_template['str_footer_include_file'] = EBE_config_load_top_footer_include('footer');
 $str_footer_design_preview = '';
-for ( $i = 1; $i < 4; $i++ ) {
-	$str_footer_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="footer' . $i . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+for ( $i = 1; $i < 10; $i++ ) {
+	if ( isset( $__cf_row_default[ 'cf_footer' . $i . '_include_file' ] ) ) {
+		$str_footer_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="footer' . $i . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+	} else {
+		break;
+	}
 }
 $arr_for_set_template['str_footer_design_preview'] = $str_footer_design_preview;
 

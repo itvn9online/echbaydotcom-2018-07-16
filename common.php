@@ -107,20 +107,18 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 //	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/top_default.css' ] = 1;
 	
 	// Kiểm tra và load các file top tương ứng
-	if ( $__cf_row['cf_top1_include_file'] != '' ) {
-		$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'top/' . $__cf_row['cf_top1_include_file'];
+	for ( $i = 1; $i < 10; $i++ ) {
+		$j = 'cf_top' . $i . '_include_file';
 		
-		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row['cf_top1_include_file'] ) ] = 1;
-	}
-	if ( $__cf_row['cf_top2_include_file'] != '' ) {
-		$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'top/' . $__cf_row['cf_top2_include_file'];
-		
-		$arr_for_add_css[ EBE_get_css_for_config_design( $__cf_row['cf_top2_include_file'] ) ] = 1;
-	}
-	if ( $__cf_row['cf_top3_include_file'] != '' ) {
-		$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'top/' . $__cf_row['cf_top3_include_file'];
-		
-		$arr_for_add_css[ EBE_get_css_for_config_design( $__cf_row['cf_top3_include_file'] ) ] = 1;
+		if ( isset( $__cf_row_default[ $j ] ) ) {
+			if ( $__cf_row[ $j ] != '' ) {
+				$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'top/' . $__cf_row[ $j ];
+				
+				$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = 1;
+			}
+		} else {
+			break;
+		}
 	}
 	
 	//
@@ -138,20 +136,18 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 //	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/footer_default.css' ] = 1;
 	
 	// Kiểm tra và load các file top tương ứng
-	if ( $__cf_row['cf_footer1_include_file'] != '' ) {
-		$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row['cf_footer1_include_file'];
+	for ( $i = 1; $i < 10; $i++ ) {
+		$j = 'cf_footer' . $i . '_include_file';
 		
-		$arr_for_add_css[ EBE_get_css_for_config_design( $__cf_row['cf_footer1_include_file'] ) ] = 1;
-	}
-	if ( $__cf_row['cf_footer2_include_file'] != '' ) {
-		$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row['cf_footer2_include_file'];
-		
-		$arr_for_add_css[ EBE_get_css_for_config_design( $__cf_row['cf_footer2_include_file'] ) ] = 1;
-	}
-	if ( $__cf_row['cf_footer3_include_file'] != '' ) {
-		$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row['cf_footer3_include_file'];
-		
-		$arr_for_add_css[ EBE_get_css_for_config_design( $__cf_row['cf_footer3_include_file'] ) ] = 1;
+		if ( isset( $__cf_row_default[ $j ] ) ) {
+			if ( $__cf_row[ $j ] != '' ) {
+				$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row[ $j ];
+				
+				$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = 1;
+			}
+		} else {
+			break;
+		}
 	}
 	
 	//
