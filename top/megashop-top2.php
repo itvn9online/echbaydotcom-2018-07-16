@@ -4,7 +4,7 @@
 			<div class="lf f20 cf fullsize-if-mobile"><a href="./" class="web-logo d-block" style="background-image:url('<?php echo $__cf_row['cf_logo']; ?>');">&nbsp;</a></div>
 			<div class="lf f80 hide-if-mobile cf">
 				<div class="lf f70">
-					<div class="nav"><?php echo _eb_echbay_menu( 'top-menu-02' ); ?></div>
+					<div class="nav"><?php echo EBE_echbay_top_menu(); ?></div>
 				</div>
 				<div class="lf f30">
 					<div class="div-search-margin">

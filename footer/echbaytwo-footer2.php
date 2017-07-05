@@ -10,8 +10,7 @@
 				<br>
 				<div>
 					<?php
-					echo _eb_echbay_menu(
-						'footer-menu-04',
+					echo EBE_echbay_footer_menu(
 						array(
 							'menu_class' => 'bold bottom-contact',
 						),
@@ -33,8 +32,7 @@
 			<div class="lf f25 fullsize-if-mobile">
 				<div class="left-menu-space">
 					<?php
-					echo _eb_echbay_menu(
-						'footer-menu-01',
+					echo EBE_echbay_footer_menu(
 						array(
 							'menu_class' => 'bottom-node',
 						),
@@ -48,8 +46,7 @@
 			<div class="lf f25 fullsize-if-mobile">
 				<div class="left-menu-space">
 					<?php
-					echo _eb_echbay_menu(
-						'footer-menu-02',
+					echo EBE_echbay_footer_menu(
 						array(
 							'menu_class' => 'bottom-node',
 						),
@@ -63,8 +60,7 @@
 			<div class="lf f25 fullsize-if-mobile">
 				<div class="left-menu-space">
 					<?php
-					echo _eb_echbay_menu(
-						'footer-menu-03',
+					echo EBE_echbay_footer_menu(
 						array(
 							'menu_class' => 'bottom-node',
 						),

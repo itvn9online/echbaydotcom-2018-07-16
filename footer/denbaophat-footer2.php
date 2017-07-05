@@ -5,8 +5,7 @@
 		<div class="lf f25 fullsize-if-mobile">
 			<div>
 				<?php
-				echo _eb_echbay_menu(
-					'footer-menu-01',
+				echo EBE_echbay_footer_menu(
 					array(
 						'menu_class' => 'ls-bottom-support',
 					),
@@ -17,8 +16,7 @@
 			</div>
 			<div>
 				<?php
-				echo _eb_echbay_menu(
-					'footer-menu-02',
+				echo EBE_echbay_footer_menu(
 					array(
 						'menu_class' => 'ls-bottom-support',
 					),
@@ -48,7 +46,7 @@
 				<div class="titleCSS bold">Sản phẩm yêu thích</div>
 				<h4 class="clone-gorup-list l19">
 					<?php
-					echo _eb_echbay_menu( 'footer-menu-03' );
+					echo EBE_echbay_footer_menu();
 					?>
 				</h4>
 			</div>

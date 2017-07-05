@@ -1,0 +1,16 @@
+#vicwatch-footer1 .footer-top {
+	background: #e2deda;
+	padding: 20px 0;
+}
+#vicwatch-footer1 .footer-about-menu { line-height: 21px; }
+#vicwatch-footer1 .footer-about-menu li {
+	margin-bottom: 10px;
+	position: relative;
+	padding-left: 20px;
+}
+#vicwatch-footer1 .footer-about-menu a { color: #333; }
+#vicwatch-footer1 .footer-about-menu i {
+	position: absolute;
+	left: 0;
+	color: #777;
+}

@@ -10,7 +10,7 @@
 			</ul>
 		</div>
 		<div class="lf f70 cf">
-			<div class="bottom-nav rf"><?php echo _eb_echbay_menu( 'footer-menu-01' ); ?></div>
+			<div class="bottom-nav rf"><?php echo EBE_echbay_footer_menu(); ?></div>
 		</div>
 	</div>
 </div>

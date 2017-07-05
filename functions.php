@@ -960,7 +960,7 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 
 // load menu theo số thứ tự tăng dần
 $i_echbay_top_menu = 0;
-function EBE_echbay_top_menu ( $menu = array(), $in_cache = 1, $tag_menu_name = '' ) {
+function EBE_echbay_top_menu ( $menu = array(), $in_cache = 1, $tag_menu_name = '', $tag_close_menu_name = '</div>' ) {
 	global $i_echbay_top_menu;
 	
 	$i_echbay_top_menu++;
@@ -972,12 +972,13 @@ function EBE_echbay_top_menu ( $menu = array(), $in_cache = 1, $tag_menu_name = 
 		'top-menu-0' . $i_echbay_top_menu,
 		$menu,
 		$in_cache,
-		$tag_menu_name
+		$tag_menu_name,
+		$tag_close_menu_name
 	);
 }
 
 $i_echbay_footer_menu = 0;
-function EBE_echbay_footer_menu ( $menu = array(), $in_cache = 1, $tag_menu_name = '' ) {
+function EBE_echbay_footer_menu ( $menu = array(), $in_cache = 1, $tag_menu_name = '', $tag_close_menu_name = '</div>' ) {
 	global $i_echbay_footer_menu;
 	
 	$i_echbay_footer_menu++;
@@ -989,7 +990,8 @@ function EBE_echbay_footer_menu ( $menu = array(), $in_cache = 1, $tag_menu_name
 		'footer-menu-0' . $i_echbay_footer_menu,
 		$menu,
 		$in_cache,
-		$tag_menu_name
+		$tag_menu_name,
+		$tag_close_menu_name
 	);
 }
 
