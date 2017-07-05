@@ -317,6 +317,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_on_off_amp_blogs' );
 	show_note_for_checkbox_config( 'cf_on_off_amp_blog' );
 	show_note_for_checkbox_config( 'cf_on_off_auto_update_wp' );
+	show_note_for_checkbox_config( 'cf_disable_auto_get_thumb' );
 }
 
 

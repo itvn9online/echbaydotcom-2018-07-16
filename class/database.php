@@ -277,6 +277,9 @@ $__cf_row_default = array(
 	// tự động cập nhật mã nguồn wordpress
 	'cf_on_off_auto_update_wp' => 0,
 	
+	// tự tìm và lấy link thumbnail bằng javascript
+	'cf_disable_auto_get_thumb' => 0,
+	
 	
 	/*
 	* giao diện HTML mặc định

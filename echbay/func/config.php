@@ -86,6 +86,10 @@ if ( ! isset( $_POST['cf_on_off_auto_update_wp'] ) || (int) $_POST['cf_on_off_au
 	$_POST['cf_on_off_auto_update_wp'] = 0;
 }
 
+if ( ! isset( $_POST['cf_disable_auto_get_thumb'] ) || (int) $_POST['cf_disable_auto_get_thumb'] != 1 ) {
+	$_POST['cf_disable_auto_get_thumb'] = 0;
+}
+
 
 
 

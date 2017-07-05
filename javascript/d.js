@@ -153,7 +153,7 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 //	console.log( sr );
 	
 	// nếu có tham số này -> site không sử dụng thumb hoặc không có thumb
-	if ( typeof eb_disable_auto_get_thumb != 'undefined' && eb_disable_auto_get_thumb == 1 ) {
+	if ( typeof eb_disable_auto_get_thumb == 'number' && eb_disable_auto_get_thumb == 1 ) {
 		console.log('Auto get thumb disable');
 	}
 	// lấy thumb để làm ảnh slider -> load cho nhanh
