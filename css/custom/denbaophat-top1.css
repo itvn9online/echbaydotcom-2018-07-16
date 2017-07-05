@@ -14,3 +14,7 @@
 }
 #oi_member_func a:first-child { margin-right: 15px }
 #oi_member_func a:hover { text-decoration: underline }
+.top-top-ul li {
+	float: left;
+	margin-right: 15px;
+}

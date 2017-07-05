@@ -298,6 +298,8 @@ $__cf_row_default = array(
 	
 	// khung sản phẩm
 	'cf_threadnode_include_file' => '',
+	// Thay đổi thẻ cho phần tiêu đề, tùy các SEOer muốn là thẻ gì thì chọn thẻ đấy, mặc định DIV
+	'cf_threadnode_title_tag' => 'div',
 	
 	
 	// danh sách tin -> tổng quan

@@ -26,6 +26,23 @@ function EBE_widget_categories_get_child( $term_id, $cat_type, $show_count, $wid
 }
 
 
+function EBE_widget_get_parent_cat ( $id, $cat_type = 'category' ) {
+	if ( $id > 0 ) {
+		$a = get_term_by( 'id', $id, $cat_type );
+//		print_r( $a );
+		
+		// nếu không có nhóm cha -> nhóm này nhất rồi
+		if ( $a->parent == 0 ) {
+			return $a;
+		} else {
+			return EBE_widget_get_parent_cat ( $a->parent, $cat_type );
+		}
+	}
+	
+	return false;
+}
+
+
 
 /*
 * Widget danh mục sản phẩm hiện tại đang xem
@@ -48,7 +65,9 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			'cat_status' => 0,
 			'cat_type' => 'category',
 			'list_tyle' => '',
-			'get_child' => ''
+			'get_child' => '',
+			'get_parent' => '',
+			'dynamic_tag' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -137,6 +156,36 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'get_child' ], 'Lấy danh sách nhóm con' );
 		
+		
+		
+		//
+		$input_name = $this->get_field_name ( 'get_parent' );
+//		echo $instance[ 'get_child' ];
+		
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'get_parent' ], 'Tự tìm các nhóm cùng cha' );
+		
+		
+		//
+		echo '<p>HTML tag cho tiêu đề: ';
+		
+		__eb_widget_load_select(
+			array(
+				'' => '[ Trống ]',
+				'div' => 'DIV',
+				'p' => 'P',
+				'li' => 'LI',
+				'h2' => 'H2',
+				'h3' => 'H3',
+				'h4' => 'H4',
+				'h5' => 'H5',
+				'h6' => 'H6'
+			),
+			 $this->get_field_name ( 'dynamic_tag' ),
+			$dynamic_tag
+		);
+		
+		echo '</p>';
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -167,6 +216,44 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		$get_child = isset( $instance ['get_child'] ) ? $instance ['get_child'] : 'off';
 		$get_child = $get_child == 'on' ? true : false;
 		
+		$get_parent = isset( $instance ['get_parent'] ) ? $instance ['get_parent'] : 'off';
+		$get_parent = $get_parent == 'on' ? true : false;
+		
+		$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';
+		$dynamic_tag_begin = '';
+		$dynamic_tag_end = '';
+		if ( $dynamic_tag != '' ) {
+			$dynamic_tag_begin = '<' . $dynamic_tag . '>';
+			$dynamic_tag_end = '</' . $dynamic_tag . '>';
+		}
+		
+		
+		//
+		$cats_info = NULL;
+		
+		// tự động lấy danh mục cùng nhóm
+		// nếu không có nhóm được chỉ định
+		// thuộc tính tự động tìm nhóm được thiết lập
+		if ( $cat_ids == 0 && $get_parent == true ) {
+			global $cid;
+			
+			$cats_info = EBE_widget_get_parent_cat( $cid, $cat_type );
+//			print_r( $cats_info );
+			
+			$cat_ids = $cats_info->term_id;
+//			echo $cat_ids;
+		} else if ( $cat_ids > 0 ) {
+			$cats_info = EBE_widget_get_parent_cat( $cat_ids, $cat_type );
+		}
+		
+		
+		//
+		if ( $cats_info != NULL && $title == '' ) {
+			$title = $cats_info->name;
+		}
+		
+		
+		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
 		
@@ -178,6 +265,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		//
 		echo '<ul class="echbay-category-in-js">';
+		
 		
 		//
 		$arrs_cats = get_categories( array(
@@ -198,7 +286,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 					}
 					
 					//
-					echo '<li class="cat-item cat-item-' . $v->term_id . '"><a data-taxonomy="' . $v->taxonomy . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>';
+					echo '<li class="cat-item cat-item-' . $v->term_id . '">' . $dynamic_tag_begin . '<a data-taxonomy="' . $v->taxonomy . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
 					
 					//
 					if ( $get_child == true ) {
@@ -218,7 +306,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 				}
 				
 				//
-				echo '<li class="cat-item cat-item-' . $v->term_id . '"><a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>';
+				echo '<li class="cat-item cat-item-' . $v->term_id . '">' . $dynamic_tag_begin . '<a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
 				
 				//
 				if ( $get_child == true ) {

@@ -529,6 +529,7 @@ if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
 if ( mtv_id > 0 ) {
 	_eb_get_config( true );
 }
+//print_r( $__cf_row );
 
 
 

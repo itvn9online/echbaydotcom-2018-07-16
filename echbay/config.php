@@ -726,6 +726,21 @@ $str_threadnode_design_preview = '<div title="[Bấm đây để chọn thiết 
 
 $arr_for_set_template['str_threadnode_design_preview'] = $str_threadnode_design_preview;
 
+$arr_for_set_template['cf_threadnode_title_tag'] = __eb_create_select_checked_config(
+	array(
+		'div' => 'DIV',
+		'p' => 'P',
+		'li' => 'LI',
+		'h2' => 'H2',
+		'h3' => 'H3',
+		'h4' => 'H4',
+		'h5' => 'H5',
+		'h6' => 'H6'
+	),
+	$__cf_row['cf_threadnode_title_tag'],
+	'cf_threadnode_title_tag'
+);
+
 
 
 
