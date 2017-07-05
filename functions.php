@@ -2906,6 +2906,10 @@ function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 	return true;
 }
 
+function EBE_create_cache_for_ftp () {
+	return EB_THEME_CACHE . 'cache_for_ftp.txt';
+}
+
 function EBE_check_ftp_account () {
 	
 	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
@@ -2932,10 +2936,6 @@ function EBE_get_config_ftp_root_dir ( $content_ = '1' ) {
 	}
 	
 	return $__cf_row['cf_ftp_root_dir'];
-}
-
-function EBE_create_cache_for_ftp () {
-	return EB_THEME_CACHE . 'cache_for_ftp.txt';
 }
 
 function EBE_get_ftp_root_dir ( $content_ ) {

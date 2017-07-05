@@ -143,9 +143,7 @@ function EBE_update_file_via_ftp () {
 	
 	
 	// update file thông qua ftp -> nếu không có dữ liệu -> hủy luôn
-	$ftp_server = EBE_check_ftp_account();
-//	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
-	if ( $ftp_server == false ) {
+	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
 		
 		// update thông qua hàm cơ bản của php
 		return EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core, $list_dir_for_update_old_core, $list_file_for_update_old_core );
@@ -155,15 +153,13 @@ function EBE_update_file_via_ftp () {
 	
 	
 	// tạo kết nối tới FTP
+	if ( ! defined('FTP_HOST') ) {
+		$ftp_server = $_SERVER['SERVER_ADDR'];
+	} else {
+		$ftp_server = FTP_HOST;
+	}
 	$ftp_user_name = FTP_USER;
 	$ftp_user_pass = FTP_PASS;
-	
-	
-	
-	//
-	$ftp_dir_root = EBE_get_ftp_root_dir( time() );
-	
-	
 	
 	// tạo kết nối
 	$conn_id = ftp_connect($ftp_server) or die('ERROR connect to server');
@@ -175,7 +171,7 @@ function EBE_update_file_via_ftp () {
 //	echo getcwd() . "\n";
 	
 	// Tạo file trong thư mục cache
-//	$file_test = EBE_create_cache_for_ftp();
+	$file_test = EB_THEME_CACHE . 'test_ftp.txt';
 //	$file_cache_update = $file_test;
 //	echo $file_test . " - \n";
 //	$file_source_test = $list_file_for_update_eb_core[0];
@@ -183,14 +179,50 @@ function EBE_update_file_via_ftp () {
 //	echo $file_source_test . " + \n";
 	
 	//
+	$ftp_dir_root = '';
 	
 	//
+	if ( ! file_exists( $file_test ) ) {
+		_eb_create_file( $file_test, 1 );
+	}
+	
+	//
+	if ( ! file_exists( $file_test ) ) {
+		die('ERROR create test file!');
+	}
+	
+	// Tìm thư mục gốc của tài khoản FTP này
+//	if ( ! ftp_put($conn_id, '.' . $file_test, '.' . $file_source_test, FTP_ASCII) ) {
+		$ftp_root_dir = explode( '/', $file_test );
+		
+		foreach ( $ftp_root_dir as $v ) {
+//			echo $v . "\n";
+			if ( $v != '' ) {
+				$file_test = strstr( $file_test, $v );
+//				echo $file_test . " - \n";
+//				$file_source_test = strstr( $file_source_test, $v );
+//				echo $file_source_test . " + \n";
+				
+				//
+//				if ( $file_test != '' && $file_source_test != '' ) {
+				if ( $file_test != '' ) {
+//					if ( ftp_put($conn_id, './' . $file_test, './' . $file_source_test, FTP_ASCII) ) {
+					if ( ftp_nlist($conn_id, './' . $file_test) != false ) {
+//						$ftp_dir_root = './' . $v;
+						$ftp_dir_root = $v;
+						break;
+					}
+//					echo "\n";
+				}
+			}
+		}
+//	}
 	
 	//
 //	echo $ftp_dir_root . '<br>' . "\n";
 //	echo $file_cache_update . '<br>' . "\n";
 //	echo $file_test . '<br>' . "\n";
-//	$file_test = './' . $file_test;
+	$file_test = './' . $file_test;
 //	echo $file_test . '<br>' . "\n";
 	
 	//
@@ -275,6 +307,15 @@ function EBE_update_file_via_ftp () {
 		
 		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
 //		echo $file_test . ' - file cache<br>' . "\n";
+		
+		/*
+		if( ftp_nlist($conn_id, $file_test) == false ) {
+			die( 'File not exist: ' . $file_test );
+		}
+		if( ftp_nlist($conn_id, $v2) == false ) {
+			die( 'File not exist: ' . $v2 );
+		}
+		*/
 		
 		// upload file FTP_BINARY or FTP_ASCII -> nên sử dụng FTP_BINARY
 //		ftp_put($conn_id, $v2, $v, FTP_ASCII) or die( 'ERROR upload file to server #' . $v );
