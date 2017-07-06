@@ -1,0 +1,90 @@
+.thread-list { margin: 0 -15px; }
+.thread-list li { width: 33.33%; }
+.thread-list-padding {
+	margin: 0 15px 20px 15px;
+	padding: 0 0 20px 0;
+}
+/*
+.thread-list-padding:hover {
+	border-color: #ccc;
+	-webkit-box-shadow: 0 3pt 3pt #ccc;
+	-moz-box-shadow: 0 3pt 3pt #ccc;
+	box-shadow: 3pt 3pt 3pt #ccc;
+}
+*/
+.thread-list-avt {
+	background: #fff center no-repeat;
+	background-size: auto 100%;
+	height: 220px;
+	border: 1px #f2f2f2 solid;
+}
+.thread-list-padding:hover .thread-list-avt {
+	background-size: auto 120%;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+/*
+.thread-list-mobilebg {
+	position: relative;
+}
+*/
+.thread-list-title {
+	margin: 5px 0;
+	height: 20px;
+	line-height: 20px;
+	overflow: hidden;
+}
+.thread-list-padding:hover .thread-list-title { font-weight: bold; }
+.thread-list-msp {
+	height: 30px;
+	overflow: hidden;
+}
+.thread-list-booking,
+.thread-list-view {
+	margin: 0 auto;
+	width: 92%;
+	max-width: 250px;
+}
+.thread-list-booking a,
+.thread-list-view a {
+	border-radius: 25px;
+	text-decoration: none;
+	display: block;
+	color: #6e6e6e;
+	border: 1px #dcdcdc solid;
+}
+.thread-list-view a,
+.thread-list-booking a {
+	width: 50%;
+	margin: 0 auto;
+	min-width: 120px;
+}
+.thread-list-views a:hover { color: #fff; }
+.thread-list-booking a:hover {
+	background: #3a80bc;
+	border-color: #3a80bc;
+}
+.thread-list-view a:hover {
+	background: #c00;
+	border-color: #c00;
+}
+.thread-list-ant {
+	position: relative !important;
+	z-index: 1;
+	color: #999;
+}
+.thread-list-ant:hover { text-decoration: underline; }
+.thread-list-gia { margin-top: 10px; }
+.thread-list-gia span { margin: 0 3px; }
+.thread-list-per {
+	position: absolute;
+	top: 12px;
+	right: 0;
+	padding: 0 10px;
+	border-radius: 10px 0 0 10px;
+	background: #3a80bc;
+	color: #fff;
+	line-height: 20px;
+}
