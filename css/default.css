@@ -1595,5 +1595,6 @@ li.footer-social-gg { background-color: #DE4B39; }
 .footer-social a {
 	font-size: 20px;
 	color: #fff;
+	display: block;
 }
 .footer-social a:hover { opacity: .6; }

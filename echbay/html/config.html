@@ -72,6 +72,9 @@
 				<td class="i bold redcolor bborder" colspan="2">URL trang chính</td>
 			</tr>
 			<tr>
+				<td class="small" colspan="2">* Nếu để trống, hệ thống sẽ tự động tìm và tối ưu lại.</td>
+			</tr>
+			<tr>
 				<td class="t">Site URL</td>
 				<td class="i"><input type="text" name="current_homeurl" value="{tmp.current_homeurl}" class="m" maxlength="100" /></td>
 			</tr>
@@ -82,6 +85,10 @@
 			<tr>
 				<td class="t">FTP root dir</td>
 				<td class="i">{tmp.cf_ftp_root_dir}</td>
+			</tr>
+			<tr>
+				<td class="t">Content Language</td>
+				<td class="i"><input type="text" name="cf_content_language" value="{tmp.cf_content_language}" class="s" maxlength="10" /></td>
 			</tr>
 		</tbody>
 		<tbody title="Nâng cao" id="eb-admin-config-advanced" class="eb-admin-config-tab eb-admin-hide-config-tab">
@@ -446,11 +453,11 @@
 					<div class="small">Tọa độ Công ty/ Tổ chức của bạn trên bản đồ</div>
 					<div id="mapholder"></div></td>
 			</tr>
+			<!--
 			<tr>
 				<td class="t">Content Language</td>
 				<td class="i">{tmp.list_file_for_lang}</td>
 			</tr>
-			<!--
 			<tr>
 				<td class="t">Timezone</td>
 				<td class="i"><div class="cf">

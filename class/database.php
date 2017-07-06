@@ -440,6 +440,7 @@ if ( $__cf_row['cf_tester_mode'] == 1 ) {
 
 
 // ngôn ngữ trên website
+/*
 include EB_THEME_PLUGIN_INDEX . 'lang/' . $default_all_site_lang . '.php';
 if ( $__cf_row['cf_content_language'] != $default_all_site_lang && $__cf_row['cf_content_language'] != '' ) {
 	include EB_THEME_PLUGIN_INDEX . 'lang/' . $__cf_row['cf_content_language'] . '.php';
@@ -464,6 +465,7 @@ if ($check_update_lang == false) {
 	_eb_get_static_html ( $strCacheFilter, date( 'r', time() ), '', 60 );
 }
 $url_for_js_lang = 'wp-content/uploads/ebcache/lang.js';
+*/
 
 
 

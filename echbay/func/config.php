@@ -104,6 +104,11 @@ if ( $_POST['cf_description'] == '' ) {
 }
 
 
+if ( $_POST['cf_content_language'] == '' ) {
+	$_POST['cf_content_language'] = get_language_attributes();
+}
+
+
 
 
 

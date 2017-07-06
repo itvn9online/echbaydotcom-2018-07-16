@@ -355,6 +355,7 @@ date_default_timezone_set( $__cf_row['cf_timezone'] );
 //echo EB_THEME_PLUGIN_INDEX . "\n";
 //echo EB_URL_OF_PLUGIN . "\n";
 //echo __FILE__ . "\n";
+/*
 $list_file_for_lang = '';
 
 //
@@ -376,6 +377,7 @@ foreach ( $arr_file_for_lang as $v ) {
 	//
 	$list_file_for_lang .= '<option value="' . $v . '" ' . $sl . '>' . $v . '</option>';
 }
+*/
 
 
 
@@ -418,7 +420,8 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	'tmp.cf_product_thumbnail_table_size' => '<select name="cf_product_thumbnail_table_size">' . $str_cf_product_thumbnail_table_size . '</select>',
 	'tmp.cf_product_thumbnail_mobile_size' => '<select name="cf_product_thumbnail_mobile_size">' . $str_cf_product_thumbnail_mobile_size . '</select>',
 	
-	'tmp.list_file_for_lang' => '<select name="cf_content_language">' . $list_file_for_lang . '</select>',
+//	'tmp.list_file_for_lang' => '<select name="cf_content_language">' . $list_file_for_lang . '</select>',
+	'tmp.list_file_for_lang' => '',
 ), ECHBAY_PRI_CODE );
 
 

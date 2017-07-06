@@ -81,6 +81,15 @@
 	<div>
 		<input type="checkbox" id="bai_viet_nay_duoc_lay_theo_id" />
 		<label for="bai_viet_nay_duoc_lay_theo_id">Xác định bài viết dựa theo ID (thường sẽ xác định theo URL, nếu có ID thì check vào đây để lọc theo ID sẽ chuẩn hơn)</label>
+		<blockquote>
+			<div><em>* Nhập vào định dạng để cắt ID bài viết theo định dạng này (mặc định sẽ lấy theo số ở cuối URL)</em></div>
+			<div>
+				<input type="text" id="id_post_begin" value="" placeholder="Bắt đầu bằng" />
+			</div>
+			<div>
+				<input type="text" id="id_post_end" value="" placeholder="Kết thúc bằng" />
+			</div>
+		</blockquote>
 	</div>
 	<br>
 	<div>
@@ -217,5 +226,5 @@
 </div>
 <script type="text/javascript">
 {tmp.js}
-</script>
+</script> 
 <script type="text/javascript" src="{tmp.admin_js_uri}leech_data.js?v={tmp.media_version}"></script> 

@@ -162,6 +162,7 @@ function EBE_update_file_via_ftp () {
 	
 	//
 	$ftp_dir_root = EBE_get_ftp_root_dir( time() );
+	echo 'FTP root dir: ' . $ftp_dir_root . '<br><br>' . "\n";
 	
 	
 	

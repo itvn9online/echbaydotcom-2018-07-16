@@ -250,7 +250,7 @@ function click_get_user_position () {
 	f.cf_region.value = '';
 	f.cf_placename.value = '';
 	f.cf_position.value = '';
-	f.cf_content_language.value = '';
+//	f.cf_content_language.value = '';
 	
 	//
 	auto_get_user_position();

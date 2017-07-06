@@ -36,6 +36,19 @@ console.log( arr_for_save_domain_config );
 function get_leech_data_post_id ( str, vitri ) {
 	console.log(str);
 	
+	var b = $('#id_post_begin').val() || '',
+		e = $('#id_post_end').val() || '';
+	
+	// nếu có điều kiên để lọc ID
+	if ( b != '' && e != '' ) {
+		var a = str.split( b );
+		if ( a.length > 1 ) {
+			return a[1].split( e )[0];
+		}
+		return 0;
+	}
+	
+	// nếu không -> chủ động tìm
 	if ( typeof vitri == 'undefined' ) {
 		vitri = 0;
 	}
@@ -713,7 +726,9 @@ function check_lech_data_submit ( _alert ) {
 	
 	// ID phân nhóm
 	f.t_ant.value = g_func.number_only( $('#oiAnt input[name="t_ant"]').val() || 0 );
-	if ( f.t_ant.value == 0 ) {
+	if ( f.t_ant.value.toString() == '0' ) {
+//		console.log( f.t_ant.value );
+		
 		if ( typeof _alert != 'undefined' && _alert == 'no' ) {
 		}
 		else {
@@ -730,11 +745,13 @@ function check_lech_data_submit ( _alert ) {
 		EBE_auto_save_domain_cookie();
 		
 		//
+		/*
 		setTimeout(function () {
 			document.frm_leech_data.submit();
 		}, 5000);
+		*/
 		
-		return false;
+//		return 2;
 	}
 	
 	//
@@ -907,8 +924,15 @@ setInterval(function () {
 
 $('.click-submit-url-details').off('click').click(function () {
 	
-	if ( check_lech_data_submit( 'no' ) == false ) {
-		if ( confirm( 'Chưa chọn Phân nhóm sản phẩm! Bạn có muốn chọn lại không?' ) == true ) {
+	var a = check_lech_data_submit( 'no' );
+	
+	if ( a != true ) {
+		/*
+		if ( a == 2 ) {
+			alert('Tự động chạy sau 5 giây');
+			return false;
+		}
+		else */ if ( confirm( 'Chưa chọn Phân nhóm sản phẩm! Bạn có muốn chọn lại không?' ) == true ) {
 			return false;
 		}
 	}
@@ -1082,6 +1106,9 @@ if ( g_func.getc( 'leech_data_auto_next' ) == 1 ) {
 
 // lưu cookies cho phiên làm việc -> lưu và làm dưới dạng mảng cho thống nhất
 var arr_cookie_lamviec = {
+	id_post_begin : '',
+	id_post_end : '',
+	
 	details_noidung : '',
 	details_dieukien : '',
 	details_goithieu : '',
