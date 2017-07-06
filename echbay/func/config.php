@@ -105,7 +105,12 @@ if ( $_POST['cf_description'] == '' ) {
 
 
 if ( $_POST['cf_content_language'] == '' ) {
-	$_POST['cf_content_language'] = get_language_attributes();
+	$a = get_language_attributes();
+	$a = trim( $a );
+	$a = str_replace( 'lang="', '', $a );
+	$a = str_replace( '"', '', $a );
+	
+	$_POST['cf_content_language'] = $a;
 }
 
 

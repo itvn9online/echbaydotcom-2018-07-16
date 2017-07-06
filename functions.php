@@ -2938,7 +2938,7 @@ function EBE_get_config_ftp_root_dir ( $content_ = '1' ) {
 	return $__cf_row['cf_ftp_root_dir'];
 }
 
-function EBE_get_ftp_root_dir ( $content_ ) {
+function EBE_get_ftp_root_dir ( $content_ = 'test' ) {
 	
 	$ftp_server = EBE_check_ftp_account();
 	if ( $ftp_server == false ) {
