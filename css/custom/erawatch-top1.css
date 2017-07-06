@@ -1,0 +1,59 @@
+#erawatch-top1 .web-top-logo { padding: 8px 0; }
+#erawatch-top1 .web-top-logo,
+#erawatch-top1 .web-top-logo a { color: #000; }
+#erawatch-top1 .topbar-menu { border-left: 1px #ccc solid; }
+#erawatch-top1 .topbar-menu li {
+	float: left;
+	border-right: 1px #ccc solid;
+}
+#erawatch-top1 .topbar-menu .sub-menu {
+	position: absolute;
+	background: #fff;
+	border: 1px #f2f2f2 solid;
+	-webkit-box-shadow: 0 3pt 3pt #ccc;
+	-moz-box-shadow: 0 3pt 3pt #ccc;
+	box-shadow: 3pt 3pt 3pt #ccc;
+	display: none;
+	z-index: 11;
+	padding: 8px 0;
+	line-height: 19px;
+}
+#erawatch-top1 .topbar-menu li:hover .sub-menu { display: block; }
+#erawatch-top1 .topbar-menu .sub-menu li {
+	float: none;
+	border: 0 none;
+	padding: 5px 0;
+}
+#erawatch-top1 .topbar-menu a {
+	display: block;
+	padding: 0 15px;
+}
+#erawatch-top1 .topbar-menu .sub-menu .sub-menu { display: none; }
+#erawatch-top1 .div-search-margin { }
+#erawatch-top1 .div-search {
+	background: #fff;
+	position: relative;
+	border-radius: 12px;
+	border: 1px #ccc solid;
+}
+#erawatch-top1 .div-search form { padding-left: 6px }
+#erawatch-top1 .div-search input[type=search],
+#erawatch-top1 .div-search button {
+	background: none;
+	border: 0 none;
+	outline: none;
+}
+#erawatch-top1 .div-search input[type=search] {
+	height: 25px;
+	width: 85%;
+}
+#erawatch-top1 .div-search button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 20%;
+	max-width: 30px;
+}
+#erawatch-top1 .oi_member_func a { display: inline-block; }
+#erawatch-top1 .oi_member_func a:last-child { margin-left: 15px; }
