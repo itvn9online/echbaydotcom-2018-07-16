@@ -1,6 +1,5 @@
-<div id="eb_header">
-	<div>
-		<?php
+<?php
+
 // top menu dưới dạng widget
 //$eb_top_widget = _eb_echbay_sidebar( 'eb_top_global', 'eb-widget-top cf', 'div', 1, 0, 1 );
 
@@ -17,10 +16,3 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 		include $v;
 	}
 }
-// Bổ sung thêm một số module dưới dạng widget cho phần top
-// top menu dưới dạng widget
-//else {
-?>
-	</div>
-	<div class="eb-top"><?php echo _eb_echbay_sidebar( 'eb_top_global', 'eb-widget-top cf', 'div', 1, 0, 1 ); ?></div>
-</div>

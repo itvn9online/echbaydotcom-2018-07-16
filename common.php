@@ -110,14 +110,21 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 	for ( $i = 1; $i < 10; $i++ ) {
 		$j = 'cf_top' . $i . '_include_file';
 		
-		if ( isset( $__cf_row_default[ $j ] ) ) {
-			if ( $__cf_row[ $j ] != '' ) {
+		if ( ! isset( $__cf_row_default[ $j ] ) ) {
+			break;
+		}
+		
+		//
+		if ( $__cf_row[ $j ] != '' ) {
+			// nếu là widget -> chỉ nhúng, và nhúng theo kiểu khác
+			if ( $__cf_row[ $j ] == 'top_widget.php' ) {
+				$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . $__cf_row[ $j ];
+			}
+			else {
 				$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'top/' . $__cf_row[ $j ];
 				
 				$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = 1;
 			}
-		} else {
-			break;
 		}
 	}
 	
@@ -139,14 +146,21 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 	for ( $i = 1; $i < 10; $i++ ) {
 		$j = 'cf_footer' . $i . '_include_file';
 		
-		if ( isset( $__cf_row_default[ $j ] ) ) {
-			if ( $__cf_row[ $j ] != '' ) {
+		if ( ! isset( $__cf_row_default[ $j ] ) ) {
+			break;
+		}
+		
+		//
+		if ( $__cf_row[ $j ] != '' ) {
+			// nếu là widget -> chỉ nhúng, và nhúng theo kiểu khác
+			if ( $__cf_row[ $j ] == 'footer_widget.php' ) {
+				$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . $__cf_row[ $j ];
+			}
+			else {
 				$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row[ $j ];
 				
 				$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = 1;
 			}
-		} else {
-			break;
 		}
 	}
 	

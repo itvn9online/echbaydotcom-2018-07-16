@@ -585,9 +585,12 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 	$arr_top_include_file = array();
 	for ( $i = 1; $i < 10; $i++ ) {
 		$j = $type . $i;
+		
+		//
 		if ( isset( $__cf_row_default[ 'cf_' . $j . '_include_file' ] ) ) {
 			$arr_top_include_file[ $j ] = array(
-				'' => 'Chọn file thiết kế cho phần ' . $j
+				'' => 'Chọn file thiết kế cho phần ' . $j,
+				$type . '_widget.php' => 'Đặt làm ' . $type . ' widget'
 			);
 		} else {
 			if ( isset( $__cf_row_default[ 'cf_' . $type . '_include_file' ] ) ) {
@@ -595,6 +598,7 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 					'' => 'Chọn file thiết kế cho phần ' . $type
 				);
 			}
+			
 			break;
 		}
 	}
