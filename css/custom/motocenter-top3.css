@@ -1,0 +1,57 @@
+#motocenter-top3 .web-top-logo { padding: 10px 0; }
+/* #motocenter-top3 .nav { position: relative; } */
+#motocenter-top3 .nav li {
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: bold;
+	float: left;
+	padding: 0 20px;
+}
+#motocenter-top3 .nav a {
+	display: block;
+	color: #333;
+	padding: 38px 0 15px 0;
+	border-bottom: 5px solid #fff;
+}
+#motocenter-top3 .nav a:hover {
+	color: #293c92;
+	border-bottom-color: #293c92;
+}
+#motocenter-top3 .nav .sub-menu {
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 99;
+	padding: 25px 5%;
+	line-height: 19px;
+	background-color: #fff;
+	border-top: 1px #ccc solid;
+	text-align: left;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+	display: none;
+	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	-moz-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+}
+#motocenter-top3 .nav li:hover .sub-menu { display: block; }
+#motocenter-top3 .nav .sub-menu li {
+	line-height: 19px;
+	float: none;
+	display: inline-block;
+	width: 24%;
+	margin: 0 0 10px 0;
+	padding: 0;
+	text-transform: none;
+	font-weight: normal;
+	font-size: 14px;
+}
+#motocenter-top3 .nav .sub-menu a {
+	color: #000;
+	padding: 0;
+	border: 0 none;
+}
+#motocenter-top3 .nav .sub-menu a:hover { text-decoration: underline; }
+#motocenter-top3 .nav .sub-menu .sub-menu { display: none !important; }
