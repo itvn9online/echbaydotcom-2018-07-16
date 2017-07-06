@@ -240,7 +240,8 @@ function EBE_update_file_via_ftp () {
 	
 	
 	// tìm và xóa các thư mục không tồn tại trong bản mới (thực hiện sau khi xóa file)
-	foreach ( $list_dir_for_update_old_core as $v ) {
+	$arr = array_reverse( $list_dir_for_update_old_core );
+	foreach ( $arr as $v ) {
 		
 //		echo $v . "\n";
 		
