@@ -1,6 +1,10 @@
 
 
 
+// Tham số dùng để xác định xem file được add vào mục nào
+var id_for_set_new_include_file = '';
+
+
 
 show_note_for_checkbox_config( 'cf_using_top_default' );
 show_note_for_checkbox_config( 'cf_using_footer_default' );
@@ -38,39 +42,72 @@ if ( dog('cf_using_footer_default').checked == true ) {
 $('.click-add-class-selected').click(function () {
 	var a = $(this).attr('data-key') || '',
 		img = $(this).attr('data-img') || '',
-		val  = $(this).attr('data-val ') || '',
-		size = $(this).attr('data-size') || '';
+		val  = $(this).attr('data-val') || '',
+		size = $(this).attr('data-size') || '',
+		type = $(this).attr('data-type') || '';
+	
+//	console.log( a );
+//	console.log( type );
+//	console.log( img );
+//	console.log( val );
+	
 	if ( a != '' ) {
-		$('.click-add-class-selected[data-key="' + a + '"]').removeClass('selected');
+//		$('.click-add-class-selected[data-key="' + a + '"]').removeClass('selected');
+		$('.click-add-class-selected').removeClass('selected');
 		$(this).addClass('selected');
 		
-		//
-		var jPro = $('.click-to-change-file-design[data-key="' + a + '"]');
+		// mặc định nạp lần đầu (auto click) -> lấy theo A
+//		var jPro = $('.click-to-change-file-design[data-key="' + a + '"]');
+//		var jPro = '.click-to-change-file-design[data-name="' + type + '"]';
+		var jPro = '.click-to-change-file-design[data-val="' + val + '"]';
 		
-		jPro.css({
+		// khi người dùng click thì lấy theo ID đã được click
+		if ( id_for_set_new_include_file != '' ) {
+			jPro = '.click-to-change-file-design[data-key="' + id_for_set_new_include_file + '"]';
+		}
+//		console.log( jPro );
+//		console.log( $(jPro).length );
+//		$(jPro).html('aaaaaaaaaa'); return false;
+		
+		$(jPro).css({
 			'background-image' : 'url(\'' + img + '\')'
 		});
 		
-		if ( val == '' && img == '' ) {
-			jPro
+//		if ( val == '' && img == '' ) {
+		if ( img == '' ) {
+//			console.log( $(this).attr('title') );
+			
+			$(jPro)
 //			.hide()
 			.html( $(this).attr('title') )
 			.height('auto')
+			.addClass('bold')
 			;
 		}
 		else {
-			jPro
+			$(jPro)
 //			.show()
 			.html( '&nbsp;' )
 			;
 			
 			if ( size != '' ) {
-				jPro.height( jPro.width() * eval(size) );
+				$(jPro).height( $(jPro).width() * eval(size) );
 			}
+		}
+		
+		//
+//		console.log( val );
+//		console.log( type );
+		
+		// nếu là click thủ công -> nạp giá trị mới
+		if ( id_for_set_new_include_file != '' ) {
+			$( '#' + $(jPro).attr('data-name') ).val( val );
 		}
 	}
 });
 
+// chạy riêng với function trên cho nó chuẩn chỉ, đỡ lỗi
+/* v1
 $('.click-add-class-selected').each(function () {
 	var a = $('input[type="radio"]', this).attr('id') || '';
 	if ( a != '' ) {
@@ -78,6 +115,81 @@ $('.click-add-class-selected').each(function () {
 			$(this).click();
 		}
 	}
+});
+*/
+
+// v2
+$('.each-to-get-current-value-file').each(function(index, element) {
+	var a = $(this).val() || '',
+		b = $(this).attr('name') || '',
+		key = $(this).attr('data-key') || '';
+	
+	// Nếu có giá trị -> đã có file được chọn
+	if ( a != '' ) {
+//		console.log(a);
+//		console.log(b);
+		
+		// Nếu là widget -> hiển thị giá trị riêng
+		if ( a.split( '_widget.' ).length > 1 ) {
+			a = 'Mẫu #' + a.split('.')[0];
+			$('div[data-name="' + b + '"]').addClass('bold');
+		}
+		// Hoặc gọi đến hàm hiển thị file tương ứng
+		else {
+//			id_for_set_new_include_file = key;
+			
+			$('.click-add-class-selected[data-val="' + a + '"]').click();
+//			$('.click-add-class-selected[data-type="' + b + '"]').click();
+			
+			a = '';
+		}
+	}
+	// Nếu không có giá trị -> hiển thị hướng dẫn bấm chọn
+	else {
+		a = '[ Chọn file thiết kế cho phần #' + $(this).attr('data-type') + ' ]';
+	}
+	
+	if ( a != '' ) {
+		$('div[data-name="' + b + '"]').html( a );
+	}
+});
+
+
+
+// Xóa file
+$('.click-remove-file-include-form-input').click(function () {
+	if ( id_for_set_new_include_file == '' ) {
+		console.log( 'id_for_set_new_include_file not found' );
+		return false;
+	}
+	
+	var jPro = $('.click-to-change-file-design[data-key="' + id_for_set_new_include_file + '"]');
+	
+	$( '#' + jPro.attr('data-name') ).val( '' );
+	
+	jPro.css({
+		'background-image' : 'url(\'\')'
+	}).height('auto').html('[ Chọn file thiết kế cho phần #' + jPro.attr('data-key') + ' ]');
+});
+
+
+
+// Đặt làm widget
+$('.click-add-widget-include-to-input').click(function () {
+	if ( id_for_set_new_include_file == '' ) {
+		console.log( 'id_for_set_new_include_file not found' );
+		return false;
+	}
+	
+	var a = $(this).attr('data-type') || '';
+	
+	var jPro = $('.click-to-change-file-design[data-key="' + id_for_set_new_include_file + '"]');
+	
+	$( '#' + jPro.attr('data-name') ).val( a + '_widget.php' );
+	
+	jPro.css({
+		'background-image' : 'url(\'\')'
+	}).height('auto').html('Mẫu #' + a + '_widget');
 });
 
 
@@ -103,12 +215,15 @@ $('.click-to-change-file-design').click(function () {
 //	console.log(key);
 //	console.log(text);
 	
+	id_for_set_new_include_file = key;
+//	console.log( id_for_set_new_include_file );
+	
 	$('.change-eb-design-fixed').hide();
 	$('.change-eb-design-fixed[data-key="' + text + '"]').show().addClass('selected');
 	
 	// Căn chỉnh lại size cho phần chọn thiết kế
-	$('.preview-in-ebdesign').hide();
-	$('.preview-in-ebdesign[data-key="' + key + '"]').show();
+//	$('.preview-in-ebdesign').hide();
+//	$('.preview-in-ebdesign[data-key="' + key + '"]').show();
 	$('.preview-in-ebdesign').each(function(index, element) {
 		var a = $(this).attr('data-size') || '';
 		if ( a != '' ) {

@@ -293,12 +293,17 @@ $__cf_row_default = array(
 	'cf_top2_include_file' => '',
 	'cf_top3_include_file' => '',
 	'cf_top4_include_file' => '',
+	'cf_top5_include_file' => '',
+	'cf_top6_include_file' => '',
 	
 	'cf_using_footer_default' => 1,
 	'cf_footer_class_style' => '',
 	'cf_footer1_include_file' => '',
 	'cf_footer2_include_file' => '',
 	'cf_footer3_include_file' => '',
+	'cf_footer4_include_file' => '',
+	'cf_footer5_include_file' => '',
+	'cf_footer6_include_file' => '',
 	
 	// khung sản phẩm
 	'cf_threadnode_include_file' => '',

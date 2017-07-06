@@ -7,7 +7,7 @@
 <ul id="list-tab-eb-admin-config" class="eb-admin-config cf">
 </ul>
 <form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();">
-	<div class="d-none"> </div>
+	<div class="d-none2">{tmp.str_list_all_include_file}</div>
 	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table fix-textarea-height">
 		<tbody title="Chung" id="eb-admin-config-theme-chung" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
@@ -24,13 +24,7 @@
 					<div class="small" style="line-height:19px;">Chọn từng khối thiết kế cho phần TOP hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
 					<div class="show-if-using-top-default border-file-design">{tmp.str_top_design_preview}</div>
 					<div data-key="top" class="change-eb-design-fixed">
-						<div class="change-eb-design-padding">
-							<div align="right">
-								<button type="button" class="cur click-to-exit-design">Đóng [x]</button>
-							</div>
-							<div class="change-eb-design-note"><em>* Nếu bạn không muốn chọn file thiết kế cho mục này, hãy bấm chọn ô đầu tiên.</em></div>
-							<div>{tmp.str_top_include_file}</div>
-						</div>
+						<div class="change-eb-design-padding">{tmp.str_top_include_file}</div>
 					</div></td>
 			</tr>
 			<tr>
@@ -47,13 +41,7 @@
 					<div class="small" style="line-height:19px;">Chọn từng khối thiết kế cho phần FOOTER hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
 					<div class="show-if-using-footer-default border-file-design">{tmp.str_footer_design_preview}</div>
 					<div data-key="footer" class="change-eb-design-fixed">
-						<div class="change-eb-design-padding">
-							<div align="right">
-								<button type="button" class="cur click-to-exit-design">Đóng [x]</button>
-							</div>
-							<div class="change-eb-design-note"><em>* Nếu bạn không muốn chọn file thiết kế cho mục này, hãy bấm chọn ô đầu tiên.</em></div>
-							<div>{tmp.str_footer_include_file}</div>
-						</div>
+						<div class="change-eb-design-padding">{tmp.str_footer_include_file}</div>
 					</div></td>
 			</tr>
 			<tr>
@@ -69,10 +57,6 @@
 					<div class="border-file-design border-threadnode-design">{tmp.str_threadnode_design_preview}</div>
 					<div data-key="threadnode" class="change-eb-design-fixed">
 						<div class="change-eb-design-padding">
-							<div align="right">
-								<button type="button" class="cur click-to-exit-design">Đóng [x]</button>
-							</div>
-							<div class="change-eb-design-note"><em>* Nếu bạn không muốn chọn file thiết kế cho mục này, hãy bấm chọn ô đầu tiên.</em></div>
 							<div class="border-threadnode-design cf">{tmp.str_threadnode_include_file}</div>
 						</div>
 					</div></td>

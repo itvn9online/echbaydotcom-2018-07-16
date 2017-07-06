@@ -260,6 +260,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	opacity: .01;
 }
 .preview-in-ebdesign input[type=radio] { opacity: .01; }
+.preview-bg-ebdesign { text-indent: -9999px; }
+.click-add-widget-include-to-input[data-type="threadnode"] { display: none; }
 .border-file-design {
 	border: 1px #ccc solid;
 	padding: 15px;

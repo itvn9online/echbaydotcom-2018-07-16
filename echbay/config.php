@@ -572,9 +572,13 @@ $arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_conf
 
 
 // load danh sách file TOP, FOOTER
+$str_list_all_include_file = array();
+
 function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php' ) {
 	global $__cf_row_default;
 	global $__cf_row;
+	global $str_list_all_include_file;
+//	global $arr_for_set_template;
 	
 	//
 	$str_top_design_preview = '';
@@ -585,23 +589,40 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 	$arr_top_include_file = array();
 	for ( $i = 1; $i < 10; $i++ ) {
 		$j = $type . $i;
+		$j_name = 'cf_' . $j . '_include_file';
+		$j2_name = 'cf_' . $type . '_include_file';
 		
 		//
-		if ( isset( $__cf_row_default[ 'cf_' . $j . '_include_file' ] ) ) {
+		if ( isset( $__cf_row_default[ $j_name ] ) ) {
+			/*
 			$arr_top_include_file[ $j ] = array(
 				'' => 'Chọn file thiết kế cho phần ' . $j,
 				$type . '_widget.php' => 'Đặt làm ' . $type . ' widget'
 			);
+			*/
+			
+			$arr_top_include_file[ $j ] = array();
+			
+			$str_list_all_include_file[] = '<input type="text" name="' . $j_name . '" id="' . $j_name . '" value="' . $__cf_row[ $j_name ] . '" data-type="' . $j . '" class="each-to-get-current-value-file" />';
 		} else {
-			if ( isset( $__cf_row_default[ 'cf_' . $type . '_include_file' ] ) ) {
+			if ( isset( $__cf_row_default[ $j2_name ] ) ) {
+				/*
 				$arr_top_include_file[ $type ] = array(
 					'' => 'Chọn file thiết kế cho phần ' . $type
 				);
+				*/
+				
+				$arr_top_include_file[ $type ] = array();
+				
+				$str_list_all_include_file[] = '<input type="text" name="' . $j2_name . '" id="' . $j2_name . '" value="' . $__cf_row[ $j2_name ] . '" data-type="' . $type . '" class="each-to-get-current-value-file" />';
 			}
 			
 			break;
 		}
 	}
+	$str_list_all_include_file[] = '<br>';
+//	print_r( $str_list_all_include_file );
+//	$arr_for_set_template['str_list_all_include_file'] = implode( "\n", $str_list_all_include_file );
 	
 	foreach ( $arr_file_name as $v ) {
 		$v = basename( $v );
@@ -625,14 +646,26 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 	}
 //	print_r( $arr_top_include_file );
 	
-	$str_top_include_file = '';
+	$str_top_include_file = '
+	<div align="right">
+		<button type="button" class="cur click-to-exit-design">Đóng [x]</button>
+	</div>
+	<br>
+	<div class="change-eb-design-note d-none"><em>* Các file sẽ xuất hiện lần lượt theo vị trí đã chọn!</em></div>
+	<div class="cf text-center">
+		<div class="lf f50"><button type="button" data-type="' . $type . '" class="click-remove-file-include-form-input cur">[ Xóa file ]</button></div>
+		<div class="lf f50"><button type="button" data-type="' . $type . '" class="click-add-widget-include-to-input cur">[ ' . $type . ' widget ]</button></div>
+	</div>';
 	$i = 0;
 	foreach ( $arr_top_include_file as $k => $v ) {
 	//	print_r($v);
 		
+		$str_top_include_file .= '<br><h3>' . $k . '</h3>';
+		
 		$label_name = 'cf_' . $k . '_include_file';
 		
 		foreach ( $v as $k2 => $v2 ) {
+			
 			$label_id = $label_name . $i;
 			
 			if ( $k2 == '' ) {
@@ -672,11 +705,18 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 				}
 			}
 			
+			/*
+			// v1
 			$str_top_include_file .= '
 			<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>
 				<input type="radio" name="' . $label_name . '" id="' .$label_id. '" value="' .$val. '" ' . $ck . '>
 				<label for="' .$label_id. '">' .$text. '</label>
 			</div>';
+			*/
+			
+			// v2
+			$str_top_include_file .= '
+			<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" data-type="' . $label_name . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>' .$text. '</div>';
 			
 			$i++;
 		}
@@ -704,8 +744,10 @@ $arr_for_set_template['str_top_design_preview'] = $arr_design_preview['preview']
 $arr_for_set_template['str_top_include_file'] = EBE_config_load_top_footer_include();
 $str_top_design_preview = '';
 for ( $i = 1; $i < 10; $i++ ) {
-	if ( isset( $__cf_row_default[ 'cf_top' . $i . '_include_file' ] ) ) {
-		$str_top_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="top' . $i . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+	$j_name = 'cf_top' . $i . '_include_file';
+	
+	if ( isset( $__cf_row_default[ $j_name ] ) ) {
+		$str_top_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="' . $j_name . '" data-key="top' . $i . '" data-val="' . $__cf_row[ $j_name ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
 	} else {
 		break;
 	}
@@ -723,8 +765,10 @@ $arr_for_set_template['str_footer_design_preview'] = $arr_design_preview['previe
 $arr_for_set_template['str_footer_include_file'] = EBE_config_load_top_footer_include('footer');
 $str_footer_design_preview = '';
 for ( $i = 1; $i < 10; $i++ ) {
-	if ( isset( $__cf_row_default[ 'cf_footer' . $i . '_include_file' ] ) ) {
-		$str_footer_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="footer' . $i . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+	$j_name = 'cf_footer' . $i . '_include_file';
+	
+	if ( isset( $__cf_row_default[ $j_name ] ) ) {
+		$str_footer_design_preview .= '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="' . $j_name . '" data-key="footer' . $i . '" data-val="' . $__cf_row[ $j_name ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
 	} else {
 		break;
 	}
@@ -737,7 +781,7 @@ $arr_for_set_template['str_footer_design_preview'] = $str_footer_design_preview;
 //
 $arr_for_set_template['str_threadnode_include_file'] = EBE_config_load_top_footer_include('threadnode', '.html');
 
-$str_threadnode_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-key="threadnode" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+$str_threadnode_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="cf_threadnode_include_file" data-key="threadnode" data-val="' . $__cf_row[ 'cf_threadnode_include_file' ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
 
 $arr_for_set_template['str_threadnode_design_preview'] = $str_threadnode_design_preview;
 
@@ -755,6 +799,15 @@ $arr_for_set_template['cf_threadnode_title_tag'] = __eb_create_select_checked_co
 	$__cf_row['cf_threadnode_title_tag'],
 	'cf_threadnode_title_tag'
 );
+
+
+
+
+//
+global $str_list_all_include_file;
+//print_r( $str_list_all_include_file );
+$arr_for_set_template['str_list_all_include_file'] = implode( "\n", $str_list_all_include_file );
+
 
 
 
