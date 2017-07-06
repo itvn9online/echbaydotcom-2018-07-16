@@ -716,7 +716,8 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 			
 			// v2
 			$str_top_include_file .= '
-			<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" data-type="' . $label_name . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>' .$text. '</div>';
+			<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" data-type="' . $label_name . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>' .$text. '</div>
+			<div class="small text-right hide-if-threadnode"><em>' . $text . '</em></div>';
 			
 			$i++;
 		}

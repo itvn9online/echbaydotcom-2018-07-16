@@ -132,7 +132,7 @@ $('.each-to-get-current-value-file').each(function(index, element) {
 		// Nếu là widget -> hiển thị giá trị riêng
 		if ( a.split( '_widget.' ).length > 1 ) {
 			a = 'Mẫu #' + a.split('.')[0];
-			$('div[data-name="' + b + '"]').addClass('bold');
+			$('div[data-name="' + b + '"]').addClass('bold redcolor');
 		}
 		// Hoặc gọi đến hàm hiển thị file tương ứng
 		else {

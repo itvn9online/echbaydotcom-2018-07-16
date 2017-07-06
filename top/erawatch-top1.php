@@ -2,7 +2,7 @@
 	<div class="web-top-logo l25 hide-if-mobile">
 		<div class="cf div-search-margin <?php echo $__cf_row['cf_top_class_style']; ?>">
 			<div class="lf f50">
-				<div class="topbar-menu"><?php echo $arr_tmp_top_menu[2]; ?></div>
+				<div class="topbar-menu"><?php echo EBE_echbay_top_menu(); ?></div>
 				<!-- <i class="fa fa-phone"></i> <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span> --></div>
 			<div class="lf f20 fullsize-if-mobile">
 				<div>

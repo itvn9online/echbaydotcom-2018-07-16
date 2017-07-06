@@ -225,7 +225,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	overflow: hidden;
 	background: #f2f2f2 center no-repeat;
 	background-size: auto 99%;
-	margin: 10px 0;
+	margin: 10px 0 3px 0;
 	cursor: pointer;
 	border: 1px #ccc solid;
 	padding: 1px;
@@ -261,6 +261,7 @@ input[id="_eb_category_order"] { width: 90px; }
 }
 .preview-in-ebdesign input[type=radio] { opacity: .01; }
 .preview-bg-ebdesign { text-indent: -9999px; }
+.border-threadnode-design .hide-if-threadnode,
 .click-add-widget-include-to-input[data-type="threadnode"] { display: none; }
 .border-file-design {
 	border: 1px #ccc solid;
@@ -309,7 +310,7 @@ input[id="_eb_category_order"] { width: 90px; }
 .change-eb-design-fixed:hover,
 .change-eb-design-fixed.selected {
 	background: #fff;
-	max-width: 550px;
+	max-width: 800px;
 }
 .change-eb-design-fixed:hover {
 	-moz-transition: all 0.2s ease;
@@ -336,6 +337,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	float: left;
 	width: 46%;
 	margin: 5px 1%;
+	max-width: 250px;
 }
 .border-threadnode-design .preview-in-ebdesign { background-size: auto 99% !important; }
 .border-threadnode-design .preview-in-ebdesign:hover { background-size: 99% auto !important; }
