@@ -225,7 +225,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	overflow: hidden;
 	background: #f2f2f2 center no-repeat;
 	background-size: auto 99%;
-	margin: 10px 0 3px 0;
+	margin: 15px 0 3px 0;
 	cursor: pointer;
 	border: 1px #ccc solid;
 	padding: 1px;
@@ -326,7 +326,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	height: 38px;
 	overflow: hidden;
 }
-.change-eb-design-padding { padding: 19px 25px; }
+.change-eb-design-padding { padding: 9px 15px; }
 .border-threadnode-design { background-color: #fff; }
 .border-threadnode-design .preview-file-design {
 	height: 250px !important;
