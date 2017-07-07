@@ -209,6 +209,9 @@ $(document).keydown(function(e) {
 
 
 
+// tên khung đang được hiển thị
+var current_frame_design_is_show = '';
+
 // click hiển thị khung chọn file design
 $('.click-to-change-file-design').click(function () {
 	
@@ -229,6 +232,13 @@ $('.click-to-change-file-design').click(function () {
 	id_for_set_new_include_file = key;
 //	console.log( id_for_set_new_include_file );
 	
+	// nếu vẫn đang là khung cũ được hiển thị thì bỏ qua
+	if ( current_frame_design_is_show == text ) {
+		return false;
+	}
+	current_frame_design_is_show = text;
+	
+	//
 	$('.change-eb-design-fixed').hide();
 	$('.change-eb-design-fixed[data-key="' + text + '"]').show().addClass('selected');
 	
