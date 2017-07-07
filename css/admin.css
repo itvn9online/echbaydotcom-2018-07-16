@@ -319,6 +319,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
+.change-eb-design-fixed:hover .f33-if-ebdesign-hover { width: 33% !important; }
+.change-eb-design-fixed:hover .show-if-ebdesign-hover { display: inline-block !important; }
 .change-eb-design-fixed.selected { opacity: .5; }
 .change-eb-design-fixed:hover .preview-in-ebdesign { background-size: 99% auto; }
 .change-eb-design-note {

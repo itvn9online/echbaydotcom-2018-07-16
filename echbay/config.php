@@ -647,14 +647,13 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 //	print_r( $arr_top_include_file );
 	
 	$str_top_include_file = '
-	<div align="right">
-		<button type="button" class="cur click-to-exit-design">Đóng [x]</button>
-	</div>
-	<br>
 	<div class="change-eb-design-note d-none"><em>* Các file sẽ xuất hiện lần lượt theo vị trí đã chọn!</em></div>
 	<div class="cf text-center">
-		<div class="lf f50"><button type="button" data-type="' . $type . '" class="click-remove-file-include-form-input cur">[ Xóa file ]</button></div>
-		<div class="lf f50"><button type="button" data-type="' . $type . '" class="click-add-widget-include-to-input cur">[ ' . $type . ' widget ]</button></div>
+		<div class="lf f50 f33-if-ebdesign-hover"><button type="button" data-type="' . $type . '" class="click-remove-file-include-form-input cur">[ Xóa file ]</button></div>
+		<div class="lf f50 f33-if-ebdesign-hover"><button type="button" data-type="' . $type . '" class="click-add-widget-include-to-input cur">[ ' . $type . ' widget ]</button></div>
+		<div align="right" class="lf f33 d-none show-if-ebdesign-hover">
+			<button type="button" class="cur click-to-exit-design">Đóng [x]</button>
+		</div>
 	</div>';
 	$i = 0;
 	foreach ( $arr_top_include_file as $k => $v ) {
