@@ -198,7 +198,7 @@ $('.click-add-widget-include-to-input').click(function () {
 //
 $('.click-to-exit-design').click(function () {
 	$('.change-eb-design-fixed').hide();
-//	$('body').removeClass('ebdesign-no-scroll');
+	$('body').removeClass('ebdesign-no-scroll');
 });
 
 $(document).keydown(function(e) {
@@ -218,7 +218,7 @@ $('.click-to-change-file-design').click(function () {
 	}, 600);
 	
 	// ẩn scroll của body làm việc cho dễ
-//	$('body').addClass('ebdesign-no-scroll');
+	$('body').addClass('ebdesign-no-scroll');
 	
 	//
 	var key = $(this).attr('data-key') || '',
