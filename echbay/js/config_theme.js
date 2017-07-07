@@ -198,6 +198,7 @@ $('.click-add-widget-include-to-input').click(function () {
 //
 $('.click-to-exit-design').click(function () {
 	$('.change-eb-design-fixed').hide();
+//	$('body').removeClass('ebdesign-no-scroll');
 });
 
 $(document).keydown(function(e) {
@@ -210,6 +211,15 @@ $(document).keydown(function(e) {
 
 // click hiển thị khung chọn file design
 $('.click-to-change-file-design').click(function () {
+	
+//	window.scroll( 0, $(this).offset().top - ( $(window).height()/ 4 ) );
+	$('body,html').animate({
+		scrollTop: $(this).offset().top - ( $(window).height()/ 4 ) + 'px'
+	}, 600);
+	
+//	$('body').addClass('ebdesign-no-scroll');
+	
+	//
 	var key = $(this).attr('data-key') || '',
 		text = g_func.text_only(key);
 //	console.log(key);

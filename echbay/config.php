@@ -583,7 +583,7 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 	//
 	$str_top_design_preview = '';
 	
-	$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . $type . '/*.{' . substr( $file_type, 1 ) . '}', GLOB_BRACE );
+	$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . 'themes/' . $type . '/*.{' . substr( $file_type, 1 ) . '}', GLOB_BRACE );
 //	print_r( $arr_file_name );
 	
 	$arr_top_include_file = array();
@@ -687,7 +687,7 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 			$css_class = '';
 			$img = '';
 			if ( $val != '' ) {
-				$bg_file = EB_THEME_PLUGIN_INDEX . 'images-global/design/' . str_replace( $file_type, '.jpg', $val );
+				$bg_file = EB_THEME_PLUGIN_INDEX . 'themes/images/' . str_replace( $file_type, '.jpg', $val );
 				if ( file_exists( $bg_file ) ) {
 					$file_info = getimagesize( $bg_file );
 					

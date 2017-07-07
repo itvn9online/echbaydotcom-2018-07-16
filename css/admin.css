@@ -1,5 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
+body.ebdesign-no-scroll { overflow: hidden; }
 .eb-admin-tab {
 	line-height: 35px;
 	padding: 0;
@@ -327,7 +328,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	overflow: hidden;
 }
 .change-eb-design-padding { padding: 9px 15px; }
-.border-threadnode-design { background-color: #fff; }
+/* .border-threadnode-design { background-color: #fff; } */
 .border-threadnode-design .preview-file-design {
 	height: 250px !important;
 	background-position: left !important;
@@ -336,11 +337,12 @@ input[id="_eb_category_order"] { width: 90px; }
 	height: 220px !important;
 	float: left;
 	width: 46%;
-	margin: 5px 1%;
+	margin: 5px 2% 5px 0;
 	max-width: 250px;
 }
 .border-threadnode-design .preview-in-ebdesign { background-size: auto 99% !important; }
-.border-threadnode-design .preview-in-ebdesign:hover { background-size: 99% auto !important; }
+.border-threadnode-design .preview-in-ebdesign:hover { background-size: 90% auto !important; }
+.border-threadnode-design .preview-in-ebdesign { background-color: #fff; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
