@@ -280,6 +280,9 @@ $__cf_row_default = array(
 	// tự tìm và lấy link thumbnail bằng javascript
 	'cf_disable_auto_get_thumb' => 0,
 	
+	// nhúng URL vào các thẻ H1 ở trang chi tiết sản phẩm, bài viết, danh mục...
+	'cf_set_link_for_h1' => 1,
+	
 	
 	/*
 	* giao diện HTML mặc định

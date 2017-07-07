@@ -660,7 +660,8 @@ else {
 		
 		//
 		$other_post_right .= _eb_load_post( $limit_other_post, array(
-			'category__in' => wp_get_post_categories( $__post->ID ),
+//			'category__in' => wp_get_post_categories( $__post->ID ),
+			'category__in' => $post_categories,
 			/*
 			'post__not_in' => array(
 				$__post->ID
@@ -754,6 +755,9 @@ $product_list_color = _eb_get_post_object( $pid, '_eb_product_list_color' );
 $product_list_color = str_replace( ' src=', ' data-src=', $product_list_color );
 $product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_list_color );
 
+//
+$trv_h1_tieude = str_replace( '<', '&lt;', str_replace( '>', '&gt;', $__post->post_title ) );
+
 // tạo mảng để khởi tạo nội dung
 $arr_main_content = array(
 	'tmp.trv_id' => $pid,
@@ -761,7 +765,8 @@ $arr_main_content = array(
 //	'tmp.trv_masanpham' => $trv_masanpham == '' ? '#' . $pid : $trv_masanpham,
 	'tmp.link_for_fb_comment' => $web_link . '?p=' . $pid,
 	
-	'tmp.trv_tieude' => str_replace( '<', '&lt;', str_replace( '>', '&gt;', $__post->post_title ) ),
+	'tmp.trv_tieude' => $trv_h1_tieude,
+	'tmp.trv_h1_tieude' => $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
 	'tmp.trv_goithieu' => $__post->post_excerpt,
 	'tmp.trv_noidung' => $trv_noidung,
 	'tmp.trv_img' => $trv_img,

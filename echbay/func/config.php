@@ -90,6 +90,10 @@ if ( ! isset( $_POST['cf_disable_auto_get_thumb'] ) || (int) $_POST['cf_disable_
 	$_POST['cf_disable_auto_get_thumb'] = 0;
 }
 
+if ( ! isset( $_POST['cf_set_link_for_h1'] ) || (int) $_POST['cf_set_link_for_h1'] != 1 ) {
+	$_POST['cf_set_link_for_h1'] = 0;
+}
+
 
 
 
