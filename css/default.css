@@ -1598,3 +1598,23 @@ li.footer-social-gg { background-color: #DE4B39; }
 	display: block;
 }
 .footer-social a:hover { opacity: .6; }
+.blogs-module-name {
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+	border-bottom: 1px #999 solid;
+}
+.thread-details-title,
+.blog-details-title,
+.page-details-title,
+.thread-module-name,
+.blogs-module-name { font-size: 18px; }
+.thread-details-title,
+.thread-details-title a,
+.blog-details-title,
+.blog-details-title a,
+.page-details-title,
+.page-details-title a,
+.thread-module-name,
+.thread-module-name a,
+.blogs-module-name,
+.blogs-module-name a { color: #333; }
