@@ -121,7 +121,7 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 				$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . $__cf_row[ $j ];
 			}
 			else {
-				$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'top/' . $__cf_row[ $j ];
+				$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'themes/top/' . $__cf_row[ $j ];
 				
 				$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = 1;
 			}
@@ -157,7 +157,7 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 				$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . $__cf_row[ $j ];
 			}
 			else {
-				$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'footer/' . $__cf_row[ $j ];
+				$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'themes/footer/' . $__cf_row[ $j ];
 				
 				$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = 1;
 			}

@@ -217,6 +217,7 @@ $('.click-to-change-file-design').click(function () {
 		scrollTop: $(this).offset().top - ( $(window).height()/ 4 ) + 'px'
 	}, 600);
 	
+	// ẩn scroll của body làm việc cho dễ
 //	$('body').addClass('ebdesign-no-scroll');
 	
 	//

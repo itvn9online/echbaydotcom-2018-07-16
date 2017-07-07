@@ -180,7 +180,7 @@ include EB_THEME_CORE . 'database.php';
 
 // Nếu có chọn file thiết kế -> sử dụng nguyên mẫu
 if ( $__cf_row['cf_threadnode_include_file'] != '' ) {
-	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'threadnode/' . $__cf_row['cf_threadnode_include_file'];
+	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $__cf_row['cf_threadnode_include_file'];
 	
 	if ( file_exists($inc_threadnode) ) {
 		$arr_for_show_html_file_load[] = '<!-- config HTML: ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
