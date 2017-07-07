@@ -197,7 +197,7 @@ if ( $__cf_row['cf_threadnode_include_file'] != '' ) {
 			$arr_for_show_html_file_load[] = '<!-- config CSS: ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
 		}
 		*/
-		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row['cf_threadnode_include_file'] ) ] = 1;
+		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row['cf_threadnode_include_file'], '.html' ) ] = 1;
 	}
 	else {
 		define( '__eb_thread_template', 'File ' . $inc_threadnode . ' not exist' );

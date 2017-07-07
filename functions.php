@@ -4567,8 +4567,8 @@ function EBE_set_header ( $status = 200 ) {
 
 
 
-function EBE_get_css_for_config_design ( $f ) {
-	return EB_THEME_PLUGIN_INDEX . 'themes/css/' . str_replace( '.html', '.css', str_replace( '.php', '.css', $f ) );
+function EBE_get_css_for_config_design ( $f, $type = '.php' ) {
+	return EB_THEME_PLUGIN_INDEX . 'themes/css/' . str_replace( $type, '.css', $f );
 }
 
 
