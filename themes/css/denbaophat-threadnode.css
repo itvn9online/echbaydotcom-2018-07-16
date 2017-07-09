@@ -3,7 +3,7 @@
 	background: #fff;
 	margin: 0 10px 20px 10px;
 	border: 1px #ccc solid;
-	position: relative;
+	padding-top: 8px;
 }
 .thread-list-padding:hover { border-color: #999; }
 .thread-list-padding:hover .thread-list-title { color: #ef672f; }
@@ -38,7 +38,7 @@
 	overflow: hidden;
 	height: 180px;
 	line-height: 180px;
-	margin: 8px 8px 0 8px;
+	margin: 0 8px 0 8px;
 }
 .thread-list-title {
 	height: 40px;

@@ -101,7 +101,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
-//		global $func;
+//		global $__cf_row;
 		
 		extract ( $args );
 		
@@ -119,8 +119,10 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$html_template = isset( $instance ['html_template'] ) ? $instance ['html_template'] : '';
 		$html_template = str_replace( '.html', '', $html_template );
 		$post_type = isset( $instance ['post_type'] ) ? $instance ['post_type'] : '';
+		
 		$html_node = isset( $instance ['html_node'] ) ? $instance ['html_node'] : '';
 		$html_node = str_replace( '.html', '', $html_node );
+		
 		$ads_eb_status = isset( $instance ['ads_eb_status'] ) ? $instance ['ads_eb_status'] : 0;
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
@@ -198,12 +200,20 @@ class ___echbay_widget_random_blog extends WP_Widget {
 //		print_r( $arr_select_data );
 		
 		
+		
+		// nếu là node của sản phẩm -> dùng bản mặc định luôn
+		if ( $html_node == 'thread_node' ) {
+			$html_node = __eb_thread_template;
+		} else {
+			$html_node = EBE_get_page_template( $html_node );
+		}
+		
 		//
 		$content = _eb_load_post( $post_number, $arr_select_data,
 //		), file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/blog_node.html', 1 ) );
 //		), EBE_get_page_template( 'blog_node' ) );
 //		), EBE_get_page_template( $html_node ) );
-		EBE_get_page_template( $html_node ) );
+		$html_node );
 		
 		
 		

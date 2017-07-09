@@ -800,6 +800,7 @@ $arr_main_content = array(
 	'tmp.trv_tietkiem' => $trv_giamoi > 0 ? EBE_add_ebe_currency_class( $trv_giaban - $trv_giamoi ) : '',
 	
 	'tmp.cf_product_details_size' => $__cf_row['cf_product_details_size'],
+	'tmp.cf_diachi' => nl2br( $__cf_row['cf_diachi'] ),
 	
 	'tmp.p_link' => $url_og_url,
 	

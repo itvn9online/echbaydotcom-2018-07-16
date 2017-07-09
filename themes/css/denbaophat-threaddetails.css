@@ -1,0 +1,130 @@
+.thread-details-bprice {
+	padding: 15px 0;
+	border-top: 1px #ddd solid;
+	border-bottom: 1px #ddd solid;
+}
+.thread-details-label {
+	color: #888;
+	margin-bottom: 10px;
+}
+.thread-details-price {
+	display: block;
+	font-size: 48px;
+	line-height: 48px;
+	margin-bottom: 10px;
+	word-wrap: break-word;
+}
+.thread-details-price strong { font-weight: normal; }
+.thread-details-gia li {
+	float: left;
+	padding-right: 35px;
+}
+.thread-details-gia li:last-child { padding: 0; }
+.thread-details-gia .bold { font-size: 16px; }
+.thread-details-comment {
+	color: #666;
+	margin: 0 0 18px 18px;
+	line-height: 19px;
+}
+.thread-details-comment ul {
+	display: block;
+	list-style-type: disc;
+}
+.thread-details-comment li {
+	margin: 0;
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+.thread-details-free {
+	border: dashed 1px #88bb33;
+	padding: 10px 10px 0 10px;
+	line-height: 21px;
+}
+.thread-details-free div { margin-bottom: 10px; }
+.thread-details-promotion i {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 24px;
+	font-size: 19px;
+	text-align: center;
+	background: #FCB040;
+	color: #fff;
+}
+.thread-details-promotion {
+	background: #f5f5f5;
+	border: 1px solid #f1f1f1;
+	padding: 10px 10px 5px 10px;
+	line-height: 24px;
+}
+.thread-details-promotion li {
+	background-color: #fff;
+	border: 1px #ccc solid;
+	position: relative;
+	padding: 0 0 0 30px;
+	margin-bottom: 6px;
+}
+.thread-details-mua {
+	border: 1px #ccc solid;
+	border-top: 0 none;
+	margin-bottom: 15px;
+}
+.thread-details-muapadding {
+	padding: 15px 10px;
+	border-top: 1px #ccc solid;
+}
+.thread-details-maxmua,
+.thread-details-muamax {
+	border-radius: 3pt;
+	-moz-border-radius: 3pt;
+}
+.thread-details-maxmua {
+	background: #f2f2f2;
+	width: 90%;
+	margin: 6px auto;
+	font-size: 9pt;
+	padding: 1px;
+	border: 1px #ccc solid;
+}
+.thread-details-muamax {
+	background: #09F;
+	width: 1px;
+	color: #09F;
+}
+.detail-muangay-padding {
+	margin: 0 auto;
+	max-width: 600px;
+	margin-bottom: 15px;
+}
+.details-mua-ngay,
+.details-tu-van {
+	height: 50px;
+	display: block;
+}
+.details-mua-ngay {
+	background: #d71921;
+	border: 0 none;
+	cursor: pointer;
+	width: 100%;
+}
+.details-tu-van { background: #585858; }
+.details-tu-van span {
+	display: block;
+	padding-top: 6px;
+}
+.thread-details-module {
+	border-top: 2px #333 solid;
+	padding: 8px 0 18px 2px;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 21px;
+}
+.thread-details-bottom {
+	border: 1px #ccc dotted;
+	padding: 20px;
+}
+.thread-other-right .thread-list-padding { margin-bottom: 15px; }
+.thread-other-right .thread-list-avt { margin: 0 25px; }
+.thread-other-right .thread-list-chayhang { padding-bottom: 0; }
+.thread-hide-view .thread-list-xem { display: none; }

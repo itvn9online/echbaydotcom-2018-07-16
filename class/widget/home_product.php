@@ -72,8 +72,10 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		$max_width = isset( $instance ['max_width'] ) ? $instance ['max_width'] : '';
 		$post_cloumn = isset( $instance ['post_cloumn'] ) ? $instance ['post_cloumn'] : '';
 		$post_type = isset( $instance ['post_type'] ) ? $instance ['post_type'] : '';
+		
 		$html_node = isset( $instance ['html_node'] ) ? $instance ['html_node'] : '';
 		$html_node = str_replace( '.html', '', $html_node );
+		
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
 		//
