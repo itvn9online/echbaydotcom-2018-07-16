@@ -475,6 +475,7 @@ $arr_list_tag = array();
 $blog_list_medium = '';
 $product_list_medium = '';
 $other_post_right = '';
+$other_post_2right = '';
 $str_for_details_sidebar = '';
 
 // với blog -> sử dụng giao diện khác post
@@ -669,6 +670,16 @@ else {
 			*/
 		) );
 		
+		// lấy thêm loạt bài tiếp theo, 1 số gaio diện sẽ sử dụng
+		$other_post_2right = _eb_load_post( $limit_other_post, array(
+			'category__in' => $post_categories,
+			/*
+			'post__not_in' => array(
+				$__post->ID
+			),
+			*/
+		) );
+		
 	}
 	
 	
@@ -785,7 +796,10 @@ $arr_main_content = array(
 	
 	'tmp.blog_list_medium' => $blog_list_medium,
 	'tmp.product_list_medium' => $product_list_medium,
+	
 	'tmp.other_post_right' => $other_post_right,
+	'tmp.other_post_2right' => $other_post_2right,
+	
 	'tmp.other_option_list' => $other_option_list,
 	
 	'tmp.rating_value_img' => $rating_value_img,
