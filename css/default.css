@@ -135,7 +135,9 @@ label,
 .bold { font-weight: bold !important }
 .normal { font-weight: normal !important }
 .old-price { text-decoration: line-through; }
+.hide-if-gia-zero[data-gia="0"],
 .hide-if-gia-zero[data-per="0"] .old-price,
+.hide-if-gia-zero[data-per="0"] .thread-list-per,
 .echbay-blog-giamoi[data-gia="0"] { display: none; }
 .blackcolor { color: #333 !important }
 .awhitecolor,

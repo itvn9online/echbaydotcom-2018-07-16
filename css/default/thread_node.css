@@ -35,13 +35,14 @@
 	padding: 0 10px;
 	line-height: 25px;
 	top: 30px;
-	display: none;
 }
 /* .thread-list-giamgiashow .thread-list-per, */
+/*
 .thread-list li[data-per="0"] .thread-list-per {
 	display: block;
 	z-index: 1;
 }
+*/
 .thread-list-desc {
 	height: 60px;
 	overflow: hidden;
