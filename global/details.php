@@ -659,25 +659,26 @@ else {
 //			$limit_other_post = $__cf_row['cf_num_details_list'];
 //		}
 		
+		
+		//
+//		print_r( $post_categories );
+		
+		
 		//
 		$other_post_right .= _eb_load_post( $limit_other_post, array(
 //			'category__in' => wp_get_post_categories( $__post->ID ),
 			'category__in' => $post_categories,
-			/*
 			'post__not_in' => array(
 				$__post->ID
 			),
-			*/
 		) );
 		
 		// lấy thêm loạt bài tiếp theo, 1 số gaio diện sẽ sử dụng
-		$other_post_2right = _eb_load_post( $limit_other_post, array(
+		$other_post_2right = _eb_load_post( $__cf_row['cf_num_details2_list'], array(
 			'category__in' => $post_categories,
-			/*
 			'post__not_in' => array(
 				$__post->ID
 			),
-			*/
 		) );
 		
 	}
