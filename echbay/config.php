@@ -118,9 +118,10 @@ function __eb_create_select_checked_config ( $arr, $val, $key, $file_name = '' )
 		
 		// tạo HTML
 		$str .= '
-<input type="radio" name="' . $key . '" id="' .$label_id. '" value="' .$k. '"' . $sl . '>
-<label for="' .$label_id. '">' .$v. ' (' . $phai . ')</label>
-<br>';
+<div class="ebdesign-table-for ebdesign-table-for-' . $phai . '">
+	<input type="radio" name="' . $key . '" id="' .$label_id. '" value="' .$k. '"' . $sl . '>
+	<label for="' .$label_id. '">' .$v. ' (' . $phai . ')</label>
+</div>';
 	}
 	
 	return trim( $str );
@@ -128,8 +129,8 @@ function __eb_create_select_checked_config ( $arr, $val, $key, $file_name = '' )
 
 $arr_cf_blog_class_style = array(
 	'' => 'Không giới hạn chiều rộng',
-	'w99' => 'Dạng thu gọn, rộng tối đa 999px',
-	'w90' => 'Dạng tràn khung, rộng tối đa 1366px',
+	'w99' => 'Dạng thu gọn, rộng 999px',
+	'w90' => 'Dạng tràn khung, rộng 90%, tối đa 1366px',
 );
 
 $str_cf_blog_class_style = __eb_create_select_checked_config(
@@ -799,6 +800,16 @@ $arr_for_set_template['cf_threadnode_title_tag'] = __eb_create_select_checked_co
 	$__cf_row['cf_threadnode_title_tag'],
 	'cf_threadnode_title_tag'
 );
+
+
+
+
+//
+$arr_for_set_template['str_threaddetails_include_file'] = EBE_config_load_top_footer_include('threaddetails', '.html');
+
+$str_threaddetails_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="cf_threaddetails_include_file" data-key="threaddetails" data-val="' . $__cf_row[ 'cf_threaddetails_include_file' ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+
+$arr_for_set_template['str_threaddetails_design_preview'] = $str_threaddetails_design_preview;
 
 
 

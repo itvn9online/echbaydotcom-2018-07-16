@@ -345,6 +345,131 @@ input[id="_eb_category_order"] { width: 90px; }
 .border-threadnode-design .preview-in-ebdesign { background-size: auto 99% !important; }
 .border-threadnode-design .preview-in-ebdesign:hover { background-size: 90% auto !important; }
 .border-threadnode-design .preview-in-ebdesign { background-color: #fff; }
+/* */
+.ebdesign-table-for {
+	position: relative;
+	border: 1px #999 solid;
+	height: 50px;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+.noborder-ebdesign-table-for { margin-top: 5px; }
+.noborder-ebdesign-table-for .ebdesign-table-for {
+	height: auto;
+	padding: 0;
+	border: 0 none;
+	margin-bottom: 5px;
+}
+.ebdesign-table-for:hover {
+	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	-moz-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+}
+.ebdesign-table-for:before,
+.ebdesign-table-for:after {
+	content: "";
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	width: 25%;
+	display: none;
+	background: #f2f2f2;
+}
+.ebdesign-table-for label {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+	padding: 10px 0 0 30px;
+}
+.noborder-ebdesign-table-for .ebdesign-table-for label { top: auto; }
+.ebdesign-table-for-home { }
+.ebdesign-table-for-home_noidung_menu:after,
+.ebdesign-table-for-thread_list_noidung_menu:after,
+.ebdesign-table-for-thread_details_noidung_menu:after,
+.ebdesign-table-for-blogs_noidung_menu:after,
+.ebdesign-table-for-blog_details_noidung_menu:after,
+.ebdesign-table-for-page_noidung_menu:after {
+	border-left: 1px #999 solid;
+	right: 0;
+	display: block;
+}
+.ebdesign-table-for-home_menu_noidung:before,
+.ebdesign-table-for-thread_list_menu_noidung:before,
+.ebdesign-table-for-thread_details_menu_noidung:before,
+.ebdesign-table-for-blogs_menu_noidung:before,
+.ebdesign-table-for-blog_details_menu_noidung:before,
+.ebdesign-table-for-page_menu_noidung:before {
+	border-right: 1px #999 solid;
+	left: 0;
+	display: block;
+}
+.ebdesign-table-for-home_menu_noidung,
+.ebdesign-table-for-thread_list_menu_noidung,
+.ebdesign-table-for-thread_details_menu_noidung,
+.ebdesign-table-for-blogs_menu_noidung,
+.ebdesign-table-for-blog_details_menu_noidung,
+.ebdesign-table-for-page_menu_noidung { padding-left: 26%; }
+.ebdesign-table-for-home_menu_noidung label,
+.ebdesign-table-for-thread_list_menu_noidung label,
+.ebdesign-table-for-thread_details_menu_noidung label,
+.ebdesign-table-for-blogs_menu_noidung label,
+.ebdesign-table-for-blog_details_menu_noidung label,
+.ebdesign-table-for-page_menu_noidung label { padding-left: 29%; }
+.ebdesign-table-for-w99:before,
+.ebdesign-table-for-w99:after,
+.ebdesign-table-for-w90:before,
+.ebdesign-table-for-w90:after { display: block; }
+.ebdesign-table-for-w99:before,
+.ebdesign-table-for-w99:after { width: 15%; }
+.ebdesign-table-for-w90:before,
+.ebdesign-table-for-w90:after { width: 5%; }
+.ebdesign-table-for-w99 { padding-left: 16%; }
+.ebdesign-table-for-w99 label { padding-left: 19%; }
+.ebdesign-table-for-w90 { padding-left: 6%; }
+.ebdesign-table-for-w90 label { padding-left: 9%; }
+.ebdesign-table-for-w99:before,
+.ebdesign-table-for-w90:before {
+	left: 0;
+	border-right: 1px #ccc solid;
+}
+.ebdesign-table-for-w99:after,
+.ebdesign-table-for-w90:after,
+.ebdesign-table-for-thread-list50:after,
+.ebdesign-table-for-echbay-blog50:after {
+	right: 0;
+	border-left: 1px #ccc solid;
+}
+.ebdesign-table-for-thread-list50:after,
+.ebdesign-table-for-thread-list33:before,
+.ebdesign-table-for-thread-list25:before,
+.ebdesign-table-for-thread-list25:after,
+.ebdesign-table-for-thread-list20:before,
+.ebdesign-table-for-thread-list20:after,
+.ebdesign-table-for-echbay-blog50:after { display: block; }
+.ebdesign-table-for-thread-list33:before,
+.ebdesign-table-for-thread-list25:before,
+.ebdesign-table-for-thread-list25:after,
+.ebdesign-table-for-thread-list20:before,
+.ebdesign-table-for-thread-list20:after {
+	border-right: 1px #ccc solid;
+	border-left: 1px #ccc solid;
+}
+.ebdesign-table-for-thread-list50:after,
+.ebdesign-table-for-echbay-blog50:after { width: 50%; }
+.ebdesign-table-for-thread-list33:before {
+	width: 33.33%;
+	left: 33.33%;
+}
+.ebdesign-table-for-thread-list25:before { left: 25%; }
+.ebdesign-table-for-thread-list25:after { right: 0; }
+.ebdesign-table-for-thread-list20:before,
+.ebdesign-table-for-thread-list20:after { width: 20%; }
+.ebdesign-table-for-thread-list20:before { left: 20%; }
+.ebdesign-table-for-thread-list20:after { left: 60%; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

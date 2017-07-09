@@ -88,6 +88,9 @@ $('.click-add-class-selected').click(function () {
 			$(jPro)
 //			.show()
 			.html( '&nbsp;' )
+			.attr({
+				'data-size' : size
+			})
 			;
 			
 			if ( size != '' ) {
@@ -256,6 +259,19 @@ $('.click-to-change-file-design').click(function () {
 	setTimeout(function () {
 		$('.change-eb-design-fixed').removeClass('selected');
 	}, 600);
+});
+
+
+
+// khi click chuyển tab thì chỉnh lại chiều cao của cột design
+$('#list-tab-eb-admin-config li').click(function () {
+	$('.click-to-change-file-design').each(function(index, element) {
+		var a = $(this).attr('data-size') || '';
+		
+		if ( a != '' ) {
+			$(this).height( $(this).width() * eval( a ) );
+		}
+	});
 });
 
 

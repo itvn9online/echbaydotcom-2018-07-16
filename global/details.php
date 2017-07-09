@@ -837,7 +837,27 @@ if ( function_exists('eb_details_for_current_domain') ) {
 //$main_content = EBE_str_template( $html_file, $arr_main_content, $thu_muc_for_html );
 
 // v2
-$main_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), $arr_main_content );
+// với sản phẩm -> có thể tạo nhiều design khác nhau
+if ( $__post->post_type == 'post' && $__cf_row['cf_threaddetails_include_file'] != '' ) {
+	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'themes/threaddetails/' . $__cf_row['cf_threaddetails_include_file'];
+	
+	if ( file_exists($inc_threadnode) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML: ' . $__cf_row['cf_threaddetails_include_file'] . ' -->';
+		
+		$main_content = file_get_contents( $inc_threadnode, 1 );
+		
+		// dùng chung thì gán CSS dùng chung luôn (nếu có)
+		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row['cf_threaddetails_include_file'], '.html' ) ] = 1;
+	}
+	else {
+		die( 'File ' . $inc_threadnode . ' not exist' );
+	}
+}
+// mặc định thì kiểm tra theo theme và plugin
+else {
+	$main_content = EBE_get_page_template( $html_v2_file );
+}
+$main_content = EBE_html_template( $main_content, $arr_main_content );
 
 
 

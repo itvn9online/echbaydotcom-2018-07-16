@@ -313,6 +313,9 @@ $__cf_row_default = array(
 	// Thay đổi thẻ cho phần tiêu đề, tùy các SEOer muốn là thẻ gì thì chọn thẻ đấy, mặc định DIV
 	'cf_threadnode_title_tag' => 'div',
 	
+	// HTML trang chi tiết sản phẩm
+	'cf_threaddetails_include_file' => '',
+	
 	
 	// danh sách tin -> tổng quan
 	'cf_home_class_style' => '',
