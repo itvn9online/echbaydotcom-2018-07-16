@@ -575,11 +575,37 @@ $arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_conf
 // load danh sách file TOP, FOOTER
 $str_list_all_include_file = array();
 
+function EBE_config_theme_load_file_tag ( $str, $search ) {
+	if ( $str == '' || $search == '' ) {
+		return '';
+	}
+	
+	$str = explode( $search . ':', $str );
+	
+	if ( count( $str ) > 1 ) {
+		$str = explode( "\n", $str[1] );
+		
+		return trim( $str[0] );
+	}
+	
+	return '';
+}
+
+/*
+* Quy tắc tạo file template:
+
+1: Nếu muốn file chỉ chạy trên domain cụ thể
+Domain: xwatch.vn
+
+*/
 function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php' ) {
 	global $__cf_row_default;
 	global $__cf_row;
 	global $str_list_all_include_file;
 //	global $arr_for_set_template;
+	
+	// kiểm tra theo domain của template
+	$current_domain = str_replace( 'www.', '', $_SERVER['HTTP_HOST'] );
 	
 	//
 	$str_top_design_preview = '';
@@ -626,8 +652,8 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 //	$arr_for_set_template['str_list_all_include_file'] = implode( "\n", $str_list_all_include_file );
 	
 	foreach ( $arr_file_name as $v ) {
-		$v = basename( $v );
-		$node = explode( '-', $v );
+		$file_name = basename( $v );
+		$node = explode( '-', $file_name );
 //		print_r( $node );
 //		$node = $node[0];
 		if ( count( $node ) == 1 ) {
@@ -654,9 +680,10 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 		<button type="button" data-type="' . $type . '" class="click-add-widget-include-to-input cur">[ ' . $type . ' widget ]</button>
 		<button type="button" class="cur click-to-exit-design d-none show-if-ebdesign-hover">Đóng [x]</button>
 	</div>';
+	
 	$i = 0;
 	foreach ( $arr_top_include_file as $k => $v ) {
-	//	print_r($v);
+//		print_r($v);
 		
 		$str_top_include_file .= '<br><h3>' . $k . '</h3>';
 		
@@ -665,58 +692,84 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 		foreach ( $v as $k2 => $v2 ) {
 			
 			$label_id = $label_name . $i;
+			$file_tag = '';
+			$for_domain = '';
 			
 			if ( $k2 == '' ) {
 //				$str_top_include_file .= '<hr>';
 				$val = '';
 				$text = '[' . $v2 . ']';
 			} else {
+				// lấy thông tin file để tạo tag
+				$file_tag = file_get_contents( $k2, 1 );
+				
+				// Tìm theo domain, nếu file được set cho domain cụ thể -> kiểm tra domain có trùng không
+				$for_domain = EBE_config_theme_load_file_tag( $file_tag, 'Domain' );
+				if ( $for_domain != '' ) {
+					$for_domain = strtolower( str_replace( 'www.', '', $for_domain ) );
+				}
+//				echo $for_domain . '<br>' . "\n";
+				
+				$k2 = basename($k2);
 				$val = $k2;
 				$text = 'Mẫu #' . str_replace( $file_type, '', $k2 );
 			}
 			
-			$ck = '';
-			if ( $val == $__cf_row[ $label_name ] ) {
-				$ck = ' checked="checked"';
-			}
 			
-			// kiểm tra và lấy hình nền nếu có
-			$bg = '';
-			$css_class = '';
-			$img = '';
-			if ( $val != '' ) {
-				$bg_file = EB_THEME_PLUGIN_INDEX . 'themes/images/' . str_replace( $file_type, '.jpg', $val );
-				if ( file_exists( $bg_file ) ) {
-					$file_info = getimagesize( $bg_file );
-					
-					$img = str_replace( EB_THEME_PLUGIN_INDEX, EB_URL_OF_PLUGIN, $bg_file );
-					
-					$css_class = 'preview-bg-ebdesign';
-					if ( $ck != '' ) {
-						$css_class .= ' selected';
-						
-//						$str_top_design_preview .= '<div title="Click to change design" data-key="' . $k . '" data-size="' . $file_info[1] . '/' . $file_info[0] . '" class="click-to-change-file-design preview-file-design" style="background-image:url(\'' . $img . '\');">&nbsp;</div>';
-//						echo $bg_file;
-					}
-					
-					$bg = ' data-size="' . $file_info[1] . '/' . $file_info[0] . '" style="height: ' . $file_info[1] . 'px;background-image:url(\'' . $img . '\');"';
+			//
+			if ( $for_domain == ''
+			// theo tên miền chính
+			|| $current_domain == $for_domain
+			// theo sub-domain -> tạo thêm dấu . ở đầu chuỗi
+			|| strstr( $current_domain, '.' . $for_domain ) == true ) {
+				
+				//
+				$ck = '';
+				if ( $val == $__cf_row[ $label_name ] ) {
+					$ck = ' checked="checked"';
 				}
+				
+				
+				// kiểm tra và lấy hình nền nếu có
+				$bg = '';
+				$css_class = '';
+				$img = '';
+				if ( $val != '' ) {
+					$bg_file = EB_THEME_PLUGIN_INDEX . 'themes/images/' . str_replace( $file_type, '.jpg', $val );
+					if ( file_exists( $bg_file ) ) {
+						$file_info = getimagesize( $bg_file );
+						
+						$img = str_replace( EB_THEME_PLUGIN_INDEX, EB_URL_OF_PLUGIN, $bg_file );
+						
+						$css_class = 'preview-bg-ebdesign';
+						if ( $ck != '' ) {
+							$css_class .= ' selected';
+							
+	//						$str_top_design_preview .= '<div title="Click to change design" data-key="' . $k . '" data-size="' . $file_info[1] . '/' . $file_info[0] . '" class="click-to-change-file-design preview-file-design" style="background-image:url(\'' . $img . '\');">&nbsp;</div>';
+	//						echo $bg_file;
+						}
+						
+						$bg = ' data-size="' . $file_info[1] . '/' . $file_info[0] . '" style="height: ' . $file_info[1] . 'px;background-image:url(\'' . $img . '\');"';
+					}
+				}
+				
+				/*
+				// v1
+				$str_top_include_file .= '
+				<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>
+					<input type="radio" name="' . $label_name . '" id="' .$label_id. '" value="' .$val. '" ' . $ck . '>
+					<label for="' .$label_id. '">' .$text. '</label>
+				</div>';
+				*/
+				
+				// v2
+				$str_top_include_file .= '
+				<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" data-type="' . $label_name . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>' .$text. '</div>
+				<div class="small text-right hide-if-threadnode"><em>' . $text . '</em></div>';
+				
 			}
 			
-			/*
-			// v1
-			$str_top_include_file .= '
-			<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>
-				<input type="radio" name="' . $label_name . '" id="' .$label_id. '" value="' .$val. '" ' . $ck . '>
-				<label for="' .$label_id. '">' .$text. '</label>
-			</div>';
-			*/
-			
-			// v2
-			$str_top_include_file .= '
-			<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" data-type="' . $label_name . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>' .$text. '</div>
-			<div class="small text-right hide-if-threadnode"><em>' . $text . '</em></div>';
-			
+			//
 			$i++;
 		}
 	}
