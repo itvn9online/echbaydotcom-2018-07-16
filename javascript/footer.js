@@ -389,7 +389,8 @@ function add_fb_messages_for_page () {
 			
 			
 			//
-			var fb_src = $('html').attr('lang') || (function(lang) {
+			var fb_src = (function(lang) {
+				var a = $('html').attr('lang') || lang || '';
 				if (lang != '') {
 					lang = lang.split('_')[0].split('-')[0].toLowerCase();
 					if (lang == 'vi') {
@@ -397,7 +398,8 @@ function add_fb_messages_for_page () {
 					}
 				}
 				return 'en_US';
-			})(navigator.language || navigator.userLanguage || '');
+			})( navigator.language || navigator.userLanguage || '' );
+//			console.log( fb_src );
 			
 			//
 			(function(d, s, id) {
