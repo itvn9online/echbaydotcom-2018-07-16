@@ -1,26 +1,26 @@
 /* .web-top-padding { background: #000; } */
-.web-logo {
+#xwatch-top2 .web-logo {
 	background: left no-repeat;
 	background-size: auto 50%;
 	line-height: 170px;
 }
-.div-search-margin { margin-top: 54px; }
-.div-search {
+#xwatch-top2 .div-search-margin { margin-top: 54px; }
+#xwatch-top2 .div-search {
 	border-radius: 10px;
 	border: 0 none;
 }
-.div-search form { padding-left: 6px }
-.div-search input[type=search],
-.div-search button {
+#xwatch-top2 .div-search form { padding-left: 6px }
+#xwatch-top2 .div-search input[type=search],
+#xwatch-top2 .div-search button {
 	background: none;
 	border: 0 none;
 	outline: none;
 }
-.div-search input[type=search] {
+#xwatch-top2 .div-search input[type=search] {
 	height: 38px;
 	width: 85%;
 }
-.div-search button {
+#xwatch-top2 .div-search button {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -29,29 +29,29 @@
 	font-size: 18px;
 	color: #999;
 }
-.div-search button:hover { color: #000; }
+#xwatch-top2 .div-search button:hover { color: #000; }
 /*
-.div-search button {
+#xwatch-top2 .div-search button {
 	font-size: 16px;
 	color: #fff;
 	max-width: 40px;
 }
-.div-search:hover {
+#xwatch-top2 .div-search:hover {
 	background-color: #999;
 }
 */
-.fix-search-ins { position: relative; }
-.div-search-ins {
+#xwatch-top2 .fix-search-ins { position: relative; }
+#xwatch-top2 .div-search-ins {
 	position: absolute;
 	left: 100px;
 	top: 0;
 	height: 25px;
 	overflow: hidden;
 }
-.div-search-ins,
-.div-search-ins a { color: #fff; }
-.div-search-ins li {
+#xwatch-top2 .div-search-ins,
+#xwatch-top2 .div-search-ins a { color: #fff; }
+#xwatch-top2 .div-search-ins li {
 	display: inline-block;
 	margin-left: 2px;
 }
-.top-multi-hotline a { color: #fff; }
+#xwatch-top2 .top-multi-hotline a { color: #fff; }
