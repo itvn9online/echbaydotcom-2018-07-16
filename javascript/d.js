@@ -739,6 +739,8 @@ function ___eb_details_cart_quan () {
 		var a = $(this).val() || 0;
 		
 		$('#oi_change_tongtien').html( g_func.money_format( a * product_js['gm'] ) + 'đ' );
+		
+		_global_js_eb.cart_create_arr_porudct();
 	});
 	$('#oi_change_soluong select').change();
 	

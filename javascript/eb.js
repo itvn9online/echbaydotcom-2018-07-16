@@ -1126,12 +1126,12 @@ var _global_js_eb = {
 		//
 		var arr = {
 			// user info
-			hd_ten: $('#t_ten').val() || '',
-			hd_dienthoai: $('#t_dienthoai').val() || '',
-			hd_email: $('#t_email').val() || '',
-			hd_diachi: $('#t_diachi').val() || '',
-			hd_ghichu: $('#t_ghichu').val() || '',
-			hd_thanhtoan: $('input[name="t_thanhtoan"]:checked').val() || 'tructiep',
+			hd_ten: '',
+			hd_dienthoai: '',
+			hd_email: '',
+			hd_diachi: '',
+			hd_ghichu: '',
+			hd_thanhtoan: 'tructiep',
 			
 			// user agent
 			hd_url: window.location.href,
@@ -1152,6 +1152,26 @@ var _global_js_eb = {
 			hd_screen: screen.width + 'x' + screen.height,
 			hd_agent: navigator.userAgent
 		};
+		
+		// user info
+		if ( pid > 0 ) {
+			var f = document.frm_cart;
+			
+			arr['hd_ten'] = f.t_ten.value;
+			arr['hd_dienthoai'] = f.t_dienthoai.value;
+			arr['hd_email'] = f.t_email.value;
+			arr['hd_diachi'] = f.t_diachi.value;
+			arr['hd_ghichu'] = f.t_ghichu.value;
+		}
+		else {
+			arr['hd_ten'] = $('#t_ten').val() || '';
+			arr['hd_dienthoai'] = $('#t_dienthoai').val() || '';
+			arr['hd_email'] = $('#t_email').val() || '';
+			arr['hd_diachi'] = $('#t_diachi').val() || '';
+			arr['hd_ghichu'] = $('#t_ghichu').val() || '';
+			arr['hd_thanhtoan'] = $('input[name="t_thanhtoan"]:checked').val() || 'tructiep';
+		}
+		
 //		console.log(arr);
 		
 		/*
@@ -1395,20 +1415,38 @@ var _global_js_eb = {
 	
 	cart_create_arr_porudct : function () {
 		
+		// reset lại mảng
 		ebe_arr_cart_product_list = [];
-		$('.each-for-set-cart-value').each(function () {
+		
+		// nếu đang là xem trang chi tiết
+		if ( pid > 0 ) {
 			ebe_arr_cart_product_list.push( {
-				"id" : $(this).attr('data-id') || 0,
-				"name" : $('.get-product-name-for-cart', this).html() || '',
+				"id" : pid,
+				"name" : product_js.tieude,
 				"size" : '',
 				"color" : '',
-				"old_price" : $(this).attr('data-old-price') || 0,
-				"price" : $(this).attr('data-price') || 0,
-				"quan" : $('.change-select-quanlity', this).val() || 1,
-				"sku" : $(this).attr('data-sku') || ''
+				"old_price" : product_js.gia,
+				"price" : product_js.gm,
+				"quan" : $('#oi_change_soluong select').val() || 1,
+				"sku" : ''
 			} );
-		});
-//		console.log( ebe_arr_cart_product_list );
+		}
+		// nếu đang là xem trong giỏ hàng
+		else {
+			$('.each-for-set-cart-value').each(function () {
+				ebe_arr_cart_product_list.push( {
+					"id" : $(this).attr('data-id') || 0,
+					"name" : $('.get-product-name-for-cart', this).html() || '',
+					"size" : '',
+					"color" : '',
+					"old_price" : $(this).attr('data-old-price') || 0,
+					"price" : $(this).attr('data-price') || 0,
+					"quan" : $('.change-select-quanlity', this).val() || 1,
+					"sku" : $(this).attr('data-sku') || ''
+				} );
+			});
+		}
+		console.log( ebe_arr_cart_product_list );
 		
 		//
 //		if ( dog('hd_products_info') == null ) {
@@ -1503,6 +1541,7 @@ var _global_js_eb = {
 			f.t_diachi.value = f.t_dienthoai.value;
 		}
 		
+//		_global_js_eb.cart_create_arr_porudct();
 		_global_js_eb.cart_agent();
 //		return false;
 		
@@ -1921,6 +1960,12 @@ var _global_js_eb = {
 	// google analytics tracking
 	// https://developers.google.com/analytics/devguides/collection/analyticsjs/events
 	ga_event_track : function ( eventCategory, eventAction, eventLabel ) {
+		
+		if ( typeof ga == 'undefined' ) {
+			console.log('ga not found');
+			return false;
+		}
+		
 		if ( typeof goog_report_conversion == 'undefined' ) {
 			return false;
 		}

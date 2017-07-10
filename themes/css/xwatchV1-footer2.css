@@ -1,0 +1,39 @@
+#xwatchV1-footer2 .footer-bottom {
+	background-color: #1a1a1a;
+	padding: 35px 0;
+}
+#xwatchV1-footer2 .footer-bottom,
+#xwatchV1-footer2 .footer-bottom a { color: #fff; }
+#xwatchV1-footer2 .footer-map ul { margin: 0 -14px; }
+#xwatchV1-footer2 .footer-map li {
+	float: left;
+	width: 25%;
+}
+#xwatchV1-footer2 .footer-map-padding { margin: 0 14px; }
+#xwatchV1-footer2 .footer-map h4 {
+	font-size: 16px;
+	border-bottom: 1px #999 solid;
+	display: inline-block;
+	padding-bottom: 6px;
+	margin-bottom: 6px;
+}
+#xwatchV1-footer2 .footer-map div { margin-bottom: 5px; }
+#xwatchV1-footer2 .footer-map-content { height: 68px;/* overflow: hidden; */ }
+#xwatchV1-footer2 .footer-hotline,
+#xwatchV1-footer2 .footer-map-phone {
+	/*
+	background: url(../images/nut-hotline-chan-trang.png?v=1) left no-repeat;
+	*/
+	background: #c00;
+	border-radius: 20px;
+	line-height: 33px;
+	background-size: auto 100%;
+	width: 170px;
+	text-align: left;
+}
+#xwatchV1-footer2 .footer-hotline { margin: 0 auto; }
+#xwatchV1-footer2 .footer-hotline a,
+#xwatchV1-footer2 .footer-map-phone a {
+	display: inline-block;
+	padding-left: 40px;
+}

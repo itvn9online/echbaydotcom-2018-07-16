@@ -180,7 +180,7 @@ $arr = array(
 	'order_status' => $hd_trangthai,
 	'tv_id' => $tv_id,
 );
-//print_r( $arr );
+//print_r( $arr ); exit();
 
 
 $hd_id = EBE_set_order( $arr );

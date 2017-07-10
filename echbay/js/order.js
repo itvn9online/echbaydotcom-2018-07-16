@@ -5,7 +5,13 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 //	console.log( typeof $ );
 //	console.log( typeof jQuery );
 	
+//	console.log(arr);
 	if ( typeof arr != 'object' ) {
+		if ( arr == '' ) {
+			console.log('arr not found');
+			return false;
+		}
+		
 		arr = $.parseJSON( unescape( arr ) );
 		
 		// kiểm tra lại mà vẫn thế -> lỗi
@@ -17,6 +23,11 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 //	console.log(arr);
 	
 	if ( typeof cus != 'object' ) {
+		if ( cus == '' ) {
+			console.log('cus not found');
+			return false;
+		}
+		
 		try {
 			cus = $.parseJSON( unescape( cus ) );
 		} catch (e) {
