@@ -1,0 +1,26 @@
+#webgiare-top1 .web-logo {
+	background: left no-repeat;
+	background-size: auto 60%;
+}
+#webgiare-top1 .web-logo,
+#webgiare-top1 .top-contact-info,
+#webgiare-top1 .oi_member_func { line-height: 68px; }
+#webgiare-top1 .oi_member_func a { display: inline-block; }
+#webgiare-top1 .oi_member_func a:last-child { margin-left: 15px; }
+#webgiare-top1 .top-contact-info,
+#webgiare-top1 .top-contact-info a { color: #ccc; }
+#webgiare-top1 .top-contact-info li {
+	display: inline-block;
+	margin-right: 35px;
+}
+#webgiare-top1 .top-contact-info li:last-child { margin: 0; }
+#webgiare-top1 .top-contact-info a:hover { text-decoration: underline; }
+/*
+.web-top-logo {
+	line-height: 30px;
+	padding: 8px 0;
+	border-bottom: 1px #d9d9d9 solid;
+}
+.web-top-logo,
+.web-top-logo a { color: #9b9b9b; }
+*/

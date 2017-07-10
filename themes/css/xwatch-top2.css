@@ -50,8 +50,11 @@
 }
 #xwatch-top2 .div-search-ins,
 #xwatch-top2 .div-search-ins a { color: #fff; }
-#xwatch-top2 .div-search-ins li {
+#xwatch-top2 .div-search-ins li { display: inline-block; }
+#xwatch-top2 .div-search-ins li:after {
+	content: ",";
 	display: inline-block;
-	margin-left: 2px;
+	margin-right: 2px;
 }
+#xwatch-top2 .div-search-ins li:last-child:after { content: "..."; }
 #xwatch-top2 .top-multi-hotline a { color: #fff; }

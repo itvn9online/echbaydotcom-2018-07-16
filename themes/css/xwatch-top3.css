@@ -87,7 +87,7 @@
 	font-weight: normal;
 }
 /* fixed menu */
-.ebfixed-top-menu .global-nav-fixed {
+.ebfixed-top-menu #xwatch-top3 .global-nav-fixed {
 	background: rgba(0, 0, 0, .7);
 	position: fixed;
 	top: 0;
@@ -95,21 +95,21 @@
 	right: 0;
 	z-index: 11;
 }
-.ebfixed-top-menu .global-nav-fixed .menu-block-title {
+.ebfixed-top-menu #xwatch-top3 .global-nav-fixed .menu-block-title {
 	line-height: 35px;
 	border-radius: 10px;
 	font-size: 15px;
 	margin-top: 5px;
 }
-.ebfixed-top-menu .global-nav-fixed .global-nav:hover .menu-block-title { border-radius: 10px 10px 0 0; }
-.ebfixed-top-menu .global-nav-fixed .top-menu {
+.ebfixed-top-menu #xwatch-top3 .global-nav-fixed .global-nav:hover .menu-block-title { border-radius: 10px 10px 0 0; }
+.ebfixed-top-menu #xwatch-top3 .global-nav-fixed .top-menu {
 	line-height: 25px;
 	padding: 10px 0 8px 0;
 }
-.ebfixed-top-menu .nav-menu,
-.ebfixed-top-menu .nav-menu .sub-menu { border: 1px #ccc solid; }
-.ebfixed-top-menu .nav-menu .sub-menu {
+.ebfixed-top-menu #xwatch-top3 .nav-menu,
+.ebfixed-top-menu #xwatch-top3 .nav-menu .sub-menu { border: 1px #ccc solid; }
+.ebfixed-top-menu #xwatch-top3 .nav-menu .sub-menu {
 	border-left: 0 none;
 	margin: -1px 0;
 }
-.ebfixed-top-menu .nav-menu .sub-menu .sub-menu { border: 0 none; }
+.ebfixed-top-menu #xwatch-top3 .nav-menu .sub-menu .sub-menu { border: 0 none; }
