@@ -1,8 +1,8 @@
-<div id="webgiare-top2">
+<div id="webgiare-top2" class="default-bg">
 	<div class="wm-logo-fixed hide-if-mobile">
 		<div class="<?php echo $__cf_row['cf_top_class_style']; ?> cf">
 			<div class="lf f70">
-				<div class="nav-menu"><?php echo $arr_tmp_top_menu[1]; ?></div>
+				<div class="nav-menu"><?php echo EBE_echbay_top_menu(); ?></div>
 			</div>
 			<div class="lf f30">
 				<div class="div-search-margin">

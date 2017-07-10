@@ -1,0 +1,33 @@
+#webgiare-footer2 { padding: 10px 0 20px 0; }
+#webgiare-footer2,
+#webgiare-footer2 a { color: #fff; }
+#webgiare-footer2 .footer-bottom { padding: 15px 0 35px 0; }
+#webgiare-footer2 .global-footer-company { margin-bottom: 15px; }
+#webgiare-footer2 .global-footer-company li {
+	margin-right: 25px;
+	display: inline-block;
+}
+#webgiare-footer2 .footer-coppyright { }
+#webgiare-footer2 .footer-coppyright,
+#webgiare-footer2 .footer-coppyright a { color: #999; }
+/*
+.bottom-header {
+	background-color: #4d4d4d;
+	line-height: 19px;
+	height: 45px;
+	overflow: hidden;
+	margin: 25px 0;
+	text-align: center;
+}
+.bottom-header li {
+	display: inline-block;
+	padding: 13px 0;
+}
+.bottom-header a {
+	display: block;
+	padding: 0 10px;
+	border-right: 1px #ccc solid;
+}
+.bottom-header a:hover { text-decoration: underline; }
+.bottom-header li:last-child a { border: 0 none; }
+*/

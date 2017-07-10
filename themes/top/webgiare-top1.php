@@ -1,4 +1,4 @@
-<div id="webgiare-top1">
+<div id="webgiare-top1" class="default-bg">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<div class="cf">
 			<div class="lf f30 fullsize-if-mobile"><a href="./" class="web-logo d-block" style="background-image:url('<?php echo $__cf_row['cf_logo']; ?>');">&nbsp;</a></div>
