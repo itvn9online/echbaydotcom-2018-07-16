@@ -202,6 +202,7 @@ $('.click-add-widget-include-to-input').click(function () {
 $('.click-to-exit-design').click(function () {
 	$('.change-eb-design-fixed').hide();
 	$('body').removeClass('ebdesign-no-scroll');
+	current_frame_design_is_show = '';
 });
 
 $(document).keydown(function(e) {
@@ -229,8 +230,8 @@ $('.click-to-change-file-design').click(function () {
 	//
 	var key = $(this).attr('data-key') || '',
 		text = g_func.text_only(key);
-//	console.log(key);
-//	console.log(text);
+	console.log(key);
+	console.log(text);
 	
 	id_for_set_new_include_file = key;
 //	console.log( id_for_set_new_include_file );

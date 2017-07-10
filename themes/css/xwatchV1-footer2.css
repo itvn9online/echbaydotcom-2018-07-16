@@ -22,9 +22,9 @@
 #xwatchV1-footer2 .footer-hotline,
 #xwatchV1-footer2 .footer-map-phone {
 	/*
-	background: url(../images/nut-hotline-chan-trang.png?v=1) left no-repeat;
+	background: url(../images/nut-hotline-chan-trang.png?v=1);
 	*/
-	background: #c00;
+	background: #c00 left no-repeat;
 	border-radius: 20px;
 	line-height: 33px;
 	background-size: auto 100%;
