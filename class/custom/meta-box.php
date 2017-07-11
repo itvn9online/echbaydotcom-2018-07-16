@@ -158,7 +158,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_category_order' => 'Số càng lớn thì độ ưu tiên càng cao, nhóm sẽ được ưu tiên xuất hiện trước',
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_category_leech_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
-	'_eb_category_primary' => 'Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
+	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
 );
 
 
@@ -562,7 +562,7 @@ function EBextra_category_fields( $tag ) {
 			echo '</select>';
 		}
 		else if ( $tai == 'checkbox' ) {
-			echo '<input type="checkbox" name="' . $k . '" id="' . $k . '" value="' . $val . '" class="" /> <label for="' . $k . '">' . $eb_arr_placeholder_custom_meta_box[$k] . '</label>';
+			echo '<input type="checkbox" name="' . $k . '" id="' . $k . '" value="' . $val . '" class="" /> <label for="' . $k . '"><em>' . $eb_arr_placeholder_custom_meta_box[$k] . '</em></label>';
 		}
 		else if ( $tai == 'textarea' ) {
 			wp_editor( html_entity_decode($val, ENT_QUOTES, 'UTF-8'), $k );
