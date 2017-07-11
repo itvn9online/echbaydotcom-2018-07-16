@@ -1,6 +1,6 @@
 <div id="vietnamontrails-footer2">
 	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
-		<div class="bottom-contact cf">
+		<div class="bottom-contact cf default-2bg">
 			<div class="lf f25 fullsize-if-mobile">
 				<div class="medium18 l25"><i class="fa fa-star greencolor"></i> Join us</div>
 				<ul class="footer-social text-center cf">
