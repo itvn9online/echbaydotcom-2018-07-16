@@ -668,6 +668,7 @@ else {
 				$post_primary_categories[] = $v;
 			}
 		}
+//		print_r( $post_primary_categories );
 		
 		// nếu không tìm được -> lấy tất
 		if ( count( $post_primary_categories ) == 0 ) {
