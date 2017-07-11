@@ -49,6 +49,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 	
 	function update($new_instance, $old_instance) {
 		$instance = _eb_widget_parse_args ( $new_instance, $old_instance );
+//		print_r($instance); exit();
 		return $instance;
 	}
 	

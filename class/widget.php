@@ -89,6 +89,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	foreach ( $instance as $k => $v ) {
 		$$k = esc_attr ( $v );
 	}
+//	print_r( $field_name );
 	/*
 	$title = esc_attr ( $instance ['title'] );
 	$sortby = esc_attr ( $instance ['sortby'] );
@@ -458,6 +459,8 @@ function _eb_menu_width_form_for_widget ( $select_name, $select_val ) {
 
 function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) {
 	
+//	print_r( $option );
+	
 	$select_name = $option['cat_ids_name'];
 	$select_val = $option['cat_ids'];
 	$cat_type_name = $option['cat_type'];
@@ -530,7 +533,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 			
 			foreach ( $sub_cat as $sub_v ) {
 				$sl = '';
-				if ( $sub_v->term == $select_val ) {
+				if ( $sub_v->term_id == $select_val ) {
 					$sl = ' selected="selected"';
 				}
 				
