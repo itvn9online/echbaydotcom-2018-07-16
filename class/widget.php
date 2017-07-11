@@ -111,7 +111,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	__eb_widget_load_cat_select ( array(
 		'cat_ids_name' => $field_name['cat_ids'],
 		'cat_ids' => $cat_ids,
-		'cat_type_name' => $field_name['cat_type_name'],
+		'cat_type_name' => $field_name['cat_type'],
 		'cat_type' => $cat_type,
 	), '', true );
 	
@@ -460,7 +460,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	
 	$select_name = $option['cat_ids_name'];
 	$select_val = $option['cat_ids'];
-	$cat_type_name = $option['cat_type_name'];
+	$cat_type_name = $option['cat_type'];
 	$cat_type = $option['cat_type'];
 	
 //	echo $select_name . '<br>' . "\n";
