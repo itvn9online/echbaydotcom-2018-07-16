@@ -133,6 +133,7 @@ $eb_arr_type_custom_meta_box = array(
 	'_eb_category_status' => $arr_eb_category_status,
 	'_eb_category_order' => 'number',
 	'_eb_category_leech_url' => 'hidden',
+	'_eb_category_primary' => 'checkbox',
 	'_eb_category_content' => 'textarea',
 );
 
@@ -157,6 +158,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_category_order' => 'Số càng lớn thì độ ưu tiên càng cao, nhóm sẽ được ưu tiên xuất hiện trước',
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_category_leech_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
+	'_eb_category_primary' => 'Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
 );
 
 
@@ -436,7 +438,7 @@ add_action( 'save_post', 'EchBayThongTinSave' );
 * Custom fields for category extra
 * https://en.bainternet.info/wordpress-category-extra-fields/
 */
-if ( cf_on_off_echbay_seo == 1 ) {
+//if ( cf_on_off_echbay_seo == 1 ) {
 
 
 
@@ -453,13 +455,14 @@ foreach ( array( 'term_description' ) as $filter ) {
 
 
 
-$arr_category_custom_fields = array(
-	'_eb_category_status' => 'Trạng thái/ Định dạng',
-//	'_eb_category_type' => '',
-	'_eb_category_order' => 'Số thứ tự',
-);
+//
+$arr_category_custom_fields = array();
+
 
 // Để tránh xung đột và thừa thãi -> chỉ kích hoạt cột liên quan đến SEO khi người dùng chọn bật nó, ngoài ra thì bỏ qua
+if ( cf_on_off_echbay_seo == 1 ) {
+	$arr_category_custom_fields['_eb_category_status'] = 'Trạng thái/ Định dạng';
+	$arr_category_custom_fields['_eb_category_order'] = 'Số thứ tự';
 	$arr_category_custom_fields['_eb_category_content'] = 'Giới thiệu';
 	
 	$arr_category_custom_fields['_eb_category_title'] = 'Title';
@@ -468,11 +471,30 @@ $arr_category_custom_fields = array(
 	
 	$arr_category_custom_fields['_eb_category_old_url'] = 'URL cũ (nếu có)';
 	$arr_category_custom_fields['_eb_category_leech_url'] = 'URL đồng bộ';
-	
-	
-// Thêm trường dữ liệu cho phần category
+}
+
+// thuộc tính này luôn tồn tại cho category
+$arr_category_custom_fields['_eb_category_primary'] = 'Đặt làm nhóm chính';
+
+
+// Thêm trường dữ liệu cho phần category -> luôn kích hoạt
 add_action ( 'edit_category_form_fields', 'EBextra_category_fields');
-add_action ( 'edit_tag_form_fields', 'EBextra_category_fields');
+add_action ( 'edited_category', 'EBsave_extra_category_fileds');
+
+
+// các trường còn lại, chỉ kích hoạt khi EchBay Seo plugin được bật
+if ( cf_on_off_echbay_seo == 1 ) {
+	add_action ( 'edit_tag_form_fields', 'EBextra_category_fields');
+	
+	
+	// Lưu dữ liệu edited_ + tên của taxonomy
+	add_action ( 'edited_post_tag', 'EBsave_extra_category_fileds');
+	add_action ( 'edited_post_options', 'EBsave_extra_category_fileds');
+	//add_action ( 'edited_blogs', 'EBsave_extra_category_fileds');
+	add_action ( 'edited_' . EB_BLOG_POST_LINK, 'EBsave_extra_category_fileds');
+}
+
+
 
 // add extra fields to category edit form callback function
 function EBextra_category_fields( $tag ) {
@@ -511,9 +533,15 @@ function EBextra_category_fields( $tag ) {
 		//
 		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
 		
+		// tạo class riêng cho textarea
+		$description_wrap = 'term-echbay-wrap';
+		if ( $tai == 'textarea' ) {
+			$description_wrap = 'term-description-wrap';
+		}
+		
 		//
 		echo '
-<tr class="form-field term-description-wrap" style="' . $hidden_class . '">
+<tr class="form-field ' . $description_wrap . '" style="' . $hidden_class . '">
 	<th scope="row"><label for="' . $k . '">' . $v . '</label></th>
 	<td>';
 		
@@ -533,12 +561,15 @@ function EBextra_category_fields( $tag ) {
 			
 			echo '</select>';
 		}
+		else if ( $tai == 'checkbox' ) {
+			echo '<input type="checkbox" name="' . $k . '" id="' . $k . '" value="' . $val . '" class="" /> <label for="' . $k . '">' . $eb_arr_placeholder_custom_meta_box[$k] . '</label>';
+		}
 		else if ( $tai == 'textarea' ) {
 			wp_editor( html_entity_decode($val, ENT_QUOTES, 'UTF-8'), $k );
 //			echo '<textarea id="' . $k . '" name="' . $k . '" ' . $other_attr . '>' .$val. '</textarea>';
 		}
 		else {
-			echo '<input type="' . $tai . '" name="' . $k . '" id="' . $k . '" value="' . $val . '" ' . $other_attr . '>';
+			echo '<input type="' . $tai . '" name="' . $k . '" id="' . $k . '" value="' . $val . '" ' . $other_attr . ' />';
 		}
 		
 		//
@@ -548,13 +579,6 @@ function EBextra_category_fields( $tag ) {
 	}
 }
 
-
-// Lưu dữ liệu edited_ + tên của taxonomy
-add_action ( 'edited_category', 'EBsave_extra_category_fileds');
-add_action ( 'edited_post_tag', 'EBsave_extra_category_fileds');
-add_action ( 'edited_post_options', 'EBsave_extra_category_fileds');
-//add_action ( 'edited_blogs', 'EBsave_extra_category_fileds');
-add_action ( 'edited_' . EB_BLOG_POST_LINK, 'EBsave_extra_category_fileds');
 
 // save extra category extra fields callback function
 function EBsave_extra_category_fileds( $term_id ) {
@@ -567,17 +591,24 @@ function EBsave_extra_category_fileds( $term_id ) {
 	
 	// chạy vòng lặp rồi kiểm tra trong POST có tương ứng thì update
 	foreach ( $arr_category_custom_fields as $k => $v ) {
+		
+		// lọc mã html với các input thường
+		$loc_html = isset( $eb_arr_type_custom_meta_box[ $k ] ) ? $eb_arr_type_custom_meta_box[ $k ] : '';
+		
 		if ( isset( $_POST[ $k ] ) ){
 //			echo $k . '<br>' . "\n";
 			
 			$val = $_POST[ $k ];
 			
-			// lọc mã html với các input thường
-			$loc_html = isset( $eb_arr_type_custom_meta_box[ $k ] ) ? $eb_arr_type_custom_meta_box[ $k ] : '';
-			
 			// Bỏ qua với textarea
 			if ( $loc_html == 'textarea_one' || $loc_html == 'textarea' ) {
-			} else {
+			}
+			// nếu là checkbox -> set giá trị là 1
+			else if ( $loc_html == 'checkbox' ) {
+				$val = 1;
+			}
+			// chỉ áp dụng nếu là input text
+			else {
 				$val = sanitize_text_field( $val );
 			}
 			
@@ -594,6 +625,11 @@ function EBsave_extra_category_fileds( $term_id ) {
 			//
 //			$arr_save[ $k ] = addslashes( $val );
 		}
+		// thử kiểm tra với checkbox
+		else if ( $loc_html == 'checkbox' ) {
+			// không có -> set là 0 luôn
+			update_post_meta( $term_id, $k, 0 );
+		}
 	}
 //	exit();
 	
@@ -606,5 +642,5 @@ function EBsave_extra_category_fileds( $term_id ) {
 
 
 
-} // end check ON/ OFF seo module
+//} // end check ON/ OFF seo module
 

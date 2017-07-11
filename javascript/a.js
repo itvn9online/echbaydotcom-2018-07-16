@@ -811,6 +811,12 @@ function EBE_set_default_title_for_seo () {
 		// thu gọn menu của wp
 //		$('body').addClass('folded');
 	}
+	// chỉnh sửa category
+	else if ( win_href.split('/term.php?taxonomy=').length > 1 ) {
+		if ( dog('_eb_category_primary') != null && dog('_eb_category_primary').value == 1 ) {
+			dog('_eb_category_primary').checked = true;
+		}
+	}
 	// thêm tài khoản thành viên
 	else if ( win_href.split('/user-new.php').length > 1 ) {
 		$('#createuser .form-table tr:last').after('\
