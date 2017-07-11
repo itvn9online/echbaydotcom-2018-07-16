@@ -660,26 +660,40 @@ else {
 //		}
 		
 		
-		//
+		// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
+		$post_primary_categories = array();
 //		print_r( $post_categories );
+		foreach ( $post_categories as $v ) {
+			if ( _eb_get_post_meta( $v, '_eb_category_primary', true, 0 ) > 0 ) {
+				$post_primary_categories[] = $v;
+			}
+		}
+		
+		// nếu không tìm được -> lấy tất
+		if ( count( $post_primary_categories ) == 0 ) {
+			$post_primary_categories = $post_categories;
+		}
+//		print_r( $post_primary_categories );
 		
 		
 		//
 		$other_post_right .= _eb_load_post( $limit_other_post, array(
 //			'category__in' => wp_get_post_categories( $__post->ID ),
-			'category__in' => $post_categories,
+			'category__in' => $post_primary_categories,
 			'post__not_in' => array(
 				$__post->ID
 			),
 		) );
 		
-		// lấy thêm loạt bài tiếp theo, 1 số gaio diện sẽ sử dụng
-		$other_post_2right = _eb_load_post( $__cf_row['cf_num_details2_list'], array(
-			'category__in' => $post_categories,
-			'post__not_in' => array(
-				$__post->ID
-			),
-		) );
+		// lấy thêm loạt bài tiếp theo, 1 số giao diện sẽ sử dụng
+		if ( $__cf_row['cf_num_details2_list'] > 0 ) {
+			$other_post_2right = _eb_load_post( $__cf_row['cf_num_details2_list'], array(
+				'category__in' => $post_primary_categories,
+				'post__not_in' => array(
+					$__post->ID
+				),
+			) );
+		}
 		
 	}
 	
