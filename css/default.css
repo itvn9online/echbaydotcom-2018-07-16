@@ -1487,7 +1487,7 @@ a.search-advanced-btn {
 	width: 99%;
 }
 .maxwidth-public-table .t { width: 20%; }
-.maxwidth-public-table .t { width: 75%; }
+.maxwidth-public-table .i { width: 75%; }
 .order-danhsach-sanpham { padding: 1px; }
 .order-danhsach-sanpham tr:first-child {
 	font-weight: bold;
