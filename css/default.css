@@ -1465,10 +1465,6 @@ a.search-advanced-btn {
 	border-radius: 2px;
 	padding: 10px 15px;
 }
-.maxwidth-public-table {
-	max-width: none;
-	width: 99%;
-}
 .eb-editer-table {
 	padding: 0;
 	border: 0 none;
@@ -1486,6 +1482,12 @@ a.search-advanced-btn {
 .eb-public-table .l,
 .eb-public-table textarea { width: 90%; }
 .eb-public-table div.small { line-height: 16px; }
+.maxwidth-public-table {
+	max-width: none;
+	width: 99%;
+}
+.maxwidth-public-table .t { width: 20%; }
+.maxwidth-public-table .t { width: 75%; }
 .order-danhsach-sanpham { padding: 1px; }
 .order-danhsach-sanpham tr:first-child {
 	font-weight: bold;
