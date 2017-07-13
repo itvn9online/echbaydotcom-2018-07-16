@@ -1,6 +1,13 @@
 
 
 
+
+// thu gọn menu của wordpress -> để tăng kích thước cho khung thiết kế
+$('body').addClass('folded');
+
+
+
+
 // Tham số dùng để xác định xem file được add vào mục nào
 var id_for_set_new_include_file = '';
 

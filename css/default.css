@@ -1465,6 +1465,10 @@ a.search-advanced-btn {
 	border-radius: 2px;
 	padding: 10px 15px;
 }
+.maxwidth-public-table {
+	max-width: none;
+	width: 99%;
+}
 .eb-editer-table {
 	padding: 0;
 	border: 0 none;

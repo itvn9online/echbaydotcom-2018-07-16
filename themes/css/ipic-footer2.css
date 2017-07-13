@@ -1,0 +1,18 @@
+#ipic-footer2 .footer-header {
+	color: #000 !important;
+	padding: 15px 0 35px 0;
+}
+#ipic-footer2 .web-footer-logo {
+	line-height: 90px;
+	display: block;
+	background: center no-repeat;
+	background-size: 90% auto;
+}
+#ipic-footer2 .bottom-contact { padding-top: 5px; }
+#ipic-footer2 .bottom-contact li { margin-bottom: 5px; }
+#ipic-footer2 .bottom-contact a { color: #06C !important; }
+#ipic-footer2 .bottom-contact i {
+	display: inline-block;
+	width: 20px;
+	text-align: center;
+}

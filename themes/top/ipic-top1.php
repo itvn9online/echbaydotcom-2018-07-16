@@ -1,6 +1,6 @@
-<div id="ipic-top2">
-	<div class="cf <?php echo $__cf_row['cf_top_class_style']; ?>">
-		<div class="top-header cf <?php echo $__cf_row['cf_top_class_style']; ?>">
+<div id="ipic-top1">
+	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
+		<div class="top-header cf">
 			<div class="lf f25 fullsize-if-mobile">
 				<div><a href="./" title="Trang chủ" class="web-logo" style="background-image:url('<?php echo $__cf_row['cf_logo']; ?>');">&nbsp;</a></div>
 			</div>
@@ -12,7 +12,7 @@
 					<div class="rf div-search-margin">
 						<div class="div-search">
 							<form role="search" method="get" action="<?php echo web_link; ?>">
-								<input type="search" placeholder="Tìm kiếm sản phẩm" value="<?php echo $current_search_key; ?>" name="s" aria-required="true" required>
+								<input type="search" placeholder="Tìm kiếm" value="<?php echo $current_search_key; ?>" name="s" aria-required="true" required>
 								<input type="hidden" name="post_type" value="post" />
 								<button type="submit" class="cur default-2bg"><i class="fa fa-search"></i></button>
 							</form>

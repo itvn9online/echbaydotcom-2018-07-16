@@ -1,0 +1,37 @@
+#ipic-top2 .nav-menu { border-bottom: 5px #fff solid; }
+#ipic-top2 .nav-menu ul {
+	text-align: center;
+	line-height: 32px;
+	border-left: 1px #fff solid;
+	border-right: 1px #fff solid;
+}
+#ipic-top2 .nav-menu li {
+	display: inline-block;
+	border-right: 1px #fff solid;
+	position: relative;
+}
+#ipic-top2 .nav-menu li:first-child { border-left: 1px #fff solid; }
+#ipic-top2 .nav-menu a {
+	font-weight: bold;
+	color: #000 !important;
+	display: block;
+	padding: 0 15px;
+}
+#ipic-top2 .nav-menu .sub-menu {
+	position: absolute;
+	text-align: left;
+	background: rgba(0, 0, 0, .3);
+	min-width: 220px;
+	border-top: 5px #fff solid;
+	display: none;
+}
+#ipic-top2 .nav-menu li:hover .sub-menu { display: block; }
+#ipic-top2 .nav-menu .sub-menu li {
+	display: block;
+	border: 0 none;
+}
+#ipic-top2 .nav-menu .sub-menu a {
+	color: #fff !important;
+	font-weight: normal;
+}
+#ipic-top2 .nav-menu .sub-menu .sub-menu { display: none; }
