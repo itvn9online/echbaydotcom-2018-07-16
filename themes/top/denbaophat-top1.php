@@ -1,5 +1,5 @@
-<div id="denbaophat-top1">
-	<div class="top-utility default-bg hide-if-mobile">
+<div id="denbaophat-top1" class="hide-if-mobile">
+	<div class="top-utility default-bg">
 		<div class="cf <?php echo $__cf_row['cf_top_class_style']; ?>">
 			<div class="lf f40">
 				<div class="top-top-ul"><?php echo EBE_echbay_top_menu(); ?></div>
