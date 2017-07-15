@@ -28,6 +28,12 @@ get_category_link( $id ) -> dùng function riêng cũng được -> _eb_c_link( 
 
 
 
+// tắt chức năng xmlrpc -> chả có nhu cầu sử dụng
+add_filter( 'xmlrpc_enabled', '__return_false' );
+
+
+
+
 
 //
 //echo $wpdb->posts . '<br>';
