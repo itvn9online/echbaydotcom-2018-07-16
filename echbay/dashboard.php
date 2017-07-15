@@ -117,6 +117,27 @@ if ( date_time - $lats_update_file_test > 3600 ) {
 	// tạo file ở root
 	_eb_create_file( $file_test, date_time, '', 0 );
 	
+	
+	
+	
+	
+	// chặn file xmlrpc.php, không cho thực thi trên file này
+	$xmlrpc_file = ABSPATH . 'xmlrpc.php';
+	if ( file_exists( $xmlrpc_file ) ) {
+		$xmlrpc_content = file_get_contents( $xmlrpc_file, 1 );
+		$xmlrpc_content = explode( "\n", trim( $xmlrpc_content ) );
+		
+		// Kiểm tra dòng đầu tiên xem đã được add câu lệnh die vào chưa
+		$xmlrpc_content[0] = trim( $xmlrpc_content[0] );
+		
+		//  như này là chưa add -> add thêm thôi
+		if ( $xmlrpc_content[0] == '<?php' || $xmlrpc_content[0] == '<?' ) {
+			$xmlrpc_content[0] = $xmlrpc_content[0] . ' die("Disable by EchBay.com");';
+			
+			_eb_create_file( $xmlrpc_file, implode( "\n", $xmlrpc_content ) );
+		}
+	}
+	
 }
 
 //
