@@ -132,7 +132,7 @@ if ( date_time - $lats_update_file_test > 3600 ) {
 		
 		//  như này là chưa add -> add thêm thôi
 		if ( $xmlrpc_content[0] == '<?php' || $xmlrpc_content[0] == '<?' ) {
-			$xmlrpc_content[0] = $xmlrpc_content[0] . ' die("Disable by EchBay.com");';
+			$xmlrpc_content[0] = $xmlrpc_content[0] . ' die("xmlrpc method has been disable by EchBay.com");';
 			
 			_eb_create_file( $xmlrpc_file, implode( "\n", $xmlrpc_content ) );
 		}
