@@ -117,16 +117,25 @@ $('.click-add-class-selected').click(function () {
 });
 
 // chạy riêng với function trên cho nó chuẩn chỉ, đỡ lỗi
-/* v1
 $('.click-add-class-selected').each(function () {
+	
+	// tạo key để tìm kiếm nhanh
+	var a = $(this).attr('data-val') || '';
+	if ( a != '' ) {
+		$(this).attr({
+			'data-search': a.split('-')[0]
+		});
+	}
+	
+	/* v1
 	var a = $('input[type="radio"]', this).attr('id') || '';
 	if ( a != '' ) {
 		if ( dog( a ).checked == true ) {
 			$(this).click();
 		}
 	}
+	*/
 });
-*/
 
 // v2
 $('.each-to-get-current-value-file').each(function(index, element) {

@@ -2931,8 +2931,13 @@ function EBE_check_ftp_account () {
 function EBE_get_config_ftp_root_dir ( $content_ = '1' ) {
 	global $__cf_row;
 	
+	// Nếu chưa có thư mục root cho FTP -> bắt đầu dò tìm
 	if ( $__cf_row['cf_ftp_root_dir'] == '' ) {
 		$__cf_row['cf_ftp_root_dir'] = EBE_get_ftp_root_dir( $content_ );
+	}
+	// Tạo file cache để truyền dữ liệu
+	else {
+		_eb_create_file( EBE_create_cache_for_ftp(), $content_, '', 0 );
 	}
 	
 	return $__cf_row['cf_ftp_root_dir'];
@@ -3052,7 +3057,7 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 	
 	// upload file
 	$result = true;
-	if ( ! ftp_put($conn_id, '.' . $file_for_ftp , EBE_create_cache_for_ftp(), FTP_BINARY) ) {
+	if ( ! ftp_put($conn_id, '.' . $file_for_ftp, EBE_create_cache_for_ftp(), FTP_BINARY) ) {
 		echo 'ERROR FTP: ftp_put error<br>' . "\n";
 		$result = false;
 	}
