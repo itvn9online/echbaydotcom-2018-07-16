@@ -530,27 +530,27 @@ function EBE_get_current_wp_module ( s ) {
 		a = 'post';
 	}
 	// danh sách post, page, custom post type
-	else if ( win_href.split('/edit.php').length > 1 ) {
+	else if ( s.split('/edit.php').length > 1 ) {
 		a = 'list';
 	}
 	// chi tiết catgory, tag...
-	else if ( win_href.split('/term.php').length > 1 ) {
+	else if ( s.split('/term.php').length > 1 ) {
 		a = 'cat_details';
 	}
 	// thêm tài khoản thành viên
-	else if ( win_href.split('/user-new.php').length > 1 ) {
+	else if ( s.split('/user-new.php').length > 1 ) {
 		a = 'user-new';
 	}
 	// sửa tài khoản thành viên
-	else if ( win_href.split('/user-edit.php').length > 1 ) {
+	else if ( s.split('/user-edit.php').length > 1 ) {
 		a = 'user-edit';
 	}
 	// không cho người dùng chỉnh sửa kích thước ảnh thumb -> để các câu lệnh dùng thumb sẽ chính xác hơn
-	else if ( win_href.split('/options-media.php').length > 1 ) {
+	else if ( s.split('/options-media.php').length > 1 ) {
 		a = 'media';
 	}
 	// chuyển rule wordpress sang nginx cho nó mượt
-	else if ( win_href.split('/options-permalink.php').length > 1 ) {
+	else if ( s.split('/options-permalink.php').length > 1 ) {
 		a = 'permalink';
 	}
 //	admin_act == 'user-new'
