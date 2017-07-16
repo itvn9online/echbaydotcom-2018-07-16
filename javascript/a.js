@@ -533,6 +533,10 @@ function EBE_get_current_wp_module ( s ) {
 	else if ( s.split('/edit.php').length > 1 ) {
 		a = 'list';
 	}
+	// danh sách catgory, tag...
+	else if ( s.split('/edit-tags.php').length > 1 ) {
+		a = 'cat_list';
+	}
 	// chi tiết catgory, tag...
 	else if ( s.split('/term.php').length > 1 ) {
 		a = 'cat_details';
@@ -853,13 +857,8 @@ function EBE_get_current_wp_module ( s ) {
 //		$('body').addClass('folded');
 	}
 	*/
-	// chỉnh sửa category
-	else if ( admin_act == 'cat_details' ) {
-		if ( dog('_eb_category_primary') != null && dog('_eb_category_primary').value == 1 ) {
-			dog('_eb_category_primary').checked = true;
-		}
-		
-		
+	// danh sách category
+	else if ( admin_act == 'cat_list' ) {
 		// fix chiều cao cho cột mô tả -> vì nó dài quá
 		$('#the-list').addClass('eb-hide-description');
 		
@@ -876,6 +875,12 @@ function EBE_get_current_wp_module ( s ) {
 			if ( dog('description-hide').checked == true ) {
 				dog('description-hide').checked = false;
 			}
+		}
+	}
+	// chỉnh sửa category
+	else if ( admin_act == 'cat_details' ) {
+		if ( dog('_eb_category_primary') != null && dog('_eb_category_primary').value == 1 ) {
+			dog('_eb_category_primary').checked = true;
 		}
 	}
 	// thêm tài khoản thành viên
