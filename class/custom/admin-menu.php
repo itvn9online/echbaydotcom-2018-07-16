@@ -182,7 +182,7 @@ function echbay_admin_styles() {
 	
 	
 	// nếu là phiên bản web giá rẻ -> ẩn các menu admin quan trọng đi, chỉ hiện thị với supper admin
-	if ( mtv_id != 1 && defined('webgiare_dot_org_install') ) {
+	if ( mtv_id != 1 && webgiare_dot_org_install == true ) {
 		echo _eb_del_line( '<style type="text/css">' . file_get_contents( EB_URL_OF_PLUGIN . 'css/administrator.css', 1 ) . '</style>' );
 	}
 	

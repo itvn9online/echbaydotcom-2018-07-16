@@ -288,6 +288,13 @@ if ( ! defined('WP_ADMIN_DIR') ) {
 	define( 'WP_ADMIN_DIR', 'wp-admin' );
 }
 
+/*
+* Mặc định là ẩn các menu quan trọng với tài khoản administrator
+*/
+if ( ! defined('webgiare_dot_org_install') ) {
+	define( 'webgiare_dot_org_install', true );
+}
+
 
 
 //
