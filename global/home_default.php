@@ -3,6 +3,12 @@
 
 
 
+// load css cho home default
+$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/home_default.css' ] = 1;
+
+
+
+
 /*
 * sản phẩm nổi bật
 */
