@@ -859,6 +859,7 @@ function EBE_get_current_wp_module ( s ) {
 	*/
 	// danh sách category
 	else if ( admin_act == 'cat_list' ) {
+		/*
 		// fix chiều cao cho cột mô tả -> vì nó dài quá
 		$('#the-list').addClass('eb-hide-description');
 		
@@ -876,6 +877,7 @@ function EBE_get_current_wp_module ( s ) {
 				dog('description-hide').checked = false;
 			}
 		}
+		*/
 	}
 	// chỉnh sửa category
 	else if ( admin_act == 'cat_details' ) {
