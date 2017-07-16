@@ -197,6 +197,20 @@ if ( ( defined('WP_AUTO_UPDATE_CORE') && WP_AUTO_UPDATE_CORE == true ) ) {
 
 
 
+
+
+// kiểm tra quyền đọc ghi qua FTP
+if ( webgiare_dot_org_install == true ) {
+	$str_eb_warning .= '
+	<div><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng bảo mật cho tài khoản admin đang được bật, tính năng này sẽ ẩn đi một số menu đặc biệt quan trọng trên website, để tắt nó đi, hãy thêm đoạn code sau vào file wp-config.php:
+		<pre><code>define( \'webgiare_dot_org_install\', false );</code></pre>
+	</div>';
+}
+
+
+
+
+
 //
 if ( $str_eb_warning != '' ) {
 	echo '<div class="eb-warning-site-config">' . $str_eb_warning . ' <p>* Các lưu ý này sẽ được thiết lập trong file: <strong>wp-config.php</strong> của wordpress.</p></div><br>';
