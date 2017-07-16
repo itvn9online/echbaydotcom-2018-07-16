@@ -522,6 +522,45 @@ function EBE_set_default_title_for_seo () {
 
 
 
+function EBE_get_current_wp_module ( s ) {
+	var a = '';
+	
+	// chi tiết bài viết, sửa bài viết
+	if ( s.split('/post.php').length > 1 ) {
+		a = 'post';
+	}
+	// danh sách post, page, custom post type
+	else if ( win_href.split('/edit.php').length > 1 ) {
+		a = 'list';
+	}
+	// chi tiết catgory, tag...
+	else if ( win_href.split('/term.php').length > 1 ) {
+		a = 'cat_details';
+	}
+	// thêm tài khoản thành viên
+	else if ( win_href.split('/user-new.php').length > 1 ) {
+		a = 'user-new';
+	}
+	// sửa tài khoản thành viên
+	else if ( win_href.split('/user-edit.php').length > 1 ) {
+		a = 'user-edit';
+	}
+	// không cho người dùng chỉnh sửa kích thước ảnh thumb -> để các câu lệnh dùng thumb sẽ chính xác hơn
+	else if ( win_href.split('/options-media.php').length > 1 ) {
+		a = 'media';
+	}
+	// chuyển rule wordpress sang nginx cho nó mượt
+	else if ( win_href.split('/options-permalink.php').length > 1 ) {
+		a = 'permalink';
+	}
+//	admin_act == 'user-new'
+	console.log(a);
+	
+	return a;
+}
+
+
+
 
 // tạo url chung cho các module
 //$(document).ready(function() {
@@ -539,6 +578,7 @@ function EBE_set_default_title_for_seo () {
 	
 	//
 	var win_href = window.location.href;
+	var admin_act = EBE_get_current_wp_module( win_href );
 	
 	//
 	$('.admin-set-reload-url').attr({
@@ -582,7 +622,7 @@ function EBE_set_default_title_for_seo () {
 	
 	// post size (product size)
 	// nếu đang trong phần sửa bài viết
-	if ( win_href.split('post.php?post=').length > 1 ) {
+	if ( admin_act == 'post' ) {
 		
 		
 		
@@ -799,7 +839,7 @@ function EBE_set_default_title_for_seo () {
 		
 	}
 	// danh sách post, page, custom post type
-	else if ( win_href.split('/edit.php').length > 1 ) {
+	else if ( admin_act == 'list' ) {
 		// nếu là post
 		if ( win_href.split('post_type=').length == 1
 		|| win_href.split('post_type=post').length > 1 ) {
@@ -814,21 +854,40 @@ function EBE_set_default_title_for_seo () {
 	}
 	*/
 	// chỉnh sửa category
-	else if ( win_href.split('/term.php?taxonomy=').length > 1 ) {
+	else if ( admin_act == 'cat_details' ) {
 		if ( dog('_eb_category_primary') != null && dog('_eb_category_primary').value == 1 ) {
 			dog('_eb_category_primary').checked = true;
 		}
+		
+		
+		// fix chiều cao cho cột mô tả -> vì nó dài quá
+		$('#the-list').addClass('eb-hide-description');
+		
+		$('#the-list .column-description').each(function(index, element) {
+			var a = $(this).html() || '';
+			if ( a != '' ) {
+				$(this).html( '<div class="eb-fixed-content-height">' + a + '</div>' );
+			}
+		}).addClass('show-column-description');
+		
+		// mặc định sẽ ẩn cột description đi cho nó gọn
+		if ( dog('description-hide') != null && dog('description-hide').checked == true ) {
+			$('#description-hide').click();
+			if ( dog('description-hide').checked == true ) {
+				dog('description-hide').checked = false;
+			}
+		}
 	}
 	// thêm tài khoản thành viên
-	else if ( win_href.split('/user-new.php').length > 1 ) {
+	else if ( admin_act == 'user-new' ) {
 		$('#createuser .form-table tr:last').after('\
 		<tr class="form-field">\
 			<th>&nbsp;</th>\
 			<td>' + ( $('#echbay_role_user_note').html() || 'DIV #echbay_role_user_note not found' ) + '</td>\
 		</tr>');
 	}
-	// thêm tài khoản thành viên
-	else if ( win_href.split('/user-edit.php').length > 1 ) {
+	// sửa tài khoản thành viên
+	else if ( admin_act == 'user-edit' ) {
 		$('.user-role-wrap').after('\
 		<tr class="form-field">\
 			<th>&nbsp;</th>\
@@ -836,11 +895,11 @@ function EBE_set_default_title_for_seo () {
 		</tr>');
 	}
 	// không cho người dùng chỉnh sửa kích thước ảnh thumb -> để các câu lệnh dùng thumb sẽ chính xác hơn
-	else if ( win_href.split('/options-media.php').length > 1 ) {
+	else if ( admin_act == 'media' ) {
 		$('#wpbody-content .form-table tr:first td:last').addClass('disable-edit-thumb-small').append('<div class="div-edit-thumb-small">&nbsp;</div>');
 	}
 	// chuyển rule wordpress sang nginx cho nó mượt
-	else if ( win_href.split('/options-permalink.php').length > 1 ) {
+	else if ( admin_act == 'permalink' ) {
 //		console.log( arr_wordpress_rules.length );
 		console.log( arr_wordpress_rules );
 		
@@ -909,21 +968,6 @@ function EBE_set_default_title_for_seo () {
 	
 	//
 	fix_textarea_height();
-	
-	
-	
-	
-	// fix chiều cao cho cột mô tả -> vì nó dài quá
-	if ( admin_body_class.split('edit-tags-php').length > 1 ) {
-		$('#the-list').addClass('eb-hide-description');
-		
-		$('#the-list .column-description').each(function(index, element) {
-			var a = $(this).html() || '';
-			if ( a != '' ) {
-				$(this).html( '<div class="eb-fixed-content-height">' + a + '</div>' );
-			}
-		}).addClass('show-column-description');
-	}
 	
 	
 //});
