@@ -41,6 +41,13 @@ if ($main_content == false) {
 	$home_with_cat = _eb_echbay_get_sidebar( 'home_content_sidebar' );
 //	echo $home_with_cat;
 	
+	// nếu không có home -> load mặc định theo thiết kế dựng sẵn
+	if ( $home_with_cat == '' ) {
+		include EB_THEME_PLUGIN_INDEX . 'global/home_default.php';
+		
+		$home_with_cat = $home_hot . $home_new . $home_with_cat;
+	}
+	
 	
 	
 	// lấy template theo từng trang
