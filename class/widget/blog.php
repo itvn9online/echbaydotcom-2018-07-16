@@ -152,11 +152,9 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			$terms_categories[] = $cat_ids;
 			$cat_link = _eb_c_link( $cat_ids, $cat_type );
 			
-			$categories = get_term_by('id', $cat_ids, 'category');
-			$cat_name = $categories->name;
-			
 			if ( $title == '' ) {
-				$title = $cat_name;
+				$categories = get_term_by('id', $cat_ids, 'category');
+				$title = $categories->name;
 			}
 		}
 		// lấy tất cả
@@ -240,6 +238,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		//
 		echo '<div class="' . $custom_style . '">';
+		
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_link' => $cat_link == '' ? 'javascript:;' : $cat_link,
 			'tmp.num_line' => $num_line,
@@ -249,6 +248,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			'tmp.widget_title' => _eb_get_echo_widget_title( $cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>', 'echbay-widget-blogs-title', $before_title ),
 			'tmp.content' => $content,
 		) );
+		
 		echo '</div>';
 		
 		//

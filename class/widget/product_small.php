@@ -97,6 +97,11 @@ class ___echbay_widget_random_product extends WP_Widget {
 		
 		if ( $cat_ids > 0 ) {
 			$args['cat'] = $cat_ids;
+			
+			if ( $title == '' ) {
+				$categories = get_term_by('id', $cat_ids, 'category');
+				$title = $categories->name;
+			}
 		}
 		// tự động lấy theo nhóm hiện tại
 		/*

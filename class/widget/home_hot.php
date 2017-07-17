@@ -102,8 +102,10 @@ class ___echbay_widget_home_hot_content extends WP_Widget {
 			$args['cat'] = $cat_ids;
 			
 			// lấy thông tin phân nhóm luôn
-			$categories = get_term_by('id', $cat_ids, 'category');
-//			print_r( $categories );
+			if ( $title == '' ) {
+				$categories = get_term_by('id', $cat_ids, 'category');
+				$title = $categories->name;
+			}
 		}
 		
 		// tìm theo trạng thái
