@@ -72,7 +72,7 @@ $eb_wp_post_type = 0;
 //
 //$str_fpr_license_echbay = '';
 //if ( $__cf_row['cf_on_off_echbay_logo'] == 1 ) {
-	$str_fpr_license_echbay = '<span class="powered-by-echbay">Cung cấp bởi <a href="//echbay.com" title="Cung cấp bởi ẾchBay.com - Thiết kế web chuyên nghiệp" target="_blank" rel="nofollow">EchBay.com</a></span>';
+	$str_fpr_license_echbay = '<span class="powered-by-echbay">Cung cấp bởi <a href="#" title="Cung cấp bởi ẾchBay.com - Thiết kế web chuyên nghiệp" target="_blank" rel="nofollow">EchBay.com</a></span>';
 //}
 
 

@@ -449,3 +449,14 @@ function add_fb_messages_for_page () {
 
 
 
+
+// Thêm link bản quyền cho theme
+$('.powered-by-echbay a').attr({
+	href: 'https://www.echbay.com/'
+});
+
+
+
+
+
+

@@ -551,7 +551,7 @@ var _global_js_eb = {
 				head.appendChild(l);
 			}(document, css_m_id));
 			*/
-//			$('body').addClass('style-for-mobile');
+			$('body').addClass('style-for-mobile');
 			
 			
 			
@@ -649,7 +649,7 @@ var _global_js_eb = {
 			});
 		} else {
 //			$('#' + css_m_id).remove();
-//			$('body').removeClass('style-for-mobile');
+			$('body').removeClass('style-for-mobile');
 			
 			//
 			$('.fix-li-wit').each(function () {

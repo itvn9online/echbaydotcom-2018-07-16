@@ -2,37 +2,37 @@
 /*
 * style for mobile
 */
-@media screen and (max-width:775px) {
-body {
+/* @media screen and (max-width:775px) { */
+body.style-for-mobile {
 	min-width: 250px;
 	/* padding: 0 1px; */
 	margin-top: 45px;
 }
 /* global mobile */
-.w90,
-.w99,
-/* .global-w99, */
-.fullsize-if-mobile {
+.style-for-mobile .w90,
+.style-for-mobile .w99,
+/* .style-for-mobile .global-w99, */
+.style-for-mobile .fullsize-if-mobile {
 	width: 100% !important;
 	margin: 0 0 0 auto;
 	max-width: 999px;
 }
-.fullsize-if-mobile { float: none; }
-.w90,
-/* .global-w99, */
-.w99 { min-width: 250px; }
-.hide-if-mobile { display: none !important; }
-.show-if-mobile { display: block !important; }
-.right-menu-space { padding-right: 0; }
-.left-menu-space { padding-left: 0; }
-.mobile-zero-margin,
-.echbay-blog,
-.thread-list,
-.widget-search-advanced { margin: 0 !important; }
-.thread-list li { width: 50%; }
+.style-for-mobile .fullsize-if-mobile { float: none; }
+.style-for-mobile .w90,
+/* .style-for-mobile .global-w99, */
+.style-for-mobile .w99 { min-width: 250px; }
+.style-for-mobile .hide-if-mobile { display: none !important; }
+.style-for-mobile .show-if-mobile { display: block !important; }
+.style-for-mobile .right-menu-space { padding-right: 0; }
+.style-for-mobile .left-menu-space { padding-left: 0; }
+.style-for-mobile .mobile-zero-margin,
+.style-for-mobile .echbay-blog,
+.style-for-mobile .thread-list,
+.style-for-mobile .widget-search-advanced { margin: 0 !important; }
+.style-for-mobile .thread-list li { width: 50%; }
 /* fix search mobile */
 /*
-.div-search-margin {
+.style-for-mobile .div-search-margin {
 	margin-top: 0;
 	position: fixed;
 	top: 45px;
@@ -44,80 +44,80 @@ body {
 	border-bottom: 1px #666 solid;
 	display: none;
 }
-.div-search-margin .div-search {
+.style-for-mobile .div-search-margin .div-search {
 	background: #fff;
 	width: 95%;
 	margin: 0 auto !important;
 	border: 0 none;
 	border-radius: 10px;
 }
-.div-search-margin input[type=search] { color: #333; }
-.show-search-mobile .div-search-margin { display: block; }
+.style-for-mobile .div-search-margin input[type=search] { color: #333; }
+.style-for-mobile .show-search-mobile .div-search-margin { display: block; }
 */
 /* mobile menu */
-.menu-for-mobile {
+.style-for-mobile .menu-for-mobile {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 999;
 }
-.menu-mobile-nav,
-.menu-mobile-top,
-.height-for-mobile { background: rgba( 0, 0, 0, .9 ); }
-.menu-mobile-top /*,
-.height-for-mobile */ {
+.style-for-mobile .menu-mobile-nav,
+.style-for-mobile .menu-mobile-top,
+.style-for-mobile .height-for-mobile { background: rgba( 0, 0, 0, .9 ); }
+.style-for-mobile .menu-mobile-top /*,
+.style-for-mobile .height-for-mobile */ {
 	padding: 0 15px;
 	line-height: 45px;
 }
-.height-for-mobile { display: none; }
-.menu-mobile-top,
-.menu-mobile-top a {
+.style-for-mobile .height-for-mobile { display: none; }
+.style-for-mobile .menu-mobile-top,
+.style-for-mobile .menu-mobile-top a {
 	font-size: 35px;
 	color: #fff;
 }
-.menu-mobile-top a { display: block; }
-.menu-mobile-nav {
+.style-for-mobile .menu-mobile-top a { display: block; }
+.style-for-mobile .menu-mobile-nav {
 	line-height: 35px;
 	display: none;
 	border-top: 1px #000 solid;
 	border-bottom: 1px #000 solid;
 	overflow: auto;
 }
-.menu-mobile-nav,
-.menu-mobile-nav a { color: #fff; }
-#nav_mobile_top a {
+.style-for-mobile .menu-mobile-nav,
+.style-for-mobile .menu-mobile-nav a { color: #fff; }
+.style-for-mobile #nav_mobile_top a {
 	display: block;
 	padding: 0 20px;
 	font-size: 14px;
 	line-height: 40px;
 }
-#nav_mobile_top li { border-bottom: 1px #515151 solid; }
-#nav_mobile_top li li {
+.style-for-mobile #nav_mobile_top li { border-bottom: 1px #515151 solid; }
+.style-for-mobile #nav_mobile_top li li {
 	background: rgba(77, 77, 64, .7);
 	border: 0 none;
 	line-height: 30px;
 }
-#nav_mobile_top li li a {
+.style-for-mobile #nav_mobile_top li li a {
 	display: block;
 	color: #ccc;
 	padding: 0 0 0 30px;
 	font-size: 12px;
 	border-bottom: 1px #4d4d40 solid;
 }
-.mobile_member_func a { margin: 0 10px; }
-.menu-mobile-search {
+.style-for-mobile .mobile_member_func a { margin: 0 10px; }
+.style-for-mobile .menu-mobile-search {
 	position: relative;
 	padding: 10px 15px;
 }
-.menu-mobile-search i {
+.style-for-mobile .menu-mobile-search i {
 	position: absolute;
 	right: 30px;
 	color: #000;
 	font-size: 25px;
 	cursor: pointer;
 }
-.menu-mobile-search input[type=text] {
+.style-for-mobile .menu-mobile-search input[type=text] {
 	width: 98%;
 	padding: 8px 1px;
 	border: 1px #999 solid;
@@ -125,16 +125,16 @@ body {
 	background: #fff;
 }
 /* touch mobile */
-.home-video-scroll { overflow: auto; }
-.home-video-scroll ul {
+.style-for-mobile .home-video-scroll { overflow: auto; }
+.style-for-mobile .home-video-scroll ul {
 	width: 250%;
 	max-width: 900px;
 }
-.cart-table-free div { margin: 5px 0 !important; }
-.cart-ultable li div.f25,
-.cart-ultable li div.f75 { width: 100%; }
+.style-for-mobile .cart-table-free div { margin: 5px 0 !important; }
+.style-for-mobile .cart-ultable li div.f25,
+.style-for-mobile .cart-ultable li div.f75 { width: 100%; }
 /* other style mobile */
-#oi_scroll_top {
+.style-for-mobile #oi_scroll_top {
 	height: 44px;
 	line-height: 44px;
 	bottom: 0 !important;
@@ -142,32 +142,32 @@ body {
 	left: 5%;
 	border-radius: 8px 8px 0 0;
 }
-.big-banner-button ul {
+.style-for-mobile .big-banner-button ul {
 	position: inherit;
 	top: 0;
 	margin: 15px 0;
 }
-.big-banner-button li.selected { color: #C00; }
-.banner-chan-trang li { width: 99%; }
-.global-right-space {
+.style-for-mobile .big-banner-button li.selected { color: #C00; }
+.style-for-mobile .banner-chan-trang li { width: 99%; }
+.style-for-mobile .global-right-space {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 }
-.echbay-blog-left { width: 100% !important; }
-.echbay-blog-right { width: 100% !important; }
-.echbay-blog-right .echbay-blog-marginleft {
+.style-for-mobile .echbay-blog-left { width: 100% !important; }
+.style-for-mobile .echbay-blog-right { width: 100% !important; }
+.style-for-mobile .echbay-blog-right .echbay-blog-marginleft {
 	padding-left: 0 !important;
 	padding-top: 8px !important;
 }
-#main-content,
-.mobile-padding { padding: 0 5px; }
-.thread_list_menu_noidung .custom-width-cats-sidebar { display: none; }
-.jEBE_slider-position {
+.style-for-mobile #main-content,
+.style-for-mobile .mobile-padding { padding: 0 5px; }
+.style-for-mobile .thread_list_menu_noidung .custom-width-cats-sidebar { display: none; }
+.style-for-mobile .jEBE_slider-position {
 	overflow-y: hidden;
 	overflow-x: auto;
 }
 /*
-.thread-details-mobileLeft,
-.thread-details-mobileRight { line-height: 150px; }
+.style-for-mobile .thread-details-mobileLeft,
+.style-for-mobile .thread-details-mobileRight { line-height: 150px; }
 */
-}
+/* } */

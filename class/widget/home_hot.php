@@ -18,6 +18,7 @@ class ___echbay_widget_home_hot_content extends WP_Widget {
 		
 		$default = array (
 			'title' => 'EchBay home HOT',
+			'description' => '',
 			'sortby' => 'menu_order',
 			'num_line' => '',
 			'html_template' => 'home_hot.html',

@@ -20,6 +20,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		$default = array (
 //			'title' => 'EchBay home product',
 			'title' => '',
+			'description' => '',
 			'num_line' => '',
 			'html_template' => 'home_node.html',
 			'html_node' => '',
@@ -61,6 +62,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		$description = isset( $instance ['description'] ) ? $instance ['description'] : '';
 		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
 		if ( $post_number == 0 ) $post_number = 5;
 		
@@ -185,10 +187,11 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_id' => $cat_ids,
 			'tmp.cat_link' => $cat_link ? $cat_link : 'javascript:;',
-//			'tmp.cat_name' => $title != '' ? $title : ( $cat_name != '' ? $cat_name : 'Sản phẩm' ),
-			'tmp.cat_name' => $cat_name,
+			'tmp.cat_name' => $title != '' ? $title : $cat_name,
+//			'tmp.cat_name' => $cat_name,
 			'tmp.cat_count' => $cat_count,
-			'tmp.title' => $title,
+//			'tmp.title' => $title,
+			'tmp.description' => $description,
 			
 			// danh sách nhóm cấp 2
 			'tmp.str_sub_cat' => $str_sub_cat,

@@ -37,3 +37,8 @@
 	display: inline-block;
 	padding-left: 40px;
 }
+.style-for-mobile #xwatchV1-footer2 .footer-map ul { margin: 0; }
+.style-for-mobile #xwatchV1-footer2 .footer-map li {
+	float: none;
+	width: 100% !important;
+}

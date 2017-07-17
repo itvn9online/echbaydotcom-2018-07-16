@@ -15,6 +15,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 	function form($instance) {
 		$default = array (
 			'title' => 'EchBay blog',
+			'description' => '',
 			'sortby' => 'menu_order',
 			'num_line' => '',
 			'html_template' => 'widget_echbay_blog.html',

@@ -17,6 +17,7 @@ class ___echbay_widget_random_product extends WP_Widget {
 		
 		$default = array (
 			'title' => 'EchBay product small',
+			'description' => '',
 			'sortby' => 'menu_order',
 			'num_line' => '',
 			'html_template' => 'product_small.html',
