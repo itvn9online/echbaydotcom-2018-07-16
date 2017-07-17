@@ -894,7 +894,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 			// nếu chưa -> tạo file cache
 			if ( ! file_exists( $file_save ) ) {
 				$file_content = explode( "\n", file_get_contents( $v, 1 ) );
-				$cache_content = '/* ' . $file_cache . ' - ' . date( 'r', date_time ) . ' ============== */' . "\n";
+				$cache_content = '/* ' . $file_cache . ' - ' . date( 'r', date_time ) . ' */' . "\n";
 				
 				foreach ( $file_content as $v2 ) {
 					$v2 = trim( $v2 );
