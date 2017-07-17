@@ -21,6 +21,7 @@
 
 
 // dọn dẹp các bản ghi cũ
+/*
 $count_monitor = _eb_q("SELECT COUNT(meta_id) as ID
 	FROM
 		`" . wp_postmeta . "`
@@ -29,6 +30,8 @@ $count_monitor = _eb_q("SELECT COUNT(meta_id) as ID
 		AND meta_value = 1");
 //print_r( $count_monitor );
 if ( isset( $count_monitor[0]->ID ) && $count_monitor[0]->ID > 500 ) {
+	*/
+if ( isset( $_GET['cleanup_404'] ) ) {
 	_eb_q("DELETE
 	FROM
 		`" . wp_postmeta . "`
