@@ -736,6 +736,23 @@ function _eb_replace_css_space ( $str, $new_array = array() ) {
 
 // add css thẳng vào HTML
 function _eb_add_compiler_css ( $arr ) {
+	print_r( $arr );
+	
+	// nếu là dạng tester -> chỉ có 1 kiểu add thôi
+	if ( eb_code_tester == true ) {
+		_eb_add_compiler_css_v2( $arr );
+	}
+	// sử dụng thật thì có 2 kiểu add: inline và add link
+	else {
+		// inline
+		_eb_add_compiler_css_v2( $new_arr1 );
+		
+		// add link
+		_eb_add_compiler_css_v2( $new_arr1, 0 );
+	}
+}
+
+function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 	
 	// nhúng link
 	if ( eb_code_tester == true ) {
@@ -808,9 +825,16 @@ function _eb_add_compiler_css ( $arr ) {
 				) ) );
 			}
 			
-			//
+			// 
 //			echo '/* ' . $file_cache . ' */' . "\n";
-			echo file_get_contents( $file_save, 1 ) . "\n";
+			// inline
+			if ( $css_inline == 1 ) {
+				echo file_get_contents( $file_save, 1 ) . "\n";
+			}
+			// add link
+			else {
+				echo $file_save;
+			}
 		}
 	}
 	

@@ -49,8 +49,8 @@ $arr_for_add_theme_css = array();
 
 // Load các CSS ưu tiên mặc định
 // loại css add thẳng vào html chỉ dành cho trang đầu tiên
-$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/default.css' ] = 1;
-$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/mobile.css' ] = 1;
+$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/default.css' ] = 0;
+$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/mobile.css' ] = 0;
 $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/guest.css' ] = 1;
 
 

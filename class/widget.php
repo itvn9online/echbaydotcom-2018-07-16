@@ -108,6 +108,9 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
 	
 	
+	echo '<p>Description: <textarea class="widefat" name="' . $field_name['description'] . '">' . $description . '</textarea></p>';
+	
+	
 	//
 	__eb_widget_load_cat_select ( array(
 		'cat_ids_name' => $field_name['cat_ids'],
