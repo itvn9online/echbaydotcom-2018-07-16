@@ -734,9 +734,33 @@ function _eb_replace_css_space ( $str, $new_array = array() ) {
 	return $str;
 }
 
+function EBE_replace_link_in_cache_css ( $c ) {
+	return _eb_replace_css_space ( $c, array(
+		'../images/' => '../../themes/' . basename( get_template_directory() ) . '/theme/images/',
+		
+		// các css ngoài -> trong outsource -> vd: font awesome
+		'../outsource/' => '../../echbaydotcom/outsource/',
+		'../fonts/' => '../../echbaydotcom/outsource/fonts/',
+	) );
+}
+
+function EBE_replace_link_in_css ( $c ) {
+	return _eb_replace_css_space ( $c, array(
+//		'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/theme/images/',
+		'../images/' => './wp-content/themes/' . basename( EB_THEME_URL ) . '/theme/images/',
+		'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
+		'../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
+		
+		// các css ngoài -> trong outsource -> vd: font awesome
+		'../outsource/' => './wp-content/echbaydotcom/outsource/',
+		
+		'../fonts/' => './wp-content/echbaydotcom/outsource/fonts/',
+	) );
+}
+
 // add css thẳng vào HTML
 function _eb_add_compiler_css ( $arr ) {
-	print_r( $arr );
+//	print_r( $arr );
 	
 	// nếu là dạng tester -> chỉ có 1 kiểu add thôi
 	if ( eb_code_tester == true ) {
@@ -744,11 +768,26 @@ function _eb_add_compiler_css ( $arr ) {
 	}
 	// sử dụng thật thì có 2 kiểu add: inline và add link
 	else {
+		$new_arr1 = array();
+		$new_arr2 = array();
+		
+		//
+		foreach ( $arr as $k => $v ) {
+			if ( $v == 1 ) {
+				$new_arr2[$k] = 1;
+			}
+			else {
+				$new_arr1[$k] = 1;
+			}
+		}
+//		print_r( $new_arr1 );
+//		print_r( $new_arr2 );
+		
 		// inline
 		_eb_add_compiler_css_v2( $new_arr1 );
 		
 		// add link
-		_eb_add_compiler_css_v2( $new_arr1, 0 );
+		_eb_add_compiler_css_v2( $new_arr2, 0 );
 	}
 }
 
@@ -775,6 +814,57 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		//
 		return true;
 	}
+	
+	
+	// add link
+	if ( $css_inline != 1 ) {
+		$file_cache = '';
+		$new_arr = array();
+		foreach ( $arr as $v => $k ) {
+			// chỉ add file có trong host
+			if ( file_exists( $v ) ) {
+				// lấy tên file
+				$file_name = basename($v, '.css');
+//				echo $file_name . '<br>' . "\n";
+				
+				// thời gian cập nhật file
+				$file_time = filemtime ( $v );
+				
+				$file_cache .= $file_name . $file_time;
+				
+				$new_arr[$v] = 1;
+			}
+		}
+		$file_cache .= '.css';
+//		echo $file_cache . "\n";
+		
+		$file_save = EB_THEME_CACHE . $file_cache;
+//		echo $file_save . "\n";
+		
+		// nếu chưa -> tạo file cache
+		if ( ! file_exists( $file_save ) ) {
+			$cache_content = '';
+			foreach ( $new_arr as $v => $k ) {
+				$file_content = explode( "\n", file_get_contents( $v, 1 ) );
+				
+				foreach ( $file_content as $v2 ) {
+					$v2 = trim( $v2 );
+					$cache_content .= $v2;
+				}
+			}
+			
+			//
+			_eb_create_file ( $file_save, EBE_replace_link_in_cache_css ( $cache_content ) );
+		}
+		
+		// -> done
+		echo '<link rel="stylesheet" href="' . web_link . 'wp-content/uploads/ebcache/' . $file_cache . '" type="text/css" media="all" />';
+		
+		//
+		return true;
+	}
+	
+	
 	
 	
 	// nhúng nội dung file
@@ -812,29 +902,13 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 				}
 				
 				//
-				_eb_create_file ( $file_save, _eb_replace_css_space ( $cache_content, array(
-//					'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/theme/images/',
-					'../images/' => './wp-content/themes/' . basename( EB_THEME_URL ) . '/theme/images/',
-					'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
-					'../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
-					
-					// các css ngoài -> trong outsource -> vd: font awesome
-					'../outsource/' => './wp-content/echbaydotcom/outsource/',
-					
-					'../fonts/' => './wp-content/echbaydotcom/outsource/fonts/',
-				) ) );
+				_eb_create_file ( $file_save, EBE_replace_link_in_css($cache_content) );
 			}
 			
 			// 
 //			echo '/* ' . $file_cache . ' */' . "\n";
 			// inline
-			if ( $css_inline == 1 ) {
-				echo file_get_contents( $file_save, 1 ) . "\n";
-			}
-			// add link
-			else {
-				echo $file_save;
-			}
+			echo file_get_contents( $file_save, 1 ) . "\n";
 		}
 	}
 	
@@ -878,13 +952,7 @@ function _eb_add_compiler_link_css ( $arr ) {
 				}
 				
 				//
-				_eb_create_file ( $file_save, _eb_replace_css_space ( $cache_content, array(
-					'../images/' => '../../themes/' . basename( get_template_directory() ) . '/theme/images/',
-					
-					// các css ngoài -> trong outsource -> vd: font awesome
-					'../outsource/' => '../../echbaydotcom/outsource/',
-					'../fonts/' => '../../echbaydotcom/outsource/fonts/',
-				) ) );
+				_eb_create_file ( $file_save, EBE_replace_link_in_cache_css($cache_content) );
 			}
 			
 			//
