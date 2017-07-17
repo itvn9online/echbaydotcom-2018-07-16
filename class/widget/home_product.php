@@ -186,7 +186,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		echo '<div class="' . $custom_style . '">';
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_id' => $cat_ids,
-			'tmp.cat_link' => $cat_link ? $cat_link : 'javascript:;',
+			'tmp.cat_link' => $cat_link != '' ? $cat_link : 'javascript:;',
 			'tmp.cat_name' => $title != '' ? $title : $cat_name,
 //			'tmp.cat_name' => $cat_name,
 			'tmp.cat_count' => $cat_count,

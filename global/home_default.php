@@ -134,7 +134,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 					'tmp.cat_link' => _eb_c_link( $k ),
 					'tmp.cat_name' => $home_detauls_categories->name,
 					'tmp.cat_count' => $home_detauls_categories->count,
-					'tmp.title' => $home_detauls_categories->name,
+					'tmp.description' => '',
 					
 					// danh sách nhóm cấp 2
 					'tmp.str_sub_cat' => $str_sub_cat,
