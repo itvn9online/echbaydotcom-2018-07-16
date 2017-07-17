@@ -14,7 +14,7 @@
 <br>
 <script type="text/javascript">
 $('.url-for-cleanup-404').attr({
-	href: window.location.href.split('&cleanup_404')[0].split('#')[0] + '&cleanup_404=1'
+	href: window.location.href.split('&cleanup_404=')[0].split('#')[0] + '&cleanup_404=1'
 });
 </script>
 <table border="0" cellpadding="6" cellspacing="0" width="100%" class="table-list ip-invoice-alert">
