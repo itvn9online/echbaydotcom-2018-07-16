@@ -1,0 +1,21 @@
+#softpro-top3 .thread-details-tohome {
+	height: 25px;
+	line-height: 25px;
+	padding: 31px 0;
+	background: #76c6e8 center no-repeat;
+	background-size: cover;
+	border: 0 none;
+	margin: 0;
+	margin-top: 16px;
+}
+#softpro-top3 .thread-details-tohome li { display: inline-block; }
+#softpro-top3 .thread-details-tohome li:after {
+	content: "/";
+	display: inline-block;
+	padding: 0 10px 0 15px;
+}
+#softpro-top3 .thread-details-tohome li:last-child:after { display: none; }
+#softpro-top3 .thread-details-tohome a {
+	color: #000;
+	font-size: 18px;
+}
