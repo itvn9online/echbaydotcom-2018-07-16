@@ -145,11 +145,19 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		//
 		$terms_categories = array();
+		$cat_name = '';
 		
 		// lấy theo nhóm tin đã được chỉ định
 		if ( $cat_ids > 0 ) {
 			$terms_categories[] = $cat_ids;
 			$cat_link = _eb_c_link( $cat_ids, $cat_type );
+			
+			$categories = get_term_by('id', $cat_ids, 'category');
+			$cat_name = $categories->name;
+			
+			if ( $title == '' ) {
+				$title = $cat_name;
+			}
 		}
 		// lấy tất cả
 		else {
