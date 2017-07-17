@@ -157,6 +157,7 @@ function echbay_admin_styles() {
 //		web_link . 'wp-content/echbaydotcom/outsource/fonts/font-awesome.css',
 		EB_URL_OF_PLUGIN . 'outsource/fonts/font-awesome.css',
 		EB_URL_OF_PLUGIN . 'css/default.css',
+		EB_URL_OF_PLUGIN . 'css/default2.css',
 		EB_URL_OF_PLUGIN . 'css/admin.css',
 //		EB_URL_OF_PLUGIN . 'css/admin.css',
 	) ), 'link' );
