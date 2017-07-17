@@ -10,8 +10,13 @@
 </style>
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">404 Monitor</a></div>
 <br>
-<div>* Tất cả các trang 404 sẽ được lưu log, nếu trang đã bị thay đổi URL, bạn hãy nhấp đúp chuột vào bên cột <strong>URL redirect to</strong> để nhập URL mới cho trang 404.</div>
+<div>* Tất cả các trang 404 sẽ được lưu log, nếu trang đã bị thay đổi URL, bạn hãy nhấp đúp chuột vào bên cột <strong>URL redirect to</strong> để nhập URL mới cho trang 404. Nếu nhiều log quá, hãy <a href="#" class="url-for-cleanup-404">bấm vào đây</a> để dọn dẹp bớt log cho nó nhẹ web.</div>
 <br>
+<script type="text/javascript">
+$('.url-for-cleanup-404').attr({
+	href: window.location.href.split('&cleanup_404')[0].split('#')[0] + '&cleanup_404=1'
+});
+</script>
 <table border="0" cellpadding="6" cellspacing="0" width="100%" class="table-list ip-invoice-alert">
 	<tr class="table-list-title">
 		<td width="50%">URL with 404 Error</td>
