@@ -3,20 +3,16 @@
 		<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
 			<ul data-width="240" class="fix-li-wit cf l19 bold upper">
 				<li>
-					<div><i class="fa fa-refresh"></i> Đổi hàng<br />
-						trong 7 ngày</div>
+					<div><?php echo EBE_get_lang('ebslogan1'); ?></div>
 				</li>
 				<li>
-					<div><i class="fa fa-truck"></i> Giao hàng miễn phí<br />
-						Toàn Quốc</div>
+					<div><?php echo EBE_get_lang('ebslogan2'); ?></div>
 				</li>
 				<li>
-					<div><i class="fa fa-dollar"></i> Thanh toán<br />
-						khi giao hàng</div>
+					<div><?php echo EBE_get_lang('ebslogan3'); ?></div>
 				</li>
 				<li>
-					<div><i class="fa fa-check-square"></i> Bảo hành VIP<br />
-						12 tháng</div>
+					<div><?php echo EBE_get_lang('ebslogan4'); ?></div>
 				</li>
 			</ul>
 		</div>

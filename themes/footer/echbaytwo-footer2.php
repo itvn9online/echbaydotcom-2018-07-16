@@ -21,7 +21,7 @@
 						?>
 					</div>
 					<hr class="orgborder one-line" />
-					<div><i class="fa fa-star greencolor l25"></i> Kết nối với chúng tôi</div>
+					<div><i class="fa fa-star greencolor l25"></i> <?php echo EBE_get_lang('joinus'); ?></div>
 					<ul class="footer-social text-center cf">
 						<li class="footer-social-fb"><a href="javascript:;" class="ahref-to-facebook" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
 						<li class="footer-social-tw"><a href="javascript:;" class="each-to-twitter-page" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>
