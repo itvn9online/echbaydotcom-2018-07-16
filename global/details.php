@@ -850,6 +850,11 @@ $arr_main_content = array(
 	
 	// tìm và tạo sidebar luôn
 //	'tmp.str_sidebar' => _eb_echbay_sidebar( $id_for_get_sidebar ),
+	
+	// lang
+	'tmp.lang_btn_muangay' => EBE_get_lang('mungay'),
+	'tmp.lang_chitiet_sanpham' => EBE_get_lang('chitietsp'),
+	'tmp.lang_sanpham_tuongtu' => EBE_get_lang('tuongtu'),
 );
 
 

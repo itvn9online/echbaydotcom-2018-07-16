@@ -11,6 +11,11 @@ define( 'eb_key_for_site_lang', 'lang_eb_' );
 $___eb_lang[eb_key_for_site_lang . 'home'] = 'Trang chủ';
 $___eb_lang[eb_key_for_site_lang . 'search'] = 'Tìm kiếm';
 $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
+$___eb_lang[eb_key_for_site_lang . 'mungay'] = 'Mua ngay';
+
+// details
+$___eb_lang[eb_key_for_site_lang . 'chitietsp'] = 'Chi tiết Sản phẩm';
+$___eb_lang[eb_key_for_site_lang . 'tuongtu'] = 'Sản phẩm tương tự';
 
 // footer
 $___eb_lang[eb_key_for_site_lang . 'copyright'] = 'Bản quyền';
