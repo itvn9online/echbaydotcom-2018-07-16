@@ -4,28 +4,28 @@
 			<div class="bottom-support-border cf default-2bg">
 				<div class="lf f25 fullsize-if-mobile">
 					<?php
-				echo EBE_echbay_footer_menu(
-					array(
-						'menu_class' => 'ls-bottom-support',
-					),
-					1,
-					'<div class="footer-support-title">'
-				);
-				?>
+					echo EBE_echbay_footer_menu(
+						array(
+							'menu_class' => 'ls-bottom-support',
+						),
+						1,
+						'<div class="footer-support-title">'
+					);
+					?>
 					<div>&nbsp;</div>
 				</div>
 				<div class="lf f75 cf fullsize-if-mobile">
 					<div class="lf f40 fullsize-if-mobile">
 						<div class="left-menu-space">
 							<?php
-						echo EBE_echbay_footer_menu(
-							array(
-								'menu_class' => 'ls-bottom-support',
-							),
-							1,
-							'<div class="footer-support-title">'
-						);
-						?>
+							echo EBE_echbay_footer_menu(
+								array(
+									'menu_class' => 'ls-bottom-support',
+								),
+								1,
+								'<div class="footer-support-title">'
+							);
+							?>
 						</div>
 						<div>&nbsp;</div>
 					</div>

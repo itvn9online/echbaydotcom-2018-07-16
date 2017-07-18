@@ -18,7 +18,7 @@ $___eb_lang[eb_key_for_site_lang . 'allrights'] = 'Toàn bộ phiên bản';
 $___eb_lang[eb_key_for_site_lang . 'joinus'] = 'Kết nối với chúng tôi';
 $___eb_lang[eb_key_for_site_lang . 'diachi'] = 'Địa chỉ:';
 $___eb_lang[eb_key_for_site_lang . 'dienthoai'] = 'Điện thoại:';
-//$___eb_lang[eb_key_for_site_lang . 'joinus'] = 'Kết nối với chúng tôi';
+$___eb_lang[eb_key_for_site_lang . 'poweredby'] = 'Cung cấp bởi';
 
 // echbay two footer sologan
 $___eb_lang[eb_key_for_site_lang . 'ebslogan1'] = '<i class="fa fa-refresh"></i> Đổi hàng<br />trong 7 ngày';
