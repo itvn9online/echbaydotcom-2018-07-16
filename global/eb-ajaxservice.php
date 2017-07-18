@@ -28,7 +28,9 @@ else {
 	$echbay_ajax_file = EB_THEME_PLUGIN_INDEX . 'global/temp/' . $action_module . '.php';
 	
 	if ( file_exists( $echbay_ajax_file ) ) {
-		echo '<!-- EchBay plugin ajax -->';
+		if ( ! isset( $_GET['no_echo'] ) ) {
+			echo '<!-- EchBay plugin ajax -->';
+		}
 	}
 	else {
 		echo 'Module not found';

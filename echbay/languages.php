@@ -57,7 +57,7 @@ function EBE_click_to_update_site_lang () {
 			//
 			if ( c != null && c != cache_for_current_lang_edit ) {
 	//			console.log('ajax update');
-				ajaxl('languages_update&text=' + encodeURIComponent( c ) + '&key=' + b, b, 1);
+				ajaxl('languages_update&text=' + encodeURIComponent( c ) + '&key=' + b + '&no_echo=1', b, 1);
 			}
 		}
 	});
