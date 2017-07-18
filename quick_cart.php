@@ -40,31 +40,31 @@
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_thanhtien'); ?></div>
 						<div id="oi_change_tongtien" class="eb-quickcart-right bold redcolor"></div>
 					</div>
-					<div class="eb-quickcart-node cf">
+					<div class="eb-quickcart-node eb-quickcart-fullname cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_hoten'); ?></div>
 						<div class="eb-quickcart-right">
 							<input type="text" name="t_ten" value="" placeholder="<?php echo EBE_get_lang('cart_hoten'); ?>" />
 						</div>
 					</div>
-					<div class="eb-quickcart-node cf">
+					<div class="eb-quickcart-node eb-quickcart-tel cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_dienthoai'); ?> <span class="redcolor">*</span></div>
 						<div class="eb-quickcart-right">
 							<input type="text" name="t_dienthoai" value="" placeholder="<?php echo EBE_get_lang('cart_dienthoai'); ?>" />
 						</div>
 					</div>
-					<div class="eb-quickcart-node cf">
+					<div class="eb-quickcart-node eb-quickcart-email cf">
 						<div class="eb-quickcart-left">Email</div>
 						<div class="eb-quickcart-right">
 							<input type="text" name="t_email" value="" placeholder="Email" />
 						</div>
 					</div>
-					<div class="eb-quickcart-node cf">
+					<div class="eb-quickcart-node eb-quickcart-address cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_diachi'); ?></div>
 						<div class="eb-quickcart-right">
 							<textarea name="t_diachi" placeholder="<?php echo EBE_get_lang('cart_diachi2'); ?>"></textarea>
 						</div>
 					</div>
-					<div class="eb-quickcart-node cf">
+					<div class="eb-quickcart-node eb-quickcart-note cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_ghichu'); ?></div>
 						<div class="eb-quickcart-right">
 							<textarea name="t_ghichu" placeholder="<?php echo EBE_get_lang('cart_vidu'); ?>"></textarea>
