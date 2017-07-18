@@ -3,31 +3,67 @@
 
 
 //
-//phpinfo();
+global $___eb_lang;
+
 
 //
-//print_r( $_SERVER );
+//print_r( $___eb_lang );
 
-//
-echo '<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table">';
 
-//
-foreach ( $_SERVER as $k => $v ) {
-	if ($k == 'HTTP_COOKIE') {
-		$v = '<strong>F12</strong>';
+
+
+?>
+
+<div class="wrap">
+	<h1>Bản dịch</h1>
+</div>
+<p>* Bạn có thể thay đổi các bản dịch, cụm từ trên website sang nội dung khác phù hợp với website của bạn hơn. Bấm đúp chuột vào cụm từ cần thay đổi, nhập từ mới rồi enter.</p>
+<table border="0" cellpadding="0" cellspacing="0" width="99%" class="table-list">
+	<tr class="table-list-title">
+		<td width="20%">Key</td>
+		<td width="80%">Value</td>
+	</tr>
+	<?php
+	foreach ( $___eb_lang as $k => $v ) {
+		echo '
+		<tr>
+			<td>' . str_replace( eb_key_for_site_lang, '', $k ) . '</td>
+			<td id="' . $k . '" class="click-to-update-url-lang cur">' . $v . '</td>
+		</tr>';
 	}
-	
-	//
-	echo '
-	<tr>
-		<td class="t">' . $k . '</td>
-		<td class="i">' . $v . '</td>
-	</tr>';
+	?>
+</table>
+<br>
+<br>
+<script type="text/javascript">
+
+//
+var cache_for_current_lang_edit = '';
+
+function EBE_click_to_update_site_lang () {
+	$('.click-to-update-url-lang').off('dblclick').dblclick(function () {
+		var a = $(this).html() || '',
+			b = $(this).attr('id') || '',
+			c = '';
+		cache_for_current_lang_edit = a;
+		
+		//
+		if ( b != '' ) {
+			
+			//
+			c = prompt( 'Translate:', a );
+//			console.log(c);
+			
+			//
+			if ( c != null && c != cache_for_current_lang_edit ) {
+	//			console.log('ajax update');
+				ajaxl('languages_update&text=' + encodeURIComponent( c ) + '&key=' + b, b, 1);
+			}
+		}
+	});
 }
 
-
-
 //
-echo '</table>';
+EBE_click_to_update_site_lang();
 
-
+</script> 

@@ -38,7 +38,7 @@ I - Thiết lập cài đặt cho website (lưu ý, thay www.webgiare.org bằng
 			- URL trang chính: tên miền chính của bạn là gì thì hãy nhập đầy đủ vào đây, phân định giữa https và http, www và không có www. Nếu chưa rõ cách nhập, có thể xóa trắng đi để hệ thống tự tạo theo mẫu tối ưu nhất.
 		b. Nâng cao http://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=advanced:
 			- Logo: thay đổi Logo và Favicon cho website bằng cách nhập url vào ô nhập liệu.
-			- Màu cơ bản: nếu theme đi kèm plugin EchBay được viết theo đúng tiêu cấu hình chung thì bạn có thể sử dụng module này để thay đổi màu sắc cho website một cách dễ dàng.
+			- Màu cơ bản: nếu theme đi kèm plugin EchBay được viết theo đúng tiêu chuẩn cấu hình chung thì bạn có thể sử dụng module này để thay đổi màu sắc cho website một cách dễ dàng.
 			- Kích thước tiêu chuẩn hình ảnh/ clip: bao gồm các thiết lập liên quan để tỷ lệ ảnh cho weebsite như: ảnh sản phẩm, ảnh bài viết, chất lượng ảnh trên các phiên bản Desktop, Table, Mobile...
 		c. Phân trang http://www.webgiare.org/wp-admin/admin.php?page=eb-config&tab=part-page:
 			- Phân trang cho Trang chủ: một số module riêng sẽ sử dụng các con số ở đây để phân trang, còn thông thường sẽ sử dụng luôn cài đặt riêng của widget: http://www.webgiare.org/wp-admin/widgets.php

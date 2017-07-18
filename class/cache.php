@@ -240,6 +240,14 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		
 		
 		
+		/*
+		* Danh sách bản dịch
+		*/
+		EBE_get_lang_list();
+		
+		
+		
+		
 		
 		/*
 		* Tối ưu thẻ META với mạng xã hội
@@ -531,6 +539,7 @@ if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
 // lấy config theo thời gian thực nếu tài khoản đang đăng nhập
 if ( mtv_id > 0 ) {
 	_eb_get_config( true );
+	EBE_get_lang_list( true );
 }
 //print_r( $__cf_row );
 
