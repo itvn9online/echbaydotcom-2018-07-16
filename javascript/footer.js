@@ -389,16 +389,17 @@ function add_fb_messages_for_page () {
 			
 			
 			//
-			var fb_src = (function(lang) {
-				var a = $('html').attr('lang') || lang || '';
+			var fb_src = (function() {
+				var lang = $('html').attr('lang') || navigator.language || navigator.userLanguage || '';
 				if (lang != '') {
 					lang = lang.split('_')[0].split('-')[0].toLowerCase();
+//					console.log( lang );
 					if (lang == 'vi') {
 						return 'vi_VN';
 					}
 				}
 				return 'en_US';
-			})( navigator.language || navigator.userLanguage || '' );
+			})();
 //			console.log( fb_src );
 			
 			//
