@@ -284,6 +284,9 @@ $__cf_row_default = array(
 	// nhúng URL vào các thẻ H1 ở trang chi tiết sản phẩm, bài viết, danh mục...
 	'cf_set_link_for_h1' => 1,
 	
+	// ẩn các menu quan trọng trong admin
+	'cf_hide_supper_admin_menu' => 1,
+	
 	
 	/*
 	* giao diện HTML mặc định

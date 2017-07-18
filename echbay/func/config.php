@@ -94,6 +94,10 @@ if ( ! isset( $_POST['cf_set_link_for_h1'] ) || (int) $_POST['cf_set_link_for_h1
 	$_POST['cf_set_link_for_h1'] = 0;
 }
 
+if ( ! isset( $_POST['cf_hide_supper_admin_menu'] ) || (int) $_POST['cf_hide_supper_admin_menu'] != 1 ) {
+	$_POST['cf_hide_supper_admin_menu'] = 0;
+}
+
 
 
 

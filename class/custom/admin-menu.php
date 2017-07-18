@@ -146,6 +146,7 @@ if ( mtv_id > 0 && strstr( $_SERVER['REQUEST_URI'], '/options-permalink.php' ) =
 */
 function echbay_admin_styles() {
 	global $str_list_wordpress_rule;
+	global $__cf_row;
 //	global $func;
 	
 	// lấy thời gian cập nhật cuối của file css -> update lại toàn bộ các file khác
@@ -183,10 +184,14 @@ function echbay_admin_styles() {
 	
 	
 	// nếu là phiên bản web giá rẻ -> ẩn các menu admin quan trọng đi, chỉ hiện thị với supper admin
-	if ( mtv_id != 1 && webgiare_dot_org_install == true ) {
-		_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
-			EB_URL_OF_PLUGIN . 'css/administrator.css',
-		) ), 'link' );
+//	if ( mtv_id != 1 && webgiare_dot_org_install == true ) {
+	if ( mtv_id != 1 ) {
+		// nếu thuộc tính ẩn menu admin đang được kích hoạt -> ẩn
+		if ( $__cf_row['cf_hide_supper_admin_menu'] == 1 ) {
+			_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
+				EB_URL_OF_PLUGIN . 'css/administrator.css',
+			) ), 'link' );
+		}
 	}
 	
 	

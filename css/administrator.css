@@ -1,4 +1,5 @@
 #menu-dashboard ul,
 /* #menu-appearance, */
 #menu-plugins,
-#menu-tools { display: none; }
+#menu-tools,
+.show-administrator-only { display: none; }
