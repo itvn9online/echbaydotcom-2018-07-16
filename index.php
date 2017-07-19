@@ -840,11 +840,18 @@ else {
 	*/
 	add_action('after_setup_theme', 'EB_remove_admin_bar_in_theme');
 	
+	// xóa các script không sử dụng đến
+	add_action( 'wp_footer', 'EBE_deregister_scripts' );
+	
 }
 
 //
 function EB_remove_admin_bar_in_theme() {
 	show_admin_bar(false);
+}
+
+function EBE_deregister_scripts() {
+	wp_deregister_script( 'wp-embed' );
 }
 
 
