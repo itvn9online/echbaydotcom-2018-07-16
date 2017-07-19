@@ -383,7 +383,7 @@ function ___eb_details_product_rating () {
 //		console.log( i );
 		
 		if ( i < a ) {
-			if ( i + 0.5 == a ) {
+			if ( i + .5 == a ) {
 				str += '<i data-start="' +(i + 1)+ '" class="fa fa-star-half-o orgcolor cur"></i> ';
 			}
 			else {
@@ -556,7 +556,7 @@ function ___eb_details_product_color () {
 		p_link = 'javascript:;';
 		
 		//
-		str += '<li data-title="' + product_js.tieude + '" data-color="' + arr_product_color[i].colorName + '" data-i="' + arr_product_color[i].id + '" data-img="' + arr_product_color[i].img + '" data-href="' +p_link+ '" style="background-image:url(\'' +arr_product_color[i].img+ '\');"><a title="' + arr_product_color[i].colorName + '" href="javascript:;">&nbsp;</a></li>';
+		str += '<li data-title="' + product_js['tieude'] + '" data-color="' + arr_product_color[i].colorName + '" data-i="' + arr_product_color[i].id + '" data-img="' + arr_product_color[i].img + '" data-href="' +p_link+ '" style="background-image:url(\'' +arr_product_color[i].img+ '\');"><a title="' + arr_product_color[i].colorName + '" href="javascript:;">&nbsp;</a></li>';
 	}
 	
 	$('#oi_product_color').show();
@@ -667,7 +667,7 @@ function ___eb_details_product_size () {
 	var str = '';
 	
 	for (var i = 0; i < arr_product_size.length; i++) {
-		str += '<li data-size-node="' + i + '" data-name="' + arr_product_size[i].name + '" data-quan="' + arr_product_size[i].val + '"><div>' + arr_product_size[i].name + '</div></li>';
+		str += '<li data-size-node="' + i + '" data-name="' + arr_product_size[i].name + '" data-quan="' + arr_product_size[i].val + '"><div>' + arr_product_size[i].name + '</div></li>'
 	}
 	
 	$('.oi_product_size, .show-if-size-exist').show();
@@ -694,11 +694,11 @@ function ___eb_details_product_size () {
 			if ( curent_soluong < 5 ) {
 				str_alert = '<span class="bluecolor">C\u00f2n ' + curent_soluong + ' s\u1ea3n ph\u1ea9m</span>';
 			} else {
-				str_alert = '<span class="greencolor">S\u1eb5n h\u00e0ng</span>';
+				str_alert = '<span class="greencolor">S\u1eb5n h\u00e0ng</span>'
 			}
 		} else {
 			str_alert = '<span class="redcolor">H\u1ebft h\u00e0ng</span>';
-			$('.show-if-user-size').show();
+			$('.show-if-user-size').show()
 		}
 		$('.oi_product_size .product-size-soluong > span').html(str_alert);
 //		$('.oi_product_size .product-size-soluong').show();
@@ -738,7 +738,7 @@ function ___eb_details_cart_quan () {
 	$('#oi_change_soluong select').change(function () {
 		var a = $(this).val() || 0;
 		
-		$('#oi_change_tongtien').html( g_func.money_format( a * product_js.gm ) + 'đ' );
+		$('#oi_change_tongtien').html( g_func.money_format( a * product_js['gm'] ) + 'đ' );
 		
 		_global_js_eb.cart_create_arr_porudct();
 	});
@@ -1306,11 +1306,11 @@ function ___eb_details_post_run ( r ) {
 	// facebook track
 	var track_arr = {
 		'content_ids' : [pid],
-		'content_name' : product_js.tieude
+		'content_name' : product_js['tieude']
 	};
-	if ( typeof product_js.gm == 'number' && product_js.gm > 0 ) {
-		track_arr.value = product_js.gm;
-		track_arr.currency = 'VND';
+	if ( typeof product_js['gm'] == 'number' && product_js['gm'] > 0 ) {
+		track_arr['value'] = product_js['gm'];
+		track_arr['currency'] = 'VND';
 	}
 	_global_js_eb.fb_track( 'ViewContent', track_arr );
 	
@@ -1504,7 +1504,7 @@ var arr_detect_browser = (function () {
 	}
 	else if ((navigator.userAgent.indexOf("MSIE") != -1)
 	// IF IE > 10
-	|| (!document.documentMode == true)) {
+	|| (!!document.documentMode == true)) {
 		r = 'IE';
 	}
 	
@@ -1896,7 +1896,7 @@ function ___eb_thread_details_timeend () {
 		$('#oiSearchAjax').fadeIn();
 	}).blur(function () {
 		setTimeout(function () {
-			$('#oiSearchAjax').hide();
+			$('#oiSearchAjax').hide()
 		}, 200);
 	}).keyup(function (e) {
 		var a = $(this).val(),
@@ -2107,8 +2107,8 @@ setTimeout(function () {
 	$('.click-jquery-add-to-cart').click(function() {
 		var product_price = $(this).attr('data-gia') || $(this).attr('data-price') || '';
 		if ( product_price == '' ) {
-			if ( typeof product_js.gm == 'number' && product_js.gm > 0 ) {
-				product_price = product_js.gm;
+			if ( typeof product_js['gm'] == 'number' && product_js['gm'] > 0 ) {
+				product_price = product_js['gm'];
 			} else {
 				product_price = 0;
 			}

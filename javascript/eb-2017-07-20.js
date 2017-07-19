@@ -99,17 +99,17 @@ function _date(phomat, t) {
 							case "a":
 								a = d.getHours();
 								if (a >= 12) {
-									a = 'am';
+									a = 'am'
 								} else {
-									a = 'pm';
+									a = 'pm'
 								}
 								break;
 							case "A":
 								a = d.getHours();
 								if (a >= 12) {
-									a = 'AM';
+									a = 'AM'
 								} else {
-									a = 'PM';
+									a = 'PM'
 								}
 								break;
 							case "H":
@@ -118,7 +118,7 @@ function _date(phomat, t) {
 							case "h":
 								a = d.getHours();
 								if (a > 12) {
-									a -= 12;
+									a -= 12
 								}
 								break;
 							case "i":
@@ -132,7 +132,7 @@ function _date(phomat, t) {
 							a = '0' + a;
 						}
 						return a;
-					}( phomat.substr(i, 1) ));
+					})(phomat.substr(i, 1));
 				}
 				return str;
 			};
@@ -159,7 +159,7 @@ var g_func = {
 		str = str.replace(/\u00f9|\u00fa|\u1ee5|\u1ee7|\u0169|\u01b0|\u1eeb|\u1ee9|\u1ef1|\u1eed|\u1eef/g, "u");
 		str = str.replace(/\u1ef3|\u00fd|\u1ef5|\u1ef7|\u1ef9/g, "y");
 		str = str.replace(/\u0111/g, "d");
-		return str;
+		return str
 	},
 	non_mark_seo: function(str) {
 		str = this.non_mark(str);
@@ -168,7 +168,7 @@ var g_func = {
 		str = str.replace(/-+-/g, "-");
 		str = str.replace(/^\-+|\-+$/g, "");
 		for (var i = 0; i < 5; i++) {
-			str = str.replace(/--/g, '-');
+			str = str.replace(/--/g, '-')
 		}
 		str = (function(s) {
 			var str = '',
@@ -177,27 +177,27 @@ var g_func = {
 			for (var i = 0; i < s.length; i++) {
 				t = s.substr(i, 1);
 				if (t == '-' || t == '+' || re.test(t) == true) {
-					str += t;
+					str += t
 				}
 			}
-			return str;
+			return str
 		})(str);
-		return str;
+		return str
 	},
 	strip_tags: function(input, allowed) {
 		if (!allowed) {
-			allowed = '';
+			allowed = ''
 		}
 		allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
 		var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
 			cm = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
 		return input.replace(cm, '').replace(tags, function($0, $1) {
 			return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
-		});
+		})
 	},
 	trim: function(str) {
 		return $.trim( str );
-//		return str.replace(/^\s+|\s+$/g, "");
+//		return str.replace(/^\s+|\s+$/g, "")
 	},
 	
 	setc: function (name, value, days) {
@@ -291,7 +291,7 @@ var g_func = {
 			if (len > 3) {
 				var new_str = str;
 				str = '';
-				for (i = 0; i < new_str.length; i++) {
+				for (var i = 0; i < new_str.length; i++) {
 					len -= 3;
 					if (len > 0) {
 						str = dot + new_str.substr(len, 3) + str;
@@ -395,8 +395,8 @@ function a_lert(m) {
 	clearTimeout(ctimeout);
 	dog('o_load', '<div class="o-load">' + m + '</div>');
 	ctimeout = setTimeout(function() {
-		g_func.jquery_null('o_load');
-	}, 3000);
+		g_func.jquery_null('o_load')
+	}, 3000)
 }
 
 
@@ -790,17 +790,17 @@ var _global_js_eb = {
 		if (typeof op == 'undefined') {
 			op = {};
 		}
-		if (typeof op.dateFormat == 'undefined') {
-			op.dateFormat = 'yy/mm/dd';
+		if (typeof op['dateFormat'] == 'undefined') {
+			op['dateFormat'] = 'yy/mm/dd';
 		}
-		$.datepicker.regional.de = {
+		$.datepicker.regional['de'] = {
 			monthNames: ['Th\u00e1ng 1', 'Th\u00e1ng 2', 'Th\u00e1ng 3', 'Th\u00e1ng 4', 'Th\u00e1ng 5', 'Th\u00e1ng 6', 'Th\u00e1ng 7', 'Th\u00e1ng 8', 'Th\u00e1ng 9', 'Th\u00e1ng 10', 'Th\u00e1ng 11', 'Th\u00e1ng 12'],
 			monthNamesShort: ['Jan', 'Feb', 'M&auml;r', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
 			dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
 			dayNamesShort: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
 			dayNamesMin: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 		};
-		$.datepicker.setDefaults($.datepicker.regional.de);
+		$.datepicker.setDefaults($.datepicker.regional['de']);
 		$(id).datepicker(op);
 	},
 	
@@ -861,24 +861,24 @@ var _global_js_eb = {
 					click_ref: encodeURIComponent(a),
 					click_url: encodeURIComponent(click_url),
 					click_iframe: (function() {
-						return (top != self) ? 1 : 0;
+						return (top != self) ? 1 : 0
 					})(),
 					click_title: (function() {
 						var str = document.title || '';
 						if (str != '') {
-							str = encodeURIComponent(str);
+							str = encodeURIComponent(str)
 						}
-						return str;
+						return str
 					})(),
 					click_timezone: encodeURIComponent(offset),
 					click_lang: (function() {
 						var str = navigator.userLanguage || navigator.language || '';
-						return str;
+						return str
 					})(),
 					click_usertime: (function() {
 						var t = new Date().getTime();
 						t = parseInt(t / 1000, 10);
-						return t;
+						return t
 					})(),
 					click_window: $(window).width() + 'x' + $(window).height(),
 					click_document: $(document).width() + 'x' + $(document).height(),
@@ -886,7 +886,7 @@ var _global_js_eb = {
 					click_agent: (function() {
 						var str = navigator.userAgent || navigator.vendor || window.opera || '';
 						str = str.replace(/\s/g, '+');
-						return str;
+						return str
 					})(),
 					click_staff_id: staff_id
 				};
@@ -1076,9 +1076,9 @@ var _global_js_eb = {
 										break;
 									}
 								}
-							}(arr[i].arr));
+							})(arr[i].arr);
 						}
-					}(site_group[i].arr));
+					})(site_group[i].arr);
 				}
 			}
 		}
@@ -1092,7 +1092,7 @@ var _global_js_eb = {
 								break;
 							}
 						}
-					}(site_group[i].arr));
+					})(site_group[i].arr);
 				}
 			}
 		}
@@ -1150,16 +1150,16 @@ var _global_js_eb = {
 			// user agent
 			hd_url: window.location.href,
 			hd_title: (function(str) {
-				return str;
+				return str
 			})(document.title || ''),
 			hd_timezone: offset,
 			hd_lang: (function(str) {
-				return str;
+				return str
 			})(navigator.userLanguage || navigator.language || ''),
 			hd_usertime: (function() {
 				var t = new Date().getTime();
 				t = parseInt(t / 1000, 10);
-				return t;
+				return t
 			})(),
 			hd_window: $(window).width() + 'x' + $(window).height(),
 			hd_document: $(document).width() + 'x' + $(document).height(),
@@ -1171,19 +1171,19 @@ var _global_js_eb = {
 		if ( pid > 0 ) {
 			var f = document.frm_cart;
 			
-			arr.hd_ten = f.t_ten.value;
-			arr.hd_dienthoai = f.t_dienthoai.value;
-			arr.hd_email = f.t_email.value;
-			arr.hd_diachi = f.t_diachi.value;
-			arr.hd_ghichu = f.t_ghichu.value;
+			arr['hd_ten'] = f.t_ten.value;
+			arr['hd_dienthoai'] = f.t_dienthoai.value;
+			arr['hd_email'] = f.t_email.value;
+			arr['hd_diachi'] = f.t_diachi.value;
+			arr['hd_ghichu'] = f.t_ghichu.value;
 		}
 		else {
-			arr.hd_ten = $('#t_ten').val() || '';
-			arr.hd_dienthoai = $('#t_dienthoai').val() || '';
-			arr.hd_email = $('#t_email').val() || '';
-			arr.hd_diachi = $('#t_diachi').val() || '';
-			arr.hd_ghichu = $('#t_ghichu').val() || '';
-			arr.hd_thanhtoan = $('input[name="t_thanhtoan"]:checked').val() || 'tructiep';
+			arr['hd_ten'] = $('#t_ten').val() || '';
+			arr['hd_dienthoai'] = $('#t_dienthoai').val() || '';
+			arr['hd_email'] = $('#t_email').val() || '';
+			arr['hd_diachi'] = $('#t_diachi').val() || '';
+			arr['hd_ghichu'] = $('#t_ghichu').val() || '';
+			arr['hd_thanhtoan'] = $('input[name="t_thanhtoan"]:checked').val() || 'tructiep';
 		}
 		
 //		console.log(arr);
@@ -1280,7 +1280,7 @@ var _global_js_eb = {
 //		console.log(typeof a);
 		
 		// Kiểu dữ liệu về bắt buộc phải là một mảng
-		if ( typeof a == 'object' && typeof a.loc != 'undefined' ) {
+		if ( typeof a == 'object' && typeof a['loc'] != 'undefined' ) {
 //			console.log(a);
 			
 			//
@@ -1288,7 +1288,7 @@ var _global_js_eb = {
 			
 			if ( typeof hai != 'number' ) hai = 400;
 			
-			return '//maps.googleapis.com/maps/api/staticmap?center=' +a.loc+ '&zoom=14&size=' +wit+ 'x' +hai+ '&sensor=false';
+			return '//maps.googleapis.com/maps/api/staticmap?center=' +a['loc']+ '&zoom=14&size=' +wit+ 'x' +hai+ '&sensor=false';
 		}
 		
 		// Mặc định trả về 1 chuỗi
@@ -1547,7 +1547,7 @@ var _global_js_eb = {
 			var new_email = g_func.non_mark_seo(f.t_dienthoai.value);
 			try {
 				new_email += '@' + web_link.split('//')[1].split('/')[0].replace('www.', '').replace(/\:/g, '.');
-			} catch (e) {}
+			} catch (e) {};
 			f.t_email.value = new_email;
 		}
 		
@@ -1609,14 +1609,14 @@ var _global_js_eb = {
 		}
 		
 		var remove_item = 0;
-		if ( typeof action_obj.remove_item != 'undefined' ) {
-			remove_item = action_obj.remove_item;
+		if ( typeof action_obj['remove_item'] != 'undefined' ) {
+			remove_item = action_obj['remove_item'];
 		}
 //		console.log(remove_item);
 		
 		var tr_id = '';
-		if ( typeof action_obj.tr_id != 'undefined' ) {
-			tr_id = action_obj.tr_id;
+		if ( typeof action_obj['tr_id'] != 'undefined' ) {
+			tr_id = action_obj['tr_id'];
 		}
 		
 		var c = 'eb_cookie_cart_list_id',
@@ -1740,9 +1740,9 @@ var _global_js_eb = {
 			'content_ids' : [ new_cart_id ]
 		};
 		
-		if ( typeof action_obj.price != 'undefined' && action_obj.price > 0 ) {
-			track_arr.value = action_obj.price;
-			track_arr.currency = 'VND';
+		if ( typeof action_obj['price'] != 'undefined' && action_obj['price'] > 0 ) {
+			track_arr['value'] = action_obj['price'];
+			track_arr['currency'] = 'VND';
 		}
 		
 		//
@@ -1783,14 +1783,14 @@ var _global_js_eb = {
 		
 		//
 		var remove_item = 0;
-		if ( typeof action_obj.remove_item != 'undefined' ) {
-			remove_item = action_obj.remove_item;
+		if ( typeof action_obj['remove_item'] != 'undefined' ) {
+			remove_item = action_obj['remove_item'];
 		}
 //		console.log(remove_item);
 		
 		var tr_id = '';
-		if ( typeof action_obj.tr_id != 'undefined' ) {
-			tr_id = action_obj.tr_id;
+		if ( typeof action_obj['tr_id'] != 'undefined' ) {
+			tr_id = action_obj['tr_id'];
 		}
 		
 		var c = 'eb_cookie_cart_list_id',
@@ -1864,9 +1864,9 @@ var _global_js_eb = {
 			'content_ids' : [ new_cart_id ]
 		};
 		
-		if ( typeof action_obj.price != 'undefined' && action_obj.price > 0 ) {
-			track_arr.value = action_obj.price;
-			track_arr.currency = 'VND';
+		if ( typeof action_obj['price'] != 'undefined' && action_obj['price'] > 0 ) {
+			track_arr['value'] = action_obj['price'];
+			track_arr['currency'] = 'VND';
 		}
 		
 		//
@@ -2022,8 +2022,8 @@ var _global_js_eb = {
 			track_arr = {};
 		} else {
 			// mặc định type = product
-			if ( typeof track_arr.content_type == 'undefined' || track_arr.content_type == '' ) {
-				track_arr.content_type = 'product';
+			if ( typeof track_arr['content_type'] == 'undefined' || track_arr['content_type'] == '' ) {
+				track_arr['content_type'] = 'product';
 			}
 		}
 		console.log('Facebook pixel (' + track_name + ') by EchBay.com');
