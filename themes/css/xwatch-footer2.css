@@ -1,0 +1,59 @@
+#xwatch-footer2 {
+	background: #000;
+	padding: 35px 0 10px 0;
+	color: #fff;
+	font-size: 14px;
+	line-height: 22px;
+}
+#xwatch-footer2 .web-footer-logo {
+	display: block;
+	line-height: 90px;
+	background: center no-repeat;
+	background-size: auto 95%;
+	margin-bottom: 15px;
+}
+#xwatch-footer2 .footer-showroom {
+	line-height: 19px;
+	padding-left: 15px;
+}
+#xwatch-footer2 .footer-showroom li {
+	text-transform: uppercase;
+	margin-bottom: 15px;
+	font-size: 15px;
+}
+#xwatch-footer2 .footer-showroom a {
+	color: #fff;
+	font-weight: bold;
+	border-bottom: 1px #fff solid;
+	display: inline-block;
+}
+#xwatch-footer2 .footer-showroom .sub-menu { margin-top: 10px; }
+#xwatch-footer2 .footer-showroom .sub-menu li {
+	text-transform: none;
+	margin-bottom: 15px;
+	float: left;
+	width: 33.33%;
+	font-size: 14px;
+}
+#xwatch-footer2 .footer-showroom .sub-menu a {
+	border: 0 none;
+	font-weight: normal;
+}
+#xwatch-footer2 .footer-showroom .sub-menu .sub-menu {
+	margin-top: 0;
+	padding-right: 20px;
+}
+#xwatch-footer2 .footer-showroom .sub-menu .sub-menu li {
+	float: none;
+	width: 100%;
+	margin: 5px 0;
+}
+#xwatch-footer2 .footer-showroom .sub-menu .sub-menu li:last-child a { color: #09C; }
+.style-for-mobile #xwatch-footer2 .footer-showroom {
+	text-align: center;
+	padding-top: 19px;
+}
+.style-for-mobile #xwatch-footer2 .footer-showroom .sub-menu li {
+	float: none;
+	width: 100%;
+}

@@ -7,7 +7,7 @@ Domain: xwatch.vn
 <div id="xwatch-footer2">
 	<div class="cf <?php echo $__cf_row['cf_footer_class_style']; ?>">
 		<div class="lf f38 text-center fullsize-if-mobile">
-			<div><a href="./" title="Trang chủ" class="web-logo" style="background-image:url('<?php echo $__cf_row['cf_logo']; ?>');">&nbsp;</a></div>
+			<div><a href="./" title="Trang chủ" class="web-footer-logo" style="background-image:url('<?php echo $__cf_row['cf_logo']; ?>');">&nbsp;</a></div>
 			<h2 class="upper">Hệ thống đồng hồ chính hãng</h2>
 			<div>Tư vấn bán hàng: <span class="phone-numbers-inline footer-hotline"><?php echo $__cf_row['cf_call_hotline']; ?></span></div>
 			<div>Tư vấn kỹ thuật: <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span></div>
