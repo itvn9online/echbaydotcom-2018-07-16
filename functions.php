@@ -4710,12 +4710,21 @@ function EBE_print_product_img_css_class ( $arr, $in = 'Header' ) {
 
 
 
+// https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 function EBE_set_header ( $status = 200 ) {
+	
+	$pcol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+//	echo $pcol;
+	
 	// Chuyển header sang 200
 	if ( $status == 200 ) {
-		$pcol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
-		//echo $pcol;
 		header( $pcol . ' 200 OK' );
+	}
+	else if ( $status == 404 ) {
+		header( $pcol . ' 404 Not Found' );
+	}
+	else if ( $status == 401 ) {
+		header( $pcol . ' 401 Unauthorized' );
 	}
 }
 

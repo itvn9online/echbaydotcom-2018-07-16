@@ -831,11 +831,7 @@ else {
 	* Không cho đọc nội dung thông qua json
 	*/
 	if ( $__cf_row['cf_on_off_json'] == 0 ) {
-		// nếu tồn tại tham số rest_route -> đang vào JSON -> hủy luôn
-		if ( isset( $_GET['rest_route'] ) ) {
-			die('{"message":"JSON disable by EchBay.com"}');
-		}
-//		include EB_THEME_PLUGIN_INDEX . 'plugins/disable-json-api.php';
+		include EB_THEME_PLUGIN_INDEX . 'plugins/disable-json-api.php';
 	}
 	
 	
