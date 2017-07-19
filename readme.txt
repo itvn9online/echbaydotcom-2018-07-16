@@ -8,8 +8,8 @@ Text Domain: echbayecom
 Tags: e-commerce
 Requires at least: 3.3
 Tested up to: 4.8
-Stable tag: 1.0.1
-Version: 1.0.1
+Stable tag: 1.0.2
+Version: 1.0.2
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 
@@ -111,6 +111,21 @@ I - Thiết lập cài đặt cho website (lưu ý, thay www.webgiare.org bằng
 === CÁC PLUGINS KHUYÊN DÙNG ===
 - Thông thường, các tính năng được chúng tôi viết dưới dạng plugin nhằm mục đích phục vụ cả các website không sử dụng theme của EchBay, các plugins này được liệt kê tại đây http://www.webgiare.org/wp-admin/plugin-install.php?s=itvn9online&tab=search&type=author.
 Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này gần như là cần thiết hết. Bạn yên tâm là các plugin được viết dưới dạng short code nên rất nhẹ, ngoài ra còn hệ thống cache đi kèm nên không có sự ảnh hưởng nào tới độ trễ webiste của bạn.
+
+
+
+=== CÁC THAY ĐỔI QUAN TRỌNG ===
+= Version 1.0.2 =
+* Tối ưu lại hệ thống quảng cáo (ads post_type).
+* Tinh chỉnh lại các rule, xóa các rewrite không cần thiết.
+* Cập nhật lại sitemap: thời gian update site map thành 3 tiếng, thêm CSS cho sitemap, thêm ngày cập nhật cuối cho phần bài viết.
+
+= Version 1.0.1 =
+* Thêm các chức năng lắp ghép giao diện, tự tạo giao diện riêng từ kho có sẵn.
+
+= Version 1.0.0 =
+* None
+
 
 
 * BY EchBay.com - Webgiare.org
