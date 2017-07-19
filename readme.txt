@@ -99,7 +99,7 @@ I - Thiết lập cài đặt cho website (lưu ý, thay www.webgiare.org bằng
 
 2. Mã nguồn của các bên thứ ba được sử dụng chung chủ yếu là các mã nguồn nổi tiếng và đảm bảo bởi một tổ chức uy tín như GitHub (PHPMailler), Google (jQuery, Font Awesome). Các mã nguồn này sẽ được đặt trong thư mục có tên là outsource để khách hàng tiện kiểm tra, đối chiếu hoặc tự cập nhật mã nguồn lên phiên bản mới hơn nếu cần thiết.
 
-3. Khách hàng có thể nhân bản web lên thành nhiều bản, tuy nhiên, chỉ các bản trả phí mới nhận được hỗ trợ và bảo hành, các bản khác khách hàng chủ động quản lý và cập nhật theo.
+3. Khách hàng có thể nhân bản web lên thành nhiều bản, tuy nhiên, chỉ các bản trả phí trực tiếp cho tác giả mới nhận được hỗ trợ và bảo hành, các bản khác khách hàng chủ động quản lý và cập nhật theo.
 
 
 === CẬP NHẬT MÃ NGUỒN ===
@@ -109,7 +109,7 @@ I - Thiết lập cài đặt cho website (lưu ý, thay www.webgiare.org bằng
 
 
 === CÁC PLUGINS KHUYÊN DÙNG ===
-- Thông thường, các tính năng được chúng tôi viết dưới dạng plugin nhằm mục đích phục vụ cả các website không sử dụng theme của EchBay, các plugins này được liệt kê tại đây http://www.webgiare.org/wp-admin/plugin-install.php?s=itvn9online&tab=search&type=author.
+- Thông thường, các tính năng được chúng tôi viết dưới dạng plugin nhằm mục đích phục vụ cả các website không sử dụng theme của EchBay, các plugins này được liệt kê tại đây https://wordpress.org/plugins/search/dao+quoc+dai/.
 Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này gần như là cần thiết hết. Bạn yên tâm là các plugin được viết dưới dạng short code nên rất nhẹ, ngoài ra còn hệ thống cache đi kèm nên không có sự ảnh hưởng nào tới độ trễ webiste của bạn.
 
 
