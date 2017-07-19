@@ -98,9 +98,9 @@ function echbay_create_custom_post_type ( $custom_post_name, $custom_post_module
 	
 	// thay đổi các tham số mặc định bằng tham số mới nếu có
 	foreach ( $arr_return as $k => $v ) {
-		if ( isset( $arr[$k] ) ) {
+//		if ( isset( $arr[$k] ) ) {
 			$arr[$k] = $v;
-		}
+//		}
 	}
 	
 	//
@@ -133,7 +133,17 @@ function ech_bay_custom_post_type() {
 		'page-attributes',
 //		'post-formats',
 //	), 70 );
-	), 7 );
+	), 7, array(
+//		'public' => false,
+		// không lưu trữ
+		'has_archive' => false,
+		// Loại bỏ khỏi kết quả tìm kiếm
+		'exclude_from_search' => true,
+//		'publicly_queryable' => false,
+		'show_in_nav_menus' => false,
+		// không cần rewwrite URL cho mục này
+		'rewrite' => false,
+	) );
 	
 	// điều chỉnh các tham số riêng trước khi gửi đi
 	$args['taxonomies'] = array(
@@ -180,6 +190,7 @@ function ech_bay_custom_post_type() {
 	/*
 	* Đơn hàng
 	*/
+	/*
 	$custom_post_module = 'shop_order';
 	
 	//
@@ -210,6 +221,7 @@ function ech_bay_custom_post_type() {
  
 	// Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
 	register_post_type($custom_post_module, $args);
+	*/
 	
 	
 	

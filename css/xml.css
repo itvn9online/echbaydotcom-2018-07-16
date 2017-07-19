@@ -1,0 +1,45 @@
+urlset {
+	display: block;
+	max-width: 1080px;
+	margin: 10px auto;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 13px;
+}
+url {
+	display: block;
+	overflow: auto;
+	padding: 5px;
+	word-wrap: break-word;
+}
+url:nth-child(2n+1) { background: #f8f8f8; }
+loc {
+	display: inline-block;
+	width: 75%;
+}
+lastmod {
+	display: inline-block;
+	width: 24%;
+	text-align: right;
+}
+changefreq,
+priority { display: none; }
+
+@media screen and (max-width: 960px) {
+urlset { font-size: 12px; }
+loc,
+lastmod {
+	max-width: 100%;
+	width: 100%;
+	float: left;
+}
+}
+
+@media screen and (max-device-width: 500px) {
+urlset { zoom: 2; }
+loc,
+lastmod {
+	max-width: 100%;
+	width: 100%;
+	float: left;
+}
+}
