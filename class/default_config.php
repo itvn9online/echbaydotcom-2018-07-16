@@ -117,8 +117,8 @@ $__cf_row_default = array(
 	'cf_product_buy_amp' => 0,
 	
 	
-	// bật/ tắt JSON
-	'cf_on_off_json' => 1,
+	// bật/ tắt chia sẻ dữ liệu qua JSON
+	'cf_on_off_json' => 0,
 	
 	// xóa URL cha của phân nhóm
 	'cf_remove_category_base' => 0,

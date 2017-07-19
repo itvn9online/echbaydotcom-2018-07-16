@@ -763,12 +763,17 @@ color: #333;
 /*
 * wp-content
 */
-.aligncenter {
+.aligncenter,
+.aligncenter img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
-.aligncenter .wp-caption-text { text-align: center; }
+.aligncenter .wp-caption-text {
+	text-align: center;
+	font-style: italic;
+	font-size: 85%;
+}
 /* */
 .sponsor-top-desktop { padding: 25px 0; }
 .sponsor-top-title {

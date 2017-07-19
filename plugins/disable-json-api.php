@@ -58,12 +58,15 @@ function DRA_Disable_Via_Filters() {
  * @return WP_Error
  */
 function DRA_only_allow_logged_in_rest_access( $access ) {
-
+	
+	//
+	return '{"code":"rest_cannot_access","message":"Only authenticated users can access the REST API.","data":{"status":401}}';
+	
 	if ( ! is_user_logged_in() ) {
-        return new WP_Error( 'rest_cannot_access', __( 'Only authenticated users can access the REST API.', 'disable-json-api' ), array( 'status' => rest_authorization_required_code() ) );
-    }
-
-    return $access;
+		return new WP_Error( 'rest_cannot_access', __( 'Only authenticated users can access the REST API.', 'disable-json-api' ), array( 'status' => rest_authorization_required_code() ) );
+	}
+	
+	return $access;
 	
 }
 
