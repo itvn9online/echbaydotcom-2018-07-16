@@ -50,6 +50,10 @@ if ( ! isset( $_POST['cf_on_off_json'] ) || (int) $_POST['cf_on_off_json'] != 1 
 	$_POST['cf_on_off_json'] = 0;
 }
 
+if ( ! isset( $_POST['cf_on_off_xmlrpc'] ) || (int) $_POST['cf_on_off_xmlrpc'] != 1 ) {
+	$_POST['cf_on_off_xmlrpc'] = 0;
+}
+
 if ( ! isset( $_POST['cf_remove_category_base'] ) || (int) $_POST['cf_remove_category_base'] != 1 ) {
 	$_POST['cf_remove_category_base'] = 0;
 }

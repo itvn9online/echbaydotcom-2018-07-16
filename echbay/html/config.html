@@ -485,9 +485,20 @@
 				<td class="t">Chia sẻ dữ liệu qua JSON</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_json" id="cf_on_off_json" value="{tmp.cf_on_off_json}" />
 					<label for="cf_on_off_json" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small" style="line-height:19px;">Hãy mở thử liên kết sau trong trình duyệt ẩn danh hoặc khi chưa đăng nhập vào hệ thống để kiểm tra:<br>
+					<div class="small" style="line-height:19px;">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
 						<div>- <a href="{tmp.web_link}wp-json/wp/v2/posts" target="_blank">{tmp.web_link}wp-json/wp/v2/posts</a></div>
 						<div>- <a href="{tmp.web_link}wp-json/wp/v2/users" target="_blank">{tmp.web_link}wp-json/wp/v2/users</a></div>
+					</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Chia sẻ dữ liệu qua JSON</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_xmlrpc" id="cf_on_off_xmlrpc" value="{tmp.cf_on_off_xmlrpc}" />
+					<label for="cf_on_off_xmlrpc" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small" style="line-height:19px;">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+						<div>- <a href="{tmp.web_link}xmlrpc.php" target="_blank">{tmp.web_link}wp-json/wp/v2/posts</a></div>
 					</div></td>
 			</tr>
 			<tr>

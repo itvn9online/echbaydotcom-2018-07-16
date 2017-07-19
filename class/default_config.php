@@ -119,6 +119,7 @@ $__cf_row_default = array(
 	
 	// bật/ tắt chia sẻ dữ liệu qua JSON
 	'cf_on_off_json' => 0,
+	'cf_on_off_xmlrpc' => 0,
 	
 	// xóa URL cha của phân nhóm
 	'cf_remove_category_base' => 0,
