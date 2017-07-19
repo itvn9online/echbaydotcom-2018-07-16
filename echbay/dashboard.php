@@ -1,6 +1,6 @@
 <br>
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Trang tổng quan</a></div>
-<p>* Các cài đặt được chúng tôi khuyên dùng sẽ được đưa ra tại đây, bao gồm: các cài đặt liên quan đến bảo mật website, tối ưu tốc độ web...</p>
+<p>* Các cài đặt được chúng tôi khuyên dùng sẽ được đưa ra tại đây, bao gồm: các cài đặt liên quan đến bảo mật website, tối ưu tốc độ web... Và các cài đặt này thường đường thay đổi trong file wp-config.php hoặc <a href="<?php echo web_link . WP_ADMIN_DIR; ?> '/admin.php?page=eb-config&tab=permalinks" target="_blank">thay đổi tại đây</a>.</p>
 <?php
 
 //
