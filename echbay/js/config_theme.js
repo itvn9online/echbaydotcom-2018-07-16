@@ -27,7 +27,7 @@ function EBE_themes_key_quick_search () {
 				a = g_func.non_mark_seo( a.split('.')[0] );
 				a = a.replace(/\-/g, '');
 				
-				b = g_func.non_mark_seo( a.split('.')[0] );
+				b = g_func.non_mark_seo( b.split('.')[0] );
 				b = b.replace(/\-/g, '');
 				
 				$(this).attr({
