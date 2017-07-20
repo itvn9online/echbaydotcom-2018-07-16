@@ -401,6 +401,8 @@ $('#press_for_search_eb_themes').click(function () {
 				}
 			}
 		});
+	} else {
+		$(fix_id).show();
 	}
 });
 
