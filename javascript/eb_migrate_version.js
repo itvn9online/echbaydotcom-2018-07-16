@@ -17,7 +17,7 @@
 	
 	if ( a.split('.htm').length > 1 ) {
 		var a0 = a.split('.')[0];
-//		console.log(a0);
+		console.log(a0);
 		
 		if ( a0.substr(0, 1) == 'c' || a0.substr(0, 1) == 's' || a0.substr(0, 1) == 'f' ) {
 			b = num(a0);

@@ -363,10 +363,13 @@ input[id="_eb_category_order"] { width: 90px; }
 /* */
 .ebdesign-table-for {
 	position: relative;
-	border: 1px #999 solid;
-	height: 50px;
+	border: 1px #333 solid;
+	height: 30px;
 	margin-bottom: 15px;
 	padding: 10px;
+	background: #666;
+	color: #fff;
+	border-radius: 2px;
 }
 .noborder-ebdesign-table-for { margin-top: 5px; }
 .noborder-ebdesign-table-for .ebdesign-table-for {
