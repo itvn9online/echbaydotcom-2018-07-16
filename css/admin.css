@@ -377,6 +377,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	padding: 0;
 	border: 0 none;
 	margin-bottom: 5px;
+	background: none;
+	color: #333;
 }
 .ebdesign-table-for:hover {
 	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
