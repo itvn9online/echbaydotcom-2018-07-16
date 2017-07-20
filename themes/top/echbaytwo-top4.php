@@ -1,3 +1,9 @@
+<?php
+/*
+Tags: breadcrumb
+*/
+?>
+
 <div class="thread-details-tohome">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<ul class="cf">

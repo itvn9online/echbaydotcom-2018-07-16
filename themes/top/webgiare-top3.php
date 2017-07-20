@@ -1,3 +1,9 @@
+<?php
+/*
+Tags: breadcrumb
+*/
+?>
+
 <div id="webgiare-top2">
 	<div class="site-header__categories">
 		<div class="thread-details-tohome">
