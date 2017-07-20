@@ -19,7 +19,7 @@ function EBE_themes_key_quick_search () {
 	if ( load_key_for_quick_serach == false ) {
 		load_key_for_quick_serach = true;
 		
-		$('.for-themes-quick-search').each(function(index, element) {
+		$('.for-themes-quick-search').each(function() {
 			var a = $(this).attr('data-key') || '';
 			
 			if ( a != '' ) {
@@ -161,7 +161,7 @@ $('.click-add-class-selected').each(function () {
 });
 
 // v2
-$('.each-to-get-current-value-file').each(function(index, element) {
+$('.each-to-get-current-value-file').each(function() {
 	var a = $(this).val() || '',
 		b = $(this).attr('name') || '',
 		key = $(this).attr('data-key') || '';
@@ -285,7 +285,7 @@ $('.click-to-change-file-design').click(function () {
 	
 	// hiển thị theo từ khóa đang tìm
 	if ( key_search != '' ) {
-		console.log(key_search);
+//		console.log(key_search);
 		$('#press_for_search_eb_themes').click().keyup();
 	}
 	
@@ -300,11 +300,13 @@ $('.click-to-change-file-design').click(function () {
 	// ẩn scroll của body làm việc cho dễ
 	$('body').addClass('ebdesign-no-scroll');
 	
+	
+	
 	//
 	var key = $(this).attr('data-key') || '',
 		text = g_func.text_only(key);
-	console.log(key);
-	console.log(text);
+//	console.log(key);
+//	console.log(text);
 	
 	id_for_set_new_include_file = key;
 //	console.log( id_for_set_new_include_file );
@@ -319,15 +321,19 @@ $('.click-to-change-file-design').click(function () {
 	$('.change-eb-design-fixed').hide();
 	$('.change-eb-design-fixed[data-key="' + text + '"]').show().addClass('selected');
 	
+	
+	
 	// Căn chỉnh lại size cho phần chọn thiết kế
 //	$('.preview-in-ebdesign').hide();
 //	$('.preview-in-ebdesign[data-key="' + key + '"]').show();
-	$('.preview-in-ebdesign').each(function(index, element) {
+	$('.preview-in-ebdesign').each(function() {
 		var a = $(this).attr('data-size') || '';
 		if ( a != '' ) {
-			$(this).height( $(this).width() * eval(a) );
+			$(this).height( $('.change-eb-design-fixed[data-key="' + text + '"]  h3:first').width() * eval(a) );
 		}
 	});
+	
+	
 	
 	// xóa class định hình sau khi xong việc
 	setTimeout(function () {
@@ -340,7 +346,7 @@ $('.click-to-change-file-design').click(function () {
 
 // khi click chuyển tab thì chỉnh lại chiều cao của cột design
 $('#list-tab-eb-admin-config li').click(function () {
-	$('.click-to-change-file-design').each(function(index, element) {
+	$('.click-to-change-file-design').each(function() {
 		var a = $(this).attr('data-size') || '';
 		
 		if ( a != '' ) {
@@ -385,8 +391,14 @@ $('#press_for_search_eb_themes').click(function () {
 		
 		$(fix_id).hide().each(function() {
 			var a = $(this).attr('data-search') || '';
-			if (a != '' && a.split(key).length > 1) {
-				$(this).show();
+			if ( key.length == 1 ) {
+				if (a != '' && a.substr(0, 1) == key) {
+					$(this).show();
+				}
+			} else {
+				if (a != '' && a.split(key).length > 1) {
+					$(this).show();
+				}
 			}
 		});
 	}
