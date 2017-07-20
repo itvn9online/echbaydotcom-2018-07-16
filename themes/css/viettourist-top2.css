@@ -1,15 +1,15 @@
-#viettourist-top2 #oi_member_func {
+#viettourist-top2 .oi_member_func {
 	line-height: 45px;
 	font-size: 15px;
 }
-#viettourist-top2 #oi_member_func a {
+#viettourist-top2 .oi_member_func a {
 	color: #000;
 	display: inline-block;
 }
-#viettourist-top2 #oi_member_func a:last-child { margin-left: 15px; }
-#viettourist-top2 #oi_member_func a:hover { text-decoration: underline }
+#viettourist-top2 .oi_member_func a:last-child { margin-left: 15px; }
+#viettourist-top2 .oi_member_func a:hover { text-decoration: underline }
 #viettourist-top2 .top-top-login { position: relative; }
-#viettourist-top2 .top-top-login #oi_member_func {
+#viettourist-top2 .top-top-login .oi_member_func {
 	position: absolute;
 	top: -45px;
 	right: 10px;
