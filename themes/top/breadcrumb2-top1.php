@@ -4,7 +4,7 @@ Description: Thiết kế bo gọn theo kích thước của TOP trong mục Cà
 */
 ?>
 
-<div id="breadcrumb-top2">
+<div id="breadcrumb2-top1">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<div class="thread-details-tohome">
 			<ul class="cf">

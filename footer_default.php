@@ -6,4 +6,4 @@ $arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'themes/footer/echbaytwo-f
 
 $arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'themes/footer/echbaytwo-footer2.php';
 
-$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'themes/footer/echbaytwo-footer3.php';
+$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'themes/footer/copyright-footer3.php';
