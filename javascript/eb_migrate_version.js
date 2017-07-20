@@ -1,6 +1,9 @@
 
 
 
+/*
+* Chức năng reddirect URL từ bản cũ sang bản mới
+*/
 (function ( u ) {
 	if ( act != '404' ) {
 		return false;
@@ -17,18 +20,37 @@
 	
 	if ( a.split('.htm').length > 1 ) {
 		var a0 = a.split('.')[0];
-		console.log(a0);
+//		console.log(a0);
 		
+		/*
+		* ID nằm cuối chuỗi
+		*/
+		// category
 		if ( a0.substr(0, 1) == 'c' || a0.substr(0, 1) == 's' || a0.substr(0, 1) == 'f' ) {
 			b = num(a0);
-//			console.log(a0);
+//			console.log(b);
 			
 			if ( b > 0 ) {
 				window.location = u.replace(/\-\-/gi, '-').replace( '-' + a, '' );
 				return false;
 			}
 		}
+		// post
+		else if ( a0.substr(0, 1) == 'p' ) {
+			b = num(a0);
+//			console.log(b);
+			
+			if ( b > 0 ) {
+				window.location = web_link + '?p=' + b;
+				return false;
+			}
+		}
 		
+		
+		
+		/*
+		* ID nằm đầu chuỗi
+		*/
 		//
 //		else {
 			a = u.split('//')[1].split('/');
