@@ -4,7 +4,10 @@
 	border-top: 8px solid #2276E7;
 	border-bottom: 1px solid #222;
 }
-#viettourist-footer2 .footer-bg { background: #333; }
+#viettourist-footer2 .footer-bg {
+	background: #333;
+	border-bottom: 1px solid #444;
+}
 #viettourist-footer2 .footer-bg,
 #viettourist-footer2 .footer-bg a { color: #fff; }
 #viettourist-footer2 .footer-social li {
