@@ -28,7 +28,7 @@ if ( mtv_id > 0 ) {
 		}
 		// admin mặc định
 		else {
-			$connect_admin .= 'wp-admin';
+			$connect_admin .= WP_ADMIN_DIR;
 		}
 		
 		//
