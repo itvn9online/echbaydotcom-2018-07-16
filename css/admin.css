@@ -327,12 +327,18 @@ input[id="_eb_category_order"] { width: 90px; }
 	background: rgba(0, 0, 0, 86);
 	top: 0;
 	padding: 10px;
+	padding-left: 50%;
 	z-index: 1;
 }
 .button-for-ebdesign-hover button { margin-left: 10px; }
-.button-for-ebdesign-hover .eb-themes-search {
+.eb-themes-search {
 	width: 50%;
 	border-radius: 1px;
+	position: fixed;
+	top: 6px;
+	left: 10px;
+	z-index: 9999999;
+	width: 45%;
 }
 /* .change-eb-design-fixed:hover .f33-if-ebdesign-hover { width: 33% !important; } */
 .change-eb-design-fixed:hover .show-if-ebdesign-hover { display: inline-block !important; }

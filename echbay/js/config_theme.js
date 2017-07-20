@@ -217,6 +217,7 @@ $('.click-add-widget-include-to-input').click(function () {
 //
 $('.click-to-exit-design').click(function () {
 	$('.change-eb-design-fixed').hide();
+	$('#press_for_search_eb_themes').hide();
 	$('body').removeClass('ebdesign-no-scroll');
 	current_frame_design_is_show = '';
 });
@@ -234,6 +235,9 @@ var current_frame_design_is_show = '';
 
 // click hiển thị khung chọn file design
 $('.click-to-change-file-design').click(function () {
+	
+	// hiển thị hết các theme ra
+	$('.for-themes-quick-search').show();
 	
 //	window.scroll( 0, $(this).offset().top - ( $(window).height()/ 4 ) );
 	$('body,html').animate({
@@ -276,6 +280,33 @@ $('.click-to-change-file-design').click(function () {
 	setTimeout(function () {
 		$('.change-eb-design-fixed').removeClass('selected');
 	}, 600);
+	
+	
+	// hiển thị khung tìm kiếm nhanh
+	$('#press_for_search_eb_themes').show().focus();
+	
+	//
+	/*
+	var key_search = $('#press_for_search_eb_themes').val();
+	if ( key_search == '' ) {
+		key_search = window.location.href.split('#');
+//		key_search = window.location.hash || '';
+//		if ( key_search != '' ) {
+		if ( key_search.length > 1 ) {
+			key_search = key_search[1];
+			$('#press_for_search_eb_themes').val( key_search );
+		} else {
+			key_search = '';
+		}
+	}
+	
+	// hiển thị theo từ khóa đang tìm
+	if ( key_search != '' ) {
+		console.log(key_search);
+		$('#press_for_search_eb_themes').click().keyup();
+	}
+	*/
+	
 });
 
 
@@ -290,6 +321,66 @@ $('#list-tab-eb-admin-config li').click(function () {
 		}
 	});
 });
+
+
+
+
+// quick search
+var load_key_for_quick_serach = false;
+$('#press_for_search_eb_themes').click(function () {
+	if ( load_key_for_quick_serach == false ) {
+		$('.for-themes-quick-search').each(function(index, element) {
+			var a = $(this).attr('data-key') || '';
+			
+			if ( a != '' ) {
+				a = g_func.non_mark_seo( a.split('.')[0] );
+				a = a.replace(/\-/g, '');
+				
+				$(this).attr({
+					'data-search' : a
+				});
+			}
+		});
+	}
+}).keyup(function(e) {
+	var fix_id = '.for-themes-quick-search';
+	
+//	console.log(e.keyCode);
+	
+	// enter
+	if (e.keyCode == 13) {
+		return false
+		/*
+	} else if (e.keyCode == 27) {
+		$(fix_id).hide();
+		return false
+	}
+	// space
+	else if (e.keyCode == 32) {
+		$(fix_id).show();
+		*/
+	}
+	
+	var key = $(this).val() || '';
+	if (key != '') {
+		key = g_func.non_mark_seo(key);
+		key = key.replace(/[^0-9a-zA-Z]/g, '');
+	}
+//	console.log(key);
+//	return false;
+	
+	if (key != '') {
+//		window.location.hash = key;
+		
+		$(fix_id).hide().each(function() {
+			var a = $(this).attr('data-search') || '';
+			if (a != '' && a.split(key).length > 1) {
+				$(this).show();
+			}
+		});
+	}
+});
+
 
 
 

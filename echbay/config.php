@@ -676,7 +676,6 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 	$str_top_include_file = '
 	<div class="change-eb-design-note d-none"><em>* Các file sẽ xuất hiện lần lượt theo vị trí đã chọn!</em></div>
 	<div class="button-for-ebdesign-hover">
-		<input type="text" id="press_for_search_eb_themes" placeholder="Tìm kiếm giao diện theo tên" class="eb-themes-search" />
 		<button type="button" data-type="' . $type . '" class="click-remove-file-include-form-input cur">[ Xóa file ]</button>
 		<button type="button" data-type="' . $type . '" class="click-add-widget-include-to-input cur">[ ' . $type . ' widget ]</button>
 		<button type="button" class="cur click-to-exit-design d-none2 show-if-ebdesign-hover">Đóng [x]</button>
@@ -765,8 +764,10 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 				
 				// v2
 				$str_top_include_file .= '
-				<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" data-type="' . $label_name . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>' .$text. '</div>
-				<div class="small text-right hide-if-threadnode"><em>' . $text . '</em></div>';
+				<div data-key="' . $val . '" class="for-themes-quick-search">
+					<div data-img="' . $img . '" data-key="' . $k . '" data-val="' . $val . '" data-type="' . $label_name . '" title="' . $text . '" class="click-add-class-selected preview-in-ebdesign ' . $css_class . '" ' . $bg . '>' .$text. '</div>
+					<div class="small text-right hide-if-threadnode"><em>' . $text . '</em></div>
+				</div>';
 				
 			}
 			

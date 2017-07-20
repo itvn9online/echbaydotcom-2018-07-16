@@ -613,7 +613,7 @@ function EBE_get_current_wp_module ( s ) {
 	// đánh dấu tab
 	var a = win_href.split('&tab=');
 	if ( a.length > 1 ) {
-		a = a[1].split('&')[0];
+		a = a[1].split('&')[0].split('#')[0];
 		console.log(a);
 		
 		$('.eb-admin-tab a[data-tab="' +a+ '"]').addClass('selected');
