@@ -1,6 +1,6 @@
 <?php
 /*
-Description: Sử dụng thiết kế tràn khung, tràn màn hình
+Description: Breadcrumb cho website, sử dụng thiết kế tràn khung, tràn màn hình.
 */
 ?>
 

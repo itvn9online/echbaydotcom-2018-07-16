@@ -20,14 +20,18 @@ function EBE_themes_key_quick_search () {
 		load_key_for_quick_serach = true;
 		
 		$('.for-themes-quick-search').each(function() {
-			var a = $(this).attr('data-key') || '';
+			var a = $(this).attr('data-key') || '',
+				b = $(this).attr('data-tags') || '';
 			
 			if ( a != '' ) {
 				a = g_func.non_mark_seo( a.split('.')[0] );
 				a = a.replace(/\-/g, '');
 				
+				b = g_func.non_mark_seo( a.split('.')[0] );
+				b = b.replace(/\-/g, '');
+				
 				$(this).attr({
-					'data-search' : a
+					'data-search' : a + b
 				});
 			}
 		});
