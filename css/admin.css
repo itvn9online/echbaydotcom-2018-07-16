@@ -359,13 +359,13 @@ input[id="_eb_category_order"] { width: 90px; }
 	height: 250px !important;
 	background-position: left !important;
 }
-.border-threadnode-design .preview-bg-ebdesign {
-	height: 220px !important;
+.border-threadnode-design .for-themes-quick-search {
 	float: left;
 	width: 46%;
 	margin: 5px 2% 5px 0;
 	max-width: 250px;
 }
+.border-threadnode-design .preview-bg-ebdesign { height: 220px !important; }
 .border-threadnode-design .preview-in-ebdesign { background-size: auto 99% !important; }
 .border-threadnode-design .preview-in-ebdesign:hover { background-size: 90% auto !important; }
 .border-threadnode-design .preview-in-ebdesign { background-color: #fff; }
