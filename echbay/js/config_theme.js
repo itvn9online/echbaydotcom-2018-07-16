@@ -386,9 +386,11 @@ $('#press_for_search_eb_themes').click(function () {
 //	console.log(key);
 //	return false;
 	
+	//
+	window.location.hash = key;
+	
+	//
 	if (key != '') {
-		window.location.hash = key;
-		
 		$(fix_id).hide().each(function() {
 			var a = $(this).attr('data-search') || '';
 			if ( key.length == 1 ) {
