@@ -149,6 +149,9 @@ $__cf_row_default = array(
 	// ẩn các menu quan trọng trong admin
 	'cf_hide_supper_admin_menu' => 1,
 	
+	// Với các website nâng cấp từ version 1 lên version, URL có thể sẽ khác nhau -> dùng chức năng này để đồng bộ
+	'cf_echbay_migrate_version' => 0,
+	
 	
 	/*
 	* giao diện HTML mặc định

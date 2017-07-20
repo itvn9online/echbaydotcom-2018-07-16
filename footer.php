@@ -120,6 +120,12 @@ EBE_add_js_compiler_in_cache( array(
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/swiper.min.js',
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.touchSwipe.min.js',
 ) );
+
+// thêm JS đồng bộ URL (nếu có)
+if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
+	$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/eb_migrate_version.js';
+}
+
 EBE_add_js_compiler_in_cache( $arr_for_add_js, 'async', 1 );
 
 // jquery map
