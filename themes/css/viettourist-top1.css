@@ -22,6 +22,7 @@
 	position: relative;
 	border-radius: 2px;
 	background-color: #fff;
+	border: 0 none;
 }
 #viettourist-top1 .div-search form { padding-left: 6px }
 #viettourist-top1 .div-search input[type=search],
