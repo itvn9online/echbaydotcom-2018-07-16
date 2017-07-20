@@ -4,21 +4,9 @@
 	border-top: 8px solid #2276E7;
 	border-bottom: 1px solid #222;
 }
-#viettourist-footer2 .ls-bottom-support {
-	width: 50%;
-	float: left;
-}
-#viettourist-footer2 .ls-bottom-support li,
-#viettourist-footer2 .ls-bottom-support li a {
-	font-size: 16px;
-	color: #195E9E;
-}
-#viettourist-footer2 .ls-bottom-support a:hover { text-decoration: underline; }
-#viettourist-footer2 .ls-bottom-support ul {
-	list-style: inside;
-	margin-bottom: 15px;
-}
-#viettourist-footer2 .ls-bottom-support li { padding: 4px 0; }
+#viettourist-footer2 .footer-bg { background: #333; }
+#viettourist-footer2 .footer-bg,
+#viettourist-footer2 .footer-bg a { color: #fff; }
 #viettourist-footer2 .footer-social li {
 	float: none;
 	display: inline-block;
