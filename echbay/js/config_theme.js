@@ -9,7 +9,30 @@ $('body').addClass('folded');
 
 
 // Tham số dùng để xác định xem file được add vào mục nào
-var id_for_set_new_include_file = '';
+var id_for_set_new_include_file = '',
+	// tạo key cho phần quick search
+	load_key_for_quick_serach = false;
+
+
+
+function EBE_themes_key_quick_search () {
+	if ( load_key_for_quick_serach == false ) {
+		load_key_for_quick_serach = true;
+		
+		$('.for-themes-quick-search').each(function(index, element) {
+			var a = $(this).attr('data-key') || '';
+			
+			if ( a != '' ) {
+				a = g_func.non_mark_seo( a.split('.')[0] );
+				a = a.replace(/\-/g, '');
+				
+				$(this).attr({
+					'data-search' : a
+				});
+			}
+		});
+	}
+}
 
 
 
@@ -239,6 +262,10 @@ $('.click-to-change-file-design').click(function () {
 	// hiển thị hết các theme ra
 	$('.for-themes-quick-search').show();
 	
+	//
+	EBE_themes_key_quick_search();
+	
+	
 //	window.scroll( 0, $(this).offset().top - ( $(window).height()/ 4 ) );
 	$('body,html').animate({
 		scrollTop: $(this).offset().top - ( $(window).height()/ 4 ) + 'px'
@@ -286,7 +313,6 @@ $('.click-to-change-file-design').click(function () {
 	$('#press_for_search_eb_themes').show().focus();
 	
 	//
-	/*
 	var key_search = $('#press_for_search_eb_themes').val();
 	if ( key_search == '' ) {
 		key_search = window.location.href.split('#');
@@ -305,7 +331,6 @@ $('.click-to-change-file-design').click(function () {
 		console.log(key_search);
 		$('#press_for_search_eb_themes').click().keyup();
 	}
-	*/
 	
 });
 
@@ -323,25 +348,9 @@ $('#list-tab-eb-admin-config li').click(function () {
 });
 
 
-
-
 // quick search
-var load_key_for_quick_serach = false;
 $('#press_for_search_eb_themes').click(function () {
-	if ( load_key_for_quick_serach == false ) {
-		$('.for-themes-quick-search').each(function(index, element) {
-			var a = $(this).attr('data-key') || '';
-			
-			if ( a != '' ) {
-				a = g_func.non_mark_seo( a.split('.')[0] );
-				a = a.replace(/\-/g, '');
-				
-				$(this).attr({
-					'data-search' : a
-				});
-			}
-		});
-	}
+	EBE_themes_key_quick_search();
 }).keyup(function(e) {
 	var fix_id = '.for-themes-quick-search';
 	
@@ -370,7 +379,7 @@ $('#press_for_search_eb_themes').click(function () {
 //	return false;
 	
 	if (key != '') {
-//		window.location.hash = key;
+		window.location.hash = key;
 		
 		$(fix_id).hide().each(function() {
 			var a = $(this).attr('data-search') || '';
