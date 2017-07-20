@@ -266,6 +266,32 @@ $('.click-to-change-file-design').click(function () {
 	EBE_themes_key_quick_search();
 	
 	
+	// hiển thị khung tìm kiếm nhanh
+	$('#press_for_search_eb_themes').show().focus();
+	
+	//
+	var key_search = $('#press_for_search_eb_themes').val();
+	if ( key_search == '' ) {
+		key_search = window.location.href.split('#');
+//		key_search = window.location.hash || '';
+//		if ( key_search != '' ) {
+		if ( key_search.length > 1 ) {
+			key_search = key_search[1];
+			$('#press_for_search_eb_themes').val( key_search );
+		} else {
+			key_search = '';
+		}
+	}
+	
+	// hiển thị theo từ khóa đang tìm
+	if ( key_search != '' ) {
+		console.log(key_search);
+		$('#press_for_search_eb_themes').click().keyup();
+	}
+	
+	
+	
+	
 //	window.scroll( 0, $(this).offset().top - ( $(window).height()/ 4 ) );
 	$('body,html').animate({
 		scrollTop: $(this).offset().top - ( $(window).height()/ 4 ) + 'px'
@@ -307,30 +333,6 @@ $('.click-to-change-file-design').click(function () {
 	setTimeout(function () {
 		$('.change-eb-design-fixed').removeClass('selected');
 	}, 600);
-	
-	
-	// hiển thị khung tìm kiếm nhanh
-	$('#press_for_search_eb_themes').show().focus();
-	
-	//
-	var key_search = $('#press_for_search_eb_themes').val();
-	if ( key_search == '' ) {
-		key_search = window.location.href.split('#');
-//		key_search = window.location.hash || '';
-//		if ( key_search != '' ) {
-		if ( key_search.length > 1 ) {
-			key_search = key_search[1];
-			$('#press_for_search_eb_themes').val( key_search );
-		} else {
-			key_search = '';
-		}
-	}
-	
-	// hiển thị theo từ khóa đang tìm
-	if ( key_search != '' ) {
-		console.log(key_search);
-		$('#press_for_search_eb_themes').click().keyup();
-	}
 	
 });
 
