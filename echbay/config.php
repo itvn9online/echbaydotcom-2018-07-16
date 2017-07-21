@@ -570,6 +570,11 @@ $arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_conf
 
 
 
+//
+if ( $include_page == 'config_theme' ) {
+	include ECHBAY_PRI_CODE . 'config_theme_arr.php';
+}
+
 
 
 // -> HTML
