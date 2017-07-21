@@ -1624,11 +1624,13 @@ function EBE_set_lang($key, $val) {
 	// xóa option cũ đi cho đỡ lằng nhằng
 	delete_option( $key );
 	
-	//
-	$val = stripslashes( stripslashes( stripslashes( $val ) ) );
-	
-	// thêm option mới
-	add_option( $key, $val, '', 'no' );
+	// chỉ cập nhật khi có value, nếu không có thì sử dụng của bản default
+	if ( $val != '' ) {
+		$val = stripslashes( stripslashes( stripslashes( $val ) ) );
+		
+		// thêm option mới
+		add_option( $key, $val, '', 'no' );
+	}
 	
 }
 

@@ -53,6 +53,19 @@ $___eb_lang[eb_key_for_site_lang . 'cart_them'] = 'Cho vào giỏ hàng';
 // booking done
 $___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
 
+// nội dung email đơn hàng
+$___eb_lang[eb_key_for_site_lang . 'booking_mail'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/booking.html' );
+
+// file mail mặc định
+$___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/mail.html' );
+
+
+
+
+//
+//$___eb_lang_default = $___eb_lang;
+//$___eb_lang = array();
+
 
 
 
