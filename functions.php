@@ -287,7 +287,7 @@ function _eb_add_full_js ( $arr = array(), $type_add = 'import' ) {
 	else {
 		*/
 		foreach ( $arr as $v ) {
-			echo '<script type="text/javascript" src="' . $v . '?v=' . web_version . '"></script>' . "\n";
+			echo '<script type="text/javascript" src="' . $v . '"></script>' . "\n";
 		}
 //	}
 	

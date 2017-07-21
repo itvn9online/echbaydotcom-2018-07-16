@@ -13,27 +13,7 @@ global $___eb_lang;
 
 
 ?>
-<style>
-.table-languages-list { }
-.table-languages-list textarea {
-	width: 99%;
-	height: 20px;
-	border: 0 none;
-	padding: 0;
-	background: none;
-	box-shadow: none;
-}
-.table-languages-list { }
-.table-languages-list { }
-.table-languages-list { }
-.table-languages-list { }
-.eb-admin-lang-submit {
-	position: absolute;
-	left: 10%;
-	top: -999px;
-	display: none;
-}
-</style>
+
 <div class="wrap">
 	<h1>Bản dịch</h1>
 </div>
@@ -124,7 +104,7 @@ function EBE_click_to_update_site_lang () {
 			//
 			$('.eb-admin-lang-submit').show().val('Cập nhật').css({
 //				left: $(this).offset().left + 'px',
-				top: ( $(this).offset().top - 35 ) + 'px'
+				top: ( $(this).offset().top + $(this).height() - 55 ) + 'px'
 			});
 			
 			//

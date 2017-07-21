@@ -195,6 +195,15 @@ function echbay_admin_styles() {
 	}
 	
 	
+	
+	// add css cho trang tin tức
+	if ( $__cf_row['cf_set_news_version'] == 1 ) {
+		_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
+			EB_URL_OF_PLUGIN . 'css/admin_news.css',
+		) ), 'link' );
+	}
+	
+	
 	//
 	echo $str_list_wordpress_rule;
 	
@@ -238,6 +247,15 @@ function echbay_admin_footer_styles() {
 		EB_URL_OF_PLUGIN . 'javascript/a.js',
 //		EB_URL_OF_PLUGIN . 'javascript/a.js',
 	) ), 'add' );
+	
+	
+	
+	// add javascript cho trang tin tức
+	if ( $__cf_row['cf_set_news_version'] == 1 ) {
+		_eb_add_full_js( EBE_admin_set_realtime_for_file ( array(
+			EB_URL_OF_PLUGIN . 'javascript/admin_news.js',
+		) ), 'add' );
+	}
 	
 }
 add_action('admin_footer', 'echbay_admin_footer_styles');

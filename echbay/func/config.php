@@ -102,6 +102,10 @@ if ( ! isset( $_POST['cf_hide_supper_admin_menu'] ) || (int) $_POST['cf_hide_sup
 	$_POST['cf_hide_supper_admin_menu'] = 0;
 }
 
+if ( ! isset( $_POST['cf_set_news_version'] ) || (int) $_POST['cf_set_news_version'] != 1 ) {
+	$_POST['cf_set_news_version'] = 0;
+}
+
 if ( ! isset( $_POST['cf_echbay_migrate_version'] ) || (int) $_POST['cf_echbay_migrate_version'] != 1 ) {
 	$_POST['cf_echbay_migrate_version'] = 0;
 }

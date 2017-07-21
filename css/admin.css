@@ -507,6 +507,20 @@ input[id="_eb_category_order"] { width: 90px; }
 	padding: 12px;
 	margin-bottom: 30px;
 }
+.table-languages-list textarea {
+	width: 99%;
+	height: 20px;
+	border: 0 none;
+	padding: 0;
+	background: none;
+	box-shadow: none;
+}
+.eb-admin-lang-submit {
+	position: absolute;
+	right: 2%;
+	top: -999px;
+	display: none;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

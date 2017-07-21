@@ -1,0 +1,14 @@
+/* ẩn menu đơn hàng */
+#toplevel_page_eb-order .wp-first-item,
+/* ẩn menu blog/ tin tức */
+#menu-posts-blog,
+/* ẩn các thuộc tính của sản phẩm khi thêm sản phẩm mới */
+#eb-product-info,
+#eb-product-list-color,
+#eb-product-dieukien,
+#eb-product-noibat,
+#post_optionsdiv,
+/* ẩn menu thông số khác (bên trái) */
+#menu-posts .wp-submenu li:last-child,
+/* ẩn menu thêm blog ở trên admin bar */
+#wp-admin-bar-new-blog { display: none; }
