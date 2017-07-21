@@ -67,7 +67,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			'list_tyle' => '',
 			'get_child' => '',
 			'get_parent' => '',
-			'dynamic_tag' => ''
+			'dynamic_tag' => 'h2'
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
