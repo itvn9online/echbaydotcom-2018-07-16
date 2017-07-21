@@ -11,7 +11,7 @@ define( 'eb_key_for_site_lang', 'lang_eb_' );
 $___eb_lang[eb_key_for_site_lang . 'home'] = 'Trang chủ';
 $___eb_lang[eb_key_for_site_lang . 'search'] = 'Tìm kiếm';
 // placeholder for search
-$___eb_lang[eb_key_for_site_lang . 'searchp'] = $___eb_lang[eb_key_for_site_lang . 'search'];
+$___eb_lang[eb_key_for_site_lang . 'searchp'] = $___eb_lang[eb_key_for_site_lang . 'search'] . ' sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'mungay'] = 'Mua ngay';
 
@@ -49,6 +49,9 @@ $___eb_lang[eb_key_for_site_lang . 'cart_ghichu'] = 'Ghi chú';
 $___eb_lang[eb_key_for_site_lang . 'cart_vidu'] = 'Ví dụ: Giao hàng trong giờ hành chính, gọi điện trước khi giao...';
 $___eb_lang[eb_key_for_site_lang . 'cart_gui'] = '<i class="fa fa-shopping-cart"></i> Gửi đơn hàng';
 $___eb_lang[eb_key_for_site_lang . 'cart_them'] = 'Cho vào giỏ hàng';
+
+// booking done
+$___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
 
 
 

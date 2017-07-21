@@ -749,15 +749,19 @@ function click_edit_img_in_content() {
 
 function fix_textarea_height() {
 	$('.fix-textarea-height textarea, textarea.fix-textarea-height').each(function() {
-		var a = $(this).attr('data-resize') || '';
+		var a = $(this).attr('data-resize') || '',
+			min_height = $(this).attr('data-min-height') || 60,
+			add_height = $(this).attr('data-add-height') || 20;
+//		console.log(min_height);
+		
 		if (a == '') {
 			$(this).height(20);
 			
 			//
 			var new_height = $(this).get(0).scrollHeight || 0;
-			new_height += 20;
-			if (new_height < 60) {
-				new_height = 60;
+			new_height -= 0 - add_height;
+			if (new_height < min_height) {
+				new_height = min_height;
 			}
 			
 			//

@@ -1535,13 +1535,11 @@ var _global_js_eb = {
 		
 		var check_phone_number = g_func.number_only( f.t_dienthoai.value );
 		
-		/*
 		if (check_phone_number.toString().length < 10) {
 			alert('Vui lòng nhập ít nhất một số điện thoại bạn đang sử dụng');
 			f.t_dienthoai.focus();
 			return false;
 		}
-		*/
 		
 		if (_global_js_eb.check_email(f.t_email.value) == false) {
 			var new_email = g_func.non_mark_seo(f.t_dienthoai.value);
@@ -1549,6 +1547,12 @@ var _global_js_eb = {
 				new_email += '@' + web_link.split('//')[1].split('/')[0].replace('www.', '').replace(/\:/g, '.');
 			} catch (e) {}
 			f.t_email.value = new_email;
+			
+			if (_global_js_eb.check_email(f.t_email.value) == false) {
+				alert('Email không đúng định dạng');
+				f.t_email.focus();
+				return false;
+			}
 		}
 		
 		if (f.t_diachi.value.replace(/\s/g, '') == '') {

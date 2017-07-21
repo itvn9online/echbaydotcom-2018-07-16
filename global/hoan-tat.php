@@ -109,12 +109,22 @@ $main_content = EBE_str_template ( 'hoan-tat.html', array (
 */
 
 //
-$main_content = EBE_html_template( EBE_get_page_template( $act ), array(
-	'tmp.js' => 'var current_hd_id = "' . $hd_id . '", current_hd_object = "' . $current_hd_object . '";',
+//$main_content = EBE_html_template( EBE_get_page_template( $act ), array(
+$main_content = EBE_html_template( EBE_get_lang('booking_done'), array(
+//	'tmp.js' => '',
 	'tmp.hd_id' => $hd_id,
 	'tmp.hd_mahoadon' => $hd_mahoadon,
 	'tmp.cf_hotline' => $__cf_row['cf_hotline'],
 //	'tmp.echbay_plugin_url' => EB_URL_OF_PLUGIN,
 //	'tmp.echbay_plugin_version' => date_time,
 ) );
+
+
+
+// thêm mã JS vào luôn trong phần PHP, để HTML làm bản dịch
+$main_content .= '<script type="text/javascript">
+var current_hd_id = "' . $hd_id . '", current_hd_object = "' . $current_hd_object . '";
+</script>';
+
+
 
