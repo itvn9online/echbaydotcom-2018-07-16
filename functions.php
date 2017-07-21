@@ -2061,6 +2061,7 @@ function _eb_load_ads ( $type = 0, $posts_per_page = 20, $data_size = 1, $_eb_qu
 	global $__cf_row;
 	global $arr_eb_ads_status;
 	global $eb_background_for_post;
+	global $cid;
 //		global $___eb_ads__not_in;
 //		echo 'ADS NOT IN: ' . $___eb_ads__not_in . '<br>' . "\n";
 	
@@ -2095,33 +2096,61 @@ function _eb_load_ads ( $type = 0, $posts_per_page = 20, $data_size = 1, $_eb_qu
 	
 	// nếu có thuộc tính in_cat, mà giá trị trống -> lấy các q.cáo trong nhóm hiện tại
 	if ( isset($_eb_query['category__in']) && $_eb_query['category__in'] == '' ) {
-		$_eb_query['category__in'] = array();
+		$arr_in = array();
 		
-		$categories = get_the_category();
-//			print_r($categories);
-		
-		foreach ( $categories as $k => $v ) {
-			$_eb_query['category__in'][] = $v->term_id;
-//				$strCacheFilter .= $v->term_id;
+		// nếu đang có nhóm -> lấy luôn ID của nhóm này
+		if ( $cid > 0 ) {
+			$arr_in[] = $cid;
 		}
+		// hoặc lấy ID các category đang xuất hiện ở đây
+		else {
+			// chỉ lấy category hiện tại
+			$categories = get_queried_object();
+//			print_r($categories);
+			if ( isset( $categories->term_id ) ) {
+				$arr_in[] = $categories->term_id;
+			}
+			else {
+			// lấy các category theo sản phẩm
+				$categories = get_the_category();
+//				print_r($categories);
+				foreach ( $categories as $k => $v ) {
+					$arr_in[] = $v->term_id;
+	//				$strCacheFilter .= $v->term_id;
+				}
+			}
+		}
+//		print_r($arr_in);
+		$_eb_query['category__in'] = $arr_in;
 	}
-	
 	// nếu có thuộc tính not_in_cat, mà giá trị trống -> chỉ lấy các q.cáo không có nhóm
-	if ( isset($_eb_query['category__not_in']) && $_eb_query['category__not_in'] == '' ) {
-		$_eb_query['category__not_in'] = array();
+	else if ( isset($_eb_query['category__not_in']) && $_eb_query['category__not_in'] == '' ) {
+		$arr_in = array();
 		
+		// nếu đang có nhóm -> lấy luôn ID của nhóm này
+		if ( $cid > 0 ) {
+			$arr_in[] = $cid;
+		}
+		// mặc định là lấy toàn bộ category
+		else {
 //			$categories = get_the_category();
 //			print_r($categories);
-		
-		$categories = get_categories( array(
-//				'hide_empty' => 0,
-		) );
+			
+			$categories = get_categories();
+			/*
+			$categories = get_categories( array(
+				'hide_empty' => 0,
+			) );
+			*/
 //			print_r($categories);
-		
-		foreach ( $categories as $k => $v ) {
-			$_eb_query['category__not_in'][] = $v->term_id;
+			
+			foreach ( $categories as $k => $v ) {
+				$arr_in[] = $v->term_id;
 //				$strCacheFilter .= $v->term_id;
+			}
 		}
+//		print_r($arr_in);
+		$_eb_query['category__not_in'] = $arr_in;
 	}
 	
 	
@@ -2131,9 +2160,9 @@ function _eb_load_ads ( $type = 0, $posts_per_page = 20, $data_size = 1, $_eb_qu
 	}
 	
 	
-//		$strCacheFilter = 'ads' . $type . implode ( '-', $_eb_query );
+//	$strCacheFilter = 'ads' . $type . implode ( '-', $_eb_query );
 	$strCacheFilter = 'ads' . $type . $strCacheFilter;
-//		echo $strCacheFilter . '<br>' . "\n";
+//	echo $strCacheFilter . '<br>' . "\n";
 	$str = _eb_get_static_html ( $strCacheFilter );
 	if ($str == false) {
 		*/
