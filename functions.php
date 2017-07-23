@@ -4761,8 +4761,14 @@ function EBE_set_header ( $status = 200 ) {
 
 
 
+// lấy css theo plugin
 function EBE_get_css_for_config_design ( $f, $type = '.php' ) {
 	return EB_THEME_PLUGIN_INDEX . 'themes/css/' . str_replace( $type, '.css', $f );
+}
+
+// lấy css theo theme
+function EBE_get_css_for_theme_design ( $f, $type = '.php' ) {
+	return EB_THEME_URL . 'css/' . str_replace( $type, '.css', $f );
 }
 
 

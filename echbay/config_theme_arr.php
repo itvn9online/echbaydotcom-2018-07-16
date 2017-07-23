@@ -34,12 +34,17 @@ function EBE_config_theme_load_file_tag ( $str, $search ) {
 1: Nếu muốn file chỉ chạy trên domain cụ thể
 Domain: xwatch.vn
 
+2. Nếu muốn chỉ chạy trên theme cụ thể -> chov vào thư mục theme/ui
+
 */
-function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php' ) {
+function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php', $in_theme = 0 ) {
 	global $__cf_row_default;
 	global $__cf_row;
 	global $str_list_all_include_file;
 //	global $arr_for_set_template;
+	
+	// định dạng file được hỗ trợ
+	$file_type_support = 'php,html,htm';
 	
 	// kiểm tra theo domain của template
 	$current_domain = str_replace( 'www.', '', $_SERVER['HTTP_HOST'] );
@@ -47,9 +52,20 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 	//
 	$str_top_design_preview = '';
 	
-	$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . 'themes/' . $type . '/*.{' . substr( $file_type, 1 ) . '}', GLOB_BRACE );
+	// lấy trong plugin
+	if ( $in_theme == 0 ) {
+//		echo EB_THEME_PLUGIN_INDEX . "\n";
+		$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . 'themes/' . $type . '/*.{' . $file_type_support . '}', GLOB_BRACE );
+	}
+	// lấy trong theme
+	else {
+//		echo EB_THEME_URL . "\n";
+		$arr_file_name = glob ( EB_THEME_URL . 'theme/ui/*.{' . $file_type_support . '}', GLOB_BRACE );
+	}
 //	print_r( $arr_file_name );
 	
+	
+	// tạo input cho config submit
 	$arr_top_include_file = array();
 	for ( $i = 1; $i < 10; $i++ ) {
 		$j = $type . $i;
@@ -110,13 +126,22 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 	}
 //	print_r( $arr_top_include_file );
 	
-	$str_top_include_file = '
+	
+	
+	//
+	$str_top_include_file = '';
+	// Tạo nút riêng nếu là theme dùng chung
+	if ( $in_theme == 0 ) {
+		$str_top_include_file = '
 	<div class="change-eb-design-note d-none"><em>* Các file sẽ xuất hiện lần lượt theo vị trí đã chọn!</em></div>
 	<div class="button-for-ebdesign-hover">
 		<button type="button" data-type="' . $type . '" class="click-remove-file-include-form-input cur">[ Xóa file ]</button>
 		<button type="button" data-type="' . $type . '" class="click-add-widget-include-to-input cur">[ ' . $type . ' widget ]</button>
 		<button type="button" class="cur click-to-exit-design d-none2 show-if-ebdesign-hover">Đóng [x]</button>
 	</div>';
+	}
+	
+	
 	
 	$i = 0;
 	foreach ( $arr_top_include_file as $k => $v ) {
@@ -252,6 +277,15 @@ $arr_for_set_template['str_top_include_file'] = $arr_design_preview['list'];
 $arr_for_set_template['str_top_design_preview'] = $arr_design_preview['preview'];
 */
 
+
+
+// các file theo theme
+$arr_for_set_template['str_private_include_file'] = EBE_config_load_top_footer_include( $type = 'private', $file_type = '.php', 1 );
+
+
+
+
+// các file dùng chung
 $arr_for_set_template['str_top_include_file'] = EBE_config_load_top_footer_include();
 $str_top_design_preview = '';
 for ( $i = 1; $i < 10; $i++ ) {

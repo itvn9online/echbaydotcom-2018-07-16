@@ -321,19 +321,28 @@ $('.click-to-change-file-design').click(function () {
 	}
 	current_frame_design_is_show = text;
 	
-	//
-	$('.change-eb-design-fixed').hide();
-	$('.change-eb-design-fixed[data-key="' + text + '"]').show().addClass('selected');
+	// v1
+//	$('.change-eb-design-fixed').hide();
+//	$('.change-eb-design-fixed[data-key="' + text + '"]').show().addClass('selected');
+	
+	// v2
+	$('.change-eb-design-fixed').show().addClass('selected');
+	
+	$('.change-eb-design-hide-fixed').hide();
+	$('.change-eb-design-' + text + '-fixed').show();
 	
 	
 	
 	// Căn chỉnh lại size cho phần chọn thiết kế
+	var eb_design_width = $('#change_eb_design_width').width();
+	
 //	$('.preview-in-ebdesign').hide();
 //	$('.preview-in-ebdesign[data-key="' + key + '"]').show();
 	$('.preview-in-ebdesign').each(function() {
 		var a = $(this).attr('data-size') || '';
 		if ( a != '' ) {
-			$(this).height( $('.change-eb-design-fixed[data-key="' + text + '"]  h3:first').width() * eval(a) );
+//			$(this).height( $('.change-eb-design-fixed[data-key="' + text + '"]  h3:first').width() * eval(a) );
+			$(this).height( eb_design_width * eval(a) );
 		}
 	});
 	
