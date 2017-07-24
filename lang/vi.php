@@ -21,6 +21,12 @@ $___eb_lang[eb_key_for_site_lang . 'xacnhan_thoat'] = 'Xác nhận đăng xuất
 $___eb_lang[eb_key_for_site_lang . 'dangnhap'] = 'Đăng nhập';
 $___eb_lang[eb_key_for_site_lang . 'dangky'] = 'Đăng ký';
 
+$___eb_lang[eb_key_for_site_lang . 'order_by'] = 'Sắp xếp theo';
+$___eb_lang[eb_key_for_site_lang . 'order_price_down'] = 'Giá giảm dần';
+$___eb_lang[eb_key_for_site_lang . 'order_price_up'] = 'Giá Tăng dần';
+$___eb_lang[eb_key_for_site_lang . 'order_az'] = 'Tên sản phẩm ( từ A đến Z )';
+$___eb_lang[eb_key_for_site_lang . 'order_za'] = 'Tên sản phẩm ( từ Z đến A )';
+
 //
 $___eb_lang[eb_key_for_site_lang . 'cart_diachi'] = 'Địa chỉ';
 $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'] = 'Điện thoại';

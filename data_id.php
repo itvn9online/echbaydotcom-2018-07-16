@@ -15,6 +15,12 @@ $add_data_id = array (
 		'lang_dangnhap' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('dangnhap') ) . '\'',
 		'lang_dangky' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('dangky') ) . '\'',
 		
+		'lang_order_by' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('order_by') ) . '\'',
+		'lang_order_price_down' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('order_price_down') ) . '\'',
+		'lang_order_price_up' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('order_price_up') ) . '\'',
+		'lang_order_az' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('order_az') ) . '\'',
+		'lang_order_za' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('order_za') ) . '\'',
+		
 //		'service_name' => '\'' . $service_name . '\'',
 //		'co_quick_register' => '\'c_quick_register\'',
 		'isLogin' => $mtv_id,

@@ -50,13 +50,13 @@ $('.eb-set-menu-selected .sub-menu').addClass('cf');
 	
 	//
 	var arr = {
-		time : 'Sắp xếp theo',
+		time : lang_order_by,
 //		time : 'Mới nhất',
 //		view : 'Xem nhiều',
-		price_down : 'Giá giảm dần',
-		price_up : 'Giá Tăng dần',
-		az : 'Tên sản phẩm ( từ A đến Z )',
-		za : 'Tên sản phẩm ( từ Z đến A )'
+		price_down : lang_order_price_down,
+		price_up : lang_order_price_up,
+		az : lang_order_az,
+		za : lang_order_za
 	};
 	
 	//
