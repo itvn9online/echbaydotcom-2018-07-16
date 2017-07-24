@@ -122,6 +122,29 @@ function EBE_click_to_update_site_lang () {
 			}
 			*/
 		}
+	}).keyup(function(e) {
+		// khi người dùng bấm enter
+		if (e.keyCode == 13) {
+			// kiểm tra giá trị đang có
+			var a = $(this).val() || '';
+			// nếu có
+			if ( a != '' ) {
+				a = $.trim(a);
+				// kiểm tra lại lần nữa cho chắc
+				if ( a != '' ) {
+					if ( a.split("\n").length == 1 ) {
+						$(this).val( a );
+						
+						// tự động cập nhật giá trị mới
+						if ( check_update_languages() == true ) {
+							document.frm_languages.submit();
+						}
+						
+						return false
+					}
+				}
+			}
+		}
 	});
 }
 
