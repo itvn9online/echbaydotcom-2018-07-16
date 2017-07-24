@@ -8,7 +8,6 @@
 }
 #webgiare-top2 .nav-menu {
 	line-height: 48px;
-	margin-top: 10px;
 	position: relative;
 	font-size: 15px;
 }
@@ -53,7 +52,7 @@
 	line-height: 37px;
 	margin-top: 0;
 }
-#webgiare-top2 .div-search-margin { margin-top: 15px; }
+#webgiare-top2 .div-search-margin { margin-top: 10px; }
 #webgiare-top2 .div-search {
 	background: #f2f2f2;
 	position: relative;
