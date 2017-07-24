@@ -18,9 +18,10 @@ if ( isset( $_GET['cat'] ) && $_GET['cat'] > 0 ) {
 	// tìm kiếm URL gốc
 	$url_og_url = _eb_c_link( (int)$_GET['cat'], EB_BLOG_POST_LINK );
 	
-	//
+	// nếu không tìm thấy -> bỏ qua -> để đến trang báo lỗi
 	if ( $url_og_url == '' || $url_og_url == '#' ) {
 	}
+	// nếu có -> chuyển tới trang chính
 	else {
 		wp_redirect( $url_og_url, 301 );
 		exit();
