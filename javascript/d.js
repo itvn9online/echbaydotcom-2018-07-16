@@ -1657,6 +1657,7 @@ $(window).resize(function() {
 	
 	_global_js_eb.auto_margin();
 //}).on('load', function(e) {
+	
 	/*
 	if (pid <= 0 && qc_2ben.length > 0 && $(window).width() > 1100) {
 		load_ads_2ben = true;

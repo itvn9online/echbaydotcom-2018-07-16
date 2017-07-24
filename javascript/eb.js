@@ -463,7 +463,22 @@ var _global_js_eb = {
 	
 	//
 	check_contact_frm : function () {
+		_global_js_eb.add_primari_iframe();
+		
+		//
 		var f = document.frm_contact;
+		
+		//
+		return true;
+	},
+	
+	
+	//
+	check_profile_frm : function () {
+		_global_js_eb.add_primari_iframe();
+		
+		//
+		var f = document.frm_canhan;
 		
 		//
 		return true;
@@ -1531,6 +1546,9 @@ var _global_js_eb = {
 		}
 		
 		//
+		_global_js_eb.add_primari_iframe();
+		
+		//
 		var f = document.frm_cart;
 		
 		var check_phone_number = g_func.number_only( f.t_dienthoai.value );
@@ -2038,11 +2056,24 @@ var _global_js_eb = {
 		
 		//
 		return true;
+	},
+	
+	
+	/*
+	* Nạp iframe để submit
+	*/
+	add_primari_iframe : function () {
+		if ( dog('target_eb_iframe') == null ) {
+			$('body').append('<iframe id="target_eb_iframe" name="target_eb_iframe" src="about:blank" width="750" height="600">AJAX form</iframe>');
+		}
+		
+		return true;
 	}
 	
 };
 
 //
 //var ___eb_for_wp = _global_js_eb;
+
 
 

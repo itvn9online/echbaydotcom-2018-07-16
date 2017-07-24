@@ -19,7 +19,7 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 ?>
 <!-- end mobile menu --> 
 <!-- ajax post -->
-<iframe id="target_eb_iframe" name="target_eb_iframe" src="about:blank" width="750" height="600">AJAX form</iframe>
+<!-- <iframe id="target_eb_iframe" name="target_eb_iframe" src="about:blank" width="750" height="600">AJAX form</iframe> -->
 <!-- quick view video -->
 <div class="quick-video">
 	<div class="quick-video-close big cf">
