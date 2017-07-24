@@ -62,8 +62,12 @@ else {
 <!-- -->
 <meta property="og:title" content="<?php echo $__cf_row ['cf_title']; ?>" />
 <meta property="og:description" content="<?php echo $__cf_row ['cf_description']; ?>" />
-<meta property="og:type" content="product" />
+<meta property="og:type" content="<?php echo $web_og_type; ?>" />
 <meta property="og:site_name" content="<?php echo $web_name; ?>" />
+<!-- -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="<?php echo $__cf_row ['cf_description']; ?>" />
+<meta name="twitter:title" content="<?php echo $__cf_row ['cf_title']; ?>" />
 <?php
 }
 else {

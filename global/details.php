@@ -25,6 +25,7 @@ $__post = $post;
 $pid = $__post->ID;
 
 $url_og_url = _eb_p_link( $pid );
+$web_og_type = 'product';
 
 _eb_fix_url( $url_og_url );
 
@@ -40,14 +41,14 @@ $eb_wp_post_type = $__post->post_type;
 
 
 // SEO
-$__cf_row ['cf_title'] = _eb_get_post_object( $pid, '_eb_product_title', $__post->post_title );
-//if ( $__cf_row ['cf_title'] == '' ) $__cf_row ['cf_title'] = $__post->post_title;
+$__cf_row ['cf_title'] = _eb_get_post_object( $pid, '_eb_product_title' );
+if ( $__cf_row ['cf_title'] == '' ) $__cf_row ['cf_title'] = $__post->post_title;
 
-$__cf_row ['cf_keywords'] = _eb_get_post_object( $pid, '_eb_product_keywords', $__post->post_title );
-//if ( $__cf_row ['cf_keywords'] == '' ) $__cf_row ['cf_keywords'] = $__post->post_title;
+$__cf_row ['cf_keywords'] = _eb_get_post_object( $pid, '_eb_product_keywords' );
+if ( $__cf_row ['cf_keywords'] == '' ) $__cf_row ['cf_keywords'] = $__post->post_title;
 
-$__cf_row ['cf_description'] = _eb_get_post_object( $pid, '_eb_product_description', $__post->post_title );
-//if ( $__cf_row ['cf_description'] == '' ) $__cf_row ['cf_description'] = $__post->post_title;
+$__cf_row ['cf_description'] = _eb_get_post_object( $pid, '_eb_product_description' );
+if ( $__cf_row ['cf_description'] == '' ) $__cf_row ['cf_description'] = $__post->post_excerpt != '' ? $__post->post_excerpt : $__post->post_title;
 
 
 // meta cho thẻ amp -> hiện chỉ hỗ trợ trang chi tiết dạng đơn giản
@@ -140,6 +141,9 @@ $id_for_get_sidebar = 'post_sidebar';
 
 // blog
 if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
+	// bài báo
+	$web_og_type = 'article';
+	
 	$post_categories = get_the_terms( $pid, EB_BLOG_POST_LINK );
 	
 	//

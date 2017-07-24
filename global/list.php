@@ -96,6 +96,13 @@ if ( $switch_taxonomy != '' ) {
 	//
 	$url_og_url = _eb_c_link( $__category->term_id, $__category->taxonomy );
 	
+	// Mặc định là trang sản phẩm
+	$web_og_type = 'product';
+	// Nếu là tin tức thì báo là tin tức
+	if ( $__category->taxonomy == EB_BLOG_POST_LINK || $__cf_row['cf_set_news_version'] == 1 ) {
+		$web_og_type = 'blog';
+	}
+	
 	//
 	_eb_fix_url( $url_og_url );
 	

@@ -7,6 +7,7 @@
 
 //
 $dynamic_meta .= '<link rel="canonical" href="' . web_link . '" />';
+$url_og_url = web_link;
 
 
 
