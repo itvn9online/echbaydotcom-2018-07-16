@@ -1,4 +1,3 @@
-
 /*
 * style for mobile
 */
@@ -171,3 +170,4 @@ body.style-for-mobile {
 .style-for-mobile .thread-details-mobileRight { line-height: 150px; }
 */
 /* } */
+.style-for-mobile .thread-details-mobileCenter { max-width: 450px; }
