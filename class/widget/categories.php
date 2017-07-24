@@ -67,7 +67,8 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			'list_tyle' => '',
 			'get_child' => '',
 			'get_parent' => '',
-			'dynamic_tag' => 'h2'
+			'dynamic_tag' => 'h2',
+			'custom_style' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -186,6 +187,10 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		echo '</p>';
 		
+		
+		//
+		echo '<p>Custom style: <input type="text" class="widefat" name="' . $this->get_field_name ( 'custom_style' ) . '" value="' . $custom_style . '" /></p>';
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -227,6 +232,8 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			$dynamic_tag_end = '</' . $dynamic_tag . '>';
 		}
 		
+		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
+		
 		
 		//
 		$cats_info = NULL;
@@ -258,7 +265,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		_eb_echo_widget_name( $this->name, $before_widget );
 		
 		//
-		echo '<div class="' . $list_tyle . '">';
+		echo '<div class="' . trim( $list_tyle . ' ' . $custom_style ) . '">';
 		
 		//
 		_eb_echo_widget_title( $title, 'echbay-widget-category-title', $before_title );
