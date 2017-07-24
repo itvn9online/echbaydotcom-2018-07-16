@@ -2929,7 +2929,66 @@ function _eb_p_link ($id, $seo = '') {
 // link cho phân nhóm
 $arr_cache_for_get_cat_url = array();
 
-function _eb_c_link ( $id, $taxx = 'category' ) {
+function _eb_c_link ( $id, $taxx = '' ) {
+	global $arr_cache_for_get_cat_url;
+	
+	//
+	if ( isset($arr_cache_for_get_cat_url[ $id ]) ) {
+		return $arr_cache_for_get_cat_url[ $id ];
+	}
+	
+	$strCacheFilter = 'cat_link' . $id;
+	$a = _eb_get_static_html ( $strCacheFilter, '', '', eb_default_cache_time );
+//	$a = _eb_get_static_html ( $strCacheFilter, '', '', 5 );
+	if ($a == false) {
+		
+		//
+		if ( $taxx == '' || $taxx == 'category' ) {
+			$a = get_category_link( $id );
+		}
+		else {
+			$a = get_term_link( get_term_by( 'id', $id, $taxx ), $taxx );
+		}
+		
+		//
+		if ( isset($a->errors) || $a == '' ) {
+//			print_r($a);
+			
+			// lấy theo blog
+//			if ( $taxx != '' ) {
+//				$a = get_term_link( get_term_by( 'id', $id, $taxx ), $taxx );
+//			}
+//			else {
+				$a = get_term_link( get_term_by( 'id', $id, EB_BLOG_POST_LINK ), EB_BLOG_POST_LINK );
+				if ( isset($a->errors) || $a == '' ) {
+					$a = get_term_link( get_term_by( 'id', $id, 'post_options' ), 'post_options' );
+					
+					// lấy theo post_tag
+					if ( isset($a->errors) || $a == '' ) {
+						$a = get_term_link( get_term_by( 'id', $id, 'post_tag' ), 'post_tag' );
+					}
+				}
+//			}
+			
+			//
+			if ( isset($a->errors) || $a == '' ) {
+				$a = '#';
+			}
+		}
+		// xóa ký tự đặc biệt khi rút link category
+		$a = str_replace( '/./', '/', $a );
+		
+		//
+		_eb_get_static_html ( $strCacheFilter, $a, '', 60 );
+	}
+	
+	//
+	$arr_cache_for_get_cat_url[ $id ] = $a;
+	
+	return $a;
+}
+
+function _eb_c_link_v1 ( $id, $taxx = 'category' ) {
 	global $arr_cache_for_get_cat_url;
 	
 	//
@@ -2942,8 +3001,9 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 //		$a = _eb_get_static_html ( $strCacheFilter, '', '', 5 );
 	if ($a == false) {
 		
+		//
 		$a = get_category_link( $id );
-//			$a = get_term_link( get_term( $id, $taxx ), $taxx );
+//		$a = get_term_link( get_term( $id, $taxx ), $taxx );
 		
 		// nếu trùng với short link -> không ghi cache nữa
 		/*
@@ -2954,7 +3014,7 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 		
 		//
 		if ( isset($a->errors) || $a == '' ) {
-//				print_r($a);
+//			print_r($a);
 			
 			$tem = get_term_by( 'id', $id, EB_BLOG_POST_LINK );
 			

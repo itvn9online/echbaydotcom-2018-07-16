@@ -94,13 +94,15 @@ if ( $switch_taxonomy != '' ) {
 //	echo $current_category_menu;
 	
 	//
-	$url_og_url = _eb_c_link( $__category->term_id );
+	$url_og_url = _eb_c_link( $__category->term_id, $__category->taxonomy );
 	
 	//
 	_eb_fix_url( $url_og_url );
 	
 	//
 	$link_for_fb_comment = web_link . '?cat=' . $__category->term_id;
+//	$link_for_fb_comment = wp_get_shortlink();
+//	the_shortlink();
 	
 	$dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
 	$dynamic_meta .= '<link rel="shortlink" href="' . $link_for_fb_comment . '" />';

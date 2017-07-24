@@ -10,6 +10,30 @@
 
 
 //
+//print_r( $_GET );
+
+// Nếu có ID của cat -> có thể là blog
+if ( isset( $_GET['cat'] ) && $_GET['cat'] > 0 ) {
+	
+	// tìm kiếm URL gốc
+	$url_og_url = _eb_c_link( (int)$_GET['cat'], EB_BLOG_POST_LINK );
+	
+	//
+	if ( $url_og_url == '' || $url_og_url == '#' ) {
+	}
+	else {
+		wp_redirect( $url_og_url, 301 );
+		exit();
+	}
+//	echo $url_og_url;
+//	exit();
+	
+}
+
+
+
+
+//
 $act = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
 //echo $act . '<br>';
 
