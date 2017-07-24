@@ -12,7 +12,7 @@ if ( $mtv_id > 0 ) {
 	<div class="popup-padding l19">
 		<div>Tạo mới một tài khoản cho phép bạn truy cập và sử dụng các dịch vụ trên website này. Nếu bạn đã có tài khoản, bạn hãy <a onclick="g_func.opopup('login')" href="javascript:;">đăng nhập tại đây</a></div>
 		<br />
-		<form name="frm_dangnhap" method="post" action="process/?set_module=register" target="target_eb_iframe">
+		<form name="frm_dangnhap" method="post" action="process/?set_module=register" target="target_eb_iframe" onSubmit="return _global_js_eb.add_primari_iframe();">
 			<div>
 				<label for="t_email"><strong>Email</strong></label>
 			</div>

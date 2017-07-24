@@ -2073,7 +2073,7 @@ var _global_js_eb = {
 };
 
 //
-//var ___eb_for_wp = _global_js_eb;
+//var ___eb_for_wp = _global_js_eb.add_primari_iframe;
 
 
 

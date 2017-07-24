@@ -578,6 +578,7 @@ function _eb_add_css_js_file ( $arr, $file_type = '.css', $include_now = 0, $inc
 					$new_content = $f_content;
 					
 					// chỉnh lại đường dẫn trong file css
+					/*
 					$arr_css_new_content = array(
 						'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/theme/images/',
 //							'../../../../plugins/' => '../../plugins/',
@@ -604,6 +605,7 @@ function _eb_add_css_js_file ( $arr, $file_type = '.css', $include_now = 0, $inc
 						';}.' => '}.',
 						';}#' => '}#',
 					);
+					*/
 					
 					// google khuyến khích không nên để inline cho CSS
 //						$new_content = str_replace( '}', '}' . "\n", $new_content );
@@ -627,9 +629,12 @@ function _eb_add_css_js_file ( $arr, $file_type = '.css', $include_now = 0, $inc
 					$new_content .= $str_new;
 					
 					//
+					/*
 					foreach ( $arr_css_new_content as $k => $v ) {
 						$new_content = str_replace( $k, $v, $new_content );
 					}
+					*/
+					$new_content = EBE_replace_link_in_cache_css ( $new_content );
 					
 					// nội dung in trực tiếp vào html
 					$new_content = '<style type="text/css">/* ' . date( 'r', date_time ) . ' */' . $new_content . '</style>';
@@ -734,9 +739,18 @@ function _eb_replace_css_space ( $str, $new_array = array() ) {
 	return $str;
 }
 
+// khi file css nằm trong cache
 function EBE_replace_link_in_cache_css ( $c ) {
 	return _eb_replace_css_space ( $c, array(
-		'../images/' => '../../themes/' . basename( get_template_directory() ) . '/theme/images/',
+		// IMG của theme
+//		'../images/' => '../../themes/' . basename( get_template_directory() ) . '/theme/images/',
+		'../images/' => '../../themes/' . basename( EB_THEME_URL ) . '/theme/images/',
+		
+		// IMG của plugin tổng
+//		'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
+		'../../images-global/' => '../../echbaydotcom/images-global/',
+//		'../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
+		'../images-global/' => '../../echbaydotcom/images-global/',
 		
 		// các css ngoài -> trong outsource -> vd: font awesome
 		'../outsource/' => '../../echbaydotcom/outsource/',
@@ -744,12 +758,15 @@ function EBE_replace_link_in_cache_css ( $c ) {
 	) );
 }
 
+// khi css thuộc dạng inline (hiển thị trực tiếp trong HTML)
 function EBE_replace_link_in_css ( $c ) {
 	return _eb_replace_css_space ( $c, array(
 //		'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/theme/images/',
 		'../images/' => './wp-content/themes/' . basename( EB_THEME_URL ) . '/theme/images/',
-		'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
-		'../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
+//		'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
+		'../../images-global/' => './wp-content/echbaydotcom/images-global/',
+//		'../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
+		'../images-global/' => './wp-content/echbaydotcom/images-global/',
 		
 		// các css ngoài -> trong outsource -> vd: font awesome
 		'../outsource/' => './wp-content/echbaydotcom/outsource/',
