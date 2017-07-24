@@ -1396,9 +1396,9 @@ if ( $('.thread-details-tags a').length > 0 ) {
 
 // Kiểm tra người dùng đã đăng nhập chưa
 if ( isLogin > 0 && logout_url != '' ) {
-	$('.oi_member_func').html( '<a href="profile/" class="bold">Tài khoản</a> <a onclick="return confirm(\'Xác nhận đăng xuất khỏi hệ thống\');" href="' +logout_url+ '">Thoát</a>' );
+	$('.oi_member_func').html( '<a href="profile/" class="bold">' + lang_taikhoan + '</a> <a onclick="return confirm(\'' + lang_xacnhan_thoat + '\');" href="' +logout_url+ '">' + lang_thoat + '</a>' );
 } else {
-	$('.oi_member_func').html( '<a href="javascript:;" onclick="g_func.opopup(\'login\');">Đăng nhập</a> <a onclick="g_func.opopup(\'register\');" href="javascript:;">Đăng ký</a>' );
+	$('.oi_member_func').html( '<a href="javascript:;" onclick="g_func.opopup(\'login\');">' + lang_dangnhap + '</a> <a onclick="g_func.opopup(\'register\');" href="javascript:;">' + lang_dangky + '</a>' );
 }
 //$('.oi_member_func').addClass('fa fa-user');
 

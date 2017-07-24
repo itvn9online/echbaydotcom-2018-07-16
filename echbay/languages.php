@@ -18,6 +18,9 @@ global $___eb_lang;
 	<h1>Bản dịch</h1>
 </div>
 <p>* Bạn có thể thay đổi các bản dịch, cụm từ trên website sang nội dung khác phù hợp với website của bạn hơn. Bấm đúp chuột vào cụm từ cần thay đổi, nhập từ mới rồi enter.</p>
+<h4>&lt;?php echo EBE_get_lang('home'); ?&gt;</h4>
+<h4>EBE_get_lang('home')</h4>
+<br>
 <form name="frm_languages" method="post" action="<?php echo web_link; ?>process/?set_module=languages" target="target_eb_iframe" onsubmit="return check_update_languages();">
 	<div class="d-none">
 		<input type="text" name="languages_key_edit" id="languages_key_edit" value="">

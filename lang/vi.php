@@ -15,6 +15,12 @@ $___eb_lang[eb_key_for_site_lang . 'searchp'] = $___eb_lang[eb_key_for_site_lang
 $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'mungay'] = 'Mua ngay';
 
+$___eb_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
+$___eb_lang[eb_key_for_site_lang . 'thoat'] = 'Thoát';
+$___eb_lang[eb_key_for_site_lang . 'xacnhan_thoat'] = 'Xác nhận đăng xuất khỏi hệ thống';
+$___eb_lang[eb_key_for_site_lang . 'dangnhap'] = 'Đăng nhập';
+$___eb_lang[eb_key_for_site_lang . 'dangky'] = 'Đăng ký';
+
 //
 $___eb_lang[eb_key_for_site_lang . 'cart_diachi'] = 'Địa chỉ';
 $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'] = 'Điện thoại';

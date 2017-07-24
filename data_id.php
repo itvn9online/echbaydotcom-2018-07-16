@@ -8,6 +8,13 @@ $add_data_id = array (
 //		'check_lazyload' => $check_lazyload,
 		'web_link' => '\'' . $web_link . '\'',
 		'web_name' => '\'' . _eb_str_block_fix_content ( web_name ) . '\'',
+		
+		'lang_taikhoan' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('taikhoan') ) . '\'',
+		'lang_thoat' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('thoat') ) . '\'',
+		'lang_xacnhan_thoat' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('xacnhan_thoat') ) . '\'',
+		'lang_dangnhap' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('dangnhap') ) . '\'',
+		'lang_dangky' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('dangky') ) . '\'',
+		
 //		'service_name' => '\'' . $service_name . '\'',
 //		'co_quick_register' => '\'c_quick_register\'',
 		'isLogin' => $mtv_id,
