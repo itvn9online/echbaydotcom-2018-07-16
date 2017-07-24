@@ -59,6 +59,7 @@ class ___echbay_widget_home_hot_content extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		$description = isset( $instance ['description'] ) ? $instance ['description'] : '';
 		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
 		if ( $post_number == 0 ) $post_number = 5;
 		
@@ -136,6 +137,7 @@ class ___echbay_widget_home_hot_content extends WP_Widget {
 			'tmp.max_width' => $max_width,
 			'tmp.num_post_line' => $num_line,
 			'tmp.home_hot_title' => $title,
+			'tmp.description' => $description,
 			'tmp.home_hot' => $str_home_hot,
 		) );
 		
