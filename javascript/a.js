@@ -557,7 +557,11 @@ function EBE_get_current_wp_module ( s ) {
 	else if ( s.split('/options-permalink.php').length > 1 ) {
 		a = 'permalink';
 	}
-//	admin_act == 'user-new'
+	// chuyển rule wordpress sang nginx cho nó mượt
+	else if ( s.split('/nav-menus.php').length > 1 ) {
+		a = 'menu';
+	}
+//	admin_act == 'menu'
 	console.log(a);
 	
 	return a;
@@ -952,6 +956,19 @@ function EBE_get_current_wp_module ( s ) {
 //		console.log(str);
 		
 		$('form[name="form"]').after( '<textarea style="width:99%;height:600px;">' + str + '</textarea>' );
+	}
+	// ở phần menu thì thêm 1 số menu tĩnh vào để add cho nhanh
+	else if ( admin_act == 'menu' ) {
+		
+		$('#side-sortables ul.outer-border').after( $('#content-for-quick-add-menu').html() || '' );
+		
+		// khi người dùng bấm thêm vào menu
+		$('.click-to-add-custom-link').click(function () {
+			$('#custom-menu-item-url').val( $(this).attr('data-link') || '#' );
+			$('#custom-menu-item-name').val( $(this).attr('data-text') || 'Home' );
+			$('#submit-customlinkdiv').click();
+		});
+		
 	}
 	
 	
