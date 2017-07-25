@@ -521,7 +521,12 @@ input[id="_eb_category_order"] { width: 90px; }
 	top: -999px;
 	display: none;
 }
-.buttom-for-quick-add-menu li { }
+.buttom-for-quick-add-menu li {
+	padding: 8px 2px 8px 14px;
+	border-bottom: 1px dashed #ccc;
+	margin: 0;
+}
+.buttom-for-quick-add-menu li:last-child { border: 0 none; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
