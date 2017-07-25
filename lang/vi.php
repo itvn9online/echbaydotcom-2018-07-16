@@ -13,6 +13,7 @@ $___eb_lang[eb_key_for_site_lang . 'search'] = 'Tìm kiếm';
 // placeholder for search
 $___eb_lang[eb_key_for_site_lang . 'searchp'] = $___eb_lang[eb_key_for_site_lang . 'search'] . ' sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
+$___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'mungay'] = 'Mua ngay';
 
 $___eb_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
