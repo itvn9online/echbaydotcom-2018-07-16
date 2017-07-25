@@ -967,6 +967,7 @@ function EBE_get_current_wp_module ( s ) {
 			$('#custom-menu-item-url').val( $(this).attr('data-link') || '#' );
 			$('#custom-menu-item-name').val( $(this).attr('data-text') || 'Home' );
 			$('#submit-customlinkdiv').click();
+//			$('#menu-to-edit li:last').click();
 		});
 		
 	}
