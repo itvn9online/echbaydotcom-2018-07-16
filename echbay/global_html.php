@@ -3,7 +3,7 @@
 		<ul class="buttom-for-quick-add-menu">
 			<li>
 				<h4>Thêm menu nhanh</h4>
-				<div>Bấm dấu + để thêm menu!</div>
+				<div>* <em>Bấm dấu <strong>+</strong> để thêm menu</em>!</div>
 			</li>
 			<li class="cf">
 				<div class="lf f80"><?php echo EBE_get_lang('home'); ?></div>
