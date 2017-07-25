@@ -521,6 +521,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	top: -999px;
 	display: none;
 }
+.buttom-for-quick-add-menu li { }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
