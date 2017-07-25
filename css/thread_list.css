@@ -10,5 +10,14 @@
 .thread-list33 li { width: 33.33%; }
 .echbay-blog50 li,
 .thread-list50 li { width: 50%; }
+.echbay-blog100,
+.thread-list100,
+.echbay-blog100 .echbay-blog-padding,
+.echbay-blog100 .thread-list-padding,
+.thread-list100 .echbay-blog-padding,
+.thread-list100 .thread-list-padding {
+	margin-left: 0;
+	margin-right: 0;
+}
 .echbay-blog100 li,
 .thread-list100 li { width: 100%; }
