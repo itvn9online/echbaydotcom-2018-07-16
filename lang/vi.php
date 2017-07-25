@@ -64,6 +64,16 @@ $___eb_lang[eb_key_for_site_lang . 'cart_vidu'] = 'Ví dụ: Giao hàng trong gi
 $___eb_lang[eb_key_for_site_lang . 'cart_gui'] = '<i class="fa fa-shopping-cart"></i> Gửi đơn hàng';
 $___eb_lang[eb_key_for_site_lang . 'cart_them'] = 'Cho vào giỏ hàng';
 
+// contact
+$___eb_lang[eb_key_for_site_lang . 'lh_lienhe'] = 'Liên hệ với chúng tôi';
+$___eb_lang[eb_key_for_site_lang . 'lh_luuy'] = 'Để liên hệ với chúng tôi, bạn có thể gửi email tới <a href="mailto:{tmp.cf_email}" rel="nofollow">{tmp.cf_email}</a>, sử dụng phom liên hệ phía dưới hoặc liên hệ trực tiếp theo địa chỉ và số điện thoại chúng tôi cung cấp.';
+$___eb_lang[eb_key_for_site_lang . 'lh_hoten'] = $___eb_lang[eb_key_for_site_lang . 'cart_hoten'];
+$___eb_lang[eb_key_for_site_lang . 'lh_diachi'] = $___eb_lang[eb_key_for_site_lang . 'cart_diachi'];
+$___eb_lang[eb_key_for_site_lang . 'lh_dienthoai'] = $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'];
+$___eb_lang[eb_key_for_site_lang . 'lh_noidung'] = 'Nội dung';
+$___eb_lang[eb_key_for_site_lang . 'lh_submit'] = 'Gửi liên hệ';
+$___eb_lang[eb_key_for_site_lang . 'lh_note'] = 'là các trường bắt buộc phải điền.<br>Vui lòng cung đầy đủ thông tin để quá trình trao đổi được diễn ra thuận lợi hơn.';
+
 // booking done
 $___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
 

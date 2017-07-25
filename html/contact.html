@@ -1,24 +1,13 @@
-<style type="text/css">
-#show_showroom_if_change {
-	padding: 10px;
-	background: #666;
-	border: 1px #ccc solid;
-	color: #fff;
-}
-#show_map_if_select {
-	border: 1px #ccc solid;
-}
-</style>
 <div class="medium {tmp.custom_blog_css}">
-	<div class="text-center medium18 upper bold">Liên hệ với chúng tôi</div>
-	<p class="l19">Để liên hệ với chúng tôi, bạn có thể gửi email tới <a href="mailto:{tmp.cf_email}" rel="nofollow">{tmp.cf_email}</a>, sử dụng phom liên hệ phía dưới hoặc liên hệ trực tiếp theo địa chỉ và số điện thoại chúng tôi cung cấp.</p>
+	<h1 class="text-center medium18 upper">{tmp.lh_lienhe}</h1>
+	<p class="l19">{tmp.lh_luuy}</p>
 	<div class="cf">
 		<div class="lf f62 fullsize-if-mobile">
 			<div class="right-menu-space">
 				<form name="frm_contact" method="post" action="process/?set_module=contact" target="target_eb_iframe" onsubmit="return _global_js_eb.check_contact_frm();">
 					<ul class="cart-ultable">
 						<li class="cf">
-							<div class="lf f25">Họ và tên <span class="redcolor">*</span></div>
+							<div class="lf f25">{tmp.lh_hoten} <span class="redcolor">*</span></div>
 							<div class="lf f75">
 								<input type="text" name="t_ten" id="t_ten" value="" aria-required="true" required />
 							</div>
@@ -30,19 +19,19 @@
 							</div>
 						</li>
 						<li class="cf">
-							<div class="lf f25">Địa chỉ</div>
+							<div class="lf f25">{tmp.lh_diachi}</div>
 							<div class="lf f75">
 								<input type="text" name="t_diachi" id="t_diachi" value="" />
 							</div>
 						</li>
 						<li class="cf">
-							<div class="lf f25">Điện thoại <span class="redcolor">*</span></div>
+							<div class="lf f25">{tmp.lh_dienthoai} <span class="redcolor">*</span></div>
 							<div class="lf f75">
 								<input type="text" name="t_dienthoai" id="t_dienthoai" value="" />
 							</div>
 						</li>
 						<li class="cf">
-							<div class="lf f25">Nội dung <span class="redcolor">*</span></div>
+							<div class="lf f25">{tmp.lh_noidung} <span class="redcolor">*</span></div>
 							<div class="lf f75">
 								<textarea name="t_noidung" id="t_noidung" aria-required="true" required></textarea>
 							</div>
@@ -50,14 +39,13 @@
 						<li class="cf">
 							<div class="lf f25">&nbsp;</div>
 							<div>
-								<input type="submit" value="Gửi liên hệ" class="cart-mua-button upper" />
+								<input type="submit" value="{tmp.lh_submit}" class="cart-mua-button upper" />
 							</div>
 						</li>
 					</ul>
 				</form>
 				<br>
-				<p class="l25"><span class="redcolor">*</span> là các trường bắt buộc phải điền.<br>
-					Vui lòng cung đầy đủ thông tin để quá trình trao đổi được diễn ra thuận lợi hơn.</p>
+				<p class="l25"><span class="redcolor">*</span> {tmp.lh_note}</p>
 				<br>
 			</div>
 			<br>
@@ -68,10 +56,10 @@
 			<div class="l19">
 				<div>{tmp.cf_diachi}</div>
 				<br>
-				<div>Điện thoại</div>
+				<div>{tmp.lh_dienthoai}</div>
 				<div class="phone-numbers-inline">{tmp.cf_call_dienthoai}</div>
 				<br>
-				<div>Hotline</div>
+				<div>{tmp.cart_hotline}</div>
 				<div class="phone-numbers-inline">{tmp.cf_call_hotline}</div>
 				<br>
 				<div>Email: <a href="mailto:{tmp.cf_email}" rel="nofollow">{tmp.cf_email}</a></div>
