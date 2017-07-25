@@ -1954,6 +1954,8 @@ var _global_js_eb = {
 	// nạp thông tin khách hàng cho giỏ hàng -> từ cookies
 	cart_customer_cache : function ( f ) {
 		
+//		return false;
+		
 		// nếu không có form truyền vào -> tìm form mặc định
 		if ( typeof f == 'undefined' ) {
 			// nếu frm mặc định cũng không có -> lỗi
@@ -1966,9 +1968,11 @@ var _global_js_eb = {
 		
 		//
 		var a = function ( c ) {
-				c = g_func.getc( c );
-				return c == null ? '' : c;
-			};
+			c = g_func.getc( c );
+			return c == null ? '' : c;
+		};
+//		console.log(a);
+//		return false;
 		
 		if ( typeof f.t_ten != 'undefined' ) f.t_ten.value = a( 'eb_cookie_cart_name' );
 		if ( typeof f.t_dienthoai != 'undefined' ) f.t_dienthoai.value = a( 'eb_cookie_cart_phone' );

@@ -18,3 +18,33 @@
 	background: #ccc center no-repeat;
 	background-size: auto 100%;
 }
+.details-mua-ngay {
+	background: #fff;
+	font-family: "Courier New", Courier, monospace;
+	border: 1px #FF794C solid;
+	border-radius: 2px;
+	text-align: center;
+	width: 250px;
+	margin: 0 auto;
+	color: #00216B;
+	font-weight: bold;
+	font-size: 18px;
+	cursor: pointer;
+	-webkit-box-shadow: 0 2pt 2pt #99B2DD;
+	-moz-box-shadow: 0 2pt 2pt #99B2DD;
+	box-shadow: 2pt 2pt 2pt #99B2DD;
+}
+.mua-button-v5 {
+	background: #00A13A;
+	width: 200px;
+	height: 45px;
+	border: 0 none;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16pt;
+}
+.thread-details-bottom {
+	border: 1px #ccc solid;
+	border-radius: 6px;
+	padding: 20px;
+}
