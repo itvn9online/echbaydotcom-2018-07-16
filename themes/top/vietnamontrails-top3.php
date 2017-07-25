@@ -14,7 +14,7 @@
 		</div>
 		<div class="lf f60">
 			<marquee width="100%" direction="left" scrollamount="3" scrolldelay="0" onmouseover="this.stop();" onmouseout="this.start();">
-			<span class="top-marquee"><?php echo $__cf_row['cf_description']; ?></span>
+			<span class="top-marquee"><?php echo $__cf_row['cf_abstract']; ?></span>
 			</marquee>
 		</div>
 		<div class="lf f20 text-center">
