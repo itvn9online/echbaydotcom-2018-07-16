@@ -43,6 +43,9 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 echo EBE_html_template( EBE_get_page_template( 'search_nav_mobile' ), array(
 	'tmp.str_nav_mobile_top' => $str_nav_mobile_top,
 	
+	'tmp.cart_dienthoai' => EBE_get_lang('cart_dienthoai'),
+	'tmp.cart_hotline' => EBE_get_lang('cart_hotline'),
+	
 	'tmp.cf_logo' => $__cf_row['cf_logo'],
 	'tmp.cf_dienthoai' => $__cf_row['cf_dienthoai'],
 	'tmp.cf_call_dienthoai' => $__cf_row['cf_call_dienthoai'],
