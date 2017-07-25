@@ -1048,23 +1048,29 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 			}
 		}
 		
-		$a = $menu_name . wp_nav_menu( $menu );
+		$a = wp_nav_menu( $menu );
 		
-		// xóa các ID và class trong menu
-		$a = preg_replace('/ id=\"menu-item-(.*)\"/iU', '', $a );
-		$a = preg_replace('/ class=\"menu-item (.*)\"/iU', '', $a );
-		
-		// xóa ký tự đặc biệt khi rút link category
-		$a = str_replace( '/./', '/', $a );
-//		$a = str_replace( '/category/', '/', $a );
-		$a = str_replace( 'xwatch.echbay.com/', 'xwatch.vn/', $a );
+		// nếu có chuỗi /auto.get_all_category/ -> đây là menu tự động -> lấy toàn bộ category
+		if ( strpos( $a, '/auto.get_all_category/' ) !== false ) {
+			$a = EBE_echbay_category_menu();
+		}
+		else {
+			// xóa các ID và class trong menu
+			$a = preg_replace('/ id=\"menu-item-(.*)\"/iU', '', $a );
+			$a = preg_replace('/ class=\"menu-item (.*)\"/iU', '', $a );
+			
+			// xóa ký tự đặc biệt khi rút link category
+			$a = str_replace( '/./', '/', $a );
+//			$a = str_replace( '/category/', '/', $a );
+			$a = str_replace( 'xwatch.echbay.com/', 'xwatch.vn/', $a );
+		}
 		
 		/*
 		_eb_get_static_html ( $strCacheFilter, $a );
 	}
 	*/
 	
-	return '<!-- menu slug: ' . $slug . ' -->' . $a;
+	return '<!-- menu slug: ' . $slug . ' -->' . $menu_name . $a;
 }
 
 // load menu theo số thứ tự tăng dần
@@ -1102,6 +1108,56 @@ function EBE_echbay_footer_menu ( $menu = array(), $in_cache = 1, $tag_menu_name
 		$tag_menu_name,
 		$tag_close_menu_name
 	);
+}
+
+// Lấy toàn bộ danh sách category rồi hiển thị thành menu
+function EBE_echbay_category_menu ( $cat_type = 'category', $cat_ids = 0, $ul_class = 'eball-category-main' ) {
+	$arrs_cats = get_categories( array(
+		'taxonomy' => $cat_type,
+//		'hide_empty' => 0,
+		'parent' => $cat_ids,
+	) );
+//	print_r($arrs_cats);
+	if ( count($arrs_cats) == 0 ) {
+		// nếu đang là nhóm cấp 1 -> trả về thông báo
+		if ( $cat_ids == 0 ) {
+			return '<!-- no ' . $cat_type . ' detected -->';
+		}
+		// nếu từ nhóm cấp 2 trở đi -> trả về NULL
+		else {
+			return '';
+		}
+	}
+	
+	
+	// Nếu đang là lấy nhóm cấp 1
+	if ( $cat_ids == 0 ) {
+		// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
+		$post_primary_categories = array();
+//		print_r( $post_categories );
+		foreach ( $arrs_cats as $v ) {
+			if ( _eb_get_post_meta( $v->term_id, '_eb_category_primary', true, 0 ) > 0 ) {
+				$post_primary_categories[] = $v;
+			}
+		}
+//		print_r( $post_primary_categories );
+		
+		
+		// nếu có nhóm chính -> tiếp theo chỉ lấy các nhóm chính
+		if ( count( $post_primary_categories ) > 0 ) {
+			$arrs_cats = $post_primary_categories;
+		}
+//		print_r($arrs_cats);
+	}
+	
+	
+	//
+	$str = '';
+	foreach ( $arrs_cats as $v ) {
+		$str .= '<li><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a>' . EBE_echbay_category_menu ( $v->taxonomy, $v->term_id, 'sub-menu' ) . '</li>';
+	}
+	
+	return '<ul class="cf ' . $ul_class . '">' . $str . '</ul>';
 }
 
 

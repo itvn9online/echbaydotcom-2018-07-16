@@ -42,6 +42,12 @@
 				</div>
 			</li>
 			<li class="cf">
+				<div class="lf f80">All category <em>(create menu with all category in site)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="/auto.get_all_category/" data-text="All category" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
 				<div class="lf f80">Đã thông báo với BCT</div>
 				<div class="lf f20 text-center">
 					<button data-link="#" data-text="<img src='<?php echo basename( WP_CONTENT_DIR ); ?>/echbaydotcom/images-global/dathongbao.png' width='200' height='76' />" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
