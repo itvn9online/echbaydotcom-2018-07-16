@@ -121,7 +121,8 @@ function EBE_update_file_via_ftp () {
 	
 	//
 	if ( ! is_dir( $dir_source_update ) ) {
-		echo 'dir not found: ' . $dir_source_update;
+		echo 'dir not found: ' . $dir_source_update . '<br>' . "\n";
+		echo '* <em>Kiểm tra module zip.so đã có trong thư mục <strong>/usr/lib64/php/modules/</strong> chưa!</em>';
 		return false;
 	}
 	
