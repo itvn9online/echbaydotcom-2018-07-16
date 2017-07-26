@@ -5,6 +5,7 @@
 //print_r( $_POST );
 //print_r( $_GET );
 //exit();
+EBE_stripPostServerClient ();
 
 
 

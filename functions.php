@@ -1945,10 +1945,10 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	}
 
 	
-	//
-	if ($__cf_row ['cf_sys_email'] == 1) {
-		return _eb_send_mail_phpmailer ( $to_email, '', $title, $message, '', $bcc_email );
-	}
+	// Sử dụng hàm mail mặc định của wp cho nó chuẩn
+//	if ($__cf_row ['cf_sys_email'] == 1) {
+//		return _eb_send_mail_phpmailer ( $to_email, '', $title, $message, '', $bcc_email );
+//	}
 	
 	
 	//
@@ -2699,6 +2699,13 @@ function _eb_checkPostServerClient() {
 	
 	//
 	return $_POST;
+}
+
+//
+function EBE_stripPostServerClient() {
+	foreach ( $_POST as $k => $v ) {
+		$_POST[$K] = trim( strip_tags( $v ) );
+	}
 }
 
 
@@ -3567,7 +3574,7 @@ function _eb_create_account_auto ( $arr = array() ) {
 	
 	
 	// tạo username từ email
-	if ( ! isset( $arr['user_name'] ) ) {
+	if ( ! isset( $arr['user_name'] ) || trim( $arr['user_name'] ) == '' ) {
 		$user_name = str_replace( '.', '_', str_replace( '@', '', $user_email ) );
 	} else {
 		$user_name = strtolower( $arr['user_name'] );
@@ -4905,4 +4912,36 @@ function EBE_get_css_for_theme_design ( $f, $type = '.php' ) {
 }
 
 
+// Tạo comment theo chuẩn chung
+function EBE_insert_comment ( $data =  array() ) {
+	global $client_ip;
+	
+	// dữ liệu mặc định
+	$arr = array(
+		// mặc định thì cho vào thành contact
+		'comment_post_ID' => eb_contact_id_comments,
+		'comment_author' => '',
+		'comment_author_email' => mtv_email,
+		'comment_author_url' => '',
+		'comment_content' => '',
+		'comment_type' => '',
+		'comment_parent' => 0,
+		'user_id' => mtv_id,
+		'comment_author_IP' => $client_ip,
+		'comment_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '',
+		'comment_date' => date( 'Y-m-d H:i:s', date_time ),
+		'comment_approved' => 1,
+	);
+	
+	// dữ liệu phủ định
+	foreach ( $data as $k => $v ) {
+		if ( isset( $arr[$k] ) ) {
+			$arr[$k] = $v;
+		}
+	}
+//	print_r($arr);
+	
+	wp_insert_comment($arr);
+	
+}
 

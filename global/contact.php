@@ -32,6 +32,7 @@ $main_content = EBE_html_template( EBE_get_page_template( $act ), array(
 	'tmp.cf_diachi' => nl2br( $__cf_row['cf_diachi'] ),
 	'tmp.cf_email' => $__cf_row['cf_email'],
 	
+	// lang
 	'tmp.lh_lienhe' => EBE_get_lang('lh_lienhe'),
 	'tmp.lh_luuy' => EBE_get_lang('lh_luuy'),
 	'tmp.lh_hoten' => EBE_get_lang('lh_hoten'),
