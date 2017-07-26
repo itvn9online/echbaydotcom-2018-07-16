@@ -12,7 +12,7 @@ EBE_stripPostServerClient ();
 $t_email = strtolower ( trim ( $_POST ['t_email'] ) );
 
 if ( _eb_check_email_type ( $t_email ) != 1 ) {
-	_eb_alert( 'Email không đúng định dạng' );
+	_eb_alert( EBE_get_lang('cart_emailformat') );
 }
 
 
@@ -87,6 +87,13 @@ _eb_send_email ( $mail_to_admin, $mail_title, $message );
 
 
 //
-_eb_alert( 'contact submit' );
+echo '<script>
+parent.document.frm_contact.t_noidung.value = "";
+</script>';
+
+//
+_eb_alert( EBE_get_lang('lh_done') );
+
+
 
 
