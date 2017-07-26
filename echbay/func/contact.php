@@ -71,6 +71,17 @@ EBE_insert_comment( array(
 //
 $mail_title = 'Contact from ' . _eb_non_mark( $_POST['t_ten'] ) . ' (' . $_POST['t_email'] . ')';
 
+
+
+if (strstr ( $t_email, '@gmail.com' ) == true
+|| strstr ( $t_email, '@yahoo.' ) == true
+|| strstr ( $t_email, '@hotmail.com' ) == true) {
+	_eb_send_email( $t_email, $mail_title, $message );
+}
+
+
+
+
 // gửi email cho admin
 $mail_to_admin = $__cf_row ['cf_email'];
 if ($__cf_row ['cf_email_note'] != '') {
