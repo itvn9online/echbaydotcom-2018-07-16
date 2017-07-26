@@ -83,8 +83,27 @@ foreach ( $sql as $v ) {
 	</li>';
 }
 
+
+
 //
-echo '<ul class="cf eb-newgallery">' . $str_list_file . '</ul>';
+$str_part_page = '';
+if ( $totalPage > 1 ) {
+	for ( $i = 1; $i <= $totalPage; $i++ ) {
+		$str_part_page .= '<a href="javascript:;" onClick="ajaxl(\'gallery&trang=' . $i . '\', \'oi_admin_popup\', 9);" class="' . ( $i == $trang ? 'bold redcolor' : '' ) . '">' . $i . '</a>';
+	}
+}
+
+
+//
+echo '
+<div class="eb-newgallery">
+	<div class="text-right eb-gallery-close"><button type="button" onClick="$(\'#oi_admin_popup\').hide();" class="cur">[ x ]</button></div>
+	<ul class="cf">' . $str_list_file . '</ul>
+	<div class="text-center"><strong>' . $trang . '</strong>/ ' . $totalPage . '</div>
+	<div class="text-center eb-gallery-part-page">' . $str_part_page . '</div>
+</div>
+<br>';
+
 
 
 

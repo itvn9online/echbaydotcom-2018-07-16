@@ -580,6 +580,16 @@ input[id="_eb_category_order"] { width: 90px; }
 	background-size: auto 100%;
 	margin: 6px 0;
 }
+.eb-gallery-close { padding: 10px 15px; }
+.eb-gallery-part-page { padding: 15px 0; }
+.eb-gallery-part-page a {
+	display: inline-block;
+	border: 1px #ccc solid;
+	line-height: 21px;
+	min-width: 21px;
+	border-radius: 3px;
+	margin: 3px;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

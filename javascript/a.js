@@ -11,6 +11,10 @@ function EBA_preview_img_logo ( img, id ) {
 	}
 	
 	if ( img.split('//').length == 1 ) {
+		if ( img.substr( 0, 1 ) == '/' ) {
+			img = img.substr(1);
+		}
+		img = web_link + img;
 	}
 	
 	$('.' + id).css({
@@ -19,7 +23,7 @@ function EBA_preview_img_logo ( img, id ) {
 }
 
 function EBA_add_img_logo ( img, id ) {
-	EBA_add_img_to( img, id );
+	EBA_add_img_to( img.replace( web_link, '' ), id );
 	EBA_preview_img_logo( img, id );
 }
 
@@ -1045,7 +1049,7 @@ function EBE_get_current_wp_module ( s ) {
 		}
 		// Hiển thị option theo chỉ định
 		else if ( show_only != '' && $('#oi_admin_popup .eb-newgallery-option').length > 0 ) {
-			$('#oi_admin_popup .eb-newgallery-option div').hide();
+//			$('#oi_admin_popup .eb-newgallery-option div').hide();
 			$('#oi_admin_popup .eb-newgallery-option .' + show_only).show();
 		}
 	});
