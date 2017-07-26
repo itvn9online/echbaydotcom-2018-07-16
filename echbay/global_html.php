@@ -1,3 +1,4 @@
+<div id="oi_admin_popup"></div>
 <div class="d-none">
 	<div id="content-for-quick-add-menu">
 		<ul class="buttom-for-quick-add-menu">

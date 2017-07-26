@@ -226,11 +226,14 @@ function echbay_admin_footer_styles() {
 	include ECHBAY_PRI_CODE . 'role_user.php';
 	echo '</div>';
 	
-	// các chức năng khác
+	
+	
+	
+	/*
+	* các chức năng khác
+	*/
 	include ECHBAY_PRI_CODE . 'global_html.php';
 	
-	
-	//
 	echo file_get_contents( ECHBAY_PRI_CODE . 'html/size_edit.html', 1 );
 	
 	

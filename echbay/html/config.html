@@ -97,14 +97,15 @@
 			</tr>
 			<tr>
 				<td valign="top" class="t">Logo website</td>
-				<td class="i"><input type="text" name="cf_logo" value="{tmp.cf_logo}" class="m" maxlength="255" />
-					<div id="preview_cf_logo"></div>
-					<div class="small">Nhập vào URL của logo, upload và lấy URL <a href="upload.php" target="_blank">tại đây</a>.</div></td>
+				<td class="i"><input type="text" name="cf_logo" id="cf_logo" value="{tmp.cf_logo}" class="m" />
+					<div title="Bấm vào đây để thay đổi Logo" data-show="gallery-add-to-logo" class="cf_logo ad-admin-avt-size cur click-open-new-gallery">&nbsp;</div>
+					<div class="small">Bấm vào Logo hoặc Favicon để chọn và thay tệp ảnh mới. Nếu chưa có ảnh, <strong><a href="upload.php" target="_blank">hãy vào đây</a></strong> để upload ảnh sau đó bấm lại vào Logo, Favicon để tải lại thư viện ảnh. <a href="javascript:;" onClick="EBA_add_img_logo('', 'cf_logo')">[ Đặt về mặc định ]</a>.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Favicon</td>
-				<td class="i"><input type="text" name="cf_favicon" value="{tmp.cf_favicon}" class="m" maxlength="255" />
-					<div class="small">Favicon là ảnh nhỏ, định dạng PNG, hình vuông (32x32) xuất hiện ở góc của mỗi tab trình duyệt.</div></td>
+				<td class="i"><input type="text" name="cf_favicon" id="cf_favicon" value="{tmp.cf_favicon}" class="m" />
+					<div title="Bấm vào đây để thay đổi Favicon" data-show="gallery-add-to-favicon" class="cf_favicon ad-admin-avt-size cur click-open-new-gallery">&nbsp;</div>
+					<div class="small">Favicon là ảnh nhỏ, định dạng PNG, hình vuông (32x32) xuất hiện ở góc của mỗi tab trình duyệt. <a href="javascript:;" onClick="EBA_add_img_logo('', 'cf_favicon')">[ Đặt về mặc định ]</a>.</div></td>
 			</tr>
 			<tr>
 				<td class="i bold redcolor bborder" colspan="2">Màu cơ bản</td>

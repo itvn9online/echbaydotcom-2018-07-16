@@ -249,12 +249,6 @@ $('.click-to-exit-design').click(function () {
 	current_frame_design_is_show = '';
 });
 
-$(document).keydown(function(e) {
-	if (e.keyCode == 27) {
-		$('.click-to-exit-design').click();
-	}
-});
-
 
 
 // tên khung đang được hiển thị

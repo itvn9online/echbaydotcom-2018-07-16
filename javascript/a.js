@@ -1,5 +1,31 @@
 
 
+function EBA_add_img_to ( img, id ) {
+	dog(id).value = img;
+}
+
+function EBA_preview_img_logo ( img, id ) {
+//	if ( typeof img == 'undefined' || img == '' ) {
+	if ( typeof img == 'undefined' ) {
+		return false;
+	}
+	
+	if ( img.split('//').length == 1 ) {
+	}
+	
+	$('.' + id).css({
+		'background-image' : 'url(\'' + img + '\')'
+	});
+}
+
+function EBA_add_img_logo ( img, id ) {
+	EBA_add_img_to( img, id );
+	EBA_preview_img_logo( img, id );
+}
+
+
+
+
 //
 //console.log( typeof jQuery );
 if ( typeof jQuery != 'function' ) {
@@ -25,7 +51,8 @@ if ( cf_chu_de_chinh != '' ) {
 
 // chức năng xử lý cho product size
 var eb_global_product_size = '',
-	eb_inner_html_product_size = '';
+	eb_inner_html_product_size = '',
+	gallery_has_been_load = false;
 
 function eb_func_add_nut_product_size ( str, i ) {
 	if ( typeof str == 'undefined' ) {
@@ -995,7 +1022,51 @@ function EBE_get_current_wp_module ( s ) {
 	fix_textarea_height();
 	
 	
+	
+	
+	// mở gallery tự viết
+	$('.click-open-new-gallery').click(function () {
+		$('#oi_admin_popup').show();
+		
+		//
+		var show_only = $(this).attr('data-show') || '';
+		
+		//
+		if ( gallery_has_been_load == false ) {
+			gallery_has_been_load = true;
+			
+			ajaxl('gallery', 'oi_admin_popup', 9, function () {
+				// Nếu có thuộc tính hiển thị option
+				if ( show_only != '' ) {
+					// chỉ hiển thị option theo chỉ định
+					$('#oi_admin_popup .eb-newgallery-option .' + show_only).show();
+				}
+			});
+		}
+		// Hiển thị option theo chỉ định
+		else if ( show_only != '' && $('#oi_admin_popup .eb-newgallery-option').length > 0 ) {
+			$('#oi_admin_popup .eb-newgallery-option div').hide();
+			$('#oi_admin_popup .eb-newgallery-option .' + show_only).show();
+		}
+	});
+//	$('.click-open-new-gallery').click();
+	
+	
 //});
 })( $('body').attr('class') || '' );
+
+
+
+
+
+// Tất cả các hiệu ứng khi bấm ESC sẽ bị đóng lại
+$(document).keydown(function(e) {
+	if (e.keyCode == 27) {
+		console.log('ESC to close');
+		$('.click-to-exit-design').click();
+		$('#oi_admin_popup').hide();
+	}
+});
+
 
 
