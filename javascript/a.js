@@ -1006,7 +1006,7 @@ function EBE_get_current_wp_module ( s ) {
 	
 	
 	
-	//
+	// hiển thị khung post dưới localhost để test
 	if ( win_href.split('localhost:').length > 1 ) {
 		$('#target_eb_iframe').height(600).css({
 			position: 'relative',
