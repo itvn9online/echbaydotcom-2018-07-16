@@ -72,7 +72,7 @@ foreach ( $sql as $v ) {
 	
 	//
 	$str_list_file .= '
-	<li>
+	<li title="' . basename( $a_full[0] ) . '">
 		<div class="eb-newgallery-padding">
 			<div class="eb-newgallery-option">
 				<div onClick="EBA_add_img_logo(\'' . $a_full[0] . '\', \'cf_logo\');" class="gallery-add-to-logo">Đặt làm Logo</div>

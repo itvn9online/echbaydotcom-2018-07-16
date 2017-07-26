@@ -33,7 +33,7 @@ else {
 		}
 	}
 	else {
-		echo 'Module not found';
+		echo 'Module not found (ajaxl)';
 		
 		// -> thoát luôn, không cho nó đẻ trứng
 		exit();

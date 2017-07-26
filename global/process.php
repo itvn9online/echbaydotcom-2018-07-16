@@ -60,7 +60,7 @@ else if ( file_exists( $submit_admin_file ) ) {
 }
 // nếu không module nào được tìm thấy -> lỗi
 else {
-	_eb_alert('Module not found');
+	_eb_alert('Module not found (process)');
 }
 
 //

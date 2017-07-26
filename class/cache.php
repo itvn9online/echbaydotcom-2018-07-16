@@ -7,6 +7,9 @@
 */
 
 
+//print_r( $___eb_lang );
+
+
 
 
 $__eb_cache_time = 0;
@@ -244,6 +247,12 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		* Danh sách bản dịch
 		*/
 		EBE_get_lang_list();
+//		print_r( $___eb_lang );
+		
+		// -> tạo chuỗi để lưu cache
+		foreach ( $___eb_lang as $k => $v ) {
+			$__eb_cache_content .= '$___eb_lang[\'' . $k . '\']="' . str_replace ( '"', '\"', str_replace ( '$', '\$', $v ) ) . '";';
+		}
 		
 		
 		
@@ -539,9 +548,10 @@ if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
 // lấy config theo thời gian thực nếu tài khoản đang đăng nhập
 if ( mtv_id > 0 ) {
 	_eb_get_config( true );
-	EBE_get_lang_list( true );
+	EBE_get_lang_list();
 }
 //print_r( $__cf_row );
+//print_r( $___eb_lang );
 
 
 

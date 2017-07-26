@@ -1,6 +1,6 @@
 <?php
 
-$__cf_row ['cf_title'] = 'Liên hệ';
+$__cf_row ['cf_title'] = EBE_get_lang('lh_lienhe');
 $group_go_to[] = ' <li><a href="' . _eb_full_url() . '">' . $__cf_row ['cf_title'] . '</a></li>';
 
 
