@@ -41,6 +41,41 @@
 	height: 30px;
 	overflow: hidden;
 }
+.thread-list-booking,
+.thread-list-view {
+	margin: 0 auto;
+	width: 92%;
+	max-width: 250px;
+}
+.thread-list-booking a,
+.thread-list-view a {
+	border-radius: 25px;
+	text-decoration: none;
+	display: block;
+	color: #6e6e6e;
+	border: 1px #dcdcdc solid;
+}
+.thread-list-view a,
+.thread-list-booking a {
+	width: 50%;
+	margin: 0 auto;
+	min-width: 120px;
+}
+.thread-list-views a:hover { color: #fff; }
+.thread-list-booking a:hover {
+	background: #3a80bc;
+	border-color: #3a80bc;
+}
+.thread-list-view a:hover {
+	background: #c00;
+	border-color: #c00;
+}
+.thread-list-ant {
+	position: relative !important;
+	z-index: 1;
+	color: #999;
+}
+.thread-list-ant:hover { text-decoration: underline; }
 .thread-list-gia { margin-top: 10px; }
 .thread-list-gia span { margin: 0 3px; }
 .thread-list-per {

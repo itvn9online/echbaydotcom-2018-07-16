@@ -31,6 +31,7 @@ if ( $__cf_row['cf_num_home_hot'] > 0 ) {
 			'tmp.max_width' => '',
 			'tmp.num_post_line' => '',
 			'tmp.home_hot_title' => '<i class="fa fa-dollar"></i> Sản phẩm HOT',
+			'tmp.description' => '',
 			'tmp.home_hot' => $home_hot,
 		) );
 	}
@@ -59,6 +60,7 @@ if ( $__cf_row['cf_num_home_new'] > 0 ) {
 			'tmp.max_width' => '',
 			'tmp.num_post_line' => '',
 			'tmp.home_hot_title' => '<i class="fa fa-star"></i> Sản phẩm MỚI',
+			'tmp.description' => '',
 			'tmp.home_hot' => $home_new,
 		) );
 	}

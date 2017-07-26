@@ -1,0 +1,102 @@
+.thread-details { box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.thread-details-padding,
+.thread-support-padding { padding: 20px; }
+.thread-details-tomtat {
+	background-color: #eff3f6;
+	padding: 18px;
+}
+.thread-details-title { }
+.thread-details-comment {
+	color: #666;
+	line-height: 19px;
+}
+.thread-details-comment ul {
+	display: block;
+	list-style-type: disc;
+	margin: 0 0 18px 18px;
+}
+.thread-details-comment li {
+	margin: 0;
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+.details-btn-maxwidth {
+	max-width: 900px;
+	margin: 0 auto;
+}
+.details-mua-ngay,
+.details-tu-van {
+	height: 70px;
+	margin: 0 auto;
+	width: 95%;
+	max-width: 300px;
+	display: block;
+}
+.details-mua-ngay { border: 0 none; }
+.details-tu-van { display: block; }
+.details-tu-van span {
+	display: block;
+	padding-top: 12px;
+}
+.details-mua-ngay:hover,
+.details-tu-van:hover { opacity: .9; }
+.thread-details-tab,
+.thread-details-orther {
+	line-height: 35px;
+	border-bottom: 2px #333 solid;
+}
+.thread-details-tab,
+.thread-details-tab a { color: #333; }
+.thread-details-tab li {
+	float: left;
+	padding: 0 32px;
+	cursor: pointer;
+}
+.thread-details-tab li.selected,
+.thread-details-orther li {
+	background-color: #333;
+	color: #fff;
+}
+.thread-details-orther li {
+	padding: 0 15px;
+	float: left;
+}
+.thread-details-mobileAvt,
+.thread-details-mobileAvt li { background-size: auto 100%; }
+.details-support-title {
+	font-size: 16px;
+	font-style: italic;
+	border-bottom: 1px #ccc solid;
+	padding-bottom: 3px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+.details-support-phone {
+	font-size: 18px;
+	position: relative;
+}
+.details-support-phone span {
+	display: block;
+	padding-left: 45px;
+	line-height: 26px;
+}
+.details-support-phone { min-height: 52px; }
+.details-support-phone a { color: #333; }
+.details-support-phone i {
+	font-size: 40px;
+	text-align: center;
+	padding-right: 9px;
+	color: #e74c0c;
+	position: absolute;
+	left: 0;
+	display: block;
+	line-height: 52px;
+}
+.thread-details-hotline {
+	background: #e74c0c;
+	border-radius: 20px;
+	line-height: 40px;
+	max-width: 300px;
+	margin: 0 auto;
+}
+.thread-details-hotline a { display: block; }
