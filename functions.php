@@ -2018,11 +2018,17 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	// sử dụng wordpress mail
 	$mail = wp_mail( $to_email, $title, $message, $headers );
 	if( $mail ) {
+		EBE_show_log( 'Send email to: ' . $to_email );
 		return true;
 	}
 	
 	//
+	EBE_show_log( 'ERROR send email: ' . $to_email );
 	return false;
+}
+
+function EBE_show_log ($m) {
+	echo '<script>console.log("' . $m . '");</script>';
 }
 
 //
