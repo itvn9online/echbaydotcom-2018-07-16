@@ -1930,6 +1930,7 @@ function _eb_lnk_block_email ($em) {
 	return web_link . 'block_email&e=' .base64_encode( $em ). '&c=' . _eb_mdnam( $em );
 }
 
+
 function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email = '', $add_domain = 1) {
 	global $year_curent;
 	global $__cf_row;
@@ -1946,9 +1947,13 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 
 	
 	// Sử dụng hàm mail mặc định của wp cho nó chuẩn
-//	if ($__cf_row ['cf_sys_email'] == 1) {
+	if ($__cf_row ['cf_sys_email'] == 1) {
+		// v1
 //		return _eb_send_mail_phpmailer ( $to_email, '', $title, $message, '', $bcc_email );
-//	}
+		
+		// v2
+		add_action( 'phpmailer_init', 'EBE_configure_smtp' );
+	}
 	
 	
 	//
@@ -2018,6 +2023,34 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	
 	//
 	return false;
+}
+
+//
+function EBE_configure_smtp( PHPMailer $phpmailer ){
+	global $__cf_row;
+	
+	if ( $__cf_row['cf_smtp_host'] == ''
+	|| $__cf_row['cf_smtp_email'] == ''
+	|| $__cf_row['cf_smtp_pass'] == '' ) {
+		return false;
+	}
+	
+	if ( $__cf_row['cf_smtp_port'] == '' || $__cf_row['cf_smtp_port'] == 0 ) {
+		$__cf_row['cf_smtp_port'] == 25;
+	}
+	
+	// switch to smtp
+    $phpmailer->isSMTP();
+    $phpmailer->Host = $__cf_row['cf_smtp_host'];
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Port = $__cf_row['cf_smtp_port'];
+    $phpmailer->Username = $__cf_row['cf_smtp_email'];
+    $phpmailer->Password = $__cf_row['cf_smtp_pass'];
+    $phpmailer->SMTPSecure = false;
+    $phpmailer->From = $__cf_row['cf_smtp_email'];
+    $phpmailer->FromName = 'Sender Name';
+	
+	return true;
 }
 
 function _eb_send_mail_phpmailer($to, $to_name = '', $subject, $message, $from_reply = '', $bcc_email = '') {
