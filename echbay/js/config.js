@@ -449,6 +449,7 @@ eb_drop_menu('oi_select_timezone', cf_timezone);
 
 
 //
+/*
 $('#cf_sys_email').click(function () {
 	if ( dog('cf_sys_email').checked == true ) {
 		$(this).val( 1 );
@@ -461,6 +462,7 @@ $('#cf_sys_email').click(function () {
 if ( $('#cf_sys_email').val() == 1 ) {
 	dog('cf_sys_email').checked = true;
 }
+*/
 
 
 

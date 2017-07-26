@@ -25,9 +25,9 @@ _eb_q("DELETE
 
 
 // kích hoạt chế độ gửi email qua SMTP nếu có
-if ( ! isset( $_POST['cf_sys_email'] ) || $_POST['cf_sys_email'] == '' ) {
+//if ( ! isset( $_POST['cf_sys_email'] ) || $_POST['cf_sys_email'] == '' ) {
 	$_POST['cf_sys_email'] = 0;
-}
+//}
 
 //
 if ( $_POST ['cf_smtp_host'] != ''
