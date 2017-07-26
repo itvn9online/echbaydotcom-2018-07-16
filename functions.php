@@ -1111,7 +1111,18 @@ function EBE_echbay_footer_menu ( $menu = array(), $in_cache = 1, $tag_menu_name
 }
 
 // Lấy toàn bộ danh sách category rồi hiển thị thành menu
-function EBE_echbay_category_menu ( $cat_type = 'category', $cat_ids = 0, $ul_class = 'eball-category-main' ) {
+function EBE_echbay_category_menu (
+	// taxonomy mặc định
+	$cat_type = 'category',
+	// nhóm cha mặc định -> mặc định lấy nhóm cấp 1
+	$cat_ids = 0,
+	// class riêng (nếu có)
+	$ul_class = 'eball-category-main',
+	// có lấy nhóm con hay không -> mặc định là có
+	$get_child = 1,
+	//  thẻ theo yêu cầu (tùy vào seoer muốn thẻ gì thì truyền vào)
+	$dynamic_tags = 'div'
+) {
 	$arrs_cats = get_categories( array(
 		'taxonomy' => $cat_type,
 //		'hide_empty' => 0,
@@ -1154,7 +1165,18 @@ function EBE_echbay_category_menu ( $cat_type = 'category', $cat_ids = 0, $ul_cl
 	//
 	$str = '';
 	foreach ( $arrs_cats as $v ) {
-		$str .= '<li><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a>' . EBE_echbay_category_menu ( $v->taxonomy, $v->term_id, 'sub-menu' ) . '</li>';
+		$str_child = '';
+		if ( $get_child == 1 ) {
+			$str_child = EBE_echbay_category_menu (
+				$v->taxonomy,
+				$v->term_id,
+				'sub-menu',
+				'div'
+			);
+		}
+		
+		//
+		$str .= '<li><' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
 	}
 	
 	return '<ul class="cf ' . $ul_class . '">' . $str . '</ul>';
