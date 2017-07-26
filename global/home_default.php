@@ -162,10 +162,10 @@ $home_with_cat = $home_hot . $home_new . $home_with_cat;
 * Thêm dữ liệu theo chuẩn của SEO Quake
 */
 // lấy tiêu đề chính làm thẻ H1
-$home_with_cat .= '<h1 class="home_default-title medium18 text-center bold">' . $__cf_row ['cf_title'] . '</h1>';
+$home_with_cat .= '<h1 class="home_default-title text-center">' . $__cf_row ['cf_title'] . '</h1>';
 
 // lấy các danh mục cấp 2 làm thẻ H2
-$home_with_cat .= EBE_echbay_category_menu( 'category', 0, 'home_default-catgory', 0, 'h2' );
+$home_with_cat .= EBE_echbay_category_menu( 'category', 0, 'home_default-catgory text-center', 0, 'h2' );
 
 
 

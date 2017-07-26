@@ -1,2 +1,17 @@
-.home_default-title { }
+.home_default-title {
+	font-size: 25px;
+	font-weight: normal;
+	margin: 15px 0;
+}
 .home_default-catgory { }
+.home_default-catgory li { }
+.home-hot-title .fa-dollar,
+.home-hot-title .fa-star {
+	display: inline-block;
+	width: 28px;
+	background: #fff;
+	border-radius: 50%;
+	color: #7ec400;
+	border: 1px #7ec400 solid;
+	line-height: 28px;
+}
