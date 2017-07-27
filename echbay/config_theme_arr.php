@@ -159,6 +159,7 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 			$theme_description = '';
 			$theme_tags = '';
 			$search_tags = '';
+			$warning_file_format = '';
 			
 			if ( $k2 == '' ) {
 //				$str_top_include_file .= '<hr>';
@@ -191,6 +192,19 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 				$k2 = basename($k2);
 				$val = $k2;
 				$text = 'Mẫu #' . str_replace( $file_type, '', $k2 );
+				
+				
+				// kiểm tra định dạng file đã theo chuẩn chưa
+				if ( $type == 'top' ) {
+					if ( strstr( $file_tag, 'cf_top_class_style' ) == false ) {
+						$warning_file_format = '<div class="redcolor"> * Định dạng file thiếu thuộc tính căn chỉnh chiều rộng: <strong>$__cf_row[\'cf_top_class_style\']</strong></div>';
+					}
+				}
+				else if ( $type == 'footer' ) {
+					if ( strstr( $file_tag, 'cf_footer_class_style' ) == false ) {
+						$warning_file_format = '<div class="redcolor"> * Định dạng file thiếu thuộc tính căn chỉnh chiều rộng: <strong>$__cf_row[\'cf_footer_class_style\']</strong></div>';
+					}
+				}
 			}
 			
 			
@@ -212,6 +226,7 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 				$bg = '';
 				$css_class = '';
 				$img = '';
+				$chua_co_hinh_anh = '';
 				if ( $val != '' ) {
 					$bg_file = EB_THEME_PLUGIN_INDEX . 'themes/images/' . str_replace( $file_type, '.jpg', $val );
 					if ( file_exists( $bg_file ) ) {
@@ -228,6 +243,10 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 						}
 						
 						$bg = ' data-size="' . $file_info[1] . '/' . $file_info[0] . '" style="height: ' . $file_info[1] . 'px;background-image:url(\'' . $img . '\');"';
+					}
+					else {
+						// cảnh bảo bổ sung thêm ảnh
+						$chua_co_hinh_anh = '<div class="redcolor">* Thiếu ảnh minh họa, để nghị bổ sung thêm</div>';
 					}
 				}
 				
@@ -248,6 +267,8 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 						<div><strong>' . $text . '</strong></div>
 						' . $theme_description . '
 						' . $theme_tags . '
+						' . $chua_co_hinh_anh . '
+						' . $warning_file_format . '
 					</div>
 				</div>';
 				
