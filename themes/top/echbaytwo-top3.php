@@ -1,3 +1,9 @@
+<?php
+/*
+Tags: dep qua, the thao tien dat
+*/
+?>
+
 <div id="echbaytwo-top3">
 	<div class="top-nav default-bg hide-if-mobile">
 		<div class="cf <?php echo $__cf_row['cf_top_class_style']; ?>">

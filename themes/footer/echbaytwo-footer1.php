@@ -3,6 +3,7 @@
 Tags: dep qua, the gioi do da, etime, taobao
 */
 ?>
+
 <div id="echbaytwo-footer1">
 	<div class="bottom-slogan">
 		<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
