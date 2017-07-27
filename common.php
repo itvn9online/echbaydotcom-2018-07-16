@@ -287,6 +287,9 @@ if ( file_exists( $inc_file ) ) {
 	// chuyển URL sang dạng SSL
 	$main_content = _eb_ssl_template( $main_content );
 	
+	// chyển các thẻ title động sang thẻ theo config
+	$main_content = EBE_dynamic_title_tag( $main_content );
+	
 }
 // nếu không -> hiển thị trang 404
 else {

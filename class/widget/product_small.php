@@ -52,6 +52,7 @@ class ___echbay_widget_random_product extends WP_Widget {
 	
 	function widget($args, $instance) {
 //		global $func;
+//		global $__cf_row;
 		
 		extract ( $args );
 		

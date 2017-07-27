@@ -83,8 +83,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	}
 	
 	//
-	$html = str_replace( '<dynamic_title_tag', '<' . $__cf_row['cf_threadnode_title_tag'], $html );
-	$html = str_replace( 'dynamic_title_tag>', $__cf_row['cf_threadnode_title_tag'] . '>', $html );
+//	$html = EBE_dynamic_title_tag( $html );
 	
 	//
 	/*
@@ -101,6 +100,19 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	
 	//
 	return EBE_arr_tmp( $post, $html );
+}
+
+
+// tạo thẻ động cho phần tiêu đề sản phẩm, blog
+function EBE_dynamic_title_tag ( $html ) {
+	global $__cf_row;
+	
+	// tạo thẻ đóng
+	$html = str_replace( 'dynamic_title_tag>', $__cf_row['cf_threadnode_title_tag'] . '>', $html );
+	// tạo thẻ mở
+	$html = str_replace( '<dynamic_title_tag', '<' . $__cf_row['cf_threadnode_title_tag'], $html );
+	
+	return $html;
 }
 
 
