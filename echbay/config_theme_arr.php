@@ -195,22 +195,16 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 				$text = 'Mẫu #' . $file_name_only;
 				
 				
-				// kiểm tra định dạng file đã theo chuẩn chưa
-				if ( $type == 'top' ) {
-					if ( strstr( $file_tag, 'cf_top_class_style' ) == false ) {
-						$warning_file_format = '<div class="redcolor"> * Định dạng file thiếu thuộc tính căn chỉnh chiều rộng: <strong>$__cf_row[\'cf_top_class_style\']</strong></div>';
-					}
-				}
-				else if ( $type == 'footer' ) {
-					if ( strstr( $file_tag, 'cf_footer_class_style' ) == false ) {
-						$warning_file_format = '<div class="redcolor"> * Định dạng file thiếu thuộc tính căn chỉnh chiều rộng: <strong>$__cf_row[\'cf_footer_class_style\']</strong></div>';
-					}
-				}
-				
-				// tên file chưa có ID -> cảnh báo luôn
+				// check file format
 				if ( $type == 'top' || $type == 'footer' ) {
+					// kiểm tra định dạng file đã theo chuẩn chưa
+					if ( strstr( $file_tag, 'cf_' . $type . '_class_style' ) == false ) {
+						$warning_file_format .= '<div class="redcolor"> * Định dạng file thiếu thuộc tính căn chỉnh chiều rộng: <strong>$__cf_row[\'cf_' . $type . '_class_style\']</strong></div>';
+					}
+					
+					// tên file chưa có ID -> cảnh báo luôn
 					if ( strstr( $file_tag, ' id="' . $file_name_only . '"' ) == false ) {
-						$warning_file_format = '<div class="redcolor"> * Định dạng file thiếu attribute để phân định lớp CSS: <strong>id="' . $file_name_only . '"</strong></div>';
+						$warning_file_format .= '<div class="redcolor"> * Định dạng file thiếu attribute để phân định lớp CSS: <strong>id="' . $file_name_only . '"</strong></div>';
 					}
 				}
 			}
