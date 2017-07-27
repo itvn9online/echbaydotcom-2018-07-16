@@ -3,6 +3,22 @@
 
 
 
+/*
+* Quy tắc tạo file template:
+
+1: Nếu muốn file chỉ chạy trên domain cụ thể, VD:
+Domain: xwatch.vn
+
+2. Nếu muốn chỉ chạy trên theme cụ thể -> cho vào thư mục /wp-content/themes/[theme name]theme/ui
+
+3. Tạo tags để tìm kiếm themes dễ hơn, VD:
+Tags: slogan, bigbanner, breadcrumb
+
+*/
+
+
+
+
 // reset lại mảng giá trị này từ file config cho nó chuẩn
 //$arr_for_set_template = array();
 
@@ -28,15 +44,9 @@ function EBE_config_theme_load_file_tag ( $str, $search ) {
 	return '';
 }
 
-/*
-* Quy tắc tạo file template:
 
-1: Nếu muốn file chỉ chạy trên domain cụ thể
-Domain: xwatch.vn
 
-2. Nếu muốn chỉ chạy trên theme cụ thể -> chov vào thư mục theme/ui
 
-*/
 function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php', $in_theme = 0 ) {
 	global $__cf_row_default;
 	global $__cf_row;

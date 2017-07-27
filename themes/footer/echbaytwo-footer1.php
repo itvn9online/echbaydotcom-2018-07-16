@@ -1,6 +1,6 @@
 <?php
 /*
-Tags: dep qua, the gioi do da, etime, taobao
+Tags: dep qua, the gioi do da, etime, taobao, slogan
 */
 ?>
 
