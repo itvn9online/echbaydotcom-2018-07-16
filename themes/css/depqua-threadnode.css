@@ -19,7 +19,8 @@
 	border: 1px #ccc solid;
 }
 .thread-list-title { position: relative; }
-.thread-list-title div {
+.thread-list-title div,
+.thread-list-title h3 {
 	background: rgba(0, 0, 0, .6);
 	position: absolute;
 	height: 42px;
