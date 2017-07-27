@@ -552,9 +552,11 @@ $('.click-to-reset-site-color').click(function () {
 
 
 // các hàm chạy sau một chút
-setTimeout(function () {
-	EBA_preview_img_logo( dog('cf_logo').value, 'cf_logo' );
-	EBA_preview_img_logo( dog('cf_favicon').value, 'cf_favicon' );
-}, 600);
+if ( current_module_config != 'config_theme' ) {
+	setTimeout(function () {
+		EBA_preview_img_logo( dog('cf_logo').value, 'cf_logo' );
+		EBA_preview_img_logo( dog('cf_favicon').value, 'cf_favicon' );
+	}, 600);
+}
 
 
