@@ -152,6 +152,8 @@ if ( $__cf_row['cf_post_column_style'] == '' ) {
 }
 
 
+
+
 // blog
 if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
 	// bài báo
@@ -245,6 +247,20 @@ if ( isset( $cats[0] ) ) {
 } else if ( $bnt_id > 0 ) {
 	$ant_id = $bnt_id;
 	$cid = $bnt_id;
+}
+
+
+
+
+// Nếu banner ở dạng global -> lấy global luôn
+if ( $__cf_row['cf_global_big_banner'] == 1 ) {
+	$str_big_banner = EBE_get_big_banner();
+}
+// Còn không chỉ lấy các banner không có category
+else {
+	$str_big_banner = EBE_get_big_banner( 5, array(
+		'category__in' => '',
+	) );
 }
 
 
