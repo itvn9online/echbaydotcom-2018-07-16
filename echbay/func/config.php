@@ -110,6 +110,10 @@ if ( ! isset( $_POST['cf_echbay_migrate_version'] ) || (int) $_POST['cf_echbay_m
 	$_POST['cf_echbay_migrate_version'] = 0;
 }
 
+if ( ! isset( $_POST['cf_global_big_banner'] ) || (int) $_POST['cf_global_big_banner'] != 1 ) {
+	$_POST['cf_global_big_banner'] = 0;
+}
+
 
 
 

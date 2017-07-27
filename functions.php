@@ -1184,6 +1184,7 @@ function EBE_echbay_category_menu (
 
 
 /*
+* tags: sidebar, widget
 * https://codex.wordpress.org/Function_Reference/dynamic_sidebar
 */
 function _eb_echbay_get_sidebar( $slug ) {
@@ -1248,7 +1249,7 @@ function _eb_echbay_sidebar( $slug, $css = '', $div = 'div', $in_cache = 1, $loa
 			
 			//
 //			$a = '<ul class="sidebar-' . $slug . ' eb-sidebar-global-css ' . $css . '">' . $a . '</ul>';
-			$a = '<div class="sidebar-' . $slug . ' eb-sidebar-global-css ' . $css . '">' . $a . '</div>';
+			$a = '<!-- ' . $slug . ' --><div class="sidebar-' . $slug . ' eb-sidebar-global-css ' . $css . '">' . $a . '</div>';
 		}
 		
 		/*
@@ -2191,7 +2192,20 @@ function _eb_load_ads_v2 ( $type = 0, $posts_per_page = 20, $_eb_query = array()
 	return _eb_load_ads( $type, $posts_per_page, $op['data_size'], $_eb_query, $op['offset'], $op['html'] );
 }
 
-function _eb_load_ads ( $type = 0, $posts_per_page = 20, $data_size = 1, $_eb_query = array(), $offset = 0, $html = '' ) {
+function _eb_load_ads (
+	// Trạng thái của banner quảng cáo
+	$type = 0,
+	// số lượng bản ghi cần lấy
+	$posts_per_page = 20,
+	// kích thước muốn hiển thị
+	$data_size = 1,
+	// query phủ định
+	$_eb_query = array(),
+	// offset như mysql thông thương
+	$offset = 0,
+	// định dạng HTML cần xuất ra
+	$html = ''
+) {
 	global $__cf_row;
 	global $arr_eb_ads_status;
 	global $eb_background_for_post;
@@ -2316,7 +2330,7 @@ function _eb_load_ads ( $type = 0, $posts_per_page = 20, $data_size = 1, $_eb_qu
 		$arr['meta_value'] = $type;
 		
 		$arr['offset'] = $offset;
-//			$arr['offset'] = 0;
+//		$arr['offset'] = 0;
 		$arr['posts_per_page'] = $posts_per_page;
 		
 		$arr['orderby'] = 'menu_order ID';

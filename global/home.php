@@ -17,10 +17,16 @@ $id_for_get_sidebar = 'home_sidebar';
 
 
 
-//
-$str_big_banner = EBE_get_big_banner( 5, array(
-	'category__not_in' => '',
-) );
+// Nếu banner ở dạng global -> lấy global luôn
+if ( $__cf_row['cf_global_big_banner'] == 1 ) {
+	$str_big_banner = EBE_get_big_banner();
+}
+// Còn không chỉ lấy các banner không có category
+else {
+	$str_big_banner = EBE_get_big_banner( 5, array(
+		'category__not_in' => '',
+	) );
+}
 
 
 
