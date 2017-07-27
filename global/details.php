@@ -252,12 +252,8 @@ if ( isset( $cats[0] ) ) {
 
 
 
-// Nếu banner ở dạng global -> lấy global luôn
-if ( $__cf_row['cf_global_big_banner'] == 1 ) {
-	$str_big_banner = EBE_get_big_banner();
-}
-// Còn không chỉ lấy các banner không có category
-else {
+// Chỉ lấy banner riêng khi chế độ global không được kích hoạt
+if ( $__cf_row['cf_global_big_banner'] == 0 ) {
 	$str_big_banner = EBE_get_big_banner( 5, array(
 		'category__in' => '',
 	) );

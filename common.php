@@ -390,6 +390,11 @@ if ( $str_big_banner != '' ) {
 }
 */
 
+// nếu chế độ global banner được kích hoạt -> lấy banner theo file tổng
+if ( $__cf_row['cf_global_big_banner'] == 1 ) {
+	$str_big_banner = EBE_get_big_banner();
+}
+
 
 
 //
