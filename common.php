@@ -410,3 +410,10 @@ $group_go_to = implode( ' ', $group_go_to );
 
 
 
+
+//
+include EB_THEME_PLUGIN_INDEX . 'header.php';
+
+
+
+

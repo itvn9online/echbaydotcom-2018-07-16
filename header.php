@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="<?php echo $__cf_row['cf_content_language']; ?>" class="no-js no-svg" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <head>
 <!-- header -->
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -45,7 +47,8 @@ _eb_add_compiler_css( $arr_for_add_css );
 ?>
 <style type="text/css">
 /* EchBay custom CSS for replace default CSS by plugin or theme */
-<?php echo $__cf_row['cf_default_css']; ?>
+<?php echo $__cf_row['cf_default_css'];
+?>
 </style>
 <?php
 _eb_add_compiler_css( $arr_for_add_theme_css );
@@ -74,3 +77,5 @@ $eb_background_for_post = array();
 
 ?>
 </head>
+<!--Thêm class tượng trưng cho mỗi trang lên <body> để tùy biến-->
+<body class="<?php echo $css_m_css; ?>">
