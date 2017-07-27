@@ -143,8 +143,13 @@ foreach ( $arr_product_js as $k => $v ) {
 
 
 
-//
-$id_for_get_sidebar = 'post_sidebar';
+
+// Nếu config không tạo menu -> không load sidebar
+if ( $__cf_row['cf_post_column_style'] == '' ) {
+	$id_for_get_sidebar = '';
+} else {
+	$id_for_get_sidebar = 'post_sidebar';
+}
 
 
 // blog
@@ -159,7 +164,12 @@ if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
 		$dynamic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
 	}
 	
-	$id_for_get_sidebar = 'blog_details_sidebar';
+	// Nếu config không tạo menu -> không load sidebar
+	if ( $__cf_row['cf_blog_column_style'] == '' ) {
+		$id_for_get_sidebar = '';
+	} else {
+		$id_for_get_sidebar = 'blog_details_sidebar';
+	}
 }
 // post, page
 else {

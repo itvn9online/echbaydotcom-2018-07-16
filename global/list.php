@@ -33,8 +33,12 @@ $switch_taxonomy = isset( $__category->taxonomy ) ? $__category->taxonomy : '';
 
 
 
-//
-$id_for_get_sidebar = 'category_sidebar';
+// Nếu config không tạo menu -> không load sidebar
+if ( $__cf_row['cf_cats_column_style'] == '' ) {
+	$id_for_get_sidebar = '';
+} else {
+	$id_for_get_sidebar = 'category_sidebar';
+}
 
 
 
@@ -288,8 +292,12 @@ if ( $main_content == false ) {
 		|| $switch_taxonomy == 'blog_tag' ) {
 			
 			
-			//
-			$id_for_get_sidebar = 'blog_sidebar';
+			// Nếu config không tạo menu -> không load sidebar
+			if ( $__cf_row['cf_blogs_column_style'] == '' ) {
+				$id_for_get_sidebar = '';
+			} else {
+				$id_for_get_sidebar = 'blog_sidebar';
+			}
 			
 			
 			

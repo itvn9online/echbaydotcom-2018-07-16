@@ -262,8 +262,8 @@ if ( file_exists( $inc_file ) ) {
 		'tmp.web_version' => $web_version,
 		'tmp.web_name' => $web_name,
 		
-		// tìm và tạo sidebar luôn
-		'tmp.str_sidebar' => _eb_echbay_sidebar( $id_for_get_sidebar ),
+		// tìm và tạo sidebar luôn (nếu có)
+		'tmp.str_sidebar' => $id_for_get_sidebar == '' ? '' : _eb_echbay_sidebar( $id_for_get_sidebar ),
 		'tmp.search_advanced_sidebar' => _eb_echbay_sidebar( 'search_product_options', 'widget-search-advanced cf', 'div', 1, 0 ),
 		
 		// kích thước sản phẩm trên mobile

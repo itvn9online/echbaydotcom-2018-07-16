@@ -11,8 +11,13 @@ $url_og_url = web_link;
 
 
 
-//
-$id_for_get_sidebar = 'home_sidebar';
+
+// Nếu config không tạo menu -> không load sidebar
+if ( $__cf_row['cf_home_column_style'] == '' ) {
+	$id_for_get_sidebar = '';
+} else {
+	$id_for_get_sidebar = 'home_sidebar';
+}
 
 
 
