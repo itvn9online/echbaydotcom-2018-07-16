@@ -1,7 +1,7 @@
 <div id="megashop-top2">
 	<div class="web-top-logo">
 		<div class="cf <?php echo $__cf_row['cf_top_class_style']; ?>">
-			<div class="lf f20 cf fullsize-if-mobile"><a href="./" class="web-logo d-block" style="background-image:url('<?php echo $__cf_row['cf_logo']; ?>');">&nbsp;</a></div>
+			<div class="lf f20 cf fullsize-if-mobile"><?php echo EBE_get_html_logo(); ?></div>
 			<div class="lf f80 hide-if-mobile cf">
 				<div class="lf f70">
 					<div class="nav"><?php echo EBE_echbay_top_menu(); ?></div>

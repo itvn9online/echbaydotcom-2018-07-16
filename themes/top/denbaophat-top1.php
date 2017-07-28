@@ -7,9 +7,7 @@
 			<div class="lf f60 cf">
 				<ul class="rf menutophd">
 					<li><i class="fa fa-phone"></i> <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span></li>
-					<li>
-						<div class="oi_member_func upper"></div>
-					</li>
+					<li class="upper"><?php echo EBE_get_html_profile(); ?></li>
 				</ul>
 			</div>
 		</div>

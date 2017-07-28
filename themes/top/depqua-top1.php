@@ -5,10 +5,8 @@
 			<div class="lf f80">
 				<div class="rf cf top-top-ul"><?php echo EBE_echbay_top_menu(); ?>
 					<ul class="cf">
-						<li><a title="Giỏ hàng" href="actions/cart" class="btn-to-cart"><i class="fa fa-shopping-cart"></i> Giỏ hàng (<span class="show_count_cart">0</span>)</a></li>
-						<li>
-							<div id="oi_member_func" class="oi_member_func"></div>
-						</li>
+						<li><?php echo EBE_get_html_cart(); ?></li>
+						<li><?php echo EBE_get_html_profile(); ?></li>
 					</ul>
 				</div>
 			</div>

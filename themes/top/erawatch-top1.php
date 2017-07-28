@@ -17,12 +17,8 @@
 				</div>
 			</div>
 			<div class="lf f30 cf text-center">
-				<div class="lf f60">
-					<div class="oi_member_func"></div>
-				</div>
-				<div class="lf f40">
-					<div class="btn-to-cart"><a title="Giỏ hàng" href="cart/" rel="nofollow"><em class="show_count_cart d-none">0</em><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></div>
-				</div>
+				<div class="lf f60"><?php echo EBE_get_html_profile(); ?></div>
+				<div class="lf f40"><?php echo EBE_get_html_cart(); ?></div>
 			</div>
 		</div>
 	</div>

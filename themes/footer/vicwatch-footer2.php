@@ -14,7 +14,7 @@
 					<div>Email: <a href="mailto:<?php echo $__cf_row['cf_email']; ?>"><?php echo $__cf_row['cf_email']; ?></a></div>
 				</div>
 				<br>
-				<div class="oi_member_func"></div>
+				<?php echo EBE_get_html_profile(); ?>
 			</div>
 		</div>
 	</div>

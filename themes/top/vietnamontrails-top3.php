@@ -17,8 +17,6 @@
 			<span class="top-marquee"><?php echo $__cf_row['cf_abstract']; ?></span>
 			</marquee>
 		</div>
-		<div class="lf f20 text-center">
-			<div class="oi_member_func"></div>
-		</div>
+		<div class="lf f20 text-center"><?php echo EBE_get_html_profile(); ?></div>
 	</div>
 </div>

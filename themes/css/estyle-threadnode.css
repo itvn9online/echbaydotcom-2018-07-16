@@ -1,0 +1,72 @@
+.thread-list { margin: 0 -8px }
+.thread-list li {
+	float: left;
+	width: 25%
+}
+.thread-list-padding {
+	margin: 8px;
+	border: 1px #EBE8E8 solid;
+	border-radius: 2px;
+}
+.thread-logo-giamgia { position: relative; }
+.thread-logo-giamgia div {
+	background: #ea9c51;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	width: 45px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	border-radius: 25px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+}
+.thread-list-avt {
+	background: #fff center no-repeat;
+	background-size: auto 100%;
+	height: 300px;
+	line-height: 300px;
+	overflow: hidden;
+}
+.thread-list-avt a { display: block; }
+.thread-list-bg {
+	background: #eeeeee;
+	padding: 8px 0 8px 15px;
+}
+.thread-list-title {
+	font-weight: normal;
+	height: 41px;
+	overflow: hidden;
+	line-height: 19px;
+	margin: 8px 8px 8px 0;
+	font-weight: normal;
+	font-size: 15px;
+	color: #414141;
+}
+.thread-list-mau { margin: 5px 5px 0 0; }
+.thread-list-giamoi {
+	font-size: 16px;
+	color: #ea9c51;
+	font-weight: bold;
+	display: block;
+}
+.thread-list-giacu {
+	font-size: 13px;
+	text-decoration: line-through;
+	color: #3a3a3a;
+	display: block;
+	line-height: 21px;
+}
+.thread-list-mua {
+	line-height: 30px;
+	margin-top: 10px;
+}
+.thread-list-mua div { padding: 0 0 0 23px; }
+.thread-list-mua i {
+	font-size: 16px;
+	color: #ea9c51;
+	display: inline-block;
+	margin-right: 5px;
+}

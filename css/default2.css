@@ -126,12 +126,18 @@ label,
 }
 /* end flex blog */
 .details-hideif-hethang .details-ankhi-hethang { display: none; }
+/*
 .oi_member_func a:first-child:before {
 	display: inline-block;
 	margin-right: 5px;
 	content: "\f007";
 	font-family: FontAwesome;
 }
+*/
+.oi_member_func a,
+.oi_member_func i { display: inline-block; }
+.oi_member_func a:first-child { margin-right: 15px }
+.oi_member_func i { margin-right: 5px; }
 .thread-details-relative { position: relative; }
 .echbay-tintuc-ngaygui {
 	font-style: italic;
@@ -1399,3 +1405,4 @@ li.footer-social-gg { background-color: #DE4B39; }
 	display: block;
 }
 .footer-social a:hover { opacity: .6; }
+.show_count_cart { font-style: normal; }

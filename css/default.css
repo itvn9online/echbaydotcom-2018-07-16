@@ -82,6 +82,7 @@ a {
 .lf { float: left; }
 .f100 { width: 100%; }
 .f90 { width: 90%; }
+.f85 { width: 85%; }
 .f80 { width: 80%; }
 .f75 { width: 75%; }
 .f70 { width: 70%; }
@@ -98,6 +99,7 @@ a {
 .f30 { width: 30%; }
 .f25 { width: 25%; }
 .f20 { width: 20%; }
+.f15 { width: 15%; }
 .f10 { width: 10%; }
 .l19 { line-height: 19px; }
 .l20 { line-height: 20px; }

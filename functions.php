@@ -5032,3 +5032,52 @@ function EBE_insert_comment ( $data =  array() ) {
 	
 }
 
+
+/*
+* Các đoạn HTML thường dùng
+*/
+function EBE_get_html_logo () {
+	global $__cf_row;
+	
+	return '<div><a href="./" class="web-logo d-block" style="background-image:url(' . $__cf_row['cf_logo'] . ');">&nbsp;</a></div>';
+}
+
+function EBE_get_html_search () {
+	global $current_search_key;
+	
+	return '
+<div class="div-search-margin">
+	<div class="div-search">
+		<form role="search" method="get" action="' . web_link . '">
+			<input type="search" placeholder="Tìm kiếm" value="' . $current_search_key . '" name="s" aria-required="true" required>
+			<input type="hidden" name="post_type" value="post" />
+			<button type="submit" class="cur"><i class="fa fa-search"></i></button>
+		</form>
+	</div>
+	<div id="oiSearchAjax"></div>
+</div>';
+}
+
+function EBE_get_html_cart () {
+	$a = EBE_get_lang('cart');
+	
+	return '<div class="btn-to-cart cf"><a title="' . $a . '" href="./cart" rel="nofollow"><i class="fa fa-shopping-cart"></i> ' . $a . ' <em class="show_count_cart d-none">(0)</em></a></div>';
+}
+
+function EBE_get_html_profile () {
+	return '<div class="oi_member_func"></div>';
+}
+
+function EBE_get_html_address () {
+	global $__cf_row;
+	
+	return '
+	<div class="footer-address">
+		<div class="footer-address-company bold">' . $__cf_row['cf_ten_cty'] . '</div>
+		<div class="footer-address-info l19">Địa chỉ: ' . nl2br( $__cf_row['cf_diachi'] ) . '<br>
+			Hotline: ' . $__cf_row['cf_call_hotline'] . ' | Điện thoại: <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span><br>
+			Email: <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
+	</div>';
+}
+
+
