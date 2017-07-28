@@ -553,6 +553,18 @@ $('.click-to-reset-site-color').click(function () {
 
 // các hàm chạy sau một chút
 if ( current_module_config != 'config_theme' ) {
+	
+	$('.click-add-url-for-logo').click(function () {
+		var a = $(this).attr('data-id') || '';
+		if ( a != '' ) {
+			var b = prompt('URL image:', '');
+			if ( you != null ) {
+				EBA_add_img_logo( b, 'cf_logo' );
+			}
+		}
+	});
+	
+	//
 	setTimeout(function () {
 		EBA_preview_img_logo( dog('cf_logo').value, 'cf_logo' );
 		EBA_preview_img_logo( dog('cf_favicon').value, 'cf_favicon' );
