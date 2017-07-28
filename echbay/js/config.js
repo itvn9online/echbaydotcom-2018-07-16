@@ -559,7 +559,7 @@ if ( current_module_config != 'config_theme' ) {
 		if ( a != '' ) {
 			var b = prompt('URL image:', '');
 			if ( b != null && b != '' ) {
-				EBA_add_img_logo( b, 'cf_logo' );
+				EBA_add_img_logo( b, a );
 			}
 		}
 	});
