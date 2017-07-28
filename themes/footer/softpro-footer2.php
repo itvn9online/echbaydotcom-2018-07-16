@@ -1,4 +1,4 @@
-<div class="footer-pading">
+<div id="softpro-footer2" class="footer-pading">
 	<div class="cf <?php echo $__cf_row['cf_footer_class_style']; ?>">
 		<div class="lf f25 fullsize-if-mobile">
 			<div class="right-menu-space">

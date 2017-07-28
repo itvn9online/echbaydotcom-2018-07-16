@@ -1,5 +1,5 @@
 <div id="zappos-footer1">
-	<div class="<?php echo $__cf_row['cf_blog_class_style']; ?>">
+	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
 		<div class="cf">
 			<div class="lf f25 fullsize-if-mobile l19">
 				<div class="right-menu-space">

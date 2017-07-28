@@ -1,5 +1,5 @@
-<div id="vicwatch-top1">
-	<div class="web-top-logo hide-if-mobile">
+<div id="vicwatch-top1" class="hide-if-mobile">
+	<div class="web-top-logo">
 		<div class="<?php echo $__cf_row['cf_top_class_style']; ?> cf div-search-margin">
 			<div class="lf f50"><i class="fa fa-map-marker"></i> <?php echo _eb_first( explode( "\n", $__cf_row['cf_diachi'] ) ); ?></div>
 			<div class="lf f30 cf text-center medium">
