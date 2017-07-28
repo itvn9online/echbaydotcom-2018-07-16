@@ -8,7 +8,7 @@
 #estyle-footer2 .web-logo {
 	line-height: 60px;
 	background: center no-repeat;
-	background-size: auto 99%;
+	background-size: 99% auto;
 }
 #estyle-footer2 .footer-address { padding-left: 20px; }
 #estyle-footer2 .footer-address-company {

@@ -5,7 +5,7 @@
 #estyle-top2 .web-logo {
 	line-height: 90px;
 	background: left no-repeat;
-	background-size: auto 99%;
+	background-size: 99% auto;
 }
 #estyle-top2 .estyle-top2-margin { margin-top: 29px; }
 #estyle-top2 .btn-to-cart a {
