@@ -39,7 +39,7 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 	foreach ( $arr_dir as $v ) {
 		$v2 = str_replace( $dir_source, EB_THEME_PLUGIN_INDEX, $v );
 		
-		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
+		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 		
 		// tạo thư mục nếu chưa có
 		if ( ! is_dir( $v2 ) ) {
@@ -96,10 +96,10 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 	
 	
 	//
-	foreach ( $list_file_for_update_eb_core as $v ) {
+	foreach ( $arr_file as $v ) {
 		$v2 = str_replace( $dir_source, EB_THEME_PLUGIN_INDEX, $v );
 		
-		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
+		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 		
 		// upload file
 		copy( $v, $v2 );
@@ -204,7 +204,7 @@ function EBE_update_file_via_ftp () {
 	foreach ( $list_dir_for_update_eb_core as $v ) {
 		$v2 = str_replace( $dir_source_update, EB_THEME_PLUGIN_INDEX, $v );
 		
-		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
+		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 		
 		// tạo thư mục nếu chưa có
 		if ( ! is_dir( $v2 ) ) {
@@ -276,7 +276,7 @@ function EBE_update_file_via_ftp () {
 		
 //		$v = '.' . strstr( $v, '/' . $ftp_dir_root . '/' );
 		
-		echo '<strong>from</strong>: ' . $v . ' - <strong>to</strong>: ' . $v2 . '<br>' . "\n";
+		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 //		echo $file_test . ' - file cache<br>' . "\n";
 		
 		// upload file FTP_BINARY or FTP_ASCII -> nên sử dụng FTP_BINARY
@@ -319,14 +319,14 @@ function EBE_remove_dir_after_update ( $dir, $arr ) {
 //	print_r( $list_dir_for_update_eb_core );
 	foreach ( $arr as $v ) {
 		rmdir( $v );
-		echo '<strong>remove dir</strong>: ' . $v . '<br>' . "\n";
+		echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v ) . '<br>' . "\n";
 	}
 	if ( file_exists( $dir . '.gitattributes' ) ) {
 		unlink( $dir . '.gitattributes' );
-		echo '<strong>remove file</strong>: ' . $dir . '.gitattributes<br>' . "\n";
+		echo '<strong>remove file</strong>: ' . str_replace( EB_THEME_CONTENT, '', $dir ) . '.gitattributes<br>' . "\n";
 	}
 	rmdir( $dir );
-	echo '<strong>remove dir</strong>: ' . $dir . '<br>' . "\n";
+	echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $dir ) . '<br>' . "\n";
 	
 	// cập nhật lại version trong file cache
 	_eb_get_static_html ( 'github_version', EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) ), '', 60 );
@@ -370,6 +370,12 @@ function EBE_get_text_version ( $str ) {
 				copy( 'https://github.com/itvn9online/echbaydotcom/archive/master.zip', $destination_path );
 				chmod( $destination_path, 0777 );
 			}
+			
+			
+			// dir for content
+			echo 'Dir content: <strong>' . EB_THEME_CONTENT . '</strong><br>' . "\n";
+			
+			
 			
 			// Giải nén file
 			if ( file_exists( $destination_path ) ) {
