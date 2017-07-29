@@ -458,7 +458,7 @@ $('.powered-by-echbay a').attr({
 
 // kiểm tra phiên bản HTML mới hay cũ
 setTimeout(function () {
-	if ( $('html').length != 1 ) {
+	if ( $('title').length != 1 ) {
 		alert('Lỗi HTML! vui lòng kiểm tra lại (HTML ERROR!)');
 	}
 }, 1200);
