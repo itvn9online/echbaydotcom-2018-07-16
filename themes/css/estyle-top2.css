@@ -31,6 +31,7 @@
 #estyle-top2 .div-search {
 	width: 90%;
 	margin: 0 auto;
+	border-color: #999;
 }
 #estyle-top2 .div-search form { padding-left: 10px; }
 #estyle-top2 .div-search input[type=search],
