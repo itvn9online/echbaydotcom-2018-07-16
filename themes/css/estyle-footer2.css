@@ -6,9 +6,9 @@
 #estyle-footer2,
 #estyle-footer2 a { color: #CCC; }
 #estyle-footer2 .web-logo {
-	line-height: 60px;
+	line-height: 40px;
 	background: center no-repeat;
-	background-size: 99% auto;
+	background-size: auto 90%;
 }
 #estyle-footer2 .footer-address { padding-left: 20px; }
 #estyle-footer2 .footer-address-company {

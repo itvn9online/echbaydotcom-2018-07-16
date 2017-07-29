@@ -3,11 +3,10 @@
 	background: #5EC7F0;
 }
 #estyle-top2 .web-logo {
-	line-height: 90px;
+	line-height: 50px;
 	background: left no-repeat;
-	background-size: 99% auto;
 }
-#estyle-top2 .estyle-top2-margin { margin-top: 29px; }
+#estyle-top2 .estyle-top2-margin { margin-top: 10px; }
 #estyle-top2 .btn-to-cart a {
 	background: #fff;
 	text-transform: uppercase;
