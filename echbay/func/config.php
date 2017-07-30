@@ -120,12 +120,16 @@ if ( ! isset( $_POST['cf_global_big_banner'] ) || (int) $_POST['cf_global_big_ba
 
 //
 if ( $_POST['cf_title'] == '' ) {
-	$_POST['cf_title'] = web_name;
+//	$_POST['cf_title'] = web_name;
+	$_POST['cf_title'] = $__cf_row_default['cf_title'];
 }
+_eb_update_option( 'blogname', $_POST['cf_title'] );
 
 if ( $_POST['cf_description'] == '' ) {
-	$_POST['cf_description'] = get_bloginfo('blogdescription');
+//	$_POST['cf_description'] = get_bloginfo('blogdescription');
+	$_POST['cf_description'] = $__cf_row_default['cf_description'];
 }
+_eb_update_option( 'blogdescription', $_POST['cf_description'] );
 
 
 if ( $_POST['cf_content_language'] == '' ) {
