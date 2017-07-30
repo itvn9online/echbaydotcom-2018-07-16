@@ -13,6 +13,18 @@
 				</div>
 			</li>
 			<li class="cf">
+				<div class="lf f80"><i class="fa fa-home"></i> <?php echo EBE_get_lang('home'); ?> <em>(/)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="/" data-text="<i class='fa fa-home'></i> <?php echo EBE_get_lang('home'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-home"></i> <em>(/)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="/" data-text="<i class='fa fa-home'></i>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
 				<div class="lf f80"><?php echo EBE_get_lang('lienhe'); ?> <em>(/contact)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/contact" data-text="<?php echo EBE_get_lang('lienhe'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
@@ -43,9 +55,21 @@
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80">All category <em>(create menu with all category in site)</em></div>
+				<div class="lf f80">Tất cả danh mục <em>(lấy toàn bộ chuyên mục đang có trên hệ thống)</em></div>
 				<div class="lf f20 text-center">
-					<button data-link="/auto.get_all_category/" data-text="All category" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+					<button data-link="/auto.get_all_category/" data-text="Toàn bộ danh mục" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-bars"></i> Danh mục <em>(lấy toàn bộ chuyên mục đang có trên hệ thống, đính kèm cả icon, dùng cho việc tạo dropdown menu)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="/auto.get_all_category/bars/" data-text="<i class='fa fa-bars'></i> Danh mục" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-bars"></i> Danh mục <i class="fa fa-caret-down"></i> <em>(lấy toàn bộ chuyên mục đang có trên hệ thống, đính kèm cả icon, dùng cho việc tạo dropdown menu - mẫu 2)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="/auto.get_all_category/caret/" data-text="<i class='fa fa-bars'></i> Danh mục <i class='fa fa-caret-down'></i>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">

@@ -1065,6 +1065,20 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 		// nếu có chuỗi /auto.get_all_category/ -> đây là menu tự động -> lấy toàn bộ category
 		if ( strpos( $a, '/auto.get_all_category/' ) !== false ) {
 			$a = EBE_echbay_category_menu();
+			
+			// các mẫu danh mục
+			if ( strpos( $a, '/auto.get_all_category/bars/' ) !== false ) {
+				$a = '<div class="' . $slug . '-hover">
+					<div class="' . $slug . '-bars"><i class="fa fa-bars"></i> Danh mục</div>
+					<div class="' . $slug . '-cats">' . $a . '</div>
+				</div>';
+			}
+			else if ( strpos( $a, '/auto.get_all_category/caret/' ) !== false ) {
+				$a = '<div class="' . $slug . '-hover">
+					<div class="' . $slug . '-bars"><i class="fa fa-bars"></i> Danh mục <i class="fa fa-caret-down"></i></div>
+					<div class="' . $slug . '-cats">' . $a . '</div>
+				</div>';
+			}
 		}
 		else {
 			// xóa các ID và class trong menu
