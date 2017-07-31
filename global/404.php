@@ -85,9 +85,16 @@ if ( $act == '9999' ) {
 
 // một số act trùng nhau
 switch ( $act ) {
+	
+	// các tham số chung của phần contact
 	case "lien-he":
 	case "lienhe":
 		$act = 'contact';
+		break;
+	
+	// sitemap của yoast seo -> mặc định là sử dụng sitemap riêng của echbay
+	case "sitemap.xml":
+		wp_redirect( web_link . 'sitemap', 301 );
 		break;
 }
 
@@ -171,13 +178,30 @@ switch ( $act ) {
 		// nếu không -> thử kiểm tra URL cũ xem có không
 		else {
 			
+			/*
+			* Thử mọi phien bản, SSL, www.
+			*/
+			
 			//
-			$old_404_url = web_link . substr( $current_404_uri, 1 );
+			$domain_non_www = str_replace( 'www.', '', $_SERVER['HTTP_HOST'] );
+			$domain_uri = substr( $current_404_uri, 1 );
+			
+			//
+			$old_404_url = 'http://' . $domain_non_www . '/' . $domain_uri;
 //			echo $old_404_url . '<br>' . "\n";
 			
-			$old_small_404_url = web_link . substr( $current_small_404_uri, 1 );
+//			$old_small_404_url = web_link . substr( $current_small_404_uri, 1 );
+			$old_small_404_url = 'http://www.' . $domain_non_www . '/' . $domain_uri;
 //			echo $old_small_404_url . '<br>' . "\n";
 //			exit();
+			
+//			$old_ssl_www_404_url = 'https://www.' . str_replace( 'www.', '', $_SERVER['HTTP_HOST'] ) . substr( $current_small_404_uri, 1 );
+			$old_ssl_www_404_url = 'https://www.' . $domain_non_www . '/' . $domain_uri;
+//			echo $old_ssl_www_404_url . '<br>' . "\n";
+			
+//			$old_ssl_404_url = 'https://' . str_replace( 'www.', '', $_SERVER['HTTP_HOST'] ) . substr( $current_small_404_uri, 1 );
+			$old_ssl_404_url = 'https://' . $domain_non_www . '/' . $domain_uri;
+//			echo $old_ssl_404_url . '<br>' . "\n";
 			
 			//
 			$sql = _eb_q("SELECT post_id, meta_key
@@ -186,6 +210,10 @@ switch ( $act ) {
 			WHERE
 				meta_value = '" . $old_404_url . "'
 				OR meta_value = '" . $old_small_404_url . "'
+				OR meta_value = '" . $old_ssl_www_404_url . "'
+				OR meta_value = '" . $old_ssl_404_url . "'
+				OR meta_value = '" . $current_404_uri . "'
+				OR meta_value = '" . $domain_uri . "'
 			ORDER BY
 				meta_id DESC
 			LIMIT 0, 1");

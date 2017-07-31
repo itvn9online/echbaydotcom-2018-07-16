@@ -505,6 +505,20 @@ function click_remove_style_of_img_content () {
 
 
 
+// Tạo ảnh đại diện mặc định nếu chưa có
+function EBE_set_default_img_avt () {
+	if ( dog('_eb_product_avatar') != null && dog('_eb_product_avatar').value == '' ) {
+		var a = $( '#content_ifr' ).contents().find( 'img:first' ).attr('src') || '';
+//		console.log(a);
+		
+		if ( a != '' ) {
+			dog('_eb_product_avatar').value = a;
+		}
+	}
+}
+
+
+
 //
 function EBE_set_default_title_for_seo () {
 	if ( dog('postexcerpt-hide').checked == false ) {
@@ -860,12 +874,17 @@ function EBE_get_current_wp_module ( s ) {
 		
 		
 		//
-		$('#publish').css({
+		$('#publish').addClass('publish-position-fixed')
+		/*
+		.css({
 			'position' : 'fixed',
 			'bottom': '20px',
 			'right' : '20px',
 			'z-index' : 99
-		}).click(function () {
+		})
+		*/
+		.click(function () {
+			EBE_set_default_img_avt();
 			EBE_set_default_title_for_seo();
 		});
 		

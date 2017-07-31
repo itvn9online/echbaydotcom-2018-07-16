@@ -26,6 +26,7 @@ $pid = $__post->ID;
 
 $url_og_url = _eb_p_link( $pid );
 $web_og_type = 'product';
+$link_for_fb_comment = web_link . '?p=' . $pid;
 
 _eb_fix_url( $url_og_url );
 
@@ -156,6 +157,9 @@ if ( $__cf_row['cf_post_column_style'] == '' ) {
 
 // blog
 if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
+	
+	$link_for_fb_comment = web_link . '?post_type=' . EB_BLOG_POST_TYPE . '&p=' . $pid;
+	
 	// bài báo
 	$web_og_type = 'article';
 	
@@ -819,12 +823,14 @@ $product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . '
 //
 $trv_h1_tieude = str_replace( '<', '&lt;', str_replace( '>', '&gt;', $__post->post_title ) );
 
+
+
 // tạo mảng để khởi tạo nội dung
 $arr_main_content = array(
 	'tmp.trv_id' => $pid,
 	'tmp.trv_masanpham' => $trv_masanpham,
 //	'tmp.trv_masanpham' => $trv_masanpham == '' ? '#' . $pid : $trv_masanpham,
-	'tmp.link_for_fb_comment' => $web_link . '?p=' . $pid,
+	'tmp.link_for_fb_comment' => $link_for_fb_comment,
 	
 	'tmp.trv_tieude' => $trv_h1_tieude,
 	'tmp.trv_h1_tieude' => $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
