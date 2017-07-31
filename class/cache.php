@@ -168,13 +168,6 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		/*
 		* Một số thông số khác
 		*/
-//		$web_name = get_bloginfo ( 'name' );
-		$web_name = get_bloginfo ( 'blogname' );
-//		$web_name = get_bloginfo ( 'sitename' );
-		
-		//
-//		$__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";$web_link="' . str_replace( '"', '\"', $web_link ) . '";';
-		$__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";';
 		
 		
 		
@@ -184,6 +177,21 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		* lấy các dữ liệu được tạo riêng cho config -> $post_id = -1;
 		*/
 		_eb_get_config();
+		
+		
+		//
+		if ( $__cf_row['cf_web_name'] == '' ) {
+//			$web_name = get_bloginfo ( 'name' );
+			$web_name = get_bloginfo ( 'blogname' );
+//			$web_name = get_bloginfo ( 'sitename' );
+		} else {
+			$web_name = $__cf_row['cf_web_name'];
+		}
+		
+		//
+//		$__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";$web_link="' . str_replace( '"', '\"', $web_link ) . '";';
+		$__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";';
+			
 		
 		// chỉnh lại số điện thoại sang dạng html -> do safari lỗi hiển thị
 		if ( $__cf_row['cf_call_dienthoai'] == '' && $__cf_row['cf_dienthoai'] != '' ) {

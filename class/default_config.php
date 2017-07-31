@@ -4,6 +4,7 @@
 
 // mảng các tham số dành cho cấu hình website, cần thêm thuộc tính gì thì cứ thế add vào mảng này là được
 $__cf_row_default = array(
+	'cf_web_name' => '',
 	'cf_chu_de_chinh' => '',
 	
 	'cf_smtp_email' => '',

@@ -10,7 +10,7 @@
 				);
 				?>
 			</div>
-			<div class="footer-coppyright">&copy;<?php echo $year_curent; ?> <span class="upper bold"> <?php echo $web_name; ?> </span> - Toàn bộ phiên bản. <?php echo $str_fpr_license_echbay; ?></div>
+			<div class="footer-coppyright">&copy;<?php echo $year_curent; ?> <span class="upper bold"> <?php echo web_name; ?> </span> - Toàn bộ phiên bản. <?php echo $str_fpr_license_echbay; ?></div>
 			<br>
 		</div>
 		<div class="lf f25 cf fullsize-if-mobile">
