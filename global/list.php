@@ -114,7 +114,11 @@ if ( $switch_taxonomy != '' ) {
 	_eb_fix_url( $url_og_url );
 	
 	//
-	$link_for_fb_comment = web_link . '?cat=' . $__category->term_id;
+	if ( $__category->taxonomy == 'category' ) {
+		$link_for_fb_comment = web_link . '?cat=' . $__category->term_id;
+	} else {
+		$link_for_fb_comment = web_link . '?taxonomy=' . $__category->taxonomy . '&cat=' . $__category->term_id;
+	}
 //	$link_for_fb_comment = wp_get_shortlink();
 //	the_shortlink();
 	

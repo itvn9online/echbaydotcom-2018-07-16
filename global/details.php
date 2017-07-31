@@ -158,7 +158,7 @@ if ( $__cf_row['cf_post_column_style'] == '' ) {
 // blog
 if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
 	
-	$link_for_fb_comment = web_link . '?post_type=' . EB_BLOG_POST_TYPE . '&p=' . $pid;
+//	$link_for_fb_comment = web_link . '?post_type=' . EB_BLOG_POST_TYPE . '&p=' . $pid;
 	
 	// bài báo
 	$web_og_type = 'article';
