@@ -51,6 +51,21 @@
 					<div class="border-file-design border-threadnode-design">{tmp.str_threadnode_design_preview}</div></td>
 			</tr>
 			<tr>
+				<td class="t">Ảnh Sản phẩm</td>
+				<td class="i"><input type="text" name="cf_product_size" value="{tmp.cf_product_size}" class="n fixed-size-for-config" maxlength="10" />
+					<div class="small">Ví dụ kích thước ảnh sản phẩm là 400x400 thì bạn có thể nhập là 400/400 hoặc nhập luôn là 1 (kết quả của phép toán 400:400).</div></td>
+			</tr>
+			<tr>
+				<td class="t">Ảnh Sản phẩm (mobile)</td>
+				<td class="i"><input type="number" name="cf_product_mobile_size" value="{tmp.cf_product_mobile_size}" class="n" maxlength="10" />
+					<div class="small">Đây là kích thước tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình từ 7inch trở xuống.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Ảnh Sản phẩm (table)</td>
+				<td class="i"><input type="number" name="cf_product_table_size" value="{tmp.cf_product_table_size}" class="n" maxlength="10" />
+					<div class="small">Đây là kích thước tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình từ 11inch trở xuống.</div></td>
+			</tr>
+			<tr>
 				<td valign="top" class="t">HTML tag cho tiêu đề</td>
 				<td class="i"><div class="small" style="line-height:19px;">Mặc định, code chỉ để thẻ DIV cho các tiêu đề, hạn chế việc sử dụng các thẻ H2-H6. Trường hợp các bạn làm SEO có nhu cầu sử dụng thẻ H thì chọn theo lựa chọn dưới đây.<br>
 						* Lưu ý: việc thay đổi thẻ có thể sẽ làm thay đổi giao diện web, vì thế, cần phải kiểm tra và điều chỉnh lại CSS theo thẻ mới.</div>
@@ -92,7 +107,7 @@
 				<td valign="top" class="t">Bố cục trang danh sách sản phẩm</td>
 				<td class="i">{tmp.cf_cats_column_style}</td>
 			</tr>
-			<tr>
+			<tr class="d-none">
 				<td valign="top" class="t">Bố cục chỉ mục sản phẩm (node)</td>
 				<td class="i">{tmp.cf_cats_node_html}</td>
 			</tr>
@@ -127,9 +142,14 @@
 					<div class="border-file-design border-threaddetails-design">{tmp.str_threaddetails_design_preview}</div></td>
 			</tr>
 			<tr>
+				<td class="t">Slide chi tiết sản phẩm</td>
+				<td class="i"><input type="text" name="cf_product_details_size" value="{tmp.cf_product_details_size}" class="n fixed-size-for-config" maxlength="10" />
+					<div class="small">Kích thước slider trong phần chi tiết sản phẩm.</div></td>
+			</tr>
+			<tr class="d-none">
 				<td colspan="2"><hr></td>
 			</tr>
-			<tr>
+			<tr class="d-none">
 				<td valign="top" class="t">Bố cục sản phẩm liên quan (node)</td>
 				<td class="i">{tmp.cf_post_node_html}</td>
 			</tr>
