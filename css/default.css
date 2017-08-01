@@ -205,7 +205,7 @@ a {
 .jEBE_slider-toLeft,
 .jEBE_slider-toRight {
 	position: absolute;
-	z-index: 9;
+	z-index: 1;
 	cursor: pointer;
 	font-size: 30px;
 }

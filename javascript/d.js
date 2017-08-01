@@ -291,7 +291,7 @@ function ___eb_details_slider_v2 () {
 	// tải slider theo code mới
 	jEBE_slider( '.thread-details-mobileAvt', {
 		sliderArrow: true,
-//		buttonListNext: false,
+		buttonListNext: cf_details_show_list_next == 1 ? true : false,
 //		autoplay : true,
 		
 		sliderArrowWidthLeft : '40%',

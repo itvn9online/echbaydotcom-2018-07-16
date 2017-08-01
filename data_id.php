@@ -32,6 +32,9 @@ $add_data_id = array (
 //		'sid' => $sid,
 //		'fid' => $fid,
 		'pid' => $pid,
+		
+		'cf_details_show_list_next' => $__cf_row['cf_details_show_list_next'],
+		
 //		'tid' => $tid,
 //		'url_for_cat_js' => '\'' . $url_for_cat_js . '\'' ,
 		'act' => '\'' . $act . '\'' 

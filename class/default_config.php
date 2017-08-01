@@ -158,6 +158,12 @@ $__cf_row_default = array(
 	// Mặc định, banner lớn được load theo từng trang, nếu muốn load cho toàn bộ trang thì kích hoạt nó lên
 	'cf_global_big_banner' => 0,
 	
+	/*
+	* Cấu hình slider cho trang chi tiết sản phẩm
+	*/
+	// Ẩn/ Hiện nút nhỏ nhỏ màu đỏ trên silder
+	'cf_details_show_list_next' => 0,
+	
 	
 	/*
 	* giao diện HTML mặc định

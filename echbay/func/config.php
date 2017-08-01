@@ -114,6 +114,10 @@ if ( ! isset( $_POST['cf_global_big_banner'] ) || (int) $_POST['cf_global_big_ba
 	$_POST['cf_global_big_banner'] = 0;
 }
 
+if ( ! isset( $_POST['cf_details_show_list_next'] ) || (int) $_POST['cf_details_show_list_next'] != 1 ) {
+	$_POST['cf_details_show_list_next'] = 0;
+}
+
 
 
 

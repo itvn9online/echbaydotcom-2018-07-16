@@ -324,6 +324,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_set_news_version' );
 	show_note_for_checkbox_config( 'cf_echbay_migrate_version' );
 	show_note_for_checkbox_config( 'cf_global_big_banner' );
+	show_note_for_checkbox_config( 'cf_details_show_list_next' );
 }
 
 
@@ -481,6 +482,7 @@ $('.fixed-size-for-config').change(function () {
 			
 			a = a[1] + '/' + a[0];
 		}
+		a = a.toString().replace(/[^0-9\/]/g, '');
 		
 		$(this).val( a );
 	}
