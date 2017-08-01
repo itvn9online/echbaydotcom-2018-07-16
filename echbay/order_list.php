@@ -49,6 +49,7 @@ $sql = _eb_q ( "SELECT COUNT(order_id)
 	WHERE
 		tv_id > 0
 		" . $strFilter );
+//echo $strFilter . '<br>' . "\n";
 //print_r( $sql );
 $sql = $sql[0];
 //print_r( $sql );
@@ -61,6 +62,9 @@ foreach ( $sql as $v ) {
 
 // phân trang bình thường
 $totalPage = ceil ( $totalThread / $threadInPage );
+if ( $totalPage < 1 ) {
+	$totalPage = 1;
+}
 //echo $totalPage . '<br>' . "\n";
 if ($trang > $totalPage) {
 	$trang = $totalPage;
