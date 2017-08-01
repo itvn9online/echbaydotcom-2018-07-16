@@ -470,7 +470,7 @@ if ( $('#cf_sys_email').val() == 1 ) {
 
 
 // phần thiết lập thông số của size -> chỉnh về 1 định dạng
-$('input[name="cf_product_size"], input[name="cf_product_details_size"], input[name="cf_blog_size"], input[name="cf_top_banner_size"], input[name="cf_other_banner_size"]').change(function () {
+$('.fixed-size-for-config').change(function () {
 	var a = $(this).val() || '';
 	if ( a != '' ) {
 		a = a.replace( /\s/g, '' );
