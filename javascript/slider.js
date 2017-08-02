@@ -173,7 +173,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		});
 		$(jd).after('<div class="' + jd_class + '"><div class="jEBE_slider-thumbnail"><ul class="cf">' + str_btn + '</ul></div></div>');
 		
-		//
+		// Tạo slider cho thumbnail
 		if ( conf['thumbnailSlider'] == true ) {
 			var j_id = '_' + Math.random().toString(32).replace('.', '_');
 			
@@ -181,16 +181,100 @@ function jEBE_slider ( jd, conf, callBack ) {
 				id: j_id
 			});
 			
+			/*
+			// các option mặc định thì chuyển về false hết
 			jEBE_slider( '#' + j_id, {
+				visible: 4,
+				buttonListNext: false,
+				size : conf['thumbnailHeight'] + '/' + conf['thumbnailWidth']
 			}, function () {
 			});
+			*/
+			
+			//
+			$('#' + j_id).addClass('jEBE_slider-child-thumbnail').height( conf['thumbnailHeight'] )
+			/*
+			.css({
+				height: conf['thumbnailHeight'] + 'px'
+			})
+			*/
+			;
+			
+			// mặc định là hiển thị 4 ảnh con, nếu nhiều hơn 4 ảnh -> hiển thị dưới dạng slide
+			if ( $('#' + j_id + ' li').length > 4 ) {
+				
+				// set chiều rộng mới cho UL, để tất cả các LI sẽ nằm trên 1 dòng
+				$('#' + j_id + ' ul').attr({
+					'data-width': $('#' + j_id + ' ul').width()
+				}).width( $('#' + j_id + ' li').length * ( $('#' + j_id + ' ul').width()/ 4 ) );
+				
+				// tính toán chiều rộng cho các thẻ li
+				$('#' + j_id + ' li').width( ( 100/ $('#' + j_id + ' li').length - 0.1 ) + '%' );
+				
+				//
+				var str_for_thumb_row = '',
+					j_id_left = j_id + '_left',
+					j_id_right = j_id + '_right';
+				
+				str_for_thumb_row += '<div id="' + j_id_left + '" class="jEBE_slider-left-thumbnail ' + j_id + '-thumb-left"><i class="fa fa-angle-left"></i></div>';
+				str_for_thumb_row += '<div id="' + j_id_right + '" class="jEBE_slider-right-thumbnail ' + j_id + '-thumb-right"><i class="fa fa-angle-right"></i></div>';
+				
+				//
+				$('#' + j_id).addClass('jEBE_slider-scroll-thumbnail').before('<div class="jEBE_slider-arrow-thumbnail ' + j_id + '-thumb-arrow">' + str_for_thumb_row + '</div>');
+				
+				//
+				$('#' + j_id_left + ', #' + j_id_right).height( conf['thumbnailHeight'] ).css({
+					'line-height': conf['thumbnailHeight'] + 'px'
+				});
+				
+				//
+				$('#' + j_id_left).click(function () {
+					var a = $('#' + j_id + ' ul').attr('data-scroll') || 0;
+					a = a - 1;
+					if ( a < 0 ) {
+						a = 0;
+					}
+					
+					$('#' + j_id + ' ul').attr({
+						'data-scroll': a
+					}).css({
+//						left: '-' + $('#' + j_id + ' ul').attr('data-width') + 'px'
+						left: '-' + ( a * 100 ) + '%'
+					});
+				});
+				
+				//
+				$('#' + j_id_right).click(function () {
+					var a = $('#' + j_id + ' ul').attr('data-scroll') || 0,
+						max_li = $('#' + j_id + ' li').length/ 4;
+					a = a - (0 - 1);
+//					console.log(a);
+//					console.log(max_li);
+					if ( a > max_li ) {
+						a = max_li;
+					}
+//					console.log(a);
+					
+					$('#' + j_id + ' ul').attr({
+						'data-scroll': a
+					}).css({
+//						left: '-' + $('#' + j_id + ' ul').attr('data-width') + 'px'
+						left: '-' + ( a * 100 ) + '%'
+					});
+				});
+				
+			}
 		}
 		
 		// tạo css cho thumbmail
-		$(jd_to_class + ' .jEBE_slider-thumbnail div').css({
+		$(jd_to_class + ' .jEBE_slider-thumbnail div').width( conf['thumbnailWidth'] ).height( conf['thumbnailHeight'] )
+		/*
+		.css({
 			width: conf['thumbnailWidth'] + 'px',
 			height: conf['thumbnailHeight'] + 'px'
-		});
+		})
+		*/
+		;
 	}
 	
 	

@@ -1406,3 +1406,38 @@ li.footer-social-gg { background-color: #DE4B39; }
 }
 .footer-social a:hover { opacity: .6; }
 .show_count_cart { font-style: normal; }
+.jEBE_slider-child-thumbnail {
+	overflow: hidden;
+	margin: 15px 0;
+}
+.jEBE_slider-scroll-thumbnail {
+	width: 90%;
+	margin: 15px auto;
+	position: relative;/* overflow: hidden; *//*
+	overflow-y: hidden;
+	overflow-x: scroll;
+	*/
+}
+.jEBE_slider-scroll-thumbnail ul { position: absolute; }
+.jEBE_slider-child-thumbnail li {
+	display: block;
+	float: left;
+}
+.jEBE_slider-child-thumbnail li div {
+	width: auto !important;
+	background-size: auto 98%;
+}
+.jEBE_slider-arrow-thumbnail { position: relative; }
+.jEBE_slider-left-thumbnail,
+.jEBE_slider-right-thumbnail {
+	position: absolute;
+	font-size: 40px;
+	width: 5%;
+	top: 0;
+	cursor: pointer;
+}
+.jEBE_slider-left-thumbnail { left: 0; }
+.jEBE_slider-right-thumbnail {
+	right: 0;
+	text-align: right;
+}
