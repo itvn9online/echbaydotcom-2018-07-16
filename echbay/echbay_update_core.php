@@ -42,11 +42,8 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 		
 		// tạo thư mục nếu chưa có
-		if ( ! is_dir( $v2 ) ) {
+		if ( EBE_create_dir( $v2 ) == true ) {
 			echo '<strong>Create dir:</strong> ' . $v2 . '<br>' . "\n";
-			mkdir($v2, 0755) or die('mkdir error');
-			// server window ko cần chmod
-			chmod($v2, 0755) or die('chmod ERROR');
 		}
 	}
 	

@@ -3340,6 +3340,18 @@ function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 	return true;
 }
 
+function EBE_create_dir ( $path ) {
+	if ( ! is_dir( $path ) ) {
+		mkdir($path, 0755) or die('mkdir error');
+		// server window ko cần chmod
+		chmod($path, 0755) or die('chmod ERROR');
+		
+		return true;
+	}
+	
+	return false;
+}
+
 function EBE_create_cache_for_ftp () {
 	return EB_THEME_CACHE . 'cache_for_ftp.txt';
 }
