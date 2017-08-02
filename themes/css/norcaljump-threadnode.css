@@ -1,0 +1,40 @@
+.titleCSS {
+	font-size: 13pt;
+	padding: 6px 0;
+}
+.bottom-support {
+	padding: 20px 0 35px 0;
+	margin: 0;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3) inset;
+}
+.bottom-support,
+.bottom-support a { color: #333; }
+.ls-bottom-support {
+	list-style: inside;
+	margin-bottom: 20px;
+}
+.ls-bottom-support li,
+.ls-bottom-support li a { font-size: 9pt; }
+.ls-bottom-support a:hover { text-decoration: underline; }
+.ls-bottom-support li { padding: 4px 0; }
+.footer-social li { background-color: #ccc; }
+.bottom-contact ul { margin-top: 10px; }
+.bottom-contact li {
+	position: relative;
+	margin-bottom: 10px;
+	line-height: 23px;
+	padding-left: 25px;
+}
+.bottom-contact i {
+	position: absolute;
+	top: 2px;
+	left: 0;
+	font-size: 18px;
+}
+.clone-gorup-list li { float: left; }
+.clone-gorup-list a:after {
+	content: ",";
+	display: inline-block;
+	margin-right: 5px;
+}
+.clone-gorup-list li:last-child a:after { display: none; }
