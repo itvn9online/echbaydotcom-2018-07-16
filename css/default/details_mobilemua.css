@@ -26,7 +26,7 @@
 	line-height: 25px;
 	font-size: 25px;
 }
-.thread-details-mobilemua span { display: none; }
+/* .thread-details-mobilemua span { display: none; } */
 .thread-details-mobilemua,
 .thread-details-mobilemua a { color: #333; }
 .thread-details-phonemua a { display: none; }
