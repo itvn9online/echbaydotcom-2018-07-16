@@ -163,6 +163,7 @@ $__cf_row_default = array(
 	*/
 	// Ẩn/ Hiện nút nhỏ nhỏ màu đỏ trên silder
 	'cf_details_show_list_next' => 0,
+	'cf_details_show_list_thumb' => 1,
 	
 	
 	/*

@@ -328,6 +328,7 @@ if ( current_module_config != 'config_theme' ) {
 // config_theme
 else {
 	show_note_for_checkbox_config( 'cf_details_show_list_next' );
+	show_note_for_checkbox_config( 'cf_details_show_list_thumb' );
 }
 
 

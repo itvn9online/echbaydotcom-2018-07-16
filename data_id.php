@@ -34,6 +34,7 @@ $add_data_id = array (
 		'pid' => $pid,
 		
 		'cf_details_show_list_next' => $__cf_row['cf_details_show_list_next'],
+		'cf_details_show_list_thumb' => $__cf_row['cf_details_show_list_thumb'],
 		
 //		'tid' => $tid,
 //		'url_for_cat_js' => '\'' . $url_for_cat_js . '\'' ,

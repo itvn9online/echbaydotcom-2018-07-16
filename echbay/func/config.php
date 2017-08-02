@@ -118,6 +118,10 @@ if ( ! isset( $_POST['cf_details_show_list_next'] ) || (int) $_POST['cf_details_
 	$_POST['cf_details_show_list_next'] = 0;
 }
 
+if ( ! isset( $_POST['cf_details_show_list_thumb'] ) || (int) $_POST['cf_details_show_list_thumb'] != 1 ) {
+	$_POST['cf_details_show_list_thumb'] = 0;
+}
+
 
 
 

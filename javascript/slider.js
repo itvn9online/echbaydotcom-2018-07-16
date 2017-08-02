@@ -95,6 +95,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// thumbnail -> vì là lấy hình ảnh làm thumbnail -> cần class chứa URL ảnh (src hoặc data-img)
 	set_default_conf( 'thumbnail', false );
+	set_default_conf( 'thumbnailSlider', true );
 	// kích thước của thumbnail
 	set_default_conf( 'thumbnailWidth', 90 );
 	set_default_conf( 'thumbnailHeight', conf['thumbnailWidth'] );
@@ -171,6 +172,19 @@ function jEBE_slider ( jd, conf, callBack ) {
 			i++;
 		});
 		$(jd).after('<div class="' + jd_class + '"><div class="jEBE_slider-thumbnail"><ul class="cf">' + str_btn + '</ul></div></div>');
+		
+		//
+		if ( conf['thumbnailSlider'] == true ) {
+			var j_id = '_' + Math.random().toString(32).replace('.', '_');
+			
+			$(jd_to_class + ' .jEBE_slider-thumbnail').attr({
+				id: j_id
+			});
+			
+			jEBE_slider( '#' + j_id, {
+			}, function () {
+			});
+		}
 		
 		// tạo css cho thumbmail
 		$(jd_to_class + ' .jEBE_slider-thumbnail div').css({
