@@ -1,5 +1,5 @@
-<div id="echbaytwo-top1">
-	<div class="top-top-login default-2bg hide-if-mobile">
+<div id="norcaljump-top1">
+	<div class="norcaljump-top1">
 		<div class="cf <?php echo $__cf_row['cf_top_class_style']; ?>">
 			<div class="lf f50"><a href="mailto:<?php echo $__cf_row['cf_email']; ?>" rel="nofollow" target="_blank"><i class="fa fa-envelope-o orgcolor"></i> <?php echo $__cf_row['cf_email']; ?></a> &nbsp; <span class="phone-numbers-inline"><i class="fa fa-phone orgcolor"></i> <?php echo $__cf_row['cf_call_dienthoai']; ?></span></div>
 			<div class="lf f50">

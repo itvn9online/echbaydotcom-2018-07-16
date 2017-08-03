@@ -272,7 +272,7 @@ input[id="_eb_category_order"] { width: 90px; }
 .border-file-design {
 	border: 1px #ccc solid;
 	padding: 15px;
-	background: #fafafa;
+	background: #fafafa url(../images-global/wix-bg-design.png);
 }
 .preview-file-design {
 	height: 21px;
@@ -286,6 +286,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	cursor: pointer;
 	font-size: 13px;
 	border-bottom: 1px #fafafa solid;
+	max-width:999px;
+	margin:0 auto;
 }
 .preview-file-design:hover {
 	-moz-transition: all 0.2s ease;

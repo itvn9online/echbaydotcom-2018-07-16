@@ -60,6 +60,7 @@ include_once $include_file;
 
 
 // một số tham số dùng chung
+$main_content = str_replace( '{tmp.admin_css_uri}', EB_URL_OF_PLUGIN . 'css/', $main_content );
 $main_content = str_replace( '{tmp.admin_js_uri}', EB_URL_OF_PLUGIN . 'echbay/js/', $main_content );
 //$main_content = str_replace( '{tmp.web_version}', web_version, $main_content );
 $main_content = str_replace( '{tmp.web_version}', date_time, $main_content );

@@ -418,3 +418,10 @@ $('#press_for_search_eb_themes').click(function () {
 
 
 
+//
+$('#list-tab-eb-admin-config').click(function () {
+	window.scroll( 0, 0 );
+});
+
+
+

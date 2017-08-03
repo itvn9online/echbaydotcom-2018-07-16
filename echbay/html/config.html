@@ -163,11 +163,11 @@ div.gallery-add-to-favicon { display: block; }
 			</tr>
 			<tr>
 				<td class="t">Ảnh Tin tức/ blog</td>
-				<td class="i"><input type="text" name="cf_blog_size" value="{tmp.cf_blog_size}" class="n fixed-size-for-config" maxlength="10" /></td>
+				<td class="i"><input type="text" name="cf_blog_size" value="{tmp.cf_blog_size}" class="s fixed-size-for-config" maxlength="10" /></td>
 			</tr>
 			<tr>
 				<td class="t">Banner lớn (banner top)</td>
-				<td class="i"><input type="text" name="cf_top_banner_size" value="{tmp.cf_top_banner_size}" class="n fixed-size-for-config" maxlength="10" /></td>
+				<td class="i"><input type="text" name="cf_top_banner_size" value="{tmp.cf_top_banner_size}" class="s fixed-size-for-config" maxlength="10" /></td>
 			</tr>
 			<tr>
 				<td class="t">Banner toàn trang (global)</td>
@@ -178,7 +178,7 @@ div.gallery-add-to-favicon { display: block; }
 			</tr>
 			<tr>
 				<td class="t">Các banner khác</td>
-				<td class="i"><input type="text" name="cf_other_banner_size" value="{tmp.cf_other_banner_size}" class="n fixed-size-for-config" maxlength="10" /></td>
+				<td class="i"><input type="text" name="cf_other_banner_size" value="{tmp.cf_other_banner_size}" class="s fixed-size-for-config" maxlength="10" /></td>
 			</tr>
 			<tr>
 				<td class="t">Chất lượng hình ảnh (desktop)</td>
@@ -199,14 +199,14 @@ div.gallery-add-to-favicon { display: block; }
 			</tr>
 			<tr>
 				<td class="t">Sản phẩm Nổi bật</td>
-				<td class="i"><input type="number" name="cf_num_home_hot" value="{tmp.cf_num_home_hot}" /></td>
+				<td class="i"><input type="number" name="cf_num_home_hot" value="{tmp.cf_num_home_hot}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Nổi bật hoặc hệ thống tự đưa ra các sản phẩm được nhiều người mua nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
 			</tr>
 			<tr>
 				<td class="t">Sản phẩm Mới</td>
-				<td class="i"><input type="number" name="cf_num_home_new" value="{tmp.cf_num_home_new}" /></td>
+				<td class="i"><input type="number" name="cf_num_home_new" value="{tmp.cf_num_home_new}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Mới hoặc hệ thống tự đưa ra các sản phẩm mới nhất theo ngày cập nhật nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
@@ -222,7 +222,7 @@ div.gallery-add-to-favicon { display: block; }
 			-->
 			<tr>
 				<td class="t">Danh sách sản phẩm ở trang chủ</td>
-				<td class="i"><input type="number" name="cf_num_home_list" value="{tmp.cf_num_home_list}" /></td>
+				<td class="i"><input type="number" name="cf_num_home_list" value="{tmp.cf_num_home_list}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>Là số sản phẩm lấy kèm mỗi nhóm ở trang chủ. Nhập là 0 nếu bạn muốn tắt chức năng này hoặc chuyển sang sử dụng <a href="{tmp.web_link}wp-admin/widgets.php" target="_blank"><strong>Widget</strong></a> có tên là: <strong>EchBay home product</strong> (nếu có).</em></td>
@@ -244,21 +244,21 @@ div.gallery-add-to-favicon { display: block; }
 			</tr>
 			<tr>
 				<td class="t">Chi tiết Sản phẩm</td>
-				<td class="i"><input type="number" name="cf_num_details_list" value="{tmp.cf_num_details_list}" /></td>
+				<td class="i"><input type="number" name="cf_num_details_list" value="{tmp.cf_num_details_list}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>Đây là số lượng sản phẩm Liên quan trong phần chi tiết sản phẩm, bạn muốn lấy bao nhiêu sản phẩm thì nhập số đó vào đây.</em></td>
 			</tr>
 			<tr>
 				<td class="t">Chi tiết Sản phẩm (2)</td>
-				<td class="i"><input type="number" name="cf_num_details2_list" value="{tmp.cf_num_details2_list}" /></td>
+				<td class="i"><input type="number" name="cf_num_details2_list" value="{tmp.cf_num_details2_list}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>Một số giao diện yêu cầu 2 list sản phẩm liên quan (mặc định là không tải), nếu giao diện của bạn có hỗ trợ, và bạn muốn kích hoạt chức năng này, hãy nhập số sản phẩm muốn lấy.</em></td>
 			</tr>
 			<tr>
 				<td class="t">Chi tiết blog</td>
-				<td class="i"><input type="number" name="cf_num_details_blog_list" value="{tmp.cf_num_details_blog_list}" /></td>
+				<td class="i"><input type="number" name="cf_num_details_blog_list" value="{tmp.cf_num_details_blog_list}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>Đây là số lượng sản phẩm Liên quan trong phần chi tiết blog, bạn muốn lấy bao nhiêu sản phẩm thì nhập số đó vào đây.</em></td>
@@ -457,12 +457,12 @@ div.gallery-add-to-favicon { display: block; }
 			</tr>
 			<tr>
 				<td class="t">geo.region</td>
-				<td class="i"><input type="text" name="cf_region" value="{tmp.cf_region}" placeholder="VN" class="n" maxlength="55" />
+				<td class="i"><input type="text" name="cf_region" value="{tmp.cf_region}" placeholder="VN" class="s" maxlength="55" />
 					<div class="small">Mã Quốc gia. Ví dụ: VN, US</div></td>
 			</tr>
 			<tr>
 				<td class="t">geo.placename</td>
-				<td class="i"><input type="text" name="cf_placename" value="{tmp.cf_placename}" placeholder="Thanh Pho Ha Noi" class="m" maxlength="155" />
+				<td class="i"><input type="text" name="cf_placename" value="{tmp.cf_placename}" placeholder="Thanh Pho Ha Noi" class="n" maxlength="155" />
 					<div class="small">Ví dụ: Hanoi, Ha Noi, Ho Chi Minh, Saigon...</div></td>
 			</tr>
 			<tr>
@@ -496,7 +496,7 @@ div.gallery-add-to-favicon { display: block; }
 				<td class="t">Chia sẻ dữ liệu qua JSON</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_json" id="cf_on_off_json" value="{tmp.cf_on_off_json}" />
 					<label for="cf_on_off_json" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small" style="line-height:19px;">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+					<div class="small l19">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
 						<div>- <a href="{tmp.web_link}wp-json/wp/v2/posts" target="_blank">{tmp.web_link}wp-json/wp/v2/posts</a></div>
 						<div>- <a href="{tmp.web_link}wp-json/wp/v2/users" target="_blank">{tmp.web_link}wp-json/wp/v2/users</a></div>
 					</div></td>
@@ -508,7 +508,7 @@ div.gallery-add-to-favicon { display: block; }
 				<td class="t">Chia sẻ dữ liệu qua XML-RPC</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_xmlrpc" id="cf_on_off_xmlrpc" value="{tmp.cf_on_off_xmlrpc}" />
 					<label for="cf_on_off_xmlrpc" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small" style="line-height:19px;">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+					<div class="small l19">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
 						<div>- <a href="{tmp.web_link}xmlrpc.php" target="_blank">{tmp.web_link}xmlrpc.php</a></div>
 					</div></td>
 			</tr>
@@ -519,7 +519,7 @@ div.gallery-add-to-favicon { display: block; }
 				<td class="t">Xóa URL phân nhóm cha</td>
 				<td class="i"><input type="checkbox" name="cf_remove_category_base" id="cf_remove_category_base" value="{tmp.cf_remove_category_base}" />
 					<label for="cf_remove_category_base" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small" style="line-height:19px;">Mặc định, các phân nhóm con sẽ mang thêm URL của nhóm cha, để xóa nó đi, hãy bấm chọn và lưu lại</div></td>
+					<div class="small l19">Mặc định, các phân nhóm con sẽ mang thêm URL của nhóm cha, để xóa nó đi, hãy bấm chọn và lưu lại</div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -528,7 +528,7 @@ div.gallery-add-to-favicon { display: block; }
 				<td class="t">EchBay SEO plugin</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_echbay_seo" id="cf_on_off_echbay_seo" value="{tmp.cf_on_off_echbay_seo}" />
 					<label for="cf_on_off_echbay_seo" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small" style="line-height:19px;">Mặc định, plugin SEO của EchBay sẽ được bật, tuy nhiên, trong một số trường hợp nếu sử dụng các plugin SEO khác mà bị xung đột hoặc trùng lặp dữ liệu thì nên tắt nó đi.</div></td>
+					<div class="small l19">Mặc định, plugin SEO của EchBay sẽ được bật, tuy nhiên, trong một số trường hợp nếu sử dụng các plugin SEO khác mà bị xung đột hoặc trùng lặp dữ liệu thì nên tắt nó đi.</div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -537,7 +537,7 @@ div.gallery-add-to-favicon { display: block; }
 				<td class="t">Cung cấp bởi Ếch Bay</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_echbay_logo" id="cf_on_off_echbay_logo" value="{tmp.cf_on_off_echbay_logo}" />
 					<label for="cf_on_off_echbay_logo" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small" style="line-height:19px;">Chúng tôi đánh giá cao việc bạn giữ nguyên dòng chữ <strong>Cung cấp bởi EchBay.com</strong> ở phía cuối trang web, bởi điều đó thể hiện sự tôn trọng quyền tác giả của bạn dành cho chúng tôi. Tuy nhiên, nếu điều này gây phiền toái cho bạn, hãy tích vào đây để ẩn nó đi.</div></td>
+					<div class="small l19">Chúng tôi đánh giá cao việc bạn giữ nguyên dòng chữ <strong>Cung cấp bởi EchBay.com</strong> ở phía cuối trang web, bởi điều đó thể hiện sự tôn trọng quyền tác giả của bạn dành cho chúng tôi. Tuy nhiên, nếu điều này gây phiền toái cho bạn, hãy tích vào đây để ẩn nó đi.</div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>

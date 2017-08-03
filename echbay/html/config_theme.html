@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="{tmp.admin_css_uri}admin_config_theme.css?v={tmp.js_version}" type="text/css" />
+<div class="config_theme-bars">&nbsp;</div>
+<br>
 <br>
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">{tmp.config_module_name}</a></div>
 <p class="show-if-module-config_theme l19">* Tùy theo thiết kế của theme là chiều rộng dạng bo viền, tràn khung hoặc tính theo tỉ lệ phần trăm (tương đối) mà lựa chọn kích thước tiêu chuẩn chung một cách hớp lý nhất.<br>
@@ -18,58 +21,33 @@
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Thiết kế phần TOP</td>
-				<td class="i"><input type="checkbox" name="cf_using_top_default" id="cf_using_top_default" value="{tmp.cf_using_top_default}" />
-					<label for="cf_using_top_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
-					<div class="small l19">Chọn từng khối thiết kế cho phần TOP hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
-					<div class="show-if-using-top-default border-file-design">{tmp.str_top_design_preview}</div></td>
+				<td colspan="2" valign="top" class="t">Thiết kế phần TOP</td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Chiều rộng top</td>
 				<td class="i">{tmp.cf_top_class_style}</td>
 			</tr>
 			<tr>
+				<td colspan="2"><input type="checkbox" name="cf_using_top_default" id="cf_using_top_default" value="{tmp.cf_using_top_default}" />
+					<label for="cf_using_top_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small l19">Chọn từng khối thiết kế cho phần TOP hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-top-default border-file-design">{tmp.str_top_design_preview}</div></td>
+			</tr>
+			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Thiết kế phần FOOTER</td>
-				<td class="i"><input type="checkbox" name="cf_using_footer_default" id="cf_using_footer_default" value="{tmp.cf_using_footer_default}" />
-					<label for="cf_using_footer_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
-					<div class="small l19">Chọn từng khối thiết kế cho phần FOOTER hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
-					<div class="show-if-using-footer-default border-file-design">{tmp.str_footer_design_preview}</div></td>
+				<td colspan="2" valign="top" class="t">Thiết kế phần FOOTER</td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Chiều rộng footer</td>
 				<td class="i">{tmp.cf_footer_class_style}</td>
 			</tr>
 			<tr>
-				<td colspan="2"><hr></td>
-			</tr>
-			<tr>
-				<td valign="top" class="t">Thiết kế khung SẢN PHẨM</td>
-				<td class="i"><div class="small" style="line-height:19px;">Chọn file thiết kế cho khung SẢN PHẨM hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
-					<div class="border-file-design border-threadnode-design">{tmp.str_threadnode_design_preview}</div></td>
-			</tr>
-			<tr>
-				<td class="t">Ảnh Sản phẩm</td>
-				<td class="i"><input type="text" name="cf_product_size" value="{tmp.cf_product_size}" class="n fixed-size-for-config" maxlength="10" />
-					<div class="small">Ví dụ kích thước ảnh sản phẩm là 400x400 thì bạn có thể nhập là 400/400 hoặc nhập luôn là 1 (kết quả của phép toán 400:400).</div></td>
-			</tr>
-			<tr>
-				<td class="t">Ảnh Sản phẩm (mobile)</td>
-				<td class="i"><input type="number" name="cf_product_mobile_size" value="{tmp.cf_product_mobile_size}" class="n" maxlength="10" />
-					<div class="small">Đây là kích thước tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình từ 7inch trở xuống.</div></td>
-			</tr>
-			<tr>
-				<td class="t">Ảnh Sản phẩm (table)</td>
-				<td class="i"><input type="number" name="cf_product_table_size" value="{tmp.cf_product_table_size}" class="n" maxlength="10" />
-					<div class="small">Đây là kích thước tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình từ 11inch trở xuống.</div></td>
-			</tr>
-			<tr>
-				<td valign="top" class="t">HTML tag cho tiêu đề</td>
-				<td class="i"><div class="small" style="line-height:19px;">Mặc định, code chỉ để thẻ DIV cho các tiêu đề, hạn chế việc sử dụng các thẻ H2-H6. Trường hợp các bạn làm SEO có nhu cầu sử dụng thẻ H thì chọn theo lựa chọn dưới đây.<br>
-						* Lưu ý: việc thay đổi thẻ có thể sẽ làm thay đổi giao diện web, vì thế, cần phải kiểm tra và điều chỉnh lại CSS theo thẻ mới.</div>
-					<div class="noborder-ebdesign-table-for">{tmp.cf_threadnode_title_tag}</div></td>
+				<td colspan="2"><input type="checkbox" name="cf_using_footer_default" id="cf_using_footer_default" value="{tmp.cf_using_footer_default}" />
+					<label for="cf_using_footer_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small l19">Chọn từng khối thiết kế cho phần FOOTER hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-footer-default border-file-design">{tmp.str_footer_design_preview}</div></td>
 			</tr>
 		</tbody>
 		<tbody title="Trang chủ (Home)" id="eb-admin-config-theme-home" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
@@ -107,6 +85,40 @@
 				<td valign="top" class="t">Bố cục trang danh sách sản phẩm</td>
 				<td class="i">{tmp.cf_cats_column_style}</td>
 			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" valign="top" class="t">Thiết kế khung SẢN PHẨM</td>
+			</tr>
+			<tr>
+				<td colspan="2"><div class="small l19">Chọn file thiết kế cho khung SẢN PHẨM hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
+					<div class="border-file-design border-threadnode-design">{tmp.str_threadnode_design_preview}</div></td>
+			</tr>
+			<tr>
+				<td class="t">Kích thước ảnh Sản phẩm</td>
+				<td class="i"><input type="text" name="cf_product_size" value="{tmp.cf_product_size}" class="s fixed-size-for-config" maxlength="10" />
+					<div class="small">Ví dụ kích thước ảnh sản phẩm là 400x400 thì bạn có thể nhập là 400/400 hoặc nhập luôn là 1 (kết quả của phép toán 400:400).</div></td>
+			</tr>
+			<tr>
+				<td class="t">K.Thước ảnh S.Phẩm trên mobile</td>
+				<td class="i"><input type="number" name="cf_product_mobile_size" value="{tmp.cf_product_mobile_size}" class="s" maxlength="10" />
+					<div class="small">Đây là kích thước tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình có chiều rộng từ 7 inch trở xuống.</div></td>
+			</tr>
+			<tr>
+				<td class="t">K.Thước ảnh S.Phẩm trên table</td>
+				<td class="i"><input type="number" name="cf_product_table_size" value="{tmp.cf_product_table_size}" class="s" maxlength="10" />
+					<div class="small">Đây là kích thước tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình có chiều rộng từ 11 inch trở xuống.</div></td>
+			</tr>
+			<tr>
+				<td class="t">HTML tag cho tiêu đề</td>
+				<td class="i"><div class="noborder-ebdesign-table-for">{tmp.cf_threadnode_title_tag}</div>
+					<div class="small l19">Mặc định, code chỉ để thẻ H3 cho các tiêu đề, theo khuyến nghị của <a href="https://chrome.google.com/webstore/detail/seoquake/akdgnmcogleenhbclghghlkkdndkjdjc?hl=vi" target="_blank" rel="nofollow">SEO Quake</a>. Trường hợp các bạn làm SEO có nhu cầu sử dụng các thẻ khác thì chọn theo lựa chọn ở đây.<br>
+						* Lưu ý: việc thay đổi thẻ có thể sẽ làm thay đổi giao diện web, vì thế, cần phải kiểm tra và điều chỉnh lại CSS theo thẻ mới.</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
 			<tr class="d-none">
 				<td valign="top" class="t">Bố cục chỉ mục sản phẩm (node)</td>
 				<td class="i">{tmp.cf_cats_node_html}</td>
@@ -137,13 +149,15 @@
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Thiết kế chi tiết SẢN PHẨM</td>
-				<td class="i"><div class="small" style="line-height:19px;">Chọn file thiết kế cho trang chi tiết SẢN PHẨM hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
+				<td colspan="2" valign="top" class="t">Thiết kế chi tiết SẢN PHẨM</td>
+			</tr>
+			<tr>
+				<td colspan="2"><div class="small l19">Chọn file thiết kế cho trang chi tiết SẢN PHẨM hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
 					<div class="border-file-design border-threaddetails-design">{tmp.str_threaddetails_design_preview}</div></td>
 			</tr>
 			<tr>
 				<td class="t">Slide chi tiết sản phẩm</td>
-				<td class="i"><input type="text" name="cf_product_details_size" value="{tmp.cf_product_details_size}" class="n fixed-size-for-config" maxlength="10" />
+				<td class="i"><input type="text" name="cf_product_details_size" value="{tmp.cf_product_details_size}" class="s fixed-size-for-config" maxlength="10" />
 					<div class="small">Kích thước slider trong phần chi tiết sản phẩm.</div></td>
 			</tr>
 			<tr>

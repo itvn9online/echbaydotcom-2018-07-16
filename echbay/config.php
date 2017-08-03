@@ -104,6 +104,37 @@ function __eb_create_select_checked_config ( $arr, $val, $key, $file_name = '' )
 		// đánh dấu kiểm
 		$sl = '';
 		if ( $val == $k ) {
+			$sl = ' selected="selected"';
+		}
+		
+		// ví dụ cho code dễ hình dung
+		$phai = $k;
+		if ( $file_name != '' ) {
+			$phai = $file_name;
+			if ( $k != '' ) {
+				$phai .= '_' . $k;
+			}
+		}
+		
+		// tạo HTML
+		$str .= '<option value="' .$k. '"' . $sl . '>' .$v. ' (' . $phai . ')</option>';
+	}
+	
+	return '<select name="' . $key . '" id="' .$label_id. '">' . $str . '</select>';
+}
+
+
+
+function __eb_create_radio_checked_config ( $arr, $val, $key, $file_name = '' ) {
+	$str = '';
+	
+	foreach ( $arr as $k => $v ) {
+		
+		$label_id = $key . '_id' . $k;
+		
+		// đánh dấu kiểm
+		$sl = '';
+		if ( $val == $k ) {
 			$sl = ' checked="checked"';
 		}
 		
@@ -126,6 +157,9 @@ function __eb_create_select_checked_config ( $arr, $val, $key, $file_name = '' )
 	
 	return trim( $str );
 }
+
+
+
 
 $arr_cf_blog_class_style = array(
 	'' => 'Không giới hạn chiều rộng',

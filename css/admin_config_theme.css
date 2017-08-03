@@ -1,0 +1,49 @@
+.eb-admin-config,
+.config_theme-bars,
+.eb-admin-wp-submit {
+	position: fixed;
+	top: 0;
+	line-height: 40px;
+}
+.config_theme-bars {
+	z-index: 999990;
+	left: 0;
+	right: 0;
+	background: #fff;
+	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	-moz-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+}
+.eb-admin-config {
+	margin: 0;
+	left: 5%;
+	z-index: 999991;
+	font-size: 15px;
+	min-width: 250px;
+}
+.eb-admin-config li {
+	float: none;
+	border-radius: 0;
+	margin: 0;
+	background: #fff;
+	border-color: #ccc;
+	border-top: 0 none;
+	display: none;
+}
+.eb-admin-config li.selected,
+.eb-admin-config:hover li {
+	display: block;
+	color: #000;
+}
+.eb-admin-config li:hover { background: #f2f2f2; }
+.eb-admin-config li.selected { background: #eaf7ff; }
+.eb-admin-wp-submit {
+	bottom: auto;
+	right: -1px;
+	z-index: 999991;
+	border: 0 none;
+	padding: 0 25px;
+	background: #3899ec;
+	color: #fff;
+	top: -1px;
+}
