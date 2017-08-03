@@ -29,7 +29,13 @@ include EB_THEME_CORE . 'func.php';
 //$default_all_timezone = 'Asia/Saigon';
 $default_all_timezone = 'Asia/Ho_Chi_Minh';
 //echo current_time( 'timestamp' );
-date_default_timezone_set ( $default_all_timezone );
+if ( file_exists ( EB_THEME_CACHE . '___timezone.txt' ) ) {
+	date_default_timezone_set ( file_get_contents( EB_THEME_CACHE . '___timezone.txt' ) );
+}
+// Sử dụng timezon mặc định
+else {
+	date_default_timezone_set ( $default_all_timezone );
+}
 /*
 echo get_option('gmt_offset');
 echo get_option('timezone_string');

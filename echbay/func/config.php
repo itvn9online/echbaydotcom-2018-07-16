@@ -258,9 +258,15 @@ _eb_set_config( 'cf_web_version', date( 'y.md.Hi', date_time ) );
 
 
 
-// với timezone thì cần cho vào file tĩnh, do time sẽ được set trước khi config được được
+// với timezone thì cần cho vào file tĩnh, do time sẽ được set trước khi config được
+$_POST['cf_timezone'] = get_option( 'timezone_string' );
+//echo 'Timezone: ' . $_POST['cf_timezone'] . '<br>' . "\n";
+
 if ( isset( $_POST['cf_timezone'] ) ) {
 	$cf_timezone = trim( $_POST['cf_timezone'] );
+	
+	_eb_set_config( 'cf_timezone', $cf_timezone );
+	
 	if ( $cf_timezone != '' ) {
 		// lưu file thì ko cần sử dụng chức năng bảo vệ chuỗi
 		$_POST ['cf_timezone'] = stripslashes ( $_POST ['cf_timezone'] );
