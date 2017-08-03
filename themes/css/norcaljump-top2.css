@@ -1,40 +1,38 @@
-.titleCSS {
-	font-size: 13pt;
-	padding: 6px 0;
+#norcaljump-top2 .top-top-login {
+	line-height: 32px;
+	height: 32px;
+	padding: 4px 0;
+	background: #f60;
 }
-.bottom-support {
-	padding: 20px 0 35px 0;
-	margin: 0;
-	box-shadow: 0 0 10px rgba(0,0,0,0.3) inset;
+#norcaljump-top2 .top-top-login,
+#norcaljump-top2 .top-top-login a { color: #fff; }
+#norcaljump-top2 .div-search {
+	border: 0 none;
+	text-align: left;
+	border-radius: 4px;
+	overflow: hidden;
+	width: 95%;
+	margin: 0 auto;
 }
-.bottom-support,
-.bottom-support a { color: #333; }
-.ls-bottom-support {
-	list-style: inside;
-	margin-bottom: 20px;
+#norcaljump-top2 .div-search form { padding-left: 5px; }
+#norcaljump-top2 .div-search input[type=search],
+#norcaljump-top2 .div-search button {
+	border: 0 none;
+	outline: none;
 }
-.ls-bottom-support li,
-.ls-bottom-support li a { font-size: 9pt; }
-.ls-bottom-support a:hover { text-decoration: underline; }
-.ls-bottom-support li { padding: 4px 0; }
-.footer-social li { background-color: #ccc; }
-.bottom-contact ul { margin-top: 10px; }
-.bottom-contact li {
-	position: relative;
-	margin-bottom: 10px;
-	line-height: 23px;
-	padding-left: 25px;
+#norcaljump-top2 .div-search input[type=search] {
+	height: 30px;
+	width: 80%;
+	background: #fff;
 }
-.bottom-contact i {
+#norcaljump-top2 .div-search button {
 	position: absolute;
-	top: 2px;
-	left: 0;
-	font-size: 18px;
+	top: 1px;
+	right: 1px;
+	bottom: 1px;
+	font-size: 20px;
+	color: #fff;
+	width: 15%;
+	background: #000;
+	border-radius: 0 4px 4px 0;
 }
-.clone-gorup-list li { float: left; }
-.clone-gorup-list a:after {
-	content: ",";
-	display: inline-block;
-	margin-right: 5px;
-}
-.clone-gorup-list li:last-child a:after { display: none; }
