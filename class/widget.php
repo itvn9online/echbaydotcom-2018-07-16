@@ -200,12 +200,17 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p>Custom Size: <input type="text" class="widefat" name="' . $field_name['custom_size'] . '" value="' . $custom_size . '"/> * Điều chỉnh size ảnh theo kích thước riêng (nếu có).</p>';
+	echo '<p>Custom Size: <input type="text" class="widefat fixed-size-for-config" name="' . $field_name['custom_size'] . '" value="' . $custom_size . '"/> * Điều chỉnh size ảnh theo kích thước riêng (nếu có).</p>';
 	
 	
 	
 	//
 	echo '</div>';
+	
+	
+	echo '<script type="text/javascript">
+	convert_size_to_one_format();
+	</script>';
 	
 }
 

@@ -474,25 +474,8 @@ if ( $('#cf_sys_email').val() == 1 ) {
 
 
 
-// phần thiết lập thông số của size -> chỉnh về 1 định dạng
-$('.fixed-size-for-config').change(function () {
-	var a = $(this).val() || '';
-	if ( a != '' ) {
-		a = a.replace( /\s/g, '' );
-		
-		// nếu có dấu x -> chuyển về định dạng của Cao/ Rộng
-		if ( a.split('x').length > 1 ) {
-			a = a.split( 'x' );
-			
-			a = a[1] + '/' + a[0];
-		}
-		a = a.toString().replace(/[^0-9\/]/g, '');
-		
-		$(this).val( a );
-	}
-}).blur(function () {
-	$(this).change();
-});
+//
+convert_size_to_one_format();
 
 
 
