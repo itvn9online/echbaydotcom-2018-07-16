@@ -75,7 +75,7 @@ $offset = ($trang - 1) * $threadInPage;
 ?>
 <div class="wrap">
 	<h1>Danh sách <?php echo $by_post_type == EB_BLOG_POST_TYPE ? 'Blog/ Tin tức' : 'Sản phẩm'; ?> (Trang <?php echo number_format( $trang ) . '/ ' . number_format( $totalPage ); ?>)</h1>
-	<div><a data-type="post" href="#" class="set-url-post-post-type">Sản phẩm</a> | <a data-type="<?php echo EB_BLOG_POST_TYPE; ?>" href="#" class="set-url-post-post-type">Blog/ Tin tức</a> | <a data-type="ads" href="#" class="set-url-post-post-type">Banner Quảng cáo</a></div>
+	<div>Theo định dạng: <a data-type="post" href="#" class="set-url-post-post-type">Sản phẩm</a> | <a data-type="<?php echo EB_BLOG_POST_TYPE; ?>" href="#" class="set-url-post-post-type">Blog/ Tin tức</a> | <a data-type="ads" href="#" class="set-url-post-post-type">Banner Quảng cáo</a></div>
 </div>
 <br>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list">
