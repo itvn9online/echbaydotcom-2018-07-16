@@ -981,7 +981,7 @@ function convert_size_to_one_format () {
 			
 			$(this).val( a );
 		}
-	}).off('change').blur(function () {
+	}).off('blur').blur(function () {
 		$(this).change();
 	});
 }
