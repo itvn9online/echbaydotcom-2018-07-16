@@ -49,8 +49,9 @@ if ( ! file_exists( $include_tab ) || ! isset( $arr_order_tab[$eb_get_tab] ) ) {
 }
 
 
-
+//
 include_once $include_tab;
+
 
 
 

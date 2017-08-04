@@ -54,7 +54,13 @@ $main_content = '';
 
 
 //
+echo '<div id="rAdminME">';
+
+
+
+//
 include_once $include_file;
+
 
 
 
@@ -67,7 +73,10 @@ $main_content = str_replace( '{tmp.web_version}', date_time, $main_content );
 $main_content = str_replace( '{tmp.web_link}', web_link, $main_content );
 
 //
+
 echo $main_content;
+
+echo '</div>';
 
 
 

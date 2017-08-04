@@ -286,8 +286,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	cursor: pointer;
 	font-size: 13px;
 	border-bottom: 1px #fafafa solid;
-	max-width:999px;
-	margin:0 auto;
+	max-width: 999px;
+	margin: 0 auto;
 }
 .preview-file-design:hover {
 	-moz-transition: all 0.2s ease;
@@ -600,6 +600,14 @@ input[id="_eb_category_order"] { width: 90px; }
 	right : 20px;
 	z-index : 99;
 }
+.admin-thread-avt {
+	background: center no-repeat;
+	background-size: auto 99%;
+	line-height: 60px;
+	min-width: 60px;
+}
+.div-inline-block div { display: inline-block; }
+.div-inline-block div.d-none { display: none !important; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

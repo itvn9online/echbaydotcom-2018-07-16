@@ -91,14 +91,14 @@ function echbay_create_admin_menu() {
 //	add_submenu_page( $parent_slug, 'Dọn dẹp các dữ liệu tạm trong quá trình sử dụng website', 'Xóa bộ nhớ tạm', 'administrator', 'eb-cleanup-cache', 'func_include_eb_private_code' );
 	
 	
+	// menu chỉnh sửa sản phẩm nhanh
+	add_submenu_page( $parent_slug, 'Quản lý Sản phẩm/ Bài viết', 'Sản phẩm/ Blog', 'delete_posts', 'eb-products', 'func_include_eb_private_code' );
+	
+	
 	/*
 	* Mọi người đều có thể nhìn thấy menu này
 	*/
 	add_submenu_page( $parent_slug, 'Giới thiệu về tác giả', 'Giới thiệu', 'read', 'eb-about', 'func_include_eb_private_code' );
-	
-	
-	// menu chỉnh sửa sản phẩm nhanh
-	add_submenu_page( $parent_slug, 'Quản lý Sản phẩm/ Bài viết', 'Sản phẩm', 'delete_posts', 'eb-products', 'func_include_eb_private_code' );
 	
 	
 	//
