@@ -265,9 +265,9 @@ $_POST['cf_timezone'] = get_option( 'timezone_string' );
 if ( isset( $_POST['cf_timezone'] ) ) {
 	$cf_timezone = trim( $_POST['cf_timezone'] );
 	
-	_eb_set_config( 'cf_timezone', $cf_timezone );
-	
-	if ( $cf_timezone != '' ) {
+	if ( $cf_timezone != '' && ! is_numeric( $cf_timezone ) ) {
+		_eb_set_config( 'cf_timezone', $cf_timezone );
+		
 		// lưu file thì ko cần sử dụng chức năng bảo vệ chuỗi
 		$_POST ['cf_timezone'] = stripslashes ( $_POST ['cf_timezone'] );
 		
