@@ -440,7 +440,8 @@ function ___eb_details_product_tab () {
 	//
 	setTimeout(function () {
 		// Chiều cao định vị cho tab
-		var min_tab_height = 40;
+		var min_tab_height = $('.thread-details-tab').attr('data-max-height') || 40;
+		console.log( 'Fixed data height (max ' + min_tab_height + 'px) for thread-details-tab' );
 		
 //		console.log( $('.thread-details-tab').height() );
 		if ( $('.thread-details-tab').height() > min_tab_height ) {

@@ -838,8 +838,12 @@ $arr_main_content = array(
 	
 	'tmp.trv_tieude' => $trv_h1_tieude,
 	'tmp.trv_h1_tieude' => $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
+	
 	'tmp.trv_goithieu' => $__post->post_excerpt,
 	'tmp.trv_noidung' => $trv_noidung,
+	'tmp.trv_dieukien' => _eb_get_post_object( $pid, '_eb_product_dieukien' ),
+	'tmp.trv_tomtat' => _eb_get_post_object( $pid, '_eb_product_noibat' ),
+	
 	'tmp.trv_img' => $trv_img,
 	
 	'tmp.ant_link' => _eb_c_link($ant_id),
@@ -847,8 +851,6 @@ $arr_main_content = array(
 	
 	'tmp.trv_galerry' => $product_gallery,
 	'tmp.trv_list_color' => $product_list_color,
-	'tmp.trv_dieukien' => _eb_get_post_object( $pid, '_eb_product_dieukien' ),
-	'tmp.trv_tomtat' => _eb_get_post_object( $pid, '_eb_product_noibat' ),
 	
 	'tmp.trv_mua' => $trv_mua,
 	'tmp.trv_max_mua' => $trv_max_mua,

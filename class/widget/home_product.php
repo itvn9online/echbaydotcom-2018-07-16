@@ -33,7 +33,8 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			'post_type' => 'post',
 			'ads_eb_status' => 0,
 			'post_eb_status' => 0,
-			'custom_style' => ''
+			'custom_style' => '',
+			'custom_size' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		
@@ -80,6 +81,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		$html_node = str_replace( '.html', '', $html_node );
 		
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
+		$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );

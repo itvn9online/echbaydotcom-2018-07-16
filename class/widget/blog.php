@@ -28,7 +28,8 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			'post_type' => EB_BLOG_POST_TYPE,
 			'ads_eb_status' => 0,
 			'post_eb_status' => 0,
-			'custom_style' => ''
+			'custom_style' => '',
+			'custom_size' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		
@@ -126,6 +127,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		$ads_eb_status = isset( $instance ['ads_eb_status'] ) ? $instance ['ads_eb_status'] : 0;
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
+		$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
 		
 		
 		//
@@ -213,6 +215,12 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			$html_node = __eb_thread_template;
 		} else {
 			$html_node = EBE_get_page_template( $html_node );
+			
+			// chỉnh lại kích thước nếu có
+			if ( $custom_size != '' ) {
+				$html_node = str_replace( '{tmp.cf_blog_size}', $custom_size, $html_node );
+				$html_node = str_replace( '{tmp.cf_product_size}', $custom_size, $html_node );
+			}
 		}
 		
 		//

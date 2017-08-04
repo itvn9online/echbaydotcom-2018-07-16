@@ -196,7 +196,11 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '"/></p>';
+	echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng.</p>';
+	
+	
+	//
+	echo '<p>Custom Size: <input type="text" class="widefat" name="' . $field_name['custom_size'] . '" value="' . $custom_size . '"/> * Điều chỉnh size ảnh theo kích thước riêng (nếu có).</p>';
 	
 	
 	
@@ -290,6 +294,7 @@ function _eb_widget_style_for_post_cloumn ( $select_name, $select_val ) {
 			'anhtren_chuduoi' => 'Ảnh trên - chữ dưới',
 			'chutren_anhduoi' => 'Chữ trên - ảnh dưới',
 			'chi_chu' => 'Chỉ chữ',
+			'chi_anh' => 'Chỉ ảnh'
 		),
 		$select_name,
 		$select_val
