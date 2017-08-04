@@ -157,7 +157,8 @@ if ($totalPage > 1) {
 <p>* Số thứ tự (STT) càng lớn thì độ ưu tiên càng cao, sản phẩm sẽ được sắp xếp theo STT từ cao đến thấp.</p>
 <br>
 <script type="text/javascript">
-var waiting_for_ajax_running = false;
+var waiting_for_ajax_running = false,
+	by_post_type = '<?php echo $by_post_type; ?>';
 
 $('.click-order-thread').off('click').click(function () {
 	if ( waiting_for_ajax_running == true ) {
@@ -192,5 +193,7 @@ $('.set-url-post-post-type').each(function(index, element) {
 		href: window.location.href.split('&by_post_type=')[0] + '&by_post_type=' + a
 	});
 });
+
+$('.set-url-post-post-type[data-type="' + by_post_type + '"]').addClass('bold');
 
 </script>
