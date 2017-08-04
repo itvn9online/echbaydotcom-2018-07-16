@@ -78,5 +78,5 @@ $eb_background_for_post = array();
 
 ?>
 </head>
-<!--Thêm class tượng trưng cho mỗi trang lên <body> để tùy biến-->
+<!--Thêm class tượng trưng cho mỗi trang lên BODY để tùy biến-->
 <body class="<?php echo $css_m_css; ?>">
