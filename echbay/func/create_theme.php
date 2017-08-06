@@ -221,17 +221,17 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 	$conten_for_bo_giao_dien = '<?php ' . "\n";
 	
 	$conten_for_bo_giao_dien .= '/*' . "\n";
-	$conten_for_bo_giao_dien .= '* create in ' . date( 'r', date_time ) . "\n";
-	$conten_for_bo_giao_dien .= '* by ' . mtv_email . ' #' . mtv_id . "\n";
-	$conten_for_bo_giao_dien .= '* from IP: ' . $client_ip . "\n";
-	$conten_for_bo_giao_dien .= '* on domain: ' . $_SERVER['HTTP_HOST'] . "\n";
-	$conten_for_bo_giao_dien .= '* with browser: ' . $_SERVER['HTTP_USER_AGENT'] . "\n";
+	$conten_for_bo_giao_dien .= '* Save from ' . date( 'r', date_time ) . "\n";
+	$conten_for_bo_giao_dien .= '* By ' . mtv_email . ' #' . mtv_id . "\n";
+	$conten_for_bo_giao_dien .= '* From IP: ' . $client_ip . "\n";
+	$conten_for_bo_giao_dien .= '* On domain: ' . $_SERVER['HTTP_HOST'] . "\n";
+	$conten_for_bo_giao_dien .= '* User agent: ' . $_SERVER['HTTP_USER_AGENT'] . "\n";
 	$conten_for_bo_giao_dien .= '*/' . "\n";
 	
 	//
 	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]=array();' . "\n";
 	
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["screenshot"] = ""' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["screenshot"] = "";' . "\n";
 	
 	//
 	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'top', '.php' );
