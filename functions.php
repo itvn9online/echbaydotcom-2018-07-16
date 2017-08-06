@@ -3258,7 +3258,13 @@ function _eb_remove_file ($file_, $ftp = 1) {
 	return false;
 }
 
-function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
+function _eb_create_file (
+	$file_,
+	$content_,
+	$add_line = '',
+	$ftp = 1,
+	$set_permission = 0777
+) {
 	
 	//
 	if ( ! file_exists( $file_ ) ) {
@@ -3277,7 +3283,7 @@ function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 		}
 		else {
 			// nhớ set 777 cho file
-			chmod($file_, 0777);
+			chmod($file_, $set_permission);
 		}
 		fclose($filew);
 	}
@@ -3560,10 +3566,19 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 	
 	//
 	$file_for_ftp = $file_;
-	if ( $ftp_dir_root != '' ) {
-		$file_for_ftp = strstr( $file_, '/' . $ftp_dir_root . '/' );
-	}
 //	echo $file_for_ftp . '<br>';
+	if ( $ftp_dir_root != '' ) {
+//		echo $ftp_dir_root . '<br>';
+		
+		// nếu trong chuỗi file không có root dir -> báo lỗi
+		if ( strstr( $file_, '/' . $ftp_dir_root . '/' ) == false ) {
+			echo 'ERROR FTP root dir not found #' . $ftp_dir_root . '<br>' . "\n";
+			return false;
+		}
+		
+		$file_for_ftp = strstr( $file_, '/' . $ftp_dir_root . '/' );
+//		echo $file_for_ftp . '<br>';
+	}
 //	echo EBE_create_cache_for_ftp() . '<br>';
 	
 	// upload file
