@@ -250,6 +250,22 @@
 				<td class="i">{tmp.cf_page_column_style}</td>
 			</tr>
 		</tbody>
+		<tbody title="Bộ giao diện" id="eb-admin-config-theme-themes" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Thêm giao diện mới</td>
+				<td class="i">Nếu bạn am hiểu về HTML, CSS... một chút PHP, Javascript... bạn có thể tự tạo giao diện riêng cho mình tại đây. Sử dụng công cụ hỗ trợ của chúng tôi để tạo ra giao diện theo chuẩn chung của hệ thống.</td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><button type="button" class="cur click-open-create-themes">Tạo Bộ giao diện mới</button></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bold">Danh sách các giao diện đươc hỗ trợ:</td>
+			</tr>
+		</tbody>
 	</table>
 	<div>
 		<input type="submit" value="Cập nhật" class="eb-admin-wp-submit" />
@@ -278,6 +294,48 @@
 	<div id="change_eb_design_width">&nbsp;</div>
 </div>
 <input type="text" id="press_for_search_eb_themes" placeholder="Tìm kiếm giao diện theo tên" class="eb-themes-search d-none" />
+<!-- add new themes -->
+<div id="eb_add_new_themes" class="hide-if-press-esc">
+	<div class="eb-best-new-themes">
+		<form name="frm_create_theme" method="post" action="{tmp.web_link}process/?set_module=create_theme" target="target_eb_iframe" onsubmit="return check_create_theme();">
+			<div class="medium18 bold">Tạo giao diện mới</div>
+			<p>* Công cụ tạo file mẫu cho giao diện theo một chuẩn chung!</p>
+			<div>Giao diện tạo mới sẽ được lưu vào thư mục (nếu chưa có):<br>
+				<em>{tmp.dir_for_save_new_theme}</em></div>
+			<br>
+			<div class="bold">Tên giao diện</div>
+			<div>
+				<input type="text" placeholder="Chữ cái từ A-z, 0-9, viết liền, không dấu" value="" name="create_theme_name" id="create_theme_name" aria-required="true" required>
+			</div>
+			<br>
+			<div class="bold">Top</div>
+			<div>
+				<input type="number" placeholder="0-6" value="1" name="create_theme_top" id="create_theme_top">
+			</div>
+			<br>
+			<div class="bold">Footer</div>
+			<div>
+				<input type="number" placeholder="0-6" value="1" name="create_theme_footer" id="create_theme_footer">
+			</div>
+			<br>
+			<div class="bold">Khung sản phẩm</div>
+			<div>
+				<input type="number" placeholder="0-1" value="1" name="create_theme_threadnode" id="create_theme_threadnode">
+			</div>
+			<br>
+			<div class="bold">Trang chi tiết</div>
+			<div>
+				<input type="number" placeholder="0-6" value="1" name="create_theme_threaddetails" id="create_theme_threaddetails">
+			</div>
+			<br>
+			<div>
+				<input type="submit" value="Khởi tạo" class="cur" />
+				<button type="button" onClick="process_for_press_esc();" class="cur">Hủy bỏ [x]</button>
+			</div>
+			<br>
+		</form>
+	</div>
+</div>
 <script type="text/javascript">
 {tmp.js}
 </script> 

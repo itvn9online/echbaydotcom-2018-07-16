@@ -3340,16 +3340,81 @@ function _eb_create_file ($file_, $content_, $add_line = '', $ftp = 1) {
 	return true;
 }
 
-function EBE_create_dir ( $path ) {
-	if ( ! is_dir( $path ) ) {
-		mkdir($path, 0755) or die('mkdir error');
+function EBE_create_dir ( $path, $ftp = 1 ) {
+	if ( is_dir( $path ) ) {
+		return true;
+	}
+	
+	//
+	if ( mkdir($path, 0755) ) {
 		// server window ko cần chmod
-		chmod($path, 0755) or die('chmod ERROR');
+		chmod($path, 0755) or die('ERROR create dir: ' . $path);
 		
 		return true;
 	}
 	
+	// Không thì tạo thông qua FTP
+	if ( $ftp == 1 ) {
+		return WGR_ftp_create_dir( $path );
+	}
+	
 	return false;
+}
+
+function WGR_ftp_create_dir ( $path ) {
+	if ( is_dir( $path ) ) {
+		return true;
+	}
+	
+	$ftp_dir_root = EBE_get_config_ftp_root_dir( date_time );
+	
+	$ftp_server = EBE_check_ftp_account();
+	if ( $ftp_server == false ) {
+		echo 'FTP account not found';
+		return false;
+	}
+	$ftp_user_name = FTP_USER;
+	$ftp_user_pass = FTP_PASS;
+	
+	
+	// tạo kết nối
+	$conn_id = ftp_connect($ftp_server);
+	if ( ! $conn_id ) {
+		echo 'ERROR FTP connect to server<br>' . "\n";
+		return false;
+	}
+	
+	
+	// đăng nhập
+	if ( ! ftp_login($conn_id, $ftp_user_name, $ftp_user_pass) ) {
+		echo 'ERROR FTP login false<br>' . "\n";
+		return false;
+	}
+	
+	
+	//
+	$file_for_ftp = $path;
+	if ( $ftp_dir_root != '' ) {
+		$file_for_ftp = strstr( $file_for_ftp, '/' . $ftp_dir_root . '/' );
+	}
+//	echo $file_for_ftp . '<br>';
+//	echo EBE_create_cache_for_ftp() . '<br>';
+	
+	// upload file
+	$result = true;
+	if ( ! ftp_mkdir($conn_id, $create_dir) ) {
+		echo 'ERROR FTP: ftp_mkdir error<br>' . "\n";
+		$result = false;
+	}
+	
+	
+	// close the connection
+	ftp_close($conn_id);
+	
+	
+	//
+	return $result;
+	
 }
 
 function EBE_create_cache_for_ftp () {
@@ -5034,7 +5099,8 @@ function EBE_get_css_for_config_design ( $f, $type = '.php' ) {
 
 // lấy css theo theme
 function EBE_get_css_for_theme_design ( $f, $type = '.php' ) {
-	return EB_THEME_URL . 'theme/css/' . str_replace( $type, '.css', $f );
+//	return EB_THEME_URL . 'theme/css/' . str_replace( $type, '.css', $f );
+	return EB_THEME_URL . 'theme/ui/' . str_replace( $type, '.css', $f );
 }
 
 

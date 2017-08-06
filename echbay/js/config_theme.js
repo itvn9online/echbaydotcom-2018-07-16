@@ -15,6 +15,16 @@ var id_for_set_new_include_file = '',
 
 
 
+function check_create_theme () {
+	
+	if ( confirm('Xác nhận tạo theme') == false ) {
+		return false;
+	}
+	
+	return true;
+}
+
+
 function EBE_themes_key_quick_search () {
 	if ( load_key_for_quick_serach == false ) {
 		load_key_for_quick_serach = true;
@@ -247,6 +257,14 @@ $('.click-to-exit-design').click(function () {
 	$('#press_for_search_eb_themes').hide();
 	$('body').removeClass('ebdesign-no-scroll');
 	current_frame_design_is_show = '';
+});
+
+//
+$('.click-open-create-themes').click(function () {
+	$('#eb_add_new_themes').show();
+	$('body').addClass('ebdesign-no-scroll');
+	
+	$('#create_theme_name').focus();
 });
 
 

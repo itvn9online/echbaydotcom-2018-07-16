@@ -80,7 +80,9 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 	for ( $i = 1; $i < 10; $i++ ) {
 		$j = $type . $i;
 		$j_name = 'cf_' . $j . '_include_file';
+//		echo $j_name . '<br>' . "\n";
 		$j2_name = 'cf_' . $type . '_include_file';
+//		echo $j2_name . '<br>' . "\n";
 		
 		//
 		if ( isset( $__cf_row_default[ $j_name ] ) ) {
@@ -94,7 +96,8 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 			$arr_top_include_file[ $j ] = array();
 			
 			$str_list_all_include_file[] = '<input type="text" name="' . $j_name . '" id="' . $j_name . '" value="' . $__cf_row[ $j_name ] . '" data-type="' . $j . '" class="each-to-get-current-value-file" />';
-		} else {
+		}
+		else {
 			if ( isset( $__cf_row_default[ $j2_name ] ) ) {
 				/*
 				$arr_top_include_file[ $type ] = array(
@@ -113,6 +116,7 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 	$str_list_all_include_file[] = '<br>';
 //	print_r( $str_list_all_include_file );
 //	$arr_for_set_template['str_list_all_include_file'] = implode( "\n", $str_list_all_include_file );
+//	print_r( $arr_top_include_file );
 	
 	foreach ( $arr_file_name as $v ) {
 		$file_name = basename( $v );
@@ -122,7 +126,9 @@ function EBE_config_load_top_footer_include ( $type = 'top', $file_type = '.php'
 		if ( count( $node ) == 1 ) {
 			$node = str_replace( '_', '', $type );
 		} else {
-			$node = str_replace( $file_type, '', $node[1] );
+//			$node = str_replace( $file_type, '', $node[1] );
+			$node = explode( '.', $node[1] );
+			$node = $node[0];
 		}
 //		echo $node . "\n";
 		
@@ -395,6 +401,13 @@ $arr_for_set_template['str_threaddetails_design_preview'] = $str_threaddetails_d
 global $str_list_all_include_file;
 //print_r( $str_list_all_include_file );
 $arr_for_set_template['str_list_all_include_file'] = implode( "\n", $str_list_all_include_file );
+
+
+
+
+
+// Hiển thị đường dẫn tạo theme
+$arr_for_set_template['dir_for_save_new_theme'] = EB_THEME_URL . 'theme/ui/';
 
 
 

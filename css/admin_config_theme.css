@@ -20,6 +20,7 @@
 	z-index: 999991;
 	font-size: 15px;
 	min-width: 250px;
+	padding-bottom: 50px;
 }
 .eb-admin-config li {
 	float: none;
@@ -47,3 +48,28 @@
 	color: #fff;
 	top: -1px;
 }
+#eb_add_new_themes {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.6);
+	z-index: 999999;
+	overflow: auto;
+	display: none;
+}
+.eb-best-new-themes {
+	width: 90%;
+	max-width: 600px;
+	padding: 25px;
+	margin: 25px auto;
+	background: #fff;
+}
+.eb-best-new-themes input[type=text],
+.eb-best-new-themes input[type=number] {
+	width: 90%;
+	padding: 5px;
+}
+.eb-best-new-themes input[type=submit],
+.eb-best-new-themes button { padding: 6px 25px; }

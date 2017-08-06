@@ -500,12 +500,20 @@ var eb_global_product_size = '',
 
 
 
+//
+function process_for_press_esc () {
+	$('.click-to-exit-design').click();
+	$('#oi_admin_popup, .hide-if-press-esc').hide();
+	
+	$('body').removeClass('ebdesign-no-scroll');
+}
+
 // Tất cả các hiệu ứng khi bấm ESC sẽ bị đóng lại
 $(document).keydown(function(e) {
 	if (e.keyCode == 27) {
 		console.log('ESC to close');
-		$('.click-to-exit-design').click();
-		$('#oi_admin_popup').hide();
+		
+		process_for_press_esc();
 	}
 });
 
