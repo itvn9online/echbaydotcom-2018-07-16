@@ -344,10 +344,12 @@
 		</form>
 	</div>
 </div>
-<form name="frm_config_active_theme" method="post" action="{tmp.web_link}process/?set_module=config_active_theme" target="target_eb_iframe">
-	<input type="text" placeholder="Key theme" value="" name="create_theme_key" id="create_theme_key" aria-required="true" required>
-	<input type="submit" value="Submit" />
-</form>
+<div class="d-none">
+	<form name="frm_config_active_theme" method="post" action="{tmp.web_link}process/?set_module=config_active_theme" target="target_eb_iframe">
+		<input type="text" placeholder="Key theme" value="" name="create_theme_key" id="create_theme_key" aria-required="true" required>
+		<input type="submit" value="Submit" />
+	</form>
+</div>
 <script type="text/javascript">
 {tmp.js}
 </script> 

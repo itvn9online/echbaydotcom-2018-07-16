@@ -123,7 +123,7 @@ if ( $create_theme_top > 0 ) {
 
 // Tạo trang danh mục sản phẩm -> lấy mẫu mặc định theo theme mặc định
 if ( $create_theme_footer > 0 ) {
-	for ( $i = 1; $i <= $create_theme_top; $i++ ) {
+	for ( $i = 1; $i <= $create_theme_footer; $i++ ) {
 		$file_name = 'cf_footer' . $i . '_include_file';
 		
 		if ( isset( $__cf_row_default[ $file_name ] ) ) {

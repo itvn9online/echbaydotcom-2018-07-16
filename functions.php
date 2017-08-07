@@ -1524,6 +1524,7 @@ function _eb_set_config($key, $val) {
 	
 	// thêm option mới
 //	if ( get_option( $key ) == false ) {
+	if ( $val != '' ) {
 		/*
 		$sql = "INSERT INTO `" . $wpdb->options . "`
 		( option_name, option_name, option_name )
@@ -1532,8 +1533,8 @@ function _eb_set_config($key, $val) {
 		*/
 		add_option( $key, $val, '', 'no' );
 //		add_option( $key, $val );
-	/*
 	}
+	/*
 	else {
 		update_option( $key, $val, 'no' );
 //		update_option( $key, $val );

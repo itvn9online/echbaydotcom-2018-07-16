@@ -26,6 +26,29 @@ $arr = $eb_all_themes_support[ $create_theme_key ];
 
 
 
+//
+for ( $i = 1; $i <= 10; $i++ ) {
+	$k = 'cf_top' . $i . '_include_file';
+	
+	if ( isset( $__cf_row_default[ $k ] ) ) {
+		_eb_set_config( $k, '' );
+	}
+}
+
+for ( $i = 1; $i <= 10; $i++ ) {
+	$k = 'cf_footer' . $i . '_include_file';
+	
+	if ( isset( $__cf_row_default[ $k ] ) ) {
+		_eb_set_config( $k, '' );
+	}
+}
+
+//
+_eb_set_config( 'cf_threaddetails_include_file', '' );
+_eb_set_config( 'cf_threadnode_include_file', '' );
+
+
+
 // chạy vòng lặp rồi in các dữ liệu vào bảng lưu
 foreach( $arr as $k => $v ) {
 //	echo $k . '<br>';
