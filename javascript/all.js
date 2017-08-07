@@ -946,7 +946,7 @@ function EBA_preview_img_logo ( img, id ) {
 		return false;
 	}
 	
-	if ( img.split('//').length == 1 ) {
+	if ( img != '' && img.split('//').length == 1 ) {
 		if ( img.substr( 0, 1 ) == '/' ) {
 			img = img.substr(1);
 		}
@@ -959,6 +959,7 @@ function EBA_preview_img_logo ( img, id ) {
 }
 
 function EBA_add_img_logo ( img, id ) {
+	console.log(img);
 	EBA_add_img_to( img.replace( web_link, '' ), id );
 	EBA_preview_img_logo( img, id );
 }

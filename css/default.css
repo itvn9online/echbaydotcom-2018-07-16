@@ -244,3 +244,7 @@ a {
 	display: inline-block;
 	text-align: center;
 }
+.web-logo {
+	line-height: 50px;
+	background: center no-repeat;
+}

@@ -1,6 +1,6 @@
-<div id="denbaophat-top2">
-	<div class="top-header default-2bg">
-		<div class="cf <?php echo $__cf_row['cf_top_class_style']; ?>">
+<div id="denbaophat-top2" class="top-header default-2bg">
+	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
+		<div class="cf denbaophat-top2">
 			<div class="lf f25 fullsize-if-mobile"><?php echo EBE_get_html_logo(); ?></div>
 			<div class="lf f75 hide-if-mobile">
 				<ul class="cf top-chinh-sach small">

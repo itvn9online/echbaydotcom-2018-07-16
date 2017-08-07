@@ -43,6 +43,7 @@ function WGR_create_themes_default_format (
 	}
 	
 	
+	
 	// tạo HTML mặc định nếu chưa có
 	if ( $default_content == '' ) {
 		$default_content = trim( '
@@ -53,9 +54,41 @@ function WGR_create_themes_default_format (
 		</div>
 	</div>
 </div>
+<?php
+/*
+*
+* List function recommended for you, please remove after code finish.
+*
+* Get logo for website:
+* EBE_get_html_logo();
+*
+* Big banner (primary banner):
+* WGR_get_bigbanner();
+*
+* Get search form:
+* EBE_get_html_search();
+*
+* GET cart URL:
+* EBE_get_html_cart();
+*
+* GET profile URL:
+* EBE_get_html_profile();
+*
+* GET top menu (auto):
+* EBE_echbay_top_menu();
+*
+* GET footer menu (auto):
+* EBE_echbay_footer_menu();
+*
+* GET contact info
+* EBE_get_html_address();
+*
+*/
 		' );
 	}
+	
 	_eb_create_file( $html, $default_content );
+	
 	
 	
 	// tạo CSS mặc định nếu chưa có
@@ -64,7 +97,10 @@ function WGR_create_themes_default_format (
 			$default_css_content .= '#' . $fname . ' { }' . "\n";
 		}
 	}
+	
 	_eb_create_file( $css, $default_css_content );
+	
+	
 	
 	//
 	return true;

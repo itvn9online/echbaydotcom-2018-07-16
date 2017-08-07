@@ -1,6 +1,6 @@
-<div id="depqua-top1" class="hide-if-mobile">
-	<div class="top-top-login">
-		<div class="<?php echo $__cf_row['cf_top_class_style']; ?> cf">
+<div id="depqua-top1" class="top-top-login hide-if-mobile">
+	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
+		<div class="depqua-top1 cf">
 			<div class="lf f20"><a href="./"><i class="fa fa-home"></i> Trang chủ</a></div>
 			<div class="lf f80">
 				<div class="rf cf top-top-ul"><?php echo EBE_echbay_top_menu(); ?>

@@ -1518,6 +1518,7 @@ function _eb_set_config($key, $val) {
 	
 	// xóa option cũ đi cho đỡ lằng nhằng
 	delete_option( $key );
+//	echo $key . '<br>' . "\n";
 	
 	//
 	$val = stripslashes( stripslashes( stripslashes( $val ) ) );
@@ -5204,6 +5205,12 @@ function EBE_get_html_address () {
 			Hotline: ' . $__cf_row['cf_call_hotline'] . ' | Điện thoại: <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span><br>
 			Email: <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
 	</div>';
+}
+
+function WGR_get_bigbanner () {
+	global $str_big_banner;
+	
+	return '<div class="oi_big_banner">' . $str_big_banner . '</div>';
 }
 
 
