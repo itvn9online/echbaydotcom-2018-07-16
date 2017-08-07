@@ -241,7 +241,7 @@ if ( $file_name != '' && file_exists( $file_name ) ) {
 	$file_name = getimagesize($file_name);
 	print_r($file_name);
 	
-	$_POST['cf_size_logo'] = $file_name[1] . 'x' . $file_name[0];
+	$_POST['cf_size_logo'] = $file_name[1] . '/' . $file_name[0];
 }
 
 
