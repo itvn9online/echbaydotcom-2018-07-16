@@ -212,16 +212,26 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 // chỉnh kích thước cho logo theo chuẩn
 if ( $_POST['cf_logo'] != '' ) {
 	$file_name = $_POST['cf_logo'];
+	
+	// nếu ảnh là 1 URL hoặc không tồn tại trên host
 	if ( strstr( $file_name, '//' ) == true || ! file_exists( $file_name ) ) {
+		// chuyển sang up vào cache để check
 		$file_name = explode( '/', $_POST['cf_logo'] );
 		$file_name = $file_name[ count( $file_name ) - 1 ];
 		$file_name = EB_THEME_CACHE . $file_name;
 		
-		if ( ! copy( $_POST['cf_logo'], $file_name ) ) {
+		// nếu có trong cache rồi thì thôi
+		if ( file_exists( $file_name ) ) {
+		}
+		// nếu ko -> copy về
+		else if ( ! copy( $_POST['cf_logo'], $file_name ) ) {
+			// nếu lỗi thì trả về file trống
 			$file_name = '';
 		}
 	}
-} else {
+}
+// lấy size của logo mặc định
+else {
 	$file_name = $__cf_row_default['cf_logo'];
 }
 echo $file_name . '<br>' . "\n";
