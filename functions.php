@@ -5161,7 +5161,7 @@ function EBE_insert_comment ( $data =  array() ) {
 function EBE_get_html_logo () {
 	global $__cf_row;
 	
-	return '<div><a href="./" class="web-logo d-block" style="background-image:url(' . $__cf_row['cf_logo'] . ');">&nbsp;</a></div>';
+	return '<div><a data-size="' . $__cf_row['cf_size_logo'] . '" href="./" class="web-logo ti-le-global d-block" style="background-image:url(' . $__cf_row['cf_logo'] . ');">&nbsp;</a></div>';
 }
 
 function EBE_get_html_search () {

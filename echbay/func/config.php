@@ -208,6 +208,35 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 
 
 
+
+// chỉnh kích thước cho logo theo chuẩn
+if ( $_POST['cf_logo'] != '' ) {
+	$file_name = $_POST['cf_logo'];
+	if ( strstr( $file_name, '//' ) == true || ! file_exists( $file_name ) ) {
+		$file_name = explode( '/', $_POST['cf_logo'] );
+		$file_name = $file_name[ count( $file_name ) - 1 ];
+		$file_name = EB_THEME_CACHE . $file_name;
+		
+		if ( ! copy( $_POST['cf_logo'], $file_name ) ) {
+			$file_name = '';
+		}
+	}
+} else {
+	$file_name = $__cf_row_default['cf_logo'];
+}
+echo $file_name . '<br>' . "\n";
+
+//
+if ( $file_name != '' && file_exists( $file_name ) ) {
+	$file_name = getimagesize($file_name);
+	print_r($file_name);
+	
+	$_POST['cf_size_logo'] = $file_name[1] . 'x' . $file_name[0];
+}
+
+
+
+
 // chạy vòng lặp rồi in các dữ liệu vào bảng lưu
 foreach( $_POST as $k => $v ) {
 //	echo $k . '<br>';
