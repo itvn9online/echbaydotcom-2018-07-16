@@ -83,6 +83,9 @@ $dir_for_save_theme = EB_THEME_URL . 'theme/ui/';
 $create_theme_name = trim( $_POST['create_theme_name'] );
 $create_theme_name = _eb_non_mark( $create_theme_name );
 $create_theme_name = preg_replace ( '/[^a-zA-Z0-9]+/', '', $create_theme_name );
+if ( $create_theme_name == '' ) {
+	_eb_alert('create_theme_name not found');
+}
 
 $create_theme_top = (int) $_POST['create_theme_top'];
 $create_theme_footer = (int) $_POST['create_theme_footer'];
@@ -231,7 +234,8 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 	//
 	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]=array();' . "\n";
 	
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["screenshot"] = "";' . "\n";
+	// hình ảnh sẽ được đưa lên host của webgiare để làm tổng
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["screenshot"] = "https://www.webgiare.org/img1/' . $create_theme_name . '.jpg";' . "\n";
 	
 	//
 	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'top', '.php' );
@@ -252,7 +256,15 @@ _eb_log_admin( 'Tạo giao diện mẫu' );
 
 
 //
-_eb_alert('Tạo giao diện mẫu thành công');
+//_eb_alert('Tạo giao diện mẫu thành công');
+
+
+
+//
+die('<script type="text/javascript">
+alert("Tạo giao diện mẫu thành công");
+parent.window.location = parent.window.location.href;
+</script>');
 
 
 

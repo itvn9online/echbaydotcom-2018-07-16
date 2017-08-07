@@ -429,7 +429,7 @@ foreach ( $eb_all_themes_support as $k => $v ) {
 <li data-key="' . $theme_name . '" style="background-image:url(\'' . $theme_avt . '\');">
 	<p>&nbsp;</p>
 	<h3>' . $theme_name . '</h3>
-	<button type="button" data-prev="' . $theme_name . '" class="blue-button cur click-active-eb-themes">Kích hoạt</button>
+	<button type="button" data-theme="' . $theme_name . '" class="blue-button cur click-active-eb-themes">Kích hoạt</button>
 </li>';
 }
 $arr_for_set_template['str_all_themes_support'] = $str_all_themes_support;

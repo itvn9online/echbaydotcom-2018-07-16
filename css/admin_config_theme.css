@@ -7,7 +7,7 @@
 }
 .config_theme-bars {
 	z-index: 999990;
-	left: 36px;
+	left: 68px;
 	right: 0;
 	background: #fff;
 	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
@@ -16,7 +16,7 @@
 }
 .eb-admin-config {
 	margin: 0;
-	left: 5%;
+	left: 8%;
 	z-index: 999991;
 	font-size: 15px;
 	min-width: 250px;

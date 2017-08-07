@@ -1,3 +1,6 @@
+<style>
+#wpadminbar { height: 39px; }
+</style>
 <link rel="stylesheet" href="{tmp.admin_css_uri}admin_config_theme.css?v={tmp.js_version}" type="text/css" />
 <div class="config_theme-bars">&nbsp;</div>
 <br>
@@ -263,7 +266,7 @@
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="bold">Danh sách các giao diện đươc hỗ trợ:</td>
+				<td colspan="2" class="bold">Danh sách giao diện:</td>
 			</tr>
 			<tr>
 				<td colspan="2"><ul class="cf text-center skins-admin-edit">
@@ -302,7 +305,7 @@
 <!-- add new themes -->
 <div id="eb_add_new_themes" class="hide-if-press-esc">
 	<div class="eb-best-new-themes">
-		<form name="frm_create_theme" method="post" action="{tmp.web_link}process/?set_module=create_theme" target="target_eb_iframe" onsubmit="return check_create_theme();">
+		<form name="frm_create_theme" method="post" action="{tmp.web_link}process/?set_module=config_create_theme" target="target_eb_iframe" onsubmit="return check_create_theme();">
 			<div class="medium18 bold">Tạo giao diện mới</div>
 			<p>* Công cụ tạo file mẫu cho giao diện theo một chuẩn chung!</p>
 			<div>Giao diện tạo mới sẽ được lưu vào thư mục (nếu chưa có):<br>
@@ -341,6 +344,10 @@
 		</form>
 	</div>
 </div>
+<form name="frm_config_active_theme" method="post" action="{tmp.web_link}process/?set_module=config_active_theme" target="target_eb_iframe">
+	<input type="text" placeholder="Key theme" value="" name="create_theme_key" id="create_theme_key" aria-required="true" required>
+	<input type="submit" value="Submit" />
+</form>
 <script type="text/javascript">
 {tmp.js}
 </script> 

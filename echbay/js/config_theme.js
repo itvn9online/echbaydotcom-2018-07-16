@@ -443,3 +443,20 @@ $('#list-tab-eb-admin-config').click(function () {
 
 
 
+//
+$('.click-active-eb-themes').click(function () {
+	var a = $(this).attr('data-theme') || '';
+	if ( a == '' ) {
+		console.log('data-theme not found');
+		return false;
+	}
+	
+	$('#create_theme_key').val(a);
+	
+	document.frm_config_active_theme.submit();
+	
+});
+
+
+
+
