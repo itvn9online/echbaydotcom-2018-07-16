@@ -434,7 +434,7 @@ $('#oi_smtp_pass').off('focus').focus(function () {
 	
 	var a = window.location.href.split('&tab=');
 	if ( a.length > 1 ) {
-		a = a[1].split('&')[0];
+		a = a[1].split('&')[0].split('#')[0];
 		console.log(a);
 		
 		$('.eb-admin-tab a[data-tab="' +a+ '"]').addClass('selected');
