@@ -412,6 +412,32 @@ $arr_for_set_template['dir_for_save_new_theme'] = EB_THEME_URL . 'theme/ui/';
 
 
 
+// list toàn bộ các themes đã đươc liệt kê
+$arr_list_all_themes = glob ( EB_THEME_PLUGIN_INDEX . 'themes/all/*.{php}', GLOB_BRACE );
+//print_r($arr_list_all_themes);
+foreach ( $arr_list_all_themes as $v ) {
+	include $v;
+}
+
+//print_r($eb_all_themes_support);
+$str_all_themes_support = '';
+foreach ( $eb_all_themes_support as $k => $v ) {
+	$theme_name = $k;
+	$theme_avt = $v['screenshot'];
+	
+	$str_all_themes_support .= '
+<li data-key="' . $theme_name . '" style="background-image:url(\'' . $theme_avt . '\');">
+	<p>&nbsp;</p>
+	<h3>' . $theme_name . '</h3>
+	<button type="button" data-prev="' . $theme_name . '" class="blue-button cur click-active-eb-themes">Kích hoạt</button>
+</li>';
+}
+$arr_for_set_template['str_all_themes_support'] = $str_all_themes_support;
+
+
+
+
+
 //
 //print_r( $arr_for_set_template );
 

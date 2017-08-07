@@ -46,6 +46,9 @@ define( 'wp_postmeta', $wpdb->postmeta );
 $arr_for_add_css = array();
 $arr_for_add_theme_css = array();
 
+// danh sách toàn bộ các theme được hỗ trợ
+$eb_all_themes_support = array();
+
 
 // Load các CSS ưu tiên mặc định
 // loại css add thẳng vào html chỉ dành cho trang đầu tiên
