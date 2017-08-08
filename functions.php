@@ -1756,7 +1756,9 @@ function _eb_get_config_v1 ( $real_time = false ) {
 // lúc lấy lang thì không cần gán key đầy đủ, mà sẽ gán trong function này
 function EBE_get_lang($k) {
 	global $___eb_lang;
-	return isset( $___eb_lang[eb_key_for_site_lang . $k] ) ? $___eb_lang[eb_key_for_site_lang . $k] : '';
+	
+//	return isset( $___eb_lang[eb_key_for_site_lang . $k] ) ? $___eb_lang[eb_key_for_site_lang . $k] : '';
+	return $___eb_lang[eb_key_for_site_lang . $k];
 }
 
 function EBE_set_lang($key, $val) {
