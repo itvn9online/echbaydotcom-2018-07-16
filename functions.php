@@ -1159,11 +1159,20 @@ function EBE_echbay_category_menu (
 	//  thẻ theo yêu cầu (tùy vào seoer muốn thẻ gì thì truyền vào)
 	$dynamic_tags = 'div'
 ) {
-	$arrs_cats = get_categories( array(
+	
+	//
+	$arrs_cats = array(
 		'taxonomy' => $cat_type,
 //		'hide_empty' => 0,
 		'parent' => $cat_ids,
-	) );
+	);
+	// lấy toàn bộ danh mục để làm design ở chế độ debug
+	if ( eb_code_tester == true ) {
+		$arrs_cats['hide_empty'] = 0;
+	}
+	
+	//
+	$arrs_cats = get_categories( $arrs_cats );
 //	print_r($arrs_cats);
 	if ( count($arrs_cats) == 0 ) {
 		// nếu đang là nhóm cấp 1 -> trả về thông báo
@@ -1212,7 +1221,7 @@ function EBE_echbay_category_menu (
 		}
 		
 		//
-		$str .= '<li><' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
+		$str .= '<li><' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count d-none"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
 	}
 	
 	return '<ul class="cf ' . $ul_class . '">' . $str . '</ul>';

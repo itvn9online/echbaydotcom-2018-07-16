@@ -167,9 +167,12 @@ if ( file_exists( $inc_file ) ) {
 		'tmp.str_sidebar' => $id_for_get_sidebar == '' ? '' : _eb_echbay_sidebar( $id_for_get_sidebar ),
 		'tmp.search_advanced_sidebar' => _eb_echbay_sidebar( 'search_product_options', 'widget-search-advanced cf', 'div', 1, 0 ),
 		
-		// kích thước sản phẩm trên mobile
+		// kích thước sản phẩm trên mobile, table
 		'tmp.cf_product_mobile_size' => $__cf_row['cf_product_mobile_size'],
+		'tmp.trv_mobile_img' => $__cf_row['cf_product_mobile_size'],
+		
 		'tmp.cf_product_table_size' => $__cf_row['cf_product_table_size'],
+		'tmp.trv_table_img' => $__cf_row['cf_product_table_size'],
 		
 		// kích thước ảnh blog
 		'tmp.cf_blog_size' => $__cf_row['cf_blog_size'],
