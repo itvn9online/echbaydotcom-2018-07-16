@@ -25,39 +25,45 @@
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><?php echo EBE_get_lang('lienhe'); ?> <em>(/contact)</em></div>
+				<div class="lf f80"><i class="fa fa-support"></i> <?php echo EBE_get_lang('lienhe'); ?> <em>(/contact)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/contact" data-text="<?php echo EBE_get_lang('lienhe'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><?php echo EBE_get_lang('lienhe'); ?> <em>(/lienhe)</em></div>
+				<div class="lf f80"><i class="fa fa-support"></i> <?php echo EBE_get_lang('lienhe'); ?> <em>(/lienhe)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/lienhe" data-text="<?php echo EBE_get_lang('lienhe'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><?php echo EBE_get_lang('lienhe'); ?> <em>(/lien-he)</em></div>
+				<div class="lf f80"><i class="fa fa-support"></i> <?php echo EBE_get_lang('lienhe'); ?> <em>(/lien-he)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/lien-he" data-text="<?php echo EBE_get_lang('lienhe'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><?php echo EBE_get_lang('cart'); ?> <em>(/cart)</em></div>
+				<div class="lf f80"><i class="fa fa-shopping-cart"></i> <?php echo EBE_get_lang('cart'); ?> <em>(/cart)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/cart" data-text="<?php echo EBE_get_lang('cart'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><?php echo EBE_get_lang('taikhoan'); ?> <em>(/profile)</em></div>
+				<div class="lf f80"><i class="fa fa-user"></i> <?php echo EBE_get_lang('taikhoan'); ?> <em>(/profile)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/profile" data-text="<?php echo EBE_get_lang('taikhoan'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80">Tất cả danh mục <em class="small">(lấy toàn bộ chuyên mục đang có trên hệ thống)</em></div>
+				<div class="lf f80"><i class="fa fa-list"></i> Tất cả danh mục <em class="small">(lấy toàn bộ chuyên mục đang có trên hệ thống)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/auto.get_all_category/" data-text="Toàn bộ danh mục" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-home"></i> Tất cả danh mục <em class="small">(lấy toàn bộ chuyên mục đang có trên hệ thống, đính kèm Home menu vào đầu tiên)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="/auto.get_all_category/home/" data-text="<i class='fa fa-home'></i> Danh mục" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">

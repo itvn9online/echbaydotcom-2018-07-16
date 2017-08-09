@@ -1086,6 +1086,9 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 					<div class="all-category-cats ' . $menu_slug_class . '-cats">' . $all_cats . '</div>
 				</div>';
 			}
+			else if ( strpos( $a, '/auto.get_all_category/home/' ) !== false ) {
+				$a = $all_cats;
+			}
 			else {
 				$a = $all_cats;
 			}
@@ -4554,10 +4557,10 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category') {
 	
 	$arr = get_categories( array(
 		'taxonomy' => $taxx,
-//			'hide_empty' => 0,
+//		'hide_empty' => 0,
 		'parent' => $this_id
 	) );
-//		print_r($arr);
+//	print_r($arr);
 	
 	//
 	$str = '';
@@ -4565,7 +4568,7 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category') {
 //			print_r($v);
 		
 		//
-//			$c_link = _eb_c_link( $v->term_id, $web_link . '?cat=' . $v->term_id );
+//		$c_link = _eb_c_link( $v->term_id, $web_link . '?cat=' . $v->term_id );
 		$c_link = $web_link . '?cat=' . $v->term_id;
 		
 		//
@@ -4581,6 +4584,34 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category') {
 	
 	//
 	return $str;
+}
+
+
+
+function WGR_get_arr_taxonomy ( $tax = 'category' ) {
+	$arrs = get_categories( array(
+		'taxonomy' => $tax,
+		'parent' => 0,
+	) );
+	print_r( $arrs );
+	
+	//
+	$oders = array();
+	$options = array();
+	
+	//
+	foreach ( $arrs as $v ) {
+		$oders[ $v->term_id ] = (int) _eb_get_post_meta( $v->term_id, '_eb_category_order', true, 0 );
+		$options[$v->term_id] = $v;
+	}
+	arsort( $oders );
+	print_r( $oders );
+	
+	//
+	foreach ( $oders as $k => $v ) {
+		$v = $options[$k];
+		print_r($v);
+	}
 }
 
 

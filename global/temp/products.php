@@ -27,6 +27,7 @@ if ( $post_id > 0 && $type != '' ) {
 				`" . $wpdb->posts . "`
 			WHERE
 				post_type = '" . $by_post_type . "'
+				AND ID != " . $post_id . "
 			ORDER BY
 				menu_order DESC
 			LIMIT 0, 1" );

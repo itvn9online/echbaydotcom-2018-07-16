@@ -92,7 +92,7 @@ function echbay_create_admin_menu() {
 	
 	
 	// menu chỉnh sửa sản phẩm nhanh
-	add_submenu_page( $parent_slug, 'Quản lý Sản phẩm/ Bài viết', 'Sản phẩm/ Blog', 'delete_posts', 'eb-products', 'func_include_eb_private_code' );
+	add_submenu_page( $parent_slug, 'Công cụ hỗ trợ chỉnh sửa nhanh dữ liệu', 'Chỉnh sửa nhanh', 'delete_posts', 'eb-products', 'func_include_eb_private_code' );
 	
 	
 	/*

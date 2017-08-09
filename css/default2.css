@@ -1319,12 +1319,17 @@ a.search-advanced-btn {
 	color: #555;
 }
 .eb-public-table .i { width: 70%; }
-.eb-public-table .s { width: 10%; }
+.eb-public-table .s {
+	width: 10%;
+	min-width: 80px;
+}
 .eb-public-table .n { width: 30%; }
 .eb-public-table .m { width: 60%; }
 .eb-public-table .l,
 .eb-public-table textarea { width: 90%; }
 .eb-public-table div.small { line-height: 16px; }
+input[type="text"].s,
+input[type="number"].s { width: 90px; }
 .maxwidth-public-table {
 	max-width: none;
 	width: 99%;
