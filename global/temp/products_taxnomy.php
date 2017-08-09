@@ -45,6 +45,9 @@ if ( $term_id > 0 && $type != '' ) {
 		
 		//
 		update_post_meta( $term_id, '_eb_category_order', $new_stt );
+		
+		//
+		$arr_object_post_meta = array();
 	}
 	
 }

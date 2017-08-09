@@ -76,7 +76,7 @@ else {
 }
 else {
 ?>
-<!-- // EchBay SEO plugin disable by custom -->
+<!-- // EchBay SEO plugin disable by customer -->
 <?php
 }
 
