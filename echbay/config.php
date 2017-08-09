@@ -421,7 +421,7 @@ foreach ( $arr_file_for_lang as $v ) {
 
 //
 $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
-	'tmp.js' => 'var cf_timezone="' . $__cf_row['cf_timezone'] . '",current_module_config="' . $include_page . '";',
+	'tmp.js' => 'var cf_timezone="' . $__cf_row['cf_timezone'] . '",current_module_config="' . $include_page . '",cf_current_theme_using="' . $__cf_row['cf_current_theme_using'] . '";',
 	
 	'tmp.config_module_name' => $include_page == 'config_theme' ? 'Cài đặt giao diện' : 'Cấu hình Website',
 	'tmp.include_page' => $include_page,

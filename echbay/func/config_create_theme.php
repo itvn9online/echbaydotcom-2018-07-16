@@ -268,10 +268,13 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 	$conten_for_bo_giao_dien .= '*/' . "\n";
 	
 	//
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]=array();' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"] = array();' . "\n";
 	
-	// hình ảnh sẽ được đưa lên host của webgiare để làm tổng
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["screenshot"] = "https://www.webgiare.org/img1/' . $create_theme_name . '.jpg";' . "\n";
+	// tên giao diện
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["name"] = "' . $create_theme_name . '";' . "\n";
+	
+	// hình ảnh sẽ được đưa lên host của webgiare để quản lý cho dễ
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["screenshot"] = "https://img1.webgiare.org/' . $create_theme_name . '.jpg";' . "\n";
 	
 	//
 	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'top', '.php' );

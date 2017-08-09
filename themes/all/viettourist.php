@@ -7,7 +7,7 @@
 * User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36
 */
 $eb_all_themes_support["viettourist"]=array();
-$eb_all_themes_support["viettourist"]["screenshot"] = "https://www.webgiare.org/img1/viettourist.jpg";
+$eb_all_themes_support["viettourist"]["screenshot"] = "https://img1.webgiare.org/viettourist.jpg";
 //
 $eb_all_themes_support["viettourist"]["cf_top1_include_file"] = "viettourist-top1.php";
 $eb_all_themes_support["viettourist"]["cf_top2_include_file"] = "bigbanner-top1.php";

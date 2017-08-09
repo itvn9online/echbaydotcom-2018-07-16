@@ -77,12 +77,14 @@
 .eb-best-new-themes input[type=submit],
 .eb-best-new-themes button { padding: 6px 25px; }
 .skins-admin-edit li {
+	float: left;
+	width: 33%;
+}
+.skins-admin-edit li div {
 	background: #fff top center no-repeat;
 	background-size: contain;
 	position: relative;
-	float: left;
 	margin: 0 35px 55px 0;
-	width: 300px;
 	height: 300px;
 	line-height: 300px;
 	border: 1px #ccc solid;
@@ -111,6 +113,12 @@
 	border-radius: 5px;
 }
 */
+.skins-admin-edit li.selected div {
+	-webkit-box-shadow: 0 2pt 2pt #f0f0f0;
+	-moz-box-shadow: 0 2pt 2pt #f0f0f0;
+	box-shadow: 2pt 2pt 2pt #f0f0f0;
+	border-color: #999;
+}
 .skins-admin-edit h3 {
 	background: rgba(200, 200, 200,.65);
 	position: absolute;
@@ -126,18 +134,10 @@
 	text-align: left;
 	padding-left: 15px;
 }
-/*
-.skins-admin-edit li.selected {
-	-webkit-box-shadow: 0 2pt 2pt #f0f0f0;
-	-moz-box-shadow: 0 2pt 2pt #f0f0f0;
-	box-shadow: 2pt 2pt 2pt #f0f0f0;
-	border-color: #999;
-}
 .skins-admin-edit li.selected h3 {
 	background: rgba(0, 0, 0,.65);
 	color: #fff;
 }
-*/
 .skins-admin-edit button {
 	position: absolute;
 	right: 5px;
@@ -151,3 +151,4 @@
 /*
 .skins-admin-edit li:first-child div { display: none !important; }
 */
+.skins-admin-edit li.selected .click-active-eb-themes { display: none !important; }

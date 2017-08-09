@@ -7,7 +7,7 @@
 * User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36
 */
 $eb_all_themes_support["webgiare"]=array();
-$eb_all_themes_support["webgiare"]["screenshot"] = "https://www.webgiare.org/img1/webgiare.jpg";
+$eb_all_themes_support["webgiare"]["screenshot"] = "https://img1.webgiare.org/webgiare.jpg";
 //
 $eb_all_themes_support["webgiare"]["cf_top1_include_file"] = "webgiare-top1.php";
 $eb_all_themes_support["webgiare"]["cf_top2_include_file"] = "webgiare-top2.php";

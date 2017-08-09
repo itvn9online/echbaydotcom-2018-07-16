@@ -458,5 +458,11 @@ $('.click-active-eb-themes').click(function () {
 });
 
 
+//
+if ( cf_current_theme_using != '' ) {
+	$('.skins-admin-edit li[data-key="' + cf_current_theme_using + '"]').addClass('selected');
+}
+
+
 
 

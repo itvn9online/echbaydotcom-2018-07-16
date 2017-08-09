@@ -7,7 +7,7 @@
 * User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36
 */
 $eb_all_themes_support["echbaytwo"]=array();
-$eb_all_themes_support["echbaytwo"]["screenshot"] = "https://www.webgiare.org/img1/echbaytwo.jpg";
+$eb_all_themes_support["echbaytwo"]["screenshot"] = "https://img1.webgiare.org/echbaytwo.jpg";
 //
 $eb_all_themes_support["echbaytwo"]["cf_top1_include_file"] = "echbaytwo-top1.php";
 $eb_all_themes_support["echbaytwo"]["cf_top2_include_file"] = "echbaytwo-top2.php";

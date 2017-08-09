@@ -426,10 +426,12 @@ foreach ( $eb_all_themes_support as $k => $v ) {
 	$theme_avt = $v['screenshot'];
 	
 	$str_all_themes_support .= '
-<li data-key="' . $theme_name . '" style="background-image:url(\'' . $theme_avt . '\');">
-	<p>&nbsp;</p>
-	<h3>' . $theme_name . '</h3>
-	<button type="button" data-theme="' . $theme_name . '" class="blue-button cur click-active-eb-themes">Kích hoạt</button>
+<li data-key="' . $theme_name . '">
+	<div style="background-image:url(\'' . $theme_avt . '\');">
+		<p>&nbsp;</p>
+		<h3>' . $theme_name . '</h3>
+		<button type="button" data-theme="' . $theme_name . '" class="blue-button cur click-active-eb-themes">Kích hoạt</button>
+	</div>
 </li>';
 }
 $arr_for_set_template['str_all_themes_support'] = $str_all_themes_support;

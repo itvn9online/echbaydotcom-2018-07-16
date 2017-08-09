@@ -172,6 +172,7 @@ $__cf_row_default = array(
 	*/
 	// class bao viền (w99, w90)
 	'cf_blog_class_style' => '',
+	'cf_current_theme_using' => '',
 	
 	'cf_using_top_default' => 1,
 	'cf_top_class_style' => '',
