@@ -1546,7 +1546,7 @@ function _eb_set_config($key, $val) {
 	
 	// xóa option cũ đi cho đỡ lằng nhằng
 	delete_option( $key );
-//	echo $key . '<br>' . "\n";
+	echo '<em>Remove</em>: ' . $key . '<br>' . "\n";
 	
 	//
 	$val = stripslashes( stripslashes( stripslashes( $val ) ) );
@@ -1562,6 +1562,9 @@ function _eb_set_config($key, $val) {
 		*/
 		add_option( $key, $val, '', 'no' );
 //		add_option( $key, $val );
+		
+		//
+		echo 'Add: ' . $key . '<br>' . "\n";
 	}
 	/*
 	else {

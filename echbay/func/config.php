@@ -254,17 +254,25 @@ foreach( $_POST as $k => $v ) {
 	// hải có chữ cf_ ở đầu tiền
 //	if ( substr( $k, 0, 3 ) == 'cf_' ) {
 	if ( substr( $k, 0, 3 ) == 'cf_' && isset( $__cf_row_default[ $k ] ) ) {
-//		echo 'insert<br>';
-//		echo $v . '<br>';
-		
-		//
-		_eb_set_config( $k, $v );
-		
-//		$arr_for_update_eb_config[ $k ] = addslashes( stripslashes ( stripslashes ( stripslashes ( $v ) ) ) );
-		
-		//
-//		$v = sanitize_text_field( $v );
-//		$arr_for_update_eb_config[ $k ] = $v;
+		if ( substr( $k, 0, 3 ) == 'cf_' && isset( $__cf_row_default[ $k ] ) ) {
+//			echo 'insert<br>';
+//			echo $v . '<br>';
+			
+			//
+			_eb_set_config( $k, $v );
+			
+//			$arr_for_update_eb_config[ $k ] = addslashes( stripslashes ( stripslashes ( stripslashes ( $v ) ) ) );
+			
+			//
+//			$v = sanitize_text_field( $v );
+//			$arr_for_update_eb_config[ $k ] = $v;
+		}
+		else {
+			echo 'Update __cf_row_default only<br>' . "\n";
+		}
+	}
+	else {
+		echo 'Update cf_ only<br>' . "\n";
 	}
 }
 
@@ -321,6 +329,12 @@ if ( isset( $_POST['cf_timezone'] ) ) {
 
 //
 _eb_log_admin( 'Update config' );
+
+
+
+
+//
+include ECHBAY_PRI_CODE . 'config_reset_cache.php';
 
 
 

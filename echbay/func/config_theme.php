@@ -28,17 +28,25 @@ foreach( $_POST as $k => $v ) {
 	
 	// hải có chữ cf_ ở đầu tiền
 	if ( substr( $k, 0, 3 ) == 'cf_' ) {
-//		echo 'insert<br>';
-//		echo $v . '<br>';
-		
-		//
-		_eb_set_config( $k, $v );
-		
-//		$arr_for_update_eb_config[ $k ] = addslashes( stripslashes ( stripslashes ( stripslashes ( $v ) ) ) );
-		
-		//
-//		$v = sanitize_text_field( $v );
-//		$arr_for_update_eb_config[ $k ] = $v;
+		if ( isset( $__cf_row_default[ $k ] ) ) {
+//			echo 'insert<br>';
+//			echo $v . '<br>';
+			
+			//
+			_eb_set_config( $k, $v );
+			
+//			$arr_for_update_eb_config[ $k ] = addslashes( stripslashes ( stripslashes ( stripslashes ( $v ) ) ) );
+			
+			//
+//			$v = sanitize_text_field( $v );
+//			$arr_for_update_eb_config[ $k ] = $v;
+		}
+		else {
+			echo 'Update __cf_row_default only<br>' . "\n";
+		}
+	}
+	else {
+		echo 'Update cf_ only<br>' . "\n";
 	}
 }
 
@@ -47,6 +55,12 @@ foreach( $_POST as $k => $v ) {
 
 //
 _eb_log_admin( 'Update config theme' );
+
+
+
+
+//
+include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
 
 
 

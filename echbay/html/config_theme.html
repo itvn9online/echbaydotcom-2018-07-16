@@ -15,6 +15,27 @@
 <form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();">
 	<div class="d-none">{tmp.str_list_all_include_file}</div>
 	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table maxwidth-public-table fix-textarea-height">
+		<tbody title="Bộ giao diện" id="eb-admin-config-theme-themes" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Thêm giao diện mới</td>
+				<td class="i">Nếu bạn am hiểu về HTML, CSS... một chút PHP, Javascript... bạn có thể tự tạo giao diện riêng cho mình tại đây. Sử dụng công cụ hỗ trợ của chúng tôi để tạo ra giao diện theo chuẩn chung của hệ thống.</td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><button type="button" class="cur click-open-create-themes">Tạo Bộ giao diện mới</button></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bold">Danh sách giao diện:</td>
+			</tr>
+			<tr>
+				<td colspan="2"><ul class="cf text-center skins-admin-edit">
+						{tmp.str_all_themes_support}
+					</ul></td>
+			</tr>
+		</tbody>
 		<tbody title="Chung" id="eb-admin-config-theme-chung" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
 				<td valign="top" class="t">Chiều rộng khung (chung)</td>
@@ -251,27 +272,6 @@
 			<tr>
 				<td valign="top" class="t">Bố cục trang riêng (Page)</td>
 				<td class="i">{tmp.cf_page_column_style}</td>
-			</tr>
-		</tbody>
-		<tbody title="Bộ giao diện" id="eb-admin-config-theme-themes" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
-			<tr>
-				<td class="t">Thêm giao diện mới</td>
-				<td class="i">Nếu bạn am hiểu về HTML, CSS... một chút PHP, Javascript... bạn có thể tự tạo giao diện riêng cho mình tại đây. Sử dụng công cụ hỗ trợ của chúng tôi để tạo ra giao diện theo chuẩn chung của hệ thống.</td>
-			</tr>
-			<tr>
-				<td class="t">&nbsp;</td>
-				<td class="i"><button type="button" class="cur click-open-create-themes">Tạo Bộ giao diện mới</button></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr></td>
-			</tr>
-			<tr>
-				<td colspan="2" class="bold">Danh sách giao diện:</td>
-			</tr>
-			<tr>
-				<td colspan="2"><ul class="cf text-center skins-admin-edit">
-						{tmp.str_all_themes_support}
-					</ul></td>
 			</tr>
 		</tbody>
 	</table>
