@@ -1,14 +1,20 @@
 <!-- EchBay SEO plugin - http://echbay.com/ -->
 <?php
 
-// trường hợp khách hàng không sử dụng plugin SEO khác thì mới dùng plugin SEO của EchBay
-if ( $__cf_row['cf_on_off_echbay_seo'] == 1 ) {
 
 // chế độ index website
 if ( $__cf_row ["cf_blog_public"] == 0 ) {
 //	wp_no_robots();
 	echo '<meta name="robots" content="noindex,follow" />';
 }
+
+// các thẻ META không bị không chế bởi option cf_on_off_echbay_seo
+echo $global_dymanic_meta;
+
+
+
+// trường hợp khách hàng không sử dụng plugin SEO khác thì mới dùng plugin SEO của EchBay
+if ( $__cf_row['cf_on_off_echbay_seo'] == 1 ) {
 
 
 echo $dynamic_meta;

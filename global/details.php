@@ -167,7 +167,7 @@ if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
 	
 	//
 	if ( $__cf_row['cf_on_off_amp_blog'] == 1 ) {
-		$dynamic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
+		$global_dymanic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
 	}
 	
 	// Nếu config không tạo menu -> không load sidebar
@@ -182,7 +182,7 @@ else {
 	$post_categories = wp_get_post_categories( $pid );
 	
 	if ( $__post->post_type == 'post' && $__cf_row['cf_on_off_amp_product'] == 1 ) {
-		$dynamic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
+		$global_dymanic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
 	}
 }
 //if ( mtv_id == 1 ) print_r( $post_categories );

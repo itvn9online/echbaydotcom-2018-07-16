@@ -205,7 +205,7 @@ if ( $main_content == false ) {
 		}
 		else if ( ( $switch_taxonomy == EB_BLOG_POST_LINK && $__cf_row['cf_on_off_amp_blogs'] == 1 )
 		|| ( $switch_taxonomy == 'category' && $__cf_row['cf_on_off_amp_category'] == 1 ) ) {
-			$dynamic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
+			$global_dymanic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
 		}
 		
 		

@@ -15,6 +15,21 @@ if ( $term_id > 0 && $type != '' ) {
 		$new_stt = (int) $_GET['stt'];
 		
 		if ( $type == 'auto' ) {
+			$sql = _eb_q("SELECT *
+			FROM
+				" . wp_postmeta . "
+			WHERE
+				meta_key = '_eb_category_order'
+				AND post_id != " . $term_id . "
+			ORDER BY
+				meta_value DESC
+			LIMIT 0, 1");
+//			print_r( $sql );
+			
+			//
+			if ( isset( $sql[0] ) ) {
+				$new_stt = $sql[0]->meta_value + 1;
+			}
 		}
 		else if ( $type == 'up' ) {
 			$new_stt ++;

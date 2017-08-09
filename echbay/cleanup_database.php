@@ -65,7 +65,7 @@ if ( isset( $_GET['filter_post_meta'] ) ) {
 			meta_key = '" . $s_meta_key . "'
 		ORDER BY
 			meta_id DESC
-		LIMIT 5000");
+		LIMIT 0, 5000");
 		foreach ( $sql as $v ) {
 			$str_remove_meta = '';
 			// xóa meta trống

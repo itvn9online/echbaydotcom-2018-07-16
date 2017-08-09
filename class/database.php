@@ -207,6 +207,7 @@ else {
 //
 $web_name = '';
 $web_link = '';
+$dynamic_meta = '';
 
 
 

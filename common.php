@@ -61,6 +61,8 @@ $web_og_type = 'website';
 
 $image_og_image = '';
 $arr_dymanic_meta = array();
+// meta này sẽ không bị khống chế bởi option ON/ OFF EchBay SEO
+$global_dymanic_meta = '';
 $current_search_key = '';
 $str_big_banner = '';
 $current_category_menu = '';
