@@ -44,7 +44,7 @@
 .eb-admin-wp-submit {
 	bottom: auto;
 	right: -1px;
-	z-index: 999991;
+	z-index: 1000001;
 	border: 0 none;
 	padding: 0 25px;
 	background: #3899ec;
