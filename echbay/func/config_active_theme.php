@@ -48,6 +48,7 @@ for ( $i = 1; $i <= 10; $i++ ) {
 //
 _eb_set_config( 'cf_threaddetails_include_file', '' );
 _eb_set_config( 'cf_threadnode_include_file', '' );
+//_eb_set_config( 'cf_threadsearchnode_include_file', '' );
 
 
 

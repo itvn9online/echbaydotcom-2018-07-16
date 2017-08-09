@@ -15,14 +15,14 @@
 <form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();">
 	<div class="d-none">{tmp.str_list_all_include_file}</div>
 	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table maxwidth-public-table fix-textarea-height">
-		<tbody title="Bộ giao diện" id="eb-admin-config-theme-themes" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+		<tbody title="Giao diện" id="eb-admin-config-theme-themes" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
 				<td class="t">Thêm giao diện mới</td>
 				<td class="i">Nếu bạn am hiểu về HTML, CSS... một chút PHP, Javascript... bạn có thể tự tạo giao diện riêng cho mình tại đây. Sử dụng công cụ hỗ trợ của chúng tôi để tạo ra giao diện theo chuẩn chung của hệ thống.</td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td class="i"><button type="button" class="cur click-open-create-themes">Tạo Bộ giao diện mới</button></td>
+				<td class="i"><button type="button" class="cur click-open-create-themes">Tạo giao diện mới</button></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -272,6 +272,26 @@
 			<tr>
 				<td valign="top" class="t">Bố cục trang riêng (Page)</td>
 				<td class="i">{tmp.cf_page_column_style}</td>
+			</tr>
+		</tbody>
+		<tbody title="Trang tìm kiếm" id="eb-admin-config-theme-search" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td colspan="2"><div class="small l19">Chọn file thiết kế cho khung SẢN PHẨM trong trang <strong>tìm kiếm</strong> hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
+					<div class="border-file-design border-threadnode-design">{tmp.str_threadsreachnode_design_preview}</div></td>
+			</tr>
+		</tbody>
+		<tbody title="Phom nhập liệu (form)" id="eb-admin-config-theme-form" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td colspan="2" class="t">Giỏ hàng (đầy đủ)</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Giỏ hàng (thu gọn)</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Đăng ký thành viên</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Liên hệ</td>
 			</tr>
 		</tbody>
 	</table>

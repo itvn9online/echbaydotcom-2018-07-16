@@ -387,6 +387,15 @@ $arr_for_set_template['cf_threadnode_title_tag'] = __eb_create_select_checked_co
 
 
 
+
+// khung tìm kiếm sản phẩm
+$str_threadsreachnode_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="cf_threadsearchnode_include_file" data-key="threadsearchnode" data-val="' . $__cf_row[ 'cf_threadsearchnode_include_file' ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+
+$arr_for_set_template['str_threadsreachnode_design_preview'] = $str_threadsreachnode_design_preview;
+
+
+
+
 //
 $arr_for_set_template['str_threaddetails_include_file'] = EBE_config_load_top_footer_include('threaddetails', '.html');
 
@@ -399,6 +408,11 @@ $arr_for_set_template['str_threaddetails_design_preview'] = $str_threaddetails_d
 
 //
 global $str_list_all_include_file;
+
+// thêm input cho khung tìm kiếm -> vì nãy không lấy qua function
+$str_list_all_include_file[] = '<input type="text" name="cf_threadsearchnode_include_file" id="cf_threadsearchnode_include_file" value="' . $__cf_row[ 'cf_threadsearchnode_include_file' ] . '" data-type="threadsearchnode" class="each-to-get-current-value-file" />';
+
+
 //print_r( $str_list_all_include_file );
 $arr_for_set_template['str_list_all_include_file'] = implode( "\n", $str_list_all_include_file );
 

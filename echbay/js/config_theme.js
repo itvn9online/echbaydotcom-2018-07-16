@@ -32,6 +32,8 @@ function EBE_themes_key_quick_search () {
 		$('.for-themes-quick-search').each(function() {
 			var a = $(this).attr('data-key') || '',
 				b = $(this).attr('data-tags') || '';
+//			console.log(a);
+//			console.log(b);
 			
 			if ( a != '' ) {
 				a = g_func.non_mark_seo( a.split('.')[0] );
@@ -325,7 +327,7 @@ $('.click-to-change-file-design').click(function () {
 //	console.log(text);
 	
 	id_for_set_new_include_file = key;
-//	console.log( id_for_set_new_include_file );
+	console.log( 'Set value to: ' + id_for_set_new_include_file );
 	
 	// nếu vẫn đang là khung cũ được hiển thị thì bỏ qua
 	if ( current_frame_design_is_show == text ) {
@@ -341,7 +343,15 @@ $('.click-to-change-file-design').click(function () {
 	$('.change-eb-design-fixed').show().addClass('selected');
 	
 	$('.change-eb-design-hide-fixed').hide();
-	$('.change-eb-design-' + text + '-fixed').show();
+	
+	//
+	console.log('Show HTML for ' + text);
+	if ( text == 'threadsearchnode' ) {
+		$('.change-eb-design-threadnode-fixed').show();
+	}
+	else {
+		$('.change-eb-design-' + text + '-fixed').show();
+	}
 	
 	
 	
