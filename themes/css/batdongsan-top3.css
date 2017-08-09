@@ -1,8 +1,10 @@
-#batdongsan-top3 { }
-#batdongsan-top3 { }
-#batdongsan-top3 { }
-#batdongsan-top3 { }
-#batdongsan-top3 { }
+#batdongsan-top3 { padding: 8px 0; }
+#batdongsan-top3 .div-search-margin { }
+#batdongsan-top3 .div-search { }
+#batdongsan-top3 input[type="search"],
+#batdongsan-top3 button { }
+#batdongsan-top3 input[type="search"] { }
+#batdongsan-top3 button { }
 #batdongsan-top3 { }
 #batdongsan-top3 { }
 #batdongsan-top3 { }

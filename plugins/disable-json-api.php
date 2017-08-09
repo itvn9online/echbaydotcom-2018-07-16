@@ -83,16 +83,19 @@ function DRA_only_allow_logged_in_rest_access( $access ) {
 // URL mà tồn tại tham số /wp-json/ -> hủy luôn
 //if ( strstr( $_SERVER['REQUEST_URI'], '/wp-json/' ) == true ) {
 if ( strstr( $_SERVER['REQUEST_URI'], '/wp-json' ) == true ) {
-
-	// Set trạng thái cho trang 404
-	EBE_set_header(401);
+	// một số chức năng như contact-forms 7 có sử dụng json -> vẫn để cho nó dùng
+	if ( strstr( $_SERVER['REQUEST_URI'], '/contact-forms/' ) == false ) {
 	
-	// hiển thị dưới dạng text
-	header("Content-type: text/plain");
+		// Set trạng thái cho trang 404
+		EBE_set_header(401);
+		
+		// hiển thị dưới dạng text
+		header("Content-type: text/plain");
+		
+		// chặn nội dung
+		die('{"message":"JSON disable by EchBay.com"}');
 	
-	// chặn nội dung
-	die('{"message":"JSON disable by EchBay.com"}');
-	
+	}
 }
 
 
