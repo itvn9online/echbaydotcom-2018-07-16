@@ -126,6 +126,9 @@ $offset = ($trang - 1) * $threadInPage;
 <script type="text/javascript">
 
 //
+WGR_admin_quick_edit_select_menu();
+
+//
 function WGR_admin_quick_edit_products ( connect_to, url_request, parameter ) {
 	
 	// kiểm tra dữ liệu đầu vào

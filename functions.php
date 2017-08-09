@@ -1208,11 +1208,27 @@ function EBE_echbay_category_menu (
 		}
 //		print_r($arrs_cats);
 	}
+
+	
+	// sắp xếp mảng theo chủ đích của người dùng
+	$oders = array();
+	$options = array();
+	
+	//
+	foreach ( $arrs_cats as $v ) {
+		$oders[ $v->term_id ] = (int) _eb_get_post_meta( $v->term_id, '_eb_category_order', true, 0 );
+		$options[$v->term_id] = $v;
+	}
+	arsort( $oders );	
 	
 	
 	//
 	$str = '';
-	foreach ( $arrs_cats as $v ) {
+//	foreach ( $arrs_cats as $v ) {
+	foreach ( $oders as $k => $v ) {
+		$v = $options[$k];
+		
+		//
 		$str_child = '';
 		if ( $get_child == 1 ) {
 			$str_child = EBE_echbay_category_menu (
@@ -4593,7 +4609,7 @@ function WGR_get_arr_taxonomy ( $tax = 'category' ) {
 		'taxonomy' => $tax,
 		'parent' => 0,
 	) );
-	print_r( $arrs );
+//	print_r( $arrs );
 	
 	//
 	$oders = array();
@@ -4605,7 +4621,7 @@ function WGR_get_arr_taxonomy ( $tax = 'category' ) {
 		$options[$v->term_id] = $v;
 	}
 	arsort( $oders );
-	print_r( $oders );
+//	print_r( $oders );
 	
 	//
 	foreach ( $oders as $k => $v ) {
