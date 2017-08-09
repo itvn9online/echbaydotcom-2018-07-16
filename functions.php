@@ -1087,7 +1087,7 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 				</div>';
 			}
 			else if ( strpos( $a, '/auto.get_all_category/home/' ) !== false ) {
-				$a = $all_cats;
+				$a = str_replace( '<!-- ul:before -->', '<li><div><a href="./"><i class="fa fa-home"></i> ' . EBE_get_lang('home') . '</a></div></li>', $all_cats );
 			}
 			else {
 				$a = $all_cats;
@@ -1227,7 +1227,7 @@ function EBE_echbay_category_menu (
 		$str .= '<li><' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count d-none"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
 	}
 	
-	return '<ul class="cf ' . $ul_class . '">' . $str . '</ul>';
+	return '<ul class="cf ' . $ul_class . '"><!-- ul:before -->' . $str . '</ul>';
 }
 
 
