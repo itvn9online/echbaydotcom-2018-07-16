@@ -1,10 +1,14 @@
 #batdongsan-footer2 { }
-#batdongsan-footer2 { }
-#batdongsan-footer2 { }
-#batdongsan-footer2 { }
-#batdongsan-footer2 { }
-#batdongsan-footer2 { }
-#batdongsan-footer2 { }
-#batdongsan-footer2 { }
-#batdongsan-footer2 { }
-#batdongsan-footer2 { }
+#batdongsan-footer2 .footer-menu {
+	padding: 12px 0;
+	line-height: 18px;
+}
+#batdongsan-footer2 .footer-menu ul { text-align: center; }
+#batdongsan-footer2 .footer-menu li {
+	display: inline-block;
+	padding: 0 5px;
+	border-left: 1px #ccc solid;
+}
+#batdongsan-footer2 .footer-menu li:first-child { border: 0 none; }
+#batdongsan-footer2 .footer-menu a { }
+#batdongsan-footer2 .footer-menu .sub-menu { display: none; }
