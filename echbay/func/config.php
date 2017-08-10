@@ -255,6 +255,15 @@ if ( $file_name != '' && file_exists( $file_name ) ) {
 }
 
 
+//
+if ( (int) $_POST['cf_height_logo'] < 10 ) {
+	$_POST['cf_height_logo'] = $__cf_row_default['cf_height_logo'];
+}
+
+// Thêm chiều cao cố định cho logo
+$_POST['cf_default_css'] .= '.web-logo{height:' . $_POST['cf_height_logo'] . 'px;line-height:' . $_POST['cf_height_logo'] . 'px;}';
+
+
 
 
 // chạy vòng lặp rồi in các dữ liệu vào bảng lưu
