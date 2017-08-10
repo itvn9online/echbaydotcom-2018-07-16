@@ -1548,3 +1548,34 @@ function EBE_get_current_wp_module ( s ) {
 
 
 
+//
+var time_out_for_set_new_tile = null;
+function WGR_show_widget_name_by_title () {
+	clearTimeout(time_out_for_set_new_tile);
+	
+	time_out_for_set_new_tile = setTimeout(function () {
+		$('#widgets-right .widget').each(function() {
+//			console.log( 'eb-get-widget-title: ' + $('input.eb-get-widget-title', this).length );
+			
+			if ( $('input.eb-get-widget-title', this).length > 0
+			|| $('select.eb-get-widget-category', this).length > 0 ) {
+				
+				// lấy text để hiển thị ra
+				var a = $('input.eb-get-widget-title', this).val()
+				|| $('select.eb-get-widget-category option:selected', this).text()
+				|| '';
+				
+				if ( a != '' ) {
+//					console.log( a );
+					
+//					console.log( 'H3: ' + $('h3 .in-widget-title', this).length );
+					$('h3 .in-widget-title', this).html(': ' + a);
+				}
+			}
+		});
+	}, 800);
+}
+
+
+
+

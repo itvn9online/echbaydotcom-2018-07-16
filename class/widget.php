@@ -55,6 +55,16 @@ function ___add_echbay_widget() {
 
 
 
+
+// Hiển thị thêm title cho widget để dễ phân biệt
+function WGR_show_widget_name_by_title () {
+	echo '<script type="text/javascript">
+	WGR_show_widget_name_by_title();
+	</script>';
+}
+
+
+
 function _eb_top_footer_form_for_widget ( $instance, $field_name = array() ) {
 	foreach ( $instance as $k => $v ) {
 		$$k = esc_attr ( $v );
@@ -105,7 +115,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
+	_eb_widget_echo_widget_input_title( $field_name['title'], $title, '', '', 'eb-get-widget-title' );
 	
 	
 	echo '<p>Description: <textarea class="widefat" name="' . $field_name['description'] . '">' . $description . '</textarea></p>';
@@ -212,6 +222,10 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	convert_size_to_one_format();
 	</script>';
 	
+	
+	//
+	WGR_show_widget_name_by_title();
+	
 }
 
 
@@ -252,12 +266,24 @@ function _eb_widget_echo_widget_input_checkbox ( $select_name, $select_val, $men
 
 
 
-function _eb_widget_echo_widget_input_title ( $select_name, $select_val, $menu_name = 'Title:', $pla = '' ) {
+function _eb_widget_echo_widget_input_title (
+	$select_name,
+	$select_val,
+	$menu_name = '',
+	$pla = '',
+	// class CSS để phân định các điểm khác nhau
+	$class_css = ''
+) {
+	
+	if ( $menu_name == '' ) {
+		$menu_name = 'Title:';
+	}
 	if ( $pla == '' ) {
 		$pla = $menu_name;
 	}
 	
-	echo '<p>' . $menu_name . ' <input type="text" class="widefat" name="' . $select_name . '" value="' . $select_val . '" placeholder="' . $pla . '" /></p>';
+	echo '<p>' . $menu_name . ' <input type="text" class="widefat ' . $class_css . '" name="' . $select_name . '" value="' . $select_val . '" placeholder="' . $pla . '" /></p>';
+	
 }
 
 
@@ -528,7 +554,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	
 	
 	//
-	echo '<p>Categories: <select name="' . $select_name . '" id="' . $animate_id . '" class="widefat">
+	echo '<p>Categories: <select name="' . $select_name . '" id="' . $animate_id . '" class="widefat eb-get-widget-category">
 	<option value="0">[ Select category ]</option>';
 	
 	foreach ( $categories as $v ) {
