@@ -187,28 +187,25 @@ include EB_THEME_CORE . 'database.php';
 if ( $__cf_row['cf_threadnode_include_file'] != '' ) {
 	
 	//
-	$tmp_theme = EB_THEME_URL . 'theme/ui/' . $__cf_row[ 'cf_threadnode_include_file' ];
-	$tmp_plugin = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $__cf_row['cf_threadnode_include_file' ];
+	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $__cf_row['cf_threadnode_include_file'];
 	
-	// v1
-//	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $__cf_row['cf_threadnode_include_file'];
-	
-	
-	// ưu tiên hàng của theme trước
-	if ( file_exists( $tmp_theme ) ) {
-		$arr_for_show_html_file_load[] = '<!-- config HTML (theme): ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
+	//
+	if ( file_exists($inc_threadnode) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML: ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
 		
-		define( '__eb_thread_template', file_get_contents( $tmp_theme, 1 ) );
+		define( '__eb_thread_template', file_get_contents( $inc_threadnode, 1 ) );
 		
-		$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_threadnode_include_file' ] ) ] = 1;
-	}
-	// sau đó mới là của plugin
-	else if ( file_exists( $tmp_plugin ) ) {
-		$arr_for_show_html_file_load[] = '<!-- config HTML (plugin): ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
-		
-		define( '__eb_thread_template', file_get_contents( $tmp_plugin, 1 ) );
-		
-		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_threadnode_include_file' ] ) ] = 1;
+		// dùng chung thì gán CSS dùng chung luôn (nếu có)
+		/*
+		$css_threadnode = EB_THEME_PLUGIN_INDEX . 'css/' . str_replace( '.html', '.css', $__cf_row['cf_threadnode_include_file'] );
+//		echo $css_threadnode;
+		if ( file_exists( $css_threadnode ) ) {
+			$arr_for_add_theme_css[ $css_threadnode ] = 1;
+			
+			$arr_for_show_html_file_load[] = '<!-- config CSS: ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
+		}
+		*/
+		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row['cf_threadnode_include_file'], '.html' ) ] = 1;
 	}
 	else {
 		define( '__eb_thread_template', 'File ' . $inc_threadnode . ' not exist' );
