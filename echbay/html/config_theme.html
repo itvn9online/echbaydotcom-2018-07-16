@@ -274,24 +274,38 @@
 				<td class="i">{tmp.cf_page_column_style}</td>
 			</tr>
 		</tbody>
+		<!--
 		<tbody title="Trang tìm kiếm" id="eb-admin-config-theme-search" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
 				<td colspan="2"><div class="small l19">Chọn file thiết kế cho khung SẢN PHẨM trong trang <strong>tìm kiếm</strong> hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
 					<div class="border-file-design border-threadnode-design">{tmp.str_threadsreachnode_design_preview}</div></td>
 			</tr>
 		</tbody>
+		-->
 		<tbody title="Phom nhập liệu (form)" id="eb-admin-config-theme-form" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
-				<td colspan="2" class="t">Giỏ hàng (đầy đủ)</td>
+				<td colspan="2"><span class="t">Giỏ hàng (đầy đủ)</span> [<span class="cur bluecolor small">Mặc định</span>]</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="t">Giỏ hàng (thu gọn)</td>
+				<td colspan="2"><textarea name="cf_form_cart" id="cf_form_cart"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="t">Đăng ký thành viên</td>
+				<td colspan="2"><span class="t">Giỏ hàng (thu gọn)</span> [<span class="cur bluecolor small">Mặc định</span>]</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="t">Liên hệ</td>
+				<td colspan="2"><textarea name="cf_form_quick_cart" id="cf_form_quick_cart"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="t">Đăng ký thành viên</span> [<span class="cur bluecolor small">Mặc định</span>]</td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea name="cf_form_register" id="cf_form_register"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="t">Liên hệ</span> [<span class="cur bluecolor small">Mặc định</span>]</td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea name="cf_form_contact" id="cf_form_contact"></textarea></td>
 			</tr>
 		</tbody>
 	</table>
@@ -299,6 +313,10 @@
 		<input type="submit" value="Cập nhật" class="eb-admin-wp-submit" />
 	</div>
 </form>
+<textarea name="cf_tmp_form_cart" id="cf_tmp_form_cart"></textarea>
+<textarea name="cf_tmp_form_quick_cart" id="cf_tmp_form_quick_cart"></textarea>
+<textarea name="cf_tmp_form_register" id="cf_tmp_form_register"></textarea>
+<textarea name="cf_tmp_form_contact" id="cf_tmp_form_contact"></textarea>
 <div class="change-eb-design-fixed">
 	<div data-key="private">
 		<div class="change-eb-design-padding">{tmp.str_private_include_file}</div>
