@@ -1580,7 +1580,9 @@ function WGR_show_widget_name_by_title () {
 //					console.log( a );
 					
 //					console.log( 'H3: ' + $('h3 .in-widget-title', this).length );
-					$('h3 .in-widget-title', this).html(': ' + a);
+					$('h3 .in-widget-title', this).html(': ' + a).attr({
+						title: a
+					});
 				}
 			}
 		});
