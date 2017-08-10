@@ -239,9 +239,19 @@ echo $file_name . '<br>' . "\n";
 //
 if ( $file_name != '' && file_exists( $file_name ) ) {
 	$file_name = getimagesize($file_name);
-	print_r($file_name);
+//	print_r($file_name);
 	
 	$_POST['cf_size_logo'] = $file_name[1] . '/' . $file_name[0];
+	
+	//
+	if ( $file_name[0] > 400 || $file_name[1] > 400 ) {
+		echo '<script type="text/javascript">alert("Lưu ý! tối ưu kích thước cho logo trước khi up lên");</script>';
+	}
+	
+	//
+	if ( (int) $_POST['cf_height_logo'] < 10 ) {
+		$_POST['cf_height_logo'] = $file_name[1];
+	}
 }
 
 
