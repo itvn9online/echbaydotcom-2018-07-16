@@ -192,6 +192,10 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		//
 		echo '<p>Custom style: <input type="text" class="widefat" name="' . $this->get_field_name ( 'custom_style' ) . '" value="' . $custom_style . '" /></p>';
 		
+		
+		//
+		WGR_show_widget_name_by_title();
+		
 	}
 	
 	function update($new_instance, $old_instance) {

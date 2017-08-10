@@ -1561,10 +1561,21 @@ function WGR_show_widget_name_by_title () {
 			|| $('select.eb-get-widget-category', this).length > 0 ) {
 				
 				// lấy text để hiển thị ra
-				var a = $('input.eb-get-widget-title', this).val()
-				|| $('select.eb-get-widget-category option:selected', this).text()
-				|| '';
+				var a = $('input.eb-get-widget-title', this).val() || '';
 				
+				// nếu không có -> thử lấy theo tên phân nhóm
+				if ( a == '' ) {
+					a = $('select.eb-get-widget-category', this).val() || 0;
+					
+					if ( a > 0 ) {
+						a = $('select.eb-get-widget-category option[value="' + a + '"]', this).text() || '';
+					}
+					else {
+						a = '';
+					}
+				}
+				
+				//
 				if ( a != '' ) {
 //					console.log( a );
 					
