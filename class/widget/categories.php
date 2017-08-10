@@ -81,7 +81,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		*/
 		
 //		echo '<p>Title: <input type="text" class="widefat" name="' . $this->get_field_name ( 'title' ) . '" value="' . $title . '" /></p>';
-		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'title' ), $title, '', '', 'eb-get-widget-title' );
+		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'title' ), $title );
 		
 		
 		//

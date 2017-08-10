@@ -77,7 +77,7 @@ function _eb_top_footer_form_for_widget ( $instance, $field_name = array() ) {
 	_eb_menu_width_form_for_widget( $field_name['width'], $width );
 	
 	
-	_eb_widget_echo_widget_input_title( $field_name['custom_style'], $custom_style, 'Custom CSS:' );
+	_eb_widget_echo_widget_input_title( $field_name['custom_style'], $custom_style, 'Custom CSS:', '', '' );
 	
 	
 	_eb_widget_echo_widget_input_checkbox( $field_name['hide_mobile'], $hide_mobile, 'Ẩn trên mobile', 'Mặc định, module này sẽ được hiển thị trên mọi thiết bị, tích vào đây nếu muốn nó bị ẩn trên mobile.' );
@@ -115,7 +115,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	_eb_widget_echo_widget_input_title( $field_name['title'], $title, '', '', 'eb-get-widget-title' );
+	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
 	
 	
 	echo '<p>Description: <textarea class="widefat" name="' . $field_name['description'] . '">' . $description . '</textarea></p>';
@@ -272,7 +272,7 @@ function _eb_widget_echo_widget_input_title (
 	$menu_name = '',
 	$pla = '',
 	// class CSS để phân định các điểm khác nhau
-	$class_css = ''
+	$class_css = 'eb-get-widget-title'
 ) {
 	
 	if ( $menu_name == '' ) {

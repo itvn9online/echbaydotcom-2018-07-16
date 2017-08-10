@@ -40,7 +40,7 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		
 		
 		//
-		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'tag' ), $tag, 'div' );
+		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'tag' ), $tag, 'div', '', '' );
 		
 	}
 	
