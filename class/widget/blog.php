@@ -155,7 +155,9 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			$cat_link = _eb_c_link( $cat_ids, $cat_type );
 			
 			if ( $title == '' ) {
-				$categories = get_term_by('id', $cat_ids, 'category');
+//				echo $cat_ids;
+				$categories = get_term_by('id', $cat_ids, $cat_type);
+//				print_r($categories);
 				$title = $categories->name;
 			}
 		}
