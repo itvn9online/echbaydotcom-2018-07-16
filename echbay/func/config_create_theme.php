@@ -210,8 +210,25 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 10 ) {
 	global $create_theme_name;
 	
 	$str = '';
+	$begin_i = 1;
+	$end_i = $limit;
 	
-	for ( $i = 1; $i <= $limit; $i++ ) {
+	
+	// thêm widget tương ứng cho footer
+	if ( $position == 'footer' ) {
+		
+		// thêm widget vào đầu
+		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $begin_i . '_include_file"] = "footer_widget.php";' . "\n";
+		
+		// bắt đầu lặp từ node 2 trở đi
+		$begin_i = 2;
+		
+	}
+	
+	
+	
+	//
+	for ( $i = $begin_i; $i <= $limit; $i++ ) {
 		
 		if ( $limit == 1 ) {
 			$j = '';
@@ -235,6 +252,8 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 10 ) {
 			if ( file_exists( $fcheck )
 			|| file_exists( EB_THEME_URL . 'theme/ui/' . $fname ) ) {
 				$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $check_theme_node . '"] = "' . $fname . '";' . "\n";
+				
+				$end_i = $j;
 			}
 			
 		}
@@ -242,6 +261,18 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 10 ) {
 			break;
 		}
 	}
+	
+	
+	// thêm widget tương ứng cho top
+	if ( $position == 'top' ) {
+		
+		// thêm widget vào cuối
+		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "top_widget.php";' . "\n";
+		
+	}
+	
+	
+	
 	
 //	return $str;
 	return '//' . "\n" . $str;
