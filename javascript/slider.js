@@ -248,10 +248,11 @@ function jEBE_slider ( jd, conf, callBack ) {
 					var a = $('#' + j_id + ' ul').attr('data-scroll') || 0,
 						max_li = $('#' + j_id + ' li').length/ 4;
 					a = a - (0 - 1);
-//					console.log(a);
-//					console.log(max_li);
+					console.log(a);
+					console.log(max_li);
 					if ( a > max_li ) {
-						a = max_li;
+//						a = max_li;
+						a = 0;
 					}
 //					console.log(a);
 					
@@ -263,6 +264,9 @@ function jEBE_slider ( jd, conf, callBack ) {
 					});
 				});
 				
+			}
+			else {
+				$('#' + j_id + ' li').width( '25%' );
 			}
 		}
 		

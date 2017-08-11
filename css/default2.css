@@ -1429,7 +1429,14 @@ li.footer-social-gg { background-color: #DE4B39; }
 	overflow-x: scroll;
 	*/
 }
-.jEBE_slider-scroll-thumbnail ul { position: absolute; }
+.jEBE_slider-scroll-thumbnail ul {
+	position: absolute;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+	left: 0;
+}
 .jEBE_slider-child-thumbnail li {
 	display: block;
 	float: left;
