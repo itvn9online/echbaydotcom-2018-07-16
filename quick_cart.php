@@ -49,7 +49,7 @@
 					<div class="eb-quickcart-node eb-quickcart-tel cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_dienthoai'); ?> <span class="redcolor">*</span></div>
 						<div class="eb-quickcart-right">
-							<input type="text" name="t_dienthoai" value="" placeholder="<?php echo EBE_get_lang('cart_dienthoai'); ?>" />
+							<input type="text" name="t_dienthoai" value="" placeholder="<?php echo EBE_get_lang('cart_pla_dienthoai'); ?>" />
 						</div>
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-email cf">
