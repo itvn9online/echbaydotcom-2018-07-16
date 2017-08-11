@@ -271,7 +271,7 @@ input[id="_eb_category_order"] { width: 90px; }
 .click-add-widget-include-to-input[data-type="threaddetails"] { display: none; }
 .border-file-design {
 	border: 1px #ccc solid;
-	padding: 15px;
+	padding: 50px 0;
 	background: #fafafa url(../images-global/wix-bg-design.png);
 }
 .preview-file-design {

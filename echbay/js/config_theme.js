@@ -3,7 +3,7 @@
 
 
 // thu gọn menu của wordpress -> để tăng kích thước cho khung thiết kế
-$('body').addClass('folded');
+//$('body').addClass('folded');
 
 
 

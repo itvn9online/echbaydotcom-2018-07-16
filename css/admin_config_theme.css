@@ -7,7 +7,7 @@
 }
 .config_theme-bars {
 	z-index: 999990;
-	left: 68px;
+	left: 160px;
 	right: 0;
 	background: #fff;
 	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
@@ -16,11 +16,13 @@
 }
 .eb-admin-config {
 	margin: 0;
-	left: 8%;
+	left: 190px;
 	z-index: 999991;
 	font-size: 15px;
 	min-width: 250px;
 }
+body.folded .config_theme-bars { left: 68px; }
+body.folded .eb-admin-config { left: 8%; }
 .eb-admin-config:hover {
 	padding: 0 50px 90px 0;
 	background: rgba(255,255,255,.8);
