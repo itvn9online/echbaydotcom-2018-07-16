@@ -266,6 +266,8 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 10 ) {
 	// thêm widget tương ứng cho top
 	if ( $position == 'top' ) {
 		
+		$end_i += 1;
+		
 		// thêm widget vào cuối
 		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "top_widget.php";' . "\n";
 		
