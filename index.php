@@ -159,7 +159,11 @@ $arr_to_add_menu = array(
 	'footer-menu-03' => 'Footer menu 03',
 	'footer-menu-04' => 'Footer menu 04',
 	'footer-menu-05' => 'Footer menu 05',
-	'footer-menu-06' => 'Footer menu 06'
+	'footer-menu-06' => 'Footer menu 06',
+	'footer-menu-07' => 'Footer menu 07',
+	'footer-menu-08' => 'Footer menu 08',
+	'footer-menu-09' => 'Footer menu 09',
+	'footer-menu-10' => 'Footer menu 10'
 );
 
 
