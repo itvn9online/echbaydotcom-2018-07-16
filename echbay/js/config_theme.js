@@ -463,6 +463,33 @@ $('.click-active-eb-themes').click(function () {
 	
 	$('#create_theme_key').val(a);
 	
+	
+	
+	// xóa toàn bộ phần top hiện tại đi, để nạp giao diện mới
+	/*
+	for ( var i = 1; i <= 10; i++ ) {
+		
+		var top = 'cf_top' + i + '_include_file';
+		if ( dog(top) != null ) {
+			dog(top).value = '';
+		}
+		console.log( top );
+		
+		var footer = 'cf_footer' + i + '_include_file';
+		if ( dog(footer) != null ) {
+			dog(footer).value = '';
+		}
+		console.log( footer );
+		
+	}
+	dog('cf_threaddetails_include_file').value = '';
+	dog('cf_threadnode_include_file').value = '';
+	dog('cf_threadsearchnode_include_file').value = '';
+	*/
+	
+	
+	
+	//
 	document.frm_config_active_theme.submit();
 	
 });

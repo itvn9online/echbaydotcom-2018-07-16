@@ -1545,8 +1545,9 @@ function _eb_set_config($key, $val) {
 	$key = _eb_option_prefix . $key;
 	
 	// xóa option cũ đi cho đỡ lằng nhằng
-	delete_option( $key );
-	echo '<em>Remove</em>: ' . $key . '<br>' . "\n";
+	if ( delete_option( $key ) ) {
+		echo '<em>Remove</em>: ' . $key . '<br>' . "\n";
+	}
 	
 	//
 	$val = stripslashes( stripslashes( stripslashes( $val ) ) );
@@ -1640,6 +1641,9 @@ function _eb_get_config( $real_time = false ) {
 //	print_r( $__cf_row_default );
 //	echo count( $__cf_row_default ) . '<br>' . "\n";
 	
+	
+	//
+//	$__cf_row = $__cf_row_default;
 		
 	
 	/*
@@ -1676,7 +1680,8 @@ function _eb_get_config( $real_time = false ) {
 		`" . $wpdb->options . "`
 	WHERE
 		option_name LIKE '{$option_conf_name}%'");
-//	print_r( $row ); exit();
+//	print_r( $row );
+//	exit();
 	
 	//
 	if ( count( $row ) == 0 ) {

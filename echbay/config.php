@@ -40,6 +40,9 @@ foreach ( $sql as $v ) {
 
 
 
+//
+//print_r( $__cf_row_default );
+$__cf_row = $__cf_row_default;
 //print_r( $__cf_row );
 _eb_get_config( true );
 //print_r( $__cf_row );

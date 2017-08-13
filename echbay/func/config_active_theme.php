@@ -16,13 +16,14 @@ if ( ! file_exists( $file_for_active ) ) {
 
 //
 include $file_for_active;
-//print_r( $eb_all_themes_support );
+//print_r( $eb_all_themes_support ); exit();
 
 //
 if ( empty( $eb_all_themes_support[ $create_theme_key ] ) ) {
 	_eb_alert('Không không xác định được danh sách tệp giao diện');
 }
-$arr_new_theme= $eb_all_themes_support[ $create_theme_key ];
+$arr_new_theme = $eb_all_themes_support[ $create_theme_key ];
+//print_r( $arr_new_theme ); exit();
 
 
 
@@ -37,18 +38,21 @@ for ( $i = 1; $i <= 10; $i++ ) {
 	if ( isset( $__cf_row_default[ $top ] ) ) {
 		_eb_set_config( $top, '' );
 	}
+//	echo $top . '<br>';
 	
 	$footer = 'cf_footer' . $i . '_include_file';
 	if ( isset( $__cf_row_default[ $footer ] ) ) {
 		_eb_set_config( $footer, '' );
 	}
+//	echo $footer . '<br>';
 	
 }
+//exit();
 
 //
-//_eb_set_config( 'cf_threaddetails_include_file', '' );
-//_eb_set_config( 'cf_threadnode_include_file', '' );
-//_eb_set_config( 'cf_threadsearchnode_include_file', '' );
+_eb_set_config( 'cf_threaddetails_include_file', '' );
+_eb_set_config( 'cf_threadnode_include_file', '' );
+_eb_set_config( 'cf_threadsearchnode_include_file', '' );
 
 
 
@@ -62,12 +66,14 @@ foreach( $arr_new_theme as $k => $v ) {
 	
 	// hải có chữ cf_ ở đầu tiền
 //	if ( substr( $k, 0, 3 ) == 'cf_' ) {
-	if ( substr( $k, 0, 3 ) == 'cf_' && $v != '' && isset( $__cf_row_default[ $k ] ) ) {
+	if ( substr( $k, 0, 3 ) == 'cf_' && isset( $__cf_row_default[ $k ] ) ) {
 		
 		_eb_set_config( $k, $v );
+//		echo $v . '<br>';
 		
 	}
 }
+//exit();
 
 
 

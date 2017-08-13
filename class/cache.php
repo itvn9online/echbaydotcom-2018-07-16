@@ -555,6 +555,7 @@ if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
 
 // lấy config theo thời gian thực nếu tài khoản đang đăng nhập
 if ( mtv_id > 0 ) {
+	$__cf_row = $__cf_row_default;
 	_eb_get_config( true );
 	EBE_get_lang_list();
 }
