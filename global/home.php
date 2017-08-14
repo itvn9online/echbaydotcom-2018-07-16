@@ -46,7 +46,7 @@ if ($main_content == false) {
 //	$home_content_sidebar = _eb_echbay_sidebar( 'home_content_sidebar' );
 	
 	// trả về null nếu không có dữ liệu
-	if ( $__cf_row['cf_using_top_default'] == 1 ) {
+	if ( $__cf_row['cf_using_home_default'] == 1 ) {
 		$home_with_cat = '';
 		
 		
