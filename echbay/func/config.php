@@ -3,6 +3,7 @@
 
 
 //
+//print_r( $_POST );
 //$arr_for_update_eb_config = array();
 
 
@@ -114,14 +115,6 @@ if ( ! isset( $_POST['cf_global_big_banner'] ) || (int) $_POST['cf_global_big_ba
 	$_POST['cf_global_big_banner'] = 0;
 }
 
-if ( ! isset( $_POST['cf_details_show_list_next'] ) || (int) $_POST['cf_details_show_list_next'] != 1 ) {
-	$_POST['cf_details_show_list_next'] = 0;
-}
-
-if ( ! isset( $_POST['cf_details_show_list_thumb'] ) || (int) $_POST['cf_details_show_list_thumb'] != 1 ) {
-	$_POST['cf_details_show_list_thumb'] = 0;
-}
-
 
 
 
@@ -220,6 +213,16 @@ if ( $_POST['cf_logo'] != '' ) {
 		$file_name = $file_name[ count( $file_name ) - 1 ];
 		$file_name = EB_THEME_CACHE . $file_name;
 		
+		//
+		/*
+		$url_copy_logo = $_POST['cf_logo'];
+		if ( strstr( $url_copy_logo, 'http:' ) == true || strstr( $url_copy_logo, 'https:' ) == true ) {
+		}
+		else {
+			$url_copy_logo = 'http:' . $url_copy_logo;
+		}
+		*/
+		
 		// nếu có trong cache rồi thì thôi
 		if ( file_exists( $file_name ) ) {
 		}
@@ -245,7 +248,7 @@ if ( $file_name != '' && file_exists( $file_name ) ) {
 	
 	//
 	if ( $file_name[0] > 400 || $file_name[1] > 400 ) {
-		echo '<script type="text/javascript">alert("Lưu ý! tối ưu kích thước cho logo trước khi up lên");</script>';
+		echo '<script type="text/javascript">console.log("Lưu ý! tối ưu kích thước cho logo trước khi up lên");</script>';
 	}
 	
 	//
@@ -268,7 +271,7 @@ $_POST['cf_default_css'] .= '.web-logo{height:' . $_POST['cf_height_logo'] . 'px
 
 // chạy vòng lặp rồi in các dữ liệu vào bảng lưu
 foreach( $_POST as $k => $v ) {
-//	echo $k . '<br>';
+	echo $k . '<br>';
 	
 	// hải có chữ cf_ ở đầu tiền
 //	if ( substr( $k, 0, 3 ) == 'cf_' ) {
@@ -291,7 +294,7 @@ foreach( $_POST as $k => $v ) {
 		}
 	}
 	else {
-		echo 'Update cf_ only<br>' . "\n";
+		echo 'Update cf_ only (' . $k . ')<br>' . "\n";
 	}
 }
 
@@ -353,7 +356,7 @@ _eb_log_admin( 'Update config' );
 
 
 //
-include ECHBAY_PRI_CODE . 'config_reset_cache.php';
+include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
 
 
 

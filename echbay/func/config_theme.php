@@ -20,6 +20,14 @@ if ( ! isset( $_POST['cf_using_footer_default'] ) || (int) $_POST['cf_using_foot
 	$_POST['cf_using_footer_default'] = 0;
 }
 
+if ( ! isset( $_POST['cf_details_show_list_next'] ) || (int) $_POST['cf_details_show_list_next'] != 1 ) {
+	$_POST['cf_details_show_list_next'] = 0;
+}
+
+if ( ! isset( $_POST['cf_details_show_list_thumb'] ) || (int) $_POST['cf_details_show_list_thumb'] != 1 ) {
+	$_POST['cf_details_show_list_thumb'] = 0;
+}
+
 
 
 // chạy vòng lặp rồi in các dữ liệu vào bảng lưu
@@ -46,7 +54,7 @@ foreach( $_POST as $k => $v ) {
 		}
 	}
 	else {
-		echo 'Update cf_ only<br>' . "\n";
+		echo 'Update cf_ only (' . $k . ')<br>' . "\n";
 	}
 }
 
