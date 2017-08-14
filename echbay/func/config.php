@@ -271,7 +271,7 @@ $_POST['cf_default_css'] .= '.web-logo{height:' . $_POST['cf_height_logo'] . 'px
 
 // chạy vòng lặp rồi in các dữ liệu vào bảng lưu
 foreach( $_POST as $k => $v ) {
-	echo $k . '<br>';
+//	echo $k . '<br>';
 	
 	// hải có chữ cf_ ở đầu tiền
 //	if ( substr( $k, 0, 3 ) == 'cf_' ) {
