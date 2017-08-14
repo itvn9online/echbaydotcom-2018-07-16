@@ -272,8 +272,8 @@ foreach( $_POST as $k => $v ) {
 	
 	// hải có chữ cf_ ở đầu tiền
 //	if ( substr( $k, 0, 3 ) == 'cf_' ) {
-	if ( substr( $k, 0, 3 ) == 'cf_' && isset( $__cf_row_default[ $k ] ) ) {
-		if ( substr( $k, 0, 3 ) == 'cf_' && isset( $__cf_row_default[ $k ] ) ) {
+	if ( substr( $k, 0, 3 ) == 'cf_' ) {
+		if ( isset( $__cf_row_default[ $k ] ) ) {
 //			echo 'insert<br>';
 //			echo $v . '<br>';
 			
