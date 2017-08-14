@@ -1,5 +1,5 @@
 === EchBay e-Commecre Plugin for Wordpress ===
-Plugin Name: EchBay Facebook Messenger
+Plugin Name: EchBay e-Commecre Website
 Plugin URI: https://www.facebook.com/webgiare.org
 Description: Free code by itvn9online. Create e-commerce website with wordpress.
 Author: Dao Quoc Dai

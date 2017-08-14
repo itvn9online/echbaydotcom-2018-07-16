@@ -203,9 +203,19 @@ $__cf_row_default = array(
 	'cf_threaddetails_include_file' => '',
 	
 	
-	// danh sách tin -> tổng quan
-	'cf_home_class_style' => '',
+	// cấu trúc bảng tin ở trang chủ
 	'cf_home_column_style' => '',
+	'cf_using_home_default' => 1,
+	'cf_home_class_style' => '',
+	'cf_home1_include_file' => '',
+	'cf_home2_include_file' => '',
+	'cf_home3_include_file' => '',
+	'cf_home4_include_file' => '',
+	'cf_home5_include_file' => '',
+	'cf_home6_include_file' => '',
+	'cf_home7_include_file' => '',
+	'cf_home8_include_file' => '',
+	'cf_home9_include_file' => '',
 	
 	
 	// danh sách tin -> tổng quan
@@ -215,6 +225,14 @@ $__cf_row_default = array(
 	'cf_cats_node_html' => '',
 	// danh sách tin -> số tin trên mỗi dòng
 	'cf_cats_num_line' => '',
+	
+	'cf_using_cats_default' => 1,
+	'cf_cats1_include_file' => '',
+	'cf_cats2_include_file' => '',
+	'cf_cats3_include_file' => '',
+	'cf_cats4_include_file' => '',
+	'cf_cats5_include_file' => '',
+	'cf_cats6_include_file' => '',
 	
 	// chi tiết -> tổng quan
 	'cf_post_class_style' => '',

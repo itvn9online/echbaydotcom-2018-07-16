@@ -51,35 +51,33 @@ function EBE_themes_key_quick_search () {
 }
 
 
-
-show_note_for_checkbox_config( 'cf_using_top_default' );
-show_note_for_checkbox_config( 'cf_using_footer_default' );
-
-$('#cf_using_top_default').click(function () {
-	if ( dog('cf_using_top_default').checked == true ) {
-		$('.show-if-using-top-default').show();
+function WGR_show_temp_if_using_module ( chech, sau ) {
+	
+	//
+	show_note_for_checkbox_config( chech );
+	
+	//
+	$('#' + chech).click(function () {
+		if ( dog(chech).checked == true ) {
+			$('.' + sau).show();
+		} else {
+			$('.' + sau).hide();
+		}
+	});
+	
+	if ( dog(chech).checked == true ) {
+		$('.' + sau).show();
 	} else {
-		$('.show-if-using-top-default').hide();
+		$('.' + sau).hide();
 	}
-});
-if ( dog('cf_using_top_default').checked == true ) {
-	$('.show-if-using-top-default').show();
-} else {
-	$('.show-if-using-top-default').hide();
+	
 }
 
-$('#cf_using_footer_default').click(function () {
-	if ( dog('cf_using_footer_default').checked == true ) {
-		$('.show-if-using-footer-default').show();
-	} else {
-		$('.show-if-using-footer-default').hide();
-	}
-});
-if ( dog('cf_using_footer_default').checked == true ) {
-	$('.show-if-using-footer-default').show();
-} else {
-	$('.show-if-using-footer-default').hide();
-}
+//
+WGR_show_temp_if_using_module( 'cf_using_top_default', 'show-if-using-top-default' );
+WGR_show_temp_if_using_module( 'cf_using_footer_default', 'show-if-using-footer-default' );
+WGR_show_temp_if_using_module( 'cf_using_home_default', 'show-if-using-home-default' );
+WGR_show_temp_if_using_module( 'cf_using_cats_default', 'show-if-using-cats-default' );
 
 
 

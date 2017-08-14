@@ -91,6 +91,12 @@
 				<td valign="top" class="t">Bố cục trang chủ</td>
 				<td class="i">{tmp.cf_home_column_style}</td>
 			</tr>
+			<tr>
+				<td colspan="2"><input type="checkbox" name="cf_using_home_default" id="cf_using_home_default" value="{tmp.cf_using_home_default}" />
+					<label for="cf_using_home_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small l19">Chọn từng khối thiết kế cho trang HOME hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-home-default border-file-design">{tmp.str_home_design_preview}</div></td>
+			</tr>
 		</tbody>
 		<tbody title="Danh sách sản phẩm (Category)" id="eb-admin-config-theme-list" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
@@ -108,6 +114,12 @@
 			<tr>
 				<td valign="top" class="t">Bố cục trang danh sách sản phẩm</td>
 				<td class="i">{tmp.cf_cats_column_style}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="checkbox" name="cf_using_cats_default" id="cf_using_cats_default" value="{tmp.cf_using_home_default}" />
+					<label for="cf_using_cats_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small l19">Chọn từng khối thiết kế cho trang HOME hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-cats-default border-file-design">{tmp.str_cats_design_preview}</div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -320,10 +332,21 @@
 <div class="change-eb-design-fixed">
 	<div data-key="private">
 		<div class="change-eb-design-padding">{tmp.str_private_include_file}</div>
-	</div>
+	</div>{tmp.str_html_for_list_theme_module}
+	<!--
 	<div data-key="top" class="change-eb-design-hide-fixed change-eb-design-top-fixed">
 		<div class="change-eb-design-padding">{tmp.str_top_include_file}</div>
 	</div>
+	<div data-key="footer" class="change-eb-design-hide-fixed change-eb-design-footer-fixed">
+		<div class="change-eb-design-padding">{tmp.str_footer_include_file}</div>
+	</div>
+	<div data-key="home" class="change-eb-design-hide-fixed change-eb-design-home-fixed">
+		<div class="change-eb-design-padding">{tmp.str_home_include_file}</div>
+	</div>
+	<div data-key="cats" class="change-eb-design-hide-fixed change-eb-design-cats-fixed">
+		<div class="change-eb-design-padding">{tmp.str_cats_include_file}</div>
+	</div>
+	<!-- -->
 	<div data-key="threadnode" class="change-eb-design-hide-fixed change-eb-design-threadnode-fixed">
 		<div class="change-eb-design-padding">
 			<div class="border-threadnode-design cf">{tmp.str_threadnode_include_file}</div>
@@ -333,9 +356,6 @@
 		<div class="change-eb-design-padding">
 			<div class="border-threaddetails-design cf">{tmp.str_threaddetails_include_file}</div>
 		</div>
-	</div>
-	<div data-key="footer" class="change-eb-design-hide-fixed change-eb-design-footer-fixed">
-		<div class="change-eb-design-padding">{tmp.str_footer_include_file}</div>
 	</div>
 	<div id="change_eb_design_width">&nbsp;</div>
 </div>

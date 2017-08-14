@@ -329,7 +329,36 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 //	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/top_default.css' ] = 1;
 	
 	// Kiểm tra và load các file top tương ứng
-	$arr_includes_top_file = WGR_load_module_name_css( 'top', 0 );
+	for ( $i = 1; $i < 10; $i++ ) {
+		$j = 'cf_top' . $i . '_include_file';
+		
+		if ( ! isset( $__cf_row_default[ $j ] ) ) {
+			break;
+		}
+		
+		//
+		if ( $__cf_row[ $j ] != '' ) {
+			// nếu là widget -> chỉ nhúng, và nhúng theo kiểu khác
+			if ( $__cf_row[ $j ] == 'top_widget.php' ) {
+				$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . $__cf_row[ $j ];
+			}
+			else {
+				// ưu tiên hàng của theme trước
+				if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ] ) ) {
+					$arr_includes_top_file[] = EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ];
+					
+					$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ $j ] ) ] = 0;
+				}
+				// còn lại sẽ là của plugin
+				else {
+					$arr_includes_top_file[] = EB_THEME_PLUGIN_INDEX . 'themes/top/' . $__cf_row[ $j ];
+					
+					$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = 0;
+				}
+			}
+		}
+	}
+//	print_r($arr_for_add_css);
 	
 	//
 	if ( count( $arr_includes_top_file ) == 0 ) {
@@ -345,8 +374,36 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 //	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/footer_default.css' ] = 1;
 	
-	// Kiểm tra và load các file footer tương ứng
-	$arr_includes_footer_file = WGR_load_module_name_css( 'footer' );
+	// Kiểm tra và load các file top tương ứng
+	for ( $i = 1; $i < 10; $i++ ) {
+		$j = 'cf_footer' . $i . '_include_file';
+		
+		if ( ! isset( $__cf_row_default[ $j ] ) ) {
+			break;
+		}
+		
+		//
+		if ( $__cf_row[ $j ] != '' ) {
+			// nếu là widget -> chỉ nhúng, và nhúng theo kiểu khác
+			if ( $__cf_row[ $j ] == 'footer_widget.php' ) {
+				$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . $__cf_row[ $j ];
+			}
+			else {
+				// ưu tiên hàng của theme trước
+				if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ] ) ) {
+					$arr_includes_footer_file[] = EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ];
+					
+					$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ $j ] ) ] = 1;
+				}
+				// còn lại sẽ là của plugin
+				else {
+					$arr_includes_footer_file[] = EB_THEME_PLUGIN_INDEX . 'themes/footer/' . $__cf_row[ $j ];
+					
+					$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = 1;
+				}
+			}
+		}
+	}
 	
 	//
 	if ( count( $arr_includes_footer_file ) == 0 ) {
