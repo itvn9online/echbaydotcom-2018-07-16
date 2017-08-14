@@ -188,6 +188,8 @@ function ___eb_cache_end_ob_cache ( $strEBPageDynamicCache ) {
 	// xóa các thẻ TAB đi -> rút gọn lại HTML 1 chút
 	$main_content = preg_replace( "/\t/", "", $main_content );
 	
+	// optimize javascript
+	
 	// bỏ các dấu xuống dòng thừa
 //	$main_content = preg_replace( "/\n\n/", "\n", $main_content );
 	

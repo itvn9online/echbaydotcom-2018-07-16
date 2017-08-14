@@ -312,7 +312,13 @@ function _eb_add_full_js ( $arr = array(), $type_add = 'import' ) {
 	
 }
 
-function EBE_add_js_compiler_in_cache ( $arr_eb_add_full_js, $async = '', $optimize = 0 ) {
+function EBE_add_js_compiler_in_cache (
+	$arr_eb_add_full_js,
+	$async = '',
+	// có tối ưu nội dung file hay không
+	$optimize = 0
+) {
+	
 	global $__cf_row;
 	
 	//
@@ -347,9 +353,12 @@ function EBE_add_js_compiler_in_cache ( $arr_eb_add_full_js, $async = '', $optim
 			$file_name_cache .= basename( $v ) . filemtime( $v );
 		}
 	}
-	$file_name_cache .= '.js';
+	$file_name_cache = md5( $file_name_cache );
+//	$file_name_cache .= '.js';
+	$file_name_cache = 'zjs' . $file_name_cache . '.js';
 	
-	//
+	
+	// nếu file có rồi -> nhung luôn file
 //	$file_in_cache = ABSPATH . 'wp-content/uploads/ebcache/' . $file_name_cache;
 	$file_in_cache = EB_THEME_CACHE . $file_name_cache;
 	if ( file_exists( $file_in_cache ) ) {
@@ -376,22 +385,52 @@ function EBE_add_js_compiler_in_cache ( $arr_eb_add_full_js, $async = '', $optim
 				
 				//
 				$file_content = file_get_contents( $v, 1 );
+				
+				// thu gọn nội dung
+				if ( $optimize == 1 ) {
+					$file_content = WGR_remove_js_multi_comment( $file_content );
+					$file_content = explode( "\n", $file_content );
+					
+					foreach ( $file_content as $v ) {
+						$v = trim( $v );
+						
+						if ( $v == '' || substr( $v, 0, 2 ) == '//' ) {
+						}
+						else {
+							if ( strstr( $v, '//' ) == true ) {
+								$v .= "\n";
+							}
+							$new_content .= $v;
+						}
+					}
+				}
+				// chỉ gộp nội dung thành 1 file
+				else {
+					$new_content .= $file_content . "\n";
+				}
+				
+				//
+				/*
 				$file_content = explode( "\n", $file_content );
 				foreach ( $file_content as $v ) {
 					$v = trim( $v );
 					
+					// tối ưu sơ qua cho nội dung
 					if ( $v == '' || substr( $v, 0, 2 ) == '//' ) {
 					}
+					// tối ưu sâu hơn chút
 					else if ( $optimize == 1 ) {
 						if ( strstr( $v, '//' ) == true ) {
 							$v .= "\n";
 						}
 						$new_content .= $v;
 					}
+					// gần như không làm gì cả
 					else {
 						$new_content .= $v . "\n";
 					}
 				}
+				*/
 //			}
 		}
 	}
@@ -400,7 +439,7 @@ function EBE_add_js_compiler_in_cache ( $arr_eb_add_full_js, $async = '', $optim
 	_eb_create_file( $file_in_cache, $new_content );
 	
 	//
-	echo '<script type="text/javascript" src="' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/ebcache/' . $file_name_cache . '"></script>' . "\n";
+	echo '<script type="text/javascript" src="' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
 }
 
 // một số host không dùng được hàm end
@@ -737,12 +776,14 @@ function _eb_replace_css_space ( $str, $new_array = array() ) {
 		
 		';}.' => '}.',
 		';}#' => '}#',
+		
+		': ' => ':',
 	);
 	
 	//
 //		print_r( $arr );
 	$arr = array_merge( $arr, $new_array );
-//		print_r( $arr );
+//	print_r( $arr );
 	
 	foreach ( $arr as $k => $v ) {
 		$str = str_replace( $k, $v, $str );
@@ -785,6 +826,48 @@ function EBE_replace_link_in_css ( $c ) {
 		
 		'../fonts/' => './wp-content/echbaydotcom/outsource/fonts/',
 	) );
+}
+
+function WGR_remove_css_multi_comment ( $a ) {
+	
+	$str = '';
+	
+	$a = explode( '*/', $a );
+	foreach ( $a as $v ) {
+		$v = explode('/*', $v);
+		$str .= $v[0];
+	}
+//	$str = str_replace( ': ', ':', $str );
+	
+	return $str;
+	
+}
+
+function WGR_remove_js_multi_comment ( $a ) {
+	
+	$str = $a;
+	
+	$b = explode( '/*', $a );
+	$a = explode( '*/', $a );
+	
+	// nếu số thẻ đóng với thẻ mở khác nhau -> hủy luôn
+	if ( count( $a ) != count( $b ) ) {
+		return $str;
+//		return _eb_str_block_fix_content( $str );
+	}
+	
+	//
+	$str = '';
+	
+	//
+	foreach ( $a as $v ) {
+		$v = explode('/*', $v);
+		$str .= $v[0];
+	}
+	
+	return $str;
+//	return _eb_str_block_fix_content( $str );
+	
 }
 
 // add css thẳng vào HTML
@@ -857,14 +940,18 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 //				echo $file_name . '<br>' . "\n";
 				
 				// thời gian cập nhật file
-				$file_time = filemtime ( $v );
+//				$file_time = filemtime ( $v );
+				$file_time = '-' . substr( filemtime ( $v ), 6 );
 				
-				$file_cache .= $file_name . $file_time;
+//				$file_cache .= $file_name . $file_time;
+				$file_cache .= $file_time;
 				
 				$new_arr[$v] = 1;
 			}
 		}
-		$file_cache .= '.css';
+		$file_cache = md5( $file_cache );
+//		$file_cache .= '.css';
+		$file_cache = 'zss' . $file_cache . '.css';
 //		echo $file_cache . "\n";
 		
 		$file_save = EB_THEME_CACHE . $file_cache;
@@ -881,6 +968,9 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 					$cache_content .= $v2;
 				}
 			}
+			
+			//
+			$cache_content = WGR_remove_css_multi_comment ( $cache_content );
 			
 			//
 			_eb_create_file ( $file_save, EBE_replace_link_in_cache_css ( $cache_content ) );
@@ -923,12 +1013,18 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 			// nếu chưa -> tạo file cache
 			if ( ! file_exists( $file_save ) ) {
 				$file_content = explode( "\n", file_get_contents( $v, 1 ) );
-				$cache_content = '/* ' . $file_cache . ' - ' . date( 'r', date_time ) . ' */' . "\n";
+				
+				//
+//				$cache_content = '/* ' . $file_cache . ' - ' . date( 'r', date_time ) . ' */' . "\n";
+				$cache_content = '';
 				
 				foreach ( $file_content as $v2 ) {
 					$v2 = trim( $v2 );
 					$cache_content .= $v2;
 				}
+				
+				//
+				$cache_content = WGR_remove_css_multi_comment ( $cache_content );
 				
 				//
 				_eb_create_file ( $file_save, EBE_replace_link_in_css($cache_content) );
@@ -3071,7 +3167,7 @@ function _eb_str_block_fix_content ($str) {
 //			'}, {' => '},{',
 //			'}, ' => '},',
 		'\'' => '\\\'',
-		'' => ''
+//		'' => ''
 	);
 	foreach ($arr as $k => $v) {
 		if ($v != '') {
