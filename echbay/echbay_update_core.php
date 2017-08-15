@@ -345,6 +345,7 @@ function EBE_get_text_version ( $str ) {
 		
 		set_time_limit( 0 );
 		
+		//
 		$file_cache_test = EB_THEME_CACHE . 'eb_update_core.txt';
 		
 		//
@@ -431,6 +432,12 @@ function EBE_get_text_version ( $str ) {
 				}
 				*/
 				
+				
+				
+				// Bật chế độ bảo trì hệ thống
+				$bat_che_do_bao_tri = EB_THEME_CACHE . 'update_running.txt';
+				_eb_create_file( $bat_che_do_bao_tri, date_time );
+				
 				//
 				if ( EBE_update_file_via_ftp() == true ) {
 					
@@ -441,6 +448,9 @@ function EBE_get_text_version ( $str ) {
 					// tạo file cache để quá trình này không diễn ra liên tục
 					_eb_create_file( $file_cache_test, date_time );
 				}
+				
+				// tắt chế độ bảo trì
+				_eb_remove_file( $bat_che_do_bao_tri );
 				
 			}
 			else {

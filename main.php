@@ -2,6 +2,20 @@
 
 
 
+// chế độ bảo trì đang được bật -> tạm dừng mọi truy cập
+if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
+	
+	// Set trạng thái cho trang 404
+	$protocol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+	
+	//echo $protocol;
+	header( $protocol . ' 404 Not Found' );
+	
+	die('<h1>He thong dang duoc bao tri</h1>');
+}
+
+
+
 /*
 * CONFIG
 */
