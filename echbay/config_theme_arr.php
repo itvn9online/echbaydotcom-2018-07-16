@@ -271,6 +271,8 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 			// theo sub-domain -> tạo thêm dấu . ở đầu chuỗi
 			|| strstr( $current_domain, '.' . $for_domain ) == true ) {
 				
+//				echo $label_name . '<br>' . "\n";
+				
 				//
 				$ck = '';
 				if ( $val == $__cf_row[ $label_name ] ) {

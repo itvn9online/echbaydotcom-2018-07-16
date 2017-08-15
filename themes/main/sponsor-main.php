@@ -1,5 +1,6 @@
 <!--
 Description: Sidebar tạo content cho trang chủ, đính kèm module Tạo danh sách logo đối tác theo dạng slider.
+Tags: echbaytwo
 -->
 <div id="container">
 	<section id="main-content">
