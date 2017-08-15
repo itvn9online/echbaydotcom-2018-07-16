@@ -32,19 +32,22 @@ $arr_new_theme = $eb_all_themes_support[ $create_theme_key ];
 
 
 // Chạy vòng lặp để xóa toàn bộ cấu hình theme đang sử dụng đi
+$arr_for_null = array(
+	'top',
+	'footer',
+	'home',
+	'cats',
+);
+
 for ( $i = 1; $i <= 10; $i++ ) {
 	
-	$top = 'cf_top' . $i . '_include_file';
-	if ( isset( $__cf_row_default[ $top ] ) ) {
-		_eb_set_config( $top, '' );
+	foreach ( $arr_for_null as $v ) {
+		$top = 'cf_' . $v . $i . '_include_file';
+		if ( isset( $__cf_row_default[ $top ] ) ) {
+			_eb_set_config( $top, '' );
+		}
+//		echo $top . '<br>';
 	}
-//	echo $top . '<br>';
-	
-	$footer = 'cf_footer' . $i . '_include_file';
-	if ( isset( $__cf_row_default[ $footer ] ) ) {
-		_eb_set_config( $footer, '' );
-	}
-//	echo $footer . '<br>';
 	
 }
 //exit();

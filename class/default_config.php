@@ -175,6 +175,8 @@ $__cf_row_default = array(
 	'cf_blog_class_style' => '',
 	'cf_current_theme_using' => '',
 	
+	'cf_main_include_file' => '',
+	
 	'cf_using_top_default' => 1,
 	'cf_top_class_style' => '',
 	'cf_top1_include_file' => '',

@@ -2610,15 +2610,84 @@ function EBE_set_header ( $status = 200 ) {
 
 
 
+// chuyển tên file php, html... thành css
+function WGR_convert_fiename_to_css ( $f ) {
+	$f = explode('.', $f);
+	return $f[0] . '.css';
+}
+
 // lấy css theo plugin
 function EBE_get_css_for_config_design ( $f, $type = '.php' ) {
-	return EB_THEME_PLUGIN_INDEX . 'themes/css/' . str_replace( $type, '.css', $f );
+//	return EB_THEME_PLUGIN_INDEX . 'themes/css/' . str_replace( $type, '.css', $f );
+	return EB_THEME_PLUGIN_INDEX . 'themes/css/' . WGR_convert_fiename_to_css( $f );
 }
 
 // lấy css theo theme
 function EBE_get_css_for_theme_design ( $f, $type = '.php' ) {
 //	return EB_THEME_URL . 'theme/css/' . str_replace( $type, '.css', $f );
-	return EB_THEME_URL . 'theme/ui/' . str_replace( $type, '.css', $f );
+//	return EB_THEME_URL . 'theme/ui/' . str_replace( $type, '.css', $f );
+	return EB_THEME_URL . 'theme/ui/' . WGR_convert_fiename_to_css( $f );
+}
+
+// kiểm tra file template xem nằm ở đâu thì nhúng css tương ứng ở đó
+function WGR_check_add_add_css_themes_or_plugin ( $f ) {
+	// ưu tiên hàng của theme trước
+	if ( file_exists( EB_THEME_URL . 'theme/ui/' . $f ) ) {
+		return EBE_get_css_for_theme_design ( $f );
+	}
+	
+	// còn lại sẽ là của plugin
+	return EBE_get_css_for_config_design ( $f );
+}
+
+
+// load các module của web theo phương thức chung
+function WGR_load_module_name_css (
+	// phương thức lấy
+	$module_name,
+	// add css vào body hoặc head (0)
+	$css_body = 1
+) {
+	global $__cf_row_default;
+	global $__cf_row;
+	global $arr_for_add_css;
+	
+	$arr = array();
+	
+	for ( $i = 1; $i < 10; $i++ ) {
+		$j = 'cf_' . $module_name . $i . '_include_file';
+		
+		if ( ! isset( $__cf_row_default[ $j ] ) ) {
+			break;
+		}
+//		echo $j . ' -> ' . $__cf_row[ $j ] . '<br>' . "\n";
+		
+		//
+		if ( $__cf_row[ $j ] != '' ) {
+			// nếu là widget -> chỉ nhúng, và nhúng theo kiểu khác
+			if ( $__cf_row[ $j ] == $module_name . '_widget.php' ) {
+				$arr[] = EB_THEME_PLUGIN_INDEX . $__cf_row[ $j ];
+			}
+			else {
+				// ưu tiên hàng của theme trước
+				if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ] ) ) {
+					$arr[] = EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ];
+					
+					$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ $j ] ) ] = $css_body;
+				}
+				// còn lại sẽ là của plugin
+				else {
+					$arr[] = EB_THEME_PLUGIN_INDEX . 'themes/' . $module_name . '/' . $__cf_row[ $j ];
+					
+					$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = $css_body;
+				}
+			}
+		}
+	}
+//	print_r($arr_for_add_css);
+//	print_r($arr);
+	
+	return $arr;
 }
 
 
@@ -2716,55 +2785,6 @@ function WGR_get_bigbanner () {
 	global $str_big_banner;
 	
 	return '<div class="oi_big_banner">' . $str_big_banner . '</div>';
-}
-
-
-// load các module của web theo phương thức chung
-function WGR_load_module_name_css (
-	// phương thức lấy
-	$module_name,
-	// add css vào body hoặc head (0)
-	$css_body = 1
-) {
-	global $__cf_row_default;
-	global $__cf_row;
-	global $arr_for_add_css;
-	
-	$arr = array();
-	
-	for ( $i = 1; $i < 10; $i++ ) {
-		$j = 'cf_' . $module_name . $i . '_include_file';
-		
-		if ( ! isset( $__cf_row_default[ $j ] ) ) {
-			break;
-		}
-		
-		//
-		if ( $__cf_row[ $j ] != '' ) {
-			// nếu là widget -> chỉ nhúng, và nhúng theo kiểu khác
-			if ( $__cf_row[ $j ] == $module_name . '_widget.php' ) {
-				$arr[] = EB_THEME_PLUGIN_INDEX . $__cf_row[ $j ];
-			}
-			else {
-				// ưu tiên hàng của theme trước
-				if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ] ) ) {
-					$arr[] = EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ];
-					
-					$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ $j ] ) ] = $css_body;
-				}
-				// còn lại sẽ là của plugin
-				else {
-					$arr[] = EB_THEME_PLUGIN_INDEX . 'themes/' . $module_name . '/' . $__cf_row[ $j ];
-					
-					$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ $j ] ) ] = $css_body;
-				}
-			}
-		}
-	}
-//	print_r($arr_for_add_css);
-//	print_r($arr);
-	
-	return $arr;
 }
 
 

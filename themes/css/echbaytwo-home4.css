@@ -1,0 +1,7 @@
+.home_default-catgory { margin-bottom: 25px; }
+.home_default-catgory li {
+	display: inline-block;
+	margin: 5px;
+}
+.home_default-catgory h2 { font-weight: normal; }
+.home_default-catgory a { color: #555; }

@@ -398,6 +398,16 @@ $arr_for_set_template['str_home_design_preview'] = WGR_load_list_design_module_f
 
 
 //
+$arr_for_set_template['str_main_include_file'] = EBE_config_load_top_footer_include('main');
+
+$str_main_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="cf_main_include_file" data-key="main" data-val="' . $__cf_row[ 'cf_main_include_file' ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+
+$arr_for_set_template['str_main_design_preview'] = $str_main_design_preview;
+
+
+
+
+//
 //$arr_for_set_template['str_cats_include_file'] = EBE_config_load_top_footer_include('cats');
 $str_html_for_list_theme_module[] = WGR_create_html_for_list_theme_module('cats');
 $arr_for_set_template['str_cats_design_preview'] = WGR_load_list_design_module_for_page('cats');

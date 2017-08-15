@@ -334,11 +334,6 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 	//
 	if ( count( $arr_includes_top_file ) == 0 ) {
 		include EB_THEME_PLUGIN_INDEX . 'top_default.php';
-		
-		//
-		foreach ( $arr_includes_top_file as $v ) {
-			$arr_for_add_css[ EBE_get_css_for_config_design( basename( $v ) ) ] = 0;
-		}
 	}
 }
 
@@ -351,11 +346,6 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 	//
 	if ( count( $arr_includes_footer_file ) == 0 ) {
 		include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
-		
-		//
-		foreach ( $arr_includes_footer_file as $v ) {
-			$arr_for_add_css[ EBE_get_css_for_config_design( basename( $v ) ) ] = 1;
-		}
 	}
 }
 
