@@ -1,5 +1,5 @@
 <!--
-Description: Tạo danh sách logo đối tác theo dạng slider.
+Description: Tạo danh sách logo đối tác theo dạng slider -> danh sách các quảng cáo có trạng thái là: Banner/ Logo đối tác ( chân trang ).
 Tags: logo doi tac, quang cao chan trang
 -->
 <div class="sponsor-top-desktop">

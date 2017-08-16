@@ -100,6 +100,7 @@ switch ( $act ) {
 
 
 // danh sách các template được hỗ trợ -> làm theo kiểu này cho chắc chắn, tránh bị tạo url ảo
+/*
 switch ( $act ) {
 	
 	// kiểm tra nếu link có tồn tại function tương ứng -> gán vào và chạy
@@ -119,6 +120,8 @@ switch ( $act ) {
 	case "eb-ajaxservice":
 	
 	case "php_info":
+	*/
+if ( isset( $arr_active_for_404_page[ $act ] ) ) {
 		
 		// Chuyển header sang 200
 		EBE_set_header();
@@ -136,10 +139,16 @@ switch ( $act ) {
 		//
 		include EB_THEME_PLUGIN_INDEX . 'global/' . $act . '.php';
 		
+		
+}
+else {
+	/*
+		
 		break;
 	
 	// 404 thật
 	default:
+	*/
 		
 		
 		//

@@ -333,6 +333,30 @@ $___eb_ads__not_in = '';
 
 
 
+//
+$arr_active_for_404_page = array(
+	"cart" => 1,
+	"contact" => 1,
+	"hoan-tat" => 1,
+	"sitemap" => 1,
+	"temp" => 1,
+	
+	"profile" => 1,
+	"process" => 1,
+	
+	"eb-login" => 1,
+	"eb-register" => 1,
+	"eb-fogotpassword" => 1,
+	
+	"eb-ajaxservice" => 1,
+	
+	"php_info" => 1
+);
+
+
+
+
+
 
 // phiên bản
 $web_version = $__cf_row['cf_web_version'];

@@ -1,7 +1,7 @@
 <?php
 /*
-Description: Thêm dữ liệu theo chuẩn của SEO Quake.
-Tags: home by seo quake
+Description: Thêm dữ liệu bổ sung theo chuẩn của SEO Quake, bao gồm tiêu đề của website và danh mục sản phẩm được đặt trong thẻ H2.
+Tags: home for seo quake
 */
 
 

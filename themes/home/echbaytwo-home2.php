@@ -1,6 +1,6 @@
 <?php
 /*
-Description: Lấy các sản phẩm mới nhất hoặc được đặt trạng thái là "Sản phẩm mới".
+Description: Lấy các sản phẩm mới nhất hoặc được đặt trạng thái là "Sản phẩm MỚI".
 Tags: home new
 */
 

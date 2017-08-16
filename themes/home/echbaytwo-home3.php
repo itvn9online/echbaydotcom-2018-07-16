@@ -1,6 +1,6 @@
 <?php
 /*
-Description: Tạo danh sách sản phẩm theo từng phân nhóm cho trang chủ.
+Description: Tạo danh sách sản phẩm theo từng phân nhóm cho trang chủ, nếu có các nhóm được đặt làm nhóm chính (primary) thì chỉ hiển thị các nhóm này.
 Tags: list product by category
 */
 
@@ -14,6 +14,25 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 	);
 	$categories = get_categories($args);
 //	print_r( $categories );
+	
+	
+	// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
+	$post_primary_categories = array();
+//	print_r( $post_categories );
+	foreach ( $categories as $v ) {
+		if ( _eb_get_post_meta( $v->term_id, '_eb_category_primary', true, 0 ) > 0 ) {
+			$post_primary_categories[] = $v;
+		}
+	}
+//	print_r( $post_primary_categories );
+	
+	
+	// nếu có nhóm chính -> tiếp theo chỉ lấy các nhóm chính
+	if ( count( $post_primary_categories ) > 0 ) {
+		$categories = $post_primary_categories;
+	}
+//	print_r($categories);
+	
 	
 	//
 	$new_cat = array();

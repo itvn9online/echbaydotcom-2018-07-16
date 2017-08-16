@@ -1,6 +1,6 @@
 <?php
 /*
-Description: Sidebar tạo content cho trang chủ.
+Description: Sidebar tạo content cho trang chủ -> home content sidebar.
 Tags: home sidebar, main sidebar
 */
 
