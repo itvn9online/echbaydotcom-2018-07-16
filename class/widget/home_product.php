@@ -17,25 +17,10 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 	
 	function form($instance) {
 		
-		$default = array (
-//			'title' => 'EchBay home product',
+		$default = WGR_widget_arr_default_home_hot( array (
 			'title' => '',
-			'description' => '',
-			'num_line' => '',
-			'html_template' => 'home_node.html',
-			'html_node' => '',
-			'max_width' => '',
-			'sortby' => 'menu_order',
-			'post_number' => 5,
-			'cat_ids' => 0,
-			'cat_type' => 'category',
-			'post_cloumn' => '',
-			'post_type' => 'post',
-			'ads_eb_status' => 0,
-			'post_eb_status' => 0,
-			'custom_style' => '',
-			'custom_size' => ''
-		);
+			'html_template' => 'home_node.html'
+		) );
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		
 		

@@ -1,6 +1,7 @@
 <?php
 /*
 Description: Sidebar tạo content cho trang chủ.
+Tags: home sidebar, main sidebar
 */
 
 

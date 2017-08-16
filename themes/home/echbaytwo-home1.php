@@ -1,11 +1,13 @@
 <?php
-
-
-
-
 /*
-* sản phẩm nổi bật
+Description: Lấy các sản phẩm mới nhất hoặc được đặt trạng thái là "Sản phẩm HOT".
+Tags: home hot
 */
+
+
+
+
+//
 if ( $__cf_row['cf_num_home_hot'] > 0 ) {
 	$home_hot = _eb_load_post( $__cf_row['cf_num_home_hot'], array(
 		'meta_key' => '_eb_product_status',

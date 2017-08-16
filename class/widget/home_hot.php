@@ -16,7 +16,10 @@ class ___echbay_widget_home_hot_content extends WP_Widget {
 	
 	function form($instance) {
 		
-		$default = WGR_widget_arr_default_home_hot();
+		$default = WGR_widget_arr_default_home_hot( array (
+			'title' => 'EchBay home HOT',
+			'html_template' => 'home_hot.html'
+		) );
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		
 		

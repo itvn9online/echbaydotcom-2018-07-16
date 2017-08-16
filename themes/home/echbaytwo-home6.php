@@ -1,5 +1,6 @@
 <!--
 Description: Tạo danh sách logo đối tác theo dạng slider.
+Tags: logo doi tac, quang cao chan trang
 -->
 <div class="sponsor-top-desktop">
 	<div class="home-btn-chantrang text-center <?php echo $__cf_row['cf_blog_class_style']; ?>">

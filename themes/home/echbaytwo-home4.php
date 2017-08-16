@@ -1,9 +1,7 @@
 <?php
-
-
-
 /*
-* Thêm dữ liệu theo chuẩn của SEO Quake
+Description: Thêm dữ liệu theo chuẩn của SEO Quake.
+Tags: home by seo quake
 */
 
 

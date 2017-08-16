@@ -2,9 +2,10 @@
 
 
 
-function WGR_widget_arr_default_home_hot () {
-	return array (
-		'title' => 'EchBay home HOT',
+function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
+	// Giá trị mặc định
+	$arr = array (
+		'title' => 'EchBay Widget for product',
 		'description' => '',
 		'sortby' => 'menu_order',
 		'num_line' => '',
@@ -21,6 +22,14 @@ function WGR_widget_arr_default_home_hot () {
 		'custom_style' => '',
 		'custom_size' => ''
 	);
+	
+	// thay thế các giá trị mặc định
+	foreach ( $new_arr as $k => $v ) {
+		$arr[$k] = $v;
+	}
+	
+	// Trả về kết quả
+	return $arr;
 }
 
 function WGR_widget_home_hot ( $instance ) {

@@ -15,24 +15,10 @@ class ___echbay_widget_random_product extends WP_Widget {
 	
 	function form($instance) {
 		
-		$default = array (
+		$default = WGR_widget_arr_default_home_hot( array (
 			'title' => 'EchBay product small',
-			'description' => '',
-			'sortby' => 'menu_order',
-			'num_line' => '',
-			'html_template' => 'product_small.html',
-			'html_node' => '',
-			'max_width' => '',
-			'post_number' => 5,
-			'cat_ids' => 0,
-			'cat_type' => 'category',
-			'post_cloumn' => '',
-			'post_type' => 'post',
-			'ads_eb_status' => 0,
-			'post_eb_status' => 0,
-			'custom_style' => '',
-			'custom_size' => ''
-		);
+			'html_template' => 'product_small.html'
+		) );
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		
 		

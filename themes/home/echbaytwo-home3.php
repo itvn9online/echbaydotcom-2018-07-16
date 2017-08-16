@@ -1,11 +1,12 @@
 <?php
-
-
-
-
 /*
-* sản phẩm theo từng phân nhóm
+Description: Tạo danh sách sản phẩm theo từng phân nhóm cho trang chủ.
+Tags: list product by category
 */
+
+
+
+//
 if ( $__cf_row['cf_num_home_list'] > 0 ) {
 	// chỉ lấy sản phẩm theo các nhóm cấp 1
 	$args = array(

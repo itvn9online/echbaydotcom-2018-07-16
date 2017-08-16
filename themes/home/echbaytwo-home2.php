@@ -1,11 +1,13 @@
 <?php
-
-
-
-
 /*
-* sản phẩm mới
+Description: Lấy các sản phẩm mới nhất hoặc được đặt trạng thái là "Sản phẩm mới".
+Tags: home new
 */
+
+
+
+
+//
 $home_new = '';
 if ( $__cf_row['cf_num_home_new'] > 0 ) {
 	$home_new = _eb_load_post( $__cf_row['cf_num_home_new'], array(

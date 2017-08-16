@@ -13,24 +13,13 @@ class ___echbay_widget_random_blog extends WP_Widget {
 	}
 	
 	function form($instance) {
-		$default = array (
+		$default = WGR_widget_arr_default_home_hot( array (
 			'title' => 'EchBay blog',
-			'description' => '',
-			'sortby' => 'menu_order',
-			'num_line' => '',
 			'html_template' => 'widget_echbay_blog.html',
 			'html_node' => 'blogs_node.html',
-			'max_width' => '',
-			'post_number' => 5,
-			'cat_ids' => 0,
 			'cat_type' => EB_BLOG_POST_LINK,
-			'post_cloumn' => '',
-			'post_type' => EB_BLOG_POST_TYPE,
-			'ads_eb_status' => 0,
-			'post_eb_status' => 0,
-			'custom_style' => '',
-			'custom_size' => ''
-		);
+			'post_type' => EB_BLOG_POST_TYPE
+		) );
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		
 		
