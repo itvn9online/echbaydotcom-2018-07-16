@@ -37,6 +37,14 @@ if ( ! isset( $_POST['cf_details_show_list_thumb'] ) || (int) $_POST['cf_details
 }
 
 
+//
+$_POST['posts_per_page'] = (int)$_POST['posts_per_page'];
+if ( $_POST['posts_per_page'] < 0 ) {
+	$_POST['posts_per_page'] = 0;
+}
+_eb_update_option( 'posts_per_page', $_POST['posts_per_page'] );
+
+
 
 // chạy vòng lặp rồi in các dữ liệu vào bảng lưu
 foreach( $_POST as $k => $v ) {

@@ -517,6 +517,11 @@ $arr_for_set_template['str_html_for_list_theme_module'] = implode( "\n", $str_ht
 
 
 
+//
+$arr_for_set_template['posts_per_page'] = get_option('posts_per_page');
+
+
+
 
 
 //

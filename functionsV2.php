@@ -2279,6 +2279,9 @@ function _eb_update_option ( $name, $value ) {
 	WHERE
 		option_name = '" . $name . "'");
 }
+function _eb_set_option ( $name, $value ) {
+	_eb_update_option( $name, $value );
+}
 
 
 
