@@ -71,11 +71,22 @@
 #estyle-top2 .nav-ngang .sub-menu {
 	display: none;
 	position: absolute;
-	min-width: 200px;
+	width: 200px;
 	background: #fff;
 	line-height: 20px;
+	z-index: 2;
 }
 #estyle-top2 .nav-ngang li:hover .sub-menu { display: block; }
-#estyle-top2 .nav-ngang .sub-menu li { }
-#estyle-top2 .nav-ngang .sub-menu a { }
+#estyle-top2 .nav-ngang .sub-menu li {
+	float: none;
+	border: 0 none;
+	font-weight: normal;
+	padding: 5px 0;
+}
+#estyle-top2 .nav-ngang .sub-menu a {
+	color: #333;
+	font-size: 13px;
+}
+#estyle-top2 .nav-ngang .sub-menu a:hover { text-decoration: underline; }
 #estyle-top2 .nav-ngang .sub-menu .sub-menu { display: none; }
+.style-for-mobile #estyle-top2 .web-logo { background-position: center; }

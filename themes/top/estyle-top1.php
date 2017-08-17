@@ -5,8 +5,8 @@ Tags: egroup, etime, zamano
 ?>
 
 <div id="estyle-top1" class="default-bg hide-if-mobile">
-	<div class="estyle-top1">
-		<div class="<?php echo $__cf_row['cf_top_class_style']; ?> cf">
+	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
+		<div class="estyle-top1 cf">
 			<div class="lf f70">
 				<ul class="bg-tra-hang cf">
 					<li><i class="fa fa-refresh"></i> Đổi hàng<br>

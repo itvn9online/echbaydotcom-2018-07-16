@@ -70,3 +70,28 @@
 	display: inline-block;
 	margin-right: 5px;
 }
+.thread-list16 .thread-list-bg,
+.style-for-mobile .thread-list-bg {
+	padding: 3px 0 3px 3px;
+	text-align: center;
+}
+.thread-list16 .thread-list-bg .thread-list-title,
+.style-for-mobile .thread-list-bg .thread-list-title {
+	font-size: 13px;
+	margin: 0 3px;
+}
+.thread-list16 .thread-list-bg .f80,
+.thread-list16 .thread-list-bg .f70,
+.style-for-mobile .thread-list-bg .f80,
+.style-for-mobile .thread-list-bg .f70 {
+	float: none;
+	width: 100%;
+}
+.thread-list16 .thread-list-bg .f20,
+.thread-list16 .thread-list-bg .f30,
+.style-for-mobile .thread-list-bg .f20,
+.style-for-mobile .thread-list-bg .f30 { display: none; }
+.thread-list16 .thread-list-gia,
+.style-for-mobile .thread-list-gia { padding-top: 0 !important; }
+.thread-list16 .thread-list-giamoi,
+.style-for-mobile .thread-list-giamoi { padding: 0 !important; }

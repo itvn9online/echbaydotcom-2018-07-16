@@ -6,6 +6,7 @@
 }
 #estyle-footer1,
 #estyle-footer1 a { color: #ccc; }
+.style-for-mobile #estyle-footer1 .estyle-footer1 { padding: 0 5px 0 10px; }
 #estyle-footer1 .footer-title {
 	font-size: 16px;
 	padding: 6px 0;
@@ -22,4 +23,10 @@
 	line-height: 50px;
 	padding: 0 20px;
 	border-radius: 15px;
+}
+.style-for-mobile #estyle-footer1 .hop-tac-voi {
+	float: none;
+	text-align: center;
+	display: inline-block;
+	margin: 0 auto;
 }

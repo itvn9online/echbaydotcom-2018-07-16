@@ -5,8 +5,8 @@ Tags: egroup, etime, zamano
 ?>
 
 <div id="estyle-top2">
-	<div class="estyle-top2">
-		<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
+	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
+		<div class="estyle-top2">
 			<div class="cf">
 				<div class="lf f25 fullsize-if-mobile"><?php echo EBE_get_html_logo(); ?></div>
 				<div class="lf f75 hide-if-mobile">
@@ -16,7 +16,7 @@ Tags: egroup, etime, zamano
 					</div>
 				</div>
 			</div>
-			<div class="nav-ngang"><?php echo EBE_echbay_top_menu(); ?></div>
+			<div class="nav-ngang hide-if-mobile"><?php echo EBE_echbay_top_menu(); ?></div>
 		</div>
 	</div>
 </div>

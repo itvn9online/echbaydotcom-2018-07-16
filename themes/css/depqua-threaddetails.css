@@ -229,3 +229,6 @@
 	display: inline-block;
 	font-size: 16px;
 }
+.thread-list-details { margin: 0 -3px; }
+.thread-list-details li { width: 16.66% !important; }
+.thread-list-details .thread-list-padding { margin: 0 3px; }
