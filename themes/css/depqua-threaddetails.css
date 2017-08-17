@@ -224,3 +224,8 @@
 	margin: 0 auto;
 }
 .thread-details-hotline a { display: block; }
+.eb-quickcart-table button {
+	width: 45%;
+	display: inline-block;
+	font-size: 16px;
+}
