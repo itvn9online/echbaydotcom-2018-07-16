@@ -276,7 +276,7 @@ add_action('admin_footer', 'echbay_admin_footer_styles');
 
 // Thay footer trong wp bằng link của echbay
 function eb_change_footer_admin () {
-	echo 'Designed by <a href="http://echbay.com" target="_blank" rel="nofollow">EchBay.com</a> using <a href="https://wordpress.org/" target="_blank" rel="nofollow">WordPress</a> CMS.</span> - <span class="cur click-show-eb-target">Check process</span>.';
+	echo 'Designed by <a href="http://echbay.com" target="_blank" rel="nofollow">EchBay.com</a> using <a href="https://wordpress.org/" target="_blank" rel="nofollow">WordPress</a> CMS.</span> - <span class="cur click-show-eb-target">Show process</span>.';
 }
 add_filter('admin_footer_text', 'eb_change_footer_admin');
 

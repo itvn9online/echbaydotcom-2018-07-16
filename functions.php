@@ -1663,6 +1663,9 @@ function _eb_set_config($key, $val) {
 		//
 		echo 'Add: ' . $key . '<br>' . "\n";
 	}
+	else {
+		echo 'Value: ' . $key . ' is NULL<br>' . "\n";
+	}
 	/*
 	else {
 		update_option( $key, $val, 'no' );
