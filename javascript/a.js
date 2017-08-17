@@ -519,3 +519,11 @@ $(document).keydown(function(e) {
 
 
 
+//
+$('.click-show-eb-target').click(function () {
+	$('#target_eb_iframe').addClass('show-target-echbay');
+});
+
+
+
+

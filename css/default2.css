@@ -601,6 +601,11 @@ span.hd_status9 { background: #F00; }
 	top: -800px;
 	left: -999px;
 }
+#target_eb_iframe.show-target-echbay {
+	position: inherit;
+	top: 0;
+	left: 0;
+}
 /*
 .global-w99 {
 	max-width: 999px;
