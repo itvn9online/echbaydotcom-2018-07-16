@@ -29,6 +29,7 @@ function WGR_create_themes_default_format (
 	$ar_for_check_file = array(
 		'top',
 		'footer',
+		'home',
 		'threaddetails',
 		'threadnode',
 	);
@@ -204,7 +205,7 @@ if ( $create_theme_threaddetails > 0 ) {
 
 
 // Tạo file Bộ giao diện nếu chưa có
-function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 10 ) {
+function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 	
 	global $__cf_row_default;
 	global $create_theme_name;
@@ -264,7 +265,8 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 10 ) {
 	
 	
 	// thêm widget tương ứng cho top
-	if ( $position == 'top' ) {
+	if ( $position == 'top'
+	|| $position == 'top' ) {
 		
 		$end_i += 1;
 		
@@ -312,6 +314,7 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 	//
 	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'top', '.php' );
 	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'footer', '.php' );
+	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'home', '.php' );
 	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'threaddetails', '.html', 1 );
 	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'threadnode', '.html', 1 );
 	
