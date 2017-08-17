@@ -147,7 +147,7 @@
 	color: #fff;
 }
 .mua-button-v5 {
-	border: 1px #347b1b solid;
+	border: 0 none;
 	position: relative;
 	font-size: 26px;
 	color: #fff;
@@ -157,9 +157,9 @@
 .mua-button-v5 i {
 	font-size: 50px;
 	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0;
+	left: 1px;
+	top: 1px;
+	bottom: 1px;
 	width: 70px;
 	text-align: center;
 	line-height: 70px;
