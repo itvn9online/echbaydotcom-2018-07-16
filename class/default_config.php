@@ -91,6 +91,7 @@ $__cf_row_default = array(
 //	'cf_num_thread_list' => 10,
 	'cf_num_details_list' => 10,
 	'cf_num_details2_list' => 0,
+	'cf_num_details3_list' => 0,
 	'cf_num_details_blog_list' => 10,
 	
 	// kích thước mặc định của ảnh đại diện
