@@ -68,6 +68,8 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	
 	$post->trv_giamoi = EBE_add_ebe_currency_class( $post->trv_giamoi );
 	
+	$post->product_status = _eb_get_post_object( $post->ID, '_eb_product_status', $post->post_status );
+	
 	
 	// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
 	$post->trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_size'] );

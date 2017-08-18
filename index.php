@@ -418,6 +418,9 @@ $arr_eb_product_status = array(
 	0 => 'Mặc định',
 	1 => 'Sản phẩm HOT',
 	2 => 'Sản phẩm MỚI',
+	3 => 'Sản phẩm BÁN CHẠY',
+	4 => 'Sản phẩm GIẢM GIÁ',
+	5 => 'Sản phẩm KHÁC',
 );
 
 // nếu theme có hỗ trợ nhiều định dạng q.cáo khác -> add vào
