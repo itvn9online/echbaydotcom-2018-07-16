@@ -45,10 +45,20 @@ if ( $term_id > 0 && $type != '' ) {
 		
 		//
 		update_post_meta( $term_id, '_eb_category_order', $new_stt );
-		
-		// xóa cache đi để nó nhận dữ liệu ngay khi update
-		$arr_object_post_meta = array();
 	}
+	// dặt làm phân nhóm chính
+	else if ( isset( $_GET['current_primary'] ) ) {
+		$new_primary = 0;
+		if ( $_GET['current_primary'] == 0 ) {
+			$new_primary = 1;
+		}
+		
+		//
+		update_post_meta( $term_id, '_eb_category_primary', $new_primary );
+	}
+	
+	// xóa cache đi để nó nhận dữ liệu ngay khi update
+	$arr_object_post_meta = array();
 	
 }
 

@@ -1,3 +1,6 @@
+<style type="text/css">
+.click-order-thread[data-primary="1"] { color: #F90; }
+</style>
 <?php
 
 
@@ -39,7 +42,7 @@ function WGR_get_and_oders_taxonomy_category (
 	// Nếu đang là lấy nhóm cấp 1
 	if ( $cat_ids == 0 ) {
 		foreach ( $arrs_cats as $v ) {
-			$post_primary_categories[ $v->term_id ] = _eb_get_post_meta( $v->term_id, '_eb_category_primary', true, 0 );
+			$post_primary_categories[ $v->term_id ] = _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 );
 		}
 //		print_r( $post_primary_categories );
 	}
@@ -51,7 +54,7 @@ function WGR_get_and_oders_taxonomy_category (
 	
 	//
 	foreach ( $arrs_cats as $v ) {
-		$oders[ $v->term_id ] = (int) _eb_get_post_meta( $v->term_id, '_eb_category_order', true, 0 );
+		$oders[ $v->term_id ] = (int) _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
 		$options[$v->term_id] = $v;
 	}
 	arsort( $oders );	
@@ -74,6 +77,7 @@ function WGR_get_and_oders_taxonomy_category (
 		
 		//
 		$strLinkAjaxl = '&term_id=' . $v->term_id . '&by_taxonomy=' . $v->taxonomy;
+		$_eb_category_primary = _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 );
 		
 		//
 		$str .= '
@@ -87,9 +91,11 @@ function WGR_get_and_oders_taxonomy_category (
 					<div><i title="Up" data-ajax="' . $strLinkAjaxl . '&t=up&stt=' . $cat_stt . '" class="fa fa-arrow-circle-up fa-icons cur click-order-thread"></i></div>
 					
 					<div><i title="Down" data-ajax="' . $strLinkAjaxl . '&t=down&stt=' . $cat_stt . '" class="fa fa-arrow-circle-down fa-icons cur click-order-thread"></i></div>
+					
+					<div><i title="Set primary" data-primary="' . $_eb_category_primary . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_primary=' . $_eb_category_primary . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
 				</div>
 			</div>
-			<div class="lf"><a href="' . _eb_c_link( $v->term_id ) . '" target="_blank">' . $v->name . ' (' . $v->count . ')</a></div>
+			<div class="lf"><a href="' . _eb_c_link( $v->term_id ) . '" target="_blank">' . $v->name . ' (' . $v->count . ')</a> <a href="' . web_link . WP_ADMIN_DIR . '/term.php?taxonomy=' . $v->taxonomy . '&tag_ID=' . $v->term_id . '&post_type=' . ( $v->taxonomy == EB_BLOG_POST_LINK ? EB_BLOG_POST_TYPE : 'post' ) . '" target="_blank"><i class="fa fa-edit blackcolor"></i></a></div>
 		</div>' . $str_child;
 	}
 	
@@ -105,7 +111,6 @@ echo WGR_get_and_oders_taxonomy_category( $by_taxonomy );
 
 
 ?>
-
 <script type="text/javascript">
 
 //

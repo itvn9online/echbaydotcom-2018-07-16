@@ -3,8 +3,7 @@
 .thread-list-padding {
 	background: #fff;
 	margin: 8px 6px 6px 6px;
-	border: 1px #ccc solid;
-	border-radius: 3px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.13);
 }
 .thread-list-padding:hover { border-color: #999; }
 .thread-list-avt {
@@ -13,6 +12,9 @@
 	height: 220px;
 	border-bottom: 1px #f2f2f2 solid;
 }
+.thread-list-info {
+	padding:10px;
+}
 .thread-list-title {
 	height: 40px;
 	line-height: 20px;
@@ -20,7 +22,9 @@
 	margin: 8px 0;
 	font-size: 14px;
 	color: #333;
-	font-weight: bold;
+}
+.thread-list-title * {
+	font-weight:normal;
 }
 .thread-list-ant {
 	position: relative !important;
