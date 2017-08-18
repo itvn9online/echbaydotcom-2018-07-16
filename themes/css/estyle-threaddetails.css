@@ -1,0 +1,165 @@
+.thread-details { }
+.thread-details-title a {
+	font-size: 20px;
+	color: #ff7a00;
+}
+.thread-details-gia {
+	display: block;
+	font-size: 18px;
+	color: #414141;
+	line-height: 22px;
+}
+.thread-details-gia strong { font-weight: normal; }
+.thread-details-giamoi {
+	font-size: 28px;
+	color: #ff7a00;
+}
+.thread-details-km {
+	background: #000;
+	display: inline-block;
+	height: 20px;
+	position: relative;
+	width: 50px;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	padding-top: 10px;
+}
+.thread-details-km:after {
+	border-bottom: 30px solid #000;
+	border-left: 36px solid transparent;
+	border-right: 36px solid transparent;
+	content: "";
+	height: 0;
+	left: -11px;
+	position: absolute;
+	width: 0;
+	transform: rotate(-180deg);
+	-webkit-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+}
+.thread-details-xoay {
+	padding: 10px 0;
+	margin: 15px 0 5px 0;
+}
+.thread-details-xoay li {
+	line-height: 18px;
+	width: 33%;
+	float: left;
+	position: relative;
+}
+.thread-details-xoay div {
+	min-height: 40px;
+	font-size: 11pt;
+	padding: 2px 0 2px 45px;
+}
+.thread-details-xoay div:before {
+	position: absolute;
+	left: 0;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 20px;
+	border: 1px #ccc solid;
+	text-align: center;
+	font-size: 25px;
+}
+.thread-details-xoay .thanhtoan div:before { font-size: 18px; }
+.thread-details-xoay .doihang { }
+.thread-details-phone {
+	padding-left: 45px;
+	line-height: 25px;
+	position: relative;
+}
+.thread-details-phone i.fa-phone {
+	position: absolute;
+	left: 0;
+	line-height: 48px;
+	display: inline-block;
+	width: 45px;
+	text-align: center;
+	font-size: 30px;
+	color: #f83107;
+}
+.thread-details-dienthoai {
+	font-size: 15px;
+	font-weight: bold;
+}
+.thread-details-dienthoai a {
+	display: inline-block;
+	color: #F00;
+}
+.thread-details-dienthoai a:before {
+	content: "-";
+	margin: 0 5px;
+}
+.thread-details-dienthoai a:first-child:before { display: none; }
+.thread-details-imua {
+	position: relative;
+	padding-left: 40px;
+}
+.thread-details-imua i {
+	position: absolute;
+	left: 0;
+	display: inline-block;
+	line-height: 31px;
+	width: 31px;
+	text-align: center;
+	border: 1px #999 solid;
+	color: #666;
+	border-radius: 50%;
+}
+.add-to-cart {
+	background: #38B04A;
+	border: 0 none;
+	outline: none;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	height: 31px;
+	min-width: 150px;
+	width: 95%;
+	max-width: 250px;
+}
+.thread-details-tab {
+	line-height: 35px;
+	border-bottom: 2px #333 solid;
+	margin-bottom: 19px;
+}
+.thread-details-tab,
+.thread-details-tab a { color: #333; }
+.thread-details-tab li {
+	float: left;
+	padding: 0 32px;
+	cursor: pointer;
+}
+.thread-details-tab li.selected {
+	background-color: #333;
+	color: #fff;
+}
+.details-mua-ngay,
+.details-tu-van {
+	height: 70px;
+	display: block;
+}
+.details-mua-ngay {
+	background: #d71921;
+	border: 0 none;
+	cursor: pointer;
+	margin-right: 10px;
+	width: 100%;
+}
+.details-tu-van {
+	background: #585858;
+	margin-left: 10px;
+}
+.details-tu-van span {
+	display: block;
+	padding-top: 12px;
+}
+.thread-details-slogan {
+	border: 1px #ccc solid;
+	padding: 10px 2px 10px 5px;
+	border-radius: 5px;
+}
