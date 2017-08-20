@@ -99,6 +99,10 @@ if ( ! isset( $_POST['cf_set_link_for_h1'] ) || (int) $_POST['cf_set_link_for_h1
 	$_POST['cf_set_link_for_h1'] = 0;
 }
 
+if ( ! isset( $_POST['cf_current_price_before'] ) || (int) $_POST['cf_current_price_before'] != 1 ) {
+	$_POST['cf_current_price_before'] = 0;
+}
+
 if ( ! isset( $_POST['cf_hide_supper_admin_menu'] ) || (int) $_POST['cf_hide_supper_admin_menu'] != 1 ) {
 	$_POST['cf_hide_supper_admin_menu'] = 0;
 }
@@ -265,6 +269,29 @@ if ( (int) $_POST['cf_height_logo'] < 10 ) {
 
 // Thêm chiều cao cố định cho logo vào CSS
 $_POST['cf_default_css'] .= '.web-logo{height:' . $_POST['cf_height_logo'] . 'px;line-height:' . $_POST['cf_height_logo'] . 'px;}';
+
+
+
+
+// chuyển đơn vị tiền tệ từ sau ra trước
+/*
+if ( $_POST['cf_current_price_before'] != 0 ) {
+	
+	//
+	$_POST['cf_default_css'] .= '.ebe-currency:after { display:none; } .ebe-currency:before { display: inline-block; }';
+	
+	
+	// đổi đơn vị tiền tệ
+	if ( $_POST['cf_current_price'] != '' ) {
+		$_POST['cf_default_css'] .= '.ebe-currency:before { content: "' . $_POST['cf_current_price'] . '"; }';
+	}
+}
+// đổi đơn vị tiền tệ
+else if ( $_POST['cf_current_price'] != '' ) {
+	$_POST['cf_default_css'] .= '.ebe-currency:after { content: "' . $_POST['cf_current_price'] . '"; }';
+}
+*/
+//echo $_POST['cf_default_css'];
 
 
 

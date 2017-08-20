@@ -10,7 +10,13 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 //	global $eb_background_for_mobile_post;
 	
 	//
-//		print_r( $post );
+	$ant_ten = '';
+	$ant_option = '';
+	$ant_tags = '';
+	
+	//
+//	print_r( $post );
+//	print_r( $__cf_row ); exit();
 	
 	// truyền các giá trị cho HTML cũ có thể chạy được
 	
@@ -24,15 +30,84 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		
 		//
 		$post->p_link = _eb_p_link( $post->ID );
+		
+		// blog
+		if ( $post->post_type == EB_BLOG_POST_TYPE ) {
+			$pot_tai = EB_BLOG_POST_LINK;
+			
+			// tags
+			$arr_list_tag = wp_get_object_terms( $post->ID, 'blog_tag' );
+			
+		}
+		// product
+		else {
+			
+			// post option
+			$arr_post_options = wp_get_object_terms( $post->ID, 'post_options' );
+			if ( ! empty ( $arr_post_options ) ) {
+//				print_r( $arr_post_options );
+				
+				//
+				foreach ( $arr_post_options as $v ) {
+					if ( $v->parent > 0 ) {
+						$parent_name = WGR_get_taxonomy_parent( $v );
+						
+						//
+						$ant_option .= '<span>' . $parent_name->name . '</span>: <a href="' . _eb_c_link( $v->term_id, $v->taxonomy ) . '" target="_blank">' . $v->name . '</a> ';
+					}
+				}
+				$ant_option = '<span class="thread-list-options">' . $ant_option . '</span>';
+			}
+			
+			
+			// tags
+			$arr_list_tag = get_the_tags( $post->ID );
+			
+		}
+		
+		// -> tag
+		if ( ! empty ( $arr_list_tag ) ) {
+//			print_r( $arr_list_tag );
+			
+			//
+			foreach ( $arr_list_tag as $v ) {
+				$ant_tags .= '<a href="' . get_tag_link( $v->term_id ) . '">' . $v->name . '</a> ';
+			}
+			$ant_tags = '<span class="thread-list-tags">' . $ant_tags . '</span>';
+		}
+		
+		
+		// lấy danh mục sản phẩm
+//		$ant = get_the_category( $post->ID );
+		$ant = get_the_terms( $post->ID, $pot_tai );
+//		print_r( $ant );
+		foreach ( $ant as $v ) {
+			if ( $ant_ten == '' && $v->parent == 0 ) {
+				$ant_ten = '<a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a>';
+				break;
+			}
+		}
+//		$post->ant_ten = isset ($ant[0]->name ) ? '<a href="' . _eb_c_link( $ant[0]->term_id ) . '">' . $ant[0]->name . '</a>' : '';
+		
 	}
+	$post->ant_ten = $ant_ten;
+	$post->ant_option = $ant_option;
+	$post->ant_tags = $ant_tags;
+	
+	
 	
 //	$post->p_link = $post->guid;
 	$post->trv_tieude = $post->post_title;
 	$post->trv_id = $post->ID;
 	$post->trv_masanpham = _eb_get_post_object( $post->ID, '_eb_product_sku', $post->ID );
 	$post->trv_gioithieu = $post->post_excerpt;
-//	$post->ngaycapnhat = date( 'd/m/Y', strtotime( $post->post_modified ) );
-	$post->ngaycapnhat = date( 'd/m/Y', strtotime( $post->post_date ) );
+	
+	//
+//	$post_time = strtotime( $post->post_modified );
+	$post_time = strtotime( $post->post_date );
+//	$post->ngaycapnhat = date( 'd/m/Y', $post_time );
+	$post->ngaycapnhat = date( $__cf_row['cf_date_format'], $post_time );
+	$post->ngaycapnhats = $post->ngaycapnhat . ' ' . date( $__cf_row['cf_time_format'], $post_time );
 	
 	$post->trv_mua = (int) _eb_get_post_object( $post->ID, '_eb_product_buyer', 0 );
 	
@@ -51,11 +126,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	$post->trv_trangthai = 1;
 	$post->trv_ngayhethan = date_time;
 	
-	//
-//	$ant = get_the_category( $post->ID );
-	$ant = get_the_terms( $post->ID, $pot_tai );
-//	print_r( $ant );
-	$post->ant_ten = isset ($ant[0]->name ) ? '<a href="' . _eb_c_link( $ant[0]->term_id ) . '">' . $ant[0]->name . '</a>' : '';
+	
 	
 	//
 	$post->pt = 0;
@@ -102,6 +173,19 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	
 	//
 	return EBE_arr_tmp( $post, $html );
+}
+
+
+function WGR_get_taxonomy_parent ( $arr ) {
+	$a = get_term_by( 'id', $arr->parent, $arr->taxonomy );
+//	print_r( $a );
+	
+	// tìm đến khi lấy được nhóm cấp 1 thì thôi
+	if ( $a->parent > 0 ) {
+		$a = WGR_get_taxonomy_parent( $a );
+	}
+	
+	return $a;
 }
 
 

@@ -1,5 +1,9 @@
 /* Global css (thread_node) */
 .thread-list { margin: 0 -6px; }
+.thread-list li {
+	float: none;
+	width: 100%;
+}
 .thread-list-padding {
 	background: #fff;
 	margin: 8px 6px 6px 6px;
@@ -10,36 +14,30 @@
 	background: center no-repeat;
 	background-size: auto 100%;
 	height: 220px;
-	border-bottom: 1px #f2f2f2 solid;
 }
-.thread-list-info {
-	padding:10px;
-}
+.thread-list-info { padding: 0 0 0 10px; }
 .thread-list-title {
-	height: 40px;
-	line-height: 20px;
-	overflow: hidden;
-	margin: 8px 0;
+	line-height: 19px;
+	margin: 0 0 8px 0;
 	font-size: 14px;
-	color: #333;
+	font-family: 'Open Sans', sans-serif, Arial;
 }
-.thread-list-title * {
-	font-weight:normal;
-}
+.thread-list-title * { font-weight: normal; }
+.thread-list-title a { color: #333; }
 .thread-list-ant {
 	position: relative !important;
 	z-index: 1;
 	color: #999;
 }
 .thread-list-ant:hover { text-decoration: underline; }
-.thread-list-per {
+.thread-list-per { display: none;/*
 	position: absolute;
 	left: 20px;
 	background: #ff9104;
 	padding: 0 10px;
 	line-height: 25px;
 	top: 30px;
-}
+	*/ }
 /* .thread-list-giamgiashow .thread-list-per, */
 /*
 .thread-list li[data-per="0"] .thread-list-per {
@@ -62,9 +60,14 @@
 }
 .thread-list-giamoi {
 	color: #ff9104;
-	font-size: 20px;
-	font-weight: bold;
-	padding: 5px 0 11px 0;
+	font-size: 16px;
+	padding: 5px 0 2px 0;
 }
+/*
 .thread-list-mobilebg { }
 .thread-list-msp { display: none; }
+*/
+.thread-list-details { }
+.thread-list-details { }
+.thread-list-details { }
+.thread-list-details { }

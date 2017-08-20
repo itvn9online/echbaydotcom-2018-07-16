@@ -127,15 +127,16 @@ var eb_global_product_size = '',
 			$('#_eb_product_oldprice, #_eb_product_price').change(function () {
 				var a = $(this).val() || 0;
 				
-				a = g_func.number_only( a );
+//				a = g_func.number_only( a );
+				a = g_func.money_format( a );
 				
 				if ( a == '' ) {
 					a = 0;
 				}
 				
-				console.log(a);
+//				console.log(a);
 				$(this).val(a);
-			});
+			}).change();
 			
 			
 			

@@ -102,6 +102,15 @@ function check_update_config() {
 	create_phone_click_to_call();
 	create_deault_css();
 	
+	
+	//
+	var a = $.trim( f.cf_current_price.value );
+	if ( a != '' ) {
+		f.cf_current_price.value = a.replace( /\\/g, '/' );
+	}
+	
+	
+	
 	//
 //	return false;
 	return true;
@@ -320,6 +329,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_on_off_auto_update_wp' );
 	show_note_for_checkbox_config( 'cf_disable_auto_get_thumb' );
 	show_note_for_checkbox_config( 'cf_set_link_for_h1' );
+	show_note_for_checkbox_config( 'cf_current_price_before' );
 	show_note_for_checkbox_config( 'cf_hide_supper_admin_menu' );
 	show_note_for_checkbox_config( 'cf_set_news_version' );
 	show_note_for_checkbox_config( 'cf_echbay_migrate_version' );

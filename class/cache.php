@@ -31,6 +31,16 @@ if (file_exists ( $__eb_cache_conf )) {
 // chấp nhận lần đầu truy cập sẽ lỗi
 @include $__eb_cache_conf;
 
+// lấy config theo thời gian thực nếu tài khoản đang đăng nhập
+if ( mtv_id > 0 ) {
+	// không reset mảng này -> do 1 số config sẽ được tạo theo config của wp
+//	$__cf_row = $__cf_row_default;
+	
+	// nạp lại config riêng
+	_eb_get_config( true );
+	EBE_get_lang_list();
+}
+
 
 
 
@@ -239,6 +249,10 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		}
 		*/
 		$__cf_row ["cf_blog_public"] = get_option( 'blog_public' );
+		
+		// định dạng ngày giờ
+		$__cf_row ["cf_date_format"] = get_option( 'date_format' );
+		$__cf_row ["cf_time_format"] = get_option( 'time_format' );
 		
 		// tên thư mục chứa theme theo tiêu chuẩn của echbay
 		$__cf_row ["cf_theme_dir"] = basename( dirname( dirname( EB_THEME_HTML ) ) );
@@ -553,12 +567,28 @@ if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
 
 
 
-// lấy config theo thời gian thực nếu tài khoản đang đăng nhập
-if ( mtv_id > 0 ) {
-	$__cf_row = $__cf_row_default;
-	_eb_get_config( true );
-	EBE_get_lang_list();
+
+
+// chuyển đơn vị tiền tệ từ sau ra trước
+if ( $__cf_row['cf_current_price_before'] != 0 ) {
+	
+	//
+	$__cf_row['cf_default_css'] .= '.ebe-currency:after { display:none; } .ebe-currency:before { display: inline-block; }';
+	
+	
+	// đổi đơn vị tiền tệ
+	if ( $__cf_row['cf_current_price'] != '' ) {
+		$__cf_row['cf_default_css'] .= '.ebe-currency:before { content: "' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"; }';
+	}
 }
+// đổi đơn vị tiền tệ
+else if ( $__cf_row['cf_current_price'] != '' ) {
+	$__cf_row['cf_default_css'] .= '.ebe-currency:after { content: "' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"; }';
+}
+
+
+
+
 //print_r( $__cf_row );
 //print_r( $___eb_lang );
 

@@ -1246,11 +1246,16 @@ a.search-advanced-btn {
 	font-size: 16px;
 	margin-bottom: 10px;
 }
+.ebe-currency:before,
+.ebe-currency:after { content: "\0111"; }
 /* .ebe-currency:after, */
 .ebe-currency:after {
-	content: "\0111";
 	display: inline-block;
 	margin-left: 2px;
+}
+.ebe-currency:before {
+	display: none;
+	margin-right: 2px;
 }
 .global-cats-description {
 	font-size: 15px;
@@ -1464,3 +1469,13 @@ li.footer-social-gg { background-color: #DE4B39; }
 	right: 0;
 	text-align: right;
 }
+/*
+.thread-details-tags a,
+.thread-list-tags a { display: inline-block; }
+*/
+.thread-details-tags a:after,
+.thread-list-options a:after,
+.thread-list-tags a:after { content: ", "; }
+.thread-details-tags a:last-child:after,
+.thread-list-options a:last-child:after,
+.thread-list-tags a:last-child:after { display: none; }

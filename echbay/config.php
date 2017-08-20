@@ -608,6 +608,25 @@ $arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_conf
 
 
 //
+$arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
+	array(
+		'' => 'đ',
+		'vn/0111' => 'vnđ',
+		'VN/00d0' => 'VNĐ',
+		'VND' => 'VND',
+		'/00A5' => '&yen;',
+		'$' => '$',
+		'USD' => 'USD',
+	),
+	$__cf_row['cf_current_price'],
+	'cf_current_price'
+);
+
+
+
+
+
+//
 if ( $include_page == 'config_theme' ) {
 	include ECHBAY_PRI_CODE . 'config_theme_arr.php';
 }

@@ -29,6 +29,12 @@ $___eb_lang[eb_key_for_site_lang . 'order_az'] = 'Tên sản phẩm ( từ A đ�
 $___eb_lang[eb_key_for_site_lang . 'order_za'] = 'Tên sản phẩm ( từ Z đến A )';
 
 //
+$___eb_lang[eb_key_for_site_lang . 'post_giacu'] = 'Giá cũ';
+$___eb_lang[eb_key_for_site_lang . 'post_giamoi'] = 'Giá mới';
+$___eb_lang[eb_key_for_site_lang . 'post_luotmua'] = 'Lượt mua';
+$___eb_lang[eb_key_for_site_lang . 'post_soluong'] = 'Số lượng';
+
+//
 $___eb_lang[eb_key_for_site_lang . 'cart_diachi'] = 'Địa chỉ';
 $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'cart_pla_dienthoai'] = $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'];
@@ -56,7 +62,7 @@ $___eb_lang[eb_key_for_site_lang . 'ebslogan4'] = '<i class="fa fa-check-square"
 $___eb_lang[eb_key_for_site_lang . 'cart_muangay'] = $___eb_lang[eb_key_for_site_lang . 'mungay'];
 $___eb_lang[eb_key_for_site_lang . 'cart_mausac'] = 'Màu sắc';
 $___eb_lang[eb_key_for_site_lang . 'cart_kichco'] = 'Kích cỡ';
-$___eb_lang[eb_key_for_site_lang . 'cart_soluong'] = 'Số lượng';
+$___eb_lang[eb_key_for_site_lang . 'cart_soluong'] = $___eb_lang[eb_key_for_site_lang . 'post_soluong'];
 $___eb_lang[eb_key_for_site_lang . 'cart_thanhtien'] = 'Thành tiền';
 $___eb_lang[eb_key_for_site_lang . 'cart_hoten'] = 'Họ và tên';
 $___eb_lang[eb_key_for_site_lang . 'cart_diachi2'] = 'Địa chỉ nhận hàng';

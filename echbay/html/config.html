@@ -92,12 +92,29 @@ div.gallery-add-to-favicon { display: block; }
 				<td class="i"><input type="text" name="current_siteurl" value="{tmp.current_siteurl}" class="m" maxlength="100" /></td>
 			</tr>
 			<tr>
+				<td class="i bold redcolor bborder" colspan="2">Khác</td>
+			</tr>
+			<tr>
 				<td class="t">FTP root dir</td>
 				<td class="i">{tmp.cf_ftp_root_dir}</td>
 			</tr>
 			<tr>
 				<td class="t">Content Language</td>
 				<td class="i"><input type="text" name="cf_content_language" value="{tmp.cf_content_language}" class="s" maxlength="10" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Đơn vị tiền tệ</td>
+				<td class="i">{tmp.cf_current_price}
+					<div class="small">Sử dụng bảng mã riêng cho CSS, tham khảo <a href="http://www.salisbury.edu/weboffice/CMS/htmlcodes.html" target="_blank" rel="nofollow">tại đây</a>.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Xuất hiện ở phía trước</td>
+				<td class="i"><input type="checkbox" name="cf_current_price_before" id="cf_current_price_before" value="{tmp.cf_current_price_before}" />
+					<label for="cf_current_price_before" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small">Mặc định, đơn vị tiền tệ sẽ xuất hiện ở phía sau giá tiền (ưu tiên cho web sử dụng Việt Nam đồng), nếu bạn muốn nó xuất hiện ở phía trước, hãy đánh dấu vào đây và lưu lại.</div></td>
 			</tr>
 		</tbody>
 		<tbody title="Nâng cao" id="eb-admin-config-advanced" class="eb-admin-config-tab eb-admin-hide-config-tab">

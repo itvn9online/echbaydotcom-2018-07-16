@@ -632,7 +632,8 @@ else {
 //	if ( mtv_id == 1 ) print_r($arr_post_options);
 	foreach ( $arr_post_options as $v ) {
 		if ( $v->parent > 0 ) {
-			$parent_name = get_term_by( 'id', $v->parent, $v->taxonomy );
+//			$parent_name = get_term_by( 'id', $v->parent, $v->taxonomy );
+			$parent_name = WGR_get_taxonomy_parent( $v );
 //			if ( mtv_id == 1 ) print_r( $parent_name );
 			
 			//
@@ -789,9 +790,9 @@ else {
 //
 $str_tags = '';
 //print_r( $arr_list_tag );
-if ( !empty ( $arr_list_tag ) ) {
+if ( ! empty ( $arr_list_tag ) ) {
 	foreach ( $arr_list_tag as $v ) {
-		$str_tags .= ', <a href="' . get_tag_link( $v->term_id ) . '">' . $v->name . '</a>';
+		$str_tags .= '<a href="' . get_tag_link( $v->term_id ) . '">' . $v->name . '</a> ';
 	}
 }
 
