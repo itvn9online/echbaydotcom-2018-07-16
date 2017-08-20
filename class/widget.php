@@ -502,7 +502,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	
 	$select_name = $option['cat_ids_name'];
 	$select_val = $option['cat_ids'];
-	$cat_type_name = $option['cat_type'];
+	$cat_type_name = $option['cat_type_name'];
 	$cat_type = $option['cat_type'];
 	
 //	echo $select_name . '<br>' . "\n";

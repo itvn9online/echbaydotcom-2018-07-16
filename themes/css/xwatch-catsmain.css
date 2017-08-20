@@ -1,14 +1,22 @@
+.widget-search-advanced { margin: 0 -10px; }
+.style-for-mobile .widget-search-advanced { margin: 0; }
+.widget-search-advanced .widget_echbay_category,
+.widget-search-advanced .widget_echbay_price,
+.global-button-for-seach-advanced {
+	float: left;
+	width: 25%;
+}
 .widget-search-advanced .widget-category-padding {
 	position: relative;
 	margin: 5px 0;
 }
-.widget-search-advanced a {
+.widget-search-advanced .widget-category-padding a {
 	color: #333;
 	display: block;
 	padding: 0 5px 0 15px;
 	line-height: 35px;
 }
-.widget-search-advanced ul {
+.widget-search-advanced .widget-category-padding ul {
 	position: absolute;
 	left: 10px;
 	right: 10px;
@@ -22,15 +30,33 @@
 	box-shadow: 2px 2px 2px #ccc;
 	display: none;
 }
-.widget-search-advanced:hover ul { display: block; }
-.widget-search-advanced li {
+.widget-search-advanced .widget-category-padding:hover ul { display: block; }
+.widget-search-advanced .widget-category-padding li {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	border-bottom: 1px #f2f2f2 solid;
 }
-.widget-search-advanced li:hover { background: #f5f5f5; }
-.widget-search-advanced .echbay-widget-title {
+.widget-search-advanced .widget-category-padding .sub-menu {
+	position: unset;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	font-size: 13px;
+	border: 0 none;
+}
+.widget-search-advanced .widget-category-padding .sub-menu li {
+	border: 0 none;
+	border-top: 1px #f2f2f2 solid;
+}
+.widget-search-advanced .widget-category-padding .sub-menu a {
+	line-height: 20px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.widget-search-advanced .widget-category-padding .sub-menu a:before { content: "+ "; }
+.widget-search-advanced .widget-category-padding li:hover { background: #f5f5f5; }
+.widget-search-advanced .widget-category-padding .echbay-widget-title {
 	padding: 0 8px;
 	line-height: 35px;
 	font-size: 16px;
@@ -44,8 +70,8 @@
 	position: relative;
 	cursor: pointer;
 }
-.widget-search-advanced .echbay-widget-title:before { display: none; }
-.widget-search-advanced .echbay-widget-title:after {
+.widget-search-advanced .widget-category-padding .echbay-widget-title:before { display: none; }
+.widget-search-advanced .widget-category-padding .echbay-widget-title:after {
 	content: "\f0d7";
 	position: absolute;
 	right: 10px;
@@ -53,4 +79,4 @@
 	font-family: FontAwesome;
 	font-size: 14px;
 }
-.widget-search-advanced .children { display: none !important; }
+.widget-search-advanced .widget-category-padding .children { display: none !important; }

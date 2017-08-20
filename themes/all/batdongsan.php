@@ -13,6 +13,7 @@ $eb_all_themes_support["batdongsan"]["cf_top1_include_file"] = "batdongsan-top1.
 $eb_all_themes_support["batdongsan"]["cf_top2_include_file"] = "batdongsan-top2.php";
 $eb_all_themes_support["batdongsan"]["cf_top3_include_file"] = "batdongsan-top3.php";
 $eb_all_themes_support["batdongsan"]["cf_top4_include_file"] = "top_widget.php";
+$eb_all_themes_support["batdongsan"]["cf_top5_include_file"] = "vantaitanphatdat-top3.php";
 //
 $eb_all_themes_support["batdongsan"]["cf_footer1_include_file"] = "footer_widget.php";
 $eb_all_themes_support["batdongsan"]["cf_footer2_include_file"] = "batdongsan-footer1.php";

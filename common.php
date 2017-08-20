@@ -182,6 +182,18 @@ if ( file_exists( $inc_file ) ) {
 		'tmp.custom_blog_css' => $__cf_row['cf_blog_class_style'],
 	);
 	
+	// riêng với trang chủ -> nếu có set chiều rộng -> bỏ phần chiệu rọng bên trong các module con đi
+	if ( $act == '' && $__cf_row['cf_home_class_style'] != '' ) {
+//		$arr_global_main['tmp.custom_blog_css'] = $__cf_row['cf_home_class_style'];
+		$arr_global_main['tmp.custom_blog_css'] = '';
+	}
+	/*
+	else {
+		$arr_global_main['tmp.custom_blog_css'] = $__cf_row['cf_blog_class_style'];
+	}
+	*/
+	
+	//
 	foreach ( $arr_global_main as $k => $v ) {
 		$main_content = str_replace ( '{' . $k . '}', $v, $main_content );
 	}
