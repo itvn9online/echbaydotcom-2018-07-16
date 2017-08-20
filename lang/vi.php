@@ -22,6 +22,10 @@ $___eb_lang[eb_key_for_site_lang . 'xacnhan_thoat'] = 'Xác nhận đăng xuất
 $___eb_lang[eb_key_for_site_lang . 'dangnhap'] = 'Đăng nhập';
 $___eb_lang[eb_key_for_site_lang . 'dangky'] = 'Đăng ký';
 
+//
+$___eb_lang[eb_key_for_site_lang . 'home_hot'] = '<i class="fa fa-dollar"></i> Sản phẩm HOT';
+$___eb_lang[eb_key_for_site_lang . 'home_new'] = '<i class="fa fa-star"></i> Sản phẩm MỚI';
+
 $___eb_lang[eb_key_for_site_lang . 'order_by'] = 'Sắp xếp theo';
 $___eb_lang[eb_key_for_site_lang . 'order_price_down'] = 'Giá giảm dần';
 $___eb_lang[eb_key_for_site_lang . 'order_price_up'] = 'Giá tăng dần';
@@ -98,6 +102,7 @@ $___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PL
 //
 //$___eb_lang_default = $___eb_lang;
 //$___eb_lang = array();
+// EBE_get_lang('home')
 
 
 

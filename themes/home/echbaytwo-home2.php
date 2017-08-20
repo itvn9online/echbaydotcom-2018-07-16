@@ -26,7 +26,7 @@ if ( $__cf_row['cf_num_home_new'] > 0 ) {
 		echo EBE_html_template( EBE_get_page_template( 'home_hot' ), array(
 			'tmp.max_width' => '',
 			'tmp.num_post_line' => '',
-			'tmp.home_hot_title' => '<i class="fa fa-star"></i> Sản phẩm MỚI',
+			'tmp.home_hot_title' => EBE_get_lang('home_new'),
 			'tmp.description' => '',
 			'tmp.home_hot' => $home_new,
 		) );
