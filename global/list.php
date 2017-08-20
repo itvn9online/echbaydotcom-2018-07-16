@@ -425,7 +425,24 @@ if ( $main_content == false ) {
 //		$main_content = EBE_str_template( $tep_tin_for_html, $arr_main_content, $thu_muc_for_html );
 		
 		// v2
-		$main_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), $arr_main_content );
+//		$main_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), $arr_main_content );
+		
+		// v3
+		if ( $__cf_row['cf_catsmain_include_file'] != '' && $html_v2_file == 'thread_list' ) {
+			// ưu tiên hàng của theme trước
+			if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ 'cf_catsmain_include_file' ] ) ) {
+				$main_content = file_get_contents( EB_THEME_URL . 'theme/ui/' . $__cf_row[ 'cf_catsmain_include_file' ], 1 );
+			}
+			// còn lại sẽ là của plugin
+			else {
+				$main_content = file_get_contents( EB_THEME_PLUGIN_INDEX . 'themes/catsmain/' . $__cf_row[ 'cf_catsmain_include_file' ], 1 );
+			}
+			
+			$main_content = EBE_html_template( $main_content, $arr_main_content );
+		}
+		else {
+			$main_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), $arr_main_content );
+		}
 		
 	/*
 	}
