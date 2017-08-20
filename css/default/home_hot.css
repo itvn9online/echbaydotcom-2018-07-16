@@ -5,22 +5,26 @@
 .home-hot-bg .thread-list-mobilebg { background: #fff; }
 /* .home-hot-bg .thread-list-giamgia { line-height: 35px; } */
 .home-hot-title {
-	border-bottom: 3px #EBEBEB solid;
+	border-bottom: 2px #EBEBEB solid;
 	position: relative;
 	line-height: 30px;
 	font-size: 18px;
+	/*
 	text-align: center;
+	*/
 	font-weight: bold;
 	margin-bottom: 19px;
+	padding: 5px 0;
 }
 .home-hot-title:before {
 	width: 10%;
-	height: 3px;
+	height: 2px;
 	content: "";
 	background: #f00;
 	position: absolute;
-	bottom: -3px;
+	bottom: -2px;/*
 	left: 45%;
+	*/
 }
 /*
 .home-hot-title i {
@@ -36,3 +40,14 @@
 	border-radius: 50%;
 }
 */
+.home-hot-title .fa-dollar,
+.home-hot-title .fa-star {
+	display: inline-block;
+	width: 28px;
+	background: #fff;
+	border-radius: 50%;
+	color: #7ec400;
+	border: 1px #7ec400 solid;
+	line-height: 28px;
+	text-align: center;
+}
