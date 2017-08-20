@@ -2,6 +2,7 @@
 #batdongsan-footer2 .footer-menu {
 	padding: 12px 0;
 	line-height: 18px;
+	border: 1px #ccc solid;
 }
 #batdongsan-footer2 .footer-menu ul { text-align: center; }
 #batdongsan-footer2 .footer-menu li {

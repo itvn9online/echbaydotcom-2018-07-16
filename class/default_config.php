@@ -233,6 +233,9 @@ $__cf_row_default = array(
 	// danh sách tin -> số tin trên mỗi dòng
 	'cf_cats_num_line' => '',
 	
+	// file main cho category
+	'cf_catsmain_include_file' => '',
+	
 	'cf_using_cats_default' => 1,
 	'cf_cats1_include_file' => '',
 	'cf_cats2_include_file' => '',

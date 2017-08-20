@@ -1,0 +1,9 @@
+.thread-details-tohome,
+.thread-details-tohome a { color: #fd7900; }
+.thread-details-tohome {
+	background-color: #f5f5f5;
+	border-radius: 4px;
+	padding: 0 15px;
+	font-size: 14px;
+	margin-bottom: 20px;
+}

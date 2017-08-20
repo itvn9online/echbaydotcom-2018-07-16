@@ -28,6 +28,7 @@ Tags: slogan, bigbanner, breadcrumb
 // load danh sách file TOP, FOOTER
 $str_list_all_include_file = array();
 $str_html_for_list_theme_module = array();
+$str_html_for_single_theme_module = array();
 
 function EBE_config_theme_load_file_tag ( $str, $search ) {
 	if ( $str == '' || $search == '' ) {
@@ -81,6 +82,15 @@ function WGR_create_html_for_list_theme_module ( $type, $file_type = '.php' ) {
 	return '
 <div data-key="' . $type . '" class="change-eb-design-hide-fixed change-eb-design-' . $type . '-fixed">
 	<div class="change-eb-design-padding">' . EBE_config_load_top_footer_include( $type, $file_type ) . '</div>
+</div>';
+}
+
+function WGR_create_html_for_single_theme_module ( $type, $file_type = '.php' ) {
+	return '
+<div data-key="' . $type . '" class="change-eb-design-hide-fixed change-eb-design-' . $type . '-fixed">
+	<div class="change-eb-design-padding">
+		<div class="border-' . $type . '-design cf">' . EBE_config_load_top_footer_include( $type, $file_type ) . '</div>
+	</div>
 </div>';
 }
 
@@ -399,12 +409,24 @@ $arr_for_set_template['str_home_design_preview'] = WGR_load_list_design_module_f
 
 
 
-//
-$arr_for_set_template['str_main_include_file'] = EBE_config_load_top_footer_include('main');
+// file main chính của toàn bộ trang web
+//$arr_for_set_template['str_main_include_file'] = EBE_config_load_top_footer_include('main');
+$str_html_for_single_theme_module[] = WGR_create_html_for_single_theme_module('main');
 
 $str_main_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="cf_main_include_file" data-key="main" data-val="' . $__cf_row[ 'cf_main_include_file' ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
 
 $arr_for_set_template['str_main_design_preview'] = $str_main_design_preview;
+
+
+
+
+// file main cho category
+//$arr_for_set_template['str_catsmain_include_file'] = EBE_config_load_top_footer_include('catsmain');
+$str_html_for_single_theme_module[] = WGR_create_html_for_single_theme_module('catsmain');
+
+$str_catsmain_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="cf_catsmain_include_file" data-key="catsmain" data-val="' . $__cf_row[ 'cf_catsmain_include_file' ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
+
+$arr_for_set_template['str_catsmain_design_preview'] = $str_catsmain_design_preview;
 
 
 
@@ -418,7 +440,8 @@ $arr_for_set_template['str_cats_design_preview'] = WGR_load_list_design_module_f
 
 
 //
-$arr_for_set_template['str_threadnode_include_file'] = EBE_config_load_top_footer_include('threadnode', '.html');
+//$arr_for_set_template['str_threadnode_include_file'] = EBE_config_load_top_footer_include('threadnode', '.html');
+$str_html_for_single_theme_module[] = WGR_create_html_for_single_theme_module('threadnode', '.html');
 
 $str_threadnode_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="cf_threadnode_include_file" data-key="threadnode" data-val="' . $__cf_row[ 'cf_threadnode_include_file' ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
 
@@ -454,7 +477,8 @@ $arr_for_set_template['str_threadsreachnode_design_preview'] = $str_threadsreach
 
 
 //
-$arr_for_set_template['str_threaddetails_include_file'] = EBE_config_load_top_footer_include('threaddetails', '.html');
+//$arr_for_set_template['str_threaddetails_include_file'] = EBE_config_load_top_footer_include('threaddetails', '.html');
+$str_html_for_single_theme_module[] = WGR_create_html_for_single_theme_module('threaddetails', '.html');
 
 $str_threaddetails_design_preview = '<div title="[Bấm đây để chọn thiết kế hoặc để trống]" data-name="cf_threaddetails_include_file" data-key="threaddetails" data-val="' . $__cf_row[ 'cf_threaddetails_include_file' ] . '" class="click-to-change-file-design preview-file-design">&nbsp;</div>';
 
@@ -514,6 +538,7 @@ $arr_for_set_template['str_all_themes_support'] = $str_all_themes_support;
 
 //
 $arr_for_set_template['str_html_for_list_theme_module'] = implode( "\n", $str_html_for_list_theme_module );
+$arr_for_set_template['str_html_for_single_theme_module'] = implode( "\n", $str_html_for_single_theme_module );
 
 
 

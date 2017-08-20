@@ -125,9 +125,15 @@
 				<td class="i">{tmp.cf_cats_column_style}</td>
 			</tr>
 			<tr>
+				<td colspan="2" valign="top" class="t">Khung cho trang CATEGORY</td>
+			</tr>
+			<tr>
+				<td colspan="2"><div class="border-file-design">{tmp.str_catsmain_design_preview}</div></td>
+			</tr>
+			<tr>
 				<td colspan="2"><input type="checkbox" name="cf_using_cats_default" id="cf_using_cats_default" value="{tmp.cf_using_home_default}" />
 					<label for="cf_using_cats_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
-					<div class="small l19">Chọn từng khối thiết kế cho trang HOME hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="small l19">Chọn từng khối thiết kế cho trang CATEGORY hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
 					<div class="show-if-using-cats-default border-file-design">{tmp.str_cats_design_preview}</div></td>
 			</tr>
 			<tr>
@@ -360,7 +366,9 @@
 	<div data-key="cats" class="change-eb-design-hide-fixed change-eb-design-cats-fixed">
 		<div class="change-eb-design-padding">{tmp.str_cats_include_file}</div>
 	</div>
-	<!-- -->
+	-->
+	{tmp.str_html_for_single_theme_module} 
+	<!--
 	<div data-key="threadnode" class="change-eb-design-hide-fixed change-eb-design-threadnode-fixed">
 		<div class="change-eb-design-padding">
 			<div class="border-threadnode-design cf">{tmp.str_threadnode_include_file}</div>
@@ -371,11 +379,17 @@
 			<div class="border-main-design cf">{tmp.str_main_include_file}</div>
 		</div>
 	</div>
+	<div data-key="catsmain" class="change-eb-design-hide-fixed change-eb-design-catsmain-fixed">
+		<div class="change-eb-design-padding">
+			<div class="border-catsmain-design cf">{tmp.str_catsmain_include_file}</div>
+		</div>
+	</div>
 	<div data-key="threaddetails" class="change-eb-design-hide-fixed change-eb-design-threaddetails-fixed">
 		<div class="change-eb-design-padding">
 			<div class="border-threaddetails-design cf">{tmp.str_threaddetails_include_file}</div>
 		</div>
 	</div>
+	-->
 	<div id="change_eb_design_width">&nbsp;</div>
 </div>
 <input type="text" id="press_for_search_eb_themes" placeholder="Tìm kiếm giao diện theo tên" class="eb-themes-search d-none" />

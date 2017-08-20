@@ -5,3 +5,7 @@
 }
 .home_default-catgory h2 { font-weight: normal; }
 .home_default-catgory a { color: #555; }
+.home_default-catgory a:hover { text-decoration: underline; }
+.home_default-catgory a:after { content: ", "; }
+.home_default-catgory li:last-child a:after,
+.home_default-catgory .sub-menu a:after { display: none; }
