@@ -71,7 +71,7 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 //		echo $custom_price;
 		$list_tyle = isset( $instance ['list_tyle'] ) ? $instance ['list_tyle'] : 'off';
 		$list_tyle = ( $list_tyle == 'on' ) ? 'widget-category-selectbox' : '';
-		$list_tyle .= 'widget-category-padding';
+		$list_tyle .= ' widget-category-padding';
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );

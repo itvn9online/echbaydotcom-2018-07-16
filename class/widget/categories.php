@@ -222,7 +222,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		$list_tyle = isset( $instance ['list_tyle'] ) ? $instance ['list_tyle'] : 'off';
 		$list_tyle = ( $list_tyle == 'on' ) ? 'widget-category-selectbox' : '';
-		$list_tyle .= 'widget-category-padding';
+		$list_tyle .= ' widget-category-padding';
 		
 		$get_child = isset( $instance ['get_child'] ) ? $instance ['get_child'] : 'off';
 		$get_child = ( $get_child == 'on' ) ? true : false;
