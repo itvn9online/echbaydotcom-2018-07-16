@@ -70,14 +70,15 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		$custom_price = isset( $instance ['custom_price'] ) ? $instance ['custom_price'] : '';
 //		echo $custom_price;
 		$list_tyle = isset( $instance ['list_tyle'] ) ? $instance ['list_tyle'] : 'off';
-		$list_tyle = $list_tyle == 'on' ? 'widget-category-selectbox' : '';
+		$list_tyle = ( $list_tyle == 'on' ) ? 'widget-category-selectbox' : '';
+		$list_tyle .= 'widget-category-padding';
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
 //		echo $custom_price;
 		
 		//
-		echo '<div class="' . $list_tyle . '">';
+		echo '<div class="' . trim( $list_tyle ) . '">';
 		
 		//
 		_eb_echo_widget_title( $title, 'echbay-widget-price-title', $before_title );

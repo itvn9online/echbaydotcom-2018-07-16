@@ -214,20 +214,21 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		$show_count = isset( $instance ['show_count'] ) ? $instance ['show_count'] : 'off';
 //		echo $show_count;
-		$show_count = $show_count == 'on' ? true : false;
+		$show_count = ( $show_count == 'on' ) ? true : false;
 		
 		$cat_ids = isset( $instance ['cat_ids'] ) ? $instance ['cat_ids'] : 0;
 		$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : 'category';
 		$cat_status = isset( $instance ['cat_status'] ) ? $instance ['cat_status'] : 0;
 		
 		$list_tyle = isset( $instance ['list_tyle'] ) ? $instance ['list_tyle'] : 'off';
-		$list_tyle = $list_tyle == 'on' ? 'widget-category-selectbox' : '';
+		$list_tyle = ( $list_tyle == 'on' ) ? 'widget-category-selectbox' : '';
+		$list_tyle .= 'widget-category-padding';
 		
 		$get_child = isset( $instance ['get_child'] ) ? $instance ['get_child'] : 'off';
-		$get_child = $get_child == 'on' ? true : false;
+		$get_child = ( $get_child == 'on' ) ? true : false;
 		
 		$get_parent = isset( $instance ['get_parent'] ) ? $instance ['get_parent'] : 'off';
-		$get_parent = $get_parent == 'on' ? true : false;
+		$get_parent = ( $get_parent == 'on' ) ? true : false;
 		
 		$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';
 		$dynamic_tag_begin = '';

@@ -432,10 +432,14 @@ if ( $main_content == false ) {
 			// ưu tiên hàng của theme trước
 			if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ 'cf_catsmain_include_file' ] ) ) {
 				$main_content = file_get_contents( EB_THEME_URL . 'theme/ui/' . $__cf_row[ 'cf_catsmain_include_file' ], 1 );
+				
+				$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_catsmain_include_file' ] ) ] = 1;
 			}
 			// còn lại sẽ là của plugin
 			else {
 				$main_content = file_get_contents( EB_THEME_PLUGIN_INDEX . 'themes/catsmain/' . $__cf_row[ 'cf_catsmain_include_file' ], 1 );
+				
+				$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_catsmain_include_file' ] ) ] = 1;
 			}
 			
 			$main_content = EBE_html_template( $main_content, $arr_main_content );
