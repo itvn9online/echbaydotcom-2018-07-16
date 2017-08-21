@@ -2657,7 +2657,7 @@ function WGR_load_module_name_css (
 	
 	$arr = array();
 	
-	for ( $i = 1; $i < 10; $i++ ) {
+	for ( $i = 1; $i < 20; $i++ ) {
 		$j = 'cf_' . $module_name . $i . '_include_file';
 		
 		if ( ! isset( $__cf_row_default[ $j ] ) ) {
@@ -2778,9 +2778,11 @@ function EBE_get_html_address () {
 	return '
 	<div class="footer-address">
 		<div class="footer-address-company bold">' . $__cf_row['cf_ten_cty'] . '</div>
-		<div class="footer-address-info l19">Địa chỉ: ' . nl2br( $__cf_row['cf_diachi'] ) . '<br>
-			Hotline: ' . $__cf_row['cf_call_hotline'] . ' | Điện thoại: <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span><br>
-			Email: <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
+		<div class="footer-address-info l19">
+			<div>Địa chỉ: ' . nl2br( $__cf_row['cf_diachi'] ) . '</div>
+			<div>Hotline: ' . $__cf_row['cf_call_hotline'] . ' | Điện thoại: <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></div>
+			<div>Email: <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
+		</div>
 	</div>';
 }
 
