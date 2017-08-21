@@ -23,6 +23,7 @@ $eb_all_themes_support["motocenter"]["cf_footer3_include_file"] = "echbaytwo-foo
 //
 $eb_all_themes_support["motocenter"]["cf_home1_include_file"] = "bigbannerFixed-home1.php";
 $eb_all_themes_support["motocenter"]["cf_home2_include_file"] = "widget-home1.php";
+$eb_all_themes_support["motocenter"]["cf_home6_include_file"] = "motocenter-home1.php";
 //
 $eb_all_themes_support["motocenter"]["cf_threaddetails_include_file"] = "motocenter-threaddetails.html";
 //
