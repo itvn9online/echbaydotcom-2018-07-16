@@ -720,7 +720,7 @@ function _eb_bs_link($id, $seo = '') {
 
 function _eb_remove_file ($file_, $ftp = 1) {
 	if ( file_exists( $file_ ) ) {
-		if ( ! unlink( $ffile_ ) ) {
+		if ( ! unlink( $file_ ) ) {
 			// thử xóa bằng ftp
 			if ( $ftp == 1 ) {
 				return EBE_ftp_remove_file($file_);

@@ -437,7 +437,7 @@ function EBE_get_text_version ( $str ) {
 				// Bật chế độ bảo trì hệ thống
 				$bat_che_do_bao_tri = EB_THEME_CACHE . 'update_running.txt';
 				_eb_create_file( $bat_che_do_bao_tri, date_time );
-				echo '<h2>BAT che do bao tri website!</h2>';
+				echo '<h2>BẬT chế độ bảo trì website!</h2><br>';
 				
 				//
 				if ( EBE_update_file_via_ftp() == true ) {
@@ -451,8 +451,12 @@ function EBE_get_text_version ( $str ) {
 				}
 				
 				// tắt chế độ bảo trì
-				_eb_remove_file( $bat_che_do_bao_tri );
-				echo '<h2>TAT che do bao tri website!</h2>';
+				if ( _eb_remove_file( $bat_che_do_bao_tri ) == true ) {
+					echo '<br><h2>TẮT chế đọ bảo trì website!</h2>';
+				}
+				else {
+					echo '<br><h2>Không TẮT được chế độ bảo trì! Hãy vào thư mục ebcache và xóa file update_running.txt thủ công.</h2>';
+				}
 				
 			}
 			else {
