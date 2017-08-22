@@ -444,11 +444,13 @@ function EBE_add_js_compiler_in_cache (
 		}
 	}
 //	echo $file_name_cache . '<br>' . "\n";
-	if ( strlen( $file_name_cache ) > 155 ) {
+//	if ( strlen( $file_name_cache ) > 155 ) {
 		$file_name_cache = md5( $file_name_cache );
-	}
+//	} else {
+//		$file_name_cache = str_replace( '.', '-', $file_name_cache );
+//	}
 //	$file_name_cache .= '.js';
-	$file_name_cache = 'zjs-' . str_replace( '.', '-', $file_name_cache ) . '.js';
+	$file_name_cache = 'zjs-' . $file_name_cache . '.js';
 	
 	
 	// nếu file có rồi -> nhung luôn file
@@ -1044,11 +1046,13 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 			}
 		}
 //		echo $file_cache . '<br>' . "\n";
-		if ( strlen( $file_cache ) > 155 ) {
+//		if ( strlen( $file_cache ) > 155 ) {
 			$file_cache = md5( $file_cache );
-		}
+//		} else {
+//			$file_cache = str_replace( '.', '-', $file_cache );
+//		}
 //		$file_cache .= '.css';
-		$file_cache = 'zss-' . str_replace( '.', '-', $file_cache ) . '.css';
+		$file_cache = 'zss-' . $file_cache . '.css';
 //		echo $file_cache . "\n";
 		
 		$file_save = EB_THEME_CACHE . $file_cache;
