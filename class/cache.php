@@ -186,6 +186,10 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		/*
 		* lấy các dữ liệu được tạo riêng cho config -> $post_id = -1;
 		*/
+		// reset lại cache
+		$__cf_row = $__cf_row_default;
+		
+		//
 		_eb_get_config();
 		
 		

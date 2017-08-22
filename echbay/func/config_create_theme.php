@@ -84,6 +84,9 @@ function WGR_create_themes_default_format (
 * GET contact info
 * EBE_get_html_address();
 *
+* GET footer social icon
+* WGR_get_footer_social();
+*
 */
 		' );
 	}

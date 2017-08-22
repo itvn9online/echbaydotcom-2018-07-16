@@ -6,8 +6,8 @@ body.login {
 #login h1 a {
 	background: url(../images-global/echbay-wp-logo.png) no-repeat !important;
 	margin: 0 auto 10px auto;
-	width: 252px;
-	height: 49px;
+	width: 260px;
+	height: 50px;
 }
 .login #backtoblog a,
 .login #nav a { color: #000; }

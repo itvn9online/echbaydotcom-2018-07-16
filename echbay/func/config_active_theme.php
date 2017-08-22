@@ -88,6 +88,12 @@ _eb_set_config( 'cf_current_theme_using', $create_theme_key );
 
 
 
+//
+include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
+
+
+
+
 
 
 

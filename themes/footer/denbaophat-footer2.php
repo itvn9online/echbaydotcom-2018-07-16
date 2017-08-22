@@ -29,13 +29,7 @@
 			</div>
 			<div class="lf f25 fullsize-if-mobile">
 				<div class="titleCSS bold">Kết nối với chúng tôi</div>
-				<ul class="footer-social cf">
-					<li><a href="javascript:;" class="ahref-to-facebook fa fa-facebook" target="_blank" rel="nofollow">&nbsp;</a></li>
-					<li><a href="javascript:;" class="each-to-twitter-page fa fa-twitter" target="_blank" rel="nofollow">&nbsp;</a></li>
-					<li><a href="javascript:;" class="each-to-youtube-chanel fa fa-youtube" target="_blank" rel="nofollow">&nbsp;</a></li>
-					<li><a href="javascript:;" class="ahref-to-gooplus fa fa-google-plus" target="_blank" rel="nofollow">&nbsp;</a></li>
-				</ul>
-				<br>
+				<?php echo WGR_get_footer_social(); ?><br>
 				<div class="right-menu-space">
 					<div class="each-to-facebook" style="background:#fff;">
 						<div class="fb-like-box" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="true"></div>
