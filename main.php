@@ -5,13 +5,24 @@
 // chế độ bảo trì đang được bật -> tạm dừng mọi truy cập
 if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 	
-	// Set trạng thái cho trang 404
-	$protocol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+	//
+	$time_for_bao_tri = file_get_contents( EB_THEME_CACHE . 'update_running.txt', 1 );
 	
-	//echo $protocol;
-	header( $protocol . ' 404 Not Found' );
-	
-	die('<title>He thong dang duoc bao tri</time><h1>He thong dang duoc bao tri</h1>');
+	// Hiển thị chế độ bảo trì trong vòng 2 phút thôi
+	if ( date_time - $time_for_bao_tri < 120 ) {
+		
+		// Set trạng thái cho trang 404
+		$protocol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+		
+		//echo $protocol;
+		header( $protocol . ' 404 Not Found' );
+		
+		die('<title>He thong dang duoc bao tri</time><h1>He thong dang duoc bao tri</h1>');
+		
+	}
+	else {
+		echo '<!-- Remove update_running.txt in ebcache dir -->';
+	}
 }
 
 
