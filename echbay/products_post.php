@@ -1,11 +1,105 @@
+<style type="text/css">
+/*
+.click-order-thread.fa-comments,
+.click-order-thread.fa-link,
+*/
+.click-order-thread.fa-star[data-val="1"] { color: #F90; }
+.click-order-thread.fa-comments[data-val="closed"],
+.click-order-thread.fa-link[data-val="closed"],
+.click-order-thread.fa-star { color: #333; }
+.quick-show-if-post { display: none !important; }
+.class-for-post .quick-show-if-post { display: inline-block !important; }
+.admin-products_post-category { margin-bottom: 15px; }
+.admin-products_post-category li {
+	float: left;
+	margin: 5px 20px 5px 0;
+}
+.admin-products_post-category a:before { content: "- "; }
+</style>
 <?php
 
 
+
+//
+$by_cat_id = isset( $_GET['by_cat_id'] ) ? (int) $_GET['by_cat_id'] : 0;
+
+
+// tham khảo custom query: https://codex.wordpress.org/Displaying_Posts_Using_a_Custom_Select_Query
+
 //
 $strFilter = " post_type = '" . $by_post_type . "'
-	AND ( post_status = 'publish' OR post_status = 'pending' OR post_status = 'draft' ) ";
+	AND ( `" . $wpdb->posts . "`.post_status = 'publish' OR `" . $wpdb->posts . "`.post_status = 'pending' OR `" . $wpdb->posts . "`.post_status = 'draft' ) ";
+	
+$joinFilter = "";
 
 $strLinkPager .= '&by_post_type=' . $by_post_type;
+
+$cats_type = ( $by_post_type == 'blog' ) ? 'blogs' : 'category';
+
+
+//
+if ( $by_cat_id > 0 ) {
+	
+	$strLinkPager .= '&by_cat_id=' . $by_cat_id;
+	
+	//
+	$arrs_cats = array(
+		'taxonomy' => $cats_type,
+		'hide_empty' => 0,
+		'parent' => $by_cat_id,
+	);
+	
+	$arrs_cats = get_categories( $arrs_cats );
+//	print_r( $arrs_cats );
+	
+	$by_child_cat_id = '';
+	foreach ( $arrs_cats as $v ) {
+		$by_child_cat_id .= ',' . $v->term_id;
+	}
+	
+	
+	//
+	$strFilter .= " AND `" . $wpdb->term_taxonomy . "`.taxonomy = '" . $cats_type . "'
+		AND `" . $wpdb->term_taxonomy . "`.term_id IN (" . $by_cat_id . $by_child_cat_id . ") ";
+	
+	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . $wpdb->posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id)
+		LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
+//	$joinFilter = ", `" . $wpdb->term_taxonomy . "`, `" . $wpdb->term_relationships . "` ";
+	
+}
+//echo $strFilter . '<br>' . "\n";
+//echo $joinFilter . '<br>' . "\n";
+
+
+
+
+
+
+//
+$arrs_cats = array(
+	'taxonomy' => $cats_type,
+	'hide_empty' => 0,
+	'parent' => 0,
+);
+
+//
+$arrs_cats = get_categories( $arrs_cats );
+//print_r( $arrs_cats );
+
+echo '<ul class="cf admin-products_post-category">';
+foreach ( $arrs_cats as $v ) {
+	$sl = '';
+	if ( $v->term_id == $by_cat_id ) {
+		$sl = 'bold';
+	}
+	
+	//
+	echo '<li><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . '</a></li>';
+}
+echo '</ul>';
+
+
+
 
 
 //
@@ -23,14 +117,18 @@ if ( isset( $_GET['tab'] ) ) {
 $sql = _eb_q ( "SELECT COUNT(ID)
 	FROM
 		`" . $wpdb->posts . "`
+		" . $joinFilter . "
 	WHERE
 		" . $strFilter );
 //echo $strFilter . '<br>' . "\n";
+$totalThread = 0;
 //print_r( $sql );
-$sql = $sql[0];
-//print_r( $sql );
-foreach ( $sql as $v ) {
-	$totalThread = $v;
+if ( count( $sql ) > 0 ) {
+	$sql = $sql[0];
+//	print_r( $sql );
+	foreach ( $sql as $v ) {
+		$totalThread = $v;
+	}
 }
 //echo $totalThread . '<br>' . "\n";
 
@@ -55,22 +153,25 @@ $offset = ($trang - 1) * $threadInPage;
 
 
 ?>
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list class-for-<?php echo $by_post_type; ?>">
 	<tr class="table-list-title">
 		<td width="5%">&nbsp;</td>
 		<td width="10%">ID</td>
 		<td width="8%">Ảnh</td>
 		<td>Sản phẩm/ Giá cũ/ Giá mới</td>
 		<td width="10%">STT</td>
-		<td width="10%">Công cụ</td>
-		<td width="14%">Cập nhật cuối</td>
+		<td width="16%">Công cụ</td>
+		<td width="14%">Ngày Đăng/ Cập nhật</td>
 	</tr>
 	<?php
-	
+
+if ( $totalThread > 0 ) {
+
 	//
 	$sql = _eb_q ( "SELECT *
 	FROM
 		`" . $wpdb->posts . "`
+		" . $joinFilter . "
 	WHERE
 		" . $strFilter . "
 	ORDER BY
@@ -80,6 +181,8 @@ $offset = ($trang - 1) * $threadInPage;
 	
 	//
 	foreach ( $sql as $o ) {
+		
+//		print_r( $o ); exit();
 		
 		$trv_id = $o->ID;
 		$trv_link = web_link . '?p=' . $trv_id;
@@ -93,9 +196,17 @@ $offset = ($trang - 1) * $threadInPage;
 		$strLinkAjaxl = '&post_id=' . $trv_id . '&by_post_type=' . $by_post_type;
 		
 		//
+		$current_sticky = 0;
+		if ( is_sticky( $o->ID ) ) {
+			$current_sticky = 1;
+		}
+		$comment_status = $o->comment_status;
+		$ping_status = $o->ping_status;
+		
+		//
 		echo '
 <tr>
-	<td><input type="checkbox" name="thread-checkbox" value="' . $trv_id . '" class="eb-uix-thread-checkbox thread-multi-checkbox" /></td>
+	<td class="text-center"><input type="checkbox" name="thread-checkbox" value="' . $trv_id . '" class="eb-uix-thread-checkbox thread-multi-checkbox" /></td>
 	<td><a href="' . $trv_link . '" target="_blank">' . $trv_id . ' <i class="fa fa-eye"></i></a></td>
 	<td><a href="' . $trv_link . '" target="_blank" class="d-block admin-thread-avt" style="background-image:url(\'' . $trv_img . '\');">&nbsp;</a></td>
 	<td>
@@ -105,22 +216,29 @@ $offset = ($trang - 1) * $threadInPage;
 	</td>
 	<td><input type="number" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" class="s change-update-new-stt" /></td>
 	<td>
-		<div class="div-inline-block">
+		<div class="div-inline-block text-center">
 			<div><i title="Up to TOP" data-ajax="' . $strLinkAjaxl . '&t=auto&stt=' . $trv_stt . '" class="fa fa-refresh fa-icons cur click-order-thread"></i></div>
 			
 			<div><i title="Up" data-ajax="' . $strLinkAjaxl . '&t=up&stt=' . $trv_stt . '" class="fa fa-arrow-circle-up fa-icons cur click-order-thread"></i></div>
 			
 			<div><i title="Down" data-ajax="' . $strLinkAjaxl . '&t=down&stt=' . $trv_stt . '" class="fa fa-arrow-circle-down fa-icons cur click-order-thread"></i></div>
 			
-			<div><i title="Toggle status" data-ajax="' . $strLinkAjaxl . '&t=status&toggle_status=' . $trv_trangthai . '" class="fa fa-icons cur click-order-thread ' . ( ($trv_trangthai > 0) ? 'fa-unlock' : 'fa-lock redcolor' ) . '"></i></div>
+			<div class="quick-show-if-post"><i title="Set sticky" data-val="' . $current_sticky . '" data-ajax="' . $strLinkAjaxl . '&t=sticky&current_sticky=' . $current_sticky . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
+			
+			<div class="quick-show-if-post"><i title="Toggle comment status" data-val="' . $comment_status . '" data-ajax="' . $strLinkAjaxl . '&t=comment_status&comment_status=' . $comment_status . '" class="fa fa-comments fa-icons cur click-order-thread"></i></div>
+			
+			<div class="quick-show-if-post"><i title="Toggle ping status" data-val="' . $ping_status . '" data-ajax="' . $strLinkAjaxl . '&t=ping_status&ping_status=' . $ping_status . '" class="fa fa-link fa-icons cur click-order-thread"></i></div>
+			
+			<div><i title="Toggle status" data-ajax="' . $strLinkAjaxl . '&t=status&toggle_status=' . $trv_trangthai . '" class="fa fa-icons cur click-order-thread ' . ( ($trv_trangthai > 0) ? 'fa-unlock' : 'fa-lock blackcolor' ) . '"></i></div>
 		</div>
 	</td>
-	<td>' . $o->post_modified . '</td>
+	<td class="text-center">' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_date ) ) . '<br>' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_modified ) ) . '</td>
 </tr>';
 		
 	}
 	
-	
+}
+
 	?>
 </table>
 <script type="text/javascript">
@@ -192,4 +310,4 @@ $('.change-update-new-stt').off('change').change(function () {
 });
 
 
-</script>
+</script> 

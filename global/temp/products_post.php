@@ -45,6 +45,8 @@ if ( $post_id > 0 && $type != '' ) {
 		
 		//
 		$arr_for_update_post['menu_order'] = $trv_stt;
+		
+		echo '<br>set post order: ' . $trv_stt;
 	}
 	// thay đổi trạng thái của sản phẩm
 	else if ( isset( $_GET['toggle_status'] ) ) {
@@ -61,6 +63,47 @@ if ( $post_id > 0 && $type != '' ) {
 		
 		//
 		$arr_for_update_post['post_status'] = $new_status;
+		
+		echo '<br>set post status: ' . $new_status;
+	}
+	// thay đổi trạng thái ping với comment
+	else if ( isset( $_GET['comment_status'] ) ) {
+		$comment_status = trim( $_GET['comment_status'] );
+		
+		// Đang mở -> ẩn
+		if ( $comment_status == 'open' ) {
+			$new_status = 'closed';
+		}
+		// Mặc định là hiển thị
+		else {
+			$new_status = 'open';
+		}
+		
+		//
+		$arr_for_update_post['comment_status'] = $new_status;
+		
+		echo '<br>set comment status: ' . $new_status;
+	}
+	// thay đổi trạng thái ping với ping
+	else if ( isset( $_GET['ping_status'] ) ) {
+		$ping_status = trim( $_GET['ping_status'] );
+		
+		// Đang mở -> ẩn
+		if ( $ping_status == 'open' ) {
+			$new_status = 'closed';
+		}
+		// Mặc định là hiển thị
+		else {
+			$new_status = 'open';
+		}
+		
+		//
+		$arr_for_update_post['ping_status'] = $new_status;
+		
+		echo '<br>set ping status: ' . $new_status;
+	}
+	else {
+		echo '<br>method not found';
 	}
 	
 	//

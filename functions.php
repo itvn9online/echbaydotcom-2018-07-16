@@ -2135,6 +2135,27 @@ function _eb_get_log_search( $limit = '' ) {
 
 
 
+function _eb_number_only( $str = '', $re = '/[^0-9]+/' ) {
+	if ($str == '') {
+		return 0;
+	}
+	return (int) preg_replace ( $re, '', trim( $str ) );
+}
+
+function _eb_float_only( $str = '' ) {
+	return _eb_number_only( $str, '/[^0-9|\.]+/' );
+}
+
+function _eb_text_only($str = '') {
+	if ($str == '') {
+		return '';
+	}
+	return preg_replace ( '/[^a-zA-Z0-9\-\.]+/', '', $str );
+}
+
+function _eb_un_money_format($str) {
+	return _eb_number_only( $str );
+}
 
 
 

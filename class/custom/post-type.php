@@ -129,7 +129,7 @@ function ech_bay_custom_post_type() {
 //		'trackbacks',
 //		'custom-fields',
 //		'comments',
-		'revisions',
+//		'revisions',
 		'page-attributes',
 //		'post-formats',
 //	), 70 );

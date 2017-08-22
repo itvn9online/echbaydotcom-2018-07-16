@@ -452,7 +452,7 @@ function EBE_get_text_version ( $str ) {
 				
 				// tắt chế độ bảo trì
 				if ( _eb_remove_file( $bat_che_do_bao_tri ) == true ) {
-					echo '<br><h2>TẮT chế đọ bảo trì website!</h2>';
+					echo '<br><h2>TẮT chế độ bảo trì website!</h2>';
 				}
 				else {
 					echo '<br><h2>Không TẮT được chế độ bảo trì! Hãy vào thư mục ebcache và xóa file update_running.txt thủ công.</h2>';

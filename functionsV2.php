@@ -331,12 +331,6 @@ function _eb_checkDevice_v1 () {
 
 
 
-function _eb_un_money_format($str) {
-	return _eb_number_only( $str );
-}
-
-
-
 // Chuyển ký tự UTF-8 -> ra bảng mã mới
 function _eb_str_block_fix_content ($str) {
 //	$str = iconv('UTF-16', 'UTF-8', $str);
@@ -1143,26 +1137,6 @@ function _eb_getCucki ( $c_name, $default_value = '' ) {
 
 function _eb_alert($m) {
 	die ( '<script type="text/javascript">alert("' . $m . '");</script>' );
-}
-
-
-
-function _eb_number_only( $str = '', $re = '/[^0-9]+/' ) {
-	if ($str == '') {
-		return 0;
-	}
-	return (int) preg_replace ( $re, '', trim( $str ) );
-}
-
-function _eb_float_only( $str = '' ) {
-	return _eb_number_only( $str, '/[^0-9|\.]+/' );
-}
-
-function _eb_text_only($str = '') {
-	if ($str == '') {
-		return '';
-	}
-	return preg_replace ( '/[^a-zA-Z0-9\-\.]+/', '', $str );
 }
 
 
