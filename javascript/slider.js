@@ -131,7 +131,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// chiều cao cho slide
 	var wit = $(jd).width(),
-		hai = conf['size'] == '' ? $(jd + ' li:first').height() : wit * eval( conf['size'] )/ conf['visible'] - 1;
+		hai = ( conf['size'] ) == '' ? $(jd + ' li:first').height() : wit * eval( conf['size'] )/ conf['visible'] - 1;
 	set_default_conf( 'lineHeight', hai + 'px' );
 	
 	$(jd).height( hai ).attr({
@@ -284,8 +284,9 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// cái này phải nằm sau lệnh thumbnail thì nó mới lên trước được
 	if ( conf['buttonListNext'] == true ) {
-		var str_btn = '';
-		for ( var i = 0; i < len; i++ ) {
+		var str_btn = '',
+			listBtnLen = ( conf['visible'] > 1 ) ? Math.ceil( len/ conf['visible'] ) : len;
+		for ( var i = 0; i < listBtnLen; i++ ) {
 			str_btn += '<li data-i="' +i+ '"><i class="fa fa-circle"></i></li>';
 		}
 		$(jd).after('<div class="' + jd_class + '"><div class="big-banner-button"><ul>' + str_btn + '</ul></div></div>');
