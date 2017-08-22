@@ -436,12 +436,19 @@ function EBE_add_js_compiler_in_cache (
 	$file_name_cache = '';
 	foreach ( $arr_eb_add_full_js as $v ) {
 		if ( file_exists( $v ) ) {
-			$file_name_cache .= basename( $v ) . filemtime( $v );
+//			$file_name_cache .= basename( $v ) . filemtime( $v );
+			
+			// thời gian cập nhật file
+			$file_time = filemtime ( $v );
+			$file_name_cache .= basename( $v, '.js' ) . substr( $file_time, strlen($file_time) - 3 );
 		}
 	}
-	$file_name_cache = md5( $file_name_cache );
+//	echo $file_name_cache . '<br>' . "\n";
+	if ( strlen( $file_name_cache ) > 155 ) {
+		$file_name_cache = md5( $file_name_cache );
+	}
 //	$file_name_cache .= '.js';
-	$file_name_cache = 'zjs' . $file_name_cache . '.js';
+	$file_name_cache = 'zjs-' . str_replace( '.', '-', $file_name_cache ) . '.js';
 	
 	
 	// nếu file có rồi -> nhung luôn file
@@ -1026,8 +1033,9 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 //				echo $file_name . '<br>' . "\n";
 				
 				// thời gian cập nhật file
-//				$file_time = filemtime ( $v );
-				$file_time = '-' . substr( filemtime ( $v ), 6 );
+				$file_time = filemtime ( $v );
+//				$file_time = '-' . substr( filemtime ( $v ), 6 );
+				$file_time = $file_name . substr( $file_time, strlen($file_time) - 3 );
 				
 //				$file_cache .= $file_name . $file_time;
 				$file_cache .= $file_time;
@@ -1035,9 +1043,12 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 				$new_arr[$v] = 1;
 			}
 		}
-		$file_cache = md5( $file_cache );
+//		echo $file_cache . '<br>' . "\n";
+		if ( strlen( $file_cache ) > 155 ) {
+			$file_cache = md5( $file_cache );
+		}
 //		$file_cache .= '.css';
-		$file_cache = 'zss' . $file_cache . '.css';
+		$file_cache = 'zss-' . str_replace( '.', '-', $file_cache ) . '.css';
 //		echo $file_cache . "\n";
 		
 		$file_save = EB_THEME_CACHE . $file_cache;

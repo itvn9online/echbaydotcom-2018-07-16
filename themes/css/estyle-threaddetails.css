@@ -163,3 +163,20 @@
 	padding: 10px 2px 10px 5px;
 	border-radius: 5px;
 }
+.detail-muangay-padding {
+	max-width: 600px;
+	margin: 0 auto;
+}
+.thread-details-muangay {
+	margin-bottom: 15px;
+	padding-bottom: 5px;
+	position: relative;
+}
+.thread-details-muangay:before {
+	position: absolute;
+	width: 30%;
+	left: 35%;
+	content: "";
+	border-bottom: 1px #ccc solid;
+	bottom: 0;
+}

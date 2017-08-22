@@ -1074,6 +1074,26 @@ function eb_func_show_product_size () {
 				
 				if ( typeof arr == 'object' ) {
 					for ( var j = 0; j < arr.length; j++ ) {
+						// conver từ bản code cũ sang
+						if ( typeof arr[j].name == 'undefined' ) {
+							if ( typeof arr[j].ten != 'undefined' ) {
+								arr[j].name = arr[j].ten;
+							}
+							else {
+								arr[j].name = '';
+							}
+						}
+						
+						if ( typeof arr[j].val == 'undefined' ) {
+							if ( typeof arr[j].soluong != 'undefined' ) {
+								arr[j].val = arr[j].soluong;
+							}
+							else {
+								arr[j].val = 0;
+							}
+						}
+						
+						//
 						str += '<li data-parent="' + i + '" data-node="' + j + '" data-size="' + arr[j].name + '" data-quan="' + arr[j].val + '" title="Size: ' + arr[j].name + '/ Số lượng: ' + arr[j].val + '">' + arr[j].name + '/ ' + arr[j].val + '</li>';
 					}
 				}

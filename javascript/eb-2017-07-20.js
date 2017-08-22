@@ -1427,7 +1427,7 @@ var _global_js_eb = {
 	
 	
 	
-	cart_create_arr_porudct : function () {
+	cart_create_arr_poruduct : function () {
 		
 		// reset lại mảng
 		ebe_arr_cart_product_list = [];
@@ -1474,7 +1474,7 @@ var _global_js_eb = {
 	cart_func : function () {
 		
 		//
-		_global_js_eb.cart_create_arr_porudct();
+		_global_js_eb.cart_create_arr_poruduct();
 		_global_js_eb.cart_agent();
 		
 		//
@@ -1488,7 +1488,7 @@ var _global_js_eb = {
 		
 		//
 		$('.change-select-quanlity').change(function () {
-			_global_js_eb.cart_create_arr_porudct();
+			_global_js_eb.cart_create_arr_poruduct();
 		});
 		
 	},
@@ -1555,7 +1555,7 @@ var _global_js_eb = {
 			f.t_diachi.value = f.t_dienthoai.value;
 		}
 		
-//		_global_js_eb.cart_create_arr_porudct();
+//		_global_js_eb.cart_create_arr_poruduct();
 		_global_js_eb.cart_agent();
 //		return false;
 		

@@ -1427,6 +1427,10 @@ li.footer-social-gg { background-color: #DE4B39; }
 }
 .footer-social a:hover { opacity: .6; }
 .show_count_cart { font-style: normal; }
+.show_count_cart:before,
+.show_count_cart:after { }
+.show_count_cart:before { content: "("; }
+.show_count_cart:after { content: ")"; }
 .jEBE_slider-child-thumbnail {
 	overflow: hidden;
 	margin: 15px 0;
