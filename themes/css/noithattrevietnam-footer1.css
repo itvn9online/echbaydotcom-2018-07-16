@@ -1,0 +1,20 @@
+#noithattrevietnam-footer1 { background-color: #05715f; }
+#noithattrevietnam-footer1 .nttvn-footer-menu { }
+#noithattrevietnam-footer1 .nttvn-footer-menu ul { line-height: 40px; }
+#noithattrevietnam-footer1 .nttvn-footer-menu li { float: left; }
+#noithattrevietnam-footer1 .nttvn-footer-menu a {
+	display: block;
+	padding: 0 15px;
+	color: #fff;
+}
+#noithattrevietnam-footer1 .nttvn-footer-menu a:hover { background-color: #333; }
+#noithattrevietnam-footer1 .nttvn-footer-menu .sub-menu { display: none; }
+#noithattrevietnam-footer1 .footer-social li {
+	margin: 5px 0 0 10px;
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
+	border-radius: 0;
+	background: #fff;
+}
+#noithattrevietnam-footer1 .footer-social a { color: #333; }
