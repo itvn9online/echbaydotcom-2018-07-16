@@ -82,11 +82,21 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		$ant = get_the_terms( $post->ID, $pot_tai );
 //		print_r( $ant );
 		foreach ( $ant as $v ) {
-			if ( $ant_ten == '' && $v->parent == 0 ) {
+			// ưu tiên lấy nhóm con trước
+			if ( $ant_ten == '' && $v->parent > 0 ) {
 				$ant_ten = '<a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a>';
 				break;
 			}
 		}
+		
+		// nếu ko tìm được -> lấy luôn nhóm cha đầu tiên
+		if ( $ant_ten == '' ) {
+			foreach ( $ant as $v ) {
+				$ant_ten = '<a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a>';
+				break;
+			}
+		}
+		
 //		$post->ant_ten = isset ($ant[0]->name ) ? '<a href="' . _eb_c_link( $ant[0]->term_id ) . '">' . $ant[0]->name . '</a>' : '';
 		
 	}
