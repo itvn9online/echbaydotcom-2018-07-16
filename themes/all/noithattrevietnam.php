@@ -17,7 +17,7 @@ $eb_all_themes_support["noithattrevietnam"]["cf_top3_include_file"] = "top_widge
 $eb_all_themes_support["noithattrevietnam"]["cf_footer1_include_file"] = "footer_widget.php";
 $eb_all_themes_support["noithattrevietnam"]["cf_footer2_include_file"] = "noithattrevietnam-footer1.php";
 $eb_all_themes_support["noithattrevietnam"]["cf_footer3_include_file"] = "noithattrevietnam-footer2.php";
-$eb_all_themes_support["noithattrevietnam"]["cf_footer4_include_file"] = "erawatch-footer3.php";
+$eb_all_themes_support["noithattrevietnam"]["cf_footer4_include_file"] = "denbaophat-footer3.php";
 //
 //
 $eb_all_themes_support["noithattrevietnam"]["cf_threaddetails_include_file"] = "noithattrevietnam-threaddetails.html";

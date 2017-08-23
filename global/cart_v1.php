@@ -28,23 +28,11 @@ $cart_total = 0;
 
 
 
-if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
+if ( $cart_list_id != '' ) {
 	
-	// v1
-	/*
 	$sql = _eb_load_post_obj( 100, array(
 		'post__in' => explode( ',', substr( $cart_list_id, 1 ) ),
 	) );
-	*/
-	
-	// v2 -> lấy theo lệnh mysql ví wordpres nó lấy cả sản phẩm sticky vào
-	$sql = _eb_q("SELECT *
-	FROM
-		`" . $wpdb->posts . "`
-	WHERE
-		ID IN (" . substr( $cart_list_id, 1 ) . ")
-		AND post_status = 'publish'
-		AND post_type = 'post'");
 //	print_r( $sql );
 	
 	//
@@ -54,17 +42,12 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 	}
 	$select_soluong = '<select name="t_soluong[{cart.post_id}]" data-name="{cart.post_id}" class="change-select-quanlity">' . $select_soluong . '</select>';
 	
-	// v1
-	/*
+	//
 	while ( $sql->have_posts() ) {
 		
 		$sql->the_post();
 		
 		$post = $sql->post;
-		*/
-	foreach ( $sql as $post ) {
-		
-		//
 //		print_r($post);
 		
 		//
@@ -123,7 +106,7 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 	</td>
 	<td class="bold big hide-if-mobile">' . EBE_add_ebe_currency_class ( $trv_giamoi ) . '</td>
 	<td>' . str_replace( '{cart.post_id}', $post->ID, $select_soluong ) . '</td>
-	<td class="bold big hide-if-mobile cart-total-inline">' . EBE_add_ebe_currency_class ( $total_line ) . '</td>
+	<td class="bold big hide-if-mobile">' . EBE_add_ebe_currency_class ( $total_line ) . '</td>
 </tr>';
 		
 		//

@@ -1501,9 +1501,28 @@ var _global_js_eb = {
 		_global_js_eb.check_null_cart();
 		_global_js_eb.cart_customer_cache();
 		
-		//
+		// khi thay đổi số lượng sản phẩm
 		$('.change-select-quanlity').change(function () {
+			
+			// tính lại tổng tiền theo thời gian thực
+			var total = 0,
+				line = 0;
+			$('.each-for-set-cart-value').each(function () {
+				var gia = $(this).attr('data-price') || 0,
+					soluong = $('.change-select-quanlity', this).val() || 1;
+				
+				// tổng tiền trên mỗi dòng
+				line = gia * soluong;
+				$('.cart-total-inline .global-details-giamoi', this).html( g_func.money_format( line ) );
+				
+				// tính tổng tiền
+				total -= 0 - line;
+			});
+			$('.cart-table-total .global-details-giamoi').html( g_func.money_format( total ) );
+			
+			// cập nhật lại thông số cho cả giỏ hàng
 			_global_js_eb.cart_create_arr_poruduct();
+			
 		});
 		
 	},
@@ -1858,8 +1877,8 @@ var _global_js_eb = {
 			add_cart_id = ',' + new_cart_id,
 			list_cart_id = '';
 		
-		list_cart_id = cart_id_in_cookie == null ? '' : cart_id_in_cookie;
-//		console.log(list_cart_id);
+		list_cart_id = ( cart_id_in_cookie == null ) ? '' : cart_id_in_cookie;
+		console.log(list_cart_id);
 //		console.log(add_cart_id);
 		
 		// xóa khỏi giỏ hàng
@@ -1868,16 +1887,51 @@ var _global_js_eb = {
 				return false;
 			}
 			
-			//
+			// v1
+			/*
 			if ( list_cart_id != '' ) {
 				list_cart_id = list_cart_id.replace( add_cart_id, '' );
-//					console.log(list_cart_id);
-				g_func.setc( c, list_cart_id, 7 );
+				console.log(list_cart_id);
+				
+				if ( list_cart_id == '' ) {
+					g_func.delck( c );
+				} else {
+					g_func.setc( c, list_cart_id, 7 );
+				}
 			}
+			*/
 			
 			//
 			if ( tr_id != '' && dog(tr_id) != null ) {
+				
+				// xóa TR tương ứng đi
 				$('#' + tr_id).fadeOut().remove();
+				
+				// tính lại tổng tiền
+				var total = 0,
+					list_cart_id = '';
+				$('.each-for-set-cart-value').each(function () {
+					var gia = $(this).attr('data-price') || 0,
+						soluong = $('.change-select-quanlity', this).val() || 1,
+						post_id = $(this).attr('data-id') || 0;
+					
+					total -= 0 - ( gia * soluong );
+					
+					if ( post_id > 0 ) {
+						list_cart_id += ',' + post_id;
+					}
+				});
+				$('.cart-table-total .global-details-giamoi').html( g_func.money_format( total ) );
+				
+				// lưu giỏ hàng mới
+//				console.log(list_cart_id);
+				if ( list_cart_id == '' ) {
+					g_func.delck( c );
+				} else {
+					g_func.setc( c, list_cart_id, 7 );
+				}
+//				console.log( g_func.getc( c ) );
+				
 			}
 			
 			//
