@@ -1293,8 +1293,13 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 					<div class="all-category-cats ' . $menu_slug_class . '-cats">' . $all_cats . '</div>
 				</div>';
 			}
+			// thêm nút trang chủ
 			else if ( strpos( $a, '/auto.get_all_category/home/' ) !== false ) {
 				$a = str_replace( '<!-- ul:before -->', '<li><div><a href="./"><i class="fa fa-home"></i> ' . EBE_get_lang('home') . '</a></div></li>', $all_cats );
+			}
+			// thêm icon trang chủ
+			else if ( strpos( $a, '/auto.get_all_category/home_icon/' ) !== false ) {
+				$a = str_replace( '<!-- ul:before -->', '<li><div><a href="./"><i class="fa fa-home"></i></a></div></li>', $all_cats );
 			}
 			else {
 				$a = $all_cats;
