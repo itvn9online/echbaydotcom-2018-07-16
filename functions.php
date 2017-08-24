@@ -1455,7 +1455,14 @@ function EBE_echbay_category_menu (
 		$str .= '<li><' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count d-none"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
 	}
 	
-	return '<ul class="cf ' . $ul_class . '"><!-- ul:before -->' . $str . '</ul>';
+	// nếu là lấy nhóm cha -> thêm thuộc tính thêm chuỗi vào đầu và cuối menu
+	if ( $cat_ids == 0 ) {
+		return '<ul class="cf ' . $ul_class . '"><!-- ul:before -->' . $str . '<!-- ul:after --></ul>';
+	}
+	// với sub-menu thì trả về menu không thôi
+	else {
+		return '<ul class="cf ' . $ul_class . '">' . $str . '</ul>';
+	}
 }
 
 

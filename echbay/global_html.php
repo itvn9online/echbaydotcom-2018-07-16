@@ -61,13 +61,13 @@
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><i class="fa fa-home"></i> Trang chủ + Tất cả danh mục <em class="small">(lấy toàn bộ chuyên mục đang có trên hệ thống, đính kèm Home menu vào đầu tiên)</em></div>
+				<div class="lf f80"><i class="fa fa-home"></i> Trang chủ + Danh mục <em class="small">(lấy toàn bộ chuyên mục đang có trên hệ thống, đính kèm Home menu vào đầu tiên)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/auto.get_all_category/home/" data-text="<i class='fa fa-home'></i> Danh mục" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><i class="fa fa-home"></i> + Tất cả danh mục <em class="small">(lấy toàn bộ chuyên mục đang có trên hệ thống, đính kèm Home menu vào đầu tiên)</em></div>
+				<div class="lf f80"><i class="fa fa-home"></i> + Danh mục <em class="small">(lấy toàn bộ chuyên mục đang có trên hệ thống, đính kèm Home menu vào đầu tiên)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/auto.get_all_category/home_icon/" data-text="<i class='fa fa-home'></i> Danh mục" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
