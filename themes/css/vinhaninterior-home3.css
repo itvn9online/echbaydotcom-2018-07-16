@@ -1,26 +1,4 @@
 #vinhaninterior-home3 { padding-bottom: 50px; }
-#vinhaninterior-home3 .home_default-title {
-	font-size: 36px;
-	text-transform: uppercase;
-	line-height: 36px;
-	font-weight: 500;
-	padding: 40px 0 15px 0;
-	color: #ed1c24;
-	position: relative;
-	margin: 0;
-	margin-bottom: 20px;
-}
-#vinhaninterior-home3 .home_default-title:before {
-	position: absolute;
-	width: 10%;
-	min-width: 50px;
-	border-bottom: 1.5px #000 solid;
-	left: 45%;
-	bottom: 0;
-	display: block !important;
-	content: "";
-}
-#vinhaninterior-home3 #portfolio-wrapper { }
 #vinhaninterior-home3 #portfolio-wrapper li {
 	float: left;
 	width: 20%;

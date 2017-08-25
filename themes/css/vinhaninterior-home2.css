@@ -19,7 +19,7 @@
 	position: absolute;
 	width: 10%;
 	min-width: 50px;
-	border-bottom: 1.5px #fff solid;
+	border-bottom: 1px #fff solid;
 	left: 45%;
 	bottom: 0;
 	display: block !important;
