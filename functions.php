@@ -2765,6 +2765,9 @@ function _eb_load_ads (
 			$post->trv_table_img = $trv_table_img;
 			
 			//
+			$post->target_blank = ( _eb_get_post_meta( $post->ID, '_eb_ads_target' ) == 1 ) ? ' target="_blank"' : '';
+			
+			//
 			/*
 			if ( $post->trv_mobile_img != '' ) {
 				$post->trv_mobile_img = 'background-image:url(' . $post->trv_mobile_img . ')!important';
