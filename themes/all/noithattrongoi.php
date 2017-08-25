@@ -24,9 +24,8 @@ $eb_all_themes_support["noithattrongoi"]["cf_home2_include_file"] = "vinhaninter
 $eb_all_themes_support["noithattrongoi"]["cf_home3_include_file"] = "vinhaninterior-home2.php";
 $eb_all_themes_support["noithattrongoi"]["cf_home4_include_file"] = "vinhaninterior-home3.php";
 $eb_all_themes_support["noithattrongoi"]["cf_home5_include_file"] = "vinhaninterior-home4.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home6_include_file"] = "vinhaninterior-home5.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home7_include_file"] = "vinhaninterior-home6.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home8_include_file"] = "home_widget.php";
+$eb_all_themes_support["noithattrongoi"]["cf_home6_include_file"] = "home_widget.php";
+$eb_all_themes_support["noithattrongoi"]["cf_home7_include_file"] = "vinhaninterior-home5.php";
 //
 $eb_all_themes_support["noithattrongoi"]["cf_threaddetails_include_file"] = "noithattrevietnam-threaddetails.html";
 //

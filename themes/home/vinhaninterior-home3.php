@@ -23,7 +23,7 @@ var dt_grid_XNJtp = {"id":"abc","initial_word":""};
 
 <div id="vinhaninterior-home3">
 	<div class="vinhaninterior-home3">
-		<div class="home_default-title text-center">Dự án tham gia</div>
+		<div class="home_default-title text-center"><?php echo EBE_get_lang('ads_status12'); ?></div>
 		<br>
 		<div class="patti-grid" id="gridwrapper_abc">
 			<div id="portfolio-wrapper"><?php echo _eb_load_ads( 12, 4, '295/379', array(), 0, $html_for_get_du_an, array(
