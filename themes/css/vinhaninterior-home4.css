@@ -1,10 +1,40 @@
-#vinhaninterior-home4 { }
-#vinhaninterior-home4 { }
-#vinhaninterior-home4 { }
-#vinhaninterior-home4 { }
-#vinhaninterior-home4 { }
-#vinhaninterior-home4 { }
-#vinhaninterior-home4 { }
-#vinhaninterior-home4 { }
-#vinhaninterior-home4 { }
-#vinhaninterior-home4 { }
+#vinhaninterior-home4 { padding-bottom: 50px; }
+#vinhaninterior-home4 .home_default-title {
+	font-size: 36px;
+	text-transform: uppercase;
+	line-height: 36px;
+	font-weight: 500;
+	padding: 40px 0 15px 0;
+	color: #ed1c24;
+	position: relative;
+	margin: 0;
+	margin-bottom: 20px;
+}
+#vinhaninterior-home4 .home_default-title:before {
+	position: absolute;
+	width: 10%;
+	min-width: 50px;
+	border-bottom: 1.5px #000 solid;
+	left: 45%;
+	bottom: 0;
+	display: block !important;
+	content: "";
+}
+#vinhaninterior-home4 .home-showroom li {
+	float: left;
+	width: 50%;
+}
+#vinhaninterior-home4 .home-showroom .banner-ads-padding { margin: 0 2px; }
+#vinhaninterior-home4 .home-showroom .banner-ads-title {
+	position: absolute;
+	top: 45%;
+	left: 10%;
+	right: 10%;
+	text-align: center;
+	color: #fff;
+	font-size: 18px;
+	display: none;
+	z-index: 2;
+}
+#vinhaninterior-home4 .home-showroom li:hover a { background: rgba(0,0,0,0.5); }
+#vinhaninterior-home4 .home-showroom li:hover .banner-ads-title { display: block; }

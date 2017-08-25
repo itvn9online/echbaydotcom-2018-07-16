@@ -1,4 +1,4 @@
-#vinhaninterior-home3 { }
+#vinhaninterior-home3 { padding-bottom: 50px; }
 #vinhaninterior-home3 .home_default-title {
 	font-size: 36px;
 	text-transform: uppercase;
@@ -23,20 +23,29 @@
 #vinhaninterior-home3 #portfolio-wrapper { }
 #vinhaninterior-home3 #portfolio-wrapper li {
 	float: left;
-	width: 25%;
+	width: 20%;
 }
-#vinhaninterior-home3 #portfolio-wrapper { }
-#vinhaninterior-home3 #portfolio-wrapper { }
-#vinhaninterior-home3 #portfolio-wrapper { }
-#vinhaninterior-home3 #portfolio-wrapper { }
-#vinhaninterior-home3 #portfolio-wrapper { }
-#vinhaninterior-home3 #portfolio-wrapper { }
-#vinhaninterior-home3 #portfolio-wrapper { }
-#vinhaninterior-home3 #portfolio-wrapper { }
-#vinhaninterior-home3 { }
-#vinhaninterior-home3 { }
-#vinhaninterior-home3 { }
-#vinhaninterior-home3 { }
-#vinhaninterior-home3 { }
-#vinhaninterior-home3 { }
-#vinhaninterior-home3 { }
+#vinhaninterior-home3 #portfolio-wrapper .banner-ads-padding { margin: 2px; }
+#vinhaninterior-home3 #portfolio-wrapper .banner-ads-media {
+	background: #fff center no-repeat;
+	background-size: auto 100%;
+}
+#vinhaninterior-home3 #portfolio-wrapper .banner-ads-title {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	right: 15px;
+	border: 1px #fff solid;
+	color: #fff;
+	padding: 10px;
+	z-index: 3;
+	text-align: center;
+	text-transform: uppercase;
+	display: none;
+}
+#vinhaninterior-home3 #portfolio-wrapper a { background: rgba(0, 0, 0, .4); }
+#vinhaninterior-home3 #portfolio-wrapper li:hover a { background: none; }
+#vinhaninterior-home3 #portfolio-wrapper li:hover .banner-ads-title {
+	display: block;
+	z-index: auto;
+}
