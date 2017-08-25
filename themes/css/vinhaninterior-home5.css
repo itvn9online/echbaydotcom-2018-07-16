@@ -1,10 +1,14 @@
-#vinhaninterior-home5 { }
-#vinhaninterior-home5 { }
-#vinhaninterior-home5 { }
-#vinhaninterior-home5 { }
-#vinhaninterior-home5 { }
-#vinhaninterior-home5 { }
-#vinhaninterior-home5 { }
-#vinhaninterior-home5 { }
-#vinhaninterior-home5 { }
-#vinhaninterior-home5 { }
+#vinhaninterior-home5 { padding-bottom: 25px; }
+#vinhaninterior-home5 .home-maps { font-size: 14px; }
+#vinhaninterior-home5 .home-maps li {
+	float: left;
+	width: 33.33%;
+}
+#vinhaninterior-home5 .home-maps .banner-ads-padding { margin: 0 14px; }
+#vinhaninterior-home5 .home-maps .banner-ads-title {
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 10px 0;
+	color: #231f20;
+	font-size: 18px;
+}

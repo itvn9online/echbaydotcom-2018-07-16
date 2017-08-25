@@ -314,6 +314,13 @@ var eb_global_product_size = '',
 			EBE_set_default_title_for_seo();
 		});
 		
+		
+		
+		//
+		if ( dog('_eb_ads_target') != null && dog('_eb_ads_target').value == 1 ) {
+			dog('_eb_ads_target').checked = true;
+		}
+		
 	}
 	// danh sách post, page, custom post type
 	else if ( admin_act == 'list' ) {

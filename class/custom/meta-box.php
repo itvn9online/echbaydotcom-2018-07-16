@@ -80,6 +80,13 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 		else if ( $tai == 'hidden' ) {
 			$str_hidden .= '<input type="' . $tai . '" id="' . $k . '" name="' . $k . '" value="' .esc_attr( $val ). '" />';
 		}
+		else if ( $tai == 'checkbox' ) {
+			echo '
+			<tr data-row="' . $k . '">
+				<td class="t"><strong>' . $v . '</strong></td>
+				<td class="i"><input type="' . $tai . '" id="' . $k . '" name="' . $k . '" value="' . $val . '" /> <label for="' . $k . '">' . $eb_arr_placeholder_custom_meta_box[$k] . '</label></td>
+			</tr>';
+		}
 		// input text
 		else {
 			echo '
@@ -128,6 +135,7 @@ $eb_arr_type_custom_meta_box = array(
 	
 	// ads
 	'_eb_ads_status' => $arr_eb_ads_status,
+	'_eb_ads_target' => 'checkbox',
 	
 	// category
 	'_eb_category_status' => $arr_eb_category_status,
@@ -159,6 +167,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_category_leech_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
+	'_eb_ads_target' => 'Mặc định, các URL trong quảng cáo sẽ được mở đè lên tab hiện tại, đánh dấu và lưu lại để mở URL trong tab mới.',
 );
 
 
@@ -285,6 +294,7 @@ function EchBayMetaOutput( $post ) {
 */
 $eb_ads_custom_meta_box = array(
 	'_eb_ads_url' => 'Đường dẫn',
+	'_eb_ads_target' => 'Mở trong tab mới',
 	'_eb_ads_video_url' => 'URL Video YouTube',
 	'_eb_ads_status' => 'Hiển thị',
 	'_eb_product_avatar' => 'Ảnh đại diện',
@@ -352,17 +362,23 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 //	$arr_save = _eb_get_object_post_meta( $post_id );
 	
 	foreach ( $arr_box as $k => $v ) {
+		
+		// lọc mã html với các input thường
+		$loc_html = isset( $eb_arr_type_custom_meta_box[ $k ] ) ? $eb_arr_type_custom_meta_box[ $k ] : '';
+		
+		//
 		if ( isset( $_POST[ $k ] ) ) {
 //			echo $k . '<br>' . "\n";
 			
 			$val = $_POST[ $k ];
 			
-			// lọc mã html với các input thường
-			$loc_html = isset( $eb_arr_type_custom_meta_box[ $k ] ) ? $eb_arr_type_custom_meta_box[ $k ] : '';
-			
 			// Bỏ qua với textarea
 			if ( $loc_html == 'textarea_one' || $loc_html == 'textarea' ) {
-			} else {
+			}
+			else if ( $loc_html == 'checkbox' ) {
+				$val = 1;
+			}
+			else {
 				if ( $k == '_eb_product_oldprice'
 				|| $k == '_eb_product_price' ) {
 					$val = _eb_float_only( $val );
@@ -384,6 +400,13 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 			//
 //			$arr_save[ $k ] = addslashes( $val );
 		}
+		// thử kiểm tra với checkbox
+		else if ( $loc_html == 'checkbox' ) {
+			// không có -> set là 0 luôn
+//			update_post_meta( $post_id, $k, 0 );
+			delete_post_meta( $post_id, $k );
+		}
+		
 	}
 	
 	//
@@ -628,8 +651,10 @@ function EBsave_extra_category_fileds( $term_id ) {
 		// thử kiểm tra với checkbox
 		else if ( $loc_html == 'checkbox' ) {
 			// không có -> set là 0 luôn
-			update_post_meta( $term_id, $k, 0 );
+//			update_post_meta( $term_id, $k, 0 );
+			delete_post_meta( $term_id, $k );
 		}
+		
 	}
 //	exit();
 	
