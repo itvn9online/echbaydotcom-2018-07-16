@@ -1,7 +1,28 @@
+<?php
+
+// tạo HTML riêng
+$html_for_get_du_an = '
+<li>
+	<div class="banner-ads-padding global-a-posi"><a href="{tmp.trv_img}" rel="prettyPhoto[portf_gal]" title="{tmp.post_title}">&nbsp;</a>
+		<div data-size="{tmp.data_size}" data-img="{tmp.trv_img}" data-table-img="{tmp.trv_table_img}" data-mobile-img="{tmp.trv_mobile_img}" class="ti-le-global each-to-bgimg banner-ads-media">&nbsp;</div>
+		<div class="banner-ads-title">{tmp.trv_tieude}</div>
+		<div class="banner-ads-desc">{tmp.trv_gioithieu}</div>
+	</div>
+</li>';
+
+// js để xử lý slider
+$arr_for_add_js [] = EB_THEME_PLUGIN_INDEX . 'outsource/javascript/custom-isotope-portfolio.js';
+
+?>
 <div id="vinhaninterior-home3">
 	<div class="<?php echo $__cf_row['cf_blog_class_style']; ?>">
 		<div class="vinhaninterior-home3">
-			<!-- Write HTML code to here -->
+			<div class="home_default-title text-center">Dự án tham gia</div>
+			<br>
+			<div id="gridwrapper_abc">
+				<div id="portfolio-wrapper"><?php echo _eb_load_ads( 12, 4, 1, array(), 0, $html_for_get_du_an ); ?></div>
+				
+			</div>
 		</div>
 	</div>
 </div>
@@ -38,3 +59,7 @@
 * WGR_get_footer_social();
 *
 */
+
+
+
+
