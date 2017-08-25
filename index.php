@@ -949,6 +949,12 @@ $arr_for_add_js = array(
 	EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
 );
 
+// thêm các JS khác dưới dạng URL
+$arr_for_add_outsource_js = array();
+
+// thêm các JS khác dưới dạng URL -> có thêm thuộc tính async
+$arr_for_add_outsource_async_js = array();
+
 
 
 

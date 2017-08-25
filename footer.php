@@ -122,12 +122,22 @@ EBE_add_js_compiler_in_cache( array(
 //	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery.touchSwipe.min.js',
 ) );
 
+// JS ngoài
+foreach ( $arr_for_add_outsource_js as $v ) {
+	echo '<script type="text/javascript" src="' . $v . '"></script>' . "\n";
+}
+
 // thêm JS đồng bộ URL từ code EchBay cũ sang code WebGiaRe (nếu có)
 if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
 	$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/eb_migrate_version.js';
 }
 
 EBE_add_js_compiler_in_cache( $arr_for_add_js, 'async', 1 );
+
+// JS ngoài
+foreach ( $arr_for_add_outsource_async_js as $v ) {
+	echo '<script type="text/javascript" src="' . $v . '" async></script>' . "\n";
+}
 
 // tạo file jQuery map nếu chưa có
 $file_jquery_map = EB_THEME_CACHE . $file_jquery_js . '.map';

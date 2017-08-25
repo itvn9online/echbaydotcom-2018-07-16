@@ -2529,7 +2529,8 @@ function _eb_load_ads (
 	// default: EBE_get_page_template( 'ads_node' )
 	// get title: EBE_get_page_template( 'ads_node_title' )
 	// get title and excerpt EBE_get_page_template( 'ads_node_excerpt' )
-	$html = ''
+	$html = '',
+	$other_options = array()
 ) {
 	global $__cf_row;
 	global $arr_eb_ads_status;
@@ -2790,7 +2791,7 @@ function _eb_load_ads (
 		
 		//
 		if ( $str != '' ) {
-			$str = '<ul class="cf global-ul-load-ads">' . $str . '</ul>';
+			$str = '<ul class="cf global-ul-load-ads' . ( isset( $other_options['add_class'] ) ? ' ' . $other_options['add_class'] : '' ) . '">' . $str . '</ul>';
 			
 			//
 //			$str = str_replace( 'xwatch.echbay.com/', 'xwatch.vn/', $str );
