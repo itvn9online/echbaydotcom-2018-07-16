@@ -1,8 +1,6 @@
 <div id="vinhaninterior-home5">
 	<div class="<?php echo $__cf_row['cf_blog_class_style']; ?>">
-		<div class="vinhaninterior-home5">
-			<!-- Write HTML code to here -->
-		</div>
+		<div class="vinhaninterior-home5">vinhaninterior-home5</div>
 	</div>
 </div>
 <?php
