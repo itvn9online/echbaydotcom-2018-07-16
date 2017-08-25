@@ -1395,12 +1395,21 @@ function _eb_get_youtube_id ( $url ) {
 		return '';
 	}
 	
+	//
 	parse_str( parse_url( $url, PHP_URL_QUERY ), $a );
 	
 	if ( isset( $a['v'] ) ) {
 		return $a['v'];  
 	} else {
 		$a = explode( '/embed/', $url );
+		if ( isset( $a[1] ) ) {
+			$a = explode( '?', $a[1] );
+			$a = explode( '&', $a[0] );
+			
+			return $a[0];
+		}
+		
+		$a = explode( '/youtu.be/', $url );
 		if ( isset( $a[1] ) ) {
 			$a = explode( '?', $a[1] );
 			$a = explode( '&', $a[0] );
