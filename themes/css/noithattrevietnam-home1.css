@@ -1,0 +1,30 @@
+#noithattrevietnam-home1 .home-slogan {
+	margin: 20px -5px;
+	line-height: 19px;
+	font-size: 14px;
+	color: #666;
+}
+#noithattrevietnam-home1 .home-slogan li {
+	float: left;
+	width: 25%;
+}
+#noithattrevietnam-home1 .home-slogan div {
+	border: 1px #ccc solid;
+	margin: 0 5px;
+	padding: 15px 15px 15px 50px;
+	position: relative;
+}
+#noithattrevietnam-home1 .home-slogan i {
+	position: absolute;
+	left: 5px;
+	display: block;
+	line-height: 38px;
+	width: 38px;
+	text-align: center;
+	font-size: 35px;
+	color: #347b1b;
+}
+#noithattrevietnam-home1 .home-slogan span { color: #333; }
+#noithattrevietnam-home1 { }
+#noithattrevietnam-home1 { }
+#noithattrevietnam-home1 { }

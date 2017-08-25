@@ -2526,6 +2526,9 @@ function _eb_load_ads (
 	// offset như mysql thông thương
 	$offset = 0,
 	// định dạng HTML cần xuất ra
+	// default: EBE_get_page_template( 'ads_node' )
+	// get title: EBE_get_page_template( 'ads_node_title' )
+	// get title and excerpt EBE_get_page_template( 'ads_node_excerpt' )
 	$html = ''
 ) {
 	global $__cf_row;
@@ -2753,7 +2756,7 @@ function _eb_load_ads (
 			$post->youtube_url = $youtube_url;
 			$post->youtube_avt = $youtube_avt;
 			$post->p_link = $p_link;
-			$post->data_size = $data_size;
+			$post->data_size = ( $data_size == '' ) ? 1 : $data_size;
 			
 			//
 			$post->trv_img = $trv_img;
@@ -2787,15 +2790,14 @@ function _eb_load_ads (
 		
 		//
 		if ( $str != '' ) {
-			$str = '<!-- Banner ads status: ' . $type . ' - ' . $arr_eb_ads_status[ $type ] . ' --> <ul class="cf global-ul-load-ads">' . $str . '</ul>';
-			/*
-		} else {
-			$str = '<i></i>';
-			*/
+			$str = '<ul class="cf global-ul-load-ads">' . $str . '</ul>';
+			
+			//
+//			$str = str_replace( 'xwatch.echbay.com/', 'xwatch.vn/', $str );
 		}
-		
-		//
-		$str = str_replace( 'xwatch.echbay.com/', 'xwatch.vn/', $str );
+		else {
+			$str = '<div class="global-ul-load-ads' . $type . '">Please add banner for "' . $arr_eb_ads_status[ $type ] . ' (' . $type . ')"</div>';
+		}
 		
 		//
 		/*
@@ -2805,7 +2807,7 @@ function _eb_load_ads (
 	*/
 	
 	//
-	return $str;
+	return '<!-- ADS status: ' . $type . ' - ' . $arr_eb_ads_status[ $type ] . ' -->' . $str;
 }
 
 

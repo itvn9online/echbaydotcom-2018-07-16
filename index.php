@@ -184,6 +184,55 @@ include EB_THEME_CORE . 'database.php';
 
 
 
+
+// mảng danh sách các định dạng quảng cáo
+$arr_eb_ads_status = array(
+	0 => '[ Không hiển thị ]',
+	1 => EBE_get_lang('ads_status1'),
+	4 => EBE_get_lang('ads_status4'),
+	5 => EBE_get_lang('ads_status5'),
+	6 => EBE_get_lang('ads_status6'),
+	7 => EBE_get_lang('ads_status7'),
+	8 => EBE_get_lang('ads_status8'),
+	9 => EBE_get_lang('ads_status9'),
+	10 => EBE_get_lang('ads_status10'),
+	11 => EBE_get_lang('ads_status11'),
+	12 => EBE_get_lang('ads_status12'),
+	13 => EBE_get_lang('ads_status13'),
+	14 => EBE_get_lang('ads_status14'),
+	15 => EBE_get_lang('ads_status15')
+);
+
+$arr_eb_product_status = array(
+	0 => EBE_get_lang('product_status0'),
+	1 => EBE_get_lang('product_status1'),
+	2 => EBE_get_lang('product_status2'),
+	3 => EBE_get_lang('product_status3'),
+	4 => EBE_get_lang('product_status4'),
+	5 => EBE_get_lang('product_status5'),
+	6 => EBE_get_lang('product_status6'),
+	7 => EBE_get_lang('product_status7'),
+	8 => EBE_get_lang('product_status8'),
+	9 => EBE_get_lang('product_status9'),
+	10 => EBE_get_lang('product_status10')
+);
+
+// nếu theme có hỗ trợ nhiều định dạng q.cáo khác -> add vào
+if ( isset ( $arr_eb_ads_custom_status ) ) {
+//	print_r( $arr_eb_ads_custom_status );
+	
+	foreach ( $arr_eb_ads_custom_status as $k => $v ) {
+		$arr_eb_ads_status[$k] = $v;
+	}
+//	print_r( $arr_eb_ads_status );
+}
+
+
+
+
+
+
+
 // cáu trúc chính của trang sản phẩm
 //define( '__eb_thread_template', file_get_contents( EB_THEME_HTML . 'threadnode.html', 1 ) );
 
@@ -394,43 +443,6 @@ setTimeout(function () {
 	}
 	add_action('login_head', 'EBE_login_css');
 	
-}
-
-
-
-
-
-
-// mảng danh sách các định dạng quảng cáo
-$arr_eb_ads_status = array(
-	0 => '[ Không hiển thị ]',
-	1 => 'Banner chính ( 1366 x Auto )',
-	4 => 'Review của khách hàng',
-	5 => 'Banner/ Logo đối tác ( chân trang )',
-	6 => 'Video HOT (trang chủ)',
-	7 => 'Bộ sưu tập/ Banner nổi bật (trang chủ)',
-	8 => 'Địa chỉ/ Bản đồ (chân trang/ liên hệ)',
-	9 => 'Banner chuyên mục ở trang chủ (2x3)',
-	10 => 'Slide ảnh theo phân nhóm (trang chi tiết)',
-);
-
-$arr_eb_product_status = array(
-	0 => 'Mặc định',
-	1 => 'Sản phẩm HOT',
-	2 => 'Sản phẩm MỚI',
-	3 => 'Sản phẩm BÁN CHẠY',
-	4 => 'Sản phẩm GIẢM GIÁ',
-	5 => 'Sản phẩm KHÁC',
-);
-
-// nếu theme có hỗ trợ nhiều định dạng q.cáo khác -> add vào
-if ( isset ( $arr_eb_ads_custom_status ) ) {
-//	print_r( $arr_eb_ads_custom_status );
-	
-	foreach ( $arr_eb_ads_custom_status as $k => $v ) {
-		$arr_eb_ads_status[$k] = $v;
-	}
-//	print_r( $arr_eb_ads_status );
 }
 
 

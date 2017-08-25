@@ -45,14 +45,21 @@ function WGR_create_themes_default_format (
 	
 	
 	
+	//
+	$class_for_width = $position;
+	// mặc định với file home -> sử dụng class tổng -> blog
+	if ( $position == 'home' ) {
+		$class_for_width = 'blog';
+	}
+	
+	
+	
 	// tạo HTML mặc định nếu chưa có
 	if ( $default_content == '' ) {
 		$default_content = trim( '
 <div id="' . $fname . '">
-	<div class="<?php echo $__cf_row[\'cf_' . $position . '_class_style\']; ?>">
-		<div class="' . $fname . '">
-			<!-- Write HTML code to here -->
-		</div>
+	<div class="<?php echo $__cf_row[\'cf_' . $class_for_width . '_class_style\']; ?>">
+		<div class="' . $fname . '">Check and write code for ' . $fname . '</div>
 	</div>
 </div>
 <?php
@@ -113,6 +120,30 @@ function WGR_create_themes_default_format (
 
 
 
+function WGR_for_to_create_theme_by_name ( $name, $j = 0 ) {
+	global $__cf_row_default;
+	global $dir_for_save_theme;
+	global $create_theme_name;
+	
+	//
+	if ( $j > 0 ) {
+		for ( $i = 1; $i <= $j; $i++ ) {
+			$file_name = 'cf_' . $name . $i . '_include_file';
+			
+			if ( isset( $__cf_row_default[ $file_name ] ) ) {
+				WGR_create_themes_default_format(
+					$dir_for_save_theme,
+					$create_theme_name . '-' . $name . $i,
+					$name
+				);
+			}
+		}
+	}
+}
+
+
+
+
 //
 //print_r( $_POST ); exit();
 
@@ -145,36 +176,17 @@ EBE_create_dir( $dir_for_save_theme );
 
 
 // Tạo trang danh mục sản phẩm -> lấy mẫu mặc định theo theme mặc định
-if ( $create_theme_top > 0 ) {
-	for ( $i = 1; $i <= $create_theme_top; $i++ ) {
-		$file_name = 'cf_top' . $i . '_include_file';
-		
-		if ( isset( $__cf_row_default[ $file_name ] ) ) {
-			WGR_create_themes_default_format(
-				$dir_for_save_theme,
-				$create_theme_name . '-top' . $i,
-				'top'
-			);
-		}
-	}
-}
+WGR_for_to_create_theme_by_name( 'top', $create_theme_top );
 
 
 
 // Tạo trang danh mục sản phẩm -> lấy mẫu mặc định theo theme mặc định
-if ( $create_theme_footer > 0 ) {
-	for ( $i = 1; $i <= $create_theme_footer; $i++ ) {
-		$file_name = 'cf_footer' . $i . '_include_file';
-		
-		if ( isset( $__cf_row_default[ $file_name ] ) ) {
-			WGR_create_themes_default_format(
-				$dir_for_save_theme,
-				$create_theme_name . '-footer' . $i,
-				'footer'
-			);
-		}
-	}
-}
+WGR_for_to_create_theme_by_name( 'footer', $create_theme_footer );
+
+
+// mặc định sẽ tạo ra 5 file home
+$create_theme_home = 5;
+WGR_for_to_create_theme_by_name( 'home', $create_theme_home );
 
 
 
@@ -222,7 +234,7 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 	if ( $position == 'footer' ) {
 		
 		// thêm widget vào đầu
-		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $begin_i . '_include_file"] = "footer_widget.php";' . "\n";
+		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $begin_i . '_include_file"] = "' . $position . '_widget.php";' . "\n";
 		
 		// bắt đầu lặp từ node 2 trở đi
 		$begin_i = 2;
@@ -269,12 +281,12 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 	
 	// thêm widget tương ứng cho top
 	if ( $position == 'top'
-	|| $position == 'top' ) {
+	|| $position == 'home' ) {
 		
 		$end_i += 1;
 		
 		// thêm widget vào cuối
-		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "top_widget.php";' . "\n";
+		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "' . $position . '_widget.php";' . "\n";
 		
 	}
 	

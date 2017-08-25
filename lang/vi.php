@@ -44,6 +44,36 @@ $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'cart_pla_dienthoai'] = $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'];
 $___eb_lang[eb_key_for_site_lang . 'cart_hotline'] = 'Hotline';
 
+// default status
+$___eb_lang[eb_key_for_site_lang . 'ads_status1'] = 'Banner chính ( 1366 x Auto )';
+$___eb_lang[eb_key_for_site_lang . 'ads_status2'] = 'Chờ sử dụng';
+$___eb_lang[eb_key_for_site_lang . 'ads_status3'] = $___eb_lang[eb_key_for_site_lang . 'ads_status2'];
+$___eb_lang[eb_key_for_site_lang . 'ads_status4'] = 'Review của khách hàng';
+$___eb_lang[eb_key_for_site_lang . 'ads_status5'] = 'Banner/ Logo đối tác ( chân trang )';
+$___eb_lang[eb_key_for_site_lang . 'ads_status6'] = 'Video HOT (trang chủ)';
+$___eb_lang[eb_key_for_site_lang . 'ads_status7'] = 'Bộ sưu tập/ Banner nổi bật (trang chủ)';
+$___eb_lang[eb_key_for_site_lang . 'ads_status8'] = 'Địa chỉ/ Bản đồ (chân trang/ liên hệ)';
+$___eb_lang[eb_key_for_site_lang . 'ads_status9'] = 'Banner chuyên mục ở trang chủ (2x3)';
+$___eb_lang[eb_key_for_site_lang . 'ads_status10'] = 'Slide ảnh theo phân nhóm (trang chi tiết)';
+$___eb_lang[eb_key_for_site_lang . 'ads_status11'] = 'Noname';
+$___eb_lang[eb_key_for_site_lang . 'ads_status12'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
+$___eb_lang[eb_key_for_site_lang . 'ads_status13'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
+$___eb_lang[eb_key_for_site_lang . 'ads_status14'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
+$___eb_lang[eb_key_for_site_lang . 'ads_status15'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
+
+$___eb_lang[eb_key_for_site_lang . 'product_status0'] = 'Mặc định';
+$___eb_lang[eb_key_for_site_lang . 'product_status1'] = 'Sản phẩm HOT';
+$___eb_lang[eb_key_for_site_lang . 'product_status2'] = 'Sản phẩm MỚI';
+$___eb_lang[eb_key_for_site_lang . 'product_status3'] = 'Sản phẩm BÁN CHẠY';
+$___eb_lang[eb_key_for_site_lang . 'product_status4'] = 'Sản phẩm GIẢM GIÁ';
+$___eb_lang[eb_key_for_site_lang . 'product_status5'] = 'Sản phẩm KHÁC';
+$___eb_lang[eb_key_for_site_lang . 'product_status6'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
+$___eb_lang[eb_key_for_site_lang . 'product_status7'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
+$___eb_lang[eb_key_for_site_lang . 'product_status8'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
+$___eb_lang[eb_key_for_site_lang . 'product_status9'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
+$___eb_lang[eb_key_for_site_lang . 'product_status10'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
+
+
 // details
 $___eb_lang[eb_key_for_site_lang . 'chitietsp'] = 'Chi tiết Sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'tuongtu'] = 'Sản phẩm tương tự';

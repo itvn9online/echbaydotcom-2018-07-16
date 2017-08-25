@@ -50,7 +50,6 @@ if ( $__cf_row['cf_dns_prefetch'] != '' ) {
 
 //
 $group_go_to = array();
-$main_content = '';
 $schema_BreadcrumbList = array();
 $breadcrumb_position = 1;
 $import_ecommerce_ga = '';
@@ -146,8 +145,20 @@ if ( $act == '' ) {
 $inc_file = EB_THEME_PHP . $inc_file . '.php';
 //echo $inc_file . '<br>';
 
+//
+//echo EB_THEME_URL . 'templates/' . $act . '.php';
+
+
+
 // nếu có file -> include file vào
 if ( file_exists( $inc_file ) ) {
+	
+	
+	// main mặc định để các file con sử dụng lại
+	$main_content = '';
+	
+	
+	//
 	include $inc_file;
 
 
@@ -208,6 +219,10 @@ if ( file_exists( $inc_file ) ) {
 	// chyển các thẻ title động sang thẻ theo config
 	$main_content = EBE_dynamic_title_tag( $main_content );
 	
+}
+// hoặc nếu đây là một page template -> không làm gì cả, vì code sẽ nằm trong file template kia
+else if ( file_exists( EB_THEME_URL . 'templates/' . $act . '.php' ) ) {
+	echo '<!-- custom page template -->';
 }
 // nếu không -> hiển thị trang 404
 else {

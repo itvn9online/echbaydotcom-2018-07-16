@@ -1,0 +1,56 @@
+#vinhaninterior-home2 {
+	background: #000 url(http://vinhaninterior.com/lib/uploads/2016/08/parallax-1.jpg) center no-repeat;
+	background-size: cover;
+	background-attachment: scroll;
+	padding: 10px 0 50px 0;
+}
+#vinhaninterior-home2 .home_default-title {
+	font-size: 36px;
+	text-transform: uppercase;
+	line-height: 36px;
+	font-weight: 500;
+	padding: 40px 0 15px 0;
+	color: #fff;
+	position: relative;
+	margin: 0;
+	margin-bottom: 20px;
+}
+#vinhaninterior-home2 .home_default-title:before {
+	position: absolute;
+	width: 10%;
+	min-width: 50px;
+	border-bottom: 1.5px #fff solid;
+	left: 45%;
+	bottom: 0;
+	display: block !important;
+	content: "";
+}
+#vinhaninterior-home2 .home-linh-vuc { padding: 0 20px; }
+#vinhaninterior-home2 .home-linh-vuc li {
+	float: left;
+	width: 25%;
+}
+#vinhaninterior-home2 .home-linh-vuc .banner-ads-padding {
+	margin: 0 14px;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+}
+#vinhaninterior-home2 .home-linh-vuc .banner-ads-media {
+	background: #fff center no-repeat;
+	background-size: auto 100%;
+}
+#vinhaninterior-home2 .home-linh-vuc .banner-ads-title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, .6);
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	text-align: center;
+	padding: 15px 0;
+	line-height: 19px;
+}
+#vinhaninterior-home2 .home-linh-vuc li:hover .banner-ads-padding { border-color: #f00; }
+#vinhaninterior-home2 .home-linh-vuc li:hover .banner-ads-title { background-color: #f00; }
