@@ -56,8 +56,9 @@ if ( ! file_exists( EB_THEME_URL . 'i.php' ) ) {
 				foreach ( $arr2 as $v2 ) {
 					$copy_to = EB_THEME_URL . $fname . '/' . basename( $v2 );
 					echo $copy_to . "\n";
+					echo filesize( $v2 ) . "\n";
 					
-					if ( ! file_exists( $copy_to ) ) {
+					if ( filesize( $v2 ) > 0 && ! file_exists( $copy_to ) ) {
 						WGR_copy( $v2, $copy_to );
 					}
 				}
