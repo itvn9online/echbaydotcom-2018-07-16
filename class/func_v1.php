@@ -408,7 +408,7 @@ class EchBayCommerce {
 						
 						// chỉnh lại đường dẫn trong file css
 						$arr_css_new_content = array(
-							'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/theme/images/',
+							'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/images/',
 //							'../../../../plugins/' => '../../plugins/',
 							
 							// các css ngoài -> trong outsource -> vd: font awesome
@@ -601,7 +601,7 @@ class EchBayCommerce {
 					
 					//
 					$this->create_file ( $file_save, $this->replace_css_space ( $cache_content, array(
-						'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/theme/images/',
+						'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/images/',
 						
 						// các css ngoài -> trong outsource -> vd: font awesome
 						'../outsource/' => './wp-content/echbaydotcom/outsource/',
@@ -657,7 +657,7 @@ class EchBayCommerce {
 					
 					//
 					$this->create_file ( $file_save, $this->replace_css_space ( $cache_content, array(
-						'../images/' => '../../themes/' . basename( get_template_directory() ) . '/theme/images/',
+						'../images/' => '../../themes/' . basename( get_template_directory() ) . '/images/',
 						
 						// các css ngoài -> trong outsource -> vd: font awesome
 						'../outsource/' => '../../echbaydotcom/outsource/',

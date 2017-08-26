@@ -9,7 +9,7 @@
 1: Nếu muốn file chỉ chạy trên domain cụ thể, VD:
 Domain: xwatch.vn
 
-2. Nếu muốn chỉ chạy trên theme cụ thể -> cho vào thư mục /wp-content/themes/[theme name]theme/ui
+2. Nếu muốn chỉ chạy trên theme cụ thể -> cho vào thư mục /wp-content/themes/[theme name]ui
 
 3. Tạo tags để tìm kiếm themes dễ hơn, VD:
 Tags: slogan, bigbanner, breadcrumb
@@ -118,7 +118,7 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 	// lấy trong theme
 	else {
 //		echo EB_THEME_URL . "\n";
-		$arr_file_name = glob ( EB_THEME_URL . 'theme/ui/*.{' . $files_type_support . '}', GLOB_BRACE );
+		$arr_file_name = glob ( EB_THEME_URL . 'ui/*.{' . $files_type_support . '}', GLOB_BRACE );
 	}
 //	print_r( $arr_file_name );
 	
@@ -502,7 +502,7 @@ $arr_for_set_template['str_list_all_include_file'] = implode( "\n", $str_list_al
 
 
 // Hiển thị đường dẫn tạo theme
-$arr_for_set_template['dir_for_save_new_theme'] = EB_THEME_URL . 'theme/ui/';
+$arr_for_set_template['dir_for_save_new_theme'] = EB_THEME_URL . 'ui/';
 
 
 

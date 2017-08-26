@@ -441,8 +441,8 @@ if ( $main_content == false ) {
 		// v3
 		if ( $__cf_row['cf_catsmain_include_file'] != '' && $html_v2_file == 'thread_list' ) {
 			// ưu tiên hàng của theme trước
-			if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ 'cf_catsmain_include_file' ] ) ) {
-				$main_content = file_get_contents( EB_THEME_URL . 'theme/ui/' . $__cf_row[ 'cf_catsmain_include_file' ], 1 );
+			if ( file_exists( EB_THEME_URL . 'ui/' . $__cf_row[ 'cf_catsmain_include_file' ] ) ) {
+				$main_content = file_get_contents( EB_THEME_URL . 'ui/' . $__cf_row[ 'cf_catsmain_include_file' ], 1 );
 				
 				$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_catsmain_include_file' ] ) ] = 1;
 			}

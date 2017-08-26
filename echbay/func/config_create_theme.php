@@ -149,7 +149,7 @@ function WGR_for_to_create_theme_by_name ( $name, $j = 0 ) {
 
 
 //
-$dir_for_save_theme = EB_THEME_URL . 'theme/ui/';
+$dir_for_save_theme = EB_THEME_URL . 'ui/';
 
 $create_theme_name = trim( $_POST['create_theme_name'] );
 $create_theme_name = _eb_non_mark( $create_theme_name );
@@ -266,7 +266,7 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 //			echo $fcheck . '<br>' . "\n";
 			
 			if ( file_exists( $fcheck )
-			|| file_exists( EB_THEME_URL . 'theme/ui/' . $fname ) ) {
+			|| file_exists( EB_THEME_URL . 'ui/' . $fname ) ) {
 				$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $check_theme_node . '"] = "' . $fname . '";' . "\n";
 				
 				$end_i = $j;

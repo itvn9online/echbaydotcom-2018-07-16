@@ -322,7 +322,7 @@ if ( $enable_echbay_super_cache == 1 ) {
 	
 	
 	// gọi đến file index của từng theme
-	include_once EB_THEME_URL . 'theme/index.php';
+	include_once EB_THEME_URL . 'i.php';
 	
 	
 	
@@ -347,7 +347,7 @@ else {
 	
 	// gọi đến file index của từng theme
 	//include_once EB_THEME_URL . 'index.php';
-	include_once EB_THEME_URL . 'theme/index.php';
+	include_once EB_THEME_URL . 'i.php';
 	
 	
 	

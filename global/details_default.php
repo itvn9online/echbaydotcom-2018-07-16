@@ -928,7 +928,7 @@ if ( function_exists('eb_details_for_current_domain') ) {
 if ( $__post->post_type == 'post' && $__cf_row['cf_threaddetails_include_file'] != '' ) {
 	
 	//
-	$tmp_theme = EB_THEME_URL . 'theme/ui/' . $__cf_row[ 'cf_threaddetails_include_file' ];
+	$tmp_theme = EB_THEME_URL . 'ui/' . $__cf_row[ 'cf_threaddetails_include_file' ];
 	$tmp_plugin = EB_THEME_PLUGIN_INDEX . 'themes/threaddetails/' . $__cf_row[ 'cf_threaddetails_include_file' ];
 	
 	// ưu tiên hàng của theme trước

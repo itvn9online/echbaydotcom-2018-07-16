@@ -2633,15 +2633,15 @@ function EBE_get_css_for_config_design ( $f, $type = '.php' ) {
 
 // lấy css theo theme
 function EBE_get_css_for_theme_design ( $f, $type = '.php' ) {
-//	return EB_THEME_URL . 'theme/css/' . str_replace( $type, '.css', $f );
-//	return EB_THEME_URL . 'theme/ui/' . str_replace( $type, '.css', $f );
-	return EB_THEME_URL . 'theme/ui/' . WGR_convert_fiename_to_css( $f );
+//	return EB_THEME_URL . 'css/' . str_replace( $type, '.css', $f );
+//	return EB_THEME_URL . 'ui/' . str_replace( $type, '.css', $f );
+	return EB_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f );
 }
 
 // kiểm tra file template xem nằm ở đâu thì nhúng css tương ứng ở đó
 function WGR_check_add_add_css_themes_or_plugin ( $f ) {
 	// ưu tiên hàng của theme trước
-	if ( file_exists( EB_THEME_URL . 'theme/ui/' . $f ) ) {
+	if ( file_exists( EB_THEME_URL . 'ui/' . $f ) ) {
 		return EBE_get_css_for_theme_design ( $f );
 	}
 	
@@ -2679,8 +2679,8 @@ function WGR_load_module_name_css (
 			}
 			else {
 				// ưu tiên hàng của theme trước
-				if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ] ) ) {
-					$arr[] = EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ];
+				if ( file_exists( EB_THEME_URL . 'ui/' . $__cf_row[ $j ] ) ) {
+					$arr[] = EB_THEME_URL . 'ui/' . $__cf_row[ $j ];
 					
 					$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ $j ] ) ] = $css_body;
 				}

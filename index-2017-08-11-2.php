@@ -118,7 +118,7 @@ define( 'ECHBAY_PRI_CODE', EB_THEME_PLUGIN_INDEX . 'echbay/' );
 * theme
 */
 // thư mục lưu trữ các file template html
-define( 'EB_THEME_THEME', EB_THEME_URL . 'theme/' );
+define( 'EB_THEME_THEME', EB_THEME_URL );
 //echo EB_THEME_THEME . '<br>';
 
 // thư mục lưu trữ các file template html
@@ -187,7 +187,7 @@ include EB_THEME_CORE . 'database.php';
 if ( $__cf_row['cf_threadnode_include_file'] != '' ) {
 	
 	//
-	$tmp_theme = EB_THEME_URL . 'theme/ui/' . $__cf_row[ 'cf_threadnode_include_file' ];
+	$tmp_theme = EB_THEME_URL . 'ui/' . $__cf_row[ 'cf_threadnode_include_file' ];
 	$tmp_plugin = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $__cf_row['cf_threadnode_include_file' ];
 	
 	// v1
@@ -342,8 +342,8 @@ else {
 $___eb_template_uri = web_link;
 //echo $___eb_template_uri . ' -> aaaaaaaaaaaaaaaaaaaaaaa<br>' . "\n";
 
-//define( 'EB_URL_OF_THEME', $___eb_template_uri . '/theme/' );
-define( 'EB_URL_OF_THEME', $___eb_template_uri . 'wp-content/themes/' . basename ( EB_THEME_URL ) . '/theme/' );
+//define( 'EB_URL_OF_THEME', $___eb_template_uri . '/' );
+define( 'EB_URL_OF_THEME', $___eb_template_uri . 'wp-content/themes/' . basename ( EB_THEME_URL ) . '/' );
 //echo EB_URL_OF_THEME . '<br>' . "\n";
 //define( 'EB_URL_OF_PLUGIN', esc_url( plugins_url() ) . '/echbaydotcom/' );
 //define( 'EB_URL_OF_PLUGIN', dirname( dirname( $___eb_template_uri ) ) . '/echbaydotcom/' );

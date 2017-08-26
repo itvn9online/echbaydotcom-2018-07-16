@@ -344,8 +344,8 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 			}
 			else {
 				// ưu tiên hàng của theme trước
-				if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ] ) ) {
-					$arr_includes_top_file[] = EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ];
+				if ( file_exists( EB_THEME_URL . 'ui/' . $__cf_row[ $j ] ) ) {
+					$arr_includes_top_file[] = EB_THEME_URL . 'ui/' . $__cf_row[ $j ];
 					
 					$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ $j ] ) ] = 0;
 				}
@@ -390,8 +390,8 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 			}
 			else {
 				// ưu tiên hàng của theme trước
-				if ( file_exists( EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ] ) ) {
-					$arr_includes_footer_file[] = EB_THEME_URL . 'theme/ui/' . $__cf_row[ $j ];
+				if ( file_exists( EB_THEME_URL . 'ui/' . $__cf_row[ $j ] ) ) {
+					$arr_includes_footer_file[] = EB_THEME_URL . 'ui/' . $__cf_row[ $j ];
 					
 					$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ $j ] ) ] = 1;
 				}

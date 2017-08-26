@@ -405,7 +405,7 @@ function _eb_add_css_js_file ( $arr, $file_type = '.css', $include_now = 0, $inc
 					
 					// chỉnh lại đường dẫn trong file css
 					$arr_css_new_content = array(
-						'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/theme/images/',
+						'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/images/',
 //							'../../../../plugins/' => '../../plugins/',
 						
 						// các css ngoài -> trong outsource -> vd: font awesome
@@ -598,8 +598,8 @@ function _eb_add_compiler_css ( $arr ) {
 				
 				//
 				_eb_create_file ( $file_save, _eb_replace_css_space ( $cache_content, array(
-//					'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/theme/images/',
-					'../images/' => './wp-content/themes/' . basename( EB_THEME_URL ) . '/theme/images/',
+//					'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/images/',
+					'../images/' => './wp-content/themes/' . basename( EB_THEME_URL ) . '/images/',
 					'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
 					
 					// các css ngoài -> trong outsource -> vd: font awesome
@@ -656,7 +656,7 @@ function _eb_add_compiler_link_css ( $arr ) {
 				
 				//
 				_eb_create_file ( $file_save, _eb_replace_css_space ( $cache_content, array(
-					'../images/' => '../../themes/' . basename( get_template_directory() ) . '/theme/images/',
+					'../images/' => '../../themes/' . basename( get_template_directory() ) . '/images/',
 					
 					// các css ngoài -> trong outsource -> vd: font awesome
 					'../outsource/' => '../../echbaydotcom/outsource/',
