@@ -834,13 +834,66 @@ function WGR_copy ( $source, $path, $ftp = 1, $ch_mod = 0644 ) {
 	
 	// Không thì tạo thông qua FTP
 	if ( $ftp == 1 ) {
-//		return _eb_create_file( $path, file_get_contents( $source, 1 ) );
-		
-		// gọi trực tiếp đến hàm tạo file qua FTP, do copy đã ko được thì create file qua PHP chắc chắn cũng ko
-		return EBE_ftp_create_file( $path, file_get_contents( $source, 1 ) );
+		return WGR_ftp_copy( $source, $path );
 	}
 	
 	return false;
+}
+
+function WGR_ftp_copy ( $source, $path ) {
+	
+	//
+	$ftp_server = EBE_check_ftp_account();
+	if ( $ftp_server == false ) {
+		echo 'FTP account not found';
+		return false;
+	}
+	$ftp_user_name = FTP_USER;
+	$ftp_user_pass = FTP_PASS;
+	
+	
+	// tạo kết nối
+	$conn_id = ftp_connect($ftp_server);
+	if ( ! $conn_id ) {
+		echo 'ERROR FTP connect to server<br>' . "\n";
+		return false;
+	}
+	
+	
+	// đăng nhập
+	if ( ! ftp_login($conn_id, $ftp_user_name, $ftp_user_pass) ) {
+		echo 'ERROR FTP login false<br>' . "\n";
+		return false;
+	}
+	
+	
+	//
+	$ftp_dir_root = EBE_get_config_ftp_root_dir( date_time );
+	
+	//
+	$file_for_ftp = $path;
+//	echo $file_for_ftp . '<br>';
+	if ( $ftp_dir_root != '' ) {
+//		echo $ftp_dir_root . '<br>';
+		
+		// nếu trong chuỗi file không có root dir -> báo lỗi
+		if ( strstr( $file_for_ftp, '/' . $ftp_dir_root . '/' ) == false ) {
+			echo 'ERROR FTP root dir not found #' . $ftp_dir_root . '<br>' . "\n";
+			return false;
+		}
+		
+		$file_for_ftp = strstr( $file_for_ftp, '/' . $ftp_dir_root . '/' );
+//		echo $file_for_ftp . '<br>';
+	}
+	
+	
+	// copy qua FTP_BINARY thì mới copy ảnh chuẩn được
+	ftp_put($conn_id, $file_for_ftp, $source, FTP_BINARY) or die( 'ERROR copy file via FTP #' . $path );
+	
+	
+	//
+	return false;
+	
 }
 
 function EBE_create_dir ( $path, $ftp = 1 ) {
