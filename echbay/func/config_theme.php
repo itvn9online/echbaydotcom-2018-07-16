@@ -46,6 +46,26 @@ _eb_update_option( 'posts_per_page', $_POST['posts_per_page'] );
 
 
 
+
+
+// Fixed lại chiều cao logo cho chuẩn
+$cats_width_sidebar = (int) $_POST['cf_cats_width_sidebar'];
+
+if ( trim( $_POST['cf_cats_column_style'] ) != '' && $cats_width_sidebar > 0 ) {
+	$_POST['cf_default_css'] .= _eb_supper_del_line( '.thread_list_noidung_menu .custom-width-cats-sidebar,
+.thread_list_menu_noidung .custom-width-cats-sidebar {
+	width: ' . $cats_width_sidebar . '%;
+}
+.thread_list_noidung_menu .custom-width-cats-main,
+.thread_list_menu_noidung .custom-width-cats-main {
+	width: ' . ( 100 - $cats_width_sidebar ) . '%;
+}' );
+}
+
+
+
+
+
 // chạy vòng lặp rồi in các dữ liệu vào bảng lưu
 foreach( $_POST as $k => $v ) {
 //	echo $k . '<br>';

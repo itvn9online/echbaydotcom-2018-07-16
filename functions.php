@@ -2693,13 +2693,13 @@ function _eb_load_ads (
 		while ( $sql->have_posts() ) {
 			
 			$sql->the_post();
-//				print_r( $sql );
+//			print_r( $sql );
 			
 			$post = $sql->post;
-//				print_r( $post );
+//			print_r( $post );
 			
 			//
-//				$___eb_ads__not_in .= ',' . $post->ID;
+//			$___eb_ads__not_in .= ',' . $post->ID;
 			
 			//
 			$p_link = _eb_get_post_meta( $post->ID, '_eb_ads_url', true, 'javascript:;' );
@@ -2792,13 +2792,18 @@ function _eb_load_ads (
 		//
 		wp_reset_postdata();
 		
-		//
+		// nếu có dữ liệu -> trả về dữ liệu theo cấu trúc định sẵn
 		if ( $str != '' ) {
 			$str = '<ul class="cf global-ul-load-ads' . ( isset( $other_options['add_class'] ) ? ' ' . $other_options['add_class'] : '' ) . '">' . $str . '</ul>';
 			
 			//
 //			$str = str_replace( 'xwatch.echbay.com/', 'xwatch.vn/', $str );
 		}
+		// nếu không -> trả về giá trị mặc định (nếu có)
+		else if ( isset ( $other_options['default_value'] ) ) {
+			return $other_options['default_value'];
+		}
+		// hoặc trả về câu thông báo cho người dùng add banner cần thiết để chạy
 		else {
 			$str = '<div class="global-ul-load-ads' . $type . '">Please add banner for "' . $arr_eb_ads_status[ $type ] . ' (' . $type . ')"</div>';
 		}

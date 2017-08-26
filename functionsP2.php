@@ -14,7 +14,10 @@ function EBE_get_big_banner ( $limit = 5, $option = array () ) {
 		'
 <li title="{tmp.post_title}" class="global-a-posi"><a href="{tmp.p_link}">&nbsp;</a>
 	<div data-size="{tmp.data_size}" data-img="{tmp.trv_img}" data-table-img="{tmp.trv_table_img}" data-mobile-img="{tmp.trv_mobile_img}" class="ti-le-global banner-ads-media" style="background-image:url({tmp.trv_img});">&nbsp;</div>
-</li>'
+</li>',
+		array(
+			'default_value' => ''
+		)
 	);
 }
 
@@ -1486,6 +1489,18 @@ function _eb_del_line ( $str, $re = "", $pe = "/\r\n|\n\r|\n|\t/i" ) {
 	return preg_replace( $pe, $re, trim( $str ) );
 }
 
+function _eb_supper_del_line ( $str, $add_line = '' ) {
+	$a = explode( "\n", $str );
+	$str = '';
+	foreach ( $a as $v ) {
+		$v = trim( $v );
+		if ( $v != '' ) {
+			$str .= $v . $add_line;
+		}
+	}
+	return $str;
+}
+
 function _eb_lay_email_tu_cache ( $id ) {
 	if ( $id <= 0 ) {
 		return 'NULL';
@@ -2772,6 +2787,12 @@ function EBE_get_html_address () {
 function WGR_get_bigbanner () {
 	global $str_big_banner;
 	
+	//
+	if ( $str_big_banner == '' ) {
+		return '<!-- HTML for big banner-->';
+	}
+	
+	//
 	return '<div class="oi_big_banner">' . $str_big_banner . '</div>';
 }
 

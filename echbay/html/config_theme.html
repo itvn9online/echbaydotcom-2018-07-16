@@ -13,7 +13,9 @@
 <ul id="list-tab-eb-admin-config" class="eb-admin-config cf">
 </ul>
 <form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();">
-	<div class="d-none">{tmp.str_list_all_include_file}</div>
+	<div class="d-none2">
+		<textarea name="cf_default_css" id="cf_default_css" style="width:90%;">{tmp.cf_default_css}</textarea>
+		{tmp.str_list_all_include_file}</div>
 	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table maxwidth-public-table fix-textarea-height">
 		<tbody title="Giao diện" id="eb-admin-config-theme-themes" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
@@ -38,17 +40,17 @@
 		</tbody>
 		<tbody title="Chung" id="eb-admin-config-theme-chung" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
-				<td valign="top" class="t">Chiều rộng khung (chung)</td>
+				<td class="t">Chiều rộng khung (chung)</td>
 				<td class="i">{tmp.cf_blog_class_style}</td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td colspan="2" valign="top" class="t">Thiết kế phần TOP</td>
+				<td colspan="2" class="t">Thiết kế phần TOP</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Chiều rộng top</td>
+				<td class="t">Chiều rộng top</td>
 				<td class="i">{tmp.cf_top_class_style}</td>
 			</tr>
 			<tr>
@@ -61,7 +63,7 @@
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td colspan="2" valign="top" class="t">Khung cho phần MAIN</td>
+				<td colspan="2" class="t">Khung cho phần MAIN</td>
 			</tr>
 			<tr>
 				<td colspan="2"><div class="border-file-design">{tmp.str_main_design_preview}</div></td>
@@ -70,10 +72,10 @@
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td colspan="2" valign="top" class="t">Thiết kế phần FOOTER</td>
+				<td colspan="2" class="t">Thiết kế phần FOOTER</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Chiều rộng footer</td>
+				<td class="t">Chiều rộng footer</td>
 				<td class="i">{tmp.cf_footer_class_style}</td>
 			</tr>
 			<tr>
@@ -85,7 +87,7 @@
 		</tbody>
 		<tbody title="Trang chủ (Home)" id="eb-admin-config-theme-home" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
-				<td valign="top" class="t">Các widget được gọi ra</td>
+				<td class="t">Các widget được gọi ra</td>
 				<td class="i"><ol class="bold">
 						<li>main sidebar</li>
 						<li>home sidebar</li>
@@ -93,11 +95,11 @@
 					</ol></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Chiều rộng khung</td>
+				<td class="t">Chiều rộng khung</td>
 				<td class="i">{tmp.cf_home_class_style}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Bố cục trang chủ</td>
+				<td class="t">Bố cục trang chủ</td>
 				<td class="i">{tmp.cf_home_column_style}</td>
 			</tr>
 			<tr>
@@ -109,7 +111,7 @@
 		</tbody>
 		<tbody title="Danh sách sản phẩm (Category)" id="eb-admin-config-theme-list" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
-				<td valign="top" class="t">Các widget được gọi ra</td>
+				<td class="t">Các widget được gọi ra</td>
 				<td class="i"><ol class="bold">
 						<li>main sidebar</li>
 						<li>category sidebar</li>
@@ -117,15 +119,21 @@
 					</ol></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Chiều rộng khung</td>
+				<td class="t">Chiều rộng khung</td>
 				<td class="i">{tmp.cf_cats_class_style}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Bố cục trang danh sách sản phẩm</td>
+				<td class="t">Bố cục trang danh sách sản phẩm</td>
 				<td class="i">{tmp.cf_cats_column_style}</td>
 			</tr>
 			<tr>
-				<td colspan="2" valign="top" class="t">Khung cho trang CATEGORY</td>
+				<td class="t">Chiều rộng cho khung menu</td>
+				<td class="i"><input type="text" name="cf_cats_width_sidebar" value="{tmp.cf_cats_width_sidebar}" class="s" maxlength="2" />
+					%
+					<div class="small">Kích thước của cả khung là 100%, bạn muốn phần sidebar chiếm bao nhiêu % trong tổng số 100% này thì nhập số đó vào đây rồi lưu lại.</div></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Khung cho trang CATEGORY</td>
 			</tr>
 			<tr>
 				<td colspan="2"><div class="border-file-design">{tmp.str_catsmain_design_preview}</div></td>
@@ -140,7 +148,7 @@
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td colspan="2" valign="top" class="t">Thiết kế khung SẢN PHẨM</td>
+				<td colspan="2" class="t">Thiết kế khung SẢN PHẨM</td>
 			</tr>
 			<tr>
 				<td colspan="2"><div class="small l19">Chọn file thiết kế cho khung SẢN PHẨM hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
@@ -171,21 +179,21 @@
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr class="d-none">
-				<td valign="top" class="t">Bố cục chỉ mục sản phẩm (node)</td>
+				<td class="t">Bố cục chỉ mục sản phẩm (node)</td>
 				<td class="i">{tmp.cf_cats_node_html}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Số sản phẩm trên mỗi trang</td>
+				<td class="t">Số sản phẩm trên mỗi trang</td>
 				<td class="i"><input type="number" name="posts_per_page" value="{tmp.posts_per_page}" class="s" /></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Số sản phẩm trên mỗi dòng</td>
+				<td class="t">Số sản phẩm trên mỗi dòng</td>
 				<td class="i">{tmp.cf_cats_num_line}</td>
 			</tr>
 		</tbody>
 		<tbody title="Chi tiết sản phẩm (Post)" id="eb-admin-config-theme-details" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
-				<td valign="top" class="t">Các widget được gọi ra</td>
+				<td class="t">Các widget được gọi ra</td>
 				<td class="i"><ol class="bold">
 						<li>main sidebar</li>
 						<li>post sidebar</li>
@@ -193,18 +201,18 @@
 					</ol></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Chiều rộng khung</td>
+				<td class="t">Chiều rộng khung</td>
 				<td class="i">{tmp.cf_post_class_style}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Bố cục trang chi tiết sản phẩm</td>
+				<td class="t">Bố cục trang chi tiết sản phẩm</td>
 				<td class="i">{tmp.cf_post_column_style}</td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td colspan="2" valign="top" class="t">Thiết kế chi tiết SẢN PHẨM</td>
+				<td colspan="2" class="t">Thiết kế chi tiết SẢN PHẨM</td>
 			</tr>
 			<tr>
 				<td colspan="2"><div class="small l19">Chọn file thiết kế cho trang chi tiết SẢN PHẨM hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
@@ -233,13 +241,13 @@
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr class="d-none">
-				<td valign="top" class="t">Bố cục sản phẩm liên quan (node)</td>
+				<td class="t">Bố cục sản phẩm liên quan (node)</td>
 				<td class="i">{tmp.cf_post_node_html}</td>
 			</tr>
 		</tbody>
 		<tbody title="Blog/ Tin tức" id="eb-admin-config-theme-blog" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
-				<td valign="top" class="t">Các widget được gọi ra</td>
+				<td class="t">Các widget được gọi ra</td>
 				<td class="i"><ol class="bold">
 						<li>main sidebar</li>
 						<li>blog sidebar</li>
@@ -247,25 +255,25 @@
 					</ol></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Chiều rộng khung</td>
+				<td class="t">Chiều rộng khung</td>
 				<td class="i">{tmp.cf_blogs_class_style}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Bố cục trang danh sách tin</td>
+				<td class="t">Bố cục trang danh sách tin</td>
 				<td class="i">{tmp.cf_blogs_column_style}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Bố cục chỉ mục tin (node)</td>
+				<td class="t">Bố cục chỉ mục tin (node)</td>
 				<td class="i">{tmp.cf_blogs_node_html}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Số tin trên mỗi dòng</td>
+				<td class="t">Số tin trên mỗi dòng</td>
 				<td class="i">{tmp.cf_blogs_num_line}</td>
 			</tr>
 		</tbody>
 		<tbody title="Chi tiết Blog/ Tin tức" id="eb-admin-config-theme-blog-detais" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
-				<td valign="top" class="t">Các widget được gọi ra</td>
+				<td class="t">Các widget được gọi ra</td>
 				<td class="i"><ol class="bold">
 						<li>main sidebar</li>
 						<li>blog details sidebar</li>
@@ -273,38 +281,38 @@
 					</ol></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Chiều rộng khung</td>
+				<td class="t">Chiều rộng khung</td>
 				<td class="i">{tmp.cf_blogd_class_style}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Bố cục trang chi tiết</td>
+				<td class="t">Bố cục trang chi tiết</td>
 				<td class="i">{tmp.cf_blog_column_style}</td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Bố cục tin liên quan (node)</td>
+				<td class="t">Bố cục tin liên quan (node)</td>
 				<td class="i">{tmp.cf_blog_node_html}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Số tin trên mỗi dòng</td>
+				<td class="t">Số tin trên mỗi dòng</td>
 				<td class="i">{tmp.cf_blog_num_line}</td>
 			</tr>
 		</tbody>
 		<tbody title="Trang tĩnh (Page)" id="eb-admin-config-theme-page" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
-				<td valign="top" class="t">Các widget được gọi ra</td>
+				<td class="t">Các widget được gọi ra</td>
 				<td class="i"><ol class="bold">
 						<li>main sidebar</li>
 					</ol></td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Chiều rộng khung</td>
+				<td class="t">Chiều rộng khung</td>
 				<td class="i">{tmp.cf_page_class_style}</td>
 			</tr>
 			<tr>
-				<td valign="top" class="t">Bố cục trang riêng (Page)</td>
+				<td class="t">Bố cục trang riêng (Page)</td>
 				<td class="i">{tmp.cf_page_column_style}</td>
 			</tr>
 		</tbody>
@@ -369,7 +377,7 @@
 	<div data-key="cats" class="change-eb-design-hide-fixed change-eb-design-cats-fixed">
 		<div class="change-eb-design-padding">{tmp.str_cats_include_file}</div>
 	</div>
-	-->
+	--> 
 	{tmp.str_html_for_single_theme_module} 
 	<!--
 	<div data-key="threadnode" class="change-eb-design-hide-fixed change-eb-design-threadnode-fixed">

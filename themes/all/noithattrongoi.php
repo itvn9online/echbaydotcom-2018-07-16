@@ -13,6 +13,7 @@ $eb_all_themes_support["noithattrongoi"]["screenshot"] = "https://img1.webgiare.
 $eb_all_themes_support["noithattrongoi"]["cf_top1_include_file"] = "noithattrevietnam-top1.php";
 $eb_all_themes_support["noithattrongoi"]["cf_top2_include_file"] = "noithattrevietnam-top2.php";
 $eb_all_themes_support["noithattrongoi"]["cf_top3_include_file"] = "top_widget.php";
+$eb_all_themes_support["noithattrongoi"]["cf_top3_include_file"] = "breadcrumb-top1.php";
 //
 $eb_all_themes_support["noithattrongoi"]["cf_footer1_include_file"] = "footer_widget.php";
 $eb_all_themes_support["noithattrongoi"]["cf_footer2_include_file"] = "noithattrevietnam-footer1.php";

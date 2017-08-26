@@ -228,6 +228,8 @@ $__cf_row_default = array(
 	// danh sách tin -> tổng quan
 	'cf_cats_class_style' => '',
 	'cf_cats_column_style' => '',
+	// chiều rộng cho sidebar trang category
+	'cf_cats_width_sidebar' => 0,
 	// danh sách tin -> html cho phần node
 	'cf_cats_node_html' => '',
 	// danh sách tin -> số tin trên mỗi dòng
