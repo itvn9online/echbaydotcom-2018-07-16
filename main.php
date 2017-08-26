@@ -33,22 +33,17 @@ if ( ! file_exists( EB_THEME_URL . 'i.php' ) ) {
 	$arr = glob ( EB_THEME_URL . 'theme/*' );
 	print_r( $arr );
 	
-	//
+	// lần đầu chỉ copy thư mục và các file trong đó
 	foreach ( $arr as $v ) {
-		echo $v . "\n";
-		$fname = basename( $v );
-		
-		// file index thì chuyển thành i.php
-		if ( $fname == 'index.php' ) {
-			$fname = 'i.php';
-		}
-		
-		//
-		$path = EB_THEME_URL . $fname;
-		echo $path . "\n";
-		
 		// tạo thư mục nếu chưa có
 		if ( is_dir( $v ) ) {
+			echo $v . "\n";
+			$fname = basename( $v );
+			
+			//
+			$path = EB_THEME_URL . $fname;
+			echo $path . "\n";
+			
 			if ( $fname == '.' || $fname == '..' ) {
 			}
 			else {
@@ -68,9 +63,27 @@ if ( ! file_exists( EB_THEME_URL . 'i.php' ) ) {
 				}
 			}
 		}
-		// copy file nếu chưa có
-		else if ( ! file_exists( $path ) ) {
-			WGR_copy( $v, $path );
+	}
+	
+	// lần 2 mới copy các file
+	foreach ( $arr as $v ) {
+		if ( is_file( $v ) ) {
+			echo $v . "\n";
+			$fname = basename( $v );
+			
+			// file index thì chuyển thành i.php
+			if ( $fname == 'index.php' ) {
+				$fname = 'i.php';
+			}
+			
+			//
+			$path = EB_THEME_URL . $fname;
+			echo $path . "\n";
+			
+			// copy file nếu chưa có
+			if ( ! file_exists( $path ) ) {
+				WGR_copy( $v, $path );
+			}
 		}
 	}
 }

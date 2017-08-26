@@ -834,7 +834,10 @@ function WGR_copy ( $source, $path, $ftp = 1, $ch_mod = 0644 ) {
 	
 	// Không thì tạo thông qua FTP
 	if ( $ftp == 1 ) {
-		return _eb_create_file( $path, file_get_contents( $source, 1 ) );
+//		return _eb_create_file( $path, file_get_contents( $source, 1 ) );
+		
+		// gọi trực tiếp đến hàm tạo file qua FTP, do copy đã ko được thì create file qua PHP chắc chắn cũng ko
+		return EBE_ftp_create_file( $path, file_get_contents( $source, 1 ) );
 	}
 	
 	return false;
