@@ -5,7 +5,7 @@ function EBE_get_big_banner ( $limit = 5, $option = array () ) {
 	global $__cf_row;
 	
 	//
-	return _eb_load_ads(
+	$a = _eb_load_ads(
 		1,
 		$limit,
 		$__cf_row['cf_top_banner_size'],
@@ -19,6 +19,14 @@ function EBE_get_big_banner ( $limit = 5, $option = array () ) {
 			'default_value' => ''
 		)
 	);
+	
+	//
+	if ( $a != '' ) {
+		$a = '<div class="oi_big_banner">' . $a . '</div>';
+	}
+	
+	//
+	return $a;
 }
 
 
@@ -2793,7 +2801,8 @@ function WGR_get_bigbanner () {
 	}
 	
 	//
-	return '<div class="oi_big_banner">' . $str_big_banner . '</div>';
+//	return '<div class="oi_big_banner">' . $str_big_banner . '</div>';
+	return $str_big_banner;
 }
 
 function WGR_get_footer_social () {
