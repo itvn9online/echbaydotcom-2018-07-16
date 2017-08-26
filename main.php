@@ -27,6 +27,56 @@ if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 
 
 
+
+// chuyển từ vesion cũ sang version mới
+if ( ! file_exists( EB_THEME_URL . 'i.php' ) ) {
+	$arr = glob ( EB_THEME_URL . 'theme/*' );
+	print_r( $arr );
+	
+	//
+	foreach ( $arr as $v ) {
+		echo $v . "\n";
+		$fname = basename( $v );
+		
+		// file index thì chuyển thành i.php
+		if ( $fname == 'index.php' ) {
+			$fname = 'i.php';
+		}
+		
+		//
+		$path = EB_THEME_URL . $fname;
+		echo $path . "\n";
+		
+		// tạo thư mục nếu chưa có
+		if ( is_dir( $v ) ) {
+			if ( $fname == '.' || $fname == '..' ) {
+			}
+			else {
+				EBE_create_dir( $path );
+				
+				//
+				$arr2 = glob ( $v . '/*' );
+				print_r( $arr2 );
+				
+				foreach ( $arr2 as $v2 ) {
+					$copy_to = EB_THEME_URL . $fname . '/' . basename( $v2 );
+					echo $copy_to . "\n";
+					
+					if ( ! file_exists( $copy_to ) ) {
+						WGR_copy( $v2, $copy_to );
+					}
+				}
+			}
+		}
+		// copy file nếu chưa có
+		else if ( ! file_exists( $path ) ) {
+			WGR_copy( $v, $path );
+		}
+	}
+}
+
+
+
 /*
 * CONFIG
 */

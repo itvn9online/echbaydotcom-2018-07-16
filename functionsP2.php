@@ -826,6 +826,20 @@ function _eb_create_file (
 	return true;
 }
 
+function WGR_copy ( $source, $path, $ftp = 1, $ch_mod = 0644 ) {
+	if ( copy( $source, $path ) ) {
+		chmod($path, $ch_mod) or die('ERROR chmod WGR_copy: ' . $path);
+		return true;
+	}
+	
+	// Không thì tạo thông qua FTP
+	if ( $ftp == 1 ) {
+		return _eb_create_file( $path, file_get_contents( $source, 1 ) );
+	}
+	
+	return false;
+}
+
 function EBE_create_dir ( $path, $ftp = 1 ) {
 	if ( is_dir( $path ) ) {
 		return true;
@@ -834,7 +848,7 @@ function EBE_create_dir ( $path, $ftp = 1 ) {
 	//
 	if ( mkdir($path, 0755) ) {
 		// server window ko cần chmod
-		chmod($path, 0755) or die('ERROR create dir: ' . $path);
+		chmod($path, 0755) or die('ERROR chmod create dir: ' . $path);
 		
 		return true;
 	}
@@ -888,7 +902,7 @@ function WGR_ftp_create_dir ( $path ) {
 	
 	// upload file
 	$result = true;
-	if ( ! ftp_mkdir($conn_id, $create_dir) ) {
+	if ( ! ftp_mkdir($conn_id, $file_for_ftp) ) {
 		echo 'ERROR FTP: ftp_mkdir error<br>' . "\n";
 		$result = false;
 	}
