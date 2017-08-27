@@ -8,8 +8,8 @@ Text Domain: echbayecom
 Tags: e-commerce
 Requires at least: 3.3
 Tested up to: 4.8
-Stable tag: 1.0.3
-Version: 1.0.3
+Stable tag: 1.0.4
+Version: 1.0.4
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 
@@ -115,6 +115,10 @@ Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này
 
 
 === CÁC THAY ĐỔI QUAN TRỌNG ===
+= Version 1.0.4 =
+* Chuyển các thư mục của theme ra ngoài thư mục gốc.
+* Thêm tính năng chỉnh sửa nhanh bài viết, nhóm...
+
 = Version 1.0.3 =
 * Cập nhật chức năng tìm kiếm theme theo tên.
 
