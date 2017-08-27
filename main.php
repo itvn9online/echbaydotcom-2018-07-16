@@ -28,67 +28,6 @@ if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 
 
 
-// chuyển từ vesion cũ sang version mới
-if ( ! file_exists( EB_THEME_URL . 'i.php' ) ) {
-	$arr = glob ( EB_THEME_URL . 'theme/*' );
-	print_r( $arr );
-	
-	// lần đầu chỉ copy thư mục và các file trong đó
-	foreach ( $arr as $v ) {
-		// tạo thư mục nếu chưa có
-		if ( is_dir( $v ) ) {
-			echo $v . "\n";
-			$fname = basename( $v );
-			
-			//
-			$path = EB_THEME_URL . $fname;
-			echo $path . "\n";
-			
-			if ( $fname == '.' || $fname == '..' ) {
-			}
-			else {
-				EBE_create_dir( $path );
-				
-				//
-				$arr2 = glob ( $v . '/*' );
-				print_r( $arr2 );
-				
-				foreach ( $arr2 as $v2 ) {
-					$copy_to = EB_THEME_URL . $fname . '/' . basename( $v2 );
-					echo $copy_to . "\n";
-					echo filesize( $v2 ) . "\n";
-					
-					if ( filesize( $v2 ) > 0 && ! file_exists( $copy_to ) ) {
-						WGR_copy( $v2, $copy_to );
-					}
-				}
-			}
-		}
-	}
-	
-	// lần 2 mới copy các file
-	foreach ( $arr as $v ) {
-		if ( is_file( $v ) ) {
-			echo $v . "\n";
-			$fname = basename( $v );
-			
-			// file index thì chuyển thành i.php
-			if ( $fname == 'index.php' ) {
-				$fname = 'i.php';
-			}
-			
-			//
-			$path = EB_THEME_URL . $fname;
-			echo $path . "\n";
-			
-			// copy file nếu chưa có
-			if ( ! file_exists( $path ) ) {
-				WGR_copy( $v, $path );
-			}
-		}
-	}
-}
-
 
 
 /*
