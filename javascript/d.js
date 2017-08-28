@@ -1408,6 +1408,55 @@ function ___eb_details_post_run ( r ) {
 	console.log( arr_attr_img_content );
 	*/
 	
+	
+	
+	// đếm thời gian hiển thị
+	console.log(trv_ngayhethan);
+	if ( trv_ngayhethan > 0 ) {
+		___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time );
+	}
+	
+}
+
+
+
+function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
+	
+	var id_for_show = 'oi_time_line';
+	if ( dog(id_for_show) == null ) {
+		console.log('Thời gian hết hạn được kích hoạt, nhưng không tìm thấy DIV id="' + id_for_show + '"');
+		return false;
+	}
+	
+	// hết hạn hiển thị
+	if ( thoi_gian_con_lai < 0 ) {
+		console.log('Hết hạn hiển thị');
+		return false;
+	}
+	setTimeout(function () {
+		___wgr_dem_thoi_gian_san_pham( thoi_gian_con_lai - 1 );
+	}, 1000);
+	
+	// còn hạn hiển thị
+//	console.log(thoi_gian_con_lai);
+//	return false;
+	
+	// nếu nhiều hơn 1 giờ -> tính cả giờ và phút
+//	if ( thoi_gian_con_lai > 3600 ) {
+		var so_du = thoi_gian_con_lai % 3600;
+		var gio = (thoi_gian_con_lai - so_du) / 3600;
+		if ( gio < 10 ) gio = '0' + gio;
+		var giay = so_du % 60;
+		if ( giay < 10 ) giay = '0' + giay;
+		var phut = (so_du - giay)/ 60;
+		if ( phut < 10 ) phut = '0' + phut;
+//	}
+	// chỉ tính phút
+//	else {
+//		var phut = thoi_gian_con_lai % 3600;
+//	}
+//	console.log(gio + ':' + phut + ':' + giay);
+	dog(id_for_show).innerHTML = gio + ':' + phut + ':' + giay;
 }
 
 

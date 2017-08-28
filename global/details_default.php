@@ -1001,6 +1001,14 @@ if ( comments_open() || get_comments_number() ) {
 //
 $_eb_product_ngayhethan = _eb_get_post_object( $pid, '_eb_product_ngayhethan' );
 $_eb_product_giohethan = _eb_get_post_object( $pid, '_eb_product_giohethan' );
+$trv_ngayhethan = 0;
+if ( $_eb_product_ngayhethan != '' ) {
+	if ( $_eb_product_giohethan == '' ) {
+		$_eb_product_giohethan = '23:59';
+	}
+	
+	$trv_ngayhethan = strtotime( $_eb_product_ngayhethan . ' ' . $_eb_product_giohethan );
+}
 
 
 
@@ -1016,7 +1024,8 @@ var switch_taxonomy="' . $__post->post_type . '",
 	arr_product_color=[],
 	_eb_product_video_url="' . _eb_get_post_object( $pid, '_eb_product_video_url' ) . '",
 	_eb_product_ngayhethan="' . $_eb_product_ngayhethan . '",
-	_eb_product_giohethan="' . $_eb_product_giohethan . '";
+	_eb_product_giohethan="' . $_eb_product_giohethan . '",
+	trv_ngayhethan=' . $trv_ngayhethan . ';
 </script>';
 //	arr_product_color=[' . substr( $arr_product_color, 1 ) . '],
 
