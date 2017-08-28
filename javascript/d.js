@@ -1413,8 +1413,26 @@ function ___eb_details_post_run ( r ) {
 	// đếm thời gian hiển thị
 //	console.log(trv_ngayhethan);
 	if ( trv_ngayhethan > 0 ) {
-		if ( ___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time ) == true ) {
-			$('#oi_time_line').before('<div class="medium l25">Thời gian còn lại:</div>');
+		
+		var id_for_show = 'oi_time_line';
+		
+		// nếu ko có ID để hiển thị thời gian -> hủy bỏ luôn
+		if ( dog(id_for_show) == null ) {
+			console.log('Thời gian hết hạn được kích hoạt, nhưng không tìm thấy DIV id="' + id_for_show + '"');
+		}
+		// nếu có -> hiển thị thời gian
+		else {
+			$('#' + id_for_show).before('<div class="medium l35">' + lang_details_time_discount + '</div>');
+			
+			// Nếu trả về false -> khả năng cao là hết hạn hiển thị -> hiển thị thông báo hết hạn
+			if ( ___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time ) == false ) {
+				dog('oi_time_line').innerHTML = lang_details_time_soldout;
+				$('#' + id_for_show).removeClass('bold');
+			}
+			// điều chỉnh class theo style riêng
+			else {
+				$('#' + id_for_show).addClass('big bold global-details-countdown');
+			}
 		}
 	}
 	
@@ -1424,17 +1442,13 @@ function ___eb_details_post_run ( r ) {
 
 function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 	
-	var id_for_show = 'oi_time_line';
-	if ( dog(id_for_show) == null ) {
-		console.log('Thời gian hết hạn được kích hoạt, nhưng không tìm thấy DIV id="' + id_for_show + '"');
-		return false;
-	}
-	
 	// hết hạn hiển thị
 	if ( thoi_gian_con_lai < 0 ) {
 		console.log('Hết hạn hiển thị');
 		return false;
 	}
+	
+	// hẹn giờ load lại chức năng
 	setTimeout(function () {
 		___wgr_dem_thoi_gian_san_pham( thoi_gian_con_lai - 1 );
 	}, 1000);
@@ -1454,7 +1468,7 @@ function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 	
 	//
 //	console.log(gio + ':' + phut + ':' + giay);
-	dog(id_for_show).innerHTML = gio + ':' + phut + ':' + giay;
+	dog('oi_time_line').innerHTML = gio + ':' + phut + ':' + giay;
 	
 	return true;
 	

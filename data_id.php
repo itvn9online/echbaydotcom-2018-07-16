@@ -23,6 +23,9 @@ $add_data_id = array (
 		'lang_order_az' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('order_az') ) . '\'',
 		'lang_order_za' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('order_za') ) . '\'',
 		
+		'lang_details_time_discount' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('post_time_discount') ) . '\'',
+		'lang_details_time_soldout' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('post_time_soldout') ) . '\'',
+		
 //		'service_name' => '\'' . $service_name . '\'',
 //		'co_quick_register' => '\'c_quick_register\'',
 		'isLogin' => $mtv_id,

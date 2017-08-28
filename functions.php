@@ -134,7 +134,8 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	$post->cf_blog_size = $__cf_row['cf_blog_size'];
 	
 	$post->trv_trangthai = 1;
-	$post->trv_ngayhethan = date_time;
+//	$post->trv_ngayhethan = date_time;
+	$post->trv_ngayhethan = '';
 	
 	
 	
