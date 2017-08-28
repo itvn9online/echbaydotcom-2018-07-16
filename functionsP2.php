@@ -190,7 +190,7 @@ function _eb_load_order_v1 ( $posts_per_page = 68, $_eb_query = array() ) {
 */
 function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __eb_thread_template, $not_set_not_in = 0 ) {
 	global $___eb_post__not_in;
-//		echo 'POST NOT IN: ' . $___eb_post__not_in . '<br>' . "\n";
+//	echo 'POST NOT IN: ' . $___eb_post__not_in . '<br>' . "\n";
 	
 	// lọc các sản phẩm trùng nhau
 	if ( $___eb_post__not_in != '' && $not_set_not_in == 0 ) {
@@ -201,11 +201,11 @@ function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __e
 	$sql = _eb_load_post_obj( $posts_per_page, $_eb_query );
 	
 	//
-//		if ( $_eb_query['post_type'] == 'blog' ) {
-//			print_r( $sql );
-//			print_r( $_eb_query );
-//			exit();
-//		}
+//	if ( $_eb_query['post_type'] == 'blog' ) {
+//		print_r( $sql );
+//		print_r( $_eb_query );
+//		exit();
+//	}
 	
 	//
 	$str = '';

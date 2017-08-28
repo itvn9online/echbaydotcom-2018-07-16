@@ -67,7 +67,7 @@ $str_big_banner = '';
 $current_category_menu = '';
 $cid = 0;
 $pid = 0;
-$eb_wp_post_type = 0;
+$eb_wp_post_type = '';
 //$eb_background_for_mobile_post = array();
 
 
@@ -220,9 +220,12 @@ if ( file_exists( $inc_file ) ) {
 	$main_content = EBE_dynamic_title_tag( $main_content );
 	
 }
-// hoặc nếu đây là một page template -> không làm gì cả, vì code sẽ nằm trong file template kia
+// hoặc nếu đây là một page template -> code sẽ nằm trong file template kia
 else if ( file_exists( EB_THEME_URL . 'templates/' . $act . '.php' ) ) {
 	echo '<!-- custom page template -->';
+	
+	// Nạp lại header cho page ở mục này để làm SEO
+	include EB_THEME_PLUGIN_INDEX . 'global/page_templates_header.php';
 }
 // nếu không -> hiển thị trang 404
 else {
