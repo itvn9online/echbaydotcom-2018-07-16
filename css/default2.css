@@ -1483,3 +1483,4 @@ li.footer-social-gg { background-color: #DE4B39; }
 .thread-details-tags a:last-child:after,
 .thread-list-options a:last-child:after,
 .thread-list-tags a:last-child:after { display: none; }
+.show-if-site-demo { display: none; }

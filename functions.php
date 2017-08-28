@@ -2806,7 +2806,7 @@ function _eb_load_ads (
 		}
 		// hoặc trả về câu thông báo cho người dùng add banner cần thiết để chạy
 		else {
-			$str = '<div class="global-ul-load-ads' . $type . '">Please add banner for "' . $arr_eb_ads_status[ $type ] . ' (' . $type . ')"</div>';
+			$str = '<div class="show-if-site-demo global-ul-load-ads' . $type . '">Please add banner for "' . $arr_eb_ads_status[ $type ] . ' (' . $type . ')"</div>';
 		}
 		
 		//
