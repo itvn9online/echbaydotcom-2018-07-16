@@ -1411,9 +1411,11 @@ function ___eb_details_post_run ( r ) {
 	
 	
 	// đếm thời gian hiển thị
-	console.log(trv_ngayhethan);
+//	console.log(trv_ngayhethan);
 	if ( trv_ngayhethan > 0 ) {
-		___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time );
+		if ( ___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time ) == true ) {
+			$('#oi_time_line').before('<div class="medium l25">Thời gian còn lại:</div>');
+		}
 	}
 	
 }
@@ -1441,22 +1443,21 @@ function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 //	console.log(thoi_gian_con_lai);
 //	return false;
 	
-	// nếu nhiều hơn 1 giờ -> tính cả giờ và phút
-//	if ( thoi_gian_con_lai > 3600 ) {
-		var so_du = thoi_gian_con_lai % 3600;
-		var gio = (thoi_gian_con_lai - so_du) / 3600;
-		if ( gio < 10 ) gio = '0' + gio;
-		var giay = so_du % 60;
-		if ( giay < 10 ) giay = '0' + giay;
-		var phut = (so_du - giay)/ 60;
-		if ( phut < 10 ) phut = '0' + phut;
-//	}
-	// chỉ tính phút
-//	else {
-//		var phut = thoi_gian_con_lai % 3600;
-//	}
+	//
+	var so_du = thoi_gian_con_lai % 3600;
+	var gio = (thoi_gian_con_lai - so_du) / 3600;
+	if ( gio < 10 ) gio = '0' + gio;
+	var giay = so_du % 60;
+	if ( giay < 10 ) giay = '0' + giay;
+	var phut = (so_du - giay)/ 60;
+	if ( phut < 10 ) phut = '0' + phut;
+	
+	//
 //	console.log(gio + ':' + phut + ':' + giay);
 	dog(id_for_show).innerHTML = gio + ':' + phut + ':' + giay;
+	
+	return true;
+	
 }
 
 
