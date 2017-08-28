@@ -29,7 +29,13 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 		$other_attr = '';
 		
 		//
-		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
+//		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
+		if ( ! isset( $eb_arr_placeholder_custom_meta_box[$k] ) ) {
+			$eb_arr_placeholder_custom_meta_box[$k] = '';
+		}
+		else {
+			$eb_arr_placeholder_custom_meta_box[$k] = '<div class="small">' . $eb_arr_placeholder_custom_meta_box[$k] . '</div>';
+		}
 		
 		// chiều dài rộng cho td
 //		$td1 = 28;
@@ -57,6 +63,7 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 			}
 			
 			echo '</select>';
+			echo $eb_arr_placeholder_custom_meta_box[$k];
 			echo '</td>';
 			
 			echo '</tr>';
@@ -92,7 +99,7 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 			echo '
 			<tr data-row="' . $k . '">
 				<td class="t"><label for="' . $k . '"><strong>' . $v . '</strong></label></td>
-				<td class="i"><input type="' . $tai . '" id="' . $k . '" name="' . $k . '" value="' .esc_attr( $val ). '" ' . $other_attr . ' class="m" /></td>
+				<td class="i"><input type="' . $tai . '" id="' . $k . '" name="' . $k . '" value="' .esc_attr( $val ). '" ' . $other_attr . ' class="m" />' . $eb_arr_placeholder_custom_meta_box[$k] . '</td>
 			</tr>';
 		}
 	}
@@ -109,6 +116,20 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 /*
 * Định dạng dữ liệu
 */
+$arr_product_giohethan = array(
+	'' => '[ Không chọn ]'
+);
+for ( $i = 23; $i > 5; $i-- ) {
+	$j = $i;
+	if ( $j < 10 ) {
+		$j = '0' . $j;
+	}
+	$j .= ':59';
+	$arr_product_giohethan[$j] = $j;
+}
+
+
+//
 $eb_arr_type_custom_meta_box = array(
 	// post
 	'_eb_product_status' => $arr_eb_product_status,
@@ -119,6 +140,7 @@ $eb_arr_type_custom_meta_box = array(
 	'_eb_product_buyer' => 'number',
 	'_eb_product_quantity' => 'number',
 //	'_eb_product_avatar' => 'hidden',
+	'_eb_product_giohethan' => $arr_product_giohethan,
 	
 	'_eb_product_size' => 'hidden',
 	'_eb_product_rating_value' => 'hidden',
@@ -160,15 +182,17 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_product_avatar' => 'Ảnh đại diện dự phòng (nhiều trường hợp chuyển dữ liệu hoặc làm demo sẽ tiện)',
 	'_eb_product_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_product_video_url' => 'Một số giao diện hỗ trợ video youtube (nếu có)',
-	'_eb_product_leech_source' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	
 	'_eb_category_title' => 'Với định dạng màu sắc thì nhập mã màu vào (bao gồm cả dấu #)',
 	'_eb_category_order' => 'Số càng lớn thì độ ưu tiên càng cao, nhóm sẽ được ưu tiên xuất hiện trước',
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
-	'_eb_category_leech_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
 	'_eb_ads_target' => 'Mặc định, các URL trong quảng cáo sẽ được mở đè lên tab hiện tại, đánh dấu và lưu lại để mở URL trong tab mới.',
+	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
+	'_eb_product_giohethan' => 'Thiết lập giờ hết hạn cụ thể cho phần Ngày hết hạn ở trên. Nếu để trống trường này, giờ hết hạn sẽ là cuối ngày hôm đó (23:59)',
 );
+$eb_arr_placeholder_custom_meta_box['_eb_product_leech_source'] = $eb_arr_placeholder_custom_meta_box['_eb_product_old_url'];
+$eb_arr_placeholder_custom_meta_box['_eb_category_leech_url'] = $eb_arr_placeholder_custom_meta_box['_eb_category_old_url'];
 
 
 
@@ -201,6 +225,8 @@ $eb_arr_custom_meta_box = array(
 	'_eb_product_price' => EBE_get_lang('post_giamoi'),
 	'_eb_product_buyer' => EBE_get_lang('post_luotmua'),
 	'_eb_product_quantity' => EBE_get_lang('post_soluong'),
+	'_eb_product_ngayhethan' => 'Ngày hết hạn',
+	'_eb_product_giohethan' => 'Giờ hết hạn',
 	
 	'_eb_product_rating_value' => 'Điểm đánh giá',
 	'_eb_product_rating_count' => 'Tổng số đánh giá',
@@ -389,10 +415,15 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 			}
 			
 			//
-			$val = stripslashes( stripslashes( stripslashes( $val ) ) );
+			$val = trim( stripslashes( stripslashes( stripslashes( $val ) ) ) );
 			
 			//
-			update_post_meta( $post_id, $k, $val );
+			if ( $val == '' ) {
+				delete_post_meta( $post_id, $k );
+			}
+			else {
+				update_post_meta( $post_id, $k, $val );
+			}
 			
 			//
 //			$arr_save[ $k ] = $val;
@@ -554,7 +585,13 @@ function EBextra_category_fields( $tag ) {
 		$other_attr = '';
 		
 		//
-		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
+//		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
+		if ( ! isset( $eb_arr_placeholder_custom_meta_box[$k] ) ) {
+			$eb_arr_placeholder_custom_meta_box[$k] = '';
+		}
+		else {
+			$eb_arr_placeholder_custom_meta_box[$k] = '<div class="small">' . $eb_arr_placeholder_custom_meta_box[$k] . '</div>';
+		}
 		
 		// tạo class riêng cho textarea
 		$description_wrap = 'term-echbay-wrap';
@@ -594,6 +631,8 @@ function EBextra_category_fields( $tag ) {
 		else {
 			echo '<input type="' . $tai . '" name="' . $k . '" id="' . $k . '" value="' . $val . '" ' . $other_attr . ' />';
 		}
+		
+		echo $eb_arr_placeholder_custom_meta_box[$k];
 		
 		//
 		echo '
@@ -636,11 +675,16 @@ function EBsave_extra_category_fileds( $term_id ) {
 			}
 			
 			//
-			$val = stripslashes( stripslashes( stripslashes( $val ) ) );
+			$val = trim( stripslashes( stripslashes( stripslashes( $val ) ) ) );
 //			echo $val;
 			
 			//
-			update_post_meta( $term_id, $k, $val );
+			if ( $val == '' ) {
+				delete_post_meta( $term_id, $k );
+			}
+			else {
+				update_post_meta( $term_id, $k, $val );
+			}
 			
 			//
 //			$arr_save[ $k ] = $val;

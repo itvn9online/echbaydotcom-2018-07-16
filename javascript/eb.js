@@ -808,14 +808,14 @@ var _global_js_eb = {
 		if (typeof op.dateFormat == 'undefined') {
 			op.dateFormat = 'yy/mm/dd';
 		}
-		$.datepicker.regional.de = {
+		$.datepicker.regional.vi = {
 			monthNames: ['Th\u00e1ng 1', 'Th\u00e1ng 2', 'Th\u00e1ng 3', 'Th\u00e1ng 4', 'Th\u00e1ng 5', 'Th\u00e1ng 6', 'Th\u00e1ng 7', 'Th\u00e1ng 8', 'Th\u00e1ng 9', 'Th\u00e1ng 10', 'Th\u00e1ng 11', 'Th\u00e1ng 12'],
 			monthNamesShort: ['Jan', 'Feb', 'M&auml;r', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
 			dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
 			dayNamesShort: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
 			dayNamesMin: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 		};
-		$.datepicker.setDefaults($.datepicker.regional.de);
+		$.datepicker.setDefaults($.datepicker.regional.vi);
 		$(id).datepicker(op);
 	},
 	

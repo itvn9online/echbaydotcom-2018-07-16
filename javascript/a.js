@@ -321,6 +321,15 @@ var eb_global_product_size = '',
 			dog('_eb_ads_target').checked = true;
 		}
 		
+		
+		
+		//
+		jQuery(document).ready(function($) {
+			if ( dog('_eb_product_ngayhethan') != null ) {
+				_global_js_eb.select_date('#_eb_product_ngayhethan');
+			}
+		});
+		
 	}
 	// danh sách post, page, custom post type
 	else if ( admin_act == 'list' ) {

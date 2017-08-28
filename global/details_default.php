@@ -998,6 +998,12 @@ if ( comments_open() || get_comments_number() ) {
 
 
 
+//
+$_eb_product_ngayhethan = _eb_get_post_object( $pid, '_eb_product_ngayhethan' );
+$_eb_product_giohethan = _eb_get_post_object( $pid, '_eb_product_giohethan' );
+
+
+
 
 // -> thêm đoạn JS dùng để xác định xem khách đang ở đâu trên web
 $main_content .= '<script type="text/javascript">
@@ -1008,7 +1014,9 @@ var switch_taxonomy="' . $__post->post_type . '",
 	product_js={' . substr ( $product_js, 1 ) . '},
 	arr_product_size="' . $product_size . '",
 	arr_product_color=[],
-	_eb_product_video_url="' . _eb_get_post_object( $pid, '_eb_product_video_url' ) . '";
+	_eb_product_video_url="' . _eb_get_post_object( $pid, '_eb_product_video_url' ) . '",
+	_eb_product_ngayhethan="' . $_eb_product_ngayhethan . '",
+	_eb_product_giohethan="' . $_eb_product_giohethan . '";
 </script>';
 //	arr_product_color=[' . substr( $arr_product_color, 1 ) . '],
 

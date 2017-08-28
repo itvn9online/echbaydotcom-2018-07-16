@@ -175,16 +175,19 @@ function echbay_admin_styles() {
 		EB_URL_OF_PLUGIN . 'javascript/eb.js',
 //		EB_URL_OF_THEME . 'javascript/eb.js',
 		EB_URL_OF_PLUGIN . 'javascript/all.js',
+//		EB_URL_OF_PLUGIN . 'outsource/javascript/jquery.caret.1.02.min.js',
 //		EB_URL_OF_PLUGIN . 'javascript/a.js',
 	) ), 'add' );
 	
 	//
-	echo '<link href="' . web_link . eb_default_vaficon . '" rel="shortcut icon" type="image/png" />';
+	echo '<link href="' . web_link . eb_default_vaficon . '" rel="shortcut icon" type="image/png" />
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>';
 	
 	//
 	echo _eb_del_line( '<script type="text/javascript">
-	var web_link = "' . web_link . '";
-	</script>' );
+var web_link = "' . web_link . '";
+</script>' );
 	
 	
 	// nếu là phiên bản web giá rẻ -> ẩn các menu admin quan trọng đi, chỉ hiện thị với supper admin
@@ -213,6 +216,25 @@ function echbay_admin_styles() {
 	
 }
 add_action('admin_head', 'echbay_admin_styles');
+
+
+/**
+ * Load jQuery datepicker.
+ *
+ * By using the correct hook you don't need to check `is_admin()` first.
+ * If jQuery hasn't already been loaded it will be when we request the
+ * datepicker script.
+ */
+function wpse_enqueue_datepicker() {
+    // Load the datepicker script (pre-registered in WordPress).
+    wp_enqueue_script( 'jquery-ui-datepicker' );
+
+    // You need styling for the datepicker. For simplicity I've linked to Google's hosted jQuery UI CSS.
+    wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
+    wp_enqueue_style( 'jquery-ui' );  
+}
+//add_action( 'wp_enqueue_scripts', 'wpse_enqueue_datepicker' );
+
 
 
 
