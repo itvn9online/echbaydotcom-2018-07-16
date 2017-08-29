@@ -94,6 +94,9 @@ function WGR_create_themes_default_format (
 * GET footer social icon
 * <?php echo WGR_get_footer_social(); ?>
 *
+* GET facebook like box
+* <?php echo WGR_get_fb_like_box(); ?>
+*
 */
 		' );
 	}

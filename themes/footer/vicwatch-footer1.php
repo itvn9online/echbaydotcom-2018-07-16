@@ -37,11 +37,7 @@
 					<br>
 				</div>
 				<div class="lf f30 fullsize-if-mobile">
-					<div class="left-menu-space">
-						<div class="each-to-facebook">
-							<div class="fb-page" data-small-header="false" data-hide-cover="false" data-show-facepile="true"></div>
-						</div>
-						<br>
+					<div class="left-menu-space"><?php echo WGR_get_fb_like_box(); ?><br>
 						<?php echo WGR_get_footer_social(); ?><br>
 					</div>
 				</div>

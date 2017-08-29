@@ -1,0 +1,62 @@
+#main-content .w99,
+#main-content .w90 {
+	background: #fff;
+	padding: 20px 0;
+	border-radius: 20px 20px 0 0;
+}
+.thread-module-name {
+	background-color: #4db4ef;
+	font-size: 28px;
+	font-weight: bold;
+	text-shadow: 1px 1px #999;
+	border-bottom-color: #f60;
+	margin: 0;
+	padding: 0 0 0 10px;
+}
+.thread-module-name a { color: #FF0; }
+.thread-list-order .thread-list-orderby {
+	right: 1px;
+	top: 6px;
+}
+.thread-list-orderby select {
+	padding: 5px;
+	border-radius: 3px;
+}
+.thread-list { }
+.thread-list li { width: 20%; }
+.thread-list-padding { margin: 0 20px 20px 20px; }
+.thread-list-per { }
+.thread-list-avt {
+	background: center no-repeat;
+	background-size: 100% auto;
+}
+.thread-list-title {
+	margin: 6px 0;
+	height: 32px;
+	line-height: 16px;
+	overflow: hidden;
+	font-size: 13px;
+	color: #333;
+	font-weight: normal;
+}
+.thread-list-gia { font-size: 15px; }
+.thread-list-mua {
+	background: #f60;
+	width: 90%;
+	max-width: 90px;
+	margin: 0 auto;
+	line-height: 22px;
+	border-radius: 10px;
+	margin-top: 10px;
+	border: 1px #fff solid;
+}
+.thread-list-mua a {
+	display: block;
+	color: #fff;
+	font-weight: bold;
+}
+.thread-list-mua:hover {
+	border-color: #f60;
+	background-color: #fff;
+}
+.thread-list-mua:hover a { color: #f60; }

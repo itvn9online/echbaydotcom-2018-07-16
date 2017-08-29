@@ -1,0 +1,17 @@
+.norcaljump-footer2 {
+	background: #2679ab;
+	line-height: 43px;
+	height: 43px;
+	overflow: hidden;
+	font-size: 11pt;
+	border-radius: 0 0 20px 20px;
+	border: 1px #F18403 solid;
+	border-top: 0 none!important;
+	margin-bottom: 35px;
+}
+.norcaljump-footer2,
+.norcaljump-footer2 a {
+	font-weight: bold;
+	color: #fff;
+}
+.cart-pro-phet { border-radius: 6px 6px 0 0; }

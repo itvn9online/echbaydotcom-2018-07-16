@@ -731,8 +731,8 @@ color: #333;
 .cart-pro-phet {
 	background: #fff;
 	padding: 15px 0;
-	-moz-border-radius: pt;
-	border-radius: 6pt
+	-moz-border-radius: 6pt;
+	border-radius: 6pt;
 }
 .cart-pro-phet #oi_send_invoice { }
 .cart-pro-phet #cart_null {

@@ -2885,4 +2885,11 @@ function WGR_get_footer_social () {
 	</ul>';
 }
 
+function WGR_get_fb_like_box () {
+	return '
+	<div class="each-to-facebook">
+		<div class="fb-page" data-small-header="false" data-hide-cover="false" data-show-facepile="true"></div>
+	</div>';
+}
+
 
