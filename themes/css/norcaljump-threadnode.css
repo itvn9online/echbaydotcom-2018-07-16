@@ -1,6 +1,6 @@
 #main-content {
 	background: #fff;
-	padding: 20px 0;
+	padding: 20px;
 	border-radius: 20px 20px 0 0;
 }
 .thread-module-name {
@@ -9,19 +9,19 @@
 	font-weight: bold;
 	text-shadow: 1px 1px #999;
 	border-bottom-color: #f60;
-	margin: 0;
 	padding: 0 0 0 10px;
+	margin: 0 -20px 20px -20px !important;
 }
 .thread-module-name a { color: #FF0; }
 .thread-list-order .thread-list-orderby {
-	right: 1px;
+	right: -19px;
 	top: 6px;
 }
 .thread-list-orderby select {
 	padding: 5px;
 	border-radius: 3px;
 }
-.thread-list { }
+.thread-list { margin: 0 -20px; }
 .thread-list li { width: 20%; }
 .thread-list-padding { margin: 0 20px 20px 20px; }
 .thread-list-per { }
@@ -59,3 +59,6 @@
 	background-color: #fff;
 }
 .thread-list-mua:hover a { color: #f60; }
+.right-hot-product .echbay-blog-gioithieu,
+.right-hot-product .echbay-blog-giacu { display: none; }
+.right-hot-product .echbay-blog-title { height: auto; }

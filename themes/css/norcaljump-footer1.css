@@ -22,6 +22,7 @@
 }
 #norcaljump-footer1 .echbay-blog li:last-child:after { display: none; }
 #norcaljump-footer1 .echbay-blog .echbay-blog-padding { }
+#norcaljump-footer1 .echbay-blog .echbay-blog-title { display: inline; }
 #norcaljump-footer1 .echbay-blog .echbay-blog-infos { display: none; }
 #norcaljump-footer1 .echbay-blog a {
 	font-size: 11pt;

@@ -58,5 +58,7 @@
 #norcaljump-top3 .top-menu-right li {
 	border-right: 3px #FF6600 solid;
 	margin-right: -3px;
+	height: 23px;
+	overflow: hidden;
 }
 .oi_big_banner { margin-top: 10px; }
