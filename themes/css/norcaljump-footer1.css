@@ -1,13 +1,31 @@
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
-#norcaljump-footer1 { }
+.norcaljump-footer1 {
+	padding: 20px;
+	background: #fff;
+}
+#norcaljump-footer1 .echbay-widget-blogs-title {
+	color: #8C8989;
+	font-size: 1.5em;
+	font-weight: bold;
+	border: 0 none;
+	margin-bottom: 20px;
+}
+#norcaljump-footer1 .echbay-widget-blogs-title:before { display: none; }
+#norcaljump-footer1 .echbay-blog { list-style: none; }
+#norcaljump-footer1 .echbay-blog li {
+	width: auto;
+	margin: 0 0 10px 0;
+}
+#norcaljump-footer1 .echbay-blog li:after {
+	content: "|";
+	display: inline-block;
+	margin: 0 5px;
+}
+#norcaljump-footer1 .echbay-blog li:last-child:after { display: none; }
+#norcaljump-footer1 .echbay-blog .echbay-blog-padding { }
+#norcaljump-footer1 .echbay-blog .echbay-blog-infos { display: none; }
+#norcaljump-footer1 .echbay-blog a {
+	font-size: 11pt;
+	color: #C00;
+	font-weight: normal;
+}
+#norcaljump-footer1 .echbay-blog a:hover { text-decoration: underline; }

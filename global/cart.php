@@ -1,6 +1,6 @@
 <?php
 
-$__cf_row ['cf_title'] = 'Giỏ hàng';
+$__cf_row ['cf_title'] = EBE_get_lang('shopping_cart');
 $group_go_to[] = ' <li><a href="./cart">' . $__cf_row ['cf_title'] . '</a></li>';
 
 

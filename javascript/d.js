@@ -2548,6 +2548,15 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr ) {
 
 
 
+// báo lỗi nếu có thẻ dynamic_title_tag chưa được chuyển đổi
+if ( $('dynamic_title_tag').length > 0 ) {
+	alert('dynamic_title_tag cần được thay đổi sang DIV hoặc H*');
+}
+
+
+
+
+
 // TEST
 //g_func.opopup('login');
 //g_func.opopup('register');

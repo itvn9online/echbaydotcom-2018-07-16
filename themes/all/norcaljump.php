@@ -17,7 +17,8 @@ $eb_all_themes_support["norcaljump"]["cf_top4_include_file"] = "norcaljump-top4.
 $eb_all_themes_support["norcaljump"]["cf_top5_include_file"] = "top_widget.php";
 //
 $eb_all_themes_support["norcaljump"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["norcaljump"]["cf_footer2_include_file"] = "norcaljump-footer2.php";
+$eb_all_themes_support["norcaljump"]["cf_footer2_include_file"] = "norcaljump-footer1.php";
+$eb_all_themes_support["norcaljump"]["cf_footer3_include_file"] = "norcaljump-footer2.php";
 //
 $eb_all_themes_support["norcaljump"]["cf_home1_include_file"] = "norcaljump-home1.php";
 $eb_all_themes_support["norcaljump"]["cf_home2_include_file"] = "norcaljump-home2.php";
