@@ -514,6 +514,10 @@ function EBE_get_text_version ( $str ) {
 					
 					// tạo file cache để quá trình này không diễn ra liên tục
 					_eb_create_file( $file_cache_test, date_time );
+					
+					//
+					echo '<div id="eb_core_update_all_done"></div>';
+					
 				}
 				
 				// tắt chế độ bảo trì
@@ -600,5 +604,10 @@ jQuery('.click-connect-to-github-update-eb-core').attr({
 //
 if ( window.location.href.split('&confirm_eb_process=').length > 1 ) {
 	window.history.pushState("", '', window.location.href.split('&confirm_eb_process=')[0]);
+}
+
+if ( jQuery('#eb_core_update_all_done').length > 0 ) {
+	window.scroll( 0, jQuery(document).height() );
+	alert('All done');
 }
 </script>
