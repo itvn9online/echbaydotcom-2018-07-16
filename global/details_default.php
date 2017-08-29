@@ -455,9 +455,9 @@ $html_file = 'thread_details.html';
 $arr_list_tag = array();
 $blog_list_medium = '';
 $product_list_medium = '';
-$other_post_right = '';
-$other_post_2right = '';
-$other_post_3right = '';
+$other_post_right = '<!-- Chi tiết Sản phẩm -->';
+$other_post_2right = '<!-- Chi tiết Sản phẩm (2) -->';
+$other_post_3right = '<!-- Chi tiết Sản phẩm (3) -->';
 $str_for_details_sidebar = '';
 
 // với blog -> sử dụng giao diện khác post
