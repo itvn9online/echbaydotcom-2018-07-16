@@ -1,6 +1,13 @@
 <?php
 
 
+//
+if ( mtv_id == 0 ) {
+	die('For user only');
+}
+
+
+//
 $email = '';
 if (isset ( $_GET ['email'] ) ) {
 	$email = trim ( $_GET ['email'] );

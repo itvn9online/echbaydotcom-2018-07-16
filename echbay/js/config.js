@@ -224,6 +224,7 @@ if ( $('#cf_call_dienthoai').val() == '' || $('#cf_call_hotline').val() == '' ) 
 
 
 function config_test_send_mail() {
+	
 	var f = document.frm_config,
 		from = f.cf_smtp_email.value,
 		pass = f.cf_smtp_pass.value,
@@ -239,7 +240,11 @@ function config_test_send_mail() {
 	$('#test_smtp_email').show();
 	
 	// 
-	ajaxl(web_link + 'test_email?email=' + to, 'test_smtp_email', 1);
+	ajaxl( web_link + 'test_email?email=' + to, 'test_smtp_email', 1, function () {
+		$('#test_smtp_email').html( $('#test_smtp_email').html().replace(/\n/g, '<br>') );
+	} );
+	
+	//
 	return false;
 	
 	//
@@ -251,6 +256,7 @@ function config_test_send_mail() {
 		alert('Nhập đầy đủ Email, Host, Pass để thử');
 		f.cf_smtp_email.focus();
 	}
+	
 }
 
 
