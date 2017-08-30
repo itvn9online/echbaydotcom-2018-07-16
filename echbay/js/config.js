@@ -239,7 +239,7 @@ function config_test_send_mail() {
 	$('#test_smtp_email').show();
 	
 	// 
-	ajaxl(web_link + 'test_email=1&email=' + to, 'test_smtp_email', 1);
+	ajaxl(web_link + 'test_email?email=' + to, 'test_smtp_email', 1);
 	return false;
 	
 	//
