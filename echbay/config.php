@@ -89,6 +89,33 @@ foreach ( $arr_cf_reset_cache as $k => $v ) {
 
 
 
+//
+$arr_cf_smtp_encryption = array(
+	'' => 'Không sử dụng',
+	'ssl' => 'Sử dụng mã hóa SSL',
+	'tls' => 'Sử dụng mã hóa TLS',
+);
+//print_r($arr_cf_smtp_encryption);
+$str_cf_smtp_encryption = '';
+foreach ( $arr_cf_smtp_encryption as $k => $v ) {
+	$label_id = 'label_cf_smtp_encryption' .$k;
+	
+	$sl = '';
+	if ( $__cf_row['cf_smtp_encryption'] == $k ) {
+		$sl = ' checked="checked"';
+	}
+	
+	$str_cf_smtp_encryption .= '
+<div>
+	<input type="radio" name="cf_smtp_encryption" id="' .$label_id. '" value="' .$k. '"' . $sl . '>
+	<label for="' .$label_id. '">' .$v. '</label>
+</div>';
+}
+
+
+
+
+
 
 
 
@@ -430,6 +457,8 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	'tmp.include_page' => $include_page,
 //	'tmp.js_version' => date( 'Ymd-His', filemtime( ECHBAY_PRI_CODE . 'js/config.js' ) ),
 	'tmp.js_version' => time(),
+	
+	'tmp.cf_smtp_encryption' => $str_cf_smtp_encryption,
 	
 //	'tmp.ex_dns_prefetch' => $_SERVER['HTTP_HOST'],
 	'tmp.timezone_wp_full' => $timezone_wp_full,

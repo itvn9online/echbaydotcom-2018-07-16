@@ -11,6 +11,8 @@ $__cf_row_default = array(
 	'cf_smtp_pass' => '',
 	'cf_smtp_host' => '',
 	'cf_smtp_port' => 25,
+	// tls, ssl
+	'cf_smtp_encryption' => '',
 	
 	'cf_title' => 'Một website sử dụng plugin thương mại điện tử của EchBay.com',
 	'cf_meta_title' => 'Một website sử dụng plugin thương mại điện tử của EchBay.com',

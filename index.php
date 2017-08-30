@@ -185,6 +185,21 @@ include EB_THEME_CORE . 'database.php';
 
 
 
+
+// thiết lập gửi email thông qua STMP
+if ($__cf_row ['cf_sys_email'] == 1) {
+	// v1
+//	return _eb_send_mail_phpmailer ( $to_email, '', $title, $message, '', $bcc_email );
+	
+	// v2
+	add_action( 'phpmailer_init', 'EBE_configure_smtp' );
+}
+
+
+
+
+
+
 // mảng danh sách các định dạng quảng cáo
 $arr_eb_ads_status = array(
 	0 => '[ Không hiển thị ]',

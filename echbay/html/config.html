@@ -384,6 +384,11 @@ div.gallery-add-to-favicon { display: block; }
 					<div class="small">Port nếu có. Gmail SSL port: <strong>465</strong>, Gmail TLS port: <strong>587</strong></div></td>
 			</tr>
 			<tr>
+				<td class="t">Mã hóa</td>
+				<td class="i">{tmp.cf_smtp_encryption}
+					<div class="small">Hầu hết các server mail đều hỗ trợ phương thức SSL, nhưng nếu có TLS thì bạn nên sử dụng TLS thay cho SSL.</div></td>
+			</tr>
+			<tr>
 				<td class="t">Kiểm tra hệ thống gửi email</td>
 				<td class="i"><div><a href="javascript:;" onclick="config_test_send_mail()"><strong>Nhấn vào đây để thử</strong></a>. Email sẽ được gửi về <strong>{tmp.cf_email}</strong>.</div>
 					<div id="test_smtp_email" class="d-none small"></div></td>

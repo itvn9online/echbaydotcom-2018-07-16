@@ -331,28 +331,31 @@ $mail_title = 'Gui ban thong tin don hang: ' . $hd_mahoadon;
 
 
 
-if (strstr ( $t_email, '@gmail.com' ) == true
-|| strstr ( $t_email, '@yahoo.' ) == true
-|| strstr ( $t_email, '@hotmail.com' ) == true) {
-//	if ( _eb_check_email_type( $t_email ) == 1 ) {
-		_eb_send_email( $t_email, $mail_title, $message );
-//	}
-}
-
-
-
-
-
 // gửi email cho admin
 $mail_to_admin = $__cf_row ['cf_email'];
 if ($__cf_row ['cf_email_note'] != '') {
 	$mail_to_admin = $__cf_row ['cf_email_note'];
 }
 
-// -> ép buộc sử dụng hàm mail mặc định
-$__cf_row ['cf_sys_email'] = 0;
 
-_eb_send_email ( $mail_to_admin, $mail_title, $message );
+
+$bcc_email = '';
+if (strstr ( $t_email, '@gmail.com' ) == true
+|| strstr ( $t_email, '@yahoo.' ) == true
+|| strstr ( $t_email, '@hotmail.com' ) == true) {
+//	if ( _eb_check_email_type( $t_email ) == 1 ) {
+		$bcc_email = $t_email;
+//		_eb_send_email( $t_email, $mail_title, $message, $mail_to_admin );
+//	}
+}
+
+
+
+
+// -> ép buộc sử dụng hàm mail mặc định
+//$__cf_row ['cf_sys_email'] = 0;
+
+_eb_send_email ( $mail_to_admin, $mail_title, $message, $bcc_email );
 
 
 

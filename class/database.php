@@ -283,7 +283,9 @@ $arr_hd_trangthai = array (
 		6 => 'Không liên lạc được',
 		7 => 'Liên hệ lại',
 		8 => 'Đặt trước, đã thanh toán',
-		9 => 'Hoàn tất' 
+		9 => 'Hoàn tất',
+		10 => 'Xác nhận, chờ in',
+		11 => 'Đang vận chuyển' 
 );
 
 
@@ -335,6 +337,9 @@ $___eb_ads__not_in = '';
 
 //
 $arr_active_for_404_page = array(
+	"test_email" => 1,
+	"billing_print" => 1,
+	
 	"cart" => 1,
 	"contact" => 1,
 	"hoan-tat" => 1,

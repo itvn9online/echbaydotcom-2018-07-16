@@ -2290,16 +2290,6 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	if ( $add_domain == 1 ) {
 		$title = '[' . $chost . '] ' . $title;
 	}
-
-	
-	// Sử dụng hàm mail mặc định của wp cho nó chuẩn
-	if ($__cf_row ['cf_sys_email'] == 1) {
-		// v1
-//		return _eb_send_mail_phpmailer ( $to_email, '', $title, $message, '', $bcc_email );
-		
-		// v2
-		add_action( 'phpmailer_init', 'EBE_configure_smtp' );
-	}
 	
 	
 	//
@@ -2377,7 +2367,7 @@ function EBE_show_log ($m) {
 	echo '<script>console.log("' . $m . '");</script>';
 }
 
-//
+// https://codex.wordpress.org/Plugin_API/Action_Reference/phpmailer_init
 function EBE_configure_smtp( PHPMailer $phpmailer ){
 	global $__cf_row;
 	
@@ -2392,15 +2382,22 @@ function EBE_configure_smtp( PHPMailer $phpmailer ){
 	}
 	
 	// switch to smtp
-    $phpmailer->isSMTP();
-    $phpmailer->Host = $__cf_row['cf_smtp_host'];
-    $phpmailer->SMTPAuth = true;
-    $phpmailer->Port = $__cf_row['cf_smtp_port'];
-    $phpmailer->Username = $__cf_row['cf_smtp_email'];
-    $phpmailer->Password = $__cf_row['cf_smtp_pass'];
-    $phpmailer->SMTPSecure = false;
-    $phpmailer->From = $__cf_row['cf_smtp_email'];
-    $phpmailer->FromName = 'Sender Name';
+	$phpmailer->isSMTP();
+	$phpmailer->Host = $__cf_row['cf_smtp_host'];
+	// Force it to use Username and Password to authenticate
+	$phpmailer->SMTPAuth = true;
+	$phpmailer->Port = $__cf_row['cf_smtp_port'];
+	$phpmailer->Username = $__cf_row['cf_smtp_email'];
+	$phpmailer->Password = $__cf_row['cf_smtp_pass'];
+	
+	// Additional settings...
+	// Choose SSL or TLS, if necessary for your server
+	$phpmailer->SMTPSecure = ( $__cf_row['cf_smtp_encryption'] == '' ) ? false : $__cf_row['cf_smtp_encryption'];
+//	$phpmailer->SMTPSecure = 'tls';
+//	$phpmailer->SMTPSecure = 'ssl';
+	
+	$phpmailer->From = ( _eb_check_email_type( $__cf_row['cf_smtp_email'] ) != 1 ) ? $__cf_row['cf_email'] : $__cf_row['cf_smtp_email'];
+	$phpmailer->FromName = ( $__cf_row['cf_web_name'] == '' ) ? '(' . strtoupper( $_SERVER['HTTP_HOST'] ) . ')' : _eb_non_mark( $__cf_row['cf_web_name'] );
 	
 	return true;
 }
