@@ -372,9 +372,10 @@ function ajaxl(url, id, bg, callBack) {
 	
 	// URL phải theo 1 chuẩn nhất định
 //	if ( url.split( web_link ).length == 1 ) {
+	if ( url.split( '//' ).length == 1 ) {
 		url = web_link + 'eb-ajaxservice?set_module=' + url;
-		console.log(url);
-//	}
+	}
+	console.log(url);
 	
 	//
 	$.ajax({

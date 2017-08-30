@@ -228,7 +228,21 @@ function config_test_send_mail() {
 		from = f.cf_smtp_email.value,
 		pass = f.cf_smtp_pass.value,
 		host = f.cf_smtp_host.value,
+		to = f.cf_email_note.value;
+	
+	if ( to == '' ) {
 		to = f.cf_email.value;
+	}
+	
+	//
+	dog('test_smtp_email', 'Đang tải...');
+	$('#test_smtp_email').show();
+	
+	// 
+	ajaxl(web_link + '?test_email=1&email=' + to, 'test_smtp_email', 1);
+	return false;
+	
+	//
 	if (from != '' && pass != '' && host != '' && to != '') {
 		dog('test_smtp_email', 'Đang tải...');
 		$('#test_smtp_email').show();
