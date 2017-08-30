@@ -9,10 +9,11 @@ if ( mtv_id == 0 ) {
 
 //
 $email = '';
-if (isset ( $_GET ['email'] ) ) {
+if ( isset ( $_GET ['email'] ) ) {
 	$email = trim ( $_GET ['email'] );
 	
-	if ( _eb_check_email_type( $__cf_row['cf_smtp_email'] ) != 1 ) {
+	// nếu email không đúng định dạng -> hủy bỏ luôn
+	if ( _eb_check_email_type( $email ) != 1 ) {
 		$email = '';
 	}
 }
