@@ -1,4 +1,4 @@
-<div id="dumbo-top3">
+<div id="dumbo-top3" class="hide-if-mobile">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<div class="dumbo-top3 cf">
 			<div class="lf f25">

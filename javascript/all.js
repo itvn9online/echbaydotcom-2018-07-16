@@ -1113,7 +1113,7 @@ function eb_func_show_product_size () {
 	//
 //	console.log(eb_inner_html_product_size);
 	$('#' + eb_inner_html_product_size).html( str_size );
-	$('#' + eb_inner_html_product_size + ' ul:last li:last').after('<li data-add="group" title="Thêm nhóm size mới (một số theme mới hỗ trợ tính năng này)"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i></li>');
+//	$('#' + eb_inner_html_product_size + ' ul:last li:last').after('<li data-add="group" title="Thêm nhóm size mới (một số theme mới hỗ trợ tính năng này)"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i></li>');
 	
 	// chuyển từ object sang string
 	/*

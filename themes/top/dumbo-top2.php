@@ -1,8 +1,8 @@
 <div id="dumbo-top2">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<div class="dumbo-top2 cf">
-			<div class="lf f25"><?php echo EBE_get_html_logo(); ?></div>
-			<div class="lf f75">
+			<div class="lf f25 fullsize-if-mobile"><?php echo EBE_get_html_logo(); ?></div>
+			<div class="lf f75 hide-if-mobile">
 				<div class="left-menu-space">
 					<div class="bg-tra-hang">
 						<ul class="cf">

@@ -57,16 +57,8 @@
 					</div>
 				</div>
 				<div id="export_img_list_color" class="d-none">{tmp.trv_list_color}</div>
-				<div class="cf text-center detail-muangay-padding">
-					<div class="details-ankhi-hethang lf f50 fullsize-if-mobile">
-						<div>
-							<button type="button" class="details-mua-ngay big click-jquery-show-quick-cart upper whitecolor">Đặt mua ngay</button>
-						</div>
-						<br>
-					</div>
-					<div class="lf f50 fullsize-if-mobile"><a href="tel:{tmp.cf_hotline}" rel="nofollow" class="upper whitecolor details-tu-van medium"><span class="bold medium18">Tư vấn miễn phí</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}</a></div>
-				</div>
 				<div id="oi_time_line"></div>
+				<div class="clone-show-quick-cart"></div>
 			</div>
 		</div>
 		<div class="lf f20 fullsize-if-mobile">
@@ -148,6 +140,12 @@
 			</div>
 			<div class="col-sidebar-content custom-width-global-sidebar custom-width-product-sidebar fullsize-if-mobile">
 				<div id="main_right">
+					<div class="details-other-title upper fcb">Sản phẩm khác</div>
+					<br>
+					<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit thread-list thread-list100 thread-details-other cf">
+						{tmp.other_post_right}
+					</ul>
+					<br>
 					<div class="fix-right-menu">{tmp.str_sidebar}</div>
 					<div id="fix_right_menu">&nbsp;</div>
 				</div>
@@ -158,7 +156,7 @@
 	<div class="details-other-title upper fcb">Sản phẩm khác</div>
 	<br>
 	<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit thread-list thread-details-other cf">
-		{tmp.other_post_right}
+		{tmp.other_post_2right}
 	</ul>
 	<br>
 </div>

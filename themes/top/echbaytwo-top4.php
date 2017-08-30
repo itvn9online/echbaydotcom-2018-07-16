@@ -5,7 +5,7 @@ Tags: breadcrumb
 */
 ?>
 
-<div class="thread-details-tohome">
+<div id="echbaytwo-top4">
 	<?php
 	include EB_THEME_PLUGIN_INDEX . 'themes/top/breadcrumb-top1.php';
 	$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/breadcrumb-top1.css' ] = 1;

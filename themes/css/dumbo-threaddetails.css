@@ -198,3 +198,9 @@
 	display: block;
 	padding-top: 12px;
 }
+.btn-addto-cart { display: block; }
+.eb-quickcart-table button {
+    width: 45%;
+    display: inline-block;
+    font-size: 16px;
+}
