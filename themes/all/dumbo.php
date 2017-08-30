@@ -14,7 +14,8 @@ $eb_all_themes_support["dumbo"]["cf_top1_include_file"] = "dumbo-top1.php";
 $eb_all_themes_support["dumbo"]["cf_top2_include_file"] = "dumbo-top2.php";
 $eb_all_themes_support["dumbo"]["cf_top3_include_file"] = "dumbo-top3.php";
 $eb_all_themes_support["dumbo"]["cf_top4_include_file"] = "dumbo-top4.php";
-$eb_all_themes_support["dumbo"]["cf_top5_include_file"] = "top_widget.php";
+$eb_all_themes_support["dumbo"]["cf_top5_include_file"] = "breadcrumb3-top1.php";
+$eb_all_themes_support["dumbo"]["cf_top6_include_file"] = "top_widget.php";
 //
 $eb_all_themes_support["dumbo"]["cf_footer1_include_file"] = "footer_widget.php";
 //

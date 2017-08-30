@@ -1,16 +1,13 @@
 <?php
 /*
+Description: Alias breadcrumb-top1 -> Breadcrumb cho website, sử dụng thiết kế tràn khung, tràn màn hình (không giới hạn chiều rộng) -> thay đổi chút xíu ở style thôi.
 Tags: breadcrumb
 */
 ?>
 
 <div id="webgiare-top3">
-	<div class="site-header__categories">
-		<div class="thread-details-tohome">
-			<ul class="cf <?php echo $__cf_row['cf_top_class_style']; ?>">
-				<li><a href="./"><i class="fa fa-home"></i> Trang chủ</a></li>
-				<?php echo $group_go_to; ?>
-			</ul>
-		</div>
-	</div>
+	<?php
+	include EB_THEME_PLUGIN_INDEX . 'themes/top/breadcrumb-top1.php';
+	$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/breadcrumb-top1.css' ] = 1;
+	?>
 </div>
