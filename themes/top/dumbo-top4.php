@@ -1,3 +1,10 @@
+<?php
+if ( $str_big_banner != '' ) :
+?>
+<!-- Riêng ở trang chủ -> cho hiển thị menu ra -->
+<style>
+#dumbo-top3 .all-category-cats { display: block; }
+</style>
 <div id="dumbo-top4">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<div class="dumbo-top4 cf">
@@ -8,3 +15,6 @@
 		</div>
 	</div>
 </div>
+<?php
+endif;
+?>
