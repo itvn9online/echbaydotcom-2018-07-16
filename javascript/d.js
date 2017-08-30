@@ -2267,8 +2267,15 @@ setTimeout(function () {
 	
 	//
 	$('.click-jquery-show-quick-cart').click(function() {
-		$('#click_show_cpa').show();
-		$('body').addClass('body-no-scroll');
+		// Nếu có thuộc tính hiển thị quick cart -> cuộn chuột đến đó
+		if ( $('.clone-show-quick-cart').length > 0 ) {
+			window.scroll( 0, $('.clone-show-quick-cart').offset().top - 90 );
+		}
+		// hiển thị form mua hàng nhanh
+		else {
+			$('#click_show_cpa').show();
+			$('body').addClass('body-no-scroll');
+		}
 	});
 	
 	//
