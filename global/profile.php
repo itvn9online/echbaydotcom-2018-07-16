@@ -4,6 +4,11 @@
 
 //
 if ( mtv_id > 0 ) {
+	$__cf_row ['cf_title'] = EBE_get_lang('taikhoan');
+	$group_go_to[] = ' <li><a href="./profile">' . $__cf_row ['cf_title'] . '</a></li>';
+	
+	
+	//
 	$arr_user_profile = get_userdata( mtv_id );
 //	$arr_user_profile = get_currentuserinfo();
 //	$arr_user_profile = get_user_by('id', mtv_id);

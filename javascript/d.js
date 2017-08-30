@@ -2269,7 +2269,10 @@ setTimeout(function () {
 	$('.click-jquery-show-quick-cart').click(function() {
 		// Nếu có thuộc tính hiển thị quick cart -> cuộn chuột đến đó
 		if ( $('.clone-show-quick-cart').length > 0 ) {
-			window.scroll( 0, $('.clone-show-quick-cart').offset().top - 90 );
+//			window.scroll( 0, $('.clone-show-quick-cart').offset().top - 90 );
+			$('body,html').animate({
+				scrollTop: $('.clone-show-quick-cart').offset().top - 90
+			}, 800);
 		}
 		// hiển thị form mua hàng nhanh
 		else {
