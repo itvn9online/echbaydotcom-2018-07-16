@@ -2369,6 +2369,7 @@ function EBE_show_log ($m) {
 
 // https://codex.wordpress.org/Plugin_API/Action_Reference/phpmailer_init
 function EBE_configure_smtp( PHPMailer $phpmailer ){
+	
 	global $__cf_row;
 	
 	if ( $__cf_row['cf_smtp_host'] == ''
@@ -2383,9 +2384,16 @@ function EBE_configure_smtp( PHPMailer $phpmailer ){
 	
 	// switch to smtp
 	$phpmailer->isSMTP();
-	$phpmailer->Host = $__cf_row['cf_smtp_host'];
+	$phpmailer->CharSet = 'utf-8';
+	
+	// https://github.com/PHPMailer/PHPMailer/wiki/SMTP-Debugging
+	$phpmailer->SMTPDebug = ( $__cf_row['cf_tester_mode'] == 1 ) ? 2 : 0;
+	
 	// Force it to use Username and Password to authenticate
 	$phpmailer->SMTPAuth = true;
+	
+	//
+	$phpmailer->Host = $__cf_row['cf_smtp_host'];
 	$phpmailer->Port = $__cf_row['cf_smtp_port'];
 	$phpmailer->Username = $__cf_row['cf_smtp_email'];
 	$phpmailer->Password = $__cf_row['cf_smtp_pass'];
@@ -2399,7 +2407,20 @@ function EBE_configure_smtp( PHPMailer $phpmailer ){
 	$phpmailer->From = ( _eb_check_email_type( $__cf_row['cf_smtp_email'] ) != 1 ) ? $__cf_row['cf_email'] : $__cf_row['cf_smtp_email'];
 	$phpmailer->FromName = ( $__cf_row['cf_web_name'] == '' ) ? '(' . strtoupper( $_SERVER['HTTP_HOST'] ) . ')' : _eb_non_mark( $__cf_row['cf_web_name'] );
 	
+	//
+	$phpmailer->SMTPOptions = array (
+		'ssl' => array (
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true 
+		) 
+	);
+	$phpmailer->WordWrap = 50;
+	$phpmailer->IsHTML ( true );
+	
+	//
 	return true;
+	
 }
 
 function _eb_send_mail_phpmailer($to, $to_name = '', $subject, $message, $from_reply = '', $bcc_email = '') {

@@ -28,7 +28,12 @@ User: #' . mtv_id . '
 
 
 //
-_eb_send_email( $email, 'Test email via EchBay e-commerce plugin', $mesage );
+if ( _eb_send_email( $email, 'Test email via EchBay e-commerce plugin', $mesage ) == true ) {
+	echo 'OK';
+}
+else {
+	echo 'ERROR';
+}
 
 
 
