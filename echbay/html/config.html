@@ -351,16 +351,10 @@ div.gallery-add-to-favicon { display: block; }
 		</tbody>
 		<tbody title="Thiết lập gửi mail" id="eb-admin-config-smtp" class="eb-admin-config-tab eb-admin-hide-config-tab">
 			<tr>
-				<td class="i bold redcolor bborder" colspan="2">SMTP Email</td>
+				<td class="i bold redcolor bborder" colspan="2">Cấu hình gửi email nâng cao (thông qua SMTP)</td>
 			</tr>
 			<tr>
 				<td class="i" colspan="2">* Nếu tài khoản STMP được thiết lập, hệ thống email sẽ sử dụng PHPMailler và tài khoản SMTP để gửi email, nếu không, sẽ sử dụng hàm mail() mặc định của server (nếu được hỗ trợ).</td>
-			</tr>
-			<tr class="d-none">
-				<td class="t">EchBay.com free e-mail</td>
-				<td class="i"><input type="checkbox" name="cf_sys_email" value="{tmp.cf_sys_email}" id="cf_sys_email" />
-					<label for="cf_sys_email">Gửi email thông qua pepipost.com (miễn phí)</label>
-					<div class="small">* Dịch vụ này hiện chỉ tích hợp cho khách hàng sử dụng Hosting cung cấp bởi EchBay.com</div></td>
 			</tr>
 			<tr>
 				<td class="t">SMTP Email</td>
@@ -381,12 +375,17 @@ div.gallery-add-to-favicon { display: block; }
 			<tr>
 				<td class="t">SMTP Port</td>
 				<td class="i"><input type="number" name="cf_smtp_port" value="{tmp.cf_smtp_port}" class="s" maxlength="6" />
-					<div class="small">Port nếu có. Gmail SSL port: <strong>465</strong>, Gmail TLS port: <strong>587</strong></div></td>
+					<div class="small">Port nếu có. Gmail SSL port: <strong>465</strong>, Gmail TLS port: <strong>587</strong>, Pepipost port 2525. <a href="http://support.pepipost.com/knowledge_base/topics/wp-mail-smtp?utm_source=WordPress&utm_campaign=Plugins&utm_medium=echbaydotcom&utm_term=organic" target="_blank">Tìm hiểu thêm</a> về việc gửi email qua pepipost.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Mã hóa</td>
 				<td class="i">{tmp.cf_smtp_encryption}
 					<div class="small">Hầu hết các server mail đều hỗ trợ phương thức SSL, nhưng nếu có TLS thì bạn nên sử dụng TLS thay cho SSL.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Dịch vụ gửi mail</td>
+				<td class="i">{tmp.cf_sys_email}
+					<div class="small">* Lựa chọn dịch vụ gửi mail mà bạn muốn sử dụng.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Kiểm tra hệ thống gửi email</td>

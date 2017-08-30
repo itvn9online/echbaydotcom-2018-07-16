@@ -8,6 +8,36 @@ global $__cf_row_default;
 
 
 
+
+
+
+function WGR_config_list_radio_option ( $arr, $key ) {
+	global $__cf_row;
+	
+	$str = '';
+	foreach ( $arr as $k => $v ) {
+		$label_id = 'label_' . $key . $k;
+		
+		$sl = '';
+		if ( $__cf_row[$key] == $k ) {
+			$sl = ' checked="checked"';
+		}
+		
+		$str .= '
+<div>
+	<input type="radio" name="' . $key . '" id="' .$label_id. '" value="' .$k. '"' . $sl . '>
+	<label for="' .$label_id. '">' .$v. '</label>
+</div>';
+	}
+	
+	return $str;
+}
+
+
+
+
+
+
 //
 //echo get_home_url() . '<br>' . "\n";
 //echo get_site_url() . '<br>' . "\n";
@@ -84,39 +114,6 @@ foreach ( $arr_cf_reset_cache as $k => $v ) {
 	<label for="' .$label_id. '">' .$v. '</label>
 </div>';
 }
-
-
-
-
-
-//
-$arr_cf_smtp_encryption = array(
-	'' => 'Không sử dụng',
-	'ssl' => 'Sử dụng mã hóa SSL',
-	'tls' => 'Sử dụng mã hóa TLS',
-);
-//print_r($arr_cf_smtp_encryption);
-$str_cf_smtp_encryption = '';
-foreach ( $arr_cf_smtp_encryption as $k => $v ) {
-	$label_id = 'label_cf_smtp_encryption' .$k;
-	
-	$sl = '';
-	if ( $__cf_row['cf_smtp_encryption'] == $k ) {
-		$sl = ' checked="checked"';
-	}
-	
-	$str_cf_smtp_encryption .= '
-<div>
-	<input type="radio" name="cf_smtp_encryption" id="' .$label_id. '" value="' .$k. '"' . $sl . '>
-	<label for="' .$label_id. '">' .$v. '</label>
-</div>';
-}
-
-
-
-
-
-
 
 
 
@@ -458,7 +455,17 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 //	'tmp.js_version' => date( 'Ymd-His', filemtime( ECHBAY_PRI_CODE . 'js/config.js' ) ),
 	'tmp.js_version' => time(),
 	
-	'tmp.cf_smtp_encryption' => $str_cf_smtp_encryption,
+	'tmp.cf_smtp_encryption' => WGR_config_list_radio_option( array(
+		'' => 'Không sử dụng',
+		'ssl' => 'Sử dụng mã hóa SSL',
+		'tls' => 'Sử dụng mã hóa TLS',
+	), 'cf_smtp_encryption' ),
+	
+	'tmp.cf_sys_email' => WGR_config_list_radio_option( array(
+		'' => 'Sử dụng hàm mail() mặc định của server (nhanh, gọn, nhẹ nhưng hay vào spam)',
+		'ssl' => 'Sử dụng SMTP email (lâu hơn chút, tỉ lệ vào spam phụ thuộc vào server mail)',
+		'tls' => 'Sử dụng Pepipost SMTP (miễn phí và khá tốt, ít vào spam, hay vào mục quảng cáo của Gmail)',
+	), 'cf_sys_email' ),
 	
 //	'tmp.ex_dns_prefetch' => $_SERVER['HTTP_HOST'],
 	'tmp.timezone_wp_full' => $timezone_wp_full,

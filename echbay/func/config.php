@@ -26,6 +26,7 @@ _eb_q("DELETE
 
 
 // kích hoạt chế độ gửi email qua SMTP nếu có
+/*
 //if ( ! isset( $_POST['cf_sys_email'] ) || $_POST['cf_sys_email'] == '' ) {
 	$_POST['cf_sys_email'] = 0;
 //}
@@ -35,6 +36,21 @@ if ( $_POST ['cf_smtp_host'] != ''
 && $_POST ['cf_smtp_email'] != ''
 && $_POST ['cf_smtp_pass'] != '' ) {
 	$_POST['cf_sys_email'] = 1;
+}
+*/
+
+
+
+//
+if ( ! isset( $_POST['cf_sys_email'] ) ) {
+	$_POST['cf_sys_email'] = '';
+}
+
+// tắt chế độ gửi email qua SMTP nếu 1 trong các thông số này bị thiếu
+if ( $_POST ['cf_smtp_host'] == ''
+|| $_POST ['cf_smtp_email'] == ''
+|| $_POST ['cf_smtp_pass'] == '' ) {
+	$_POST['cf_sys_email'] = '';
 }
 
 

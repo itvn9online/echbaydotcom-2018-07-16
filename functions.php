@@ -2392,7 +2392,8 @@ function EBE_configure_smtp( PHPMailer $phpmailer ){
 	// Force it to use Username and Password to authenticate
 	$phpmailer->SMTPAuth = true;
 	
-	//
+	// Set the Pepipost settings
+	// default setting
 	$phpmailer->Host = $__cf_row['cf_smtp_host'];
 	$phpmailer->Port = $__cf_row['cf_smtp_port'];
 	$phpmailer->Username = $__cf_row['cf_smtp_email'];
