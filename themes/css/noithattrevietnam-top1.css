@@ -1,5 +1,8 @@
 #noithattrevietnam-top1 { }
-#noithattrevietnam-top1 .web-logo { background-position: left; }
+#noithattrevietnam-top1 .web-logo {
+	background: #fff left no-repeat;
+	background-size: auto 80%;
+}
 #noithattrevietnam-top1 .nttvn-top-menu {
 	line-height: 30px;
 	background-color: #ececec;

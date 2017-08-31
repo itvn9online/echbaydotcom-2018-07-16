@@ -669,30 +669,30 @@ else {
 			),
 		) );
 		
-		
-		
-		// lấy thêm loạt bài tiếp theo, 1 số giao diện sẽ sử dụng
-		if ( $__cf_row['cf_num_details2_list'] > 0 ) {
-			$other_post_2right = _eb_load_post( $__cf_row['cf_num_details2_list'], array(
-				'category__in' => $post_primary_categories,
-				'post__not_in' => array(
-					$__post->ID
-				),
-			) );
-		}
-		
-		
-		
-		// lấy thêm loạt bài tiếp theo, 1 số giao diện sẽ sử dụng
-		if ( $__cf_row['cf_num_details3_list'] > 0 ) {
-			$other_post_3right = _eb_load_post( $__cf_row['cf_num_details3_list'], array(
-				'category__in' => $post_primary_categories,
-				'post__not_in' => array(
-					$__post->ID
-				),
-			) );
-		}
-		
+	}
+	
+	
+	
+	// lấy thêm loạt bài tiếp theo, 1 số giao diện sẽ sử dụng
+	if ( $__cf_row['cf_num_details2_list'] > 0 ) {
+		$other_post_2right = _eb_load_post( $__cf_row['cf_num_details2_list'], array(
+			'category__in' => $post_primary_categories,
+			'post__not_in' => array(
+				$__post->ID
+			),
+		) );
+	}
+	
+	
+	
+	// lấy thêm loạt bài tiếp theo, 1 số giao diện sẽ sử dụng
+	if ( $__cf_row['cf_num_details3_list'] > 0 ) {
+		$other_post_3right = _eb_load_post( $__cf_row['cf_num_details3_list'], array(
+			'category__in' => $post_primary_categories,
+			'post__not_in' => array(
+				$__post->ID
+			),
+		) );
 	}
 	
 	
