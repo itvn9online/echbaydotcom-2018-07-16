@@ -212,6 +212,16 @@ $__cf_row_default = array(
 	'cf_threaddetails_include_file' => '',
 	
 	
+	// Chiều rộng chung của toàn website -> nếu chiều rộng này được set, cả website sẽ sử dụng nó
+	'cf_global_width_sidebar' => 0,
+	// -> nếu không, sẽ sử dụng chiều rộng riêng của từng trang
+	'cf_home_width_sidebar' => 0,
+	'cf_cats_width_sidebar' => 0,
+	'cf_post_width_sidebar' => 0,
+	'cf_blogs_width_sidebar' => 0,
+	'cf_blog_width_sidebar' => 0,
+	
+	
 	// cấu trúc bảng tin ở trang chủ
 	'cf_home_column_style' => '',
 	'cf_using_home_default' => 1,
@@ -230,8 +240,6 @@ $__cf_row_default = array(
 	// danh sách tin -> tổng quan
 	'cf_cats_class_style' => '',
 	'cf_cats_column_style' => '',
-	// chiều rộng cho sidebar trang category
-	'cf_cats_width_sidebar' => 0,
 	// danh sách tin -> html cho phần node
 	'cf_cats_node_html' => '',
 	// danh sách tin -> số tin trên mỗi dòng

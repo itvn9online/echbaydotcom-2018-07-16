@@ -1,0 +1,40 @@
+.noithattre-menuleft .echbay-widget-title {
+	background-color: #05715f;
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	padding-left: 15px;
+	border: 0 none;
+	margin-bottom: 2px;
+}
+.noithattre-menuleft .echbay-widget-title:before { display: none; }
+.widget_echbay_category .noithattre-menuleft { margin-bottom: 20px; }
+.widget_echbay_category .noithattre-menuleft li {
+	list-style: none;
+	margin: 0;
+}
+.widget_echbay_category .noithattre-menuleft li * {
+	font-weight: normal;
+	font-size: 13px;
+}
+.widget_echbay_category .noithattre-menuleft li a {
+	padding: 10px;
+	background: #eef0ef;
+	display: block;
+	margin: 2px 0;
+}
+.widget_echbay_category .noithattre-menuleft li a:hover { color: #c00; }
+.widget_echbay_category .noithattre-menuleft .sub-menu { }
+.noithattre-menuleft { }
+.noithattre-menuleft .echbay-blog-infos,
+.noithattre-menuleft .echbay-blog-gioithieu { display: none; }
+.noithattre-menuleft .echbay-blog-title a {
+	font-size: 13px;
+	line-height: 16px;
+}
+.noithattre-menuleft .echbay-blog-marginleft { padding-left: 10px; }
+.thread-list-order { display: none; }
+.thread-module-name {
+	border-bottom: 0 none !important;
+	line-height: 19px !important;
+}

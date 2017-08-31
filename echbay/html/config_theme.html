@@ -84,6 +84,43 @@
 					<div class="small l19">Chọn từng khối thiết kế cho phần FOOTER hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
 					<div class="show-if-using-footer-default border-file-design">{tmp.str_footer_design_preview}</div></td>
 			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2">* Kích thước của cả khung là 100%, bạn muốn phần sidebar chiếm bao nhiêu % trong tổng số 100% này thì nhập số đó vào đây rồi lưu lại.</td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng cho khung menu</td>
+				<td class="i"><input type="text" name="cf_global_width_sidebar" value="{tmp.cf_global_width_sidebar}" class="s" maxlength="2" />
+					%
+					<div class="small">* Đây là kích thước dùng chung cho toàn bộ website, nếu kích thước này được thiết lập, toàn bộ website sẽ sử dụng kích thước này làm chuẩn. Nếu không, hãy sử dụng các tham số tiếp theo để thiết lập riêng cho từng trang.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung (home)</td>
+				<td class="i"><input type="text" name="cf_home_width_sidebar" value="{tmp.cf_home_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung (category)</td>
+				<td class="i"><input type="text" name="cf_cats_width_sidebar" value="{tmp.cf_cats_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung (product)</td>
+				<td class="i"><input type="text" name="cf_post_width_sidebar" value="{tmp.cf_post_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung (blogs)</td>
+				<td class="i"><input type="text" name="cf_blogs_width_sidebar" value="{tmp.cf_blogs_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung (blog)</td>
+				<td class="i"><input type="text" name="cf_blog_width_sidebar" value="{tmp.cf_blog_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
 		</tbody>
 		<tbody title="Trang chủ (Home)" id="eb-admin-config-theme-home" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
@@ -125,12 +162,6 @@
 			<tr>
 				<td class="t">Bố cục trang danh sách sản phẩm</td>
 				<td class="i">{tmp.cf_cats_column_style}</td>
-			</tr>
-			<tr>
-				<td class="t">Chiều rộng cho khung menu</td>
-				<td class="i"><input type="text" name="cf_cats_width_sidebar" value="{tmp.cf_cats_width_sidebar}" class="s" maxlength="2" />
-					%
-					<div class="small">Kích thước của cả khung là 100%, bạn muốn phần sidebar chiếm bao nhiêu % trong tổng số 100% này thì nhập số đó vào đây rồi lưu lại.</div></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="t">Khung cho trang CATEGORY</td>

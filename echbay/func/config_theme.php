@@ -48,18 +48,34 @@ _eb_update_option( 'posts_per_page', $_POST['posts_per_page'] );
 
 
 
-// Fixed lại chiều cao logo cho chuẩn
-$cats_width_sidebar = (int) $_POST['cf_cats_width_sidebar'];
-
-if ( trim( $_POST['cf_cats_column_style'] ) != '' && $cats_width_sidebar > 0 ) {
-	$_POST['cf_default_css'] .= _eb_supper_del_line( '.thread_list_noidung_menu .custom-width-cats-sidebar,
-.thread_list_menu_noidung .custom-width-cats-sidebar {
-	width: ' . $cats_width_sidebar . '%;
+// Tính toán chiều rộng cho từng module
+$cf_global_width_sidebar = (int) $_POST['cf_global_width_sidebar'];
+if ( $cf_global_width_sidebar > 0 ) {
+	$cf_home_width_sidebar = $cf_global_width_sidebar;
+	$cf_cats_width_sidebar = $cf_global_width_sidebar;
+	$cf_post_width_sidebar = $cf_global_width_sidebar;
+	$cf_blogs_width_sidebar = $cf_global_width_sidebar;
+	$cf_blog_width_sidebar = $cf_global_width_sidebar;
 }
-.thread_list_noidung_menu .custom-width-cats-main,
-.thread_list_menu_noidung .custom-width-cats-main {
-	width: ' . ( 100 - $cats_width_sidebar ) . '%;
-}' );
+else {
+	$cf_home_width_sidebar = (int) $_POST['cf_home_width_sidebar'];
+	$cf_cats_width_sidebar = (int) $_POST['cf_cats_width_sidebar'];
+	$cf_post_width_sidebar = (int) $_POST['cf_post_width_sidebar'];
+	$cf_blogs_width_sidebar = (int) $_POST['cf_blogs_width_sidebar'];
+	$cf_blog_width_sidebar = (int) $_POST['cf_blog_width_sidebar'];
+}
+
+//
+if ( trim( $_POST['cf_cats_column_style'] ) != '' && $cf_cats_width_sidebar > 0 ) {
+	$_POST['cf_default_css'] .= _eb_supper_del_line( trim( '
+.thread_list_noidung_menu .col-sidebar-content,
+.thread_list_menu_noidung .col-sidebar-content {
+	width: ' . $cf_cats_width_sidebar . '%;
+}
+.thread_list_noidung_menu .col-main-content,
+.thread_list_menu_noidung .col-main-content {
+	width: ' . ( 100 - $cf_cats_width_sidebar ) . '%;
+}' ) );
 }
 
 
