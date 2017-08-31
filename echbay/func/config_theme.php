@@ -48,6 +48,37 @@ _eb_update_option( 'posts_per_page', $_POST['posts_per_page'] );
 
 
 
+
+
+// tạo css cho từng module nếu có
+function WGR_config_tao_css_chia_cot (
+	// thuộc tính của module được kiểm tra
+	$column,
+	// chiều rộng sidebar
+	$width,
+	// class css sẽ được điều khiển
+	$css1,
+	$css2
+) {
+	
+	if ( trim( $column ) != '' && $width > 0 ) {
+		return _eb_supper_del_line( trim( '
+.' . $css1 . ' .col-sidebar-content,
+.' . $css1 . ' .col-sidebar-content {
+	width: ' . $width . '%;
+}
+.' . $css1 . ' .col-main-content,
+.' . $css2 . ' .col-main-content {
+	width: ' . ( 100 - $width ) . '%;
+}' ) );
+	}
+	
+	//
+	return '';
+	
+}
+
+
 // Tính toán chiều rộng cho từng module
 $cf_global_width_sidebar = (int) $_POST['cf_global_width_sidebar'];
 if ( $cf_global_width_sidebar > 0 ) {
@@ -64,19 +95,22 @@ else {
 	$cf_blogs_width_sidebar = (int) $_POST['cf_blogs_width_sidebar'];
 	$cf_blog_width_sidebar = (int) $_POST['cf_blog_width_sidebar'];
 }
+$_POST['cf_default_themes_css'] = '';
 
 //
-if ( trim( $_POST['cf_cats_column_style'] ) != '' && $cf_cats_width_sidebar > 0 ) {
-	$_POST['cf_default_css'] .= _eb_supper_del_line( trim( '
-.thread_list_noidung_menu .col-sidebar-content,
-.thread_list_menu_noidung .col-sidebar-content {
-	width: ' . $cf_cats_width_sidebar . '%;
-}
-.thread_list_noidung_menu .col-main-content,
-.thread_list_menu_noidung .col-main-content {
-	width: ' . ( 100 - $cf_cats_width_sidebar ) . '%;
-}' ) );
-}
+$_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_home_column_style'], $cf_home_width_sidebar, 'home_noidung_menu', 'home_menu_noidung' );
+
+//
+$_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_cats_column_style'], $cf_cats_width_sidebar, 'thread_list_noidung_menu', 'thread_list_menu_noidung' );
+
+//
+$_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_post_column_style'], $cf_post_width_sidebar, 'thread_details_noidung_menu', 'thread_details_menu_noidung' );
+
+//
+$_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_blogs_column_style'], $cf_blogs_width_sidebar, 'blogs_noidung_menu', 'blogs_menu_noidung' );
+
+//
+$_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_blog_column_style'], $cf_blog_width_sidebar, 'blog_details_noidung_menu', 'blog_details_menu_noidung' );
 
 
 

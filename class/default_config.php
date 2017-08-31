@@ -66,6 +66,7 @@ $__cf_row_default = array(
 	
 	// màu cơ bản
 	'cf_default_css' => '',
+	'cf_default_themes_css' => '',
 	
 	'cf_default_body_bg' => '#ffffff',
 	'cf_default_color' => '#000000',

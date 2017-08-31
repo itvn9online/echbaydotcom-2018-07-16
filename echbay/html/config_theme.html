@@ -13,9 +13,7 @@
 <ul id="list-tab-eb-admin-config" class="eb-admin-config cf">
 </ul>
 <form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();">
-	<div class="d-none">
-		<textarea name="cf_default_css" id="cf_default_css" style="width:90%;">{tmp.cf_default_css}</textarea>
-		{tmp.str_list_all_include_file}</div>
+	<div class="d-none">{tmp.str_list_all_include_file}</div>
 	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table maxwidth-public-table fix-textarea-height">
 		<tbody title="Giao diện" id="eb-admin-config-theme-themes" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>

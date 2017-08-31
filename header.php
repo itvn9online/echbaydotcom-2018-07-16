@@ -48,7 +48,7 @@ _eb_add_compiler_css( $arr_for_add_css );
 ?>
 <style type="text/css">
 /* EchBay custom CSS for replace default CSS by plugin or theme */
-<?php echo $__cf_row['cf_default_css'];
+<?php echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
 ?>
 </style>
 <?php
