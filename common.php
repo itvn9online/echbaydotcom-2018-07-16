@@ -379,6 +379,11 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 	}
 }
 
+// xong sẽ nạp CSS tổng của theme (trang nào cũng có mặt)
+if ( $__cf_row[ 'cf_current_theme_using' ] != '' ) {
+	$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
+}
+
 
 
 
