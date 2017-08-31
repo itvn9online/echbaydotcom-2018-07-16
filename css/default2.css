@@ -78,10 +78,27 @@ label,
 .blogs_menu_noidung .custom-width-blogs-main { width: 75%; }
 .blogs_noidung_menu .custom-width-blogs-sidebar,
 .blogs_menu_noidung .custom-width-blogs-sidebar { width: 25%; }
-.blogs_noidung_menu .blogs-left-space,
-.blogs_noidung_menu .blogs-right-space { padding-right: 25px; }
+/* căn lề cho sidebar */
+.thread_list_menu_noidung .global-right-space,
+.thread_list_menu_noidung .global-right-space,
+.blogs_menu_noidung .global-right-space,
+.blogs_menu_noidung .global-right-space { padding-right: 25px; }
+.thread_list_noidung_menu .global-right-space,
+.thread_details_noidung_menu .global-right-space,
+.blogs_noidung_menu .global-right-space,
+.blog_details_noidung_menu .global-right-space { padding-left: 25px; }
+/*
+.thread_list_menu_noidung .cats-right-space,
+.thread_details_noidung_menu .product-right-space,
 .blogs_menu_noidung .blogs-left-space,
+.blog_details_menu_noidung .blog-left-space,
+.blogs_noidung_menu .blogs-right-space { padding-right: 25px; }
+.thread_list_noidung_menu .cats-right-space,
+.thread_details_menu_noidung .product-right-space,
+.blogs_noidung_menu .blogs-left-space,
+.blog_details_noidung_menu .blog-left-space,
 .blogs_menu_noidung .blogs-right-space { padding-left: 25px; }
+*/
 /* custom flex blogs-node */
 .blogs_node_chi_chu {
 	list-style: inside;
@@ -207,13 +224,11 @@ label,
 .thread_list_menu_noidung .custom-width-cats-main { width: 80%; }
 .thread_list_noidung_menu .custom-width-cats-sidebar,
 .thread_list_menu_noidung .custom-width-cats-sidebar { width: 20% }
-.thread_list_noidung_menu .cats-right-space { padding-left: 25px; }
 .thread_list_menu_noidung {
 	display: -webkit-flex; /* Safari */
 	display: flex;
 	flex-direction: row-reverse;
 }
-.thread_list_menu_noidung .cats-right-space { padding-right: 25px; }
 /* product details flex */
 .thread_details_noidung_menu .custom-width-product-main,
 .thread_details_noidung_menu .custom-width-product-sidebar,
@@ -226,13 +241,11 @@ label,
 .thread_details_menu_noidung .custom-width-product-main { width: 80%; }
 .thread_details_noidung_menu .custom-width-product-sidebar,
 .thread_details_menu_noidung .custom-width-product-sidebar { width: 20%; }
-.thread_details_noidung_menu .product-right-space { padding-right: 25px; }
 .thread_details_menu_noidung {
 	display: -webkit-flex; /* Safari */
 	display: flex;
 	flex-direction: row-reverse;
 }
-.thread_details_menu_noidung .product-right-space { padding-left: 25px; }
 /* home details flex */
 .home_noidung_menu .custom-width-home-main,
 .home_noidung_menu .custom-width-home-sidebar,
