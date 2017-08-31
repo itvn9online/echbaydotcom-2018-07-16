@@ -80,9 +80,9 @@ label,
 .blogs_menu_noidung .custom-width-blogs-sidebar { width: 25%; }
 /* căn lề cho sidebar */
 .thread_list_menu_noidung .global-right-space,
-.thread_list_menu_noidung .global-right-space,
+.thread_details_menu_noidung .global-right-space,
 .blogs_menu_noidung .global-right-space,
-.blogs_menu_noidung .global-right-space { padding-right: 25px; }
+.blog_details_menu_noidung .global-right-space { padding-right: 25px; }
 .thread_list_noidung_menu .global-right-space,
 .thread_details_noidung_menu .global-right-space,
 .blogs_noidung_menu .global-right-space,
@@ -186,13 +186,13 @@ label,
 .blog_details_menu_noidung .custom-width-blog-main { width: 75%; }
 .blog_details_noidung_menu .custom-width-blog-sidebar,
 .blog_details_menu_noidung .custom-width-blog-sidebar { width: 25%; }
-.blog_details_noidung_menu .blog-right-space { padding-right: 25px; }
+/* .blog_details_noidung_menu .blog-right-space { padding-right: 25px; } */
 .blog_details_menu_noidung {
 	display: -webkit-flex; /* Safari */
 	display: flex;
 	flex-direction: row-reverse;
 }
-.blog_details_menu_noidung .blog-right-space { padding-left: 25px; }
+/* .blog_details_menu_noidung .blog-right-space { padding-left: 25px; } */
 /* page flex */
 .page_noidung_menu .custom-width-page-main,
 .page_noidung_menu .custom-width-page-sidebar,
