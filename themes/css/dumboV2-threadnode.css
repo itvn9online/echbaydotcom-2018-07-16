@@ -1,0 +1,82 @@
+/* Global css (thread_node) */
+.thread-list { margin: 0 -6px; }
+.thread-list-padding {
+	background: #fff;
+	margin: 8px 6px 6px 6px;
+	border: 1px #ccc solid;
+}
+.thread-list-padding:hover { border-color: #999; }
+.thread-list-avt {
+	background: center no-repeat;
+	background-size: auto 100%;
+	height: 220px;
+	border-bottom: 1px #f2f2f2 solid;
+}
+.thread-list-title {
+	height: 38px;
+	line-height: 19px;
+	overflow: hidden;
+	margin: 8px 0 3px 0;
+	font-size: 14px;
+	color: #333;
+	font-weight: normal;
+}
+.thread-list-ant {
+	position: relative !important;
+	z-index: 1;
+	color: #999;
+}
+.thread-list-ant:hover { text-decoration: underline; }
+.thread-list-per {
+	background-color: #fff;
+	border: 1px #F30 dashed;
+	line-height: 28px;
+	margin: 0 5px 0 10px;
+	color: #F30;
+}
+.thread-list-desc {
+	height: 60px;
+	overflow: hidden;
+	font-size: 14px;
+	color: #5d5c5c;
+}
+.thread-list-gia { color: #555; }
+.thread-list-gia strong { font-weight: normal; }
+.thread-list-giamoi {
+	color: #f00;
+	font-size: 15px;
+	display: inline-block;
+	margin-right: 8px;
+}
+.thread-list-xem {
+	background: #eee center no-repeat;
+	border-top: 1px #ccc solid;
+}
+.thread-list-xem,
+.thread-list-info { padding: 10px; }
+.style-for-mobile .thread-list-xem,
+.style-for-mobile .thread-list-info { padding: 3px; }
+.thread-list-info { background: #eee center no-repeat; }
+.thread-list-more {
+	position: absolute;
+	top: 35%;
+	left: 0;
+	right: 0;
+}
+.thread-list-more div {
+	color: #fff;
+	width: 90%;
+	max-width: 120px;
+	background: rgba( 0, 0, 0, .6 );
+	margin: 0 auto;
+	text-align: center;
+	padding: 10px 0;
+	border-radius: 3px;
+	display: none;
+}
+.thread-list-padding:hover .thread-list-more div { display: block; }
+.thread-list-giaban {
+	height: 19px;
+	line-height: 19px;
+	overflow: hidden;
+}

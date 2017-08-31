@@ -27,4 +27,5 @@ $eb_all_themes_support["dumbo"]["cf_home3_include_file"] = "home_widget.php";
 //
 $eb_all_themes_support["dumbo"]["cf_threaddetails_include_file"] = "dumbo-threaddetails.html";
 //
-$eb_all_themes_support["dumbo"]["cf_threadnode_include_file"] = "dumbo-threadnode.html";
+//$eb_all_themes_support["dumbo"]["cf_threadnode_include_file"] = "dumbo-threadnode.html";
+$eb_all_themes_support["dumbo"]["cf_threadnode_include_file"] = "dumboV2-threadnode.html";

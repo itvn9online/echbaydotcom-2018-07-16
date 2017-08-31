@@ -1,0 +1,44 @@
+#vinhaninteriorV2-home3 { padding-bottom: 50px; }
+#vinhaninteriorV2-home3 .home-hot-bg {
+	background: none;
+	padding: 0;
+}
+#vinhaninteriorV2-home3 .home-hot-title { display: none; }
+#vinhaninteriorV2-home3 .w99,
+#vinhaninteriorV2-home3 .w90 { width: 100%; }
+#vinhaninteriorV2-home3 .thread-list { margin: 0; }
+#vinhaninteriorV2-home3 .thread-list li { width: 20%; }
+#vinhaninteriorV2-home3 .thread-list-padding {
+	margin: 2px;
+	border-radius: 0;
+}
+#vinhaninteriorV2-home3 .thread-list-title {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	color: #fff;
+	border: 1px #fff solid;
+	text-transform: uppercase;
+	background: rgba(100, 100, 100, .3);
+	padding: 6px;
+	display: none;
+}
+#vinhaninteriorV2-home3 .thread-list-title * {
+	font-weight: normal;
+	font-size: 14px;
+}
+#vinhaninteriorV2-home3 a { background: rgba(0, 0, 0, .3); }
+#vinhaninteriorV2-home3 .thread-list-avt {
+	-webkit-filter: grayscale(1); /* Old WebKit */
+	filter: grayscale(1);
+}
+#vinhaninteriorV2-home3 .thread-list li:hover a { background: none; }
+#vinhaninteriorV2-home3 .thread-list li:hover .thread-list-title { display: block; }
+#vinhaninteriorV2-home3 .thread-list li:hover .thread-list-avt {
+	-webkit-filter: grayscale(0); /* Old WebKit */
+	filter: grayscale(0);
+}
+#vinhaninteriorV2-home3 { }
+#vinhaninteriorV2-home3 { }
+#vinhaninteriorV2-home3 { }
