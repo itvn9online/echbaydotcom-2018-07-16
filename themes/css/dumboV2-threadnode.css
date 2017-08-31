@@ -16,7 +16,7 @@
 	height: 38px;
 	line-height: 19px;
 	overflow: hidden;
-	margin: 8px 0 3px 0;
+	margin: 0 0 3px 0;
 	font-size: 14px;
 	color: #333;
 	font-weight: normal;
@@ -27,13 +27,6 @@
 	color: #999;
 }
 .thread-list-ant:hover { text-decoration: underline; }
-.thread-list-per {
-	background-color: #fff;
-	border: 1px #F30 dashed;
-	line-height: 28px;
-	margin: 0 5px 0 10px;
-	color: #F30;
-}
 .thread-list-desc {
 	height: 60px;
 	overflow: hidden;
@@ -57,26 +50,27 @@
 .style-for-mobile .thread-list-xem,
 .style-for-mobile .thread-list-info { padding: 3px; }
 .thread-list-info { background: #eee center no-repeat; }
-.thread-list-more {
-	position: absolute;
-	top: 35%;
-	left: 0;
-	right: 0;
-}
-.thread-list-more div {
-	color: #fff;
-	width: 90%;
-	max-width: 120px;
-	background: rgba( 0, 0, 0, .6 );
-	margin: 0 auto;
-	text-align: center;
-	padding: 10px 0;
-	border-radius: 3px;
-	display: none;
-}
-.thread-list-padding:hover .thread-list-more div { display: block; }
+/*
 .thread-list-giaban {
 	height: 19px;
 	line-height: 19px;
 	overflow: hidden;
+}
+*/
+.thread-list-per,
+.thread-list-more {
+	width: 90%;
+	margin: 0 auto;
+	border-radius: 3px;
+}
+.thread-list-per {
+	background-color: #fff;
+	border: 1px #F30 dashed;
+	line-height: 28px;
+	color: #F30;
+}
+.thread-list-more {
+	background-color: #f00;
+	line-height: 30px;
+	color: #fff;
 }

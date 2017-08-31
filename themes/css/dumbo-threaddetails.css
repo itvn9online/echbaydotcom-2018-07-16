@@ -198,6 +198,7 @@
 	display: block;
 	padding-top: 12px;
 }
+.style-for-mobile .details-tu-van { margin-left: 0; }
 .btn-addto-cart { display: block; }
 .eb-quickcart-table button {
     width: 45%;
