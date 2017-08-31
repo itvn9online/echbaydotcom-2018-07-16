@@ -78,7 +78,9 @@ label,
 .blogs_menu_noidung .custom-width-blogs-main { width: 75%; }
 .blogs_noidung_menu .custom-width-blogs-sidebar,
 .blogs_menu_noidung .custom-width-blogs-sidebar { width: 25%; }
+.blogs_noidung_menu .blogs-left-space,
 .blogs_noidung_menu .blogs-right-space { padding-right: 25px; }
+.blogs_menu_noidung .blogs-left-space,
 .blogs_menu_noidung .blogs-right-space { padding-left: 25px; }
 /* custom flex blogs-node */
 .blogs_node_chi_chu {

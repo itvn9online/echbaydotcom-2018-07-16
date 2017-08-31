@@ -64,7 +64,7 @@ function WGR_config_tao_css_chia_cot (
 	if ( trim( $column ) != '' && $width > 0 ) {
 		return _eb_supper_del_line( trim( '
 .' . $css1 . ' .col-sidebar-content,
-.' . $css1 . ' .col-sidebar-content {
+.' . $css2 . ' .col-sidebar-content {
 	width: ' . $width . '%;
 }
 .' . $css1 . ' .col-main-content,
