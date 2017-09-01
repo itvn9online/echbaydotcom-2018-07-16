@@ -1,5 +1,5 @@
 .noithattre-menuleft .echbay-widget-title {
-	background-color: #05715f;
+	background-color: #f7941e;
 	color: #fff;
 	font-size: 14px;
 	text-transform: uppercase;
@@ -38,7 +38,7 @@
 	border-bottom: 0 none !important;
 	line-height: 19px !important;
 }
-.style-for-mobile .echbay-blog li {
+.style-for-mobile .home-news .echbay-blog li {
 	float: none;
 	width: 100%;
 	max-width: 400px;

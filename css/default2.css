@@ -204,7 +204,12 @@ label,
 }
 */
 /* .blog_details_menu_noidung .blog-right-space { padding-left: 25px; } */
-/* display flex cho cac trang co su dung menu sidebar */
+/*
+* display flex cho cac trang co su dung menu sidebar
+*/
+/*
+* Với các thiết kế có menu -> tạo hiển thị dưới dạng menu
+*/
 .home_noidung_menu .col-main-content,
 .thread_list_noidung_menu .col-main-content,
 .thread_details_noidung_menu .col-main-content,
@@ -235,7 +240,9 @@ label,
 	display: block;
 	float: left;
 }
-/* */
+/*
+* Chỉnh lại chiều rộng mặc định cho menu và content
+*/
 .home_noidung_menu .col-main-content,
 .thread_list_noidung_menu .col-main-content,
 .thread_details_noidung_menu .col-main-content,
@@ -263,7 +270,9 @@ label,
 .blogs_menu_noidung .col-sidebar-content,
 .blog_details_menu_noidung .col-sidebar-content,
 .page_menu_noidung .col-sidebar-content { width: 20%; }
-/* */
+/*
+* Lật ngược thiết kế đối với lựa chọn menu - nội dung
+*/
 .home_menu_noidung,
 .thread_list_menu_noidung,
 .thread_details_menu_noidung,

@@ -1,7 +1,4 @@
-#noithattrevietnam-top2 {
-	background-color: #05715f;
-	padding: 1px 0;
-}
+#noithattrevietnam-top2 { padding: 1px 0; }
 #noithattrevietnam-top2 { }
 #noithattrevietnam-top2 .nttvn-nav-menu { line-height: 25px; }
 #noithattrevietnam-top2 .nttvn-nav-menu ul { }
@@ -10,7 +7,7 @@
 	color: #fff;
 	text-transform: uppercase;
 	padding: 10px 15px;
-	border-right: solid 1px #288575;
+	border-right: solid 1px rgba(255,255,255,.3);
 	font-size: 14px;
 	display: block;
 }
@@ -19,7 +16,7 @@
 	color: #333;
 }
 #noithattrevietnam-top2 .nttvn-nav-menu .sub-menu {
-	background-color: #05715f;
+	background-color: #f7941e;
 	position: absolute;
 	z-index: 3;
 	width: 230px;
@@ -38,7 +35,7 @@
 	text-transform: none;
 	color: #fff;
 	padding: 5px 15px;
-	border-top: 1px #288575 solid;
+	border-top: 1px rgba(255,255,255,.3) solid;
 }
 #noithattrevietnam-top2 .nttvn-nav-menu .sub-menu a:hover { background: rgba(255, 255, 255, .1); }
 #noithattrevietnam-top2 .nttvn-nav-menu .sub-menu .sub-menu { display: none; }
@@ -78,6 +75,6 @@
 	width: 250px;
 }
 #noithattrevietnam-top2 .div-search-margin:hover .div-search button {
-	background-color: #05715f;
+	background-color: #f7941e;
 	color: #fff;
 }

@@ -11,6 +11,10 @@ body.style-for-mobile {
 .style-for-mobile .w90,
 .style-for-mobile .w99,
 /* .style-for-mobile .global-w99, */
+/*
+.style-for-mobile .col-main-content,
+.style-for-mobile .col-sidebar-content,
+*/
 .style-for-mobile .fullsize-if-mobile {
 	width: 100% !important;
 	margin: 0 0 0 auto;
@@ -173,11 +177,31 @@ body.style-for-mobile {
 .style-for-mobile .menu-mobile-padding { padding-bottom: 90px; }
 /* .style-for-mobile .menu-mobile-padding .oi_member_func a { } */
 /* .style-for-mobile .thread_list_menu_noidung .custom-width-cats-sidebar { display: none; } */
+/*
+* Hủy bỏ việc lật ngược cột
+*/
+.style-for-mobile .home_menu_noidung,
 .style-for-mobile .thread_list_menu_noidung,
 .style-for-mobile .thread_details_menu_noidung,
-.style-for-mobile .thread_details_noidung_menu {
+.style-for-mobile .blogs_menu_noidung,
+.style-for-mobile .blog_details_menu_noidung,
+.style-for-mobile .page_menu_noidung {
 	display: block;
 	flex-direction: unset;
 }
+/*
+* Nội dung với menu nằm trên một cột -> tạo giãn cách cho 2 cái này
+*/
+.style-for-mobile .home_noidung_menu .col-sidebar-content,
+.style-for-mobile .thread_list_noidung_menu .col-sidebar-content,
+.style-for-mobile .thread_details_noidung_menu .col-sidebar-content,
+.style-for-mobile .blogs_noidung_menu .col-sidebar-content,
+.style-for-mobile .blog_details_noidung_menu .col-sidebar-content,
+.style-for-mobile .page_noidung_menu .col-sidebar-content,
+/* */
+.style-for-mobile .home_menu_noidung .col-sidebar-content,
+.style-for-mobile .thread_list_menu_noidung .col-sidebar-content,
 .style-for-mobile .thread_details_menu_noidung .col-sidebar-content,
-.style-for-mobile .thread_details_noidung_menu .col-sidebar-content { padding-top: 20px; }
+.style-for-mobile .blogs_menu_noidung .col-sidebar-content,
+.style-for-mobile .blog_details_menu_noidung .col-sidebar-content,
+.style-for-mobile .page_menu_noidung .col-sidebar-content { padding-top: 20px; }
