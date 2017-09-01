@@ -152,6 +152,14 @@ if ( $_POST['cf_description'] == '' ) {
 }
 _eb_update_option( 'blogdescription', $_POST['cf_description'] );
 
+// cập nhật email chính cho website
+if ( $_POST['cf_email_note'] != '' ) {
+	_eb_update_option( 'admin_email', $_POST['cf_email_note'] );
+}
+else if ( $_POST['cf_email'] ) {
+	_eb_update_option( 'admin_email', $_POST['cf_email'] );
+}
+
 
 if ( $_POST['cf_content_language'] == '' ) {
 	$a = get_language_attributes();
