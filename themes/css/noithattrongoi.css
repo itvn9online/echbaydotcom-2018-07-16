@@ -38,3 +38,9 @@
 	border-bottom: 0 none !important;
 	line-height: 19px !important;
 }
+.style-for-mobile .echbay-blog li {
+	float: none;
+	width: 100%;
+	max-width: 400px;
+	margin: 10px auto;
+}

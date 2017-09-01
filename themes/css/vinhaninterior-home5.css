@@ -4,6 +4,12 @@
 	float: left;
 	width: 33.33%;
 }
+.style-for-mobile #vinhaninterior-home5 .home-maps li {
+	float: none;
+	width: 100%;
+	max-width: 400px;
+	margin: 10px auto;
+}
 #vinhaninterior-home5 .home-maps .banner-ads-padding { margin: 0 14px; }
 #vinhaninterior-home5 .home-maps .banner-ads-title {
 	font-weight: bold;

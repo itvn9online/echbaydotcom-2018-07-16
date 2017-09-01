@@ -160,7 +160,6 @@ body.style-for-mobile {
 }
 .style-for-mobile #main-content,
 .style-for-mobile .mobile-padding { padding: 0 5px; }
-.style-for-mobile .thread_list_menu_noidung .custom-width-cats-sidebar { display: none; }
 .style-for-mobile .jEBE_slider-position {
 	overflow-y: hidden;
 	overflow-x: auto;
@@ -173,3 +172,12 @@ body.style-for-mobile {
 .style-for-mobile .thread-details-mobileCenter { max-width: 450px; }
 .style-for-mobile .menu-mobile-padding { padding-bottom: 90px; }
 /* .style-for-mobile .menu-mobile-padding .oi_member_func a { } */
+/* .style-for-mobile .thread_list_menu_noidung .custom-width-cats-sidebar { display: none; } */
+.style-for-mobile .thread_list_menu_noidung,
+.style-for-mobile .thread_details_menu_noidung,
+.style-for-mobile .thread_details_noidung_menu {
+	display: block;
+	flex-direction: unset;
+}
+.style-for-mobile .thread_details_menu_noidung .col-sidebar-content,
+.style-for-mobile .thread_details_noidung_menu .col-sidebar-content { padding-top: 20px; }

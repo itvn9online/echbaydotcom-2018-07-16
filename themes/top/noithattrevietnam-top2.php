@@ -1,4 +1,4 @@
-<div id="noithattrevietnam-top2">
+<div id="noithattrevietnam-top2" class="hide-if-mobile">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<div class="noithattrevietnam-top2 cf">
 			<div class="lf f90">

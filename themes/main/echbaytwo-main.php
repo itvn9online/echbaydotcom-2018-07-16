@@ -1,6 +1,9 @@
-<!--
+<?php
+/*
 Description: Sidebar tạo content cho trang chủ (main mặc định).
--->
+*/
+?>
+
 <div id="container">
 	<section id="main-content">
 		<div id="main" style="min-height:250px;">

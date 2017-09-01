@@ -2,7 +2,7 @@
 	border-bottom: 1px #ccc solid;
 	padding: 35px 0 55px 0;
 }
-#noithattrevietnam-footer2 { }
+.style-for-mobile .noithattrevietnam-footer2 { padding-left: 5px; }
 #noithattrevietnam-footer2 .footer-address-company { display: none; }
 #noithattrevietnam-footer2 .footer-address-info a {
 	color: #666;

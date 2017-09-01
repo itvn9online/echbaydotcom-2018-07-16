@@ -30,6 +30,12 @@
 	float: left;
 	width: 25%;
 }
+.style-for-mobile #vinhaninterior-home2 .home-linh-vuc li {
+	width: 100%;
+	float: none;
+	max-width: 400px;
+	margin: 0 auto 20px auto;
+}
 #vinhaninterior-home2 .home-linh-vuc .banner-ads-padding {
 	margin: 0 14px;
 	border: 1px solid rgba(255, 255, 255, 0.5);

@@ -467,8 +467,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 			'line-height' : conf['lineHeight']
 		}).height( hai );
 		
-		// chỉ căn chiều rộng trên bản pc -> mobile còn để touch
-		if ( $(window).width() > 750 ) {
+		// tạo nút bấm chuyển ảnh ngay trên khung ảnh nếu:
+		// người dùng đang xem trên màn ảnh rộng
+		// hiển thì mỗi ảnh 1 cái
+		if ( $(window).width() > 750 || conf['visible'] == 1 ) {
 			$( jd_to_class + ' .jEBE_slider-toLeft' ).css({
 				'width': conf['sliderArrowWidthLeft']
 			});
