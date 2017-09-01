@@ -153,11 +153,15 @@ if ( $_POST['cf_description'] == '' ) {
 _eb_update_option( 'blogdescription', $_POST['cf_description'] );
 
 // cập nhật email chính cho website
+$for_update_site_email = '';
 if ( $_POST['cf_email_note'] != '' ) {
-	_eb_update_option( 'admin_email', $_POST['cf_email_note'] );
+	$for_update_site_email = trim( $_POST['cf_email_note'] );
 }
 else if ( $_POST['cf_email'] ) {
-	_eb_update_option( 'admin_email', $_POST['cf_email'] );
+	$for_update_site_email = trim( $_POST['cf_email'] );
+}
+if ( _eb_check_email_type( $for_update_site_email ) == 1 ) {
+	_eb_update_option( 'admin_email', $for_update_site_email );
 }
 
 
