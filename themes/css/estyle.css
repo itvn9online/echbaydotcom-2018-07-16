@@ -1,0 +1,25 @@
+.custom-width-home-main .widget_random_blog { padding: 0; }
+.home-top1-banner .echbay-blog,
+.home-top2-banner .echbay-blog { margin: 0; }
+.home-hide-title-name .echbay-widget-title { display: none; }
+.home-hide-title-name .echbay-blog-padding { padding: 0; }
+.home-top1-banner .echbay-blog-padding { margin: 2px; }
+.home-top2-banner .echbay-blog-padding { margin: 0 5px; }
+.home-hot-products .thread-list-bg {
+	padding: 10px 0;
+	text-align: center;
+}
+.home-hot-products .thread-list-bg .thread-list-title {
+	margin: 3px 0;
+	padding: 0;
+	height: 38px;
+	line-height: 19px;
+	font-size: 13px;
+}
+.home-hot-products .thread-list-bg .f30,
+.home-hot-products .thread-list-bg .f20 { display: none; }
+.home-hot-products .thread-list-bg .f80,
+.home-hot-products .thread-list-bg .f70 {
+	float: none;
+	width: 100%;
+}

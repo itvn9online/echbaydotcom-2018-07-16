@@ -495,7 +495,18 @@ $('.click-active-eb-themes').click(function () {
 
 //
 if ( cf_current_theme_using != '' ) {
-	$('.skins-admin-edit li[data-key="' + cf_current_theme_using + '"]').addClass('selected');
+	console.log('Select and move current theme to top');
+	
+	$('.skins-admin-edit li[data-key="' + cf_current_theme_using + '"]')
+	.addClass('selected')
+	.css({
+		order : 0
+	});
+	
+	$('.skins-admin-edit li[data-key="' + cf_current_theme_using + '"] .click-active-eb-themes')
+	.html('<i class="fa fa-refresh"></i> Nạp lại')
+	.addClass('red-button')
+	.removeClass('blue-button');
 }
 
 

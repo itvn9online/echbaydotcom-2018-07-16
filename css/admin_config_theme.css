@@ -78,9 +78,16 @@ body.folded .eb-admin-config { left: 8%; }
 }
 .eb-best-new-themes input[type=submit],
 .eb-best-new-themes button { padding: 6px 25px; }
+.skins-admin-edit {
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
 .skins-admin-edit li {
 	float: left;
 	width: 33%;
+	order: 1;
 }
 .skins-admin-edit li div {
 	background: #fff top center no-repeat;
