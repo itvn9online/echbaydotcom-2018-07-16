@@ -168,6 +168,9 @@ $__cf_row_default = array(
 	// Mặc định, banner lớn được load theo từng trang, nếu muốn load cho toàn bộ trang thì kích hoạt nó lên
 	'cf_global_big_banner' => 0,
 	
+	// Mặc định, big banner được load cả trong trang chi tiết
+	'cf_post_big_banner' => 1,
+	
 	/*
 	* Cấu hình slider cho trang chi tiết sản phẩm
 	*/

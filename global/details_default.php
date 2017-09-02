@@ -196,7 +196,10 @@ if ( isset( $cats[0] ) ) {
 
 
 // Chỉ lấy banner riêng khi chế độ global không được kích hoạt
-if ( $__cf_row['cf_global_big_banner'] == 0 ) {
+if ( $__cf_row['cf_post_big_banner'] == 0 ) {
+	$str_big_banner = '<!-- Big banner current set not load in post details -->';
+}
+else if ( $__cf_row['cf_global_big_banner'] == 0 ) {
 	// Mặc định chỉ lấy cho phần post
 	if ( $cid > 0 ) {
 		$str_big_banner = EBE_get_big_banner( 5, array(
