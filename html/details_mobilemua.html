@@ -2,13 +2,16 @@
 	<div class="show-if-mobile">
 		<div class="thread-details-mobilemua text-center upper">
 			<ul class="cf">
-				<!-- Nút mua mặc định, sẽ redirect sang giỏ hàng đê mua -->
-				<li class="click-jquery-add-to-cart thread-details-mobilecart thread-details-cartcart"><i class="fa fa-shopping-cart"></i> <span>Mua ngay</span></li>
-				<!-- Nút mua sẽ hiển thị hoặc chuyển đến form mua hàng nhanh -->
-				<li class="click-jquery-show-quick-cart d-none thread-details-mobilecart thread-details-quickcart"><i class="fa fa-shopping-cart"></i> <span>Mua ngay</span></li>
+				<li class="click-jquery-quickcart-or-cart thread-details-mobilecart"><i class="fa fa-shopping-cart"></i> <span>Mua ngay</span></li>
 				<li class="phone-numbers-inline thread-details-phonemua">{tmp.cf_call_hotline}</li>
 				<li class="oi_scroll_top"><i class="fa fa-arrow-up"></i> Đầu trang</li>
 			</ul>
 		</div>
 	</div>
+</div>
+<div class="d-none">
+	<!-- Nút mua mặc định, sẽ redirect sang giỏ hàng để mua -->
+	<div class="click-jquery-add-to-cart">To cart</div>
+	<!-- Nút mua sẽ hiển thị hoặc chuyển đến form mua hàng nhanh -->
+	<div class="click-jquery-show-quick-cart">Show quick cart</div>
 </div>

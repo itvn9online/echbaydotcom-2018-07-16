@@ -525,7 +525,7 @@ function ___eb_details_product_color () {
 	
 	//
 	$('.show-if-color-exist').show();
-	$('.oi_product_color ul').html( str );
+	$('.oi_product_color ul').html( str ).after('<div class="show-products-color-text l19 small"></div>');
 	
 	$('.oi_product_color li').click(function () {
 		$('.oi_product_color li').removeClass('selected');
@@ -535,9 +535,15 @@ function ___eb_details_product_color () {
 			'background-image' : 'url(' + ( $(this).attr('data-img') || '' ) + ')'
 		});
 		
+		// Lấy tên màu
+		var color_name = $(this).attr('title') || '';
+		
+		// Hiển thị ra cho người dùng xem
+		$('.show-products-color-text').html(color_name);
+		
 		//
 		if ( typeof document.frm_cart != 'undefined' ) {
-			$('.eb-global-frm-cart input[name^=t_color]').val( $(this).attr('title') || '' );
+			$('.eb-global-frm-cart input[name^=t_color]').val( color_name );
 			
 			//
 			_global_js_eb.cart_create_arr_poruduct();
@@ -719,7 +725,7 @@ function ___eb_details_product_size () {
 	}
 	
 	$('.oi_product_size, .show-if-size-exist').show();
-	$('.oi_product_size ul').html(str);
+	$('.oi_product_size ul').html(str).after('<div class="show-products-size-text l19 small"></div>');
 	
 	$('.oi_product_size li').off('click').click(function() {
 		var size_node = $(this).attr('data-size-node') || '';
@@ -2267,6 +2273,13 @@ setTimeout(function () {
 	
 	//
 	$('.click-jquery-show-quick-cart').click(function() {
+		$('#click_show_cpa').show();
+		$('body').addClass('body-no-scroll');
+	});
+	
+	
+	// Nút kép -> nhảy sang giỏ hàng hoặc mở quick cart
+	$('.click-jquery-quickcart-or-cart').click(function(e) {
 		// Nếu có thuộc tính hiển thị quick cart -> cuộn chuột đến đó
 		if ( $('.clone-show-quick-cart').length > 0 ) {
 //			window.scroll( 0, $('.clone-show-quick-cart').offset().top - 90 );
@@ -2274,12 +2287,13 @@ setTimeout(function () {
 				scrollTop: $('.clone-show-quick-cart').offset().top - 90
 			}, 800);
 		}
-		// hiển thị form mua hàng nhanh
+		// Chuyển sang giỏ hàng
 		else {
-			$('#click_show_cpa').show();
-			$('body').addClass('body-no-scroll');
+			$('.click-jquery-add-to-cart:first').click();
 		}
 	});
+	
+	
 	
 	//
 //	console.log('TEST');
