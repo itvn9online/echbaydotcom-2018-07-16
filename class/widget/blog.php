@@ -232,7 +232,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		//
 		$html_template = _eb_widget_create_html_template( $html_template, 'widget_echbay_blog' );
-		echo '<!-- HTML widget file: ' . $html_template . ' -->';
+		echo '<!-- HTML widget file: ' . $html_template . ' - Widget title: ' . $title . ' -->';
 		
 		
 		//

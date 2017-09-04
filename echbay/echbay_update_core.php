@@ -583,8 +583,11 @@ function EBE_eb_update_time_to_new_time ( $t ) {
 	if ( $t < 3600 ) {
 		$t = 'Khoảng ' . ceil( $t/ 60 ) . ' phút trước';
 	}
-	else {
+	else if ( $t < 24 * 3600 ) {
 		$t = 'Khoảng ' . ceil( $t/ 3600 ) . ' giờ trước';
+	}
+	else {
+		$t = 'Khoảng ' . ceil( $t/ 3600/ 24 ) . ' ngày trước';
 	}
 	
 	return $t;
