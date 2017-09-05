@@ -1610,7 +1610,7 @@ function _eb_categories_list_list_v3 ( $taxx = 'category' ) {
 		'taxonomy' => $taxx,
 		'hide_empty' => 0,
 	) );
-//		print_r($arr);
+//	print_r($arr);
 	
 	//
 //		echo count( $arr ) . "\n";

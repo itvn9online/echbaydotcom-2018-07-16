@@ -26,6 +26,11 @@ else {
 //
 $trv_giaban = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_oldprice', 0 ) );
 $trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );
+/*
+if ( $trv_giamoi == 0 ) {
+	$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_price', 0 ) );
+}
+*/
 
 
 

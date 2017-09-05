@@ -198,6 +198,8 @@ var web_link = "' . web_link . '";
 			_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 				EB_URL_OF_PLUGIN . 'css/administrator.css',
 			) ), 'link' );
+			
+			echo '<script type="text/javascript">console.log("Hide menu if user not administrator");</script>';
 		}
 	}
 	

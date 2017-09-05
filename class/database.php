@@ -337,6 +337,8 @@ $___eb_ads__not_in = '';
 
 //
 $arr_active_for_404_page = array(
+	"eb_export_products" => 1,
+	
 	"test_email" => 1,
 	"billing_print" => 1,
 	

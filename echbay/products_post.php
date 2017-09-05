@@ -187,8 +187,24 @@ if ( $totalThread > 0 ) {
 		$trv_id = $o->ID;
 		$trv_link = web_link . '?p=' . $trv_id;
 		$trv_tieude = $o->post_title;
+		
+		// với phần giá cả -> sẽ lấy giá của woo nếu có
 		$trv_giaban = _eb_float_only( _eb_get_post_object( $o->ID, '_eb_product_oldprice', 0 ) );
+		/*
+		if ( $trv_giaban == 0 ) {
+			$trv_giaban = _eb_float_only( _eb_get_post_object( $o->ID, '_regular_price', 0 ) );
+		}
+		*/
 		$trv_giamoi = _eb_float_only( _eb_get_post_object( $o->ID, '_eb_product_price', 0 ) );
+		if ( $trv_giamoi == 0 ) {
+			$trv_giamoi = _eb_float_only( _eb_get_post_object( $o->ID, '_price', 0 ) );
+			
+			// cập nhật giá mới từ giá của woo
+			if ( $trv_giamoi > 0 ) {
+				update_post_meta( $o->ID, '_eb_product_price', $trv_giamoi );
+			}
+		}
+		
 		$trv_img = _eb_get_post_img( $o->ID, 'thumbnail' );
 		$view_by_group = '';
 		$trv_stt = $o->menu_order;

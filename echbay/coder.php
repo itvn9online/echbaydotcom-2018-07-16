@@ -16,6 +16,7 @@ $arr_order_tab = array(
 	'php_info' => 'PHP Info',
 	'local_attack' => 'Local attack',
 	'leech_data' => 'Leech data',
+	'export_products' => 'Xuất sản phẩm ra XML',
 	'install_demo' => 'Install demo',
 	'cleanup_database' => 'Dọn dẹp website',
 //	'wordpress_update_core' => 'Cập nhật WordPress',

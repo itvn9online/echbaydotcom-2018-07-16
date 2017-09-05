@@ -214,12 +214,21 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			}
 		}
 		
-		//
-		$content = _eb_load_post( $post_number, $arr_select_data,
-//		), file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/blog_node.html', 1 ) );
-//		), EBE_get_page_template( 'blog_node' ) );
-//		), EBE_get_page_template( $html_node ) );
-		$html_node );
+		// load riêng 1 kiểu đối với ads
+		/*
+		if ( $post_type == 'ads' ) {
+			$content = _eb_load_post( $post_number, $arr_select_data,
+			$html_node );
+		}
+		// mặc định thì load theo post
+		else {
+			*/
+			$content = _eb_load_post( $post_number, $arr_select_data,
+//			), file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/blog_node.html', 1 ) );
+//			), EBE_get_page_template( 'blog_node' ) );
+//			), EBE_get_page_template( $html_node ) );
+			$html_node );
+//		}
 		
 		
 		

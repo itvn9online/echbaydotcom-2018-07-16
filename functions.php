@@ -153,8 +153,15 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	$post->product_status = _eb_get_post_object( $post->ID, '_eb_product_status', $post->post_status );
 	
 	
+	// load ảnh đại diện cho phần quảng cáo
+	if ( $post->post_type == 'ads' ) {
+		$post->trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_ads_thumbnail_size'] );
+	}
 	// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
-	$post->trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_size'] );
+	else {
+		$post->trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_size'] );
+	}
+	
 	if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
 		$post->trv_table_img = $post->trv_img;
 	} else {
@@ -165,6 +172,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	} else {
 		$post->trv_mobile_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_mobile_size'] );
 	}
+	
 	
 	//
 //	$html = EBE_dynamic_title_tag( $html );
