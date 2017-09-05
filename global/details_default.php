@@ -829,7 +829,8 @@ $arr_main_content = array(
 	'tmp.other_option_list' => $other_option_list,
 	
 	'tmp.rating_value_img' => $rating_value_img,
-	'tmp.str_tags' => substr( $str_tags, 1 ),
+//	'tmp.str_tags' => substr( $str_tags, 1 ),
+	'tmp.str_tags' => $str_tags,
 	
 	'tmp.bl_ngaygui' => date( 'd/m/Y H:i T', $post_modified ),
 	
