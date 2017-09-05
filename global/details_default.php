@@ -617,6 +617,25 @@ else {
 	/*
 	* other post
 	*/
+	
+	// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
+	$post_primary_categories = array();
+//		print_r( $post_categories );
+	foreach ( $post_categories as $v ) {
+		if ( _eb_get_post_meta( $v, '_eb_category_primary', true, 0 ) > 0 ) {
+			$post_primary_categories[] = $v;
+		}
+	}
+//		print_r( $post_primary_categories );
+	
+	// nếu không tìm được -> lấy tất
+	if ( count( $post_primary_categories ) == 0 ) {
+		$post_primary_categories = $post_categories;
+	}
+//	print_r( $post_primary_categories );
+	
+	
+	//
 	if ( $limit_other_post > 0 ) {
 		
 		//
@@ -649,23 +668,6 @@ else {
 //		if ( ! isset($limit_other_post) ) {
 //			$limit_other_post = $__cf_row['cf_num_details_list'];
 //		}
-		
-		
-		// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
-		$post_primary_categories = array();
-//		print_r( $post_categories );
-		foreach ( $post_categories as $v ) {
-			if ( _eb_get_post_meta( $v, '_eb_category_primary', true, 0 ) > 0 ) {
-				$post_primary_categories[] = $v;
-			}
-		}
-//		print_r( $post_primary_categories );
-		
-		// nếu không tìm được -> lấy tất
-		if ( count( $post_primary_categories ) == 0 ) {
-			$post_primary_categories = $post_categories;
-		}
-//		print_r( $post_primary_categories );
 		
 		
 		//
