@@ -536,14 +536,19 @@ function ___eb_details_product_color () {
 		});
 		
 		// Lấy tên màu
-		var color_name = $(this).attr('title') || '';
+		var color_name = $(this).attr('title') || '',
+			color_img = $(this).attr('data-img') || '';
 		
 		// Hiển thị ra cho người dùng xem
 		$('.show-products-color-text').html(color_name);
 		
 		//
 		if ( typeof document.frm_cart != 'undefined' ) {
-			$('.eb-global-frm-cart input[name^=t_color]').val( color_name );
+			if ( color_img != '' ) {
+				color_img = ' <img src="' + color_img + '" height="50" />';
+			}
+			
+			$('.eb-global-frm-cart input[name^=t_color]').val( color_name + color_img );
 			
 			//
 			_global_js_eb.cart_create_arr_poruduct();
