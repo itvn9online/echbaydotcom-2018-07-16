@@ -266,6 +266,24 @@ var eb_global_product_size = '',
 						});
 					}
 				});
+				
+				
+				// riêng đối với phần list của màu sắc thì chuyển caption sang alt để lấy tên màu cho chuẩn
+				if ( iff_id == '_eb_product_list_color_ifr' ) {
+//					console.log(iff_id);
+					$('#' + iff_id).contents().find( 'dl' ).each(function() {
+						var a = $('.wp-caption-dd', this).html() || '',
+							b = $('img', this).attr('alt') || '';
+//						console.log(a);
+						if ( a != '' && a != b ) {
+							$('img', this).attr({
+								alt: a
+							});
+							
+							console.log('Convert caption to ALT');
+						}
+					});
+				}
 			}
 		};
 		

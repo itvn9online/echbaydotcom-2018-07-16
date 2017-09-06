@@ -1,0 +1,58 @@
+#noithatnhapkhaueh-home1 .home-hot-bg,
+#noithatnhapkhaueh-home2 .home-hot-bg { background-color: #fff; }
+.hide-widget-title .echbay-widget-title { display: none; }
+.home-top1-banner .echbay-blog {
+	margin: 0;
+	padding: 15px 0 0 0;
+}
+.home-top1-banner .echbay-blog-padding { padding: 0; }
+.home-top1-banner .echbay-blog-avt {
+	border: 0 none;
+	background-color: #f2f2f2;
+}
+.home-hot-title {
+	text-align: center;
+	border: 0 none;
+	text-transform: uppercase;
+	height: 30px;
+}
+.home-hot-title i { display: none !important; }
+.home-hot-title:before {
+	width: 40%;
+	bottom: auto;
+	top: 40%;
+	height: 1px;
+	left: 30%;
+	background: none;
+	border-bottom: 1px #ccc solid;
+}
+.home-hot-title span {
+	display: inline-block;
+	position: relative;
+	background: #fff;
+	padding: 0 15px;
+}
+.thread-home-c2 {
+	text-align: center;
+	position: relative;
+	border: 0 none;
+}
+.thread-home-c2 a { display: none; }
+.thread-home-c2 a:first-child {
+	display: inline-block;
+	position: relative;
+	position: relative;
+	background: #fff !important;
+	color: #333;
+}
+.thread-home-c2:before {
+	content: "";
+	position: absolute;
+	height: 1px;
+	border-bottom: 1px #ccc solid;
+	left: 30%;
+	right: 30%;
+	top: 40%;
+	width: 40%;
+}
+.home-module_content { padding-bottom: 25px; }
