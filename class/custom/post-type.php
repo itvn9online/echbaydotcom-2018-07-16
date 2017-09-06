@@ -146,9 +146,11 @@ function ech_bay_custom_post_type() {
 	) );
 	
 	// điều chỉnh các tham số riêng trước khi gửi đi
+	// với phần q.cáo, add cả các mục khác để q.cáo có thể xuất hiện ở nhiều nơi
 	$args['taxonomies'] = array(
 		'category',
 		'post_options',
+		EB_BLOG_POST_LINK,
 	);
  
 	// Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên

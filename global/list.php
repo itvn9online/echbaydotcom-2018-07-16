@@ -42,16 +42,6 @@ if ( $__cf_row['cf_cats_column_style'] == '' ) {
 
 
 
-
-// Chỉ lấy banner riêng khi chế độ global không được kích hoạt
-if ( $__cf_row['cf_global_big_banner'] == 0 ) {
-	$str_big_banner = EBE_get_big_banner( 5, array(
-		'category__in' => '',
-	) );
-}
-
-
-
 // Chỉ nhận bài viết với định dạng được hỗ trợ
 if ( $switch_taxonomy != '' ) {
 	
@@ -68,6 +58,42 @@ if ( $switch_taxonomy != '' ) {
 	
 	//
 	$cid = $__category->term_id;
+	
+	
+	
+	
+	// Chỉ lấy banner riêng khi chế độ global không được kích hoạt
+	if ( $__cf_row['cf_global_big_banner'] == 0 ) {
+		/*
+		$arr_select_by_taxonomy = array(
+			'taxonomy' => $switch_taxonomy,
+		);
+		echo '<!-- ';
+		print_r( $arr_select_by_taxonomy );
+		echo ' -->';
+		*/
+		
+		if ( $switch_taxonomy == 'post_options'
+		|| $switch_taxonomy == EB_BLOG_POST_LINK ) {
+			$str_big_banner = EBE_get_big_banner( 5, array(
+				'tax_query' => array(
+					array (
+						'taxonomy' => $switch_taxonomy,
+						'field' => 'term_id',
+						'terms' => $cid,
+						'operator' => 'IN'
+					)
+				)
+			) );
+//			echo $str_big_banner;
+		}
+		// lấy theo taxonomy mặc định
+		else if ( $switch_taxonomy == 'category' ) {
+			$str_big_banner = EBE_get_big_banner( 5, array(
+				'category__in' => array( $cid ),
+			) );
+		}
+	}
 	
 	
 	

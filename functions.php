@@ -2696,8 +2696,12 @@ function _eb_load_ads (
 		foreach ( $_eb_query as $k => $v ) {
 			$arr[$k] = $v;
 		}
-//			print_r( $_eb_query );
-//			print_r( $arr );
+		/*
+		echo '<!-- ';
+//		print_r( $_eb_query );
+		print_r( $arr );
+		echo ' -->';
+		*/
 		
 		//
 		$sql = new WP_Query( $arr );

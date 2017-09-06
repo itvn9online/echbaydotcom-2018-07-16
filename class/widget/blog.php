@@ -193,7 +193,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 					'taxonomy' => $cat_type,
 					'field' => 'term_id',
 					'terms' => $terms_categories,
-					'operator' => 'IN',
+					'operator' => 'IN'
 				)
 			);
 		}
