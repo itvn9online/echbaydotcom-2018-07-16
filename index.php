@@ -466,8 +466,9 @@ setTimeout(function () {
 
 
 // đăng ký kiểu bài viết, admin menu và các tham số khác
-include EB_THEME_CORE . 'custom/post-type.php';
+// taxonomy phải được đăng ký trước custom post type
 include EB_THEME_CORE . 'custom/taxonomy.php';
+include EB_THEME_CORE . 'custom/post-type.php';
 include EB_THEME_CORE . 'custom/meta-box.php';
 
 

@@ -148,6 +148,7 @@ function ech_bay_custom_post_type() {
 	// điều chỉnh các tham số riêng trước khi gửi đi
 	$args['taxonomies'] = array(
 		'category',
+		'post_options',
 	);
  
 	// Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
