@@ -1450,11 +1450,20 @@ var _global_js_eb = {
 		
 		// nếu đang là xem trang chi tiết
 		if ( pid > 0 ) {
+			
+			//
+			var color_name = $('.oi_product_color li.selected').attr('title') || $('.oi_product_color li:first').attr('title') || '',
+				color_img = $('.oi_product_color li.selected').attr('data-img') || $('.oi_product_color li:first').attr('data-img') || '';
+			if ( color_img != '' ) {
+				color_img = ' <span data-src="' + color_img + '" class="order-img-color-product"></span>';
+			}
+			
+			//
 			ebe_arr_cart_product_list.push( {
 				"id" : pid,
 				"name" : product_js.tieude,
 				"size" : $('.oi_product_size li.selected').attr('data-name') || $('.oi_product_size li:first').attr('data-name') || '',
-				"color" : $('.oi_product_color li.selected').attr('title') || $('.oi_product_color li:first').attr('title') || '',
+				"color" : color_name + color_img,
 				"old_price" : product_js.gia,
 				"price" : product_js.gm,
 				"quan" : $('#oi_change_soluong select').val() || 1,

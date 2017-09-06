@@ -544,11 +544,14 @@ function ___eb_details_product_color () {
 		
 		//
 		if ( typeof document.frm_cart != 'undefined' ) {
+			/*
 			if ( color_img != '' ) {
 				color_img = ' <img src="' + color_img + '" height="50" />';
 			}
+			*/
 			
-			$('.eb-global-frm-cart input[name^=t_color]').val( color_name + color_img );
+//			$('.eb-global-frm-cart input[name^=t_color]').val( color_name + color_img );
+			$('.eb-global-frm-cart input[name^=t_color]').val( color_name );
 			
 			//
 			_global_js_eb.cart_create_arr_poruduct();

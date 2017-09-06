@@ -31,8 +31,10 @@ $strFilter = " post_type = '" . $by_post_type . "'
 	AND ( `" . $wpdb->posts . "`.post_status = 'publish' OR `" . $wpdb->posts . "`.post_status = 'pending' OR `" . $wpdb->posts . "`.post_status = 'draft' ) ";
 	
 $joinFilter = "";
+$strAjaxLink = '';
 
 $strLinkPager .= '&by_post_type=' . $by_post_type;
+$strAjaxLink .= '&by_post_type=' . $by_post_type;
 
 $cats_type = ( $by_post_type == 'blog' ) ? 'blogs' : 'category';
 
@@ -41,6 +43,7 @@ $cats_type = ( $by_post_type == 'blog' ) ? 'blogs' : 'category';
 if ( $by_cat_id > 0 ) {
 	
 	$strLinkPager .= '&by_cat_id=' . $by_cat_id;
+	$strAjaxLink .= '&by_cat_id=' . $by_cat_id;
 	
 	//
 	$arrs_cats = array(
@@ -174,6 +177,8 @@ if ( $totalThread > 0 ) {
 		" . $joinFilter . "
 	WHERE
 		" . $strFilter . "
+	GROUP BY
+		ID
 	ORDER BY
 		menu_order DESC
 	LIMIT " . $offset . ", " . $threadInPage );
@@ -209,7 +214,8 @@ if ( $totalThread > 0 ) {
 		$view_by_group = '';
 		$trv_stt = $o->menu_order;
 		$trv_trangthai = $o->post_status == 'publish' ? 1 : 0;
-		$strLinkAjaxl = '&post_id=' . $trv_id . '&by_post_type=' . $by_post_type;
+//		$strLinkAjaxl = '&post_id=' . $trv_id . '&by_post_type=' . $by_post_type;
+		$strLinkAjaxl = '&post_id=' . $trv_id . $strAjaxLink;
 		
 		//
 		$current_sticky = 0;
