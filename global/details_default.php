@@ -787,7 +787,10 @@ ob_end_clean();
 
 
 //
-$trv_masanpham = _eb_get_post_object( $pid, '_eb_product_sku', '#' . $pid );
+$trv_masanpham = _eb_get_post_object( $pid, '_eb_product_sku' );
+if ( $trv_masanpham == '' ) {
+	$trv_masanpham = $pid;
+}
 
 $product_gallery = _eb_get_post_object( $pid, '_eb_product_gallery' );
 $product_gallery = str_replace( ' src=', ' data-src=', $product_gallery );
