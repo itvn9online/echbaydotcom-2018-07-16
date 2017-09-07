@@ -6,12 +6,12 @@
 .click-order-thread.fa-star[data-val="1"] { color: #F90; }
 .click-order-thread.fa-comments[data-val="closed"],
 .click-order-thread.fa-link[data-val="closed"],
-.click-order-thread.fa-rss[data-val="1"],
+.click-order-thread.fa-paw[data-val="1"],
 .click-order-thread.fa-star { color: #333; }
 .quick-show-if-post { display: none !important; }
 .class-for-post .quick-show-if-post { display: inline-block !important; }
-.class-for-post .quick-show-if-rss,
-.class-for-blog .quick-show-if-rss { display: inline-block !important; }
+.class-for-post .quick-show-if-paw,
+.class-for-blog .quick-show-if-paw { display: inline-block !important; }
 .admin-products_post-category { margin-bottom: 15px; }
 .admin-products_post-category li {
 	float: left;
@@ -260,7 +260,7 @@ if ( $totalThread > 0 ) {
 			
 			<div><i title="Toggle status" data-ajax="' . $strLinkAjaxl . '&t=status&toggle_status=' . $trv_trangthai . '" class="fa fa-icons cur click-order-thread ' . ( ($trv_trangthai > 0) ? 'fa-unlock' : 'fa-lock blackcolor' ) . '"></i></div>
 			
-			<div class="quick-show-if-post quick-show-if-rss"><i title="Toggle noindex" data-val="' . $set_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=set_noindex&set_noindex=' . $set_noindex . '" class="fa fa-rss fa-icons cur click-order-thread"></i></div>
+			<div class="quick-show-if-post quick-show-if-paw"><i title="Set noindex" data-val="' . $set_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=set_noindex&set_noindex=' . $set_noindex . '" class="fa fa-paw fa-icons cur click-order-thread"></i></div>
 		</div>
 	</td>
 	<td class="text-center">' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_date ) ) . '<br>' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_modified ) ) . '</td>
