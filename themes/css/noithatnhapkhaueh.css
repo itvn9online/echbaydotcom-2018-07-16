@@ -11,14 +11,23 @@
 	border: 0 none;
 	background-color: #f2f2f2;
 }
-.home-hot-title {
+.home-hot-title,
+.home-title-center .echbay-widget-title {
 	text-align: center;
 	border: 0 none;
 	text-transform: uppercase;
 	height: 30px;
+	line-height: 30px;
+	margin: 0 auto;
+	width: 90%;
+	max-width: 450px;
 }
 .home-hot-title i { display: none !important; }
-.home-hot-title:before {
+.home-hot-title:before,
+.home-hot-title:after,
+.home-title-center .echbay-widget-title:before,
+.home-title-center .echbay-widget-title:after {
+	/*
 	width: 40%;
 	bottom: auto;
 	top: 40%;
@@ -26,13 +35,37 @@
 	left: 30%;
 	background: none;
 	border-bottom: 1px #ccc solid;
+	*/
+	width: 90px;
+	height: 1px;
+	background: none;
+	border-bottom: 1px #ccc solid;
+	left: auto;
+	bottom: auto;
+	position: relative;
+	z-index: 13;
+	content: ".";
+	color: #fff;
+	display: inline-block;
+	top: 14px;
 }
+.home-hot-title:before,
+.home-title-center .echbay-widget-title:before { margin-right: 10px; }
+.home-hot-title:after,
+.home-title-center .echbay-widget-title:after { margin-left: 10px; }
+.style-for-mobile .home-hot-title:before,
+.style-for-mobile .home-hot-title:after,
+.style-for-mobile .home-title-center .echbay-widget-title:before,
+.style-for-mobile .home-title-center .echbay-widget-title:after { width: 20px; }
+.home-title-center .echbay-widget-title div { display: inline-block; }
+/*
 .home-hot-title span {
 	display: inline-block;
 	position: relative;
 	background: #fff;
 	padding: 0 15px;
 }
+*/
 .thread-home-c2 {
 	text-align: center;
 	position: relative;
@@ -57,3 +90,27 @@
 	width: 40%;
 }
 .home-module_content { padding-bottom: 25px; }
+.home-vechungtoi li:first-child {
+	width: 100%;
+	float: none;
+	max-width: 600px;
+	margin: 0 auto;
+}
+.home-vechungtoi li:first-child .echbay-blog-padding {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 20px;
+}
+.home-vechungtoi li:first-child .echbay-blog-right {
+	display: block;
+	position: absolute;
+	z-index: 1;
+	background: rgba(100,100,100,.2);
+	bottom: 0;
+	right: -20%;
+	width: 70%;
+	float: none;
+	padding: 20px 20px 20px 5px;
+}
+.home-vechungtoi li:first-child .echbay-blog-gioithieu { color: #000; }
