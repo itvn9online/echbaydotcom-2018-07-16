@@ -286,16 +286,18 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 			break;
 		}
 	}
+	$end_i += 1;
 	
 	
-	// thêm widget tương ứng cho top
+	// thêm widget vào cuối
 	if ( $position == 'top'
 	|| $position == 'home' ) {
-		
-		$end_i += 1;
-		
-		// thêm widget vào cuối
 		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "' . $position . '_widget.php";' . "\n";
+		
+	}
+	// với footer -> thêm phần copyright vào cuối trang
+	else if ( $position == 'footer' ) {
+		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "echbaytwo-footer3.php";' . "\n";
 		
 	}
 	
