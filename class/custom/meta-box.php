@@ -12,6 +12,13 @@
 * Khai báo callback
 * @param $post là đối tượng WP_Post để nhận thông tin của post
 */
+function WGR_echo_label_for_edit_form ( $str ) {
+	if ( $str != '' ) {
+		return '<div><em class="small">' . $str . '</em></div>';
+	}
+	return '';
+}
+
 function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 	global $eb_arr_placeholder_custom_meta_box;
 	
@@ -30,12 +37,14 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 		
 		//
 //		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
+		/*
 		if ( ! isset( $eb_arr_placeholder_custom_meta_box[$k] ) ) {
 			$eb_arr_placeholder_custom_meta_box[$k] = '';
 		}
 		else {
-			$eb_arr_placeholder_custom_meta_box[$k] = '<div class="small">' . $eb_arr_placeholder_custom_meta_box[$k] . '</div>';
+			$eb_arr_placeholder_custom_meta_box[$k] = '<em class="small">' . $eb_arr_placeholder_custom_meta_box[$k] . '</em>';
 		}
+		*/
 		
 		// chiều dài rộng cho td
 //		$td1 = 28;
@@ -63,7 +72,7 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 			}
 			
 			echo '</select>';
-			echo $eb_arr_placeholder_custom_meta_box[$k];
+			echo WGR_echo_label_for_edit_form( $eb_arr_placeholder_custom_meta_box[$k] );
 			echo '</td>';
 			
 			echo '</tr>';
@@ -90,8 +99,8 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 		else if ( $tai == 'checkbox' ) {
 			echo '
 			<tr data-row="' . $k . '">
-				<td class="t"><strong>' . $v . '</strong></td>
-				<td class="i"><input type="' . $tai . '" id="' . $k . '" name="' . $k . '" value="' . $val . '" /> <label for="' . $k . '">' . $eb_arr_placeholder_custom_meta_box[$k] . '</label></td>
+				<td class="t"><label for="' . $k . '"><strong>' . $v . '</strong></label></td>
+				<td class="i"><label for="' . $k . '"><input type="' . $tai . '" id="' . $k . '" name="' . $k . '" value="' . $val . '" /> ' . $eb_arr_placeholder_custom_meta_box[$k] . '</label></td>
 			</tr>';
 		}
 		// input text
@@ -99,7 +108,7 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 			echo '
 			<tr data-row="' . $k . '">
 				<td class="t"><label for="' . $k . '"><strong>' . $v . '</strong></label></td>
-				<td class="i"><input type="' . $tai . '" id="' . $k . '" name="' . $k . '" value="' .esc_attr( $val ). '" ' . $other_attr . ' class="m" />' . $eb_arr_placeholder_custom_meta_box[$k] . '</td>
+				<td class="i"><input type="' . $tai . '" id="' . $k . '" name="' . $k . '" value="' .esc_attr( $val ). '" ' . $other_attr . ' class="m" />' . WGR_echo_label_for_edit_form( $eb_arr_placeholder_custom_meta_box[$k] ) . '</td>
 			</tr>';
 		}
 	}
@@ -141,6 +150,7 @@ $eb_arr_type_custom_meta_box = array(
 	'_eb_product_quantity' => 'number',
 //	'_eb_product_avatar' => 'hidden',
 	'_eb_product_giohethan' => $arr_product_giohethan,
+	'_eb_product_noindex' => 'checkbox',
 	
 	'_eb_product_size' => 'hidden',
 	'_eb_product_rating_value' => 'hidden',
@@ -165,6 +175,7 @@ $eb_arr_type_custom_meta_box = array(
 	'_eb_category_leech_url' => 'hidden',
 	'_eb_category_primary' => 'checkbox',
 	'_eb_category_content' => 'textarea',
+	'_eb_category_noindex' => 'checkbox',
 );
 
 // Một số thuộc tính chỉ hiển thị với admin cấp cao
@@ -190,6 +201,8 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_ads_target' => 'Mặc định, các URL trong quảng cáo sẽ được mở đè lên tab hiện tại, đánh dấu và lưu lại để mở URL trong tab mới.',
 	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
 	'_eb_product_giohethan' => 'Thiết lập giờ hết hạn cụ thể cho phần Ngày hết hạn ở trên. Nếu để trống trường này, giờ hết hạn sẽ là cuối ngày hôm đó (23:59)',
+	'_eb_product_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Bài viết này',
+	'_eb_category_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Danh mục này',
 );
 $eb_arr_placeholder_custom_meta_box['_eb_product_leech_source'] = $eb_arr_placeholder_custom_meta_box['_eb_product_old_url'];
 $eb_arr_placeholder_custom_meta_box['_eb_category_leech_url'] = $eb_arr_placeholder_custom_meta_box['_eb_category_old_url'];
@@ -204,6 +217,7 @@ $eb_meta_custom_meta_box = array(
 	'_eb_product_title' => 'Title',
 	'_eb_product_keywords' => 'Keywords',
 	'_eb_product_description' => 'Description',
+	'_eb_product_noindex' => 'Noindex',
 	
 	//
 	'_eb_product_avatar' => 'Ảnh đại diện',
@@ -522,6 +536,7 @@ if ( cf_on_off_echbay_seo == 1 ) {
 	$arr_category_custom_fields['_eb_category_title'] = 'Title';
 	$arr_category_custom_fields['_eb_category_keywords'] = 'Keywords';
 	$arr_category_custom_fields['_eb_category_description'] = 'Description';
+	$arr_category_custom_fields['_eb_category_noindex'] = 'Noindex';
 	
 	$arr_category_custom_fields['_eb_category_old_url'] = 'URL cũ (nếu có)';
 	$arr_category_custom_fields['_eb_category_leech_url'] = 'URL đồng bộ';
@@ -586,12 +601,14 @@ function EBextra_category_fields( $tag ) {
 		
 		//
 //		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
+		/*
 		if ( ! isset( $eb_arr_placeholder_custom_meta_box[$k] ) ) {
 			$eb_arr_placeholder_custom_meta_box[$k] = '';
 		}
 		else {
 			$eb_arr_placeholder_custom_meta_box[$k] = '<div class="small">' . $eb_arr_placeholder_custom_meta_box[$k] . '</div>';
 		}
+		*/
 		
 		// tạo class riêng cho textarea
 		$description_wrap = 'term-echbay-wrap';
@@ -622,7 +639,7 @@ function EBextra_category_fields( $tag ) {
 			echo '</select>';
 		}
 		else if ( $tai == 'checkbox' ) {
-			echo '<input type="checkbox" name="' . $k . '" id="' . $k . '" value="' . $val . '" class="" /> <label for="' . $k . '"><em>' . $eb_arr_placeholder_custom_meta_box[$k] . '</em></label>';
+			echo '<label for="' . $k . '"><input type="checkbox" name="' . $k . '" id="' . $k . '" value="' . $val . '" class="" />' . $eb_arr_placeholder_custom_meta_box[$k] . '</label>';
 		}
 		else if ( $tai == 'textarea' ) {
 			wp_editor( html_entity_decode($val, ENT_QUOTES, 'UTF-8'), $k );
@@ -632,7 +649,10 @@ function EBextra_category_fields( $tag ) {
 			echo '<input type="' . $tai . '" name="' . $k . '" id="' . $k . '" value="' . $val . '" ' . $other_attr . ' />';
 		}
 		
-		echo $eb_arr_placeholder_custom_meta_box[$k];
+		//
+		if ( $tai != 'checkbox' ) {
+			echo WGR_echo_label_for_edit_form( $eb_arr_placeholder_custom_meta_box[$k] );
+		}
 		
 		//
 		echo '

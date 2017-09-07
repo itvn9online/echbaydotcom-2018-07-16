@@ -15,11 +15,13 @@ $eb_all_themes_support["noithatnhapkhaueh"]["cf_top2_include_file"] = "noithatnh
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_top3_include_file"] = "noithatnhapkhaueh-top3.php";
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_top4_include_file"] = "noithatnhapkhaueh-top4.php";
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_top5_include_file"] = "top_widget.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["cf_top6_include_file"] = "webgiare-top3.php";
 //
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_footer1_include_file"] = "footer_widget.php";
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_footer2_include_file"] = "noithatnhapkhaueh-footer1.php";
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_footer3_include_file"] = "noithatnhapkhaueh-footer2.php";
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_footer4_include_file"] = "noithatnhapkhaueh-footer3.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["cf_footer5_include_file"] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_home1_include_file"] = "home_widget.php";
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_home2_include_file"] = "noithatnhapkhaueh-home1.php";

@@ -81,19 +81,21 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 //		$ant = get_the_category( $post->ID );
 		$ant = get_the_terms( $post->ID, $pot_tai );
 //		print_r( $ant );
-		foreach ( $ant as $v ) {
-			// ưu tiên lấy nhóm con trước
-			if ( $ant_ten == '' && $v->parent > 0 ) {
-				$ant_ten = '<a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a>';
-				break;
-			}
-		}
-		
-		// nếu ko tìm được -> lấy luôn nhóm cha đầu tiên
-		if ( $ant_ten == '' ) {
+		if ( ! empty( $ant ) ) {
 			foreach ( $ant as $v ) {
-				$ant_ten = '<a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a>';
-				break;
+				// ưu tiên lấy nhóm con trước
+				if ( $ant_ten == '' && $v->parent > 0 ) {
+					$ant_ten = '<a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a>';
+					break;
+				}
+			}
+			
+			// nếu ko tìm được -> lấy luôn nhóm cha đầu tiên
+			if ( $ant_ten == '' ) {
+				foreach ( $ant as $v ) {
+					$ant_ten = '<a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a>';
+					break;
+				}
 			}
 		}
 		

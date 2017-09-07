@@ -23,6 +23,14 @@ else {
 
 
 
+// nếu bài viết được đánh dấu để set noindex -> set thuộc tính noindex
+if ( _eb_get_post_object( $pid, '_eb_product_noindex', 0 ) == 1 ) {
+	$__cf_row ["cf_blog_public"] = 0;
+}
+
+
+
+
 //
 $trv_giaban = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_oldprice', 0 ) );
 $trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );

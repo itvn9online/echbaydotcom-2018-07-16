@@ -46,18 +46,19 @@ if ( $__cf_row['cf_cats_column_style'] == '' ) {
 if ( $switch_taxonomy != '' ) {
 	
 	
+	//
+	$cid = $__category->term_id;
+	
+	
 	
 	
 	
 	// không index trong 1 số trường hợp
 	if ( $switch_taxonomy == 'post_options'
+	|| _eb_get_post_object( $cid, '_eb_category_noindex', 0 ) == 1
 	|| isset( $_GET['search_advanced'] ) ) {
 		$__cf_row ["cf_blog_public"] = 0;
 	}
-	
-	
-	//
-	$cid = $__category->term_id;
 	
 	
 	

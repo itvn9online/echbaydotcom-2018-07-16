@@ -335,9 +335,8 @@ var eb_global_product_size = '',
 		
 		
 		//
-		if ( dog('_eb_ads_target') != null && dog('_eb_ads_target').value == 1 ) {
-			dog('_eb_ads_target').checked = true;
-		}
+		WGR_check_if_value_this_is_one('_eb_product_noindex');
+		WGR_check_if_value_this_is_one('_eb_ads_target');
 		
 		
 		
@@ -388,9 +387,8 @@ var eb_global_product_size = '',
 	}
 	// chỉnh sửa category
 	else if ( admin_act == 'cat_details' ) {
-		if ( dog('_eb_category_primary') != null && dog('_eb_category_primary').value == 1 ) {
-			dog('_eb_category_primary').checked = true;
-		}
+		WGR_check_if_value_this_is_one('_eb_category_primary');
+		WGR_check_if_value_this_is_one('_eb_category_noindex');
 	}
 	// thêm tài khoản thành viên
 	else if ( admin_act == 'user-new' ) {

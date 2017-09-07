@@ -6,6 +6,7 @@
 .noithatnhapkhaueh-top3 li {
 	display: inline-block;
 	text-align: left;
+	font-size: 15px;
 }
 .noithatnhapkhaueh-top3 a {
 	color: #333;
@@ -20,18 +21,30 @@
 }
 .noithatnhapkhaueh-top3 .sub-menu {
 	position: absolute;
-	min-width: 200px;
-	background: #fff;
+	min-width: 220px;
+	background: #161616;
 	display: none;
 	text-transform: none;
 	padding: 10px 0;
 	border-radius: 3px;
-	border: 1px #ccc solid;
+	border: 1px #383838 solid;
 	z-index: 10;
+}
+.noithatnhapkhaueh-top3 .sub-menu li {
+	font-size: 13px;
+	padding: 0 5px;
 }
 .noithatnhapkhaueh-top3 li:hover .sub-menu,
 .noithatnhapkhaueh-top3 .sub-menu li { display: block; }
-.noithatnhapkhaueh-top3 .sub-menu a { padding: 5px 10px; }
+.noithatnhapkhaueh-top3 .sub-menu a {
+	padding: 8px 10px;
+	color: #fff;
+	border-radius: 4px;
+}
+.noithatnhapkhaueh-top3 .sub-menu a:hover {
+	background-color: #d15b30;
+	text-decoration: none;
+}
 .noithatnhapkhaueh-top3 .sub-menu a:after { display: none; }
 .noithatnhapkhaueh-top3 .sub-menu .sub-menu { display: none !important; }
 .noithatnhapkhaueh-top3 a:hover { text-decoration: underline; }

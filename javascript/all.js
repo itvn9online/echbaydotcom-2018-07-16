@@ -1612,3 +1612,13 @@ function WGR_show_widget_name_by_title () {
 
 
 
+function WGR_check_if_value_this_is_one ( a ) {
+	if ( dog(a) != null && dog(a).value == 1 ) {
+		dog(a).checked = true;
+		return true;
+	}
+	return false;
+}
+
+
+

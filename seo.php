@@ -4,8 +4,11 @@
 
 // chế độ index website
 if ( $__cf_row ["cf_blog_public"] == 0 ) {
-//	wp_no_robots();
-	echo '<meta name="robots" content="noindex,follow" />';
+	// chỉ áp dụng khi giá trị của cf_blog_public khác với option blog_public
+	if ( get_option( 'blog_public' ) != $__cf_row ["cf_blog_public"] ) {
+//		wp_no_robots();
+		echo '<meta name="robots" content="noindex,follow" />';
+	}
 }
 
 // các thẻ META không bị không chế bởi option cf_on_off_echbay_seo
