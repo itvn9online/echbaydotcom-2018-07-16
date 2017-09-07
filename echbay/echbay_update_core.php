@@ -438,7 +438,7 @@ function EBE_get_text_version ( $str ) {
 				copy( $url_for_download_ebdotcom, $destination_path );
 				chmod( $destination_path, 0777 );
 				
-				echo '<div>Download in: <em>' . $url_for_download_ebdotcom . '</em></div>'; 
+				echo '<div>Download in: <a href="' . $url_for_download_ebdotcom . '" target="_blank">' . $url_for_download_ebdotcom . '</a></div>'; 
 			}
 			
 			
