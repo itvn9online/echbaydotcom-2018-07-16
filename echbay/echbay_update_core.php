@@ -431,9 +431,14 @@ function EBE_get_text_version ( $str ) {
 			
 			// download từ github
 			if ( ! file_exists( $destination_path ) ) {
-//				copy( 'https://github.com/itvn9online/echbaydotcom/archive/master.zip', $destination_path );
-				copy( 'https://www.echbay.com/daoloat/echbaydotcom.zip', $destination_path );
+				
+//				$url_for_download_ebdotcom = 'https://github.com/itvn9online/echbaydotcom/archive/master.zip';
+				$url_for_download_ebdotcom = 'https://www.echbay.com/daoloat/echbaydotcom.zip';
+				
+				copy( $url_for_download_ebdotcom, $destination_path );
 				chmod( $destination_path, 0777 );
+				
+				echo '<div>Download in: <em>' . $url_for_download_ebdotcom . '</em></div>'; 
 			}
 			
 			
