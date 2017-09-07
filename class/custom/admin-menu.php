@@ -180,7 +180,7 @@ function echbay_admin_styles() {
 	) ), 'add' );
 	
 	//
-	echo '<link href="' . web_link . eb_default_vaficon . '" rel="shortcut icon" type="image/png" />
+	echo '<link href="' . web_link . eb_default_vaficon . '?v=' . $__cf_row['cf_web_version'] . '" rel="shortcut icon" type="image/png" />
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>';
 	
