@@ -6,15 +6,19 @@
 .click-order-thread.fa-star[data-val="1"] { color: #F90; }
 .click-order-thread.fa-comments[data-val="closed"],
 .click-order-thread.fa-link[data-val="closed"],
+.click-order-thread.fa-rss[data-val="1"],
 .click-order-thread.fa-star { color: #333; }
 .quick-show-if-post { display: none !important; }
 .class-for-post .quick-show-if-post { display: inline-block !important; }
+.class-for-post .quick-show-if-rss,
+.class-for-blog .quick-show-if-rss { display: inline-block !important; }
 .admin-products_post-category { margin-bottom: 15px; }
 .admin-products_post-category li {
 	float: left;
 	margin: 5px 20px 5px 0;
 }
 .admin-products_post-category a:before { content: "- "; }
+.table-list input[type="number"].s { width: 70px; }
 </style>
 <?php
 
@@ -162,8 +166,8 @@ $offset = ($trang - 1) * $threadInPage;
 		<td width="10%">ID</td>
 		<td width="8%">Ảnh</td>
 		<td>Sản phẩm/ Giá cũ/ Giá mới</td>
-		<td width="10%">STT</td>
-		<td width="16%">Công cụ</td>
+		<td width="8%">STT</td>
+		<td width="10%">Công cụ</td>
 		<td width="14%">Ngày Đăng/ Cập nhật</td>
 	</tr>
 	<?php
@@ -226,6 +230,9 @@ if ( $totalThread > 0 ) {
 		$ping_status = $o->ping_status;
 		
 		//
+		$set_noindex = _eb_get_post_object( $o->ID, '_eb_product_noindex' );
+		
+		//
 		echo '
 <tr>
 	<td class="text-center"><input type="checkbox" name="thread-checkbox" value="' . $trv_id . '" class="eb-uix-thread-checkbox thread-multi-checkbox" /></td>
@@ -252,6 +259,8 @@ if ( $totalThread > 0 ) {
 			<div class="quick-show-if-post"><i title="Toggle ping status" data-val="' . $ping_status . '" data-ajax="' . $strLinkAjaxl . '&t=ping_status&ping_status=' . $ping_status . '" class="fa fa-link fa-icons cur click-order-thread"></i></div>
 			
 			<div><i title="Toggle status" data-ajax="' . $strLinkAjaxl . '&t=status&toggle_status=' . $trv_trangthai . '" class="fa fa-icons cur click-order-thread ' . ( ($trv_trangthai > 0) ? 'fa-unlock' : 'fa-lock blackcolor' ) . '"></i></div>
+			
+			<div class="quick-show-if-post quick-show-if-rss"><i title="Toggle noindex" data-val="' . $set_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=set_noindex&set_noindex=' . $set_noindex . '" class="fa fa-rss fa-icons cur click-order-thread"></i></div>
 		</div>
 	</td>
 	<td class="text-center">' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_date ) ) . '<br>' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_modified ) ) . '</td>

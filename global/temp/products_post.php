@@ -102,6 +102,24 @@ if ( $post_id > 0 && $type != '' ) {
 		
 		echo '<br>set ping status: ' . $new_status;
 	}
+	// thay đổi trạng thái ping với ping
+	else if ( isset( $_GET['set_noindex'] ) ) {
+		$set_noindex = trim( $_GET['set_noindex'] );
+		
+		// Đang mở -> ẩn
+		if ( $set_noindex == 1 ) {
+			$new_status = 0;
+		}
+		// Mặc định là hiển thị
+		else {
+			$new_status = 1;
+		}
+		
+		//
+		update_post_meta( $post_id, '_eb_product_noindex', $new_status );
+		
+		echo '<br>set index status: ' . $new_status;
+	}
 	else {
 		echo '<br>method not found';
 	}
