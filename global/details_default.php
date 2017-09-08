@@ -249,7 +249,7 @@ if ( $trv_trangthai == 7 || $trv_mua > $trv_max_mua ) {
 
 
 //
-$arr_product_color = '';
+//$arr_product_color = '';
 
 
 
@@ -813,7 +813,7 @@ $arr_main_content = array(
 	'tmp.link_for_fb_comment' => $link_for_fb_comment,
 	
 	'tmp.trv_tieude' => $trv_h1_tieude,
-	'tmp.trv_h1_tieude' => $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
+	'tmp.trv_h1_tieude' => ( $__cf_row['cf_set_link_for_h1'] == 1 ) ? '<a href="' . $url_og_url . '">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
 	
 	'tmp.trv_goithieu' => $__post->post_excerpt,
 	'tmp.trv_noidung' => $trv_noidung,
@@ -995,6 +995,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	product_js={' . substr ( $product_js, 1 ) . '},
 	arr_product_size="' . $product_size . '",
 	arr_product_color=[],
+	product_color_name="' . _eb_get_post_object( $pid, '_eb_product_color' ) . '",
 	_eb_product_video_url="' . _eb_get_post_object( $pid, '_eb_product_video_url' ) . '",
 	_eb_product_ngayhethan="' . $_eb_product_ngayhethan . '",
 	_eb_product_giohethan="' . $_eb_product_giohethan . '",
