@@ -1468,8 +1468,20 @@ input[type="number"].s { width: 90px; }
 	border: 1px #d3d3d3 solid;
 	margin-right: 5px;
 	cursor: pointer;
+	position: relative;
+}
+.product-color li div {
+	display: none;
+	position: absolute;
+	line-height: 16px;
+	font-size: 12px;
+	width: 300%;
+	left: -100%;
+	bottom: -18px;
+	text-align: center;
 }
 .product-color li.selected { border-color: #f00 !important; }
+.product-color li.selected div { display: block; }
 .thread-details-options {
 	min-width: 250px;
 	max-width: 600px;

@@ -506,7 +506,9 @@ function ___eb_details_product_color () {
 //			console.log(status);
 			
 			if ( status > 0 ) {
-				str += '<li title="' + ( $(this).attr('alt') || $(this).attr('title') || $(this).attr('data-color') || '' ) + '" data-img="' + img_fullsize + '" data-node="' + i + '" style="background-image:url(' + ___eb_set_img_to_thumbnail( s ) + ');">&nbsp;</li>';
+				var color_name = $(this).attr('alt') || $(this).attr('title') || $(this).attr('data-color') || '';
+				
+				str += '<li title="' + color_name + '" data-img="' + img_fullsize + '" data-node="' + i + '" style="background-image:url(' + ___eb_set_img_to_thumbnail( s ) + ');">&nbsp;<div>' + color_name + '</div></li>';
 				
 				arr_product_color.push( img_fullsize );
 				
@@ -540,7 +542,7 @@ function ___eb_details_product_color () {
 			color_img = $(this).attr('data-img') || '';
 		
 		// Hiển thị ra cho người dùng xem
-		$('.show-products-color-text').html(color_name);
+//		$('.show-products-color-text').html(color_name);
 		
 		// đổi tên sản phẩm theo màu sắc
 		WGR_show_product_name_and_color (color_name);
@@ -659,6 +661,11 @@ function ___eb_details_product_color () {
 }
 
 function WGR_show_product_name_and_color ( color_name ) {
+	
+	// tạo thêm một dòng phụ bên dưới phần màu sắc để tạo độ dãn dòng
+	$('.show-products-color-text').html('&nbsp;');
+	
+	// bắt đầu hiển thị thêm tên màu vào tiêu đề
 	if ( typeof color_name != 'string' ) {
 		color_name = '';
 	}
