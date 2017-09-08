@@ -490,6 +490,14 @@ function ___eb_details_product_tab () {
 function ___eb_details_product_color () {
 	
 	if ( $('#export_img_list_color img').length == 0 ) {
+		
+		// nếu có tên màu sắc -> hiển thị tên màu ra ngoài cho dễ nhìn
+		if ( product_color_name != '' ) {
+//			console.log(product_color_name);
+			$('.show-if-color-exist').show();
+			$('.oi_product_color ul').html( '<li class="text-center text-color-center">' + product_color_name + '</li>' );
+		}
+		
 		return false;
 	}
 	

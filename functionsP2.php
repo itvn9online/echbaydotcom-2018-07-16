@@ -344,6 +344,10 @@ function _eb_checkDevice_v1 () {
 
 // Chuyển ký tự UTF-8 -> ra bảng mã mới
 function _eb_str_block_fix_content ($str) {
+	if ($str == '') {
+		return '';
+	}
+	
 //	$str = iconv('UTF-16', 'UTF-8', $str);
 //	$str = mb_convert_encoding($str, 'UTF-8', 'UTF-16');
 //	$str = mysqli_escape_string($str);

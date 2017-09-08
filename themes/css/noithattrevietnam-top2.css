@@ -1,7 +1,10 @@
 #noithattrevietnam-top2 { padding: 1px 0; }
 #noithattrevietnam-top2 { }
 #noithattrevietnam-top2 .nttvn-nav-menu { line-height: 25px; }
-#noithattrevietnam-top2 .nttvn-nav-menu ul { }
+#noithattrevietnam-top2 .nttvn-nav-menu ul {
+	letter-spacing: -0.5px;
+	white-space: nowrap;
+}
 #noithattrevietnam-top2 .nttvn-nav-menu li { float: left; }
 #noithattrevietnam-top2 .nttvn-nav-menu a {
 	color: #fff;
@@ -21,6 +24,7 @@
 	z-index: 3;
 	width: 230px;
 	display: none;
+	letter-spacing: 0;
 }
 #noithattrevietnam-top2 .nttvn-nav-menu li:hover .sub-menu { display: block; }
 /*
