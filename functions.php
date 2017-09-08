@@ -2646,14 +2646,85 @@ function _eb_load_ads (
 				'hide_empty' => 0,
 			) );
 			*/
-//			print_r($categories);
+			/*
+			echo '<!-- ';
+			print_r($categories);
+			echo ' -->';
+			*/
 			
 			foreach ( $categories as $k => $v ) {
 				$arr_in[] = $v->term_id;
 //				$strCacheFilter .= $v->term_id;
 			}
+			
+			
+			/*
+			* với custom taxonomy thì add vào phần not in kiểu khác
+			*/
+			
+			// tạo tax_query nếu chưa có
+			if ( ! isset( $_eb_query['tax_query'] ) ) {
+				$_eb_query['tax_query'] = array();
+			}
+			
+			//
+			$categories = get_categories( array(
+				'taxonomy' => 'post_options'
+			) );
+			/*
+			echo '<!-- ';
+			print_r($categories);
+			echo ' -->';
+			*/
+			
+			$arr_not_in = array();
+			foreach ( $categories as $k => $v ) {
+				$arr_not_in[] = $v->term_id;
+			}
+			// tạo list các banner not in phần post_options
+			$_eb_query['tax_query'][] = array (
+				'taxonomy' => 'post_options',
+				'field' => 'term_id',
+				'terms' => $arr_not_in,
+				'operator' => 'NOT IN'
+			);
+			
+			
+			//
+			$categories = get_categories( array(
+				'taxonomy' => EB_BLOG_POST_LINK
+			) );
+			/*
+			echo '<!-- ';
+			print_r($categories);
+			echo ' -->';
+			*/
+			
+			$arr_not_in = array();
+			foreach ( $categories as $k => $v ) {
+				$arr_not_in[] = $v->term_id;
+			}
+			// tạo list các banner not in phần blog
+			$_eb_query['tax_query'][] = array (
+				'taxonomy' => EB_BLOG_POST_LINK,
+				'field' => 'term_id',
+				'terms' => $arr_not_in,
+				'operator' => 'NOT IN'
+			);
+			
+			//
+//			$_eb_query['tag__not_in'] = $arr_not_in;
+			
+			/*
+			echo '<!-- ';
+			print_r($_eb_query);
+			echo ' -->';
+			*/
+			
 		}
 //		print_r($arr_in);
+		
+		//
 		$_eb_query['category__not_in'] = $arr_in;
 	}
 	

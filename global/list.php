@@ -91,7 +91,7 @@ if ( $switch_taxonomy != '' ) {
 		// lấy theo taxonomy mặc định
 		else if ( $switch_taxonomy == 'category' ) {
 			$str_big_banner = EBE_get_big_banner( 5, array(
-				'category__in' => array( $cid ),
+				'category__in' => array( $cid )
 			) );
 		}
 	}
