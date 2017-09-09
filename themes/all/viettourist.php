@@ -14,6 +14,7 @@ $eb_all_themes_support["viettourist"]["cf_top2_include_file"] = "bigbanner-top1.
 $eb_all_themes_support["viettourist"]["cf_top3_include_file"] = "viettourist-top2.php";
 $eb_all_themes_support["viettourist"]["cf_top4_include_file"] = "viettourist-top3.php";
 $eb_all_themes_support["viettourist"]["cf_top5_include_file"] = "breadcrumb2-top1.php";
+$eb_all_themes_support["viettourist"]["cf_top6_include_file"] = "top_widget.php";
 //
 $eb_all_themes_support["viettourist"]["cf_footer1_include_file"] = "footer_widget.php";
 $eb_all_themes_support["viettourist"]["cf_footer2_include_file"] = "viettourist-footer2.php";
