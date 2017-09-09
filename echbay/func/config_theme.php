@@ -62,7 +62,7 @@ function WGR_config_tao_css_chia_cot (
 ) {
 	
 	if ( trim( $column ) != '' && $width > 0 ) {
-		return _eb_supper_del_line( trim( '
+		$str = '
 .' . $css1 . ' .col-sidebar-content,
 .' . $css2 . ' .col-sidebar-content {
 	width: ' . $width . '%;
@@ -70,7 +70,15 @@ function WGR_config_tao_css_chia_cot (
 .' . $css1 . ' .col-main-content,
 .' . $css2 . ' .col-main-content {
 	width: ' . ( 100 - $width ) . '%;
-}' ) );
+}'
+		;
+		
+		//
+//		$str = _eb_supper_del_line( trim( $str ) );
+		
+		//
+		return $str;
+		
 	}
 	
 	//
@@ -111,6 +119,10 @@ $_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_blogs
 
 //
 $_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_blog_column_style'], $cf_blog_width_sidebar, 'blog_details_noidung_menu', 'blog_details_menu_noidung' );
+
+
+// rút gọn css lại
+$_POST['cf_default_themes_css'] = WGR_remove_css_multi_comment( $_POST['cf_default_themes_css'] );
 
 
 

@@ -303,6 +303,10 @@ if ( (int) $_POST['cf_height_logo'] < 10 ) {
 $_POST['cf_default_css'] .= '.web-logo{height:' . $_POST['cf_height_logo'] . 'px;line-height:' . $_POST['cf_height_logo'] . 'px;}';
 
 
+// rút gọn css lại
+$_POST['cf_default_css'] = WGR_remove_css_multi_comment( $_POST['cf_default_css'] );
+
+
 
 
 // chuyển đơn vị tiền tệ từ sau ra trước

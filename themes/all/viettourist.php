@@ -19,6 +19,6 @@ $eb_all_themes_support["viettourist"]["cf_footer1_include_file"] = "footer_widge
 $eb_all_themes_support["viettourist"]["cf_footer2_include_file"] = "viettourist-footer2.php";
 $eb_all_themes_support["viettourist"]["cf_footer3_include_file"] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["viettourist"]["cf_threaddetails_include_file"] = "";
+$eb_all_themes_support["viettourist"]["cf_threaddetails_include_file"] = "viettourist-threaddetails.html";
 //
 $eb_all_themes_support["viettourist"]["cf_threadnode_include_file"] = "viettourist-threadnode.html";
