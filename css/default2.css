@@ -1469,6 +1469,7 @@ input[type="number"].s { width: 90px; }
 	margin-right: 5px;
 	cursor: pointer;
 	position: relative;
+	text-transform: capitalize;
 }
 .product-color li.text-color-center {
 	width: auto;
