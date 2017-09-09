@@ -16,8 +16,9 @@
 	font-family: 'Roboto', sans-serif;
 }
 #noithattrevietnam-top2.nttvn-nav-small .nttvn-nav-menu a {
-	text-transform: none;
-	padding: 10px 13px;
+	/* text-transform: capitalize; */
+	padding: 10px;
+	font-size: 12px;
 }
 #noithattrevietnam-top2 .nttvn-nav-menu a:hover {
 	background: #fff;
