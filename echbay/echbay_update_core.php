@@ -577,7 +577,7 @@ function EBE_get_text_version ( $str ) {
 		echo '<br><h2><center><a href="#" class="click-connect-to-echbay-update-eb-core">[ Bấm vào đây để cập nhật lại mã nguồn cho EchBay! ]</a></center></h2>';
 		
 		// Link cập nhật core từ github
-		echo '<div><center><a href="#" class="click-connect-to-github-update-eb-core">[ Cập nhật mã nguồn cho EchBay theo thời gian thực! Server quốc tế (GitHub) ]</a></center></div>';
+		echo '<p><center><a href="#" class="click-connect-to-github-update-eb-core">[ Cập nhật mã nguồn cho EchBay theo thời gian thực! Server quốc tế (GitHub) ]</a></center></p>';
 		
 	}
 

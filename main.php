@@ -96,11 +96,66 @@ function ___eb_cache_getUrl () {
 //exit();
 
 // getUrl gets the queried page with query string
+
+
+
+// rút gọn HTML
+function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data ) {
+	
+	//
+//	return $data;
+	
+	//
+	$a = explode( "\n", $data );
+	$data = '';
+	
+	foreach ( $a as $v ) {
+		$v = trim( $v );
+		
+		if ( $v != '' ) {
+			
+//			echo substr( $v, -3 ) . "\n";
+			
+			// kiểm tra nội dung hợp lệ
+			if ( substr( $v, 0, 4 ) == '<!--' && substr( $v, -3 ) == '-->' ) {
+			}
+			// nội dung hợp lệ
+			else {
+				$data .= $v;
+				
+				if ( strstr( $v, '//' ) == true ) {
+					$data .= "\n";
+				}
+				else {
+					$data .= ' ';
+				}
+			}
+		}
+	}
+	
+	// xóa một số khoảng trắng không cần thiết
+	for ( $i = 0; $i < 10; $i++ ) {
+		$data = str_replace('</div> <div', '</div><div', $data);
+		$data = str_replace('</div> </div>', '</div></div>', $data);
+		
+		$data = str_replace('/> </div>', '/></div>', $data);
+		$data = str_replace('/> <div', '/><div', $data);
+	}
+	
+	return $data;
+	
+}
+
 // page's content is $buffer ($data)
 function ___eb_cache_cache ( $filename, $data ) {
 	
 	// sử dụng hàm này cho gọn
 	file_put_contents( $filename, $data ) or die('ERROR: write cache file');
+	
+	// TEST
+//	unlink ( ABSPATH . 'wp-content/uploads/ebcache/all/-wordpress.org-.txt' ); echo 'TEST';
+	
+	//
 //	chmod($filename, 0777);
 	
 	/*
@@ -164,13 +219,14 @@ function ___eb_cache_display ( $cache_time = 60 ) {
 	echo ___eb_cache_mobile_class ( $data );
 	
 	//
-	exit();
-	die();
+	exit(); die();
 }
 
 
 // set class cho bản mobile nếu sử dụng cache
 function ___eb_cache_mobile_class ( $data ) {
+//	return false;
+	
 //	global $func;
 	
 	if ( _eb_checkDevice() == 'mobile' ) {
@@ -178,6 +234,7 @@ function ___eb_cache_mobile_class ( $data ) {
 	}
 	
 	echo $data;
+	
 }
 
 
@@ -187,7 +244,7 @@ function ___eb_cache_mobile_class ( $data ) {
 function ___eb_cache_end_ob_cache ( $strEBPageDynamicCache ) {
 	global $set_time_for_main_cache;
 	
-	
+//	exit();
 	
 	//
 	$main_content = ob_get_contents();
@@ -245,7 +302,7 @@ Compression = gzip -->';
 	
 	// lưu file tĩnh
 //	_eb_get_static_html ( $strEBPageDynamicCache, $main_content );
-	___eb_cache_cache ( $strEBPageDynamicCache, $main_content . $eb_cache_note );
+	___eb_cache_cache ( $strEBPageDynamicCache, WGR_rut_gon_HTML_truoc_khi_tao_cache( $main_content ) . $eb_cache_note );
 }
 
 
@@ -370,6 +427,9 @@ If you want to using EchBay Cache, please set WP_CACHE = false or comment WP_CAC
 	// thời gian tối thiểu để cache là 30s
 	else if ( $enable_echbay_super_cache == 8 ) {
 		echo '<!-- EchBay Cache (ebcache) is enable, but not time for reset cache too many short (' . $__cf_row['cf_reset_cache'] . ' secondes). Min 30 secondes -->';
+	}
+	else {
+		echo '<!-- EchBay Cache (ebcache) is disable -->';
 	}
 }
 
