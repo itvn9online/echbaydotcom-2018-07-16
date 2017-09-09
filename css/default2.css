@@ -1474,6 +1474,8 @@ input[type="number"].s { width: 90px; }
 	width: auto;
 	min-width: 35px;
 	padding: 0 5px;
+	border-color: #c00;
+	background: url(../images-global/tick.png) right bottom no-repeat;
 }
 .product-color li div {
 	display: none;

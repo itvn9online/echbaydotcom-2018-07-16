@@ -13,6 +13,11 @@
 	border-right: solid 1px rgba(255,255,255,.3);
 	font-size: 14px;
 	display: block;
+	font-family: 'Roboto', sans-serif;
+}
+#noithattrevietnam-top2.nttvn-nav-small .nttvn-nav-menu a {
+	text-transform: none;
+	padding: 10px 13px;
 }
 #noithattrevietnam-top2 .nttvn-nav-menu a:hover {
 	background: #fff;

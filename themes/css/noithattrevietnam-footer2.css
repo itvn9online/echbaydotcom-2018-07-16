@@ -9,8 +9,30 @@
 	text-decoration: underline;
 }
 #noithattrevietnam-footer2 .web-logo { background-size: 95% auto; }
-#noithattrevietnam-footer2 { }
-#noithattrevietnam-footer2 { }
-#noithattrevietnam-footer2 { }
-#noithattrevietnam-footer2 { }
-#noithattrevietnam-footer2 { }
+#noithattrevietnam-footer2 .footer-menu .eb-set-menu-selected li {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+#noithattrevietnam-footer2 .footer-menu .eb-set-menu-selected a {
+	color: #000;
+	display: block;
+	margin-bottom: 8px;
+}
+#noithattrevietnam-footer2 .footer-menu .eb-set-menu-selected .sub-menu:before {
+	display: block;
+	content: "";
+	height: 1px;
+	border-bottom: 1px #333 solid;
+	width: 30%;
+	margin-bottom: 10px;
+}
+#noithattrevietnam-footer2 .footer-menu .eb-set-menu-selected .sub-menu li {
+	font-weight: normal;
+	text-transform: none;
+}
+#noithattrevietnam-footer2 .footer-menu .eb-set-menu-selected .sub-menu a:before {
+	display: inline-block;
+	content: "-";
+	margin-right: 5px;
+}
+#noithattrevietnam-footer2 .footer-menu .eb-set-menu-selected .sub-menu .sub-menu { display: none; }
