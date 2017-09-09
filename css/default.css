@@ -43,6 +43,8 @@ body {
 	font-size: 10pt;
 	color: #000;
 	font-family: 'Helvetica Neue', Helvetica, Arial, Tahoma, Verdana, sans-serif;
+	max-width: 1900px;
+	margin: 0 auto;
 }
 ul {
 	padding: 0;
