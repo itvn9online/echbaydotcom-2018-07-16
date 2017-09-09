@@ -496,6 +496,7 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	
 //	'tmp.list_file_for_lang' => '<select name="cf_content_language">' . $list_file_for_lang . '</select>',
 	'tmp.list_file_for_lang' => '',
+	'tmp.web_admin_link' => web_link . WP_ADMIN_DIR . '/',
 ), ECHBAY_PRI_CODE );
 
 

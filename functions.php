@@ -959,6 +959,9 @@ function WGR_remove_css_multi_comment ( $a ) {
 	$str = str_replace( ';}', '}', $str );
 	$str = str_replace( ' { ', '{', $str );
 	$str = str_replace( ' {', '{', $str );
+	$str = str_replace( ', .', ',.', $str );
+	$str = str_replace( ', #', ',#', $str );
+	$str = str_replace( ': ', ':', $str );
 	
 	return $str;
 	
