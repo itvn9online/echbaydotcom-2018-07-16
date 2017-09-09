@@ -432,8 +432,14 @@ function EBE_get_text_version ( $str ) {
 			// download từ github
 			if ( ! file_exists( $destination_path ) ) {
 				
-//				$url_for_download_ebdotcom = 'https://github.com/itvn9online/echbaydotcom/archive/master.zip';
-				$url_for_download_ebdotcom = 'https://www.echbay.com/daoloat/echbaydotcom.zip';
+				// chọn server để update -> github là thời gian thực
+				if ( isset( $_GET['connect_to'] ) && $_GET['connect_to'] == 'github' ) {
+					$url_for_download_ebdotcom = 'https://github.com/itvn9online/echbaydotcom/archive/master.zip';
+				}
+				// server của echbay thì update chậm hơn chút, nhưng tải nhanh hơn -> mặc định
+				else {
+					$url_for_download_ebdotcom = 'https://www.echbay.com/daoloat/echbaydotcom.zip';
+				}
 				
 				copy( $url_for_download_ebdotcom, $destination_path );
 				chmod( $destination_path, 0777 );
@@ -567,8 +573,12 @@ function EBE_get_text_version ( $str ) {
 		}
 //		echo '<br>';
 		
-		//
-		echo '<br><h2><center><a href="#" class="click-connect-to-github-update-eb-core">[ Bấm vào đây để cập nhật lại mã nguồn cho EchBay! ]</a></center></h2>';
+		// Link cập nhật core từ echbay.com
+		echo '<br><h2><center><a href="#" class="click-connect-to-echbay-update-eb-core">[ Bấm vào đây để cập nhật lại mã nguồn cho EchBay! ]</a></center></h2>';
+		
+		// Link cập nhật core từ github
+		echo '<br><div><center><a href="#" class="click-connect-to-github-update-eb-core">[ Bấm vào đây để cập nhật lại mã nguồn cho EchBay! Server quốc tế (GitHub) ]</a></center></div>';
+		
 	}
 
 /*	
@@ -604,8 +614,15 @@ function EBE_eb_update_time_to_new_time ( $t ) {
 <p><em>* Xin lưu ý! các tính năng được cập nhật là xây dựng và phát triển cho phiên bản trả phí, nên với phiên bản miễn phí, một số tính năng sẽ không tương thích hoặc phải chỉnh lại giao diện sau khi cập nhật. Lần cập nhật trước: <strong><?php echo date( 'r', $last_time_update_eb ); ?> (<?php echo EBE_eb_update_time_to_new_time( $last_time_update_eb ); ?>)</strong></em></p>
 <br>
 <script type="text/javascript">
-jQuery('.click-connect-to-github-update-eb-core').attr({
+
+jQuery('.click-connect-to-echbay-update-eb-core').attr({
 	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1'
+}).click(function () {
+	$(this).hide();
+});
+
+jQuery('.click-connect-to-github-update-eb-core').attr({
+	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1&connect_to=github'
 }).click(function () {
 	$(this).hide();
 });
@@ -619,4 +636,5 @@ if ( jQuery('#eb_core_update_all_done').length > 0 ) {
 	window.scroll( 0, jQuery(document).height() );
 	alert('All done');
 }
+
 </script>
