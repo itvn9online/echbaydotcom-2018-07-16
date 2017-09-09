@@ -26,4 +26,5 @@ $eb_all_themes_support["estyle"]["cf_footer3_include_file"] = "estyle-footer2.ph
 //
 $eb_all_themes_support["estyle"]["cf_threaddetails_include_file"] = "estyle-threaddetails.html";
 //
-$eb_all_themes_support["estyle"]["cf_threadnode_include_file"] = "estyle-threadnode.html";
+//$eb_all_themes_support["estyle"]["cf_threadnode_include_file"] = "estyle-threadnode.html";
+$eb_all_themes_support["estyle"]["cf_threadnode_include_file"] = "mevutu-threadnode.html";
