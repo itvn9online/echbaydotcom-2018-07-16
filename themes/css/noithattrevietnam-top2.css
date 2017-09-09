@@ -46,6 +46,7 @@
 	color: #fff;
 	padding: 5px 15px;
 	border-top: 1px rgba(255,255,255,.3) solid;
+	font-size: 14px;
 }
 #noithattrevietnam-top2 .nttvn-nav-menu .sub-menu a:hover { background: rgba(255, 255, 255, .1); }
 #noithattrevietnam-top2 .nttvn-nav-menu .sub-menu .sub-menu { display: none; }
