@@ -37,10 +37,10 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 		
 		//
 //		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
-		/*
 		if ( ! isset( $eb_arr_placeholder_custom_meta_box[$k] ) ) {
 			$eb_arr_placeholder_custom_meta_box[$k] = '';
 		}
+		/*
 		else {
 			$eb_arr_placeholder_custom_meta_box[$k] = '<em class="small">' . $eb_arr_placeholder_custom_meta_box[$k] . '</em>';
 		}
@@ -601,10 +601,10 @@ function EBextra_category_fields( $tag ) {
 		
 		//
 //		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
-		/*
 		if ( ! isset( $eb_arr_placeholder_custom_meta_box[$k] ) ) {
 			$eb_arr_placeholder_custom_meta_box[$k] = '';
 		}
+		/*
 		else {
 			$eb_arr_placeholder_custom_meta_box[$k] = '<div class="small">' . $eb_arr_placeholder_custom_meta_box[$k] . '</div>';
 		}
