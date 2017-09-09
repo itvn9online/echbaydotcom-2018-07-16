@@ -957,6 +957,8 @@ function WGR_remove_css_multi_comment ( $a ) {
 	// bỏ các ký tự thừa nhiều nhất có thể
 	$str = str_replace( '; }', '}', $str );
 	$str = str_replace( ';}', '}', $str );
+	$str = str_replace( ' { ', '{', $str );
+	$str = str_replace( ' {', '{', $str );
 	
 	return $str;
 	
