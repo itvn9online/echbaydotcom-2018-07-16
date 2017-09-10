@@ -349,6 +349,7 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 	// Bỏ qua nếu không tìm thấy CSS hoặc dữ liệu bị trống
 	if ( a == '' ) {
 		if ( cf_tester_mode == 1 ) console.log('thread-details-comment is NULL');
+		return false;
 	}
 	
 	// Tách lấy từng dòng -> để tạo style cho thống nhất
@@ -357,6 +358,7 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 	// 1 dòng thì cũng bỏ qua luôn
 	if ( a.length <= 1 ) {
 		if ( cf_tester_mode == 1 ) console.log('thread-details-comment is one line');
+		return false;
 	}
 	
 	// dữ liệu phụ họa
@@ -502,18 +504,24 @@ function ___eb_details_product_tab () {
 
 
 // màu sắc sản phẩm
+// hiển thị tên màu trực tiếp nếu không có màu nào được chỉ định
+function WGR_show_product_color_name () {
+//	console.log(product_color_name);
+	
+	// nếu có tên màu sắc -> hiển thị tên màu ra ngoài cho dễ nhìn
+	if ( product_color_name != '' ) {
+		$('.show-if-color-exist').show();
+		$('.oi_product_color ul').html( '<li class="text-center text-color-center">' + product_color_name + '</li>' );
+	}
+	
+	return false;
+}
+
 function ___eb_details_product_color () {
 	
+	//
 	if ( $('#export_img_list_color img').length == 0 ) {
-		
-		// nếu có tên màu sắc -> hiển thị tên màu ra ngoài cho dễ nhìn
-		if ( product_color_name != '' ) {
-//			console.log(product_color_name);
-			$('.show-if-color-exist').show();
-			$('.oi_product_color ul').html( '<li class="text-center text-color-center">' + product_color_name + '</li>' );
-		}
-		
-		return false;
+		return WGR_show_product_color_name();
 	}
 	
 	//
@@ -543,7 +551,10 @@ function ___eb_details_product_color () {
 	// nếu ít hơn 1 màu -> hủy bỏ
 //	console.log(i);
 	if ( i < 2 ) {
+		WGR_show_product_color_name();
+		
 		arr_product_color = [];
+		
 		return false;
 	}
 //	console.log(arr_product_color);
@@ -1431,9 +1442,6 @@ function ___eb_details_post_run ( r ) {
 	
 	// color
 	___eb_details_product_color();
-	if ( product_color_name != '' ) {
-		WGR_show_product_name_and_color (product_color_name);
-	}
 	
 	// size
 	___eb_details_product_size();
