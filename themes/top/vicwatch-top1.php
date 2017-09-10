@@ -1,10 +1,10 @@
 <div id="vicwatch-top1" class="hide-if-mobile">
 	<div class="web-top-logo">
 		<div class="<?php echo $__cf_row['cf_top_class_style']; ?> cf div-search-margin">
-			<div class="lf f50"><i class="fa fa-map-marker"></i> <?php echo _eb_first( explode( "\n", $__cf_row['cf_diachi'] ) ); ?></div>
-			<div class="lf f30 cf text-center medium">
-				<div class="lf f80"><i class="fa fa-phone"></i> <span class="medium phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span></div>
-				<div class="lf f20"><?php echo EBE_get_html_cart(); ?></div>
+			<div class="lf f40"><i class="fa fa-map-marker"></i> <?php echo _eb_first( explode( "\n", $__cf_row['cf_diachi'] ) ); ?></div>
+			<div class="lf f40 cf medium">
+				<div class="lf f60 text-right"><i class="fa fa-phone"></i> <span class="medium phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span></div>
+				<div class="lf f40 text-center"><?php echo EBE_get_html_cart(); ?></div>
 			</div>
 			<div class="lf f20">
 				<div>
