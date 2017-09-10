@@ -346,32 +346,39 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 	var a = $('.thread-details-comment').html() || '',
 		str = '';
 	
+	// Bỏ qua nếu không tìm thấy CSS hoặc dữ liệu bị trống
+	if ( a == '' ) {
+		if ( cf_tester_mode == 1 ) console.log('thread-details-comment is NULL');
+	}
+	
 	// Tách lấy từng dòng -> để tạo style cho thống nhất
-	if ( a != '' ) {
-		a = a.split("\n");
+	a = a.split("\n");
+	
+	// 1 dòng thì cũng bỏ qua luôn
+	if ( a.length <= 1 ) {
+		if ( cf_tester_mode == 1 ) console.log('thread-details-comment is one line');
+	}
+	
+	// dữ liệu phụ họa
+	if ( typeof a_before == 'undefined' ) {
+		a_before = '';
+	}
+	
+	if ( typeof a_after == 'undefined' ) {
+		a_after = '';
+	}
+	
+	// bắt đầu tạo style
+	for (var i = 0; i < a.length; i++) {
+		a[i] = g_func.trim( a[i] );
 		
-		//
-		if ( a.length > 1 ) {
-			if ( typeof a_before == 'undefined' ) {
-				a_before = '';
-			}
-			
-			if ( typeof a_after == 'undefined' ) {
-				a_after = '';
-			}
-			
-			for (var i = 0; i < a.length; i++) {
-				a[i] = g_func.trim( a[i] );
-				
-				if ( a[i] != '' ) {
-					str += '<li>' + a_before + a[i] + a_after + '</li>';
-				}
-			}
-			
-			// In ra dữ liệu mới
-			$('.thread-details-comment').show().html( '<ul>' +str+ '</ul>' );
+		if ( a[i] != '' ) {
+			str += '<li>' + a_before + a[i] + a_after + '</li>';
 		}
 	}
+	
+	// In ra dữ liệu mới
+	$('.thread-details-comment').show().html( '<ul>' +str+ '</ul>' );
 	
 }
 

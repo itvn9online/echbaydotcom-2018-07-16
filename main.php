@@ -100,7 +100,7 @@ function ___eb_cache_getUrl () {
 
 
 // rút gọn HTML
-function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data ) {
+function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 	
 	//
 //	return $data;
@@ -108,6 +108,7 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data ) {
 	//
 	$a = explode( "\n", $data );
 	$data = '';
+	$i = 0;
 	
 	foreach ( $a as $v ) {
 		$v = trim( $v );
@@ -121,18 +122,39 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data ) {
 			}
 			// nội dung hợp lệ
 			else {
-				$data .= $v;
 				
 				if ( strstr( $v, '//' ) == true ) {
-					$data .= "\n";
+					$v .= "\n";
 				}
 				else {
-					$data .= ' ';
+					$v .= ' ';
 				}
+				
+				// v1
+				$data .= $v;
+				
+				
+				// v2 -> vài vòng lặp sẽ add nội dung 1 lần để tránh biến to quá hoặc hàm file_put_contents bị gọi nhiều quá
+				if ( $i % 10 == 0 ) {
+					file_put_contents( $filename, $data, FILE_APPEND ) or die('ERROR: append main cache file');
+					$data = '';
+					$i = 0;
+				}
+				else {
+					$i++;
+				}
+				
 			}
 		}
 	}
+	// v2 -> nhúng nội dung còn thiếu ở những vòng lặp cuối
+	if ( $data != '' ) {
+		file_put_contents( $filename, $data, FILE_APPEND ) or die('ERROR: append last main cache file');
+	}
 	
+	return true;
+	
+	// v1
 	// xóa một số khoảng trắng không cần thiết
 	for ( $i = 0; $i < 10; $i++ ) {
 		$data = str_replace('</div> <div', '</div><div', $data);
@@ -147,10 +169,20 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data ) {
 }
 
 // page's content is $buffer ($data)
-function ___eb_cache_cache ( $filename, $data ) {
+function ___eb_cache_cache ( $filename, $data, $data_comment = '' ) {
 	
+	// v2
+	file_put_contents( $filename, $data_comment ) or die('ERROR: write comment main cache file');
+	
+	WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename );
+	
+	return true;
+	
+	
+	
+	// v1
 	// sử dụng hàm này cho gọn
-	file_put_contents( $filename, $data ) or die('ERROR: write cache file');
+	file_put_contents( $filename, WGR_rut_gon_HTML_truoc_khi_tao_cache( $data ) . $data_comment ) or die('ERROR: write main cache file');
 	
 	// TEST
 //	unlink ( ABSPATH . 'wp-content/uploads/ebcache/all/-wordpress.org-.txt' ); echo 'TEST';
@@ -302,7 +334,7 @@ Compression = gzip -->';
 	
 	// lưu file tĩnh
 //	_eb_get_static_html ( $strEBPageDynamicCache, $main_content );
-	___eb_cache_cache ( $strEBPageDynamicCache, WGR_rut_gon_HTML_truoc_khi_tao_cache( $main_content ) . $eb_cache_note );
+	___eb_cache_cache ( $strEBPageDynamicCache, $main_content, $eb_cache_note );
 }
 
 
