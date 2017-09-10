@@ -17,10 +17,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	//
 	if ( typeof jd == 'undefined' || jd == '' || $(jd).length == 0 ) {
-		console.log( 'jEBE_slider! ' + jd + ' not found' );
+		if ( cf_tester_mode == 1 ) console.log( 'jEBE_slider! ' + jd + ' not found' );
 		return false;
 	}
-	console.log('jEBE_slider! Create slider ' + jd);
+	if ( cf_tester_mode == 1 ) console.log('jEBE_slider! Create slider ' + jd);
 	var jd_class = 'child-' + jd.substr( 1 ).replace( /\.|\#|\s/g, '-' );
 	var jd_to_class = '.' + jd_class;
 	
@@ -115,7 +115,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	set_default_conf( 'sliderArrowWidthRight', 'auto' );
 	
 	// conf['sliderArrow']
-	console.log( conf );
+	if ( cf_tester_mode == 1 ) console.log( conf );
 	
 	
 	// kiểm tra có li nào ở trong không

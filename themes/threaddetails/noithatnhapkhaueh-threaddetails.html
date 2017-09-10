@@ -17,25 +17,29 @@
 		</div>
 		<div class="lf f50 fullsize-if-mobile">
 			<div class="left-menu-space">
-				<div>
+				<div class="thread-details-info">
 					<div class="thread-details-relative">
 						<div style="position:absolute;right:0;">{tmp.admin_edit}</div>
 					</div>
 					<h1 class="thread-details-title">{tmp.trv_h1_tieude}</h1>
 					<div data-rating="{tmp.rating_value_img}" class="medium each-to-rating"></div>
-					<div class="thread-details-gia"><span>{tmp.trv_giaban}</span><span>{tmp.trv_giamoi}</span></div>
+					<div class="thread-details-gia"><span>{tmp.trv_giamoi}</span><span>{tmp.trv_giaban}</span></div>
 				</div>
 				<div class="cf text-center detail-muangay-padding">
 					<div class="details-ankhi-hethang lf f50 fullsize-if-mobile">
 						<div>
-							<button type="button" class="details-mua-ngay big click-jquery-show-quick-cart upper whitecolor">Đặt mua ngay</button>
+							<button type="button" class="details-mua-ngay upper click-jquery-show-quick-cart">Đặt hàng ngay</button>
 						</div>
 						<br>
 					</div>
-					<div class="lf f50 fullsize-if-mobile"><a href="tel:{tmp.cf_hotline}" rel="nofollow" class="upper whitecolor details-tu-van medium"><span class="bold medium18">Tư vấn miễn phí</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}</a></div>
+					<div class="lf f50 fullsize-if-mobile"><a href="tel:{tmp.cf_hotline}" rel="nofollow" class="whitecolor details-tu-van upper"><span>(Hotline)</span>{tmp.cf_hotline}</a></div>
 				</div>
 				<div class="thread-details-comment graycolor l25">{tmp.trv_goithieu}</div>
 				<table cellpadding="0" cellspacing="0" border="0" width="100%" class="thread-details-options">
+					<tr>
+						<td>Mã sản phẩm</td>
+						<td>{tmp.trv_masanpham}</td>
+					</tr>
 					{tmp.other_option_list}
 				</table>
 				<br>
@@ -51,22 +55,15 @@
 				</div>
 				<div id="export_img_list_color" class="d-none">{tmp.trv_list_color}</div>
 				<div id="oi_time_line"></div>
-				<ul class="thread-details-slogan cf l19 upper small">
+				<ul class="thread-details-slogan">
 					<li>
-						<div><i class="fa fa-truck"></i> Giao hàng<br>
-							Toàn Quốc</div>
+						<div><i class="fa fa-truck"></i> Miễn phí vận chuyển, lặp đặt tại Hà Nội</div>
 					</li>
 					<li>
-						<div><i class="fa fa-dollar"></i> Thanh toán khi<br>
-							Nhận hàng</div>
+						<div><i class="fa fa-check-square-o"></i> Bảo hành miễn phí 01 năm</div>
 					</li>
 					<li>
-						<div><i class="fa fa-refresh"></i> Đổi hàng<br>
-							<span>trong 7 ngày</span></div>
-					</li>
-					<li>
-						<div><i class="fa fa-check-square"></i> Bảo hành VIP<br>
-							<span>12 tháng</span></div>
+						<div><i class="fa fa-wrench"></i> Bảo trì trọn đời sản phẩm</div>
 					</li>
 				</ul>
 			</div>
@@ -88,11 +85,11 @@
 						<div class="cf text-center detail-muangay-padding">
 							<div class="details-ankhi-hethang lf f50 fullsize-if-mobile">
 								<div>
-									<button type="button" class="details-mua-ngay big click-jquery-show-quick-cart upper whitecolor">Đặt mua ngay</button>
+									<button type="button" class="details-mua-ngay upper click-jquery-show-quick-cart">Đặt hàng ngay</button>
 								</div>
 								<br>
 							</div>
-							<div class="lf f50 fullsize-if-mobile"><a href="tel:{tmp.cf_hotline}" rel="nofollow" class="upper whitecolor details-tu-van medium"><span class="bold medium18">Tư vấn miễn phí</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}</a></div>
+							<div class="lf f50 fullsize-if-mobile"><a href="tel:{tmp.cf_hotline}" rel="nofollow" class="whitecolor details-tu-van upper"><span>(Hotline)</span>{tmp.cf_hotline}</a></div>
 						</div>
 					</div>
 					<br>

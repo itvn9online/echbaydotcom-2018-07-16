@@ -1,25 +1,30 @@
-.thread-details-slogan { }
+.thread-details-options {
+	padding-top: 10px;
+	border-top: 1px #ccc solid;
+	margin-top: 10px;
+}
+.thread-details-slogan {
+	border-bottom: 1px #ccc solid;
+	border-top: 1px #ccc solid;
+	line-height: 30px;
+}
 .thread-details-slogan li {
-	background: #F4F4F4;
-	margin-bottom: 5px;
-}
-.thread-details-slogan div {
 	position: relative;
-	padding: 8px 0 8px 60px;
-	min-height: 40px;
+	margin: 10px 0;
 }
+.thread-details-slogan div { padding-left: 45px; }
 .thread-details-slogan i {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
 	position: absolute;
 	left: 0;
-	display: block;
-	font-size: 35px;
-	color: #888282;
-	display: block;
-	line-height: 40px;
-	width: 60px;
+	border: 1px #f00 solid;
+	border-radius: 50%;
 	text-align: center;
+	font-size: 18px;
+	color: #f00;
 }
-.thread-details-slogan span { font-size: 10px; }
 .thread-details { box-shadow: 0 1px 3px rgba(0,0,0,.25); }
 .thread-details-padding,
 .thread-support-padding { padding: 20px; }
@@ -27,7 +32,11 @@
 	background-color: #eff3f6;
 	padding: 18px;
 }
-.thread-details-title a { }
+.thread-details-title,
+.thread-details-title a {
+	font-weight: normal;
+	text-transform: uppercase;
+}
 .thread-details-tabs {
 	position: absolute;
 	left: 0;
@@ -71,22 +80,36 @@
 }
 .details-mua-ngay,
 .details-tu-van {
-	height: 70px;
+	height: 60px;
 	display: block;
+	border-radius: 5px;
+	font-size: 15px;
 }
 .details-mua-ngay {
-	background: #d71921;
+	background: #d8d8d8;
 	border: 0 none;
 	cursor: pointer;
 	margin-right: 10px;
 	width: 100%;
+	color: #f00;
 }
 .details-tu-van {
-	background: #585858;
+	background: #fd2322;
 	margin-left: 10px;
 }
 .style-for-mobile .details-tu-van { margin-left: 0; }
 .details-tu-van span {
 	display: block;
 	padding-top: 12px;
+}
+.thread-details-info {
+	background: #d8d8d8;
+	padding: 15px 20px;
+	margin-bottom: 10px;
+}
+.thread-details-gia { padding-top: 8px; }
+.thread-details-gia .global-details-giamoi {
+	font-size: 18px;
+	font-weight: normal;
+	color: #f00;
 }

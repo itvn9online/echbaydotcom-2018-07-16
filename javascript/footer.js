@@ -71,7 +71,7 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 	
 	// chỉ tìm ở trang danh sách sản phẩm
 	if ( typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category' ) {
-		console.log('search price is active, but run only category page -> STOP.');
+		if ( cf_tester_mode == 1 ) console.log('search price is active, but run only category page -> STOP.');
 	}
 	
 	//
@@ -81,7 +81,7 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 	
 	// nếu không có class này thì hủy chức năng luôn
 	if ( $(clat).length == 0 ) {
-		console.log('search price is active, but element ' + clat + ' not found -> STOP.');
+		if ( cf_tester_mode == 1 ) console.log('search price is active, but element ' + clat + ' not found -> STOP.');
 		return false;
 	}
 	
@@ -123,7 +123,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 	
 	// chỉ tìm ở trang danh sách sản phẩm
 	if ( typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category' ) {
-		console.log('search advanced is active, but run only category page -> STOP.');
+		if ( cf_tester_mode == 1 ) console.log('search advanced is active, but run only category page -> STOP.');
 	}
 	
 	//
@@ -133,7 +133,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 	
 	//
 	if ( $(clat).length == 0 ) {
-		console.log('search advanced is active, but element ' + clat + ' not found -> STOP.');
+		if ( cf_tester_mode == 1 ) console.log('search advanced is active, but element ' + clat + ' not found -> STOP.');
 		return false;
 	}
 //	console.log($(clat).length);

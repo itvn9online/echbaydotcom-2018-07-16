@@ -178,6 +178,9 @@ $__cf_row_default = array(
 	'cf_details_show_list_next' => 0,
 	'cf_details_show_list_thumb' => 1,
 	
+	// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
+	'cf_details_excerpt' => 1,
+	
 	
 	/*
 	* giao diện HTML mặc định

@@ -38,6 +38,12 @@ $add_data_id = array (
 //		'fid' => $fid,
 		'pid' => $pid,
 		
+		// chế độ kiểm thử -> dùng để console lỗi nếu chế độ này đang bật
+		'cf_tester_mode' => $__cf_row['cf_tester_mode'],
+		
+		// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
+		'cf_details_excerpt' => $__cf_row['cf_details_excerpt'],
+		
 		'cf_details_show_list_next' => $__cf_row['cf_details_show_list_next'],
 		'cf_details_show_list_thumb' => $__cf_row['cf_details_show_list_thumb'],
 		
