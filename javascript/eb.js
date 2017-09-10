@@ -2156,8 +2156,8 @@ var _global_js_eb = {
 				track_arr.content_type = 'product';
 			}
 		}
-		console.log('Facebook pixel (' + track_name + ') by EchBay.com');
-		console.log( track_arr );
+		if ( cf_tester_mode == 1 ) console.log('Facebook pixel (' + track_name + ') by EchBay.com');
+		if ( cf_tester_mode == 1 ) console.log( track_arr );
 		
 		//
 		fbq('track', track_name, track_arr);
