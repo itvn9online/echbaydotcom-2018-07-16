@@ -478,7 +478,7 @@ function EBE_add_js_compiler_in_cache (
 //	$file_in_cache = ABSPATH . 'wp-content/uploads/ebcache/' . $file_name_cache;
 	$file_in_cache = EB_THEME_CACHE . $file_name_cache;
 	if ( file_exists( $file_in_cache ) ) {
-		echo '<script type="text/javascript" src="' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
+		echo '<script type="text/javascript" src="wp-content/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
 		
 		return true;
 	}
@@ -555,7 +555,7 @@ function EBE_add_js_compiler_in_cache (
 	_eb_create_file( $file_in_cache, $new_content );
 	
 	//
-	echo '<script type="text/javascript" src="' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
+	echo '<script type="text/javascript" src="wp-content/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
 }
 
 // một số host không dùng được hàm end
@@ -826,13 +826,14 @@ function _eb_add_css_js_file ( $arr, $file_type = '.css', $include_now = 0, $inc
 		
 		//
 //			$none_http_url = str_replace( 'http://', '//', content_url() );
-		$none_http_url = 'wp-content';
+//		$none_http_url = 'wp-content';
+		$none_http_url = basename( EB_THEME_CONTENT );
 		
 		//
 		if ( $file_type == '.js' ) {
 			
 			// tạo nội dung nhúng file css
-			$f_url = $__cf_row['cf_dns_prefetch'] . $none_http_url . '/uploads/ebcache/' . $f_filename;
+			$f_url = $none_http_url . '/uploads/ebcache/' . $f_filename;
 //				echo 'URL: ' . $f_url . '<br>';
 			
 			/*
@@ -1211,8 +1212,9 @@ function _eb_add_compiler_link_css ( $arr ) {
 			}
 			
 			//
-//				$file_link = $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/ebcache/' . $file_cache;
-			$file_link = web_link . 'wp-content/uploads/ebcache/' . $file_cache;
+//			$file_link = $__cf_row['cf_dns_prefetch'] . basename( EB_THEME_CONTENT ) . '/uploads/ebcache/' . $file_cache;
+//			$file_link = web_link . basename( EB_THEME_CONTENT ) . '/uploads/ebcache/' . $file_cache;
+			$file_link = basename( EB_THEME_CONTENT ) . '/uploads/ebcache/' . $file_cache;
 			
 			// -> done
 			echo '<link rel="stylesheet" href="' . $file_link . '" type="text/css" media="all" />' . "\n";

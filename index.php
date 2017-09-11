@@ -87,6 +87,7 @@ if ( defined('WP_CONTENT_DIR') ) {
 }
 //echo 'EB_THEME_CONTENT: ' . EB_THEME_CONTENT . '<br>';
 //echo 'WP_CONTENT_DIR: ' . WP_CONTENT_DIR . '<br>';
+//echo basename( EB_THEME_CONTENT ) . '<br>' . "\n";
 
 
 

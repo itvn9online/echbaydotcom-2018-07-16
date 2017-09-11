@@ -114,7 +114,6 @@ if ( file_exists( $private_amp_file ) ) {
 
 //
 if ( $__cf_row['cf_old_domain'] != '' ) {
-	$main_content = str_replace( 'http://' . $__cf_row['cf_old_domain'] . '/wp-content/uploads/', web_link . 'wp-content/uploads/', $main_content );
 	$main_content = str_replace( '/' . $__cf_row['cf_old_domain'] . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $main_content );
 }
 

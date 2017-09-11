@@ -224,8 +224,8 @@ _eb_update_option( 'siteurl', $current_siteurl );
 
 //
 if ( isset( $_POST['cf_dns_prefetch'] )
-&& $_POST['cf_dns_prefetch'] != ''
-&& strstr( $_POST['cf_dns_prefetch'], '/' ) == true ) {
+	&& $_POST['cf_dns_prefetch'] != ''
+	&& strstr( $_POST['cf_dns_prefetch'], '/' ) == true ) {
 	$a = explode( '//', $_POST['cf_dns_prefetch'] );
 	if ( isset( $a[1] ) ) {
 		$a = $a[1];
@@ -237,6 +237,24 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 	$a = $a[0];
 	
 	$_POST['cf_dns_prefetch'] = $a;
+}
+
+
+//
+if ( isset( $_POST['cf_old_domain'] )
+	&& $_POST['cf_old_domain'] != ''
+	&& strstr( $_POST['cf_old_domain'], '/' ) == true ) {
+	$a = explode( '//', $_POST['cf_old_domain'] );
+	if ( isset( $a[1] ) ) {
+		$a = $a[1];
+	} else {
+		$a = $a[0];
+	}
+	
+	$a = explode( '/', $a );
+	$a = $a[0];
+	
+	$_POST['cf_old_domain'] = $a;
 }
 
 

@@ -94,7 +94,7 @@ _eb_add_full_js( array(
 ) );
 */
 
-echo '<script type="text/javascript" src="' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/ebcache/cat.js" async></script>';
+echo '<script type="text/javascript" src="wp-content/uploads/ebcache/cat.js" async></script>';
 /*
 echo '<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery.js"></script>';
 */

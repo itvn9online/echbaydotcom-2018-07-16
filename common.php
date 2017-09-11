@@ -31,15 +31,15 @@ if ( $__cf_row['cf_dns_prefetch'] != '' ) {
 		
 		exit();
 	}
+	
 	// không trùng -> tạo link cho DNS prefetch
-	else {
-		$dynamic_meta .= '<link rel="dns-prefetch" href="//' . $__cf_row['cf_dns_prefetch'] . '" />';
-	}
+	$dynamic_meta .= '<link rel="dns-prefetch" href="//' . $__cf_row['cf_dns_prefetch'] . '" />';
 	
 	//
 	$__cf_row['cf_dns_prefetch'] = '//' . $__cf_row['cf_dns_prefetch'] . '/';
 } else {
-	$__cf_row['cf_dns_prefetch'] = strstr( web_link, '//' );
+//	$__cf_row['cf_dns_prefetch'] = strstr( web_link, '//' );
+	$__cf_row['cf_dns_prefetch'] = $_SERVER['HTTP_HOST'] . '/';
 }
 //echo $__cf_row['cf_dns_prefetch'];
 
@@ -218,15 +218,17 @@ if ( file_exists( $inc_file ) ) {
 		$main_content = str_replace ( '{' . $k . '}', $v, $main_content );
 	}
 	
-	// chuyển sang dùng CDN (nếu có)
-	$main_content = str_replace ( web_link . 'wp-content/uploads/', $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
-	$main_content = str_replace ( '"wp-content/uploads/', '"' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
-	
 	
 	// nếu tồn tại tham số URL cũ -> thay nội dung cũ sang mới
 	if ( $__cf_row['cf_old_domain'] != '' ) {
 		$main_content = str_replace ( '/' . $__cf_row['cf_old_domain'] . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $main_content );
 	}
+	
+	
+	// chuyển sang dùng CDN (nếu có)
+	$main_content = str_replace ( web_link . 'wp-content/uploads/', $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
+//	$main_content = str_replace ( '"wp-content/uploads/', '"' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
+	
 	
 	
 	// chuyển URL sang dạng SSL
