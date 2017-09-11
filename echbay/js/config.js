@@ -361,6 +361,7 @@ if ( current_module_config != 'config_theme' ) {
 else {
 	show_note_for_checkbox_config( 'cf_details_show_list_next' );
 	show_note_for_checkbox_config( 'cf_details_show_list_thumb' );
+	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
 }
 
 

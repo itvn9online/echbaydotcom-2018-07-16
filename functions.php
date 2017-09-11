@@ -2895,7 +2895,9 @@ function _eb_load_ads (
 			
 			//
 			$post->trv_tieude = $post->post_title;
-			$post->trv_gioithieu = $post->post_excerpt;
+			
+			// mặc định là sử dụng post_excerpt, nếu không có -> sẽ sử dụng post_content
+			$post->trv_gioithieu = ( $post->post_excerpt == '' ) ? $post->post_content : $post->post_excerpt;
 			
 			//
 			$str .=  EBE_arr_tmp( $post, $html );

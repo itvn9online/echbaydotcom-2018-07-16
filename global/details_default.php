@@ -851,7 +851,7 @@ $arr_main_content = array(
 	'tmp.trv_giaban' => EBE_add_ebe_currency_class( $trv_giaban, 1 ),
 	'tmp.trv_giamoi' => EBE_add_ebe_currency_class( $trv_giamoi ),
 	'tmp.trv_num_giamoi' => $trv_giamoi,
-	'tmp.trv_tietkiem' => $trv_giamoi > 0 ? EBE_add_ebe_currency_class( $trv_giaban - $trv_giamoi ) : '',
+	'tmp.trv_tietkiem' => ( $trv_giamoi > 0 ) ? EBE_add_ebe_currency_class( $trv_giaban - $trv_giamoi ) : '',
 	
 	'tmp.cf_product_details_size' => $__cf_row['cf_product_details_size'],
 	'tmp.cf_diachi' => nl2br( $__cf_row['cf_diachi'] ),
@@ -871,6 +871,9 @@ $arr_main_content = array(
 	'tmp.custom_product_flex_css' => $custom_product_flex_css,
 	
 	'tmp.str_for_details_sidebar' => $str_for_details_sidebar,
+	
+	// phom mua ngay
+	'tmp.clone-show-quick-cart' => ( $__cf_row['cf_details_show_quick_cart'] ) == 1 ? '<div class="clone-show-quick-cart"></div>' : '',
 	
 	// tìm và tạo sidebar luôn
 //	'tmp.str_sidebar' => _eb_echbay_sidebar( $id_for_get_sidebar ),
