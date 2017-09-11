@@ -2936,4 +2936,5 @@ function _eb_load_ads (
 
 // tách các phiên bản ra cho nhẹ người code
 include EB_THEME_PLUGIN_INDEX . 'functionsP2.php';
+include EB_THEME_PLUGIN_INDEX . 'functionsP3.php';
 include EB_THEME_PLUGIN_INDEX . 'functionsWidget.php';

@@ -117,11 +117,16 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 			
 //			echo substr( $v, -3 ) . "\n";
 			
-			// kiểm tra nội dung hợp lệ
+			// xóa HTML comment
+			// https://stackoverflow.com/questions/1084741/regexp-to-strip-html-comments
 			if ( substr( $v, 0, 4 ) == '<!--' && substr( $v, -3 ) == '-->' ) {
+//				$v = trim( preg_replace('/<!--(.*)-->/Uis', '', $v) );
+//				$v = trim( preg_replace('s/<!--[^>]*-->//g', '', $v) );
+				$v = WGR_remove_html_comments ( $v );
 			}
+			
 			// nội dung hợp lệ
-			else {
+			if ( $v != '' ) {
 				
 				if ( strstr( $v, '//' ) == true ) {
 					$v .= "\n";
