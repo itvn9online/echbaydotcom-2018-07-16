@@ -70,7 +70,7 @@
 							<textarea name="t_ghichu" placeholder="<?php echo EBE_get_lang('cart_vidu'); ?>"></textarea>
 						</div>
 					</div>
-					<div class="text-center">
+					<div class="text-center eb-quickcart-submit">
 						<button type="submit" id="sb_submit_cart" class="default-bg cur"><?php echo EBE_get_lang('cart_gui'); ?></button>
 						<button type="button" class="btn-addto-cart default-2bg div-jquery-add-to-cart click-jquery-add-to-cart"><?php echo EBE_get_lang('cart_them'); ?></button>
 					</div>
