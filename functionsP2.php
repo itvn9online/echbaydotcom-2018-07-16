@@ -229,7 +229,8 @@ function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __e
 	//
 	wp_reset_postdata();
 	
-	return $str;
+	// ưu tiên sử dụng URL tương đối
+	return str_replace( web_link, '', $str );
 }
 
 
@@ -580,7 +581,7 @@ function _eb_p_link ($id, $seo = '') {
 		//
 		_eb_get_static_html ( $strCacheFilter, $a, '', 60 );
 	}
-//		echo $a . '<br>' . "\n";
+//	echo $a . '<br>' . "\n";
 	
 	return $a;
 }

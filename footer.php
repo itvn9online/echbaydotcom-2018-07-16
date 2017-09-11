@@ -61,7 +61,7 @@ if ( $act != 'cart' ) {
 
 
 //get_footer();
-echo '<link rel="stylesheet" href="./wp-content/echbaydotcom/outsource/fonts/font-awesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+echo '<link rel="stylesheet" href="wp-content/echbaydotcom/outsource/fonts/font-awesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 
 // add css, js -> sử dụng hàm riêng để tối ưu file tĩnh trước khi in ra
 //_eb_add_full_css( $arr_for_add_link_css, 'link' );

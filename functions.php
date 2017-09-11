@@ -1108,7 +1108,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		}
 		
 		// -> done
-		echo '<link rel="stylesheet" href="' . web_link . 'wp-content/uploads/ebcache/' . $file_cache . '" type="text/css" media="all" />';
+		echo '<link rel="stylesheet" href="wp-content/uploads/ebcache/' . $file_cache . '" type="text/css" media="all" />';
 		
 		//
 		return true;
@@ -1341,7 +1341,8 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 	}
 	*/
 	
-	return '<!-- menu slug: ' . $slug . ' -->' . $menu_name . $a;
+	// trả về menu và URL tương đối
+	return '<!-- menu slug: ' . $slug . ' -->' . $menu_name . str_replace( web_link, '', $a );
 }
 
 // load menu theo số thứ tự tăng dần

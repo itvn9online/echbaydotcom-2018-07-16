@@ -226,7 +226,12 @@ if ( file_exists( $inc_file ) ) {
 	
 	
 	// chuyển sang dùng CDN (nếu có)
-	$main_content = str_replace ( web_link . 'wp-content/uploads/', $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
+	// URL tương đối
+	$main_content = str_replace ( web_link . 'wp-content/', 'wp-content/', $main_content );
+	// URL từ thư mục wp-content
+//	$main_content = str_replace ( web_link . 'wp-content/', $__cf_row['cf_dns_prefetch'] . 'wp-content/', $main_content );
+	// URL từ thư mục uploads
+//	$main_content = str_replace ( web_link . 'wp-content/uploads/', $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
 //	$main_content = str_replace ( '"wp-content/uploads/', '"' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
 	
 	
