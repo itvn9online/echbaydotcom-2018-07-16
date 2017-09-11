@@ -105,10 +105,18 @@ $main_content .= '<!-- Phiên bản AMP cho website, viết bởi EchBay.com -->
 
 
 
+// file xử lý dữ liệu AMP riêng cho từng site (nếu có)
+$private_amp_file = EB_THEME_PHP . 'amp.php';
+if ( file_exists( $private_amp_file ) ) {
+	include $private_amp_file;
+}
+
+
 //
-$main_content = str_replace( 'https://www.xwatch.vn/home/pictures/', web_link . 'Home/Pictures/', $main_content );
-$main_content = str_replace( 'http://xwatch.echbay.com/wp-content/uploads/', web_link . 'wp-content/uploads/', $main_content );
-$main_content = str_replace( 'xwatch.echbay.com/', 'xwatch.vn/', $main_content );
+if ( $__cf_row['cf_old_domain'] != '' ) {
+	$main_content = str_replace( 'http://' . $__cf_row['cf_old_domain'] . '/wp-content/uploads/', web_link . 'wp-content/uploads/', $main_content );
+	$main_content = str_replace( '/' . $__cf_row['cf_old_domain'] . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $main_content );
+}
 
 
 

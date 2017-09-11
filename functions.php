@@ -1332,7 +1332,6 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 			// xóa ký tự đặc biệt khi rút link category
 			$a = str_replace( '/./', '/', $a );
 //			$a = str_replace( '/category/', '/', $a );
-			$a = str_replace( 'xwatch.echbay.com/', 'xwatch.vn/', $a );
 		}
 		
 		/*
@@ -2910,9 +2909,6 @@ function _eb_load_ads (
 		// nếu có dữ liệu -> trả về dữ liệu theo cấu trúc định sẵn
 		if ( $str != '' ) {
 			$str = '<ul class="cf global-ul-load-ads' . ( isset( $other_options['add_class'] ) ? ' ' . $other_options['add_class'] : '' ) . '">' . $str . '</ul>';
-			
-			//
-//			$str = str_replace( 'xwatch.echbay.com/', 'xwatch.vn/', $str );
 		}
 		// nếu không -> trả về giá trị mặc định (nếu có)
 		else if ( isset ( $other_options['default_value'] ) ) {

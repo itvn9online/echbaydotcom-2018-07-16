@@ -47,7 +47,6 @@ if ( $__cf_row['cf_dns_prefetch'] != '' ) {
 
 
 
-
 //
 $group_go_to = array();
 $schema_BreadcrumbList = array();
@@ -223,8 +222,16 @@ if ( file_exists( $inc_file ) ) {
 	$main_content = str_replace ( web_link . 'wp-content/uploads/', $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
 	$main_content = str_replace ( '"wp-content/uploads/', '"' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
 	
+	
+	// nếu tồn tại tham số URL cũ -> thay nội dung cũ sang mới
+	if ( $__cf_row['cf_old_domain'] != '' ) {
+		$main_content = str_replace ( '/' . $__cf_row['cf_old_domain'] . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $main_content );
+	}
+	
+	
 	// chuyển URL sang dạng SSL
 	$main_content = _eb_ssl_template( $main_content );
+	
 	
 	// chyển các thẻ title động sang thẻ theo config
 	$main_content = EBE_dynamic_title_tag( $main_content );
