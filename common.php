@@ -39,7 +39,7 @@ if ( $__cf_row['cf_dns_prefetch'] != '' ) {
 	$__cf_row['cf_dns_prefetch'] = '//' . $__cf_row['cf_dns_prefetch'] . '/';
 } else {
 //	$__cf_row['cf_dns_prefetch'] = strstr( web_link, '//' );
-	$__cf_row['cf_dns_prefetch'] = $_SERVER['HTTP_HOST'] . '/';
+	$__cf_row['cf_dns_prefetch'] = '//' . $_SERVER['HTTP_HOST'] . '/';
 }
 //echo $__cf_row['cf_dns_prefetch'];
 
