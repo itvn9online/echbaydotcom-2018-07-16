@@ -230,7 +230,7 @@ function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __e
 	wp_reset_postdata();
 	
 	// ưu tiên sử dụng URL tương đối
-	return str_replace( web_link, '', $str );
+	return str_replace( web_link, '', _eb_supper_del_line( $str ) );
 }
 
 

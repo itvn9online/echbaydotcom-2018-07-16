@@ -13,7 +13,7 @@ function WGR_remove_html_comments ( $a ) {
 		$str .= $v[0];
 	}
 	
-	return $str;
+	return trim( $str );
 	
 }
 

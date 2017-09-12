@@ -63,10 +63,6 @@ if ( ! isset( $_POST['cf_tester_mode'] ) || (int) $_POST['cf_tester_mode'] != 1 
 	$_POST['cf_tester_mode'] = 0;
 }
 
-if ( ! isset( $_POST['cf_details_excerpt'] ) || (int) $_POST['cf_details_excerpt'] != 1 ) {
-	$_POST['cf_details_excerpt'] = 0;
-}
-
 if ( ! isset( $_POST['cf_on_off_json'] ) || (int) $_POST['cf_on_off_json'] != 1 ) {
 	$_POST['cf_on_off_json'] = 0;
 }

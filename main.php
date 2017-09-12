@@ -128,12 +128,14 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 			// nội dung hợp lệ
 			if ( $v != '' ) {
 				
-				if ( strstr( $v, '//' ) == true ) {
+//				if ( strstr( $v, '//' ) == true ) {
 					$v .= "\n";
+					/*
 				}
 				else {
 					$v .= ' ';
 				}
+				*/
 				
 				// v1
 				$data .= $v;

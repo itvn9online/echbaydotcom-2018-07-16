@@ -1342,7 +1342,7 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 	*/
 	
 	// trả về menu và URL tương đối
-	return '<!-- menu slug: ' . $slug . ' -->' . $menu_name . str_replace( web_link, '', $a );
+	return '<!-- menu slug: ' . $slug . ' -->' . $menu_name . str_replace( web_link, '', _eb_supper_del_line( $a ) );
 }
 
 // load menu theo số thứ tự tăng dần
@@ -2930,7 +2930,7 @@ function _eb_load_ads (
 	*/
 	
 	//
-	return '<!-- ADS status: ' . $type . ' - ' . $arr_eb_ads_status[ $type ] . ' -->' . $str;
+	return '<!-- ADS status: ' . $type . ' - ' . $arr_eb_ads_status[ $type ] . ' -->' . _eb_supper_del_line( $str );
 }
 
 

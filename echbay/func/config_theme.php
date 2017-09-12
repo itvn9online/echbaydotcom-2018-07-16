@@ -40,6 +40,10 @@ if ( ! isset( $_POST['cf_details_show_quick_cart'] ) || (int) $_POST['cf_details
 	$_POST['cf_details_show_quick_cart'] = 0;
 }
 
+if ( ! isset( $_POST['cf_details_excerpt'] ) || (int) $_POST['cf_details_excerpt'] != 1 ) {
+	$_POST['cf_details_excerpt'] = 0;
+}
+
 
 //
 $_POST['posts_per_page'] = (int)$_POST['posts_per_page'];
