@@ -80,22 +80,27 @@ $offset = ($trang - 1) * $threadInPage;
 
 ?>
 <style type="text/css">
-.eb-to-product,
-.eb-to-adress { width: 250px; }
+.show-order-120size .eb-to-product,
+.show-order-120size .eb-to-adress { width: 250px; }
+.show-if-order-fullsize { display: none; }
+.time-for-send-bill {
+	font-weight: normal;
+	font-size: 12px;
+}
 </style>
 <div class="wrap">
 	<h1>Danh sách đơn hàng (Trang <?php echo number_format( $trang ) . '/ ' . number_format( $totalPage ); ?>)</h1>
 </div>
 <br>
-<table border="0" cellpadding="0" cellspacing="0" width="120%" class="table-list ip-invoice-alert">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list ip-invoice-alert">
 	<tr class="table-list-title">
-		<td>Mã HĐ</td>
+		<td>Mã HĐ<span>/ Ngày gửi</span></td>
 		<td>Trạng thái</td>
 		<td>S.Phẩm</td>
-		<td>Thành viên</td>
-		<td>Điện thoại</td>
-		<td>Địa chỉ</td>
-		<td>Ngày gửi</td>
+		<td>Thành viên<span>/ Điện thoại/ Địa chỉ</span></td>
+		<td class="show-if-order-fullsize">Điện thoại</td>
+		<td class="show-if-order-fullsize">Địa chỉ</td>
+		<td class="show-if-order-fullsize">Ngày gửi</td>
 	</tr>
 	<?php
 	
@@ -126,15 +131,40 @@ $offset = ($trang - 1) * $threadInPage;
 		$hd_trangthai = $o->order_status;
 		
 		//
+		$ngay_gui_don = date_time - $o->order_time;
+		if ( $ngay_gui_don < 10 * 60 ) {
+			$ngay_gui_don = 'Vài phút trước';
+		}
+		else if ( $ngay_gui_don < 60 * 60 ) {
+			$ngay_gui_don = ceil( $ngay_gui_don/ 60 ) . ' phút trước';
+		}
+		else if ( $ngay_gui_don < 24 * 3600 ) {
+			$ngay_gui_don = ceil( $ngay_gui_don/ 3600 ) . ' giờ trước';
+		}
+		else if ( $ngay_gui_don < 24 * 3600 * 2 ) {
+			$ngay_gui_don = date( 'h A', $o->order_time ) . ' hôm qua';
+		}
+		else {
+			$ngay_gui_don = date( 'd-m-Y H:i', $o->order_time );
+		}
+		
+		//
 		echo '
 		<tr class="eb-set-order-list-info hd_status' . $hd_trangthai . '">
-			<td><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order&id=' . $o->order_id . '">' . $o->order_sku . '</a></td>
+			<td class="text-center">
+				<div><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order&id=' . $o->order_id . '">' . $o->order_sku . '</a></div>
+				<div class="time-for-send-bill">(' . $ngay_gui_don . ')</div>
+			</td>
 			<td>' . ( isset( $arr_hd_trangthai[ $hd_trangthai ] ) ? $arr_hd_trangthai[ $hd_trangthai ] : '<em>NULL</em>' ) . '</td>
 			<td><div class="eb-to-product"></div></td>
-			<td><a href="user-edit.php?user_id=' . $o->tv_id . '" target="_blank">' . _eb_lay_email_tu_cache( $o->tv_id ) . '</a></td>
-			<td class="eb-to-phone">.</td>
-			<td><div class="eb-to-adress">.</div></td>
-			<td>' . date( 'd-m-Y H:i', $o->order_time ) . '</td>
+			<td>
+				<div><a href="user-edit.php?user_id=' . $o->tv_id . '" target="_blank"><i class="fa fa-user"></i> ' . _eb_lay_email_tu_cache( $o->tv_id ) . '</a></div>
+				<div><i class="fa fa-phone"></i> <span class="eb-to-phone"></span></div>
+				<div><i class="fa fa-home"></i> <span class="eb-to-adress"></span></div>
+			</td>
+			<td class="eb-to-phone show-if-order-fullsize">.</td>
+			<td class="show-if-order-fullsize"><div class="eb-to-adress">.</div></td>
+			<td class="show-if-order-fullsize">' . $ngay_gui_don . '</td>
 		</tr>
 		<script type="text/javascript">post_excerpt_to_prodcut_list("' . $o->order_products . '", "' . $o->order_customer . '");</script>';
 		
