@@ -118,10 +118,21 @@ function ___eb_admin_update_order_details () {
 		
 		//
 		if ( arr[i].color != '' ) {
-			arr[i].color = ' - ' + arr[i].color;
+			arr[i].color = $.trim( arr[i].color );
+			if ( arr[i].color.substr( 0, 1 ) != '-' ) {
+				arr[i].color = '-' + arr[i].color;
+			}
+			
+			arr[i].color = ' ' + arr[i].color;
 		}
+		
 		if ( arr[i].size != '' ) {
-			arr[i].size = ' (Size: ' + arr[i].size + ')';
+			arr[i].size = $.trim( arr[i].size );
+			if ( arr[i].size.substr( 0, 1 ) != '(' ) {
+				arr[i].size = '(Size: ' + arr[i].size + ')';
+			}
+			
+			arr[i].size = ' ' + arr[i].size;
 		}
 		
 		//

@@ -94,8 +94,8 @@ $offset = ($trang - 1) * $threadInPage;
 <br>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list ip-invoice-alert">
 	<tr class="table-list-title">
-		<td>Mã HĐ<span>/ Ngày gửi</span></td>
-		<td>Trạng thái</td>
+		<td width="12%">Mã HĐ<span>/ Ngày gửi</span></td>
+		<td width="12%">Trạng thái</td>
 		<td>S.Phẩm</td>
 		<td>Thành viên<span>/ Điện thoại/ Địa chỉ</span></td>
 		<td class="show-if-order-fullsize">Điện thoại</td>
@@ -152,8 +152,10 @@ $offset = ($trang - 1) * $threadInPage;
 		echo '
 		<tr class="eb-set-order-list-info hd_status' . $hd_trangthai . '">
 			<td class="text-center">
-				<div><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order&id=' . $o->order_id . '">' . $o->order_sku . '</a></div>
-				<div class="time-for-send-bill">(' . $ngay_gui_don . ')</div>
+				<div><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order&id=' . $o->order_id . '">
+					' . $o->order_sku . ' <i class="fa fa-edit"></i>
+					<span class="time-for-send-bill d-block">(' . $ngay_gui_don . ')</span>
+				</a></div>
 			</td>
 			<td>' . ( isset( $arr_hd_trangthai[ $hd_trangthai ] ) ? $arr_hd_trangthai[ $hd_trangthai ] : '<em>NULL</em>' ) . '</td>
 			<td><div class="eb-to-product"></div></td>

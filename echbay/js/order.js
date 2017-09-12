@@ -45,7 +45,28 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 	
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
-		f_tr.find('.eb-to-product').append( '<div><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">- ' + arr[i].name + '</a></div>' );
+		
+		if ( arr[i].color != '' ) {
+			arr[i].color = $.trim( arr[i].color );
+			if ( arr[i].color.substr( 0, 1 ) != '-' ) {
+				arr[i].color = '-' + arr[i].color;
+			}
+			
+			arr[i].name += ' ' + arr[i].color;
+		}
+		
+		if ( arr[i].size != '' ) {
+			arr[i].size = $.trim( arr[i].size );
+			if ( arr[i].size.substr( 0, 1 ) != '(' ) {
+				arr[i].size = '(Size: ' + arr[i].size + ')';
+			}
+			
+			arr[i].name += ' ' + arr[i].size;
+		}
+		
+		//
+		f_tr.find('.eb-to-product').append( '<div><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">- ' + arr[i].name + ' x ' + arr[i].quan + ' <i class="fa fa-eye"></i></a></div>' );
+		
 	}
 	
 	//
