@@ -379,7 +379,11 @@ function add_fb_messages_for_page () {
 		
 		
 		
-		if (__global_facebook_id != '') {
+		if ( __global_facebook_id != '' ) {
+			
+			//
+			if ( cf_tester_mode == 1 ) console.log( 'FB app ID: ' + __global_facebook_id );
+			
 			// căn lại chiều rộng cho fb plugin
 			$('.fb-like, .fb-comments').each(function () {
 				$(this).attr({
