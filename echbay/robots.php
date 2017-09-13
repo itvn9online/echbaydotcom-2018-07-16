@@ -6,9 +6,9 @@ $str_robots_txt = trim( 'User-agent: *
 Disallow: /cgi-bin/
 Disallow: /' . WP_ADMIN_DIR . '/
 Disallow: /wp-includes/
-Disallow: /wp-content/plugins/
-Disallow: /wp-content/cache/
-Disallow: /wp-content/themes/
+Disallow: /' . EB_DIR_CONTENT . '/plugins/
+Disallow: /' . EB_DIR_CONTENT . '/cache/
+Disallow: /' . EB_DIR_CONTENT . '/themes/
 Disallow: /search?q=*
 Disallow: *?replytocom
 Disallow: */attachment/*
@@ -98,7 +98,7 @@ if ( ! file_exists( $dir_robots_txt ) || $robots_txt_content == '' ) {
 		// upload file
 //		ftp_put($conn_id, $dir_robots_txt, $cache_robots_txt, FTP_ASCII);
 		ftp_put($conn_id, './' . $ftp_dir_root . '/robots.txt', $cache_robots_txt, FTP_BINARY);
-//		echo './' . strstr( $cache_robots_txt, 'wp-content/' ) . '<br>' . "\n";
+//		echo './' . strstr( $cache_robots_txt, EB_DIR_CONTENT . '/' ) . '<br>' . "\n";
 		
 		
 		// close the connection

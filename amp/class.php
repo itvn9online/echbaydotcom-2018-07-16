@@ -259,7 +259,7 @@ class EchAMPFunction {
 		
 		// nếu không -> thử tìm theo thư mục upload
 		if ( $check_img == '' ) {
-			$check_img = strstr( $img, '/wp-content/uploads/' );
+			$check_img = strstr( $img, '/' . EB_DIR_CONTENT . '/uploads/' );
 			if ( $check_img != '' ) {
 				$local_img = EB_THEME_CONTENT . substr( $check_img, 1 );
 			}

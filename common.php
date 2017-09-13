@@ -227,12 +227,12 @@ if ( file_exists( $inc_file ) ) {
 	
 	// chuyển sang dùng CDN (nếu có)
 	// URL tương đối
-	$main_content = str_replace ( web_link . 'wp-content/', 'wp-content/', $main_content );
+	$main_content = str_replace ( web_link . EB_DIR_CONTENT . '/', EB_DIR_CONTENT . '/', $main_content );
 	// URL từ thư mục wp-content
-//	$main_content = str_replace ( web_link . 'wp-content/', $__cf_row['cf_dns_prefetch'] . 'wp-content/', $main_content );
+//	$main_content = str_replace ( web_link . EB_DIR_CONTENT . '/', $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/', $main_content );
 	// URL từ thư mục uploads
-//	$main_content = str_replace ( web_link . 'wp-content/uploads/', $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
-//	$main_content = str_replace ( '"wp-content/uploads/', '"' . $__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/', $main_content );
+//	$main_content = str_replace ( web_link . EB_DIR_CONTENT . '/uploads/', $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/uploads/', $main_content );
+//	$main_content = str_replace ( '"' . EB_DIR_CONTENT . '/uploads/', '"' . $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/uploads/', $main_content );
 	
 	
 	

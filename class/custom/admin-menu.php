@@ -159,7 +159,7 @@ function echbay_admin_styles() {
 	
 	//
 	_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
-//		web_link . 'wp-content/echbaydotcom/outsource/fonts/font-awesome.css',
+//		web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/font-awesome.css',
 		EB_URL_OF_PLUGIN . 'outsource/fonts/font-awesome.css',
 		EB_URL_OF_PLUGIN . 'css/default.css',
 		EB_URL_OF_PLUGIN . 'css/default2.css',

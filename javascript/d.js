@@ -121,7 +121,7 @@ function ___eb_set_thumb_to_fullsize ( s ) {
 //	console.log(s);
 	
 	//
-	if ( s.split('wp-content/uploads/').length > 1 ) {
+	if ( s.split(wp_content + '/uploads/').length > 1 ) {
 		var t = s.split('-');
 		t = t[ t.length - 1 ];
 //		console.log( t );
@@ -157,7 +157,7 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 		if ( cf_tester_mode == 1 ) console.log('Auto get thumb disable');
 	}
 	// lấy thumb để làm ảnh slider -> load cho nhanh
-	else if ( sr.split('wp-content/uploads/').length > 1 ) {
+	else if ( sr.split(wp_content + '/uploads/').length > 1 ) {
 		// cắt lấy chuỗi cuối cùng của ảnh để kiểm tra xem có phải thumb hay không
 		var file_name = sr.split('/');
 		file_name = file_name[ file_name.length - 1 ];

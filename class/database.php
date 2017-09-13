@@ -264,7 +264,7 @@ if ($check_update_lang == false) {
 	//
 	_eb_get_static_html ( $strCacheFilter, date( 'r', time() ), '', 60 );
 }
-$url_for_js_lang = 'wp-content/uploads/ebcache/lang.js';
+$url_for_js_lang = EB_DIR_CONTENT . '/uploads/ebcache/lang.js';
 */
 
 

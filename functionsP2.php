@@ -1725,10 +1725,10 @@ function EBE_resize_mobile_table_img ( $attachment_id, $_size ) {
 	$new_file = $source_file . '_' . $_size . '.' . $file_type;
 	
 	// xem file này có tồn tại không -> không thì tạo
-	$check_file = ABSPATH . strstr( $new_file, 'wp-content/' );
+	$check_file = ABSPATH . strstr( $new_file, EB_DIR_CONTENT . '/' );
 	if ( ! file_exists( $check_file ) ) {
 		// Kiểm tra file nguồn
-		$source_file = ABSPATH . strstr( $source_file, 'wp-content/' );
+		$source_file = ABSPATH . strstr( $source_file, EB_DIR_CONTENT . '/' );
 		if ( ! file_exists( $source_file ) ) {
 			return 'source not found!';
 		}

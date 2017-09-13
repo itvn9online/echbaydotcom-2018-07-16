@@ -61,7 +61,7 @@ if ( $act != 'cart' ) {
 
 
 //get_footer();
-echo '<link rel="stylesheet" href="wp-content/echbaydotcom/outsource/fonts/font-awesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/font-awesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 
 // add css, js -> sử dụng hàm riêng để tối ưu file tĩnh trước khi in ra
 //_eb_add_full_css( $arr_for_add_link_css, 'link' );
@@ -78,23 +78,23 @@ EBE_print_product_img_css_class( $eb_background_for_post, 'Footer' );
 
 
 // add file danh sách nhóm
-//_eb_add_full_js( array( web_link . 'wp-content/uploads/ebcache/cat.js' ) );
+//_eb_add_full_js( array( web_link . EB_DIR_CONTENT . '/uploads/ebcache/cat.js' ) );
 
 // các file add mà không cần compiler
 /*
 _eb_add_full_js( array(
-//	$__cf_row['cf_dns_prefetch'] . 'wp-content/echbaydotcom/outsource/javascript/jquery.js',
-//	$__cf_row['cf_dns_prefetch'] . 'wp-content/echbaydotcom/outsource/javascript/jcarousellite.js',
-//	$__cf_row['cf_dns_prefetch'] . 'wp-content/echbaydotcom/outsource/javascript/lazyload.js',
-	$__cf_row['cf_dns_prefetch'] . 'wp-content/uploads/ebcache/cat.js',
-//	$__cf_row['cf_dns_prefetch'] . 'wp-content/echbaydotcom/javascript/eb.js',
-//	$__cf_row['cf_dns_prefetch'] . 'wp-content/echbaydotcom/javascript/d.js',
+//	$__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery.js',
+//	$__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jcarousellite.js',
+//	$__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/lazyload.js',
+	$__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/uploads/ebcache/cat.js',
+//	$__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/echbaydotcom/javascript/eb.js',
+//	$__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/echbaydotcom/javascript/d.js',
 //	EB_URL_OF_THEME . 'javascript/display.js',
-//	$__cf_row['cf_dns_prefetch'] . 'wp-content/echbaydotcom/javascript/footer.js',
+//	$__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/echbaydotcom/javascript/footer.js',
 ) );
 */
 
-echo '<script type="text/javascript" src="wp-content/uploads/ebcache/cat.js" async></script>';
+echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/cat.js" async></script>';
 /*
 echo '<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery.js"></script>';
 */

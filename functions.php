@@ -475,10 +475,10 @@ function EBE_add_js_compiler_in_cache (
 	
 	
 	// nếu file có rồi -> nhung luôn file
-//	$file_in_cache = ABSPATH . 'wp-content/uploads/ebcache/' . $file_name_cache;
+//	$file_in_cache = ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache;
 	$file_in_cache = EB_THEME_CACHE . $file_name_cache;
 	if ( file_exists( $file_in_cache ) ) {
-		echo '<script type="text/javascript" src="wp-content/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
+		echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
 		
 		return true;
 	}
@@ -493,7 +493,7 @@ function EBE_add_js_compiler_in_cache (
 			
 			// xem trong cache có chưa
 //			$file_name_cache = basename( $v ) . filemtime( $v ) . '.js';
-//			$file_in_cache = ABSPATH . 'wp-content/uploads/ebcache/' . $file_name_cache;
+//			$file_in_cache = ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache;
 			
 			// nếu chưa có -> tạo cache
 //			if ( ! file_exists( $file_in_cache ) ) {
@@ -555,7 +555,7 @@ function EBE_add_js_compiler_in_cache (
 	_eb_create_file( $file_in_cache, $new_content );
 	
 	//
-	echo '<script type="text/javascript" src="wp-content/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
+	echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
 }
 
 // một số host không dùng được hàm end
@@ -747,15 +747,15 @@ function _eb_add_css_js_file ( $arr, $file_type = '.css', $include_now = 0, $inc
 					// chỉnh lại đường dẫn trong file css
 					/*
 					$arr_css_new_content = array(
-						'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/images/',
+						'../images/' => './' . EB_DIR_CONTENT . '/themes/' . basename( get_template_directory() ) . '/images/',
 //							'../../../../plugins/' => '../../plugins/',
 						
 						// các css ngoài -> trong outsource -> vd: font awesome
-//							'../../../../plugins/' => 'wp-content/plugins/',
-//							'../outsource/' => 'wp-content/plugins/echbaydotcom/outsource/',
-						'../outsource/' => 'wp-content/echbaydotcom/outsource/',
+//							'../../../../plugins/' => EB_DIR_CONTENT . '/plugins/',
+//							'../outsource/' => EB_DIR_CONTENT . '/plugins/echbaydotcom/outsource/',
+						'../outsource/' => EB_DIR_CONTENT . '/echbaydotcom/outsource/',
 						
-						'../fonts/' => 'wp-content/echbaydotcom/outsource/fonts/',
+						'../fonts/' => EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/',
 						
 						// làm đẹp css
 //							'}.' => '}' . "\n" . '.',
@@ -825,9 +825,9 @@ function _eb_add_css_js_file ( $arr, $file_type = '.css', $include_now = 0, $inc
 //			exit();
 		
 		//
-//			$none_http_url = str_replace( 'http://', '//', content_url() );
-//		$none_http_url = 'wp-content';
-		$none_http_url = basename( EB_THEME_CONTENT );
+//		$none_http_url = str_replace( 'http://', '//', content_url() );
+		$none_http_url = EB_DIR_CONTENT;
+//		$none_http_url = basename( EB_THEME_CONTENT );
 		
 		//
 		if ( $file_type == '.js' ) {
@@ -931,17 +931,17 @@ function EBE_replace_link_in_cache_css ( $c ) {
 // khi css thuộc dạng inline (hiển thị trực tiếp trong HTML)
 function EBE_replace_link_in_css ( $c ) {
 	return _eb_replace_css_space ( $c, array(
-//		'../images/' => './wp-content/themes/' . basename( get_template_directory() ) . '/images/',
-		'../images/' => './wp-content/themes/' . basename( EB_THEME_URL ) . '/images/',
+//		'../images/' => './' . EB_DIR_CONTENT . '/themes/' . basename( get_template_directory() ) . '/images/',
+		'../images/' => './' . EB_DIR_CONTENT . '/themes/' . basename( EB_THEME_URL ) . '/images/',
 //		'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
-		'../../images-global/' => './wp-content/echbaydotcom/images-global/',
+		'../../images-global/' => './' . EB_DIR_CONTENT . '/echbaydotcom/images-global/',
 //		'../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
-		'../images-global/' => './wp-content/echbaydotcom/images-global/',
+		'../images-global/' => './' . EB_DIR_CONTENT . '/echbaydotcom/images-global/',
 		
 		// các css ngoài -> trong outsource -> vd: font awesome
-		'../outsource/' => './wp-content/echbaydotcom/outsource/',
+		'../outsource/' => './' . EB_DIR_CONTENT . '/echbaydotcom/outsource/',
 		
-		'../fonts/' => './wp-content/echbaydotcom/outsource/fonts/',
+		'../fonts/' => './' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/',
 	) );
 }
 
@@ -1108,7 +1108,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		}
 		
 		// -> done
-		echo '<link rel="stylesheet" href="wp-content/uploads/ebcache/' . $file_cache . '" type="text/css" media="all" />';
+		echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache . '" type="text/css" media="all" />';
 		
 		//
 		return true;
@@ -1212,9 +1212,9 @@ function _eb_add_compiler_link_css ( $arr ) {
 			}
 			
 			//
-//			$file_link = $__cf_row['cf_dns_prefetch'] . basename( EB_THEME_CONTENT ) . '/uploads/ebcache/' . $file_cache;
-//			$file_link = web_link . basename( EB_THEME_CONTENT ) . '/uploads/ebcache/' . $file_cache;
-			$file_link = basename( EB_THEME_CONTENT ) . '/uploads/ebcache/' . $file_cache;
+//			$file_link = $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache;
+//			$file_link = web_link . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache;
+			$file_link = EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache;
 			
 			// -> done
 			echo '<link rel="stylesheet" href="' . $file_link . '" type="text/css" media="all" />' . "\n";

@@ -190,7 +190,7 @@ function ___eb_cache_cache ( $filename, $data, $data_comment = '' ) {
 	file_put_contents( $filename, WGR_rut_gon_HTML_truoc_khi_tao_cache( $data ) . $data_comment ) or die('ERROR: write main cache file');
 	
 	// TEST
-//	unlink ( ABSPATH . 'wp-content/uploads/ebcache/all/-wordpress.org-.txt' ); echo 'TEST';
+//	unlink ( ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/all/-wordpress.org-.txt' ); echo 'TEST';
 	
 	//
 //	chmod($filename, 0777);

@@ -11,6 +11,7 @@ $add_data_id = array (
 //		'web_link' => '\'' . web_link . '\'',
 		'base_url_href' => '\'' . web_link . '\'',
 		'web_name' => '\'' . _eb_str_block_fix_content ( web_name ) . '\'',
+		'wp_content' => '\'' . EB_DIR_CONTENT . '\'',
 		
 		'lang_taikhoan' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('taikhoan') ) . '\'',
 		'lang_thoat' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('thoat') ) . '\'',

@@ -78,13 +78,24 @@ $arr_for_show_html_file_load = array();
 
 
 
-//
+// nếu thư mục content đã được khai báo -> lấy thư mục theo thông số này
 if ( defined('WP_CONTENT_DIR') ) {
+	define( 'EB_DIR_CONTENT', basename( WP_CONTENT_DIR ) );
 	define( 'EB_THEME_CONTENT', WP_CONTENT_DIR . '/' );
-} else {
-	define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
-	define( 'EB_THEME_CONTENT', EB_WEB_PUBLIC_HTML . 'wp-content/' );
 }
+// Không thì khai báo mặc định
+else {
+	// tên thư mục chứa content
+	define( 'EB_DIR_CONTENT', 'wp-content' );
+	
+	// thư mục đầy đủ của content
+	define( 'WP_CONTENT_DIR', ABSPATH . EB_DIR_CONTENT );
+	
+//	define( 'EB_THEME_CONTENT', EB_WEB_PUBLIC_HTML . EB_DIR_CONTENT . '/' );
+	define( 'EB_THEME_CONTENT', WP_CONTENT_DIR . '/' );
+}
+//echo 'WP_CONTENT_DIR: ' . WP_CONTENT_DIR . '<br>';
+//echo 'EB_WEB_PUBLIC_HTML: ' . EB_WEB_PUBLIC_HTML . '<br>';
 //echo 'EB_THEME_CONTENT: ' . EB_THEME_CONTENT . '<br>';
 //echo 'WP_CONTENT_DIR: ' . WP_CONTENT_DIR . '<br>';
 //echo basename( EB_THEME_CONTENT ) . '<br>' . "\n";
@@ -131,7 +142,7 @@ define( 'EB_THEME_PHP', EB_THEME_THEME . 'php/' );
 //echo EB_THEME_PHP . '<br>';
 
 // URL tương đối
-define( 'EB_URL_TUONG_DOI', 'wp-content/echbaydotcom/' );
+define( 'EB_URL_TUONG_DOI', EB_DIR_CONTENT . '/echbaydotcom/' );
 
 // thư mục lưu trữ cache
 define( 'EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' );
@@ -414,11 +425,11 @@ $___eb_template_uri = web_link;
 //echo $___eb_template_uri . ' -> aaaaaaaaaaaaaaaaaaaaaaa<br>' . "\n";
 
 //define( 'EB_URL_OF_THEME', $___eb_template_uri . '/' );
-define( 'EB_URL_OF_THEME', $___eb_template_uri . 'wp-content/themes/' . basename ( EB_THEME_URL ) . '/' );
+define( 'EB_URL_OF_THEME', $___eb_template_uri . EB_DIR_CONTENT . '/themes/' . basename ( EB_THEME_URL ) . '/' );
 //echo EB_URL_OF_THEME . '<br>' . "\n";
 //define( 'EB_URL_OF_PLUGIN', esc_url( plugins_url() ) . '/echbaydotcom/' );
 //define( 'EB_URL_OF_PLUGIN', dirname( dirname( $___eb_template_uri ) ) . '/echbaydotcom/' );
-define( 'EB_URL_OF_PLUGIN', $___eb_template_uri . 'wp-content/echbaydotcom/' );
+define( 'EB_URL_OF_PLUGIN', $___eb_template_uri . EB_DIR_CONTENT . '/echbaydotcom/' );
 //echo EB_URL_OF_PLUGIN . '<br>' . "\n";
 //echo '../../plugins/' . basename( EB_URL_OF_PLUGIN ) . '<br>';
 
@@ -960,7 +971,7 @@ $arr_tmp_footer_menu = array();
 
 //
 $arr_for_add_js = array(
-//	ABSPATH . 'wp-content/uploads/ebcache/cat.js',
+//	ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/cat.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
