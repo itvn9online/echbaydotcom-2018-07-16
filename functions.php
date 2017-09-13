@@ -2880,17 +2880,34 @@ function _eb_load_ads (
 			$post->youtube_avt = $youtube_avt;
 			$post->p_link = $p_link;
 			
-			// tạo size tự động theo ảnh
+			// tạo size tự động theo ảnh (nếu chưa có)
 			if ( $__cf_row['cf_auto_get_ads_size'] == 1 && $auto_get_size == '' ) {
 				// ảnh phải nằm trong thư mục wp-content
 				if ( strstr( $trv_img, EB_DIR_CONTENT . '/' ) == true ) {
 					$auto_get_size = strstr( $trv_img, EB_DIR_CONTENT . '/' );
-					echo $auto_get_size . '<br>' . "\n";
 				}
-				// nếu không thì vẫn sử dụng size truyền vào
-				else {
-					$auto_get_size = $data_size;
+				// hoặc cùng với domain cũng được
+				else if ( strstr( $trv_img, web_link ) == true ) {
+					$auto_get_size = str_replace( web_link, '', $trv_img );
 				}
+//				echo $auto_get_size . '<br>' . "\n";
+				
+				if ( $auto_get_size != '' ) {
+					// ghép nối lại để bắt đầu xác định size
+					$auto_get_size = ABSPATH . $auto_get_size;
+//					echo $auto_get_size . '<br>' . "\n";
+					
+					if ( file_exists( $auto_get_size ) ) {
+						$auto_get_size = getimagesize( $auto_get_size );
+//						print_r( $auto_get_size );
+						
+						// -> tạo size mới
+						$data_size = $auto_get_size[1] . '/' . $auto_get_size[0];
+					}
+				}
+				
+				// gán lại size auto để sau nó không lặp lại nữa
+				$auto_get_size = $data_size;
 			}
 			$post->data_size = $data_size;
 			
