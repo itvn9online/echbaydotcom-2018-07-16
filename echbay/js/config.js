@@ -355,6 +355,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_echbay_migrate_version' );
 	show_note_for_checkbox_config( 'cf_global_big_banner' );
 	show_note_for_checkbox_config( 'cf_post_big_banner' );
+	show_note_for_checkbox_config( 'cf_auto_get_ads_size' );
 }
 // config_theme
 else {

@@ -173,6 +173,7 @@ $__cf_row_default = array(
 	
 	// Mặc định, big banner được load cả trong trang chi tiết
 	'cf_post_big_banner' => 1,
+	'cf_auto_get_ads_size' => 0,
 	
 	/*
 	* Cấu hình slider cho trang chi tiết sản phẩm

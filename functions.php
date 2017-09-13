@@ -2804,6 +2804,13 @@ function _eb_load_ads (
 		//
 		$str = '';
 		
+		// lấy size theo dữ liệu truyền vào
+//		if ( $__cf_row['cf_auto_get_ads_size'] == 0 ) {
+			$data_size = ( $data_size == '' ) ? 1 : $data_size;
+//		}
+		// lấy size tự động theo ảnh đầu tiên
+		$auto_get_size = '';
+		
 		//
 		while ( $sql->have_posts() ) {
 			
@@ -2872,7 +2879,20 @@ function _eb_load_ads (
 			$post->youtube_url = $youtube_url;
 			$post->youtube_avt = $youtube_avt;
 			$post->p_link = $p_link;
-			$post->data_size = ( $data_size == '' ) ? 1 : $data_size;
+			
+			// tạo size tự động theo ảnh
+			if ( $__cf_row['cf_auto_get_ads_size'] == 1 && $auto_get_size == '' ) {
+				// ảnh phải nằm trong thư mục wp-content
+				if ( strstr( $trv_img, EB_DIR_CONTENT . '/' ) == true ) {
+					$auto_get_size = strstr( $trv_img, EB_DIR_CONTENT . '/' );
+					echo $auto_get_size . '<br>' . "\n";
+				}
+				// nếu không thì vẫn sử dụng size truyền vào
+				else {
+					$auto_get_size = $data_size;
+				}
+			}
+			$post->data_size = $data_size;
 			
 			//
 			$post->trv_img = $trv_img;
