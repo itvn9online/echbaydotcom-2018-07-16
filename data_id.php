@@ -8,7 +8,8 @@
 $add_data_id = array (
 		'date_time' => $date_time,
 //		'check_lazyload' => $check_lazyload,
-		'web_link' => '\'' . $web_link . '\'',
+//		'web_link' => '\'' . web_link . '\'',
+		'base_url_href' => '\'' . web_link . '\'',
 		'web_name' => '\'' . _eb_str_block_fix_content ( web_name ) . '\'',
 		
 		'lang_taikhoan' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('taikhoan') ) . '\'',

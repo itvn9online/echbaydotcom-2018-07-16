@@ -61,6 +61,10 @@ _eb_add_compiler_css( $arr_for_add_theme_css );
 <script type="text/javascript">
 /* data_id */
 <?php include EB_THEME_PLUGIN_INDEX . 'data_id.php'; ?>
+var web_link = window.location.protocol + '//' + document.domain + '/';
+if ( web_link != base_url_href ) {
+	document.getElementsByTagName("base")[0].setAttribute("href", web_link);
+}
 </script>
 <?php echo $__cf_row['cf_js_head']; ?>
 <!-- // Global site format by EchBay -->
