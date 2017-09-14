@@ -36,6 +36,11 @@ global $___eb_lang;
 		<td width="80%">Value</td>
 	</tr>
 	<?php
+	
+	// nạp lại bảng ngôn ngữ lần nữa
+	EBE_get_lang_list();
+	
+	//
 	foreach ( $___eb_lang as $k => $v ) {
 		echo '
 		<tr>
@@ -45,6 +50,7 @@ global $___eb_lang;
 			</td>
 		</tr>';
 	}
+	
 	?>
 </table>
 <br>
