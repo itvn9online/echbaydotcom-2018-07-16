@@ -1,0 +1,25 @@
+#dumbo-top3 { background-image: url(http://dumbo.vn/css/images/bg_header_top.png); }
+.web-logo { background-size: auto 100%; }
+#dumbo-top2 .bg-tra-hang { margin-top: 45px; }
+/* chỉnh lại nút mua trên trang chi tiết mobile */
+.thread-details-mobilemua li {
+	position: absolute;
+	width: 25% !important;
+}
+.thread-details-mobilemua .thread-details-mobilecart {
+	width: 50% !important;
+	left: 25%;
+	background: #f00;
+	color: #fff;
+	line-height: 46px;
+	font-size: 18px;
+}
+.thread-details-mobilemua .thread-details-cartcart,
+.thread-details-mobilemua .thread-details-mobilecart i { display: none; }
+.thread-details-mobilemua .thread-details-phonemua { background: #fff; }
+.thread-details-mobilemua .thread-details-phonemua a:before { line-height: 46px; }
+.thread-details-mobilemua .oi_scroll_top { right: 0; }
+.thread-details-mobilemua .thread-details-quickcart { display: block; }
+.child-thread-details-mobileAvt .jEBE_slider-toLeft,
+.child-thread-details-mobileAvt .jEBE_slider-toRight { width: 50% !important; }
+.eb-quickcart-table button.default-bg { background-color: #f00 !important; }
