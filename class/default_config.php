@@ -175,7 +175,7 @@ $__cf_row_default = array(
 	'cf_post_big_banner' => 1,
 	
 	// tựu động lấy size cho phần quảng cáo theo ảnh đầu tiên trong chuỗi tìm được
-	'cf_auto_get_ads_size' => 1,
+	'cf_auto_get_ads_size' => 0,
 	
 	/*
 	* Cấu hình slider cho trang chi tiết sản phẩm
