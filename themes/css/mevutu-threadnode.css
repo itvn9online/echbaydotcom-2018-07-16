@@ -19,8 +19,9 @@
 	margin-top: 5px;
 }
 .thread-list-per div.upper { background: rgba(255, 0, 0, .8); }
-.thread-list-hot,
-.thread-list-new {
+.thread-list-status1,
+.thread-list-status2,
+.thread-list-status6 {
 	background: rgba( 0, 153, 0, .8 );
 	left: 0;
 	position: absolute;
@@ -29,8 +30,6 @@
 	line-height: 30px;
 	display: none;
 }
-.thread-list li[data-status="1"] .thread-list-hot,
-.thread-list li[data-status="2"] .thread-list-new { display: block; }
 .thread-list-avt {
 	background: center no-repeat;
 	background-size: 100% auto;

@@ -1622,4 +1622,6 @@ li.footer-social-gg { background-color: #DE4B39; }
 .thread-details-tags a:last-child:after,
 .thread-list-options a:last-child:after,
 .thread-list-tags a:last-child:after { display: none; }
+.thread-list li[data-status="1"] .thread-list-status1,
+.thread-list li[data-status="2"] .thread-list-status2 { display: inline-block !important; }
 .show-if-site-demo { display: none; }
