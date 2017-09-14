@@ -771,7 +771,9 @@ function ___eb_details_product_size () {
 	
 	
 	// có 1 size thì bỏ qua, mặc định rồi
-	if ( arr_product_size.length <= 1 || $('.oi_product_size').length == 0 ) {
+//	if ( arr_product_size.length <= 1 || $('.oi_product_size').length == 0 ) {
+	// có 1 size cũng hiển thị, mặc định select cái size đấy cho khách là được
+	if ( arr_product_size.length < 1 || $('.oi_product_size').length == 0 ) {
 		return false;
 	}
 	
@@ -799,7 +801,23 @@ function ___eb_details_product_size () {
 		}
 		
 		//
-		str += '<li data-size-node="' + i + '" data-name="' + arr_product_size[i].name + '" data-quan="' + arr_product_size[i].val + '"><div>' + arr_product_size[i].name + '</div></li>';
+		var str_alert = '',
+			str_title = '';
+		if ( arr_product_size[i].val > 0 ) {
+			if ( arr_product_size[i].val < 5 ) {
+				str_title = 'C\u00f2n ' + arr_product_size[i].val + ' s\u1ea3n ph\u1ea9m';
+				str_alert = '<span class="bluecolor">' + str_title + '</span>';
+			} else {
+				str_title = 'S\u1eb5n h\u00e0ng';
+				str_alert = '<span class="greencolor">' + str_title + '</span>';
+			}
+		} else {
+			str_title = 'H\u1ebft h\u00e0ng';
+			str_alert = '<span class="redcolor">' + str_title + '</span>';
+		}
+		
+		//
+		str += '<li title="' + str_title + '" data-size-node="' + i + '" data-name="' + arr_product_size[i].name + '" data-quan="' + arr_product_size[i].val + '"><div>' + arr_product_size[i].name + '</div>' + str_alert + '</li>';
 	}
 	
 	$('.oi_product_size, .show-if-size-exist').show();
