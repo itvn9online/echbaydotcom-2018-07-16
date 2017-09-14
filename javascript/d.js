@@ -1554,7 +1554,7 @@ function ___eb_details_post_run ( r ) {
 			}
 			// điều chỉnh class theo style riêng
 			else {
-				$('#' + id_for_show).addClass('big bold global-details-countdown');
+				$('#' + id_for_show).addClass('global-details-countdown');
 			}
 			
 		})();
@@ -1590,9 +1590,16 @@ function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 	var phut = (so_du - giay)/ 60;
 	if ( phut < 10 ) phut = '0' + phut;
 	
+	var ngay = 0;
+	if ( gio > 24 ) {
+		ngay = gio;
+		gio = gio % 24;
+		ngay = (ngay - gio)/ 24;
+	}
+	
 	//
 //	console.log(gio + ':' + phut + ':' + giay);
-	dog('oi_time_line').innerHTML = gio + ':' + phut + ':' + giay;
+	dog('oi_time_line').innerHTML = '<span>' + ngay + '<em>ngày</em></span><span>' + gio + '<em>giờ</em></span><span>' + phut + '<em>phút</em></span><span>' + giay + '<em>giây</em></span>';
 	
 	return true;
 	

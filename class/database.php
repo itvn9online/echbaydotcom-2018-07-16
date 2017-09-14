@@ -344,6 +344,7 @@ $arr_active_for_404_page = array(
 	
 	"cart" => 1,
 	"contact" => 1,
+	"golden_time" => 1,
 	"hoan-tat" => 1,
 	"sitemap" => 1,
 	"temp" => 1,

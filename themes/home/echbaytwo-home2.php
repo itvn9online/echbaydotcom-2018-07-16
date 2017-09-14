@@ -12,7 +12,7 @@ $home_new = '';
 if ( $__cf_row['cf_num_home_new'] > 0 ) {
 	$home_new = _eb_load_post( $__cf_row['cf_num_home_new'], array(
 		'meta_key' => '_eb_product_status',
-		'meta_value' => 2,
+		'meta_value' => 2
 	) );
 	
 	// nếu không có -> lấy sản phẩm mới nhất hoặc xếp cao nhất
@@ -28,7 +28,7 @@ if ( $__cf_row['cf_num_home_new'] > 0 ) {
 			'tmp.num_post_line' => '',
 			'tmp.home_hot_title' => EBE_get_lang('home_new'),
 			'tmp.description' => '',
-			'tmp.home_hot' => $home_new,
+			'tmp.home_hot' => $home_new
 		) );
 	}
 	else {

@@ -1626,3 +1626,27 @@ li.footer-social-gg { background-color: #DE4B39; }
 .thread-list li[data-status="2"] .thread-list-status2,
 .thread-list li[data-status="6"] .thread-list-status6 { display: inline-block !important; }
 .show-if-site-demo { display: none; }
+.golden_time-page { padding-bottom: 50px; }
+.golden_time-page .home-hot-bg {
+	background: none;
+	padding: 0;
+}
+.global-details-countdown {
+	color: #fff;
+	font-weight: bold;
+	font-size: 35px;
+}
+.global-details-countdown span {
+	display: inline-block;
+	text-align: center;
+	padding: 5px 10px;
+	background: #666;
+	margin-right: 3px;
+	line-height: 40px;
+}
+.global-details-countdown em {
+	display: block;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 20px;
+}

@@ -86,7 +86,13 @@ if ( $act == '9999' ) {
 // một số act trùng nhau
 switch ( $act ) {
 	
-	// các tham số chung của phần contact
+	// gờ vàng
+	case "gio-vang":
+	case "giovang":
+		$act = 'golden_time';
+		break;
+	
+	// contact
 	case "lien-he":
 	case "lienhe":
 		$act = 'contact';
