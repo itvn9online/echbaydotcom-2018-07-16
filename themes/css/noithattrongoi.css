@@ -44,3 +44,29 @@
 	max-width: 400px;
 	margin: 10px auto;
 }
+/* custom style */
+.global-home-module .home_default-title,
+.home-news .echbay-widget-blogs-title {
+	font-size: 36px;
+	text-transform: uppercase;
+	line-height: 36px;
+	font-weight: 500;
+	padding: 40px 0 15px 0;
+	color: #ed1c24;
+	position: relative;
+	margin: 0;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.global-home-module .home_default-title:before,
+.home-news .echbay-widget-blogs-title:before {
+	position: absolute;
+	width: 10%;
+	min-width: 50px;
+	border-bottom: 1px #333 solid;
+	left: 45%;
+	bottom: 0;
+	display: block !important;
+	content: "";
+}
+.home-news .echbay-widget-blogs-title { border-bottom: none; }
