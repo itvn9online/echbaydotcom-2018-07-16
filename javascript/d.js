@@ -511,7 +511,26 @@ function WGR_show_product_color_name () {
 	// nếu có tên màu sắc -> hiển thị tên màu ra ngoài cho dễ nhìn
 	if ( product_color_name != '' ) {
 		$('.show-if-color-exist').show();
-		$('.oi_product_color ul').html( '<li class="text-center text-color-center">' + product_color_name + '</li>' );
+		
+		// lấy hình ảnh nếu có
+		var product_img = $('meta[itemprop="image"]').attr('content')
+						|| $('meta[itemprop="og:image"]').attr('content')
+						|| '';
+		
+		//
+		var str = '';
+		
+		// nếu có hình ảnh -> thêm hình ảnh vào phần size
+		if ( product_img != '' ) {
+			str += '<li title="' + product_color_name + '" data-img="' + product_img + '" data-node="0" class="selected" style="background-image:url(' + product_img + ');">&nbsp;<div>' + product_color_name + '</div></li>';
+			
+			$('.oi_product_color ul').after('<div class="show-products-color-text l19 small">&nbsp;</div>');
+		}
+		// nếu không, chỉ hiển thị mỗi tên
+		else {
+			str = '<li class="text-center text-color-center">' + product_color_name + '</li>';
+		}
+		$('.oi_product_color ul').html( str );
 	}
 	
 	return false;
@@ -528,7 +547,7 @@ function ___eb_details_product_color () {
 	var str = '',
 		i = 0;
 	$('#export_img_list_color img').each(function() {
-		var s = $(this).attr('data-src') || '';
+		var s = $(this).attr('data-src') || $(this).attr('src') || '';
 		
 		if ( s != '' ) {
 			// trạng thái
@@ -1515,15 +1534,17 @@ function ___eb_details_post_run ( r ) {
 	// đếm thời gian hiển thị
 //	console.log(trv_ngayhethan);
 	if ( trv_ngayhethan > 0 ) {
-		
-		var id_for_show = 'oi_time_line';
-		
-		// nếu ko có ID để hiển thị thời gian -> hủy bỏ luôn
-		if ( dog(id_for_show) == null ) {
-			console.log('Thời gian hết hạn được kích hoạt, nhưng không tìm thấy DIV id="' + id_for_show + '"');
-		}
-		// nếu có -> hiển thị thời gian
-		else {
+		(function () {
+			
+			var id_for_show = 'oi_time_line';
+			
+			// nếu ko có ID để hiển thị thời gian -> hủy bỏ luôn
+			if ( dog(id_for_show) == null ) {
+				if ( cf_tester_mode == 1 ) console.log('Thời gian hết hạn được kích hoạt, nhưng không tìm thấy DIV id="' + id_for_show + '"');
+				return false;
+			}
+			
+			// nếu có -> hiển thị thời gian
 			$('#' + id_for_show).before('<div class="medium l35">' + lang_details_time_discount + '</div>');
 			
 			// Nếu trả về false -> khả năng cao là hết hạn hiển thị -> hiển thị thông báo hết hạn
@@ -1535,7 +1556,8 @@ function ___eb_details_post_run ( r ) {
 			else {
 				$('#' + id_for_show).addClass('big bold global-details-countdown');
 			}
-		}
+			
+		})();
 	}
 	
 }
