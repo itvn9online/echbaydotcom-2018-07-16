@@ -132,9 +132,16 @@ if ( file_exists( $file_test ) ) {
 
 //
 $dir_robots_txt = ABSPATH . 'robots.txt';
+
+// nếu file không tồn tại -> cảnh báo
 if ( ! file_exists( $dir_robots_txt ) ) {
 	$str_eb_warning .= '
 	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Bạn chưa tạo file robots.txt cho website, hãy <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab=robots" target="_blank"><u>nhấn vào đây</u></a> để tạo.</div>';
+}
+// nếu có nhưng link sitemap bị sai -> cảnh báo luôn
+else if ( strstr( file_get_contents( $dir_robots_txt, 1 ), web_link . 'sitemap' ) == false ) {
+	$str_eb_warning .= '
+	<div class="orgcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: file robots.txt đã được tạo, nhưng nội dung file đang thiếu hoặc bị sai tham số khá quan trọng là chỉ định sitemap chính xác của website, hãy <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab=robots" target="_blank"><u>nhấn vào đây</u></a> để xem và cập nhật lại.</div>';
 }
 
 
