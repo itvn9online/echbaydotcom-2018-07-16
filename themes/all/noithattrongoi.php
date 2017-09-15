@@ -21,7 +21,8 @@ $eb_all_themes_support["noithattrongoi"]["cf_footer3_include_file"] = "noithattr
 $eb_all_themes_support["noithattrongoi"]["cf_footer4_include_file"] = "denbaophat-footer3.php";
 //
 $eb_all_themes_support["noithattrongoi"]["cf_home1_include_file"] = "bigbanner-home1.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home2_include_file"] = "vinhaninterior-home1.php";
+//$eb_all_themes_support["noithattrongoi"]["cf_home2_include_file"] = "vinhaninterior-home1.php";
+$eb_all_themes_support["noithattrongoi"]["cf_home2_include_file"] = "noithattrongoi-home1.php";
 $eb_all_themes_support["noithattrongoi"]["cf_home3_include_file"] = "vinhaninterior-home2.php";
 //$eb_all_themes_support["noithattrongoi"]["cf_home4_include_file"] = "vinhaninterior-home3.php";
 $eb_all_themes_support["noithattrongoi"]["cf_home4_include_file"] = "vinhaninteriorV2-home3.php";
