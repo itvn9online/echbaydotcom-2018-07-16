@@ -101,6 +101,10 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 	global $str_list_all_include_file;
 //	global $arr_for_set_template;
 	
+	//
+	$path_for_premium = str_replace( '/echbaydotcom/', '/echbaydotcom-premium/', EB_THEME_PLUGIN_INDEX );
+	$url_for_premium = str_replace( '/echbaydotcom/', '/echbaydotcom-premium/', EB_URL_OF_PLUGIN );
+	
 	// định dạng file được hỗ trợ
 	$files_type_support = 'php,html,htm';
 	
@@ -296,11 +300,16 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 				$img = '';
 				$chua_co_hinh_anh = '';
 				if ( $val != '' ) {
-					$bg_file = EB_THEME_PLUGIN_INDEX . 'themes/images/' . WGR_config_themes_replace_file_type( $val, '.jpg' );
+//					$bg_file = EB_THEME_PLUGIN_INDEX . 'themes/images/' . WGR_config_themes_replace_file_type( $val, '.jpg' );
+					$bg_file = $path_for_premium . 'themes/images/' . WGR_config_themes_replace_file_type( $val, '.jpg' );
+//					echo $bg_file. '<br>' . "\n";
+					
 					if ( file_exists( $bg_file ) ) {
 						$file_info = getimagesize( $bg_file );
 						
-						$img = str_replace( EB_THEME_PLUGIN_INDEX, EB_URL_OF_PLUGIN, $bg_file );
+//						$img = str_replace( EB_THEME_PLUGIN_INDEX, EB_URL_OF_PLUGIN, $bg_file );
+						$img = str_replace( $path_for_premium, $url_for_premium, $bg_file );
+//						echo $img. '<br>' . "\n";
 						
 						$css_class = 'preview-bg-ebdesign';
 						if ( $ck != '' ) {
