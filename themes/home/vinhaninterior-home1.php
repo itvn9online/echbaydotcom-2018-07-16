@@ -10,7 +10,14 @@
 					</div>
 				</div>
 				<div class="lf f50 fullsize-if-mobile">
-					<div class="img-max-width"><?php echo _eb_load_ads( 4, 1, '', array(), 0, '<iframe width="500" height="281" src="{tmp.youtube_url}" frameborder="0" allowfullscreen=""></iframe>' ); ?></div>
+					<div class="img-max-width"><?php
+					
+					echo _eb_load_ads( 4, 1, 'auto' );
+					
+					// video youtube
+//					echo _eb_load_ads( 4, 1, '', array(), 0, '<iframe width="500" height="281" src="{tmp.youtube_url}" frameborder="0" allowfullscreen=""></iframe>' );
+					
+					?></div>
 				</div>
 			</div>
 		</div>

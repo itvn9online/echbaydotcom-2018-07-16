@@ -2559,7 +2559,7 @@ function _eb_load_ads (
 	$type = 0,
 	// số lượng bản ghi cần lấy
 	$posts_per_page = 20,
-	// kích thước muốn hiển thị
+	// kích thước muốn hiển thị, nếu là auto -> tự lấy theo size ảnh
 	$data_size = 1,
 	// query phủ định
 	$_eb_query = array(),
@@ -2810,6 +2810,9 @@ function _eb_load_ads (
 //		}
 		// lấy size tự động theo ảnh đầu tiên
 		$auto_get_size = '';
+		if ( $__cf_row['cf_auto_get_ads_size'] == 1 || $data_size == 'auto' ) {
+			$auto_get_size = 'auto_get_size';
+		}
 		
 		//
 		while ( $sql->have_posts() ) {
@@ -2881,7 +2884,8 @@ function _eb_load_ads (
 			$post->p_link = $p_link;
 			
 			// tạo size tự động theo ảnh (nếu chưa có)
-			if ( $__cf_row['cf_auto_get_ads_size'] == 1 && $auto_get_size == '' ) {
+//			if ( $__cf_row['cf_auto_get_ads_size'] == 1 && $auto_get_size == '' ) {
+			if ( $auto_get_size == 'auto_get_size' ) {
 				// ảnh phải nằm trong thư mục wp-content
 				if ( strstr( $trv_img, EB_DIR_CONTENT . '/' ) == true ) {
 					$auto_get_size = strstr( $trv_img, EB_DIR_CONTENT . '/' );
