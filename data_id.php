@@ -43,6 +43,9 @@ $add_data_id = array (
 		// chế độ kiểm thử -> dùng để console lỗi nếu chế độ này đang bật
 		'cf_tester_mode' => $__cf_row['cf_tester_mode'],
 		
+		// nút chuyển ảnh trên slider
+		'cf_arrow_big_banner' => $__cf_row['cf_arrow_big_banner'],
+		
 		// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
 		'cf_details_excerpt' => $__cf_row['cf_details_excerpt'],
 		

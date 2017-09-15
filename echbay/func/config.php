@@ -139,6 +139,10 @@ if ( ! isset( $_POST['cf_post_big_banner'] ) || (int) $_POST['cf_post_big_banner
 	$_POST['cf_post_big_banner'] = 0;
 }
 
+if ( ! isset( $_POST['cf_arrow_big_banner'] ) || (int) $_POST['cf_arrow_big_banner'] != 1 ) {
+	$_POST['cf_arrow_big_banner'] = 0;
+}
+
 if ( ! isset( $_POST['cf_auto_get_ads_size'] ) || (int) $_POST['cf_auto_get_ads_size'] != 1 ) {
 	$_POST['cf_auto_get_ads_size'] = 0;
 }

@@ -290,17 +290,17 @@ function ___eb_details_slider_v2 () {
 	
 	// tải slider theo code mới
 	jEBE_slider( '.thread-details-mobileAvt', {
-		sliderArrow: true,
 		buttonListNext: cf_details_show_list_next == 1 ? true : false,
 //		autoplay : true,
 		
+		sliderArrow: true,
 		sliderArrowWidthLeft : '40%',
 		sliderArrowWidthRight : '60%',
+		sliderArrowLeft : 'fa-chevron-circle-left',
+		sliderArrowRight : 'fa-chevron-circle-right',
 		
 //		thumbnail : 'ul li',
 		thumbnail : cf_details_show_list_thumb == 1 ? 'ul li' : false,
-		sliderArrowLeft : 'fa-chevron-circle-left',
-		sliderArrowRight : 'fa-chevron-circle-right',
 		size : $('.thread-details-mobileAvt').attr('data-size') || ''
 	}, function () {
 		$('.thread-details-mobileAvt li').click(function () {
@@ -951,16 +951,19 @@ function ___eb_details_product_quan () {
 // big banner
 var big_banner_timeout1 = null;
 
-(function () {
+//(function () {
 	
 	// tải slider theo code mới
 	jEBE_slider( '.oi_big_banner', {
 		autoplay : true,
+		
+		sliderArrow: ( cf_arrow_big_banner == 1 ) ? true : false,
+		
 //		thumbnail : '.banner-ads-media',
 		size : $('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''
 	});
 	
-})();
+//})();
 
 function ___eb_big_banner () {
 	console.log('WARNING! Function ___eb_big_banner bas been remove, please clear in your code!');
@@ -982,6 +985,12 @@ function ___eb_big_banner () {
 			$(this).hide().remove();
 		}
 	});
+	
+	//
+	if ( $('.sponsor-top-desktop').length == 0 ) {
+		if ( cf_tester_mode == 1 ) console.log('sponsor-top-desktop not found');
+		return false;
+	}
 	
 	//
 	var len = $('.banner-chan-trang:first li').length || 0;
@@ -1046,17 +1055,17 @@ function ___eb_big_banner () {
 //	$('.home-next-chantrang, .home-prev-chantrang').hide();
 	
 	jEBE_slider( '.banner-chan-trang', {
-		sliderArrow: true,
 		buttonListNext: false,
 //		autoplay : true,
 		visible : global_chantrang_len,
 		
+		sliderArrow: true,
 //		sliderArrowWidthLeft : '40%',
 //		sliderArrowWidthRight : '60%',
-		
-//		thumbnail : 'ul li',
 //		sliderArrowLeft : 'fa-chevron-circle-left',
 //		sliderArrowRight : 'fa-chevron-circle-right',
+		
+//		thumbnail : 'ul li',
 		size : $('.banner-chan-trang li:first .ti-le-global').attr('data-size') || ''
 	});
 	

@@ -174,6 +174,9 @@ $__cf_row_default = array(
 	// Mặc định, big banner được load cả trong trang chi tiết
 	'cf_post_big_banner' => 1,
 	
+	// nút chuyển ảnh trên slider
+	'cf_arrow_big_banner' => 1,
+	
 	// tựu động lấy size cho phần quảng cáo theo ảnh đầu tiên trong chuỗi tìm được
 	'cf_auto_get_ads_size' => 0,
 	
