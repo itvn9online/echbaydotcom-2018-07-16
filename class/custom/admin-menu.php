@@ -101,6 +101,12 @@ function echbay_create_admin_menu() {
 	add_submenu_page( $parent_slug, 'Giới thiệu về tác giả', 'Giới thiệu', 'read', 'eb-about', 'func_include_eb_private_code' );
 	
 	
+	/*
+	* Bản nâng cao thì chỉ cần admin nhìn thôi, người khác không quan trọng
+	*/
+	add_submenu_page( $parent_slug, 'Phiên bản cao cấp, hỗ trợ nhiều tính năng hơn', 'Bản nâng cao', 'manage_options', 'eb-licenses', 'func_include_eb_private_code' );
+	
+	
 	//
 //	add_action( 'admin_init', 'register_mysettings' );
 }
