@@ -1,4 +1,4 @@
-<div id="noithatnhapkhaueh-top1">
+<div id="noithatnhapkhaueh-top1" class="hide-if-mobile">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<div class="noithatnhapkhaueh-top1 cf">
 			<div class="lf f50"><a href="mailto:<?php echo $__cf_row['cf_email']; ?>" rel="next" target="_blank"><?php echo $__cf_row['cf_email']; ?></a></div>

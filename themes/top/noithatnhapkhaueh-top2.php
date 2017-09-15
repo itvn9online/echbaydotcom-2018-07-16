@@ -1,4 +1,4 @@
-<div id="noithatnhapkhaueh-top2">
+<div id="noithatnhapkhaueh-top2" class="hide-if-mobile">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<div class="noithatnhapkhaueh-top2 cf">
 			<div class="lf f30"><?php echo EBE_get_html_logo(); ?></div>
