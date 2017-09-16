@@ -2371,6 +2371,23 @@ $('a[href="#"]').attr({
 
 
 
+//
+function WGR_show_or_scroll_to_quick_cart () {
+	
+	// Nếu có thuộc tính hiển thị quick cart -> cuộn chuột đến đó
+	if ( $('.clone-show-quick-cart').length > 0 ) {
+//		window.scroll( 0, $('.clone-show-quick-cart').offset().top - 90 );
+		$('body,html').animate({
+			scrollTop: $('.clone-show-quick-cart').offset().top - 90
+		}, 800);
+		
+		return true;
+	}
+	
+	// nếu không -> trả về false để thực thi lệnh tiếp theo
+	return false;
+	
+}
 
 // nút thêm sản phẩm vào giỏ hàng
 setTimeout(function () {
@@ -2407,22 +2424,18 @@ setTimeout(function () {
 	
 	//
 	$('.click-jquery-show-quick-cart').click(function() {
-		$('#click_show_cpa').show();
-		$('body').addClass('body-no-scroll');
+		// Hiển thị quick cart dạng popup nếu quick cart không hiển thị sẵn
+		if ( WGR_show_or_scroll_to_quick_cart() == false ) {
+			$('#click_show_cpa').show();
+			$('body').addClass('body-no-scroll');
+		}
 	});
 	
 	
 	// Nút kép -> nhảy sang giỏ hàng hoặc mở quick cart
 	$('.click-jquery-quickcart-or-cart').click(function(e) {
-		// Nếu có thuộc tính hiển thị quick cart -> cuộn chuột đến đó
-		if ( $('.clone-show-quick-cart').length > 0 ) {
-//			window.scroll( 0, $('.clone-show-quick-cart').offset().top - 90 );
-			$('body,html').animate({
-				scrollTop: $('.clone-show-quick-cart').offset().top - 90
-			}, 800);
-		}
-		// Chuyển sang giỏ hàng
-		else {
+		// Chuyển sang giỏ hàng nếu không có quick cart
+		if ( WGR_show_or_scroll_to_quick_cart() == false ) {
 			$('.click-jquery-add-to-cart:first').click();
 		}
 	});
