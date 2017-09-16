@@ -85,26 +85,10 @@ $t_diachi = trim ( $_POST ['t_diachi'] );
 $t_ghichu = trim ( $_POST ['t_ghichu'] );
 
 
-//
-if (mtv_id > 0) {
-	$tv_id = mtv_id;
-} else {
-	$tv_id = _eb_create_account_auto ( array(
-		'tv_matkhau' => '',
-		'tv_hoten' => $t_ten,
-		'tv_dienthoai' => $t_dienthoai,
-		'user_name' => $t_dienthoai,
-		'tv_diachi' => $t_diachi,
-		'tv_email' => $t_email
-	) );
-}
 //echo $tv_id . "\n";
 //exit();
 
 //
-if ( $tv_id <= 0 ) {
-	_eb_alert('Không xác định được tài khoản khách hàng');
-}
 //exit();
 
 
@@ -113,9 +97,50 @@ if ( $tv_id <= 0 ) {
 //echo date( 'r', date_time ) . "\n";
 
 
-
-// kiểm tra lần gừi đơn trước đó, nếu mới gửi thì bỏ qua
-if ( ! current_user_can('delete_posts') ) {
+// nếu đang là tài khoản admin -> luôn luôn tạo tài khoản mới
+if ( current_user_can('delete_posts') ) {
+	
+	$tv_id = _eb_create_account_auto ( array(
+		'tv_matkhau' => '',
+		'tv_hoten' => $t_ten,
+		'tv_dienthoai' => $t_dienthoai,
+		'user_name' => $t_dienthoai,
+		'tv_diachi' => $t_diachi,
+		'tv_email' => $t_email
+	) );
+	
+	// kiểm tra lại việc tạo tài khoản
+	if ( $tv_id <= 0 ) {
+		_eb_alert('Không xác định được tài khoản khách hàng');
+	}
+	
+}
+// nếu tài khoản thông thường -> sẽ kiểm tra nhiều thứ hơn
+else {
+	
+	//
+	if ( mtv_id > 0 ) {
+		$tv_id = mtv_id;
+	} else {
+		
+		$tv_id = _eb_create_account_auto ( array(
+			'tv_matkhau' => '',
+			'tv_hoten' => $t_ten,
+			'tv_dienthoai' => $t_dienthoai,
+			'user_name' => $t_dienthoai,
+			'tv_diachi' => $t_diachi,
+			'tv_email' => $t_email
+		) );
+		
+		// kiểm tra lại việc tạo tài khoản
+		if ( $tv_id <= 0 ) {
+			_eb_alert('Không xác định được tài khoản khách hàng');
+		}
+		
+	}
+	
+	
+	// kiểm tra lần gừi đơn trước đó, nếu mới gửi thì bỏ qua
 	$strsql = _eb_q("SELECT *
 	FROM
 		`eb_in_con_voi`
