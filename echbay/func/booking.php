@@ -115,7 +115,8 @@ if ( $tv_id <= 0 ) {
 
 
 // kiểm tra lần gừi đơn trước đó, nếu mới gửi thì bỏ qua
-$strsql = _eb_q("SELECT *
+if ( ! current_user_can('delete_posts') ) {
+	$strsql = _eb_q("SELECT *
 	FROM
 		`eb_in_con_voi`
 	WHERE
@@ -123,21 +124,22 @@ $strsql = _eb_q("SELECT *
 	ORDER BY
 		order_id DESC
 	LIMIT 0, 1" );
-//print_r( $strsql );
-//echo count($strsql);
-if ( count($strsql) > 0 ) {
-	$strsql = $strsql[0];
 //	print_r( $strsql );
-//	exit();
-	
-	// lấy thời gian gửi đơn hàng trước đó, mỗi đơn cách nhau tầm 5 phút
-	$lan_gui_don_truoc = $strsql->order_time;
-//	echo date( 'r', $lan_gui_don_truoc ) . "\n";
-//	echo date_time - $lan_gui_don_truoc . "\n";
-	
-	// giãn cách gửi đơn là 5 phút
-	if ( date_time - $lan_gui_don_truoc < 300 ) {
-		ket_thuc_qua_trinh_dat_hang( $strsql->order_id, $strsql->order_sku, 'Cảm ơn bạn, chúng tôi đang tiếp nhận và xử lý đơn hàng của bạn.' );
+//	echo count($strsql);
+	if ( count($strsql) > 0 ) {
+		$strsql = $strsql[0];
+//		print_r( $strsql );
+//		exit();
+		
+		// lấy thời gian gửi đơn hàng trước đó, mỗi đơn cách nhau tầm 5 phút
+		$lan_gui_don_truoc = $strsql->order_time;
+//		echo date( 'r', $lan_gui_don_truoc ) . "\n";
+//		echo date_time - $lan_gui_don_truoc . "\n";
+		
+		// giãn cách gửi đơn là 5 phút
+		if ( date_time - $lan_gui_don_truoc < 300 ) {
+			ket_thuc_qua_trinh_dat_hang( $strsql->order_id, $strsql->order_sku, 'Cảm ơn bạn, chúng tôi đang tiếp nhận và xử lý đơn hàng của bạn.' );
+		}
 	}
 }
 //exit();
