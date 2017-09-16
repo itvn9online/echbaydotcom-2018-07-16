@@ -90,6 +90,7 @@
 	width: 40%;
 }
 .home-module_content { padding-bottom: 25px; }
+.style-for-mobile .home-vechungtoi li { width: 50%; }
 .home-vechungtoi li:first-child {
 	width: 100%;
 	float: none;
@@ -114,3 +115,4 @@
 	padding: 20px 20px 20px 5px;
 }
 .home-vechungtoi li:first-child .echbay-blog-gioithieu { color: #000; }
+.style-for-mobile .home-vechungtoi li:first-child .echbay-blog-right { position: initial; }

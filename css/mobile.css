@@ -205,3 +205,8 @@ body.style-for-mobile {
 .style-for-mobile .blogs_menu_noidung .col-sidebar-content,
 .style-for-mobile .blog_details_menu_noidung .col-sidebar-content,
 .style-for-mobile .page_menu_noidung .col-sidebar-content { padding-top: 20px; }
+.style-for-mobile .mobile-fullsize li {
+	width: 100%;
+	float: none;
+}
+.style-for-mobile .echbay-blog33 li { width: 50%; }
