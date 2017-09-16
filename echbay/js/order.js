@@ -49,7 +49,7 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 		if ( arr[i].color != '' ) {
 			arr[i].color = $.trim( arr[i].color );
 			if ( arr[i].color.substr( 0, 1 ) != '-' ) {
-				arr[i].color = '-' + arr[i].color;
+				arr[i].color = '- ' + arr[i].color;
 			}
 			
 			arr[i].name += ' ' + arr[i].color;

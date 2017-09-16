@@ -1,97 +1,8 @@
 <?php
 
 
-
-// kiểu dữ liệu cũ hoặc mới
-$order_old_type = 0;
-
-
-
-//
-$sql = _eb_load_order( 1, array(
-	'p' => $id,
-) );
-//print_r( $sql );
-
-//
-//if ( isset($sql[0]) ) {
-if ( count($sql) > 0 ) {
-	$sql = $sql[0];
-	
-	$sql->post_excerpt = '';
-} else {
-	// v1
-	if ( isset( $_GET['order_old_type'] ) ) {
-		$sql = _eb_load_order_v1( 1, array(
-			'p' => $id,
-		) );
-	}
-//	print_r( $sql );
-	
-	if ( count($sql) > 0 ) {
-		$sql = $sql[0];
-//		print_r( $sql );
-		
-		// chuyển định dạng sang kiểu đơn mới
-		$sql->order_id = $sql->ID;
-		
-//		$sql->order_products = $sql->post_excerpt;
-//		$sql->order_customer = $sql->post_excerpt;
-		$sql->order_products = '';
-		$sql->order_customer = '';
-		
-		$sql->tv_id = $sql->post_author;
-		$sql->order_sku = $sql->post_title;
-		$sql->order_time = strtotime( $sql->post_date );
-		$sql->order_status = get_post_meta( $sql->ID, '__eb_hd_trangthai', true );
-		$sql->order_ip = '';
-//		print_r( $sql );
-		
-		//
-		$order_old_type = $sql->post_author;
-	}
-	else {
-		die('<h1>Order object not found</h1>');
-	}
-}
-
-// TEST
-echo '<!--' . "\n";
-
-print_r( $sql );
-
-/*
-$strsql = _eb_q("SELECT *
-	FROM
-		`" . $wpdb->posts . "`
-	WHERE
-		post_author = " . $sql->post_author . "
-	ORDER BY
-		ID DESC" );
-if ( count($strsql) > 0 ) {
-	$strsql = $strsql[0];
-	print_r( $strsql );
-	
-	// lấy thời gian gửi đơn hàng trước đó, mỗi đơn cách nhau tầm 5 phút
-	$lan_gui_don_truoc = strtotime( $strsql->post_date );
-	echo date( 'r', $lan_gui_don_truoc ) . "\n";
-	echo date_time - $lan_gui_don_truoc . "\n";
-}
-*/
-
-echo "\n" . '-->';
-// END TEST
-
-//if ( !isset($sql->post) || !isset($sql->post->ID) ) {
-//if ( ! isset($sql->ID) ) {
-if ( ! isset($sql->order_id) ) {
-	die('<h1>Order details not found</h1>');
-}
-
-//
-//$post = $sql[0]->post;
-$post = $sql;
-//print_r( $post );
+// sử dụng file này để load chi tiết đơn hàng -> dùng chung
+include ECHBAY_PRI_CODE . 'order_details_load.php';
 
 
 ?>
@@ -201,6 +112,7 @@ var order_details_arr_cart_product_list_v1 = (function ( arr ) {
 
 // v2
 var order_details_arr_cart_product_list = "<?php echo $post->order_products; ?>",
-	order_details_arr_cart_customer_info = "<?php echo $post->order_customer; ?>";
+	order_details_arr_cart_customer_info = "<?php echo $post->order_customer; ?>",
+	order_id = "<?php echo $id; ?>";
 </script> 
 <script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . date_time; ?>"></script> 

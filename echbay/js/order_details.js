@@ -120,7 +120,7 @@ function ___eb_admin_update_order_details () {
 		if ( arr[i].color != '' ) {
 			arr[i].color = $.trim( arr[i].color );
 			if ( arr[i].color.substr( 0, 1 ) != '-' ) {
-				arr[i].color = '-' + arr[i].color;
+				arr[i].color = '- ' + arr[i].color;
 			}
 			
 			arr[i].color = ' ' + arr[i].color;
@@ -240,7 +240,9 @@ dog('eb_cart_submit').disabled = false;
 $('#eb_cart_submit').show();
 
 dog('eb_cart_print').disabled = false;
-$('#eb_cart_print').show();
+$('#eb_cart_print').show().click(function () {
+	window.open( web_link + 'billing_print?order_id=' + order_id, '_blank' );
+});
 
 
 

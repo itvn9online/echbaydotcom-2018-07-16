@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Phiếu thu</title>
+<link href="favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="css/default.css?v={tmp.web_version}" type="text/css">
+<style type="text/css">
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+.f20 { width: 20% }
+.f30 { width: 30% }
+.f70 { width: 70% }
+.f80 { width: 80% }
+.public-table-print {
+	border-top: 1px #000 solid;
+	border-right: 1px #000 solid;
+}
+.public-table-print td {
+	padding: 7px 1px 7px 6px;
+	border-bottom: 1px #000 solid;
+	border-left: 1px #000 solid;
+}
+.public-table-print .tr-title { font-weight: bold }
+.public-table-print .tong-gia1 {
+	text-align: right;
+	width: 70%
+}
+.public-table-print .tong-gia2 { width: 30% }
+.public-table-print { }
+</style>
+</head>
+<body style="background:#fff">
+<div style="width:888px;margin:20px auto">
+	<div style="padding:10px 20px">
+		<div class="clearfix" style="line-height:20px;padding:10px 0;border-bottom:1px #000 solid">
+			<div class="lf" style="width:35%"><img src="{tmp.cf_logo}" /></div>
+			<div class="lf" style="width:65%">
+				<div style="font-size:12pt;text-transform:uppercase;font-weight:bold">{tmp.cf_ten_cty}</div>
+				<ul>
+					<li class="clearfix">
+						<div class="lf f20">Địa chỉ</div>
+						<div class="lf f80">: {tmp.cf_diachi}</div>
+					</li>
+					<li class="clearfix">
+						<div class="lf f20">Điện thoại</div>
+						<div class="lf f80">: {tmp.cf_dienthoai}</div>
+					</li>
+					<li class="clearfix">
+						<div class="lf f20">E-mail</div>
+						<div class="lf f80">: {tmp.cf_email}</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div align="center" style="text-transform:uppercase;font-weight:bold;padding:12px 0;font-size:23px">Phiếu thu kiêm xác nhận đã thanh toán</div>
+		<div class="clearfix" style="border-bottom:1px #000 dotted;padding:0 0 10px 0">
+			<div align="center" class="lf" style="width:70%">
+				<div>Liên: <em>mẫu chung</em></div>
+				<div>Ngày <em>{tmp.dd}</em> tháng <em>{tmp.mm}</em> năm <em>{tmp.yy}</em></div>
+			</div>
+			<div class="lf" style="width:30%">
+				<div class="clearfix">
+					<div class="lf" style="width:40%">
+						<div>Mã hóa đơn</div>
+						<div>Mẫu số</div>
+						<div>Ký hiệu</div>
+					</div>
+					<div class="lf" style="width:60%">
+						<div>: <strong>{tmp.id}</strong></div>
+						<div>: 03XKNB3/001</div>
+						<div>: KL/11P/VietHost.Net</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br />
+		<div class="titleCSS">Thông tin thanh toán:</div>
+		<div class="clearfix" style="line-height:22px">
+			<ul>
+				<li class="clearfix">
+					<div class="lf f20">Tên liên hệ</div>
+					<div class="lf f80">: {tmp.hd_ten}</div>
+				</li>
+				<li class="clearfix">
+					<div class="lf f20">Địa chỉ</div>
+					<div class="lf f80">: {tmp.hd_diachi}</div>
+				</li>
+				<li class="clearfix">
+					<div class="lf f20">Điện thoại</div>
+					<div class="lf f80">: {tmp.hd_dienthoai}</div>
+				</li>
+				<li class="clearfix">
+					<div class="lf f20">Ngày gửi</div>
+					<div class="lf f80">: {tmp.ngaygui}</div>
+				</li>
+			</ul>
+		</div>
+		<br />
+		<div class="titleCSS">Sản phẩm đã đặt mua:</div>
+		<table cellpadding="0" cellspacing="0" width="100%" border="0" class="public-table-print">
+			<tr class="tr-title">
+				<td width="25">&nbsp;</td>
+				<td width="68">#</td>
+				<td>Sản phẩm</td>
+				<td width="88">Giá bán</td>
+				<td width="80">Số lượng</td>
+				<td width="88">Tổng</td>
+			</tr>
+			{tmp.product_invoi_list}
+			<tr>
+				<td colspan="4" class="tong-gia1">Thành tiền</td>
+				<td colspan="2" class="tong-gia2" style="font-size:11pt;font-weight:bold">{tmp.tongtien}</td>
+			</tr>
+			<tr>
+				<td colspan="4" class="tong-gia1">Đơn vị tiền tệ</td>
+				<td colspan="2" class="tong-gia2">VNĐ</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="6">Bằng chữ: <em style="font-size:11pt;text-transform:capitalize">{tmp.str_tongtien} đồng</em></td>
+			</tr>
+		</table>
+		<br />
+		<div class="clearfix" align="center" style="height:90px">
+			<div class="lf" style="width:30%">
+				<div><strong>Khách hàng</strong></div>
+				<div><em>(Ký, ghi rõ họ tên)</em></div>
+			</div>
+			<div class="lf" style="width:45%">
+				<div><strong>{tmp.cf_ten_cty}</strong></div>
+				<div><em>(Ký, ghi rõ họ tên)</em></div>
+			</div>
+			<div class="lf" style="width:25%;padding:20px 0 0 0"><img title="Code name" alt="Code name" src="code_name.php?act=code_name&code={tmp.hd_ngaygui}&module_id=create_code_name&captcha={tmp.captcha}&display=default" /></div>
+		</div>
+		<br />
+	</div>
+</div>
+</body>
+</html>
