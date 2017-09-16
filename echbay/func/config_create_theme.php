@@ -257,7 +257,11 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 		
 		if ( $limit == 1 ) {
 			$j = '';
-		} else {
+		}
+		else if ( $position == 'footer' ) {
+			$j = $i - 1;
+		}
+		else {
 			$j = $i;
 		}
 //		echo $j . '<br>' . "\n";

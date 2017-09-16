@@ -17,8 +17,8 @@ $eb_all_themes_support["echbaythree"]["cf_top4_include_file"] = "echbaythree-top
 $eb_all_themes_support["echbaythree"]["cf_top5_include_file"] = "top_widget.php";
 //
 $eb_all_themes_support["echbaythree"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["echbaythree"]["cf_footer2_include_file"] = "echbaythree-footer2.php";
-$eb_all_themes_support["echbaythree"]["cf_footer3_include_file"] = "echbaythree-footer3.php";
+$eb_all_themes_support["echbaythree"]["cf_footer2_include_file"] = "echbaythree-footer1.php";
+$eb_all_themes_support["echbaythree"]["cf_footer3_include_file"] = "echbaythree-footer2.php";
 $eb_all_themes_support["echbaythree"]["cf_footer4_include_file"] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["echbaythree"]["cf_home1_include_file"] = "echbaythree-home1.php";
