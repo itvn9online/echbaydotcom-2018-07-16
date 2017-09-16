@@ -2831,7 +2831,7 @@ function EBE_get_html_search () {
 		<form role="search" method="get" action="' . web_link . '">
 			<input type="search" placeholder="Tìm kiếm" value="' . $current_search_key . '" name="s" aria-required="true" required>
 			<input type="hidden" name="post_type" value="post" />
-			<button type="submit" class="cur"><i class="fa fa-search"></i></button>
+			<button type="submit" class="cur default-bg"><i class="fa fa-search"></i></button>
 		</form>
 	</div>
 	<div id="oiSearchAjax"></div>
