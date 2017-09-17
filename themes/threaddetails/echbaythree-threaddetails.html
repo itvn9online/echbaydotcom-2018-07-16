@@ -22,25 +22,27 @@
 				</div>
 				<h1 class="thread-details-title">{tmp.trv_h1_tieude}</h1>
 				<div data-rating="{tmp.rating_value_img}" class="medium each-to-rating"></div>
+				<div class="thread-details-bprice">
+					<div class="thread-details-label upper small">Giá bán</div>
+					<div class="thread-details-price">{tmp.trv_giamoi}</div>
+					<div data-gia="11" class="thread-details-gia">
+						<ul class="cf">
+							<li>
+								<div class="thread-details-label upper small">Giá cũ</div>
+								<div class="bold">{tmp.trv_giaban}</div>
+							</li>
+							<li>
+								<div class="thread-details-label upper small">Giảm</div>
+								<div class="bold">-{tmp.pt}%</div>
+							</li>
+						</ul>
+					</div>
+				</div>
 				<table cellpadding="0" cellspacing="0" border="0" width="100%" class="thread-details-options">
 					{tmp.other_option_list}
 				</table>
 				<div class="thread-details-comment graycolor l25">{tmp.trv_goithieu}</div>
 				<br>
-				<div class="thread-details-gia">
-					<div class="thread-details-giamgia text-center bold">
-						<div><span class="whitecolor">Giảm<br>
-							giá</span> -{tmp.pt}%</div>
-					</div>
-					<div class="cf">
-						<div class="lf f20 hide-if-mobile">Giá gốc</div>
-						<div class="lf f80 fullsize-if-mobile">{tmp.trv_giaban}</div>
-					</div>
-					<div class="cf l30">
-						<div class="lf f20 hide-if-mobile">Giá mới</div>
-						<div class="lf f80 fullsize-if-mobile bold">{tmp.trv_giamoi}</div>
-					</div>
-				</div>
 				<br>
 				<!-- Màu sắc -->
 				<div id="oi_product_color" class="cf product-color d-none">
@@ -53,27 +55,28 @@
 					</div>
 				</div>
 				<div id="export_img_list_color" class="d-none">{tmp.trv_list_color}</div>
-				<div class="cf text-center detail-muangay-padding">
-					<div class="details-ankhi-hethang lf f50 fullsize-if-mobile">
-						<div>
-							<button type="button" class="details-mua-ngay big click-jquery-show-quick-cart upper whitecolor">Đặt mua ngay</button>
-						</div>
-						<br>
-					</div>
-					<div class="lf f50 fullsize-if-mobile"><a href="tel:{tmp.cf_hotline}" rel="nofollow" class="upper whitecolor details-tu-van medium"><span class="bold medium18">Tư vấn miễn phí</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}</a></div>
-				</div>
 				<div id="oi_time_line"></div>
 				<div>{tmp.clone-show-quick-cart}</div>
 			</div>
 		</div>
 		<div class="lf f20 fullsize-if-mobile">
 			<div class="left-menu-space">
+				<div class="text-center details-ankhi-hethang">
+					<div>
+						<button type="button" class="details-mua-ngay big click-jquery-show-quick-cart upper default-bg">Mua ngay</button>
+					</div>
+					<br>
+					<div><a href="cart?id={tmp.trv_id}" rel="nofollow" class="details-tu-van"><i class="fa fa-shopping-cart"></i> Thêm vào Fiỏ hàng</a></div>
+					<br>
+				</div>
+				<!--
 				<div class="details-support">
 					<div class="details-support-title">Hỗ trợ đặt hàng</div>
 					<div class="details-support-phone"><i class="fa fa-phone-square"></i> <span class="phone-numbers-block">{tmp.cf_call_dienthoai}</span></div>
 					<div class="details-support-yahoo fa d-none"> <span class="yahoo-nick-block">{tmp.cf_yahoo}</span></div>
 				</div>
 				<br />
+				-->
 				<div class="thread-details-mua">
 					<div class="thread-details-muapadding">
 						<div class="medium text-center">Còn <span id="oi_con_phieu" class="bold">0</span> phiếu</div>
@@ -85,23 +88,25 @@
 					</div>
 				</div>
 				<br>
-				<ul class="thread-details-slogan cf l19 upper small">
+				<ul class="thread-details-slogan">
 					<li>
 						<div><i class="fa fa-truck"></i> Giao hàng<br>
-							Toàn Quốc</div>
+							<span>Toàn Quốc</span></div>
 					</li>
 					<li>
 						<div><i class="fa fa-dollar"></i> Thanh toán khi<br>
-							Nhận hàng</div>
+							<span>Nhận hàng</span></div>
 					</li>
 					<li>
 						<div><i class="fa fa-refresh"></i> Đổi hàng<br>
 							<span>trong 7 ngày</span></div>
 					</li>
+					<!--
 					<li>
 						<div><i class="fa fa-check-square"></i> Bảo hành VIP<br>
 							<span>12 tháng</span></div>
 					</li>
+					-->
 				</ul>
 				<br>
 			</div>
@@ -145,6 +150,14 @@
 			</div>
 			<div class="col-sidebar-content custom-width-global-sidebar custom-width-product-sidebar fullsize-if-mobile">
 				<div id="main_right" class="product-right-space global-right-space">
+					<div class="thread-list-filter cf">
+						<div class="lf">Sản phẩm khác</div>
+					</div>
+					<br>
+					<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit thread-list thread-list100 thread-details-rightpost cf">
+						{tmp.other_post_right}
+					</ul>
+					<br>
 					<div class="fix-right-menu">{tmp.str_sidebar}</div>
 					<div id="fix_right_menu">&nbsp;</div>
 				</div>
@@ -152,10 +165,10 @@
 		</div>
 	</div>
 	<div id="fix_end_right_menu">&nbsp;</div>
-	<div class="details-other-title upper fcb">Sản phẩm khác</div>
+	<div class="details-other-title upper fcb">Sản phẩm cùng loại</div>
 	<br>
 	<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit thread-list thread-details-other cf">
-		{tmp.other_post_right}
+		{tmp.other_post_2right}
 	</ul>
 	<br>
 </div>

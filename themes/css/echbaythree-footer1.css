@@ -5,7 +5,14 @@
 #echbaythree-footer1,
 #echbaythree-footer1 a { color: #f2f2f2; }
 #echbaythree-footer1 .footer-menu { }
-#echbaythree-footer1 .footer-menu li { }
+#echbaythree-footer1 .footer-menu li {
+	margin-bottom: 5px;
+	font-size: 16px;
+}
 #echbaythree-footer1 .footer-menu a { }
-#echbaythree-footer1 .footer-menu .sub-menu { list-style: inside; }
+#echbaythree-footer1 .footer-menu .sub-menu {
+	list-style: inside;
+	padding-top: 6px;
+}
+#echbaythree-footer1 .footer-menu .sub-menu li { font-size: 13px; }
 #echbaythree-footer1 .footer-menu .sub-menu .sub-menu { display: none; }

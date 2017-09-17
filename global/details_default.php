@@ -828,8 +828,8 @@ $arr_main_content = array(
 	'tmp.trv_galerry' => $product_gallery,
 	'tmp.trv_list_color' => $product_list_color,
 	
-	'tmp.trv_mua' => $trv_mua,
-	'tmp.trv_max_mua' => $trv_max_mua,
+	'tmp.trv_mua' => (int) $trv_mua,
+	'tmp.trv_max_mua' => (int) $trv_max_mua,
 	'tmp.str_tinh_trang' => $str_tinh_trang,
 	
 	'tmp.blog_list_medium' => $blog_list_medium,
