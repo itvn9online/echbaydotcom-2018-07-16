@@ -1,6 +1,40 @@
 #echbaythree-home2 { }
-#echbaythree-home2 { }
-#echbaythree-home2 { }
+#echbaythree-home2 .home-node { padding: 25px 0; }
+#echbaythree-home2 .home-node-position {
+	padding-left: 20%;
+	position: relative;
+	border: 1px #ccc solid;
+	background: #FAFAF8;
+	border-radius: 10px 0 0 0;
+}
+#echbaythree-home2 .thread-home-c2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 20%;
+	border: 0 none;
+}
+#echbaythree-home2 .thread-home-c2:before { display: none; }
+#echbaythree-home2 .thread-home-c2 a:first-child {
+	display: block;
+	border-radius: 5px 0 0 0;
+	margin-top: -1px;
+	margin-left: -1px;
+	text-align: center;
+}
+#echbaythree-home2 .home-list-list { }
+#echbaythree-home2 .thread-list {
+	margin: 0;
+	border-left: 1px #ccc solid;
+}
+#echbaythree-home2 .thread-list-padding {
+	margin: 0;
+	border-top: 0 none;
+	border-left: 0 none;
+	border-bottom: 0 none;
+}
+#echbaythree-home2 .thread-list-mobilebg { padding: 0 10px 10px 10px; }
+#echbaythree-home2 .thread-list-xem { display: none; }
 #echbaythree-home2 { }
 #echbaythree-home2 { }
 #echbaythree-home2 { }
