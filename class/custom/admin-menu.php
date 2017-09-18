@@ -115,23 +115,6 @@ add_action('admin_menu', 'echbay_create_admin_menu');
 
 
 
-
-/*
-* Tải file theo thời gian thực
-*/
-function EBE_admin_get_realtime_for_file ( $v ) {
-	return filemtime( str_replace( EB_URL_OF_PLUGIN, EB_THEME_PLUGIN_INDEX, $v ) );
-}
-
-function EBE_admin_set_realtime_for_file ( $arr ) {
-	foreach ( $arr as $k => $v ) {
-		$arr[$k] = $v . '?v=' . EBE_admin_get_realtime_for_file( $v );
-	}
-	return $arr;
-}
-
-
-
 //
 $str_list_wordpress_rule = '';
 if ( mtv_id > 0 && strstr( $_SERVER['REQUEST_URI'], '/options-permalink.php' ) == true ) {
