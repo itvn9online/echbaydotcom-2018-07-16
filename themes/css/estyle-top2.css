@@ -74,7 +74,7 @@
 	width: 200px;
 	background: #fff;
 	line-height: 20px;
-	z-index: 2;
+	z-index: 3;
 }
 #estyle-top2 .nav-ngang li:hover .sub-menu { display: block; }
 #estyle-top2 .nav-ngang .sub-menu li {

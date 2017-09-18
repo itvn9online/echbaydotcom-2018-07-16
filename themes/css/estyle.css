@@ -24,3 +24,9 @@ body { font-family: Arial, Verdana, Helvetica, sans-serif; }
 	float: none;
 	width: 100%;
 }
+/* lất ngược lại ví trí của 2 nút theo yêu cầu estyle */
+.eb-quickcart-submit {
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row-reverse;
+}
