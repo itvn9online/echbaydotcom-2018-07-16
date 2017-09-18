@@ -19,3 +19,12 @@
 .blogs_menu_noidung .global-right-space,
 .blog_details_menu_noidung .global-right-space,
 .page_menu_noidung .global-right-space { padding-right: 8px; }
+.col-sidebar-content .echbay-widget-title {
+	background: #ecdf5d;
+	padding: 8px 5px 8px 15px;
+	border-radius: 4px 4px 0 0;
+	border: 0 none;
+}
+.col-sidebar-content .echbay-widget-title:before { display: none; }
+.col-sidebar-content .widget_echbay_category,
+.col-sidebar-content .widget_echbay_price { border-bottom: 15px #f1f1f1 solid; }
