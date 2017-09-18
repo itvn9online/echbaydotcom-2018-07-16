@@ -1,10 +1,9 @@
-#rongbay-footer2 { }
-#rongbay-footer2 { }
-#rongbay-footer2 { }
-#rongbay-footer2 { }
-#rongbay-footer2 { }
-#rongbay-footer2 { }
-#rongbay-footer2 { }
-#rongbay-footer2 { }
-#rongbay-footer2 { }
-#rongbay-footer2 { }
+#rongbay-footer2 {
+	padding: 20px 0;
+	background: #fff;
+}
+#rongbay-footer2,
+#rongbay-footer2 a { color: #414b56; }
+#rongbay-footer2 .footer-address-company { font-size: 15px; }
+#rongbay-footer2 .footer-address-company,
+#rongbay-footer2 .footer-address-info div { margin-bottom: 10px; }
