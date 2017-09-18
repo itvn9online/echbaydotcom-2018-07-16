@@ -119,9 +119,13 @@ add_action('admin_menu', 'echbay_create_admin_menu');
 /*
 * Tải file theo thời gian thực
 */
+function EBE_admin_get_realtime_for_file ( $v ) {
+	return filemtime( str_replace( EB_URL_OF_PLUGIN, EB_THEME_PLUGIN_INDEX, $v ) );
+}
+
 function EBE_admin_set_realtime_for_file ( $arr ) {
 	foreach ( $arr as $k => $v ) {
-		$arr[$k] = $v . '?v=' . filemtime( str_replace( EB_URL_OF_PLUGIN, EB_THEME_PLUGIN_INDEX, $v ) );
+		$arr[$k] = $v . '?v=' . EBE_admin_get_realtime_for_file( $v );
 	}
 	return $arr;
 }
@@ -186,7 +190,7 @@ function echbay_admin_styles() {
 	) ), 'add' );
 	
 	//
-	echo '<link href="' . web_link . eb_default_vaficon . '?v=' . $__cf_row['cf_web_version'] . '" rel="shortcut icon" type="image/png" />
+	echo '<link href="' . web_link . eb_default_vaficon . '?v=' . EBE_admin_get_realtime_for_file( web_link . eb_default_vaficon ) . '" rel="shortcut icon" type="image/png" />
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>';
 	
