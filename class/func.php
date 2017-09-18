@@ -681,15 +681,7 @@ class EchBayCommerce {
 	
 	// fix URL theo 1 chuẩn nhất định
 	function fix_url( $url ) {
-		if ( strstr( $url, '//' ) != strstr( $this->full_url (), '//' ) ) {
-			
-//			header ( 'Location:' . $url, true, 301 );
-			
-			wp_redirect( $url, 301 );
-			
-			exit();
-			
-		}
+		return _eb_fix_url( $url );
 	}
 	// short link
 	function _s_link ($id, $seo = 'p') {

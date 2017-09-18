@@ -24,10 +24,10 @@ $eb_all_themes_support["rongbay"]["cf_footer5_include_file"] = "rongbay-footer5.
 $eb_all_themes_support["rongbay"]["cf_footer6_include_file"] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["rongbay"]["cf_home1_include_file"] = "rongbay-home1.php";
-$eb_all_themes_support["rongbay"]["cf_home2_include_file"] = "rongbay-home2.php";
-$eb_all_themes_support["rongbay"]["cf_home3_include_file"] = "rongbay-home3.php";
-$eb_all_themes_support["rongbay"]["cf_home4_include_file"] = "rongbay-home4.php";
-$eb_all_themes_support["rongbay"]["cf_home5_include_file"] = "rongbay-home5.php";
+//$eb_all_themes_support["rongbay"]["cf_home2_include_file"] = "rongbay-home2.php";
+//$eb_all_themes_support["rongbay"]["cf_home3_include_file"] = "rongbay-home3.php";
+//$eb_all_themes_support["rongbay"]["cf_home4_include_file"] = "rongbay-home4.php";
+//$eb_all_themes_support["rongbay"]["cf_home5_include_file"] = "rongbay-home5.php";
 $eb_all_themes_support["rongbay"]["cf_home6_include_file"] = "home_widget.php";
 //
 $eb_all_themes_support["rongbay"]["cf_threaddetails_include_file"] = "rongbay-threaddetails.html";

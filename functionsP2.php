@@ -551,7 +551,10 @@ function _eb_fix_url( $url ) {
 	
 	//
 //	if ( strstr( $url, '//' ) != strstr( _eb_full_url (), '//' ) ) {
-	if ( strstr( strstr( _eb_full_url (), '//' ), strstr( $url, '//' ) ) == false ) {
+	// nếu không có dấu ? -> không có tham số nào được truyền trên URL
+	if ( strstr( _eb_full_url (), '?' ) == false
+	// nếu URL khác nhau
+	&& strstr( strstr( _eb_full_url (), '//' ), strstr( $url, '//' ) ) == false ) {
 //	if ( count( explode( strstr( $url, '//' ), strstr( _eb_full_url (), '//' ) ) ) == 1 ) {
 		
 //		header ( 'Location:' . $url, true, 301 );
@@ -561,6 +564,8 @@ function _eb_fix_url( $url ) {
 		exit();
 		
 	}
+	
+	return true;
 }
 
 // short link
