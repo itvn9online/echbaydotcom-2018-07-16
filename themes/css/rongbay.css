@@ -2,6 +2,7 @@
 	background: #fff;
 	border-radius: 4px 4px 0 0;
 }
+.col-sidebar-content .padding-sidebar-content { background: #fff; }
 .thread-module-name {
 	padding: 0 10px;
 	border: 1px #ccc solid;
@@ -12,3 +13,9 @@
 	right: 10px;
 	top: 7px;
 }
+.home_menu_noidung .global-right-space,
+.thread_list_menu_noidung .global-right-space,
+.thread_details_menu_noidung .global-right-space,
+.blogs_menu_noidung .global-right-space,
+.blog_details_menu_noidung .global-right-space,
+.page_menu_noidung .global-right-space { padding-right: 8px; }
