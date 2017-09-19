@@ -1572,7 +1572,7 @@ function ___eb_details_post_run ( r ) {
 	
 	// hiển thị con dấu hàng chính hãng
 	if ( _eb_product_chinhhang == 1 || _eb_product_chinhhang == "1" ) {
-		$('.aaaaa').after('<div class="tem-chinh-hang">&nbsp;</div>');
+		$('#export_img_product').after('<div class="tem-chinh-hang">&nbsp;</div>');
 	}
 	
 }
