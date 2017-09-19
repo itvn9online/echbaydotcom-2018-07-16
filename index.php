@@ -41,17 +41,21 @@ define( 'wp_postmeta', $wpdb->postmeta );
 
 
 
+// danh sách toàn bộ các theme được hỗ trợ
+$eb_all_themes_support = array();
+
+
+
+
+
 // mảng dùng để truyền css tương ứng vào theme
+/*
+* Các file CSS nằm trong plugin tổng sẽ được add trước
+* Sau đó là các css của theme -> nó sẽ replace các css được viết trước đó
+*/
 //$arr_for_add_js = array();
 $arr_for_add_css = array();
 //$arr_for_add_theme_css = array();
-
-
-
-
-
-// danh sách toàn bộ các theme được hỗ trợ
-$eb_all_themes_support = array();
 
 
 // Load các CSS ưu tiên mặc định
@@ -63,19 +67,15 @@ $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/mobile.css' ] = 0;
 $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/guest.css' ] = 1;
 
 //
-//$arr_for_add_theme_css[ EB_THEME_THEME . 'css/style.css' ] = 1;
-$arr_for_add_css[ EB_THEME_THEME . 'css/style.css' ] = 1;
-
-// css phục vụ việc điều chỉnh kích thước LI
-//$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
-$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
+//$arr_for_add_theme_css[ EB_THEME_URL . 'css/style.css' ] = 1;
+$arr_for_add_css[ EB_THEME_URL . 'css/style.css' ] = 1;
 
 // cho phiên bản mobile
-//$arr_for_add_theme_css[ EB_THEME_THEME . 'css/mobile.css' ] = 1;
-$arr_for_add_css[ EB_THEME_THEME . 'css/mobile.css' ] = 1;
+//$arr_for_add_theme_css[ EB_THEME_URL . 'css/mobile.css' ] = 1;
+$arr_for_add_css[ EB_THEME_URL . 'css/mobile.css' ] = 1;
 
 // tối ưu cho màn hình đầu tiên
-//$arr_for_add_css[ EB_THEME_THEME . 'css/first_screen.css' ] = 1;
+//$arr_for_add_css[ EB_THEME_URL . 'css/first_screen.css' ] = 1;
 
 
 
@@ -328,6 +328,10 @@ else {
 		)
 	);
 }
+
+// css phục vụ việc điều chỉnh kích thước LI -> load sau khi css của node được tải
+//$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
+$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
 
 
 

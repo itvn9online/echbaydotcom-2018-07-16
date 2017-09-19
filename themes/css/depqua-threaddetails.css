@@ -232,3 +232,5 @@
 .thread-list-details { margin: 0 -3px; }
 .thread-list-details li { width: 16.66% !important; }
 .thread-list-details .thread-list-padding { margin: 0 3px; }
+.thread-list-details .thread-list-giamoi { font-size: 18px; }
+.thread-list-details .thread-list-only { display: none; }

@@ -1,11 +1,13 @@
 /*
 * custom style
 */
+/*
 .thread-list-details .thread-list-gia { padding-top: 5px; }
 .thread-list-details .thread-list-giamoi {
 	padding: 5px 0 5px 0;
 	font-size: 14px;
 }
+*/
 .thread-list-filter {
 	border-bottom: 2px #333 solid;
 	line-height: 35px;
