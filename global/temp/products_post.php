@@ -102,7 +102,7 @@ if ( $post_id > 0 && $type != '' ) {
 		
 		echo '<br>set ping status: ' . $new_status;
 	}
-	// thay đổi trạng thái ping với ping
+	// cho phép công cụ tìm kiếm index hoặc noindex bài viết
 	else if ( isset( $_GET['set_noindex'] ) ) {
 		$set_noindex = trim( $_GET['set_noindex'] );
 		
@@ -119,6 +119,24 @@ if ( $post_id > 0 && $type != '' ) {
 		update_post_meta( $post_id, '_eb_product_noindex', $new_status );
 		
 		echo '<br>set index status: ' . $new_status;
+	}
+	// đặt làm hàng chính hãng
+	else if ( isset( $_GET['chinh_hang'] ) ) {
+		$chinh_hang = trim( $_GET['chinh_hang'] );
+		
+		// Đang mở -> ẩn
+		if ( $chinh_hang == 1 ) {
+			$new_status = 0;
+		}
+		// Mặc định là hiển thị
+		else {
+			$new_status = 1;
+		}
+		
+		//
+		update_post_meta( $post_id, '_eb_product_chinhhang', $new_status );
+		
+		echo '<br>Dat S.Pham chinh hang: ' . $new_status;
 	}
 	else {
 		echo '<br>method not found';

@@ -151,6 +151,7 @@ $eb_arr_type_custom_meta_box = array(
 //	'_eb_product_avatar' => 'hidden',
 	'_eb_product_giohethan' => $arr_product_giohethan,
 	'_eb_product_noindex' => 'checkbox',
+	'_eb_product_chinhhang' => 'checkbox',
 	
 	'_eb_product_size' => 'hidden',
 	'_eb_product_rating_value' => 'hidden',
@@ -202,6 +203,8 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
 	'_eb_product_giohethan' => 'Thiết lập giờ hết hạn cụ thể cho phần Ngày hết hạn ở trên. Nếu để trống trường này, giờ hết hạn sẽ là cuối ngày hôm đó (23:59)',
 	'_eb_product_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Bài viết này',
+	'_eb_product_chinhhang' => 'Đánh dấu để hiển thị nhãn Đảm bảo chính hãng',
+	
 	'_eb_category_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Danh mục này',
 );
 $eb_arr_placeholder_custom_meta_box['_eb_product_leech_source'] = $eb_arr_placeholder_custom_meta_box['_eb_product_old_url'];
@@ -241,6 +244,7 @@ $eb_arr_custom_meta_box = array(
 	'_eb_product_quantity' => EBE_get_lang('post_soluong'),
 	'_eb_product_ngayhethan' => 'Ngày hết hạn',
 	'_eb_product_giohethan' => 'Giờ hết hạn',
+	'_eb_product_chinhhang' => 'Đảm bảo chính hãng',
 	
 	'_eb_product_rating_value' => 'Điểm đánh giá',
 	'_eb_product_rating_count' => 'Tổng số đánh giá',

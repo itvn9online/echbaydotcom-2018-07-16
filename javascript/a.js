@@ -335,6 +335,7 @@ var eb_global_product_size = '',
 		
 		
 		//
+		WGR_check_if_value_this_is_one('_eb_product_chinhhang');
 		WGR_check_if_value_this_is_one('_eb_product_noindex');
 		WGR_check_if_value_this_is_one('_eb_ads_target');
 		

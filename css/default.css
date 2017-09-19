@@ -247,6 +247,7 @@ a {
 	display: inline-block;
 	text-align: center;
 }
+.fa-icons:hover { border-color: #f00; }
 .web-logo {
 	line-height: 50px;
 	background: center no-repeat;

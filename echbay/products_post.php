@@ -7,7 +7,9 @@
 .click-order-thread.fa-comments[data-val="closed"],
 .click-order-thread.fa-link[data-val="closed"],
 .click-order-thread.fa-paw[data-val="1"],
+.click-order-thread.fa-diamond[data-val="0"],
 .click-order-thread.fa-star { color: #333; }
+.click-order-thread.fa-diamond[data-val="1"] { color: #F90; }
 .quick-show-if-post { display: none !important; }
 .class-for-post .quick-show-if-post { display: inline-block !important; }
 .class-for-post .quick-show-if-paw,
@@ -230,7 +232,8 @@ if ( $totalThread > 0 ) {
 		$ping_status = $o->ping_status;
 		
 		//
-		$set_noindex = _eb_get_post_object( $o->ID, '_eb_product_noindex' );
+		$set_noindex = _eb_get_post_object( $o->ID, '_eb_product_noindex', 0 );
+		$chinh_hang = _eb_get_post_object( $o->ID, '_eb_product_chinhhang', 0 );
 		
 		//
 		echo '
@@ -261,6 +264,8 @@ if ( $totalThread > 0 ) {
 			<div><i title="Toggle status" data-ajax="' . $strLinkAjaxl . '&t=status&toggle_status=' . $trv_trangthai . '" class="fa fa-icons cur click-order-thread ' . ( ($trv_trangthai > 0) ? 'fa-unlock' : 'fa-lock blackcolor' ) . '"></i></div>
 			
 			<div class="quick-show-if-post quick-show-if-paw"><i title="Set noindex" data-val="' . $set_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=set_noindex&set_noindex=' . $set_noindex . '" class="fa fa-paw fa-icons cur click-order-thread"></i></div>
+			
+			<div class="quick-show-if-post quick-show-if-paw"><i title="Hàng chính hãng" data-val="' . $chinh_hang . '" data-ajax="' . $strLinkAjaxl . '&t=chinh_hang&chinh_hang=' . $chinh_hang . '" class="fa fa-diamond fa-icons cur click-order-thread"></i></div>
 		</div>
 	</td>
 	<td class="text-center">' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_date ) ) . '<br>' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_modified ) ) . '</td>

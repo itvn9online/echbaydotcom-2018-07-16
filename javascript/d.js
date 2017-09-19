@@ -270,7 +270,7 @@ function ___eb_details_slider_v2 () {
 	});
 	
 	//
-	dog('export_img_product', '<ul class="cf">' + str_thumb + '</ul>');
+//	dog('export_img_product', '<ul class="cf">' + str_thumb + '</ul>');
 	
 	
 	//
@@ -1567,6 +1567,12 @@ function ___eb_details_post_run ( r ) {
 			}
 			
 		})();
+	}
+	
+	
+	// hiển thị con dấu hàng chính hãng
+	if ( _eb_product_chinhhang == 1 || _eb_product_chinhhang == "1" ) {
+		$('.aaaaa').after('<div class="tem-chinh-hang">&nbsp;</div>');
 	}
 	
 }

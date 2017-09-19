@@ -540,6 +540,8 @@ a.eb-btn {
 .pdetail-slider-btn li:hover { color: #fff; }
 .pdetail-slider-btn li.selected { color: #c00; }
 */
+#export_img_product { display: none; }
+/*
 .product-details-thumb,
 .home-jcarousel-control { position: relative; }
 .jcarousel-control-prev,
@@ -584,6 +586,7 @@ a.eb-btn {
 	margin: 0 8px 3px 8px;
 }
 .details-thumb-center li:hover div { border-color: #999; }
+*/
 /* post list */
 .public-part-page {
 	line-height: 25px;
