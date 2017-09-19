@@ -210,7 +210,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		}
 		
 		//
-		print_r( $arr_select_data );
+//		print_r( $arr_select_data );
 		
 		
 		
