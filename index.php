@@ -46,6 +46,10 @@ define( 'wp_postmeta', $wpdb->postmeta );
 $arr_for_add_css = array();
 //$arr_for_add_theme_css = array();
 
+
+
+
+
 // danh sách toàn bộ các theme được hỗ trợ
 $eb_all_themes_support = array();
 
@@ -57,6 +61,21 @@ $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/default.css' ] = 0;
 $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/default2.css' ] = 1;
 $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/mobile.css' ] = 0;
 $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/guest.css' ] = 1;
+
+//
+//$arr_for_add_theme_css[ EB_THEME_THEME . 'css/style.css' ] = 1;
+$arr_for_add_css[ EB_THEME_THEME . 'css/style.css' ] = 1;
+
+// css phục vụ việc điều chỉnh kích thước LI
+//$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
+$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
+
+// cho phiên bản mobile
+//$arr_for_add_theme_css[ EB_THEME_THEME . 'css/mobile.css' ] = 1;
+$arr_for_add_css[ EB_THEME_THEME . 'css/mobile.css' ] = 1;
+
+// tối ưu cho màn hình đầu tiên
+//$arr_for_add_css[ EB_THEME_THEME . 'css/first_screen.css' ] = 1;
 
 
 
