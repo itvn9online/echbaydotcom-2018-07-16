@@ -1001,12 +1001,14 @@ function WGR_remove_js_multi_comment ( $a ) {
 function _eb_add_compiler_css ( $arr ) {
 //	print_r( $arr );
 	
+	/*
 	// nếu là dạng tester -> chỉ có 1 kiểu add thôi
 	if ( eb_code_tester == true ) {
 		_eb_add_compiler_css_v2( $arr );
 	}
 	// sử dụng thật thì có 2 kiểu add: inline và add link
 	else {
+		*/
 		$new_arr1 = array();
 		$new_arr2 = array();
 		
@@ -1022,17 +1024,28 @@ function _eb_add_compiler_css ( $arr ) {
 //		print_r( $new_arr1 );
 //		print_r( $new_arr2 );
 		
-		// inline
-		_eb_add_compiler_css_v2( $new_arr1 );
-		
-		// add link
-		_eb_add_compiler_css_v2( $new_arr2, 0 );
-	}
+		// nếu là dạng tester -> chỉ có 1 kiểu add thôi -> nhúng link CSS
+		if ( eb_code_tester == true ) {
+			echo '<!-- CSS node 0 -->' . "\n";
+			_eb_add_compiler_css_v2( $new_arr1 );
+			
+			echo '<!-- CSS node 1 -->' . "\n";
+			_eb_add_compiler_css_v2( $new_arr2 );
+		}
+		// sử dụng thật thì có 2 kiểu add: inline và add link
+		else {
+			// nhúng nội dung file css
+			_eb_add_compiler_css_v2( $new_arr1 );
+			
+			// nhúng link CSS
+			_eb_add_compiler_css_v2( $new_arr2, 0 );
+		}
+//	}
 }
 
 function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 	
-	// nhúng link
+	// nhúng link trực tiếp
 	if ( eb_code_tester == true ) {
 		$content_dir = basename( WP_CONTENT_DIR );
 //		echo $content_dir . "\n";
@@ -1055,7 +1068,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 	}
 	
 	
-	// add link
+	// nhúng link đã qua cache
 	if ( $css_inline != 1 ) {
 		$file_cache = '';
 		$new_arr = array();
