@@ -142,9 +142,12 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 //				$home_node_cat = _eb_load_post( $post_number, $args );
 			}
 		}
-//		else {
-			$home_node_cat = _eb_load_post( $post_number, $args );
-//		}
+		else {
+			$cat_name = EBE_get_lang('home_new');
+		}
+		
+		//
+		$home_node_cat = _eb_load_post( $post_number, $args );
 		
 		
 		//
@@ -174,8 +177,8 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_id' => $cat_ids,
 			'tmp.cat_link' => $cat_link != '' ? $cat_link : 'javascript:;',
-			'tmp.cat_name' => $title != '' ? $title : $cat_name,
-//			'tmp.cat_name' => $cat_name,
+//			'tmp.cat_name' => $title != '' ? $title : $cat_name,
+			'tmp.cat_name' => $cat_name,
 			'tmp.cat_count' => $cat_count,
 //			'tmp.title' => $title,
 			'tmp.description' => $description,

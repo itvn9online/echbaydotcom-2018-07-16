@@ -87,6 +87,9 @@ function WGR_widget_home_hot ( $instance ) {
 			$title = $categories->name;
 		}
 	}
+	else if ( $title == '' ) {
+		$title = EBE_get_lang('home_hot');
+	}
 	
 	// tìm theo trạng thái
 	if ( $post_eb_status > 0 ) {
