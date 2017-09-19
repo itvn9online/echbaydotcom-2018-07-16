@@ -122,9 +122,11 @@ function _eb_load_order ( $posts_per_page = 68, $_eb_query = array() ) {
 	}
 	
 	// lấy theo trạng thái hóa đơn
-	if ( isset( $_eb_query['status_by'] ) && $_eb_query['status_by'] != '' ) {
-		$strFilter .= " AND order_status = " . $_eb_query['status_by'];
+//	if ( isset( $_eb_query['status_by'] ) && (int) $_eb_query['status_by'] != '' ) {
+	if ( isset( $_eb_query['status_by'] ) ) {
+		$strFilter .= " AND order_status = " . (int) $_eb_query['status_by'];
 	}
+//	echo $strFilter . '<br>' . "\n";
 	
 	//
 	$sql = _eb_q( "SELECT *

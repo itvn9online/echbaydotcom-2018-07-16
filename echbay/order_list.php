@@ -35,7 +35,7 @@ $trang = isset( $_GET['trang'] ) ? (int)$_GET['trang'] : 1;
 
 //
 if ( isset( $_GET['tab'] ) ) {
-	$status_by = (int)$_GET['tab'];
+	$status_by = (int) $_GET['tab'];
 	
 	$strFilter .= " AND order_status = " . $status_by;
 	
@@ -153,7 +153,7 @@ $offset = ($trang - 1) * $threadInPage;
 		<tr class="eb-set-order-list-info hd_status' . $hd_trangthai . '">
 			<td class="text-center">
 				<div><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order&id=' . $o->order_id . '">
-					' . $o->order_sku . ' <i class="fa fa-edit"></i>
+					' . $o->order_sku . ' <i class="fa fa-edit bluecolor"></i>
 					<span class="time-for-send-bill d-block">(' . $ngay_gui_don . ')</span>
 				</a></div>
 			</td>

@@ -65,7 +65,7 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 		}
 		
 		//
-		f_tr.find('.eb-to-product').append( '<div><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">- ' + arr[i].name + ' x ' + arr[i].quan + ' <i class="fa fa-eye"></i></a></div>' );
+		f_tr.find('.eb-to-product').append( '<div><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">- ' + arr[i].name + ' x ' + arr[i].quan + ' <i class="fa fa-eye bluecolor"></i></a></div>' );
 		
 	}
 	
