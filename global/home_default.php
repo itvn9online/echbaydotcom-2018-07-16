@@ -21,7 +21,8 @@ $arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/home_default.css' ] = 1;
 //
 foreach ( $arr_includes_home_file as $v ) {
 //	$arr_for_add_css[ EBE_get_css_for_config_design( basename( $v ) ) ] = 1;
-	$arr_for_add_css[ WGR_check_add_add_css_themes_or_plugin( basename( $v ) ) ] = 1;
+//	$arr_for_add_css[ WGR_check_add_add_css_themes_or_plugin( basename( $v ) ) ] = 1;
+	$arr_for_add_theme_css[ WGR_check_add_add_css_themes_or_plugin( basename( $v ) ) ] = 1;
 }
 
 

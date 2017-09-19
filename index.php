@@ -282,7 +282,8 @@ if ( $__cf_row['cf_threadnode_include_file'] != '' ) {
 		
 		define( '__eb_thread_template', file_get_contents( $tmp_theme, 1 ) );
 		
-		$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_threadnode_include_file' ], '.html' ) ] = 1;
+//		$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_threadnode_include_file' ], '.html' ) ] = 1;
+		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_threadnode_include_file' ], '.html' ) ] = 1;
 	}
 	// sau đó mới là của plugin
 	else if ( file_exists( $tmp_plugin ) ) {
@@ -291,6 +292,7 @@ if ( $__cf_row['cf_threadnode_include_file'] != '' ) {
 		define( '__eb_thread_template', file_get_contents( $tmp_plugin, 1 ) );
 		
 		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_threadnode_include_file' ], '.html' ) ] = 1;
+		$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_threadnode_include_file' ], '.html' ) ] = 1;
 	}
 	else {
 		define( '__eb_thread_template', 'File ' . $inc_threadnode . ' not exist' );

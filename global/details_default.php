@@ -914,7 +914,8 @@ if ( $__post->post_type == 'post' && $__cf_row['cf_threaddetails_include_file'] 
 //		$arr_includes_top_file[] = $tmp_theme;
 		$main_content = file_get_contents( $tmp_theme, 1 );
 		
-		$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_threaddetails_include_file' ], '.html' ) ] = 1;
+//		$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_threaddetails_include_file' ], '.html' ) ] = 1;
+		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_threaddetails_include_file' ], '.html' ) ] = 1;
 	}
 	// sau đó mới là của plugin
 	else if ( file_exists( $tmp_plugin ) ) {
@@ -923,7 +924,8 @@ if ( $__post->post_type == 'post' && $__cf_row['cf_threaddetails_include_file'] 
 //		$arr_includes_top_file[] = $tmp_plugin;
 		$main_content = file_get_contents( $tmp_plugin, 1 );
 		
-		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_threaddetails_include_file' ], '.html' ) ] = 1;
+//		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_threaddetails_include_file' ], '.html' ) ] = 1;
+		$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_threaddetails_include_file' ], '.html' ) ] = 1;
 	}
 	/*
 	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'themes/threaddetails/' . $__cf_row['cf_threaddetails_include_file'];
