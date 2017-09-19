@@ -52,7 +52,7 @@ _eb_add_compiler_css( $arr_for_add_css );
 
 // các css ít quan trọng hơn sẽ được add về phía sau, dưới dạng link
 //_eb_add_compiler_link_css( $arr_for_add_link_css, 'link' );
-_eb_add_compiler_css( $arr_for_add_theme_css );
+//_eb_add_compiler_css( $arr_for_add_theme_css );
 
 
 // phần style này phải đặt ở cuối cùng, để nó replace tất cả các style tĩnh trước đó
