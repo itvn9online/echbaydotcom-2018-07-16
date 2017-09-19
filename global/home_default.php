@@ -15,8 +15,8 @@ $arr_includes_home_file[] = EB_THEME_PLUGIN_INDEX . 'themes/home/echbaytwo-home4
 
 
 // load css cho home default
-//$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/home_default.css' ] = 1;
-$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/home_default.css' ] = 1;
+$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/home_default.css' ] = 1;
+//$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/home_default.css' ] = 1;
 
 //
 foreach ( $arr_includes_home_file as $v ) {
