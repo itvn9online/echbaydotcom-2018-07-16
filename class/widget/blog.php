@@ -107,14 +107,17 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
 		$max_width = isset( $instance ['max_width'] ) ? $instance ['max_width'] : '';
 		$post_cloumn = isset( $instance ['post_cloumn'] ) ? $instance ['post_cloumn'] : '';
+		
 		$html_template = isset( $instance ['html_template'] ) ? $instance ['html_template'] : '';
 		$html_template = str_replace( '.html', '', $html_template );
+		
 		$post_type = isset( $instance ['post_type'] ) ? $instance ['post_type'] : '';
 		
 		$html_node = isset( $instance ['html_node'] ) ? $instance ['html_node'] : '';
 		$html_node = str_replace( '.html', '', $html_node );
 		
 		$ads_eb_status = isset( $instance ['ads_eb_status'] ) ? $instance ['ads_eb_status'] : 0;
+		$post_eb_status = isset( $instance ['post_eb_status'] ) ? $instance ['post_eb_status'] : 0;
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
 		
@@ -197,13 +200,24 @@ class ___echbay_widget_random_blog extends WP_Widget {
 				)
 			);
 		}
-//		print_r( $arr_select_data );
+		
+		// riêng với từng post type
+		if ( $post_type == 'post' ) {
+			if ( $post_eb_status > 0 ) {
+				$arr_select_data['meta_key'] = '_eb_product_status';
+				$arr_select_data['meta_value'] = $post_eb_status;
+			}
+		}
+		
+		//
+		print_r( $arr_select_data );
 		
 		
 		
 		// nếu là node của sản phẩm -> dùng bản mặc định luôn
 		if ( $html_node == 'thread_node' ) {
 			$html_node = __eb_thread_template;
+			$html_template = 'widget_echbay_thread';
 		} else {
 			$html_node = EBE_get_page_template( $html_node );
 			
