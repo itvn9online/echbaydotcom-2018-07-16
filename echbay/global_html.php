@@ -1,5 +1,34 @@
 <div id="oi_admin_popup"></div>
-<div class="d-none">
+<div class="d-none"> 
+	<!-- template cho phần xem theo khoảng thời gian -->
+	<div id="template_for_time_line">
+		<input title="Xem theo khoảng thời gian" type="button" id="oi_time_line_name" value="7 ngày qua" class="red-button small cur" />
+		<div class="connect-padding">
+			<div class="cf">
+				<div class="lf" style="width:20%;">
+					<div class="hode-hide-popup-show-day" style="height:150px;margin-right:30px;">&nbsp;</div>
+				</div>
+				<div class="lf" style="width:80%">
+					<div class="cf">
+						<div class="bold lf f50">Ph\u1ea1m vi ng\u00e0y</div>
+						<div title="\u0110\u00f3ng" align="right" class="lf f50 cur click-how-to-hide-day-selected">\u0110\u00f3ng [x]</div>
+					</div>
+					<div class="ad-pham-vi-ngay">' + '
+						<input type="text" value="' + betwwen1 + '" id="oi_input_value_tu_ngay" maxlength="10" />
+						' + '
+						<input type="text" value="' + betwwen2 + '" id="oi_input_value_den_ngay" maxlength="10" />
+						' + '
+						<input type="button" value="Xem" id="oi_click_get_show_by_day" />
+						' + '</div>
+					<ul class="clearfix">
+						{jmp.str}
+					</ul>
+				</div>
+			</div>
+			<div class="hode-hide-popup-show-day" style="height:30px;margin-top:20px;">&nbsp;</div>
+		</div>
+	</div>
+	<!-- link nhanh cho phần tạo menu -->
 	<div id="content-for-quick-add-menu">
 		<ul class="buttom-for-quick-add-menu">
 			<li>

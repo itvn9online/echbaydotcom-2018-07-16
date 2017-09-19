@@ -89,7 +89,14 @@ $offset = ($trang - 1) * $threadInPage;
 }
 </style>
 <div class="wrap">
-	<h1>Danh sách đơn hàng (Trang <?php echo number_format( $trang ) . '/ ' . number_format( $totalPage ); ?>)</h1>
+	<div class="cf">
+		<div class="lf f60">
+			<h1>Danh sách đơn hàng - <span><?php echo number_format($totalThread); ?></span> đơn (Trang <?php echo number_format( $trang ) . '/ ' . number_format( $totalPage ); ?>)</h1>
+		</div>
+		<div class="lf f40 cf">
+			<div id="oi_quick_connect" class="text-right cf"></div>
+		</div>
+	</div>
 </div>
 <br>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list ip-invoice-alert">
@@ -208,3 +215,10 @@ if ($totalPage > 1) {
 ?>
 </div>
 <br>
+<script type="text/javascript">
+var strLinkPager = '<?php echo $strLinkPager; ?>',
+	type_search = '',
+	type_display = '';
+
+WGR_view_by_time_line( strLinkPager + type_search, type_display );
+</script>

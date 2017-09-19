@@ -1560,7 +1560,7 @@ function EBE_get_current_wp_module ( s ) {
 		a = 'menu';
 	}
 //	admin_act == 'menu'
-	console.log(a);
+//	console.log(a);
 	
 	return a;
 }
@@ -1619,6 +1619,107 @@ function WGR_check_if_value_this_is_one ( a ) {
 	}
 	return false;
 }
+
+
+
+function WGR_view_by_time_line ( time_lnk, time_select, run_function ) {
+	
+	//
+	console.log('test');
+	return false;
+	
+	//
+	if ( dog('oi_quick_connect') == null ) {
+		console.log('oi_quick_connect not found');
+		return false;
+	}
+	
+	//
+	if (typeof time_lnk == 'undefined' || time_lnk == '') {
+		console.log('time_lnk not found');
+		return false;
+	}
+	time_lnk += '&d=';
+	
+	//
+	if (typeof time_select == 'undefined') {
+		time_select = '';
+	}
+	var arr_quick_connect = {
+			hrs24: '24 gi\u1edd qua',
+			today: 'H\u00f4m nay',
+			thismonth: 'Th\u00e1ng n\u00e0y',
+			yesterday: 'H\u00f4m qua',
+			lastmonth: 'Th\u00e1ng tr\u01b0\u1edbc',
+			last7days: '7 ng\u00e0y qua',
+			last30days: '30 ng\u00e0y qua',
+			all: 'To\u00e0n b\u1ed9 th\u1eddi gian'
+		},
+		str = '',
+		click_click_lick_lick = false,
+		_get = function(p) {
+			var wl = window.location.href,
+				a = wl.split(p + '='),
+				s = '';
+			if (a.length > 1) {
+				s = a[1].split('&')[0];
+			}
+			return s;
+		},
+		__hide_popup_day_select = function() {
+			setTimeout(function() {
+				click_click_lick_lick = false;
+			}, 200);
+			$('#oi_quick_connect .connect-padding').hide();
+		},
+		betwwen1 = _get('d1'),
+		betwwen2 = _get('d2');
+	
+	//
+	for (var x in arr_quick_connect) {
+		if (x == time_select && dog('oi_time_line_name') != null) {
+			dog('oi_time_line_name').value = arr_quick_connect[x];
+		}
+		str += '<li><a href="' + time_lnk + x + '">' + arr_quick_connect[x] + '</a></li>';
+	}
+	
+	//
+	if ( betwwen1 != '' && betwwen2 != '' ) {
+		dog('oi_time_line_name').value = betwwen1 + ' - ' + betwwen2;
+	}
+	dog('oi_quick_connect').innerHTML += str;
+	if (run_function && typeof run_function == 'function') run_function(arr_quick_connect);
+	$('.hode-hide-popup-show-day').hover(function() {
+		__hide_popup_day_select()
+	});
+	$('.click-how-to-hide-day-selected').click(function() {
+		__hide_popup_day_select()
+	});
+	$('#oi_quick_connect').hover(function() {
+		if (click_click_lick_lick == false) {
+			click_click_lick_lick = true;
+			$('#oi_quick_connect .connect-padding').show()
+		}
+	});
+	_global_js_eb.select_date('#oi_input_value_tu_ngay', {
+		numberOfMonths: 3,
+		defaultDate: '-2m'
+	});
+	_global_js_eb.select_date('#oi_input_value_den_ngay');
+	$('#oi_click_get_show_by_day').click(function() {
+		var a = $('#oi_input_value_tu_ngay').val(),
+			b = $('#oi_input_value_den_ngay').val();
+		if (a != '') {
+			if (b == '') {
+				b = a
+			}
+			window.location = web_link + time_lnk + 'between&d1=' + a + '&d2=' + b
+		} else {
+			alert('Ch\u1ecdn ng\u00e0y th\u00e1ng c\u1ea7n xem')
+		}
+	})
+}
+
 
 
 

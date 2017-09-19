@@ -608,6 +608,38 @@ input[id="_eb_category_order"] { width: 90px; }
 }
 .div-inline-block div { display: inline-block; }
 .div-inline-block div.d-none { display: none !important; }
+#oi_quick_connect { position: relative }
+#oi_quick_connect .connect-padding {
+	background: #fff;
+	position: absolute;
+	display: none;
+	right: 0;
+	width: 400px;
+	text-align: left;
+	padding: 10px;
+	margin: 0;
+	border: 1px #ccc solid;
+}
+#oi_quick_connect ul {
+	margin: 0;
+	padding: 0;
+}
+#oi_quick_connect li {
+	width: 50%;
+	float: left;
+	line-height: 25px;
+}
+#oi_quick_connect input {
+	height: 25px;
+	padding: 0;
+	border: 1px #ccc solid;
+	border-radius: 6px;
+}
+#oi_quick_connect input[type=text] {
+	width: 110px;
+	margin-right: 15px;
+}
+#oi_quick_connect input[type=button] { padding: 0 10px; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

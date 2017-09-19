@@ -81,7 +81,7 @@ var eb_global_product_size = '',
 	var a = win_href.split('&tab=');
 	if ( a.length > 1 ) {
 		a = a[1].split('&')[0].split('#')[0];
-		console.log(a);
+//		console.log(a);
 		
 		$('.eb-admin-tab a[data-tab="' +a+ '"]').addClass('selected');
 	} else {
