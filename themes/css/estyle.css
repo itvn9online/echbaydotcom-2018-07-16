@@ -25,8 +25,38 @@ body { font-family: Arial, Verdana, Helvetica, sans-serif; }
 	width: 100%;
 }
 /* lất ngược lại ví trí của 2 nút theo yêu cầu estyle */
+/*
 .eb-quickcart-submit {
 	display: -webkit-flex;
 	display: flex;
 	flex-direction: row-reverse;
 }
+*/
+.eb-quickcart-submit {
+	height: 55px;
+	position: relative;
+}
+.eb-quickcart-table button {
+	height: 41px;
+	position: absolute;
+}
+.eb-quickcart-submit #sb_submit_cart { left: 42%; }
+.eb-quickcart-submit .btn-addto-cart {
+	width: 35%;
+	left: 2%;
+	font-size: 14px;
+}
+.style-for-mobile .eb-quickcart-submit {
+	height: auto;
+	margin-bottom: 20px;
+}
+.style-for-mobile .eb-quickcart-submit #sb_submit_cart,
+.style-for-mobile .eb-quickcart-submit .btn-addto-cart {
+	position: relative;
+	left: auto;
+	width: 60%;
+	display: block;
+	margin-bottom: 10px;
+}
+.details-support-phone,
+.details-support-phone a { color: #f00; }

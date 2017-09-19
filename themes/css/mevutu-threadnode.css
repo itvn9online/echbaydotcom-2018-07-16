@@ -47,12 +47,12 @@
 }
 .thread-list-title { padding: 5px 0; }
 .thread-list-title * {
-	height: 44px;
-	line-height: 22px;
+	height: 40px;
+	line-height: 20px;
 	overflow: hidden;
 	font-weight: normal;
-	font-size: 16px;
-	padding: 0 10px;
+	font-size: 15px;
+	padding: 0 5px;
 }
 .thread-list-mobilebg {
 	background: -webkit-linear-gradient( bottom, rgba( 0, 0, 0, .2 ), rgba( 0, 0, 0, .1 ), rgba( 0, 0, 0, .01 ) );

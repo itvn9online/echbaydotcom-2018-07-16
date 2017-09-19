@@ -41,23 +41,30 @@ if ( $__cf_row['cf_facebook_id'] != '' ) {
 }
 */
 
+
+
+
 // một số css liên quan tới việc hiển thị màn hình đầu tiên, giúp tăng điểm trên google page speed
 //_eb_add_css( $arr_for_add_css );
 //_eb_add_compiler_css( $arr_for_add_css + $arr_for_add_theme_css );
 _eb_add_compiler_css( $arr_for_add_css );
+
+
+// các css ít quan trọng hơn sẽ được add về phía sau, dưới dạng link
+//_eb_add_compiler_link_css( $arr_for_add_link_css, 'link' );
+//_eb_add_compiler_css( $arr_for_add_theme_css );
+
+
+// phần style này phải đặt ở cuối cùng, để nó replace tất cả các style tĩnh trước đó
 ?>
 <style type="text/css">
 /* EchBay custom CSS for replace default CSS by plugin or theme */
-<?php echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
+<?php
+
+echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
+
 ?>
 </style>
-<?php
-_eb_add_compiler_css( $arr_for_add_theme_css );
-
-//
-//_eb_add_compiler_link_css( $arr_for_add_link_css, 'link' );
-
-?>
 <script type="text/javascript">
 /* data_id */
 <?php include EB_THEME_PLUGIN_INDEX . 'data_id.php'; ?>

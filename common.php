@@ -113,10 +113,14 @@ $arr_for_add_js = array(
 
 
 
-$arr_for_add_theme_css[ EB_THEME_THEME . 'css/style.css' ] = 1;
+//
+//$arr_for_add_theme_css[ EB_THEME_THEME . 'css/style.css' ] = 1;
+$arr_for_add_css[ EB_THEME_THEME . 'css/style.css' ] = 1;
 // css phục vụ việc điều chỉnh kích thước LI
-$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
-$arr_for_add_theme_css[ EB_THEME_THEME . 'css/mobile.css' ] = 1;
+//$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
+$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;
+//$arr_for_add_theme_css[ EB_THEME_THEME . 'css/mobile.css' ] = 1;
+$arr_for_add_css[ EB_THEME_THEME . 'css/mobile.css' ] = 1;
 //$arr_for_add_css[ EB_THEME_THEME . 'css/first_screen.css' ] = 1;
 
 

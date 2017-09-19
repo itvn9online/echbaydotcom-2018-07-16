@@ -301,7 +301,8 @@ function EBE_get_page_template ( $page_name = '', $dir = EB_THEME_HTML ) {
 	global $wpdb;
 	global $__cf_row;
 	global $arr_for_add_css;
-	global $arr_for_add_theme_css;
+//	global $arr_for_add_theme_css;
+	global $arr_for_add_css;
 	global $arr_for_show_html_file_load;
 	
 	//
@@ -337,7 +338,8 @@ function EBE_get_page_template ( $page_name = '', $dir = EB_THEME_HTML ) {
 		$css = EB_THEME_THEME . 'css/' . $page_name . '.css';
 //		echo $css;
 		if ( file_exists( $css ) ) {
-			$arr_for_add_theme_css[ $css ] = 1;
+//			$arr_for_add_theme_css[ $css ] = 1;
+			$arr_for_add_css[ $css ] = 1;
 			
 			$arr_for_show_html_file_load[] = '<!-- theme CSS: ' . $page_name . ' -->';
 		}

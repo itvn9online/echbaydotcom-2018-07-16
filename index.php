@@ -44,7 +44,7 @@ define( 'wp_postmeta', $wpdb->postmeta );
 // mảng dùng để truyền css tương ứng vào theme
 //$arr_for_add_js = array();
 $arr_for_add_css = array();
-$arr_for_add_theme_css = array();
+//$arr_for_add_theme_css = array();
 
 // danh sách toàn bộ các theme được hỗ trợ
 $eb_all_themes_support = array();
