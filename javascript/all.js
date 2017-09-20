@@ -1622,11 +1622,11 @@ function WGR_check_if_value_this_is_one ( a ) {
 
 
 
-function WGR_view_by_time_line ( time_lnk, time_select, run_function ) {
+function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 	
 	//
-	console.log('test');
-	return false;
+//	console.log('test');
+//	return false;
 	
 	//
 	if ( dog('oi_quick_connect') == null ) {
@@ -1639,49 +1639,115 @@ function WGR_view_by_time_line ( time_lnk, time_select, run_function ) {
 		console.log('time_lnk not found');
 		return false;
 	}
-	time_lnk += '&d=';
+//	time_lnk += '&d=';
 	
 	//
-	if (typeof time_select == 'undefined') {
-		time_select = '';
+	if (typeof private_cookie == 'undefined' || private_cookie == '') {
+		private_cookie = 'default_cookie_name_for_time_line';
 	}
+	
+	//
 	var arr_quick_connect = {
+			all: 'To\u00e0n b\u1ed9 th\u1eddi gian',
 			hrs24: '24 gi\u1edd qua',
 			today: 'H\u00f4m nay',
-			thismonth: 'Th\u00e1ng n\u00e0y',
 			yesterday: 'H\u00f4m qua',
-			lastmonth: 'Th\u00e1ng tr\u01b0\u1edbc',
 			last7days: '7 ng\u00e0y qua',
 			last30days: '30 ng\u00e0y qua',
-			all: 'To\u00e0n b\u1ed9 th\u1eddi gian'
+			thismonth: 'Th\u00e1ng n\u00e0y',
+			lastmonth: 'Th\u00e1ng tr\u01b0\u1edbc',
+			custom_time: 'Tùy chỉnh'
 		},
 		str = '',
-		click_click_lick_lick = false,
+//		click_click_lick_lick = false,
 		_get = function(p) {
-			var wl = window.location.href,
-				a = wl.split(p + '='),
+			var wl = window.location.href.replace(/\&amp\;/g, '&').replace(/\?/g, '&'),
+				a = wl.split('&' + p + '='),
 				s = '';
 			if (a.length > 1) {
 				s = a[1].split('&')[0];
 			}
 			return s;
 		},
+		/*
 		__hide_popup_day_select = function() {
 			setTimeout(function() {
 				click_click_lick_lick = false;
 			}, 200);
 			$('#oi_quick_connect .connect-padding').hide();
 		},
+		*/
 		betwwen1 = _get('d1'),
-		betwwen2 = _get('d2');
+		betwwen2 = _get('d2'),
+		sl = '';
+	
+	//
+	if (typeof time_select == 'undefined' || time_select == '') {
+		time_select = _get('d');
+		
+		if (time_select == '') {
+			time_select = g_func.getc(private_cookie);
+			console.log(time_select);
+			if ( time_select == null ) {
+				time_select = '';
+			}
+		}
+	}
+//	console.log(time_select);
 	
 	//
 	for (var x in arr_quick_connect) {
+		/*
 		if (x == time_select && dog('oi_time_line_name') != null) {
 			dog('oi_time_line_name').value = arr_quick_connect[x];
 		}
-		str += '<li><a href="' + time_lnk + x + '">' + arr_quick_connect[x] + '</a></li>';
+		*/
+		
+		//
+		sl = '';
+		if ( x == time_select ) {
+			sl = ' selected="selected"';
+		}
+		
+		//
+//		str += '<li><a href="' + time_lnk + x + '">' + arr_quick_connect[x] + '</a></li>';
+		str += '<option value="' + x + '"' + sl + '>' + arr_quick_connect[x] + '</option>';
 	}
+	
+	//
+	$('#oi_quick_connect').html( '<select>' + str + '</select>' );
+	
+	//
+	$('#oi_quick_connect select').off('change').change(function () {
+		var a = $(this).val() || '';
+//		console.log(a);
+		
+		// nếu là custom time -> hiển thị khung chọn thời gian
+		if ( a == 'custom_time' ) {
+		}
+		// nếu không
+		else {
+			// nếu là all time -> xóa cookie đi cho đỡ lằng nhằng
+			if ( a == 'all' ) {
+				g_func.delck(private_cookie);
+			}
+			// lưu cookie cho phiên này
+			else {
+				g_func.setc(private_cookie, a, 7 );
+			}
+			
+			// chuyển đến link cần đến
+			setTimeout(function () {
+				window.location = time_lnk + '&d=' + a;
+			}, 600);
+		}
+	});
+	
+	//
+	return false;
+	
+	
+	
 	
 	//
 	if ( betwwen1 != '' && betwwen2 != '' ) {

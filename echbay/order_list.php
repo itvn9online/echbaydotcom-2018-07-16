@@ -1,5 +1,82 @@
 <?php
 
+function WGR_cereate_order_filter($o) {
+	global $date_server;
+//	echo $date_server . '<br>' . "\n";
+	
+	global $year_curent;
+//	echo $year_curent . '<br>' . "\n";
+	
+	global $month_curent;
+//	echo $month_curent . '<br>' . "\n";
+	
+	global $day_curent;
+//	echo $day_curent . '<br>' . "\n";
+	
+	
+	//
+	if ($o == 'all') {
+		return '';
+	}
+	
+	
+	//
+	$return_filter = '';
+	switch ($o) {
+		case "between" :
+			if (isset ( $_GET ['d1'] ) && ($d1 = trim ( $_GET ['d1'] )) != '') {
+				if (isset ( $_GET ['d2'] ) && ($d2 = trim ( $_GET ['d2'] )) != '') {
+				} else {
+					$d2 = $d1;
+				}
+				$thang_trc = strtotime ( $d1 );
+				$thang_sau = strtotime ( $d2 ) + (24 * 3600);
+				$return_filter = "order_time > " . $thang_trc . " AND order_time < " . $thang_sau;
+			}
+			break;
+		case "thismonth" :
+			$thang_nay = strtotime ( $year_curent . "-" . $month_curent . "-01" );
+			$return_filter = " order_time > " . $thang_nay;
+			break;
+		case "yesterday" :
+			$str_date = strtotime ( $date_server );
+			$return_filter = " (order_time > " . ($str_date - (24 * 3600)) . " AND order_time < " . $str_date . ") ";
+			break;
+		case "lastmonth" :
+			$_month_curent = $month_curent - 1;
+			$_year_curent = $year_curent;
+			if ($_month_curent == 0) {
+				$_month_curent = 12;
+				$_year_curent -= 1;
+			}
+			$thang_truoc = strtotime ( $_year_curent . "-" . $_month_curent . "-01" );
+			$thang_nay = strtotime ( $year_curent . "-" . $month_curent . "-01" );
+			$return_filter = "(order_time > " . $thang_truoc . " AND order_time < " . $thang_nay . ")";
+			break;
+		case "last7days" :
+			$return_filter = "order_time > " . (date_time - (24 * 3600 * 7));
+			break;
+		case "last30days" :
+			$return_filter = "order_time > " . (date_time - (24 * 3600 * 30));
+			break;
+		case "today" :
+			$return_filter = "order_time > " . strtotime ( $date_server );
+			break;
+		case "hrs24" :
+			$return_filter = " order_time > " . (date_time - (24 * 3600));
+			break;
+		default :
+			$return_filter = "order_time > " . (date_time - (24 * 3600 * 7));
+//			$return_filter = " order_time > " . (date_time - (24 * 3600));
+	}
+	
+	if ($return_filter != "") {
+		return " AND " . $return_filter;
+	}
+	
+	return '';
+}
+
 
 
 
@@ -33,6 +110,7 @@ $trang = isset( $_GET['trang'] ) ? (int)$_GET['trang'] : 1;
 //echo $trang . '<br>' . "\n";
 
 
+
 //
 if ( isset( $_GET['tab'] ) ) {
 	$status_by = (int) $_GET['tab'];
@@ -41,6 +119,31 @@ if ( isset( $_GET['tab'] ) ) {
 	
 	$strLinkPager .= '&tab=' . $status_by;
 }
+$jsLinkPager = $strLinkPager;
+
+
+// đặt cookie riêng cho từng bộ lọc, nếu không có -> sẽ sử dụng cookie dùng chung
+$str_for_order_cookie_name = 'get_order_by_time_line';
+
+// lấy theo cookie nếu có
+if( ! isset ( $_GET ['d'] ) && isset( $_COOKIE[$str_for_order_cookie_name] ) ) {
+	$_GET ['d'] = $_COOKIE[$str_for_order_cookie_name];
+}
+
+// lọc theo ngày tháng
+$filterDay = isset( $_GET['d'] ) ? $_GET['d'] : '';
+
+if ( $filterDay != '' ) {
+	$strFilter .= WGR_cereate_order_filter ( $filterDay );
+	
+	$strLinkPager .= '&d=' . $filterDay;
+}
+//echo $strFilter . '<br>' . "\n";
+//exit();
+
+
+
+
 
 // tổng số đơn hàng
 $sql = _eb_q ( "SELECT COUNT(order_id)
@@ -94,7 +197,7 @@ $offset = ($trang - 1) * $threadInPage;
 			<h1>Danh sách đơn hàng - <span><?php echo number_format($totalThread); ?></span> đơn (Trang <?php echo number_format( $trang ) . '/ ' . number_format( $totalPage ); ?>)</h1>
 		</div>
 		<div class="lf f40 cf">
-			<div id="oi_quick_connect" class="text-right cf"></div>
+			<div id="oi_quick_connect" class="cf"></div>
 		</div>
 	</div>
 </div>
@@ -117,7 +220,8 @@ $offset = ($trang - 1) * $threadInPage;
 	
 	//
 	$sql = _eb_load_order( $threadInPage, array(
-		'status_by' => $status_by,
+//		'status_by' => $status_by,
+		'filter_by' => $strFilter,
 		'offset' => $offset
 	) );
 //	print_r( $sql ); exit();
@@ -216,9 +320,5 @@ if ($totalPage > 1) {
 </div>
 <br>
 <script type="text/javascript">
-var strLinkPager = '<?php echo $strLinkPager; ?>',
-	type_search = '',
-	type_display = '';
-
-WGR_view_by_time_line( strLinkPager + type_search, type_display );
+WGR_view_by_time_line( '<?php echo $jsLinkPager; ?>', '<?php echo $filterDay; ?>', '<?php echo $str_for_order_cookie_name; ?>' );
 </script>

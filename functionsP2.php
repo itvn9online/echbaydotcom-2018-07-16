@@ -126,6 +126,13 @@ function _eb_load_order ( $posts_per_page = 68, $_eb_query = array() ) {
 	if ( isset( $_eb_query['status_by'] ) ) {
 		$strFilter .= " AND order_status = " . (int) $_eb_query['status_by'];
 	}
+	
+	// lấy theo filter có sẵn
+	if ( isset( $_eb_query['filter_by'] ) ) {
+		$strFilter .= " " . $_eb_query['filter_by'];
+	}
+	
+	//
 //	echo $strFilter . '<br>' . "\n";
 	
 	//
