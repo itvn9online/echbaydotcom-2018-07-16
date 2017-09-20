@@ -16,3 +16,5 @@
 	margin-bottom: 10px;
 }
 #estyle-footer2 .footer-address-info a { text-decoration: underline; }
+#estyle-footer2 .footer-address-hotline:after,
+#estyle-footer2 .footer-address-cell { display: none; }

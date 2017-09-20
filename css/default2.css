@@ -631,7 +631,14 @@ a.eb-btn {
 	display: inline-block;
 	padding: 0 5px 0 7px;
 }
-.phone-numbers-inline a:last-child:after { content: "" }
+.phone-numbers-inline a:last-child:after { display: none; }
+.footer-address-hotline,
+.footer-address-hotline:after,
+.footer-address-cell { display: inline-block; }
+.footer-address-hotline:after {
+	content: "|";
+	margin: 0 12px;
+}
 .right-menu-space { padding-right: 25px; }
 .left-menu-space { padding-left: 25px; }
 .table-list {

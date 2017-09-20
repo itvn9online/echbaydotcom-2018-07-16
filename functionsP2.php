@@ -2875,7 +2875,10 @@ function EBE_get_html_address () {
 		<div class="footer-address-company bold">' . $__cf_row['cf_ten_cty'] . '</div>
 		<div class="footer-address-info l19">
 			<div>Địa chỉ: ' . nl2br( $__cf_row['cf_diachi'] ) . '</div>
-			<div>Hotline: ' . $__cf_row['cf_call_hotline'] . ' | Điện thoại: <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></div>
+			<div class="footer-address-phone">
+				<div class="footer-address-hotline">Hotline: <span class="phone-numbers-inline">' . $__cf_row['cf_call_hotline'] . '</span></div>
+				<div class="footer-address-cell">Điện thoại: <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></div>
+			</div>
 			<div>Email: <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
 		</div>
 	</div>';
