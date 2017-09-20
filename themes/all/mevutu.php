@@ -22,7 +22,8 @@ $eb_all_themes_support["mevutu"]["cf_footer3_include_file"] = "estyle-footer2.ph
 //
 $eb_all_themes_support["mevutu"]["cf_home1_include_file"] = "mevutu-home1.php";
 $eb_all_themes_support["mevutu"]["cf_home2_include_file"] = "mevutu-home2.php";
-$eb_all_themes_support["mevutu"]["cf_home3_include_file"] = "widget-home1.php";
+$eb_all_themes_support["mevutu"]["cf_home3_include_file"] = "mevutu-home3.php";
+$eb_all_themes_support["mevutu"]["cf_home4_include_file"] = "widget-home1.php";
 //
 $eb_all_themes_support["mevutu"]["cf_threaddetails_include_file"] = "depqua-threaddetails.html";
 //
