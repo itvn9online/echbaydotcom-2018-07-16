@@ -1,0 +1,27 @@
+#container { background: #fff; }
+#container,
+#softpro-footer2,
+#echbaytwo-footer3,
+#topgearindochina-top1,
+#topgearindochina-top2 {
+	width: 999px;
+	margin: 0 auto;
+}
+#softpro-footer2.footer-pading {
+	background: #f2f2f2;
+	border-top: 2px #333 solid;
+	border-bottom: 2px #333 solid;
+	color: #333;
+}
+#softpro-footer2 .softpro-footer2 { padding: 0 15px; }
+#softpro-footer2 a,
+#softpro-footer2 .footer-title,
+#softpro-footer2 .footer-contact-title,
+#softpro-footer2 .footer-social-title { color: #AD3148; }
+#softpro-footer2 .footer-title,
+#softpro-footer2 .footer-contact-title,
+#softpro-footer2 .footer-social-title {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 15px;
+}

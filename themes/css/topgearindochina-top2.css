@@ -1,10 +1,23 @@
-#topgearindochina-top2 { }
-#topgearindochina-top2 { }
-#topgearindochina-top2 { }
-#topgearindochina-top2 { }
-#topgearindochina-top2 { }
-#topgearindochina-top2 { }
-#topgearindochina-top2 { }
-#topgearindochina-top2 { }
-#topgearindochina-top2 { }
-#topgearindochina-top2 { }
+#topgearindochina-top2 { background: #fff; }
+#topgearindochina-top2 .nav-menu {
+	padding: 0 3px;
+	border-bottom: 4px #F90 solid;
+}
+#topgearindochina-top2 .nav-menu li {
+	float: left;
+	margin-right: 3px;
+}
+#topgearindochina-top2 .nav-menu a {
+	background: #44272c;
+	color: #fff;
+	display: block;
+	line-height: 20px;
+	padding: 6px 15px;
+	border-radius: 4px 4px 0 0;
+	text-transform: uppercase;
+}
+#topgearindochina-top2 .nav-menu a:hover {
+	background: #F90;
+	color: #000;
+}
+#topgearindochina-top2 .nav-menu .sub-menu { display: none; }

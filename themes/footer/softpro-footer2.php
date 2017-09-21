@@ -1,8 +1,9 @@
 <div id="softpro-footer2" class="footer-pading">
-	<div class="cf <?php echo $__cf_row['cf_footer_class_style']; ?>">
-		<div class="lf f25 fullsize-if-mobile">
-			<div class="right-menu-space">
-				<?php
+	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
+		<div class="softpro-footer2 cf">
+			<div class="lf f25 fullsize-if-mobile">
+				<div class="right-menu-space">
+					<?php
 				echo EBE_echbay_footer_menu(
 					array(
 						'menu_class' => 'bottom-node',
@@ -11,12 +12,12 @@
 					'<div class="footer-title upper">'
 				);
 				?>
+				</div>
+				<div>&nbsp;</div>
 			</div>
-			<div>&nbsp;</div>
-		</div>
-		<div class="lf f25 fullsize-if-mobile">
-			<div class="right-menu-space">
-				<?php
+			<div class="lf f25 fullsize-if-mobile">
+				<div class="right-menu-space">
+					<?php
 				echo EBE_echbay_footer_menu(
 					array(
 						'menu_class' => 'bottom-node',
@@ -25,12 +26,12 @@
 					'<div class="footer-title upper">'
 				);
 				?>
+				</div>
+				<div>&nbsp;</div>
 			</div>
-			<div>&nbsp;</div>
-		</div>
-		<div class="lf f25 fullsize-if-mobile">
-			<div class="right-menu-space">
-				<?php
+			<div class="lf f25 fullsize-if-mobile">
+				<div class="right-menu-space">
+					<?php
 				echo EBE_echbay_footer_menu(
 					array(
 						'menu_class' => 'bottom-node',
@@ -39,21 +40,21 @@
 					'<div class="footer-title upper">'
 				);
 				?>
+				</div>
+				<div>&nbsp;</div>
 			</div>
-			<div>&nbsp;</div>
-		</div>
-		<div class="lf f25 fullsize-if-mobile">
-			<div class="footer-contact">
-				<div class="footer-contact-title"><?php echo $__cf_row['cf_ten_cty']; ?></div>
-				<ul class="footer-contact-content">
-					<li><strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i> <?php echo nl2br( $__cf_row['cf_diachi'] ); ?></li>
-					<li><strong>Điện thoại:</strong> <i class="fa fa-phone"></i> <?php echo $__cf_row['cf_call_hotline']; ?> - <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span></li>
-					<li><strong>Email:</strong> <i class="fa fa-envelope-o"></i> <a href="mailto:<?php echo $__cf_row['cf_email']; ?>" rel="nofollow" target="_blank"><?php echo $__cf_row['cf_email']; ?></a></li>
-				</ul>
-			</div>
-			<br>
-			<div class="footer-social-title">Kết nối với chúng tôi</div>
-			<?php echo WGR_get_footer_social(); ?>
+			<div class="lf f25 fullsize-if-mobile">
+				<div class="footer-contact">
+					<div class="footer-contact-title"><?php echo $__cf_row['cf_ten_cty']; ?></div>
+					<ul class="footer-contact-content">
+						<li><strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i> <?php echo nl2br( $__cf_row['cf_diachi'] ); ?></li>
+						<li><strong>Điện thoại:</strong> <i class="fa fa-phone"></i> <?php echo $__cf_row['cf_call_hotline']; ?> - <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span></li>
+						<li><strong>Email:</strong> <i class="fa fa-envelope-o"></i> <a href="mailto:<?php echo $__cf_row['cf_email']; ?>" rel="nofollow" target="_blank"><?php echo $__cf_row['cf_email']; ?></a></li>
+					</ul>
+				</div>
+				<br>
+				<div class="footer-social-title">Kết nối với chúng tôi</div>
+				<?php echo WGR_get_footer_social(); ?> </div>
 		</div>
 	</div>
 </div>

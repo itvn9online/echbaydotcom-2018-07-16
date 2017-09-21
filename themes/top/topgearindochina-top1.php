@@ -1,47 +1,18 @@
 <div id="topgearindochina-top1">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
-		<div class="topgearindochina-top1">Check and write code for topgearindochina-top1</div>
+		<div class="topgearindochina-top1">
+			<div class="top-top-menu cf">
+				<div class="lf f30"><?php echo EBE_get_html_logo(); ?></div>
+				<div class="lf f70">
+					<div class="top-login text-right"><?php echo EBE_get_html_profile(); ?></div>
+					<br>
+					<div class="cf">
+						<div class="lf f40 text-center top-phone"><i class="fa fa-phone"></i> <?php echo $__cf_row["cf_call_hotline"]; ?></div>
+						<div class="lf f60"><?php echo EBE_get_html_search(); ?></div>
+					</div>
+				</div>
+			</div>
+			<div><?php echo WGR_get_bigbanner(); ?></div>
+		</div>
 	</div>
 </div>
-<?php
-/*
-*
-* List function recommended for you, please remove after code finish.
-*
-* Get logo for website:
-<?php echo EBE_get_html_logo(); ?>
-*
-* Big banner (primary banner):
-<?php echo WGR_get_bigbanner(); ?>
-*
-* Get search form:
-<?php echo EBE_get_html_search(); ?>
-*
-* GET cart URL:
-<?php echo EBE_get_html_cart(); ?>
-*
-* GET profile URL:
-<?php echo EBE_get_html_profile(); ?>
-*
-* GET top menu (auto):
-<?php echo EBE_echbay_top_menu(); ?>
-*
-* GET footer menu (auto):
-<?php echo EBE_echbay_footer_menu(); ?>
-*
-* GET contact info
-<?php echo EBE_get_html_address(); ?>
-*
-* GET footer social icon
-<?php echo WGR_get_footer_social(); ?>
-*
-* GET facebook like box
-<?php echo WGR_get_fb_like_box(); ?>
-*
-* Hotline A call
-<?php echo $__cf_row["cf_call_hotline"]; ?>
-*
-* Cell A call
-<?php echo $__cf_row["cf_call_dienthoai"]; ?>
-*
-*/
