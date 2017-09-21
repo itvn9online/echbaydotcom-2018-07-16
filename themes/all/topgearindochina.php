@@ -16,15 +16,12 @@ $eb_all_themes_support["topgearindochina"]["cf_top3_include_file"] = "top_widget
 $eb_all_themes_support["topgearindochina"]["cf_top4_include_file"] = "breadcrumb-top1.php";
 //
 $eb_all_themes_support["topgearindochina"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["topgearindochina"]["cf_footer1_include_file"] = "topgearindochina-footer1.php";
-$eb_all_themes_support["topgearindochina"]["cf_footer2_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["topgearindochina"]["cf_footer2_include_file"] = "softpro-footer2.php";
+$eb_all_themes_support["topgearindochina"]["cf_footer3_include_file"] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["topgearindochina"]["cf_home1_include_file"] = "topgearindochina-home1.php";
-$eb_all_themes_support["topgearindochina"]["cf_home2_include_file"] = "topgearindochina-home2.php";
-$eb_all_themes_support["topgearindochina"]["cf_home3_include_file"] = "topgearindochina-home3.php";
-$eb_all_themes_support["topgearindochina"]["cf_home4_include_file"] = "topgearindochina-home4.php";
-$eb_all_themes_support["topgearindochina"]["cf_home5_include_file"] = "topgearindochina-home5.php";
-$eb_all_themes_support["topgearindochina"]["cf_home6_include_file"] = "home_widget.php";
+$eb_all_themes_support["topgearindochina"]["cf_home1_include_file"] = "echbaytwo-home1.php";
+$eb_all_themes_support["topgearindochina"]["cf_home2_include_file"] = "echbaytwo-home2.php";
+$eb_all_themes_support["topgearindochina"]["cf_home3_include_file"] = "home_widget.php";
 //
 $eb_all_themes_support["topgearindochina"]["cf_threaddetails_include_file"] = "topgearindochina-threaddetails.html";
 //
