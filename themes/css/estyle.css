@@ -1,11 +1,19 @@
 body { font-family: Arial, Verdana, Helvetica, sans-serif; }
 .custom-width-home-main .widget_random_blog { padding: 0; }
-.home-top1-banner .echbay-blog,
-.home-top2-banner .echbay-blog { margin: 0; }
 .home-hide-title-name .echbay-widget-title { display: none; }
 .home-hide-title-name .echbay-blog-padding { padding: 0; }
-.home-top1-banner .echbay-blog-padding { margin: 2px; }
-.home-top2-banner .echbay-blog-padding { margin: 0 5px; }
+.home-top1-banner .echbay-blog,
+.home-top2-banner .echbay-blog,
+.home-top3-banner .echbay-blog { margin: 0; }
+.home-top1-banner li,
+.home-top2-banner li,
+.home-top3-banner li { margin: 0; }
+.home-top1-banner .banner-ads-media,
+.home-top2-banner .banner-ads-media,
+.home-top3-banner .banner-ads-media,
+.home-top1-banner .echbay-blog-padding,
+.home-top2-banner .echbay-blog-padding,
+.home-top3-banner .echbay-blog-padding { margin: 2px; }
 .home-hot-products .thread-list-bg {
 	padding: 10px 0;
 	text-align: center;

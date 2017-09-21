@@ -1,9 +1,10 @@
 body { font-family: Arial, Verdana, Helvetica, sans-serif; }
 .custom-width-home-main .widget_random_blog { padding: 0; }
-.home-top1-banner .echbay-blog,
-.home-top2-banner .echbay-blog { margin: 0; }
 .home-hide-title-name .echbay-widget-title { display: none; }
 .home-hide-title-name .echbay-blog-padding { padding: 0; }
+.home-top1-banner .echbay-blog,
+.home-top2-banner .echbay-blog,
+.home-top3-banner .echbay-blog { margin: 0; }
 .home-top1-banner li,
 .home-top2-banner li,
 .home-top3-banner li { margin: 0; }
