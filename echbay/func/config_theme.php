@@ -96,20 +96,23 @@ function WGR_config_tao_css_chia_cot (
 
 
 // Tính toán chiều rộng cho từng module
+// chiều rộng mặc định
 $cf_global_width_sidebar = (int) $_POST['cf_global_width_sidebar'];
+
+// chiều rộng riêng lẻ
+$cf_home_width_sidebar = (int) $_POST['cf_home_width_sidebar'];
+$cf_cats_width_sidebar = (int) $_POST['cf_cats_width_sidebar'];
+$cf_post_width_sidebar = (int) $_POST['cf_post_width_sidebar'];
+$cf_blogs_width_sidebar = (int) $_POST['cf_blogs_width_sidebar'];
+$cf_blog_width_sidebar = (int) $_POST['cf_blog_width_sidebar'];
+
+// nếu có chiều rộng chung -> set lại các chiều có kích thước là 0
 if ( $cf_global_width_sidebar > 0 ) {
-	$cf_home_width_sidebar = $cf_global_width_sidebar;
-	$cf_cats_width_sidebar = $cf_global_width_sidebar;
-	$cf_post_width_sidebar = $cf_global_width_sidebar;
-	$cf_blogs_width_sidebar = $cf_global_width_sidebar;
-	$cf_blog_width_sidebar = $cf_global_width_sidebar;
-}
-else {
-	$cf_home_width_sidebar = (int) $_POST['cf_home_width_sidebar'];
-	$cf_cats_width_sidebar = (int) $_POST['cf_cats_width_sidebar'];
-	$cf_post_width_sidebar = (int) $_POST['cf_post_width_sidebar'];
-	$cf_blogs_width_sidebar = (int) $_POST['cf_blogs_width_sidebar'];
-	$cf_blog_width_sidebar = (int) $_POST['cf_blog_width_sidebar'];
+	$cf_home_width_sidebar = ( $cf_home_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_home_width_sidebar;
+	$cf_cats_width_sidebar = ( $cf_cats_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_cats_width_sidebar;
+	$cf_post_width_sidebar = ( $cf_post_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_post_width_sidebar;
+	$cf_blogs_width_sidebar = ( $cf_blogs_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_blogs_width_sidebar;
+	$cf_blog_width_sidebar = ( $$cf_blog_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_blog_width_sidebar;
 }
 $_POST['cf_default_themes_css'] = '';
 

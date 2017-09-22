@@ -46,9 +46,6 @@ $add_data_id = array (
 		// nút chuyển ảnh trên slider
 		'cf_arrow_big_banner' => $__cf_row['cf_arrow_big_banner'],
 		
-		// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
-		'cf_details_excerpt' => $__cf_row['cf_details_excerpt'],
-		
 		'cf_details_show_list_next' => $__cf_row['cf_details_show_list_next'],
 		'cf_details_show_list_thumb' => $__cf_row['cf_details_show_list_thumb'],
 		

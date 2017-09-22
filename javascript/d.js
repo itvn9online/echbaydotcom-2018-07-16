@@ -342,6 +342,9 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 	}
 	if ( cf_tester_mode == 1 ) console.log('___eb_details_excerpt_html is running...');
 	
+	// chặn -> không cho chạy lại lần nữa
+	cf_details_excerpt = 0;
+	
 	//
 	var a = $('.thread-details-comment').html() || '',
 		str = '';
@@ -1435,13 +1438,33 @@ function ___eb_list_post_run ( r ) {
 
 
 //
-function ___eb_details_post_run ( r ) {
-	
-	// nếu tham số truyền vào không phải function -> hủy
-	if ( typeof r != 'function' ) {
-		console.log('only run with function type');
+function WGR_for_post_details ( function_for_post, function_for_blog ) {
+	if ( typeof switch_taxonomy == 'undefined' ) {
+		console.log('switch_taxonomy not found');
 		return false;
 	}
+	
+	//
+	if ( switch_taxonomy == 'post' ) {
+		if ( typeof function_for_post == 'function' ) {
+			___eb_details_post_run( function_for_post );
+		}
+		else {
+			___eb_details_post_run();
+		}
+	}
+	else {
+		if ( typeof function_for_blog == 'function' ) {
+			___eb_global_blog_details_runing( function_for_blog );
+		}
+		else {
+			___eb_global_blog_details_runing();
+		}
+	}
+}
+
+//
+function ___eb_details_post_run ( r ) {
 	
 	// với bản pc -> chỉnh lại kích thước ảnh thành fullsize (mặc định trước đó trong admind dể mobile hết)
 	/*
@@ -1451,8 +1474,10 @@ function ___eb_details_post_run ( r ) {
 	}
 	*/
 	
-	// chạy function riêng
-	r();
+	// chạy function riêng (nếu có)
+	if ( typeof r == 'function' ) {
+		r();
+	}
 	
 	
 	/*
@@ -1461,6 +1486,14 @@ function ___eb_details_post_run ( r ) {
 	
 	// slider cho trang chi tiết
 	___eb_details_slider_v2();
+	
+	
+	// tạo style cho phần tóm tắt
+	___eb_details_excerpt_html();
+	
+	
+	//
+	___eb_details_product_tab();
 	
 	
 	// tạo bộ đếm lượt mua

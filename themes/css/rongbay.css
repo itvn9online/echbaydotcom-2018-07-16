@@ -7,6 +7,7 @@
 	padding: 0 10px;
 	border: 1px #ccc solid;
 	border-radius: 4px 4px 0 0;
+	line-height: 40px;
 }
 .thread-list-orderby select { padding: 4px 5px; }
 .thread-list-order .thread-list-orderby {
@@ -28,3 +29,25 @@
 .col-sidebar-content .echbay-widget-title:before { display: none; }
 .col-sidebar-content .widget_echbay_category,
 .col-sidebar-content .widget_echbay_price { border-bottom: 15px #f1f1f1 solid; }
+.thread-details-contactTitle {
+	background: #f8f8f8;
+	text-align: center;
+	line-height: 34px;
+	border: 1px solid #ebebeb;
+	border-bottom: 0 none;
+	border-radius: 3px 3px 0 0;
+}
+.clone-show-quick-cart {
+	border: 1px #ebebeb solid;
+	padding: 0 10px 10px 10px;
+}
+.clone-show-quick-cart .eb-quickcart-quan,
+.clone-show-quick-cart .eb-quickcart-price { display: none; }
+.clone-show-quick-cart { }
+.clone-show-quick-cart { }
+.clone-show-quick-cart { }
+.clone-show-quick-cart .eb-quickcart-left,
+.clone-show-quick-cart .eb-quickcart-right {
+	float: none;
+	width: 99%;
+}

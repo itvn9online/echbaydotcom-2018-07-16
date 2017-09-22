@@ -1005,6 +1005,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	_eb_product_video_url="' . _eb_get_post_object( $pid, '_eb_product_video_url' ) . '",
 	_eb_product_ngayhethan="' . $_eb_product_ngayhethan . '",
 	_eb_product_giohethan="' . $_eb_product_giohethan . '",
+	cf_details_excerpt="' . $__cf_row['cf_details_excerpt'] . '",
 	trv_ngayhethan=' . $trv_ngayhethan . ';
 </script>';
 //	arr_product_color=[' . substr( $arr_product_color, 1 ) . '],
