@@ -1205,7 +1205,7 @@ function EBE_ftp_remove_file ($file_) {
 	
 	// upload file
 	$result = true;
-	if ( ftp_delete($conn_id, $file_for_ftp) ) {
+	if ( ! ftp_delete($conn_id, $file_for_ftp) ) {
 		echo 'ERROR FTP: ftp_delete error<br>' . "\n";
 		$result = false;
 	}

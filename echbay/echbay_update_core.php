@@ -99,11 +99,11 @@ function EBE_get_list_file_update_echbay_core ( $dir, $arr_dir = array(), $arr_f
 	);
 }
 
-function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_dir, $arr_old_file ) {
+function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_dir, $arr_old_file, $dir_to ) {
 	
 	//
 	foreach ( $arr_dir as $v ) {
-		$v2 = str_replace( $dir_source, EB_THEME_PLUGIN_INDEX, $v );
+		$v2 = str_replace( $dir_source, $dir_to, $v );
 		
 		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 		
@@ -120,7 +120,7 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 //		echo $v . "\n";
 		
 		// chuyển sang file ở thư mục update
-		$v2 = str_replace( EB_THEME_PLUGIN_INDEX, $dir_source, $v );
+		$v2 = str_replace( $dir_to, $dir_source, $v );
 //		echo $v2 . "\n";
 		
 		// kiểm tra xem có file ở thư mục update không -> không có -> xóa luôn file hiện tại
@@ -142,7 +142,7 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 //		echo $v . "\n";
 		
 		// chuyển sang thư mục ở thư mục update
-		$v2 = str_replace( EB_THEME_PLUGIN_INDEX, $dir_source, $v );
+		$v2 = str_replace( $dir_to, $dir_source, $v );
 //		echo $v2 . "\n";
 		
 		// kiểm tra xem có thư mục ở thư mục update không -> không có -> xóa luôn thư mục hiện tại
@@ -160,7 +160,7 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 	
 	//
 	foreach ( $arr_file as $v ) {
-		$v2 = str_replace( $dir_source, EB_THEME_PLUGIN_INDEX, $v );
+		$v2 = str_replace( $dir_source, $dir_to, $v );
 		
 		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 		
@@ -171,7 +171,7 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 	}
 	
 	//
-	EBE_remove_dir_after_update( $dir_source, $arr_dir );
+	EBE_remove_dir_after_update( $dir_source, $arr_dir, $dir_to );
 	
 	return true;
 	
@@ -182,12 +182,25 @@ function EBE_update_file_via_ftp () {
 	// Thư mục sau khi download và giải nén file zip
 	$dir_source_update = EB_THEME_CACHE . 'echbaydotcom-master/';
 	
-	//
+	// thư mục mà các file sẽ được update tới
+	$dir_to_update = EB_THEME_PLUGIN_INDEX;
+	
+	
+	// mặc định là update plugin
 	if ( ! is_dir( $dir_source_update ) ) {
-		echo 'dir not found: ' . $dir_source_update . '<br>' . "\n";
-		echo '* <em>Kiểm tra module zip.so đã có trong thư mục <strong>/usr/lib64/php/modules/</strong> chưa!</em>';
-		return false;
+		// nếu không có -> có thể là update theme
+		$dir_source_update = EB_THEME_CACHE . 'echbaytwo-master/';
+		$dir_to_update = EB_THEME_URL;
+		
+		// kiểm tra lại
+		if ( ! is_dir( $dir_source_update ) ) {
+			echo 'dir not found: ' . $dir_source_update . '<br>' . "\n";
+			echo '* <em>Kiểm tra module zip.so đã có trong thư mục <strong>/usr/lib64/php/modules/</strong> chưa!</em>';
+			return false;
+		}
 	}
+	echo 'Source udpate: <strong>' . basename( $dir_source_update ) . '</strong><br>' . "\n";
+	echo 'To update: <strong>' . basename( $dir_to_update ) . '</strong><br>' . "\n";
 	
 	// lấy danh sách file và thư mục (thư mục mới)
 	$a = EBE_get_list_file_update_echbay_core( $dir_source_update );
@@ -198,7 +211,7 @@ function EBE_update_file_via_ftp () {
 //	exit();
 	
 	// lấy danh sách file và thư mục (thư mục cũ) -> để so sánh và xóa các file không còn tồn tại
-	$a = EBE_get_list_file_update_echbay_core( EB_THEME_PLUGIN_INDEX );
+	$a = EBE_get_list_file_update_echbay_core( $dir_to_update );
 	$list_dir_for_update_old_core = $a[0];
 	$list_file_for_update_old_core = $a[1];
 //	print_r( $list_dir_for_update_old_core );
@@ -212,7 +225,7 @@ function EBE_update_file_via_ftp () {
 	if ( $ftp_server == false ) {
 		
 		// update thông qua hàm cơ bản của php
-		return EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core, $list_dir_for_update_old_core, $list_file_for_update_old_core );
+		return EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core, $list_dir_for_update_old_core, $list_file_for_update_old_core, $dir_to_update );
 		
 //		return false;
 	}
@@ -226,7 +239,7 @@ function EBE_update_file_via_ftp () {
 	
 	//
 	$ftp_dir_root = EBE_get_ftp_root_dir();
-	echo 'FTP root dir: ' . $ftp_dir_root . '<br><br>' . "\n";
+	echo 'FTP root dir: <strong>' . $ftp_dir_root . '</strong><br><br>' . "\n";
 	
 	
 	
@@ -265,7 +278,7 @@ function EBE_update_file_via_ftp () {
 	//
 //	print_r( $list_dir_for_update_eb_core );
 	foreach ( $list_dir_for_update_eb_core as $v ) {
-		$v2 = str_replace( $dir_source_update, EB_THEME_PLUGIN_INDEX, $v );
+		$v2 = str_replace( $dir_source_update, $dir_to_update, $v );
 		
 		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 		
@@ -285,8 +298,8 @@ function EBE_update_file_via_ftp () {
 //		echo $v . "\n";
 		
 		// chuyển sang file ở thư mục update
-		$v2 = str_replace( EB_THEME_PLUGIN_INDEX, $dir_source_update, $v );
-//		echo $v2 . "\n";
+		$v2 = str_replace( $dir_to_update, $dir_source_update, $v );
+//		echo $v2 . '<br>' . "\n";
 		
 		// kiểm tra xem có file ở thư mục update không -> không có -> xóa luôn file hiện tại
 		if ( ! file_exists( $v2 ) ) {
@@ -310,7 +323,7 @@ function EBE_update_file_via_ftp () {
 //		echo $v . "\n";
 		
 		// chuyển sang thư mục ở thư mục update
-		$v2 = str_replace( EB_THEME_PLUGIN_INDEX, $dir_source_update, $v );
+		$v2 = str_replace( $dir_to_update, $dir_source_update, $v );
 //		echo $v2 . "\n";
 		
 		// kiểm tra xem có thư mục ở thư mục update không -> không có -> xóa luôn thư mục hiện tại
@@ -334,7 +347,7 @@ function EBE_update_file_via_ftp () {
 	foreach ( $list_file_for_update_eb_core as $v ) {
 //		_eb_create_file( $file_cache_update, file_get_contents( $v, 1 ) );
 		
-		$v2 = str_replace( $dir_source_update, EB_THEME_PLUGIN_INDEX, $v );
+		$v2 = str_replace( $dir_source_update, $dir_to_update, $v );
 		$v2 = '.' . strstr( $v2, '/' . $ftp_dir_root . '/' );
 		
 //		$v = '.' . strstr( $v, '/' . $ftp_dir_root . '/' );
@@ -350,6 +363,7 @@ function EBE_update_file_via_ftp () {
 		
 		unlink( $v );
 	}
+//	exit();
 	
 	
 	
@@ -365,7 +379,7 @@ function EBE_update_file_via_ftp () {
 	
 	
 	//
-	EBE_remove_dir_after_update( $dir_source_update, $list_dir_for_update_eb_core );
+	EBE_remove_dir_after_update( $dir_source_update, $list_dir_for_update_eb_core, $dir_to_update );
 	
 	
 	//
@@ -373,23 +387,45 @@ function EBE_update_file_via_ftp () {
 	
 }
 
-function EBE_remove_dir_after_update ( $dir, $arr ) {
+function EBE_remove_dir_after_update ( $dir, $arr, $dir_to = '' ) {
 	
 	echo '<br><br>' . "\n\n";
 	
-	// lật ngược mảng để xóa thư mục
+	// lật ngược mảng để xóa thư mục trước
 	$arr = array_reverse( $arr );
-//	print_r( $list_dir_for_update_eb_core );
+//	print_r( $arr );
 	foreach ( $arr as $v ) {
 		rmdir( $v );
 		echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v ) . '<br>' . "\n";
 	}
+	
+	// xóa file của github
 	if ( file_exists( $dir . '.gitattributes' ) ) {
-		unlink( $dir . '.gitattributes' );
-		echo '<strong>remove file</strong>: ' . str_replace( EB_THEME_CONTENT, '', $dir ) . '.gitattributes<br>' . "\n";
+		if ( unlink( $dir . '.gitattributes' ) ) {
+			echo '<strong>remove file</strong>: ';
+		}
+		else {
+			echo '<strong>NOT remove file</strong>: ';
+		}
+		echo str_replace( EB_THEME_CONTENT, '', $dir ) . '.gitattributes<br>' . "\n";
 	}
+	if ( $dir_to != '' && file_exists( $dir_to . '.gitattributes' ) ) {
+		if ( _eb_remove_file( $dir_to . '.gitattributes' ) ) {
+			echo '<strong>remove file</strong>: ';
+		}
+		else {
+			echo '<strong>NOT remove file</strong>: ';
+		}
+		echo str_replace( EB_THEME_CONTENT, '', $dir_to ) . '.gitattributes<br>' . "\n";
+	}
+	
+	// xóa thư mục gốc
 	rmdir( $dir );
 	echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $dir ) . '<br>' . "\n";
+	
+	// test
+//	exit();
+	
 	
 	// cập nhật lại version trong file cache
 	_eb_get_static_html ( 'github_version', EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) ), '', 60 );
@@ -432,9 +468,16 @@ function EBE_get_text_version ( $str ) {
 			// download từ github
 			if ( ! file_exists( $destination_path ) ) {
 				
+				//
+				$connect_to_server = isset( $_GET['connect_to'] ) ? $_GET['connect_to'] : '';
+				
 				// chọn server để update -> github là thời gian thực
-				if ( isset( $_GET['connect_to'] ) && $_GET['connect_to'] == 'github' ) {
+				if ( $connect_to_server == 'github' ) {
 					$url_for_download_ebdotcom = 'https://github.com/itvn9online/echbaydotcom/archive/master.zip';
+				}
+				// cập nhật theme
+				else if ( $connect_to_server == 'theme' ) {
+					$url_for_download_ebdotcom = 'https://github.com/itvn9online/echbaytwo/archive/master.zip';
 				}
 				// server của echbay thì update chậm hơn chút, nhưng tải nhanh hơn -> mặc định
 				else {
@@ -455,6 +498,11 @@ function EBE_get_text_version ( $str ) {
 			
 			// Giải nén file
 			if ( file_exists( $destination_path ) ) {
+				
+				// kết quả giải nén
+				$unzipfile = false;
+				
+				//
 				if ( class_exists( 'ZipArchive' ) ) {
 					echo '<div>Using: <strong>ZipArchive</strong></div>'; 
 					
@@ -462,28 +510,30 @@ function EBE_get_text_version ( $str ) {
 					if ($zip->open( $destination_path ) === TRUE) {
 						$zip->extractTo( EB_THEME_CACHE );
 						$zip->close();
-						echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
-					} else {
 						
 						//
-						echo '<div>Do not unzip file, update faild!</div>';
-						
-						// nếu không unzip được -> có thể do lỗi permission -> xóa đi để tải lại
-						if ( EBE_ftp_remove_file( $destination_path ) == true ) {
-							echo '<div>Remove zip file via FTP!</div>';
-						}
+						$unzipfile = true;
 					}
 				}
 				else {
 					echo '<div>Using: <strong>unzip_file (wordpress)</strong></div>'; 
 					
 					$unzipfile = unzip_file( $destination_path, EB_THEME_CACHE );
-					if ( $unzipfile == true ) {
-						echo '<div>Unzip to: ' . EB_THEME_CACHE . '</div>'; 
-					} else {
-						echo '<div>Do not unzip file, update faild!</div>';
+				}
+				
+				//
+				if ( $unzipfile == true ) {
+					echo '<div>Unzip to: <strong>' . EB_THEME_CACHE . '</strong></div>'; 
+				} else {
+					echo '<div>Do not unzip file, update faild!</div>';
+					
+					// nếu không unzip được -> có thể do lỗi permission -> xóa đi để tải lại
+					if ( EBE_ftp_remove_file( $destination_path ) == true ) {
+						echo '<div>Remove zip file via FTP!</div>';
 					}
 				}
+				
+				//
 				echo '<br>' . "\n";
 				
 				
@@ -517,7 +567,7 @@ function EBE_get_text_version ( $str ) {
 				_eb_create_file( $bat_che_do_bao_tri, date_time );
 				echo '<h2>BẬT chế độ bảo trì website!</h2><br>';
 				
-				//
+				// bắt đầu cập nhật
 				if ( EBE_update_file_via_ftp() == true ) {
 					
 					// xóa file download để lần sau còn ghi đè lên
@@ -610,19 +660,58 @@ function EBE_eb_update_time_to_new_time ( $t ) {
 }
 
 
+
+// thư mục chứa theme hiện tại
+$current_theme_dir_update = basename( EB_THEME_URL );
+
+// hỗ trợ cập nhật theme khi sử dụng giao diện có thư mục tên như này
+$enable_theme_dir_update = 'echbaytwo';
+
+
+
 ?>
 <p><em>* Xin lưu ý! các tính năng được cập nhật là xây dựng và phát triển cho phiên bản trả phí, nên với phiên bản miễn phí, một số tính năng sẽ không tương thích hoặc phải chỉnh lại giao diện sau khi cập nhật. Lần cập nhật trước: <strong><?php echo date( 'r', $last_time_update_eb ); ?> (<?php echo EBE_eb_update_time_to_new_time( $last_time_update_eb ); ?>)</strong></em></p>
 <br>
+<?php
+
+// hiển thị nút update theme
+if ( $current_theme_dir_update == $enable_theme_dir_update ) {
+?>
+<p>Giao diện bạn đang sử dụng là <strong><?php echo $__cf_row['cf_current_theme_using']; ?></strong>, thư mục nền của website là <strong><?php echo $current_theme_dir_update; ?></strong>. Nền này đang được hỗ trợ cập nhật miễn phí từ hệ thống, nếu bạn muốn cập nhật hoặc cài đặt lại, vui lòng bấm nút bên dưới để thực hiện:</p>
+<h2>
+	<center>
+		<a href="#" class="click-connect-to-echbay-update-eb-theme">[ Bấm vào đây để cập nhật lại giao diện nền cho website! ]</a>
+	</center>
+</h2>
+<br>
+<?php
+}
+else {
+?>
+<p>Giao diện bạn đang sử dụng là <strong><?php echo $__cf_row['cf_current_theme_using']; ?></strong>, thư mục nền của website là <strong><?php echo $current_theme_dir_update; ?></strong>. Nền này hiện chưa hỗ trợ cập nhật miễn phí từ hệ thống của chúng tôi.</p>
+<?php
+}
+?>
+<br>
 <script type="text/javascript">
 
+// cập nhật plugin từ server của EchBay.com
 jQuery('.click-connect-to-echbay-update-eb-core').attr({
 	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1'
 }).click(function () {
 	$(this).hide();
 });
 
+// cập nhật plugin từ github
 jQuery('.click-connect-to-github-update-eb-core').attr({
 	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1&connect_to=github'
+}).click(function () {
+	$(this).hide();
+});
+
+// cập nhật theme
+jQuery('.click-connect-to-echbay-update-eb-theme').attr({
+	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1&connect_to=theme'
 }).click(function () {
 	$(this).hide();
 });
@@ -637,4 +726,4 @@ if ( jQuery('#eb_core_update_all_done').length > 0 ) {
 	alert('All done');
 }
 
-</script>
+</script> 
