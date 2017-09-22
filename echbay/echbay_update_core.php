@@ -198,6 +198,13 @@ function EBE_update_file_via_ftp () {
 			echo '* <em>Kiểm tra module zip.so đã có trong thư mục <strong>/usr/lib64/php/modules/</strong> chưa!</em>';
 			return false;
 		}
+		
+		// chỉ hỗ trợ update theme có tên chỉ định
+		if ( strstr( $dir_to_update, 'echbaytwo' ) == false ) {
+			echo 'theme it not support update via this panel: ' . $dir_to_update . '<br>' . "\n";
+			echo '* <em>Chỉ hỗ trợ update theme có nền là <strong>echbaytwo</strong>!</em>';
+			return false;
+		}
 	}
 	echo 'Source udpate: <strong>' . basename( $dir_source_update ) . '</strong><br>' . "\n";
 	echo 'To update: <strong>' . basename( $dir_to_update ) . '</strong><br>' . "\n";
