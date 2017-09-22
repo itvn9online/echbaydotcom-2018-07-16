@@ -14,17 +14,17 @@
 	*/
 	font-weight: bold;
 	margin-bottom: 19px;
-	padding: 0 0 5px 0;
+	padding: 0 0 5px 40px;
 }
 .home-hot-title:before {
-	width: 10%;
+	width: 50%;
+	max-width: 250px;
 	height: 2px;
 	content: "";
 	background: #f00;
 	position: absolute;
-	bottom: -2px;/*
-	left: 45%;
-	*/
+	bottom: -2px;
+	left: 0;
 }
 /*
 .home-hot-title i {
