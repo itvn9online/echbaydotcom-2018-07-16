@@ -54,11 +54,12 @@ function echo_sitemap_image_node ( $loc, $img, $title ) {
 }
 
 
-function get_sitemap_taxonomy ( $taxx = 'category', $priority = 0.9 ) {
+function get_sitemap_taxonomy ( $taxx = 'category', $priority = 0.9, $cat_ids = 0 ) {
 	global $wpdb;
 	global $sitemap_current_time;
 	
-	//
+	// v1
+	/*
 	$categories = _eb_q("SELECT *
 		FROM
 			`" . $wpdb->terms . "`
@@ -70,10 +71,22 @@ function get_sitemap_taxonomy ( $taxx = 'category', $priority = 0.9 ) {
 							taxonomy = '" . $taxx . "' )
 		ORDER BY
 			name");
+			*/
+	
+	// v2
+	$categories = get_categories( array(
+		'taxonomy' => $taxx,
+		'parent' => $cat_ids
+	) );
+	
 //	print_r( $categories );
+	
+	//
 	$str = '';
-	foreach ( $categories as $cat ) {
-		$str .= echo_sitemap_url_node( _eb_c_link( $cat->term_id, $taxx ), $priority, $sitemap_current_time );
+	if ( count( $categories ) > 0 ) {
+		foreach ( $categories as $cat ) {
+			$str .= echo_sitemap_url_node( _eb_c_link( $cat->term_id, $taxx ), $priority, $sitemap_current_time, 'always' ) . get_sitemap_taxonomy ( $taxx, $priority, $cat->term_id );
+		}
 	}
 	
 	return $str;
