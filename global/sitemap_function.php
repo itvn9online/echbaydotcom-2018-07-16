@@ -72,10 +72,15 @@ function get_sitemap_taxonomy ( $taxx = 'category', $priority = 0.9 ) {
 
 
 
-//
+// định dạng ngày tháng
 $sitemap_date_format = 'c';
 $sitemap_current_time = date( $sitemap_date_format, date_time );
+
+// giới hạn số bài viết cho mỗi sitemap map
 $limit_post_get = 1500;
+
+// giới hạn tạo sitemap cho hình ảnh -> google nó limit 1000 ảnh nên chỉ lấy thế thôi
+$limit_image_get = 1000;
 
 
 

@@ -26,7 +26,8 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	*/
 	$sql = new WP_Query( array(
 		'posts_per_page' => $limit_post_get,
-		'orderby' => 'menu_order',
+//		'orderby' => 'menu_order',
+		'orderby' => 'ID',
 		'order' => 'DESC',
 		'post_type' => 'post',
 		'post_status' => 'publish'

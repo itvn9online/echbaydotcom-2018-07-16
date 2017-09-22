@@ -357,8 +357,10 @@ $arr_active_for_404_page = array(
 //	"sitemap-blogs" => 1,
 	// cho blog
 	"sitemap-blog" => 1,
-	// sitemap sitemap cho hình ảnh
+	// sitemap sitemap cho hình ảnh (sản phẩm)
 	"sitemap-images" => 1,
+	// sitemap sitemap cho hình ảnh (blog)
+	"sitemap-blog-images" => 1,
 	
 	"temp" => 1,
 	

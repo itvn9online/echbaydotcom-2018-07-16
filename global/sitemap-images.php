@@ -31,8 +31,9 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	* media
 	*/
 	$sql = new WP_Query( array(
-		'posts_per_page' => $limit_post_get,
-		'orderby' => 'menu_order',
+		'posts_per_page' => $limit_image_get,
+//		'orderby' => 'menu_order',
+		'orderby' => 'ID',
 		'order' => 'DESC',
 		'post_type' => 'post',
 		'post_status' => 'publish'
