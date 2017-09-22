@@ -38,7 +38,7 @@ function echo_sitemap_image_node ( $loc, $img, $title ) {
 	<loc>' . $loc . '</loc>
 	<image:image>
 		<image:loc>' . $img . '</image:loc>
-		<image:title>' . $title . '</image:title>
+		<image:title><![CDATA[' . $title . ']]></image:title>
 	</image:image>
 </url>';
 }
