@@ -1,17 +1,22 @@
-urlset {
+urlset,
+sitemapindex {
 	display: block;
-	max-width: 1080px;
+	width: 90%;
+	min-width: 999px;
+	max-width: 1366px;
 	margin: 10px auto;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-size: 13px;
 }
-url {
+url,
+sitemap {
 	display: block;
 	overflow: auto;
 	padding: 5px;
 	word-wrap: break-word;
 }
-url:nth-child(2n+1) { background: #f8f8f8; }
+url:nth-child(2n+1),
+sitemap:nth-child(2n+1) { background: #f8f8f8; }
 loc {
 	display: inline-block;
 	width: 75%;
@@ -23,9 +28,19 @@ lastmod {
 }
 changefreq,
 priority { display: none; }
+image { display: block; }
+image loc,
+image title,
+image caption,
+image geo_location { display: inline-block; }
+image loc,
+image caption { width: 51%; }
+image title,
+image geo_location { width: 48%; }
 
 @media screen and (max-width: 960px) {
-urlset { font-size: 12px; }
+urlset,
+sitemapindex { font-size: 12px; }
 loc,
 lastmod {
 	max-width: 100%;
@@ -35,7 +50,8 @@ lastmod {
 }
 
 @media screen and (max-device-width: 500px) {
-urlset { zoom: 2; }
+urlset,
+sitemapindex { zoom: 2; }
 loc,
 lastmod {
 	max-width: 100%;

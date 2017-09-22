@@ -346,7 +346,20 @@ $arr_active_for_404_page = array(
 	"contact" => 1,
 	"golden_time" => 1,
 	"hoan-tat" => 1,
+	
+	// sitemap tổng
 	"sitemap" => 1,
+	// cho category, tags, post options
+	"sitemap-tags" => 1,
+	// sitemap cho post
+	"sitemap-post" => 1,
+	// cho blogs
+//	"sitemap-blogs" => 1,
+	// cho blog
+	"sitemap-blog" => 1,
+	// sitemap sitemap cho hình ảnh
+	"sitemap-images" => 1,
+	
 	"temp" => 1,
 	
 	"profile" => 1,
