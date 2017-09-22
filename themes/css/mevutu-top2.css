@@ -1,0 +1,68 @@
+#mevutu-top2 {
+	padding: 8px 0;
+	background: #111;
+	border-bottom: 2px #8f7347 solid;
+}
+#mevutu-top2 .div-search {
+	width: 90%;
+	margin: 0 auto;
+	border-color: #999;
+}
+#mevutu-top2 .div-search form { padding-left: 10px; }
+#mevutu-top2 .div-search input[type=search],
+#mevutu-top2 .div-search button {
+	background: none;
+	border: 0 none;
+	outline: none;
+}
+#mevutu-top2 .div-search input[type=search] {
+	height: 30px;
+	width: 80%;
+}
+#mevutu-top2 .div-search button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 20%;
+	max-width: 50px;
+	background: #ccc;
+	font-size: 18px;
+	border-left: 1px #999 solid;
+	color: #000;
+}
+#mevutu-top2 .nav-ngang { line-height: 30px; }
+#mevutu-top2 .nav-ngang li {
+	float: left;
+	border-bottom: 7px transparent solid;
+	font-weight: bold;
+}
+#mevutu-top2 .nav-ngang li:hover { border-bottom-color: #f2f2f2; }
+#mevutu-top2 .nav-ngang a {
+	display: block;
+	color: #fff;
+	font-size: 14px;
+	padding: 0 20px;
+}
+#mevutu-top2 .nav-ngang .sub-menu {
+	display: none;
+	position: absolute;
+	width: 200px;
+	background: #fff;
+	line-height: 20px;
+	z-index: 3;
+}
+#mevutu-top2 .nav-ngang li:hover .sub-menu { display: block; }
+#mevutu-top2 .nav-ngang .sub-menu li {
+	float: none;
+	border: 0 none;
+	font-weight: normal;
+	padding: 5px 0;
+}
+#mevutu-top2 .nav-ngang .sub-menu a {
+	color: #333;
+	font-size: 13px;
+}
+#mevutu-top2 .nav-ngang .sub-menu a:hover { text-decoration: underline; }
+#mevutu-top2 .nav-ngang .sub-menu .sub-menu { display: none; }
+.style-for-mobile #mevutu-top2 .web-logo { background-position: center; }

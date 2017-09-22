@@ -10,8 +10,8 @@ $eb_all_themes_support["mevutu"] = array();
 $eb_all_themes_support["mevutu"]["name"] = "estyle";
 $eb_all_themes_support["mevutu"]["screenshot"] = "https://img1.webgiare.org/mevutu.jpg";
 //
-$eb_all_themes_support["mevutu"]["cf_top1_include_file"] = "estyle-top1.php";
-$eb_all_themes_support["mevutu"]["cf_top2_include_file"] = "estyle-top2.php";
+$eb_all_themes_support["mevutu"]["cf_top1_include_file"] = "mevutu-top1.php";
+$eb_all_themes_support["mevutu"]["cf_top2_include_file"] = "mevutu-top2.php";
 $eb_all_themes_support["mevutu"]["cf_top3_include_file"] = "bigbanner-top1.php";
 $eb_all_themes_support["mevutu"]["cf_top4_include_file"] = "breadcrumb-top1.php";
 $eb_all_themes_support["mevutu"]["cf_top5_include_file"] = "top_widget.php";
