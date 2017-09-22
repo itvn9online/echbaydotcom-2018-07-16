@@ -33,6 +33,16 @@ function echo_sitemap_url_node ( $loc, $priority, $lastmod, $changefreq = 'daily
 
 
 function echo_sitemap_image_node ( $loc, $img, $title ) {
+	if ( $img == '' ) {
+		return false;
+	}
+	
+	//
+	if ( substr( $img, 0, 2 ) == '//' ) {
+		$img = eb_web_protocol . ':' . $img;
+	}
+	
+	//
 	return '
 <url>
 	<loc>' . $loc . '</loc>
