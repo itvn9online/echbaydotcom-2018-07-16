@@ -18,3 +18,14 @@
 	background: #ccc center no-repeat;
 	background-size: auto 100%;
 }
+.thread-list-per {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background: #f00;
+	min-width: 40px;
+	text-align: center;
+	line-height: 25px;
+	border-radius: 5px;
+	color: #fff;
+}

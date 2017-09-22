@@ -1,12 +1,16 @@
 #container { background: #fff; }
+#main-content { padding: 15px 10px; }
 #container,
 #softpro-footer2,
 #echbaytwo-footer3,
 #topgearindochina-top1,
-#topgearindochina-top2 {
+#topgearindochina-top2,
+.thread-details-tohome {
 	width: 999px;
 	margin: 0 auto;
 }
+.thread-details-tohome { }
+.thread-details-tohome ul { padding: 0 10px; }
 #softpro-footer2.footer-pading {
 	background: #f2f2f2;
 	border-top: 2px #333 solid;
