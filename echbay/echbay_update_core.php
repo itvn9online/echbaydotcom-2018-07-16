@@ -455,7 +455,15 @@ function EBE_get_text_version ( $str ) {
 		set_time_limit( 0 );
 		
 		//
-		$file_cache_test = EB_THEME_CACHE . 'eb_update_core.txt';
+		$connect_to_server = isset( $_GET['connect_to'] ) ? $_GET['connect_to'] : '';
+		
+		//
+		if ( $connect_to_server == 'theme' ) {
+			$file_cache_test = EB_THEME_CACHE . 'eb_update_theme.txt';
+		}
+		else {
+			$file_cache_test = EB_THEME_CACHE . 'eb_update_core.txt';
+		}
 		
 		//
 		$lats_update_file_test = 0;
@@ -474,9 +482,6 @@ function EBE_get_text_version ( $str ) {
 			
 			// download từ github
 			if ( ! file_exists( $destination_path ) ) {
-				
-				//
-				$connect_to_server = isset( $_GET['connect_to'] ) ? $_GET['connect_to'] : '';
 				
 				// chọn server để update -> github là thời gian thực
 				if ( $connect_to_server == 'github' ) {
