@@ -442,6 +442,15 @@ if ( isset( $_POST['cf_timezone'] ) ) {
 // cập nhật lại config cơ bản cho file wp-config.php
 $arr_cac_thay_doi = array();
 
+// thêm config mặc định nếu chưa có
+function add_default_value_to_wp_config ( $arr, $key, $default_value = 'false' ) {
+	global $content_of_new_wp_config;
+	
+	if ( ! isset( $arr[$key] ) ) {
+		$content_of_new_wp_config[0] .= "\n" . "define('" . $key . "', " . $default_value . "); // auto add by Echbaydotcom" . "\n";
+	}
+}
+
 // lấy nội dung cũ
 $content_of_wp_config = trim( file_get_contents( ABSPATH . 'wp-config.php' ) );
 //echo nl2br( $content_of_wp_config ) . '<br>' . "\n";
@@ -453,7 +462,7 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 		$v = trim( $v );
 		if ( $v != '' && substr( $v, 0, 6 ) == 'define' ) {
 			if ( strstr( $v, "'WP_DEBUG'" ) == true || strstr( $v, '"WP_DEBUG"' ) == true ) {
-	//			echo $v . '<br>' . "\n";
+//				echo $v . '<br>' . "\n";
 				
 				if ( $_POST['cf_tester_mode'] == 0 ) {
 					$content_of_new_wp_config[$k] = "define('WP_DEBUG', false);";
@@ -465,7 +474,7 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 				$arr_cac_thay_doi['WP_DEBUG'] = 1;
 			}
 			else if ( strstr( $v, "'WP_AUTO_UPDATE_CORE'" ) == true || strstr( $v, '"WP_AUTO_UPDATE_CORE"' ) == true ) {
-	//			echo $v . '<br>' . "\n";
+//				echo $v . '<br>' . "\n";
 				
 				if ( $_POST['cf_on_off_auto_update_wp'] == 0 ) {
 					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', false);";
@@ -480,11 +489,11 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 	}
 	
 	// kiểm tra các cấu hình chưa được thiết lập
-	if ( ! isset( $arr_cac_thay_doi['WP_DEBUG'] ) ) {
-		$content_of_new_wp_config[0] .= "\n" . "define('WP_DEBUG', false); // add by Echbaydotcom" . "\n";
-	}
-	if ( ! isset( $arr_cac_thay_doi['WP_AUTO_UPDATE_CORE'] ) ) {
-		$content_of_new_wp_config[0] .= "\n" . "define('WP_AUTO_UPDATE_CORE', false); // add by Echbaydotcom" . "\n";
+	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_DEBUG' );
+	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_AUTO_UPDATE_CORE' );
+	
+	// nếu vẫn đang là salt mặc định -> cập nhật salt mới
+	if ( AUTH_KEY == 'put your unique phrase here' ) {
 	}
 	
 	//
