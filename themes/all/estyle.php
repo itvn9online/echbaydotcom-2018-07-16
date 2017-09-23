@@ -19,6 +19,7 @@ $eb_all_themes_support["estyle"]["cf_top5_include_file"] = "top_widget.php";
 $eb_all_themes_support["estyle"]["cf_footer1_include_file"] = "footer_widget.php";
 $eb_all_themes_support["estyle"]["cf_footer2_include_file"] = "estyle-footer1.php";
 $eb_all_themes_support["estyle"]["cf_footer3_include_file"] = "estyle-footer2.php";
+$eb_all_themes_support["mevutu"]["cf_footer4_include_file"] = "denbaophat-footer3.php";
 //
 $eb_all_themes_support["estyle"]["cf_home1_include_file"] = "echbaytwo-home1.php";
 $eb_all_themes_support["estyle"]["cf_home2_include_file"] = "echbaytwo-home2.php";
