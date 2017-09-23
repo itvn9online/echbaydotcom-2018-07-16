@@ -268,6 +268,18 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		
 		
 		
+		// tạo file timezone nếu chưa có
+		// chỉ với các website có ngôn ngữ không phải tiếng Việt
+		if ( $__cf_row['cf_content_language'] != 'vi'
+		// timezone phải tồn tại
+		&& $__cf_row['cf_timezone'] != ''
+		// file chưa được tạo
+		&& ! file_exists ( EB_THEME_CACHE . '___timezone.txt' ) ) {
+			_eb_create_file( EB_THEME_CACHE . '___timezone.txt', $__cf_row['cf_timezone'] );
+		}
+		
+		
+		
 		
 		/*
 		* Danh sách bản dịch
