@@ -438,6 +438,69 @@ if ( isset( $_POST['cf_timezone'] ) ) {
 
 
 
+
+// cập nhật lại config cơ bản cho file wp-config.php
+$arr_cac_thay_doi = array();
+
+// lấy nội dung cũ
+$content_of_wp_config = trim( file_get_contents( ABSPATH . 'wp-config.php' ) );
+//echo nl2br( $content_of_wp_config ) . '<br>' . "\n";
+
+// chỉ thay đổi khi file config theo chuẩn mặc định
+$content_of_new_wp_config = explode( "\n", $content_of_wp_config );
+if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
+	foreach ( $content_of_new_wp_config as $k => $v ) {
+		$v = trim( $v );
+		if ( $v != '' && substr( $v, 0, 6 ) == 'define' ) {
+			if ( strstr( $v, "'WP_DEBUG'" ) == true || strstr( $v, '"WP_DEBUG"' ) == true ) {
+	//			echo $v . '<br>' . "\n";
+				
+				if ( $_POST['cf_tester_mode'] == 0 ) {
+					$content_of_new_wp_config[$k] = "define('WP_DEBUG', false);";
+				}
+				else {
+					$content_of_new_wp_config[$k] = "define('WP_DEBUG', true);";
+				}
+				
+				$arr_cac_thay_doi['WP_DEBUG'] = 1;
+			}
+			else if ( strstr( $v, "'WP_AUTO_UPDATE_CORE'" ) == true || strstr( $v, '"WP_AUTO_UPDATE_CORE"' ) == true ) {
+	//			echo $v . '<br>' . "\n";
+				
+				if ( $_POST['cf_on_off_auto_update_wp'] == 0 ) {
+					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', false);";
+				}
+				else {
+					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', true);";
+				}
+				
+				$arr_cac_thay_doi['WP_AUTO_UPDATE_CORE'] = 1;
+			}
+		}
+	}
+	
+	// kiểm tra các cấu hình chưa được thiết lập
+	if ( ! isset( $arr_cac_thay_doi['WP_DEBUG'] ) ) {
+		$content_of_new_wp_config[0] .= "\n" . "define('WP_DEBUG', false); // add by Echbaydotcom" . "\n";
+	}
+	if ( ! isset( $arr_cac_thay_doi['WP_AUTO_UPDATE_CORE'] ) ) {
+		$content_of_new_wp_config[0] .= "\n" . "define('WP_AUTO_UPDATE_CORE', false); // add by Echbaydotcom" . "\n";
+	}
+	
+	//
+	$content_of_new_wp_config = implode( "\n", $content_of_new_wp_config );
+	//echo nl2br( $content_of_new_wp_config ) . '<br>' . "\n";
+	
+	// cập nhật lại file wp-config nếu có sự thay đổi
+	if ( $content_of_wp_config != $content_of_new_wp_config ) {
+		_eb_create_file( ABSPATH . 'wp-config.php', $content_of_new_wp_config );
+	}
+}
+
+
+
+
+
 //
 _eb_log_admin( 'Update config' );
 
