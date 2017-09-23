@@ -581,7 +581,7 @@ if ( current_module_config != 'config_theme' ) {
 	$('.click-add-url-for-logo').click(function () {
 		var a = $(this).attr('data-id') || '';
 		if ( a != '' ) {
-			var b = prompt('URL image:', '');
+			var b = prompt('URL image:', $('#' + a).val() || '');
 			if ( b != null && b != '' ) {
 				EBA_add_img_logo( b, a );
 			}
