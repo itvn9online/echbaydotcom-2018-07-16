@@ -37,6 +37,10 @@ image loc,
 image caption { width: 51%; }
 image title,
 image geo_location { width: 48%; }
+loc:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
 
 @media screen and (max-width: 960px) {
 urlset,
