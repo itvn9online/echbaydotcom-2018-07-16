@@ -24,7 +24,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	/*
 	* home
 	*/
-	$get_list_sitemap .= echo_sitemap_url_node( web_link, 1.0, $sitemap_current_time );
+	$get_list_sitemap .= WGR_echo_sitemap_url_node( web_link, 1.0, $sitemap_current_time );
 	
 	
 	
@@ -32,19 +32,19 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	/*
 	* catagory
 	*/
-	$get_list_sitemap .= get_sitemap_taxonomy();
+	$get_list_sitemap .= WGR_get_sitemap_taxonomy();
 	
 	
 	// post_tag
-	$get_list_sitemap .= get_sitemap_taxonomy( 'post_tag', 0.8 );
+	$get_list_sitemap .= WGR_get_sitemap_taxonomy( 'post_tag', 0.8 );
 	
 	
 	// post_options
-	$get_list_sitemap .= get_sitemap_taxonomy( 'post_options', 0.7 );
+	$get_list_sitemap .= WGR_get_sitemap_taxonomy( 'post_options', 0.7 );
 	
 	
 	// blog
-	$get_list_sitemap .= get_sitemap_taxonomy( 'blogs', 0.6 );
+	$get_list_sitemap .= WGR_get_sitemap_taxonomy( 'blogs', 0.6 );
 	
 	
 	
@@ -63,13 +63,12 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 
 
 //
-echo_sitemap_css();
+WGR_echo_sitemap_css();
 
 echo '
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ' . $get_list_sitemap . '
-</urlset>
-<!-- Sitemap content by EchBay.com -->';
+</urlset>';
 
 
 

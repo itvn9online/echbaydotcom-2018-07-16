@@ -27,7 +27,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		//
 //		if ( $k == 'sitemap' || strstr( $k, 'sitemap-' ) == true ) {
 		if ( strstr( $k, 'sitemap-' ) == true ) {
-			$get_list_sitemap .= echo_sitemap_node( web_link . $k, $sitemap_current_time );
+			$get_list_sitemap .= WGR_echo_sitemap_node( web_link . $k, $sitemap_current_time );
 		}
 	}
 	
@@ -45,13 +45,12 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 
 
 // print
-echo_sitemap_css();
+WGR_echo_sitemap_css();
 
 echo '
 <sitemapindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">
 ' . $get_list_sitemap . '
-</sitemapindex>
-<!-- Sitemap content by EchBay.com -->';
+</sitemapindex>';
 
 
 
