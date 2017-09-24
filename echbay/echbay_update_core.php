@@ -733,7 +733,7 @@ if ( window.location.href.split('&confirm_eb_process=').length > 1 ) {
 
 if ( jQuery('#eb_core_update_all_done').length > 0 ) {
 	window.scroll( 0, jQuery(document).height() );
-	alert('All done');
+	console.log('All done');
 }
 
 </script> 
