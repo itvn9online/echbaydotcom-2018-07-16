@@ -692,7 +692,7 @@ if ( $current_theme_dir_update == $enable_theme_dir_update ) {
 ?>
 <p>Giao diện bạn đang sử dụng là <strong><?php echo $__cf_row['cf_current_theme_using']; ?></strong>, thư mục nền của website là <strong><?php echo $current_theme_dir_update; ?></strong>. Nền này đang được hỗ trợ cập nhật miễn phí từ hệ thống, nếu bạn muốn cập nhật hoặc cài đặt lại, vui lòng bấm nút bên dưới để thực hiện:</p>
 <h2 class="text-center"><a href="#" class="click-connect-to-echbay-update-eb-theme">[ Bấm vào đây để cập nhật lại giao diện nền cho website! ]</a></h2>
-<div class="text-center">Lần cập nhật trước: <strong><?php echo date( 'r', $last_time_update_theme_eb ); ?> (<?php echo EBE_eb_update_time_to_new_time( $last_time_update_theme_eb ); ?>)</strong></em></div>
+<p class="text-center"><em>Lần cập nhật trước: <strong><?php echo date( 'r', $last_time_update_theme_eb ); ?> (<?php echo EBE_eb_update_time_to_new_time( $last_time_update_theme_eb ); ?>)</strong></em></p>
 <br>
 <?php
 }
