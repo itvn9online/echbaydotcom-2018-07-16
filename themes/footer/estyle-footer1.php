@@ -1,7 +1,7 @@
 <div id="estyle-footer1">
 	<div class="<?php echo $__cf_row['cf_footer_class_style']; ?>">
 		<div class="estyle-footer1 cf">
-			<div class="lf f75 cf fullsize-if-mobile bottom-node">
+			<div class="lf f75 cf fullsize-if-mobile sub-footer-menu">
 				<div class="lf f33 fullsize-if-mobile"><?php echo EBE_echbay_footer_menu(); ?>
 					<div>&nbsp;</div>
 				</div>

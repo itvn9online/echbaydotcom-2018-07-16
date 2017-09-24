@@ -8,18 +8,6 @@
 #estyle-footer1 a { color: #ccc; }
 .style-for-mobile #estyle-footer1 .estyle-footer1 { padding: 0 5px 0 10px; }
 #estyle-footer1 .eb-set-menu-selected { padding-right: 15px; }
-#estyle-footer1 .bottom-node li {
-	font-size: 16px;
-	padding: 6px 0;
-}
-#estyle-footer1 .bottom-node .sub-menu {
-	list-style: inside;
-	padding-top: 8px;
-}
-#estyle-footer1 .bottom-node .sub-menu li {
-	padding: 4px 0;
-	font-size: 13px;
-}
 #estyle-footer1 .hop-tac-voi {
 	background: #090;
 	display: block;
