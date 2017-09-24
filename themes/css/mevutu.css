@@ -68,3 +68,8 @@ body { font-family: Arial, Verdana, Helvetica, sans-serif; }
 }
 .details-support-phone,
 .details-support-phone a { color: #f00; }
+#denbaophat-footer3 .footer-copyright,
+#denbaophat-footer3 p {
+	padding: 0;
+	margin: 2px 0;
+}

@@ -10,7 +10,7 @@
 			<div class="lf f25 fullsize-if-mobile"><?php echo EBE_echbay_footer_menu(); ?>
 				<div>&nbsp;</div>
 			</div>
-			<div class="lf f25 fullsize-if-mobile"><?php echo EBE_echbay_footer_menu(); ?>
+			<div class="lf f25 fullsize-if-mobile">
 				<div>&nbsp;</div>
 			</div>
 		</div>
