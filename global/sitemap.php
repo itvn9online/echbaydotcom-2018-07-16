@@ -31,6 +31,10 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		}
 	}
 	
+	// phân trang cho sitemap (lấy từ trang 2 trở đi)
+	$get_list_sitemap .= WGR_sitemap_part_page();
+	$get_list_sitemap .= WGR_sitemap_part_page( 'blog', 'sitemap-blog', 'sitemap-blog-images' );
+	
 	
 	
 	//
