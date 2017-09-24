@@ -252,6 +252,7 @@ amp-carousel > amp-img > img { object-fit: contain; }
 	right: 16px;
 }
 /* Inline styles */
+/*
 .amp-wp-inline-7a2577c6b6cd13470b2d5ce3311b877d {
 	color: #000000;
 	font-size: 12pt;
@@ -265,6 +266,7 @@ amp-carousel > amp-img > img { object-fit: contain; }
 	color: #ff6600;
 	font-size: 12pt;
 }
+*/
 .amp-related-posts { margin-left: 25px; }
 .amp-wp-blogs-list {
 	border: 1px #ccc solid;

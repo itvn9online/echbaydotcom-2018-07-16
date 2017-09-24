@@ -82,7 +82,12 @@ if ( $__cf_row['cf_default_amp_bg'] == '' ) {
 
 ?>
 <style amp-custom>
-<?php echo $eb_amp->add_css ( array( 'css/amp-custom.css', ) ) . $css_for_amp_logo . '.amp-wp-header { background-color: ' . $__cf_row['cf_default_amp_bg'] . '; }';
+<?php
+
+echo WGR_remove_css_multi_comment( $eb_amp->add_css ( array(
+	'css/amp-custom.css'
+) ) ) . $css_for_amp_logo . '.amp-wp-header{background-color:' . $__cf_row['cf_default_amp_bg'] . '}';
+
 ?>
 </style>
 </head>

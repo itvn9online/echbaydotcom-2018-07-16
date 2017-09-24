@@ -199,7 +199,7 @@ class EchAMPFunction {
 			$v = EB_THEME_PLUGIN_INDEX . $v;
 			
 			if ( file_exists( $v ) ) {
-				$f_content .= file_get_contents( $v, 1 ) . "\n";
+				$f_content .= trim( file_get_contents( $v, 1 ) ) . "\n";
 			}
 		}
 		

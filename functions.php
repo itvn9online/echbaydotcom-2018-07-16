@@ -948,12 +948,21 @@ function EBE_replace_link_in_css ( $c ) {
 
 function WGR_remove_css_multi_comment ( $a ) {
 	
-	$str = '';
-	
 	$a = explode( '*/', $a );
+	$str = '';
 	foreach ( $a as $v ) {
 		$v = explode('/*', $v);
 		$str .= $v[0];
+	}
+	
+	//
+	$a = explode( "\n", $str );
+	$str = '';
+	foreach ( $a as $v ) {
+		$v = trim( $v );
+		if ( $v != '' ) {
+			$str .= $v;
+		}
 	}
 	
 	// bỏ các ký tự thừa nhiều nhất có thể
@@ -964,6 +973,7 @@ function WGR_remove_css_multi_comment ( $a ) {
 	$str = str_replace( ', .', ',.', $str );
 	$str = str_replace( ', #', ',#', $str );
 	$str = str_replace( ': ', ':', $str );
+	$str = str_replace( '} .', '}.', $str );
 	
 	return $str;
 	
