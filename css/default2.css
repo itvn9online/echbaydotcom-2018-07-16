@@ -1666,6 +1666,7 @@ li.footer-social-gg { background-color: #DE4B39; }
 	height: 168px;
 	margin: 15px 0;
 }
+/* tạo menu kiểu cha con mặc định cho phần footer, chỉ cần có sub-menu là có mẫu menu cha con luôn */
 .sub-footer-menu li {
 	font-size: 16px;
 	padding: 6px 0;
@@ -1677,4 +1678,9 @@ li.footer-social-gg { background-color: #DE4B39; }
 .sub-footer-menu .sub-menu li {
 	padding: 4px 0;
 	font-size: 13px;
+}
+/* mã nhúng của google adword tạo ra một khoảng trống ở vị trí nó được đặt, thêm style để làm mất khoảng trống này đi */
+iframe[name="google_conversion_frame"] {
+	position: absolute;
+	left: -999px;
 }
