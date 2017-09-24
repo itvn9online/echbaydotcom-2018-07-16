@@ -2,7 +2,6 @@
 
 
 
-// https://support.google.com/webmasters/answer/178636?hl=vi
 
 
 // thư viện dùng chung

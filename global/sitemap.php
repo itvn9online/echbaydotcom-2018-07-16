@@ -1,6 +1,13 @@
 <?php
 
 
+
+// tham khảo
+// https://support.google.com/webmasters/answer/178636?hl=vi
+
+
+
+
 // thư viện dùng chung
 include EB_THEME_PLUGIN_INDEX . 'global/sitemap_function.php';
 
