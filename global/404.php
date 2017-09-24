@@ -164,6 +164,20 @@ else {
 		$current_404_uri = $_SERVER['REQUEST_URI'];
 //		echo $current_404_uri . '<br>' . "\n";
 		
+		
+		
+		
+		// fiexd lỗi ở ra từ short URL ở bản AMP
+		$check_2blog_in_url = explode( '/blog/', $current_404_uri );
+		if ( count( $check_2blog_in_url ) == 3 ) {
+			$check_2blog_in_url = web_link . substr( $check_2blog_in_url[0], 1 ) . '/blog/' . $check_2blog_in_url[1];
+//			echo $check_2blog_in_url . '<br>' . "\n"; exit();
+			wp_redirect( $check_2blog_in_url, 301 ); exit();
+		}
+		
+		
+		
+		
 		//
 		$current_small_404_uri = explode( '?', $current_404_uri );
 		$current_small_404_uri = $current_small_404_uri[0];
