@@ -463,20 +463,6 @@ $content_of_wp_config = trim( file_get_contents( ABSPATH . 'wp-config.php' ) );
 $content_of_new_wp_config = explode( "\n", $content_of_wp_config );
 if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 	
-	// tạo URL động cho site
-	$dynamic_siteurl = explode( '/', $_POST['current_siteurl'] );
-	
-	// nếu web chạy trong thư mục con -> thêm dấu ' ở cuối
-	if ( count( $dynamic_siteurl ) > 3 ) {
-		$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\'] . \'';
-		$dynamic_siteurl = '\'' . implode( '/', $dynamic_siteurl ) . '\'';
-	}
-	else {
-		$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\']';
-		$dynamic_siteurl = '\'' . implode( '/', $dynamic_siteurl );
-	}
-//	echo $dynamic_siteurl . '<br>'; exit();
-	
 	//
 	foreach ( $content_of_new_wp_config as $k => $v ) {
 		$v = trim( $v );
@@ -527,6 +513,22 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 	
 //	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_EDIT' );
 //	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_MODS' );
+	
+	
+	// tạo URL động cho site dựa vào URL cố định trước đó
+	$dynamic_siteurl = explode( '/', $current_siteurl );
+	
+	// nếu web chạy trong thư mục con -> thêm dấu ' ở cuối
+	if ( count( $dynamic_siteurl ) > 3 ) {
+		$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\'] . \'';
+		$dynamic_siteurl = '\'' . implode( '/', $dynamic_siteurl ) . '\'';
+	}
+	// nếu không, có thể chốt luôn chính là HOST hiện tại
+	else {
+		$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\']';
+		$dynamic_siteurl = '\'' . implode( '/', $dynamic_siteurl );
+	}
+//	echo $dynamic_siteurl . '<br>'; exit();
 	
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_SITEURL', $dynamic_siteurl );
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_HOME', 'WP_SITEURL' );
