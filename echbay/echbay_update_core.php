@@ -494,10 +494,13 @@ function EBE_get_text_version ( $str ) {
 		if ( date_time - $lats_update_file_test > $time_limit_update ) {
 			
 			// nơi lưu file zip
-			$destination_path = EB_THEME_CACHE . '/echbaydotcom.zip';
+			$destination_path = EB_THEME_CACHE . 'echbaydotcom.zip';
 			
 			// download từ github
 			if ( ! file_exists( $destination_path ) ) {
+				
+				// server dự phòng
+				$url2_for_download_ebdotcom = '';
 				
 				// chọn server để update -> github là thời gian thực
 				if ( $connect_to_server == 'github' ) {
@@ -510,11 +513,40 @@ function EBE_get_text_version ( $str ) {
 				// server của echbay thì update chậm hơn chút, nhưng tải nhanh hơn -> mặc định
 				else {
 					$url_for_download_ebdotcom = 'https://www.echbay.com/daoloat/echbaydotcom.zip';
+					
+					// thiết lập chế độ download từ server dự phòng
+					$url2_for_download_ebdotcom = 'http://api.echbay.com/daoloat/echbaydotcom.zip';
 				}
 				
-				copy( $url_for_download_ebdotcom, $destination_path );
-				chmod( $destination_path, 0777 );
+				// TEST
+//				$url_for_download_ebdotcom = 'http://api.echbay.com/css/bg/HD-Eagle-Wallpapers.jpg';
+//				$destination_path = EB_THEME_CACHE . 'w.jpg';
 				
+				// thử download theo cách thông thường
+				if ( copy( $url_for_download_ebdotcom, $destination_path ) ) {
+					chmod( $destination_path, 0777 );
+				}
+				// download từ server dự phòng
+				else if ( $url2_for_download_ebdotcom != '' && copy( $url2_for_download_ebdotcom, $destination_path ) ) {
+					chmod( $destination_path, 0777 );
+				}
+				// đổi hàm khác xem ok không
+				else if ( file_put_contents( $destination_path, fopen( $url_for_download_ebdotcom, 'r') ) ) {
+					chmod( $destination_path, 0777 );
+				}
+				// sử dụng cURL để download file qua https
+				else if ( WGR_copy_secure_file( $url_for_download_ebdotcom, $destination_path ) ) {
+					chmod( $destination_path, 0777 );
+				}
+				// vẫn không được thì báo lỗi
+				else {
+					die('<p>URL download: <strong>' . $url_for_download_ebdotcom . '</strong></p>
+					<p>SAVE to: <strong>' . $destination_path . '</strong></p>
+					<h1>Download file faild!</h1>');
+				}
+//				exit();
+				
+				//
 				echo '<div>Download in: <a href="' . $url_for_download_ebdotcom . '" target="_blank">' . $url_for_download_ebdotcom . '</a></div>'; 
 			}
 			
