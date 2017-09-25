@@ -355,7 +355,8 @@ if ( ! defined('WP_AUTO_UPDATE_CORE') ) {
 
 // cấu hình URL dạng tĩnh -> khuyên dùng
 if ( ! defined('WP_SITEURL') ) {
-	define( 'WP_SITEURL', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+//	define( 'WP_SITEURL', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+	define( 'WP_SITEURL', get_option ( 'siteurl' ) );
 }
 //echo WP_SITEURL . '<br>';
 if ( ! defined('WP_HOME') ) {

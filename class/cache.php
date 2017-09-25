@@ -544,8 +544,8 @@ else if ( defined('WP_HOME') ) {
 }
 else {
 //	$web_link = get_bloginfo ( 'url' );
-//	$web_link = get_option ( 'siteurl' );
-	$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'];
+//	$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'];
+	$web_link = get_option ( 'siteurl' );
 }
 
 // thêm dấu chéo vào cuối nếu chưa có
