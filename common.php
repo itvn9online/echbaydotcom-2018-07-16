@@ -140,9 +140,14 @@ if ( $act == '' ) {
 } else {
 	$inc_file = $act;
 }
-//echo $inc_file . '<br>';
+//echo $inc_file . '<br>' . "\n";
+$inc_child_file = '';
+if ( defined('EB_CHILD_THEME_URL') ) {
+	$inc_child_file = EB_CHILD_THEME_URL . 'php/' . $inc_file . '.php';
+//	echo $inc_child_file . '<br>' . "\n";
+}
 $inc_file = EB_THEME_PHP . $inc_file . '.php';
-//echo $inc_file . '<br>';
+//echo $inc_file . '<br>' . "\n";
 
 //
 //echo EB_THEME_URL . 'templates/' . $act . '.php';
@@ -157,8 +162,14 @@ if ( file_exists( $inc_file ) ) {
 	$main_content = '';
 	
 	
-	//
-	include $inc_file;
+	// sử dụng child theme (ưu tiên)
+	if ( $inc_child_file != '' && file_exists( $inc_child_file ) ) {
+		include $inc_child_file;
+	}
+	// sử dụng ở theme chính
+	else {
+		include $inc_file;
+	}
 
 
 	//

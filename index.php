@@ -68,14 +68,20 @@ $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/guest.css' ] = 1;
 
 //
 //$arr_for_add_theme_css[ EB_THEME_URL . 'css/style.css' ] = 1;
-$arr_for_add_css[ EB_THEME_URL . 'css/style.css' ] = 1;
-
-// cho phiên bản mobile
-//$arr_for_add_theme_css[ EB_THEME_URL . 'css/mobile.css' ] = 1;
-$arr_for_add_css[ EB_THEME_URL . 'css/mobile.css' ] = 1;
-
-// tối ưu cho màn hình đầu tiên
-//$arr_for_add_css[ EB_THEME_URL . 'css/first_screen.css' ] = 1;
+if ( defined('EB_CHILD_THEME_URL') ) {
+	$arr_for_add_css[ EB_CHILD_THEME_URL . 'css/style.css' ] = 1;
+	$arr_for_add_css[ EB_CHILD_THEME_URL . 'css/mobile.css' ] = 1;
+}
+else {
+	$arr_for_add_css[ EB_THEME_URL . 'css/style.css' ] = 1;
+	
+	// cho phiên bản mobile
+	//$arr_for_add_theme_css[ EB_THEME_URL . 'css/mobile.css' ] = 1;
+	$arr_for_add_css[ EB_THEME_URL . 'css/mobile.css' ] = 1;
+	
+	// tối ưu cho màn hình đầu tiên
+	//$arr_for_add_css[ EB_THEME_URL . 'css/first_screen.css' ] = 1;
+}
 
 
 
@@ -285,36 +291,53 @@ if ( isset ( $arr_eb_ads_custom_status ) ) {
 //define( '__eb_thread_template', file_get_contents( EB_THEME_HTML . 'threadnode.html', 1 ) );
 
 // Nếu có chọn file thiết kế -> sử dụng nguyên mẫu
-if ( $__cf_row['cf_threadnode_include_file'] != '' ) {
+$load_config_temp = $__cf_row['cf_threadnode_include_file'];
+if ( $load_config_temp != '' ) {
 	
 	//
-	$tmp_theme = EB_THEME_URL . 'ui/' . $__cf_row[ 'cf_threadnode_include_file' ];
-	$tmp_plugin = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $__cf_row['cf_threadnode_include_file' ];
+	$tmp_child_theme = '';
+	if ( defined('EB_CHILD_THEME_URL') ) {
+		$tmp_child_theme = EB_CHILD_THEME_URL . 'ui/' . $load_config_temp;
+//		echo $tmp_child_theme . '<br>' . "\n";
+	}
+	$tmp_theme = EB_THEME_URL . 'ui/' . $load_config_temp;
+//	echo $tmp_theme . '<br>' . "\n";
+	$tmp_plugin = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $load_config_temp;
+//	echo $tmp_plugin . '<br>' . "\n";
 	
 	// v1
-//	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $__cf_row['cf_threadnode_include_file'];
+//	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $load_config_temp;
 	
 	
 	// ưu tiên hàng của theme trước
-	if ( file_exists( $tmp_theme ) ) {
-		$arr_for_show_html_file_load[] = '<!-- config HTML (theme): ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
+	if ( $tmp_child_theme != '' && file_exists( $tmp_child_theme ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (child theme): ' . $load_config_temp . ' -->';
+		
+		define( '__eb_thread_template', file_get_contents( $tmp_child_theme, 1 ) );
+		
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+	}
+	else if ( file_exists( $tmp_theme ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (theme): ' . $load_config_temp . ' -->';
 		
 		define( '__eb_thread_template', file_get_contents( $tmp_theme, 1 ) );
 		
-		$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_threadnode_include_file' ], '.html' ) ] = 1;
-//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $__cf_row[ 'cf_threadnode_include_file' ], '.html' ) ] = 1;
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
 	}
 	// sau đó mới là của plugin
 	else if ( file_exists( $tmp_plugin ) ) {
-		$arr_for_show_html_file_load[] = '<!-- config HTML (plugin): ' . $__cf_row['cf_threadnode_include_file'] . ' -->';
+		$arr_for_show_html_file_load[] = '<!-- config HTML (plugin): ' . $load_config_temp . ' -->';
 		
 		define( '__eb_thread_template', file_get_contents( $tmp_plugin, 1 ) );
 		
-		$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_threadnode_include_file' ], '.html' ) ] = 1;
-//		$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_threadnode_include_file' ], '.html' ) ] = 1;
+		$arr_for_add_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
 	}
 	else {
-		define( '__eb_thread_template', 'File ' . $inc_threadnode . ' not exist' );
+//		define( '__eb_thread_template', 'File ' . $inc_threadnode . ' not exist' );
+		define( '__eb_thread_template', 'File ' . $load_config_temp . ' not exist' );
 	}
 }
 else {
@@ -1009,9 +1032,22 @@ $arr_for_add_js = array(
 	EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
-	EB_THEME_THEME . 'javascript/display.js',
-	EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
+//	EB_THEME_THEME . 'javascript/display.js',
+//	EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
 );
+
+// nạp js từ child theme (nếu có)
+if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'javascript/display.js' ) ) {
+	$arr_for_add_js[] = EB_CHILD_THEME_URL . 'javascript/display.js';
+}
+// mặc định là nạp từ theme
+else {
+	$arr_for_add_js[] = EB_THEME_THEME . 'javascript/display.js';
+}
+
+// bổ sung js chân trang
+$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/footer.js';
+
 
 // thêm các JS khác dưới dạng URL
 $arr_for_add_outsource_js = array();

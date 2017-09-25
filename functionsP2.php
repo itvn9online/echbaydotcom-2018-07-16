@@ -2722,10 +2722,10 @@ function EBE_get_css_for_config_design ( $f, $type = '.php' ) {
 }
 
 // lấy css theo theme
-function EBE_get_css_for_theme_design ( $f, $type = '.php' ) {
-//	return EB_THEME_URL . 'css/' . str_replace( $type, '.css', $f );
-//	return EB_THEME_URL . 'ui/' . str_replace( $type, '.css', $f );
-	return EB_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f );
+function EBE_get_css_for_theme_design ( $f, $type = '.php', $dir = EB_THEME_URL ) {
+//	return $dir . 'css/' . str_replace( $type, '.css', $f );
+//	return $dir . 'ui/' . str_replace( $type, '.css', $f );
+	return $dir . 'ui/' . WGR_convert_fiename_to_css( $f );
 }
 
 // kiểm tra file template xem nằm ở đâu thì nhúng css tương ứng ở đó

@@ -297,12 +297,13 @@ $offset = ($trang - 1) * $threadInPage;
 		//
 		echo '
 		<tr class="hd_status' . $hd_trangthai . '">
-			<td><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order&id=' . $o->ID . '&order_old_type=1" class="order-a-of-v1">' . $o->post_title . '</a></td>
+			<td>
+				<div><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order&id=' . $o->ID . '&order_old_type=1" class="order-a-of-v1">' . $o->post_title . '</a></div>
+				<div class="small">' . $o->post_date . '</div>
+			</td>
 			<td>' . ( isset( $arr_hd_trangthai[ $hd_trangthai ] ) ? $arr_hd_trangthai[ $hd_trangthai ] : '<em>NULL</em>' ) . '</td>
 			<td><em>Chưa đồng bộ</em></td>
 			<td><a href="user-edit.php?user_id=' . $o->post_author . '" target="_blank">' . _eb_lay_email_tu_cache( $o->post_author ) . '</a></td>
-			<td colspan="2">&nbsp;</td>
-			<td>' . $o->post_date . '</td>
 		</tr>';
 		
 	}
