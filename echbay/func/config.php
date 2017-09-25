@@ -465,15 +465,17 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 	
 	// tạo URL động cho site
 	$dynamic_siteurl = explode( '/', $_POST['current_siteurl'] );
-	$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\'] . \'';
 	
 	// nếu web chạy trong thư mục con -> thêm dấu ' ở cuối
 	if ( count( $dynamic_siteurl ) > 3 ) {
+		$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\'] . \'';
 		$dynamic_siteurl = '\'' . implode( '/', $dynamic_siteurl ) . '\'';
 	}
 	else {
+		$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\']';
 		$dynamic_siteurl = '\'' . implode( '/', $dynamic_siteurl );
 	}
+//	echo $dynamic_siteurl . '<br>'; exit();
 	
 	//
 	foreach ( $content_of_new_wp_config as $k => $v ) {
