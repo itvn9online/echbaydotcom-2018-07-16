@@ -13,7 +13,7 @@ $url_for_home_clean_up = web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab
 // tính tổng các post_type đang có
 $sql = _eb_q("SELECT post_type
 	FROM
-		" . $wpdb->posts . "
+		`" . $wpdb->posts . "`
 	GROUP BY
 		post_type");
 //print_r( $sql );
@@ -23,7 +23,7 @@ foreach ( $sql as $v ) {
 	//
 	$strsql = _eb_q("SELECT ID
 	FROM
-		" . $wpdb->posts . "
+		`" . $wpdb->posts . "`
 	WHERE
 		post_type = '" . $v->post_type . "'");
 	
@@ -60,7 +60,7 @@ if ( isset( $_GET['filter_post_meta'] ) ) {
 		//
 		$sql = _eb_q("SELECT *
 		FROM
-			" . wp_postmeta . "
+			`" . wp_postmeta . "`
 		WHERE
 			meta_key = '" . $s_meta_key . "'
 		ORDER BY
@@ -71,7 +71,7 @@ if ( isset( $_GET['filter_post_meta'] ) ) {
 			// xóa meta trống
 			if ( $remove_meta == 'null' && $v->meta_value == '' ) {
 				$wpdb->query( "DELETE FROM
-					" . wp_postmeta . "
+					`" . wp_postmeta . "`
 				WHERE
 					meta_id = " . $v->meta_id . "
 					AND meta_value = ''" );
@@ -81,7 +81,7 @@ if ( isset( $_GET['filter_post_meta'] ) ) {
 			// xóa meta bằng 0
 			else if ( $remove_meta == 'zero' && $v->meta_value == '0' ) {
 				$wpdb->query( "DELETE FROM
-					" . wp_postmeta . "
+					`" . wp_postmeta . "`
 				WHERE
 					meta_id = " . $v->meta_id . "
 					AND meta_value = '0'" );
@@ -98,7 +98,7 @@ if ( isset( $_GET['filter_post_meta'] ) ) {
 else {
 	$sql = _eb_q("SELECT meta_key
 	FROM
-		" . wp_postmeta . "
+		`" . wp_postmeta . "`
 	GROUP BY
 		meta_key
 	ORDER BY
@@ -109,7 +109,7 @@ else {
 		// tính tổng các post_meta đang có
 		$strsql = _eb_q("SELECT meta_id
 		FROM
-			" . wp_postmeta . "
+			`" . wp_postmeta . "`
 		WHERE
 			meta_key = '" . $v->meta_key . "'");
 		
@@ -130,9 +130,46 @@ $text_for_run_clean_up = 'Tắt tiến trình dọn database';
 
 // nếu đang là xóa database
 if ( isset( $_GET['del_data'] ) ) {
+	
+	/*
+	* Xóa các post thuộc dạng revision
+	* Sử dụng lệnh mysql thuần xóa cho nhanh
+	* Thường thì revision không có postmeta, term_relationships -> nhưng cứ đặt lệnh xóa cho nó xôm
+	*/
+	// xóa postmeta trước
+	$wpdb->query( "DELETE FROM
+		`" . wp_postmeta . "`
+	WHERE
+		post_id IN ( select
+						ID
+					from
+						`" . $wpdb->posts . "`
+					where
+						post_type = 'revision' )" );
+	
+	// tiếp theo là term_relationships
+//	echo $wpdb->term_relationships . '<br>' . "\n"; exit();
+	$wpdb->query( "DELETE FROM
+		`" . $wpdb->term_relationships . "`
+	WHERE
+		object_id IN ( select
+						ID
+					from
+						`" . $wpdb->posts . "`
+					where
+						post_type = 'revision' )" );
+	
+	// sau đó xóa posts
+	$wpdb->query( "DELETE FROM
+		`" . $wpdb->posts . "`
+	WHERE
+		post_type = 'revision'" );
+	
+	
+	// chạy lại bằng lệnh cung cấp bởi wp -> đề phòng lệnh trên có lỗi
 	$sql = _eb_q("SELECT ID, post_title, post_name
 	FROM
-		" . $wpdb->posts . "
+		`" . $wpdb->posts . "`
 	WHERE
 		post_type = 'revision'
 	ORDER BY
@@ -148,10 +185,13 @@ if ( isset( $_GET['del_data'] ) ) {
 		wp_delete_post( $v->ID, true );
 	}
 	
+	
+	
+	
 	// Xóa các log sinh ra bởi EchBay
 	echo '<h2>- Xóa các log sinh ra bởi EchBay:</h2>';
 	$wpdb->query( "DELETE FROM
-		" . wp_postmeta . "
+		`" . wp_postmeta . "`
 	WHERE
 		meta_key = '__eb_log_user'
 		OR meta_key = '__eb_log_admin'" );

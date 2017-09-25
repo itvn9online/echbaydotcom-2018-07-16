@@ -85,7 +85,7 @@ function WGR_create_themes_default_format (
 * GET top menu (auto):
 <?php echo EBE_echbay_top_menu(); ?>
 *
-* GET footer menu (auto):
+* GET footer menu (auto): -> class for sub-menu: sub-footer-menu
 <?php echo EBE_echbay_footer_menu(); ?>
 *
 * GET contact info

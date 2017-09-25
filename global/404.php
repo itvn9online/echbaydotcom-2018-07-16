@@ -10,7 +10,7 @@
 
 
 //
-//print_r( $_GET );
+//print_r( $_GET ); exit();
 
 // Nếu có ID của cat -> có thể là blog
 if ( isset( $_GET['cat'] ) && $_GET['cat'] > 0 ) {
@@ -35,12 +35,23 @@ if ( isset( $_GET['cat'] ) && $_GET['cat'] > 0 ) {
 
 
 //
-$act = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
-//echo $act . '<br>';
-
-if ( $act != '' ) {
-	$act = _eb_begin( explode( '?', $act ) );
-	$act = _eb_begin( explode( '&', $act ) );
+//print_r( $_GET );
+$act = '';
+/*
+if ( isset( $_GET['ebaction'] ) ) {
+	$act = $_GET['ebaction'];
+}
+else */ if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+	$act = $_SERVER['REQUEST_URI'];
+	
+	if ( $act != '' ) {
+		$act = _eb_begin( explode( '?', $act ) );
+		$act = _eb_begin( explode( '&', $act ) );
+	}
+	//echo $act . '<br>';
+	
+	$act = basename( $act );
+	//echo $act . '<br>';
 }
 //echo $act . '<br>';
 
@@ -48,9 +59,6 @@ if ( $act != '' ) {
 if ( $act == '' || $act == '/' ) {
 	die('Template not found');
 }
-
-$act = basename( $act );
-//echo $act . '<br>';
 
 //
 //echo ECHBAY_PRI_CODE . '<br>';

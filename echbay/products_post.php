@@ -159,6 +159,9 @@ else if ( $trang < 1 ) {
 $offset = ($trang - 1) * $threadInPage;
 //echo $offset . '<br>' . "\n";
 
+//
+$strAjaxLink .= '&trang=' . $trang;
+
 
 
 ?>

@@ -12,9 +12,8 @@ $eb_all_themes_support["kingsport"]["screenshot"] = "https://img1.webgiare.org/k
 //
 $eb_all_themes_support["kingsport"]["cf_top1_include_file"] = "kingsport-top1.php";
 $eb_all_themes_support["kingsport"]["cf_top2_include_file"] = "kingsport-top2.php";
-$eb_all_themes_support["kingsport"]["cf_top3_include_file"] = "kingsport-top3.php";
-$eb_all_themes_support["kingsport"]["cf_top4_include_file"] = "top_widget.php";
-$eb_all_themes_support["kingsport"]["cf_top5_include_file"] = "breadcrumb-top1.php";
+$eb_all_themes_support["kingsport"]["cf_top3_include_file"] = "top_widget.php";
+$eb_all_themes_support["kingsport"]["cf_top4_include_file"] = "breadcrumb-top1.php";
 //
 $eb_all_themes_support["kingsport"]["cf_footer1_include_file"] = "footer_widget.php";
 $eb_all_themes_support["kingsport"]["cf_footer1_include_file"] = "kingsport-footer1.php";

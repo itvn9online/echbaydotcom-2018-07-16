@@ -2857,10 +2857,10 @@ function EBE_get_html_cart ( $icon_only = 0 ) {
 	$a = EBE_get_lang('cart');
 	
 	if ( $icon_only == 1 ) {
-		return '<div class="btn-to-cart cf"><a title="' . $a . '" href="./cart" rel="nofollow"><i class="fa fa-shopping-cart"></i> <em class="show_count_cart d-none">0</em></a></div>';
+		return '<div class="btn-to-cart cf"><a title="' . $a . '" href="' . web_link . 'cart" rel="nofollow"><i class="fa fa-shopping-cart"></i> <em class="show_count_cart d-none">0</em></a></div>';
 	}
 	else {
-		return '<div class="btn-to-cart cf"><a title="' . $a . '" href="./cart" rel="nofollow"><i class="fa fa-shopping-cart"></i> ' . $a . ' <em class="show_count_cart d-none">0</em></a></div>';
+		return '<div class="btn-to-cart cf"><a title="' . $a . '" href="' . web_link . 'cart" rel="nofollow"><i class="fa fa-shopping-cart"></i> ' . $a . ' <em class="show_count_cart d-none">0</em></a></div>';
 	}
 }
 
