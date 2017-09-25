@@ -528,14 +528,18 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 		$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\']';
 		$dynamic_siteurl = '\'' . implode( '/', $dynamic_siteurl );
 	}
-//	echo $dynamic_siteurl . '<br>'; exit();
+	echo '<strong>WP_SITEURL</strong>: ' . $dynamic_siteurl . '<br>' . "\n";
+//	exit();
 	
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_SITEURL', $dynamic_siteurl );
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_HOME', 'WP_SITEURL' );
 	
+	
+	
 	// nếu vẫn đang là salt mặc định -> cập nhật salt mới
 	if ( AUTH_KEY == 'put your unique phrase here' ) {
 	}
+	
 	
 	//
 	$content_of_new_wp_config = implode( "\n", $content_of_new_wp_config );
