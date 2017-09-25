@@ -382,7 +382,7 @@ if ( ! defined('FTP_HOST') ) {
 * Kích hoạt bằng cách set thủ công trong wp-config.php
 */
 if ( ! defined('DISALLOW_FILE_EDIT') ) {
-	define( 'DISALLOW_FILE_EDIT', ( $_POST['cf_alow_edit_plugin_theme'] == 0 ) ? true : false );
+	define( 'DISALLOW_FILE_EDIT', ( $__cf_row['cf_alow_edit_plugin_theme'] == 0 ) ? true : false );
 }
 
 /*
@@ -390,7 +390,7 @@ if ( ! defined('DISALLOW_FILE_EDIT') ) {
 * Kích hoạt bằng cách set thủ công trong wp-config.php
 */
 if ( ! defined('DISALLOW_FILE_MODS') ) {
-	define( 'DISALLOW_FILE_MODS', ( $_POST['cf_alow_edit_plugin_theme'] == 0 ) ? true : false );
+	define( 'DISALLOW_FILE_MODS', ( $__cf_row['cf_alow_edit_plugin_theme'] == 0 ) ? true : false );
 }
 
 /*
