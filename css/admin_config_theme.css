@@ -93,12 +93,19 @@ body.folded .eb-admin-config { left: 8%; }
 	background: #fff top center no-repeat;
 	background-size: contain;
 	position: relative;
-	margin: 0 35px 55px 0;
+	margin: 0 35px 0 0;
 	height: 300px;
 	line-height: 300px;
 	border: 1px #ccc solid;
 	border-radius: 2px;
 	cursor: pointer;
+}
+.skins-admin-edit li h4 {
+	margin: 10px 0 55px 0;
+	font-size: 18px;
+	color: #868686;
+	font-weight: 400;
+	text-align: left;
 }
 /*
 .skins-admin-edit div {

@@ -536,14 +536,27 @@ $str_all_themes_support = '';
 foreach ( $eb_all_themes_support as $k => $v ) {
 	$theme_name = $k;
 	$theme_avt = $v['screenshot'];
+//	print_r( $v );
 	
+	// nếu không có giá -> bản miễn phí, nếu có giá -> bản tính phí
+	// bản tính phí thì theme nằm ở chỗ khác, nên người dùng có kích hoạt thì theme cũng không hoạt động
+	if ( ! isset( $v['price'] ) ) {
+		$v['price'] = 0;
+	}
+	$gia_kich_hoat = '<em>Miễn phí</em>';
+	if ( $v['price'] > 0 ) {
+		$gia_kich_hoat = '<strong class="ebe-currency redcolor">' . number_format( $v['price'] ) . '</strong>';
+	}
+	
+	//
 	$str_all_themes_support .= '
-<li data-key="' . $theme_name . '">
+<li data-price="' . $v['price'] . '" data-key="' . $theme_name . '">
 	<div style="background-image:url(\'' . $theme_avt . '\');">
 		<p>&nbsp;</p>
 		<h3>' . $theme_name . '</h3>
 		<button type="button" data-theme="' . $theme_name . '" class="blue-button cur click-active-eb-themes">Kích hoạt</button>
 	</div>
+	<h4>' . $gia_kich_hoat . '</h4>
 </li>';
 }
 $arr_for_set_template['str_all_themes_support'] = $str_all_themes_support;
