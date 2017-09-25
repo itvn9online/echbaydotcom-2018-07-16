@@ -467,6 +467,14 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 	$dynamic_siteurl = explode( '/', $_POST['current_siteurl'] );
 	$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\'] . \'';
 	
+	// nếu web chạy trong thư mục con -> thêm dấu ' ở cuối
+	if ( count( $dynamic_siteurl ) > 3 ) {
+		$dynamic_siteurl = '\'' . implode( '/', $dynamic_siteurl ) . '\'';
+	}
+	else {
+		$dynamic_siteurl = '\'' . implode( '/', $dynamic_siteurl );
+	}
+	
 	//
 	foreach ( $content_of_new_wp_config as $k => $v ) {
 		$v = trim( $v );
@@ -518,7 +526,7 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 //	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_EDIT' );
 //	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_MODS' );
 	
-	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_SITEURL', '\'' . implode( '/', $dynamic_siteurl ) . '\'' );
+	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_SITEURL', $dynamic_siteurl );
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_HOME', 'WP_SITEURL' );
 	
 	// nếu vẫn đang là salt mặc định -> cập nhật salt mới
