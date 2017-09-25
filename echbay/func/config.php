@@ -499,34 +499,10 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 				$arr_cac_thay_doi['WP_AUTO_UPDATE_CORE'] = 1;
 			}
 			// cho phép chính sửa theme, plugin
-			/*
-			else if ( strstr( $v, "'DISALLOW_FILE_EDIT'" ) == true || strstr( $v, '"DISALLOW_FILE_EDIT"' ) == true ) {
-//				echo $v . '<br>' . "\n";
-				
-				if ( $_POST['cf_alow_edit_plugin_theme'] == 0 ) {
-					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_EDIT', true);";
-				}
-				else {
-					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_EDIT', false);";
-				}
-				
-				$arr_cac_thay_doi['DISALLOW_FILE_EDIT'] = 1;
-			}
-			else if ( strstr( $v, "'DISALLOW_FILE_MODS'" ) == true || strstr( $v, '"DISALLOW_FILE_MODS"' ) == true ) {
-//				echo $v . '<br>' . "\n";
-				
-				if ( $_POST['cf_alow_edit_plugin_theme'] == 0 ) {
-					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_MODS', true);";
-				}
-				else {
-					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_MODS', false);";
-				}
-				
-				$arr_cac_thay_doi['DISALLOW_FILE_MODS'] = 1;
-			}
-			*/
+			else if ( strstr( $v, "'DISALLOW_FILE_EDIT'" ) == true || strstr( $v, '"DISALLOW_FILE_EDIT"' ) == true
+			|| strstr( $v, "'DISALLOW_FILE_MODS'" ) == true || strstr( $v, '"DISALLOW_FILE_MODS"' ) == true
 			// định nghĩa cứng cho URL website -> xóa đi để add lại vào phần đầu trang
-			else if ( strstr( $v, "'WP_SITEURL'" ) == true || strstr( $v, '"WP_SITEURL"' ) == true
+			|| strstr( $v, "'WP_SITEURL'" ) == true || strstr( $v, '"WP_SITEURL"' ) == true
 			|| strstr( $v, "'WP_HOME'" ) == true || strstr( $v, '"WP_HOME"' ) == true ) {
 				$content_of_new_wp_config[$k] = '';
 //				unset( $content_of_new_wp_config[$k] );
