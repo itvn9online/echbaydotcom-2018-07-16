@@ -293,7 +293,52 @@ if ( isset ( $arr_eb_ads_custom_status ) ) {
 // Nếu có chọn file thiết kế -> sử dụng nguyên mẫu
 $load_config_temp = $__cf_row['cf_threadnode_include_file'];
 if ( $load_config_temp != '' ) {
-	define( '__eb_thread_template', WGR_check_and_load_tmp_theme( $load_config_temp, 'threadnode' ) );
+	
+	//
+	$tmp_child_theme = '';
+	if ( defined('EB_CHILD_THEME_URL') ) {
+		$tmp_child_theme = EB_CHILD_THEME_URL . 'ui/' . $load_config_temp;
+//		echo $tmp_child_theme . '<br>' . "\n";
+	}
+	$tmp_theme = EB_THEME_URL . 'ui/' . $load_config_temp;
+//	echo $tmp_theme . '<br>' . "\n";
+	$tmp_plugin = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $load_config_temp;
+//	echo $tmp_plugin . '<br>' . "\n";
+	
+	// v1
+//	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'themes/threadnode/' . $load_config_temp;
+	
+	
+	// ưu tiên hàng của theme trước
+	if ( $tmp_child_theme != '' && file_exists( $tmp_child_theme ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (child theme): ' . $load_config_temp . ' -->';
+		
+		define( '__eb_thread_template', file_get_contents( $tmp_child_theme, 1 ) );
+		
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+	}
+	else if ( file_exists( $tmp_theme ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (theme): ' . $load_config_temp . ' -->';
+		
+		define( '__eb_thread_template', file_get_contents( $tmp_theme, 1 ) );
+		
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
+	}
+	// sau đó mới là của plugin
+	else if ( file_exists( $tmp_plugin ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (plugin): ' . $load_config_temp . ' -->';
+		
+		define( '__eb_thread_template', file_get_contents( $tmp_plugin, 1 ) );
+		
+		$arr_for_add_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
+	}
+	else {
+//		define( '__eb_thread_template', 'File ' . $inc_threadnode . ' not exist' );
+		define( '__eb_thread_template', 'File ' . $load_config_temp . ' not exist' );
+	}
 }
 else {
 	define(

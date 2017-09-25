@@ -903,7 +903,60 @@ if ( function_exists('eb_details_for_current_domain') ) {
 // với sản phẩm -> có thể tạo nhiều design khác nhau
 $load_config_temp = $__cf_row['cf_threaddetails_include_file'];
 if ( $__post->post_type == 'post' && $load_config_temp != '' ) {
-	$main_content = WGR_check_and_load_tmp_theme( $load_config_temp, 'threaddetails' );
+	
+	//
+	$tmp_child_theme = '';
+	if ( defined('EB_CHILD_THEME_URL') ) {
+		$tmp_child_theme = EB_CHILD_THEME_URL . 'ui/' . $load_config_temp;
+//		echo $tmp_child_theme . '<br>' . "\n";
+	}
+	$tmp_theme = EB_THEME_URL . 'ui/' . $load_config_temp;
+	$tmp_plugin = EB_THEME_PLUGIN_INDEX . 'themes/threaddetails/' . $load_config_temp;
+	
+	// ưu tiên hàng của theme trước
+	if ( $tmp_child_theme != '' && file_exists( $tmp_child_theme ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (child theme): ' . $load_config_temp . ' -->';
+		
+		define( '__eb_thread_template', file_get_contents( $tmp_child_theme, 1 ) );
+		
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+	}
+	else if ( file_exists( $tmp_theme ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (theme): ' . $load_config_temp . ' -->';
+		
+//		$arr_includes_top_file[] = $tmp_theme;
+		$main_content = file_get_contents( $tmp_theme, 1 );
+		
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
+	}
+	// sau đó mới là của plugin
+	else if ( file_exists( $tmp_plugin ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (plugin): ' . $load_config_temp . ' -->';
+		
+//		$arr_includes_top_file[] = $tmp_plugin;
+		$main_content = file_get_contents( $tmp_plugin, 1 );
+		
+		$arr_for_add_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
+	}
+	/*
+	$inc_threadnode = EB_THEME_PLUGIN_INDEX . 'themes/threaddetails/' . $load_config_temp;
+	
+	if ( file_exists($inc_threadnode) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML: ' . $load_config_temp . ' -->';
+		
+		$main_content = file_get_contents( $inc_threadnode, 1 );
+		
+		// dùng chung thì gán CSS dùng chung luôn (nếu có)
+		$arr_for_add_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
+	}
+	*/
+	else {
+		$main_content = 'File ' . $inc_threadnode . ' not exist';
+//		die( 'File ' . $inc_threadnode . ' not exist' );
+	}
 }
 // mặc định thì kiểm tra theo theme và plugin
 else {

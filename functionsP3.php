@@ -71,3 +71,60 @@ function EBE_admin_set_realtime_for_file ( $arr ) {
 
 
 
+// kiểm tra và trả về đường dẫn của file theme tương ứng
+function WGR_check_and_load_tmp_theme ( $load_config_temp, $dir_all_theme ) {
+	global $arr_for_show_html_file_load;
+	global $arr_for_add_css;
+//	global $arr_for_add_theme_css;
+	
+	//
+	$tmp_child_theme = '';
+	if ( defined('EB_CHILD_THEME_URL') ) {
+		$tmp_child_theme = EB_CHILD_THEME_URL . 'ui/' . $load_config_temp;
+//		echo $tmp_child_theme . '<br>' . "\n";
+	}
+	
+	$tmp_theme = EB_THEME_URL . 'ui/' . $load_config_temp;
+//	echo $tmp_theme . '<br>' . "\n";
+	
+	$tmp_plugin = EB_THEME_PLUGIN_INDEX . 'themes/' . $dir_all_theme . '/' . $load_config_temp;
+//	echo $tmp_plugin . '<br>' . "\n";
+	
+	
+	// ưu tiên hàng của child theme trước
+	if ( $tmp_child_theme != '' && file_exists( $tmp_child_theme ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (child theme): ' . $load_config_temp . ' -->';
+		
+		$main_content = file_get_contents( $tmp_child_theme, 1 );
+		
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+	}
+	// sau đó đến theme
+	else if ( file_exists( $tmp_theme ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (theme): ' . $load_config_temp . ' -->';
+		
+		$main_content = file_get_contents( $tmp_theme, 1 );
+		
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
+	}
+	// rồi đến plugin
+	else if ( file_exists( $tmp_plugin ) ) {
+		$arr_for_show_html_file_load[] = '<!-- config HTML (plugin): ' . $load_config_temp . ' -->';
+		
+		$main_content = file_get_contents( $tmp_plugin, 1 );
+		
+		$arr_for_add_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
+	}
+	else {
+		return 'File ' . $load_config_temp . ' not exist';
+	}
+	
+	return $main_content;
+}
+
+
+
+
