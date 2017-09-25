@@ -8,8 +8,8 @@ Text Domain: echbayecom
 Tags: e-commerce
 Requires at least: 3.3
 Tested up to: 4.8
-Stable tag: 1.0.4
-Version: 1.0.4
+Stable tag: 1.0.5
+Version: 1.0.5
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 
@@ -23,7 +23,7 @@ Donate link: https://paypal.me/itvn9online/5
 
 4. Hình ảnh và các tệp tin khác sẽ được wordpress lưu tại thư mục `wp-content/uploads`, nếu kiểm tra thấy chưa có thư mục này thì bạn chủ động tạo và set permission 777 cho nó.
 
-5. Sử dụng web, mọi vấn đề thắc mắc hoặc yêu cầu trợ giúp vui lòng gửi qua email: lienhe@echbay.com
+5. Sử dụng web, mọi vấn đề thắc mắc hoặc yêu cầu trợ giúp vui lòng gửi qua email: lienhe@echbay.com hoặc gửi câu hỏi tại nhóm support riêng ở đây: https://www.facebook.com/groups/wordpresseb/
 
 
 === HƯỚNG DẪN SỬ DỤNG ===
@@ -115,6 +115,9 @@ Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này
 
 
 === CÁC THAY ĐỔI QUAN TRỌNG ===
+= Version 1.0.5 =
+* Thêm chức năng phân trang cho sitemap.xml tăng giới hạn sitemap lên 99,000 bản ghi. Hỗ trợ thêm sitemap image theo chuẩn google. Xem thêm: https://www.facebook.com/groups/wordpresseb/permalink/500753096956466/
+
 = Version 1.0.4 =
 * Chuyển các thư mục của theme ra ngoài thư mục gốc.
 * Thêm tính năng chỉnh sửa nhanh bài viết, nhóm...
