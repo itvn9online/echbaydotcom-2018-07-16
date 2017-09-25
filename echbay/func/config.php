@@ -499,14 +499,15 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 				$arr_cac_thay_doi['WP_AUTO_UPDATE_CORE'] = 1;
 			}
 			// cho phép chính sửa theme, plugin
+			/*
 			else if ( strstr( $v, "'DISALLOW_FILE_EDIT'" ) == true || strstr( $v, '"DISALLOW_FILE_EDIT"' ) == true ) {
 //				echo $v . '<br>' . "\n";
 				
 				if ( $_POST['cf_alow_edit_plugin_theme'] == 0 ) {
-					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_EDIT', false);";
+					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_EDIT', true);";
 				}
 				else {
-					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_EDIT', true);";
+					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_EDIT', false);";
 				}
 				
 				$arr_cac_thay_doi['DISALLOW_FILE_EDIT'] = 1;
@@ -515,14 +516,15 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 //				echo $v . '<br>' . "\n";
 				
 				if ( $_POST['cf_alow_edit_plugin_theme'] == 0 ) {
-					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_MODS', false);";
+					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_MODS', true);";
 				}
 				else {
-					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_MODS', true);";
+					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_MODS', false);";
 				}
 				
 				$arr_cac_thay_doi['DISALLOW_FILE_MODS'] = 1;
 			}
+			*/
 			// định nghĩa cứng cho URL website -> xóa đi để add lại vào phần đầu trang
 			else if ( strstr( $v, "'WP_SITEURL'" ) == true || strstr( $v, '"WP_SITEURL"' ) == true
 			|| strstr( $v, "'WP_HOME'" ) == true || strstr( $v, '"WP_HOME"' ) == true ) {
@@ -536,8 +538,9 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 	// kiểm tra các cấu hình chưa được thiết lập
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_DEBUG' );
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_AUTO_UPDATE_CORE' );
-	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_EDIT' );
-	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_MODS' );
+	
+//	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_EDIT' );
+//	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_MODS' );
 	
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_SITEURL', '\'' . implode( '/', $dynamic_siteurl ) . '\'' );
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_HOME', 'WP_SITEURL' );

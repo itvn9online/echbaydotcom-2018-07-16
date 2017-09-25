@@ -381,7 +381,7 @@ if ( ! defined('FTP_HOST') ) {
 * Mặc định là không cho edit theme, plugin nếu sử dụng bản miễn phí
 * Kích hoạt bằng cách set thủ công trong wp-config.php
 */
-if ( ! defined('DISALLOW_FILE_EDIT') ) {
+if ( ! defined('DISALLOW_FILE_EDIT') && $_POST['cf_alow_edit_plugin_theme'] == 0 ) {
 	define( 'DISALLOW_FILE_EDIT', true );
 }
 
@@ -389,7 +389,7 @@ if ( ! defined('DISALLOW_FILE_EDIT') ) {
 * Mặc định là không cho update, install theme, plugin nếu sử dụng bản miễn phí
 * Kích hoạt bằng cách set thủ công trong wp-config.php
 */
-if ( ! defined('DISALLOW_FILE_MODS') ) {
+if ( ! defined('DISALLOW_FILE_MODS') && $_POST['cf_alow_edit_plugin_theme'] == 0 ) {
 	define( 'DISALLOW_FILE_MODS', true );
 }
 
