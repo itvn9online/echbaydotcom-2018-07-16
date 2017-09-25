@@ -652,6 +652,7 @@ $arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
 		'VN/00d0' => 'VNĐ',
 		'VND' => 'VND',
 		'/00A5' => '&yen;',
+		'NT$' => 'NT$',
 		'$' => '$',
 		'USD' => 'USD',
 	),
