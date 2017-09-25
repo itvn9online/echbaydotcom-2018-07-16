@@ -452,6 +452,22 @@ function EBE_get_text_version ( $str ) {
 //if ( current_user_can('manage_options') )  {
 	if ( isset( $_GET['confirm_eb_process'] ) ) {
 		
+		
+		// không cập nhật trên localhost
+		if ( strstr( $_SERVER['HTTP_HOST'], 'localhost' ) == true ) {
+//			echo $_SERVER['HTTP_HOST']; exit();
+//			echo $_SERVER['REQUEST_URI']; exit();
+			
+			// nếu thư mục là webgiare thì bỏ qua chế độ cập nhật
+			if ( strstr( $_SERVER['REQUEST_URI'], '/wordpress.org/' ) == true ) {
+				echo '<h1>Chế độ cập nhật đã bị vô hiệu hóa bởi coder!</h1>';
+				exit();
+			}
+		}
+		
+		
+		
+		// không giới hạn thời gian để download file được lâu hơn
 		set_time_limit( 0 );
 		
 		//
