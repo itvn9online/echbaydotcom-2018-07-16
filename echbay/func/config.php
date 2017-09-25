@@ -123,6 +123,10 @@ if ( ! isset( $_POST['cf_hide_supper_admin_menu'] ) || (int) $_POST['cf_hide_sup
 	$_POST['cf_hide_supper_admin_menu'] = 0;
 }
 
+if ( ! isset( $_POST['cf_alow_edit_plugin_theme'] ) || (int) $_POST['cf_alow_edit_plugin_theme'] != 1 ) {
+	$_POST['cf_alow_edit_plugin_theme'] = 0;
+}
+
 if ( ! isset( $_POST['cf_set_news_version'] ) || (int) $_POST['cf_set_news_version'] != 1 ) {
 	$_POST['cf_set_news_version'] = 0;
 }
@@ -458,9 +462,17 @@ $content_of_wp_config = trim( file_get_contents( ABSPATH . 'wp-config.php' ) );
 // chỉ thay đổi khi file config theo chuẩn mặc định
 $content_of_new_wp_config = explode( "\n", $content_of_wp_config );
 if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
+	
+	// tạo URL động cho site
+	$dynamic_siteurl = explode( '/', $_POST['current_siteurl'] );
+	$dynamic_siteurl[2] = '\' . $_SERVER[\'HTTP_HOST\'] . \'';
+	
+	//
 	foreach ( $content_of_new_wp_config as $k => $v ) {
 		$v = trim( $v );
 		if ( $v != '' && substr( $v, 0, 6 ) == 'define' ) {
+			
+			// chức năng debug
 			if ( strstr( $v, "'WP_DEBUG'" ) == true || strstr( $v, '"WP_DEBUG"' ) == true ) {
 //				echo $v . '<br>' . "\n";
 				
@@ -473,6 +485,7 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 				
 				$arr_cac_thay_doi['WP_DEBUG'] = 1;
 			}
+			// chức năng tự động cập nhật mã nguồn wp
 			else if ( strstr( $v, "'WP_AUTO_UPDATE_CORE'" ) == true || strstr( $v, '"WP_AUTO_UPDATE_CORE"' ) == true ) {
 //				echo $v . '<br>' . "\n";
 				
@@ -485,12 +498,49 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 				
 				$arr_cac_thay_doi['WP_AUTO_UPDATE_CORE'] = 1;
 			}
+			// cho phép chính sửa theme, plugin
+			else if ( strstr( $v, "'DISALLOW_FILE_EDIT'" ) == true || strstr( $v, '"DISALLOW_FILE_EDIT"' ) == true ) {
+//				echo $v . '<br>' . "\n";
+				
+				if ( $_POST['cf_alow_edit_plugin_theme'] == 0 ) {
+					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_EDIT', false);";
+				}
+				else {
+					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_EDIT', true);";
+				}
+				
+				$arr_cac_thay_doi['DISALLOW_FILE_EDIT'] = 1;
+			}
+			else if ( strstr( $v, "'DISALLOW_FILE_MODS'" ) == true || strstr( $v, '"DISALLOW_FILE_MODS"' ) == true ) {
+//				echo $v . '<br>' . "\n";
+				
+				if ( $_POST['cf_alow_edit_plugin_theme'] == 0 ) {
+					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_MODS', false);";
+				}
+				else {
+					$content_of_new_wp_config[$k] = "define('DISALLOW_FILE_MODS', true);";
+				}
+				
+				$arr_cac_thay_doi['DISALLOW_FILE_MODS'] = 1;
+			}
+			// định nghĩa cứng cho URL website -> xóa đi để add lại vào phần đầu trang
+			else if ( strstr( $v, "'WP_SITEURL'" ) == true || strstr( $v, '"WP_SITEURL"' ) == true
+			|| strstr( $v, "'WP_HOME'" ) == true || strstr( $v, '"WP_HOME"' ) == true ) {
+				$content_of_new_wp_config[$k] = '';
+//				unset( $content_of_new_wp_config[$k] );
+			}
+			
 		}
 	}
 	
 	// kiểm tra các cấu hình chưa được thiết lập
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_DEBUG' );
 	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_AUTO_UPDATE_CORE' );
+	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_EDIT' );
+	add_default_value_to_wp_config( $arr_cac_thay_doi, 'DISALLOW_FILE_MODS' );
+	
+	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_SITEURL', '\'' . implode( '/', $dynamic_siteurl ) . '\'' );
+	add_default_value_to_wp_config( $arr_cac_thay_doi, 'WP_HOME', 'WP_SITEURL' );
 	
 	// nếu vẫn đang là salt mặc định -> cập nhật salt mới
 	if ( AUTH_KEY == 'put your unique phrase here' ) {
@@ -500,10 +550,23 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 	$content_of_new_wp_config = implode( "\n", $content_of_new_wp_config );
 	//echo nl2br( $content_of_new_wp_config ) . '<br>' . "\n";
 	
+	
+	// tối ưu lại toàn bộ nội dung file wp-config
+	$a = explode( "\n", $content_of_new_wp_config );
+	$content_of_new_wp_config = '';
+	foreach ( $a as $v ) {
+		$v = trim( $v );
+		if ( $v != '' ) {
+			$content_of_new_wp_config .= $v . "\n";
+		}
+	}
+	
+	
 	// cập nhật lại file wp-config nếu có sự thay đổi
 	if ( $content_of_wp_config != $content_of_new_wp_config ) {
 		_eb_create_file( ABSPATH . 'wp-config.php', $content_of_new_wp_config );
 	}
+	
 }
 
 
