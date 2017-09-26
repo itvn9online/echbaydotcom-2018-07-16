@@ -919,8 +919,8 @@ if ( $__post->post_type == 'post' && $load_config_temp != '' ) {
 		
 		define( '__eb_thread_template', file_get_contents( $tmp_child_theme, 1 ) );
 		
-		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
-//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, EB_CHILD_THEME_URL ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, EB_CHILD_THEME_URL ) ] = 1;
 	}
 	else if ( file_exists( $tmp_theme ) ) {
 		$arr_for_show_html_file_load[] = '<!-- config HTML (theme): ' . $load_config_temp . ' -->';
@@ -928,7 +928,7 @@ if ( $__post->post_type == 'post' && $load_config_temp != '' ) {
 //		$arr_includes_top_file[] = $tmp_theme;
 		$main_content = file_get_contents( $tmp_theme, 1 );
 		
-		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp ) ] = 1;
 //		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
 	}
 	// sau đó mới là của plugin

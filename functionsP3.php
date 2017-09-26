@@ -97,8 +97,8 @@ function WGR_check_and_load_tmp_theme ( $load_config_temp, $dir_all_theme ) {
 		
 		$main_content = file_get_contents( $tmp_child_theme, 1 );
 		
-		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
-//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html', EB_CHILD_THEME_URL ) ] = 1;
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, EB_CHILD_THEME_URL ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, EB_CHILD_THEME_URL ) ] = 1;
 	}
 	// sau đó đến theme
 	else if ( file_exists( $tmp_theme ) ) {
@@ -106,8 +106,8 @@ function WGR_check_and_load_tmp_theme ( $load_config_temp, $dir_all_theme ) {
 		
 		$main_content = file_get_contents( $tmp_theme, 1 );
 		
-		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
-//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, '.html' ) ] = 1;
+		$arr_for_add_css[ EBE_get_css_for_theme_design ( $load_config_temp ) ] = 1;
+//		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp ) ] = 1;
 	}
 	// rồi đến plugin
 	else if ( file_exists( $tmp_plugin ) ) {

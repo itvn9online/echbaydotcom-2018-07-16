@@ -2722,7 +2722,7 @@ function EBE_get_css_for_config_design ( $f, $type = '.php' ) {
 }
 
 // lấy css theo theme
-function EBE_get_css_for_theme_design ( $f, $type = '.php', $dir = EB_THEME_URL ) {
+function EBE_get_css_for_theme_design ( $f, $dir = EB_THEME_URL, $type = '.php' ) {
 //	return $dir . 'css/' . str_replace( $type, '.css', $f );
 //	return $dir . 'ui/' . str_replace( $type, '.css', $f );
 	return $dir . 'ui/' . WGR_convert_fiename_to_css( $f );
@@ -2732,7 +2732,7 @@ function EBE_get_css_for_theme_design ( $f, $type = '.php', $dir = EB_THEME_URL 
 function WGR_check_add_add_css_themes_or_plugin ( $f ) {
 	// ưu tiên hàng của theme trước
 	if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'ui/' . $f ) ) {
-		return EBE_get_css_for_theme_design ( $f, '', EB_CHILD_THEME_URL );
+		return EBE_get_css_for_theme_design ( $f, EB_CHILD_THEME_URL );
 	}
 	else if ( file_exists( EB_THEME_URL . 'ui/' . $f ) ) {
 		return EBE_get_css_for_theme_design ( $f );
@@ -2776,7 +2776,7 @@ function WGR_load_module_name_css (
 				&& file_exists( EB_CHILD_THEME_URL . 'ui/' . $__cf_row[ $j ] ) ) {
 					$arr[] = EB_CHILD_THEME_URL . 'ui/' . $__cf_row[ $j ];
 					
-					$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ $j ] ) ] = $css_body;
+					$arr_for_add_css[ EBE_get_css_for_theme_design ( $__cf_row[ $j ], EB_CHILD_THEME_URL ) ] = $css_body;
 				}
 				else if ( file_exists( EB_THEME_URL . 'ui/' . $__cf_row[ $j ] ) ) {
 					$arr[] = EB_THEME_URL . 'ui/' . $__cf_row[ $j ];

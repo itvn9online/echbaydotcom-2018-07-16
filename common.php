@@ -390,6 +390,7 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 	if ( count( $arr_includes_top_file ) == 0 ) {
 		include EB_THEME_PLUGIN_INDEX . 'top_default.php';
 	}
+	print_r( $arr_includes_top_file );
 }
 
 if ( $__cf_row['cf_using_footer_default'] == 1 ) {
@@ -406,8 +407,9 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 
 // xong sẽ nạp CSS tổng của theme (trang nào cũng có mặt)
 if ( $__cf_row[ 'cf_current_theme_using' ] != '' ) {
-	$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
+//	$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
 //	$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
+	$arr_for_add_css[ WGR_check_add_add_css_themes_or_plugin ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
 }
 //print_r( $arr_for_add_css );
 
