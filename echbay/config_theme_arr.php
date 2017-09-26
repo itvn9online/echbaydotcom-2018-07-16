@@ -543,14 +543,19 @@ foreach ( $eb_all_themes_support as $k => $v ) {
 	if ( ! isset( $v['price'] ) ) {
 		$v['price'] = 0;
 	}
+	
+	// mặc định thì hiển thị miễn phí
 	$gia_kich_hoat = '<em>Miễn phí</em>';
+	// sắp xếp theo giá tăng dần cho nó hút
+	$li_order = '';
 	if ( $v['price'] > 0 ) {
 		$gia_kich_hoat = '<strong class="ebe-currency redcolor">' . number_format( $v['price'] ) . '</strong>';
+		$li_order = 'order:' . ( $v['price']/ 1000 );
 	}
 	
 	//
 	$str_all_themes_support .= '
-<li data-price="' . $v['price'] . '" data-key="' . $theme_name . '">
+<li data-price="' . $v['price'] . '" data-key="' . $theme_name . '" style="' . $li_order . '">
 	<div style="background-image:url(\'' . $theme_avt . '\');">
 		<p>&nbsp;</p>
 		<h3>' . $theme_name . '</h3>
