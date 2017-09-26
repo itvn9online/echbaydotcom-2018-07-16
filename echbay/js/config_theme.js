@@ -498,10 +498,12 @@ if ( cf_current_theme_using != '' ) {
 	console.log('Select and move current theme to top');
 	
 	$('.skins-admin-edit li[data-key="' + cf_current_theme_using + '"]')
-	.addClass('selected')
+	/*
 	.css({
 		order : 0
-	});
+	})
+	*/
+	.addClass('selected');
 	
 	$('.skins-admin-edit li[data-key="' + cf_current_theme_using + '"] .click-active-eb-themes')
 	.html('<i class="fa fa-refresh"></i> Nạp lại')

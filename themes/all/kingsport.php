@@ -9,6 +9,7 @@
 $eb_all_themes_support["kingsport"] = array();
 $eb_all_themes_support["kingsport"]["name"] = "kingsport";
 $eb_all_themes_support["kingsport"]["screenshot"] = "https://img1.webgiare.org/kingsport.jpg";
+$eb_all_themes_support["kingsport"]["price"] = 2000000;
 //
 $eb_all_themes_support["kingsport"]["cf_top1_include_file"] = "kingsport-top1.php";
 $eb_all_themes_support["kingsport"]["cf_top2_include_file"] = "kingsport-top2.php";

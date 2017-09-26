@@ -9,6 +9,7 @@
 $eb_all_themes_support["erawatch"] = array();
 $eb_all_themes_support["erawatch"]["name"] = "erawatch";
 $eb_all_themes_support["erawatch"]["screenshot"] = "https://img1.webgiare.org/erawatch.jpg";
+$eb_all_themes_support["erawatch"]["price"] = 2000000;
 //
 $eb_all_themes_support["erawatch"]["cf_top1_include_file"] = "erawatch-top1.php";
 $eb_all_themes_support["erawatch"]["cf_top2_include_file"] = "erawatch-top2.php";

@@ -9,6 +9,7 @@
 $eb_all_themes_support["noithattrongoi"] = array();
 $eb_all_themes_support["noithattrongoi"]["name"] = "noithattrongoi";
 $eb_all_themes_support["noithattrongoi"]["screenshot"] = "https://img1.webgiare.org/noithattrongoi.jpg";
+$eb_all_themes_support["noithattrongoi"]["price"] = 1200000;
 //
 $eb_all_themes_support["noithattrongoi"]["cf_top1_include_file"] = "noithattrevietnam-top1.php";
 $eb_all_themes_support["noithattrongoi"]["cf_top2_include_file"] = "noithattrevietnam-top2.php";

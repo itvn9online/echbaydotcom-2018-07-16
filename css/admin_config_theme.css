@@ -87,8 +87,10 @@ body.folded .eb-admin-config { left: 8%; }
 .skins-admin-edit li {
 	float: left;
 	width: 33%;
-	order: 1;
+	order: 9;
 }
+.skins-admin-edit li[data-price="0"] { order: 5; }
+.skins-admin-edit li.selected { order: 0; }
 .skins-admin-edit li div {
 	background: #fff top center no-repeat;
 	background-size: contain;

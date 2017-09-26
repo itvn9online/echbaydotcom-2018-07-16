@@ -8,6 +8,7 @@
 */
 $eb_all_themes_support["vicwatch"]=array();
 $eb_all_themes_support["vicwatch"]["screenshot"] = "https://img1.webgiare.org/vicwatch.jpg";
+$eb_all_themes_support["vicwatch"]["price"] = 1500000;
 //
 $eb_all_themes_support["vicwatch"]["cf_top1_include_file"] = "vicwatch-top1.php";
 $eb_all_themes_support["vicwatch"]["cf_top2_include_file"] = "vicwatch-top2.php";
