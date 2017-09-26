@@ -13,9 +13,10 @@ $eb_all_themes_support["rongbay"]["price"] = 1200000;
 //
 $eb_all_themes_support["rongbay"]["cf_top1_include_file"] = "rongbay-top1.php";
 $eb_all_themes_support["rongbay"]["cf_top2_include_file"] = "rongbay-top2.php";
-$eb_all_themes_support["rongbay"]["cf_top3_include_file"] = "bigbannerFixed-top1.php";
-$eb_all_themes_support["rongbay"]["cf_top4_include_file"] = "rongbay-top3.php";
-$eb_all_themes_support["rongbay"]["cf_top5_include_file"] = "top_widget.php";
+$eb_all_themes_support["rongbay"]["cf_top3_include_file"] = "rongbay-top3.php";
+$eb_all_themes_support["rongbay"]["cf_top4_include_file"] = "bigbannerFixed-top1.php";
+$eb_all_themes_support["rongbay"]["cf_top5_include_file"] = "rongbay-top4.php";
+$eb_all_themes_support["rongbay"]["cf_top6_include_file"] = "top_widget.php";
 //
 $eb_all_themes_support["rongbay"]["cf_footer1_include_file"] = "footer_widget.php";
 $eb_all_themes_support["rongbay"]["cf_footer2_include_file"] = "rongbay-footer1.php";

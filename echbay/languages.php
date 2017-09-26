@@ -128,7 +128,9 @@ function EBE_click_to_update_site_lang () {
 			}
 			*/
 		}
-	}).keyup(function(e) {
+	}).off('focus').focus(function(e) {
+		$(this).click();
+	}).off('keyup').keyup(function(e) {
 		// khi người dùng bấm enter
 		if (e.keyCode == 13) {
 			// kiểm tra giá trị đang có
