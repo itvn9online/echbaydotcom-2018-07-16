@@ -8,6 +8,7 @@
 */
 $eb_all_themes_support["batdongsan"]=array();
 $eb_all_themes_support["batdongsan"]["screenshot"] = "https://img1.webgiare.org/batdongsan.jpg";
+$eb_all_themes_support["batdongsan"]["price"] = 2500000;
 //
 $eb_all_themes_support["batdongsan"]["cf_top1_include_file"] = "batdongsan-top1.php";
 $eb_all_themes_support["batdongsan"]["cf_top2_include_file"] = "batdongsan-top2.php";
