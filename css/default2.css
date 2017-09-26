@@ -345,10 +345,16 @@ label,
 .home_noidung_menu .custom-width-home-sidebar,
 .home_menu_noidung .custom-width-home-sidebar { width: 25%; }
 */
+/*
 .home_noidung_menu .w90,
 .home_noidung_menu .w99,
 .home_menu_noidung .w90,
-.home_menu_noidung .w99 {
+.home_menu_noidung .w99,
+*/
+.w99 .w99,
+.w99 .w90,
+.w90 .w99,
+.w90 .w90 {
 	width: auto;
 	min-width: 250px;
 }
