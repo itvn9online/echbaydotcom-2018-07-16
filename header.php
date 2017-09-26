@@ -48,7 +48,7 @@ if ( $__cf_row['cf_facebook_id'] != '' ) {
 //_eb_add_css( $arr_for_add_css );
 //_eb_add_compiler_css( $arr_for_add_css + $arr_for_add_theme_css );
 _eb_add_compiler_css( $arr_for_add_css );
-print_r( $arr_for_add_css );
+//print_r( $arr_for_add_css );
 
 
 // các css ít quan trọng hơn sẽ được add về phía sau, dưới dạng link

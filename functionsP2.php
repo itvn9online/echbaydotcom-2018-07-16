@@ -2730,11 +2730,14 @@ function EBE_get_css_for_theme_design ( $f, $dir = EB_THEME_URL, $type = '.php' 
 
 // kiểm tra file template xem nằm ở đâu thì nhúng css tương ứng ở đó
 function WGR_check_add_add_css_themes_or_plugin ( $f ) {
+//	echo EB_CHILD_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f ) . '<br>' . "\n";
+//	echo EB_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f ) . '<br>' . "\n";
+	
 	// ưu tiên hàng của theme trước
-	if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'ui/' . $f ) ) {
+	if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f ) ) ) {
 		return EBE_get_css_for_theme_design ( $f, EB_CHILD_THEME_URL );
 	}
-	else if ( file_exists( EB_THEME_URL . 'ui/' . $f ) ) {
+	else if ( file_exists( EB_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f ) ) ) {
 		return EBE_get_css_for_theme_design ( $f );
 	}
 	

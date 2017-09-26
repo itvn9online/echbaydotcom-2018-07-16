@@ -390,7 +390,7 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 	if ( count( $arr_includes_top_file ) == 0 ) {
 		include EB_THEME_PLUGIN_INDEX . 'top_default.php';
 	}
-	print_r( $arr_includes_top_file );
+//	print_r( $arr_includes_top_file );
 }
 
 if ( $__cf_row['cf_using_footer_default'] == 1 ) {
@@ -403,6 +403,7 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 	if ( count( $arr_includes_footer_file ) == 0 ) {
 		include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
 	}
+//	print_r( $arr_includes_footer_file );
 }
 
 // xong sẽ nạp CSS tổng của theme (trang nào cũng có mặt)
