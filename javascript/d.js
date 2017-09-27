@@ -966,6 +966,11 @@ var big_banner_timeout1 = null;
 		size : $('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''
 	});
 	
+	// Hiển thị menu NAV dưới dạng hover
+	if ( $('.oi_big_banner li').length > 0 && $('.show-menu-if-banner').length > 0 ) {
+		$('.show-menu-if-banner .all-category-hover').addClass('selected');
+	}
+	
 //})();
 
 function ___eb_big_banner () {

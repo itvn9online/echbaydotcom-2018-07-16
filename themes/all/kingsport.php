@@ -21,7 +21,7 @@ $eb_all_themes_support["kingsport"]["cf_footer1_include_file"] = "kingsport-foot
 $eb_all_themes_support["kingsport"]["cf_footer2_include_file"] = "kingsport-footer2.php";
 $eb_all_themes_support["kingsport"]["cf_footer3_include_file"] = "kingsport-footer3.php";
 $eb_all_themes_support["kingsport"]["cf_footer4_include_file"] = "kingsport-footer4.php";
-$eb_all_themes_support["kingsport"]["cf_footer5_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["kingsport"]["cf_footer5_include_file"] = "kingsport-footer5.php";
 //
 $eb_all_themes_support["kingsport"]["cf_home1_include_file"] = "kingsport-home1.php";
 $eb_all_themes_support["kingsport"]["cf_home2_include_file"] = "kingsport-home2.php";
