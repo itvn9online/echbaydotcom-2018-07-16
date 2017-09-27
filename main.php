@@ -388,6 +388,14 @@ if ( $__cf_row['cf_reset_cache'] > 0 ) {
 $css_m_css = implode( ' ', get_body_class() );
 
 
+// load file index theo theme
+$file_index_theo_theme = EB_THEME_URL . 'i.php';
+if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'i.php' ) ) {
+	$file_index_theo_theme = EB_CHILD_THEME_URL . 'i.php';
+}
+//echo $file_index_theo_theme;
+
+
 // cache chỉ được kích hoạt khi tham số này = 1
 if ( $enable_echbay_super_cache == 1 ) {
 
@@ -420,7 +428,7 @@ if ( $enable_echbay_super_cache == 1 ) {
 	
 	
 	// gọi đến file index của từng theme
-	include_once EB_THEME_URL . 'i.php';
+	include_once $file_index_theo_theme;
 	
 	
 	
@@ -445,7 +453,7 @@ else {
 	
 	// gọi đến file index của từng theme
 	//include_once EB_THEME_URL . 'index.php';
-	include_once EB_THEME_URL . 'i.php';
+	include_once $file_index_theo_theme;
 	
 	
 	
