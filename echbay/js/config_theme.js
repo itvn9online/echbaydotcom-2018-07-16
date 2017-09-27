@@ -390,10 +390,16 @@ $('#list-tab-eb-admin-config li').click(function () {
 
 
 // quick search
-$('#press_for_search_eb_themes').click(function () {
+var ul_for_quick_search_theme = '';
+$('#press_for_search_eb_themes, #press_for_search_all_themes').click(function () {
+	// tìm kiểm theme hoặc module của theme
+	ul_for_quick_search_theme = $(this).attr('data-class-search') || 'for-themes-quick-search';
+	
+	//
 	EBE_themes_key_quick_search();
 }).keyup(function(e) {
-	var fix_id = '.for-themes-quick-search';
+//	var fix_id = '.for-themes-quick-search';
+	var fix_id = '.' + ul_for_quick_search_theme;
 	
 //	console.log(e.keyCode);
 	
@@ -425,7 +431,14 @@ $('#press_for_search_eb_themes').click(function () {
 	//
 	if (key != '') {
 		$(fix_id).hide().each(function() {
-			var a = $(this).attr('data-search') || '';
+			if ( ul_for_quick_search_theme == 'for-themes-quick-search' ) {
+				var a = $(this).attr('data-search') || '';
+			}
+			else {
+				var a = $(this).attr('data-key') || '';
+			}
+			
+			//
 			if ( key.length == 1 ) {
 				if (a != '' && a.substr(0, 1) == key) {
 					$(this).show();
