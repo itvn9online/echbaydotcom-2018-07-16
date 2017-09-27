@@ -12,10 +12,11 @@ if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 	if ( date_time - $time_for_bao_tri < 120 ) {
 		
 		// Set trạng thái cho trang 404
-		$protocol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+		EBE_set_header(404);
+//		$protocol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
 		
 		//echo $protocol;
-		header( $protocol . ' 404 Not Found' );
+//		header( $protocol . ' 404 Not Found' );
 		
 		die('<title>He thong dang duoc bao tri</time><h1>He thong dang duoc bao tri</h1>');
 		

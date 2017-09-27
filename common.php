@@ -23,9 +23,10 @@
 if ( $__cf_row['cf_dns_prefetch'] != '' ) {
 	// trùng thì hủy bỏ truy cập này luôn
 	if ( $__cf_row['cf_dns_prefetch'] == $_SERVER['HTTP_HOST'] ) {
-		$pcol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+		EBE_set_header(403);
+//		$pcol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
 		//echo $pcol;
-		header( $pcol . ' 403 Forbidden' );
+//		header( $pcol . ' 403 Forbidden' );
 		
 		echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/403.html', 1 );
 		

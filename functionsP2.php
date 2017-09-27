@@ -2692,6 +2692,12 @@ function EBE_print_product_img_css_class ( $arr, $in = 'Header' ) {
 // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 function EBE_set_header ( $status = 200 ) {
 	
+	// sử dụng hàm set header của wp
+	return status_header ( $status );
+	
+	
+	
+	// hoặc tự mình làm
 	$pcol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
 //	echo $pcol;
 	
