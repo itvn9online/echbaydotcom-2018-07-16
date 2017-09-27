@@ -46,7 +46,7 @@ if ( $term_id > 0 && $type != '' ) {
 		//
 		update_post_meta( $term_id, '_eb_category_order', $new_stt );
 		
-		echo '<br>set category order: ' . $new_primary;
+		echo '<br>set category order: ' . $new_stt;
 	}
 	// dặt làm phân nhóm chính
 	else if ( isset( $_GET['current_primary'] ) ) {
