@@ -846,6 +846,21 @@ color: #333;
 	margin: 1em 0;
 	list-style: disc;
 }
+.ul-default-style h1,
+.ul-default-style h2,
+.ul-default-style h3,
+.ul-default-style h4,
+.ul-default-style h5,
+.ul-default-style h6 { margin: 0.83em 0; }
+.ul-default-style table {
+	border-top: 1px #ccc solid;
+	border-right: 1px #ccc solid;
+}
+.ul-default-style td {
+	border-bottom: 1px #ccc solid;
+	border-left: 1px #ccc solid;
+	padding: 6px;
+}
 .cart-pro-phet {
 	background: #fff;
 	padding: 15px 0;

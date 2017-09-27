@@ -544,8 +544,16 @@ else if ( defined('WP_HOME') ) {
 }
 else {
 //	$web_link = get_bloginfo ( 'url' );
-//	$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'];
-	$web_link = get_option ( 'siteurl' );
+	
+//	if ( is_admin() ) {
+	// lấy URL động với site có dùng SSL
+	if ( eb_web_protocol == 'https' ) {
+		$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'];
+	}
+	// mặc định thì lấy theo config
+	else {
+		$web_link = get_option ( 'siteurl' );
+	}
 }
 
 // thêm dấu chéo vào cuối nếu chưa có
