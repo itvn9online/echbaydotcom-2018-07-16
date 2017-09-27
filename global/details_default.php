@@ -13,12 +13,14 @@ $custom_blog_node_flex_css = '';
 include EB_THEME_PLUGIN_INDEX . 'global/post.php';
 
 //
+/*
 if ( $__cf_row['cf_set_news_version'] == 0 ) {
 	$web_og_type = 'product';
 }
 else {
+	*/
 	$web_og_type = 'article';
-}
+//}
 
 
 
@@ -113,7 +115,7 @@ if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
 //	$link_for_fb_comment = web_link . '?post_type=' . EB_BLOG_POST_TYPE . '&p=' . $pid;
 	
 	// bài báo
-	$web_og_type = 'article';
+//	$web_og_type = 'article';
 	
 	$post_categories = get_the_terms( $pid, EB_BLOG_POST_LINK );
 	
@@ -555,6 +557,9 @@ else if ( $__post->post_type == 'page' ) {
 //	$thu_muc_for_html = $check_html_rieng['dir'];
 }
 else {
+	
+	// set trạng thái trang là sản phẩm
+	$web_og_type = 'product';
 	
 	//
 //	$check_html_rieng = _eb_get_private_html( 'blog_details.html', 'blog_node.html' );
