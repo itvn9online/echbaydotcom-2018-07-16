@@ -30,6 +30,8 @@ $__cf_row_default = array(
 	'cf_size_logo' => '1/2',
 	'cf_height_logo' => 50,
 	'cf_favicon' => eb_default_vaficon,
+	// ảnh đại diện mặc định khi chia sẻ trên fb
+	'cf_og_image' => '',
 	
 	'cf_ten_cty' => 'Thiết kế web giá rẻ',
 //	'web_name' => '',

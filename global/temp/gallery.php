@@ -77,6 +77,7 @@ foreach ( $sql as $v ) {
 			<div class="eb-newgallery-option">
 				<div onClick="EBA_add_img_logo(\'' . $a_full[0] . '\', \'cf_logo\');" class="gallery-add-to-logo">Đặt làm Logo</div>
 				<div onClick="EBA_add_img_logo(\'' . $a_full[0] . '\', \'cf_favicon\');" class="gallery-add-to-favicon">Đặt làm Favicon</div>
+				<div onClick="EBA_add_img_logo(\'' . $a_full[0] . '\', \'cf_og_image\', 1);" class="gallery-add-to-og_image">Đặt làm Ảnh mặc định</div>
 			</div>
 			<div class="eb-newgallery-bg" style="background-image:url(\'' . $a_thumb[0] . '\');">&nbsp;</div>
 		</div>

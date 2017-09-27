@@ -958,9 +958,11 @@ function EBA_preview_img_logo ( img, id ) {
 	});
 }
 
-function EBA_add_img_logo ( img, id ) {
+function EBA_add_img_logo ( img, id, set_full_link ) {
 	console.log(img);
-	EBA_add_img_to( img.replace( web_link, '' ), id );
+	if ( typeof set_full_link == 'undefined' || set_full_link == false || set_full_link == 0 ) {
+		EBA_add_img_to( img.replace( web_link, '' ), id );
+	}
 	EBA_preview_img_logo( img, id );
 }
 

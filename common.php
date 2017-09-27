@@ -57,7 +57,7 @@ $url_og_url = '';
 // các og:type được hỗ trợhttps://stackoverflow.com/questions/9275457/facebook-ogtype-meta-tags-should-i-just-make-up-my-own
 $web_og_type = 'website';
 
-$image_og_image = '';
+$image_og_image = $__cf_row['cf_og_image'];
 $arr_dymanic_meta = array();
 // meta này sẽ không bị khống chế bởi option ON/ OFF EchBay SEO
 $global_dymanic_meta = '';
