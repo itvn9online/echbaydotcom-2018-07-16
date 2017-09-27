@@ -759,7 +759,16 @@ var _global_js_eb = {
 				// -> nhập vào là: chiều cao/ chiều rộng
 				new_size = $(this).attr('data-size') || '';
 			
-			if ( new_size != '' ) {
+			if ( new_size == 'auto' ) {
+				new_size = '';
+			}
+			else if ( new_size != '' ) {
+				if ( new_size.split('x').length > 1 || new_size.split('*').length > 1 ) {
+					new_size.split('x').split('*');
+					new_size = new_size[1] + '/' + new_size[0];
+				}
+				
+				//
 //				a *= new_size;
 				a *= eval(new_size);
 				a += 1;
