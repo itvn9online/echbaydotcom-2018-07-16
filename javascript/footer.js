@@ -462,7 +462,8 @@ $('.powered-by-echbay a').attr({
 
 // kiểm tra phiên bản HTML mới hay cũ
 setTimeout(function () {
-	if ( $('title').length != 1 ) {
+//	if ( $('title').length != 1 ) {
+	if ( $('head title').length != 1 ) {
 		alert('Lỗi HTML! vui lòng kiểm tra lại (HTML ERROR!)');
 		console.log('Reinstall theme or call to +84984533228');
 	}
