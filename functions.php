@@ -1417,8 +1417,8 @@ function EBE_echbay_footer_menu ( $menu = array(), $in_cache = 1, $tag_menu_name
 	global $i_echbay_footer_menu;
 	
 	$i_echbay_footer_menu++;
-	if ( $i_echbay_footer_menu > 6 ) {
-		$i_echbay_footer_menu = 6;
+	if ( $i_echbay_footer_menu > 10 ) {
+		$i_echbay_footer_menu = 10;
 	}
 	
 	return _eb_echbay_menu(
