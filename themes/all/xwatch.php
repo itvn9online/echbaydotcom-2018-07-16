@@ -23,6 +23,9 @@ $eb_all_themes_support["xwatch"]["footer"][] = "xwatch-footer2.php";
 $eb_all_themes_support["xwatch"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["xwatch"]["home"][] = "home_widget.php";
+$eb_all_themes_support["xwatch"]["home"][] = "xwatch-home1.php";
+$eb_all_themes_support["xwatch"]["home"][] = "xwatch-home2.php";
+$eb_all_themes_support["xwatch"]["home"][] = "xwatch-home3.php";
 //
 //$eb_all_themes_support["xwatch"]["cf_threaddetails_include_file"] = "";
 //
