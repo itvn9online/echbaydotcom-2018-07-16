@@ -1,7 +1,10 @@
-<!--
-Description: Sidebar tạo content cho trang chủ, đính kèm module Tạo danh sách logo đối tác theo dạng sliderở chân trang, dùng cho các website muốn lật slider này lên đầu tiên ở trang chủ.
+<?php
+/*
+Description: Sidebar tạo content cho trang chủ, đính kèm module Tạo danh sách logo đối tác theo dạng slider ở chân trang, dùng cho các website muốn lật slider này lên đầu tiên ở trang chủ.
 Tags: echbaytwo, home sidebar, main sidebar
--->
+*/
+?>
+
 <div id="container">
 	<section id="main-content">
 		<div id="main" style="min-height:250px;">

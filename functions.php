@@ -1613,6 +1613,8 @@ function _eb_echbay_sidebar( $slug, $css = '', $div = 'div', $in_cache = 1, $loa
 }
 
 
+
+
 function _eb_q ($str) {
 	global $wpdb;
 	
@@ -1620,6 +1622,28 @@ function _eb_q ($str) {
 	
 	return $wpdb->get_results( $str, OBJECT );
 }
+
+function _eb_c ($str) {
+	$sql = _eb_q( $str );
+	
+	// v1 -> chạy 1 vòng lặp rồi trả về kết quả
+	if ( count( $sql ) > 0 ) {
+//		echo 'aaaaaaaaa';
+//		print_r( $sql );
+		$sql = $sql[0];
+//		print_r( $sql );
+		foreach ( $sql as $v ) {
+			$a = $v;
+		}
+		return $a;
+	}
+	
+	// mặc định trả về 0
+	return 0;
+}
+
+
+
 
 function _eb_full_url () {
 	return '//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];

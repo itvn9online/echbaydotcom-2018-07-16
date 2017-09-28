@@ -125,19 +125,12 @@ function WGR_get_sitemap_total_post ( $type = 'post' ) {
 	global $wpdb;
 //	echo $wpdb->posts;
 	
-	$sql = _eb_q("SELECT COUNT(ID) as a
+	return _eb_c("SELECT COUNT(ID) as a
 	FROM
 		`" . $wpdb->posts . "`
 	WHERE
 		post_type = '" . $type . "'
 		AND post_status = 'publish'");
-//	print_r( $sql );
-	
-	if ( isset( $sql[0] ) ) {
-		return $sql[0]->a;
-	}
-	
-	return 0;
 }
 
 

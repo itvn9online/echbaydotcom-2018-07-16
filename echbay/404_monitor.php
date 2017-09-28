@@ -27,14 +27,13 @@ $('.url-for-cleanup-404').attr({
 
 // dọn dẹp các bản ghi cũ
 /*
-$count_monitor = _eb_q("SELECT COUNT(meta_id) as ID
+$count_monitor = _eb_c("SELECT COUNT(meta_id) AS c
 	FROM
 		`" . wp_postmeta . "`
 	WHERE
 		post_id = " . eb_log_404_id_postmeta . "
 		AND meta_value = 1");
-//print_r( $count_monitor );
-if ( isset( $count_monitor[0]->ID ) && $count_monitor[0]->ID > 500 ) {
+if ( $count_monitor > 500 ) {
 	*/
 if ( isset( $_GET['cleanup_404'] ) ) {
 	_eb_q("DELETE

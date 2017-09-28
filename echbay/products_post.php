@@ -33,7 +33,7 @@ $by_cat_id = isset( $_GET['by_cat_id'] ) ? (int) $_GET['by_cat_id'] : 0;
 // tham khảo custom query: https://codex.wordpress.org/Displaying_Posts_Using_a_Custom_Select_Query
 
 //
-$strFilter = " post_type = '" . $by_post_type . "'
+$strFilter = " `" . $wpdb->posts . "`.post_type = '" . $by_post_type . "'
 	AND ( `" . $wpdb->posts . "`.post_status = 'publish' OR `" . $wpdb->posts . "`.post_status = 'pending' OR `" . $wpdb->posts . "`.post_status = 'draft' ) ";
 	
 $joinFilter = "";
@@ -123,22 +123,13 @@ if ( isset( $_GET['tab'] ) ) {
 */
 
 // tổng số đơn hàng
-$sql = _eb_q ( "SELECT COUNT(ID)
+$totalThread = _eb_c ( "SELECT COUNT(ID) AS c
 	FROM
 		`" . $wpdb->posts . "`
 		" . $joinFilter . "
 	WHERE
 		" . $strFilter );
 //echo $strFilter . '<br>' . "\n";
-$totalThread = 0;
-//print_r( $sql );
-if ( count( $sql ) > 0 ) {
-	$sql = $sql[0];
-//	print_r( $sql );
-	foreach ( $sql as $v ) {
-		$totalThread = $v;
-	}
-}
 //echo $totalThread . '<br>' . "\n";
 
 
@@ -180,17 +171,17 @@ $strAjaxLink .= '&trang=' . $trang;
 if ( $totalThread > 0 ) {
 
 	//
-	$sql = _eb_q ( "SELECT *
+	$sql = "SELECT *
 	FROM
 		`" . $wpdb->posts . "`
 		" . $joinFilter . "
 	WHERE
 		" . $strFilter . "
-	GROUP BY
-		ID
 	ORDER BY
-		menu_order DESC
-	LIMIT " . $offset . ", " . $threadInPage );
+		`" . $wpdb->posts . "`.menu_order DESC
+	LIMIT " . $offset . ", " . $threadInPage;
+//	echo $sql; 
+	$sql = _eb_q ( $sql );
 //	print_r( $sql ); exit();
 	
 	//

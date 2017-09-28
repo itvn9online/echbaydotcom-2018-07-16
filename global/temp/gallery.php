@@ -22,19 +22,11 @@ print_r( $all_sizes );
 
 
 //
-$total_post = 0;
-$sql = $wpdb->get_results( "SELECT COUNT(ID)
+$total_post = _eb_c( "SELECT COUNT(ID) AS c
 	FROM
 		`" . $wpdb->posts . "`
 	WHERE
-		post_type = 'attachment'", OBJECT );
-//print_r( $sql );
-if ( isset($sql[0]) ) {
-	$sql = $sql[0];
-	foreach ( $sql as $v ) {
-		$total_post = $v;
-	}
-}
+		post_type = 'attachment'" );
 $post_per_page = 50;
 $trang = isset($_GET['trang']) ? (int)$_GET['trang'] : 1;
 $totalPage = ceil ( $total_post / $post_per_page );

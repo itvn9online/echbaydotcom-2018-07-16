@@ -146,19 +146,13 @@ if ( $filterDay != '' ) {
 
 
 // tổng số đơn hàng
-$sql = _eb_q ( "SELECT COUNT(order_id)
+$totalThread = _eb_c ( "SELECT COUNT(order_id) AS c
 	FROM
 		`eb_in_con_voi`
 	WHERE
 		tv_id > 0
 		" . $strFilter );
 //echo $strFilter . '<br>' . "\n";
-//print_r( $sql );
-$sql = $sql[0];
-//print_r( $sql );
-foreach ( $sql as $v ) {
-	$totalThread = $v;
-}
 //echo $totalThread . '<br>' . "\n";
 
 

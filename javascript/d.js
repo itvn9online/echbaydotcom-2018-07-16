@@ -954,7 +954,24 @@ function ___eb_details_product_quan () {
 // big banner
 var big_banner_timeout1 = null;
 
-//(function () {
+(function () {
+	
+	var big_banner_len = $('.oi_big_banner li').length;
+	
+	// chuyển big banner đến vị trí mới (chỉ làm khi số lượng big banner là 1)
+	if ( big_banner_len > 0 && $('.oi_big_banner').length == 1 && $('.clone-big-banner-to-here').length > 0 ) {
+		// thiết lập class để lát xóa
+		$('.oi_big_banner').addClass('oi_big_banner-remove');
+		
+		// nhân bản sang vị trí mới
+		$('.clone-big-banner-to-here').html( $('.oi_big_banner').html() ).addClass('oi_big_banner').show();
+		
+		// xóa cái cũ
+		$('.oi_big_banner-remove').remove();
+		
+		// bỏ chế độ hiển thị menu liên quan đến big banner
+		$('.show-menu-if-banner').removeClass('show-menu-if-banner');
+	}
 	
 	// tải slider theo code mới
 	jEBE_slider( '.oi_big_banner', {
@@ -967,11 +984,11 @@ var big_banner_timeout1 = null;
 	});
 	
 	// Hiển thị menu NAV dưới dạng hover
-	if ( $('.oi_big_banner li').length > 0 && $('.show-menu-if-banner').length > 0 ) {
+	if ( big_banner_len > 0 && $('.show-menu-if-banner').length > 0 ) {
 		$('.show-menu-if-banner .all-category-hover').addClass('selected');
 	}
 	
-//})();
+})();
 
 function ___eb_big_banner () {
 	console.log('WARNING! Function ___eb_big_banner bas been remove, please clear in your code!');
