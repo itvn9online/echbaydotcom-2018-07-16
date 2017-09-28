@@ -10,21 +10,21 @@ $eb_all_themes_support["echbaythree"] = array();
 $eb_all_themes_support["echbaythree"]["name"] = "echbaythree";
 $eb_all_themes_support["echbaythree"]["screenshot"] = "https://img1.webgiare.org/echbaythree.jpg";
 //
-$eb_all_themes_support["echbaythree"]["cf_top1_include_file"] = "echbaythree-top1.php";
-$eb_all_themes_support["echbaythree"]["cf_top2_include_file"] = "echbaythree-top2.php";
-$eb_all_themes_support["echbaythree"]["cf_top3_include_file"] = "echbaythree-top3.php";
-$eb_all_themes_support["echbaythree"]["cf_top4_include_file"] = "top_widget.php";
-$eb_all_themes_support["echbaythree"]["cf_top5_include_file"] = "breadcrumb-top1.php";
+$eb_all_themes_support["echbaythree"]["top"][] = "echbaythree-top1.php";
+$eb_all_themes_support["echbaythree"]["top"][] = "echbaythree-top2.php";
+$eb_all_themes_support["echbaythree"]["top"][] = "echbaythree-top3.php";
+$eb_all_themes_support["echbaythree"]["top"][] = "top_widget.php";
+$eb_all_themes_support["echbaythree"]["top"][] = "breadcrumb-top1.php";
 //
-$eb_all_themes_support["echbaythree"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["echbaythree"]["cf_footer2_include_file"] = "echbaythree-footer1.php";
-$eb_all_themes_support["echbaythree"]["cf_footer3_include_file"] = "echbaythree-footer2.php";
-$eb_all_themes_support["echbaythree"]["cf_footer4_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["echbaythree"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["echbaythree"]["footer"][] = "echbaythree-footer1.php";
+$eb_all_themes_support["echbaythree"]["footer"][] = "echbaythree-footer2.php";
+$eb_all_themes_support["echbaythree"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["echbaythree"]["cf_home1_include_file"] = "echbaythree-home1.php";
-$eb_all_themes_support["echbaythree"]["cf_home2_include_file"] = "echbaytwo-home1.php";
-$eb_all_themes_support["echbaythree"]["cf_home3_include_file"] = "echbaythree-home2.php";
-$eb_all_themes_support["echbaythree"]["cf_home4_include_file"] = "home_widget.php";
+$eb_all_themes_support["echbaythree"]["home"][] = "echbaythree-home1.php";
+$eb_all_themes_support["echbaythree"]["home"][] = "echbaytwo-home1.php";
+$eb_all_themes_support["echbaythree"]["home"][] = "echbaythree-home2.php";
+$eb_all_themes_support["echbaythree"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["echbaythree"]["cf_threaddetails_include_file"] = "echbaythree-threaddetails.html";
 //

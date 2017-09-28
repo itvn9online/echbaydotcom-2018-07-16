@@ -11,25 +11,25 @@ $eb_all_themes_support["rongbay"]["name"] = "rongbay";
 $eb_all_themes_support["rongbay"]["screenshot"] = "https://img1.webgiare.org/rongbay.jpg";
 $eb_all_themes_support["rongbay"]["price"] = 1200000;
 //
-$eb_all_themes_support["rongbay"]["cf_top1_include_file"] = "rongbay-top1.php";
-$eb_all_themes_support["rongbay"]["cf_top2_include_file"] = "rongbay-top2.php";
-$eb_all_themes_support["rongbay"]["cf_top3_include_file"] = "rongbay-top3.php";
-$eb_all_themes_support["rongbay"]["cf_top4_include_file"] = "bigbannerFixed-top1.php";
-$eb_all_themes_support["rongbay"]["cf_top5_include_file"] = "rongbay-top4.php";
-$eb_all_themes_support["rongbay"]["cf_top6_include_file"] = "top_widget.php";
+$eb_all_themes_support["rongbay"]["top"][] = "rongbay-top1.php";
+$eb_all_themes_support["rongbay"]["top"][] = "rongbay-top2.php";
+$eb_all_themes_support["rongbay"]["top"][] = "rongbay-top3.php";
+$eb_all_themes_support["rongbay"]["top"][] = "bigbannerFixed-top1.php";
+$eb_all_themes_support["rongbay"]["top"][] = "rongbay-top4.php";
+$eb_all_themes_support["rongbay"]["top"][] = "top_widget.php";
 //
-$eb_all_themes_support["rongbay"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["rongbay"]["cf_footer2_include_file"] = "rongbay-footer1.php";
-$eb_all_themes_support["rongbay"]["cf_footer3_include_file"] = "rongbay-footer2.php";
-$eb_all_themes_support["rongbay"]["cf_footer4_include_file"] = "rongbay-footer3.php";
-$eb_all_themes_support["rongbay"]["cf_footer5_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["rongbay"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["rongbay"]["footer"][] = "rongbay-footer1.php";
+$eb_all_themes_support["rongbay"]["footer"][] = "rongbay-footer2.php";
+$eb_all_themes_support["rongbay"]["footer"][] = "rongbay-footer3.php";
+$eb_all_themes_support["rongbay"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["rongbay"]["cf_home1_include_file"] = "rongbay-home1.php";
-$eb_all_themes_support["rongbay"]["cf_home2_include_file"] = "rongbay-home2.php";
-//$eb_all_themes_support["rongbay"]["cf_home3_include_file"] = "rongbay-home3.php";
-//$eb_all_themes_support["rongbay"]["cf_home4_include_file"] = "rongbay-home4.php";
-//$eb_all_themes_support["rongbay"]["cf_home5_include_file"] = "rongbay-home5.php";
-$eb_all_themes_support["rongbay"]["cf_home6_include_file"] = "home_widget.php";
+$eb_all_themes_support["rongbay"]["home"][] = "rongbay-home1.php";
+$eb_all_themes_support["rongbay"]["home"][] = "rongbay-home2.php";
+//$eb_all_themes_support["rongbay"]["home"][] = "rongbay-home3.php";
+//$eb_all_themes_support["rongbay"]["home"][] = "rongbay-home4.php";
+//$eb_all_themes_support["rongbay"]["home"][] = "rongbay-home5.php";
+$eb_all_themes_support["rongbay"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["rongbay"]["cf_threaddetails_include_file"] = "rongbay-threaddetails.html";
 //

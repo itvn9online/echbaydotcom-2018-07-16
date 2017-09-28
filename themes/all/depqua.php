@@ -11,17 +11,17 @@ $eb_all_themes_support["depqua"]["name"] = "depqua";
 $eb_all_themes_support["depqua"]["screenshot"] = "https://img1.webgiare.org/depqua.jpg";
 $eb_all_themes_support["depqua"]["price"] = 1200000;
 //
-$eb_all_themes_support["depqua"]["cf_top1_include_file"] = "depqua-top1.php";
-$eb_all_themes_support["depqua"]["cf_top2_include_file"] = "echbaytwo-top2.php";
-$eb_all_themes_support["depqua"]["cf_top3_include_file"] = "echbaytwo-top3.php";
-$eb_all_themes_support["depqua"]["cf_top4_include_file"] = "top_widget.php";
-$eb_all_themes_support["depqua"]["cf_top5_include_file"] = "bigbanner-top1.php";
-$eb_all_themes_support["depqua"]["cf_top6_include_file"] = "breadcrumb-top1.php";
+$eb_all_themes_support["depqua"]["top"][] = "depqua-top1.php";
+$eb_all_themes_support["depqua"]["top"][] = "echbaytwo-top2.php";
+$eb_all_themes_support["depqua"]["top"][] = "echbaytwo-top3.php";
+$eb_all_themes_support["depqua"]["top"][] = "top_widget.php";
+$eb_all_themes_support["depqua"]["top"][] = "bigbanner-top1.php";
+$eb_all_themes_support["depqua"]["top"][] = "breadcrumb-top1.php";
 //
-$eb_all_themes_support["depqua"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["depqua"]["cf_footer2_include_file"] = "echbaytwo-footer1.php";
-$eb_all_themes_support["depqua"]["cf_footer3_include_file"] = "depqua-footer2.php";
-$eb_all_themes_support["depqua"]["cf_footer4_include_file"] = "depqua-footer3.php";
+$eb_all_themes_support["depqua"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["depqua"]["footer"][] = "echbaytwo-footer1.php";
+$eb_all_themes_support["depqua"]["footer"][] = "depqua-footer2.php";
+$eb_all_themes_support["depqua"]["footer"][] = "depqua-footer3.php";
 //
 $eb_all_themes_support["depqua"]["cf_threaddetails_include_file"] = "depqua-threaddetails.html";
 //

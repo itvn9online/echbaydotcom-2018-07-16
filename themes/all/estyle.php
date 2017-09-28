@@ -11,20 +11,20 @@ $eb_all_themes_support["estyle"]["name"] = "estyle";
 $eb_all_themes_support["estyle"]["screenshot"] = "https://img1.webgiare.org/estyle.jpg";
 $eb_all_themes_support["estyle"]["price"] = 700000;
 //
-$eb_all_themes_support["estyle"]["cf_top1_include_file"] = "estyle-top1.php";
-$eb_all_themes_support["estyle"]["cf_top2_include_file"] = "estyle-top2.php";
-$eb_all_themes_support["estyle"]["cf_top3_include_file"] = "bigbanner-top1.php";
-$eb_all_themes_support["estyle"]["cf_top4_include_file"] = "breadcrumb-top1.php";
-$eb_all_themes_support["estyle"]["cf_top5_include_file"] = "top_widget.php";
+$eb_all_themes_support["estyle"]["top"][] = "estyle-top1.php";
+$eb_all_themes_support["estyle"]["top"][] = "estyle-top2.php";
+$eb_all_themes_support["estyle"]["top"][] = "bigbanner-top1.php";
+$eb_all_themes_support["estyle"]["top"][] = "breadcrumb-top1.php";
+$eb_all_themes_support["estyle"]["top"][] = "top_widget.php";
 //
-$eb_all_themes_support["estyle"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["estyle"]["cf_footer2_include_file"] = "estyle-footer1.php";
-$eb_all_themes_support["estyle"]["cf_footer3_include_file"] = "estyle-footer2.php";
-$eb_all_themes_support["estyle"]["cf_footer4_include_file"] = "denbaophat-footer3.php";
+$eb_all_themes_support["estyle"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["estyle"]["footer"][] = "estyle-footer1.php";
+$eb_all_themes_support["estyle"]["footer"][] = "estyle-footer2.php";
+$eb_all_themes_support["estyle"]["footer"][] = "denbaophat-footer3.php";
 //
-$eb_all_themes_support["estyle"]["cf_home1_include_file"] = "echbaytwo-home1.php";
-$eb_all_themes_support["estyle"]["cf_home2_include_file"] = "echbaytwo-home2.php";
-$eb_all_themes_support["estyle"]["cf_home3_include_file"] = "widget-home1.php";
+$eb_all_themes_support["estyle"]["home"][] = "echbaytwo-home1.php";
+$eb_all_themes_support["estyle"]["home"][] = "echbaytwo-home2.php";
+$eb_all_themes_support["estyle"]["home"][] = "widget-home1.php";
 //
 $eb_all_themes_support["estyle"]["cf_threaddetails_include_file"] = "estyle-threaddetails.html";
 //

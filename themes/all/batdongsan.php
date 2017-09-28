@@ -10,17 +10,17 @@ $eb_all_themes_support["batdongsan"]=array();
 $eb_all_themes_support["batdongsan"]["screenshot"] = "https://img1.webgiare.org/batdongsan.jpg";
 $eb_all_themes_support["batdongsan"]["price"] = 2500000;
 //
-$eb_all_themes_support["batdongsan"]["cf_top1_include_file"] = "batdongsan-top1.php";
-$eb_all_themes_support["batdongsan"]["cf_top2_include_file"] = "batdongsan-top2.php";
-$eb_all_themes_support["batdongsan"]["cf_top3_include_file"] = "batdongsan-top3.php";
-$eb_all_themes_support["batdongsan"]["cf_top4_include_file"] = "top_widget.php";
-$eb_all_themes_support["batdongsan"]["cf_top5_include_file"] = "vantaitanphatdat-top3.php";
+$eb_all_themes_support["batdongsan"]["top"][] = "batdongsan-top1.php";
+$eb_all_themes_support["batdongsan"]["top"][] = "batdongsan-top2.php";
+$eb_all_themes_support["batdongsan"]["top"][] = "batdongsan-top3.php";
+$eb_all_themes_support["batdongsan"]["top"][] = "top_widget.php";
+$eb_all_themes_support["batdongsan"]["top"][] = "vantaitanphatdat-top3.php";
 //
-$eb_all_themes_support["batdongsan"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["batdongsan"]["cf_footer2_include_file"] = "batdongsan-footer1.php";
-$eb_all_themes_support["batdongsan"]["cf_footer3_include_file"] = "batdongsan-footer2.php";
-$eb_all_themes_support["batdongsan"]["cf_footer4_include_file"] = "batdongsan-footer3.php";
-$eb_all_themes_support["batdongsan"]["cf_footer5_include_file"] = "batdongsan-footer4.php";
+$eb_all_themes_support["batdongsan"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["batdongsan"]["footer"][] = "batdongsan-footer1.php";
+$eb_all_themes_support["batdongsan"]["footer"][] = "batdongsan-footer2.php";
+$eb_all_themes_support["batdongsan"]["footer"][] = "batdongsan-footer3.php";
+$eb_all_themes_support["batdongsan"]["footer"][] = "batdongsan-footer4.php";
 //
 $eb_all_themes_support["batdongsan"]["cf_threaddetails_include_file"] = "batdongsan-threaddetails.html";
 //

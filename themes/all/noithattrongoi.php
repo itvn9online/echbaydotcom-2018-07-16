@@ -11,25 +11,25 @@ $eb_all_themes_support["noithattrongoi"]["name"] = "noithattrongoi";
 $eb_all_themes_support["noithattrongoi"]["screenshot"] = "https://img1.webgiare.org/noithattrongoi.jpg";
 $eb_all_themes_support["noithattrongoi"]["price"] = 1200000;
 //
-$eb_all_themes_support["noithattrongoi"]["cf_top1_include_file"] = "noithattrevietnam-top1.php";
-$eb_all_themes_support["noithattrongoi"]["cf_top2_include_file"] = "noithattrevietnam-top2.php";
-$eb_all_themes_support["noithattrongoi"]["cf_top3_include_file"] = "top_widget.php";
-$eb_all_themes_support["noithattrongoi"]["cf_top3_include_file"] = "breadcrumb-top1.php";
+$eb_all_themes_support["noithattrongoi"]["top"][] = "noithattrevietnam-top1.php";
+$eb_all_themes_support["noithattrongoi"]["top"][] = "noithattrevietnam-top2.php";
+$eb_all_themes_support["noithattrongoi"]["top"][] = "top_widget.php";
+$eb_all_themes_support["noithattrongoi"]["top"][] = "breadcrumb-top1.php";
 //
-$eb_all_themes_support["noithattrongoi"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["noithattrongoi"]["cf_footer2_include_file"] = "noithattrevietnam-footer1.php";
-$eb_all_themes_support["noithattrongoi"]["cf_footer3_include_file"] = "noithattrevietnam-footer2.php";
-$eb_all_themes_support["noithattrongoi"]["cf_footer4_include_file"] = "denbaophat-footer3.php";
+$eb_all_themes_support["noithattrongoi"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["noithattrongoi"]["footer"][] = "noithattrevietnam-footer1.php";
+$eb_all_themes_support["noithattrongoi"]["footer"][] = "noithattrevietnam-footer2.php";
+$eb_all_themes_support["noithattrongoi"]["footer"][] = "denbaophat-footer3.php";
 //
-$eb_all_themes_support["noithattrongoi"]["cf_home1_include_file"] = "bigbanner-home1.php";
-//$eb_all_themes_support["noithattrongoi"]["cf_home2_include_file"] = "vinhaninterior-home1.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home2_include_file"] = "noithattrongoi-home1.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home3_include_file"] = "vinhaninterior-home2.php";
-//$eb_all_themes_support["noithattrongoi"]["cf_home4_include_file"] = "vinhaninterior-home3.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home4_include_file"] = "vinhaninteriorV2-home3.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home5_include_file"] = "vinhaninterior-home4.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home6_include_file"] = "home_widget.php";
-$eb_all_themes_support["noithattrongoi"]["cf_home7_include_file"] = "vinhaninterior-home5.php";
+$eb_all_themes_support["noithattrongoi"]["home"][] = "bigbanner-home1.php";
+//$eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninterior-home1.php";
+$eb_all_themes_support["noithattrongoi"]["home"][] = "noithattrongoi-home1.php";
+$eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninterior-home2.php";
+//$eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninterior-home3.php";
+$eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninteriorV2-home3.php";
+$eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninterior-home4.php";
+$eb_all_themes_support["noithattrongoi"]["home"][] = "home_widget.php";
+$eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninterior-home5.php";
 //
 $eb_all_themes_support["noithattrongoi"]["cf_threaddetails_include_file"] = "noithattrevietnam-threaddetails.html";
 //

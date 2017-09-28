@@ -22,7 +22,7 @@ include $file_for_active;
 if ( empty( $eb_all_themes_support[ $create_theme_key ] ) ) {
 	_eb_alert('Không không xác định được danh sách tệp giao diện');
 }
-$arr_new_theme = $eb_all_themes_support[ $create_theme_key ];
+$arr_new_theme = WGR_convert_default_theme_to_confog( $eb_all_themes_support[ $create_theme_key ] );
 //print_r( $arr_new_theme ); exit();
 
 

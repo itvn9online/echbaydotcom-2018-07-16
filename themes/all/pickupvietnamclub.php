@@ -11,16 +11,16 @@ $eb_all_themes_support["pickupvietnamclub"]["name"] = "pickupvietnamclub";
 $eb_all_themes_support["pickupvietnamclub"]["screenshot"] = "https://img1.webgiare.org/pickupvietnamclub.jpg";
 $eb_all_themes_support["pickupvietnamclub"]["price"] = 1200000;
 //
-$eb_all_themes_support["pickupvietnamclub"]["cf_top1_include_file"] = "pickupvietnamclub-top1.php";
-$eb_all_themes_support["pickupvietnamclub"]["cf_top2_include_file"] = "";
-$eb_all_themes_support["pickupvietnamclub"]["cf_top3_include_file"] = "pickupvietnamclub-top3.php";
-$eb_all_themes_support["pickupvietnamclub"]["cf_top4_include_file"] = "echbaytwo-top4.php";
-$eb_all_themes_support["pickupvietnamclub"]["cf_top5_include_file"] = "";
-$eb_all_themes_support["pickupvietnamclub"]["cf_top6_include_file"] = "top_widget.php";
+$eb_all_themes_support["pickupvietnamclub"]["top"][] = "pickupvietnamclub-top1.php";
+$eb_all_themes_support["pickupvietnamclub"]["top"][] = "";
+$eb_all_themes_support["pickupvietnamclub"]["top"][] = "pickupvietnamclub-top3.php";
+$eb_all_themes_support["pickupvietnamclub"]["top"][] = "echbaytwo-top4.php";
+$eb_all_themes_support["pickupvietnamclub"]["top"][] = "";
+$eb_all_themes_support["pickupvietnamclub"]["top"][] = "top_widget.php";
 //
-$eb_all_themes_support["pickupvietnamclub"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["pickupvietnamclub"]["cf_footer2_include_file"] = "echbaytwo-footer2.php";
-$eb_all_themes_support["pickupvietnamclub"]["cf_footer3_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["pickupvietnamclub"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["pickupvietnamclub"]["footer"][] = "echbaytwo-footer2.php";
+$eb_all_themes_support["pickupvietnamclub"]["footer"][] = "echbaytwo-footer3.php";
 //
 //
 $eb_all_themes_support["pickupvietnamclub"]["cf_threaddetails_include_file"] = "pickupvietnamclub-threaddetails.html";

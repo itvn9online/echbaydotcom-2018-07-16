@@ -10,14 +10,14 @@ $eb_all_themes_support["vietnamontrails"]=array();
 $eb_all_themes_support["vietnamontrails"]["screenshot"] = "https://img1.webgiare.org/vietnamontrails.jpg";
 $eb_all_themes_support["vietnamontrails"]["price"] = 700000;
 //
-$eb_all_themes_support["vietnamontrails"]["cf_top1_include_file"] = "top_widget.php";
-$eb_all_themes_support["vietnamontrails"]["cf_top2_include_file"] = "vietnamontrails-top3.php";
-$eb_all_themes_support["vietnamontrails"]["cf_top3_include_file"] = "echbaytwo-top4.php";
+$eb_all_themes_support["vietnamontrails"]["top"][] = "top_widget.php";
+$eb_all_themes_support["vietnamontrails"]["top"][] = "vietnamontrails-top3.php";
+$eb_all_themes_support["vietnamontrails"]["top"][] = "echbaytwo-top4.php";
 //
-$eb_all_themes_support["vietnamontrails"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["vietnamontrails"]["cf_footer2_include_file"] = "vietnamontrails-footer1.php";
-$eb_all_themes_support["vietnamontrails"]["cf_footer3_include_file"] = "vietnamontrails-footer2.php";
-$eb_all_themes_support["vietnamontrails"]["cf_footer4_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["vietnamontrails"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["vietnamontrails"]["footer"][] = "vietnamontrails-footer1.php";
+$eb_all_themes_support["vietnamontrails"]["footer"][] = "vietnamontrails-footer2.php";
+$eb_all_themes_support["vietnamontrails"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["vietnamontrails"]["cf_threaddetails_include_file"] = "vietnamontrails-threaddetails.html";
 //

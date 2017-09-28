@@ -11,18 +11,18 @@ $eb_all_themes_support["motocenter"]["name"] = "motocenter";
 $eb_all_themes_support["motocenter"]["screenshot"] = "https://img1.webgiare.org/motocenter.jpg";
 $eb_all_themes_support["motocenter"]["price"] = 1200000;
 //
-$eb_all_themes_support["motocenter"]["cf_top2_include_file"] = "echbaytwo-top1.php";
-$eb_all_themes_support["motocenter"]["cf_top3_include_file"] = "motocenter-top3.php";
-$eb_all_themes_support["motocenter"]["cf_top5_include_file"] = "echbaytwo-top4.php";
-$eb_all_themes_support["motocenter"]["cf_top6_include_file"] = "top_widget.php";
+$eb_all_themes_support["motocenter"]["top"][] = "echbaytwo-top1.php";
+$eb_all_themes_support["motocenter"]["top"][] = "motocenter-top3.php";
+$eb_all_themes_support["motocenter"]["top"][] = "echbaytwo-top4.php";
+$eb_all_themes_support["motocenter"]["top"][] = "top_widget.php";
 //
-$eb_all_themes_support["motocenter"]["cf_footer1_include_file"] = "echbaytwo-footer2.php";
-$eb_all_themes_support["motocenter"]["cf_footer2_include_file"] = "footer_widget.php";
-$eb_all_themes_support["motocenter"]["cf_footer3_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["motocenter"]["footer"][] = "echbaytwo-footer2.php";
+$eb_all_themes_support["motocenter"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["motocenter"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["motocenter"]["cf_home1_include_file"] = "bigbannerFixed-home1.php";
-$eb_all_themes_support["motocenter"]["cf_home2_include_file"] = "widget-home1.php";
-$eb_all_themes_support["motocenter"]["cf_home6_include_file"] = "motocenter-home1.php";
+$eb_all_themes_support["motocenter"]["home"][] = "bigbannerFixed-home1.php";
+$eb_all_themes_support["motocenter"]["home"][] = "widget-home1.php";
+$eb_all_themes_support["motocenter"]["home"][] = "motocenter-home1.php";
 //
 $eb_all_themes_support["motocenter"]["cf_threaddetails_include_file"] = "";
 //

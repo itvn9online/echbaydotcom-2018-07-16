@@ -11,19 +11,19 @@ $eb_all_themes_support["noithattrevietnam"]["name"] = "noithattrevietnam";
 $eb_all_themes_support["noithattrevietnam"]["screenshot"] = "https://img1.webgiare.org/noithattrevietnam.jpg";
 //$eb_all_themes_support["noithattrevietnam"]["price"] = 700000;
 //
-$eb_all_themes_support["noithattrevietnam"]["cf_top1_include_file"] = "noithattrevietnam-top1.php";
-$eb_all_themes_support["noithattrevietnam"]["cf_top2_include_file"] = "noithattrevietnam-top2.php";
-$eb_all_themes_support["noithattrevietnam"]["cf_top3_include_file"] = "top_widget.php";
+$eb_all_themes_support["noithattrevietnam"]["top"][] = "noithattrevietnam-top1.php";
+$eb_all_themes_support["noithattrevietnam"]["top"][] = "noithattrevietnam-top2.php";
+$eb_all_themes_support["noithattrevietnam"]["top"][] = "top_widget.php";
 //
-$eb_all_themes_support["noithattrevietnam"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["noithattrevietnam"]["cf_footer2_include_file"] = "noithattrevietnam-footer1.php";
-$eb_all_themes_support["noithattrevietnam"]["cf_footer3_include_file"] = "noithattrevietnam-footer2.php";
-$eb_all_themes_support["noithattrevietnam"]["cf_footer4_include_file"] = "denbaophat-footer3.php";
+$eb_all_themes_support["noithattrevietnam"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["noithattrevietnam"]["footer"][] = "noithattrevietnam-footer1.php";
+$eb_all_themes_support["noithattrevietnam"]["footer"][] = "noithattrevietnam-footer2.php";
+$eb_all_themes_support["noithattrevietnam"]["footer"][] = "denbaophat-footer3.php";
 //
-$eb_all_themes_support["noithattrevietnam"]["cf_home1_include_file"] = "noithattrevietnam-home1.php";
-$eb_all_themes_support["noithattrevietnam"]["cf_home2_include_file"] = "bigbanner-home1.php";
-$eb_all_themes_support["noithattrevietnam"]["cf_home3_include_file"] = "echbaytwo-home1.php";
-$eb_all_themes_support["noithattrevietnam"]["cf_home9_include_file"] = "home_widget.php";
+$eb_all_themes_support["noithattrevietnam"]["home"][] = "noithattrevietnam-home1.php";
+$eb_all_themes_support["noithattrevietnam"]["home"][] = "bigbanner-home1.php";
+$eb_all_themes_support["noithattrevietnam"]["home"][] = "echbaytwo-home1.php";
+$eb_all_themes_support["noithattrevietnam"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["noithattrevietnam"]["cf_threaddetails_include_file"] = "noithattrevietnam-threaddetails.html";
 //

@@ -9,24 +9,24 @@
 $eb_all_themes_support["echbaytwo"]=array();
 $eb_all_themes_support["echbaytwo"]["screenshot"] = "https://img1.webgiare.org/echbaytwo.jpg";
 //
-$eb_all_themes_support["echbaytwo"]["cf_top1_include_file"] = "echbaytwo-top1.php";
-$eb_all_themes_support["echbaytwo"]["cf_top2_include_file"] = "echbaytwo-top2.php";
-$eb_all_themes_support["echbaytwo"]["cf_top3_include_file"] = "echbaytwo-top3.php";
-$eb_all_themes_support["echbaytwo"]["cf_top4_include_file"] = "bigbanner-top1.php";
-$eb_all_themes_support["echbaytwo"]["cf_top5_include_file"] = "breadcrumb-top1.php";
-$eb_all_themes_support["echbaytwo"]["cf_top6_include_file"] = "top_widget.php";
+$eb_all_themes_support["echbaytwo"]["top"][] = "echbaytwo-top1.php";
+$eb_all_themes_support["echbaytwo"]["top"][] = "echbaytwo-top2.php";
+$eb_all_themes_support["echbaytwo"]["top"][] = "echbaytwo-top3.php";
+$eb_all_themes_support["echbaytwo"]["top"][] = "bigbanner-top1.php";
+$eb_all_themes_support["echbaytwo"]["top"][] = "breadcrumb-top1.php";
+$eb_all_themes_support["echbaytwo"]["top"][] = "top_widget.php";
 //
-$eb_all_themes_support["echbaytwo"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["echbaytwo"]["cf_footer2_include_file"] = "echbaytwo-footer1.php";
-$eb_all_themes_support["echbaytwo"]["cf_footer3_include_file"] = "echbaytwo-footer2.php";
-$eb_all_themes_support["echbaytwo"]["cf_footer4_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["echbaytwo"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["echbaytwo"]["footer"][] = "echbaytwo-footer1.php";
+$eb_all_themes_support["echbaytwo"]["footer"][] = "echbaytwo-footer2.php";
+$eb_all_themes_support["echbaytwo"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["echbaytwo"]["cf_home1_include_file"] = "echbaytwo-home1.php";
-$eb_all_themes_support["echbaytwo"]["cf_home2_include_file"] = "echbaytwo-home2.php";
-$eb_all_themes_support["echbaytwo"]["cf_home3_include_file"] = "echbaytwo-home3.php";
-$eb_all_themes_support["echbaytwo"]["cf_home4_include_file"] = "echbaytwo-home4.php";
-$eb_all_themes_support["echbaytwo"]["cf_home5_include_file"] = "echbaytwo-home5.php";
-$eb_all_themes_support["echbaytwo"]["cf_home6_include_file"] = "echbaytwo-home6.php";
+$eb_all_themes_support["echbaytwo"]["home"][] = "echbaytwo-home1.php";
+$eb_all_themes_support["echbaytwo"]["home"][] = "echbaytwo-home2.php";
+$eb_all_themes_support["echbaytwo"]["home"][] = "echbaytwo-home3.php";
+$eb_all_themes_support["echbaytwo"]["home"][] = "echbaytwo-home4.php";
+$eb_all_themes_support["echbaytwo"]["home"][] = "echbaytwo-home5.php";
+$eb_all_themes_support["echbaytwo"]["home"][] = "echbaytwo-home6.php";
 //
 $eb_all_themes_support["echbaytwo"]["cf_threaddetails_include_file"] = "";
 //

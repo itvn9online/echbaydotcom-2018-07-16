@@ -307,19 +307,22 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 	// thêm widget vào cuối
 	if ( $position == 'top'
 	|| $position == 'home' ) {
-		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "' . $position . '_widget.php";' . "\n";
+//		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "' . $position . '_widget.php";' . "\n";
+		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"] = "' . $position . '_widget.php";' . "\n";
 		
 		//
 		if ( $position == 'top' ) {
 			$end_i += 1;
 			
-			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "breadcrumb-top1.php";' . "\n";
+//			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "breadcrumb-top1.php";' . "\n";
+			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"] = "breadcrumb-top1.php";' . "\n";
 		}
 		
 	}
 	// với footer -> thêm phần copyright vào cuối trang
 	else if ( $position == 'footer' ) {
-		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "echbaytwo-footer3.php";' . "\n";
+//		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "echbaytwo-footer3.php";' . "\n";
+		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"] = "echbaytwo-footer3.php";' . "\n";
 		
 	}
 	

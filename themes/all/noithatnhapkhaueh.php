@@ -11,24 +11,24 @@ $eb_all_themes_support["noithatnhapkhaueh"]["name"] = "noithatnhapkhaueh";
 $eb_all_themes_support["noithatnhapkhaueh"]["screenshot"] = "https://img1.webgiare.org/noithatnhapkhaueh.jpg";
 $eb_all_themes_support["noithatnhapkhaueh"]["price"] = 1200000;
 //
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_top1_include_file"] = "noithatnhapkhaueh-top1.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_top2_include_file"] = "noithatnhapkhaueh-top2.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_top3_include_file"] = "noithatnhapkhaueh-top3.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_top4_include_file"] = "noithatnhapkhaueh-top4.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_top5_include_file"] = "top_widget.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_top6_include_file"] = "webgiare-top3.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["top"][] = "noithatnhapkhaueh-top1.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["top"][] = "noithatnhapkhaueh-top2.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["top"][] = "noithatnhapkhaueh-top3.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["top"][] = "noithatnhapkhaueh-top4.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["top"][] = "top_widget.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["top"][] = "webgiare-top3.php";
 //
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_footer2_include_file"] = "noithatnhapkhaueh-footer1.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_footer3_include_file"] = "noithatnhapkhaueh-footer2.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_footer4_include_file"] = "noithatnhapkhaueh-footer3.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_footer5_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["footer"][] = "noithatnhapkhaueh-footer1.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["footer"][] = "noithatnhapkhaueh-footer2.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["footer"][] = "noithatnhapkhaueh-footer3.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_home1_include_file"] = "home_widget.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_home2_include_file"] = "noithatnhapkhaueh-home1.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_home3_include_file"] = "noithatnhapkhaueh-home2.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_home4_include_file"] = "noithatnhapkhaueh-home3.php";
-$eb_all_themes_support["noithatnhapkhaueh"]["cf_home5_include_file"] = "noithatnhapkhaueh-home4.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "home_widget.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "noithatnhapkhaueh-home1.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "noithatnhapkhaueh-home2.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "noithatnhapkhaueh-home3.php";
+$eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "noithatnhapkhaueh-home4.php";
 //
 $eb_all_themes_support["noithatnhapkhaueh"]["cf_threaddetails_include_file"] = "noithatnhapkhaueh-threaddetails.html";
 //

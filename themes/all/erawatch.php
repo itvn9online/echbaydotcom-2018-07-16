@@ -11,16 +11,16 @@ $eb_all_themes_support["erawatch"]["name"] = "erawatch";
 $eb_all_themes_support["erawatch"]["screenshot"] = "https://img1.webgiare.org/erawatch.jpg";
 $eb_all_themes_support["erawatch"]["price"] = 2000000;
 //
-$eb_all_themes_support["erawatch"]["cf_top1_include_file"] = "erawatch-top1.php";
-$eb_all_themes_support["erawatch"]["cf_top2_include_file"] = "erawatch-top2.php";
-$eb_all_themes_support["erawatch"]["cf_top3_include_file"] = "bigbanner-top1.php";
-$eb_all_themes_support["erawatch"]["cf_top4_include_file"] = "echbaytwo-top4.php";
-$eb_all_themes_support["erawatch"]["cf_top5_include_file"] = "top_widget.php";
+$eb_all_themes_support["erawatch"]["top"][] = "erawatch-top1.php";
+$eb_all_themes_support["erawatch"]["top"][] = "erawatch-top2.php";
+$eb_all_themes_support["erawatch"]["top"][] = "bigbanner-top1.php";
+$eb_all_themes_support["erawatch"]["top"][] = "echbaytwo-top4.php";
+$eb_all_themes_support["erawatch"]["top"][] = "top_widget.php";
 //
-$eb_all_themes_support["erawatch"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["erawatch"]["cf_footer2_include_file"] = "erawatch-footer2.php";
-$eb_all_themes_support["erawatch"]["cf_footer3_include_file"] = "erawatch-footer1.php";
-$eb_all_themes_support["erawatch"]["cf_footer4_include_file"] = "erawatch-footer3.php";
+$eb_all_themes_support["erawatch"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["erawatch"]["footer"][] = "erawatch-footer2.php";
+$eb_all_themes_support["erawatch"]["footer"][] = "erawatch-footer1.php";
+$eb_all_themes_support["erawatch"]["footer"][] = "erawatch-footer3.php";
 //
 $eb_all_themes_support["erawatch"]["cf_threaddetails_include_file"] = "erawatch-threaddetails.html";
 //

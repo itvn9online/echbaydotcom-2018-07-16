@@ -9,15 +9,15 @@
 $eb_all_themes_support["denbaophat"]=array();
 $eb_all_themes_support["denbaophat"]["screenshot"] = "https://img1.webgiare.org/denbaophat.jpg";
 //
-$eb_all_themes_support["denbaophat"]["cf_top1_include_file"] = "denbaophat-top1.php";
-$eb_all_themes_support["denbaophat"]["cf_top2_include_file"] = "denbaophat-top2.php";
-$eb_all_themes_support["denbaophat"]["cf_top3_include_file"] = "denbaophat-top3.php";
-$eb_all_themes_support["denbaophat"]["cf_top4_include_file"] = "echbaytwo-top4.php";
-$eb_all_themes_support["denbaophat"]["cf_top5_include_file"] = "top_widget.php";
+$eb_all_themes_support["denbaophat"]["top"][] = "denbaophat-top1.php";
+$eb_all_themes_support["denbaophat"]["top"][] = "denbaophat-top2.php";
+$eb_all_themes_support["denbaophat"]["top"][] = "denbaophat-top3.php";
+$eb_all_themes_support["denbaophat"]["top"][] = "echbaytwo-top4.php";
+$eb_all_themes_support["denbaophat"]["top"][] = "top_widget.php";
 //
-$eb_all_themes_support["denbaophat"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["denbaophat"]["cf_footer2_include_file"] = "denbaophat-footer2.php";
-$eb_all_themes_support["denbaophat"]["cf_footer3_include_file"] = "denbaophat-footer3.php";
+$eb_all_themes_support["denbaophat"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["denbaophat"]["footer"][] = "denbaophat-footer2.php";
+$eb_all_themes_support["denbaophat"]["footer"][] = "denbaophat-footer3.php";
 //
 $eb_all_themes_support["denbaophat"]["cf_threaddetails_include_file"] = "denbaophat-threaddetails.html";
 //

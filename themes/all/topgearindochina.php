@@ -10,18 +10,18 @@ $eb_all_themes_support["topgearindochina"] = array();
 $eb_all_themes_support["topgearindochina"]["name"] = "topgearindochina";
 $eb_all_themes_support["topgearindochina"]["screenshot"] = "https://img1.webgiare.org/topgearindochina.jpg";
 //
-$eb_all_themes_support["topgearindochina"]["cf_top1_include_file"] = "topgearindochina-top1.php";
-$eb_all_themes_support["topgearindochina"]["cf_top2_include_file"] = "topgearindochina-top2.php";
-$eb_all_themes_support["topgearindochina"]["cf_top3_include_file"] = "top_widget.php";
-$eb_all_themes_support["topgearindochina"]["cf_top4_include_file"] = "breadcrumb-top1.php";
+$eb_all_themes_support["topgearindochina"]["top"][] = "topgearindochina-top1.php";
+$eb_all_themes_support["topgearindochina"]["top"][] = "topgearindochina-top2.php";
+$eb_all_themes_support["topgearindochina"]["top"][] = "top_widget.php";
+$eb_all_themes_support["topgearindochina"]["top"][] = "breadcrumb-top1.php";
 //
-$eb_all_themes_support["topgearindochina"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["topgearindochina"]["cf_footer2_include_file"] = "softpro-footer2.php";
-$eb_all_themes_support["topgearindochina"]["cf_footer3_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["topgearindochina"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["topgearindochina"]["footer"][] = "softpro-footer2.php";
+$eb_all_themes_support["topgearindochina"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["topgearindochina"]["cf_home1_include_file"] = "echbaytwo-home1.php";
-$eb_all_themes_support["topgearindochina"]["cf_home2_include_file"] = "echbaytwo-home2.php";
-$eb_all_themes_support["topgearindochina"]["cf_home3_include_file"] = "home_widget.php";
+$eb_all_themes_support["topgearindochina"]["home"][] = "echbaytwo-home1.php";
+$eb_all_themes_support["topgearindochina"]["home"][] = "echbaytwo-home2.php";
+$eb_all_themes_support["topgearindochina"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["topgearindochina"]["cf_threaddetails_include_file"] = "topgearindochina-threaddetails.html";
 //

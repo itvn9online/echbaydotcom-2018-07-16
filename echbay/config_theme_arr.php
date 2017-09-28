@@ -535,6 +535,7 @@ foreach ( $arr_list_all_themes as $v ) {
 $str_all_themes_support = '';
 foreach ( $eb_all_themes_support as $k => $v ) {
 	$theme_name = $k;
+//	$v = WGR_convert_default_theme_to_confog( $v );
 	$theme_avt = $v['screenshot'];
 //	print_r( $v );
 	

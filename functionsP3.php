@@ -126,5 +126,31 @@ function WGR_check_and_load_tmp_theme ( $load_config_temp, $dir_all_theme ) {
 }
 
 
+// chuyển các mảng dữ liệu động về một định dạng chuẩn hơn
+function WGR_convert_default_theme_to_confog ( $arr ) {
+	if ( isset( $arr['top'] ) ) {
+		foreach ( $arr['top'] as $k => $v ) {
+			$arr['cf_top' . ( $k + 1 ) . '_include_file'] = $v;
+		}
+		unset( $arr['top'] );
+	}
+	
+	if ( isset( $arr['footer'] ) ) {
+		foreach ( $arr['footer'] as $k => $v ) {
+			$arr['cf_footer' . ( $k + 1 ) . '_include_file'] = $v;
+		}
+		unset( $arr['footer'] );
+	}
+	
+	if ( isset( $arr['home'] ) ) {
+		foreach ( $arr['home'] as $k => $v ) {
+			$arr['cf_home' . ( $k + 1 ) . '_include_file'] = $v;
+		}
+		unset( $arr['home'] );
+	}
+	
+	return $arr;
+}
+
 
 

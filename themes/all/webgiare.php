@@ -9,13 +9,13 @@
 $eb_all_themes_support["webgiare"]=array();
 $eb_all_themes_support["webgiare"]["screenshot"] = "https://img1.webgiare.org/webgiare.jpg";
 //
-$eb_all_themes_support["webgiare"]["cf_top1_include_file"] = "webgiare-top1.php";
-$eb_all_themes_support["webgiare"]["cf_top2_include_file"] = "webgiare-top2.php";
-$eb_all_themes_support["webgiare"]["cf_top3_include_file"] = "top_widget.php";
-$eb_all_themes_support["webgiare"]["cf_top4_include_file"] = "webgiare-top3.php";
+$eb_all_themes_support["webgiare"]["top"][] = "webgiare-top1.php";
+$eb_all_themes_support["webgiare"]["top"][] = "webgiare-top2.php";
+$eb_all_themes_support["webgiare"]["top"][] = "top_widget.php";
+$eb_all_themes_support["webgiare"]["top"][] = "webgiare-top3.php";
 //
-$eb_all_themes_support["webgiare"]["cf_footer1_include_file"] = "webgiare-footer1.php";
-$eb_all_themes_support["webgiare"]["cf_footer2_include_file"] = "webgiare-footer2.php";
+$eb_all_themes_support["webgiare"]["footer"][] = "webgiare-footer1.php";
+$eb_all_themes_support["webgiare"]["footer"][] = "webgiare-footer2.php";
 //
 $eb_all_themes_support["webgiare"]["cf_threaddetails_include_file"] = "";
 //

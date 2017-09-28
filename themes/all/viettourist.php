@@ -10,16 +10,16 @@ $eb_all_themes_support["viettourist"]=array();
 $eb_all_themes_support["viettourist"]["screenshot"] = "https://img1.webgiare.org/viettourist.jpg";
 $eb_all_themes_support["viettourist"]["price"] = 1000000;
 //
-$eb_all_themes_support["viettourist"]["cf_top1_include_file"] = "viettourist-top1.php";
-$eb_all_themes_support["viettourist"]["cf_top2_include_file"] = "bigbanner-top1.php";
-$eb_all_themes_support["viettourist"]["cf_top3_include_file"] = "viettourist-top2.php";
-$eb_all_themes_support["viettourist"]["cf_top4_include_file"] = "viettourist-top3.php";
-$eb_all_themes_support["viettourist"]["cf_top5_include_file"] = "breadcrumb2-top1.php";
-$eb_all_themes_support["viettourist"]["cf_top6_include_file"] = "top_widget.php";
+$eb_all_themes_support["viettourist"]["top"][] = "viettourist-top1.php";
+$eb_all_themes_support["viettourist"]["top"][] = "bigbanner-top1.php";
+$eb_all_themes_support["viettourist"]["top"][] = "viettourist-top2.php";
+$eb_all_themes_support["viettourist"]["top"][] = "viettourist-top3.php";
+$eb_all_themes_support["viettourist"]["top"][] = "breadcrumb2-top1.php";
+$eb_all_themes_support["viettourist"]["top"][] = "top_widget.php";
 //
-$eb_all_themes_support["viettourist"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["viettourist"]["cf_footer2_include_file"] = "viettourist-footer2.php";
-$eb_all_themes_support["viettourist"]["cf_footer3_include_file"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["viettourist"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["viettourist"]["footer"][] = "viettourist-footer2.php";
+$eb_all_themes_support["viettourist"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["viettourist"]["cf_threaddetails_include_file"] = "viettourist-threaddetails.html";
 //
