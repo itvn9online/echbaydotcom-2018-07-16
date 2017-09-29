@@ -138,12 +138,15 @@ body.style-for-mobile {
 .style-for-mobile .cart-ultable li div.f75 { width: 100%; }
 /* other style mobile */
 .style-for-mobile #oi_scroll_top {
+	width: 44px;
 	height: 44px;
 	line-height: 44px;
+	/*
 	bottom: 0 !important;
-	right: auto;
-	left: 5%;
 	border-radius: 8px 8px 0 0;
+	*/
+	right: auto;
+	left: 1px;
 }
 .style-for-mobile .big-banner-button ul {
 	position: inherit;
