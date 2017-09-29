@@ -147,7 +147,9 @@ body.style-for-mobile {
 	*/
 	right: auto;
 	left: 1px;
+	opacity: .8;
 }
+.style-for-mobile #oi_scroll_top:hover { opacity: 1; }
 .style-for-mobile .big-banner-button ul {
 	position: inherit;
 	top: 0;
