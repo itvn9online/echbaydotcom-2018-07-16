@@ -26,4 +26,4 @@ $eb_all_themes_support["motocenter"]["home"][] = "motocenter-home1.php";
 //
 $eb_all_themes_support["motocenter"]["cf_threaddetails_include_file"] = "";
 //
-$eb_all_themes_support["motocenter"]["cf_threadnode_include_file"] = "nguyenkhoa-threadnode.html";
+$eb_all_themes_support["motocenter"]["cf_threadnode_include_file"] = "motocenter-threadnode.html";

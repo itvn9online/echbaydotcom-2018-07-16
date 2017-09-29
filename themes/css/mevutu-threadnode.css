@@ -31,15 +31,6 @@
 	display: none;
 	z-index: 2;
 }
-.thread-list-status6 {
-	background: url(../../images-global/golden_time.png) center no-repeat;
-	background-size: 100% auto;
-	width: 90px;
-	height: 90px;
-	padding: 0;
-	top: -2px;
-	left: -2px;
-}
 .thread-list-avt {
 	background: center no-repeat;
 	background-size: 100% auto;

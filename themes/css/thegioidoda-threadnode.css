@@ -42,6 +42,7 @@
 	font-size: 16px;
 	padding: 0 10px;
 }
+/*
 .thread-list-giovang {
 	background: url(../images/golden_time.png) no-repeat;
 	background-size: 100% auto;
@@ -56,6 +57,7 @@
 	z-index: 9;
 }
 .thread-list-giovangshow .thread-list-giovang { display: block; }
+*/
 .thread-list-sale,
 .thread-list-giamgia,
 .thread-list-new {

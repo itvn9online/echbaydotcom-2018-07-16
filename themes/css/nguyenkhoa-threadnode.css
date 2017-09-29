@@ -98,6 +98,7 @@
 	color: #fff;
 	display: none;
 }
+/*
 .thread-list-giovang {
 	background: url(../images/golden_time.png) no-repeat;
 	background-size: 100% auto;
@@ -108,4 +109,5 @@
 	height: 35%;
 	display: none;
 }
+*/
 .thread-list-padding:hover { border-color: #166d06; }
