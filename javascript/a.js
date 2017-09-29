@@ -561,3 +561,30 @@ $('.click-show-eb-target').click(function () {
 
 
 
+// clone menu EchBay.com to top
+(function () {
+	
+	var id_echbay_menu = 'toplevel_page_eb-order',
+		a = {};
+	$('#' + id_echbay_menu + ' a').each(function(index, element) {
+		var h = $(this).attr('href') || '',
+			t = $(this).html() || '';
+		a[h] = t;
+	});
+//	console.log(a);
+	
+	//
+	$('#wp-admin-bar-root-default').append( '<li id="' + id_echbay_menu + '-top" class="menupop"><a href="javascript://" class="ab-item">* EchBay.com</a></li>' );
+	
+	$('#' + id_echbay_menu + '-top').append( '<div class="ab-sub-wrapper"><ul id="' + id_echbay_menu + '-submenu" class="ab-submenu"></ul></div>' );
+	
+	//
+	for ( var x in a ) {
+		$('#' + id_echbay_menu + '-submenu').append( '<li><a class="ab-item" href="' + x + '">' + a[x] + '</a></li>' );
+	}
+	
+})();
+
+
+
+
