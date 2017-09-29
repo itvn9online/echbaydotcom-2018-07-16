@@ -610,6 +610,8 @@ input[id="_eb_category_order"] { width: 90px; }
 .div-inline-block div.d-none { display: none !important; }
 #oi_quick_connect { text-align: right; }
 #oi_quick_connect select { min-width: 250px; }
+input#_eb_ads_for_category { display: none; }
+
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
 }

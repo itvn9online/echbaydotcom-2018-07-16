@@ -169,6 +169,8 @@ $eb_arr_type_custom_meta_box = array(
 	// ads
 	'_eb_ads_status' => $arr_eb_ads_status,
 	'_eb_ads_target' => 'checkbox',
+	'_eb_ads_for_post' => 'number',
+	'_eb_ads_for_category' => 'number',
 	
 	// category
 	'_eb_category_status' => $arr_eb_category_status,
@@ -182,7 +184,7 @@ $eb_arr_type_custom_meta_box = array(
 // Một số thuộc tính chỉ hiển thị với admin cấp cao
 if ( mtv_id == 1 ) {
 	$eb_arr_type_custom_meta_box['_eb_product_leech_source'] = 'text';
-	$eb_arr_type_custom_meta_box['_eb_product_avatar'] = 'text';
+//	$eb_arr_type_custom_meta_box['_eb_product_avatar'] = 'text';
 	
 	$eb_arr_type_custom_meta_box['_eb_category_leech_url'] = 'text';
 }
@@ -199,7 +201,11 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_category_order' => 'Số càng lớn thì độ ưu tiên càng cao, nhóm sẽ được ưu tiên xuất hiện trước',
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
+	
 	'_eb_ads_target' => 'Mặc định, các URL trong quảng cáo sẽ được mở đè lên tab hiện tại, đánh dấu và lưu lại để mở URL trong tab mới.',
+	'_eb_ads_for_post' => 'Nhập vào ID của Sản phẩm hoặc bài Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
+	'_eb_ads_for_category' => 'Nhập vào ID của Danh mục Sản phẩm hoặc Danh mục Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Danh mục Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
+	
 	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
 	'_eb_product_giohethan' => 'Thiết lập giờ hết hạn cụ thể cho phần Ngày hết hạn ở trên. Nếu để trống trường này, giờ hết hạn sẽ là cuối ngày hôm đó (23:59)',
 	'_eb_product_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Bài viết này',
@@ -342,6 +348,8 @@ $eb_ads_custom_meta_box = array(
 	'_eb_ads_video_url' => 'URL Video YouTube',
 	'_eb_ads_status' => 'Hiển thị',
 	'_eb_product_avatar' => 'Ảnh đại diện',
+	'_eb_ads_for_post' => 'ID Sản phẩm/ Blog',
+	'_eb_ads_for_category' => 'Chuyên mục/ Danh mục',
 );
 
 function EchBayQuangCaoOutput( $post ) {
