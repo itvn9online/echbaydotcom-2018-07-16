@@ -18,7 +18,7 @@ $eb_all_themes_support["erawatch"]["top"][] = "echbaytwo-top4.php";
 $eb_all_themes_support["erawatch"]["top"][] = "top_widget.php";
 //
 $eb_all_themes_support["erawatch"]["footer"][] = "footer_widget.php";
-$eb_all_themes_support["erawatch"]["footer"][] = "erawatch-footer2.php";
+$eb_all_themes_support["erawatch"]["footer"][] = "echbayfour-footer1.php";
 $eb_all_themes_support["erawatch"]["footer"][] = "erawatch-footer1.php";
 $eb_all_themes_support["erawatch"]["footer"][] = "erawatch-footer3.php";
 //

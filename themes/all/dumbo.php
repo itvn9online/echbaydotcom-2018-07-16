@@ -18,7 +18,7 @@ $eb_all_themes_support["dumbo"]["top"][] = "breadcrumb3-top1.php";
 $eb_all_themes_support["dumbo"]["top"][] = "top_widget.php";
 //
 $eb_all_themes_support["dumbo"]["footer"][] = "footer_widget.php";
-$eb_all_themes_support["dumbo"]["footer"][] = "erawatch-footer2.php";
+$eb_all_themes_support["dumbo"]["footer"][] = "echbayfour-footer1.php";
 $eb_all_themes_support["dumbo"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["dumbo"]["home"][] = "dumbo-home1.php";

@@ -15,7 +15,7 @@ $eb_all_themes_support["softpro"]["top"][] = "softpro-top3.php";
 $eb_all_themes_support["softpro"]["top"][] = "top_widget.php";
 //
 $eb_all_themes_support["softpro"]["footer"][] = "footer_widget.php";
-$eb_all_themes_support["softpro"]["footer"][] = "erawatch-footer2.php.php";
+$eb_all_themes_support["softpro"]["footer"][] = "echbayfour-footer1.php";
 $eb_all_themes_support["softpro"]["footer"][] = "echbaythree-footer1.php";
 //
 $eb_all_themes_support["softpro"]["home"][] = "home_widget.php";
