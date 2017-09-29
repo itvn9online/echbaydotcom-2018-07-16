@@ -554,15 +554,25 @@ foreach ( $eb_all_themes_support as $k => $v ) {
 		$li_order = 'order:' . ( $v['price']/ 1000 );
 	}
 	
+	// tác giả -> mặc định là do webgiaredotorg code
+	if ( ! isset( $v['author'] ) || $v['author'] == '' ) {
+		$tac_gia_giao_dien = 'webgiaredotorg';
+	} else {
+		$tac_gia_giao_dien = $v['author'];
+	}
+	
 	//
 	$str_all_themes_support .= '
-<li data-price="' . $v['price'] . '" data-key="' . $theme_name . '" style="' . $li_order . '">
-	<div style="background-image:url(\'' . $theme_avt . '\');">
+<li data-price="' . $v['price'] . '" data-key="' . $theme_name . '" data-author="' . $tac_gia_giao_dien . '" style="' . $li_order . '">
+	<div class="skins-adminedit-bg" style="background-image:url(\'' . $theme_avt . '\');">
 		<p>&nbsp;</p>
 		<h3>' . $theme_name . '</h3>
 		<button type="button" data-theme="' . $theme_name . '" class="blue-button cur click-active-eb-themes">Kích hoạt</button>
 	</div>
-	<h4>' . $gia_kich_hoat . '</h4>
+	<div class="skins-adminedit-info">
+		<h4>' . $gia_kich_hoat . '</h4>
+		<div>Tác giả: <span class="click-show-theme-by bluecolor cur">' . $tac_gia_giao_dien . '</span></div>
+	</div>
 </li>';
 }
 $arr_for_set_template['str_all_themes_support'] = $str_all_themes_support;

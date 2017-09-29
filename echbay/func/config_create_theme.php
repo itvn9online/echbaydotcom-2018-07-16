@@ -362,6 +362,9 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 	// hình ảnh sẽ được đưa lên host của webgiare để quản lý cho dễ
 	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["screenshot"] = "https://img1.webgiare.org/' . $create_theme_name . '.jpg";' . "\n";
 	
+	// khung chờ để nhập thông tin tác giả
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["author"] = "";' . "\n";
+	
 	// đặt giá mặc định cho các theme mới tạo
 	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["price"] = 2000000;' . "\n";
 	

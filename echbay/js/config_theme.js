@@ -508,6 +508,7 @@ $('.click-active-eb-themes').click(function () {
 
 //
 if ( cf_current_theme_using != '' ) {
+	console.log(cf_current_theme_using);
 	console.log('Select and move current theme to top');
 	
 	$('.skins-admin-edit li[data-key="' + cf_current_theme_using + '"]')
