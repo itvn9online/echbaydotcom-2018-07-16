@@ -852,6 +852,10 @@ color: #333;
 .ul-default-style h4,
 .ul-default-style h5,
 .ul-default-style h6 { margin: 0.83em 0; }
+/* chỉnh line-height cho các thẻ H về mặc định của chrome */
+.ul-default-style h2 { line-height: 25px; }
+.ul-default-style h3 { line-height: 20px; }
+.ul-default-style h4 { line-height: 18px; }
 .ul-default-style table {
 	border-top: 1px #ccc solid;
 	border-right: 1px #ccc solid;

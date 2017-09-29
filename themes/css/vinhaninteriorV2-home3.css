@@ -34,15 +34,19 @@
 	font-size: 14px;
 }
 #vinhaninteriorV2-home3 a { background: rgba(0, 0, 0, .1); }
+/*
 #vinhaninteriorV2-home3 .thread-list-avt {
-	-webkit-filter: grayscale(1); /* Old WebKit */
+	-webkit-filter: grayscale(1);
 	filter: grayscale(1);
 }
+*/
 #vinhaninteriorV2-home3 .thread-list li:hover a { background: none; }
 #vinhaninteriorV2-home3 .thread-list li:hover .thread-list-title { display: block; }
 #vinhaninteriorV2-home3 .thread-list li:hover .thread-list-avt {
-	-webkit-filter: grayscale(0); /* Old WebKit */
+	/*
+	-webkit-filter: grayscale(0);
 	filter: grayscale(0);
+	*/
 	background-size: 105% auto;
 }
 #vinhaninteriorV2-home3 { }
