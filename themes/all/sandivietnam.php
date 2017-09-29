@@ -12,20 +12,20 @@ $eb_all_themes_support["sandivietnam"]["screenshot"] = "https://img1.webgiare.or
 $eb_all_themes_support["sandivietnam"]["author"] = "";
 $eb_all_themes_support["sandivietnam"]["price"] = 500000;
 //
-$eb_all_themes_support["sandivietnam"]["cf_top1_include_file"] = "sandivietnam-top1.php";
-$eb_all_themes_support["sandivietnam"]["top"] = "top_widget.php";
-$eb_all_themes_support["sandivietnam"]["top"] = "breadcrumb-top1.php";
+$eb_all_themes_support["sandivietnam"]["top"][] = "sandivietnam-top1.php";
+$eb_all_themes_support["sandivietnam"]["top"][] = "top_widget.php";
+$eb_all_themes_support["sandivietnam"]["top"][] = "breadcrumb-top1.php";
 //
-$eb_all_themes_support["sandivietnam"]["cf_footer1_include_file"] = "footer_widget.php";
-$eb_all_themes_support["sandivietnam"]["cf_footer1_include_file"] = "sandivietnam-footer1.php";
-$eb_all_themes_support["sandivietnam"]["footer"] = "echbaytwo-footer3.php";
+$eb_all_themes_support["sandivietnam"]["footer"][] = "footer_widget.php";
+$eb_all_themes_support["sandivietnam"]["footer"][] = "sandivietnam-footer1.php";
+$eb_all_themes_support["sandivietnam"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["sandivietnam"]["cf_home1_include_file"] = "sandivietnam-home1.php";
-$eb_all_themes_support["sandivietnam"]["cf_home2_include_file"] = "sandivietnam-home2.php";
-$eb_all_themes_support["sandivietnam"]["cf_home3_include_file"] = "sandivietnam-home3.php";
-$eb_all_themes_support["sandivietnam"]["cf_home4_include_file"] = "sandivietnam-home4.php";
-$eb_all_themes_support["sandivietnam"]["cf_home5_include_file"] = "sandivietnam-home5.php";
-$eb_all_themes_support["sandivietnam"]["home"] = "home_widget.php";
+$eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home1.php";
+$eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home2.php";
+$eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home3.php";
+$eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home4.php";
+$eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home5.php";
+$eb_all_themes_support["sandivietnam"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["sandivietnam"]["cf_threaddetails_include_file"] = "sandivietnam-threaddetails.html";
 //
