@@ -189,9 +189,10 @@ function __eb_create_radio_checked_config ( $arr, $val, $key, $file_name = '' ) 
 
 
 $arr_cf_blog_class_style = array(
-	'' => 'Không giới hạn chiều rộng',
+	'' => 'Thiết lập chiều rộng riêng cho module',
 	'w99' => 'Dạng thu gọn, rộng 999px',
 	'w90' => 'Dạng tràn khung, rộng 90%, tối đa 1366px',
+	'w100' => 'Dạng tràn khung, rộng tối đa theo BODY',
 );
 
 $str_cf_blog_class_style = __eb_create_select_checked_config(

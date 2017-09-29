@@ -32,6 +32,7 @@ if (file_exists ( $__eb_cache_conf )) {
 @include $__eb_cache_conf;
 
 // lấy config theo thời gian thực nếu tài khoản đang đăng nhập
+/*
 if ( mtv_id > 0 ) {
 	// không reset mảng này -> do 1 số config sẽ được tạo theo config của wp
 //	$__cf_row = $__cf_row_default;
@@ -40,6 +41,7 @@ if ( mtv_id > 0 ) {
 	_eb_get_config( true );
 	EBE_get_lang_list();
 }
+*/
 
 
 
@@ -54,7 +56,7 @@ $time_for_update_cache = $__cf_row['cf_reset_cache'];
 
 
 //
-if ($__eb_cache_time > $time_for_update_cache) {
+if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 	// nếu thời gian update cache nhỏ quá -> bỏ qua
 	if ( file_exists ( $file_last_update ) ) {
 		$last_update = filemtime ( $file_last_update );
@@ -69,7 +71,7 @@ if ($__eb_cache_time > $time_for_update_cache) {
 	
 	
 	//
-	if ( $__eb_cache_time > $time_for_update_cache ) {
+	if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		
@@ -389,14 +391,16 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		
 		
 		/*
-		* lưu cache
+		* lưu cache -> chỉ lưu khi thành viên chưa đăng nhập
 		*/
-		_eb_create_file ( $__eb_cache_conf, '<?php ' . str_replace( '\\\"', '\"', $__eb_cache_content ) );
-		
-		
-		
-		//
-		_eb_log_user ( 'Update common_cache: ' . $_SERVER ['REQUEST_URI'] );
+		if ( mtv_id == 0 || ! file_exists( $__eb_cache_conf ) ) {
+			_eb_create_file ( $__eb_cache_conf, '<?php ' . str_replace( '\\\"', '\"', $__eb_cache_content ) );
+			
+			
+			
+			//
+			_eb_log_user ( 'Update common_cache: ' . $_SERVER ['REQUEST_URI'] );
+		}
 		
 		
 		
@@ -407,8 +411,9 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		* Tạo cat dưới dạng JS
 		*/
 		$strCacheFilter = 'cat_js';
-		$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter );
-		if ($check_Cleanup_cache == false) {
+		// giãn cách tạo file này tối thiểu là 120 giây
+		$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 120 );
+		if ( $check_Cleanup_cache == false ) {
 	//		$site_group = get_full_category_v2 ();
 	//		echo $site_group;
 			
@@ -473,7 +478,7 @@ if ($__eb_cache_time > $time_for_update_cache) {
 		*/
 		$strCacheFilter = 'auto_clean_up_log';
 		$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 24 * 3600 );
-		if ($check_Cleanup_cache == false) {
+		if ( $check_Cleanup_cache == false ) {
 			/*
 			* user log
 			*/
@@ -484,11 +489,11 @@ if ($__eb_cache_time > $time_for_update_cache) {
 			//
 			if ( count($a) > 0 ) {
 				$sql = "DELETE FROM
-						" . wp_postmeta . "
-					WHERE
-						post_id = " . eb_log_user_id_postmeta . "
-						AND meta_key = '__eb_log_user'
-						AND meta_id < " . $a[0]->meta_id;
+					`" . wp_postmeta . "`
+				WHERE
+					post_id = " . eb_log_user_id_postmeta . "
+					AND meta_key = '__eb_log_user'
+					AND meta_id < " . $a[0]->meta_id;
 //				echo $sql . '<br>';
 				
 				//
@@ -508,11 +513,11 @@ if ($__eb_cache_time > $time_for_update_cache) {
 			//
 			if ( count($a) > 0 ) {
 				$sql = "DELETE FROM
-						" . wp_postmeta . "
-					WHERE
-						post_id = " . eb_log_user_id_postmeta . "
-						AND meta_key = '__eb_log_admin'
-						AND meta_id < " . $a[0]->meta_id;
+					`" . wp_postmeta . "`
+				WHERE
+					post_id = " . eb_log_user_id_postmeta . "
+					AND meta_key = '__eb_log_admin'
+					AND meta_id < " . $a[0]->meta_id;
 //				echo $sql . '<br>';
 				
 				//
@@ -557,9 +562,9 @@ else {
 }
 
 // thêm dấu chéo vào cuối nếu chưa có
-if ( substr( $web_link, -1 ) != '/' ) {
+//if ( substr( $web_link, -1 ) != '/' ) {
 	$web_link .= '/';
-}
+//}
 
 //
 /*
@@ -613,6 +618,37 @@ else if ( $__cf_row['cf_current_price'] != '' ) {
 
 
 
+// thiết lập chiều rộng cho các module riêng lẻ
+if ( $__cf_row['cf_blog_class_style'] != '' ) {
+	if ( $__cf_row['cf_top_class_style'] == '' ) {
+		$__cf_row['cf_top_class_style'] = $__cf_row['cf_blog_class_style'];
+	}
+	
+	if ( $__cf_row['cf_footer_class_style'] == '' ) {
+		$__cf_row['cf_footer_class_style'] = $__cf_row['cf_blog_class_style'];
+	}
+	
+	if ( $__cf_row['cf_cats_class_style'] == '' ) {
+		$__cf_row['cf_cats_class_style'] = $__cf_row['cf_blog_class_style'];
+	}
+	
+	if ( $__cf_row['cf_post_class_style'] == '' ) {
+		$__cf_row['cf_post_class_style'] = $__cf_row['cf_blog_class_style'];
+	}
+	
+	if ( $__cf_row['cf_blogs_class_style'] == '' ) {
+		$__cf_row['cf_blogs_class_style'] = $__cf_row['cf_blog_class_style'];
+	}
+	
+	if ( $__cf_row['cf_blogd_class_style'] == '' ) {
+		$__cf_row['cf_blogd_class_style'] = $__cf_row['cf_blog_class_style'];
+	}
+}
+
+
+
+
+//
 //print_r( $__cf_row );
 //print_r( $___eb_lang );
 
