@@ -10,7 +10,7 @@ $eb_all_themes_support["sandivietnam"] = array();
 $eb_all_themes_support["sandivietnam"]["name"] = "sandivietnam";
 $eb_all_themes_support["sandivietnam"]["screenshot"] = "https://img1.webgiare.org/sandivietnam.jpg";
 $eb_all_themes_support["sandivietnam"]["author"] = "";
-$eb_all_themes_support["sandivietnam"]["demo"] = "sandivietnam.com";
+$eb_all_themes_support["sandivietnam"]["demo"] = "sandivietnam";
 $eb_all_themes_support["sandivietnam"]["price"] = 500000;
 //
 $eb_all_themes_support["sandivietnam"]["top"][] = "sandivietnam-top1.php";

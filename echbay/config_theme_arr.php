@@ -565,7 +565,18 @@ foreach ( $eb_all_themes_support as $k => $v ) {
 	if ( ! isset( $v['demo'] ) || $v['demo'] == '' ) {
 		$link_xem_demo = '<em class="redcolor">chưa sẵn sàng</em>';
 	} else {
-		$link_xem_demo = '<a href="http://' . $v['demo'] . '/" target="_blank" rel="nofollow" class="greencolor">' . $v['demo'] . ' <i class="fa fa-eye"></i></a>';
+		// cảnh bảo với các link demo chưa đạt chuẩn
+		$demo_class_show = 'orgcolor small';
+		
+		// nếu URL truyền vào không có dấu chắm -> đặt link mặc định về echbay.net
+		if ( strstr( $v['demo'], '.' ) == false || strstr( $v['demo'], '.echbay.net' ) == true ) {
+//			$v['demo'] = $v['demo'] . '.echbay.net';
+			$v['demo'] = $theme_name . '.echbay.net';
+			$demo_class_show = 'greencolor';
+		}
+		
+		//
+		$link_xem_demo = '<a href="http://' . $v['demo'] . '/" target="_blank" rel="nofollow" class="' . $demo_class_show . '">' . $v['demo'] . ' <i class="fa fa-eye"></i></a>';
 	}
 	
 	//
