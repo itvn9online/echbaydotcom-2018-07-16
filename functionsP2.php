@@ -2883,7 +2883,7 @@ function EBE_get_html_cart ( $icon_only = 0 ) {
 }
 
 function EBE_get_html_profile () {
-	return '<div class="oi_member_func"></div>';
+	return '<div class="oi_member_func">.</div>';
 }
 
 function EBE_get_html_address () {

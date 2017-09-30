@@ -9,6 +9,7 @@
 $eb_all_themes_support["dumbo"] = array();
 $eb_all_themes_support["dumbo"]["name"] = "dumbo";
 $eb_all_themes_support["dumbo"]["screenshot"] = "https://img1.webgiare.org/dumbo.jpg";
+$eb_all_themes_support["dumbo"]["demo"] = "dumbo.vn";
 //
 $eb_all_themes_support["dumbo"]["top"][] = "dumbo-top1.php";
 $eb_all_themes_support["dumbo"]["top"][] = "dumbo-top2.php";

@@ -91,7 +91,7 @@ body.folded .eb-admin-config { left: 8%; }
 }
 .skins-admin-edit li[data-price="0"] { order: 5; }
 .skins-admin-edit li.selected { order: 0 !important; }
-.skins-admin-edit li .skins-adminedit-bg {
+.skins-admin-edit .skins-adminedit-bg {
 	background: #fff top center no-repeat;
 	background-size: contain;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAALElEQVQYGWO8d+/efwYkoKioiMRjYGBC4WHhUK6A8T8QIJt8//59ZC493AAAQssKpBK4F5AAAAAASUVORK5CYII=);
@@ -102,6 +102,14 @@ body.folded .eb-admin-config { left: 8%; }
 	border: 1px #ccc solid;
 	border-radius: 2px;
 	cursor: pointer;
+}
+.skins-admin-edit li:hover .skins-adminedit-bg {
+	background-size: 80% auto;
+	background-position: right bottom;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
 }
 .skins-adminedit-info {
 	font-size: 14px;

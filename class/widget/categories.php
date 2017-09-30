@@ -253,7 +253,9 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			$cats_info = EBE_widget_get_parent_cat( $cid, $cat_type );
 //			print_r( $cats_info );
 			
-			$cat_ids = $cats_info->term_id;
+			if ( ! empty ( $cats_info ) ) {
+				$cat_ids = $cats_info->term_id;
+			}
 //			echo $cat_ids;
 		} else if ( $cat_ids > 0 ) {
 			$cats_info = EBE_widget_get_parent_cat( $cat_ids, $cat_type );

@@ -185,7 +185,7 @@ $arr_to_add_menu = array(
 	'nav-for-mobile' => 'NAV for mobile',
 	
 	'top-menu-01' => 'Top menu 01',
-	'top-menu-02' => 'NAV menu',
+	'top-menu-02' => 'Top menu 02',
 	'top-menu-03' => 'Top menu 03',
 	'top-menu-04' => 'Top menu 04',
 	'top-menu-05' => 'Top menu 05',

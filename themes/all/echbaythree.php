@@ -9,6 +9,7 @@
 $eb_all_themes_support["echbaythree"] = array();
 $eb_all_themes_support["echbaythree"]["name"] = "echbaythree";
 $eb_all_themes_support["echbaythree"]["screenshot"] = "https://img1.webgiare.org/echbaythree.jpg";
+$eb_all_themes_support["echbaythree"]["demo"] = "demo.echbay.com";
 //
 $eb_all_themes_support["echbaythree"]["top"][] = "echbaythree-top1.php";
 $eb_all_themes_support["echbaythree"]["top"][] = "echbaythree-top2.php";

@@ -73,19 +73,8 @@ class ___echbay_widget_add_search_form extends WP_Widget {
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
 		
-		
 		//
-		echo '
-		<div class="div-search-margin">
-			<div class="div-search">
-				<form role="search" method="get" action="' . web_link. '">
-					<input type="search" placeholder="Tìm kiếm sản phẩm" value="' . $current_search_key . '" name="s" aria-required="true" required>
-					<input type="hidden" name="post_type" value="post" />
-					<button type="submit" class="cur default-bg"><i class="fa fa-search"></i> ' . $title . '</button>
-				</form>
-			</div>
-			<div id="oiSearchAjax"></div>
-		</div>';
+		echo EBE_get_html_search();
 		
 		echo '</div>';
 		

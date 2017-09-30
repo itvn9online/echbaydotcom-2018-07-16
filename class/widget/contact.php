@@ -74,15 +74,23 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		echo '<div class="' . str_replace( '  ', ' ', trim( 'top-footer-css ' . $width ) ) . '">';
 		
 		//
+		echo '<div class="' . str_replace( '  ', ' ', trim( 'footer-contact ' . $custom_style ) ) . '">';
+		
+		//
+		echo EBE_get_html_address();
+		
+		/*
 		echo '
-		<div class="' . str_replace( '  ', ' ', trim( 'footer-contact ' . $custom_style ) ) . '">
-			<div class="footer-contact-title">' . $__cf_row['cf_ten_cty'] . '</div>
-			<ul class="footer-contact-content">
-				<li><strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i> ' . nl2br( $__cf_row['cf_diachi'] ) . '</li>
-				<li><strong>Điện thoại:</strong> <i class="fa fa-phone"></i> ' . $__cf_row['cf_call_hotline'] . ' - <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></li>
-				<li><strong>Email:</strong> <i class="fa fa-envelope-o"></i> <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></li>
-			</ul>
-		</div>';
+		<div class="footer-contact-title">' . $__cf_row['cf_ten_cty'] . '</div>
+		<ul class="footer-contact-content">
+			<li><strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i> ' . nl2br( $__cf_row['cf_diachi'] ) . '</li>
+			<li><strong>Điện thoại:</strong> <i class="fa fa-phone"></i> ' . $__cf_row['cf_call_hotline'] . ' - <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></li>
+			<li><strong>Email:</strong> <i class="fa fa-envelope-o"></i> <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></li>
+		</ul>';
+		*/
+		
+		//
+		echo '</div>';
 		
 		echo '</div>';
 		

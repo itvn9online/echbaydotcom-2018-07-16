@@ -561,6 +561,13 @@ foreach ( $eb_all_themes_support as $k => $v ) {
 		$tac_gia_giao_dien = $v['author'];
 	}
 	
+	// link xem trước demo
+	if ( ! isset( $v['demo'] ) || $v['demo'] == '' ) {
+		$link_xem_demo = '<em class="redcolor">chưa sẵn sàng</em>';
+	} else {
+		$link_xem_demo = '<a href="http://' . $v['demo'] . '/" target="_blank" rel="nofollow" class="greencolor">' . $v['demo'] . ' <i class="fa fa-eye"></i></a>';
+	}
+	
 	//
 	$str_all_themes_support .= '
 <li data-price="' . $v['price'] . '" data-key="' . $theme_name . '" data-author="' . $tac_gia_giao_dien . '" style="' . $li_order . '">
@@ -569,9 +576,10 @@ foreach ( $eb_all_themes_support as $k => $v ) {
 		<h3>' . $theme_name . '</h3>
 		<button type="button" data-theme="' . $theme_name . '" class="blue-button cur click-active-eb-themes">Kích hoạt</button>
 	</div>
-	<div class="skins-adminedit-info">
+	<div class="skins-adminedit-info l19">
 		<h4>' . $gia_kich_hoat . '</h4>
 		<div>Tác giả: <span class="click-show-theme-by bluecolor cur">' . $tac_gia_giao_dien . '</span></div>
+		<div>Demo: ' . $link_xem_demo . '</div>
 	</div>
 </li>';
 }

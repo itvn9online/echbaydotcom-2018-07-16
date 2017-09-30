@@ -9,6 +9,7 @@
 $eb_all_themes_support["topgearindochina"] = array();
 $eb_all_themes_support["topgearindochina"]["name"] = "topgearindochina";
 $eb_all_themes_support["topgearindochina"]["screenshot"] = "https://img1.webgiare.org/topgearindochina.jpg";
+$eb_all_themes_support["topgearindochina"]["demo"] = "topgearindochina.com";
 //
 $eb_all_themes_support["topgearindochina"]["top"][] = "topgearindochina-top1.php";
 $eb_all_themes_support["topgearindochina"]["top"][] = "topgearindochina-top2.php";

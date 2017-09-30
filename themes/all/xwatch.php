@@ -8,7 +8,8 @@
 */
 $eb_all_themes_support["xwatch"]=array();
 $eb_all_themes_support["xwatch"]["screenshot"] = "https://img1.webgiare.org/xwatch.jpg";
-$eb_all_themes_support["vinhaninterior"]["price"] = 3200000;
+$eb_all_themes_support["xwatch"]["price"] = 3200000;
+$eb_all_themes_support["xwatch"]["demo"] = "xwatch.vn";
 //
 $eb_all_themes_support["xwatch"]["top"][] = "xwatch-top1.php";
 $eb_all_themes_support["xwatch"]["top"][] = "xwatch-top2.php";

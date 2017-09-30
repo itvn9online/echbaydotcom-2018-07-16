@@ -4,18 +4,7 @@
 			<div class="lf f80">
 				<div class="nav-menu"><?php echo EBE_echbay_top_menu(); ?></div>
 			</div>
-			<div class="lf f20">
-				<div class="div-search-margin">
-					<div class="div-search">
-						<form role="search" method="get" action="<?php echo web_link; ?>">
-							<input type="search" placeholder="Tìm kiếm" value="<?php echo $current_search_key; ?>" name="s" aria-required="true" required>
-							<input type="hidden" name="post_type" value="post" />
-							<button type="submit" class="cur"><i class="fa fa-search"></i></button>
-						</form>
-					</div>
-					<div id="oiSearchAjax"></div>
-				</div>
-			</div>
+			<div class="lf f20"><?php echo EBE_get_html_search(); ?></div>
 		</div>
 	</div>
 </div>

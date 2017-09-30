@@ -9,6 +9,7 @@
 $eb_all_themes_support["vietnamontrails"]=array();
 $eb_all_themes_support["vietnamontrails"]["screenshot"] = "https://img1.webgiare.org/vietnamontrails.jpg";
 $eb_all_themes_support["vietnamontrails"]["price"] = 700000;
+$eb_all_themes_support["vietnamontrails"]["demo"] = "vietnamontrail.com";
 //
 $eb_all_themes_support["vietnamontrails"]["top"][] = "top_widget.php";
 $eb_all_themes_support["vietnamontrails"]["top"][] = "vietnamontrails-top3.php";

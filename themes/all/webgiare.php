@@ -8,6 +8,7 @@
 */
 $eb_all_themes_support["webgiare"]=array();
 $eb_all_themes_support["webgiare"]["screenshot"] = "https://img1.webgiare.org/webgiare.jpg";
+$eb_all_themes_support["webgiare"]["demo"] = "webgiare.org";
 //
 $eb_all_themes_support["webgiare"]["top"][] = "webgiare-top1.php";
 $eb_all_themes_support["webgiare"]["top"][] = "webgiare-top2.php";

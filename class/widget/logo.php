@@ -94,6 +94,7 @@ class ___echbay_widget_logo_favicon extends WP_Widget {
 		//
 		echo '<div class="' . $custom_style . '">';
 		
+//		echo EBE_get_html_logo();
 		echo '<a title="' . $title . '" href="' . web_link . '" class="web-logo d-block" style="background-image:url(\'' . $logo . '\');">&nbsp;</a>';
 		
 		echo '</div>';
