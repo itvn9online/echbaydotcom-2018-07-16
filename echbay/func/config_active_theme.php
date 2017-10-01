@@ -100,7 +100,7 @@ include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
 //
 die('<script type="text/javascript">
 //alert("Cài đặt giao diện mới thành công");
-parent.window.location = parent.window.location.href;
+parent.window.location = parent.window.location.href.split("#")[0];
 </script>');
 
 
