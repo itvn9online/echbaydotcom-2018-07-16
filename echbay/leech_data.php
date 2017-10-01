@@ -36,7 +36,7 @@ $sql = _eb_q ( "SELECT option_value
 	LIMIT 0, 1" );
 //print_r( $sql );
 $str_for_save_domain_config = '';
-if ( count( $sql > 0 ) ) {
+if ( count( $sql ) > 0 ) {
 	$str_for_save_domain_config = $sql[0]->option_value;
 }
 
