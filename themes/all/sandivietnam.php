@@ -15,12 +15,13 @@ $eb_all_themes_support["sandivietnam"]["price"] = 500000;
 //
 $eb_all_themes_support["sandivietnam"]["top"][] = "sandivietnam-top1.php";
 $eb_all_themes_support["sandivietnam"]["top"][] = "top_widget.php";
-$eb_all_themes_support["sandivietnam"]["top"][] = "breadcrumb-top1.php";
+//$eb_all_themes_support["sandivietnam"]["top"][] = "breadcrumb-top1.php";
 //
 $eb_all_themes_support["sandivietnam"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["sandivietnam"]["footer"][] = "sandivietnam-footer1.php";
-$eb_all_themes_support["sandivietnam"]["footer"][] = "echbaytwo-footer3.php";
+//$eb_all_themes_support["sandivietnam"]["footer"][] = "echbaytwo-footer3.php";
 //
+//$eb_all_themes_support["sandivietnam"]["home"][] = "breadcrumb-home1.php";
 $eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home1.php";
 $eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home2.php";
 $eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home3.php";

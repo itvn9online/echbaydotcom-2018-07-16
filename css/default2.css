@@ -638,6 +638,8 @@ a.eb-btn {
 	padding: 0 5px 0 7px;
 }
 .phone-numbers-inline a:last-child:after { display: none; }
+/* default contact */
+.footer-address-info i.fa { display: none; }
 .footer-address-hotline,
 .footer-address-hotline:after,
 .footer-address-cell { display: inline-block; }

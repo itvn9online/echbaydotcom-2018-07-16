@@ -43,8 +43,9 @@ class ___echbay_widget_set_copyright extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
-		global $str_fpr_license_echbay;
-		global $year_curent;
+//		global $str_fpr_license_echbay;
+//		global $year_curent;
+		global $str_footer_echbay_license;
 		
 		extract ( $args );
 		
@@ -77,7 +78,8 @@ class ___echbay_widget_set_copyright extends WP_Widget {
 		
 		
 		//
-		echo '<div class="' . str_replace( '  ', ' ', trim( 'footer-site-info ' . $custom_style ) ) . '">' . EBE_get_lang('copyright') . ' &copy; ' . $year_curent . ' <span>' . $title . '</span> - ' . EBE_get_lang('allrights') . '. ' . $str_fpr_license_echbay . '</div>';
+		echo '<div class="' . str_replace( '  ', ' ', trim( 'footer-site-info ' . $custom_style ) ) . '">' . $str_footer_echbay_license . '</div>';
+//		echo '<div class="' . str_replace( '  ', ' ', trim( 'footer-site-info ' . $custom_style ) ) . '">' . EBE_get_lang('copyright') . ' &copy; ' . $year_curent . ' <span>' . $title . '</span> - ' . EBE_get_lang('allrights') . '. ' . $str_fpr_license_echbay . '</div>';
 		
 		echo '</div>';
 		

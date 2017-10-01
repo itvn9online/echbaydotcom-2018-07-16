@@ -2893,12 +2893,12 @@ function EBE_get_html_address () {
 	<div class="footer-address">
 		<div class="footer-address-company bold">' . $__cf_row['cf_ten_cty'] . '</div>
 		<div class="footer-address-info l19">
-			<div>Địa chỉ: ' . nl2br( $__cf_row['cf_diachi'] ) . '</div>
+			<div class="footer-address-address"><strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i> ' . nl2br( $__cf_row['cf_diachi'] ) . '</div>
 			<div class="footer-address-phone">
-				<div class="footer-address-hotline">Hotline: <span class="phone-numbers-inline">' . $__cf_row['cf_call_hotline'] . '</span></div>
-				<div class="footer-address-cell">Điện thoại: <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></div>
+				<div class="footer-address-hotline"><strong>Hotline:</strong> <i class="fa fa-phone"></i> <span class="phone-numbers-inline">' . $__cf_row['cf_call_hotline'] . '</span></div>
+				<div class="footer-address-cell"><strong>Điện thoại:</strong> <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></div>
 			</div>
-			<div>Email: <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
+			<div class="footer-address-email"><strong>Email:</strong> <i class="fa fa-envelope-o"></i> <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
 		</div>
 	</div>';
 }
