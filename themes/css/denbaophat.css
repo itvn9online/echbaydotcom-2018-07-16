@@ -8,16 +8,6 @@
 	font-size: 14px;
 }
 */
-.thread-list-filter {
-	border-bottom: 2px #333 solid;
-	line-height: 35px;
-	color: #fff;
-	text-transform: uppercase;
-}
-.thread-list-filter div {
-	background: #333;
-	padding: 0 20px;
-}
 .menu-block-title {
 	border-left: #000 5px solid;
 	padding: 0 10px;
@@ -87,27 +77,6 @@
 .eb-sidebar-global-css ul.menu li.selected,
 .eb-sidebar-global-css ul.menu li.selected .sub-menu li { display: block; }
 .menu-right-padding { padding: 10px; }
-.details-other-title {
-	border-bottom: 3px #EBEBEB solid;
-	position: relative;
-	line-height: 45px;
-	font-size: 14pt;
-	border-bottom: 3px #ccc solid;
-}
-.details-other-title,
-.details-other-title a { color: #333; }
-.details-other-title:before {
-	position: absolute;
-	width: 250px;
-	border: 0 none;
-	border-bottom: 3px #e74c0c solid;
-	bottom: -3px;
-	left: 0;
-	height: 3px;
-	padding: 0;
-	margin: 0;
-	content: "";
-}
 /* doi tac slider */
 .sponsor-top-desktop,
 .banner-chan-trang { padding: 0; }

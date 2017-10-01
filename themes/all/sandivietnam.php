@@ -21,12 +21,8 @@ $eb_all_themes_support["sandivietnam"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["sandivietnam"]["footer"][] = "sandivietnam-footer1.php";
 //$eb_all_themes_support["sandivietnam"]["footer"][] = "echbaytwo-footer3.php";
 //
-//$eb_all_themes_support["sandivietnam"]["home"][] = "breadcrumb-home1.php";
+$eb_all_themes_support["sandivietnam"]["home"][] = "bigbanner-home1.php";
 $eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home1.php";
-$eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home2.php";
-$eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home3.php";
-$eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home4.php";
-$eb_all_themes_support["sandivietnam"]["home"][] = "sandivietnam-home5.php";
 $eb_all_themes_support["sandivietnam"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["sandivietnam"]["cf_threaddetails_include_file"] = "sandivietnam-threaddetails.html";
