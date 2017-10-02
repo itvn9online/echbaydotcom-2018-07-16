@@ -26,6 +26,7 @@ $eb_all_themes_support["noithatnhapkhaueh"]["footer"][] = "noithatnhapkhaueh-foo
 $eb_all_themes_support["noithatnhapkhaueh"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "home_widget.php";
+//$eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "noithatnhapkhaueh-home5.php";
 $eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "noithatnhapkhaueh-home1.php";
 $eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "noithatnhapkhaueh-home2.php";
 $eb_all_themes_support["noithatnhapkhaueh"]["home"][] = "noithatnhapkhaueh-home3.php";
