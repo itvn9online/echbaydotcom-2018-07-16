@@ -292,20 +292,26 @@ if ( isset ( $arr_eb_ads_custom_status ) ) {
 
 // Nếu có chọn file thiết kế -> sử dụng nguyên mẫu
 $load_config_temp = $__cf_row['cf_threadnode_include_file'];
+$__eb_thread_template = '';
 if ( $load_config_temp != '' ) {
-	define( '__eb_thread_template', WGR_check_and_load_tmp_theme( $load_config_temp, 'threadnode' ) );
+	$__eb_thread_template = WGR_check_and_load_tmp_theme( $load_config_temp, 'threadnode' );
 }
 else {
-	define(
-		'__eb_thread_template',
-		EBE_get_page_template(
-			EBE_get_html_file_addon(
-				'thread_node',
-				$__cf_row['cf_cats_node_html']
-			)
+	$__eb_thread_template = EBE_get_page_template(
+		EBE_get_html_file_addon(
+			'thread_node',
+			$__cf_row['cf_cats_node_html']
 		)
 	);
 }
+
+// nếu chưa có cặp thẻ LI -> bổ sung cặp này vào -> tạo dữ liệu theo thẻ thống nhất
+if ( strstr( $__eb_thread_template, '</li>' ) == false ) {
+	$__eb_thread_template = '<li data-id="{tmp.trv_id}" data-ngay="{tmp.trv_ngayhethan}" data-per="{tmp.pt}" data-link="{tmp.p_link}" data-status="{tmp.product_status}" class="hide-if-gia-zero">' . $__eb_thread_template . '</li>';
+}
+
+//
+define( '__eb_thread_template', $__eb_thread_template );
 
 // css phục vụ việc điều chỉnh kích thước LI -> load sau khi css của node được tải
 //$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/thread_list.css' ] = 1;

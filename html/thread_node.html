@@ -1,22 +1,21 @@
-<li data-ngay="{tmp.trv_ngayhethan}" data-per="{tmp.pt}" data-status="{tmp.product_status}" class="hide-if-gia-zero">
-	<div class="thread-list-padding">
-		<div class="global-a-posi fcb text-center"><a title="{tmp.trv_tieude}" href="{tmp.p_link}">&nbsp;</a>
-			<div class="thread-list-per whitecolor">-{tmp.pt}%</div>
-			<div data-size="{tmp.cf_product_size}" data-img="{tmp.trv_img}" data-table-img="{tmp.trv_table_img}" data-mobile-img="{tmp.trv_mobile_img}" class="ti-le-global thread-list-avt each-to-bgimg">&nbsp;</div>
-			<div class="thread-list-title">
-				<dynamic_title_tag>{tmp.trv_tieude}</dynamic_title_tag>
-			</div>
-			<div class="thread-list-msp">Mã sp: {tmp.trv_masanpham}</div>
-			<div class="thread-list-mobilebg">
-				<div class="thread-list-gia">{tmp.trv_giaban}</div>
-				<div class="thread-list-giamoi">{tmp.trv_giamoi}</div>
-			</div>
+
+<div class="thread-list-padding">
+	<div class="global-a-posi fcb text-center"><a title="{tmp.trv_tieude}" href="{tmp.p_link}">&nbsp;</a>
+		<div class="thread-list-per whitecolor">-{tmp.pt}%</div>
+		<div data-size="{tmp.cf_product_size}" data-img="{tmp.trv_img}" data-table-img="{tmp.trv_table_img}" data-mobile-img="{tmp.trv_mobile_img}" class="ti-le-global thread-list-avt each-to-bgimg">&nbsp;</div>
+		<div class="thread-list-title">
+			<dynamic_title_tag>{tmp.trv_tieude}</dynamic_title_tag>
 		</div>
-		<div class="thread-list-xem bold cf">
-			<div class="lf f50">
-				<div class="thread-list-mua upper"><a href="cart/?id={tmp.trv_id}"><i class="fa fa-shopping-cart"></i> Mua ngay</a></div>
-			</div>
-			<div class="lf f50 text-center"><a href="{tmp.p_link}" class="thread-list-more"><i class="fa fa-eye"></i> Xem</a></div>
+		<div class="thread-list-msp">Mã sp: {tmp.trv_masanpham}</div>
+		<div class="thread-list-mobilebg">
+			<div class="thread-list-gia">{tmp.trv_giaban}</div>
+			<div class="thread-list-giamoi">{tmp.trv_giamoi}</div>
 		</div>
 	</div>
-</li>
+	<div class="thread-list-xem bold cf">
+		<div class="lf f50">
+			<div class="thread-list-mua upper"><a href="cart/?id={tmp.trv_id}"><i class="fa fa-shopping-cart"></i> Mua ngay</a></div>
+		</div>
+		<div class="lf f50 text-center"><a href="{tmp.p_link}" class="thread-list-more"><i class="fa fa-eye"></i> Xem</a></div>
+	</div>
+</div>
