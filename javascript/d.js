@@ -1466,11 +1466,6 @@ function ___eb_list_post_run ( r ) {
 
 //
 function WGR_for_post_details ( function_for_post, function_for_blog ) {
-	if ( khong_chay_function_o_theme_nua == 1 ) {
-		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
-		return false;
-	}
-	khong_chay_function_o_theme_nua = 1;
 	
 	//
 	if ( typeof switch_taxonomy == 'undefined' ) {
@@ -1503,6 +1498,11 @@ function WGR_for_post_details ( function_for_post, function_for_blog ) {
 
 //
 function ___eb_details_post_run ( r ) {
+	if ( khong_chay_function_o_theme_nua == 1 ) {
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		return false;
+	}
+	khong_chay_function_o_theme_nua = 1;
 	
 	// với bản pc -> chỉnh lại kích thước ảnh thành fullsize (mặc định trước đó trong admind dể mobile hết)
 	/*

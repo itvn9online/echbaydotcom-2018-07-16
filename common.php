@@ -155,6 +155,19 @@ $inc_file = EB_THEME_PHP . $inc_file . '.php';
 
 
 
+
+// sử dụng child theme (ưu tiên)
+if ( $inc_child_file != '' && file_exists( $inc_child_file ) ) {
+//	include $inc_child_file;
+	$inc_file = $inc_child_file;
+}
+// sử dụng ở theme chính
+/*
+else {
+	include $inc_file;
+}
+*/
+
 // nếu có file -> include file vào
 if ( file_exists( $inc_file ) ) {
 	
@@ -162,15 +175,8 @@ if ( file_exists( $inc_file ) ) {
 	// main mặc định để các file con sử dụng lại
 	$main_content = '';
 	
-	
-	// sử dụng child theme (ưu tiên)
-	if ( $inc_child_file != '' && file_exists( $inc_child_file ) ) {
-		include $inc_child_file;
-	}
-	// sử dụng ở theme chính
-	else {
-		include $inc_file;
-	}
+	//
+	include $inc_file;
 
 
 	//
@@ -255,6 +261,7 @@ else if ( file_exists( EB_THEME_URL . 'templates/' . $act . '.php' ) ) {
 }
 // nếu không -> hiển thị trang 404
 else {
+	echo '<!-- ' . $inc_file . ' -->' . "\n";
 	include EB_THEME_PLUGIN_INDEX . 'global/null.php';
 }
 
