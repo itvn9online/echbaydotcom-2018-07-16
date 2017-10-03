@@ -2615,6 +2615,30 @@ setTimeout(function () {
 		|| switch_taxonomy == 'post_tag'
 		|| switch_taxonomy == 'post_options' ) {
 			console.log('test track for fb');
+			
+			//
+			var track_arr = {
+				'content_name' : $('h1:first a').html() || $('h1:first').html() || document.title
+			};
+			
+			//
+			var ids = '';
+			$('.thread-list li').slice(0, 10).each(function() {
+				var a = $(this).attr('data-id') || '';
+				
+				if ( a != '' ) {
+					ids += ',' + a;
+				}
+			});
+			if ( ids != '' ) {
+				track_arr['content_ids'] = ids.substr(1).split(',');
+				
+				//
+				_global_js_eb.fb_track( 'ViewContent', track_arr );
+			}
+			else {
+				console.log('ids for facebok track not found');
+			}
 		}
 	}
 	else if ( act == 'cart' ) {
@@ -2623,7 +2647,7 @@ setTimeout(function () {
 	else if ( act == 'hoan-tat' ) {
 		_global_js_eb.ga_event_track( 'Booking done', 'Dat hang thanh cong' );
 	}
-}, 2000);
+}, 3000);
 
 
 

@@ -2169,7 +2169,7 @@ var _global_js_eb = {
 			if ( typeof not_reload_track == 'undefined' || not_reload_track != 1 ) {
 				setTimeout(function () {
 					_global_js_eb.fb_track( track_name, track_arr, 1 );
-				}, 600);
+				}, 1200);
 			}
 			
 			return false;
