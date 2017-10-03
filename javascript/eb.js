@@ -2153,10 +2153,20 @@ var _global_js_eb = {
 	// facebook dynamic remarketing
 	// https://developers.facebook.com/docs/marketing-api/facebook-pixel/v2.8
 	fb_track : function ( track_name, track_arr ) {
-		if ( typeof track_name == 'undefined'
-		|| track_name == ''
-		|| typeof fbq == 'undefined'
-		|| top != self ) {
+		// nếu fb chưa được nạp -> thoát luôn mà không nói gì
+		if ( typeof fbq == 'undefined' ) {
+			return false;
+		}
+		
+		// Không chạy trong iframe
+		if ( top != self ) {
+			console.log('fb_track not run in iframe');
+			return false;
+		}
+		
+		// không có tên sự kiện cũng thoát
+		if ( typeof track_name == 'undefined' || track_name == '' ) {
+			console.log('track_name not found');
 			return false;
 		}
 		

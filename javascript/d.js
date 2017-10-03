@@ -986,6 +986,9 @@ var big_banner_timeout1 = null;
 	// Hiển thị menu NAV dưới dạng hover
 	if ( big_banner_len > 0 && $('.show-menu-if-banner').length > 0 ) {
 		$('.show-menu-if-banner .all-category-hover').addClass('selected');
+		$('.oi_big_banner').css({
+			'min-height' : $('.show-menu-if-banner .all-category-cats').height() + 'px'
+		});
 	}
 	
 })();
