@@ -1436,7 +1436,10 @@ ___eb_show_cart_count();
 var khong_chay_function_o_theme_nua = 0;
 
 function ___eb_global_home_runing ( r ) {
-	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	if ( khong_chay_function_o_theme_nua == 1 ) {
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		return false;
+	}
 	khong_chay_function_o_theme_nua = 1;
 	
 	if ( typeof Child_eb_global_home_runing == 'function' ) {
@@ -1446,7 +1449,10 @@ function ___eb_global_home_runing ( r ) {
 
 
 function ___eb_list_post_run ( r ) {
-	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	if ( khong_chay_function_o_theme_nua == 1 ) {
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		return false;
+	}
 	khong_chay_function_o_theme_nua = 1;
 	
 	if ( typeof Child_eb_list_post_run == 'function' ) {
@@ -1460,7 +1466,10 @@ function ___eb_list_post_run ( r ) {
 
 //
 function WGR_for_post_details ( function_for_post, function_for_blog ) {
-	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	if ( khong_chay_function_o_theme_nua == 1 ) {
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		return false;
+	}
 	khong_chay_function_o_theme_nua = 1;
 	
 	//
@@ -1694,7 +1703,10 @@ function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 
 
 function ___eb_global_blogs_runing ( r ) {
-	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	if ( khong_chay_function_o_theme_nua == 1 ) {
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		return false;
+	}
 	khong_chay_function_o_theme_nua = 1;
 	
 	if ( typeof Child_eb_global_blogs_runing == 'function' ) {
@@ -1704,7 +1716,10 @@ function ___eb_global_blogs_runing ( r ) {
 
 
 function ___eb_global_blog_details_runing ( r ) {
-	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	if ( khong_chay_function_o_theme_nua == 1 ) {
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		return false;
+	}
 	khong_chay_function_o_theme_nua = 1;
 	
 	if ( typeof Child_eb_global_blog_details_runing == 'function' ) {
