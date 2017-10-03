@@ -1431,31 +1431,27 @@ ___eb_show_cart_count();
 
 
 // function cho từng action
+
+// các function này trước được gọi ở theme, giờ chuyển vào plugin thì bổ sung biến để kiểm tra nó chạy rồi hay chưa
+var khong_chay_function_o_theme_nua = 0;
+
 function ___eb_global_home_runing ( r ) {
+	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	khong_chay_function_o_theme_nua = 1;
 	
-	// nếu tham số truyền vào không phải function -> hủy
-	if ( typeof r != 'function' ) {
-		console.log('only run with function type');
-		return false;
+	if ( typeof Child_eb_global_home_runing == 'function' ) {
+		Child_eb_global_home_runing();
 	}
-	
-	// chạy function riêng
-	r();
-	
 }
 
 
 function ___eb_list_post_run ( r ) {
+	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	khong_chay_function_o_theme_nua = 1;
 	
-	// nếu tham số truyền vào không phải function -> hủy
-	if ( typeof r != 'function' ) {
-		console.log('only run with function type');
-		return false;
+	if ( typeof Child_eb_list_post_run == 'function' ) {
+		Child_eb_list_post_run();
 	}
-	
-	// chạy function riêng
-	r();
-	
 }
 
 
@@ -1464,6 +1460,10 @@ function ___eb_list_post_run ( r ) {
 
 //
 function WGR_for_post_details ( function_for_post, function_for_blog ) {
+	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	khong_chay_function_o_theme_nua = 1;
+	
+	//
 	if ( typeof switch_taxonomy == 'undefined' ) {
 		console.log('switch_taxonomy not found');
 		return false;
@@ -1471,20 +1471,24 @@ function WGR_for_post_details ( function_for_post, function_for_blog ) {
 	
 	//
 	if ( switch_taxonomy == 'post' ) {
+		/*
 		if ( typeof function_for_post == 'function' ) {
 			___eb_details_post_run( function_for_post );
 		}
 		else {
+			*/
 			___eb_details_post_run();
-		}
+//		}
 	}
 	else {
+		/*
 		if ( typeof function_for_blog == 'function' ) {
 			___eb_global_blog_details_runing( function_for_blog );
 		}
 		else {
+			*/
 			___eb_global_blog_details_runing();
-		}
+//		}
 	}
 }
 
@@ -1500,8 +1504,13 @@ function ___eb_details_post_run ( r ) {
 	*/
 	
 	// chạy function riêng (nếu có)
+	/*
 	if ( typeof r == 'function' ) {
 		r();
+	}
+	*/
+	if ( typeof Child_eb_details_post_run == 'function' ) {
+		Child_eb_details_post_run();
 	}
 	
 	
@@ -1685,30 +1694,22 @@ function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 
 
 function ___eb_global_blogs_runing ( r ) {
+	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	khong_chay_function_o_theme_nua = 1;
 	
-	// nếu tham số truyền vào không phải function -> hủy
-	if ( typeof r != 'function' ) {
-		console.log('only run with function type');
-		return false;
+	if ( typeof Child_eb_global_blogs_runing == 'function' ) {
+		Child_eb_global_blogs_runing();
 	}
-	
-	// chạy function riêng
-	r();
-	
 }
 
 
 function ___eb_global_blog_details_runing ( r ) {
+	if ( khong_chay_function_o_theme_nua == 1 ) return false;
+	khong_chay_function_o_theme_nua = 1;
 	
-	// nếu tham số truyền vào không phải function -> hủy
-	if ( typeof r != 'function' ) {
-		console.log('only run with function type');
-		return false;
+	if ( typeof Child_eb_global_blog_details_runing == 'function' ) {
+		Child_eb_global_blog_details_runing();
 	}
-	
-	// chạy function riêng
-	r();
-	
 }
 
 // end global function /////////////////////////////////////////////////////////////////

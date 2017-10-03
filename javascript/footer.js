@@ -3,6 +3,57 @@
 
 
 
+/*
+* Các function sẽ được nạp từ theme -> nếu có thì chạy ở đây
+*/
+// for home
+if ( act == '' ) {
+	___eb_global_home_runing();
+}
+// end home
+
+// archive (category/ blog)
+else if ( act == 'archive' ) {
+	// category
+	if ( switch_taxonomy == 'category'
+	|| switch_taxonomy == 'post_tag'
+	|| switch_taxonomy == 'post_options' ) {
+		___eb_list_post_run();
+	}
+	// blog
+	else {
+		___eb_global_blogs_runing();
+	}
+}
+// end archive
+
+// for details
+else if ( act == 'single' ) {
+	WGR_for_post_details();
+}
+// end details
+
+// for contact
+else if ( act == 'contact' ) {
+	_global_js_eb.contact_func();
+}
+// end contact
+
+// for cart
+else if ( act == 'cart' ) {
+	_global_js_eb.cart_func();
+}
+// end cart
+
+// for 404
+else if ( act == '404' ) {
+	_global_js_eb.page404_func();
+}
+// end 404
+
+
+
+
 
 // hệ thống banner quảng cáo
 //___eb_logo_doitac_chantrang(6);
