@@ -986,6 +986,7 @@ $arr_for_add_js = array(
 //	ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/cat.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
+	EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
 //	EB_THEME_THEME . 'javascript/display.js',
 //	EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',

@@ -2152,15 +2152,26 @@ var _global_js_eb = {
 	
 	// facebook dynamic remarketing
 	// https://developers.facebook.com/docs/marketing-api/facebook-pixel/v2.8
-	fb_track : function ( track_name, track_arr ) {
-		// nếu fb chưa được nạp -> thoát luôn mà không nói gì
-		if ( typeof fbq == 'undefined' ) {
-			return false;
-		}
+	fb_track : function ( track_name, track_arr, not_reload_track ) {
+		//
+//		console.log('aaaaaaaaa');
 		
 		// Không chạy trong iframe
 		if ( top != self ) {
 			console.log('fb_track not run in iframe');
+			return false;
+		}
+		
+		// nếu fb chưa được nạp -> thoát luôn mà không nói gì
+		if ( typeof fbq == 'undefined' ) {
+			
+			// nạp lại track này lần nữa (do fbq thường load chậm hơn website)
+			if ( typeof not_reload_track == 'undefined' || not_reload_track != 1 ) {
+				setTimeout(function () {
+					_global_js_eb.fb_track( track_name, track_arr, 1 );
+				}, 600);
+			}
+			
 			return false;
 		}
 		
