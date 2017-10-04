@@ -170,6 +170,7 @@ else {
 
 // nếu có file -> include file vào
 if ( file_exists( $inc_file ) ) {
+//	echo '<!-- ' . $inc_file . ' -->' . "\n";
 	
 	
 	// main mặc định để các file con sử dụng lại
