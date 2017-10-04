@@ -14,46 +14,64 @@
 	border: 0 none;
 }
 .eb-profile-table input[type=text] { padding: 5px; }
+.eb-profile-table li { padding: 10px 0; }
+.eb-profile-table div.t,
+.eb-profile-table div.i { float: left; }
+.style-for-mobile .eb-profile-table { min-width: 200px; }
+.style-for-mobile .eb-profile-table div.t,
+.style-for-mobile .eb-profile-table div.i {
+	float: none;
+	width: 100%;
+}
+.style-for-mobile .eb-profile-table input[type=text] { width: 90%; }
 </style>
 <div class="{tmp.custom_blog_css}">
 	<div class="eb-user-main">
 		<div class="medium18 bold">Tổng quan về tài khoản</div>
 		<br />
 		<form name="frm_canhan" method="post" action="javascript:;" target="target_eb_iframe" onSubmit="return _global_js_eb.check_profile_frm();">
-			<table width="100%" border="0" cellpadding="0" cellspacing="0" class="eb-public-table eb-profile-table">
-				<tr>
-					<td class="t">E-mail</td>
-					<td class="i bold bluecolor">{tmp.tv_email}{tmp.connect_admin}</td>
-				</tr>
-				<tr>
-					<td class="t">Mã tài khoản</td>
-					<td class="i bold redcolor">{tmp.mtv_id}</td>
-				</tr>
-				<tr>
-					<td class="t">Mật khẩu</td>
-					<td class="i"><a href="javascript:;" class="click-show-frm-change-pass">Thay đổi mật khẩu</a></td>
-				</tr>
-				<tr>
-					<td class="t">Họ và tên</td>
-					<td class="i"><input type="text" name="t_hoten" value="{tmp.tv_hoten}" class="n" /></td>
-				</tr>
-				<tr>
-					<td class="t">Điện thoại</td>
-					<td class="i"><input type="text" name="t_dienthoai" value="{tmp.tv_dienthoai}" class="n" /></td>
-				</tr>
-				<tr>
-					<td class="t">Địa chỉ</td>
-					<td class="i"><input type="text" name="t_diachi" value="{tmp.tv_diachi}" class="l" /></td>
-				</tr>
-				<tr>
-					<td class="t">Ngày đăng ký</td>
-					<td class="i">{tmp.tv_ngaydangky}</td>
-				</tr>
-				<tr>
-					<td class="t" height="80">&nbsp;</td>
-					<td class="i"><input type="submit" value="Cập nhật" class="blue-button cur" /></td>
-				</tr>
-			</table>
+			<ul class="eb-public-table eb-profile-table">
+				<li class="cf">
+					<div class="t">E-mail</div>
+					<div class="i bold bluecolor">{tmp.tv_email}{tmp.connect_admin}</div>
+				</li>
+				<li class="cf">
+					<div class="t">Mã tài khoản</div>
+					<div class="i bold redcolor">{tmp.mtv_id}</div>
+				</li>
+				<li class="cf">
+					<div class="t">Mật khẩu</div>
+					<div class="i"><a href="javascript:;" class="click-show-frm-change-pass">Thay đổi mật khẩu</a></div>
+				</li>
+				<li class="cf">
+					<div class="t">Họ và tên</div>
+					<div class="i">
+						<input type="text" name="t_hoten" value="{tmp.tv_hoten}" class="n" />
+					</div>
+				</li>
+				<li class="cf">
+					<div class="t">Điện thoại</div>
+					<div class="i">
+						<input type="text" name="t_dienthoai" value="{tmp.tv_dienthoai}" class="n" />
+					</div>
+				</li>
+				<li class="cf">
+					<div class="t">Địa chỉ</div>
+					<div class="i">
+						<input type="text" name="t_diachi" value="{tmp.tv_diachi}" class="l" />
+					</div>
+				</li>
+				<li class="cf">
+					<div class="t">Ngày đăng ký</div>
+					<div class="i">{tmp.tv_ngaydangky}</div>
+				</li>
+				<li class="cf">
+					<div class="t" height="80">&nbsp;</div>
+					<div class="i">
+						<input type="submit" value="Cập nhật" class="blue-button cur" />
+					</div>
+				</li>
+			</ul>
 		</form>
 	</div>
 </div>
