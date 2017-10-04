@@ -144,6 +144,7 @@ if ( mtv_id > 0 && strstr( $_SERVER['REQUEST_URI'], '/options-permalink.php' ) =
 function echbay_admin_styles() {
 	global $str_list_wordpress_rule;
 	global $__cf_row;
+	global $wpdb;
 //	global $func;
 	
 	// lấy thời gian cập nhật cuối của file css -> update lại toàn bộ các file khác
@@ -177,9 +178,32 @@ function echbay_admin_styles() {
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>';
 	
+	// lấy số STT lớn nhất của bài viết/ sản phẩm -> gán cho nó sản phẩm mới thêm sẽ luôn được lên đầu
+	$order_max_post_new = 0;
+	if ( strstr( $_SERVER['REQUEST_URI'], '/post-new.php' ) == true ) {
+		$order_by_post_type = 'post';
+		if ( isset( $_GET['post_type'] ) ) {
+			$order_by_post_type = $_GET['post_type'];
+		}
+		$sql = _eb_q("SELECT menu_order
+		FROM
+			`" . $wpdb->posts . "`
+			WHERE
+				post_type = '" . $order_by_post_type . "'
+				AND menu_order > 0
+		ORDER BY
+			menu_order DESC
+		LIMIT 0, 1");
+//		print_r( $sql );
+		if ( ! empty( $sql ) ) {
+			$order_max_post_new = $sql[0]->menu_order;
+		}
+	}
+	
 	//
 	echo _eb_del_line( '<script type="text/javascript">
-var web_link = "' . web_link . '";
+var web_link = "' . web_link . '",
+	order_max_post_new = ' . $order_max_post_new . ';
 </script>' );
 	
 	

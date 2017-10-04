@@ -349,6 +349,14 @@ var eb_global_product_size = '',
 		});
 		
 	}
+	// thêm bài viết mới
+	else if ( admin_act == 'post-new' ) {
+		// thêm STT mới nhất để bài viết này luôn được lên đầu khi thêm mới
+		if ( order_max_post_new > 0 ) {
+			$('#menu_order').val( order_max_post_new - -1 );
+			console.log('Add menu order to maximun');
+		}
+	}
 	// danh sách post, page, custom post type
 	else if ( admin_act == 'list' ) {
 		// nếu là post

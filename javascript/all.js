@@ -1530,6 +1530,10 @@ function EBE_get_current_wp_module ( s ) {
 	if ( s.split('/post.php').length > 1 ) {
 		a = 'post';
 	}
+	// thêm bài viết mới
+	else if ( s.split('/post-new.php').length > 1 ) {
+		a = 'post-new';
+	}
 	// danh sách post, page, custom post type
 	else if ( s.split('/edit.php').length > 1 ) {
 		a = 'list';
@@ -1563,7 +1567,7 @@ function EBE_get_current_wp_module ( s ) {
 		a = 'menu';
 	}
 //	admin_act == 'menu'
-//	console.log(a);
+	console.log(a);
 	
 	return a;
 }
