@@ -122,6 +122,15 @@
 }
 .product-for-saleoff .thread-details-gia,
 .product-for-saleoff .thread-details-giamgia { display: none; }
+.style-for-mobile .thread-details-giamgia {
+	padding: 0 10px 0 0;
+	font-size: 20px;
+}
+.style-for-mobile .thread-details-giamgia div { padding-left: 50px; }
+.style-for-mobile .thread-details-giamgia span {
+	padding: 3px 6px;
+	font-size: 13px;
+}
 .details-support {
 	border: 1px #ccc solid;
 	padding: 10px;
