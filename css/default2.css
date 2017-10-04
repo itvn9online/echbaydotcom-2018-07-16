@@ -1776,4 +1776,5 @@ iframe[name="google_conversion_frame"] {
 .style-for-mobile .thread-details-tab li {
 	float: none;
 	text-align: center;
+	padding: 0 0;
 }

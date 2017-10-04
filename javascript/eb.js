@@ -344,7 +344,7 @@ var g_func = {
 	
 	
 	mb_v2: function() {
-		if ( screen.width < 900 || $(window).width() < 900 ) {
+		if ( screen.width < 775 || $(window).width() < 775 ) {
 			return true;
 		}
 		return false;
