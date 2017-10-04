@@ -22,13 +22,33 @@
 .echbay-blog100 li,
 .thread-list100 li { width: 100%; }
 /* trên mobile thì chỉnh cái đống này về kích thước mới */
+/*
+.style-for-mobile .echbay-blog100 li,
+.style-for-mobile .thread-list100 li,
 .style-for-mobile .echbay-blog10 li,
 .style-for-mobile .thread-list10 li,
 .style-for-mobile .echbay-blog16 li,
 .style-for-mobile .thread-list16 li,
 .style-for-mobile .echbay-blog25 li,
-.style-for-mobile .thread-list25 li { width: 50%; }
+.style-for-mobile .thread-list25 li,
 .style-for-mobile .echbay-blog20 li,
 .style-for-mobile .thread-list20 li,
 .style-for-mobile .echbay-blog33 li,
-.style-for-mobile .thread-list33 li { width: 100%; }
+.style-for-mobile .thread-list33 li,
+*/
+.style-for-mobile .echbay-blog li,
+.style-for-mobile .thread-list li { width: 50%; }
+.style-for-mobile .echbay-blog20 li:first-child,
+.style-for-mobile .thread-list20 li:first-child,
+.style-for-mobile .echbay-blog33 li:first-child,
+.style-for-mobile .thread-list33 li:first-child {
+	width: 100%;
+	float: none;
+}
+.style-for-mobile .echbay-blog100 .echbay-blog-padding,
+.style-for-mobile .echbay-blog100 .thread-list-padding,
+.style-for-mobile .thread-list100 .echbay-blog-padding,
+.style-for-mobile .thread-list100 .thread-list-padding {
+	margin-left: 3px;
+	margin-right: 3px;
+}

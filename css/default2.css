@@ -61,6 +61,7 @@ label,
 	height: auto;
 	overflow: hidden;
 }
+.style-for-mobile .thread-list100 .echbay-blog-title { height: 38px; }
 /* custom flex blogs */
 /*
 .blogs_menu_noidung {
