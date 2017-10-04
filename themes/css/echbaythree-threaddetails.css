@@ -100,22 +100,6 @@
 	margin: 0 auto;
 }
 .thread-details-hotline a { display: block; }
-.thread-details-tab {
-	line-height: 35px;
-	border-bottom: 2px #333 solid;
-	margin-bottom: 19px;
-}
-.thread-details-tab,
-.thread-details-tab a { color: #333; }
-.thread-details-tab li {
-	float: left;
-	padding: 0 32px;
-	cursor: pointer;
-}
-.thread-details-tab li.selected {
-	background-color: #333;
-	color: #fff;
-}
 .thread-details-gia { color: #333; }
 .thread-details-gia li {
 	float: left;

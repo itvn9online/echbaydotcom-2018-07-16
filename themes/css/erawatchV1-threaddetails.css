@@ -40,24 +40,13 @@
 }
 .details-mua-ngay:hover,
 .details-tu-van:hover { opacity: .9; }
-.thread-details-tab,
 .thread-details-orther {
 	line-height: 35px;
 	border-bottom: 2px #333 solid;
 }
-.thread-details-tab,
-.thread-details-tab a { color: #333; }
-.thread-details-tab li {
-	float: left;
-	padding: 0 32px;
-	cursor: pointer;
-}
-.thread-details-tab li.selected,
 .thread-details-orther li {
 	background-color: #333;
 	color: #fff;
-}
-.thread-details-orther li {
 	padding: 0 15px;
 	float: left;
 }

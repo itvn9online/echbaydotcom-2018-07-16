@@ -1755,3 +1755,25 @@ iframe[name="google_conversion_frame"] {
 	background: #333;
 	padding: 0 20px;
 }
+/* */
+.thread-details-tab {
+	line-height: 35px;
+	border-bottom: 2px #333 solid;
+	margin-bottom: 19px;
+}
+.thread-details-tab,
+.thread-details-tab a { color: #333; }
+.thread-details-tab li {
+	float: left;
+	padding: 0 32px;
+	cursor: pointer;
+	background: #f2f2f2;
+}
+.thread-details-tab li.selected {
+	background-color: #333;
+	color: #fff;
+}
+.style-for-mobile .thread-details-tab li {
+	float: none;
+	text-align: center;
+}
