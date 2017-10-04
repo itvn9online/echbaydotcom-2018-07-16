@@ -10,9 +10,11 @@
 					<div class="lf f50 fullsize-if-mobile">
 						<div class="bold upper l35">Hà Nội</div>
 						<div><?php echo EBE_get_html_address(); ?></div>
+						<br>
 					</div>
 					<div class="lf f50 fullsize-if-mobile">
 						<div class="left-menu-space footer-menu"><?php echo EBE_echbay_footer_menu(); ?></div>
+						<br>
 					</div>
 				</div>
 			</div>

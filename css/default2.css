@@ -1238,6 +1238,8 @@ color: #333;
 	font-size: 18px;
 	margin-bottom: 10px;
 }
+.echbay-widget-title,
+.echbay-widget-title a { color: #333; }
 .echbay-widget-title:before {
 	content: "";
 	position: absolute;

@@ -8,7 +8,7 @@ Tags: copyright
 <div id="denbaophat-footer3">
 	<div class="footer-copyright">
 		<div class="cf <?php echo $__cf_row['cf_footer_class_style']; ?>">
-			<p class="small text-center"><?php echo $str_footer_echbay_license; ?></p>
+			<div class="small text-center"><?php echo $str_footer_echbay_license; ?></div>
 		</div>
 	</div>
 </div>

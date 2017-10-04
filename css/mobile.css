@@ -32,7 +32,7 @@ body.style-for-mobile {
 .style-for-mobile .echbay-blog,
 .style-for-mobile .thread-list,
 .style-for-mobile .widget-search-advanced { margin: 0 !important; }
-.style-for-mobile .thread-list li { width: 50%; }
+/* .style-for-mobile .thread-list li { width: 50%; } */
 /* fix search mobile */
 /*
 .style-for-mobile .div-search-margin {

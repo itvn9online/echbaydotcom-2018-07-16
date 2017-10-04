@@ -21,3 +21,14 @@
 }
 .echbay-blog100 li,
 .thread-list100 li { width: 100%; }
+/* trên mobile thì chỉnh cái đống này về kích thước mới */
+.style-for-mobile .echbay-blog10 li,
+.style-for-mobile .thread-list10 li,
+.style-for-mobile .echbay-blog16 li,
+.style-for-mobile .thread-list16 li,
+.style-for-mobile .echbay-blog25 li,
+.style-for-mobile .thread-list25 li { width: 50%; }
+.style-for-mobile .echbay-blog20 li,
+.style-for-mobile .thread-list20 li,
+.style-for-mobile .echbay-blog33 li,
+.style-for-mobile .thread-list33 li { width: 100%; }
