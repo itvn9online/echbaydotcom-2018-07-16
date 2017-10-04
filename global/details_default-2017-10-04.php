@@ -143,6 +143,11 @@ else {
 
 
 //
+$post_format = get_post_format( $pid );
+echo $post_format . '<br>' . "\n";
+
+
+//
 $cats = array();
 $cats_child = array();
 $ant_link = '';
@@ -721,6 +726,33 @@ else {
 	
 	
 	
+	
+	// xem định dạng bài viết có được hỗ trợ theo theme không
+//	$post_format = get_post_format( $pid );
+//	echo $post_format . '<br>' . "\n";
+	if ( $post_format != '' ) {
+//		$check_new_format = 'thread_details-' . $post_format . '.html';
+		$check_new_format = $html_v2_file . '-' . $post_format . '.html';
+//		echo $check_new_format . '<br>' . "\n";
+		
+		//
+		if ( file_exists( EB_THEME_HTML . $check_new_format ) ) {
+//			$html_file = $check_new_format;
+//			echo $html_file . '<br>' . "\n";
+//			$html_v2_file = 'thread_details-' . $post_format;
+			$html_v2_file = $html_v2_file . '-' . $post_format;
+//			echo $html_v2_file . '<br>' . "\n";
+			
+//			$thu_muc_for_html = EB_THEME_HTML;
+		}
+	}
+//	else if ( $__cf_row['cf_post_column_style'] != '' ) {
+//	else {
+//		$html_v2_file = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_post_column_style'] );
+//		$html_v2_file = $html_v2_file . '_' . $__cf_row['cf_post_column_style'];
+//	}
+	
+	
 	//
 	if ( $__cf_row['cf_post_column_style'] != '' ) {
 		$custom_product_flex_css = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_post_column_style'] );
@@ -875,31 +907,13 @@ if ( function_exists('eb_details_for_current_domain') ) {
 }
 
 
-
-
-// định dạng file
-$post_format = get_post_format( $pid );
-
-// TEST
-//echo $post_format . '<br>' . "\n";
-//echo $html_v2_file . '<br>' . "\n";
-
-
-
-
 // tạo nội dung - v1
 //$main_content = EBE_str_template( $html_file, $arr_main_content, $thu_muc_for_html );
 
 // v2
-$load_config_temp = $__cf_row['cf_threaddetails_include_file'];
-//echo $load_config_temp . '<br>' . "\n";
-
-// nếu có post format mới -> sử dụng format này
-if ( $post_format != '' ) {
-	$main_content = EBE_get_page_template( $html_v2_file . '-' . $post_format );
-}
 // với sản phẩm -> có thể tạo nhiều design khác nhau
-else if ( $__post->post_type == 'post' && $load_config_temp != '' ) {
+$load_config_temp = $__cf_row['cf_threaddetails_include_file'];
+if ( $__post->post_type == 'post' && $load_config_temp != '' ) {
 	$main_content = WGR_check_and_load_tmp_theme( $load_config_temp, 'threaddetails' );
 }
 // mặc định thì kiểm tra theo theme và plugin

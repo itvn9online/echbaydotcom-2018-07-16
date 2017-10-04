@@ -267,6 +267,7 @@ function EBE_html_template ( $html, $arr = array() ) {
 	return $html;
 }
 
+// tạo tên class riêng theo config
 function EBE_get_html_file_addon ( $page_name, $addon = '' ) {
 	global $arr_for_show_html_file_load;
 	
