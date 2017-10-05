@@ -526,6 +526,7 @@ function _eb_str_block_fix_content ($str) {
 //			'}, {' => '},{',
 //			'}, ' => '},',
 		'\'' => '\\\'',
+		'"' => '&quot;',
 //		'' => ''
 	);
 	foreach ($arr as $k => $v) {
