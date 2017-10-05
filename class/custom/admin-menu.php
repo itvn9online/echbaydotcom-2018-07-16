@@ -177,7 +177,8 @@ function echbay_admin_styles() {
 	//
 	echo '<link href="' . web_link . eb_default_vaficon . '?v=' . EBE_admin_get_realtime_for_file( web_link . eb_default_vaficon ) . '" rel="shortcut icon" type="image/png" />
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>';
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>,
+<script src="' . web_link . 'eb-load-quick-search"></script>';
 	
 	// lấy số STT lớn nhất của bài viết/ sản phẩm -> gán cho nó sản phẩm mới thêm sẽ luôn được lên đầu
 	$order_max_post_new = 0;

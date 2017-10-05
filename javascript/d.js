@@ -2,6 +2,7 @@
 
 
 //
+/*
 if ( typeof eb_site_group == 'undefined' ) {
 	eb_site_group = [];
 }
@@ -16,6 +17,7 @@ if ( typeof eb_site_group == 'undefined' ) {
 		});
 	}
 })();
+*/
 
 
 
