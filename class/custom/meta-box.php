@@ -169,8 +169,8 @@ $eb_arr_type_custom_meta_box = array(
 	// ads
 	'_eb_ads_status' => $arr_eb_ads_status,
 	'_eb_ads_target' => 'checkbox',
-	'_eb_ads_for_post' => 'number',
-	'_eb_ads_for_category' => 'number',
+//	'_eb_ads_for_post' => 'number',
+//	'_eb_ads_for_category' => 'number',
 	
 	// category
 	'_eb_category_status' => $arr_eb_category_status,
@@ -343,13 +343,13 @@ function EchBayMetaOutput( $post ) {
 * Form quảng cáo
 */
 $eb_ads_custom_meta_box = array(
+	'_eb_ads_for_post' => 'ID Sản phẩm/ Blog/ Page',
+	'_eb_ads_for_category' => 'Chuyên mục/ Danh mục',
 	'_eb_ads_url' => 'Đường dẫn',
 	'_eb_ads_target' => 'Mở trong tab mới',
 	'_eb_ads_video_url' => 'URL Video YouTube',
 	'_eb_ads_status' => 'Hiển thị',
 	'_eb_product_avatar' => 'Ảnh đại diện',
-	'_eb_ads_for_post' => 'ID Sản phẩm/ Blog/ Page',
-	'_eb_ads_for_category' => 'Chuyên mục/ Danh mục',
 );
 
 function EchBayQuangCaoOutput( $post ) {

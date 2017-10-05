@@ -611,6 +611,33 @@ input[id="_eb_category_order"] { width: 90px; }
 #oi_quick_connect { text-align: right; }
 #oi_quick_connect select { min-width: 250px; }
 input#_eb_ads_for_category { display: none; }
+.admin-show-quick-search { position: relative; }
+.admin-show-quick-search div {
+	position: absolute;
+	background: #fff;
+	border: 1px #ccc solid;
+	line-height: 16px;
+	font-size: 12px;
+	height: 250px;
+	overflow-y: scroll;
+	z-index: 99;
+}
+.admin-show-quick-search h4 {
+	background: #f2f2f2;
+	border-bottom: 1px #ccc solid;
+	margin-bottom: 6px;
+}
+.admin-show-quick-search ul { }
+.admin-show-quick-search li {
+	cursor: pointer;
+	margin: 0;
+}
+.admin-show-quick-search li:hover {
+	text-decoration: underline;
+	color: #c00;
+}
+.admin-show-quick-search h4,
+.admin-show-quick-search li { padding: 5px 15px; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

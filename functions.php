@@ -6,6 +6,7 @@
 // lấy sản phẩm theo mẫu chung
 function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_tai = 'category' ) {
 	global $__cf_row;
+	global $wpdb;
 	global $eb_background_for_post;
 //	global $eb_background_for_mobile_post;
 	
@@ -19,6 +20,25 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 //	print_r( $__cf_row ); exit();
 	
 	// truyền các giá trị cho HTML cũ có thể chạy được
+	
+	
+	// riêng với mục quảng cáo -> kiểm tra xem có alias tới post, page, blog nào không
+	$alias_post = _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 );
+	
+	// nếu có -> nạp thông tin post, page... mà nó alias tới
+	if ( $alias_post > 0 ) {
+		$sql = _eb_q("SELECT *
+		FROM
+			`" . $wpdb->posts . "`
+		WHERE
+			ID = " . $alias_post . "
+			AND post_status = 'publish'");
+//		print_r( $sql );
+		if ( ! empty( $sql ) ) {
+			$post = $sql[0];
+		}
+	}
+	
 	
 	// với quảng cáo thì lấy link theo kiểu quảng cáo
 	if ( $post->post_type == 'ads' ) {
@@ -2649,7 +2669,8 @@ function _eb_load_ads (
 	global $arr_eb_ads_status;
 	global $eb_background_for_post;
 	global $cid;
-//		global $___eb_ads__not_in;
+	global $wpdb;
+//	global $___eb_ads__not_in;
 //		echo 'ADS NOT IN: ' . $___eb_ads__not_in . '<br>' . "\n";
 	
 	//
@@ -2895,6 +2916,25 @@ function _eb_load_ads (
 			
 			$post = $sql->post;
 //			print_r( $post );
+			
+			
+			// kiểm tra xem q.cáo có alias tới post, page... nào không
+			$alias_post = _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 );
+			
+			// nếu có -> nạp thông tin post, page... mà nó alias tới
+			if ( $alias_post > 0 ) {
+				$strsql = _eb_q("SELECT *
+				FROM
+					`" . $wpdb->posts . "`
+				WHERE
+					ID = " . $alias_post . "
+					AND post_status = 'publish'");
+		//		print_r( $sql );
+				if ( ! empty( $strsql ) ) {
+					$post = $strsql[0];
+				}
+			}
+			
 			
 			//
 //			$___eb_ads__not_in .= ',' . $post->ID;

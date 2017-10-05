@@ -405,7 +405,7 @@ $('#press_for_search_eb_themes, #press_for_search_all_themes').click(function ()
 	
 	// enter
 	if (e.keyCode == 13) {
-		return false
+		return false;
 		/*
 	} else if (e.keyCode == 27) {
 		$(fix_id).hide();
@@ -439,12 +439,10 @@ $('#press_for_search_eb_themes, #press_for_search_all_themes').click(function ()
 			}
 			
 			//
-			if ( key.length == 1 ) {
-				if (a != '' && a.substr(0, 1) == key) {
+			if ( a != '' ) {
+				if ( key.length == 1 && a.substr(0, 1) == key ) {
 					$(this).show();
-				}
-			} else {
-				if (a != '' && a.split(key).length > 1) {
+				} else if ( a.split(key).length > 1 ) {
 					$(this).show();
 				}
 			}
