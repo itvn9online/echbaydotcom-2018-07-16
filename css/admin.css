@@ -638,6 +638,18 @@ input#_eb_ads_for_category { display: none; }
 }
 .admin-show-quick-search h4,
 .admin-show-quick-search li { padding: 5px 15px; }
+.hide-module-advanced-ads tr[data-row="_eb_ads_url"],
+.hide-module-advanced-ads tr[data-row="_eb_ads_target"],
+.hide-module-advanced-ads tr[data-row="_eb_ads_video_url"],
+.hide-module-advanced-ads tr[data-row="_eb_product_avatar"],
+.hide-module-advanced-ads tr[data-row="_eb_show_product_avatar"],
+.hide-module-advanced-ads #remove_content_style,
+.hide-module-advanced-ads #postexcerpt { display: none; }
+.hide-module-advanced-ads #postdivrich {
+	height: 50px;
+	overflow: hidden;
+	visibility: hidden;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

@@ -62,7 +62,7 @@ function WGR_run_for_admin_edit_post () {
 			
 			//
 			$('tr[data-row="_eb_product_avatar"]').after( '\
-			<tr>\
+			<tr data-row="_eb_show_product_avatar">\
 				<td class="t">&nbsp;</td>\
 				<td class="i"><img src="' + a + '" height="110" /></td>\
 			</tr>' );
@@ -92,7 +92,7 @@ function WGR_run_for_admin_edit_post () {
 		
 		// tạo chức năng chỉnh sửa nội dung, đưa hết về 1 định dạng chuẩn
 		var str = '\
-		<div style="padding-top:8px;">\
+		<div id="remove_content_style" style="padding-top:8px;">\
 			<input type="checkbox" id="click_remove_content_style" class="click_remove_content_style" />\
 			<label for="click_remove_content_style">Loại bỏ toàn bộ các style tĩnh để chuẩn hóa style cho bài viết theo một thiết kế chung.</label>\
 		</div>';
@@ -276,6 +276,7 @@ function WGR_run_for_admin_edit_post () {
 			//
 			$('#' + jd_for_quick_search_post + ' li').click(function () {
 				$('#_eb_ads_for_post').val( $(this).attr('data-id') || '' );
+				$('body').addClass('hide-module-advanced-ads');
 			});
 		}
 		
@@ -290,7 +291,17 @@ function WGR_run_for_admin_edit_post () {
 		$('#' + jd_for_quick_search_post).show();
 	}).blur(function () {
 		$('#' + jd_for_quick_search_post).fadeOut();
+		
+		//
+		if ( $(this).val() == '' ) {
+			$('body').removeClass('hide-module-advanced-ads');
+		}
 	});
+	
+	// thêm class để ẩn các chức năng không còn cần thiết khi q.cáo có alias
+	if ( $('#_eb_ads_for_post').val() != '' ) {
+		$('body').addClass('hide-module-advanced-ads');
+	}
 	
 	
 	// kích hoạt chức năng tìm kiếm nhanh
