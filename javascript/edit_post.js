@@ -242,7 +242,6 @@ function WGR_run_for_admin_edit_post () {
 	//
 	WGR_check_if_value_this_is_one('_eb_product_chinhhang');
 	WGR_check_if_value_this_is_one('_eb_product_noindex');
-	WGR_check_if_value_this_is_one('_eb_ads_target');
 	
 	
 	
@@ -256,6 +255,21 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	
+	// riêng cho ads
+	WGR_run_for_admin_edit_ads_post();
+	
+	
+}
+
+function WGR_run_for_admin_edit_ads_post () {
+	if ( dog('_eb_ads_for_post') == null ) {
+		return false;
+	}
+	
+	//
+	WGR_check_if_value_this_is_one('_eb_ads_target');
+	
+	//
 	// nhập ID blog, product, page mà q.cáo alias tới
 	var jd_for_quick_search_post = 'quick_sreach_for_eb_ads_for_post',
 		action_for_quick_search_post = '';
@@ -299,7 +313,8 @@ function WGR_run_for_admin_edit_post () {
 	});
 	
 	// thêm class để ẩn các chức năng không còn cần thiết khi q.cáo có alias
-	if ( $('#_eb_ads_for_post').val() != '' ) {
+	var check_ads_alias = $('#_eb_ads_for_post').val() || '';
+	if ( check_ads_alias != '' ) {
 		$('body').addClass('hide-module-advanced-ads');
 	}
 	
@@ -346,8 +361,6 @@ function WGR_run_for_admin_edit_post () {
 			$(fix_id).show();
 		}
 	});
-	
-	
 }
 
 function edit_post_load_list_post_for_quick_search ( arr, arr_name ) {
