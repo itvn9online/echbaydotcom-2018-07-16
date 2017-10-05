@@ -344,7 +344,7 @@ function edit_post_load_list_post_for_quick_search ( arr, arr_name ) {
 	for ( var i = 0; i < arr.length; i++ ) {
 		var key = g_func.non_mark_seo( arr[i].ten ) + arr[i].seo;
 		
-		str += '<li data-id="' + arr[i].id + '" data-key="' + key.replace(/\-/g, '') + '">' + arr[i].ten + '</li>';
+		str += '<li data-id="' + arr[i].id + '" data-key="' + key.replace(/\-/g, '') + '">' + arr[i].ten + ' <a href="' + web_link + '?p=' + arr[i].id + '" target="_blank"><i class="fa fa-external-link"></i></a></li>';
 	}
 	
 	return '<h4>' + arr_name + '</h4><ul>' + str + '</ul>';
