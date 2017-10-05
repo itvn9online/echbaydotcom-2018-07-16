@@ -412,6 +412,7 @@ $('input[name=cf_position]').off('change').change(function () {
 
 
 //
+/*
 $('#oi_smtp_pass').off('focus').focus(function () {
 	$(this).attr({
 		type : 'password'
@@ -431,6 +432,54 @@ $('#oi_smtp_pass').off('focus').focus(function () {
 }).off('keyup').keyup(function () {
 	$('input[name=cf_smtp_pass]').val( $(this).val() || '' );
 }).blur();
+*/
+
+
+
+//
+var smtp_random_pass = Math.random().toString(32).split('.')[1];
+
+
+//
+$('#oi_smtp_pass')
+.off('focus').focus(function () {
+/*
+	$(this)
+//	.attr({
+//		type : 'password'
+//	})
+	.val( $('input[name=cf_smtp_pass]').val() );
+})
+.off('dblclick').dblclick(function () {
+*/
+//	console.log(smtp_random_pass);
+	$(this).val( smtp_random_pass + $('input[name=cf_smtp_pass]').val() );
+})
+.off('blur').blur(function () {
+	var a = $(this).val() || '',
+		str = '';
+	
+	if ( a != '' ) {
+		for ( var i = 0; i < a.length; i++ ) str += '*';
+	}
+	
+	//
+	$(this).attr({
+		type : 'text'
+	}).val( str );
+})
+.off('keyup').keyup(function () {
+	var a = $(this).val() || '';
+	if ( a != '' ) {
+		a = a.replace( smtp_random_pass, '' );
+	}
+	
+	$('input[name=cf_smtp_pass]').val( a );
+})
+.blur();
+
+
+
 
 
 
