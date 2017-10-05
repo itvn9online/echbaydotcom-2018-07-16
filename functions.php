@@ -2917,6 +2917,9 @@ function _eb_load_ads (
 			$post = $sql->post;
 //			print_r( $post );
 			
+			//
+			$p_link = '';
+			
 			
 			// kiểm tra xem q.cáo có alias tới post, page... nào không
 			$alias_post = _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 );
@@ -2929,10 +2932,16 @@ function _eb_load_ads (
 				WHERE
 					ID = " . $alias_post . "
 					AND post_status = 'publish'");
-		//		print_r( $sql );
+//				print_r( $strsql );
 				if ( ! empty( $strsql ) ) {
 					$post = $strsql[0];
+					$p_link = _eb_p_link( $post->ID );
 				}
+			}
+			
+			//
+			if ( $p_link == '' ) {
+				$p_link = _eb_get_post_meta( $post->ID, '_eb_ads_url', true, 'javascript:;' );
 			}
 			
 			
@@ -2940,7 +2949,6 @@ function _eb_load_ads (
 //			$___eb_ads__not_in .= ',' . $post->ID;
 			
 			//
-			$p_link = _eb_get_post_meta( $post->ID, '_eb_ads_url', true, 'javascript:;' );
 //			$p_link = _eb_get_ads_object( $post->ID, '_eb_ads_url', 'javascript:;' );
 //			echo $p_link . '<br>';
 			
