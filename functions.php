@@ -2382,6 +2382,7 @@ function _eb_build_mail_header($from_email) {
 	$headers[] = 'X-MimeOLE: Produced By xtreMedia';
 	$headers[] = 'X-Mailer: PHP/ '. phpversion();
 	
+	// trả về header
 	return implode ( "\r\n", $headers );
 }
 
