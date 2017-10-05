@@ -31,7 +31,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	*/
 	
 	// v2
-	$sql = WGR_get_sitemap_post();
+	$sql = WGR_get_sitemap_post( 'page' );
 	foreach ( $sql as $v ) {
 		$get_list_sitemap .= WGR_echo_sitemap_image_node( _eb_p_link( $v->ID ), _eb_get_post_img( $v->ID ), $v->post_title );
 	}
@@ -43,7 +43,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 //		'orderby' => 'menu_order',
 		'orderby' => 'ID',
 		'order' => 'DESC',
-		'post_type' => 'post',
+		'post_type' => 'blog',
 		'post_status' => 'publish'
 	));
 	//print_r( $sql );

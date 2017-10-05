@@ -33,7 +33,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	// v2
 	$sql = WGR_get_sitemap_post( 'blog' );
 	foreach ( $sql as $v ) {
-		$get_list_sitemap .= WGR_echo_sitemap_image_node( get_the_permalink( $v->ID ), _eb_get_post_img( $v->ID ), $v->post_title );
+		$get_list_sitemap .= WGR_echo_sitemap_image_node( _eb_p_link( $v->ID ), _eb_get_post_img( $v->ID ), $v->post_title );
 	}
 	
 	/*
@@ -50,7 +50,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	while ( $sql->have_posts() ) : $sql->the_post();
 //		print_r($sql->post);
 		
-		$get_list_sitemap .= WGR_echo_sitemap_image_node( get_the_permalink( $sql->post->ID ), _eb_get_post_img( $sql->post->ID ), $sql->post->post_title );
+		$get_list_sitemap .= WGR_echo_sitemap_image_node( _eb_p_link( $sql->post->ID ), _eb_get_post_img( $sql->post->ID ), $sql->post->post_title );
 	endwhile;
 	*/
 	

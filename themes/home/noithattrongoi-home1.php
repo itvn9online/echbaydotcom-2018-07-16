@@ -3,7 +3,7 @@ $str_noithattrongoi_home1 = '
 <h1 class="home_default-title text-center">{tmp.trv_tieude}</h1>
 <div class="cf">
 	<div class="lf f50 fullsize-if-mobile">
-		<div class="right-menu-space l20 medium">
+		<div class="right-menu-space l25 medium">
 			<div>{tmp.trv_gioithieu}</div>
 			<br>
 		</div>

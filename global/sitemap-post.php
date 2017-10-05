@@ -28,7 +28,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	// v2
 	$sql = WGR_get_sitemap_post();
 	foreach ( $sql as $v ) {
-		$get_list_sitemap .= WGR_echo_sitemap_url_node( get_the_permalink( $v->ID ), 0.5, date( $sitemap_date_format, strtotime( $v->post_modified ) ) );
+		$get_list_sitemap .= WGR_echo_sitemap_url_node( _eb_p_link( $v->ID ), 0.5, date( $sitemap_date_format, strtotime( $v->post_modified ) ) );
 	}
 	
 	/*
@@ -45,7 +45,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	while ( $sql->have_posts() ) : $sql->the_post();
 //		print_r($sql->post);
 		
-		$get_list_sitemap .= WGR_echo_sitemap_url_node( get_the_permalink( $sql->post->ID ), 0.5, date( $sitemap_date_format, strtotime( $sql->post->post_modified ) ) );
+		$get_list_sitemap .= WGR_echo_sitemap_url_node( _eb_p_link( $sql->post->ID ), 0.5, date( $sitemap_date_format, strtotime( $sql->post->post_modified ) ) );
 	endwhile;
 	*/
 	

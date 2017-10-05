@@ -2118,13 +2118,20 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category') {
 //	print_r($arr);
 	
 	//
+	$link_for_taxonomy = '';
+	if ( $taxx != 'category' ) {
+		$link_for_taxonomy = $taxx . '=blogs&';
+	}
+	
+	//
 	$str = '';
 	foreach ( $arr as $v ) {
 //			print_r($v);
 		
 		//
 //		$c_link = _eb_c_link( $v->term_id, $web_link . '?cat=' . $v->term_id );
-		$c_link = $web_link . '?cat=' . $v->term_id;
+//		$c_link = _eb_c_link( $v->term_id, $taxx );
+		$c_link = $web_link . '?' . $link_for_taxonomy . 'cat=' . $v->term_id;
 		
 		//
 		$cat_order = 0;

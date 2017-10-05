@@ -169,6 +169,7 @@ function echbay_admin_styles() {
 		EB_URL_OF_PLUGIN . 'javascript/eb.js',
 //		EB_URL_OF_THEME . 'javascript/eb.js',
 		EB_URL_OF_PLUGIN . 'javascript/all.js',
+		EB_URL_OF_PLUGIN . 'javascript/edit_post.js',
 //		EB_URL_OF_PLUGIN . 'outsource/javascript/jquery.caret.1.02.min.js',
 //		EB_URL_OF_PLUGIN . 'javascript/a.js',
 	) ), 'add' );

@@ -361,6 +361,9 @@ $arr_active_for_404_page = array(
 	"sitemap-images" => 1,
 	// sitemap sitemap cho hình ảnh (blog)
 	"sitemap-blog-images" => 1,
+	// for page
+	"sitemap-page" => 1,
+	"sitemap-page-images" => 1,
 	
 	"temp" => 1,
 	
@@ -373,7 +376,8 @@ $arr_active_for_404_page = array(
 	
 	"eb-ajaxservice" => 1,
 	
-	"php_info" => 1
+	"php_info" => 1,
+	"eb-load-quick-search" => 1
 );
 
 

@@ -1,9 +1,6 @@
 <?php
 
 
-
-
-
 // thư viện dùng chung
 include EB_THEME_PLUGIN_INDEX . 'global/sitemap_function.php';
 
@@ -27,30 +24,30 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	
 	/*
-	* media
+	* blog
 	*/
 	
 	// v2
-	$sql = WGR_get_sitemap_post();
+	$sql = WGR_get_sitemap_post( 'page' );
 	foreach ( $sql as $v ) {
-		$get_list_sitemap .= WGR_echo_sitemap_image_node( _eb_p_link( $v->ID ), _eb_get_post_img( $v->ID ), $v->post_title );
+		$get_list_sitemap .= WGR_echo_sitemap_url_node( _eb_p_link( $v->ID ), 0.3, date( $sitemap_date_format, strtotime( $v->post_modified ) ) );
 	}
 	
 	/*
 	// v1
 	$sql = new WP_Query( array(
-		'posts_per_page' => $limit_image_get,
+		'posts_per_page' => $limit_post_get,
 //		'orderby' => 'menu_order',
 		'orderby' => 'ID',
 		'order' => 'DESC',
-		'post_type' => 'post',
+		'post_type' => 'blog',
 		'post_status' => 'publish'
 	));
 	//print_r( $sql );
 	while ( $sql->have_posts() ) : $sql->the_post();
 //		print_r($sql->post);
 		
-		$get_list_sitemap .= WGR_echo_sitemap_image_node( _eb_p_link( $sql->post->ID ), _eb_get_post_img( $sql->post->ID ), $sql->post->post_title );
+		$get_list_sitemap .= WGR_echo_sitemap_url_node( _eb_p_link( $sql->post->ID ), 0.3, date( $sitemap_date_format, strtotime( $sql->post->post_modified ) ) );
 	endwhile;
 	*/
 	
@@ -74,7 +71,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 WGR_echo_sitemap_css();
 
 echo '
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ' . $get_list_sitemap . '
 </urlset>';
 
