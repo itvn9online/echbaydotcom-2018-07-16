@@ -97,7 +97,9 @@ _eb_add_full_js( array(
 /*
 echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/cat.js" async></script>';
 */
+/*
 echo '<script type="text/javascript" src="' . web_link . 'eb-load-quick-search" async></script>';
+*/
 /*
 echo '<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery.js"></script>';
 */
