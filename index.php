@@ -234,6 +234,15 @@ else {
 	add_action( 'phpmailer_init', 'EBE_configure_smtp' );
 }
 
+// Thiết lập gửi EMail với định dạng HTML
+// https://developer.wordpress.org/reference/hooks/wp_mail_content_type/
+/*
+function WGR_set_html_mail_content_type() {
+    return 'text/html';
+}
+add_filter( 'wp_mail_content_type', 'WGR_set_html_mail_content_type' );
+*/
+
 
 
 

@@ -372,7 +372,7 @@ if (strstr ( $t_email, '@gmail.com' ) == true
 || strstr ( $t_email, '@hotmail.com' ) == true) {
 //	if ( _eb_check_email_type( $t_email ) == 1 ) {
 		$bcc_email = $t_email;
-//		_eb_send_email( $t_email, $mail_title, $message, $mail_to_admin );
+//		_eb_send_email( $t_email, $mail_title, $message, '', $mail_to_admin );
 //	}
 }
 
@@ -382,7 +382,7 @@ if (strstr ( $t_email, '@gmail.com' ) == true
 // -> ép buộc sử dụng hàm mail mặc định
 //$__cf_row ['cf_sys_email'] = 0;
 
-_eb_send_email ( $mail_to_admin, $mail_title, $message, $bcc_email );
+_eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email );
 
 
 
