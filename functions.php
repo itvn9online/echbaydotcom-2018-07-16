@@ -2501,7 +2501,12 @@ function EBE_configure_smtp( PHPMailer $phpmailer ){
 	$phpmailer->CharSet = 'utf-8';
 	
 	// https://github.com/PHPMailer/PHPMailer/wiki/SMTP-Debugging
-	$phpmailer->SMTPDebug = ( $__cf_row['cf_tester_mode'] == 1 ) ? 2 : 0;
+	if ( $__cf_row['cf_tester_mode'] == 1 ) {
+		$phpmailer->SMTPDebug = 2;
+	}
+	else {
+		$phpmailer->SMTPDebug = 0;
+	}
 	
 	// Force it to use Username and Password to authenticate
 	$phpmailer->SMTPAuth = true;
@@ -2515,12 +2520,27 @@ function EBE_configure_smtp( PHPMailer $phpmailer ){
 	
 	// Additional settings...
 	// Choose SSL or TLS, if necessary for your server
-	$phpmailer->SMTPSecure = ( $__cf_row['cf_smtp_encryption'] == '' ) ? false : $__cf_row['cf_smtp_encryption'];
+	if ( $__cf_row['cf_smtp_encryption'] == '' ) {
+		$phpmailer->SMTPSecure = false;
+	}
+	else {
+		$phpmailer->SMTPSecure = $__cf_row['cf_smtp_encryption'];
+	}
 //	$phpmailer->SMTPSecure = 'tls';
 //	$phpmailer->SMTPSecure = 'ssl';
 	
-	$phpmailer->From = ( _eb_check_email_type( $__cf_row['cf_smtp_email'] ) != 1 ) ? $__cf_row['cf_email'] : $__cf_row['cf_smtp_email'];
-	$phpmailer->FromName = ( $__cf_row['cf_web_name'] == '' ) ? '(' . strtoupper( $_SERVER['HTTP_HOST'] ) . ')' : _eb_non_mark( $__cf_row['cf_web_name'] );
+	if ( _eb_check_email_type( $__cf_row['cf_smtp_email'] ) != 1 ) {
+		$phpmailer->From = $__cf_row['cf_email'];
+	}
+	else {
+		$phpmailer->From = $__cf_row['cf_smtp_email'];
+	}
+	if ( $__cf_row['cf_web_name'] == '' ) {
+		$phpmailer->FromName = '(' . strtoupper( $_SERVER['HTTP_HOST'] ) . ')';
+	}
+	else {
+		$phpmailer->FromName = _eb_non_mark( $__cf_row['cf_web_name'] );
+	}
 	
 	//
 	$phpmailer->SMTPOptions = array (
@@ -2538,7 +2558,7 @@ function EBE_configure_smtp( PHPMailer $phpmailer ){
 	
 }
 
-function _eb_send_mail_phpmailer($to, $to_name = '', $subject, $message, $from_reply = '', $bcc_email = '') {
+function _eb_send_mail_phpmailer( $to, $to_name = '', $subject, $message, $from_reply = '', $bcc_email = '' ) {
 //	global $dir_index;
 	global $__cf_row;
 	
