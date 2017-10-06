@@ -575,7 +575,15 @@ var _global_js_eb = {
 				head.appendChild(l);
 			}(document, css_m_id));
 			*/
-			$('body').addClass('style-for-mobile');
+			
+			// mobile
+			if ( screen_width < 550 ) {
+				$('body').addClass('style-for-mobile');
+			}
+			// table
+			else {
+				$('body').addClass('style-for-mobile').addClass('style-for-table');
+			}
 			
 			
 			
@@ -673,7 +681,7 @@ var _global_js_eb = {
 			});
 		} else {
 //			$('#' + css_m_id).remove();
-			$('body').removeClass('style-for-mobile');
+			$('body').removeClass('style-for-mobile').removeClass('style-for-table');
 			
 			//
 			$('.fix-li-wit').each(function () {
