@@ -3126,7 +3126,8 @@ function _eb_load_ads (
 			$post->trv_tieude = $post->post_title;
 			
 			// mặc định là sử dụng post_excerpt, nếu không có -> sẽ sử dụng post_content
-			$post->trv_gioithieu = ( $post->post_excerpt == '' ) ? $post->post_content : nl2br( $post->post_excerpt );
+//			$post->trv_gioithieu = ( $post->post_excerpt == '' ) ? '<div class="each-to-fix-ptags">' . trim( $post->post_content ) . '</div>' : nl2br( $post->post_excerpt );
+			$post->trv_gioithieu = ( $post->post_excerpt == '' ) ? nl2br( trim( $post->post_content ) ) : nl2br( $post->post_excerpt );
 			
 			//
 			$str .=  EBE_arr_tmp( $post, $html );
