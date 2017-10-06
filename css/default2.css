@@ -1667,6 +1667,7 @@ li.footer-social-gg { background-color: #DE4B39; }
 .thread-list-status6 {
 	position: absolute;
 	z-index: 2;
+	display: none;
 }
 .thread-list-status6 {
 	background: url(../images-global/golden_time.png) center no-repeat;
