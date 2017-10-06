@@ -45,7 +45,7 @@
 .style-for-mobile .threadnode-small-left,
 .style-for-mobile .threadnode-small-right {
 	width: 100%;
-	float: none;
+	/* float: none; */
 }
 .style-for-mobile .echbay-blog100 .echbay-blog-padding,
 .style-for-mobile .echbay-blog100 .thread-list-padding,
