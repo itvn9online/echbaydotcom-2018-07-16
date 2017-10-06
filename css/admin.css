@@ -641,8 +641,10 @@ input#_eb_ads_for_category { display: none; }
 .hide-module-advanced-ads tr[data-row="_eb_ads_url"],
 .hide-module-advanced-ads tr[data-row="_eb_ads_target"],
 .hide-module-advanced-ads tr[data-row="_eb_ads_video_url"],
+/*
 .hide-module-advanced-ads tr[data-row="_eb_product_avatar"],
 .hide-module-advanced-ads tr[data-row="_eb_show_product_avatar"],
+*/
 .hide-module-advanced-ads #remove_content_style,
 .hide-module-advanced-ads #postexcerpt { display: none; }
 .hide-module-advanced-ads #postdivrich {

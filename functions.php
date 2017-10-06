@@ -23,19 +23,28 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	
 	
 	// riêng với mục quảng cáo -> kiểm tra xem có alias tới post, page, blog nào không
-	$alias_post = _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 );
-	
-	// nếu có -> nạp thông tin post, page... mà nó alias tới
-	if ( $alias_post > 0 ) {
-		$sql = _eb_q("SELECT *
-		FROM
-			`" . $wpdb->posts . "`
-		WHERE
-			ID = " . $alias_post . "
-			AND post_status = 'publish'");
-//		print_r( $sql );
-		if ( ! empty( $sql ) ) {
-			$post = $sql[0];
+	$anh_dai_dien_goc = '';
+	$ads_id = $post->ID;
+	if ( $post->post_type == 'ads' ) {
+		// lấy ảnh đại diện gốc để dùng trong trường hợp q.cáo có ảnh riêng
+		$anh_dai_dien_goc = _eb_get_post_img( $post->ID, $__cf_row['cf_ads_thumbnail_size'] );
+		
+		//
+		$alias_post = _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 );
+		
+		// nếu có -> nạp thông tin post, page... mà nó alias tới
+		if ( $alias_post > 0 ) {
+			$sql = _eb_q("SELECT *
+			FROM
+				`" . $wpdb->posts . "`
+			WHERE
+				ID = " . $alias_post . "
+				AND post_status = 'publish'");
+//			print_r( $sql );
+			// gán post mới nếu có
+			if ( ! empty( $sql ) ) {
+				$post = $sql[0];
+			}
 		}
 	}
 	
@@ -43,7 +52,21 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	// với quảng cáo thì lấy link theo kiểu quảng cáo
 	if ( $post->post_type == 'ads' ) {
 		$post->p_link = _eb_get_post_meta( $post->ID, '_eb_ads_url', true, 'javascript:;' );
+		
+		// đặt ảnh đại diện cho phần q.cáo
+		$post->trv_img = $anh_dai_dien_goc;
 	} else {
+		// sử dụng ảnh riêng của q.cáo (nếu có)
+		if ( $anh_dai_dien_goc != '' ) {
+			$post->trv_img = $anh_dai_dien_goc;
+		}
+		// sử dụng ảnh mặc định của post
+		else {
+			$post->trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_size'] );
+			$ads_id = $post->ID;
+		}
+		
+		//
 //		if ( $post->post_type == 'blog' && $post->post_excerpt == '' ) {
 			$post->post_excerpt = _eb_short_string( strip_tags ( $post->post_content ), 130 );
 //		}
@@ -176,23 +199,17 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	
 	
 	// load ảnh đại diện cho phần quảng cáo
-	if ( $post->post_type == 'ads' ) {
-		$post->trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_ads_thumbnail_size'] );
-	}
 	// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
-	else {
-		$post->trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_size'] );
-	}
-	
 	if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
 		$post->trv_table_img = $post->trv_img;
 	} else {
-		$post->trv_table_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_table_size'] );
+		$post->trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
 	}
+	
 	if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
 		$post->trv_mobile_img = $post->trv_table_img;
 	} else {
-		$post->trv_mobile_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_mobile_size'] );
+		$post->trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
 	}
 	
 	
@@ -2942,6 +2959,10 @@ function _eb_load_ads (
 			$p_link = '';
 			
 			
+			//
+			$anh_dai_dien_goc = _eb_get_post_img( $post->ID, $__cf_row['cf_ads_thumbnail_size'] );
+			$ads_id = $post->ID;
+			
 			// kiểm tra xem q.cáo có alias tới post, page... nào không
 			$alias_post = _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 );
 			
@@ -2973,17 +2994,40 @@ function _eb_load_ads (
 //			$p_link = _eb_get_ads_object( $post->ID, '_eb_ads_url', 'javascript:;' );
 //			echo $p_link . '<br>';
 			
-			// lấy ảnh từ bài viết
-			$trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_ads_thumbnail_size'] );
-			if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
-				$trv_table_img = $trv_img;
-			} else {
-				$trv_table_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_table_size'] );
+			// nếu q.cáo này không có ảnh
+			$trv_img = '';
+			if ( $anh_dai_dien_goc == '' ) {
+				// -> gán lại ID nếu nó có alias
+				if ( $alias_post > 0 ) {
+					$ads_id = $post->ID;
+					
+					// lấy ảnh theo post alias
+					$trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_ads_thumbnail_size'] );
+				}
+				// không thì bỏ qua phần lấy ảnh
+				else {
+					$ads_id = 0;
+				}
 			}
-			if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
-				$trv_mobile_img = $trv_table_img;
-			} else {
-				$trv_mobile_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_mobile_size'] );
+			else {
+				$trv_img = $anh_dai_dien_goc;
+			}
+			
+			// lấy ảnh từ bài viết
+			$trv_table_img = '';
+			$trv_mobile_img = '';
+			if ( $ads_id > 0 ) {
+				if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
+					$trv_table_img = $trv_img;
+				} else {
+					$trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
+				}
+				
+				if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
+					$trv_mobile_img = $trv_table_img;
+				} else {
+					$trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
+				}
 			}
 			
 			//

@@ -348,7 +348,7 @@ $eb_ads_custom_meta_box = array(
 	'_eb_ads_url' => 'Đường dẫn',
 	'_eb_ads_target' => 'Mở trong tab mới',
 	'_eb_ads_video_url' => 'URL Video YouTube',
-	'_eb_ads_status' => 'Hiển thị',
+	'_eb_ads_status' => 'Khu vực hiển thị',
 	'_eb_product_avatar' => 'Ảnh đại diện',
 );
 
