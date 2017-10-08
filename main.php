@@ -55,6 +55,7 @@ $set_time_for_main_cache = $set_time_for_main_cache - rand( 0, $set_time_for_mai
 //echo $__cf_row['cf_reset_cache'] . '<br>' . "\n";
 //echo mtv_id . '<br>' . "\n";
 //echo $act . '<br>' . "\n";
+//print_r($post);
 
 
 

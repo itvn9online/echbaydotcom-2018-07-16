@@ -2,6 +2,7 @@
 
 if ( have_posts() ) {
 //	echo '<!-- TEST -->' . "\n";
+//	print_r( $post );
 	
 	if ( $post->post_type == 'post' || $post->post_type == EB_BLOG_POST_TYPE ) {
 		if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'php/content.php' ) ) {
