@@ -1,6 +1,6 @@
 <br>
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Đơn hàng</a></div>
-<ul class="cf eb-admin-tab">
+<ul class="cf eb-admin-tab eb-order-filter-tab">
 	<li><a href="admin.php?page=eb-order">Tất cả</a></li>
 	<?php
 	global $arr_hd_trangthai;
@@ -8,7 +8,7 @@
 	//
 	foreach ( $arr_hd_trangthai as $k => $v ) {
 		if ( $k >= 0 ) {
-			echo '<li><a href="admin.php?page=eb-order&tab=' . $k . '">' . $v . '</a></li>';
+			echo '<li data-tab="' . $k . '"><a href="admin.php?page=eb-order&tab=' . $k . '">' . $v . '</a></li>';
 		}
 	}
 	?>

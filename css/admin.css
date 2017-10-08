@@ -26,6 +26,15 @@ body.ebdesign-no-scroll { overflow: hidden; }
 	background: #333 !important;
 	color: #fff;
 }
+.eb-order-filter-tab {
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.eb-order-filter-tab li { order: 9; }
+.eb-order-filter-tab li[data-tab="4"] { order: 99; }
+/* */
 .eb-admin-config {
 	line-height: 30px;
 	margin: 15px 0;
