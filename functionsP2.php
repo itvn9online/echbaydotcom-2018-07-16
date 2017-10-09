@@ -1376,19 +1376,21 @@ function _eb_create_page( $page_url, $page_name, $page_template = '' ) {
 		);
 		
 		// tạo page mới
-//			$page = apply_filters('yourplugin_add_new_page', $page, 'teams');
+//		$page = apply_filters('yourplugin_add_new_page', $page, 'teams');
 		$pageid = wp_insert_post ($page);
 		
 		
 		/*
 		* add template tương ứng
 		*/
+		/*
 		if ( $page_template == '' ) {
-//				$page_template = 'templates/' . $page_url . '.php';
+//			$page_template = 'templates/' . $page_url . '.php';
 			$page_template = 'templates/index.php';
 		}
 		
 		add_post_meta( $pageid, '_wp_page_template', $page_template, true );
+		*/
 	}
 }
 

@@ -9,6 +9,7 @@ $gio_vang_list = _eb_load_post( $__cf_row['cf_num_home_hot'], array(
 
 
 //
+_eb_create_page( $act, EBE_get_lang('golden_time') );
 $__cf_row ['cf_title'] = EBE_get_lang('golden_time');
 $__cf_row ['cf_keywords'] = $__cf_row ['cf_title'];
 $__cf_row ['cf_description'] = EBE_get_lang('golden_desc_time');

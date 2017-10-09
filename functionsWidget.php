@@ -92,7 +92,7 @@ function WGR_widget_home_hot ( $instance ) {
 		
 		//
 		$title = '<a href="' . $home_hot_lnk . '">' . $title . '</a>';
-		$home_hot_more = '<a href="' . $home_hot_lnk . '">Xem thêm <span>&raquo;</span></a>';
+		$home_hot_more = '<div class="home-hot-more"><a href="' . $home_hot_lnk . '">Xem thêm <span>&raquo;</span></a></div>';
 	}
 	else if ( $title == '' ) {
 		$title = EBE_get_lang('home_hot');
