@@ -22,11 +22,13 @@ if ( $__cf_row['cf_num_home_hot'] > 0 ) {
 	// nếu có dữ liệu trả về
 	if ( $home_hot != '' ) {
 		// Lấy theo mẫu của widget #home_hot
-		echo EBE_html_template( EBE_get_page_template( 'home_hot' ), array(
-			'tmp.max_width' => '',
-			'tmp.num_post_line' => '',
+//		echo EBE_html_template( EBE_get_page_template( 'home_hot' ), array(
+		echo WGR_show_home_hot( array(
+//			'tmp.max_width' => '',
+//			'tmp.num_post_line' => '',
 			'tmp.home_hot_title' => EBE_get_lang('home_hot'),
-			'tmp.description' => '',
+//			'tmp.home_hot_more' => '',
+//			'tmp.description' => '',
 			'tmp.home_hot' => $home_hot
 		) );
 	}

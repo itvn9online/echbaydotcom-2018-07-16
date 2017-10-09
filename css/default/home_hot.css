@@ -26,6 +26,8 @@
 	bottom: -2px;
 	left: 0;
 }
+.home-hot-title,
+.home-hot-title a { color: #333; }
 /*
 .home-hot-title i {
 	display: inline-block;

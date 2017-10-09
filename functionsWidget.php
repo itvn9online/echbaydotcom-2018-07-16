@@ -76,16 +76,23 @@ function WGR_widget_home_hot ( $instance ) {
 	
 	//
 	$str_home_hot = '';
+	$home_hot_lnk = '';
+	$home_hot_more = '';
 	
 	// nếu có phân nhóm -> lấy theo phân nhóm
 	if ( $cat_ids > 0 ) {
 		$args['cat'] = $cat_ids;
+		$home_hot_lnk = _eb_c_link( $cat_ids, $cat_type );
 		
 		// lấy thông tin phân nhóm luôn
 		if ( $title == '' ) {
-			$categories = get_term_by('id', $cat_ids, 'category');
+			$categories = get_term_by('id', $cat_ids, $cat_type);
 			$title = $categories->name;
 		}
+		
+		//
+		$title = '<a href="' . $home_hot_lnk . '">' . $title . '</a>';
+		$home_hot_more = '<a href="' . $home_hot_lnk . '">Xem thêm <span>&raquo;</span></a>';
 	}
 	else if ( $title == '' ) {
 		$title = EBE_get_lang('home_hot');
@@ -115,16 +122,36 @@ function WGR_widget_home_hot ( $instance ) {
 	//
 	echo '<div class="' . $custom_style . '">';
 	
-	echo EBE_html_template( EBE_get_page_template( $html_template ), array(
+//	echo EBE_html_template( EBE_get_page_template( $html_template ), array(
+	echo WGR_show_home_hot( array(
 		'tmp.max_width' => $max_width,
 		'tmp.num_post_line' => $num_line,
 		'tmp.home_hot_title' => $title,
+		'tmp.home_hot_more' => $home_hot_more,
 		'tmp.description' => $description,
 		'tmp.home_hot' => $str_home_hot,
-	) );
+//	) );
+	), $html_template );
 	
 	echo '</div>';
 	
+}
+
+
+// hiển thị phần home hot theo chuẩn nhất định
+function WGR_show_home_hot ( $arr, $tmp = 'home_hot' ) {
+	// nạp html được truyền vào
+	$html = EBE_html_template( EBE_get_page_template( $tmp ), $arr );
+	
+	// các đoạn HTML mặc định cho về trống nếu chưa có
+	return EBE_html_template( $html, array(
+		'tmp.max_width' => '',
+		'tmp.num_post_line' => '',
+		'tmp.home_hot_title' => '',
+		'tmp.home_hot_more' => '',
+		'tmp.description' => '',
+		'tmp.home_hot' => '',
+	) );
 }
 
 

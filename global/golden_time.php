@@ -26,12 +26,13 @@ if ( $gio_vang_list != '' ) {
 //	echo $gio_vang_list;
 	
 	// Lấy theo mẫu của widget #home_hot
-	$main_content = EBE_html_template( EBE_get_page_template( 'home_hot' ), array(
+//	$main_content = EBE_html_template( EBE_get_page_template( 'home_hot' ), array(
+	$main_content = WGR_show_home_hot( array(
 //		'tmp.custom_blog_css' => $__cf_row['cf_blog_class_style'],
 //		'tmp.max_width' => '',
-		'tmp.num_post_line' => '',
+//		'tmp.num_post_line' => '',
 		'tmp.home_hot_title' => EBE_get_lang('golden_time'),
-		'tmp.description' => '',
+//		'tmp.description' => '',
 		'tmp.home_hot' => $gio_vang_list
 	) );
 	
