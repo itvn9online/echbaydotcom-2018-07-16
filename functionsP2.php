@@ -1378,7 +1378,7 @@ function WGR_create_page( $page_url, $page_name ) {
 //			'post_content' => 'Vui lòng không xóa hoặc thay đổi bất kỳ điều gì trong trang này.',
 //			'post_content' => 'Đây là trang dùng để chủ động nhập nội dung cho các bộ thẻ META ở phía dưới. Hãy điều chỉnh nó cho phù hợp!',
 			'post_content' => '',
-			'post_excerpt' => 'Đây là trang tĩnh, dùng để chủ động thêm nội dung vào các trang đã được fixed cứng bởi code. Bạn có thể thêm nội dung tùy chỉnh vào ô Nội dung ở trên và bổ các bộ thẻ META nếu thấy cần thiết.',
+			'post_excerpt' => 'Đây là trang tĩnh, dùng để chủ động thêm nội dung vào các trang đã được fixed cứng bởi code. Bạn có thể thêm nội dung tùy chỉnh vào ô Nội dung ở trên và bổ sung các bộ thẻ META nếu thấy cần thiết.',
 			'post_parent' => 0,
 			'post_author' => mtv_id,
 			'post_status' => 'publish',

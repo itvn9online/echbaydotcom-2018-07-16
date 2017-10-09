@@ -3,7 +3,13 @@
 
 
 // chế độ index website
-if ( $__cf_row ["cf_blog_public"] == 0 ) {
+// đối với các trang riêng của plugin
+if ( $act != '' && isset( $arr_active_for_404_page[ $act ] ) ) {
+	if ( $__cf_row ["cf_blog_public"] == 0 ) {
+		echo '<meta name="robots" content="noindex,follow" />';
+	}
+}
+else if ( $__cf_row ["cf_blog_public"] == 0 ) {
 	// chỉ áp dụng khi giá trị của cf_blog_public khác với option blog_public
 	if ( get_option( 'blog_public' ) != $__cf_row ["cf_blog_public"] ) {
 //		wp_no_robots();

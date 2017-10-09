@@ -5,7 +5,7 @@
 include EB_THEME_PLUGIN_INDEX . 'global/page_static.php';
 
 
-//
+// giờ vàng thì vẫn cho index bình thường
 $__cf_row ["cf_blog_public"] = 1;
 
 
