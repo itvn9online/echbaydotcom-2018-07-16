@@ -309,7 +309,7 @@ $structured_data_post_title = str_replace( '"', '&quot;', $__post->post_title );
 if ( $trv_giamoi > 0 ) {
 	
 	// giá cho coc coc đỡ hiển thị phần so sánh giá khi người dùng truy cập bằng coc coc
-	$trv_coccoc_giamoi = $trv_giamoi/ 100 * 60;
+	$trv_coccoc_giamoi = $trv_giamoi/ 100 * 62;
 	
 	//
 	$structured_data_detail = '
