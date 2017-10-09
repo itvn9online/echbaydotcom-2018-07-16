@@ -1,6 +1,10 @@
 <?php
 
 
+// gọi tới file dùng chung của tất cả các custom page
+include EB_THEME_PLUGIN_INDEX . 'global/page_static.php';
+
+
 //
 $gio_vang_list = _eb_load_post( $__cf_row['cf_num_home_hot'], array(
 	'meta_key' => '_eb_product_status',
@@ -8,8 +12,7 @@ $gio_vang_list = _eb_load_post( $__cf_row['cf_num_home_hot'], array(
 ) );
 
 
-//
-_eb_create_page( $act, EBE_get_lang('golden_time') );
+/*
 $__cf_row ['cf_title'] = EBE_get_lang('golden_time');
 $__cf_row ['cf_keywords'] = $__cf_row ['cf_title'];
 $__cf_row ['cf_description'] = EBE_get_lang('golden_desc_time');
@@ -17,8 +20,9 @@ $__cf_row ['cf_description'] = EBE_get_lang('golden_desc_time');
 
 //
 $url_og_url = web_link . $act;
-$schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, 'Giờ vàng' );
 $dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
+*/
+$schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, 'Giờ vàng' );
 
 
 //

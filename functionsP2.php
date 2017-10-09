@@ -1355,12 +1355,56 @@ function _eb_create_account_auto ( $arr = array() ) {
 /*
 * Tự động tạo trang nếu chưa có
 */
+function WGR_create_page( $page_url, $page_name ) {
+	global $wpdb;
+	
+	//
+	if ( $page_url == '' || $page_name == '' ) {
+		die('Plase set value for page_url or page_name');
+	}
+	
+	$sql = _eb_q( "SELECT *
+	FROM
+		`" . $wpdb->posts . "`
+	WHERE
+		post_name = '" . $page_url . "'" );
+//	print_r( $sql );
+	
+	// nếu chưa có thì tạo mới
+	if ( empty( $sql ) ) {
+		$page = array(
+			'post_title' => $page_name,
+			'post_type' => 'page',
+//			'post_content' => 'Vui lòng không xóa hoặc thay đổi bất kỳ điều gì trong trang này.',
+			'post_content' => 'Đây là trang dùng để chủ động nhập nội dung cho các bộ thẻ META ở phía dưới. Hãy điều chỉnh nó cho phù hợp!',
+			'post_parent' => 0,
+			'post_author' => mtv_id,
+			'post_status' => 'publish',
+			'post_name' => $page_url,
+		);
+		$pageid = wp_insert_post ($page);
+		
+		//
+		if( !is_wp_error($pageid) ){
+			// sau đó trả về page vừa được insert
+			return WGR_create_page( $page_url, $page_name );
+		}
+		//there was an error in the post insertion, 
+		else {
+			echo $pageid->get_error_message(); exit();
+		}
+	}
+	
+	//
+	return $sql[0];
+}
+
 function _eb_create_page( $page_url, $page_name, $page_template = '' ) {
 	global $wpdb;
 	
 	$name = $wpdb->get_var("SELECT ID
 	FROM
-		" . $wpdb->posts . "
+		`" . $wpdb->posts . "`
 	WHERE
 		post_name = '" . $page_url . "'");
 	
@@ -1368,7 +1412,8 @@ function _eb_create_page( $page_url, $page_name, $page_template = '' ) {
 		$page = array(
 			'post_title' => $page_name,
 			'post_type' => 'page',
-			'post_content' => 'Vui lòng không xóa hoặc thay đổi bất kỳ điều gì trong trang này.',
+//			'post_content' => 'Vui lòng không xóa hoặc thay đổi bất kỳ điều gì trong trang này.',
+			'post_content' => 'Đây là trang dùng để chủ động nhập nội dung cho các bộ thẻ META ở phía dưới. Hãy điều chỉnh nó cho phù hợp!',
 			'post_parent' => 0,
 			'post_author' => mtv_id,
 			'post_status' => 'publish',
