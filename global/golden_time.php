@@ -6,6 +6,10 @@ include EB_THEME_PLUGIN_INDEX . 'global/page_static.php';
 
 
 //
+$__cf_row ["cf_blog_public"] = 1;
+
+
+//
 $gio_vang_list = _eb_load_post( $__cf_row['cf_num_home_hot'], array(
 	'meta_key' => '_eb_product_status',
 	'meta_value' => 6
