@@ -308,6 +308,10 @@ $structured_data_post_title = str_replace( '"', '&quot;', $__post->post_title );
 
 if ( $trv_giamoi > 0 ) {
 	
+	// giá cho coc coc đỡ hiển thị phần so sánh giá khi người dùng truy cập bằng coc coc
+	$trv_coccoc_giamoi = $trv_giamoi/ 100 * 70;
+	
+	//
 	$structured_data_detail = '
 <script type="application/ld+json">
 {
@@ -330,7 +334,7 @@ if ( $trv_giamoi > 0 ) {
 	"offers": {
 		"@type": "Offer",
 		"priceCurrency": "VND",
-		"price": "' .$trv_giamoi. '",
+		"price": "' .$trv_coccoc_giamoi. '",
 		"priceValidUntil": "' .date( 'Y-m-d', $schema_priceValidUntil ). '",
 		/*
 		"seller": {
