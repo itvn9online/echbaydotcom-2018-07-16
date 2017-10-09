@@ -1586,7 +1586,8 @@ function ___eb_details_post_run ( r ) {
 	};
 	if ( typeof product_js.gm == 'number' && product_js.gm > 0 ) {
 		track_arr.value = product_js.gm;
-		track_arr.currency = 'VND';
+//		track_arr.currency = 'VND';
+		track_arr.currency = cf_current_sd_price;
 	}
 	_global_js_eb.fb_track( 'ViewContent', track_arr );
 	

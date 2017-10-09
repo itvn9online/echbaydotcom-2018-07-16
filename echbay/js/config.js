@@ -358,6 +358,32 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_post_big_banner' );
 	show_note_for_checkbox_config( 'cf_arrow_big_banner' );
 	show_note_for_checkbox_config( 'cf_auto_get_ads_size' );
+	
+	
+	//
+	$('select[name="cf_current_price"]').change(function () {
+		var a = $(this).val() || '',
+			new_a = 'VND';
+		
+		// tạo định dạng tiền tệ tương ứng
+		if ( a == '' || a == 'vn/0111' || a == 'VN/00d0' ) {
+		}
+		else if ( a == '$' ) {
+			new_a = 'USD';
+		}
+		// nhân dân tệ
+		else if ( a == '/00A5' ) {
+			new_a = 'CNY';
+		}
+		else {
+			new_a = a;
+		}
+//		console.log( a );
+//		console.log( new_a );
+		
+		$('#cf_current_sd_price_show, #cf_current_sd_price').val( new_a );
+		
+	});
 }
 // config_theme
 else {

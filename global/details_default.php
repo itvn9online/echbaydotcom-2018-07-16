@@ -333,7 +333,8 @@ if ( $trv_giamoi > 0 ) {
 	*/
 	"offers": {
 		"@type": "Offer",
-		"priceCurrency": "VND",
+//		"priceCurrency": "VND",
+		"priceCurrency": "' . $__cf_row['cf_current_sd_price'] . '",
 		"price": "' .$trv_coccoc_giamoi. '",
 		"priceValidUntil": "' .date( 'Y-m-d', $schema_priceValidUntil ). '",
 		/*

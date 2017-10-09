@@ -82,7 +82,8 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr ) {
 		content_type: "product",
 //		value: arr[i].price,
 		value: tong_tien,
-		currency: "VND"
+//		currency: "VND"
+		currency: cf_current_sd_price
 	});
 	
 	// google analytics track -> by order

@@ -161,6 +161,8 @@ $__cf_row_default = array(
 	// vị trí của đơn vị tiền tệ
 	'cf_current_price' => '',
 	'cf_current_price_before' => 0,
+	// Đơn vị tiền tệ cho phần structured data
+	'cf_current_sd_price' => 'VND',
 	
 	// ẩn các menu quan trọng trong admin
 	'cf_hide_supper_admin_menu' => 1,
