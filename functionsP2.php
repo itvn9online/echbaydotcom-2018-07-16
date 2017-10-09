@@ -2870,7 +2870,7 @@ function EBE_get_html_search () {
 <div class="div-search-margin">
 	<div class="div-search">
 		<form role="search" method="get" action="' . web_link . '">
-			<input type="search" placeholder="Tìm kiếm" value="' . $current_search_key . '" name="s" aria-required="true" required>
+			<input type="search" placeholder="' . EBE_get_lang('searchp') . '" value="' . $current_search_key . '" name="s" aria-required="true" required>
 			<input type="hidden" name="post_type" value="post" />
 			<button type="submit" class="cur default-bg"><i class="fa fa-search"></i></button>
 		</form>

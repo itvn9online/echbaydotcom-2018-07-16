@@ -9,9 +9,12 @@ define( 'eb_key_for_site_lang', 'lang_eb_' );
 
 //
 $___eb_lang[eb_key_for_site_lang . 'home'] = 'Trang chủ';
+
+//
 $___eb_lang[eb_key_for_site_lang . 'search'] = 'Tìm kiếm';
 // placeholder for search
 $___eb_lang[eb_key_for_site_lang . 'searchp'] = $___eb_lang[eb_key_for_site_lang . 'search'] . ' sản phẩm';
+
 $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_site_lang . 'cart'];
 $___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Liên hệ';
