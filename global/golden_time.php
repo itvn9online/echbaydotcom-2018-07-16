@@ -47,7 +47,7 @@ if ( $gio_vang_list != '' ) {
 	
 	
 	//
-	$main_content = '<div class="golden_time-page">' . $main_content . '</div>';
+	$main_content = '<div class="golden_time-page">' . $main_content . '</div>' . $__post->post_content;
 }
 else {
 	include EB_THEME_PLUGIN_INDEX . 'global/content-none.php';
