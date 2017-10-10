@@ -137,14 +137,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	_eb_widget_number_of_posts_inline( $field_name['num_line'], $num_line, array(
-		'' => 'Mặc định',
-		'thread-list100' => 'Một',
-		'thread-list50' => 'Hai',
-		'thread-list33' => 'Ba',
-		'thread-list25' => 'Bốn',
-		'thread-list20' => 'Năm',
-	) );
+	_eb_widget_number_of_posts_inline( $field_name['num_line'], $num_line );
 	
 	
 	//
@@ -341,11 +334,19 @@ function _eb_widget_style_for_post_cloumn ( $select_name, $select_val ) {
 
 function _eb_widget_number_of_posts_inline ( $select_name, $select_val, $default_arr_select = array (
 	'' => 'Mặc định',
+	'thread-list100' => 'Một',
+	'thread-list50' => 'Hai',
+	'thread-list33' => 'Ba',
+	'thread-list25' => 'Bốn',
+	'thread-list20' => 'Năm'
+	/*
+	'' => 'Mặc định',
 	'echbay-blog100' => 'Một',
 	'echbay-blog50' => 'Hai',
 	'echbay-blog33' => 'Ba',
 	'echbay-blog25' => 'Bốn',
-	'echbay-blog20' => 'Năm',
+	'echbay-blog20' => 'Năm'
+	*/
 ) ) {
 	echo '<p>Number of posts inline: ';
 	

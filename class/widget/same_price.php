@@ -21,6 +21,7 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 			'min_price' => 10,
 			'post_number' => 5,
 			'custom_style' => '',
+			'num_line' => '',
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -55,6 +56,9 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 		_eb_widget_echo_number_of_posts_to_show( $this->get_field_name ( 'post_number' ), $post_number );
 		
 		
+		_eb_widget_number_of_posts_inline( $this->get_field_name('num_line'), $num_line );
+		
+		
 		echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $this->get_field_name('custom_style') . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng.</p>';
 		
 	}
@@ -79,6 +83,8 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 		$min_price = isset( $instance ['min_price'] ) ? $instance ['min_price'] : 0;
 		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 5;
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
+		$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
+//		echo $num_line;
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
@@ -113,6 +119,7 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 			echo '<div class="' . $custom_style . '">';
 			
 			echo WGR_show_home_hot( array(
+				'tmp.num_post_line' => $num_line,
 				'tmp.home_hot_title' => $title,
 				'tmp.home_hot' => $str_same_price
 			) );
