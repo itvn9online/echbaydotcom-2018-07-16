@@ -13,6 +13,8 @@
 add_action ( 'widgets_init', '___add_echbay_widget' );
 function ___add_echbay_widget() {
 	
+	register_widget ( '___echbay_widget_same_same_price' );
+	
 	register_widget ( '___echbay_widget_random_product' );
 	
 	register_widget ( '___echbay_widget_google_map' );
@@ -745,6 +747,7 @@ include EB_THEME_CORE . 'widget/contact.php';
 include EB_THEME_CORE . 'widget/search.php';
 include EB_THEME_CORE . 'widget/banner_big.php';
 include EB_THEME_CORE . 'widget/go_to.php';
+include EB_THEME_CORE . 'widget/same_price.php';
 
 
 
