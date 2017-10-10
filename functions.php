@@ -68,8 +68,9 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		
 		//
 //		if ( $post->post_type == 'blog' && $post->post_excerpt == '' ) {
+		if ( $post->post_excerpt == '' ) {
 			$post->post_excerpt = _eb_short_string( strip_tags ( $post->post_content ), 130 );
-//		}
+		}
 		
 		//
 		$post->p_link = _eb_p_link( $post->ID );

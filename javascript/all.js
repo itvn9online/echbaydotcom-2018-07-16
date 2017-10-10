@@ -1471,7 +1471,7 @@ function EBE_set_default_img_avt () {
 		// nếu không có -> lấy trong gallery
 		if ( a == '' ) {
 			var a = $( '#_eb_product_gallery_ifr' ).contents().find( 'img:first' ).attr('src') || '';
-//			console.log(a);
+			console.log(a);
 		}
 		
 		if ( a != '' ) {
