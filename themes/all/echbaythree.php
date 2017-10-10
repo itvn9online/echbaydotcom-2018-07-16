@@ -22,7 +22,7 @@ $eb_all_themes_support["echbaythree"]["footer"][] = "echbaythree-footer1.php";
 $eb_all_themes_support["echbaythree"]["footer"][] = "echbaythree-footer2.php";
 $eb_all_themes_support["echbaythree"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["echbaythree"]["home"][] = "echbaythree-home1.php";
+//$eb_all_themes_support["echbaythree"]["home"][] = "echbaythree-home1.php";
 $eb_all_themes_support["echbaythree"]["home"][] = "echbaytwo-home1.php";
 $eb_all_themes_support["echbaythree"]["home"][] = "echbaythree-home2.php";
 $eb_all_themes_support["echbaythree"]["home"][] = "home_widget.php";
