@@ -31,7 +31,10 @@ function WGR_quick_search_get_js_post ( $type = 'post', $limit_post_get = 1000 )
 function WGR_quick_search_set_content ( $data ) {
 	global $quick_search_in_cache;
 	
-	file_put_contents( $quick_search_in_cache, $data . "\n", FILE_APPEND ) or die('ERROR: append quick_search cache file');
+	if ( ! file_put_contents( $quick_search_in_cache, $data . "\n", FILE_APPEND ) ) {
+		_eb_remove_file( $quick_search_in_cache );
+		die('ERROR: append quick_search cache file');
+	}
 }
 
 
@@ -48,7 +51,8 @@ $get_list_quick_search = _eb_get_static_html ( $strCacheFilter, '', '', 600 );
 if ( $get_list_quick_search == false || eb_code_tester == true ) {
 	
 	// tạo file mới, với dòng comment đầu tiên -> đỡ lỗi cho JS
-	file_put_contents( $quick_search_in_cache, '/* */' ) or die('ERROR: write comment quick_search cache file');
+//	file_put_contents( $quick_search_in_cache, '/* */' ) or die('ERROR: write comment quick_search cache file');
+	_eb_create_file( $quick_search_in_cache, '/* */' );
 	
 	
 	
