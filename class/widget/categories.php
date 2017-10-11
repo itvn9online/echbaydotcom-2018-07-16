@@ -83,37 +83,8 @@ function WGR_custom_check_post_in_multi_taxonomy_v1 ( $cat1, $cat2 ) {
 	return 1;
 }
 
-function WGR_custom_check_post_in_multi_taxonomy ( $cat1, $cat2 ) {
+function WGR_custom_check_post_in_multi_taxonomy_v2 ( $cat1, $cat2 ) {
 	global $wpdb;
-	
-	// lấy và chạy vòng lặp để so dữ liệu
-	$sql = "SELECT object_id
-	FROM
-		`" . $wpdb->term_relationships . "`
-	WHERE
-		term_taxonomy_id = " . $cat1 . ' OR term_taxonomy_id = ' . $cat2 . "
-	ORDER BY
-		object_id DESC
-	LIMIT 0, 500";
-//	echo $sql . '<br>' . "\n";
-	$sql = _eb_q( $sql );
-//	print_r( $sql );
-	
-	$num = 0;
-	foreach ( $sql as $v ) {
-		// dùng chính object_id để order -> chạy vòng lặp sẽ phát hiện ra sản phẩm trùng nhau luôn
-		if ( $v->object_id == $num ) {
-//			echo _eb_p_link( $v->object_id ) . '<br>' . "\n";
-			return 1;
-		}
-		$num = $v->object_id;
-	}
-	
-	//
-	return 0;
-	
-	
-	
 	
 	//
 //	$strFilter = " AND `" . $wpdb->term_taxonomy . "`.term_id IN (" . $cat1 . ',' . $cat2 . ") ";
@@ -149,6 +120,37 @@ function WGR_custom_check_post_in_multi_taxonomy ( $cat1, $cat2 ) {
 	
 	//
 	return 1;
+}
+
+function WGR_custom_check_post_in_multi_taxonomy ( $cat1, $cat2 ) {
+	global $wpdb;
+	
+	// lấy và chạy vòng lặp để so dữ liệu
+	$sql = "SELECT object_id
+	FROM
+		`" . $wpdb->term_relationships . "`
+	WHERE
+		term_taxonomy_id = " . $cat1 . " OR term_taxonomy_id = " . $cat2 . "
+	ORDER BY
+		object_id DESC
+	LIMIT 0, 500";
+//	echo $sql . '<br>' . "\n";
+	$sql = _eb_q( $sql );
+//	print_r( $sql );
+	
+	$num = 0;
+	foreach ( $sql as $v ) {
+		// dùng chính object_id để order -> chạy vòng lặp sẽ phát hiện ra sản phẩm trùng nhau luôn
+		if ( $v->object_id == $num ) {
+//			echo _eb_p_link( $v->object_id ) . '<br>' . "\n";
+			return 1;
+		}
+		$num = $v->object_id;
+	}
+	
+	//
+	return 0;
+	
 }
 
 function WGR_check_post_in_multi_taxonomy ( $a ) {
@@ -293,7 +295,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		$input_name = $this->get_field_name ( 'show_for_search_advanced' );
 //		echo $instance[ 'show_for_search_advanced' ];
 		
-		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'show_for_search_advanced' ], 'Chỉ hiện thị nhóm có sản phẩm (tìm kiếm nâng cao)' );
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'show_for_search_advanced' ], 'Chỉ hiện thị nhóm có sản phẩm (tìm kiếm nâng cao) <span class="redcolor small d-block">* Tính năng này có thể làm chậm website của bạn!</span>' );
 		
 		
 		//

@@ -19,6 +19,7 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 			'max_price' => '1000000',
 			'line_price' => 5,
 			'custom_price' => '',
+			'show_for_search_advanced' => '',
 			'list_tyle' => '',
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
@@ -28,21 +29,23 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		
 		echo '<p>Title: <input type="text" class="widefat" name="' . $this->get_field_name ( 'title' ) . '" value="' . $title . '" /></p>';
 		
+		echo '<hr>';
+		
 		echo '<p>Min price: <input type="number" class="widefat" name="' . $this->get_field_name ( 'min_price' ) . '" value="' . $min_price . '" placeholder="0" /></p>';
 		
 		echo '<p>Max price: <input type="number" class="widefat" name="' . $this->get_field_name ( 'max_price' ) . '" value="' . $max_price . '" placeholder="1000000" /></p>';
 		
 		echo '<p>Number of line: <input type="number" class="widefat" name="' . $this->get_field_name ( 'line_price' ) . '" value="' . $line_price . '" placeholder="5" />
-		Nhập vào giá trị nhỏ nhất (mặc định là 0) và giá trị lớn nhất, hệ thống sẽ tự tính toán các bước giá theo hệ số tiền: 10, 20, 50 và hiển thị tương ứng.</p>';
+		<span class="small">Nhập vào giá trị nhỏ nhất (mặc định là 0) và giá trị lớn nhất, hệ thống sẽ tự tính toán các bước giá theo hệ số tiền: 10, 20, 50 và hiển thị tương ứng.</span></p>';
+		
+		echo '<hr>';
 		
 		//
-		echo '<p>Custom price: <textarea class="widefat" name="' . $this->get_field_name ( 'custom_price' ) . '" placeholder="Can enter multiple price, each price separated by a newline (press Enter)." style="height: 150px;">' . $custom_price . '</textarea>
-		Để chủ động trong việc tạo khoảng giá, có thể tự nhập các khoảng ở đây, mỗi khoảng cách nhau bởi dấu xuống dòng. VD:<br>
+		echo '<p>Custom price: <textarea class="widefat" name="' . $this->get_field_name ( 'custom_price' ) . '" placeholder="Can enter multiple price, each price separated by a newline (press Enter)." style="height: 110px;">' . $custom_price . '</textarea>
+		<span class="small">Để chủ động trong việc tạo khoảng giá, có thể tự nhập các khoảng ở đây, mỗi khoảng cách nhau bởi dấu xuống dòng. VD:<br>
 		1000000<br>
 		2000000<br>
-		3000000<br>
-		5000000<br>
-		10000000</p>';
+		3000000</span></p>';
 		
 		
 		//
@@ -50,6 +53,12 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 //		echo $instance[ 'list_tyle' ];
 		
 		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'list_tyle' ], 'Hiển thị dưới dạng Select Box' );
+		
+		
+		$input_name = $this->get_field_name ( 'show_for_search_advanced' );
+//		echo $instance[ 'show_for_search_advanced' ];
+		
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'show_for_search_advanced' ], 'Tự động lấy khoảng giá tối đa (tìm kiếm nâng cao) <span class="redcolor small d-block">* Tính năng này có thể làm chậm website của bạn!</span>' );
 		
 	}
 	
@@ -59,7 +68,8 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
-//		global $func;
+		global $cid;
+		global $wpdb;
 		
 		extract ( $args );
 		
@@ -69,13 +79,64 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		$line_price = isset( $instance ['line_price'] ) ? $instance ['line_price'] : 5;
 		$custom_price = isset( $instance ['custom_price'] ) ? $instance ['custom_price'] : '';
 //		echo $custom_price;
+		
 		$list_tyle = isset( $instance ['list_tyle'] ) ? $instance ['list_tyle'] : 'off';
 		$list_tyle = ( $list_tyle == 'on' ) ? 'widget-category-selectbox' : '';
 		$list_tyle .= ' widget-category-padding';
 		
+		$show_for_search_advanced = isset( $instance ['show_for_search_advanced'] ) ? $instance ['show_for_search_advanced'] : 'off';
+		$show_for_search_advanced = ( $show_for_search_advanced == 'on' ) ? true : false;
+		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
 //		echo $custom_price;
+		
+		
+		
+		
+		// lấy giá lớn nhất theo mỗi nhóm
+		$max_price_by_category = 0;
+//		if ( mtv_id == 1 ) {
+		
+		if ( $show_for_search_advanced == true && $cid > 0 ) {
+			// lấy giá lớn nhất của sản phẩm -> phải convert meta_value sang number mới lấy được
+			// https://stackoverflow.com/questions/5417381/mysql-sort-string-number
+			$sql = "SELECT post_id, meta_value
+			FROM
+				`" . $wpdb->postmeta . "`
+			WHERE
+				meta_key = '_eb_product_price'
+				AND post_id IN ( select ID
+								from
+									`" . $wpdb->posts . "`
+								where
+									post_type = 'post'
+									and post_status = 'publish'
+									and ID in ( select object_id
+												from
+													`" . $wpdb->term_relationships . "`
+												where
+													term_taxonomy_id = " . $cid . " )
+								)
+			ORDER BY
+				meta_value * 1 DESC
+			LIMIT 0, 1";
+//			echo $sql . '<br>' . "\n";
+			$sql = _eb_q( $sql );
+//			print_r( $sql );
+			
+			if ( ! empty( $sql ) ) {
+//				echo _eb_p_link( $sql[0]->post_id ) . '<br>' . "\n";
+				
+				$max_price_by_category = $sql[0]->meta_value;
+			}
+		}
+//		echo number_format( $max_price_by_category ) . '<br>' . "\n";
+		
+//		}
+		
+		
+		
 		
 		//
 		echo '<div class="' . trim( $list_tyle ) . '">';
@@ -91,20 +152,16 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		echo '<li><a href="#" data-price="">Tất cả khoảng giá</a></li>';
 		
 		
+		
+		// giá tối đa tự động
+		if ( $max_price_by_category > 0 && $max_price > $max_price_by_category ) {
+			$max_price = $max_price_by_category;
+		}
+		
 		// lấy khoảng giá
 		$trung_binh = $max_price/ $line_price;
 		$first_price = 0;
 		
-		//
-		$arr_list_price = array(
-			10,
-			20,
-			50
-		);
-		for ( $i = 0; $i < 25; $i++ ) {
-			$arr_list_price[] = $arr_list_price[$i] * 10;
-		}
-//		print_r( $arr_list_price );
 		
 		//
 		$j = 0;
@@ -117,6 +174,11 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 			
 			foreach ( $custom_price as $v ) {
 				$v = _eb_number_only( $v );
+				
+				// nếu gặp khoảng giá tối đa rồi thì bỏ qua luôn
+				if ( $max_price_by_category > 0 && $v > $max_price_by_category ) {
+					break;
+				}
 				
 				//
 				if ( $v > 0 ) {
@@ -147,6 +209,27 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		}
 		// Tạo giá tự động
 		else {
+			
+			//
+			$arr_list_price = array(
+				10,
+				20,
+//				30,
+//				40,
+				50
+			);
+			for ( $i = 0; $i < 25; $i++ ) {
+				$a = $arr_list_price[$i] * 10;
+				if ( $a > $max_price ) {
+					break;
+				}
+				
+				$arr_list_price[] = $a;
+			}
+//			print_r( $arr_list_price );
+//			echo number_format( $trung_binh ) . '<br>' . "\n";
+			
+			//
 			foreach ( $arr_list_price as $k => $v ) {
 				if ( $v >= $trung_binh ) {
 					// Bắt đầu
@@ -162,6 +245,7 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 						$first_price = $v;
 					}
 					// kết thúc
+					/*
 					else {
 						// chuẩn bị kết thúc
 						echo '<li><a href="#" data-price="' . $first_price . '-' . $max_price . '"><span class="ebe-currency">' . number_format( $first_price ) . '</span> - <span class="ebe-currency">' . number_format( $max_price ) . '</span></a></li>';
@@ -172,10 +256,15 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 						// thoát
 						break;
 					}
+					*/
 					
 					$j++;
 				}
 			}
+			
+			// bonus thêm giá cuối
+			echo '<li><a href="#" data-price="-' . $first_price . '">Trên <span class="ebe-currency">' . number_format( $first_price )  . '</span></a></li>';
+			
 		}
 		
 		
