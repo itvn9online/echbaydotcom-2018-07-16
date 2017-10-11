@@ -67,6 +67,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			'list_tyle' => '',
 			'get_child' => '',
 			'get_parent' => '',
+			'show_for_search_advanced' => '',
 			'dynamic_tag' => 'h2',
 			'custom_style' => ''
 		);
@@ -167,6 +168,12 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'get_parent' ], 'Tự tìm các nhóm cùng cha' );
 		
 		
+		$input_name = $this->get_field_name ( 'show_for_search_advanced' );
+//		echo $instance[ 'show_for_search_advanced' ];
+		
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'show_for_search_advanced' ], 'Chỉ hiện thị nhóm có sản phẩm (tìm kiếm nâng cao)' );
+		
+		
 		//
 		echo '<p>HTML tag cho tiêu đề: ';
 		
@@ -229,6 +236,9 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		$get_parent = isset( $instance ['get_parent'] ) ? $instance ['get_parent'] : 'off';
 		$get_parent = ( $get_parent == 'on' ) ? true : false;
+		
+		$show_for_search_advanced = isset( $instance ['show_for_search_advanced'] ) ? $instance ['show_for_search_advanced'] : 'off';
+		$show_for_search_advanced = ( $show_for_search_advanced == 'on' ) ? true : false;
 		
 		$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';
 		$dynamic_tag_begin = '';

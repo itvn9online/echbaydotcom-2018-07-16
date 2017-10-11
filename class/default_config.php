@@ -310,6 +310,13 @@ $__cf_row_default = array(
 	
 	
 	
+	// thanh toán trực tuyến
+	'cf_baokim_email' => '',
+	'cf_nganluong_email' => '',
+	'cf_paypal_email' => '',
+	
+	
+	
 	// thư mục gốc của tài khoản FTP
 	'cf_ftp_root_dir' => '',
 	
