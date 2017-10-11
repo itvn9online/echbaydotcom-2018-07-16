@@ -91,10 +91,10 @@ function WGR_custom_check_post_in_multi_taxonomy ( $cat1, $cat2 ) {
 	FROM
 		`" . $wpdb->term_relationships . "`
 	WHERE
-		term_taxonomy_id IN (" . $cat1 . ',' . $cat2 . ")
+		term_taxonomy_id = " . $cat1 . ' OR term_taxonomy_id = ' . $cat2 . "
 	ORDER BY
 		object_id DESC
-	LIMIT 0, 5000";
+	LIMIT 0, 500";
 //	echo $sql . '<br>' . "\n";
 	$sql = _eb_q( $sql );
 //	print_r( $sql );
