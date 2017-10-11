@@ -48,6 +48,7 @@ if ( $switch_taxonomy != '' ) {
 	
 	//
 	$cid = $__category->term_id;
+	$eb_wp_taxonomy = $__category->taxonomy;
 	
 	
 	
