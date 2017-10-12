@@ -661,6 +661,19 @@ input#_eb_ads_for_category { display: none; }
 	overflow: hidden;
 	visibility: hidden;
 }
+/*
+* Chỉnh lại icon cho menu của EchBay
+* https://developer.wordpress.org/resource/dashicons/
+*/
+#toplevel_page_eb-order .dashicons-admin-generic:before,
+/* #toplevel_page_echbay-plugins-menu .dashicons-admin-generic:before, */
+#menu-posts-ads .dashicons-admin-post:before,
+#menu-posts-blog .dashicons-admin-post:before { font-family: FontAwesome; }
+#toplevel_page_eb-order .dashicons-admin-generic:before { content: "\f06c"; }
+#menu-posts-ads .dashicons-admin-post:before { content: "\f03e"; }
+#menu-posts-blog .dashicons-admin-post:before { content: "\f1ea"; }
+#toplevel_page_echbay-plugins-menu .dashicons-admin-generic:before { /* content: "\f176"; */
+content: "\f325"; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
