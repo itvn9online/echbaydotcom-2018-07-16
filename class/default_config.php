@@ -168,6 +168,7 @@ $__cf_row_default = array(
 	'cf_hide_supper_admin_menu' => 1,
 	
 	// cho phép chính sửa theme, plugin
+	'cf_alow_edit_theme_plugin' => 0,
 	'cf_alow_edit_plugin_theme' => 1,
 	
 	'cf_set_news_version' => 0,

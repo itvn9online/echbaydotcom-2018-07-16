@@ -2,4 +2,5 @@
 #menu-appearance .hide-if-no-customize,
 #menu-plugins,
 #menu-tools,
+#menu-settings,
 .show-administrator-only { display: none; }

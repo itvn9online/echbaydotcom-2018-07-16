@@ -123,6 +123,10 @@ if ( ! isset( $_POST['cf_hide_supper_admin_menu'] ) || (int) $_POST['cf_hide_sup
 	$_POST['cf_hide_supper_admin_menu'] = 0;
 }
 
+if ( ! isset( $_POST['cf_alow_edit_theme_plugin'] ) || (int) $_POST['cf_alow_edit_theme_plugin'] != 1 ) {
+	$_POST['cf_alow_edit_theme_plugin'] = 0;
+}
+
 if ( ! isset( $_POST['cf_alow_edit_plugin_theme'] ) || (int) $_POST['cf_alow_edit_plugin_theme'] != 1 ) {
 	$_POST['cf_alow_edit_plugin_theme'] = 0;
 }

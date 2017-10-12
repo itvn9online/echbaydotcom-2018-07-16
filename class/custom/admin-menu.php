@@ -213,8 +213,10 @@ var web_link = "' . web_link . '",
 	// nếu là phiên bản web giá rẻ -> ẩn các menu admin quan trọng đi, chỉ hiện thị với supper admin
 //	if ( mtv_id != 1 && webgiare_dot_org_install == true ) {
 //	if ( mtv_id != 1 ) {
+//		echo _eb_getCucki('ebe_click_show_hidden_menu') . ' ------- aaaaaaaaaaaaaaaaaaaaaaa';
+		
 		// nếu thuộc tính ẩn menu admin đang được kích hoạt -> ẩn
-		if ( $__cf_row['cf_hide_supper_admin_menu'] == 1 && _eb_getCucki('ebe_click_show_hidden_menu') != '' ) {
+		if ( $__cf_row['cf_hide_supper_admin_menu'] == 1 && _eb_getCucki('ebe_click_show_hidden_menu') == '' ) {
 			/*
 			_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 				EB_URL_OF_PLUGIN . 'css/administrator.css',

@@ -318,7 +318,7 @@ $('.click-show-eb-target').click(function () {
 
 // xóa CSS chặn các menu khác của admin
 var current_cookie_show_hide_admin_menu = g_func.getc('ebe_click_show_hidden_menu');
-console.log( current_cookie_show_hide_admin_menu );
+//console.log( current_cookie_show_hide_admin_menu );
 
 $('.click-show-no-customize').click(function(e) {
 	// đang bật -> tắt
@@ -335,7 +335,12 @@ $('.click-show-no-customize').click(function(e) {
 		
 		current_cookie_show_hide_admin_menu = null;
 		
-		console.log("Please re-load this page for show admin menu");
+		console.log("Please re-load for disable function hide-menu");
+		setTimeout(function () {
+			if ( confirm('Re-load for disable function hide-menu?') == true ) {
+				window.location = window.location.href;
+			}
+		}, 200);
 	}
 });
 
