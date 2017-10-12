@@ -203,24 +203,27 @@ function echbay_admin_styles() {
 	}
 	
 	//
-	echo _eb_del_line( '<script type="text/javascript">
+	echo '<script type="text/javascript">
 var web_link = "' . web_link . '",
-	order_max_post_new = ' . $order_max_post_new . ';
-</script>' );
+	order_max_post_new = ' . $order_max_post_new . ',
+	cf_hide_supper_admin_menu = ' . $__cf_row['cf_hide_supper_admin_menu'] . ';
+</script>';
 	
 	
 	// nếu là phiên bản web giá rẻ -> ẩn các menu admin quan trọng đi, chỉ hiện thị với supper admin
 //	if ( mtv_id != 1 && webgiare_dot_org_install == true ) {
-	if ( mtv_id != 1 ) {
+//	if ( mtv_id != 1 ) {
 		// nếu thuộc tính ẩn menu admin đang được kích hoạt -> ẩn
-		if ( $__cf_row['cf_hide_supper_admin_menu'] == 1 ) {
+		if ( $__cf_row['cf_hide_supper_admin_menu'] == 1 && _eb_getCucki('ebe_click_show_hidden_menu') != '' ) {
+			/*
 			_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 				EB_URL_OF_PLUGIN . 'css/administrator.css',
 			) ), 'link' );
+			*/
 			
-			echo '<script type="text/javascript">console.log("Hide menu if user not administrator");</script>';
+			echo '<link rel="stylesheet" href="' . EB_URL_OF_PLUGIN . 'css/admin-hide-menu.css?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'css/admin-hide-menu.css' ) . '" type="text/css" media="all" id="admin-hide-menu" />';
 		}
-	}
+//	}
 	
 	
 	
@@ -319,7 +322,7 @@ add_action('admin_footer', 'echbay_admin_footer_styles');
 
 // Thay footer trong wp bằng link của echbay
 function eb_change_footer_admin () {
-	echo 'Designed by <a href="http://echbay.com" target="_blank" rel="nofollow">EchBay.com</a> using <a href="https://wordpress.org/" target="_blank" rel="nofollow">WordPress</a> CMS.</span> - <span class="cur click-show-eb-target">Show process</span>.';
+	echo 'Designed by <a href="http://echbay.com" target="_blank" rel="nofollow">EchBay.com</a> using <a href="https://wordpress.org/" target="_blank" rel="nofollow">WordPress</a> CMS.</span> - <span class="cur graycolor click-show-eb-target">Show process</span> - <span class="cur graycolor click-show-no-customize">Show no-customize</span>.';
 }
 add_filter('admin_footer_text', 'eb_change_footer_admin');
 

@@ -768,13 +768,10 @@ class EchBayCommerce {
 	
 	
 	function setCucki ( $c_name, $c_value = 0, $c_time = 0, $c_path = '/' ) {
-		__eb_set_cookie( $c_name, $c_value, $c_time, $c_path );
 	}
+	
 	function getCucki ( $c_name, $default_value = '' ) {
-		if ( isset($_COOKIE[ $c_name ]) ) {
-			return $_COOKIE[ $c_name ];
-		}
-		return $default_value;
+		return _eb_getCucki( $c_name, $default_value );
 	}
 	
 	

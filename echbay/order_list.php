@@ -126,8 +126,9 @@ $jsLinkPager = $strLinkPager;
 $str_for_order_cookie_name = 'get_order_by_time_line';
 
 // lấy theo cookie nếu có
-if( ! isset ( $_GET ['d'] ) && isset( $_COOKIE[$str_for_order_cookie_name] ) ) {
-	$_GET ['d'] = $_COOKIE[$str_for_order_cookie_name];
+$order_by_time_line = _eb_getCucki( $str_for_order_cookie_name );
+if( ! isset ( $_GET ['d'] ) && $order_by_time_line != '' ) {
+	$_GET ['d'] = $order_by_time_line;
 }
 
 // lọc theo ngày tháng

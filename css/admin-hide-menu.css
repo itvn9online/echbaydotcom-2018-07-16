@@ -1,5 +1,5 @@
 #menu-dashboard ul,
-/* #menu-appearance, */
+#menu-appearance .hide-if-no-customize,
 #menu-plugins,
 #menu-tools,
 .show-administrator-only { display: none; }

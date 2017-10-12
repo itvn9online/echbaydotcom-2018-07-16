@@ -309,10 +309,46 @@ $(document).keydown(function(e) {
 
 
 
-//
+// hiển thị iframe submit của EchBay
 $('.click-show-eb-target').click(function () {
 	$('#target_eb_iframe').addClass('show-target-echbay');
 });
+
+
+
+// xóa CSS chặn các menu khác của admin
+var current_cookie_show_hide_admin_menu = g_func.getc('ebe_click_show_hidden_menu');
+console.log( current_cookie_show_hide_admin_menu );
+
+$('.click-show-no-customize').click(function(e) {
+	// đang bật -> tắt
+	if ( current_cookie_show_hide_admin_menu == null ) {
+		$('#admin-hide-menu').remove();
+		
+		//
+		current_cookie_show_hide_admin_menu = encodeURIComponent( window.location.href );
+		g_func.setc( 'ebe_click_show_hidden_menu', current_cookie_show_hide_admin_menu, 4 * 3600 );
+	}
+	// đang tắt -> bật
+	else {
+		g_func.delck( 'ebe_click_show_hidden_menu' );
+		
+		current_cookie_show_hide_admin_menu = null;
+		
+		console.log("Please re-load this page for show admin menu");
+	}
+});
+
+//
+if ( cf_hide_supper_admin_menu == 1 ) {
+	// thông báo cho người dùng
+	if ( current_cookie_show_hide_admin_menu == null ) {
+		console.log("Hide menu for admin");
+	}
+	else {
+		console.log("Hide menu admin is active! but cookies disable is ON");
+	}
+}
 
 
 
