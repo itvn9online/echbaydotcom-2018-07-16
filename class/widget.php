@@ -111,9 +111,11 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	$post_eb_status = esc_attr ( $instance ['post_eb_status'] );
 	*/
 	
+	// tạo ID riêng cho từng widget để điều khiển cho dễ
+	$random_current_widget_id = 'ebe_widget_id_change' . md5( rand( 1, 1000 ) );
 	
 	//
-	echo '<div class="eb-widget-fixed">';
+	echo '<div class="eb-widget-fixed ' . $random_current_widget_id . '">';
 	
 	
 	//
@@ -145,7 +147,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p>Post status by: ';
+	echo '<p class="ebe-post-status">Post status by: ';
 	
 	__eb_widget_load_select(
 		$arr_eb_product_status,
@@ -157,7 +159,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p>Ads status by: ';
+	echo '<p class="ebe-ads-status">Ads status by: ';
 	
 	__eb_widget_load_select(
 		$arr_eb_ads_status,
@@ -178,7 +180,8 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 			'blog' => 'blog',
 		),
 		$field_name['post_type'],
-		$post_type
+		$post_type,
+		'ebe-post-type'
 	);
 	
 	echo '</p>';
@@ -215,6 +218,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	echo '<script type="text/javascript">
 	convert_size_to_one_format();
+	WGR_widget_show_option_by_post_type("' . $random_current_widget_id . '");
 	</script>';
 	
 	
@@ -459,8 +463,8 @@ function _eb_echo_widget_title ( $title, $clat = '', $before_title = '', $after_
 }
 
 
-function __eb_widget_load_select ( $arr, $select_name, $select_val ) {
-	echo '<select name="' . $select_name . '" class="widefat">';
+function __eb_widget_load_select ( $arr, $select_name, $select_val, $select_class_css = '' ) {
+	echo '<select name="' . $select_name . '" class="widefat ' . $select_class_css . '">';
 	
 	foreach ( $arr as $k => $v ) {
 		echo '<option value="' . $k . '"' . _eb_selected( $k, $select_val ) . '>' . $v . '</option>';

@@ -990,6 +990,25 @@ function convert_size_to_one_format () {
 	});
 }
 
+function WGR_widget_show_option_by_post_type ( select_id ) {
+//	console.log(select_id);
+	
+	var a = $('.' + select_id + ' .ebe-post-type').val() || '';
+//	console.log( a );
+	
+	$('.' + select_id).attr({
+		'data-type': a
+	});
+	
+	//
+	$('.' + select_id + ' .ebe-post-type').change(function () {
+		var a = $(this).val() || '';
+		$('.' + select_id).attr({
+			'data-type': a
+		});
+	});
+}
+
 
 
 

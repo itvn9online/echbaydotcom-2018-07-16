@@ -187,6 +187,11 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			if ( $ads_eb_status > 0 ) {
 				$arr_select_data['meta_key'] = '_eb_ads_status';
 				$arr_select_data['meta_value'] = $ads_eb_status;
+				
+				// hiển thị trạng thái ads ra để chekc cho dễ
+				global $arr_eb_ads_status;
+				
+				echo '<!-- ADS status: ' . $ads_eb_status . ' - ' . $arr_eb_ads_status[ $ads_eb_status ] . ' -->';
 			}
 		}
 		// với blog, lấy đặc biệt hơn chút
