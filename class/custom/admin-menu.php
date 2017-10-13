@@ -535,4 +535,17 @@ add_action("add_attachment", 'EBE_resizeafter_upload_media');
 
 
 
+// cập nhật lại rule mới cho phân nhóm khi người dùng vào sửa nhóm
+if ( $__cf_row['cf_remove_category_base'] == 1 ) {
+	if ( strstr( $_SERVER['REQUEST_URI'], '/term.php?taxonomy=category' ) == true
+		|| strstr( $_SERVER['REQUEST_URI'], '/edit-tags.php?taxonomy=category' ) == true ) {
+		add_action( 'shutdown', 'flush_rewrite_rules' );
+//		flush_rewrite_rules();
+	}
+}
+
+
+
+
+
 

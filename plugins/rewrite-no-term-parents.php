@@ -12,10 +12,8 @@
 //
 //echo '<!-- remove category base by echbay -->' . "\n";
 //echo 1;
-
-
 // xóa slug của category cha khỏi đường dẫn của category con
-function ___eb_remove_term_parents($url, $term, $taxonomy) {
+function WGR_remove_category_parents ($url, $term, $taxonomy) {
 	
 //	echo $url . '<br>' . "\n";
 	
@@ -27,11 +25,6 @@ function ___eb_remove_term_parents($url, $term, $taxonomy) {
 	return $url;
 	
 }
-
-add_filter ( 'term_link', '___eb_remove_term_parents', 1000, 3 );
-
-
-
 
 
 // Add our custom product cat rewrite rules
@@ -74,6 +67,7 @@ function eb_get_and_add_new_array_rule ( $arr, $taxonomy_key = 'category', $post
 	
 }
 
+
 function ___eb_modife_wp_rule_taxonomy($rules) {
 	
 //	print_r( $rules );
@@ -84,15 +78,7 @@ function ___eb_modife_wp_rule_taxonomy($rules) {
 	
 }
 
-//add_filter ( 'rewrite_rules_array', '___eb_modife_wp_rule_taxonomy' );
 
-
-
-
-
-
-
-//
 function eb_add_rewrite_rule_structure ( $taxonomy_key = 'category', $post_type = 'post' ) {
 	
 //	echo $set_for_tax;
@@ -139,11 +125,19 @@ function eb_add_rewrite_rule_structure ( $taxonomy_key = 'category', $post_type 
 	
 }
 
-function eb_register_taxonomy_rules () {
+
+function WGR_register_category_taxonomy_rules () {
 	eb_add_rewrite_rule_structure();
 }
 
-add_action('init', 'eb_register_taxonomy_rules');
+
+
+// for category
+if ( $__cf_row['cf_remove_category_base'] == 1 ) {
+	add_filter ( 'term_link', 'WGR_remove_category_parents', 1000, 3 );
+//	add_filter ( 'rewrite_rules_array', '___eb_modife_wp_rule_taxonomy' );
+	add_filter('init', 'WGR_register_category_taxonomy_rules');
+}
 
 
 

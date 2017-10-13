@@ -947,20 +947,12 @@ function EBE_deregister_scripts() {
 */
 //	$__eb_category_base = get_option( 'category_base' );
 //	if ( $__eb_category_base == '' || $__eb_category_base == '.' ) {
-if ( $__cf_row['cf_remove_category_base'] == 1 ) {
+//if ( $__cf_row['cf_remove_category_base'] == 1 ) {
 //	echo $__cf_row['cf_remove_category_base'];
 	
 	include EB_THEME_PLUGIN_INDEX . 'plugins/rewrite-no-term-parents.php';
 //	include EB_THEME_PLUGIN_INDEX . 'plugins/category-description-editor.php';
-	
-	// cập nhật lại rule mới cho phân nhóm khi người dùng vào sửa nhóm
-	if ( mtv_id > 0
-	&& ( strstr( $_SERVER['REQUEST_URI'], '/term.php?taxonomy=category' ) == true
-		|| strstr( $_SERVER['REQUEST_URI'], '/edit-tags.php?taxonomy=category' ) == true ) ) {
-		add_action( 'shutdown', 'flush_rewrite_rules' );
-//		flush_rewrite_rules();
-	}
-}
+//}
 
 
 

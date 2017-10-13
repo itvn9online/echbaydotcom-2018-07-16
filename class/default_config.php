@@ -133,8 +133,10 @@ $__cf_row_default = array(
 	'cf_on_off_json' => 0,
 	'cf_on_off_xmlrpc' => 0,
 	
-	// xóa URL cha của phân nhóm
+	// xóa URL cha của phân nhóm, custom taxonomy
 	'cf_remove_category_base' => 0,
+	'cf_remove_post_option_base' => 0,
+	'cf_alow_post_option_index' => 0,
 	
 	// plugin SEO của EchBay
 	'cf_on_off_echbay_seo' => 1,

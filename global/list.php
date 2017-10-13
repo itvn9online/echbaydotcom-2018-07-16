@@ -55,9 +55,10 @@ if ( $switch_taxonomy != '' ) {
 	
 	
 	// không index trong 1 số trường hợp
-	if ( $switch_taxonomy == 'post_options'
-	|| _eb_get_post_object( $cid, '_eb_category_noindex', 0 ) == 1
-	|| isset( $_GET['search_advanced'] ) ) {
+	if ( $switch_taxonomy == 'post_options' && $__cf_row['cf_alow_post_option_index'] == 0 ) {
+		$__cf_row ["cf_blog_public"] = 0;
+	}
+	else if ( isset( $_GET['search_advanced'] ) || _eb_get_post_object( $cid, '_eb_category_noindex', 0 ) == 1 ) {
 		$__cf_row ["cf_blog_public"] = 0;
 	}
 	

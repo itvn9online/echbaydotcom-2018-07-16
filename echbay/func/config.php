@@ -59,101 +59,65 @@ if ( $_POST ['cf_smtp_host'] == ''
 
 
 //
-if ( ! isset( $_POST['cf_tester_mode'] ) || (int) $_POST['cf_tester_mode'] != 1 ) {
-	$_POST['cf_tester_mode'] = 0;
+function WGR_default_config ( $k ) {
+	if ( ! isset( $_POST[ $k ] ) || (int) $_POST[ $k ] != 1 ) {
+		return 0;
+	}
+	return 1;
 }
 
-if ( ! isset( $_POST['cf_on_off_json'] ) || (int) $_POST['cf_on_off_json'] != 1 ) {
-	$_POST['cf_on_off_json'] = 0;
-}
+//
+$_POST['cf_tester_mode'] = WGR_default_config('cf_tester_mode');
 
-if ( ! isset( $_POST['cf_on_off_xmlrpc'] ) || (int) $_POST['cf_on_off_xmlrpc'] != 1 ) {
-	$_POST['cf_on_off_xmlrpc'] = 0;
-}
+$_POST['cf_on_off_json'] = WGR_default_config('cf_on_off_json');
 
-if ( ! isset( $_POST['cf_remove_category_base'] ) || (int) $_POST['cf_remove_category_base'] != 1 ) {
-	$_POST['cf_remove_category_base'] = 0;
-}
+$_POST['cf_on_off_xmlrpc'] = WGR_default_config('cf_on_off_xmlrpc');
 
-if ( ! isset( $_POST['cf_on_off_echbay_seo'] ) || (int) $_POST['cf_on_off_echbay_seo'] != 1 ) {
-	$_POST['cf_on_off_echbay_seo'] = 0;
-}
+$_POST['cf_remove_category_base'] = WGR_default_config('cf_remove_category_base');
 
-if ( ! isset( $_POST['cf_on_off_echbay_logo'] ) || (int) $_POST['cf_on_off_echbay_logo'] != 1 ) {
-	$_POST['cf_on_off_echbay_logo'] = 0;
-}
+$_POST['cf_remove_post_option_base'] = WGR_default_config('cf_remove_post_option_base');
 
-if ( ! isset( $_POST['cf_on_off_amp_logo'] ) || (int) $_POST['cf_on_off_amp_logo'] != 1 ) {
-	$_POST['cf_on_off_amp_logo'] = 0;
-}
+$_POST['cf_alow_post_option_index'] = WGR_default_config('cf_alow_post_option_index');
 
-if ( ! isset( $_POST['cf_on_off_amp_category'] ) || (int) $_POST['cf_on_off_amp_category'] != 1 ) {
-	$_POST['cf_on_off_amp_category'] = 0;
-}
+$_POST['cf_on_off_echbay_seo'] = WGR_default_config('cf_on_off_echbay_seo');
 
-if ( ! isset( $_POST['cf_on_off_amp_product'] ) || (int) $_POST['cf_on_off_amp_product'] != 1 ) {
-	$_POST['cf_on_off_amp_product'] = 0;
-}
+$_POST['cf_on_off_echbay_logo'] = WGR_default_config('cf_on_off_echbay_logo');
 
-if ( ! isset( $_POST['cf_on_off_amp_blogs'] ) || (int) $_POST['cf_on_off_amp_blogs'] != 1 ) {
-	$_POST['cf_on_off_amp_blogs'] = 0;
-}
+$_POST['cf_on_off_amp_logo'] = WGR_default_config('cf_on_off_amp_logo');
 
-if ( ! isset( $_POST['cf_on_off_amp_blog'] ) || (int) $_POST['cf_on_off_amp_blog'] != 1 ) {
-	$_POST['cf_on_off_amp_blog'] = 0;
-}
+$_POST['cf_on_off_amp_category'] = WGR_default_config('cf_on_off_amp_category');
 
-if ( ! isset( $_POST['cf_on_off_auto_update_wp'] ) || (int) $_POST['cf_on_off_auto_update_wp'] != 1 ) {
-	$_POST['cf_on_off_auto_update_wp'] = 0;
-}
+$_POST['cf_on_off_amp_product'] = WGR_default_config('cf_on_off_amp_product');
 
-if ( ! isset( $_POST['cf_disable_auto_get_thumb'] ) || (int) $_POST['cf_disable_auto_get_thumb'] != 1 ) {
-	$_POST['cf_disable_auto_get_thumb'] = 0;
-}
+$_POST['cf_on_off_amp_blogs'] = WGR_default_config('cf_on_off_amp_blogs');
 
-if ( ! isset( $_POST['cf_set_link_for_h1'] ) || (int) $_POST['cf_set_link_for_h1'] != 1 ) {
-	$_POST['cf_set_link_for_h1'] = 0;
-}
+$_POST['cf_on_off_amp_blog'] = WGR_default_config('cf_on_off_amp_blog');
 
-if ( ! isset( $_POST['cf_current_price_before'] ) || (int) $_POST['cf_current_price_before'] != 1 ) {
-	$_POST['cf_current_price_before'] = 0;
-}
+$_POST['cf_on_off_auto_update_wp'] = WGR_default_config('cf_on_off_auto_update_wp');
 
-if ( ! isset( $_POST['cf_hide_supper_admin_menu'] ) || (int) $_POST['cf_hide_supper_admin_menu'] != 1 ) {
-	$_POST['cf_hide_supper_admin_menu'] = 0;
-}
+$_POST['cf_disable_auto_get_thumb'] = WGR_default_config('cf_disable_auto_get_thumb');
 
-if ( ! isset( $_POST['cf_alow_edit_theme_plugin'] ) || (int) $_POST['cf_alow_edit_theme_plugin'] != 1 ) {
-	$_POST['cf_alow_edit_theme_plugin'] = 0;
-}
+$_POST['cf_set_link_for_h1'] = WGR_default_config('cf_set_link_for_h1');
 
-if ( ! isset( $_POST['cf_alow_edit_plugin_theme'] ) || (int) $_POST['cf_alow_edit_plugin_theme'] != 1 ) {
-	$_POST['cf_alow_edit_plugin_theme'] = 0;
-}
+$_POST['cf_current_price_before'] = WGR_default_config('cf_current_price_before');
 
-if ( ! isset( $_POST['cf_set_news_version'] ) || (int) $_POST['cf_set_news_version'] != 1 ) {
-	$_POST['cf_set_news_version'] = 0;
-}
+$_POST['cf_hide_supper_admin_menu'] = WGR_default_config('cf_hide_supper_admin_menu');
 
-if ( ! isset( $_POST['cf_echbay_migrate_version'] ) || (int) $_POST['cf_echbay_migrate_version'] != 1 ) {
-	$_POST['cf_echbay_migrate_version'] = 0;
-}
+$_POST['cf_alow_edit_theme_plugin'] = WGR_default_config('cf_alow_edit_theme_plugin');
 
-if ( ! isset( $_POST['cf_global_big_banner'] ) || (int) $_POST['cf_global_big_banner'] != 1 ) {
-	$_POST['cf_global_big_banner'] = 0;
-}
+$_POST['cf_alow_edit_plugin_theme'] = WGR_default_config('cf_alow_edit_plugin_theme');
 
-if ( ! isset( $_POST['cf_post_big_banner'] ) || (int) $_POST['cf_post_big_banner'] != 1 ) {
-	$_POST['cf_post_big_banner'] = 0;
-}
+$_POST['cf_set_news_version'] = WGR_default_config('cf_set_news_version');
 
-if ( ! isset( $_POST['cf_arrow_big_banner'] ) || (int) $_POST['cf_arrow_big_banner'] != 1 ) {
-	$_POST['cf_arrow_big_banner'] = 0;
-}
+$_POST['cf_echbay_migrate_version'] = WGR_default_config('cf_echbay_migrate_version');
 
-if ( ! isset( $_POST['cf_auto_get_ads_size'] ) || (int) $_POST['cf_auto_get_ads_size'] != 1 ) {
-	$_POST['cf_auto_get_ads_size'] = 0;
-}
+$_POST['cf_global_big_banner'] = WGR_default_config('cf_global_big_banner');
+
+$_POST['cf_post_big_banner'] = WGR_default_config('cf_post_big_banner');
+
+$_POST['cf_arrow_big_banner'] = WGR_default_config('cf_arrow_big_banner');
+
+$_POST['cf_auto_get_ads_size'] = WGR_default_config('cf_auto_get_ads_size');
 
 
 
@@ -228,6 +192,16 @@ if ( substr( $current_siteurl, -1 ) == '/' ) {
 //update_option( 'siteurl', $current_siteurl );
 _eb_update_option( 'siteurl', $current_siteurl );
 //echo $current_siteurl . '<br>' . "\n";
+
+
+
+
+
+
+// nếu thuộc tính xá URL phân nhóm cha được kích hoạt -> đặt luôn category_base về .
+if ( $_POST['cf_remove_category_base'] == 1 ) {
+	_eb_update_option( 'category_base', '.' );
+}
 
 
 

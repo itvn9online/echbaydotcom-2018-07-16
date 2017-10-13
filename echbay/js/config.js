@@ -337,7 +337,11 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_tester_mode' );
 	show_note_for_checkbox_config( 'cf_on_off_json' );
 	show_note_for_checkbox_config( 'cf_on_off_xmlrpc' );
+	
 	show_note_for_checkbox_config( 'cf_remove_category_base' );
+	show_note_for_checkbox_config( 'cf_remove_post_option_base' );
+	show_note_for_checkbox_config( 'cf_alow_post_option_index' );
+	
 	show_note_for_checkbox_config( 'cf_on_off_echbay_seo' );
 	show_note_for_checkbox_config( 'cf_on_off_echbay_logo' );
 	

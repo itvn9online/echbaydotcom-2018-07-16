@@ -2,6 +2,11 @@
 
 
 
+//
+//print_r( $_GET );
+
+
+
 // chế độ bảo trì đang được bật -> tạm dừng mọi truy cập
 if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 	

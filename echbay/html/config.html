@@ -621,7 +621,23 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Xóa URL phân nhóm cha</td>
 				<td class="i"><input type="checkbox" name="cf_remove_category_base" id="cf_remove_category_base" value="{tmp.cf_remove_category_base}" />
 					<label for="cf_remove_category_base" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Mặc định, các phân nhóm con sẽ mang thêm URL của nhóm cha, để xóa nó đi, hãy bấm chọn và lưu lại</div></td>
+					<div class="small l19">Mặc định, các phân nhóm con sẽ mang thêm URL của nhóm cha, để xóa nó đi, hãy bấm chọn và lưu lại.
+						<div class="redcolor">* Việc xóa URL nhóm cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Xóa URL post_option cha</td>
+				<td class="i"><input type="checkbox" name="cf_remove_post_option_base" id="cf_remove_post_option_base" value="{tmp.cf_remove_post_option_base}" />
+					<label for="cf_remove_post_option_base" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Mặc định, các post_option con sẽ mang thêm URL của post_option cha, để xóa nó đi, hãy bấm chọn và lưu lại.
+						<div class="redcolor">* Việc xóa URL post_option cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích. <strong>Ngoài ra, nó có thể làm xung đột URL với phần phân nhóm nên dễ tạo lỗi cho website rất nhiều</strong>.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Cho phép index với post_option</td>
+				<td class="i"><input type="checkbox" name="cf_alow_post_option_index" id="cf_alow_post_option_index" value="{tmp.cf_alow_post_option_index}" />
+					<label for="cf_alow_post_option_index" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Mặc định, các post option sẽ không được index, do nó chỉ được coi là phân nhóm phụ, phục vụ cho module tìm kiếm nâng cao, nếu bạn muốn nó vẫn được index bình thường, có thể kích hoạt nó lên.</div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
