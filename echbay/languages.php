@@ -45,7 +45,7 @@ global $___eb_lang;
 		echo '
 		<tr>
 			<td>' . str_replace( eb_key_for_site_lang, '', $k ) . '</td>
-			<td>
+			<td class="table-languages-edit">
 				<textarea data-min-height="21" data-add-height="1" id="' . $k . '" class="click-to-update-url-lang cur">' . $v . '</textarea>
 			</td>
 		</tr>';
@@ -104,6 +104,11 @@ function EBE_click_to_update_site_lang () {
 		
 		//
 		if ( b != '' ) {
+			
+			//
+			window.history.pushState( "", '', window.location.href.split('&edit_key=')[0] + '&edit_key=' + b );
+			
+			//
 			cache_for_current_lang_id = b;
 			
 			//
@@ -154,6 +159,21 @@ function EBE_click_to_update_site_lang () {
 			}
 		}
 	});
+	
+	//
+	if ( window.location.href.split('&edit_key=').length > 1 ) {
+		var a = window.location.href.split('&edit_key=')[1].split('&')[0].split('#')[0];
+//		console.log(a);
+		
+		//
+		$('body,html').animate({
+			scrollTop: $('#' + a).offset().top - 220
+		}, 200);
+		
+		//
+		$('#' + a + '.click-to-update-url-lang').focus();
+	}
+	
 }
 
 //
