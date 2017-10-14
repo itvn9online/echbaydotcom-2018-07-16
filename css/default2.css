@@ -44,6 +44,7 @@ label,
 	height: 38px;
 	overflow: hidden;
 	margin-top: 3px;
+	text-align: justify;
 }
 .echbay-blog-cat a { color: #666; }
 .echbay-blog-left { width: 40%; }
@@ -56,11 +57,16 @@ label,
 	color: #f00;
 }
 .thread-list100 .echbay-blog-title,
+.echbay-blog100 .echbay-blog-title,
 .thread-list100 .echbay-blog-infos,
-.thread-list100 .echbay-blog-gioithieu {
+.thread-list100 .echbay-blog-gioithieu,
+.echbay-blog100 .echbay-blog-gioithieu {
 	height: auto;
 	overflow: hidden;
 }
+/* tối đa cho phần giới thiệu của blog là 5 dòng */
+.thread-list100 .echbay-blog-gioithieu,
+.echbay-blog100 .echbay-blog-gioithieu { max-height: 95px; }
 .style-for-mobile .thread-list100 .echbay-blog-title { height: 38px; }
 /* custom flex blogs */
 /*
@@ -1788,7 +1794,11 @@ iframe[name="google_conversion_frame"] {
 .eball-category-icon,
 .eball-category-count { display: none; }
 .eball-category-icon {
-	background: le no-repeat;
+	background: left no-repeat;
 	background-size: auto 100%;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 5px;
 }
 .eball-category-icon:before { content: " "; }

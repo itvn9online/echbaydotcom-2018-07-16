@@ -214,6 +214,13 @@ input[id="_eb_category_order"] { width: 90px; }
 .eb-widget-fixed[data-type="post"] .ebe-post-status,
 .eb-widget-fixed[data-type="ads"] .ebe-ads-status { display: block; }
 /* .eb-widget-fixed[data-type="blog"] { } */
+.eb-get-widget-category option { display: none; }
+.eb-widget-fixed[data-type="post"] option[data-taxonomy="category"],
+.eb-widget-fixed[data-type="post"] option[data-taxonomy="post_options"],
+.eb-widget-fixed[data-type="ads"] option[data-taxonomy="category"],
+.eb-widget-fixed[data-type="ads"] option[data-taxonomy="post_options"],
+.eb-widget-fixed[data-type="blog"] option[data-taxonomy="blogs"],
+.eb-get-widget-category option[value="0"] { display: block; }
 .ebe-color-picker {
 	padding: 0;
 	margin: 0;

@@ -126,6 +126,23 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
+	echo '<p>Post type: ';
+	
+	__eb_widget_load_select(
+		array(
+			'post' => 'post',
+			'ads' => 'ads',
+			'blog' => 'blog',
+		),
+		$field_name['post_type'],
+		$post_type,
+		'ebe-post-type'
+	);
+	
+	echo '</p>';
+	
+	
+	//
 	__eb_widget_load_cat_select ( array(
 		'cat_ids_name' => $field_name['cat_ids'],
 		'cat_ids' => $cat_ids,
@@ -165,23 +182,6 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 		$arr_eb_ads_status,
 		$field_name['ads_eb_status'],
 		$ads_eb_status
-	);
-	
-	echo '</p>';
-	
-	
-	//
-	echo '<p>Post type: ';
-	
-	__eb_widget_load_select(
-		array(
-			'post' => 'post',
-			'ads' => 'ads',
-			'blog' => 'blog',
-		),
-		$field_name['post_type'],
-		$post_type,
-		'ebe-post-type'
 	);
 	
 	echo '</p>';
@@ -587,7 +587,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 			}
 		}
 		else {
-			echo '<option disabled>' . $v . '</option>';
+			echo '<option value="0" disabled>' . $v . '</option>';
 		}
 	}
 	echo '</select></p>';

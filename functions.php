@@ -1569,7 +1569,7 @@ function EBE_echbay_category_menu (
 		}
 		
 		//
-		$str .= '<li><' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $cat_favicon . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
+		$str .= '<li>' . $cat_favicon . '<' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
 	}
 	
 	// nếu là lấy nhóm cha -> thêm thuộc tính thêm chuỗi vào đầu và cuối menu

@@ -67,6 +67,27 @@ foreach ( $sql as $v ) {
 	}
 }
 
+// tự động cập nhật lại URL cho bản SSL
+if ( eb_web_protocol == 'https' ) {
+	$new_current_homeurl = explode( '/', $current_homeurl );
+	if ( $new_current_homeurl[0] != 'https:' ) {
+		$new_current_homeurl[0] = 'https:';
+		
+		//
+		echo implode( '/', $new_current_homeurl ) . '<br>' . "\n";
+		_eb_update_option( 'home', implode( '/', $new_current_homeurl ) );
+	}
+	
+	$new_current_siteurl = explode( '/', $current_siteurl );
+	if ( $new_current_siteurl[0] != 'https:' ) {
+		$new_current_siteurl[0] = 'https:';
+		
+		//
+		echo implode( '/', $new_current_siteurl ) . '<br>' . "\n";
+		_eb_update_option( 'siteurl', implode( '/', $new_current_siteurl ) );
+	}
+}
+
 
 
 

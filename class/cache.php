@@ -563,6 +563,12 @@ else {
 	}
 }
 
+// hỗ trợ link HTTP nếu truy cập vào cổng 443
+if ( eb_web_protocol == 'https' && strstr( $web_link, 'https://' ) == false ) {
+	$web_link = str_replace( 'http://', 'https://', $web_link );
+}
+
+
 // thêm dấu chéo vào cuối nếu chưa có
 //if ( substr( $web_link, -1 ) != '/' ) {
 	$web_link .= '/';
