@@ -255,8 +255,16 @@ var eb_global_product_size = '',
 	
 	
 	
+	// thêm CSS hiển thị nút add IMG cho category
+	if ( $('#_eb_category_avt').length > 0 || $('#_eb_category_favicon').length ) {
+		$('head').append('<style>\
+div.gallery-add-to-category_avt,\
+div.gallery-add-to-category_favicon { display: block; }\
+</style>');
+	}
+	
 	// mở gallery tự viết
-	$('.click-open-new-gallery').click(function () {
+	$('.click-open-new-gallery, #_eb_category_avt, #_eb_category_favicon').click(function () {
 		$('#oi_admin_popup').show();
 		
 		//
@@ -265,7 +273,14 @@ var eb_global_product_size = '',
 		//
 		if ( gallery_has_been_load == false ) {
 			gallery_has_been_load = true;
+			setTimeout(function () {
+				gallery_has_been_load = false;
+			}, 15 * 1000 );
 			
+			//
+			dog('oi_admin_popup').innerHTML = 'waiting...';
+			
+			//
 			ajaxl('gallery', 'oi_admin_popup', 9, function () {
 				// Nếu có thuộc tính hiển thị option
 				if ( show_only != '' ) {

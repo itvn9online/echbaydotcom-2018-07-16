@@ -119,7 +119,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			//
 			foreach ( $arrs_cats as $v ) {
 				// lấy các nhóm có trạng thái như chỉ định
-				if ( (int) _eb_get_post_meta( $v->term_id, '_eb_category_status', true, 0 ) == $cat_status ) {
+				if ( (int) _eb_get_cat_object( $v->term_id, '_eb_category_status', 0 ) == $cat_status ) {
 					$hien_thi_sl = '';
 					if ( $show_count == 'on' ) {
 						$hien_thi_sl = ' (' . $v->count . ')';

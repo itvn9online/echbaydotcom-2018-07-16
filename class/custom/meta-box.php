@@ -197,10 +197,13 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_product_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_product_video_url' => 'Một số giao diện hỗ trợ video youtube (nếu có)',
 	
+	'_eb_category_avt' => 'Ảnh đại diện của phân nhóm, kích thước khuyến nghị là 500x400 pixel. Ảnh này sẽ xuất hiện khi chia sẻ nhóm lên các mạng xã hội như: Facebook, Twiter...',
+	'_eb_category_favicon' => 'Favicon là một ảnh nhỏ hơn, kích thước khuyến nghị là 64x64 pixel. Ảnh này thường dùng trong các menu nếu CSS của menu có hỗ trợ chức năng.',
 	'_eb_category_title' => 'Với định dạng màu sắc thì nhập mã màu vào (bao gồm cả dấu #)',
 	'_eb_category_order' => 'Số càng lớn thì độ ưu tiên càng cao, nhóm sẽ được ưu tiên xuất hiện trước',
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
-	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
+//	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
+	'_eb_category_primary' => 'Trong các module lấy sản phẩm, tạo menu... nếu có sự xuất hiện của nhóm chính thì sản phẩm trong nhóm đó sẽ được ưu tiên hơn.',
 	
 	'_eb_ads_target' => 'Mặc định, các URL trong quảng cáo sẽ được mở đè lên tab hiện tại, đánh dấu và lưu lại để mở URL trong tab mới.',
 	'_eb_ads_for_post' => 'Nhập vào ID của Sản phẩm hoặc bài Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
@@ -537,6 +540,10 @@ foreach ( array( 'term_description' ) as $filter ) {
 
 //
 $arr_category_custom_fields = array();
+
+//
+$arr_category_custom_fields['_eb_category_avt'] = 'Ảnh đại diện lớn (banner)';
+$arr_category_custom_fields['_eb_category_favicon'] = 'Ảnh đại diện nhỏ (favicon)';
 
 
 // Để tránh xung đột và thừa thãi -> chỉ kích hoạt cột liên quan đến SEO khi người dùng chọn bật nó, ngoài ra thì bỏ qua

@@ -1785,3 +1785,10 @@ iframe[name="google_conversion_frame"] {
 	text-align: center;
 	padding: 0 0;
 }
+.eball-category-icon,
+.eball-category-count { display: none; }
+.eball-category-icon {
+	background: le no-repeat;
+	background-size: auto 100%;
+}
+.eball-category-icon:before { content: " "; }

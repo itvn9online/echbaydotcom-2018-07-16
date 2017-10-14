@@ -532,8 +532,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	border: 0 none;
 	padding: 0;
 	background: none;
-	box-shadow: none;
-	/* padding: 6px; */
+	box-shadow: none;/* padding: 6px; */
 }
 .table-languages-list textarea:focus { color: #c00; }
 .eb-admin-lang-submit {
@@ -611,7 +610,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	border-radius: 3px;
 	margin: 3px;
 }
-.publish-position-fixed {
+.publish-position-fixed,
+.edit-tag-actions .button-primary {
 	position : fixed;
 	bottom: 20px;
 	right : 20px;

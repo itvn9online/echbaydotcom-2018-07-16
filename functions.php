@@ -1515,7 +1515,7 @@ function EBE_echbay_category_menu (
 		$post_primary_categories = array();
 //		print_r( $post_categories );
 		foreach ( $arrs_cats as $v ) {
-			if ( _eb_get_post_meta( $v->term_id, '_eb_category_primary', true, 0 ) > 0 ) {
+			if ( _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 ) > 0 ) {
 				$post_primary_categories[] = $v;
 			}
 		}
@@ -1536,7 +1536,7 @@ function EBE_echbay_category_menu (
 	
 	//
 	foreach ( $arrs_cats as $v ) {
-		$oders[ $v->term_id ] = (int) _eb_get_post_meta( $v->term_id, '_eb_category_order', true, 0 );
+		$oders[ $v->term_id ] = (int) _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
 		$options[$v->term_id] = $v;
 	}
 	arsort( $oders );	
@@ -1559,8 +1559,17 @@ function EBE_echbay_category_menu (
 			);
 		}
 		
+		// lấy ảnh đại diện nhỏ đối với các nhóm cấp 1
+		$cat_favicon = '';
+		if ( $cat_ids == 0 ) {
+			$cat_favicon = _eb_get_cat_object( $v->term_id, '_eb_category_favicon' );
+			if ( $cat_favicon != '' ) {
+				$cat_favicon = '<span class="eball-category-icon" style="background-image:url(\'' . $cat_favicon . '\');"></span>';
+			}
+		}
+		
 		//
-		$str .= '<li><' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count d-none"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
+		$str .= '<li><' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $cat_favicon . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
 	}
 	
 	// nếu là lấy nhóm cha -> thêm thuộc tính thêm chuỗi vào đầu và cuối menu

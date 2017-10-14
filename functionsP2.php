@@ -2214,7 +2214,7 @@ function WGR_get_arr_taxonomy ( $tax = 'category' ) {
 	
 	//
 	foreach ( $arrs as $v ) {
-		$oders[ $v->term_id ] = (int) _eb_get_post_meta( $v->term_id, '_eb_category_order', true, 0 );
+		$oders[ $v->term_id ] = (int) _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
 		$options[$v->term_id] = $v;
 	}
 	arsort( $oders );
@@ -2257,7 +2257,7 @@ function _eb_get_tax_post_options ( $arr_option = array(), $taxo = 'post_options
 	
 	//
 	foreach ( $arrs as $v ) {
-		$oders[ $v->term_id ] = (int) _eb_get_post_meta( $v->term_id, '_eb_category_order', true, 0 );
+		$oders[ $v->term_id ] = (int) _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
 		$options[$v->term_id] = $v;
 	}
 	arsort( $oders );
@@ -2284,7 +2284,7 @@ function _eb_get_tax_post_options ( $arr_option = array(), $taxo = 'post_options
 		
 		//
 		foreach ( $arr as $v2 ) {
-			$oder[ $v2->term_id ] = (int) _eb_get_post_meta( $v2->term_id, '_eb_category_order', true, 0 );
+			$oder[ $v2->term_id ] = (int) _eb_get_cat_object( $v2->term_id, '_eb_category_order', 0 );
 			$option[$v2->term_id] = $v2;
 		}
 		arsort( $oder );

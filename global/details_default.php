@@ -641,7 +641,7 @@ else {
 	$post_primary_categories = array();
 //		print_r( $post_categories );
 	foreach ( $post_categories as $v ) {
-		if ( _eb_get_post_meta( $v, '_eb_category_primary', true, 0 ) > 0 ) {
+		if ( _eb_get_cat_object( $v, '_eb_category_primary', 0 ) > 0 ) {
 			$post_primary_categories[] = $v;
 		}
 	}

@@ -20,7 +20,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 	$post_primary_categories = array();
 //	print_r( $post_categories );
 	foreach ( $categories as $v ) {
-		if ( _eb_get_post_meta( $v->term_id, '_eb_category_primary', true, 0 ) > 0 ) {
+		if ( _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 ) > 0 ) {
 			$post_primary_categories[] = $v;
 		}
 	}
