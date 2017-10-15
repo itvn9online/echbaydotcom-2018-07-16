@@ -71,6 +71,7 @@ function WGR_run_for_admin_edit_post () {
 		
 		// xử lý hình ảnh lỗi cho xwatch cũ
 		setTimeout(function () {
+			console.log('for xwatch domain');
 			if ( $("#_eb_product_gallery_ifr").length > 0 ) {
 				$("#_eb_product_gallery_ifr").contents().find('img').each(function() {
 					var a = $(this).attr('src') || '',
@@ -90,17 +91,45 @@ function WGR_run_for_admin_edit_post () {
 		
 		
 		
-		// tạo chức năng chỉnh sửa nội dung, đưa hết về 1 định dạng chuẩn
-		var str = '\
-		<div id="remove_content_style" style="padding-top:8px;">\
-			<input type="checkbox" id="click_remove_content_style" class="click_remove_content_style" />\
+		$('#postdivrich').after('<div class="ebe-fixed-content-style">\
+			<input type="checkbox" id="click_remove_content_style" />\
 			<label for="click_remove_content_style">Loại bỏ toàn bộ các style tĩnh để chuẩn hóa style cho bài viết theo một thiết kế chung.</label>\
-		</div>';
+		</div>\
+		<div class="ebe-fixed-content-style">\
+			<input type="checkbox" id="click_convert_table_tags" />\
+			<label for="click_convert_table_tags">Chuyển đổi thẻ TABLE sang thẻ DIV cho nội dung dễ style hơn, tương thích nhiều thiết bị hơn.</label>\
+		</div>\
+		<div class="ebe-fixed-content-style graycolor small">\
+			<input type="checkbox" id="click_remove_table_tags" />\
+			<label for="click_remove_table_tags">Loại bỏ toàn bộ các thẻ TABLE để nội dung có thể chạy trên nhiều thiết bị khác như mobile, table... (<em>điều này có thể làm vỡ khối nên không khuyên dùng</em>)</label>\
+		</div>\
+		<div class="ebe-fixed-content-style">\
+			<input type="checkbox" id="click_fixed_a_tags_redirect" />\
+			<label for="click_fixed_a_tags_redirect">Xử lý các URL thuộc dạng redirect về non-redirect (thường áp dụng cho web chết, bị lưu trữ trên web.archive.org).</label>\
+		</div>\
+		<div class="ebe-fixed-content-style">\
+			<input type="checkbox" id="click_download_img_other_domain" />\
+			<label for="click_download_img_other_domain">Download ảnh từ host khác về host hiện tại (giúp cho ảnh được xử lý với tốc độ tối ưu hơn).</label>\
+		</div>');
 		
-		$('#postdivrich').after(str);
 		
 		//
+//		console.log('aaaaaaaaaaaaaaaaa');
+		
+		// tạo chức năng format nội dung, đưa hết về 1 định dạng chuẩn
 		click_remove_style_of_content();
+		
+		// chuyển thẻ table thành thẻ DIV -> theo tiêu chuẩn riêng của EchBay
+		click_convert_table_tags_of_content();
+		
+		// xóa thẻ table khỏi nội dung -> làm cho nội dung chuẩn hơn trên mobile
+		click_remove_table_tags_of_content();
+		
+		// xóa URL dạng redirect
+		click_fixed_a_tags_redirect_of_content();
+		
+		// download IMG về
+		click_download_img_other_domain_of_content();
 		
 		
 		

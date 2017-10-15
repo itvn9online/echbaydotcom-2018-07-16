@@ -81,7 +81,7 @@ echo '</div>';
 
 
 // thêm iframe để update dữ liệu không cần tải lại trang
-echo '<iframe id="target_eb_iframe" name="target_eb_iframe" src="about:blank" width="99%" height="600">AJAX form</iframe>';
+//echo '<iframe id="target_eb_iframe" name="target_eb_iframe" src="about:blank" width="99%" height="600">AJAX form</iframe>';
 
 
 

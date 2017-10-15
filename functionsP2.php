@@ -917,28 +917,28 @@ function WGR_ftp_copy ( $source, $path ) {
 	
 }
 
-function EBE_create_dir ( $path, $ftp = 1 ) {
+function EBE_create_dir ( $path, $ftp = 1, $mod = 0755 ) {
 	if ( is_dir( $path ) ) {
 		return true;
 	}
 	
 	//
-	if ( mkdir($path, 0755) ) {
+	if ( mkdir($path, $mod) ) {
 		// server window ko cần chmod
-		chmod($path, 0755) or die('ERROR chmod create dir: ' . $path);
+		chmod($path, $mod) or die('ERROR chmod create dir: ' . $path);
 		
 		return true;
 	}
 	
 	// Không thì tạo thông qua FTP
 	if ( $ftp == 1 ) {
-		return WGR_ftp_create_dir( $path );
+		return WGR_ftp_create_dir( $path, $mod );
 	}
 	
 	return false;
 }
 
-function WGR_ftp_create_dir ( $path ) {
+function WGR_ftp_create_dir ( $path, $mod = 0755 ) {
 	if ( is_dir( $path ) ) {
 		return true;
 	}
@@ -982,6 +982,9 @@ function WGR_ftp_create_dir ( $path ) {
 	if ( ! ftp_mkdir($conn_id, $file_for_ftp) ) {
 		echo 'ERROR FTP: ftp_mkdir error<br>' . "\n";
 		$result = false;
+	}
+	else if ( ! ftp_chmod($conn_id, $mod, $file_for_ftp) ) {
+		echo 'ERROR FTP: ftp_chmod error<br>' . "\n";
 	}
 	
 	
@@ -1101,7 +1104,7 @@ function EBE_get_ftp_root_dir ( $content_ = 'test' ) {
 }
 
 // Tạo file thông qua tài khoản FTP
-function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
+function EBE_ftp_create_file ($file_, $content_, $add_line = '', $mod = 0777) {
 	
 	$ftp_dir_root = EBE_get_config_ftp_root_dir( $content_ );
 	
@@ -1158,6 +1161,9 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '') {
 		echo 'ERROR FTP: ftp_put error<br>' . "\n";
 		$result = false;
 	}
+	// chmod file sau khi tạo
+//	else if ( ! ftp_chmod($conn_id, 0644, $file_for_ftp) ) {
+//	}
 	
 	
 	// close the connection

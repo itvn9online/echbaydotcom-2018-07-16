@@ -662,6 +662,7 @@ input#_eb_ads_for_category { display: none; }
 }
 .admin-show-quick-search h4,
 .admin-show-quick-search li { padding: 5px 15px; }
+.ebe-fixed-content-style { padding-top: 8px; }
 .hide-module-advanced-ads tr[data-row="_eb_ads_url"],
 .hide-module-advanced-ads tr[data-row="_eb_ads_target"],
 .hide-module-advanced-ads tr[data-row="_eb_ads_video_url"],
@@ -669,7 +670,7 @@ input#_eb_ads_for_category { display: none; }
 .hide-module-advanced-ads tr[data-row="_eb_product_avatar"],
 .hide-module-advanced-ads tr[data-row="_eb_show_product_avatar"],
 */
-.hide-module-advanced-ads #remove_content_style,
+.hide-module-advanced-ads .ebe-fixed-content-style,
 .hide-module-advanced-ads #postexcerpt { display: none; }
 .hide-module-advanced-ads #postdivrich {
 	height: 50px;

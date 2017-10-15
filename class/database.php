@@ -375,6 +375,7 @@ $arr_active_for_404_page = array(
 	"eb-fogotpassword" => 1,
 	
 	"eb-ajaxservice" => 1,
+	"download_img_to_site" => 1,
 	
 	"php_info" => 1,
 	"eb-load-quick-search" => 1

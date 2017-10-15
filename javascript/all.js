@@ -1310,12 +1310,21 @@ function eb_func_click_modife_product_size () {
 function click_remove_style_of_content () {
 	
 	//
-	$('.click_remove_content_style').click(function () {
+	if ( $('#click_remove_content_style').length == 0 ) {
+		console.log('click_remove_content_style not found');
+		return false;
+	}
+	
+	//
+	$('#click_remove_content_style').click(function () {
 		
 		// hủy check ngay và luôn
+		/*
 		$(this).prop({
 			checked : false
 		});
+		*/
+		dog('click_remove_content_style').checked = false;
 		
 		//
 		var content_id = $(this).attr('data-editer') || 'content_ifr';
@@ -1373,6 +1382,8 @@ function click_remove_style_of_content () {
 			'p',
 			'div'
 		];
+		console.log('Remove style, id... for tags:');
+		console.log(arr);
 		
 		//
 		for ( var i = 0; i < arr.length; i++ ) {
@@ -1475,6 +1486,413 @@ function click_remove_style_of_img_content () {
 			
 			$(this).remove();
 		});
+	});
+}
+
+
+
+// xóa thẻ TABLE trong nội dung bài viết
+function click_convert_table_tags_of_content () {
+	
+	//
+	if ( $('#click_convert_table_tags').length == 0 ) {
+		console.log('click_convert_table_tags not found');
+		return false;
+	}
+	
+	//
+	$('#click_convert_table_tags').click(function () {
+		
+		// hủy check ngay và luôn
+		dog('click_convert_table_tags').checked = false;
+		
+		//
+		var content_id = $(this).attr('data-editer') || 'content_ifr';
+		
+		// tên đầy đủ của text editter
+//		content_id += 'wysiwyg';
+		
+		//
+		if ( dog( content_id ) == null ) {
+			alert('Text editer #' +content_id+ ' not found');
+			return false;
+		}
+		
+		// ID cho jQuery
+		content_id = '#' + content_id;
+		
+		//
+		if ( confirm('Confirm convert all TABLE tags to DIV tags in this content!') == false ) {
+			return false;
+		}
+		
+		
+		// Các thẻ sẽ bị loại bỏ khỏi html
+		var max_for = 0;
+		var func_for_runc_remove_table = function () {
+			// số lần lặp tối đa
+			if ( max_for > 50 ) {
+				return false;
+			}
+			max_for++;
+			
+			//
+			console.log('Convert tags:');
+			
+			//
+			var arr = [
+				'table'
+			];
+			console.log(arr);
+			for ( var i = 0; i < arr.length; i++ ) {
+				$( content_id ).contents().find( arr[i] ).each(function() {
+					$(this).before( '<div class="cf wgr-convert-table">' + $(this).html() + '</div>' ).remove();
+				});
+			}
+			
+			//
+			var arr = [
+				'thead',
+				'tbody',
+				'tfoot'
+			];
+			console.log(arr);
+			for ( var i = 0; i < arr.length; i++ ) {
+				$( content_id ).contents().find( arr[i] ).each(function() {
+					$(this).before( $(this).html() ).remove();
+				});
+			}
+			
+			//
+			var arr = [
+				'tr'
+			];
+			console.log(arr);
+			for ( var i = 0; i < arr.length; i++ ) {
+				$( content_id ).contents().find( arr[i] ).each(function() {
+					$(this).before( '<div class="cf wgr-convert-tr">' + $(this).html() + '</div>' ).remove();
+				});
+			}
+			
+			//
+			var arr = [
+				'th',
+				'td'
+			];
+			console.log(arr);
+			for ( var i = 0; i < arr.length; i++ ) {
+				$( content_id ).contents().find( arr[i] ).each(function() {
+					$(this).before( '<div class="lf wgr-convert-td">' + $(this).html() + '</div>' ).remove();
+				});
+			}
+			
+			//
+			if ( $( content_id ).contents().find( 'table' ).length > 0 ) {
+				func_for_runc_remove_table();
+			}
+		};
+		func_for_runc_remove_table();
+		
+	});
+}
+
+
+
+// xóa thẻ TABLE trong nội dung bài viết
+function click_remove_table_tags_of_content () {
+	
+	//
+	if ( $('#click_remove_table_tags').length == 0 ) {
+		console.log('click_remove_table_tags not found');
+		return false;
+	}
+	
+	//
+	$('#click_remove_table_tags').click(function () {
+		
+		// hủy check ngay và luôn
+		dog('click_remove_table_tags').checked = false;
+		
+		//
+		var content_id = $(this).attr('data-editer') || 'content_ifr';
+		
+		// tên đầy đủ của text editter
+//		content_id += 'wysiwyg';
+		
+		//
+		if ( dog( content_id ) == null ) {
+			alert('Text editer #' +content_id+ ' not found');
+			return false;
+		}
+		
+		// ID cho jQuery
+		content_id = '#' + content_id;
+		
+		//
+		if ( confirm('Confirm remove all TABLE tags in this content!') == false ) {
+			return false;
+		}
+		
+		
+		// Các thẻ sẽ bị loại bỏ khỏi html
+		var max_for = 0;
+		var func_for_runc_remove_table = function () {
+			// số lần lặp tối đa
+			if ( max_for > 50 ) {
+				return false;
+			}
+			max_for++;
+			
+			//
+			var arr = [
+				'table',
+				'thead',
+				'tbody',
+				'tfoot',
+				'tr',
+				'th',
+				'td'
+			];
+			console.log('Remove tags:');
+			console.log(arr);
+			
+			//
+			for ( var i = 0; i < arr.length; i++ ) {
+				$( content_id ).contents().find( arr[i] ).each(function() {
+					$(this).before( $(this).html() ).remove();
+				});
+			}
+			
+			//
+			if ( $( content_id ).contents().find( arr[0] ).length > 0 ) {
+				func_for_runc_remove_table();
+			}
+		};
+		func_for_runc_remove_table();
+		
+	});
+}
+
+
+
+// xóa URL dạng redirect
+function click_fixed_a_tags_redirect_of_content () {
+	
+	//
+	if ( $('#click_fixed_a_tags_redirect').length == 0 ) {
+		console.log('click_fixed_a_tags_redirect not found');
+		return false;
+	}
+	
+	//
+	$('#click_fixed_a_tags_redirect').click(function () {
+		
+		// hủy check ngay và luôn
+		dog('click_fixed_a_tags_redirect').checked = false;
+		
+		//
+		var content_id = $(this).attr('data-editer') || 'content_ifr';
+		
+		// tên đầy đủ của text editter
+//		content_id += 'wysiwyg';
+		
+		//
+		if ( dog( content_id ) == null ) {
+			alert('Text editer #' +content_id+ ' not found');
+			return false;
+		}
+		
+		// ID cho jQuery
+		content_id = '#' + content_id;
+		
+		//
+		if ( confirm('Confirm fixed A tags redirect in this content!') == false ) {
+			return false;
+		}
+		
+		
+		//
+		console.log('Remove redirect URL:');
+		$( content_id ).contents().find( 'a' ).each(function() {
+			var a = $(this).attr('href') || $(this).attr('data-mce-href') || '';
+			if ( a != '' ) {
+				console.log(a);
+				
+				//
+				a = decodeURIComponent(a).split('://');
+//				console.log(a);
+				
+				// nếu có từ 3 phần từ trở lên -> có xuất hiện URL redirect
+				if ( a.length > 2 ) {
+					a = 'http://' + a[ a.length - 1 ];
+					console.log('New URL: ' + a);
+					
+					$(this).removeAttr('data-mce-href').removeAttr('href').attr({
+						'data-mce-href': a,
+						href: a
+					}).removeAttr('target').removeAttr('rel');
+				}
+			}
+		});
+		/*
+		var new_html = $( content_id ).contents().find( 'body' ).html() || $( content_id ).contents().html() || '';
+		console.log( new_html );
+		*/
+		
+	});
+}
+
+
+
+// download IMG
+var class_for_download_img_to_site = 'class_for_download_img_to_site';
+function run_download_img_other_domain_of_content ( content_id ) {
+	
+	//
+	if ( typeof content_id == 'undefined' || content_id == '' ) {
+		content_id = '#content_ifr';
+	}
+	
+	//
+	var current_domain = web_link.split('//')[1].split('/')[0] || document.domain;
+	console.log(current_domain);
+	
+	//
+	var download_url = '';
+	
+	// tạo hiệu ứng ẩn cho BODY
+	$('body').css({
+		opacity: .2
+	});
+	
+	//
+	console.log('Download all IMG:');
+	$( content_id ).contents().find( 'img' ).removeClass( class_for_download_img_to_site ).each(function() {
+		var a = $(this).attr('src') || $(this).attr('data-mce-src') || '';
+		if ( a != '' ) {
+			console.log(a);
+			
+			var b = a.split('//')[1].split('/')[0];
+			
+			// nếu ảnh chưa được download -> kích hoạt chế độ download
+			if ( current_domain != b ) {
+				console.log(b);
+				
+				download_url = web_link + 'download_img_to_site/?img=' + encodeURIComponent( a ) + '&for_id_content=' + encodeURIComponent( content_id );
+				
+				// tìm vào tạo tên file mới
+				var file_name = decodeURIComponent(a).split('://');
+//				console.log(file_name);
+				if ( file_name.length == 3 ) {
+					file_name = file_name[2];
+				} else {
+					file_name = file_name[1];
+				}
+				file_name = file_name.replace( /\/|\s/g, '-' );
+//				console.log(file_name);
+				
+				download_url += '&file_name=' + file_name;
+				
+				//
+				console.log(download_url);
+				
+				//
+				window.open(download_url, 'target_eb_iframe');
+//				$('#target_eb_iframe').on('load', function () {
+//					console.log(Math.random());
+					
+					// xóa ảnh đại diện phụ trợ đi
+					var avt = $('#_eb_product_avatar').val() || '';
+					if ( avt != '' ) {
+						avt = avt.split('//')[1].split('/')[0];
+						console.log(avt);
+						if ( current_domain != avt ) {
+							$('#_eb_product_avatar').val('');
+						}
+					}
+//				});
+				
+				// add class để chút xong việc sẽ thay src cho ảnh
+				$(this).addClass( class_for_download_img_to_site );
+				
+				// chỉ download mỗi cái 1 lần
+				return false;
+			}
+		}
+	});
+	/*
+	var new_html = $( content_id ).contents().find( 'body' ).html() || $( content_id ).contents().html() || '';
+	console.log( new_html );
+	*/
+	
+	// đến đây mà không bị return -> hết ảnh để download -> thông báo thành công
+	if ( download_url == '' ) {
+		// tạo hiệu ứng ẩn cho BODY
+		$('body').css({
+			opacity: 1
+		});
+		
+		//
+		alert('All done!');
+	}
+	
+}
+
+function finish_download_img_other_domain_of_content ( img, content_id ) {
+	console.log(img);
+	
+	//
+	if ( typeof content_id == 'undefined' || content_id == '' ) {
+		content_id = '#content_ifr';
+	}
+	
+	$( content_id ).contents().find( 'img.' + class_for_download_img_to_site ).attr({
+		'data-mce-src' : img,
+		src : img
+	}).removeClass( class_for_download_img_to_site );
+	
+	// tìm và load ảnh tiếp theo
+	run_download_img_other_domain_of_content();
+	
+}
+
+function click_download_img_other_domain_of_content () {
+	
+	//
+	if ( $('#click_download_img_other_domain').length == 0 ) {
+		console.log('click_download_img_other_domain not found');
+		return false;
+	}
+	
+	//
+	$('#click_download_img_other_domain').click(function () {
+		
+		// hủy check ngay và luôn
+		dog('click_download_img_other_domain').checked = false;
+		
+		//
+		var content_id = $(this).attr('data-editer') || 'content_ifr';
+		
+		// tên đầy đủ của text editter
+//		content_id += 'wysiwyg';
+		
+		//
+		if ( dog( content_id ) == null ) {
+			alert('Text editer #' +content_id+ ' not found');
+			return false;
+		}
+		
+		// ID cho jQuery
+		content_id = '#' + content_id;
+		
+		//
+		if ( confirm('Confirm download all IMG to this site!') == false ) {
+			return false;
+		}
+		
+		//
+		run_download_img_other_domain_of_content( content_id );
+		
 	});
 }
 

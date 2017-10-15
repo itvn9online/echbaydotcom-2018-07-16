@@ -25,6 +25,12 @@ if ( cf_chu_de_chinh != '' ) {
 
 
 
+// nạp iframe để submit cho tiện
+_global_js_eb.add_primari_iframe();
+
+
+
+
 // chức năng xử lý cho product size
 var eb_global_product_size = '',
 	eb_inner_html_product_size = '',
