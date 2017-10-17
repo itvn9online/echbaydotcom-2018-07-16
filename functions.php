@@ -1547,11 +1547,11 @@ function EBE_echbay_category_menu (
 //	foreach ( $arrs_cats as $v ) {
 	foreach ( $oders as $k => $v ) {
 		
+		//
+		$v = $options[$k];
+		
 		// không lấy nhóm có ID là 1
 		if ( $v->term_id != 1 ) {
-			$v = $options[$k];
-			
-			//
 			$str_child = '';
 			if ( $get_child == 1 ) {
 				$str_child = EBE_echbay_category_menu (
