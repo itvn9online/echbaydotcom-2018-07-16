@@ -15,10 +15,9 @@ $eb_all_themes_support["xwatchluxury"]["price"] = 2000000;
 //
 $eb_all_themes_support["xwatchluxury"]["top"][] = "xwatchluxury-top1.php";
 $eb_all_themes_support["xwatchluxury"]["top"][] = "xwatchluxury-top2.php";
-$eb_all_themes_support["xwatchluxury"]["top"][] = "xwatchluxury-top3.php";
-$eb_all_themes_support["xwatchluxury"]["top"][] = "xwatchluxury-top4.php";
-$eb_all_themes_support["xwatchluxury"]["top"][] = "top_widget.php";
 $eb_all_themes_support["xwatchluxury"]["top"][] = "breadcrumb-top1.php";
+$eb_all_themes_support["xwatchluxury"]["top"][] = "bigbanner-top1.php";
+$eb_all_themes_support["xwatchluxury"]["top"][] = "top_widget.php";
 //
 $eb_all_themes_support["xwatchluxury"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["xwatchluxury"]["footer"][] = "xwatchluxury-footer1.php";

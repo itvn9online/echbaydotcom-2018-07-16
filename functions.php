@@ -1546,30 +1546,35 @@ function EBE_echbay_category_menu (
 	$str = '';
 //	foreach ( $arrs_cats as $v ) {
 	foreach ( $oders as $k => $v ) {
-		$v = $options[$k];
 		
-		//
-		$str_child = '';
-		if ( $get_child == 1 ) {
-			$str_child = EBE_echbay_category_menu (
-				$v->taxonomy,
-				$v->term_id,
-				'sub-menu',
-				'div'
-			);
-		}
-		
-		// lấy ảnh đại diện nhỏ đối với các nhóm cấp 1
-		$cat_favicon = '';
-		if ( $cat_ids == 0 ) {
-			$cat_favicon = _eb_get_cat_object( $v->term_id, '_eb_category_favicon' );
-			if ( $cat_favicon != '' ) {
-				$cat_favicon = '<span class="eball-category-icon" style="background-image:url(\'' . $cat_favicon . '\');"></span>';
+		// không lấy nhóm có ID là 1
+		if ( $v->term_id != 1 ) {
+			$v = $options[$k];
+			
+			//
+			$str_child = '';
+			if ( $get_child == 1 ) {
+				$str_child = EBE_echbay_category_menu (
+					$v->taxonomy,
+					$v->term_id,
+					'sub-menu',
+					'div'
+				);
 			}
+			
+			// lấy ảnh đại diện nhỏ đối với các nhóm cấp 1
+			$cat_favicon = '';
+			if ( $cat_ids == 0 ) {
+				$cat_favicon = _eb_get_cat_object( $v->term_id, '_eb_category_favicon' );
+				if ( $cat_favicon != '' ) {
+					$cat_favicon = '<span class="eball-category-icon" style="background-image:url(\'' . $cat_favicon . '\');"></span>';
+				}
+			}
+			
+			//
+			$str .= '<li>' . $cat_favicon . '<' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
 		}
 		
-		//
-		$str .= '<li>' . $cat_favicon . '<' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
 	}
 	
 	// nếu là lấy nhóm cha -> thêm thuộc tính thêm chuỗi vào đầu và cuối menu

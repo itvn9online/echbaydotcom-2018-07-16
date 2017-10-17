@@ -979,8 +979,8 @@ $('.click-submit-url-categories').off('click').click(function () {
 				arr_exist = {};
 			
 			$( html_tags ).each(function() {
-				var a = $(this).attr('href') || '',
-					img = $('img', this).attr('data-src') || $('img', this).attr('src') || '';
+				var a = $(this).attr('href') || $('a', this).attr('href') || '',
+					img = $('img', this).attr('data-src') || $('img', this).attr('src') || $(this).attr('data-img') || '';
 				
 				// full url nếu chưa có
 				a = full_url_for_img_src(a);
