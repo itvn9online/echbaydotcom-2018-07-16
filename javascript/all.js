@@ -2256,6 +2256,10 @@ function WGR_custom_search_and_add_menu ( post_id, post_type ) {
 
 function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
 	
+	console.log(post_id);
+	console.log(post_type);
+	console.log(post_url);
+	
 	// xóa trước khi làm việc
 	$('.remove-after-add-menu').remove();
 	
@@ -2323,20 +2327,20 @@ function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
 		add_process.find('input').each(function() {
 			var a = $(this).attr('name') || '';
 			
-			if ( a.split('menu-item-object').length > 1 ) {
+			if ( a.split('[menu-item-object]').length > 1 ) {
 				$(this).val( post_type );
 			}
 			/*
-			else if ( a.split('menu-item-object-id').length > 1 ) {
+			else if ( a.split('[menu-item-object-id]').length > 1 ) {
 				$(this).val( post_id ).prop({
 					checked : true
 				});
 			}
 			*/
-			else if ( a.split('menu-item-title').length > 1 ) {
+			else if ( a.split('[menu-item-title]').length > 1 ) {
 				$(this).val( post_title );
 			}
-			else if ( a.split('menu-item-url').length > 1 ) {
+			else if ( a.split('[menu-item-url]').length > 1 ) {
 				$(this).val( post_url );
 			}
 		});
