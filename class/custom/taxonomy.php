@@ -124,7 +124,7 @@ function dang_ky_taxonomy() {
 	register_taxonomy($taxonomy_post_type . '_options', $taxonomy_post_type, $args);
 }
 // Hook into the 'init' action
-add_action( 'init', 'dang_ky_taxonomy');
+add_filter( 'init', 'dang_ky_taxonomy');
 
 
 

@@ -713,7 +713,7 @@ $main_content = EBE_arr_tmp( $__cf_row_default, $main_content, 'aaa.' );
 
 // cập nhật lại rule cho wp
 if ( $__cf_row['cf_remove_category_base'] == 1 ) {
-	add_action( 'shutdown', 'flush_rewrite_rules' );
+	add_filter( 'shutdown', 'flush_rewrite_rules' );
 }
 
 

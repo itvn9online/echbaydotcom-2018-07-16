@@ -400,7 +400,7 @@ function EchBayMetaBox () {
 	// thông tin bổ sung cho quảng cáo
 	add_meta_box( 'eb-ads-info', 'Thông tin cơ bản', 'EchBayQuangCaoOutput', 'ads' );
 }
-add_action( 'add_meta_boxes', 'EchBayMetaBox' );
+add_filter( 'add_meta_boxes', 'EchBayMetaBox' );
 
 
 
@@ -504,7 +504,7 @@ function EchBayThongTinSave ( $post_id ) {
 	
 	EchBayThongTinRunSave( $eb_arr_phu_meta_box, $post_id );
 }
-add_action( 'save_post', 'EchBayThongTinSave' );
+add_filter( 'save_post', 'EchBayThongTinSave' );
 
 
 
@@ -566,20 +566,20 @@ $arr_category_custom_fields['_eb_category_primary'] = 'Đặt làm nhóm chính'
 
 
 // Thêm trường dữ liệu cho phần category -> luôn kích hoạt
-add_action ( 'edit_category_form_fields', 'EBextra_category_fields');
-add_action ( 'edited_category', 'EBsave_extra_category_fileds');
+add_filter ( 'edit_category_form_fields', 'EBextra_category_fields');
+add_filter ( 'edited_category', 'EBsave_extra_category_fileds');
 
 
 // các trường còn lại, chỉ kích hoạt khi EchBay Seo plugin được bật
 if ( cf_on_off_echbay_seo == 1 ) {
-	add_action ( 'edit_tag_form_fields', 'EBextra_category_fields');
+	add_filter ( 'edit_tag_form_fields', 'EBextra_category_fields');
 	
 	
 	// Lưu dữ liệu edited_ + tên của taxonomy
-	add_action ( 'edited_post_tag', 'EBsave_extra_category_fileds');
-	add_action ( 'edited_post_options', 'EBsave_extra_category_fileds');
-	//add_action ( 'edited_blogs', 'EBsave_extra_category_fileds');
-	add_action ( 'edited_' . EB_BLOG_POST_LINK, 'EBsave_extra_category_fileds');
+	add_filter ( 'edited_post_tag', 'EBsave_extra_category_fileds');
+	add_filter ( 'edited_post_options', 'EBsave_extra_category_fileds');
+	//add_filter ( 'edited_blogs', 'EBsave_extra_category_fileds');
+	add_filter ( 'edited_' . EB_BLOG_POST_LINK, 'EBsave_extra_category_fileds');
 }
 
 

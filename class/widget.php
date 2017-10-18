@@ -10,7 +10,7 @@
 
 
 
-add_action ( 'widgets_init', '___add_echbay_widget' );
+add_filter ( 'widgets_init', '___add_echbay_widget' );
 function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_same_same_price' );

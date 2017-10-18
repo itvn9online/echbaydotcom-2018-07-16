@@ -19,14 +19,14 @@ function edit_cat_description($category) {
 <?php
 }
  
-add_action( 'admin_print_styles', 'category_tinymce_css' );
+add_filter( 'admin_print_styles', 'category_tinymce_css' );
 function category_tinymce_css() { ?>    <style type="text/css">
     .quicktags-toolbar input{float:left !important; width:auto !important;}
     </style>
 <?php 
 }
  
-add_action('category_add_form_fields','add_cat_description');
+add_filter('category_add_form_fields','add_cat_description');
 function add_cat_description($tag) {
     $tag_extra_fields = get_option(description1);?>
     <table class="form-table">
@@ -42,7 +42,7 @@ function add_cat_description($tag) {
 <?php 
 } 
  
-add_action('admin_head', 'taxonomy_tinycme_hide_description');
+add_filter('admin_head', 'taxonomy_tinycme_hide_description');
 function taxonomy_tinycme_hide_description() {
 global $pagenow; 
 //echo $pagenow;exit;

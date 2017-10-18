@@ -231,7 +231,7 @@ else {
 //	return _eb_send_mail_phpmailer ( $to_email, '', $title, $message, '', $bcc_email );
 	
 	// v2
-	add_action( 'phpmailer_init', 'EBE_configure_smtp' );
+	add_filter( 'phpmailer_init', 'EBE_configure_smtp' );
 }
 
 // Thiết lập gửi EMail với định dạng HTML
@@ -497,7 +497,7 @@ setTimeout(function () {
 </script>';
 		
 	}
-	add_action('login_head', 'EBE_login_css');
+	add_filter('login_head', 'EBE_login_css');
 	
 }
 
@@ -664,7 +664,7 @@ function echbay_theme_setup() {
 }
 
 //
-add_action ( 'init', 'echbay_theme_setup');
+add_filter ( 'init', 'echbay_theme_setup');
 
 
 
@@ -892,7 +892,7 @@ function eb_change_product_query( $query ){
 
 //
 //if ( isset ( $_GET ['filter'] ) || isset ( $_GET ['orderby'] ) ) {
-	add_action( 'pre_get_posts', 'eb_change_product_query');
+	add_filter( 'pre_get_posts', 'eb_change_product_query');
 //}
 
 
@@ -923,10 +923,10 @@ else {
 	/*
 	* Không hiển thị menu admin ở theme
 	*/
-	add_action('after_setup_theme', 'EB_remove_admin_bar_in_theme');
+	add_filter('after_setup_theme', 'EB_remove_admin_bar_in_theme');
 	
 	// xóa các script không sử dụng đến
-	add_action( 'wp_footer', 'EBE_deregister_scripts' );
+	add_filter( 'wp_footer', 'EBE_deregister_scripts' );
 	
 }
 

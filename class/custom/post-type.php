@@ -242,7 +242,7 @@ function ech_bay_custom_post_type() {
 	
 }
 // Kích hoạt hàm tạo custom post type
-add_action('init', 'ech_bay_custom_post_type');
+add_filter('init', 'ech_bay_custom_post_type');
 
 
 

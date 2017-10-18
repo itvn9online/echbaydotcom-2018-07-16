@@ -83,7 +83,7 @@ function __eb_widget_load_cat_select ( $select_name, $select_val, $tax = '', $ge
 
 
 
-add_action ( 'widgets_init', '___add_echbay_widget' );
+add_filter ( 'widgets_init', '___add_echbay_widget' );
 function ___add_echbay_widget() {
 	register_widget ( '___echbay_widget_random_product' );
 	
