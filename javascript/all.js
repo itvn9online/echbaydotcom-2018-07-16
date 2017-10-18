@@ -2320,10 +2320,6 @@ function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
 		var add_process = $('.remove-after-add-menu');
 		
 		//
-		add_process.find('input[type="checkbox"]').val( post_id ).prop({
-			checked : true
-		});
-		
 		add_process.find('input').each(function() {
 			var a = $(this).attr('name') || '';
 			
@@ -2344,7 +2340,11 @@ function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
 				$(this).val( post_url );
 			}
 		});
-		
+
+		add_process.find('input[type="checkbox"]').val( post_id ).prop({
+			checked : true
+		});
+				
 		// kích hoạt chức năng add menu
 		setTimeout(function () {
 			button_process.click();
