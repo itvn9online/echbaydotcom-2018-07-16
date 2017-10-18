@@ -1036,7 +1036,7 @@ function ___eb_big_banner () {
 	
 	// số thẻ LI mặc định được hiển thị/ 1000px
 	var so_the_li_mong_muon = $('.banner-chan-trang:first').attr('data-num') || 5;
-//	console.log( so_the_li_mong_muon );
+	console.log( so_the_li_mong_muon );
 	/*
 	if ( typeof so_the_li_mong_muon != 'number' ) {
 		so_the_li_mong_muon = 5;
@@ -1044,18 +1044,20 @@ function ___eb_big_banner () {
 	*/
 	// -> chiểu rộng trung bình của mỗi LI
 	so_the_li_mong_muon = 999/ so_the_li_mong_muon - 1;
-//	console.log( so_the_li_mong_muon );
+	console.log( so_the_li_mong_muon );
 //	console.log( $('.banner-chan-trang:first').width() );
 	
 	// tính toán số thẻ LI được hiển thị
 	var global_chantrang_len = $('.banner-chan-trang:first').width()/ so_the_li_mong_muon;
 	global_chantrang_len = Math.ceil( global_chantrang_len ) - 1;
-//	console.log( global_chantrang_len );
+	console.log( global_chantrang_len );
 	
 	// nếu nhiều hơn so với số LI thật -> gán lại giá trị mới
+	/*
 	if ( global_chantrang_len > len ) {
 		global_chantrang_len = len;
 	}
+	*/
 //	console.log( global_chantrang_len );
 	
 	//

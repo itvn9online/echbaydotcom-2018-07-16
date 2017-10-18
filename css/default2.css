@@ -1046,8 +1046,8 @@ color: #333;
 	overflow: hidden;
 }
 .banner-chan-trang li {
-	float: left;
 	width: 20%;
+	display: inline-block;
 }
 .banner-chan-trang .banner-ads-media {
 	margin: 0 14px;

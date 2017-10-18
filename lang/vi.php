@@ -137,6 +137,14 @@ $___eb_lang[eb_key_for_site_lang . 'booking_mail'] = file_get_contents( EB_THEME
 $___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/mail.html' );
 
 
+// tiêu đề của phần logo đối tác
+$___eb_lang[eb_key_for_site_lang . 'doitac_title'] = '';
+// số tin trên mỗi dòng
+$___eb_lang[eb_key_for_site_lang . 'doitac_num'] = '6';
+// kích thước của banner đối tác
+$___eb_lang[eb_key_for_site_lang . 'doitac_size'] = '1/2';
+
+
 
 
 //
