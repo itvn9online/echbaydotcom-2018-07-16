@@ -2246,12 +2246,16 @@ function WGR_load_post_page_for_add_menu ( arr, type ) {
 		a = a.replace(/[^0-9a-zA-Z]/g, '');
 		
 		//
-		$('#show_all_list_post_page_menu ul').append('<li data-key="' + a + '" onclick="WGR_custom_search_and_add_menu(' + arr[i].id + ', \'' + type + '\');" class="cur">' + arr[i].ten + '</li>');
+		$('#show_all_list_post_page_menu ul').append('<li data-key="' + a + '" onclick="WGR_custom_search_and_add_menu(' + arr[i].id + ', \'' + type + '\');this.style.display=\'none\';" class="cur">' + arr[i].ten + '</li>');
 	}
 }
 
 function WGR_custom_search_and_add_menu ( post_id, post_type ) {
 	window.open(web_link + 'get_post_id_for_menu/?by_id=' + post_id + '&by_post_type=' + post_type, 'target_eb_iframe');
+	
+	$('#show_all_list_post_page_menu').css({
+		opacity: .1
+	});
 }
 
 function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
@@ -2358,6 +2362,11 @@ function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
 				$('.remove-after-add-menu').remove();
 			}, 200);
 			*/
+			
+			//
+			$('#show_all_list_post_page_menu').css({
+				opacity: 1
+			});
 		}, 200);
 		
 	}

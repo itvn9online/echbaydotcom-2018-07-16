@@ -243,7 +243,7 @@ var eb_global_product_size = '',
 		// nạp danh sách sản phẩm, tin tức... khi người dùng nhấn vào ô tìm kiếm
 		$('#wgr_search_product_in_menu').click(function () {
 			if ( dog('show_all_list_post_page_menu') == null ) {
-				$('#wgr_search_product_in_menu').after('<p>* Nhập từ khóa vào ô tìm kiếm để tìm kiếm Sản phẩm, bài viết tin tức, trang tĩnh, chuyên mục, danh mục... sau đó bấm chọn trong danh sách vừa tim được để thêm vào menu.</p><div id="show_all_list_post_page_menu"><ul></ul></div>');
+				$('#wgr_search_product_in_menu').after('<p class="orgcolor">* Nhập từ khóa vào ô tìm kiếm để tìm kiếm Sản phẩm, bài viết tin tức, trang tĩnh, chuyên mục, danh mục... sau đó bấm chọn trong danh sách vừa tim được để thêm vào menu.</p><div id="show_all_list_post_page_menu"><ul></ul></div>');
 				
 				//
 				WGR_load_post_page_for_add_menu( eb_posts_list, 'post' );
@@ -465,3 +465,6 @@ if ( $('.each-to-bgimg').length > 0 ) {
 		});
 	});
 }
+
+
+
