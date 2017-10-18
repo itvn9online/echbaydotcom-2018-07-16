@@ -2260,9 +2260,9 @@ function WGR_custom_search_and_add_menu ( post_id, post_type ) {
 
 function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
 	
-	console.log(post_id);
-	console.log(post_type);
-	console.log(post_url);
+//	console.log(post_id);
+//	console.log(post_type);
+//	console.log(post_url);
 	
 	// xóa trước khi làm việc
 	$('.remove-after-add-menu').remove();
