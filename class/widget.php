@@ -324,7 +324,8 @@ function _eb_widget_style_for_post_cloumn ( $select_name, $select_val ) {
 			'anhtren_chuduoi' => 'Ảnh trên - chữ dưới',
 			'chutren_anhduoi' => 'Chữ trên - ảnh dưới',
 			'chi_chu' => 'Chỉ chữ',
-			'chi_anh' => 'Chỉ ảnh'
+			'chi_anh' => 'Chỉ ảnh',
+			'chi_anh_chu' => 'Chỉ ảnh + chữ'
 		),
 		$select_name,
 		$select_val

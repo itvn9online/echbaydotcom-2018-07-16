@@ -25,12 +25,12 @@ $eb_all_themes_support["xwatchluxury"]["footer"][] = "xwatchluxury-footer2.php";
 $eb_all_themes_support["xwatchluxury"]["footer"][] = "xwatchluxury-footer3.php";
 $eb_all_themes_support["xwatchluxury"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home1.php";
-$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home2.php";
-$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home3.php";
-$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home4.php";
-$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home5.php";
 $eb_all_themes_support["xwatchluxury"]["home"][] = "home_widget.php";
+//$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home1.php";
+//$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home2.php";
+//$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home3.php";
+//$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home4.php";
+//$eb_all_themes_support["xwatchluxury"]["home"][] = "xwatchluxury-home5.php";
 //
 $eb_all_themes_support["xwatchluxury"]["threaddetails"][] = "xwatchluxury-threaddetails.html";
 //
