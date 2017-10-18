@@ -414,7 +414,7 @@ function eb_run_post_column_content($column, $post_id) {
 		
 		//
 		if ( isset( $arr_eb_ads_status[$a] ) ) {
-			echo '<span class="small">' . $arr_eb_ads_status[$a] . '</span>';
+			echo '<span class="small"><a href="' . web_link . WP_ADMIN_DIR . '/edit.php?post_type=ads&ads_filter_status=' . $a . '">' . $arr_eb_ads_status[$a] . '</a></span>';
 		} else {
 			echo '<em>NULL</em>';
 		}
@@ -428,6 +428,22 @@ function eb_run_post_column_content($column, $post_id) {
 	}
 }
 
+function WGR_admin_load_ads_by_status ( $query ) {
+	$ads_filter_status = isset ( $_GET ['ads_filter_status'] ) ? trim ( strtolower( $_GET ['ads_filter_status'] ) ) : '';
+	
+	//
+	if ( $ads_filter_status != '' ) {
+		$status_in = array(
+			'key' => '_eb_ads_status',
+			'value' => $ads_filter_status,
+			'compare' => '=',
+			'type' => 'NUMERIC'
+		);
+		
+		$query->set( 'meta_query', array( $status_in ) );
+	}
+}
+
 
 
 // để cho nhẹ code, chỉ chạy chức năng tương ứng với request
@@ -438,6 +454,7 @@ if ( strstr( $_SERVER['REQUEST_URI'], '/edit.php' ) == true ) {
 		
 		add_filter ( 'manage_' . $post_type . '_posts_columns', 'eb_add_ads_column_head' );
 		add_action ( 'manage_' . $post_type . '_posts_custom_column', 'eb_run_post_column_content', 10, 2 );
+		add_filter( 'pre_get_posts', 'WGR_admin_load_ads_by_status');
 	}
 	// cho blog
 	else if ( strstr( $_SERVER['REQUEST_URI'], 'post_type=blog' ) == true ) {

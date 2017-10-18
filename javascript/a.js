@@ -409,20 +409,22 @@ if ( cf_hide_supper_admin_menu == 1 ) {
 //
 function WGR_admin_add_img_lazzy_load ( img ) {
 	if (img != '') {
-		$('.eb-lazzy-effect:first').css({
+		$('.each-to-bgimg:first').css({
 			'background-image': 'url(\'' + img + '\')'
 		});
 	}
 	
 	//
-	$('.eb-lazzy-effect:first').removeClass('eb-lazzy-effect').removeClass('each-to-bgimg');
+	$('.each-to-bgimg:first').removeClass('each-to-bgimg').removeClass('eb-lazzy-effect');
 }
 
+// load 10 cái đầu tiên trước
+$('.each-to-bgimg').slice(0, 10).each(function() {
+	WGR_admin_add_img_lazzy_load( $(this).attr('data-img') || '' );
+});
+
 //
-if ( $('.each-to-bgimg').length > 10 ) {
-	$('.eb-lazzy-effect').slice(0, 10).each(function() {
-		WGR_admin_add_img_lazzy_load( $(this).attr('data-img') || '' );
-	});
+if ( $('.each-to-bgimg').length > 0 ) {
 	
 	//
 	$('.each-to-bgimg').addClass('eb-lazzy-effect');
@@ -439,10 +441,5 @@ if ( $('.each-to-bgimg').length > 10 ) {
 				WGR_admin_add_img_lazzy_load( $(this).attr('data-img') || '' );
 			}
 		});
-	});
-}
-else {
-	$('.eb-lazzy-effect').each(function() {
-		WGR_admin_add_img_lazzy_load( $(this).attr('data-img') || '' );
 	});
 }
