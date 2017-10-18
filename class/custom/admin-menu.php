@@ -403,7 +403,7 @@ function eb_run_post_column_content($column, $post_id) {
 		
 		//
 		$a = _eb_get_post_img ( $post_id );
-		echo '<div><img src="' . $a . '" height="60" /></div>';
+		echo '<div data-img="' . $a . '" class="admin-list-post-avt each-to-bgimg">&nbsp;</div>';
 	}
 	// trạng thái
 	else if ($column == 'ads_status') {

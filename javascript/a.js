@@ -116,7 +116,7 @@ var eb_global_product_size = '',
 		// nếu là post
 		if ( win_href.split('post_type=').length == 1
 		|| win_href.split('post_type=post').length > 1 ) {
-			$('table.wp-list-table').width( '150%' );
+			$('table.wp-list-table').width( '150%' ).addClass('admin-list-product-avt');
 		}
 	}
 	// danh sách đơn hàng
@@ -406,3 +406,43 @@ if ( cf_hide_supper_admin_menu == 1 ) {
 
 
 
+//
+function WGR_admin_add_img_lazzy_load ( img ) {
+	if (img != '') {
+		$('.eb-lazzy-effect:first').css({
+			'background-image': 'url(\'' + img + '\')'
+		});
+	}
+	
+	//
+	$('.eb-lazzy-effect:first').removeClass('eb-lazzy-effect').removeClass('each-to-bgimg');
+}
+
+//
+if ( $('.each-to-bgimg').length > 10 ) {
+	$('.eb-lazzy-effect').slice(0, 10).each(function() {
+		WGR_admin_add_img_lazzy_load( $(this).attr('data-img') || '' );
+	});
+	
+	//
+	$('.each-to-bgimg').addClass('eb-lazzy-effect');
+	
+	//
+	$(window).scroll(function() {
+		var new_scroll_top = window.scrollY || $(window).scrollTop();
+//		console.log(new_scroll_top);
+		
+		$('.eb-lazzy-effect').each(function() {
+			a = $(this).offset().top || 0;
+			
+			if ( a < new_scroll_top + 600 ) {
+				WGR_admin_add_img_lazzy_load( $(this).attr('data-img') || '' );
+			}
+		});
+	});
+}
+else {
+	$('.eb-lazzy-effect').each(function() {
+		WGR_admin_add_img_lazzy_load( $(this).attr('data-img') || '' );
+	});
+}

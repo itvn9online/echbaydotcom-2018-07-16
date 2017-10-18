@@ -693,6 +693,24 @@ input#_eb_ads_for_category { display: none; }
 #menu-posts-ads .dashicons-admin-post:before { content: "\f03e"; }
 #menu-posts-blog .dashicons-admin-post:before { content: "\f1ea"; }
 #toplevel_page_echbay-plugins-menu .dashicons-admin-generic:before { /* content: "\f176"; */ content: "\f325"; }
+.admin-list-post-avt {
+	height: 60px;
+	width: 110px;
+	background: left no-repeat;
+	background-size: auto 100%;
+}
+/*
+.admin-list-product-avt tr {
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.admin-list-product-avt th,
+.admin-list-product-avt td { order: 9; }
+.admin-list-product-avt th#img,
+.admin-list-product-avt td.img { order: 99; }
+*/
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
