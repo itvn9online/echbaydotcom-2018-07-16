@@ -376,6 +376,7 @@ $arr_active_for_404_page = array(
 	
 	"eb-ajaxservice" => 1,
 	"download_img_to_site" => 1,
+	"get_post_id_for_menu" => 1,
 	
 	"php_info" => 1,
 	"eb-load-quick-search" => 1

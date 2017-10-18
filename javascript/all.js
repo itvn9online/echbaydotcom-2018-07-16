@@ -112,10 +112,10 @@ function eb_drop_menu(fix_id, select_id) {
 		$('#' + fix_id + ' div').show()
 	}).off('keyup').keyup(function(e) {
 		if (e.keyCode == 13) {
-			return false
+			return false;
 		} else if (e.keyCode == 27) {
 			$("#" + fix_id + " div").hide();
-			return false
+			return false;
 		} else if (e.keyCode == 32) {
 			$('#' + fix_id + ' div').show();
 		}
@@ -136,9 +136,9 @@ function eb_drop_menu(fix_id, select_id) {
 				}
 			});
 			
-			$('#' + fix_id + ' li[data-show=1]').show()
+			$('#' + fix_id + ' li[data-show="1"]').show();
 		} else {
-			$('#' + fix_id + ' li').show()
+			$('#' + fix_id + ' li').show();
 		}
 		
 		if ($('#' + fix_id + ' ul').height() > 250) {
@@ -2235,6 +2235,176 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 			alert('Ch\u1ecdn ng\u00e0y th\u00e1ng c\u1ea7n xem')
 		}
 	})
+}
+
+
+
+// công cụ search và add menu riêng, do công cụ của wp tìm không ra
+function WGR_load_post_page_for_add_menu ( arr, type ) {
+	for ( var i = 0; i < arr.length; i++ ) {
+		var a = g_func.non_mark_seo( arr[i].ten );
+		a = a.replace(/[^0-9a-zA-Z]/g, '');
+		
+		//
+		$('#show_all_list_post_page_menu ul').append('<li data-key="' + a + '" onclick="WGR_custom_search_and_add_menu(' + arr[i].id + ', \'' + type + '\');" class="cur">' + arr[i].ten + '</li>');
+	}
+}
+
+function WGR_custom_search_and_add_menu ( post_id, post_type ) {
+	window.open(web_link + 'get_post_id_for_menu/?by_id=' + post_id + '&by_post_type=' + post_type, 'target_eb_iframe');
+}
+
+function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
+	
+	// xóa trước khi làm việc
+	$('.remove-after-add-menu').remove();
+	
+	//
+	var node_max = 9999999999;
+	
+	// lấy vị trí hiện tại của HTML để chuyển hết thành 1 vị trí mới
+	var menu_item_checkbox = $('#pagechecklist-most-recent li:last .menu-item-checkbox').attr('name')
+								|| $('#postchecklist-most-recent li:last .menu-item-checkbox').attr('name')
+								|| $('#blogchecklist-most-recent li:last .menu-item-checkbox').attr('name')
+								|| '';
+//		console.log(menu_item_checkbox);
+	if ( menu_item_checkbox != '' ) {
+		menu_item_checkbox = menu_item_checkbox.split(']')[0].split('[')[1];
+//		console.log(menu_item_checkbox);
+		
+		// lấy HTML mẫu của wp để tạo ID
+		var accordion_section_content = $('#pagechecklist-most-recent li:last').html()
+									|| $('#postchecklist-most-recent li:last').html()
+									|| $('#blogchecklist-most-recent li:last').html()
+									|| '';
+//		console.log(accordion_section_content);
+		
+		// thay thế toàn bộ vị trí của mảng lên cấp cao nhất có thể
+		for ( var i = 0; i < 50; i++ ) {
+			accordion_section_content = accordion_section_content.replace( '[' + menu_item_checkbox + ']', '[-' + node_max + ']' );
+		}
+//		console.log(accordion_section_content);
+		
+		// TEST
+		var post_title = '';
+		var button_process = 'submit-posttype-' + post_type;
+		if ( dog(button_process) == null ) {
+			console.log('BUTTON [' + button_process + '] for add menu not found');
+			return false;
+		}
+		button_process = $('#' + button_process);
+		
+		//
+		if ( post_type == 'page' ) {
+			var for_process = $('#pagechecklist-most-recent li:last');
+			
+			post_title = WGR_js_get_post_title_by_id ( eb_pages_list, post_id );
+		}
+		else if ( post_type == 'post' ) {
+			var for_process = $('#postchecklist-most-recent li:last');
+			
+			post_title = WGR_js_get_post_title_by_id ( eb_posts_list, post_id );
+		}
+		else if ( post_type == 'blog' ) {
+			var for_process = $('#blogchecklist-most-recent li:last');
+			
+			post_title = WGR_js_get_post_title_by_id ( eb_blogs_list, post_id );
+		}
+		for_process.after('<li class="remove-after-add-menu">' + accordion_section_content + '</li>');
+		
+		//
+		var add_process = $('.remove-after-add-menu');
+		
+		//
+		add_process.find('input[type="checkbox"]').val( post_id ).prop({
+			checked : true
+		});
+		
+		add_process.find('input').each(function() {
+			var a = $(this).attr('name') || '';
+			
+			if ( a.split('menu-item-object').length > 1 ) {
+				$(this).val( post_type );
+			}
+			/*
+			else if ( a.split('menu-item-object-id').length > 1 ) {
+				$(this).val( post_id ).prop({
+					checked : true
+				});
+			}
+			*/
+			else if ( a.split('menu-item-title').length > 1 ) {
+				$(this).val( post_title );
+			}
+			else if ( a.split('menu-item-url').length > 1 ) {
+				$(this).val( post_url );
+			}
+		});
+		
+		// kích hoạt chức năng add menu
+		setTimeout(function () {
+			button_process.click();
+			
+			// xong việc thì loại bỏ checkbox này luôn
+			/*
+			setTimeout(function () {
+				$('.remove-after-add-menu').find('input[type="checkbox"]').prop({
+					checked : false
+				});
+				$('.remove-after-add-menu').remove();
+			}, 200);
+			*/
+		}, 200);
+		
+	}
+	else {
+		console.log('menu_item_checkbox not found');
+	}
+	
+}
+
+// lấy tiêu đề dựa theo ID
+function WGR_js_get_post_title_by_id ( arr, id ) {
+	for ( var i = 0; i < arr.length; i++ ) {
+		if ( arr[i].id == id ) {
+			return arr[i].ten;
+			break;
+		}
+	}
+}
+
+// tạo chức năng gõ phím để tìm kiếm bài viết trong menu
+function WGR_press_for_search_post_page () {
+	
+	$('#wgr_search_product_in_menu').off('keyup').keyup(function(e) {
+		if (e.keyCode == 13) {
+			return false;
+		}
+		
+		var fix_id = 'show_all_list_post_page_menu';
+		
+		var key = $(this).val() || '';
+		if (key != '') {
+			key = g_func.non_mark_seo(key);
+			key = key.replace(/[^0-9a-zA-Z]/g, '');
+		}
+		
+		if (key != '') {
+			$('#' + fix_id + ' li').hide().each(function() {
+				if (a != '') {
+					var a = $(this).attr('data-key') || '';
+					if (a != '' && a.split(key).length > 1) {
+						$(this).show();
+					}
+				}
+			});
+			
+			$('#' + fix_id + ' li[data-show="1"]').show()
+		} else {
+			$('#' + fix_id + ' li').show()
+		}
+	});
+	
 }
 
 

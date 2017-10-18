@@ -98,6 +98,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		$description = isset( $instance ['description'] ) ? $instance ['description'] : '';
 		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
 		if ( $post_number == 0 ) $post_number = 5;
 		
@@ -264,6 +265,15 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		
 		//
+		$widget_title = _eb_get_echo_widget_title( $cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>', 'echbay-widget-blogs-title', $before_title );
+		
+		if ( $description != '' ) {
+			$widget_title .= '<div class="echbay-widget-blogs-desc">' . $description . '</div>';
+		}
+//		echo $description;
+		
+		
+		//
 		echo '<div class="' . $custom_style . '">';
 		
 		echo EBE_dynamic_title_tag( EBE_html_template( EBE_get_page_template( $html_template ), array(
@@ -272,7 +282,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			'tmp.max_width' => $max_width,
 			'tmp.blog_title' => $title,
 			'tmp.post_cloumn' => $post_cloumn,
-			'tmp.widget_title' => _eb_get_echo_widget_title( $cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>', 'echbay-widget-blogs-title', $before_title ),
+			'tmp.widget_title' => $widget_title,
 			'tmp.content' => $content,
 		) ) );
 		

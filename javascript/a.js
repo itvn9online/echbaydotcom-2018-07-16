@@ -234,6 +234,28 @@ var eb_global_product_size = '',
 //			$('#menu-to-edit li:last').click();
 		});
 		
+		
+		// tạo menu tìm kiếm bài viết cho phần menu, do tìm kiếm của wp tìm không chính xác
+		$('#nav-menus-frame').before('<br><div><input type="text" id="wgr_search_product_in_menu" placeholder="Tìm kiếm Sản phẩm/ Bài viết... để thêm vào menu" class="wgr-search-post-menu" /></div>');
+		
+//		WGR_custom_search_and_add_menu( 1, 'post' );
+		
+		// nạp danh sách sản phẩm, tin tức... khi người dùng nhấn vào ô tìm kiếm
+		$('#wgr_search_product_in_menu').click(function () {
+			if ( dog('show_all_list_post_page_menu') == null ) {
+				$('#wgr_search_product_in_menu').after('<p>* Nhập từ khóa vào ô tìm kiếm để tìm kiếm Sản phẩm, bài viết tin tức, trang tĩnh, chuyên mục, danh mục... sau đó bấm chọn trong danh sách vừa tim được để thêm vào menu.</p><div id="show_all_list_post_page_menu"><ul></ul></div>');
+				
+				//
+				WGR_load_post_page_for_add_menu( eb_posts_list, 'post' );
+				WGR_load_post_page_for_add_menu( eb_blogs_list, 'blog' );
+				WGR_load_post_page_for_add_menu( eb_pages_list, 'page' );
+				
+				//
+				WGR_press_for_search_post_page();
+				
+			}
+		});
+		
 	}
 	
 	

@@ -699,6 +699,7 @@ input#_eb_ads_for_category { display: none; }
 	background: left no-repeat;
 	background-size: auto 100%;
 }
+.wp-list-table tr:hover .admin-list-post-avt { background-size: 100% auto; }
 /*
 .admin-list-product-avt tr {
 	display: -webkit-flex;
@@ -711,6 +712,18 @@ input#_eb_ads_for_category { display: none; }
 .admin-list-product-avt th#img,
 .admin-list-product-avt td.img { order: 99; }
 */
+.wgr-search-post-menu {
+	width: 90%;
+	max-width: 600px;
+}
+#show_all_list_post_page_menu {
+	height: 250px;
+	overflow-y: auto;
+	border: 1px #ccc solid;
+	padding: 5px 0;
+}
+#show_all_list_post_page_menu li { padding: 5px 15px; }
+#show_all_list_post_page_menu li:hover { background-color: #f2f2f2; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

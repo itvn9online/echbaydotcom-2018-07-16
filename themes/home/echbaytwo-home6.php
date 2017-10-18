@@ -10,7 +10,9 @@ if ( $check_load_logo_doitac > 0 ) {
 	//
 	$num_load_logo_doitac = EBE_get_lang('doitac_title');
 	if ( $num_load_logo_doitac != '' ) {
-		$num_load_logo_doitac = '<div class="text-center title-btn-chantrang">' . $num_load_logo_doitac . '</div>';
+		$num_load_logo_doitac = '<div class="text-center title-btn-chantrang home-hot-title">
+			<div>' . $num_load_logo_doitac . '</div>
+		</div>';
 	}
 	
 ?>
