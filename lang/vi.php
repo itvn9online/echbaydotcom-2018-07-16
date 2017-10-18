@@ -140,7 +140,7 @@ $___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PL
 // tiêu đề của phần logo đối tác
 $___eb_lang[eb_key_for_site_lang . 'doitac_title'] = '';
 // số tin trên mỗi dòng
-$___eb_lang[eb_key_for_site_lang . 'doitac_num'] = '6';
+$___eb_lang[eb_key_for_site_lang . 'doitac_num'] = '5';
 // kích thước của banner đối tác
 $___eb_lang[eb_key_for_site_lang . 'doitac_size'] = '1/2';
 
