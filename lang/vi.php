@@ -141,7 +141,7 @@ $___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PL
 * Phần này không hẳn là phần ngôn ngữ, mà nó là phần config nhanh, đỡ phải chỉnh nhiều
 */
 // kích thước ảnh quảng cáo ở phần danh sách sản phẩm trang chủ
-$___eb_lang[eb_key_for_site_lang . 'homelist_size'] = '728x90';
+$___eb_lang[eb_key_for_site_lang . 'homelist_size'] = '90/728';
 $___eb_lang[eb_key_for_site_lang . 'homelist_num'] = '1';
 
 // tiêu đề của phần logo đối tác
