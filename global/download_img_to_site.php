@@ -46,7 +46,9 @@ $save_to = str_replace( ABSPATH, web_link, $save_to );
 
 
 echo '<script>
-parent.finish_download_img_other_domain_of_content("' . $save_to . '");
+if ( top != self ) {
+	parent.finish_download_img_other_domain_of_content("' . $save_to . '");
+}
 </script>';
 
 

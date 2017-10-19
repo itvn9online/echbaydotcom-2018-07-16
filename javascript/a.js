@@ -246,9 +246,14 @@ var eb_global_product_size = '',
 				$('#wgr_search_product_in_menu').after('<p class="orgcolor">* Nhập từ khóa vào ô tìm kiếm để tìm kiếm Sản phẩm, bài viết tin tức, trang tĩnh, chuyên mục, danh mục... sau đó bấm chọn trong danh sách vừa tim được để thêm vào menu.</p><div id="show_all_list_post_page_menu"><ul></ul></div>');
 				
 				//
-				WGR_load_post_page_for_add_menu( eb_posts_list, 'post' );
-				WGR_load_post_page_for_add_menu( eb_blogs_list, 'blog' );
-				WGR_load_post_page_for_add_menu( eb_pages_list, 'page' );
+				WGR_load_post_page_for_add_menu( eb_site_group, 'category', 'Chuyên mục sản phẩm', 'taxonomy' );
+				WGR_load_post_page_for_add_menu( eb_tags_group, 'post_tag', 'Từ khóa sản phẩm', 'taxonomy' );
+				WGR_load_post_page_for_add_menu( eb_options_group, 'post_options', 'Thông số khác của sản phẩm', 'taxonomy' );
+				WGR_load_post_page_for_add_menu( eb_blog_group, 'blogs', 'Danh mục tin tức', 'taxonomy' );
+				//
+				WGR_load_post_page_for_add_menu( eb_posts_list, 'post', 'Sản phẩm' );
+				WGR_load_post_page_for_add_menu( eb_blogs_list, 'blog', 'Tin tức/ Blog' );
+				WGR_load_post_page_for_add_menu( eb_pages_list, 'page', 'Trang tĩnh' );
 				
 				//
 				WGR_press_for_search_post_page();

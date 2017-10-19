@@ -2240,35 +2240,57 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 
 
 // công cụ search và add menu riêng, do công cụ của wp tìm không ra
-function WGR_load_post_page_for_add_menu ( arr, type ) {
+function WGR_load_post_page_for_add_menu ( arr, type, post_name, item_type ) {
+	if ( arr.length == 0 ) {
+		return false;
+	}
+	
+	//
+	if ( typeof item_type == 'undefined' || item_type == '' ) {
+		item_type = 'post_type';
+	}
+	
+	//
+	$('#show_all_list_post_page_menu ul').append('<li data-show="1" class="text-center"><h4>' + post_name + '</h4></li>');
+	
+	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		var a = g_func.non_mark_seo( arr[i].ten );
 		a = a.replace(/[^0-9a-zA-Z]/g, '');
 		
 		//
-		$('#show_all_list_post_page_menu ul').append('<li data-key="' + a + '" onclick="WGR_custom_search_and_add_menu(' + arr[i].id + ', \'' + type + '\');this.style.display=\'none\';" class="cur">' + arr[i].ten + '</li>');
+		$('#show_all_list_post_page_menu ul').append('<li data-key="' + a + '" onclick="WGR_custom_search_and_add_menu(' + arr[i].id + ', \'' + type + '\', \'' + item_type + '\');this.style.display=\'none\';" class="cur">' + arr[i].ten + '</li>');
 	}
 }
 
-function WGR_custom_search_and_add_menu ( post_id, post_type ) {
-	window.open(web_link + 'get_post_id_for_menu/?by_id=' + post_id + '&by_post_type=' + post_type, 'target_eb_iframe');
+function WGR_custom_search_and_add_menu ( post_id, post_type, item_type ) {
+	if ( typeof item_type == 'undefined' || item_type == '' ) {
+		console.log('item_type not found');
+		return false;
+	}
+	
+	//
+	var a = web_link + 'get_post_id_for_menu/?by_id=' + post_id + '&by_post_type=' + post_type + '&by_item_type=' + item_type;
+	console.log(a);
+	
+	window.open(a, 'target_eb_iframe');
 	
 	$('#show_all_list_post_page_menu').css({
 		opacity: .1
 	});
 }
 
-function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
-	
-//	console.log(post_id);
-//	console.log(post_type);
-//	console.log(post_url);
+function WGR_finish_search_and_add_menu ( post_id, post_type, post_url, item_type ) {
+	console.log(post_id);
+	console.log(item_type);
+	console.log(post_type);
+	console.log(post_url);
 	
 	// xóa trước khi làm việc
 	$('.remove-after-add-menu').remove();
 	
 	//
-	var node_max = 9999999999;
+	var node_max = $('.menu-item-title input[type="checkbox"]').length || 9999999999;
 	
 	// lấy vị trí hiện tại của HTML để chuyển hết thành 1 vị trí mới
 	var menu_item_checkbox = $('#pagechecklist-most-recent li:last .menu-item-checkbox').attr('name')
@@ -2295,30 +2317,89 @@ function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
 		
 		// TEST
 		var post_title = '';
-		var button_process = 'submit-posttype-' + post_type;
+		// cho taxonomy
+		if ( item_type == 'taxonomy' ) {
+			var button_process = 'submit-taxonomy-' + post_type;
+		}
+		// cho post
+		else {
+			var button_process = 'submit-posttype-' + post_type;
+		}
 		if ( dog(button_process) == null ) {
 			console.log('BUTTON [' + button_process + '] for add menu not found');
 			return false;
 		}
 		button_process = $('#' + button_process);
 		
-		//
+		// post
+		var for_process = null;
 		if ( post_type == 'page' ) {
-			var for_process = $('#pagechecklist-most-recent li:last');
+//			for_process = $('#pagechecklist-most-recent li:last');
+			for_process = 'pagechecklist-most-recent';
 			
 			post_title = WGR_js_get_post_title_by_id ( eb_pages_list, post_id );
 		}
 		else if ( post_type == 'post' ) {
-			var for_process = $('#postchecklist-most-recent li:last');
+//			for_process = $('#postchecklist-most-recent li:last');
+			for_process = 'postchecklist-most-recent';
 			
 			post_title = WGR_js_get_post_title_by_id ( eb_posts_list, post_id );
 		}
 		else if ( post_type == 'blog' ) {
-			var for_process = $('#blogchecklist-most-recent li:last');
+//			for_process = $('#blogchecklist-most-recent li:last');
+			for_process = 'blogchecklist-most-recent';
 			
 			post_title = WGR_js_get_post_title_by_id ( eb_blogs_list, post_id );
 		}
-		for_process.after('<li class="remove-after-add-menu">' + accordion_section_content + '</li>');
+		// taxonomy
+		else if ( post_type == 'category' ) {
+//			for_process = $('#categorychecklist-pop li:last');
+			for_process = 'categorychecklist-pop';
+			
+			post_title = WGR_js_get_post_title_by_id ( eb_site_group, post_id );
+		}
+		else if ( post_type == 'post_tag' ) {
+//			for_process = $('#blogschecklist-pop li:last');
+			for_process = 'post_tagchecklist-pop';
+			
+			post_title = WGR_js_get_post_title_by_id ( eb_tags_group, post_id );
+		}
+		else if ( post_type == 'post_options' ) {
+//			for_process = $('#blogschecklist-pop li:last');
+			for_process = 'post_optionschecklist-pop';
+			
+			post_title = WGR_js_get_post_title_by_id ( eb_options_group, post_id );
+		}
+		else if ( post_type == 'blogs' ) {
+//			for_process = $('#blogschecklist-pop li:last');
+			for_process = 'blogschecklist-pop';
+			
+			post_title = WGR_js_get_post_title_by_id ( eb_blog_group, post_id );
+		}
+		
+		// nếu không tồn tại ID để add -> thoát luôn
+		if ( for_process == '' || dog(for_process) == null ) {
+			/*
+			if ( $('#pagechecklist-most-recent li').length > 0 ) {
+				for_process = $('#pagechecklist-most-recent li:last');
+			}
+			else if ( $('#postchecklist-most-recent li').length > 0 ) {
+				for_process = $('#postchecklist-most-recent li:last');
+			}
+			else if ( $('#blogchecklist-most-recent li').length > 0 ) {
+				for_process = $('#blogchecklist-most-recent li:last');
+			}
+			else {
+				*/
+				console.log('for_process not found');
+				return false;
+//			}
+		}
+		for_process = $('#' + for_process);
+		
+		//
+//		for_process.after('<li class="remove-after-add-menu">' + accordion_section_content + '</li>');
+		for_process.append('<li class="remove-after-add-menu">' + accordion_section_content + '</li>');
 		
 		//
 		var add_process = $('.remove-after-add-menu');
@@ -2337,6 +2418,9 @@ function WGR_finish_search_and_add_menu ( post_id, post_type, post_url ) {
 				});
 			}
 			*/
+			else if ( a.split('[menu-item-type]').length > 1 ) {
+				$(this).val( item_type );
+			}
 			else if ( a.split('[menu-item-title]').length > 1 ) {
 				$(this).val( post_title );
 			}

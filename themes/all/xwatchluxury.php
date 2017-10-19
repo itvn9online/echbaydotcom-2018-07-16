@@ -22,7 +22,7 @@ $eb_all_themes_support["xwatchluxury"]["top"][] = "top_widget.php";
 $eb_all_themes_support["xwatchluxury"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["xwatchluxury"]["footer"][] = "xwatchluxury-footer1.php";
 $eb_all_themes_support["xwatchluxury"]["footer"][] = "xwatchluxury-footer2.php";
-$eb_all_themes_support["xwatchluxury"]["footer"][] = "xwatchluxury-footer3.php";
+//$eb_all_themes_support["xwatchluxury"]["footer"][] = "xwatchluxury-footer3.php";
 $eb_all_themes_support["xwatchluxury"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["xwatchluxury"]["home"][] = "home_widget.php";
