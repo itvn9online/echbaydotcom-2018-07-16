@@ -23,7 +23,9 @@ EBE_set_lang( $key, $text );
 
 
 echo '<script>
-parent.done_update_languages();
+if ( top != self ) {
+	parent.done_update_languages();
+}
 </script>';
 
 

@@ -4,6 +4,13 @@
 //
 $___eb_lang = array();
 
+// định dạng kiểu dữ liệu
+$eb_type_lang = array();
+
+// class CSS riêng nếu có
+$eb_class_css_lang = array();
+
+//
 define( 'eb_key_for_site_lang', 'lang_eb_' );
 
 
@@ -129,12 +136,15 @@ $___eb_lang[eb_key_for_site_lang . 'lh_done'] = 'Cảm ơn bạn! thông tin c�
 
 // booking done
 $___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
+$eb_type_lang[eb_key_for_site_lang . 'booking_done'] = 'textarea';
 
 // nội dung email đơn hàng
 $___eb_lang[eb_key_for_site_lang . 'booking_mail'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/booking.html' );
+$eb_type_lang[eb_key_for_site_lang . 'booking_mail'] = 'textarea';
 
 // file mail mặc định
 $___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/mail.html' );
+$eb_type_lang[eb_key_for_site_lang . 'mail_main'] = 'textarea';
 
 
 /*
@@ -142,14 +152,22 @@ $___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PL
 */
 // kích thước ảnh quảng cáo ở phần danh sách sản phẩm trang chủ
 $___eb_lang[eb_key_for_site_lang . 'homelist_size'] = '90/728';
+$eb_class_css_lang[eb_key_for_site_lang . 'homelist_size'] = 'fixed-size-for-config';
+
 $___eb_lang[eb_key_for_site_lang . 'homelist_num'] = '1';
+$eb_type_lang[eb_key_for_site_lang . 'homelist_num'] = 'number';
+
 
 // tiêu đề của phần logo đối tác
 $___eb_lang[eb_key_for_site_lang . 'doitac_title'] = '';
+
 // số tin trên mỗi dòng
 $___eb_lang[eb_key_for_site_lang . 'doitac_num'] = '5';
+$eb_type_lang[eb_key_for_site_lang . 'doitac_num'] = 'number';
+
 // kích thước của banner đối tác
 $___eb_lang[eb_key_for_site_lang . 'doitac_size'] = '1/2';
+$eb_class_css_lang[eb_key_for_site_lang . 'doitac_size'] = 'fixed-size-for-config';
 
 
 

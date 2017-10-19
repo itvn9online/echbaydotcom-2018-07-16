@@ -533,6 +533,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	margin-bottom: 30px;
 }
 /* .table-languages-list .table-languages-edit { padding: 0; } */
+.table-languages-list input[type="number"],
+.table-languages-list input[type="text"],
 .table-languages-list textarea {
 	width: 99%;
 	height: 20px;
@@ -541,6 +543,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	background: none;
 	box-shadow: none;/* padding: 6px; */
 }
+.table-languages-list input[type="number"]:focus,
+.table-languages-list input[type="text"]:focus,
 .table-languages-list textarea:focus { color: #c00; }
 .eb-admin-lang-submit {
 	position: absolute;

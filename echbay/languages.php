@@ -4,6 +4,8 @@
 
 //
 global $___eb_lang;
+global $eb_type_lang;
+global $eb_class_css_lang;
 
 
 //
@@ -42,12 +44,33 @@ global $___eb_lang;
 	
 	//
 	foreach ( $___eb_lang as $k => $v ) {
+		$custom_class_css = '';
+		if ( isset( $eb_class_css_lang[ $k ] ) ) {
+			$custom_class_css = ' ' . $eb_class_css_lang[ $k ];
+		}
+		
+		//
+		$pla = htmlentities( $v, ENT_QUOTES, "UTF-8" );
+		
+		//
 		echo '
 		<tr>
 			<td>' . str_replace( eb_key_for_site_lang, '', $k ) . '</td>
-			<td class="table-languages-edit">
-				<textarea data-min-height="21" data-add-height="1" id="' . $k . '" class="click-to-update-url-lang cur">' . $v . '</textarea>
-			</td>
+			<td class="table-languages-edit">';
+		
+		if ( isset( $eb_type_lang[ $k ] ) ) {
+			if ( $eb_type_lang[ $k ] == 'textarea' ) {
+				echo '<textarea data-min-height="21" data-add-height="1" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '">' . $v . '</textarea>';
+			}
+			else if ( $eb_type_lang[ $k ] == 'number' ) {
+				echo '<input type="number" value="' . $v . '" placeholder="' . $v . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
+			}
+		}
+		else {
+			echo '<input type="text" value="' . $pla . '" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
+		}
+		
+		echo '</td>
 		</tr>';
 	}
 	
@@ -140,22 +163,27 @@ function EBE_click_to_update_site_lang () {
 		if (e.keyCode == 13) {
 			// kiểm tra giá trị đang có
 			var a = $(this).val() || '';
-			// nếu có
+			a = $.trim(a);
+			
+			// kiểm tra lại lần nữa cho chắc
 			if ( a != '' ) {
-				a = $.trim(a);
-				// kiểm tra lại lần nữa cho chắc
-				if ( a != '' ) {
-					if ( a.split("\n").length == 1 ) {
-						$(this).val( a );
-						
-						// tự động cập nhật giá trị mới
-						if ( check_update_languages() == true ) {
-							document.frm_languages.submit();
-						}
-						
-						return false
+				// nếu là input text thì submit luôn
+				if ( a.split("\n").length == 1 ) {
+					$(this).val( a );
+					
+					// tự động cập nhật giá trị mới
+					if ( check_update_languages() == true ) {
+						document.frm_languages.submit();
 					}
+					
+					return false
 				}
+				// textarea thì xuống dòng thoải mai, submit phải bấm nút
+			}
+			else if ( check_update_languages() == true ) {
+				document.frm_languages.submit();
+				$(this).val( $(this).attr('placeholder') || '' );
+				return false
 			}
 		}
 	});
@@ -178,5 +206,6 @@ function EBE_click_to_update_site_lang () {
 
 //
 EBE_click_to_update_site_lang();
+convert_size_to_one_format();
 
 </script> 
