@@ -63,7 +63,7 @@ $___eb_lang[eb_key_for_site_lang . 'ads_status5'] = 'Banner/ Logo đối tác ( 
 $___eb_lang[eb_key_for_site_lang . 'ads_status6'] = 'Video HOT (trang chủ)';
 $___eb_lang[eb_key_for_site_lang . 'ads_status7'] = 'Bộ sưu tập/ Banner nổi bật (trang chủ)';
 $___eb_lang[eb_key_for_site_lang . 'ads_status8'] = 'Địa chỉ/ Bản đồ (chân trang/ liên hệ)';
-$___eb_lang[eb_key_for_site_lang . 'ads_status9'] = 'Banner chuyên mục ở trang chủ (2x3)';
+$___eb_lang[eb_key_for_site_lang . 'ads_status9'] = 'Banner chuyên mục ở trang chủ';
 $___eb_lang[eb_key_for_site_lang . 'ads_status10'] = 'Slide ảnh theo phân nhóm (trang chi tiết)';
 $___eb_lang[eb_key_for_site_lang . 'ads_status11'] = 'Noname';
 $___eb_lang[eb_key_for_site_lang . 'ads_status12'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
@@ -136,6 +136,13 @@ $___eb_lang[eb_key_for_site_lang . 'booking_mail'] = file_get_contents( EB_THEME
 // file mail mặc định
 $___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/mail.html' );
 
+
+/*
+* Phần này không hẳn là phần ngôn ngữ, mà nó là phần config nhanh, đỡ phải chỉnh nhiều
+*/
+// kích thước ảnh quảng cáo ở phần danh sách sản phẩm trang chủ
+$___eb_lang[eb_key_for_site_lang . 'homelist_size'] = '728x90';
+$___eb_lang[eb_key_for_site_lang . 'homelist_num'] = '1';
 
 // tiêu đề của phần logo đối tác
 $___eb_lang[eb_key_for_site_lang . 'doitac_title'] = '';

@@ -22,11 +22,11 @@ $eb_all_themes_support["hoangnam"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["hoangnam"]["footer"][] = "hoangnam-footer1.php";
 $eb_all_themes_support["hoangnam"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home1.php";
-$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home2.php";
-$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home3.php";
-$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home4.php";
-$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home5.php";
+//$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home1.php";
+//$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home2.php";
+//$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home3.php";
+//$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home4.php";
+//$eb_all_themes_support["hoangnam"]["home"][] = "hoangnam-home5.php";
 $eb_all_themes_support["hoangnam"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["hoangnam"]["threaddetails"][] = "hoangnam-threaddetails.html";

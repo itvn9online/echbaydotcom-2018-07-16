@@ -79,9 +79,10 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 					
 					
 					// banner quảng cáo theo từng danh mục (cấp 1)
-					$home_ads_by_cat = _eb_load_ads( 9, 5, '', array(
+					$home_ads_by_cat = _eb_load_ads( 9, _eb_number_only( EBE_get_lang('homelist_num') ), EBE_get_lang('homelist_size'), array(
 						'cat' => $cat_ids,
-					), 0, str_replace( 'ti-le-global', '', EBE_get_page_template( 'ads_node' ) ) );
+					), 0, EBE_get_page_template( 'ads_node' ) );
+//					), 0, str_replace( 'ti-le-global', '', EBE_get_page_template( 'ads_node' ) ) );
 					
 					
 					
