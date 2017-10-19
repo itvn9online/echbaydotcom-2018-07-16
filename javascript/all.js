@@ -2251,7 +2251,7 @@ function WGR_load_post_page_for_add_menu ( arr, type, post_name, item_type ) {
 	}
 	
 	//
-	$('#show_all_list_post_page_menu ul').append('<li data-show="1" class="text-center"><h4>' + post_name + '</h4></li>');
+	$('#show_all_list_post_page_menu ul').append('<li data-show="1"><h4>' + post_name + '</h4></li>');
 	
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
