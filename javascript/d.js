@@ -2004,6 +2004,7 @@ setTimeout(function () {
 
 
 
+var old_scroll_top = 0;
 $(window).resize(function() {
 	/*
 	if ($(window).width() > 1240) {
@@ -2043,9 +2044,18 @@ $(window).resize(function() {
 	
 	if (new_scroll_top > 120) {
 		$('body').addClass('ebfixed-top-menu');
+		
+		//
+		if ( new_scroll_top < old_scroll_top ) {
+			$('body').addClass('ebshow-top-scroll');
+		}
+		else {
+			$('body').removeClass('ebshow-top-scroll');
+		}
 	} else {
-		$('body').removeClass('ebfixed-top-menu');
+		$('body').removeClass('ebfixed-top-menu').removeClass('ebshow-top-scroll');
 	}
+	old_scroll_top = new_scroll_top;
 	
 	if (new_scroll_top > 500) {
 //		$('#oi_scroll_top').show();
