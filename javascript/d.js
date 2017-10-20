@@ -2709,6 +2709,8 @@ if (press_esc_to_quickvideo_close == false) {
 		//
 		$('.click-viewmore-cats-description').click(function () {
 			$('.global-cats-description').toggleClass('global-cats-description-active');
+			
+			window.scroll( 0, $('.global-cats-description').offset().top - 90 );
 		});
 		
 	} else {

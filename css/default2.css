@@ -1430,19 +1430,26 @@ a.search-advanced-btn {
 	font-size: 15px;
 	text-align: justify;
 	line-height: 25px;
-	-moz-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
-	-webkit-transition: all 0.5s ease;
-	transition: all 0.5s ease;
+	-moz-transition: all 1.5s ease;
+	-o-transition: all 1.5s ease;
+	-webkit-transition: all 1.5s ease;
+	transition: all 1.5s ease;
 }
 .viewmore-cats-description {
 	display: none;
 	font-size: 14px;
 	text-align: center;
-	margin-bottom: 10px;
+	background: -webkit-linear-gradient( top, rgba( 255, 255, 255, .4 ), rgba( 255, 255, 255, .6 ), rgba( 255, 255, 255, .7 ) );
+	background: -o-linear-gradient( top, rgba( 255, 255, 255, .4 ), rgba( 255, 255, 255, .6 ), rgba( 255, 255, 255, .8 ) );
+	background: -moz-linear-gradient( top, rgba( 255, 255, 255, .4 ), rgba( 255, 255, 255, .6 ), rgba( 255, 255, 255, .8 ) );
+	background: linear-gradient( top, rgba( 255, 255, 255, .4 ), rgba( 255, 255, 255, .6 ), rgba( 255, 255, 255, .8 ) );
+	padding: 65px 0 15px 0;
+	margin-top: -50px;
+	margin-bottom: 15px;
+	position: relative;
 }
 .global-cats-description-scroll {
-	height: 100px;
+	height: 200px;
 	overflow: hidden;
 }
 .global-cats-description-active {
