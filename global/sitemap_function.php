@@ -58,10 +58,17 @@ function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $changefreq = 'd
 </url>';
 }
 
+// tạo sitemap mặc định trong trường hợp không tìm thấy sitemap
+function WGR_create_sitemap_default_node () {
+	global $sitemap_date_format;
+	
+	return WGR_echo_sitemap_url_node( web_link, 1, date( $sitemap_date_format, date_time ) );
+}
+
 
 function WGR_echo_sitemap_image_node ( $loc, $img, $title ) {
 	if ( $img == '' ) {
-		return false;
+		return '';
 	}
 	
 	//
@@ -78,6 +85,17 @@ function WGR_echo_sitemap_image_node ( $loc, $img, $title ) {
 		<image:title><![CDATA[' . $title . ']]></image:title>
 	</image:image>
 </url>';
+}
+
+// tạo sitemap mặc định trong trường hợp không tìm thấy sitemap
+function WGR_create_sitemap_image_default_node () {
+	global $__cf_row;
+	
+	if ( strstr( $__cf_row['cf_logo'], '//' ) == false ) {
+		$__cf_row['cf_logo'] = web_link . $__cf_row['cf_logo'];
+	}
+	
+	return WGR_echo_sitemap_image_node( web_link, $__cf_row['cf_logo'], web_name );
 }
 
 

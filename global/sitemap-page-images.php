@@ -59,6 +59,11 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	//
 	$get_list_sitemap = trim($get_list_sitemap);
 	
+	//
+	if ( $get_list_sitemap == '' ) {
+		$get_list_sitemap = WGR_create_sitemap_image_default_node();
+	}
+	
 	// lưu cache
 	_eb_get_static_html ( $strCacheFilter, $get_list_sitemap, '', 1 );
 	

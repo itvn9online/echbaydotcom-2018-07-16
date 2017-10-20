@@ -30,7 +30,11 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	// v2
 	$sql = WGR_get_sitemap_post( 'page' );
 	foreach ( $sql as $v ) {
-		$get_list_sitemap .= WGR_echo_sitemap_url_node( _eb_p_link( $v->ID ), 0.3, date( $sitemap_date_format, strtotime( $v->post_modified ) ) );
+		if ( isset( $arr_active_for_404_page[ $v->post_name ] ) ) {
+		}
+		else {
+			$get_list_sitemap .= WGR_echo_sitemap_url_node( _eb_p_link( $v->ID ), 0.3, date( $sitemap_date_format, strtotime( $v->post_modified ) ) );
+		}
 	}
 	
 	/*
@@ -55,6 +59,11 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	//
 	$get_list_sitemap = trim($get_list_sitemap);
+	
+	//
+	if ( $get_list_sitemap == '' ) {
+		$get_list_sitemap = WGR_create_sitemap_default_node();
+	}
 	
 	// lưu cache
 	_eb_get_static_html ( $strCacheFilter, $get_list_sitemap, '', 1 );
