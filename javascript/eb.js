@@ -1032,7 +1032,8 @@ var _global_js_eb = {
 						// sử dụng ảnh cho bản mobile
 //						if ( wh < 768 && img_mobile != '' && img.split('.').pop().toLowerCase() != 'png' ) {
 //						if ( img_mobile != '' && img.split('.').pop().toLowerCase() != 'png' ) {
-							if ( wit < 250 ) {
+//							if ( wit < 250 ) {
+							if ( wit < 150 && wh < 750 ) {
 								img = img_mobile;
 							}
 							/*
