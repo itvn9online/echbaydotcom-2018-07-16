@@ -1430,10 +1430,6 @@ a.search-advanced-btn {
 	font-size: 15px;
 	text-align: justify;
 	line-height: 25px;
-	/*
-	height: 100px;
-	overflow: hidden;
-	*/
 	-moz-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
 	-webkit-transition: all 0.5s ease;
@@ -1445,6 +1441,10 @@ a.search-advanced-btn {
 	text-align: center;
 	margin-bottom: 10px;
 }
+.global-cats-description-scroll {
+	height: 100px;
+	overflow: hidden;
+}
 .global-cats-description-active {
 	height: auto !important;
 	overflow: auto !important;
@@ -1455,6 +1455,20 @@ a.search-advanced-btn {
 .global-cats-description h5,
 .global-cats-description h6,
 .global-cats-description div { margin: 0; }
+.click-viewmore-cats-description {
+	color: #333;
+	display: inline-block;
+	border: 1px #ccc solid;
+	line-height: 25px;
+	padding: 0 25px;
+	border-radius: 3px;
+	box-shadow: 0 0 10px #ccc;
+}
+.click-viewmore-cats-description:after {
+	content: "\00bb";
+	display: inline-block;
+	margin-left: 10px;
+}
 .blue-button,
 .red-button,
 .w-button { padding: 3pt 10pt; }

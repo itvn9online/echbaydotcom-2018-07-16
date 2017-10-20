@@ -2694,10 +2694,23 @@ if (press_esc_to_quickvideo_close == false) {
 //
 (function ( a ) {
 	if ( a != '' ) {
+		
+		// chỉ xử lý khi nội dung đủ lớn
+		if ( $('.global-cats-description').height() < 150 ) {
+			return false;
+		}
+		
+		// hiển thị nút bấm hiển thị thêm nội dung
 		$('.viewmore-cats-description').show();
+		
+		// thêm class tạo hiệu ứng thu gọn nội dung
+		$('.global-cats-description').addClass('global-cats-description-scroll');
+		
+		//
 		$('.click-viewmore-cats-description').click(function () {
 			$('.global-cats-description').toggleClass('global-cats-description-active');
 		});
+		
 	} else {
 		$('.global-cats-description').hide();
 	}
