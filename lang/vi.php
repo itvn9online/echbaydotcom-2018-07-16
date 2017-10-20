@@ -97,7 +97,7 @@ $___eb_lang[eb_key_for_site_lang . 'tuongtu'] = 'Sản phẩm tương tự';
 
 // footer
 $___eb_lang[eb_key_for_site_lang . 'copyright'] = 'Bản quyền';
-$___eb_lang[eb_key_for_site_lang . 'allrights'] = 'Toàn bộ phiên bản';
+$___eb_lang[eb_key_for_site_lang . 'allrights'] = ' - Toàn bộ phiên bản.';
 $___eb_lang[eb_key_for_site_lang . 'joinus'] = 'Kết nối với chúng tôi';
 $___eb_lang[eb_key_for_site_lang . 'diachi'] = $___eb_lang[eb_key_for_site_lang . 'cart_diachi'] . ':';
 $___eb_lang[eb_key_for_site_lang . 'dienthoai'] = $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'] . ':';
