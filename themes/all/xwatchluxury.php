@@ -10,7 +10,7 @@ $eb_all_themes_support["xwatchluxury"] = array();
 $eb_all_themes_support["xwatchluxury"]["name"] = "xwatchluxury";
 $eb_all_themes_support["xwatchluxury"]["screenshot"] = "https://img1.webgiare.org/xwatchluxury.jpg";
 $eb_all_themes_support["xwatchluxury"]["author"] = "";
-$eb_all_themes_support["xwatchluxury"]["demo"] = "";
+$eb_all_themes_support["xwatchluxury"]["demo"] = "xwatchluxury.xn";
 $eb_all_themes_support["xwatchluxury"]["price"] = 22000000;
 //
 $eb_all_themes_support["xwatchluxury"]["top"][] = "xwatchluxury-top1.php";
