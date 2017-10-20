@@ -173,6 +173,7 @@ $eb_class_css_lang[eb_key_for_site_lang . 'doitac_size'] = 'fixed-size-for-confi
 
 
 //
+$___eb_default_lang = $___eb_lang;
 //$___eb_lang_default = $___eb_lang;
 //$___eb_lang = array();
 // EBE_get_lang('home')

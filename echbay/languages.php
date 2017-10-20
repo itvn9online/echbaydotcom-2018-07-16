@@ -3,6 +3,7 @@
 
 
 //
+global $___eb_default_lang;
 global $___eb_lang;
 global $eb_type_lang;
 global $eb_class_css_lang;
@@ -50,7 +51,7 @@ global $eb_class_css_lang;
 		}
 		
 		//
-		$pla = htmlentities( $v, ENT_QUOTES, "UTF-8" );
+		$pla = htmlentities( $___eb_default_lang[ $k ], ENT_QUOTES, "UTF-8" );
 		
 		//
 		echo '
@@ -63,11 +64,11 @@ global $eb_class_css_lang;
 				echo '<textarea data-min-height="21" data-add-height="1" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '">' . $v . '</textarea>';
 			}
 			else if ( $eb_type_lang[ $k ] == 'number' ) {
-				echo '<input type="number" value="' . $v . '" placeholder="' . $v . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
+				echo '<input type="number" value="' . $v . '" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
 			}
 		}
 		else {
-			echo '<input type="text" value="' . $pla . '" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
+			echo '<input type="text" value="' . htmlentities( $v, ENT_QUOTES, "UTF-8" ) . '" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
 		}
 		
 		echo '</td>
