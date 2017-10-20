@@ -975,13 +975,16 @@ function convert_size_to_one_format () {
 		if ( a != '' ) {
 			a = a.replace( /\s/g, '' );
 			
-			// nếu có dấu x -> chuyển về định dạng của Cao/ Rộng
-			if ( a.split('x').length > 1 ) {
-				a = a.split( 'x' );
-				
-				a = a[1] + '/' + a[0];
+			// kích thước tự động thì cũng bỏ qua luôn
+			if ( a != 'auto' ) {
+				// nếu có dấu x -> chuyển về định dạng của Cao/ Rộng
+				if ( a.split('x').length > 1 ) {
+					a = a.split( 'x' );
+					
+					a = a[1] + '/' + a[0];
+				}
+				a = a.toString().replace(/[^0-9\/]/g, '');
 			}
-			a = a.toString().replace(/[^0-9\/]/g, '');
 			
 			$(this).val( a );
 		}
