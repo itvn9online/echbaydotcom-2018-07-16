@@ -170,6 +170,11 @@ $___eb_lang[eb_key_for_site_lang . 'doitac_size'] = '1/2';
 $eb_class_css_lang[eb_key_for_site_lang . 'doitac_size'] = 'fixed-size-for-config';
 
 
+// Số lượng banner lớn sẽ lấy cho mỗi trang
+$___eb_lang[eb_key_for_site_lang . 'bigbanner_num'] = '5';
+$eb_type_lang[eb_key_for_site_lang . 'bigbanner_num'] = 'number';
+
+
 
 
 //

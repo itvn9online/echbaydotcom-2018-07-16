@@ -222,7 +222,7 @@ if ( $__cf_row['cf_post_big_banner'] == 0 ) {
 else if ( $__cf_row['cf_global_big_banner'] == 0 ) {
 	// Mặc định chỉ lấy cho phần post
 	if ( $cid > 0 ) {
-		$str_big_banner = EBE_get_big_banner( 5, array(
+		$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
 			'category__in' => '',
 		) );
 	}

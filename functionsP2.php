@@ -7,7 +7,7 @@ function EBE_get_big_banner ( $limit = 5, $option = array () ) {
 	//
 	$a = _eb_load_ads(
 		1,
-		$limit,
+		(int) $limit,
 		$__cf_row['cf_top_banner_size'],
 		$option,
 		0,

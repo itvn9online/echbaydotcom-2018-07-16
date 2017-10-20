@@ -78,7 +78,7 @@ if ( $switch_taxonomy != '' ) {
 		
 		if ( $switch_taxonomy == 'post_options'
 		|| $switch_taxonomy == EB_BLOG_POST_LINK ) {
-			$str_big_banner = EBE_get_big_banner( 5, array(
+			$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
 				'tax_query' => array(
 					array (
 						'taxonomy' => $switch_taxonomy,
@@ -92,7 +92,7 @@ if ( $switch_taxonomy != '' ) {
 		}
 		// lấy theo taxonomy mặc định
 		else if ( $switch_taxonomy == 'category' ) {
-			$str_big_banner = EBE_get_big_banner( 5, array(
+			$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
 				'category__in' => array( $cid )
 			) );
 		}
