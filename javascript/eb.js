@@ -1033,8 +1033,16 @@ var _global_js_eb = {
 //						if ( wh < 768 && img_mobile != '' && img.split('.').pop().toLowerCase() != 'png' ) {
 //						if ( img_mobile != '' && img.split('.').pop().toLowerCase() != 'png' ) {
 //							if ( wit < 250 ) {
-							if ( wit < 150 && wh < 750 ) {
-								img = img_mobile;
+							if ( wh < 550 ) {
+								if ( wit < 150 ) {
+									img = img_mobile;
+								}
+								else {
+									img = img_table;
+								}
+							}
+							else if ( wh < 750 ) {
+								img = img_table;
 							}
 							/*
 							else if ( wit < 768 ) {
