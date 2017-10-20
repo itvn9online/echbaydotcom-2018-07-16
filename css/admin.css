@@ -564,14 +564,19 @@ input[id="_eb_category_order"] { width: 90px; }
 	top: 10px;
 	left: 0;
 	bottom: 10px;
-	width: 25%;
-	max-width: 250px;
+	width: 90%;
+	max-width: 200px;
 	min-width: 110px;
 	background: #fff;
 	z-index: 99999;
 	border: 1px #999 solid;
 	overflow-y: scroll;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
 }
+.eb-newgallery:hover { max-width: 350px; }
 .eb-newgallery li { padding: 5px 15px; }
 .eb-newgallery-padding {
 	position: relative;
