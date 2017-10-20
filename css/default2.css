@@ -1455,6 +1455,7 @@ a.search-advanced-btn {
 .global-cats-description-active {
 	height: auto !important;
 	overflow: auto !important;
+	padding-bottom: 50px;
 }
 .global-cats-description h2,
 .global-cats-description h3,

@@ -9,7 +9,7 @@
 $eb_all_themes_support["erawatch"] = array();
 $eb_all_themes_support["erawatch"]["name"] = "erawatch";
 $eb_all_themes_support["erawatch"]["screenshot"] = "https://img1.webgiare.org/erawatch.jpg";
-$eb_all_themes_support["erawatch"]["price"] = 2000000;
+$eb_all_themes_support["erawatch"]["price"] = 2500000;
 $eb_all_themes_support["erawatch"]["demo"] = "erawatch.vn";
 //
 $eb_all_themes_support["erawatch"]["top"][] = "erawatch-top1.php";

@@ -9,7 +9,7 @@
 $eb_all_themes_support["rongbay"] = array();
 $eb_all_themes_support["rongbay"]["name"] = "rongbay";
 $eb_all_themes_support["rongbay"]["screenshot"] = "https://img1.webgiare.org/rongbay.jpg";
-$eb_all_themes_support["rongbay"]["price"] = 1200000;
+$eb_all_themes_support["rongbay"]["price"] = 4000000;
 //
 $eb_all_themes_support["rongbay"]["top"][] = "rongbay-top1.php";
 $eb_all_themes_support["rongbay"]["top"][] = "rongbay-top2.php";
