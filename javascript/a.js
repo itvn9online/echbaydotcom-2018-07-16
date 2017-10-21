@@ -297,8 +297,14 @@ div.gallery-add-to-category_favicon { display: block; }\
 	}
 	
 	// mở gallery tự viết
-	$('.click-open-new-gallery, #_eb_category_avt, #_eb_category_favicon').click(function () {
+	$('#_eb_category_avt, #_eb_category_favicon, #_eb_product_avatar').addClass('click-open-new-gallery');
+	
+	//
+	$('.click-open-new-gallery').click(function () {
 		$('#oi_admin_popup').show();
+		
+		// cuộn đến cuối của ô thêm ảnh
+		window.scroll( 0, $(this).offset().top - $(window).height() + 50 );
 		
 		//
 		var show_only = $(this).attr('data-show') || '';

@@ -288,6 +288,12 @@ function WGR_run_for_admin_edit_post () {
 	WGR_run_for_admin_edit_ads_post();
 	
 	
+	
+	
+	// thêm CSS hiển thị nút add ảnh đại diện
+	$('body').append( '<style>div.gallery-add-to-post_avt { display: block; }</style>' );
+	
+	
 }
 
 function WGR_run_for_admin_edit_ads_post () {

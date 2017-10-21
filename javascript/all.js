@@ -956,6 +956,9 @@ function EBA_preview_img_logo ( img, id ) {
 	$('.' + id).css({
 		'background-image' : 'url(\'' + img + '\')'
 	});
+	
+	// cuộn đến cuối của ô thêm ảnh
+	window.scroll( 0, $('.' + id).offset().top - $(window).height() + 90 );
 }
 
 function EBA_add_img_logo ( img, id, set_full_link ) {

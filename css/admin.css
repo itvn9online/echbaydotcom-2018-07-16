@@ -559,6 +559,7 @@ input[id="_eb_category_order"] { width: 90px; }
 }
 .buttom-for-quick-add-menu li:last-child { border: 0 none; }
 #oi_admin_popup { display: none; }
+/*
 .eb-newgallery {
 	position: fixed;
 	top: 10px;
@@ -578,6 +579,28 @@ input[id="_eb_category_order"] { width: 90px; }
 }
 .eb-newgallery:hover { max-width: 350px; }
 .eb-newgallery li { padding: 5px 15px; }
+*/
+.eb-newgallery {
+	position: fixed;
+	top: 10px;
+	left: 12%;
+	right: 10px;
+	height: 80%;
+	background: #fff;
+	z-index: 99999;
+	border: 1px #999 solid;
+	overflow-y: scroll;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+.eb-newgallery ul { padding: 10px 25px; }
+.eb-newgallery li {
+	float: left;
+	width: 150px;
+	margin-right: 15px;
+}
 .eb-newgallery-padding {
 	position: relative;
 	border: 1px #ccc solid;
@@ -585,11 +608,14 @@ input[id="_eb_category_order"] { width: 90px; }
 .eb-newgallery-option {
 	cursor: pointer;
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
+	top: 5%;
+	left: -50%;
+	width: 200%;
 	line-height: 19px;
 	display: none;
+	z-index: 1;
+	padding: 15px;
+	background: rgba(0,0,0,.3);
 }
 .eb-newgallery li:hover .eb-newgallery-option { display: block; }
 .eb-newgallery-option div {
@@ -606,10 +632,11 @@ input[id="_eb_category_order"] { width: 90px; }
 	color: #f00;
 }
 .eb-newgallery-bg {
-	height: 110px;
+	height: 150px;
 	background: #fff center no-repeat;
 	background-size: auto 100%;
 }
+.eb-newgallery li:hover .eb-newgallery-bg { background-size: 100% auto; }
 .ad-admin-avt-size {
 	height: 90px;
 	background: #fff left no-repeat;
