@@ -946,6 +946,13 @@ function EBA_preview_img_logo ( img, id ) {
 		return false;
 	}
 	
+	//
+	if ( $('.' + id).length == 0 ) {
+		console.log('.' + id + ' not found');
+		return false;
+	}
+	
+	//
 	if ( img != '' && img.split('//').length == 1 ) {
 		if ( img.substr( 0, 1 ) == '/' ) {
 			img = img.substr(1);
