@@ -93,15 +93,17 @@ class ___echbay_widget_get_menu extends WP_Widget {
 //		_eb_echo_widget_name( $this->name, $before_widget );
 		echo '<!-- ' . $this->name . ' -->';
 		
-		//
-		echo '<div class="' . str_replace( '  ', ' ', trim( 'top-footer-css ' . $width ) ) . '">';
-		
-		//
-//		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
-		
 		
 		//
 		echo '<div class="' . $custom_style . '">';
+		
+		//
+		echo '<div class="' . str_replace( '  ', ' ', trim( 'eb-widget-menu top-footer-css ' . $width ) ) . '">';
+		
+		//
+		if ( $title != '' ) {
+			_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
+		}
 		
 		if ( $menu != '' ) {
 			echo _eb_echbay_menu( $menu, array(), 0, $tag_menu, $tag_end_menu );
@@ -109,6 +111,7 @@ class ___echbay_widget_get_menu extends WP_Widget {
 			echo 'Select menu for widget';
 		}
 		
+		//
 		echo '</div>';
 		echo '</div>';
 		
