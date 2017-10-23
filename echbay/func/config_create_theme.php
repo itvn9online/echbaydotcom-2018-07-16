@@ -197,7 +197,7 @@ WGR_for_to_create_theme_by_name( 'footer', $create_theme_footer );
 
 
 // mặc định sẽ tạo ra 5 file home
-$create_theme_home = 5;
+$create_theme_home = 2;
 WGR_for_to_create_theme_by_name( 'home', $create_theme_home );
 
 
@@ -317,6 +317,7 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 			$end_i += 1;
 			
 //			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "breadcrumb-top1.php";' . "\n";
+			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "bigbanner-top1.php";' . "\n";
 			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "breadcrumb-top1.php";' . "\n";
 		}
 		

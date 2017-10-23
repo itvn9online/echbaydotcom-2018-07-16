@@ -2997,4 +2997,23 @@ function WGR_get_fb_like_box () {
 	</div>';
 }
 
+function WGR_get_quick_register () {
+	return '
+	<div class="hpsbnlbx">
+		<form name="frm_dk_nhantin" method="post" action="javaascript:;" target="target_eb_iframe">
+			<div class="cf">
+				<div class="quick-register-left1 quick-register-hoten">
+					<input type="text" name="t_hoten" value="" placeholder="Họ tên" />
+				</div>
+				<div class="quick-register-left2 quick-register-email">
+					<input type="email" name="t_email" value="" placeholder="Email" aria-required="true" required />
+				</div>
+				<div class="quick-register-left3 quick-register-submit">
+					<button type="submit">Gửi</button>
+				</div>
+			</div>
+		</form>
+	</div>';
+}
+
 

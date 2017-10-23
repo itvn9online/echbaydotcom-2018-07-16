@@ -141,11 +141,13 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		//
 		$terms_categories = array();
 		$cat_name = '';
+		$more_link = '';
 		
 		// lấy theo nhóm tin đã được chỉ định
 		if ( $cat_ids > 0 ) {
 			$terms_categories[] = $cat_ids;
 			$cat_link = _eb_c_link( $cat_ids, $cat_type );
+			$more_link = '<div class="widget-blog-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
 			
 			if ( $title == '' ) {
 //				echo $cat_ids;
@@ -278,12 +280,13 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		echo EBE_dynamic_title_tag( EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_link' => $cat_link == '' ? 'javascript:;' : $cat_link,
+			'tmp.more_link' => $more_link,
 			'tmp.num_line' => $num_line,
 			'tmp.max_width' => $max_width,
 			'tmp.blog_title' => $title,
 			'tmp.post_cloumn' => $post_cloumn,
 			'tmp.widget_title' => $widget_title,
-			'tmp.content' => $content,
+			'tmp.content' => $content
 		) ) );
 		
 		echo '</div>';

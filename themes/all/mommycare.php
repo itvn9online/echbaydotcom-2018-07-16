@@ -14,19 +14,21 @@ $eb_all_themes_support["mommycare"]["demo"] = "";
 $eb_all_themes_support["mommycare"]["price"] = 2000000;
 //
 $eb_all_themes_support["mommycare"]["top"][] = "mommycare-top1.php";
+$eb_all_themes_support["mommycare"]["top"][] = "mommycare-top2.php";
 $eb_all_themes_support["mommycare"]["top"][] = "top_widget.php";
+$eb_all_themes_support["mommycare"]["top"][] = "bigbanner-top1.php";
 $eb_all_themes_support["mommycare"]["top"][] = "breadcrumb-top1.php";
 //
 $eb_all_themes_support["mommycare"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["mommycare"]["footer"][] = "mommycare-footer1.php";
-$eb_all_themes_support["mommycare"]["footer"][] = "echbaytwo-footer3.php";
+$eb_all_themes_support["mommycare"]["footer"][] = "mommycare-footer2.php";
 //
-$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home1.php";
-$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home2.php";
-$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home3.php";
-$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home4.php";
-$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home5.php";
 $eb_all_themes_support["mommycare"]["home"][] = "home_widget.php";
+$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home1.php";
+//$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home2.php";
+//$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home3.php";
+//$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home4.php";
+//$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home5.php";
 //
 $eb_all_themes_support["mommycare"]["threaddetails"][] = "mommycare-threaddetails.html";
 //
