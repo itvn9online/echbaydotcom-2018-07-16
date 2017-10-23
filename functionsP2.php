@@ -2177,7 +2177,7 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category') {
 	//
 	$link_for_taxonomy = '';
 	if ( $taxx != 'category' ) {
-		$link_for_taxonomy = $taxx . '=blogs&';
+		$link_for_taxonomy = 'taxonomy=' . $taxx . '&';
 	}
 	
 	//
