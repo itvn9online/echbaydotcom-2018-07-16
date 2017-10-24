@@ -1828,3 +1828,20 @@ iframe[name="google_conversion_frame"] {
 	left: 5px;
 }
 .eball-category-icon:before { content: " "; }
+.fa-icons {
+	color: #090;
+	width: 16px;
+	height: 16px;
+	font-size: 15px;
+	border: 1px transparent solid;
+	padding: 1px;
+	border-radius: 3px;
+	display: inline-block;
+	text-align: center;
+}
+.fa-icons:hover { border-color: #f00; }
+.web-mobile-logo {
+	line-height: 45px;
+	background: center no-repeat;
+	background-size: auto 99%;
+}

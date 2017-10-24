@@ -174,11 +174,6 @@ a {
 	content: "";
 }
 .show-if-mobile { display: none; }
-.web-mobile-logo {
-	line-height: 45px;
-	background: center no-repeat;
-	background-size: auto 99%;
-}
 .thread-list li {
 	float: left;
 	width: 25%;
@@ -236,18 +231,6 @@ a {
 	transition: all 0.8s ease;
 }
 .jEBE_slider-position li { float: left; }
-.fa-icons {
-	color: #090;
-	width: 16px;
-	height: 16px;
-	font-size: 15px;
-	border: 1px transparent solid;
-	padding: 1px;
-	border-radius: 3px;
-	display: inline-block;
-	text-align: center;
-}
-.fa-icons:hover { border-color: #f00; }
 .web-logo {
 	line-height: 50px;
 	background: center no-repeat;
