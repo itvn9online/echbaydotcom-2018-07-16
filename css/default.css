@@ -173,6 +173,9 @@ a {
 	display: none;
 	content: "";
 }
+.home-hot-more,
+.widget-products-more,
+.widget-blog-more,
 .show-if-mobile { display: none; }
 .thread-list li {
 	float: left;
