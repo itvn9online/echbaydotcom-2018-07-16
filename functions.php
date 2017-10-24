@@ -169,6 +169,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	
 	//
 	$post->trv_giaban = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_oldprice', 0 ) );
+	$post->trv_num_giacu = $post->trv_giaban;
 	
 	$post->trv_giamoi = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_price', 0 ) );
 	$post->trv_num_giamoi = $post->trv_giamoi;

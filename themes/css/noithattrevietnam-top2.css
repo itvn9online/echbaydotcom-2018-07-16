@@ -27,7 +27,7 @@
 #noithattrevietnam-top2 .nttvn-nav-menu .sub-menu {
 	background-color: #f7941e;
 	position: absolute;
-	z-index: 3;
+	z-index: 9;
 	width: 230px;
 	display: none;
 	letter-spacing: 0;

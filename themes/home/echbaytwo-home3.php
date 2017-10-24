@@ -85,11 +85,16 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 //					), 0, str_replace( 'ti-le-global', '', EBE_get_page_template( 'ads_node' ) ) );
 					
 					
+					//
+					$cat_link = _eb_c_link( $k );
+					$more_link = '<div class="widget-products-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
+					
 					
 					// Lấy theo mẫu của widget #home_product
 					echo EBE_html_template( EBE_get_page_template( 'home_node' ), array(
 						'tmp.cat_id' => $k,
-						'tmp.cat_link' => _eb_c_link( $k ),
+						'tmp.more_link' => $more_link,
+						'tmp.cat_link' => $cat_link,
 						'tmp.cat_name' => $home_detauls_categories->name,
 						'tmp.cat_count' => $home_detauls_categories->count,
 						'tmp.description' => '',

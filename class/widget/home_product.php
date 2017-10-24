@@ -90,6 +90,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		//
 		$cat_name = $title;
 		$cat_link = '';
+		$more_link = '';
 		$cat_count = 0;
 		
 		$home_node_cat = '';
@@ -110,6 +111,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			
 			//
 			$cat_link = _eb_c_link( $cat_ids );
+			$more_link = '<div class="widget-products-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
 			
 			// wp nó trả ra cái objec hơi dị -> foreach lấy cho dễ
 			$cat_count = $categories->count;
@@ -182,6 +184,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			'tmp.cat_count' => $cat_count,
 //			'tmp.title' => $title,
 			'tmp.description' => $description,
+			'tmp.more_link' => $more_link,
 			
 			// danh sách nhóm cấp 2
 			'tmp.str_sub_cat' => $str_sub_cat,
