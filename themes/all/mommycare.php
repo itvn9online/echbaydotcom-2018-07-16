@@ -24,7 +24,7 @@ $eb_all_themes_support["mommycare"]["footer"][] = "mommycare-footer1.php";
 $eb_all_themes_support["mommycare"]["footer"][] = "mommycare-footer2.php";
 //
 $eb_all_themes_support["mommycare"]["home"][] = "home_widget.php";
-$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home1.php";
+//$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home1.php";
 //$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home2.php";
 //$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home3.php";
 //$eb_all_themes_support["mommycare"]["home"][] = "mommycare-home4.php";

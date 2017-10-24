@@ -304,7 +304,7 @@ div.gallery-add-to-category_favicon { display: block; }\
 		$('#oi_admin_popup').show();
 		
 		// cuộn đến cuối của ô thêm ảnh
-		window.scroll( 0, $(this).offset().top - $(window).height() + 50 );
+		window.scroll( 0, $(this).offset().top - $(window).height() + 90 );
 		
 		//
 		var show_only = $(this).attr('data-show') || '';
