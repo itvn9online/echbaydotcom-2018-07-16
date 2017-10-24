@@ -122,6 +122,29 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
 	
 	
+	//
+	echo '<p>HTML tag cho tiêu đề: ';
+	
+	__eb_widget_load_select(
+		array(
+//			'' => '[ Trống ]',
+			'div' => 'DIV',
+			'p' => 'P',
+			'li' => 'LI',
+			'h2' => 'H2',
+			'h3' => 'H3',
+			'h4' => 'H4',
+			'h5' => 'H5',
+			'h6' => 'H6'
+		),
+		 $field_name['dynamic_tag'],
+		$dynamic_tag
+	);
+	
+	echo '</p>';
+	
+	
+	//
 	echo '<p>Description: <textarea class="widefat" name="' . $field_name['description'] . '">' . $description . '</textarea></p>';
 	
 	
@@ -448,19 +471,24 @@ function _eb_echo_widget_name ( $name, $before_widget ) {
 	echo '<!-- Widget name: ' . $name . ' -->' . "\n" . $before_widget;
 }
 
-function _eb_get_echo_widget_title ( $title, $clat = '', $before_title = '', $after_title = '' ) {
+function _eb_get_echo_widget_title ( $title, $clat = '', $before_title = '', $dynamic_tag = 'div', $after_title = '' ) {
 	if ( $title != '' ) {
+		if ( $dynamic_tag == '' ) {
+			$dynamic_tag = 'div';
+		}
+		
+		//
 //		echo '<div class="echbay-widget-title">' . $before_title . $title . $after_title . '</div>';
 		return '
 		<div class="echbay-widget-title ' . $clat . '">
-			<div title="' . strip_tags( $title ) . '" class="' . $before_title . '">' . $title . '</div>
+			<' . $dynamic_tag . ' title="' . strip_tags( $title ) . '" class="' . $before_title . '">' . $title . '</' . $dynamic_tag . '>
 		</div>';
 	}
 	return '';
 }
 
-function _eb_echo_widget_title ( $title, $clat = '', $before_title = '', $after_title = '' ) {
-	echo _eb_get_echo_widget_title( $title, $clat, $before_title, $after_title );
+function _eb_echo_widget_title ( $title = '', $clat = '', $before_title = '', $dynamic_tag = 'div', $after_title = '' ) {
+	echo _eb_get_echo_widget_title( $title, $clat, $before_title, $dynamic_tag, $after_title );
 }
 
 

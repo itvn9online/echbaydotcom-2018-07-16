@@ -98,6 +98,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';
 		$description = isset( $instance ['description'] ) ? $instance ['description'] : '';
 		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
 		if ( $post_number == 0 ) $post_number = 5;
@@ -267,7 +268,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		
 		//
-		$widget_title = _eb_get_echo_widget_title( $cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>', 'echbay-widget-blogs-title', $before_title );
+		$widget_title = _eb_get_echo_widget_title( $cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>', 'echbay-widget-blogs-title', $before_title, $dynamic_tag );
 		
 		if ( $description != '' ) {
 			$widget_title .= '<div class="echbay-widget-blogs-desc">' . $description . '</div>';

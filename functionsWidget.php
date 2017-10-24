@@ -6,6 +6,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 	// Giá trị mặc định
 	$arr = array (
 		'title' => 'EchBay Widget for product',
+		'dynamic_tag' => 'div',
 		'description' => '',
 		'sortby' => 'menu_order',
 		'num_line' => '',
@@ -40,6 +41,7 @@ function WGR_widget_home_hot ( $instance ) {
 	//
 //	$title = apply_filters ( 'widget_title', $instance ['title'] );
 	$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+	$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : 'div';
 	$description = isset( $instance ['description'] ) ? $instance ['description'] : '';
 	$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
 	if ( $post_number == 0 ) $post_number = 5;
@@ -92,7 +94,7 @@ function WGR_widget_home_hot ( $instance ) {
 		
 		//
 		$title = '<a href="' . $home_hot_lnk . '">' . $title . '</a>';
-		$home_hot_more = '<div class="home-hot-more"><a href="' . $home_hot_lnk . '">Xem thêm <span>&raquo;</span></a></div>';
+		$home_hot_more = '<' . $dynamic_tag . ' class="home-hot-more"><a href="' . $home_hot_lnk . '">Xem thêm <span>&raquo;</span></a></' . $dynamic_tag . '>';
 	}
 	else if ( $title == '' ) {
 		$title = EBE_get_lang('home_hot');
