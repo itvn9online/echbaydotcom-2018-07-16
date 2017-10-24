@@ -116,6 +116,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		$html_node = isset( $instance ['html_node'] ) ? $instance ['html_node'] : '';
 		$html_node = _eb_widget_create_html_template( $html_node, 'blogs_node' );
+//		echo $html_node . '<br>' . "\n";
 		
 		$ads_eb_status = isset( $instance ['ads_eb_status'] ) ? $instance ['ads_eb_status'] : 0;
 		$post_eb_status = isset( $instance ['post_eb_status'] ) ? $instance ['post_eb_status'] : 0;
