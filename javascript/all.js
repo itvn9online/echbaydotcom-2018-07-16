@@ -1980,7 +1980,9 @@ function EBE_set_default_title_for_seo () {
 	// chuyển đổi các slug sang dạng không dấu, tạo URL thân thiện
 	var new_post_name = $('#post_name').val() || '';
 	if ( new_post_name != '' ) {
-		$('#post_name').val( g_func.non_mark_seo( new_post_name ) );
+		new_post_name = g_func.non_mark_seo( new_post_name );
+		console.log( new_post_name );
+		$('#post_name').val( new_post_name );
 	}
 	
 }
