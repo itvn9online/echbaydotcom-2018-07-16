@@ -253,7 +253,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 
 
 function _eb_widget_create_html_template ( $tem, $default ) {
-	return $tem == '' ? $default : str_replace( '.html', '', $tem );
+	return ( $tem == '' ) ? $default : str_replace( '.html', '', $tem );
 }
 
 

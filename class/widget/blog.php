@@ -13,7 +13,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 	}
 	
 	function form($instance) {
-		$default = WGR_widget_arr_default_home_hot( array (
+		$default = WGR_widget_arr_default_home_hot( array(
 			'title' => 'EchBay blog',
 			'html_template' => 'widget_echbay_blog.html',
 			'html_node' => 'blogs_node.html',
@@ -111,12 +111,11 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$post_cloumn = isset( $instance ['post_cloumn'] ) ? $instance ['post_cloumn'] : '';
 		
 		$html_template = isset( $instance ['html_template'] ) ? $instance ['html_template'] : '';
-		$html_template = str_replace( '.html', '', $html_template );
 		
 		$post_type = isset( $instance ['post_type'] ) ? $instance ['post_type'] : '';
 		
 		$html_node = isset( $instance ['html_node'] ) ? $instance ['html_node'] : '';
-		$html_node = str_replace( '.html', '', $html_node );
+		$html_node = _eb_widget_create_html_template( $html_node, 'blogs_node' );
 		
 		$ads_eb_status = isset( $instance ['ads_eb_status'] ) ? $instance ['ads_eb_status'] : 0;
 		$post_eb_status = isset( $instance ['post_eb_status'] ) ? $instance ['post_eb_status'] : 0;
