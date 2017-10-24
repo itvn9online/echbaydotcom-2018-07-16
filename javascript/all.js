@@ -1976,6 +1976,13 @@ function EBE_set_default_title_for_seo () {
 	if ( str_excerpt == '' && des != '' && des != des_default ) {
 		$('#excerpt').val( des );
 	}
+	
+	// chuyển đổi các slug sang dạng không dấu, tạo URL thân thiện
+	var new_post_name = $('#post_name').val() || '';
+	if ( new_post_name != '' ) {
+		$('#post_name').val( g_func.non_mark_seo( new_post_name ) );
+	}
+	
 }
 
 
