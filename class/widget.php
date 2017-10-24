@@ -445,12 +445,23 @@ function _eb_widget_list_html_file_plugin_theme ( $select_name, $select_val, $ht
 //	$arr = _eb_parse_args( $arr_in_theme, $arr );
 	foreach ( $arr_in_plugin as $k => $v ) {
 		if ( ! isset( $arr[$k] ) ) {
-			$arr[$k] = $v;
+			$arr[$k] = $v . ' (plugin)';
 		}
 	}
 	foreach ( $arr_in_theme as $k => $v ) {
 		if ( ! isset( $arr[$k] ) ) {
-			$arr[$k] = $v;
+			$arr[$k] = $v . ' (theme)';
+		}
+	}
+	
+	// lấy trong child theme
+	if ( defined('EB_CHILD_THEME_URL') ) {
+		$arr_in_child_theme = _eb_widget_list_html_file_by_dir( EB_CHILD_THEME_URL . 'html/' );
+		
+		foreach ( $arr_in_child_theme as $k => $v ) {
+			if ( ! isset( $arr[$k] ) ) {
+				$arr[$k] = $v . ' (child theme)';
+			}
 		}
 	}
 	
