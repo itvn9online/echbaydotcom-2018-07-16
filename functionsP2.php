@@ -925,7 +925,7 @@ function EBE_create_dir ( $path, $ftp = 1, $mod = 0755 ) {
 	//
 	if ( mkdir($path, $mod) ) {
 		// server window ko cần chmod
-		chmod($path, $mod) or die('ERROR chmod create dir: ' . $path);
+		chmod($path, $mod) or die('ERROR chmod dir: ' . $path);
 		
 		return true;
 	}

@@ -406,26 +406,6 @@ function EBE_remove_dir_after_update ( $dir, $arr, $dir_to = '' ) {
 		echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v ) . '<br>' . "\n";
 	}
 	
-	// xóa file của github
-	if ( file_exists( $dir . '.gitattributes' ) ) {
-		if ( unlink( $dir . '.gitattributes' ) ) {
-			echo '<strong>remove file</strong>: ';
-		}
-		else {
-			echo '<strong>NOT remove file</strong>: ';
-		}
-		echo str_replace( EB_THEME_CONTENT, '', $dir ) . '.gitattributes<br>' . "\n";
-	}
-	if ( $dir_to != '' && file_exists( $dir_to . '.gitattributes' ) ) {
-		if ( _eb_remove_file( $dir_to . '.gitattributes' ) ) {
-			echo '<strong>remove file</strong>: ';
-		}
-		else {
-			echo '<strong>NOT remove file</strong>: ';
-		}
-		echo str_replace( EB_THEME_CONTENT, '', $dir_to ) . '.gitattributes<br>' . "\n";
-	}
-	
 	// xóa thư mục gốc
 	rmdir( $dir );
 	echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $dir ) . '<br>' . "\n";
@@ -584,6 +564,53 @@ function EBE_get_text_version ( $str ) {
 				//
 				if ( $unzipfile == true ) {
 					echo '<div>Unzip to: <strong>' . EB_THEME_CACHE . '</strong></div>'; 
+					
+					// xóa file của github luôn và ngay
+					$f_gitattributes = EB_THEME_CACHE . 'echbaydotcom-master/.gitattributes';
+					if ( file_exists( $f_gitattributes ) ) {
+						if ( unlink( $f_gitattributes ) ) {
+							echo '<strong>remove file</strong>: ';
+						}
+						else {
+							echo '<strong>NOT remove file</strong>: ';
+						}
+						echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
+					}
+					else {
+						$f_gitattributes = EB_THEME_CACHE . 'echbaytwo-master/.gitattributes';
+						if ( file_exists( $f_gitattributes ) ) {
+							if ( unlink( $f_gitattributes ) ) {
+								echo '<strong>remove file</strong>: ';
+							}
+							else {
+								echo '<strong>NOT remove file</strong>: ';
+							}
+							echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
+						}
+					}
+					
+					// v1
+					/*
+					if ( file_exists( $dir . '.gitattributes' ) ) {
+						if ( unlink( $dir . '.gitattributes' ) ) {
+							echo '<strong>remove file</strong>: ';
+						}
+						else {
+							echo '<strong>NOT remove file</strong>: ';
+						}
+						echo str_replace( EB_THEME_CONTENT, '', $dir ) . '.gitattributes<br>' . "\n";
+					}
+					if ( $dir_to != '' && file_exists( $dir_to . '.gitattributes' ) ) {
+						if ( _eb_remove_file( $dir_to . '.gitattributes' ) ) {
+							echo '<strong>remove file</strong>: ';
+						}
+						else {
+							echo '<strong>NOT remove file</strong>: ';
+						}
+						echo str_replace( EB_THEME_CONTENT, '', $dir_to ) . '.gitattributes<br>' . "\n";
+					}
+					*/
+					
 				} else {
 					echo '<div>Do not unzip file, update faild!</div>';
 					
