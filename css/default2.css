@@ -1434,6 +1434,8 @@ a.search-advanced-btn {
 	-o-transition: all 0.5s ease;
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
+	overflow: hidden;
+	max-height: 250px;
 }
 .viewmore-cats-description {
 	display: none;
@@ -1448,12 +1450,11 @@ a.search-advanced-btn {
 	margin-bottom: 15px;
 	position: relative;
 }
-.global-cats-description-scroll {
-	height: 200px;
-	overflow: hidden;
-}
+.global-cats-description-scroll { height: 200px; }
 .global-cats-description-active {
 	height: auto !important;
+	max-height: unset !important;
+	max-height: none !important;
 	overflow: auto !important;
 	padding-bottom: 50px;
 }
