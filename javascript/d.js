@@ -1444,7 +1444,7 @@ var khong_chay_function_o_theme_nua = 0;
 
 function ___eb_global_home_runing ( r ) {
 	if ( khong_chay_function_o_theme_nua == 1 ) {
-		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function ___eb_global_home_runing has been runing...');
 		return false;
 	}
 	khong_chay_function_o_theme_nua = 1;
@@ -1457,7 +1457,7 @@ function ___eb_global_home_runing ( r ) {
 
 function ___eb_list_post_run ( r ) {
 	if ( khong_chay_function_o_theme_nua == 1 ) {
-		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function ___eb_list_post_run has been runing...');
 		return false;
 	}
 	khong_chay_function_o_theme_nua = 1;
@@ -1506,7 +1506,7 @@ function WGR_for_post_details ( function_for_post, function_for_blog ) {
 //
 function ___eb_details_post_run ( r ) {
 	if ( khong_chay_function_o_theme_nua == 1 ) {
-		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function ___eb_details_post_run has been runing...');
 		return false;
 	}
 	khong_chay_function_o_theme_nua = 1;
@@ -1712,7 +1712,7 @@ function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 
 function ___eb_global_blogs_runing ( r ) {
 	if ( khong_chay_function_o_theme_nua == 1 ) {
-		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function ___eb_global_blogs_runing has been runing...');
 		return false;
 	}
 	khong_chay_function_o_theme_nua = 1;
@@ -1725,7 +1725,7 @@ function ___eb_global_blogs_runing ( r ) {
 
 function ___eb_global_blog_details_runing ( r ) {
 	if ( khong_chay_function_o_theme_nua == 1 ) {
-		console.log('WARNING!!!!!!!!!!!!!!!!!!! function has been runing...');
+		console.log('WARNING!!!!!!!!!!!!!!!!!!! function ___eb_global_blog_details_runing has been runing...');
 		return false;
 	}
 	khong_chay_function_o_theme_nua = 1;
