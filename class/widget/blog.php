@@ -216,8 +216,9 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			'post_type' => $post_type,
 		);
 		
-		// nếu là ads -> chỉ lấy theo trạng thái là đủ
+		// đối với ads
 		if ( $post_type == 'ads' ) {
+			// lấy theo trạng thái
 			if ( $ads_eb_status > 0 ) {
 				$arr_select_data['meta_key'] = '_eb_ads_status';
 				$arr_select_data['meta_value'] = $ads_eb_status;
@@ -227,27 +228,42 @@ class ___echbay_widget_random_blog extends WP_Widget {
 				
 				echo '<!-- ADS status: ' . $ads_eb_status . ' - ' . $arr_eb_ads_status[ $ads_eb_status ] . ' -->';
 			}
-		}
-		// riêng với từng post type
-		else if ( $post_type == 'post' ) {
-			if ( $post_eb_status > 0 ) {
-				$arr_select_data['meta_key'] = '_eb_product_status';
-				$arr_select_data['meta_value'] = $post_eb_status;
+			
+			// lấy theo taxonomy
+			if ( $cat_ids > 0 ) {
+				$arr_select_data['tax_query'] = array(
+					array(
+						'taxonomy' => $cat_type,
+						'field' => 'term_id',
+						'terms' => $terms_categories,
+						'operator' => 'IN'
+					)
+				);
 			}
 		}
-		
-		// với blog, lấy đặc biệt hơn chút
-//		else if ( count( $terms_categories ) > 0 ) {
-		// -> lấy theo danh mục hoặc post option -> dùng để phân loại widget
-		if ( count( $terms_categories ) > 0 ) {
-			$arr_select_data['tax_query'] = array(
-				array(
-					'taxonomy' => $cat_type,
-					'field' => 'term_id',
-					'terms' => $terms_categories,
-					'operator' => 'IN'
-				)
-			);
+		// các post type khác
+		else {
+			// post -> có thêm phần trạng thái
+			if ( $post_type == 'post' ) {
+				if ( $post_eb_status > 0 ) {
+					$arr_select_data['meta_key'] = '_eb_product_status';
+					$arr_select_data['meta_value'] = $post_eb_status;
+				}
+			}
+			
+			// với blog, lấy đặc biệt hơn chút
+	//		else if ( count( $terms_categories ) > 0 ) {
+			// -> lấy theo danh mục hoặc post option -> dùng để phân loại widget
+			if ( count( $terms_categories ) > 0 ) {
+				$arr_select_data['tax_query'] = array(
+					array(
+						'taxonomy' => $cat_type,
+						'field' => 'term_id',
+						'terms' => $terms_categories,
+						'operator' => 'IN'
+					)
+				);
+			}
 		}
 		
 		//
