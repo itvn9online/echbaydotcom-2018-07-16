@@ -143,6 +143,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$terms_categories = array();
 		$cat_name = '';
 		$more_link = '';
+		$str_sub_cat = '';
 		
 		// lấy theo nhóm tin đã được chỉ định
 		if ( $cat_ids > 0 ) {
@@ -156,6 +157,21 @@ class ___echbay_widget_random_blog extends WP_Widget {
 //				print_r($categories);
 				$title = $categories->name;
 			}
+			
+			
+			// danh sách nhóm cấp 2
+			$arr_sub_cat = array(
+				'parent' => $cat_ids,
+				'taxonomy' => $cat_type,
+			);
+			$sub_cat = get_categories($arr_sub_cat);
+//			print_r( $sub_cat );
+			
+			foreach ( $sub_cat as $sub_v ) {
+				$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id, $cat_type ) . '">' . $sub_v->name . ' <span class="blog-count-subcat">(' . $sub_v->count . ')</span></a>';
+			}
+			$str_sub_cat = '<div class="widget-blog-subcat">' . $str_sub_cat . '</div>';
+			
 		}
 		// lấy tất cả
 		else {
@@ -286,7 +302,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			'tmp.max_width' => $max_width,
 			'tmp.blog_title' => $title,
 			'tmp.post_cloumn' => $post_cloumn,
-			'tmp.widget_title' => $widget_title,
+			'tmp.widget_title' => $widget_title . $str_sub_cat,
 			'tmp.content' => $content
 		) ) );
 		

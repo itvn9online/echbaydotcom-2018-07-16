@@ -65,43 +65,46 @@ function WGR_create_themes_default_format (
 <?php
 /*
 *
-* List function recommended for you, please remove after code finish.
+* List function recommended for you, please remove after code finish.<br>
 *
 * Get logo for website:
-<?php echo EBE_get_html_logo(); ?>
+<div><?php echo EBE_get_html_logo(); ?></div>
 *
 * Big banner (primary banner):
-<?php echo WGR_get_bigbanner(); ?>
+<div><?php echo WGR_get_bigbanner(); ?></div>
 *
 * Get search form:
-<?php echo EBE_get_html_search(); ?>
+<div><?php echo EBE_get_html_search(); ?></div>
 *
 * GET cart URL:
-<?php echo EBE_get_html_cart(); ?>
+<div><?php echo EBE_get_html_cart(); ?></div>
 *
 * GET profile URL:
-<?php echo EBE_get_html_profile(); ?>
+<div><?php echo EBE_get_html_profile(); ?></div>
 *
 * GET top menu (auto):
-<?php echo EBE_echbay_top_menu(); ?>
+<div><?php echo EBE_echbay_top_menu(); ?></div>
 *
 * GET footer menu (auto): -> class for sub-menu: sub-footer-menu
-<?php echo EBE_echbay_footer_menu(); ?>
+<div><?php echo EBE_echbay_footer_menu(); ?></div>
 *
 * GET contact info
-<?php echo EBE_get_html_address(); ?>
+<div><?php echo EBE_get_html_address(); ?></div>
 *
 * GET footer social icon
-<?php echo WGR_get_footer_social(); ?>
+<div><?php echo WGR_get_footer_social(); ?></div>
 *
 * GET facebook like box
-<?php echo WGR_get_fb_like_box(); ?>
+<div><?php echo WGR_get_fb_like_box(); ?></div>
 *
 * Hotline A call
-<?php echo $__cf_row["cf_call_hotline"]; ?>
+<div><?php echo $__cf_row["cf_call_hotline"]; ?></div>
 *
 * Cell A call
-<?php echo $__cf_row["cf_call_dienthoai"]; ?>
+<div><?php echo $__cf_row["cf_call_dienthoai"]; ?></div>
+*
+* GET quick register form
+<div><?php echo WGR_get_quick_register(); ?></div>
 *
 */
 		' );

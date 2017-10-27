@@ -20,7 +20,7 @@ $eb_all_themes_support["kingsport"]["top"][] = "breadcrumb-top1.php";
 $eb_all_themes_support["kingsport"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["kingsport"]["footer"][] = "kingsport-footer1.php";
 $eb_all_themes_support["kingsport"]["footer"][] = "kingsport-footer2.php";
-//$eb_all_themes_support["kingsport"]["footer"][] = "kingsport-footer3.php";
+$eb_all_themes_support["kingsport"]["footer"][] = "kingsport-footer3.php";
 $eb_all_themes_support["kingsport"]["footer"][] = "kingsport-footer4.php";
 $eb_all_themes_support["kingsport"]["footer"][] = "kingsport-footer5.php";
 //

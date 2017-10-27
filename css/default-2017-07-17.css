@@ -160,6 +160,7 @@ label,
 .big-big { font-size: 50px; }
 .upper { text-transform: uppercase; }
 .home-count-subcat,
+.blog-count-subcat,
 .display_none,
 .d-none,
 .custom-width-global-sidebar { display: none; }
