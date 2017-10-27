@@ -87,6 +87,16 @@ if ( eb_web_protocol == 'https' ) {
 		_eb_update_option( 'siteurl', implode( '/', $new_current_siteurl ) );
 	}
 }
+// riêng đối với domain demo của webgiare
+else if ( strstr( $current_homeurl, 'demo.webgiare.org' ) == true || strstr( $current_siteurl, 'demo.webgiare.org' ) == true ) {
+	// và host không phải là bản demo -> cập nhật lại url mới luôn và ngay
+	if ( $_SERVER['HTTP_HOST'] != 'demo.webgiare.org' ) {
+		_eb_update_option( 'home', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+		_eb_update_option( 'siteurl', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+		
+		wp_redirect( _eb_full_url(), 301 );
+	}
+}
 
 
 
