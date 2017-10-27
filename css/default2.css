@@ -1847,3 +1847,4 @@ iframe[name="google_conversion_frame"] {
 	background: center no-repeat;
 	background-size: auto 99%;
 }
+.hide-widget-title .echbay-widget-title { display: none; }

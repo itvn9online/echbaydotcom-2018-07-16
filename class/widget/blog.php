@@ -129,12 +129,14 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		//
 		$cat_link = '';
+		/*
 		if ( $post_type == EB_BLOG_POST_TYPE ) {
 			$cat_type = EB_BLOG_POST_LINK;
 		}
 		else {
 			$cat_type = 'category';
 		}
+		*/
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
@@ -220,7 +222,8 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			}
 		}
 		// với blog, lấy đặc biệt hơn chút
-		else if ( count( $terms_categories ) > 0 ) {
+//		else if ( count( $terms_categories ) > 0 ) {
+		if ( count( $terms_categories ) > 0 ) {
 			$arr_select_data['tax_query'] = array(
 				array(
 					'taxonomy' => $cat_type,
