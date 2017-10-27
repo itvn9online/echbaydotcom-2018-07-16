@@ -962,6 +962,12 @@ function _eb_replace_css_space ( $str, $new_array = array() ) {
 		': ' => ':',
 	);
 	
+	// thay url ảnh của child theme thành url tuyệt đối
+	if ( defined('EB_CHILD_THEME_URL') ) {
+		$arr[ '../images-child/' ] = str_replace( '\\', '/', str_replace( ABSPATH, web_link, EB_CHILD_THEME_URL ) ) . 'images-child/';
+	}
+//	print_r( $arr );
+	
 	//
 //		print_r( $arr );
 	$arr = array_merge( $arr, $new_array );

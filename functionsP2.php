@@ -3000,7 +3000,7 @@ function WGR_get_fb_like_box () {
 function WGR_get_quick_register () {
 	return '
 	<div class="hpsbnlbx">
-		<form name="frm_dk_nhantin" method="post" action="javaascript:;" target="target_eb_iframe">
+		<form name="frm_dk_nhantin" method="post" action="javascript:;" target="target_eb_iframe">
 			<div class="cf">
 				<div class="quick-register-left1 quick-register-hoten">
 					<input type="text" name="t_hoten" value="" placeholder="Họ tên" />
