@@ -104,8 +104,11 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		if ( $post_number == 0 ) $post_number = 5;
 		
 		$sortby = isset( $instance ['sortby'] ) ? $instance ['sortby'] : '';
+		
 		$cat_ids = isset( $instance ['cat_ids'] ) ? $instance ['cat_ids'] : 0;
 		$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : EB_BLOG_POST_LINK;
+		$get_childs = isset( $instance ['get_childs'] ) ? $instance ['get_childs'] : 'off';
+		
 		$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
 		$max_width = isset( $instance ['max_width'] ) ? $instance ['max_width'] : '';
 		$post_cloumn = isset( $instance ['post_cloumn'] ) ? $instance ['post_cloumn'] : '';
@@ -160,17 +163,19 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			
 			
 			// danh sách nhóm cấp 2
-			$arr_sub_cat = array(
-				'parent' => $cat_ids,
-				'taxonomy' => $cat_type,
-			);
-			$sub_cat = get_categories($arr_sub_cat);
-//			print_r( $sub_cat );
-			
-			foreach ( $sub_cat as $sub_v ) {
-				$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id, $cat_type ) . '">' . $sub_v->name . ' <span class="blog-count-subcat">(' . $sub_v->count . ')</span></a>';
+			if ( $get_childs == 'on' ) {
+				$arr_sub_cat = array(
+					'parent' => $cat_ids,
+					'taxonomy' => $cat_type,
+				);
+				$sub_cat = get_categories($arr_sub_cat);
+	//			print_r( $sub_cat );
+				
+				foreach ( $sub_cat as $sub_v ) {
+					$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id, $cat_type ) . '">' . $sub_v->name . ' <span class="blog-count-subcat">(' . $sub_v->count . ')</span></a>';
+				}
+				$str_sub_cat = '<div class="widget-blog-subcat">' . $str_sub_cat . '</div>';
 			}
-			$str_sub_cat = '<div class="widget-blog-subcat">' . $str_sub_cat . '</div>';
 			
 		}
 		// lấy tất cả
@@ -302,7 +307,8 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			'tmp.max_width' => $max_width,
 			'tmp.blog_title' => $title,
 			'tmp.post_cloumn' => $post_cloumn,
-			'tmp.widget_title' => $widget_title . $str_sub_cat,
+			'tmp.widget_title' => $widget_title,
+			'tmp.str_sub_cat' => $str_sub_cat,
 			'tmp.content' => $content
 		) ) );
 		

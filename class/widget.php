@@ -174,6 +174,14 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	), '', true );
 	
 	
+	
+	//
+	$input_name = $field_name[ 'get_childs' ];
+//	echo $instance[ 'get_childs' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $get_childs, 'Lấy danh sách nhóm con' );
+	
+	
 	//
 	_eb_widget_echo_number_of_posts_to_show( $field_name['post_number'], $post_number );
 	

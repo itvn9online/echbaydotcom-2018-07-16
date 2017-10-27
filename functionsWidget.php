@@ -16,6 +16,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'post_number' => 5,
 		'cat_ids' => 0,
 		'cat_type' => 'category',
+		'get_childs' => 0,
 		'post_cloumn' => '',
 		'post_type' => 'post',
 		'ads_eb_status' => 0,
