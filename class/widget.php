@@ -566,13 +566,15 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	// mặc định là lấy tất cả taxonomy được hỗ trợ
 	if ( $tax == '' ) {
 		$categories = get_categories( array(
-			'parent' => 0,
+			'hide_empty' => 0,
+			'parent' => 0
 		) );
 		
 		//
 		$categories2 = get_categories( array(
-			'parent' => 0,
 			'taxonomy' => EB_BLOG_POST_LINK,
+			'hide_empty' => 0,
+			'parent' => 0
 		) );
 		$categories[] = '[ Danh mục tin tức ]';
 		foreach ( $categories2 as $v ) {
@@ -581,8 +583,9 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 		
 		//
 		$categories3 = get_categories( array(
-			'parent' => 0,
 			'taxonomy' => 'post_options',
+			'hide_empty' => 0,
+			'parent' => 0
 		) );
 		$categories[] = '[ Thuộc tính sản phẩm ]';
 		foreach ( $categories3 as $v ) {
@@ -592,7 +595,8 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	// chỉ lấy 1 taxonomy theo chỉ định
 	else {
 		$args = array(
-			'parent' => 0,
+			'hide_empty' => 0,
+			'parent' => 0
 		);
 		
 //		if ( $tax != '' ) {
@@ -616,22 +620,27 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 		if ( isset( $v->term_id ) ) {
 			$k = $v->term_id;
 			
-			echo '<option data-taxonomy="' . $v->taxonomy . '" value="' . $k . '"' . _eb_selected( $k, $select_val ) . '>' . $v->name . '</option>';
+			echo '<option data-taxonomy="' . $v->taxonomy . '" value="' . $k . '"' . _eb_selected( $k, $select_val ) . '>' . $v->name . ' (' . $v->count . ')</option>';
 			
 			// lấy nhóm con (nếu có)
 			$arr_sub_cat = array(
-				'parent' => $k,
+				'hide_empty' => 0,
+				'taxonomy' => $v->taxonomy,
+				'parent' => $k
 			);
 			$sub_cat = get_categories($arr_sub_cat);
-	//		print_r( $sub_cat );
+//			print_r( $sub_cat );
 			
-			foreach ( $sub_cat as $sub_v ) {
-				$sl = '';
-				if ( $sub_v->term_id == $select_val ) {
-					$sl = ' selected="selected"';
+			//
+			if ( ! empty ( $sub_cat ) ) {
+				foreach ( $sub_cat as $sub_v ) {
+					$sl = '';
+					if ( $sub_v->term_id == $select_val ) {
+						$sl = ' selected="selected"';
+					}
+					
+					echo '<option data-taxonomy="' . $v->taxonomy . '" value="' . $sub_v->term_id . '"' . $sl . '>---' . $sub_v->name . ' (' . $v->count . ')</option>';
 				}
-				
-				echo '<option data-taxonomy="' . $v->taxonomy . '" value="' . $sub_v->term_id . '"' . $sl . '>---' . $sub_v->name . '</option>';
 			}
 		}
 		else {

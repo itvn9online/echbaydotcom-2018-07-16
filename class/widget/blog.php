@@ -160,12 +160,15 @@ class ___echbay_widget_random_blog extends WP_Widget {
 //				echo $cat_ids;
 				$categories = get_term_by('id', $cat_ids, $cat_type);
 //				print_r($categories);
-				$title = $categories->name;
+				if ( ! empty( $categories ) ) {
+					$title = $categories->name;
+				}
+//				print_r($categories);
 			}
 			
 			
 			// danh sách nhóm cấp 2
-			if ( $get_childs == 'on' ) {
+			if ( $post_type != 'ads' && $get_childs == 'on' ) {
 				$arr_sub_cat = array(
 					'parent' => $cat_ids,
 					'taxonomy' => $cat_type,
@@ -173,10 +176,12 @@ class ___echbay_widget_random_blog extends WP_Widget {
 				$sub_cat = get_categories($arr_sub_cat);
 	//			print_r( $sub_cat );
 				
-				foreach ( $sub_cat as $sub_v ) {
-					$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id, $cat_type ) . '">' . $sub_v->name . ' <span class="blog-count-subcat">(' . $sub_v->count . ')</span></a>';
+				if ( ! empty( $sub_cat ) ) {
+					foreach ( $sub_cat as $sub_v ) {
+						$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id, $cat_type ) . '">' . $sub_v->name . ' <span class="blog-count-subcat">(' . $sub_v->count . ')</span></a>';
+					}
+					$str_sub_cat = '<div class="widget-blog-subcat">' . $str_sub_cat . '</div>';
 				}
-				$str_sub_cat = '<div class="widget-blog-subcat">' . $str_sub_cat . '</div>';
 			}
 			
 		}
@@ -189,8 +194,10 @@ class ___echbay_widget_random_blog extends WP_Widget {
 //			print_r( $categories );
 			
 			//
-			foreach ( $categories as $v ) {
-				$terms_categories[] = $v->term_id;
+			if ( ! empty( $categories ) ) {
+				foreach ( $categories as $v ) {
+					$terms_categories[] = $v->term_id;
+				}
 			}
 		}
 //		print_r( $terms_categories );
@@ -221,8 +228,17 @@ class ___echbay_widget_random_blog extends WP_Widget {
 				echo '<!-- ADS status: ' . $ads_eb_status . ' - ' . $arr_eb_ads_status[ $ads_eb_status ] . ' -->';
 			}
 		}
+		// riêng với từng post type
+		else if ( $post_type == 'post' ) {
+			if ( $post_eb_status > 0 ) {
+				$arr_select_data['meta_key'] = '_eb_product_status';
+				$arr_select_data['meta_value'] = $post_eb_status;
+			}
+		}
+		
 		// với blog, lấy đặc biệt hơn chút
 //		else if ( count( $terms_categories ) > 0 ) {
+		// -> lấy theo danh mục hoặc post option -> dùng để phân loại widget
 		if ( count( $terms_categories ) > 0 ) {
 			$arr_select_data['tax_query'] = array(
 				array(
@@ -232,14 +248,6 @@ class ___echbay_widget_random_blog extends WP_Widget {
 					'operator' => 'IN'
 				)
 			);
-		}
-		
-		// riêng với từng post type
-		if ( $post_type == 'post' ) {
-			if ( $post_eb_status > 0 ) {
-				$arr_select_data['meta_key'] = '_eb_product_status';
-				$arr_select_data['meta_value'] = $post_eb_status;
-			}
 		}
 		
 		//

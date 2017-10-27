@@ -32,14 +32,16 @@ function EBE_widget_get_parent_cat ( $id, $cat_type = 'category' ) {
 //		print_r( $a );
 		
 		// nếu không có nhóm cha -> nhóm này nhất rồi
-		if ( $a->parent == 0 ) {
-			return $a;
-		} else {
-			return EBE_widget_get_parent_cat ( $a->parent, $cat_type );
+		if ( ! empty( $a ) ) {
+			if ( $a->parent == 0 ) {
+				return $a;
+			} else {
+				return EBE_widget_get_parent_cat ( $a->parent, $cat_type );
+			}
 		}
 	}
 	
-	return false;
+	return array();
 }
 
 
@@ -377,7 +379,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		
 		//
-		$cats_info = NULL;
+		$cats_info = array();
 		
 		// tự động lấy danh mục cùng nhóm
 		// nếu không có nhóm được chỉ định
@@ -388,27 +390,38 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			$cats_info = EBE_widget_get_parent_cat( $cid, $cat_type );
 //			print_r( $cats_info );
 			
+			//
 			if ( ! empty ( $cats_info ) ) {
 				$cat_ids = $cats_info->term_id;
+				$cat_type = $cats_info->taxonomy;
 			}
 //			echo $cat_ids;
-		} else if ( $cat_ids > 0 ) {
-			$cats_info = EBE_widget_get_parent_cat( $cat_ids, $cat_type );
 		}
+		// tìm nhóm cha -> để các nhóm sau sẽ lấy theo nhóm này
+		else if ( $cat_ids > 0 ) {
+			$cats_info = EBE_widget_get_parent_cat( $cat_ids, $cat_type );
+			
+			//
+			if ( ! empty ( $cats_info ) ) {
+				$cat_type = $cats_info->taxonomy;
+			}
+		}
+//		print_r( $cats_info );
+//		echo $cat_type . '<br>' . "\n";
 		
 		
 		// lấy danh sách nhóm chính
 		$arrs_cats = get_categories( array(
 			'taxonomy' => $cat_type,
 //			'hide_empty' => 0,
-			'parent' => $cat_ids,
+			'parent' => $cat_ids
 		) );
 		
 		// nếu có lệnh kiểm tra sản phẩm tồn tại -> kiểm tra theo CID
 //		if ( mtv_id == 1 ) {
 //		print_r($arrs_cats);
 		
-		if ( $show_for_search_advanced == true && $cid > 0 ) {
+		if ( $show_for_search_advanced == true && $cid > 0 && ! empty( $arrs_cats ) ) {
 //			$get_taxonomy_name = get_term_by( 'id', $cid, $eb_wp_taxonomy );
 //			print_r( $get_taxonomy_name );
 			
@@ -470,7 +483,8 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		
 		//
-		if ( $cats_info != NULL && $title == '' ) {
+//		if ( $cats_info != NULL && $title == '' ) {
+		if ( $title == '' && ! empty ( $cats_info ) ) {
 			$title = $cats_info->name;
 		}
 		
