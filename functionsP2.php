@@ -3009,7 +3009,7 @@ function WGR_get_quick_register () {
 					<input type="email" name="t_email" value="" placeholder="Email" aria-required="true" required />
 				</div>
 				<div class="quick-register-left3 quick-register-submit">
-					<button type="submit">Gửi</button>
+					<button type="submit" class="cur">Gửi</button>
 				</div>
 			</div>
 		</form>
