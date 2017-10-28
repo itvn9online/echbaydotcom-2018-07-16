@@ -263,20 +263,24 @@ var eb_global_product_size = '',
 		
 		
 		// hiển thị các menu hay dùng
-		/*
-		if ( dog('add-blogs-hide').checked == false ) {
-			jQuery('#add-blogs-hide').click();
-		}
-		
-		if ( dog('add-post-type-blog-hide').checked == false ) {
-			jQuery('#add-post-type-blog-hide').click();
-		}
-		*/
-		
 		// hiển thị phần option để người dùng chọn các menu hay dùng
-		if ( dog('add-blogs-hide').checked == false || dog('add-post-type-blog-hide').checked == false ) {
-			jQuery('#show-settings-link').click();
-		}
+		jQuery(window).on('load', function () {
+			setTimeout(function () {
+				if ( dog('add-blogs-hide').checked == false ) {
+					jQuery('#add-blogs-hide').click();
+				}
+				
+				if ( dog('add-post-type-blog-hide').checked == false ) {
+					jQuery('#add-post-type-blog-hide').click();
+				}
+				
+				/*
+				if ( dog('add-blogs-hide').checked == false || dog('add-post-type-blog-hide').checked == false ) {
+					jQuery('#show-settings-link').click();
+				}
+				*/
+			}, 800);
+		});
 		
 	}
 	

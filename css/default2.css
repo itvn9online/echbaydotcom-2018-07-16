@@ -1849,3 +1849,8 @@ iframe[name="google_conversion_frame"] {
 	background-size: auto 99%;
 }
 .hide-widget-title .echbay-widget-title { display: none; }
+.ti-le-global.auto-size {
+	overflow: hidden;
+	line-height: normal;
+	height: auto;
+}

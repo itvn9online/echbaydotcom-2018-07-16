@@ -2723,13 +2723,26 @@ if (press_esc_to_quickvideo_close == false) {
 
 
 //
-(function ( a ) {
-	if ( a == '' ) {
-		$('.div-search form').attr({
-			name : 'frm_search'
-		});
-	}
-})( $('.div-search form').attr('name') || '' );
+(function () {
+	var i = 0,
+		fn = 'frm_search',
+		fn_rand = '';
+	$('.div-search form').each(function() {
+		var a = $(this).attr('name') || '';
+		
+		if ( a == '' ) {
+			if ( i > 0 ) {
+				fn_rand = i;
+			}
+			
+			$(this).attr({
+				name : fn + fn_rand
+			});
+			
+			i++;
+		}
+	});
+})();
 
 // menu for mobile
 if ( typeof document.frm_search != 'undefined' ) {

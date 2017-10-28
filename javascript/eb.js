@@ -774,8 +774,15 @@ var _global_js_eb = {
 				// -> nhập vào là: chiều cao/ chiều rộng
 				new_size = $(this).attr('data-size') || '';
 			
+			// với size auto -> set thẳng ảnh vào thay vì background
 			if ( new_size == 'auto' ) {
-				new_size = '';
+//				new_size = '';
+				
+				//
+				var img = $(this).attr('data-img') || '';
+				if ( img != '' ) {
+					$(this).addClass('auto-size').html('<img src="' + img + '" width="' + a + '" />');
+				}
 			}
 			else if ( new_size != '' ) {
 				if ( new_size.split('x').length > 1 || new_size.split('*').length > 1 ) {
@@ -787,12 +794,12 @@ var _global_js_eb = {
 //				a *= new_size;
 				a *= eval(new_size);
 				a += 1;
+				
+				$(this).css({
+					'line-height': a + 'px',
+					height: a + 'px'
+				});
 			}
-			
-			$(this).css({
-				'line-height': a + 'px',
-				height: a + 'px'
-			});
 		});
 //		console.log( eval('560/315') );
 //		console.log( eval('2/3') );
