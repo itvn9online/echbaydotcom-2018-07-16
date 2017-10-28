@@ -99,6 +99,8 @@ $_POST['cf_disable_auto_get_thumb'] = WGR_default_config('cf_disable_auto_get_th
 
 $_POST['cf_set_link_for_h1'] = WGR_default_config('cf_set_link_for_h1');
 
+$_POST['cf_set_mask_for_details'] = WGR_default_config('cf_set_mask_for_details');
+
 $_POST['cf_current_price_before'] = WGR_default_config('cf_current_price_before');
 
 $_POST['cf_hide_supper_admin_menu'] = WGR_default_config('cf_hide_supper_admin_menu');

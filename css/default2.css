@@ -630,18 +630,19 @@ a.eb-btn {
 .thread-content-bmask a,
 .thread-content-bmask iframe {
 	position: relative;
-	z-index: 88;
+	z-index: 2;
 }
-/* size nào có như cầu chống copy nội dung thì cho đoạn này vào config
 .thread-content-mask {
 	position: absolute;
 	top: 0;
 	left: 0;
+	/*
 	right: 0;
 	bottom: 0;
-	z-index: 8;
+	*/
+	z-index: 1;
+	display: none;
 }
-*/
 .phone-numbers-block a { display: block; }
 .phone-numbers-inline a { display: inline-block; }
 .phone-numbers-inline a:after {
