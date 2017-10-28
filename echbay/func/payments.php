@@ -145,7 +145,7 @@ else if ($payment_method == 'pp') {
 }
 // nếu là nạp qua internet banking -> chỉ reset lại trang
 else if ($payment_method == 'ib') {
-	HTAdd::domain_process_cpl ();
+//	HTAdd::domain_process_cpl ();
 }
 else {
 	$func->alert ( 'Payment method not found' );
