@@ -109,6 +109,8 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : EB_BLOG_POST_LINK;
 		$get_childs = isset( $instance ['get_childs'] ) ? $instance ['get_childs'] : 'off';
 		
+		$content_only = isset( $instance ['content_only'] ) ? $instance ['content_only'] : 'off';
+		
 		$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
 		$max_width = isset( $instance ['max_width'] ) ? $instance ['max_width'] : '';
 		$post_cloumn = isset( $instance ['post_cloumn'] ) ? $instance ['post_cloumn'] : '';
@@ -327,17 +329,54 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		//
 		echo '<div class="' . $custom_style . '">';
 		
-		echo EBE_dynamic_title_tag( EBE_html_template( EBE_get_page_template( $html_template ), array(
-			'tmp.cat_link' => $cat_link == '' ? 'javascript:;' : $cat_link,
-			'tmp.more_link' => $more_link,
-			'tmp.num_line' => $num_line,
-			'tmp.max_width' => $max_width,
-			'tmp.blog_title' => $title,
-			'tmp.post_cloumn' => $post_cloumn,
-			'tmp.widget_title' => $widget_title,
-			'tmp.str_sub_cat' => $str_sub_cat,
-			'tmp.content' => $content
-		) ) );
+		// chỉ lấy nội dung bài viết
+		if ( $content_only == 'on' ) {
+			
+			//
+//			print_r( $arr_select_data );
+			
+			// bắt buộc là sắp xếp theo menu_order DESC
+			$arr_select_data['orderby'] = 'menu_order';
+			$arr_select_data['order'] = 'DESC';
+//			print_r( $arr_select_data );
+			
+			// chỉ lấy 1 bài duy nhất
+			$sql = _eb_load_post_obj( 1, $arr_select_data );
+//			print_r( $sql );
+			
+			// lấy và in ra nội dung tìm được
+			echo '<div class="img-max-width">';
+			
+			// in thẳng
+			if ( isset( $sql->post ) && isset( $sql->post->post_content ) ) {
+				echo $sql->post->post_content;
+			}
+			
+			// sử dụng hàm content của wp -> nặng hơn -> ko thích dùng
+			/*
+			while ( $sql->have_posts() ) {
+				
+				$sql->the_post();
+				the_content();
+			}
+			*/
+			echo '</div>';
+			
+		}
+		// mặc định
+		else {
+			echo EBE_dynamic_title_tag( EBE_html_template( EBE_get_page_template( $html_template ), array(
+				'tmp.cat_link' => $cat_link == '' ? 'javascript:;' : $cat_link,
+				'tmp.more_link' => $more_link,
+				'tmp.num_line' => $num_line,
+				'tmp.max_width' => $max_width,
+				'tmp.blog_title' => $title,
+				'tmp.post_cloumn' => $post_cloumn,
+				'tmp.widget_title' => $widget_title,
+				'tmp.str_sub_cat' => $str_sub_cat,
+				'tmp.content' => $content
+			) ) );
+		}
 		
 		echo '</div>';
 		

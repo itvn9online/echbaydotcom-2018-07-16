@@ -8,6 +8,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'title' => 'EchBay Widget for product',
 		'dynamic_tag' => 'div',
 		'description' => '',
+		'content_only' => 0,
 		'sortby' => 'menu_order',
 		'num_line' => '',
 		'html_template' => 'home_hot.html',

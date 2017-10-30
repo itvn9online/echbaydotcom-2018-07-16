@@ -437,6 +437,7 @@ function ___eb_details_product_tab () {
 		$(this).addClass('selected');
 		
 		var a = $(this).attr('data-show') || '';
+//		console.log(a);
 		
 		if ( a != '' ) {
 			$('.thread-details-contenttab').hide();
@@ -447,6 +448,7 @@ function ___eb_details_product_tab () {
 				$('.hide-if-show-comment').hide();
 			} else {
 				$('.hide-if-show-comment').show();
+				_global_js_eb.auto_margin();
 			}
 		}
 		

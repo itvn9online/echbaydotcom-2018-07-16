@@ -244,6 +244,14 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
+	$input_name = $field_name[ 'content_only' ];
+//	echo $instance[ 'content_only' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $content_only, 'Chỉ lấy nội dung bài viết! với lựa chọn này, nội dung bài viết có số order lớn nhất sẽ được lấy ra và hiển thị. Thường dùng khi cần nhúng một nội dung bài viết vào một nội dung khác.' );
+	
+	
+	
+	//
 	echo '</div>';
 	
 	

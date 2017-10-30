@@ -223,7 +223,7 @@ function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __e
 	while ( $sql->have_posts() ) {
 		
 		$sql->the_post();
-//			the_content();
+//		the_content();
 		
 		//
 		if ( $not_set_not_in == 0 ) {
