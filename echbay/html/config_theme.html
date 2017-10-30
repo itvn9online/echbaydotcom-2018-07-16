@@ -150,6 +150,39 @@
 					<div class="small l19">Chọn từng khối thiết kế cho trang HOME hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
 					<div class="show-if-using-home-default border-file-design">{tmp.str_home_design_preview}</div></td>
 			</tr>
+			<tr>
+				<td class="i bold redcolor bborder" colspan="2">Phân trang cho Trang chủ</td>
+			</tr>
+			<tr>
+				<td class="t">Sản phẩm Nổi bật</td>
+				<td class="i"><input type="number" name="cf_num_home_hot" value="{tmp.cf_num_home_hot}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Nổi bật hoặc hệ thống tự đưa ra các sản phẩm được nhiều người mua nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
+			</tr>
+			<tr>
+				<td class="t">Sản phẩm Mới</td>
+				<td class="i"><input type="number" name="cf_num_home_new" value="{tmp.cf_num_home_new}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Mới hoặc hệ thống tự đưa ra các sản phẩm mới nhất theo ngày cập nhật nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
+			</tr>
+			<!--
+			<tr>
+				<td class="t">Sản phẩm Nhiều người quan tâm</td>
+				<td class="i"><input type="number" name="cf_num_home_view" value="{tmp.cf_num_home_view}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Xem nhiều hoặc hệ thống tự đưa ra các sản phẩm được xem nhiều theo số lượt giảm dần nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
+			</tr>
+			-->
+			<tr>
+				<td class="t">Danh sách sản phẩm ở trang chủ</td>
+				<td class="i"><input type="number" name="cf_num_home_list" value="{tmp.cf_num_home_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Là số sản phẩm lấy kèm mỗi nhóm ở trang chủ. Nhập là 0 nếu bạn muốn tắt chức năng này hoặc chuyển sang sử dụng <a href="{tmp.web_link}wp-admin/widgets.php" target="_blank"><strong>Widget</strong></a> có tên là: <strong>EchBay home product</strong> (nếu có).</em></td>
+			</tr>
 		</tbody>
 		<tbody title="Danh sách sản phẩm (Category)" id="eb-admin-config-theme-list" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
@@ -176,12 +209,12 @@
 				<td class="i">{tmp.cf_cats_node_html}</td>
 			</tr>
 			<tr>
-				<td class="t">Số sản phẩm trên mỗi trang</td>
-				<td class="i"><input type="number" name="posts_per_page" value="{tmp.posts_per_page}" class="s" /></td>
-			</tr>
-			<tr>
 				<td class="t">Số sản phẩm trên mỗi dòng</td>
 				<td class="i">{tmp.cf_cats_num_line}</td>
+			</tr>
+			<tr>
+				<td class="t">Số sản phẩm trên mỗi trang</td>
+				<td class="i"><input type="number" name="posts_per_page" value="{tmp.posts_per_page}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="t">Khung cho trang CATEGORY</td>
@@ -286,12 +319,33 @@
 					<label for="cf_details_excerpt" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
 					<div class="small">Mặc định, phần tóm tắt của website không hỗ trợ HTML, nên khi xuất ra ngoài, sẽ có một đoạn JS giúp tạo đoạn lệnh này từ text thuần sang dạng LIST (UL LI), sau đó bạn có thể viết thêm CSS cho nó hiển thị đẹp hơn.</div></td>
 			</tr>
-			<tr class="d-none">
+			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr class="d-none">
 				<td class="t">Bố cục sản phẩm liên quan (node)</td>
 				<td class="i">{tmp.cf_post_node_html}</td>
+			</tr>
+			<tr class="d-none">
+				<td class="i bold redcolor bborder" colspan="2">Phân trang cho Trang chi tiết Sản phẩm</td>
+			</tr>
+			<tr>
+				<td class="t">Chi tiết Sản phẩm</td>
+				<td class="i"><input type="number" name="cf_num_details_list" value="{tmp.cf_num_details_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Đây là số lượng sản phẩm Liên quan trong phần chi tiết sản phẩm, bạn muốn lấy bao nhiêu sản phẩm thì nhập số đó vào đây.</em></td>
+			</tr>
+			<tr>
+				<td class="t">Chi tiết Sản phẩm (2)</td>
+				<td class="i"><input type="number" name="cf_num_details2_list" value="{tmp.cf_num_details2_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td class="t">Chi tiết Sản phẩm (3)</td>
+				<td class="i"><input type="number" name="cf_num_details3_list" value="{tmp.cf_num_details3_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Một số giao diện yêu cầu 2-3 list sản phẩm liên quan (mặc định là không tải), nếu giao diện của bạn có hỗ trợ, và bạn muốn kích hoạt chức năng này, hãy nhập số sản phẩm muốn lấy.</em></td>
 			</tr>
 		</tbody>
 		<tbody title="Blog/ Tin tức" id="eb-admin-config-theme-blog" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
@@ -347,6 +401,13 @@
 			<tr>
 				<td class="t">Số tin trên mỗi dòng</td>
 				<td class="i">{tmp.cf_blog_num_line}</td>
+			</tr>
+			<tr>
+				<td class="t">Chi tiết blog</td>
+				<td class="i"><input type="number" name="cf_num_details_blog_list" value="{tmp.cf_num_details_blog_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Đây là số lượng sản phẩm Liên quan trong phần chi tiết blog, bạn muốn lấy bao nhiêu sản phẩm thì nhập số đó vào đây.</em></td>
 			</tr>
 		</tbody>
 		<tbody title="Trang tĩnh (Page)" id="eb-admin-config-theme-page" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
