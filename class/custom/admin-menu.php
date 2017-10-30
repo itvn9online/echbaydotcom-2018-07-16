@@ -205,6 +205,7 @@ function echbay_admin_styles() {
 	//
 	echo '<script type="text/javascript">
 var web_link = "' . web_link . '",
+	cf_old_domain = "' . $__cf_row['cf_old_domain'] . '",
 	order_max_post_new = ' . $order_max_post_new . ',
 	cf_hide_supper_admin_menu = ' . $__cf_row['cf_hide_supper_admin_menu'] . ';
 </script>';
