@@ -438,7 +438,7 @@ function add_fb_messages_for_page () {
 			// căn lại chiều rộng cho fb plugin
 			$('.fb-like, .fb-comments').each(function () {
 				$(this).attr({
-					'data-width' : $(this).width() || 250
+					'data-width' : Math.ceil( $(this).width() || 250 )
 				});
 			});
 			
