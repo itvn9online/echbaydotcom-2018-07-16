@@ -1810,6 +1810,7 @@ iframe[name="google_conversion_frame"] {
 	padding: 0 32px;
 	cursor: pointer;
 	background: #f2f2f2;
+	margin: 0 1px 0 0;
 }
 .thread-details-tab li.selected {
 	background-color: #333;
@@ -1818,7 +1819,8 @@ iframe[name="google_conversion_frame"] {
 .style-for-mobile .thread-details-tab li {
 	float: none;
 	text-align: center;
-	padding: 0 0;
+	padding: 0;
+	margin: 0 0 1px 0;
 }
 .eball-category-icon,
 .eball-category-count { display: none; }
