@@ -106,6 +106,9 @@ function WGR_create_themes_default_format (
 * GET quick register form
 <div><?php echo WGR_get_quick_register(); ?></div>
 *
+* copyright in footer
+<div><?php echo $str_footer_echbay_license; ?></div>
+*
 */
 		' );
 	}
