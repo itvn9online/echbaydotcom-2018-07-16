@@ -15,12 +15,21 @@
 		<br>
 		Dữ liệu nhập vào:
 		<pre><code>#products li a.thumb</code></pre>
-		-> Câu lệnh thực thi:<br>
+		-> Câu lệnh thực thi: thực thi trực tiếp.<br>
+		<br>
+		<pre><code>#id_so1 && .class_so2</code></pre>
+		-> Lệnh sẽ được cắt thông qua dấu <strong>&&</strong> sau đó vòng lặp sẽ chạy và xử lý các lớp css được cắt ra.<br>
+		<br>
+		<pre><code>#id_so1 || .class_so2 || #id_so2 || .class_so4</code></pre>
+		-> Lấy một trong các ID, class được khai báo! Cái nào khai báo trước sẽ ưu tiên trước.<br>
+		<br>
 		<br>
 		Đối với đường link:
 		<pre><code>$('#products li a.thumb').attr('href') hoặc $('#products li a.thumb').attr('data-href')</code></pre>
+		<br>
 		Đối với hình ảnh:
 		<pre><code>$('#products li a.thumb').attr('data-old-src') hoặc $('#products li a.thumb').attr('data-src') hoặc $('#products li a.thumb').attr('src')</code></pre>
+		<br>
 		Mặc định:
 		<pre><code>$('#products li a.thumb').html()</code></pre>
 	</div>
@@ -85,6 +94,7 @@
 			<div><em>* Nhập vào định dạng để cắt ID bài viết theo định dạng này (mặc định sẽ lấy theo số ở cuối URL)</em></div>
 			<div>
 				<input type="text" id="id_post_begin" value="" placeholder="Bắt đầu bằng" />
+				<div class="small">* Nếu chỉ nhập 1 ký tự (ví dụ: - hoặc /) -&gt; URL sẽ được cắt ngay lập tức, và mảng cuối cùng sẽ được lấy.</div>
 			</div>
 			<div>
 				<input type="text" id="id_post_end" value="" placeholder="Kết thúc bằng" />
@@ -214,7 +224,7 @@
 			</tr>
 		</table>
 		<div class="cf" style="position:fixed;bottom:35px;right:45px;">
-			<input type="submit" value="Gửi" class="blue-button admin-big-button" />
+			<input type="submit" value="Gửi" class="blue-button admin-big-button cur" />
 		</div>
 	</form>
 </div>

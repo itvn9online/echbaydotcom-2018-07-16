@@ -39,14 +39,30 @@ function get_leech_data_post_id ( str, vitri ) {
 	var b = $('#id_post_begin').val() || '',
 		e = $('#id_post_end').val() || '';
 	
-	// nếu có điều kiên để lọc ID
-	if ( b != '' && e != '' ) {
+	
+	// nếu điểm bắt đầu chỉ có 1 ký tự
+	if ( b.length == 1 ) {
+		// nếu không có điểm kết thúc -> lấy ngay vị trí cuối cùng
+		if ( e == '' ) {
+			var a = str.split( b )[0];
+			
+			return a[ a.length - 1 ];
+		}
+		
+		// nếu có điểm kết thúc -> lấy mảng ngay trước vị trí kết thúc
+		var a = str.split( e )[0].split( b );
+		
+		return a[ a.length - 1 ];
+	}
+	// nếu có điều kiện để lọc ID
+	else if ( b != '' && e != '' ) {
 		var a = str.split( b );
 		if ( a.length > 1 ) {
 			return a[1].split( e )[0];
 		}
 		return 0;
 	}
+	
 	
 	// nếu không -> chủ động tìm
 	if ( typeof vitri == 'undefined' ) {
@@ -519,7 +535,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 					// mặc định là lấy chữ
 					else {
 						// nếu nội dung nằm ở 2 nơi -> sử dụng && để lấy
-						var a2 = arr[x].get.split( '&&' );
+						var a2 = arr[x].get.replace(/\+\+/g, '&&').split( '&&' );
 						for ( var i = 0; i < a2.length; i++ ) {
 							a2[i] = g_func.trim( a2[i] );
 							
@@ -566,7 +582,12 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				return false;
 			}
 			
-			//
+			// bỏ tag HTML
+			f.t_tieude.value = g_func.strip_tags( f.t_tieude.value );
+			f.t_tieude.value = f.t_tieude.value.replace(/\s+\s/g, " ");
+			f.t_tieude.value = f.t_tieude.value.replace(/\s+\s/g, " ");
+			
+			// Tạo URL SEO
 			f.t_seo.value = g_func.non_mark_seo( f.t_tieude.value );
 			
 			
@@ -1019,7 +1040,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 		});
 	}
 	else {
-		alert('Không tìm thấy danh sách nhóm cần lấy sản phẩm');
+		console.log('Không tìm thấy danh sách nhóm cần lấy sản phẩm');
 	}
 });
 
