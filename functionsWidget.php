@@ -161,18 +161,28 @@ function WGR_show_home_hot ( $arr, $tmp = 'home_hot' ) {
 
 
 // hiển thị phần home node theo chuẩn nhất định
-function WGR_show_home_node ( $arr, $tmp = 'home_node' ) {
+function WGR_show_home_node ( $arr, $custom_tag = '', $tmp = 'home_node' ) {
+	
+	// kiểm tra xem có custom tag không -> do bản cũ với mới khác nhau nên phải có đoạn này
+	$custom_end_tag = '';
+	if ( $custom_tag != '' ) {
+		$custom_end_tag = '</' . $custom_tag . '>';
+		$custom_tag = '<' . $custom_tag . '>';
+	}
+	
 	// nạp html được truyền vào
 	$html = EBE_html_template( EBE_get_page_template( $tmp ), $arr );
 	
 	// các đoạn HTML mặc định cho về trống nếu chưa có
 	return EBE_html_template( $html, array(
+		'tmp.custom_tag' => $custom_tag,
+		'tmp.custom_end_tag' => $custom_end_tag,
 		'tmp.num_post_line' => '',
 	) );
 }
 
 // lấy danh sách nhóm con
-function WGR_get_home_node_sub_cat ( $cat_ids ) {
+function WGR_get_home_node_sub_cat ( $cat_ids, $custom_tag = '' ) {
 	// danh sách nhóm cấp 2
 	$arr_sub_cat = array(
 		'parent' => $cat_ids,
@@ -180,9 +190,17 @@ function WGR_get_home_node_sub_cat ( $cat_ids ) {
 	$sub_cat = get_categories($arr_sub_cat);
 //	print_r( $sub_cat );
 	
+	// kiểm tra xem có custom tag không -> do bản cũ với mới khác nhau nên phải có đoạn này
+	$custom_end_tag = '';
+	if ( $custom_tag != '' ) {
+		$custom_end_tag = '</' . $custom_tag . '>';
+		$custom_tag = '<' . $custom_tag . '>';
+	}
+	
+	//
 	$str_sub_cat = '';
 	foreach ( $sub_cat as $sub_v ) {
-		$str_sub_cat .= '<div><a href="' . _eb_c_link( $sub_v->term_id ) . '">' . $sub_v->name . ' <span class="home-count-subcat">(' . $sub_v->count . ')</span></a></div>';
+		$str_sub_cat .= $custom_tag . '<a href="' . _eb_c_link( $sub_v->term_id ) . '">' . $sub_v->name . ' <span class="home-count-subcat">(' . $sub_v->count . ')</span></a>' . $custom_end_tag;
 	}
 	
 	return $str_sub_cat;
