@@ -22,8 +22,8 @@ $eb_all_themes_support["saatchiart"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["saatchiart"]["footer"][] = "saatchiart-footer1.php";
 //$eb_all_themes_support["saatchiart"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["saatchiart"]["home"][] = "saatchiart-home1.php";
-$eb_all_themes_support["saatchiart"]["home"][] = "saatchiart-home2.php";
+//$eb_all_themes_support["saatchiart"]["home"][] = "saatchiart-home1.php";
+//$eb_all_themes_support["saatchiart"]["home"][] = "saatchiart-home2.php";
 $eb_all_themes_support["saatchiart"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["saatchiart"]["threaddetails"][] = "saatchiart-threaddetails.html";
