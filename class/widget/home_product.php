@@ -179,6 +179,12 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		
 		//
 		echo '<div class="' . $custom_style . '">';
+		
+		//
+		echo WGR_show_home_node( array(
+		), $html_template );
+		
+		/*
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_id' => $cat_ids,
 			'tmp.cat_link' => $cat_link != '' ? $cat_link : 'javascript:;',
@@ -204,6 +210,9 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			'tmp.num_post_line' => $num_line,
 			'tmp.max_width' => $max_width,
 		) );
+		*/
+		
+		//
 		echo '</div>';
 		
 		

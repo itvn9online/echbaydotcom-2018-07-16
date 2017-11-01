@@ -91,6 +91,10 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 					
 					
 					// Lấy theo mẫu của widget #home_product
+					echo WGR_show_home_node( array(
+					) );
+					
+					/*
 					echo EBE_html_template( EBE_get_page_template( 'home_node' ), array(
 						'tmp.cat_id' => $k,
 						'tmp.more_link' => $more_link,
@@ -112,6 +116,8 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 						'tmp.num_post_line' => '',
 						'tmp.max_width' => '',
 					) );
+					*/
+					
 				}
 			}
 		}

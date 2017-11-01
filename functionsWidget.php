@@ -160,4 +160,15 @@ function WGR_show_home_hot ( $arr, $tmp = 'home_hot' ) {
 }
 
 
+// hiển thị phần home node theo chuẩn nhất định
+function WGR_show_home_node ( $arr, $tmp = 'home_node' ) {
+	// nạp html được truyền vào
+	$html = EBE_html_template( EBE_get_page_template( $tmp ), $arr );
+	
+	// các đoạn HTML mặc định cho về trống nếu chưa có
+	return EBE_html_template( $html, array(
+	) );
+}
+
+
 

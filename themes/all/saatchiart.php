@@ -16,7 +16,7 @@ $eb_all_themes_support["saatchiart"]["price"] = 2000000;
 $eb_all_themes_support["saatchiart"]["top"][] = "saatchiart-top1.php";
 $eb_all_themes_support["saatchiart"]["top"][] = "top_widget.php";
 $eb_all_themes_support["saatchiart"]["top"][] = "bigbanner-top1.php";
-$eb_all_themes_support["saatchiart"]["top"][] = "breadcrumb-top1.php";
+$eb_all_themes_support["saatchiart"]["top"][] = "breadcrumb2-top1.php";
 //
 $eb_all_themes_support["saatchiart"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["saatchiart"]["footer"][] = "saatchiart-footer1.php";
