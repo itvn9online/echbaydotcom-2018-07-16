@@ -167,7 +167,33 @@ function WGR_show_home_node ( $arr, $tmp = 'home_node' ) {
 	
 	// các đoạn HTML mặc định cho về trống nếu chưa có
 	return EBE_html_template( $html, array(
+		'tmp.num_post_line' => '',
 	) );
+}
+
+// lấy danh sách nhóm con
+function WGR_get_home_node_sub_cat ( $cat_ids ) {
+	// danh sách nhóm cấp 2
+	$arr_sub_cat = array(
+		'parent' => $cat_ids,
+	);
+	$sub_cat = get_categories($arr_sub_cat);
+//	print_r( $sub_cat );
+	
+	$str_sub_cat = '';
+	foreach ( $sub_cat as $sub_v ) {
+		$str_sub_cat .= '<div><a href="' . _eb_c_link( $sub_v->term_id ) . '">' . $sub_v->name . ' <span class="home-count-subcat">(' . $sub_v->count . ')</span></a></div>';
+	}
+	
+	return $str_sub_cat;
+}
+
+// lấy danh sách các quảng cáo đi kèm cho từng nhóm
+function WGR_get_home_node_ads ( $cat_ids, $tmp = 'ads_node' ) {
+	return _eb_load_ads( 9, _eb_number_only( EBE_get_lang('homelist_num') ), EBE_get_lang('homelist_size'), array(
+		'cat' => $cat_ids,
+	), 0, EBE_get_page_template( $tmp ) );
+//	), 0, str_replace( 'ti-le-global', '', EBE_get_page_template( 'ads_node' ) ) );
 }
 
 

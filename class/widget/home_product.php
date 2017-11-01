@@ -123,23 +123,19 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			
 			//
 			if ( $cat_count > 0 ) {
-				// danh sách nhóm cấp 2
-				$arr_sub_cat = array(
-					'parent' => $cat_ids,
-				);
-				$sub_cat = get_categories($arr_sub_cat);
-	//			print_r( $sub_cat );
 				
-				foreach ( $sub_cat as $sub_v ) {
-					$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id ) . '">' . $sub_v->name . ' <span class="home-count-subcat">(' . $sub_v->count . ')</span></a>';
-				}
+				// lấy danh sách nhóm con
+				$str_sub_cat = WGR_get_home_node_sub_cat( $cat_ids );
 				
 				
 				
 				// banner quảng cáo theo từng danh mục (cấp 1)
+				$home_ads_by_cat = WGR_get_home_node_ads( $cat_ids );
+				/*
 				$home_ads_by_cat = _eb_load_ads( 9, 5, '', array(
 					'cat' => $cat_ids,
 				), 0, str_replace( 'ti-le-global', '', EBE_get_page_template( 'ads_node' ) ) );
+				*/
 				
 				
 				//
@@ -182,16 +178,10 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		
 		//
 		echo WGR_show_home_node( array(
-		), $html_template );
-		
-		/*
-		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_id' => $cat_ids,
 			'tmp.cat_link' => $cat_link != '' ? $cat_link : 'javascript:;',
-//			'tmp.cat_name' => $title != '' ? $title : $cat_name,
 			'tmp.cat_name' => $cat_name,
 			'tmp.cat_count' => $cat_count,
-//			'tmp.title' => $title,
 			'tmp.description' => $description,
 			'tmp.more_link' => $more_link,
 			
@@ -204,10 +194,18 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			// quảng cáo theo nhóm cấp 1
 			'tmp.home_ads_by_cat' => $home_ads_by_cat,
 			
+			//
+			'tmp.num_post_line' => $num_line,
+		), $html_template );
+		
+		/*
+		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
+//			'tmp.cat_name' => $title != '' ? $title : $cat_name,
+//			'tmp.title' => $title,
+			
 			// bg chẵn lẻ
 //			'tmp.class_for_chanle' => $class_for_chanle,
 //			'tmp.class_for_chanle' => 'each-to-bg-chanle',
-			'tmp.num_post_line' => $num_line,
 			'tmp.max_width' => $max_width,
 		) );
 		*/

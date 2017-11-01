@@ -64,25 +64,20 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 				
 				//
 				if ( $home_node_cat != '' ) {
-					// danh sách nhóm cấp 2
-					$arr_sub_cat = array(
-						'parent' => $cat_ids,
-					);
-					$sub_cat = get_categories($arr_sub_cat);
-//					print_r( $sub_cat );
 					
-					$str_sub_cat = '';
-					foreach ( $sub_cat as $sub_v ) {
-						$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id ) . '">' . $sub_v->name . ' <span class="home-count-subcat">(' . $sub_v->count . ')</span></a>';
-					}
+					// lấy danh sách nhóm con
+					$str_sub_cat = WGR_get_home_node_sub_cat( $cat_ids );
 					
 					
 					
 					// banner quảng cáo theo từng danh mục (cấp 1)
+					$home_ads_by_cat = WGR_get_home_node_ads( $cat_ids );
+					/*
 					$home_ads_by_cat = _eb_load_ads( 9, _eb_number_only( EBE_get_lang('homelist_num') ), EBE_get_lang('homelist_size'), array(
 						'cat' => $cat_ids,
 					), 0, EBE_get_page_template( 'ads_node' ) );
 //					), 0, str_replace( 'ti-le-global', '', EBE_get_page_template( 'ads_node' ) ) );
+					*/
 					
 					
 					//
@@ -92,12 +87,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 					
 					// Lấy theo mẫu của widget #home_product
 					echo WGR_show_home_node( array(
-					) );
-					
-					/*
-					echo EBE_html_template( EBE_get_page_template( 'home_node' ), array(
 						'tmp.cat_id' => $k,
-						'tmp.more_link' => $more_link,
 						'tmp.cat_link' => $cat_link,
 						'tmp.cat_name' => $home_detauls_categories->name,
 						'tmp.cat_count' => $home_detauls_categories->count,
@@ -111,6 +101,13 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 						
 						// quảng cáo theo nhóm cấp 1
 						'tmp.home_ads_by_cat' => $home_ads_by_cat,
+						
+						//
+						'tmp.more_link' => $more_link,
+					) );
+					
+					/*
+					echo EBE_html_template( EBE_get_page_template( 'home_node' ), array(
 						
 						// bg chẵn lẻ
 						'tmp.num_post_line' => '',
