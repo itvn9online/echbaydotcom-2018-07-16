@@ -187,7 +187,18 @@ if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
 	$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/eb_migrate_version.js';
 }
 
+// file js riêng của từng theme
+if ( defined('EB_CHILD_THEME_URL') ) {
+	$arr_for_add_js[] = EB_THEME_URL . 'ui/d.js';
+}
+else {
+	$arr_for_add_js[] = EB_THEME_URL . 'ui/d.js';
+}
+
+//
 EBE_add_js_compiler_in_cache( $arr_for_add_js, 'async', 1 );
+
+
 
 // JS ngoài
 foreach ( $arr_for_add_outsource_async_js as $v ) {
