@@ -146,7 +146,8 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 //				$home_node_cat = _eb_load_post( $post_number, $args );
 			}
 		}
-		else {
+		// gán tiêu đề mặc định nếu không có
+		else if ( $cat_name == '' ) {
 			$cat_name = EBE_get_lang('home_new');
 		}
 		
