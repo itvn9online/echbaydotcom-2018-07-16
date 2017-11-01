@@ -131,3 +131,21 @@
 .thread-details-rightpost { }
 .thread-details-rightpost .thread-list-mobilebg { padding: 0 5px 10px 5px; }
 .thread-details-rightpost .hide-if-mobile { display: none; }
+/* mua in bottom */
+.thread-details-bottom {
+	border: 1px #ccc dotted;
+	padding: 20px;
+}
+.thread-details-buy {
+	border: 0 none;
+	font-size: 23px;
+	padding: 10px 0;
+	-webkit-box-shadow: 0 2px 2px #ccc;
+	-moz-box-shadow: 0 2px 2px #ccc;
+	box-shadow: 2px 2px 2px #ccc;
+}
+.thread-details-buy:hover,
+.thread-details-cart:hover { opacity: .8; }
+.thread-details-buy,
+.thread-details-cart,
+.thread-details-far { width: 100%; }

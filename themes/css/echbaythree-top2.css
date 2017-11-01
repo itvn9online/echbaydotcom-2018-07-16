@@ -44,3 +44,8 @@ h1.thread-module-name {
 	padding-bottom: 10px;
 	border-bottom: 1px #ccc solid;
 }
+.widget-search-advanced .widget_echbay_category a {
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+}
