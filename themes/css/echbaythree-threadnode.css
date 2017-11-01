@@ -1,8 +1,8 @@
 /* Global css (thread_node) */
-.thread-list { margin: 0 -6px; }
+.thread-list { margin: 0 -10px; }
 .thread-list-padding {
 	background: #fff;
-	margin: 8px 6px 6px 6px;
+	margin: 8px 10px 6px 10px;
 	border: 1px #ccc solid;
 	border-radius: 1px;
 }

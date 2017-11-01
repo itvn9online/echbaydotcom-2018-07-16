@@ -39,3 +39,8 @@
 	border-radius: 5px;
 }
 #echbaythree-top2 .btn-to-cart em { display: inline-block; }
+h1.thread-module-name {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px #ccc solid;
+}

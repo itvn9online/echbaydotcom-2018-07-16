@@ -965,6 +965,12 @@ var big_banner_timeout1 = null;
 	
 	var big_banner_len = $('.oi_big_banner li').length;
 	
+	//
+	if ( big_banner_len == 0 ) {
+		$('.hide-if-banner-null').hide();
+		return false;
+	}
+	
 	// chuyển big banner đến vị trí mới (chỉ làm khi số lượng big banner là 1)
 	if ( big_banner_len > 0 && $('.oi_big_banner').length == 1 && $('.clone-big-banner-to-here').length > 0 ) {
 		// thiết lập class để lát xóa

@@ -23,6 +23,7 @@
 	line-height: 20px;
 	display: none;
 }
+#echbaythree-top3 .nav .all-category-hover.selected .all-category-cats,
 #echbaythree-top3 .nav .all-category-hover:hover .all-category-cats { display: block; }
 #echbaythree-top3 .nav .all-category-cats ul {
 	border: 1px #ccc solid;
@@ -81,7 +82,7 @@
 	margin-top: 15px;
 }
 /* hiển thị nav menu */
-#echbaythree-top3 .nav .all-category-hover .all-category-cats { display: block; }
+/* #echbaythree-top3 .nav .all-category-hover .all-category-cats { display: block; } */
 /* code riêng */
 .echbaythree-banner { padding: 10px 0 20px 0; }
 .echbaythree-banner .oi_big_banner {
