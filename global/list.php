@@ -442,6 +442,13 @@ if ( $main_content == false ) {
 		}
 		
 		
+		//
+		$arr_main_content['tmp.list_post'] = EBE_check_list_post_null( $list_post );
+		$arr_main_content['tmp.link_for_fb_comment'] = $link_for_fb_comment;
+		$arr_main_content['tmp.str_page'] = $str_page;
+		$arr_main_content['tmp.home_cf_title'] = $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '">' . $__category->name . '</a>' : $__category->name;
+		
+		
 		
 		
 		// gọi đến function riêng của từng site
@@ -455,11 +462,6 @@ if ( $main_content == false ) {
 		}
 		
 		
-		//
-		$arr_main_content['tmp.list_post'] = EBE_check_list_post_null( $list_post );
-		$arr_main_content['tmp.link_for_fb_comment'] = $link_for_fb_comment;
-		$arr_main_content['tmp.str_page'] = $str_page;
-		$arr_main_content['tmp.home_cf_title'] = $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '">' . $__category->name . '</a>' : $__category->name;
 		
 		
 		// v1
