@@ -66,7 +66,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 				if ( $home_node_cat != '' ) {
 					
 					// lấy danh sách nhóm con
-					$str_sub_cat = WGR_get_home_node_sub_cat( $cat_ids );
+					$str_sub_cat = WGR_get_home_node_sub_cat( $cat_ids, $__cf_row['cf_home_sub_cat_tag'] );
 					
 					
 					
