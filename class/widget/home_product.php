@@ -41,6 +41,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
+		global $__cf_row;
 //		global $func;
 //		global $echbay_widget_i_set_home_product_bg;
 		
@@ -196,7 +197,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			
 			//
 			'tmp.num_post_line' => $num_line,
-		), $html_template );
+		), $__cf_row['cf_home_sub_cat_tag'], $html_template );
 		
 		/*
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(

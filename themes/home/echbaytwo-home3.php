@@ -104,7 +104,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 						
 						//
 						'tmp.more_link' => $more_link,
-					) );
+					), $__cf_row['cf_home_sub_cat_tag'] );
 					
 					/*
 					echo EBE_html_template( EBE_get_page_template( 'home_node' ), array(

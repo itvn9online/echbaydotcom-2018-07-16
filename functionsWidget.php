@@ -175,8 +175,11 @@ function WGR_show_home_node ( $arr, $custom_tag = '', $tmp = 'home_node' ) {
 	
 	// các đoạn HTML mặc định cho về trống nếu chưa có
 	return EBE_html_template( $html, array(
+		// thẻ H2, H3... cho phần tên danh mục
 		'tmp.custom_tag' => $custom_tag,
 		'tmp.custom_end_tag' => $custom_end_tag,
+		
+		// các thông số khác
 		'tmp.num_post_line' => '',
 	) );
 }

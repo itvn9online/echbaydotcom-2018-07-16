@@ -241,6 +241,9 @@ $__cf_row_default = array(
 	// HTML trang chi tiết sản phẩm
 	'cf_threaddetails_include_file' => '',
 	
+	// thẻ bao ngoài cho phần thẻ A của thread-home-c2
+	'cf_home_sub_cat_tag' => '',
+	
 	
 	// Chiều rộng chung của toàn website -> nếu chiều rộng này được set, cả website sẽ sử dụng nó
 	'cf_global_width_sidebar' => 0,
