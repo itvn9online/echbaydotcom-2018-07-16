@@ -1489,7 +1489,7 @@ function ___eb_list_post_run ( r ) {
 			$('.viewmore-cats-description').show();
 			
 			// thêm class tạo hiệu ứng thu gọn nội dung
-			$('.global-cats-description').addClass('global-cats-description-scroll');
+			$('.global-cats-description').addClass('global-cats-description-scroll').height( cf_cats_description_viewmore );
 			
 			//
 			$('.click-viewmore-cats-description').click(function () {
