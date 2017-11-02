@@ -6,14 +6,16 @@
 		<div class="thread-list-mobilebg">
 			<dynamic_title_tag class="thread-list-title">{tmp.trv_tieude}</dynamic_title_tag>
 			<div class="thread-list-msp">Mã sp: {tmp.trv_masanpham}</div>
-			<div class="thread-list-giamoi">{tmp.trv_giamoi}</div>
-			<div class="thread-list-gia">{tmp.trv_giaban}</div>
+			<div class="thread-list-price">
+				<div class="thread-list-giamoi">{tmp.trv_giamoi}</div>
+				<div class="thread-list-gia">{tmp.trv_giaban}</div>
+			</div>
 		</div>
 	</div>
 	<div class="thread-list-xem bold cf">
-		<div class="lf f70">
+		<div class="lf f70 fullsize-if-mobile">
 			<div class="thread-list-mua upper"><a href="{tmp.p_link}"><i class="fa fa-eye"></i> Xem<span class="hide-if-mobile"> chi tiết</span></a></div>
 		</div>
-		<div class="lf f30 text-center"><a href="cart/?id={tmp.trv_id}"><i class="fa fa-shopping-cart"></i></a></div>
+		<div class="lf f30 text-center hide-if-mobile"><a href="cart/?id={tmp.trv_id}"><i class="fa fa-shopping-cart"></i></a></div>
 	</div>
 </div>

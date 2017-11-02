@@ -16,3 +16,7 @@
 }
 #echbaythree-footer1 .footer-menu .sub-menu li { font-size: 13px; }
 #echbaythree-footer1 .footer-menu .sub-menu .sub-menu { display: none; }
+.style-for-mobile #echbaythree-footer1 {
+	padding-left: 5px;
+	padding-right: 5px;
+}

@@ -86,3 +86,9 @@
 	color: #666;
 }
 .thread-list-mua { border-right: 1px #ccc solid; }
+/* for mobile */
+.style-for-mobile .thread-list-padding {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+.style-for-mobile .thread-list-mobilebg { padding: 0 5px 5px 5px; }

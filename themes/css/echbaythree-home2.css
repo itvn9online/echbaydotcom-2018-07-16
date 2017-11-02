@@ -41,3 +41,9 @@
 }
 #echbaythree-home2 .thread-list-mobilebg { padding: 0 10px 10px 10px; }
 #echbaythree-home2 .thread-list-xem { display: none; }
+/* for mobile */
+.style-for-mobile #echbaythree-home2 .home-node-position { padding: 0; }
+.style-for-mobile #echbaythree-home2 .thread-home-c2 {
+	position: initial;
+	width: initial;
+}

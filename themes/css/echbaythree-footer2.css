@@ -10,3 +10,7 @@
 }
 #echbaythree-footer2 .footer-address-info { }
 #echbaythree-footer2 .footer-address-info div { margin-bottom: 10px; }
+.style-for-mobile #echbaythree-footer2 {
+	padding-left: 5px;
+	padding-right: 5px;
+}
