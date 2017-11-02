@@ -1668,6 +1668,31 @@ function ___eb_details_post_run ( r ) {
 		$('#export_img_product').after('<div class="tem-chinh-hang">&nbsp;</div>');
 	}
 	
+	
+	
+	// tạo hiệu ứng thu gọn nội dung -> bấm xem thêm để hiển thị đầy đủ
+	if ( cf_product_details_viewmore > 0 ) {
+		
+		var a = null;
+		
+		// chỉnh theo phần mặt nạ của nội dung
+		if ( $('.thread-content-bmask').length > 0 ) {
+			a = $('.thread-content-bmask');
+		}
+		// mặc định là can thiệp vào nội dung luôn
+		else if ( $('#content_img_product').length > 0 ) {
+			a = $('#content_img_product');
+		}
+		else {
+			console.log('thread-content-bmask or content_img_product not found!');
+		}
+		
+		if ( a != null ) {
+			a.after('<br /><div class="text-center"><a href="javascript:;" class="click-viewmore-cats-description">Xem thêm</a></div>');
+		}
+		
+	}
+	
 }
 
 

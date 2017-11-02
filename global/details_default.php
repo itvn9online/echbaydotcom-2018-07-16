@@ -977,6 +977,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	_eb_product_ngayhethan="' . $_eb_product_ngayhethan . '",
 	_eb_product_giohethan="' . $_eb_product_giohethan . '",
 	cf_details_excerpt="' . $__cf_row['cf_details_excerpt'] . '",
+	cf_product_details_viewmore=' . $__cf_row['cf_product_details_viewmore'] . ',
 	trv_ngayhethan=' . $trv_ngayhethan . ';
 </script>';
 //	arr_product_color=[' . substr( $arr_product_color, 1 ) . '],
