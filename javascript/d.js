@@ -1688,7 +1688,12 @@ function ___eb_details_post_run ( r ) {
 		}
 		
 		if ( a != null ) {
-			a.after('<br /><div class="text-center"><a href="javascript:;" class="click-viewmore-cats-description">Xem thêm</a></div>');
+			a.addClass('thread-content-viewmore').height( cf_product_details_viewmore ).after('<br /><div class="text-center"><a href="javascript:;" class="click-viewmore-thread-details">Xem thêm</a></div>');
+			
+			//
+			$('.click-viewmore-thread-details').click(function () {
+				$('.thread-content-bmask, #content_img_product').height('auto').removeClass('thread-content-viewmore');
+			});
 		}
 		
 	}

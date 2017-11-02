@@ -1466,6 +1466,7 @@ a.search-advanced-btn {
 .global-cats-description h5,
 .global-cats-description h6,
 .global-cats-description div { margin: 0; }
+.click-viewmore-thread-details,
 .click-viewmore-cats-description {
 	color: #333;
 	display: inline-block;
@@ -1475,11 +1476,14 @@ a.search-advanced-btn {
 	border-radius: 3px;
 	box-shadow: 0 0 10px #ccc;
 }
+.click-viewmore-thread-details:after,
 .click-viewmore-cats-description:after {
 	content: "\00bb";
 	display: inline-block;
 	margin-left: 10px;
 }
+.thread-content-viewmore { overflow: hidden; }
+/* */
 .blue-button,
 .red-button,
 .w-button { padding: 3pt 10pt; }
