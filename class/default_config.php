@@ -99,6 +99,9 @@ $__cf_row_default = array(
 	'cf_num_details3_list' => 0,
 	'cf_num_details_blog_list' => 10,
 	
+	// số tin trên mỗi trang của phần bog, mặc định là 0 -> dùng chung với sản phẩm
+	'cf_blogs_per_page' => 0,
+	
 	// kích thước mặc định của ảnh đại diện
 	'cf_product_thumbnail_size' => 'medium',
 	'cf_product_thumbnail_table_size' => 'medium',
