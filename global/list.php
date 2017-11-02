@@ -533,8 +533,9 @@ else if ( $switch_taxonomy == EB_BLOG_POST_LINK
 // -> thêm đoạn JS dùng để xác định xem khách đang ở đâu trên web
 $main_content .= '<script type="text/javascript">
 var current_order="' . $current_order . '",
-	seach_advanced_value="' . $tim_nang_cao . '";
-	seach_advanced_by_cats="' . $seach_advanced_by_cats . '";
+	seach_advanced_value="' . $tim_nang_cao . '",
+	seach_advanced_by_cats="' . $seach_advanced_by_cats . '",
+	cf_cats_description_viewmore=' . $__cf_row['cf_cats_description_viewmore'] . ',
 	switch_taxonomy="' . $switch_taxonomy . '";
 </script>';
 

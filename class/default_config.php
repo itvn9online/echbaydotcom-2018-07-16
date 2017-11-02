@@ -89,6 +89,8 @@ $__cf_row_default = array(
 	'cf_top_banner_size' => '400/1366',
 	'cf_other_banner_size' => '2/3',
 	
+	'cf_cats_description_viewmore' => 150,
+	
 	'cf_num_home_hot' => 5,
 	'cf_num_home_new' => 5,
 //	'cf_num_home_view' => 0,
