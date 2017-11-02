@@ -186,7 +186,7 @@
 			<tr>
 				<td class="t">HTML tag cho tên Danh mục</td>
 				<td class="i"><div class="noborder-ebdesign-table-for">{tmp.cf_home_sub_cat_tag}</div>
-					<div class="small l19">* các thẻ trong bộ CSS <strong>thread-home-c2</strong> mặc định là thẻ A, nếu muốn nó có thẻ bao ngoài là các thẻ khác như: H2, H3, DIV... thì sử dụng chức năng này.</div></td>
+					<div class="small l19">* các thẻ trong bộ CSS <strong>thread-home-c2</strong> mặc định là thẻ A, nếu muốn nó có thẻ bao ngoài là các thẻ khác như: H2, H3, DIV... thì sử dụng chức năng này. Các bộ thẻ khuyên dùng và sẽ được CSS mặc định hỗ trợ là: DIV, H2.</div></td>
 			</tr>
 		</tbody>
 		<tbody title="Danh sách sản phẩm (Category)" id="eb-admin-config-theme-list" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
@@ -323,6 +323,11 @@
 				<td class="i"><input type="checkbox" name="cf_details_excerpt" id="cf_details_excerpt" value="{tmp.cf_details_excerpt}" />
 					<label for="cf_details_excerpt" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
 					<div class="small">Mặc định, phần tóm tắt của website không hỗ trợ HTML, nên khi xuất ra ngoài, sẽ có một đoạn JS giúp tạo đoạn lệnh này từ text thuần sang dạng LIST (UL LI), sau đó bạn có thể viết thêm CSS cho nó hiển thị đẹp hơn.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Thu gọn nội dung</td>
+				<td class="i"><input type="number" name="cf_product_details_viewmore" value="{tmp.cf_product_details_viewmore}" class="s" />
+					<div class="small">Khi thông số này được thiết lập lớn hơn 0, chiều cao nội dung sản phẩm sẽ bị thu lại bằng với thông số này. Nút [Xem thêm] sẽ được kích hoạt, và nội dung sẽ mở ra đầy đủ khi người dùng bấm xem thêm.</div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
