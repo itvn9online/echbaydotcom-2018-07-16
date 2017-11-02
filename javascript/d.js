@@ -1462,7 +1462,7 @@ function ___eb_global_home_runing ( r ) {
 	}
 }
 
-
+//
 function ___eb_list_post_run ( r ) {
 	if ( khong_chay_function_o_theme_nua == 1 ) {
 		console.log('WARNING!!!!!!!!!!!!!!!!!!! function ___eb_list_post_run has been runing...');
@@ -1735,6 +1735,21 @@ function ___eb_details_post_run ( r ) {
 		}
 		
 	}
+	
+	
+	
+	// danh sách sản phẩm đã xem, lưu dưới dạng cookies
+	var str_history = g_func.getc('wgr_product_id_view_history');
+	console.log(str_history);
+	if ( str_history == null ) {
+		str_history = '';
+	}
+	else {
+		str_history = str_history.replace( '[' + pid + ']', '' );
+	}
+	console.log(str_history);
+	str_history += '[' + pid + ']';
+	console.log(str_history);
 	
 }
 

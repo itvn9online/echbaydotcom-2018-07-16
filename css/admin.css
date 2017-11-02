@@ -761,6 +761,11 @@ input#_eb_ads_for_category { display: none; }
 }
 #show_all_list_post_page_menu li { padding: 5px 15px; }
 #show_all_list_post_page_menu li:hover { background-color: #f2f2f2; }
+/* video support đầu trang */
+.eb-admin-bar-support li {
+	float: left !important;
+	margin-left: 20px;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

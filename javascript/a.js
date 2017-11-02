@@ -358,6 +358,14 @@ div.gallery-add-to-category_favicon { display: block; }\
 //	$('.click-open-new-gallery').click();
 	
 	
+	
+	
+	//
+	$('#wp-admin-bar-top-secondary').addClass('cf eb-admin-bar-support');
+	$('#wp-admin-bar-top-secondary li:first').before('<li>TEST</li>');
+	
+	
+	
 //});
 })( $('body').attr('class') || '' );
 
