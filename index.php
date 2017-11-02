@@ -674,11 +674,17 @@ add_filter ( 'init', 'echbay_theme_setup');
 * Sắp xếp sản phẩm theo lựa chọn của người dùng
 * https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
 */
-function eb_change_product_query( $query ){
+function eb_change_product_query ( $query ) {
+	
+	global $__cf_row;
 	
 	
 	//
 	$current_order = isset ( $_GET ['orderby'] ) ? trim ( strtolower( $_GET ['orderby'] ) ) : '';
+	
+	
+	//
+//	print_r( $query );
 	
 	
 	// các post_type mặc định chỉ có 1 dạng sắp xếp
@@ -695,7 +701,7 @@ function eb_change_product_query( $query ){
 			else {
 				*/
 			if ( $current_order == '' ) {
-				if( $query->query_vars['post_type'] == EB_BLOG_POST_TYPE ) {
+				if ( $query->query_vars['post_type'] == EB_BLOG_POST_TYPE ) {
 //					$query->set( 'orderby', array(
 //						'menu_order' => 'DESC',
 //						'date' => 'DESC'
@@ -720,6 +726,18 @@ function eb_change_product_query( $query ){
 			//
 			return $query;
 		}
+	}
+	else {
+		
+//		echo EB_BLOG_POST_LINK;
+//		print_r( $query );
+		
+		// điều chỉnh số lượng post sẽ được hiển thị trên mỗi trang Blog
+		if ( $__cf_row['cf_blogs_per_page'] > 0 && isset( $query->query_vars[ EB_BLOG_POST_LINK ] ) ) {
+//			print_r( $query );
+			$query->set( 'posts_per_page', $__cf_row['cf_blogs_per_page'] );
+		}
+		
 	}
 	
 	
@@ -890,11 +908,6 @@ function eb_change_product_query( $query ){
 	return;
 }
 
-//
-//if ( isset ( $_GET ['filter'] ) || isset ( $_GET ['orderby'] ) ) {
-	add_filter( 'pre_get_posts', 'eb_change_product_query');
-//}
-
 
 
 
@@ -911,6 +924,13 @@ if ( mtv_id > 0 && is_admin () ) {
 }
 // các thiết lập chỉ dành cho trang khách hàng
 else {
+	
+	// chức năng tìm kiếm nâng cao và custom cho phần get post
+	//if ( isset ( $_GET ['filter'] ) || isset ( $_GET ['orderby'] ) ) {
+		add_filter( 'pre_get_posts', 'eb_change_product_query');
+	//}
+	
+	
 
 	/*
 	* Không cho đọc nội dung thông qua json
