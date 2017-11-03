@@ -193,7 +193,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	}
 	
 	//
-	$post->trv_giaban = EBE_add_ebe_currency_class( $post->trv_giaban, 1 );
+	$post->trv_giaban = EBE_add_ebe_currency_class( $post->trv_giaban, 1, '&nbsp;' );
 	
 	$post->trv_giamoi = EBE_add_ebe_currency_class( $post->trv_giamoi );
 	
