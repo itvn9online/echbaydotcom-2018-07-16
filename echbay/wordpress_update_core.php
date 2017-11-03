@@ -49,6 +49,7 @@ jQuery('.click-connect-to-echbay-update-wp-core').attr({
 
 //
 if ( window.location.href.split('&confirm_wp_process=').length > 1 ) {
-	window.history.pushState("", '', window.location.href.split('&confirm_wp_process=')[0]);
+	_global_js_eb.change_url_tab( 'confirm_wp_process' );
+//	window.history.pushState("", '', window.location.href.split('&confirm_wp_process=')[0]);
 }
 </script>

@@ -130,7 +130,8 @@ function EBE_click_to_update_site_lang () {
 		if ( b != '' ) {
 			
 			//
-			window.history.pushState( "", '', window.location.href.split('&edit_key=')[0] + '&edit_key=' + b );
+			_global_js_eb.change_url_tab( 'edit_key', b );
+//			window.history.pushState( "", '', window.location.href.split('&edit_key=')[0] + '&edit_key=' + b );
 			
 			//
 			cache_for_current_lang_id = b;
@@ -196,7 +197,7 @@ function EBE_click_to_update_site_lang () {
 		
 		//
 		$('body,html').animate({
-			scrollTop: $('#' + a).offset().top - 220
+			scrollTop: $('#' + a).offset().top - ( $(window).height()/ 3 )
 		}, 200);
 		
 		//

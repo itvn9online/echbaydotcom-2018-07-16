@@ -803,7 +803,8 @@ jQuery('.click-connect-to-echbay-update-eb-theme').attr({
 
 //
 if ( window.location.href.split('&confirm_eb_process=').length > 1 ) {
-	window.history.pushState("", '', window.location.href.split('&confirm_eb_process=')[0]);
+	_global_js_eb.change_url_tab( 'confirm_eb_process' );
+//	window.history.pushState("", '', window.location.href.split('&confirm_eb_process=')[0]);
 }
 
 if ( jQuery('#eb_core_update_all_done').length > 0 ) {

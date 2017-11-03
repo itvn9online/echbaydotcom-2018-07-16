@@ -545,7 +545,9 @@ $('#oi_smtp_pass')
 			$('#list-tab-eb-admin-config li').removeClass('selected');
 			$(this).addClass('selected');
 			
-			window.history.pushState( "", '', window.location.href.split('&tab=')[0] + '&tab=' + tab );
+			//
+			_global_js_eb.change_url_tab( 'tab', tab );
+//			window.history.pushState( "", '', window.location.href.split('&tab=')[0] + '&tab=' + tab );
 		}
 	});
 	

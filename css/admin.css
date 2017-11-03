@@ -766,6 +766,11 @@ input#_eb_ads_for_category { display: none; }
 	float: left !important;
 	margin-left: 20px;
 }
+/* tạo màu đánh dấu cho thẻ TR khi gửi link support cho khách hàng */
+.eb-support-table tr.current-selected-support {
+	background: #fc9;
+	box-shadow: 0 0 10px 0 #666;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

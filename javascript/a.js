@@ -360,6 +360,58 @@ div.gallery-add-to-category_favicon { display: block; }\
 	
 	
 	
+	// khi người dùng bấm vào thẻ TR trong khung có hỗ trợ support
+	$('.eb-support-table label').click(function () {
+		$('.eb-support-table tr').removeClass('current-selected-support');
+		
+		//
+		var a = $(this).attr('for') || $(this).attr('data-tab') || '';
+		
+		// thêm hash nếu có
+		/*
+		if ( a != '' ) {
+//			window.location.hash = a;
+//			window.history.pushState("", '', window.location.href.split('#')[0] + '#' + a);
+			window.history.pushState("", '', window.location.href.split('&support_tab=')[0] + '&support_tab=' + a);
+		}
+		// dọn hash nếu không có
+		else {
+//			window.history.pushState("", '', window.location.href.split('#')[0]);
+			window.history.pushState("", '', window.location.href.split('&support_tab=')[0]);
+		}
+		*/
+		
+		//
+		_global_js_eb.change_url_tab( 'support_tab', a );
+	});
+	
+	// tự động trỏ đến TR đang cần support
+	setTimeout(function () {
+		var get_support_tab = window.location.href.split('&support_tab=');
+		if ( get_support_tab.length > 1 && $('.eb-support-table').length > 0 ) {
+			get_support_tab = get_support_tab[1].split('&')[0].split('#')[0];
+			console.log(get_support_tab);
+			
+			// chạy và tìm thẻ TR có chứa cái thẻ label này
+			if ( get_support_tab != '' && $('label[for="' + get_support_tab + '"]').length > 0 ) {
+				
+				// cuộn chuột đến khu vực cần xem -> xem cho dễ
+				window.scroll( 0, $('label[for="' + get_support_tab + '"]').offset().top - ( $(window).height()/ 3 ) );
+				
+				$('.eb-support-table tr').each(function() {
+					// nếu tìm được thì thoát thôi
+					if ( $('label[for="' + get_support_tab + '"]', this).length > 0 ) {
+						$(this).addClass('current-selected-support');
+						return true;
+					}
+				});
+				
+			}
+		}
+	}, 1200);
+	
+	
+	
 	//
 	$('#wp-admin-bar-top-secondary').addClass('cf eb-admin-bar-support');
 	$('#wp-admin-bar-top-secondary li:first').before('<li>TEST</li>');

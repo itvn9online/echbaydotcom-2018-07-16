@@ -426,7 +426,8 @@ $('#press_for_search_eb_themes, #press_for_search_all_themes').click(function ()
 //	return false;
 	
 	//
-	window.location.hash = key;
+//	window.location.hash = key;
+	window.history.pushState("", '', window.location.href.split('#')[0] + '#' + key);
 	
 	//
 	if (key != '') {

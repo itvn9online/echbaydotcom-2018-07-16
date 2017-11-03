@@ -2241,6 +2241,51 @@ var _global_js_eb = {
 		}
 		
 		return true;
+	},
+	
+	
+	
+	// thay thế một giá trị nhất định trên URL
+	change_url_tab : function ( parameter, new_value ) {
+		if ( typeof parameter == 'undefined' || parameter == '' ) {
+			console.log('parameter not found');
+			return false;
+		}
+		parameter = '&' + parameter + '=';
+		
+		// nếu không có giá trị gì thì hủy luôn
+		if ( typeof new_value == 'undefined' || new_value == '' ) {
+			window.history.pushState("", document.title, window.location.href.split( parameter )[0]);
+			return true;
+		}
+		
+		//
+		var str = '',
+			current_url = window.location.href.split( parameter );
+//		console.log( current_url.length );
+//		console.log( current_url );
+		
+		// nếu có giá trị sẵn -> thay thế
+		if ( current_url.length > 1 ) {
+			var new_url = current_url[1].split('&');
+//			console.log( new_url );
+			new_url[0] = new_value;
+//			console.log( new_url );
+			
+			// ghép giá trị mới
+			current_url[1] = new_url.join('&');
+			
+			// nối lại url sau khi cắt ghép
+			str = current_url.join( parameter );
+		}
+		// nếu chưa có -> thêm mới
+		else {
+			str = current_url[0] + parameter + new_value;
+		}
+//		console.log( str );
+		window.history.pushState( "", '', str );
+		
+		return true;
 	}
 	
 };
