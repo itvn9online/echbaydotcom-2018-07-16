@@ -19,7 +19,7 @@
 				<div class="thread-details-bprice">
 					<div class="thread-details-label upper small">Giá bán</div>
 					<div class="thread-details-price">{tmp.trv_giamoi}</div>
-					<div data-gia="11" class="thread-details-gia">
+					<div data-gia="{tmp.pt}" class="thread-details-gia hide-if-gia-zero">
 						<ul class="cf">
 							<li>
 								<div class="thread-details-label upper small">Giá cũ</div>
@@ -31,7 +31,7 @@
 							</li>
 							<li class="thread-details-tietkiem">
 								<div class="thread-details-label upper small">Tiết kiệm</div>
-								<div class="bold">-{tmp.trv_tietkiem}%</div>
+								<div class="bold">-{tmp.trv_tietkiem}</div>
 							</li>
 						</ul>
 					</div>
