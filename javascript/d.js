@@ -1748,8 +1748,12 @@ function ___wgr_set_product_id_cookie () {
 	
 	// lấy danh sách trong cookie trước đó
 	var str_history = g_func.getc('wgr_product_id_view_history'),
-		new_id = '[' + pid + ']';
-	if ( cf_tester_mode == 1 ) console.log(str_history);
+		new_id = '[' + pid + ']',
+		limit_history = 25;
+	if ( cf_tester_mode == 1 ) {
+		console.log(str_history);
+		limit_history = 5;
+	}
 	
 	// nếu chưa có -> null
 	if ( str_history == null || str_history == '' ) {
@@ -1771,7 +1775,7 @@ function ___wgr_set_product_id_cookie () {
 //	console.log(check_history);
 	
 	// nếu nhiều quá -> thay mảng cuối bằng ID hiện tại
-	if ( check_history.length >= 5 ) {
+	if ( check_history.length >= limit_history ) {
 		check_history[ check_history.length - 1 ] = pid + ']';
 //		console.log(check_history);
 		

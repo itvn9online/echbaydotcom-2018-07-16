@@ -769,6 +769,7 @@ input#_eb_ads_for_category { display: none; }
 /* tạo màu đánh dấu cho thẻ TR khi gửi link support cho khách hàng */
 .eb-support-table tr.current-selected-support {
 	background: #fc9;
+	background: rgba(255,204,152,.33);
 	box-shadow: 0 0 10px 0 #666;
 }
 

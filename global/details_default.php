@@ -36,6 +36,7 @@ if ( _eb_get_post_object( $pid, '_eb_product_noindex', 0 ) == 1 ) {
 //
 $trv_giaban = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_oldprice', 0 ) );
 $trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );
+$trv_luotxem = 0;
 /*
 if ( $trv_giamoi == 0 ) {
 	$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_price', 0 ) );
@@ -562,7 +563,22 @@ else if ( $__post->post_type == 'page' ) {
 //	$check_html_rieng = _eb_get_private_html( $html_file, 'blog_node.html' );
 //	$thu_muc_for_html = $check_html_rieng['dir'];
 }
+// post
 else {
+	
+	// lấy lượt xem sản phẩm
+	$trv_luotxem = _eb_number_only( _eb_get_post_object( $pid, '_eb_product_views', 0 ) );
+	
+	// kiểm tra trong cookie xem có chưa
+	$str_history = _eb_getCucki('wgr_product_id_view_history');
+	if ( $str_history == '' || strstr( $str_history, '[' . $pid . ']' ) == false ) {
+		// tăng lượt view lên 1 đơn vị
+		$trv_luotxem++;
+		
+		// cập nhật lượt view mới
+		update_post_meta( $pid, '_eb_product_views', $trv_luotxem );
+	}
+	
 	
 	// set trạng thái trang là sản phẩm
 	$web_og_type = 'product';
@@ -798,6 +814,8 @@ $arr_main_content = array(
 	
 	'tmp.trv_tieude' => $trv_h1_tieude,
 	'tmp.trv_h1_tieude' => ( $__cf_row['cf_set_link_for_h1'] == 1 ) ? '<a href="' . $url_og_url . '">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
+	
+	'tmp.trv_luotxem' => $trv_luotxem,
 	
 	'tmp.trv_goithieu' => $__post->post_excerpt,
 	'tmp.trv_noidung' => $trv_noidung,
