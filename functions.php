@@ -262,16 +262,26 @@ function EBE_dynamic_title_tag ( $html ) {
 }
 
 
-function EBE_add_ebe_currency_class ( $gia, $gia_cu = 0 ) {
+function EBE_add_ebe_currency_class ( $gia, $gia_cu = 0, $default_value = '' ) {
+	
+	// giá mới
 	if ( $gia_cu == 0 ) {
-		$class = 'global-details-giamoi';
-		$zero = '<em>Liên hệ</em>';
-	} else {
-		$class = 'global-details-giacu old-price';
-		$zero = '&nbsp;';
+		if ( $gia > 0 ) {
+			$gia = number_format( $gia );
+		}
+		else {
+			$gia = '<em>Liên hệ</em>';
+		}
+		return '<strong class="global-details-giamoi ebe-currency">' . $gia . '</strong>';
+	}
+	// giá cũ
+	else if ( $gia > 0 ) {
+		return '<span class="global-details-giacu old-price ebe-currency">' . number_format( $gia ) . '</span>';
 	}
 	
-	return $gia > 0 ? '<strong class="' . $class . ' ebe-currency">' . number_format( $gia ) . '</strong>' : $zero;
+	// Giá trị mặc định
+	return $default_value;
+	
 }
 
 

@@ -1230,9 +1230,10 @@ function EBE_ftp_remove_file ($file_) {
 
 
 
-
+/*
 function _eb_setCucki ( $c_name, $c_value = 0, $c_time = 0, $c_path = '/' ) {
 }
+*/
 
 function _eb_getCucki ( $c_name, $default_value = '' ) {
 	if ( isset($_COOKIE[ $c_name ]) ) {

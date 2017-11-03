@@ -59,7 +59,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 //			print_r( $home_detauls_categories );
 			
 			// nếu nhóm này có sản phẩm
-			if ( $home_detauls_categories->count > 0 ) {
+//			if ( $home_detauls_categories->count > 0 ) {
 				$home_node_cat = _eb_load_post( $__cf_row['cf_num_home_list'], $args );
 				
 				//
@@ -116,7 +116,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 					*/
 					
 				}
-			}
+//			}
 		}
 	}
 }

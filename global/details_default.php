@@ -831,10 +831,10 @@ $arr_main_content = array(
 	
 	'tmp.bl_ngaygui' => date( 'd/m/Y H:i T', $post_modified ),
 	
-	'tmp.pt' => $pt,
 	'tmp.trv_giaban' => EBE_add_ebe_currency_class( $trv_giaban, 1 ),
 	'tmp.trv_giamoi' => EBE_add_ebe_currency_class( $trv_giamoi ),
 	'tmp.trv_num_giamoi' => $trv_giamoi,
+	'tmp.pt' => $pt,
 	'tmp.trv_tietkiem' => ( $trv_giamoi > 0 ) ? EBE_add_ebe_currency_class( $trv_giaban - $trv_giamoi ) : '',
 	
 	'tmp.cf_product_details_size' => $__cf_row['cf_product_details_size'],
