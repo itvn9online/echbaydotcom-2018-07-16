@@ -421,10 +421,16 @@ label,
 .bborder { border-bottom: 1px #ccc solid; }
 .lborder { border-left: 1px #ccc solid; }
 .rborder { border-right: 1px #ccc solid; }
+/*
+* ẩn các trường khi giá khuyến mại là 0
+* data-gia="0" -> ẩn chính class hide-if-gia-zero
+* data-per="0" -> ẩn các class con trong class hide-if-gia-zero
+*/
 .hide-if-gia-zero[data-gia="0"],
 .hide-if-gia-zero[data-per="0"] .old-price,
 .hide-if-gia-zero[data-per="0"] .thread-list-per,
 .echbay-blog-giamoi[data-gia="0"] { display: none; }
+/* */
 .old-price { text-decoration: line-through; }
 .bold { font-weight: bold !important }
 .normal { font-weight: normal !important }

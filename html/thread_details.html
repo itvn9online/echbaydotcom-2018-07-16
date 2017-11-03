@@ -22,13 +22,15 @@
 				<div class="thread-details-comment graycolor l25">{tmp.trv_goithieu}</div>
 				<br>
 				<div class="thread-details-gia">
-					<div class="thread-details-giamgia text-center bold">
-						<div><span class="whitecolor">Giảm<br>
-							giá</span> -{tmp.pt}%</div>
-					</div>
-					<div class="cf">
-						<div class="lf f20 hide-if-mobile">Giá gốc</div>
-						<div class="lf f80 fullsize-if-mobile">{tmp.trv_giaban}</div>
+					<div data-gia="{tmp.pt}" class="hide-if-gia-zero">
+						<div class="thread-details-giamgia text-center bold">
+							<div><span class="whitecolor">Giảm<br>
+								giá</span> -{tmp.pt}%</div>
+						</div>
+						<div class="cf">
+							<div class="lf f20 hide-if-mobile">Giá gốc</div>
+							<div class="lf f80 fullsize-if-mobile">{tmp.trv_giaban}</div>
+						</div>
 					</div>
 					<div class="cf l30">
 						<div class="lf f20 hide-if-mobile">Giá mới</div>

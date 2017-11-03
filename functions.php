@@ -282,7 +282,7 @@ function EBE_add_ebe_currency_class ( $gia, $gia_cu = 0, $default_value = '' ) {
 	}
 	
 	// Giá trị mặc định
-	return $default_value;
+	return $str;
 	
 }
 
