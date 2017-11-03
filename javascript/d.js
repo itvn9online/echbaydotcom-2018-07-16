@@ -1776,7 +1776,12 @@ function ___wgr_set_product_id_cookie () {
 	
 	// nếu nhiều quá -> thay mảng cuối bằng ID hiện tại
 	if ( check_history.length >= limit_history ) {
-		check_history[ check_history.length - 1 ] = pid + ']';
+		// thêm vào cuối
+//		check_history[ check_history.length - 1 ] = pid + ']';
+		
+		// thêm vào đầu
+		check_history[ 0 ] = '[' + pid;
+		
 //		console.log(check_history);
 		
 		// sau đó ghép chuỗi lại
@@ -1784,7 +1789,11 @@ function ___wgr_set_product_id_cookie () {
 	}
 	// thêm mới
 	else {
-		str_history += new_id;
+		// thêm vào cuối
+//		str_history += new_id;
+		
+		// thêm vào đầu
+		str_history = new_id + str_history;
 	}
 //	console.log(str_history);
 //	return false;

@@ -58,7 +58,18 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			echo '<p>Widget view history has been active, but IDs not found!</p>';
 			return false;
 		}
-		echo $str_history; exit();
+//		echo $str_history;
+		
+		// chuyển đổi sang dấu khác để còn tạo mảng giá trị
+		$str_history = str_replace('][', ',', $str_history);
+		$str_history = str_replace(']', '', $str_history);
+		$str_history = str_replace('[', '', $str_history);
+//		echo $str_history;
+		
+		// -> tạo mảng
+		$str_history = explode(',', $str_history);
+//		print_r($str_history);
+//		exit();
 		
 		extract ( $args );
 		
@@ -74,9 +85,20 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-price-title', $before_title );
 		
+		// limit số lượng bài viết -> ưu tiên bài mới xem nhất trước
+		$arr_history = array();
+		foreach ( $str_history as $k => $v ) {
+			if ( $k >= $post_number ) {
+				break;
+			}
+			
+			$arr_history[] = $v;
+		}
+//		print_r( $arr_history );
+		
 		//
 		$str_view_history = _eb_load_post( $post_number, array(
-			'post__in' => $str_history
+			'post__in' => $arr_history
 		) );
 		if ( $str_view_history != '' ) {
 			echo '<div class="' . $custom_style . '">';
