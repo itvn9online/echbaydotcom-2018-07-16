@@ -199,37 +199,12 @@ if ( webgiare_dot_org_install == true ) {
 
 
 
+
 // chặn file xmlrpc.php, không cho thực thi trên file này
-$xmlrpc_file = ABSPATH . 'xmlrpc.php';
-if ( file_exists( $xmlrpc_file ) ) {
-	$xmlrpc_content = file_get_contents( $xmlrpc_file, 1 );
-	$xmlrpc_content = explode( "\n", trim( $xmlrpc_content ) );
-	
-	// Kiểm tra dòng đầu tiên xem đã được add câu lệnh die vào chưa
-	$xmlrpc_content[0] = trim( $xmlrpc_content[0] );
-	
-	// nếu chế độ xem qua xmlrpc đang tắt
-	if ( $__cf_row['cf_on_off_xmlrpc'] == 0 ) {
-		// kiểm tra có lệnh die chưa -> như này là chưa add -> add thêm thôi
-		if ( $xmlrpc_content[0] == '<?php' || $xmlrpc_content[0] == '<?' ) {
-			$xmlrpc_content[0] = '<?php die("xmlrpc method has been disable by EchBay.com");';
-			
-			_eb_create_file( $xmlrpc_file, implode( "\n", $xmlrpc_content ) );
-		}
-	}
-	// cho phép xem qua xmlrpc
-	else {
-		// cho xem
-		if ( $xmlrpc_content[0] == '<?php' || $xmlrpc_content[0] == '<?' ) {
-		}
-		// không cho xem
-		else {
-			$xmlrpc_content[0] = '<?php';
-			
-			_eb_create_file( $xmlrpc_file, implode( "\n", $xmlrpc_content ) );
-		}
-	}
-}
+WGR_deny_or_accept_vist_php_file( ABSPATH . 'xmlrpc.php', $__cf_row['cf_on_off_xmlrpc'], 'XML-RPC' );
+
+// chặn file wp-cron.php, không cho thực thi trên file này
+WGR_deny_or_accept_vist_php_file( ABSPATH . 'wp-cron.php', $__cf_row['cf_on_off_wpcron'], 'WP Cron' );
 
 
 

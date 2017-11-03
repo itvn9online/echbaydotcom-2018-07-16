@@ -3,6 +3,43 @@
 
 
 
+
+// chức năng cho hoặc không cho truy cập vào 1 file nào đó
+function WGR_deny_or_accept_vist_php_file ( $progress_file, $deny_or_accept, $warning_content ) {
+	if ( file_exists( $progress_file ) ) {
+		$progress_content = file_get_contents( $progress_file, 1 );
+		$progress_content = explode( "\n", trim( $progress_content ) );
+		
+		// Kiểm tra dòng đầu tiên xem đã được add câu lệnh die vào chưa
+		$progress_content[0] = trim( $progress_content[0] );
+		
+		// nếu chế độ xem qua xmlrpc đang tắt
+		if ( $deny_or_accept == 0 ) {
+			// kiểm tra có lệnh die chưa -> như này là chưa add -> add thêm thôi
+			if ( $progress_content[0] == '<?php' || $progress_content[0] == '<?' ) {
+				$progress_content[0] = '<?php die("' . $warning_content . ' method has been disable by EchBay.com");';
+				
+				_eb_create_file( $progress_file, implode( "\n", $progress_content ) );
+			}
+		}
+		// cho phép xem qua xmlrpc
+		else {
+			// cho xem
+			if ( $progress_content[0] == '<?php' || $progress_content[0] == '<?' ) {
+			}
+			// không cho xem
+			else {
+				$progress_content[0] = '<?php';
+				
+				_eb_create_file( $progress_file, implode( "\n", $progress_content ) );
+			}
+		}
+	}
+}
+
+
+
+
 function WGR_remove_html_comments ( $a ) {
 	
 	$str = '';
