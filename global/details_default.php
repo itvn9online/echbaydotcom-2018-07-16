@@ -37,6 +37,7 @@ if ( _eb_get_post_object( $pid, '_eb_product_noindex', 0 ) == 1 ) {
 $trv_giaban = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_oldprice', 0 ) );
 $trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );
 $trv_luotxem = 0;
+$trv_luotthich = 0;
 /*
 if ( $trv_giamoi == 0 ) {
 	$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_price', 0 ) );
@@ -816,6 +817,7 @@ $arr_main_content = array(
 	'tmp.trv_h1_tieude' => ( $__cf_row['cf_set_link_for_h1'] == 1 ) ? '<a href="' . $url_og_url . '">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
 	
 	'tmp.trv_luotxem' => $trv_luotxem,
+	'tmp.trv_luotthich' => $trv_luotthich,
 	
 	'tmp.trv_goithieu' => $__post->post_excerpt,
 	'tmp.trv_noidung' => $trv_noidung,
