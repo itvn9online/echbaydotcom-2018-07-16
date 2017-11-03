@@ -549,8 +549,16 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Chia sẻ dữ liệu qua XML-RPC</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_xmlrpc" id="cf_on_off_xmlrpc" value="{tmp.cf_on_off_xmlrpc}" />
 					<label for="cf_on_off_xmlrpc" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+					<div class="small l19">XML-RPC là một giao thức kết nối với website WordPress từ xa sử dụng XML để trao đổi dữ liệu qua lại! Thường sử dụng khi thiết lập đăng bài từ một ứng dụng khác, nếu bạn không có nhu cầu này, hãy tắt nó đi. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
 						<div>- <a href="{tmp.web_link}xmlrpc.php" target="_blank">{tmp.web_link}xmlrpc.php</a></div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Chia sẻ dữ liệu qua XML-RPC</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_wpcron" id="cf_on_off_wpcron" value="{tmp.cf_on_off_wpcron}" />
+					<label for="cf_on_off_wpcron" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">WordPress sử dụng file wp-cron.php để thiết lập chế độ auto post bài viết theo thời gian định trước! Nếu bạn không sử dụng chức năng này, hãy tắt nó đi để tiết kiệm tài nguyên cho website. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+						<div>- <a href="{tmp.web_link}wp-cron.php" target="_blank">{tmp.web_link}wp-cron.php</a></div>
 					</div></td>
 			</tr>
 			<tr>

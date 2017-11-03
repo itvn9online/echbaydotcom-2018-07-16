@@ -73,6 +73,8 @@ $_POST['cf_on_off_json'] = WGR_default_config('cf_on_off_json');
 
 $_POST['cf_on_off_xmlrpc'] = WGR_default_config('cf_on_off_xmlrpc');
 
+$_POST['cf_on_off_wpcron'] = WGR_default_config('cf_on_off_wpcron');
+
 $_POST['cf_remove_category_base'] = WGR_default_config('cf_remove_category_base');
 
 $_POST['cf_remove_post_option_base'] = WGR_default_config('cf_remove_post_option_base');
