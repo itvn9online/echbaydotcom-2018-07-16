@@ -29,7 +29,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" class="bold"><div class="medium cf">
-						<div class="lf f30">Danh sách giao diện:</div>
+						<div class="lf f30"><label for="press_for_search_all_themes">Danh sách giao diện:</label></div>
 						<div class="lf f70"><strong>Tìm kiếm giao diện:</strong>
 							<input type="text" data-class-search="for-all-themes-quick-search li" id="press_for_search_all_themes" placeholder="Nhập tên giao diện">
 						</div>
@@ -43,7 +43,7 @@
 		</tbody>
 		<tbody title="Chung" id="eb-admin-config-theme-chung" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
-				<td class="t">Chiều rộng khung (chung)</td>
+				<td class="t"><label for="cf_blog_class_style">Chiều rộng khung (chung)</label></td>
 				<td class="i">{tmp.cf_blog_class_style}
 					<div>* Chiều rộng này sẽ được sử dụng cho các trang khác nếu trang đó không có thiết lập chiều rông cụ thể.</div></td>
 			</tr>
@@ -54,7 +54,7 @@
 				<td colspan="2" class="t">Thiết kế phần TOP</td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng top</td>
+				<td class="t"><label for="cf_top_class_style">Chiều rộng top</label></td>
 				<td class="i">{tmp.cf_top_class_style}</td>
 			</tr>
 			<tr>
@@ -79,7 +79,7 @@
 				<td colspan="2" class="t">Thiết kế phần FOOTER</td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng footer</td>
+				<td class="t"><label for="cf_footer_class_style">Chiều rộng footer</label></td>
 				<td class="i">{tmp.cf_footer_class_style}</td>
 			</tr>
 			<tr>
@@ -95,34 +95,34 @@
 				<td colspan="2">* Kích thước của cả khung là 100%, bạn muốn phần sidebar chiếm bao nhiêu % trong tổng số 100% này thì nhập số đó vào đây rồi lưu lại.</td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng cho khung menu</td>
-				<td class="i"><input type="text" name="cf_global_width_sidebar" value="{tmp.cf_global_width_sidebar}" class="s" maxlength="2" />
+				<td class="t"><label for="cf_global_width_sidebar">Chiều rộng cho khung menu</label></td>
+				<td class="i"><input type="text" name="cf_global_width_sidebar" id="cf_global_width_sidebar" value="{tmp.cf_global_width_sidebar}" class="s" maxlength="2" />
 					%
 					<div class="small">* Đây là kích thước dùng chung cho toàn bộ website, nếu kích thước này được thiết lập, toàn bộ website sẽ sử dụng kích thước này làm chuẩn. Nếu không, hãy sử dụng các tham số tiếp theo để thiết lập riêng cho từng trang.</div></td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng khung (home)</td>
-				<td class="i"><input type="text" name="cf_home_width_sidebar" value="{tmp.cf_home_width_sidebar}" class="s" maxlength="2" />
+				<td class="t"><label for="cf_home_width_sidebar">Chiều rộng khung (home)</label></td>
+				<td class="i"><input type="text" name="cf_home_width_sidebar" id="cf_home_width_sidebar" value="{tmp.cf_home_width_sidebar}" class="s" maxlength="2" />
 					%</td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng khung (category)</td>
-				<td class="i"><input type="text" name="cf_cats_width_sidebar" value="{tmp.cf_cats_width_sidebar}" class="s" maxlength="2" />
+				<td class="t"><label for="cf_cats_width_sidebar">Chiều rộng khung (category)</label></td>
+				<td class="i"><input type="text" name="cf_cats_width_sidebar" id="cf_cats_width_sidebar" value="{tmp.cf_cats_width_sidebar}" class="s" maxlength="2" />
 					%</td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng khung (product)</td>
-				<td class="i"><input type="text" name="cf_post_width_sidebar" value="{tmp.cf_post_width_sidebar}" class="s" maxlength="2" />
+				<td class="t"><label for="cf_post_width_sidebar">Chiều rộng khung (product)</label></td>
+				<td class="i"><input type="text" name="cf_post_width_sidebar" id="cf_post_width_sidebar" value="{tmp.cf_post_width_sidebar}" class="s" maxlength="2" />
 					%</td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng khung (blogs)</td>
-				<td class="i"><input type="text" name="cf_blogs_width_sidebar" value="{tmp.cf_blogs_width_sidebar}" class="s" maxlength="2" />
+				<td class="t"><label for="cf_blogs_width_sidebar">Chiều rộng khung (blogs)</label></td>
+				<td class="i"><input type="text" name="cf_blogs_width_sidebar" id="cf_blogs_width_sidebar" value="{tmp.cf_blogs_width_sidebar}" class="s" maxlength="2" />
 					%</td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng khung (blog)</td>
-				<td class="i"><input type="text" name="cf_blog_width_sidebar" value="{tmp.cf_blog_width_sidebar}" class="s" maxlength="2" />
+				<td class="t"><label for="cf_blog_width_sidebar">Chiều rộng khung (blog)</label></td>
+				<td class="i"><input type="text" name="cf_blog_width_sidebar" id="cf_blog_width_sidebar" value="{tmp.cf_blog_width_sidebar}" class="s" maxlength="2" />
 					%</td>
 			</tr>
 		</tbody>
@@ -136,12 +136,12 @@
 					</ol></td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng khung</td>
+				<td class="t"><label for="cf_home_class_style">Chiều rộng khung</label></td>
 				<td class="i">{tmp.cf_home_class_style}
 					<div class="small">* Do Trang chủ (Home) thường là một dạng thiết kế phức hợp, nên chiều rộng của trang chủ không bị chi phối bởi chiều rộng của các module khác trừ khi file template cố ý sử dụng theo cách riêng.</div></td>
 			</tr>
 			<tr>
-				<td class="t">Bố cục trang chủ</td>
+				<td class="t"><label for="cf_home_column_style">Bố cục trang chủ</label></td>
 				<td class="i">{tmp.cf_home_column_style}</td>
 			</tr>
 			<tr>
@@ -154,15 +154,15 @@
 				<td class="i bold redcolor bborder" colspan="2">Phân trang cho Trang chủ</td>
 			</tr>
 			<tr>
-				<td class="t">Sản phẩm Nổi bật</td>
-				<td class="i"><input type="number" name="cf_num_home_hot" value="{tmp.cf_num_home_hot}" class="s" /></td>
+				<td class="t"><label for="cf_num_home_hot">Sản phẩm Nổi bật</label></td>
+				<td class="i"><input type="number" name="cf_num_home_hot" id="cf_num_home_hot" value="{tmp.cf_num_home_hot}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Nổi bật hoặc hệ thống tự đưa ra các sản phẩm được nhiều người mua nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
 			</tr>
 			<tr>
-				<td class="t">Sản phẩm Mới</td>
-				<td class="i"><input type="number" name="cf_num_home_new" value="{tmp.cf_num_home_new}" class="s" /></td>
+				<td class="t"><label for="cf_num_home_new">Sản phẩm Mới</label></td>
+				<td class="i"><input type="number" name="cf_num_home_new" id="cf_num_home_new" value="{tmp.cf_num_home_new}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Mới hoặc hệ thống tự đưa ra các sản phẩm mới nhất theo ngày cập nhật nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
@@ -177,14 +177,14 @@
 			</tr>
 			-->
 			<tr>
-				<td class="t">Danh sách sản phẩm ở trang chủ</td>
-				<td class="i"><input type="number" name="cf_num_home_list" value="{tmp.cf_num_home_list}" class="s" /></td>
+				<td class="t"><label for="cf_num_home_list">Danh sách sản phẩm ở trang chủ</label></td>
+				<td class="i"><input type="number" name="cf_num_home_list" id="cf_num_home_list" value="{tmp.cf_num_home_list}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>Là số sản phẩm lấy kèm mỗi nhóm ở trang chủ. Nhập là 0 nếu bạn muốn tắt chức năng này hoặc chuyển sang sử dụng <a href="{tmp.web_link}wp-admin/widgets.php" target="_blank"><strong>Widget</strong></a> có tên là: <strong>EchBay home product</strong> (nếu có).</em></td>
 			</tr>
 			<tr>
-				<td class="t">HTML tag cho tên Danh mục</td>
+				<td class="t"><label for="cf_home_sub_cat_tag">HTML tag cho tên Danh mục</label></td>
 				<td class="i"><div class="noborder-ebdesign-table-for">{tmp.cf_home_sub_cat_tag}</div>
 					<div class="small l19">* các thẻ trong bộ CSS <strong>thread-home-c2</strong> mặc định là thẻ A, nếu muốn nó có thẻ bao ngoài là các thẻ khác như: H2, H3, DIV... thì sử dụng chức năng này. Các bộ thẻ khuyên dùng và sẽ được CSS mặc định hỗ trợ là: DIV, H2.</div></td>
 			</tr>
@@ -199,27 +199,27 @@
 					</ol></td>
 			</tr>
 			<tr>
-				<td class="t">Chiều rộng khung</td>
+				<td class="t"><label for="cf_cats_class_style">Chiều rộng khung</label></td>
 				<td class="i">{tmp.cf_cats_class_style}</td>
 			</tr>
 			<tr>
-				<td class="t">Bố cục trang danh sách sản phẩm</td>
+				<td class="t"><label for="cf_cats_column_style">Bố cục trang danh sách sản phẩm</label></td>
 				<td class="i">{tmp.cf_cats_column_style}</td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr class="d-none">
-				<td class="t">Bố cục chỉ mục sản phẩm (node)</td>
+				<td class="t"><label for="cf_cats_node_html">Bố cục chỉ mục sản phẩm (node)</label></td>
 				<td class="i">{tmp.cf_cats_node_html}</td>
 			</tr>
 			<tr>
-				<td class="t">Số sản phẩm trên mỗi dòng</td>
+				<td class="t"><label for="cf_cats_num_line">Số sản phẩm trên mỗi dòng</label></td>
 				<td class="i">{tmp.cf_cats_num_line}</td>
 			</tr>
 			<tr>
-				<td class="t">Số sản phẩm trên mỗi trang</td>
-				<td class="i"><input type="number" name="posts_per_page" value="{tmp.posts_per_page}" class="s" /></td>
+				<td class="t"><label for="posts_per_page">Số sản phẩm trên mỗi trang</label></td>
+				<td class="i"><input type="number" name="posts_per_page" id="posts_per_page" value="{tmp.posts_per_page}" class="s" /></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="t">Khung cho trang CATEGORY</td>
@@ -244,29 +244,29 @@
 					<div class="border-file-design border-threadnode-design">{tmp.str_threadnode_design_preview}</div></td>
 			</tr>
 			<tr>
-				<td class="t">Kích thước ảnh Sản phẩm</td>
-				<td class="i"><input type="text" name="cf_product_size" value="{tmp.cf_product_size}" class="s fixed-size-for-config" maxlength="10" />
+				<td class="t"><label for="cf_product_size">Kích thước ảnh Sản phẩm</label></td>
+				<td class="i"><input type="text" name="cf_product_size" id="cf_product_size" value="{tmp.cf_product_size}" class="s fixed-size-for-config" maxlength="10" />
 					<div class="small">Ví dụ kích thước ảnh sản phẩm là 400x400 thì bạn có thể nhập là 400/400 hoặc nhập luôn là 1 (kết quả của phép toán 400:400).</div></td>
 			</tr>
 			<tr>
-				<td class="t">K.Thước ảnh S.Phẩm trên mobile</td>
-				<td class="i"><input type="number" name="cf_product_mobile_size" value="{tmp.cf_product_mobile_size}" class="s" maxlength="10" />
+				<td class="t"><label for="cf_product_mobile_size">K.Thước ảnh S.Phẩm trên mobile</label></td>
+				<td class="i"><input type="number" name="cf_product_mobile_size" id="cf_product_mobile_size" value="{tmp.cf_product_mobile_size}" class="s" maxlength="10" />
 					<div class="small">Đây là kích thước tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình có chiều rộng từ 7 inch trở xuống.</div></td>
 			</tr>
 			<tr>
-				<td class="t">K.Thước ảnh S.Phẩm trên table</td>
-				<td class="i"><input type="number" name="cf_product_table_size" value="{tmp.cf_product_table_size}" class="s" maxlength="10" />
+				<td class="t"><label for="cf_product_table_size">K.Thước ảnh S.Phẩm trên table</label></td>
+				<td class="i"><input type="number" name="cf_product_table_size" id="cf_product_table_size" value="{tmp.cf_product_table_size}" class="s" maxlength="10" />
 					<div class="small">Đây là kích thước tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình có chiều rộng từ 11 inch trở xuống.</div></td>
 			</tr>
 			<tr>
-				<td class="t">HTML tag cho tiêu đề</td>
+				<td class="t"><label for="cf_threadnode_title_tag">HTML tag cho tiêu đề</label></td>
 				<td class="i"><div class="noborder-ebdesign-table-for">{tmp.cf_threadnode_title_tag}</div>
 					<div class="small l19">Mặc định, code chỉ để thẻ H3 cho các tiêu đề, theo khuyến nghị của <a href="https://chrome.google.com/webstore/detail/seoquake/akdgnmcogleenhbclghghlkkdndkjdjc?hl=vi" target="_blank" rel="nofollow">SEO Quake</a>. Trường hợp các bạn làm SEO có nhu cầu sử dụng các thẻ khác thì chọn theo lựa chọn ở đây.<br>
 						* Lưu ý: việc thay đổi thẻ có thể sẽ làm thay đổi giao diện web, vì thế, cần phải kiểm tra và điều chỉnh lại CSS theo thẻ mới.</div></td>
 			</tr>
 			<tr>
-				<td class="t">Thu gọn nội dung danh mục</td>
-				<td class="i"><input type="number" name="cf_cats_description_viewmore" value="{tmp.cf_cats_description_viewmore}" class="s" />
+				<td class="t"><label for="cf_cats_description_viewmore">Thu gọn nội dung danh mục</label></td>
+				<td class="i"><input type="number" name="cf_cats_description_viewmore" id="cf_cats_description_viewmore" value="{tmp.cf_cats_description_viewmore}" class="s" />
 					<div class="small">Khi thông số này được thiết lập lớn hơn 0, chiều cao nội dung danh mục sẽ bị thu lại bằng với thông số này. Nút [Xem thêm] sẽ được kích hoạt, và nội dung sẽ mở ra đầy đủ khi người dùng bấm [Xem thêm].</div></td>
 			</tr>
 		</tbody>
