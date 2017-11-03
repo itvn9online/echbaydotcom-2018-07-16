@@ -14,6 +14,7 @@ add_filter ( 'widgets_init', '___add_echbay_widget' );
 function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_same_same_price' );
+	register_widget ( '___echbay_widget_product_view_history' );
 	
 	register_widget ( '___echbay_widget_random_product' );
 	
@@ -818,6 +819,7 @@ include EB_THEME_CORE . 'widget/search.php';
 include EB_THEME_CORE . 'widget/banner_big.php';
 include EB_THEME_CORE . 'widget/go_to.php';
 include EB_THEME_CORE . 'widget/same_price.php';
+include EB_THEME_CORE . 'widget/view_history.php';
 
 
 

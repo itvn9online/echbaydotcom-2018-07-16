@@ -58,6 +58,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			echo '<p>Widget view history has been active, but IDs not found!</p>';
 			return false;
 		}
+		echo $str_history; exit();
 		
 		extract ( $args );
 		
@@ -74,41 +75,22 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 //		_eb_echo_widget_title( $title, 'echbay-widget-price-title', $before_title );
 		
 		//
-		$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );
-		if ( $trv_giamoi <= 0 ) {
-			echo '<!-- Widget same price has been call, but price is ZERO! -->';
-			return false;
-		}
-		$percent_price = $trv_giamoi/ 100 * $min_price;
-//		echo $percent_price;
-		
-		//
-		$price_in = array(
-			'key' => '_eb_product_price',
-			// value should be array of (lower, higher) with BETWEEN
-			'value' => array( $trv_giamoi - $percent_price, $trv_giamoi + $percent_price ),
-			'compare' => 'BETWEEN',
-			'type' => 'NUMERIC'
-		);
-//		print_r( $price_in );
-		
-		//
-		$str_same_price = _eb_load_post( $post_number, array(
-			'meta_query' => array( $price_in )
+		$str_view_history = _eb_load_post( $post_number, array(
+			'post__in' => $str_history
 		) );
-		if ( $str_same_price != '' ) {
+		if ( $str_view_history != '' ) {
 			echo '<div class="' . $custom_style . '">';
 			
 			echo WGR_show_home_hot( array(
 				'tmp.num_post_line' => $num_line,
 				'tmp.home_hot_title' => $title,
-				'tmp.home_hot' => $str_same_price
+				'tmp.home_hot' => $str_view_history
 			) );
 			
 			echo '</div>';
 		}
 		else {
-			echo '<!-- same_price == NULL -->';
+			echo '<!-- view_history == NULL -->';
 		}
 		
 		//

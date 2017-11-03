@@ -572,8 +572,8 @@ else {
 	// kiểm tra trong cookie xem có chưa
 	$str_history = _eb_getCucki('wgr_product_id_view_history');
 	if ( $str_history == '' || strstr( $str_history, '[' . $pid . ']' ) == false ) {
-		// tăng lượt view lên 1 đơn vị
-		$trv_luotxem++;
+		// tăng lượt view lên -> do lượt view sử dụng cookie lưu trong 7 ngày, nên lượt view cũng tăng nhiều lên 1 chút
+		$trv_luotxem += 9;
 		
 		// cập nhật lượt view mới
 		update_post_meta( $pid, '_eb_product_views', $trv_luotxem );
