@@ -202,9 +202,17 @@ if ( webgiare_dot_org_install == true ) {
 
 // chặn file xmlrpc.php, không cho thực thi trên file này
 WGR_deny_or_accept_vist_php_file( ABSPATH . 'xmlrpc.php', $__cf_row['cf_on_off_xmlrpc'], 'XML-RPC' );
+if ( $__cf_row['cf_on_off_xmlrpc'] != 0 ) {
+	$str_eb_warning .= '
+	<div><i class="fa fa-lightbulb-o orgcolor"></i> CẢNH BÁO: chức năng <strong>Chia sẻ dữ liệu qua XML-RPC</strong> đang được bật, điều này có thể gây tốn tài nguyên không cần thiết cho website của bạn. Nếu bạn không sử dụng nó hoặc không biết XML-RPC là gì thì hãy tắt nó đi.</div>';
+}
 
 // chặn file wp-cron.php, không cho thực thi trên file này
 WGR_deny_or_accept_vist_php_file( ABSPATH . 'wp-cron.php', $__cf_row['cf_on_off_wpcron'], 'WP Cron' );
+if ( $__cf_row['cf_on_off_wpcron'] != 0 ) {
+	$str_eb_warning .= '
+	<div><i class="fa fa-lightbulb-o orgcolor"></i> CẢNH BÁO: chức năng <strong>Cron Job</strong> của wordpress đang được bật, điều này có thể gây tốn tài nguyên không cần thiết cho website của bạn. Nếu bạn không sử dụng nó hoặc không biết đây là tính năng gì thì hãy tắt nó đi.</div>';
+}
 
 
 
