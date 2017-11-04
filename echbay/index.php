@@ -23,7 +23,7 @@ global $__cf_row;
 
 //
 if ( ! isset( $_GET['page'] ) || $_GET['page'] == '' ) {
-	die('Parameter not found');
+	WGR_parameter_not_found(__FILE__);
 }
 
 

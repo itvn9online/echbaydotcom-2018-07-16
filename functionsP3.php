@@ -191,3 +191,9 @@ function WGR_convert_default_theme_to_confog ( $arr ) {
 
 
 
+function WGR_parameter_not_found ( $f ) {
+	die('Parameter not found (' . basename( $v, '.php' ) . ')');
+}
+
+
+

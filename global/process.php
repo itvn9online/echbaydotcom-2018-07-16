@@ -15,7 +15,7 @@
 
 // tham số không thể thiếu
 if ( ! isset( $_GET['set_module'] ) || $_GET['set_module'] == '' ) {
-	die('Parameter not found');
+	WGR_parameter_not_found(__FILE__);
 }
 
 
