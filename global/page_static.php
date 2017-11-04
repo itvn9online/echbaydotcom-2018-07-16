@@ -2,7 +2,7 @@
 
 
 // tự động tạo page nếu chưa có
-WGR_create_page( $act, EBE_get_lang('golden_time') );
+WGR_create_page( $act );
 
 
 // gọi tới file dùng chung của post

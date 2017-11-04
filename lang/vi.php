@@ -150,8 +150,8 @@ $eb_type_lang[eb_key_for_site_lang . 'mail_main'] = 'textarea';
 /*
 * Phần này không hẳn là phần ngôn ngữ, mà nó là phần config nhanh, đỡ phải chỉnh nhiều
 */
-// kích thước ảnh quảng cáo ở phần danh sách sản phẩm trang chủ
-$___eb_lang[eb_key_for_site_lang . 'homelist_size'] = '90/728';
+// kích thước ảnh quảng cáo ở phần danh sách sản phẩm trang chủ: auto || 90/728
+$___eb_lang[eb_key_for_site_lang . 'homelist_size'] = 'auto';
 $eb_class_css_lang[eb_key_for_site_lang . 'homelist_size'] = 'fixed-size-for-config';
 
 $___eb_lang[eb_key_for_site_lang . 'homelist_num'] = '1';
@@ -165,8 +165,8 @@ $___eb_lang[eb_key_for_site_lang . 'doitac_title'] = '';
 $___eb_lang[eb_key_for_site_lang . 'doitac_num'] = '5';
 $eb_type_lang[eb_key_for_site_lang . 'doitac_num'] = 'number';
 
-// kích thước của banner đối tác
-$___eb_lang[eb_key_for_site_lang . 'doitac_size'] = '1/2';
+// kích thước của banner đối tác: auto || 1/2
+$___eb_lang[eb_key_for_site_lang . 'doitac_size'] = 'auto';
 $eb_class_css_lang[eb_key_for_site_lang . 'doitac_size'] = 'fixed-size-for-config';
 
 

@@ -27,7 +27,7 @@ $__cf_row_default = array(
 	'cf_sys_email' => '',
 	
 	'cf_logo' => EB_URL_TUONG_DOI . 'images-global/echbay-wp-logo.png',
-	'cf_size_logo' => '1/2',
+	'cf_size_logo' => 'auto', // 1/2
 	'cf_height_logo' => 50,
 	'cf_favicon' => eb_default_vaficon,
 	// ảnh đại diện mặc định khi chia sẻ trên fb
@@ -86,7 +86,7 @@ $__cf_row_default = array(
 	'cf_product_details_size' => '1',
 	'cf_product_details_viewmore' => 0,
 	'cf_blog_size' => '2/3',
-	'cf_top_banner_size' => '400/1366',
+	'cf_top_banner_size' => 'auto', // 400/1366
 	'cf_other_banner_size' => '2/3',
 	
 	'cf_cats_description_viewmore' => 200,

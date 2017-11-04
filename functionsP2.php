@@ -1363,12 +1363,22 @@ function _eb_create_account_auto ( $arr = array() ) {
 /*
 * Tự động tạo trang nếu chưa có
 */
-function WGR_create_page( $page_url, $page_name ) {
+function WGR_create_page( $page_url, $page_name = '' ) {
 	global $wpdb;
 	
 	//
-	if ( $page_url == '' || $page_name == '' ) {
-		die('Plase set value for page_url or page_name');
+	if ( $page_url == '' ) {
+		die('Please set value for page_url');
+	}
+	if ( $page_name == '' ) {
+		// thử lấy trong bảng lang xem có không
+		$page_name = EBE_get_lang($page_url);
+		
+		// không có thì lấy luôn page_url làm tên
+		if ( $page_name == '' ) {
+			$page_name = $page_url;
+//			die('Please set value for page_name');
+		}
 	}
 	
 	$sql = _eb_q( "SELECT *
