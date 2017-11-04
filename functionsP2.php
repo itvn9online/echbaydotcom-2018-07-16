@@ -1405,7 +1405,7 @@ function WGR_create_page( $page_url, $page_name = '' ) {
 		$pageid = wp_insert_post ($page);
 		
 		//
-		if( !is_wp_error($pageid) ){
+		if( ! is_wp_error($pageid) ){
 			// sau đó trả về page vừa được insert
 			return WGR_create_page( $page_url, $page_name );
 		}
