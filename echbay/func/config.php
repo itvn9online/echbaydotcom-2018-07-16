@@ -72,8 +72,10 @@ $_POST['cf_tester_mode'] = WGR_default_config('cf_tester_mode');
 $_POST['cf_on_off_json'] = WGR_default_config('cf_on_off_json');
 
 $_POST['cf_on_off_xmlrpc'] = WGR_default_config('cf_on_off_xmlrpc');
+WGR_deny_or_accept_vist_php_file( ABSPATH . 'xmlrpc.php', $_POST['cf_on_off_xmlrpc'], 'XML-RPC' );
 
 $_POST['cf_on_off_wpcron'] = WGR_default_config('cf_on_off_wpcron');
+WGR_deny_or_accept_vist_php_file( ABSPATH . 'wp-cron.php', $_POST['cf_on_off_wpcron'], 'WP Cron' );
 
 $_POST['cf_remove_category_base'] = WGR_default_config('cf_remove_category_base');
 
