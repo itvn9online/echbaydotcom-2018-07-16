@@ -616,7 +616,8 @@ function _eb_c_link ( $id, $taxx = '' ) {
 	}
 	
 	$strCacheFilter = 'cat_link' . $id;
-	$a = _eb_get_static_html ( $strCacheFilter, '', '', eb_default_cache_time );
+//	$a = _eb_get_static_html ( $strCacheFilter, '', '', eb_default_cache_time );
+	$a = _eb_get_static_html ( $strCacheFilter, '', '', 3600 );
 //	$a = false;
 //	$a = _eb_get_static_html ( $strCacheFilter, '', '', 5 );
 	if ($a == false) {

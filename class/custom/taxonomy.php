@@ -9,7 +9,10 @@
 
 // xóa link cache của category sau khi update
 function WGR_custom_term_slug_edit_success( $term_id, $taxonomy ) {
+	// xóa cache
 	_eb_remove_static_html( 'cat_link' . $term_id );
+	// sau đó nạp lại url
+	_eb_c_link( $term_id, $taxonomy );
 }
 
 
