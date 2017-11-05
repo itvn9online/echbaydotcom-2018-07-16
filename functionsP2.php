@@ -626,15 +626,13 @@ function _eb_c_link ( $id, $taxx = '' ) {
 		if ( $taxx == '' ) {
 			$taxx = 'category';
 		}
-		/*
 		if ( $taxx == '' || $taxx == 'category' ) {
 			$a = get_category_link( $id );
 		}
 		else {
-			*/
 //			$a = get_term_link( get_term_by( 'id', $id, $taxx ), $taxx );
 			$a = get_term_link( get_term( $id, $taxx ), $taxx );
-//		}
+		}
 //		echo $a . '<br>' . "\n";
 		
 		//
@@ -671,7 +669,36 @@ function _eb_c_link ( $id, $taxx = '' ) {
 		
 		// lưu tên file vào cache nếu không phải short link
 		if ( strstr( $a, '?cat=' ) == true || strstr( $a, '&cat=' ) == true ) {
-		} else {
+			$term = get_term( $id, $taxx );
+//			print_r( $term );
+			
+			// lấy URL trực tiếp luôn
+			$category_base = get_option('category_base');
+			if ( $taxx == 'category' ) {
+				if ( $category_base == '.' ) {
+					$category_base = '';
+				}
+				else {
+					if ( $category_base == '' ) {
+						$category_base = 'category';
+					}
+					$category_base .= '/';
+				}
+				$a = web_link . $category_base . $term->slug;
+			}
+			// custom taxonomy
+			else {
+				$a = web_link . $taxx . '/' . $term->slug;
+			}
+//			echo $a . '<br>' . "\n";
+			
+//			return $a;
+		}
+		
+		// kiểm tra lại lần nữa
+		if ( strstr( $a, '?cat=' ) == true || strstr( $a, '&cat=' ) == true ) {
+		}
+		else {
 			_eb_get_static_html ( $strCacheFilter, $a, '', 60 );
 		}
 	}
