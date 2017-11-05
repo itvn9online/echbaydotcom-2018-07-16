@@ -27,6 +27,11 @@ function dang_ky_taxonomy() {
 	
 	
 	
+	//
+	add_filter( 'edited_category', 'WGR_custom_term_slug_edit_success', 10, 2 );
+	
+	
+	
 	/*
 	* Blog/ Tin tức
 	*/
