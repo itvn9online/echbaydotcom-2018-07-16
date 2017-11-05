@@ -535,10 +535,12 @@ $arr_for_set_template['str_list_all_include_file'] = implode( "\n", $str_list_al
 
 
 // Hiển thị đường dẫn tạo theme
-$arr_for_set_template['dir_for_save_new_theme'] = EB_THEME_URL . 'ui/';
+$arr_for_set_template['dir_for_save_new_theme'] = EB_THEME_URL;
 if ( defined('EB_CHILD_THEME_URL') ) {
-	$arr_for_set_template['dir_for_save_new_theme'] = EB_CHILD_THEME_URL . 'ui/';
+	$arr_for_set_template['dir_for_save_new_theme'] = EB_CHILD_THEME_URL;
 }
+
+$arr_for_set_template['dir_for_save_include_theme'] = EB_THEME_PLUGIN_INDEX;
 
 
 

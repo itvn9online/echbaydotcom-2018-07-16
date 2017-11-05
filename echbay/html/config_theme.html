@@ -29,7 +29,9 @@
 			</tr>
 			<tr>
 				<td colspan="2" class="bold"><div class="medium cf">
-						<div class="lf f30"><label for="press_for_search_all_themes">Danh sách giao diện:</label></div>
+						<div class="lf f30">
+							<label for="press_for_search_all_themes">Danh sách giao diện:</label>
+						</div>
 						<div class="lf f70"><strong>Tìm kiếm giao diện:</strong>
 							<input type="text" data-class-search="for-all-themes-quick-search li" id="press_for_search_all_themes" placeholder="Nhập tên giao diện">
 						</div>
@@ -542,7 +544,10 @@
 			<div class="medium18 bold">Tạo giao diện mới</div>
 			<p>* Công cụ tạo file mẫu cho giao diện theo một chuẩn chung!</p>
 			<div>Giao diện tạo mới sẽ được lưu vào thư mục (nếu chưa có):<br>
-				<em>{tmp.dir_for_save_new_theme}</em></div>
+				<em><strong>{tmp.dir_for_save_new_theme}ui/</strong></em></div>
+			<br>
+			<div>Tập khai báo include mặc định cho giao diện sẽ được lưu vào thư mục (nếu chưa có):<br>
+				<em><strong>{tmp.dir_for_save_include_theme}themes/all/[ Tên giao diện ].php</strong></em></div>
 			<br>
 			<div class="bold">Tên giao diện</div>
 			<div>
@@ -559,16 +564,18 @@
 				<input type="number" placeholder="0-6" value="1" name="create_theme_footer" id="create_theme_footer">
 			</div>
 			<br>
-			<div class="bold">Khung sản phẩm</div>
-			<div>
-				<input type="number" placeholder="0-1" value="1" name="create_theme_threadnode" id="create_theme_threadnode">
+			<div class="d-none">
+				<div class="bold">Khung sản phẩm</div>
+				<div>
+					<input type="number" placeholder="0-1" value="1" name="create_theme_threadnode" id="create_theme_threadnode">
+				</div>
+				<br>
+				<div class="bold">Trang chi tiết</div>
+				<div>
+					<input type="number" placeholder="0-6" value="1" name="create_theme_threaddetails" id="create_theme_threaddetails">
+				</div>
+				<br>
 			</div>
-			<br>
-			<div class="bold">Trang chi tiết</div>
-			<div>
-				<input type="number" placeholder="0-6" value="1" name="create_theme_threaddetails" id="create_theme_threaddetails">
-			</div>
-			<br>
 			<div>
 				<input type="submit" value="Khởi tạo" class="cur" />
 				<button type="button" onClick="process_for_press_esc();" class="cur">Hủy bỏ [x]</button>
