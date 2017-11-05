@@ -8,7 +8,11 @@
 
 
 // xóa link cache của category sau khi update
-function WGR_custom_term_slug_edit_success( $term_id, $taxonomy ) {
+function WGR_custom_term_slug_edit_success ( $taxonomy = 'category' ) {
+	add_filter( 'edited_' . $taxonomy, 'WGR_custom_term_slug_edit_success2', 10, 2 );
+}
+
+function WGR_custom_term_slug_edit_success2 ( $term_id, $taxonomy ) {
 	// xóa cache
 	_eb_remove_static_html( 'cat_link' . $term_id );
 	// sau đó nạp lại url
@@ -28,7 +32,7 @@ function dang_ky_taxonomy() {
 	
 	
 	//
-	add_filter( 'edited_category', 'WGR_custom_term_slug_edit_success', 10, 2 );
+	WGR_custom_term_slug_edit_success();
 	
 	
 	
@@ -65,7 +69,7 @@ function dang_ky_taxonomy() {
 	
 	// Hàm register_taxonomy để khởi tạo taxonomy
 	register_taxonomy(EB_BLOG_POST_LINK, $taxonomy_post_type, $args);
-	add_filter( 'edited_' . EB_BLOG_POST_LINK, 'WGR_custom_term_slug_edit_success', 10, 2 );
+	WGR_custom_term_slug_edit_success( EB_BLOG_POST_LINK );
 	
 	
 	
@@ -98,7 +102,7 @@ function dang_ky_taxonomy() {
 	);
 	
 	register_taxonomy($taxonomy_post_type . '_tag', $taxonomy_post_type, $args);
-	add_filter( 'edited_' . $taxonomy_post_type . '_tag', 'WGR_custom_term_slug_edit_success', 10, 2 );
+	WGR_custom_term_slug_edit_success( $taxonomy_post_type . '_tag' );
 	
 	
 	
@@ -138,7 +142,7 @@ function dang_ky_taxonomy() {
 	);
 	
 	register_taxonomy($taxonomy_post_type . '_options', $taxonomy_post_type, $args);
-	add_filter( 'edited_' . $taxonomy_post_type . '_options', 'WGR_custom_term_slug_edit_success', 10, 2 );
+	WGR_custom_term_slug_edit_success( $taxonomy_post_type . '_options' );
 }
 // Hook into the 'init' action
 add_filter( 'init', 'dang_ky_taxonomy');
