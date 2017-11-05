@@ -12,6 +12,72 @@
 
 
 
+// lấy URL trong config wp
+if ( defined('WP_SITEURL') ) {
+	$web_link = WP_SITEURL;
+}
+else if ( defined('WP_HOME') ) {
+	$web_link = WP_HOME;
+}
+else {
+//	$web_link = get_bloginfo ( 'url' );
+	
+//	if ( is_admin() ) {
+	// lấy URL động với site có dùng SSL
+	if ( eb_web_protocol == 'https' ) {
+		$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'];
+	}
+	// mặc định thì lấy theo config
+	else {
+		$web_link = get_option ( 'siteurl' );
+	}
+}
+
+// hỗ trợ link HTTP nếu truy cập vào cổng 443
+if ( eb_web_protocol == 'https' && strstr( $web_link, 'https://' ) == false ) {
+	$web_link = str_replace( 'http://', 'https://', $web_link );
+}
+
+
+// thêm dấu chéo vào cuối nếu chưa có
+//if ( substr( $web_link, -1 ) != '/' ) {
+	$web_link .= '/';
+//}
+
+//
+/*
+if ( $localhost == 1 ) {
+	$web_link = get_bloginfo ( 'url' ) . '/';
+} else {
+	$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] . '/';
+}
+*/
+
+define( 'web_link', $web_link );
+//echo web_link;
+
+
+
+
+/*
+* chỉnh lại đường dẫn tĩnh nếu sai thông số
+*/
+if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
+	// tách mảng để tạo URL cố định
+	$web_link = explode('/', $web_link);
+//	print_r($web_link);
+	
+	// thay bằng giá trị mới
+	$web_link[2] = $_SERVER['HTTP_HOST'];
+	
+	// gán lại
+	$web_link = implode( '/', $web_link );
+//	echo $web_link;
+}
+
+
+
+
 $__eb_cache_time = 0;
 
 $__eb_cache_conf = EB_THEME_CACHE . '___all.php';
@@ -540,69 +606,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 
 
 
-// lấy URL trong config wp
-if ( defined('WP_SITEURL') ) {
-	$web_link = WP_SITEURL;
-}
-else if ( defined('WP_HOME') ) {
-	$web_link = WP_HOME;
-}
-else {
-//	$web_link = get_bloginfo ( 'url' );
-	
-//	if ( is_admin() ) {
-	// lấy URL động với site có dùng SSL
-	if ( eb_web_protocol == 'https' ) {
-		$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'];
-	}
-	// mặc định thì lấy theo config
-	else {
-		$web_link = get_option ( 'siteurl' );
-	}
-}
-
-// hỗ trợ link HTTP nếu truy cập vào cổng 443
-if ( eb_web_protocol == 'https' && strstr( $web_link, 'https://' ) == false ) {
-	$web_link = str_replace( 'http://', 'https://', $web_link );
-}
-
-
-// thêm dấu chéo vào cuối nếu chưa có
-//if ( substr( $web_link, -1 ) != '/' ) {
-	$web_link .= '/';
-//}
-
-//
-/*
-if ( $localhost == 1 ) {
-	$web_link = get_bloginfo ( 'url' ) . '/';
-} else {
-	$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] . '/';
-}
-*/
-
-
-
-
-/*
-* chỉnh lại đường dẫn tĩnh nếu sai thông số
-*/
-if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
-	// tách mảng để tạo URL cố định
-	$web_link = explode('/', $web_link);
-//	print_r($web_link);
-	
-	// thay bằng giá trị mới
-	$web_link[2] = $_SERVER['HTTP_HOST'];
-	
-	// gán lại
-	$web_link = implode( '/', $web_link );
-//	echo $web_link;
-}
-
-
-
-
 
 // chuyển đơn vị tiền tệ từ sau ra trước
 if ( $__cf_row['cf_current_price_before'] != 0 ) {
@@ -672,5 +675,8 @@ if ( $__cf_row['cf_blog_class_style'] != '' ) {
 //print_r( $__cf_row );
 //print_r( $___eb_lang );
 
+
+// TEST
+//echo _eb_get_full_category_v2 ( 0, 'category', 1 );
 
 

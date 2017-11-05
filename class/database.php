@@ -314,9 +314,6 @@ $act = '';
 define( 'web_name', $web_name );
 //echo web_name;
 
-define( 'web_link', $web_link );
-//echo web_link;
-
 
 
 

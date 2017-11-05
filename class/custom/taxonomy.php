@@ -7,6 +7,12 @@
 
 
 
+// xóa link cache của category sau khi update
+function WGR_custom_term_slug_edit_success( $term_id, $taxonomy ) {
+	_eb_remove_static_html( 'cat_link' . $term_id );
+}
+
+
 /*
 * Tạo taxonomy cho product
 */
@@ -51,6 +57,7 @@ function dang_ky_taxonomy() {
 	
 	// Hàm register_taxonomy để khởi tạo taxonomy
 	register_taxonomy(EB_BLOG_POST_LINK, $taxonomy_post_type, $args);
+	add_filter( 'edited_' . EB_BLOG_POST_LINK, 'WGR_custom_term_slug_edit_success', 10, 2 );
 	
 	
 	
@@ -83,6 +90,7 @@ function dang_ky_taxonomy() {
 	);
 	
 	register_taxonomy($taxonomy_post_type . '_tag', $taxonomy_post_type, $args);
+	add_filter( 'edited_' . $taxonomy_post_type . '_tag', 'WGR_custom_term_slug_edit_success', 10, 2 );
 	
 	
 	
@@ -122,6 +130,7 @@ function dang_ky_taxonomy() {
 	);
 	
 	register_taxonomy($taxonomy_post_type . '_options', $taxonomy_post_type, $args);
+	add_filter( 'edited_' . $taxonomy_post_type . '_options', 'WGR_custom_term_slug_edit_success', 10, 2 );
 }
 // Hook into the 'init' action
 add_filter( 'init', 'dang_ky_taxonomy');

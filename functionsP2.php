@@ -617,16 +617,24 @@ function _eb_c_link ( $id, $taxx = '' ) {
 	
 	$strCacheFilter = 'cat_link' . $id;
 	$a = _eb_get_static_html ( $strCacheFilter, '', '', eb_default_cache_time );
+//	$a = false;
 //	$a = _eb_get_static_html ( $strCacheFilter, '', '', 5 );
 	if ($a == false) {
 		
 		//
+		if ( $taxx == '' ) {
+			$taxx = 'category';
+		}
+		/*
 		if ( $taxx == '' || $taxx == 'category' ) {
 			$a = get_category_link( $id );
 		}
 		else {
-			$a = get_term_link( get_term_by( 'id', $id, $taxx ), $taxx );
-		}
+			*/
+//			$a = get_term_link( get_term_by( 'id', $id, $taxx ), $taxx );
+			$a = get_term_link( get_term( $id, $taxx ), $taxx );
+//		}
+//		echo $a . '<br>' . "\n";
 		
 		//
 		if ( isset($a->errors) || $a == '' ) {
@@ -637,13 +645,16 @@ function _eb_c_link ( $id, $taxx = '' ) {
 //				$a = get_term_link( get_term_by( 'id', $id, $taxx ), $taxx );
 //			}
 //			else {
-				$a = get_term_link( get_term_by( 'id', $id, EB_BLOG_POST_LINK ), EB_BLOG_POST_LINK );
+//				$a = get_term_link( get_term_by( 'id', $id, EB_BLOG_POST_LINK ), EB_BLOG_POST_LINK );
+				$a = get_term_link( get_term( $id, EB_BLOG_POST_LINK ), EB_BLOG_POST_LINK );
 				if ( isset($a->errors) || $a == '' ) {
-					$a = get_term_link( get_term_by( 'id', $id, 'post_options' ), 'post_options' );
+//					$a = get_term_link( get_term_by( 'id', $id, 'post_options' ), 'post_options' );
+					$a = get_term_link( get_term( $id, 'post_options' ), 'post_options' );
 					
 					// lấy theo post_tag
 					if ( isset($a->errors) || $a == '' ) {
-						$a = get_term_link( get_term_by( 'id', $id, 'post_tag' ), 'post_tag' );
+//						$a = get_term_link( get_term_by( 'id', $id, 'post_tag' ), 'post_tag' );
+						$a = get_term_link( get_term( $id, 'post_tag' ), 'post_tag' );
 					}
 				}
 //			}
@@ -657,8 +668,11 @@ function _eb_c_link ( $id, $taxx = '' ) {
 		// xóa ký tự đặc biệt khi rút link category
 		$a = str_replace( '/./', '/', $a );
 		
-		//
-		_eb_get_static_html ( $strCacheFilter, $a, '', 60 );
+		// lưu tên file vào cache nếu không phải short link
+		if ( strstr( $a, '?cat=' ) == true || strstr( $a, '&cat=' ) == true ) {
+		} else {
+			_eb_get_static_html ( $strCacheFilter, $a, '', 60 );
+		}
 	}
 	
 	//
