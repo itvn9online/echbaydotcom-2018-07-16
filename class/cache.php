@@ -474,41 +474,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		/*
-		* Tạo cat dưới dạng JS
-		*/
-		$strCacheFilter = 'cat_js';
-		// giãn cách tạo file này tối thiểu là 120 giây
-		$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 120 );
-		if ( $check_Cleanup_cache == false ) {
-	//		$site_group = get_full_category_v2 ();
-	//		echo $site_group;
-			
-			//
-	//		echo EB_THEME_CACHE;EB_BLOG_POST_LINK
-			$cat_js_file_name = 'cat.js';
-//			$cat_js_file_name = 'cat-' . date( 'H.i', $date_time ) . '.js';
-			
-			_eb_create_file ( EB_THEME_CACHE . $cat_js_file_name, 'var eb_site_group=[' . _eb_get_full_category_v2 ( 0, 'category', 1 ) . '],eb_blog_group=[' . _eb_get_full_category_v2 ( 0, EB_BLOG_POST_LINK, 1 ) . '];' );
-			
-			//
-			/*
-			$args = array(
-				'taxonomy' => EB_BLOG_POST_LINK,
-			);
-			$categories = get_categories($args);
-			print_r( $categories );
-			*/
-			
-			// ép lưu cache
-//			_eb_get_static_html ( $strCacheFilter, date( 'r', $date_time ), '', 60 );
-		}
-		
-		
-		
-		
-		
-		
-		/*
 		* tạo các page tự động nếu chưa có
 		*/
 		/*

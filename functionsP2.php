@@ -607,7 +607,8 @@ function _eb_p_link ($id, $seo = '') {
 // link cho phân nhóm
 $arr_cache_for_get_cat_url = array();
 
-function _eb_c_link ( $id, $taxx = '' ) {
+// https://codex.wordpress.org/Function_Reference/get_category_link
+function _eb_c_link ( $id, $taxx = 'category' ) {
 	global $arr_cache_for_get_cat_url;
 	
 	//
@@ -623,16 +624,25 @@ function _eb_c_link ( $id, $taxx = '' ) {
 	if ($a == false) {
 		
 		//
+//		echo $taxx . '<br>' . "\n";
 		if ( $taxx == '' ) {
 			$taxx = 'category';
 		}
+//		echo $taxx . '<br>' . "\n";
+		
+		//
+		$term = get_term( $id, $taxx );
+//		print_r( $term );
+		
+		/*
 		if ( $taxx == '' || $taxx == 'category' ) {
 			$a = get_category_link( $id );
 		}
 		else {
+			*/
 //			$a = get_term_link( get_term_by( 'id', $id, $taxx ), $taxx );
-			$a = get_term_link( get_term( $id, $taxx ), $taxx );
-		}
+			$a = get_term_link( $term, $taxx );
+//		}
 //		echo $a . '<br>' . "\n";
 		
 		//
@@ -661,26 +671,25 @@ function _eb_c_link ( $id, $taxx = '' ) {
 			//
 			if ( isset($a->errors) || $a == '' ) {
 //				$a = '#';
-				$a = _eb_c_short_link( $id, $taxx );
+				
+				// trả về link lỗi luôn, không lưu cache
+				return _eb_c_short_link( $id, $taxx );
 			}
 		}
 		// xóa ký tự đặc biệt khi rút link category
 		$a = str_replace( '/./', '/', $a );
 		
-		// lưu tên file vào cache nếu không phải short link
+		// nếu tên file là dạng short link -> thử tạo thủ công
 		if ( strstr( $a, '?cat=' ) == true || strstr( $a, '&cat=' ) == true ) {
-			$term = get_term( $id, $taxx );
-//			print_r( $term );
-			
 			// lấy URL trực tiếp luôn
-			$category_base = get_option('category_base');
 			if ( $taxx == 'category' ) {
+				$category_base = get_option('category_base');
 				if ( $category_base == '.' ) {
 					$category_base = '';
 				}
 				else {
 					if ( $category_base == '' ) {
-						$category_base = 'category';
+						$category_base = $taxx;
 					}
 					$category_base .= '/';
 				}
@@ -698,10 +707,12 @@ function _eb_c_link ( $id, $taxx = '' ) {
 		// kiểm tra lại lần nữa
 		if ( strstr( $a, '?cat=' ) == true || strstr( $a, '&cat=' ) == true ) {
 		}
+		// lưu tên file vào cache nếu không phải short link
 		else {
 			_eb_get_static_html ( $strCacheFilter, $a, '', 60 );
 		}
 	}
+//	echo $a . '<br>' . "\n";
 	
 	//
 	$arr_cache_for_get_cat_url[ $id ] = $a;
