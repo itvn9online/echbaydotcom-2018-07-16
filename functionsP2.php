@@ -650,7 +650,8 @@ function _eb_c_link ( $id, $taxx = '' ) {
 			
 			//
 			if ( isset($a->errors) || $a == '' ) {
-				$a = '#';
+//				$a = '#';
+				$a = _eb_c_short_link( $id, $taxx );
 			}
 		}
 		// xóa ký tự đặc biệt khi rút link category
@@ -664,6 +665,13 @@ function _eb_c_link ( $id, $taxx = '' ) {
 	$arr_cache_for_get_cat_url[ $id ] = $a;
 	
 	return $a;
+}
+
+function _eb_c_short_link ( $id, $taxx = '' ) {
+	if ( $taxx != 'category' ) {
+		return web_link . '?taxonomy=' . $taxx . 'cat=' . $id;
+	}
+	return web_link . '?cat=' . $id;
 }
 
 function _eb_c_link_v1 ( $id, $taxx = 'category' ) {
@@ -2175,8 +2183,8 @@ function _eb_get_private_html ( $f, $f2 = '' ) {
 
 
 //
-function _eb_get_full_category_v2($this_id = 0, $taxx = 'category') {
-	global $web_link;
+function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_link = 0) {
+//	global $web_link;
 	
 	$arr = get_categories( array(
 		'taxonomy' => $taxx,
@@ -2197,9 +2205,13 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category') {
 //			print_r($v);
 		
 		//
-//		$c_link = _eb_c_link( $v->term_id, $web_link . '?cat=' . $v->term_id );
-//		$c_link = _eb_c_link( $v->term_id, $taxx );
-		$c_link = $web_link . '?' . $link_for_taxonomy . 'cat=' . $v->term_id;
+//		$c_link = _eb_c_link( $v->term_id, web_link . '?cat=' . $v->term_id );
+		if ( $get_full_link == 1 ) {
+			$c_link = _eb_c_link( $v->term_id, $taxx );
+		}
+		else {
+			$c_link = web_link . '?' . $link_for_taxonomy . 'cat=' . $v->term_id;
+		}
 		
 		//
 		$cat_order = 0;
