@@ -109,7 +109,7 @@ _eb_add_full_js( array(
 $cat_js_file_name = 'cat.js';
 $strCacheFilter = 'cat_js';
 // giãn cách tạo file này tối thiểu là 120 giây
-$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 120 );
+$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', eb_default_cache_time + rand ( 0, 60 ) );
 if ( $check_Cleanup_cache == false ) {
 //	$site_group = get_full_category_v2 ();
 //	echo $site_group;
