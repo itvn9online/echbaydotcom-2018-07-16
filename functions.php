@@ -156,7 +156,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	$post->trv_tieude = $post->post_title;
 	$post->trv_id = $post->ID;
 	$post->trv_masanpham = _eb_get_post_object( $post->ID, '_eb_product_sku', $post->ID );
-	$post->trv_gioithieu = $post->post_excerpt;
+	$post->trv_gioithieu = nl2br( $post->post_excerpt );
 	
 	//
 //	$post_time = strtotime( $post->post_modified );
