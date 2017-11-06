@@ -58,13 +58,37 @@ function xu_ly_du_lieu_js(fun) {
 	return str;
 }
 
+//
+var khong_cho_update_config_lien_tuc = false;
+
+function khong_update_lien_tuc () {
+	
+	khong_cho_update_config_lien_tuc = true;
+	$('#rAdminME').css({
+		opacity: .2
+	});
+	
+	$('#target_eb_iframe').on('load', function () {
+		khong_cho_update_config_lien_tuc = false;
+		
+		$('#rAdminME').css({
+			opacity: 1
+		});
+	});
+	
+}
+
 function check_update_config_theme () {
+	if ( khong_cho_update_config_lien_tuc == true ) {
+		console.log('Vui lòng chờ...');
+		return false;
+	}
+	
+	khong_update_lien_tuc();
+	
 	return true;
 }
 
-
-//
-var khong_cho_update_config_lien_tuc = false;
 function check_update_config() {
 	if ( khong_cho_update_config_lien_tuc == true ) {
 		console.log('Vui lòng chờ...');
@@ -120,10 +144,7 @@ function check_update_config() {
 	
 	
 	//
-	khong_cho_update_config_lien_tuc = true;
-	$('#target_eb_iframe').on('load', function () {
-		khong_cho_update_config_lien_tuc = false;
-	});
+	khong_update_lien_tuc();
 	
 	
 	
