@@ -232,6 +232,14 @@ var eb_global_product_size = '',
 			$('#custom-menu-item-name').val( $(this).attr('data-text') || 'Home' );
 			$('#submit-customlinkdiv').click();
 //			$('#menu-to-edit li:last').click();
+			
+			// nếu có class CSS riêng
+			var a = $(this).attr('data-css') || '';
+			if ( a != '' ) {
+				setTimeout(function () {
+					$('#menu-to-edit li:last .edit-menu-item-classes').val( a );
+				}, 600);
+			}
 		});
 		
 		

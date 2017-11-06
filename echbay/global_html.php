@@ -54,6 +54,12 @@
 				</div>
 			</li>
 			<li class="cf">
+				<div class="lf f80"><i class="fa fa-circle-o-notch"></i> JS Menu <em class="small">(Tạo menu Danh mục sản phẩm bằng Javascript)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="#" data-text="JS Menu" data-css="wgr-load-js-menu" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
 				<div class="lf f80"><i class="fa fa-support"></i> <?php echo EBE_get_lang('lienhe'); ?> <em>(/contact)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/contact" data-text="<?php echo EBE_get_lang('lienhe'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
