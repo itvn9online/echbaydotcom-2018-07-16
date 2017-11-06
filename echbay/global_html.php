@@ -54,9 +54,9 @@
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><i class="fa fa-circle-o-notch"></i> JS Category <em class="small">(Tạo menu Danh mục sản phẩm bằng Javascript)</em></div>
+				<div class="lf f80"><i class="fa fa-circle-o-notch"></i> Chuyên mục <em class="small">(Tạo menu Danh mục sản phẩm bằng Javascript)</em></div>
 				<div class="lf f20 text-center">
-					<button data-link="#" data-text="JS Category" data-css="wgr-load-js-category" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+					<button data-link="#" data-text="..." data-css="wgr-load-js-category" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
@@ -66,9 +66,9 @@
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><i class="fa fa-circle-o-notch"></i> JS Blogs <em class="small">(Tạo menu Danh mục Tin tức bằng Javascript)</em></div>
+				<div class="lf f80"><i class="fa fa-circle-o-notch"></i> Danh mục <em class="small">(Tạo menu Danh mục Tin tức bằng Javascript)</em></div>
 				<div class="lf f20 text-center">
-					<button data-link="#" data-text="JS Blogs" data-css="wgr-load-js-blogs" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+					<button data-link="#" data-text="..." data-css="wgr-load-js-blogs" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
