@@ -62,8 +62,16 @@ function check_update_config_theme () {
 	return true;
 }
 
+
+//
+var khong_cho_update_config_lien_tuc = false;
 function check_update_config() {
+	if ( khong_cho_update_config_lien_tuc == true ) {
+		console.log('Vui lòng chờ...');
+		return false;
+	}
 	
+	//
 	var f = document.frm_config;
 	
 	var fun = f.cf_js_allpage_full.value,
@@ -108,6 +116,14 @@ function check_update_config() {
 	if ( a != '' ) {
 		f.cf_current_price.value = a.replace( /\\/g, '/' );
 	}
+	
+	
+	
+	//
+	khong_cho_update_config_lien_tuc = true;
+	$('#target_eb_iframe').on('load', function () {
+		khong_cho_update_config_lien_tuc = false;
+	});
 	
 	
 	

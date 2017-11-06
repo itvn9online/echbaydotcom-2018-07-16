@@ -2506,6 +2506,27 @@ function _eb_widget_parse_args ( $arr, $default ) {
 
 
 
+function _eb_get_option ( $name ) {
+	global $wpdb;
+	
+	$sql = _eb_q("SELECT option_value
+	FROM
+		`" . $wpdb->options . "`
+	WHERE
+		option_name = '" . $name . "'
+	ORDER BY
+		option_id DESC
+	LIMIT 0, 1");
+	
+	//
+//	print_r( $sql );
+	if ( ! empty( $sql ) ) {
+		return $sql[0]->option_value;
+	}
+	
+	return '';
+}
+
 function _eb_update_option ( $name, $value ) {
 	global $wpdb;
 	
