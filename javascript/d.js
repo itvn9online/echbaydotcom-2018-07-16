@@ -2749,6 +2749,17 @@ setTimeout(function () {
 		if ( WGR_show_or_scroll_to_quick_cart() == false ) {
 			$('#click_show_cpa').show();
 			$('body').addClass('body-no-scroll');
+			
+			//
+			var a = $(window).height() - $('.cart-quick').height();
+			if ( a > 0 ) {
+				a = a/ 3;
+			} else {
+				a = 25;
+			}
+			$('.cart-quick').css({
+				'margin-top' : a + 'px'
+			});
 		}
 	});
 	
