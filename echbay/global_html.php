@@ -110,7 +110,7 @@
 			<li class="cf">
 				<div class="lf f80"><i class="fa fa-diamond"></i> <?php echo EBE_get_lang('golden_time'); ?> <em>(/golden_time)</em></div>
 				<div class="lf f20 text-center">
-					<button data-link="/golden_time" data-text="<?php echo EBE_get_lang('golden_time'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+					<button data-link="/golden_time" data-text="<?php echo EBE_get_lang('golden_time'); ?>" data-css="nav-about-giovang" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
