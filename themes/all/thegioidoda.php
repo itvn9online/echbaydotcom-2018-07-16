@@ -11,7 +11,7 @@ $eb_all_themes_support["thegioidoda"]["name"] = "thegioidoda";
 $eb_all_themes_support["thegioidoda"]["screenshot"] = "https://img1.webgiare.org/thegioidoda.jpg";
 $eb_all_themes_support["thegioidoda"]["author"] = "";
 $eb_all_themes_support["thegioidoda"]["demo"] = "";
-$eb_all_themes_support["thegioidoda"]["price"] = 2000000;
+$eb_all_themes_support["thegioidoda"]["price"] = 8000000;
 //
 $eb_all_themes_support["thegioidoda"]["top"][] = "thegioidoda-top1.php";
 $eb_all_themes_support["thegioidoda"]["top"][] = "thegioidoda-top2.php";
@@ -24,8 +24,8 @@ $eb_all_themes_support["thegioidoda"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["thegioidoda"]["footer"][] = "thegioidoda-footer1.php";
 $eb_all_themes_support["thegioidoda"]["footer"][] = "thegioidoda-footer2.php";
 //
-$eb_all_themes_support["thegioidoda"]["home"][] = "thegioidoda-home1.php";
-$eb_all_themes_support["thegioidoda"]["home"][] = "thegioidoda-home2.php";
+$eb_all_themes_support["thegioidoda"]["home"][] = "echbaytwo-home1.php";
+$eb_all_themes_support["thegioidoda"]["home"][] = "echbaytwo-home3.php";
 $eb_all_themes_support["thegioidoda"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["thegioidoda"]["threaddetails"][] = "thegioidoda-threaddetails.html";
