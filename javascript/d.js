@@ -2611,6 +2611,34 @@ $('a[href="#"]').attr({
 
 
 
+// load danh sách nhóm dưới dạng JS
+function WGR_load_js_category ( i ) {
+	if ( typeof i == 'undefined' ) {
+		i = 20;
+	}
+	else if ( i < 0 ) {
+		return false;
+	}
+	
+	if ( typeof eb_site_group == 'undefined' ) {
+		setTimeout(function () {
+			WGR_load_js_category( i - 1 );
+		}, 200);
+		
+		return false;
+	}
+	
+	var str = '';
+	console.log( eb_site_group );
+}
+
+if ( $('.wgr-load-js-menu').length > 0 ) {
+	WGR_load_js_category();
+}
+
+
+
+
 //
 function WGR_show_or_scroll_to_quick_cart () {
 	
