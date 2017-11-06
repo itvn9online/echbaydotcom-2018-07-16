@@ -1020,7 +1020,8 @@ $arr_for_add_js = array(
 );
 
 // nạp js từ child theme (nếu có)
-if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'javascript/display.js' ) ) {
+//if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'javascript/display.js' ) ) {
+if ( defined('EB_CHILD_THEME_URL') ) {
 	$arr_for_add_js[] = EB_CHILD_THEME_URL . 'javascript/display.js';
 }
 // mặc định là nạp từ theme

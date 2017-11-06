@@ -682,14 +682,27 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 		// nếu tên file là dạng short link -> thử tạo thủ công
 		if ( strstr( $a, '?cat=' ) == true || strstr( $a, '&cat=' ) == true ) {
 			// lấy URL trực tiếp luôn
-			if ( $taxx == 'category' ) {
-				$category_base = get_option('category_base');
+			if ( $taxx == 'category' || $taxx == 'post_tag' ) {
+				if ( $taxx == 'post_tag' ) {
+					$category_base = 'tag_base';
+				}
+				else {
+					$category_base = 'category_base';
+				}
+				$category_base = get_option($category_base);
+//				$category_base = _eb_get_option($category_base);
+				
 				if ( $category_base == '.' ) {
 					$category_base = '';
 				}
 				else {
 					if ( $category_base == '' ) {
-						$category_base = $taxx;
+						if ( $taxx == 'post_tag' ) {
+							$category_base = 'tag';
+						}
+						else {
+							$category_base = $taxx;
+						}
 					}
 					$category_base .= '/';
 				}
