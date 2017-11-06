@@ -2612,23 +2612,39 @@ $('a[href="#"]').attr({
 
 
 // load danh sách nhóm dưới dạng JS
-function WGR_get_js_category_to_menu ( arr ) {
+function WGR_get_js_sub_category_to_menu ( arr ) {
 	if ( arr.length == 0 ) {
 		return '';
 	}
 	
+	//
 	var str = '';
 	
 	str += '<ul class="sub-menu cf">';
 	for ( var i = 0; i < arr.length; i++ ) {
-		str += '<li><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_category_to_menu( arr[i].arr ) + '</li>';
+		str += '<li><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
 	}
 	str += '</ul>';
 	
 	return str;
 }
 
-function WGR_load_js_category ( add_to, i ) {
+function WGR_get_js_category_to_menu ( arr ) {
+	if ( arr.length == 0 ) {
+		return '';
+	}
+	
+	//
+	var str = '';
+	
+	for ( var i = 0; i < arr.length; i++ ) {
+		str += '<li><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
+	}
+	
+	return str;
+}
+
+function WGR_check_load_js_category ( i ) {
 	if ( typeof i == 'undefined' ) {
 		i = 20;
 	}
@@ -2639,7 +2655,7 @@ function WGR_load_js_category ( add_to, i ) {
 	
 	if ( typeof eb_site_group == 'undefined' ) {
 		setTimeout(function () {
-			WGR_load_js_category( add_to, i - 1 );
+			WGR_check_load_js_category( i - 1 );
 		}, 200);
 		
 		return false;
@@ -2647,20 +2663,31 @@ function WGR_load_js_category ( add_to, i ) {
 	
 	//
 //	console.log( eb_site_group );
-	if ( eb_site_group.length > 0 ) {
-		$('.' + add_to).append( WGR_get_js_category_to_menu( eb_site_group ) );
+	
+	// MENU chính -> xóa LI hiện tại, ghi nội dung mới vào
+	// catgory
+	if ( eb_site_group.length > 0 && $('.wgr-load-js-category').length > 0 ) {
+		$('.wgr-load-js-category').after( WGR_get_js_category_to_menu( eb_site_group ) ).remove();
 	}
+	
+	// blog group
+	if ( eb_blog_group.length > 0 &&  $('.wgr-load-js-blogs').length > 0 ) {
+		$('.wgr-load-js-blogs').after( WGR_get_js_category_to_menu( eb_blog_group ) ).remove();
+	}
+	
+	// SUB-MENU -> bổ sung nội dung vào thẻ LI hiện tại
+	// sub catgory
+	if ( eb_site_group.length > 0 && $('.wgr-load-js-sub-category').length > 0 ) {
+		$('.wgr-load-js-sub-category').append( WGR_get_js_sub_category_to_menu( eb_site_group ) );
+	}
+	
+	// sub blog group
+	if ( eb_blog_group.length > 0 &&  $('.wgr-load-js-sub-blogs').length > 0 ) {
+		$('.wgr-load-js-sub-blogs').append( WGR_get_js_sub_category_to_menu( eb_blog_group ) );
+	}
+	
 }
-
-// catgory
-if ( $('.wgr-load-js-category').length > 0 ) {
-	WGR_load_js_category( 'wgr-load-js-category' );
-}
-
-// blog group
-if ( $('.wgr-load-js-blogs').length > 0 ) {
-	WGR_load_js_category( 'wgr-load-js-blogs' );
-}
+WGR_check_load_js_category();
 
 
 
