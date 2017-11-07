@@ -30,7 +30,8 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		$anh_dai_dien_goc = _eb_get_post_img( $post->ID, $__cf_row['cf_ads_thumbnail_size'] );
 		
 		//
-		$alias_post = _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 );
+		$alias_post = _eb_number_only( _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 ) );
+		$alias_taxonomy = _eb_number_only( _eb_get_post_object( $post->ID, '_eb_ads_for_category', 0 ) );
 		
 		// nếu có -> nạp thông tin post, page... mà nó alias tới
 		if ( $alias_post > 0 ) {
@@ -45,6 +46,8 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			if ( ! empty( $sql ) ) {
 				$post = $sql[0];
 			}
+		}
+		else if ( $alias_taxonomy > 0 ) {
 		}
 	}
 	
@@ -2997,7 +3000,8 @@ function _eb_load_ads (
 			$ads_id = $post->ID;
 			
 			// kiểm tra xem q.cáo có alias tới post, page... nào không
-			$alias_post = _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 );
+			$alias_post = _eb_number_only( _eb_get_post_object( $post->ID, '_eb_ads_for_post', 0 ) );
+			$alias_taxonomy = _eb_number_only( _eb_get_post_object( $post->ID, '_eb_ads_for_category', 0 ) );
 			
 			// nếu có -> nạp thông tin post, page... mà nó alias tới
 			if ( $alias_post > 0 ) {
@@ -3012,6 +3016,8 @@ function _eb_load_ads (
 					$post = $strsql[0];
 					$p_link = _eb_p_link( $post->ID );
 				}
+			}
+			else if ( $alias_taxonomy > 0 ) {
 			}
 			
 			//
