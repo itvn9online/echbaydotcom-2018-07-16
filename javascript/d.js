@@ -248,6 +248,18 @@ function ___eb_details_slider_v2 () {
 	// -> nếu vẫn không có -> hủy slider
 	if ( slider_len <= 1 ) {
 		$('.hide-if-slider-null').hide();
+		
+		// nếu chỉ có 1 ảnh -> in luôn cái ảnh đấy ra
+//		if ( slider_len == 1 ) {
+			var a = $('.thread-details-mobileAvt').attr('data-img') || '';
+			if ( a != '' ) {
+				$('.thread-details-mobileAvt').removeClass('ti-le-global').height('auto').css({
+					'line-height' : 'normal'
+				}).html( '<img src="' + a + '" width="' + $('.thread-details-mobileAvt').width() + '" />' );
+			}
+//		}
+		
+		//
 		return false;
 	}
 	
