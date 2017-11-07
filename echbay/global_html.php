@@ -62,7 +62,7 @@
 			<li class="cf">
 				<div class="lf f80"><i class="fa fa-circle-o-notch"></i> JS Sub Category <em class="small">(Tạo menu Danh mục sản phẩm bằng Javascript <strong>dùng để làm sub-menu</strong>)</em></div>
 				<div class="lf f20 text-center">
-					<button data-link="#" data-text="JS Sub Category (Tên menu)" data-css="wgr-load-js-sub-category" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+					<button data-link="#" data-text="Sản phẩm" data-css="wgr-load-js-sub-category" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
@@ -74,7 +74,7 @@
 			<li class="cf">
 				<div class="lf f80"><i class="fa fa-circle-o-notch"></i> JS Sub Blogs <em class="small">(Tạo menu Danh mục Tin tức bằng Javascript <strong>dùng để làm sub-menu</strong>)</em></div>
 				<div class="lf f20 text-center">
-					<button data-link="#" data-text="JS Sub Blogs (Tên menu)" data-css="wgr-load-js-sub-blogs" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+					<button data-link="#" data-text="Tin tức" data-css="wgr-load-js-sub-blogs" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
