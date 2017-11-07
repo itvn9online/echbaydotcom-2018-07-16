@@ -735,7 +735,7 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 
 function _eb_c_short_link ( $id, $taxx = '' ) {
 	if ( $taxx != 'category' ) {
-		return web_link . '?taxonomy=' . $taxx . 'cat=' . $id;
+		return web_link . '?taxonomy=' . $taxx . '&cat=' . $id;
 	}
 	return web_link . '?cat=' . $id;
 }
