@@ -554,6 +554,8 @@ $('#oi_smtp_pass')
 
 
 //
+var add_class_bg_for_tr_support = false;
+
 (function () {
 	
 	// hiển thị module config tương ứng
@@ -662,6 +664,8 @@ $('#oi_smtp_pass')
 	
 	// khi người dùng bấm vào thẻ TR trong khung có hỗ trợ support
 	$('.eb-support-table label').click(function () {
+		add_class_bg_for_tr_support = true;
+		
 		$('.eb-support-table tr').removeClass('current-selected-support');
 		
 		//
@@ -687,25 +691,27 @@ $('#oi_smtp_pass')
 	
 	// tự động trỏ đến TR đang cần support
 	setTimeout(function () {
-		var get_support_tab = window.location.href.split('&support_tab=');
-		if ( get_support_tab.length > 1 && $('.eb-support-table').length > 0 ) {
-			get_support_tab = get_support_tab[1].split('&')[0].split('#')[0];
-			console.log(get_support_tab);
-			
-			// chạy và tìm thẻ TR có chứa cái thẻ label này
-			if ( get_support_tab != '' && $('label[for="' + get_support_tab + '"]').length > 0 ) {
+		if ( add_class_bg_for_tr_support == false ) {
+			var get_support_tab = window.location.href.split('&support_tab=');
+			if ( get_support_tab.length > 1 && $('.eb-support-table').length > 0 ) {
+				get_support_tab = get_support_tab[1].split('&')[0].split('#')[0];
+				console.log(get_support_tab);
 				
-				// cuộn chuột đến khu vực cần xem -> xem cho dễ
-				window.scroll( 0, $('label[for="' + get_support_tab + '"]').offset().top - ( $(window).height()/ 3 ) );
-				
-				$('.eb-support-table tr').each(function() {
-					// nếu tìm được thì thoát thôi
-					if ( $('label[for="' + get_support_tab + '"]', this).length > 0 ) {
-						$(this).addClass('current-selected-support');
-						return true;
-					}
-				});
-				
+				// chạy và tìm thẻ TR có chứa cái thẻ label này
+				if ( get_support_tab != '' && $('label[for="' + get_support_tab + '"]').length > 0 ) {
+					
+					// cuộn chuột đến khu vực cần xem -> xem cho dễ
+					window.scroll( 0, $('label[for="' + get_support_tab + '"]').offset().top - ( $(window).height()/ 3 ) );
+					
+					$('.eb-support-table tr').each(function() {
+						// nếu tìm được thì thoát thôi
+						if ( $('label[for="' + get_support_tab + '"]', this).length > 0 ) {
+							$(this).addClass('current-selected-support');
+							return true;
+						}
+					});
+					
+				}
 			}
 		}
 	}, 1200);
