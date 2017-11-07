@@ -23,8 +23,12 @@ $eb_all_themes_support["noithattrongoi"]["footer"][] = "noithattrevietnam-footer
 $eb_all_themes_support["noithattrongoi"]["footer"][] = "denbaophat-footer3.php";
 //
 $eb_all_themes_support["noithattrongoi"]["home"][] = "bigbanner-home1.php";
+
+// sử dụng video làm ảnh đại diện
 //$eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninterior-home1.php";
+// Sử dụng ảnh bài viết làm ảnh đại diện
 $eb_all_themes_support["noithattrongoi"]["home"][] = "noithattrongoi-home1.php";
+
 $eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninterior-home2.php";
 //$eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninterior-home3.php";
 $eb_all_themes_support["noithattrongoi"]["home"][] = "vinhaninteriorV2-home3.php";
