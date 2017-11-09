@@ -164,6 +164,9 @@ $eb_arr_type_custom_meta_box = array(
 	'_eb_product_noibat' => 'textarea_one',
 	'_eb_product_list_color' => 'textarea_one',
 	
+	// Nội dung phụ cho phần blog, thi thoảng có site sử dụng
+	'_eb_blog_2content' => 'textarea_one',
+	
 	'_eb_product_leech_source' => 'hidden',
 	
 	// ads
@@ -275,6 +278,10 @@ $eb_arr_noibat_meta_box = array(
 	'_eb_product_noibat' => 'Điểm nổi bật',
 );
 
+$eb_arr_blog_2content_meta_box = array(
+	'_eb_blog_2content' => 'Điểm nổi bật',
+);
+
 // thông tin phụ của trang sản phẩm
 $eb_arr_phu_meta_box = array(
 	'_eb_product_leech_source' => 'URL đồng bộ',
@@ -339,6 +346,14 @@ function EchBayMetaOutput( $post ) {
 	EchBayPrintHTMLOutput( $eb_meta_custom_meta_box, $eb_arr_type_custom_meta_box, $post );
 }
 
+function EchBayBlog2Content ( $post ) {
+	global $eb_arr_blog_2content_meta_box;
+	global $eb_arr_type_custom_meta_box;
+	
+	//
+	EchBayPrintHTMLOutput( $eb_arr_blog_2content_meta_box, $eb_arr_type_custom_meta_box, $post );
+}
+
 
 
 
@@ -395,6 +410,7 @@ function EchBayMetaBox () {
 	
 	// thẻ META cho blog
 	add_meta_box( 'eb-blog-bosung', 'Thông tin bổ sung', 'EchBayPhuOutput', EB_BLOG_POST_TYPE );
+	add_meta_box( 'eb-blog-2content', 'Nội dung phụ', 'EchBayNoibatOutput', EB_BLOG_POST_TYPE );
 	
 	
 	// thông tin bổ sung cho quảng cáo
@@ -481,6 +497,7 @@ function EchBayThongTinSave ( $post_id ) {
 	global $eb_meta_custom_meta_box;
 	global $eb_arr_custom_meta_box;
 	global $eb_ads_custom_meta_box;
+	global $eb_arr_blog_2content_meta_box;
 	
 	global $eb_arr_gallery_meta_box;
 	global $eb_arr_list_color_meta_box;
@@ -503,6 +520,8 @@ function EchBayThongTinSave ( $post_id ) {
 	EchBayThongTinRunSave( $eb_arr_noibat_meta_box, $post_id );
 	
 	EchBayThongTinRunSave( $eb_arr_phu_meta_box, $post_id );
+	
+	EchBayThongTinRunSave( $eb_arr_blog_2content_meta_box, $post_id );
 }
 add_filter( 'save_post', 'EchBayThongTinSave' );
 
