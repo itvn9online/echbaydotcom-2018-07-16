@@ -8,8 +8,15 @@ $str_noithattrongoi_home1 = '
 			<br>
 		</div>
 	</div>
+	<!--
 	<div class="lf f50 fullsize-if-mobile global-a-posi"><a href="{tmp.p_link}" title="{tmp.post_title}"{tmp.target_blank}>&nbsp;</a>
 		<div data-size="{tmp.data_size}" data-img="{tmp.trv_img}" data-table-img="{tmp.trv_table_img}" data-mobile-img="{tmp.trv_mobile_img}" class="ti-le-global each-to-bgimg banner-ads-media">&nbsp;</div>
+	</div>
+	-->
+	<div class="lf f50 fullsize-if-mobile global-a-posi">
+		<div class="img-max-width">
+			<iframe width="500" height="281" src="{tmp.youtube_url}" frameborder="0" allowfullscreen=""></iframe>
+		</div>
 	</div>
 </div>';
 ?>
