@@ -301,6 +301,13 @@ class ___echbay_widget_random_blog extends WP_Widget {
 //			), EBE_get_page_template( 'blog_node' ) );
 //			), EBE_get_page_template( $html_node ) );
 			$html_node );
+			
+			// nếu không có dữ liệu -> in ra dữ liệu để test
+			if ( $content == '' ) {
+				echo '<!-- ';
+				print_r( $arr_select_data );
+				echo ' -->';
+			}
 //		}
 		
 		
