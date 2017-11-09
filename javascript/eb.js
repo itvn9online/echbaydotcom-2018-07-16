@@ -782,6 +782,7 @@ var _global_js_eb = {
 				var img = $(this).attr('data-img') || '';
 				if ( img != '' ) {
 					$(this).addClass('auto-size').removeClass('ti-le-global').height('auto').css({
+						'background-image' : 'none',
 						'line-height': 'normal'
 					}).html('<img src="' + img + '" width="' + a + '" />');
 				}
