@@ -6,6 +6,11 @@ var jEBE_slider_cache_option = {},
 
 function jEBE_slider ( jd, conf, callBack ) {
 	
+	//
+	if ( typeof callBack != 'function' ) {
+		callBack = null;
+	}
+	
 	// kiểm tra và nạp jQuery
 	if ( typeof jQuery != 'function' ) {
 		console.log('jQuery not found');
@@ -131,7 +136,45 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// chiều cao cho slide
 	var wit = $(jd).width(),
-		hai = ( conf['size'] ) == '' ? $(jd + ' li:first').height() : wit * eval( conf['size'] )/ conf['visible'] - 1;
+		hai = '';
+	
+	// thêm chức năng cho chiều cao tự động (auto)
+	if ( conf['size'] == '' ) {
+		hai = $(jd + ' li:first').height();
+	}
+	else if ( conf['size'] == 'auto' ) {
+		// Nếu có class auto resize -> trước đó bị hàm khác chặn mất rồi -> add lại class mới để xử lý
+		if ( $(jd + ' .auto-size').length > 1 ) {
+			$(jd + ' .auto-size').addClass('ti-le-global').removeClass('auto-size');
+		}
+		
+		// Nếu có nhiều hơn 1 ảnh -> tìm size thật
+		if ( $(jd + ' .ti-le-global').length > 1 ) {
+			// xóa class để không cho nó còn được resize nữa
+			$(jd + ' .ti-le-global').addClass('ti-le-global-xoa').removeClass('ti-le-global');
+			
+			// lấy ảnh đầu tiên của slider -> ưu tiên ảnh mobile trước -> load cho nhẹ và nhanh
+			var get_img_size = $(jd + ' li:first .ti-le-global').attr('data-mobile-img') || $(jd + ' li:first .ti-le-global').attr('data-table-img') || $(jd + ' li:first .ti-le-global').attr('data-img') || '';
+			console.log(get_img_size);
+			
+			//
+			var new_jd = jd.replace( /\.|\#/g, '_' );
+			$(jd + ' li:first .ti-le-global').html('<img src="' + get_img_size + '" id="' + new_jd + '" width="' + wit + '" data-class="' + jd + '" />');
+			
+			$('#' + new_jd).on('load', function () {
+				console.log('TESTTTTTTTTTTTTTTTTTTTTT! add function for slider');
+			});
+			
+//			jEBE_slider ( jd, conf, callBack );
+		}
+		
+		// thoát luôn
+		return false;
+	}
+	else {
+		hai = wit * eval( conf['size'] )/ conf['visible'] - 1;
+	}
+	
 	set_default_conf( 'lineHeight', hai + 'px' );
 	
 	$(jd).height( hai ).attr({
