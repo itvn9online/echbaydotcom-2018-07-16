@@ -781,7 +781,9 @@ var _global_js_eb = {
 				//
 				var img = $(this).attr('data-img') || '';
 				if ( img != '' ) {
-					$(this).addClass('auto-size').removeClass('ti-le-global').html('<img src="' + img + '" width="' + a + '" />');
+					$(this).addClass('auto-size').removeClass('ti-le-global').height('auto').css({
+						'line-height': 'normal'
+					}).html('<img src="' + img + '" width="' + a + '" />');
 				}
 			}
 			else if ( new_size != '' ) {
