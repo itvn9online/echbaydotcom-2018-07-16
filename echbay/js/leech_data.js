@@ -548,10 +548,15 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 								a2[i] = a2[i].split(':')[0];
 								
 								// xác định tag của foreach
-								var tag_begin = a2[i].split(' ').pop().split('#')[0].split('.')[0];
+								var tag_begin = a2[i].split(' ').pop().split('#')[0].split('.')[0],
+									tag_end = '';
+								if ( tag_begin != '' ) {
+									tag_end = '</' + tag_begin + '>';
+									tag_begin = '<' + tag_begin + '>';
+								}
 								
 								$( a2[i] ).each(function() {
-									str += '<' + tag_begin + '>' + ( $(this).html() || '' ) + '</' + tag_begin + '>';
+									str += tag_begin + ( $(this).html() || '' ) + tag_end;
 								});
 							} else {
 								str = $( a2[i] ).html() || '';

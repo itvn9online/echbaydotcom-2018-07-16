@@ -592,9 +592,11 @@ else if ( $__cf_row['cf_current_price'] != '' ) {
 
 
 // tạo mặt nạ cho nội dung
+/*
 if ( $__cf_row['cf_set_mask_for_details'] != 0 ) {
 	$__cf_row['cf_default_css'] .= '.thread-content-mask{right:0;bottom:0;display:block}';
 }
+*/
 
 
 

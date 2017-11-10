@@ -888,6 +888,12 @@ $arr_main_content = array(
 	'tmp.lang_sanpham_tuongtu' => EBE_get_lang('tuongtu'),
 );
 
+// tạo mặt nạ cho nội dung
+$arr_main_content['thread_content_mask'] = '';
+if ( $__cf_row['cf_set_mask_for_details'] != 0 ) {
+	$arr_main_content['thread_content_mask'] = ' active-content-mask';
+}
+
 
 // gọi đến function riêng của từng site
 if ( function_exists('eb_details_for_current_domain') ) {
