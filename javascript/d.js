@@ -2691,23 +2691,23 @@ function WGR_check_load_js_category ( i ) {
 	// MENU chính -> xóa LI hiện tại, ghi nội dung mới vào
 	// catgory
 	if ( eb_site_group.length > 0 && $('.wgr-load-js-category').length > 0 ) {
-		$('.wgr-load-js-category').after( WGR_get_js_category_to_menu( eb_site_group ) ).remove();
+		$('.wgr-load-js-category').addClass('echbay-category-order').after( WGR_get_js_category_to_menu( eb_site_group ) ).remove();
 	}
 	
 	// blog group
 	if ( eb_blog_group.length > 0 &&  $('.wgr-load-js-blogs').length > 0 ) {
-		$('.wgr-load-js-blogs').after( WGR_get_js_category_to_menu( eb_blog_group ) ).remove();
+		$('.wgr-load-js-blogs').addClass('echbay-category-order').after( WGR_get_js_category_to_menu( eb_blog_group ) ).remove();
 	}
 	
 	// SUB-MENU -> bổ sung nội dung vào thẻ LI hiện tại
 	// sub catgory
 	if ( eb_site_group.length > 0 && $('.wgr-load-js-sub-category').length > 0 ) {
-		$('.wgr-load-js-sub-category').append( WGR_get_js_sub_category_to_menu( eb_site_group ) );
+		$('.wgr-load-js-sub-category').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_site_group ) );
 	}
 	
 	// sub blog group
 	if ( eb_blog_group.length > 0 &&  $('.wgr-load-js-sub-blogs').length > 0 ) {
-		$('.wgr-load-js-sub-blogs').append( WGR_get_js_sub_category_to_menu( eb_blog_group ) );
+		$('.wgr-load-js-sub-blogs').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_blog_group ) );
 	}
 	
 }
