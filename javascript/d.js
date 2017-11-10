@@ -1505,7 +1505,9 @@ function ___eb_list_post_run ( r ) {
 		if ( a != '' ) {
 			
 			// chỉ xử lý khi nội dung đủ lớn
-			if ( cf_cats_description_viewmore > 0 && $('.global-cats-description').height() < cf_cats_description_viewmore * 1.5 ) {
+//			if ( cf_cats_description_viewmore > 0 && $('.global-cats-description').height() < cf_cats_description_viewmore * 1.5 ) {
+			if ( cf_cats_description_viewmore == 0 || $('.global-cats-description').height() < cf_cats_description_viewmore * 1.5 ) {
+				$('.global-cats-description').addClass('global-cats-description-active');
 				return false;
 			}
 			
@@ -1725,7 +1727,11 @@ function ___eb_details_post_run ( r ) {
 	
 	
 	// tạo hiệu ứng thu gọn nội dung -> bấm xem thêm để hiển thị đầy đủ
-	if ( cf_product_details_viewmore > 0 ) {
+	(function () {
+		// thiết lập bằng 0 -> tắt chức năng
+		if ( cf_product_details_viewmore == 0 ) {
+			return false;
+		}
 		
 		var a = null;
 		
@@ -1742,6 +1748,14 @@ function ___eb_details_post_run ( r ) {
 		}
 		
 		if ( a != null ) {
+			
+			// nếu tính năng được kích hoạt, nhưng chiều cao không đủ
+			if ( a.height() < cf_product_details_viewmore * 1.5 ) {
+				if ( cf_tester_mode == 1 ) console.log('cf_product_details_viewmore it active! but height of content not enough');
+				return false;
+			}
+			
+			//
 			a.addClass('thread-content-viewmore').height( cf_product_details_viewmore ).after('<br /><div class="text-center"><a href="javascript:;" class="click-viewmore-thread-details">Xem thêm</a></div>');
 			
 			//
@@ -1758,7 +1772,7 @@ function ___eb_details_post_run ( r ) {
 			});
 		}
 		
-	}
+	})();
 	
 	
 	
