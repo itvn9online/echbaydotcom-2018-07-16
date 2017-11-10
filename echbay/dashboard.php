@@ -111,7 +111,8 @@ if ( date_time - $lats_update_file_test > 3600 ) {
 	
 	// xóa file test trước đó nếu có
 	if ( file_exists( $file_test ) ) {
-		unlink( $file_test );
+		_eb_remove_file( $file_test );
+//		unlink( $file_test );
 	}
 	
 	// tạo file ở root

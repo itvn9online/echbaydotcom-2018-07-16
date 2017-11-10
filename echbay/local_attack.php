@@ -12,7 +12,8 @@ $file_test = ABSPATH . 'test_local_attack.txt';
 
 //
 if ( file_exists( $file_test ) ) {
-	unlink($file_test) or die('Không xóa được file test cũ, vui lòng xóa đi rồi thử lại');
+//	unlink($file_test) or die('Không xóa được file test cũ, vui lòng xóa đi rồi thử lại');
+	_eb_remove_file($file_test);
 }
 
 
