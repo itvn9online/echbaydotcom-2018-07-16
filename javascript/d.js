@@ -249,23 +249,35 @@ function ___eb_details_slider_v2 () {
 	if ( slider_len <= 1 ) {
 		$('.hide-if-slider-null').hide();
 		
-		// nếu chỉ có 1 ảnh -> in luôn cái ảnh đấy ra
-//		if ( slider_len == 1 ) {
-			var a = $('.thread-details-mobileAvt').attr('data-img') || '';
-			if ( a != '' ) {
-				$('.thread-details-mobileAvt').removeClass('ti-le-global').height('auto').css({
-					'line-height' : 'normal'
-				}).html( '<img src="' + a + '" width="' + $('.thread-details-mobileAvt').width() + '" />' );
-			}
-//		}
+		//
+		var a = '',
+			wit = $('.thread-details-mobileAvt').width();
+		// nếu chỉ có 1 ảnh -> in luôn cái ảnh đấy ra -> ảnh slider có thể là ảnh chất lượng hơn
+		if ( slider_len == 1 ) {
+			a = $(html_for_get).attr('data-src') || $(html_for_get).attr('src') || '';
+		}
+		// xử lý chính ảnh đại diện
+		else {
+			a = $('.thread-details-mobileAvt').attr('data-img') || '';
+		}
+		
+		//
+		if ( a != '' ) {
+			$('.thread-details-mobileAvt').removeClass('ti-le-global').height('auto').css({
+				'background-image' : 'none',
+				'line-height' : 'normal'
+			}).html( '<img src="' + a + '" data-width="' + wit + '" style="max-width:' + wit + 'px;" />' );
+		}
 		
 		//
 		return false;
 	}
 	
+	
 	//
 	$(html_for_get).each(function() {
-		sr = $(this).attr(data_get) || '';
+//		sr = $(this).attr(data_get) || '';
+		sr = $(this).attr('data-src') || $(this).attr('src') || '';
 //		console.log( sr );
 		
 		//
