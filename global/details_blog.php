@@ -4,6 +4,9 @@
 
 
 $eb_blog_2content = _eb_get_post_object( $pid, '_eb_blog_2content' );
+if ( $eb_blog_2content != '' ) {
+	$eb_blog_2content = '<div class="blog-details-2content">' . $eb_blog_2content . '</div>';
+}
 
 // tag of blog
 $arr_list_tag = wp_get_object_terms( $pid, 'blog_tag' );
