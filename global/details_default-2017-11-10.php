@@ -34,17 +34,8 @@ if ( _eb_get_post_object( $pid, '_eb_product_noindex', 0 ) == 1 ) {
 
 
 //
-$trv_giaban = 0;
-$trv_giamoi = 0;
-$pt = 0;
-if ( $__post->post_type == 'post' ) {
-	$trv_giaban = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_oldprice', 0 ) );
-	$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );
-	
-	if ($trv_giaban > $trv_giamoi) {
-		$pt = 100 - _eb_number_only ($trv_giamoi * 100 / $trv_giaban);
-	}
-}
+$trv_giaban = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_oldprice', 0 ) );
+$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );
 $trv_luotxem = 0;
 $trv_luotthich = 0;
 /*
@@ -52,9 +43,6 @@ if ( $trv_giamoi == 0 ) {
 	$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_price', 0 ) );
 }
 */
-
-
-$eb_blog_2content = '';
 
 
 
@@ -98,17 +86,16 @@ else {
 
 
 //
+$arr_product_js = array (
+	'tieude' => '\'' . _eb_str_block_fix_content ( $__post->post_title ) . '\'',
+	'gia' => $trv_giaban,
+	'gm' => $trv_giamoi,
+);
 $product_js = '';
-if ( $__post->post_type == 'post' ) {
-	$arr_product_js = array (
-		'tieude' => '\'' . _eb_str_block_fix_content ( $__post->post_title ) . '\'',
-		'gia' => $trv_giaban,
-		'gm' => $trv_giamoi,
-	);
-	foreach ( $arr_product_js as $k => $v ) {
-		$product_js .= ',' . $k . ':' . $v;
-	}
+foreach ( $arr_product_js as $k => $v ) {
+	$product_js .= ',' . $k . ':' . $v;
 }
+
 
 
 
@@ -243,29 +230,24 @@ else if ( $__cf_row['cf_global_big_banner'] == 0 ) {
 
 
 // Hết hoặc Còn hàng
-$trv_mua = 0;
-$trv_max_mua = 0;
+$trv_mua = _eb_get_post_object( $pid, '_eb_product_buyer', 0 );
+$trv_max_mua = _eb_get_post_object( $pid, '_eb_product_quantity', 0 );
 $str_tinh_trang = '<span class="greencolor">Sẵn hàng</span>';
-$con_hay_het = 1;
-$trv_trangthai = 0;
-$schema_availability = 'http://schema.org/InStock';
 
-if ( $__post->post_type == 'post' ) {
-	$trv_mua = _eb_number_only( _eb_get_post_object( $pid, '_eb_product_buyer', 0 ) );
-	$trv_max_mua = _eb_number_only( _eb_get_post_object( $pid, '_eb_product_quantity', 0 ) );
+$con_hay_het = 1;
+
+//
+$trv_trangthai = _eb_get_post_object( $pid, '_eb_product_status', 0 );
+$schema_availability = 'http://schema.org/InStock';
+if ( $trv_trangthai == 7 || $trv_mua > $trv_max_mua ) {
+	$schema_availability = 'http://schema.org/SoldOut';
 	
-	//
-	$trv_trangthai = _eb_get_post_object( $pid, '_eb_product_status', 0 );
-	if ( $trv_trangthai == 7 || $trv_mua > $trv_max_mua ) {
-		$schema_availability = 'http://schema.org/SoldOut';
-		
-		$str_tinh_trang = '<span class="redcolor">Hết hàng</span>';
-		
-		$con_hay_het = 0;
-		
-		// thêm class ẩn nút mua hàng
-		$css_m_css .= ' details-hideif-hethang';
-	}
+	$str_tinh_trang = '<span class="redcolor">Hết hàng</span>';
+	
+	$con_hay_het = 0;
+	
+	// thêm class ẩn nút mua hàng
+	$css_m_css .= ' details-hideif-hethang';
 }
 
 
@@ -284,45 +266,39 @@ $schema_priceValidUntil = $post_modified + 24 * 3600 * 365;
 
 
 //
-$trv_rating_value = 0;
-$trv_rating_count = 0;
-$rating_value_img = '5.0';
+$trv_rating_value = _eb_get_post_object( $pid, '_eb_product_rating_value', 0 );
+if ( $trv_rating_value == '' ) {
+	$trv_rating_value = 0;
+}
+//echo $trv_rating_value . "\n";
 
-if ( $__post->post_type == 'post' ) {
-	$trv_rating_value = _eb_get_post_object( $pid, '_eb_product_rating_value', 0 );
-	if ( $trv_rating_value == '' ) {
-		$trv_rating_value = 0;
-	}
-	//echo $trv_rating_value . "\n";
+$trv_rating_count = _eb_get_post_object( $pid, '_eb_product_rating_count', 0 );
+if ( $trv_rating_count == '' ) {
+	$trv_rating_count = 0;
+}
+//echo $trv_rating_count . "\n";
+
+// Tạo rate ngẫu nhiên
+if ($trv_rating_value < 6 || $trv_rating_count == 0) {
+	$trv_rating_value = rand ( 6, 10 );
+	$trv_rating_count = rand ( 1, 5 );
 	
-	$trv_rating_count = _eb_get_post_object( $pid, '_eb_product_rating_count', 0 );
-	if ( $trv_rating_count == '' ) {
-		$trv_rating_count = 0;
-	}
-	//echo $trv_rating_count . "\n";
+	// dùng update_post_meta thay cho add_post_meta
+	update_post_meta( $pid, '_eb_product_rating_value', $trv_rating_value );
+	update_post_meta( $pid, '_eb_product_rating_count', $trv_rating_count );
 	
-	// Tạo rate ngẫu nhiên
-	if ($trv_rating_value < 6 || $trv_rating_count == 0) {
-		$trv_rating_value = rand ( 6, 10 );
-		$trv_rating_count = rand ( 1, 5 );
-		
-		// dùng update_post_meta thay cho add_post_meta
-		update_post_meta( $pid, '_eb_product_rating_value', $trv_rating_value );
-		update_post_meta( $pid, '_eb_product_rating_count', $trv_rating_count );
-		
-		//
-		/*
-		$arr_object_post_meta['_eb_product_rating_value'] = $trv_rating_value;
-		$arr_object_post_meta['_eb_product_rating_count'] = $trv_rating_count;
-		
-		update_post_meta( $pid, eb_post_obj_data, $arr_object_post_meta );
-		*/
-	}
+	//
+	/*
+	$arr_object_post_meta['_eb_product_rating_value'] = $trv_rating_value;
+	$arr_object_post_meta['_eb_product_rating_count'] = $trv_rating_count;
 	
-	$rating_value_img = $trv_rating_value / 2;
-	if (strlen ( $rating_value_img ) == 1) {
-		$rating_value_img = $rating_value_img . '.0';
-	}
+	update_post_meta( $pid, eb_post_obj_data, $arr_object_post_meta );
+	*/
+}
+
+$rating_value_img = $trv_rating_value / 2;
+if (strlen ( $rating_value_img ) == 1) {
+	$rating_value_img = $rating_value_img . '.0';
 }
 	
 	
@@ -488,6 +464,14 @@ if ($main_content == false) {
 
 
 
+//
+$pt = 0;
+if ($trv_giaban > $trv_giamoi) {
+	$pt = 100 - ( int ) ($trv_giamoi * 100 / $trv_giaban);
+}
+
+
+
 
 // Mặc định là cho vào sản phẩm
 $html_v2_file = 'thread_details';
@@ -503,14 +487,274 @@ $str_for_details_sidebar = '';
 
 // với blog -> sử dụng giao diện khác post
 if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
-	include EB_THEME_PLUGIN_INDEX . 'global/details_blog.php';
+	
+	// tag of blog
+	$arr_list_tag = wp_get_object_terms( $pid, 'blog_tag' );
+	
+	
+	// bài xem nhiều
+	$args = array(
+		'post_type' => EB_BLOG_POST_TYPE,
+		'offset' => 0,
+		'tax_query' => array(
+			array(
+				'taxonomy' => EB_BLOG_POST_LINK,
+				'terms' => $ant_id,
+			)
+		),
+	);
+	
+	
+	//
+	$html_v2_file = 'blog_details';
+//	$html_file = $html_v2_file . '.html';
+	
+	
+	// nếu không tồn tại file thiết kế riêng -> kiểm tra file HTML mẫu
+//	if ( ! file_exists( EB_THEME_HTML . $html_file ) ) {
+		if ( $__cf_row['cf_blog_column_style'] != '' ) {
+//			$html_v2_file = $html_v2_file . '_' . $__cf_row['cf_blog_column_style'];
+			
+			$custom_product_flex_css = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_blog_column_style'] );
+		}
+//	}
+//	echo $__cf_row['cf_blog_column_style'] . '<br>' . "\n";
+//	echo $html_v2_file . '<br>' . "\n";
+	
+	
+	// kiểm tra nếu có file html riêng -> sử dụng html riêng
+//	$check_html_rieng = _eb_get_private_html( $html_file, 'blog_node.html' );
+	
+//	$thu_muc_for_html = $check_html_rieng['dir'];
+//	$blog_html_small_node = $check_html_rieng['html'];
+	
+	//
+//	$blog_list_medium = _eb_load_post( 10, $args, _eb_get_html_for_module( 'blog_node.html' ) );
+	
+	//
+//	$blog_list_medium = _eb_load_post( 10, $args, EBE_get_page_template( 'blog_node' ) );
+//	$custom_blog_node_flex_css = EBE_get_html_file_addon( 'blog_node', $__cf_row['cf_blog_node_html'] );
+	
+	//
+	if ( $__cf_row['cf_num_details_blog_list'] > 0 ) {
+		$blog_list_medium = _eb_load_post( $__cf_row['cf_num_details_blog_list'], $args, EBE_get_page_template( 'blogs_node' ) );
+	}
+	$custom_blog_node_flex_css = EBE_get_html_file_addon( 'blogs_node', $__cf_row['cf_blog_node_html'] );
+	
+	//
+	$str_for_details_sidebar = _eb_echbay_get_sidebar( 'blog_content_details_sidebar' );
+	
 }
 else if ( $__post->post_type == 'page' ) {
-	include EB_THEME_PLUGIN_INDEX . 'global/details_page.php';
+	$html_v2_file = 'page';
+//	$html_file = $html_v2_file . '.html';
+	
+	// nếu không tồn tại file thiết kế riêng -> kiểm tra file HTML mẫu
+//	if ( ! file_exists( EB_THEME_HTML . $html_file ) ) {
+		if ( $__cf_row['cf_page_column_style'] != '' ) {
+//			$html_v2_file = $html_v2_file . '_' . $__cf_row['cf_page_column_style'];
+			
+			$custom_product_flex_css = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_page_column_style'] );
+		}
+//	}
+//	echo $__cf_row['cf_page_column_style'] . '<br>' . "\n";
+//	echo $html_v2_file . '<br>' . "\n";
+	
+	// kiểm tra nếu có file html riêng -> sử dụng html riêng
+//	$check_html_rieng = _eb_get_private_html( $html_file, 'blog_node.html' );
+//	$thu_muc_for_html = $check_html_rieng['dir'];
 }
 // post
 else {
-	include EB_THEME_PLUGIN_INDEX . 'global/details_post.php';
+	
+	// lấy lượt xem sản phẩm
+	$trv_luotxem = _eb_number_only( _eb_get_post_object( $pid, '_eb_product_views', 0 ) );
+	
+	// kiểm tra trong cookie xem có chưa
+	$str_history = _eb_getCucki('wgr_product_id_view_history');
+	if ( $str_history == '' || strstr( $str_history, '[' . $pid . ']' ) == false ) {
+		// tăng lượt view lên -> do lượt view sử dụng cookie lưu trong 7 ngày, nên lượt view cũng tăng nhiều lên 1 chút
+		$trv_luotxem += rand( 8, 12 );
+		
+		// cập nhật lượt view mới
+		update_post_meta( $pid, '_eb_product_views', $trv_luotxem );
+	}
+	
+	
+	// set trạng thái trang là sản phẩm
+	$web_og_type = 'product';
+	
+	//
+//	$check_html_rieng = _eb_get_private_html( 'blog_details.html', 'blog_node.html' );
+	
+//	$product_list_medium = _eb_load_post( 10, array(), $check_html_rieng['html'] );
+	
+	
+	
+	// lấy màu sắc sản phẩm
+	/*
+	$sql = _eb_q("SELECT *
+	FROM
+		" . wp_postmeta . "
+	WHERE
+		meta_key = '_eb_category_status'
+		AND meta_value = 7");
+//	print_r($sql);
+	
+	//
+	$arr_post_options = wp_get_object_terms( $pid, 'post_options' );
+//	print_r($arr_post_options);
+	
+	foreach ( $sql as $v ) {
+//		print_r($v);
+		
+		foreach ( $arr_post_options as $v2 ) {
+//			print_r($v2);
+			
+			//
+			if ( $v->post_id == $v2->parent ) {
+				$arr_product_color .= ',{ten:"' . $v2->name . '",val:"' . _eb_get_cat_object( $v2->term_id, '_eb_category_title', '#fff' ) . '"}';
+			}
+		}
+	}
+	*/
+	
+	
+	
+	
+	// Tạo menu cho post option
+	$arr_post_options = wp_get_object_terms( $pid, 'post_options' );
+//	if ( mtv_id == 1 ) print_r($arr_post_options);
+	foreach ( $arr_post_options as $v ) {
+		if ( $v->parent > 0 ) {
+//			$parent_name = get_term_by( 'id', $v->parent, $v->taxonomy );
+			$parent_name = WGR_get_taxonomy_parent( $v );
+//			if ( mtv_id == 1 ) print_r( $parent_name );
+			
+			//
+			$other_option_list .= '
+<tr>
+	<td><div>' . $parent_name->name . '</div></td>
+	<td><div><a href="' . _eb_c_link( $v->term_id, $v->taxonomy ) . '" target="_blank">' . $v->name . '</a></div></td>
+</tr>';
+		}
+	}
+	
+	
+	
+	
+	// tag of post
+	$arr_list_tag = get_the_tags( $pid );
+	
+	
+	//
+	$limit_other_post = $__cf_row['cf_num_details_list'];
+	
+	/*
+	* other post
+	*/
+	
+	// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
+	$post_primary_categories = array();
+//		print_r( $post_categories );
+	foreach ( $post_categories as $v ) {
+		if ( _eb_get_cat_object( $v, '_eb_category_primary', 0 ) > 0 ) {
+			$post_primary_categories[] = $v;
+		}
+	}
+//		print_r( $post_primary_categories );
+	
+	// nếu không tìm được -> lấy tất
+	if ( count( $post_primary_categories ) == 0 ) {
+		$post_primary_categories = $post_categories;
+	}
+//	print_r( $post_primary_categories );
+	
+	
+	//
+	if ( $limit_other_post > 0 ) {
+		
+		//
+		$prev_post = get_previous_post();
+	//	print_r($prev_post);
+		if ( isset($prev_post->ID) ) {
+			$limit_other_post--;
+			
+			$other_post_right .= _eb_load_post( 1, array(
+				'post__in' => array(
+					$prev_post->ID
+				),
+			) );
+		}
+		
+		//
+		$next_post = get_next_post();
+	//	print_r($next_post);
+		if ( isset($next_post->ID) ) {
+			$limit_other_post--;
+			
+			$other_post_right .= _eb_load_post( 1, array(
+				'post__in' => array(
+					$next_post->ID
+				),
+			) );
+		}
+		
+		// nếu không có giới hạn bài viết cho phần other post -> lấy mặc định 10 bài
+//		if ( ! isset($limit_other_post) ) {
+//			$limit_other_post = $__cf_row['cf_num_details_list'];
+//		}
+		
+		
+		//
+		$other_post_right .= _eb_load_post( $limit_other_post, array(
+//			'category__in' => wp_get_post_categories( $__post->ID ),
+			'category__in' => $post_primary_categories,
+			'post__not_in' => array(
+				$__post->ID
+			),
+		) );
+		
+	}
+	
+	
+	
+	// lấy thêm loạt bài tiếp theo, 1 số giao diện sẽ sử dụng
+	if ( $__cf_row['cf_num_details2_list'] > 0 ) {
+		$other_post_2right .= _eb_load_post( $__cf_row['cf_num_details2_list'], array(
+			'category__in' => $post_primary_categories,
+			'post__not_in' => array(
+				$__post->ID
+			),
+		) );
+	}
+	
+	
+	
+	// lấy thêm loạt bài tiếp theo, 1 số giao diện sẽ sử dụng
+	if ( $__cf_row['cf_num_details3_list'] > 0 ) {
+		$other_post_3right .= _eb_load_post( $__cf_row['cf_num_details3_list'], array(
+			'category__in' => $post_primary_categories,
+			'post__not_in' => array(
+				$__post->ID
+			),
+		) );
+	}
+	
+	
+	
+	//
+	if ( $__cf_row['cf_post_column_style'] != '' ) {
+		$custom_product_flex_css = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_post_column_style'] );
+	}
+	
+	
+	
+	//
+	$str_for_details_sidebar = _eb_echbay_get_sidebar( 'post_content_sidebar' );
+	
+	
+	
 }
 
 //
@@ -544,23 +788,18 @@ ob_end_clean();
 
 
 //
-$trv_masanpham = '';
-$product_gallery = '';
-$product_list_color = '';
-if ( $__post->post_type == 'post' ) {
-	$trv_masanpham = _eb_get_post_object( $pid, '_eb_product_sku' );
-	if ( $trv_masanpham == '' ) {
-		$trv_masanpham = $pid;
-	}
-	
-	$product_gallery = _eb_get_post_object( $pid, '_eb_product_gallery' );
-	$product_gallery = str_replace( ' src=', ' data-src=', $product_gallery );
-	$product_gallery = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_gallery );
-	
-	$product_list_color = _eb_get_post_object( $pid, '_eb_product_list_color' );
-	$product_list_color = str_replace( ' src=', ' data-src=', $product_list_color );
-	$product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_list_color );
+$trv_masanpham = _eb_get_post_object( $pid, '_eb_product_sku' );
+if ( $trv_masanpham == '' ) {
+	$trv_masanpham = $pid;
 }
+
+$product_gallery = _eb_get_post_object( $pid, '_eb_product_gallery' );
+$product_gallery = str_replace( ' src=', ' data-src=', $product_gallery );
+$product_gallery = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_gallery );
+
+$product_list_color = _eb_get_post_object( $pid, '_eb_product_list_color' );
+$product_list_color = str_replace( ' src=', ' data-src=', $product_list_color );
+$product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_list_color );
 
 //
 $trv_h1_tieude = str_replace( '<', '&lt;', str_replace( '>', '&gt;', $__post->post_title ) );
@@ -593,8 +832,8 @@ $arr_main_content = array(
 	'tmp.trv_galerry' => $product_gallery,
 	'tmp.trv_list_color' => $product_list_color,
 	
-	'tmp.trv_mua' => $trv_mua,
-	'tmp.trv_max_mua' => $trv_max_mua,
+	'tmp.trv_mua' => (int) $trv_mua,
+	'tmp.trv_max_mua' => (int) $trv_max_mua,
 	'tmp.str_tinh_trang' => $str_tinh_trang,
 	
 	'tmp.blog_list_medium' => $blog_list_medium,
@@ -642,9 +881,6 @@ $arr_main_content = array(
 	
 	// tìm và tạo sidebar luôn
 //	'tmp.str_sidebar' => _eb_echbay_sidebar( $id_for_get_sidebar ),
-	
-	//
-	'tmp.eb_blog_2content' => $eb_blog_2content,
 	
 	// lang
 	'tmp.lang_btn_muangay' => EBE_get_lang('mungay'),
@@ -701,15 +937,12 @@ $main_content = EBE_html_template( $main_content, $arr_main_content );
 
 
 // product size
-$product_size = '';
-if ( $__post->post_type == 'post' ) {
-	$product_size = _eb_get_post_object( $pid, '_eb_product_size' );
-	if ( $product_size != '' ) {
-		if ( substr( $product_size, 0, 1 ) == ',' ) {
-			$product_size = substr( $product_size, 1 );
-		}
-		$product_size = str_replace( '"', '\"', $product_size );
+$product_size = _eb_get_post_object( $pid, '_eb_product_size' );
+if ( $product_size != '' ) {
+	if ( substr( $product_size, 0, 1 ) == ',' ) {
+		$product_size = substr( $product_size, 1 );
 	}
+	$product_size = str_replace( '"', '\"', $product_size );
 }
 
 
@@ -727,26 +960,22 @@ if ( comments_open() || get_comments_number() ) {
 
 
 //
+$_eb_product_ngayhethan = _eb_get_post_object( $pid, '_eb_product_ngayhethan' );
+$_eb_product_giohethan = _eb_get_post_object( $pid, '_eb_product_giohethan' );
 $trv_ngayhethan = 0;
-$_eb_product_ngayhethan = '';
-$_eb_product_giohethan = '';
-if ( $__post->post_type == 'post' ) {
-	$_eb_product_ngayhethan = _eb_get_post_object( $pid, '_eb_product_ngayhethan' );
-	$_eb_product_giohethan = _eb_get_post_object( $pid, '_eb_product_giohethan' );
-	if ( $_eb_product_ngayhethan != '' ) {
-		if ( $_eb_product_giohethan == '' ) {
-			$_eb_product_giohethan = '23:59';
-		}
-		
-		// kiểm tra định dạng này tháng
-		$check_dinh_dang_ngay = explode( '/', $_eb_product_ngayhethan );
-		
-		// định dạng chuẩn là: YYYY/MM/DD
-		if ( count( $check_dinh_dang_ngay ) == 3 && strlen( $check_dinh_dang_ngay[0] ) == 4 ) {
-			$trv_ngayhethan = $_eb_product_ngayhethan . ' ' . $_eb_product_giohethan;
-//			echo $trv_ngayhethan;
-			$trv_ngayhethan = strtotime( $trv_ngayhethan );
-		}
+if ( $_eb_product_ngayhethan != '' ) {
+	if ( $_eb_product_giohethan == '' ) {
+		$_eb_product_giohethan = '23:59';
+	}
+	
+	// kiểm tra định dạng này tháng
+	$check_dinh_dang_ngay = explode( '/', $_eb_product_ngayhethan );
+	
+	// định dạng chuẩn là: YYYY/MM/DD
+	if ( count( $check_dinh_dang_ngay ) == 3 && strlen( $check_dinh_dang_ngay[0] ) == 4 ) {
+		$trv_ngayhethan = $_eb_product_ngayhethan . ' ' . $_eb_product_giohethan;
+//		echo $trv_ngayhethan;
+		$trv_ngayhethan = strtotime( $trv_ngayhethan );
 	}
 }
 

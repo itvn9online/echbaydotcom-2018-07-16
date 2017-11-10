@@ -279,7 +279,7 @@ $eb_arr_noibat_meta_box = array(
 );
 
 $eb_arr_blog_2content_meta_box = array(
-	'_eb_blog_2content' => 'Điểm nổi bật',
+	'_eb_blog_2content' => 'Nội dung phụ',
 );
 
 // thông tin phụ của trang sản phẩm
@@ -410,7 +410,7 @@ function EchBayMetaBox () {
 	
 	// thẻ META cho blog
 	add_meta_box( 'eb-blog-bosung', 'Thông tin bổ sung', 'EchBayPhuOutput', EB_BLOG_POST_TYPE );
-	add_meta_box( 'eb-blog-2content', 'Nội dung phụ', 'EchBayNoibatOutput', EB_BLOG_POST_TYPE );
+	add_meta_box( 'eb-blog-2content', 'Nội dung phụ', 'EchBayBlog2Content', EB_BLOG_POST_TYPE );
 	
 	
 	// thông tin bổ sung cho quảng cáo
