@@ -90,8 +90,10 @@ if ( eb_web_protocol == 'https' ) {
 // và host không phải là bản demo -> cập nhật lại url mới luôn và ngay
 else if ( $_SERVER['HTTP_HOST'] != 'demo.webgiare.org' ) {
 	// riêng đối với domain demo của webgiare
-	if ( strstr( $current_homeurl, 'demo.webgiare.org' ) == true
-	|| strstr( $current_siteurl, 'demo.webgiare.org' ) == true ) {
+	if ( strstr( $current_homeurl, '/demo.webgiare.org' ) == true
+	|| strstr( $current_homeurl, 'www.demo.webgiare.org' ) == true
+	|| strstr( $current_siteurl, '/demo.webgiare.org' ) == true
+	|| strstr( $current_siteurl, 'www.demo.webgiare.org' ) == true ) {
 		_eb_update_option( 'home', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
 		_eb_update_option( 'siteurl', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
 		
