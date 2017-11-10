@@ -1505,7 +1505,7 @@ function ___eb_list_post_run ( r ) {
 		if ( a != '' ) {
 			
 			// chỉ xử lý khi nội dung đủ lớn
-			if ( cf_cats_description_viewmore > 0 && $('.global-cats-description').height() < cf_cats_description_viewmore ) {
+			if ( cf_cats_description_viewmore > 0 && $('.global-cats-description').height() < cf_cats_description_viewmore * 1.5 ) {
 				return false;
 			}
 			
