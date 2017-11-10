@@ -2282,7 +2282,7 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_li
 		//
 		$cat_order = 0;
 		if ( $this_id == 0 ) {
-			$cat_order = (int) _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
+			$cat_order = _eb_number_only( _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 ) );
 		}
 		
 		//

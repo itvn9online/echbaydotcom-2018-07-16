@@ -2646,7 +2646,7 @@ function WGR_get_js_sub_category_to_menu ( arr ) {
 	
 	str += '<ul class="sub-menu cf">';
 	for ( var i = 0; i < arr.length; i++ ) {
-		str += '<li><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
+		str += '<li style="order:' + arr[i].order + ';"><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
 	}
 	str += '</ul>';
 	
@@ -2662,7 +2662,7 @@ function WGR_get_js_category_to_menu ( arr ) {
 	var str = '';
 	
 	for ( var i = 0; i < arr.length; i++ ) {
-		str += '<li><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
+		str += '<li style="order:' + arr[i].order + ';"><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
 	}
 	
 	return str;
