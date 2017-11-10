@@ -356,7 +356,12 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			
 			// in thẳng
 			if ( isset( $sql->post ) && isset( $sql->post->post_content ) ) {
-				echo $sql->post->post_content;
+				if ( $sql->post->post_content == '' ) {
+					echo $sql->post->post_excerpt;
+				}
+				else {
+					echo $sql->post->post_content;
+				}
 			}
 			
 			// sử dụng hàm content của wp -> nặng hơn -> ko thích dùng

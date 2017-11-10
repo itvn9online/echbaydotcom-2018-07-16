@@ -483,6 +483,49 @@ if ( mtv_id == 0 ) {
 	// Thay doi logo admin wordpress
 	function EBE_login_css() {
 		
+		/*
+		* Chỉnh lại URL của database nếu vẫn là URL demo
+		*/
+		global $wpdb;
+		
+		//
+		if ( function_exists('_eb_q') ) {
+			$sql = _eb_q("SELECT *
+			FROM
+				`" . $wpdb->options . "`
+			WHERE
+				option_name = 'siteurl'
+				OR option_name = 'home'
+			ORDER BY
+				option_id DESC");
+//			print_r( $sql );
+			
+			//
+			$current_homeurl = '';
+			$current_siteurl = '';
+			foreach ( $sql as $v ) {
+				if ( $v->option_name == 'home' ) {
+					$current_homeurl = $v->option_value;
+				}
+				else if ( $v->option_name == 'siteurl' ) {
+					$current_siteurl = $v->option_value;
+				}
+			}
+			
+			// và host không phải là bản demo -> cập nhật lại url mới luôn và ngay
+			if ( $_SERVER['HTTP_HOST'] != 'demo.webgiare.org' ) {
+				// riêng đối với domain demo của webgiare
+				if ( strstr( $current_homeurl, 'demo.webgiare.org' ) == true
+				|| strstr( $current_siteurl, 'demo.webgiare.org' ) == true ) {
+					_eb_update_option( 'home', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+					_eb_update_option( 'siteurl', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+					
+					wp_redirect( _eb_full_url(), 301 );
+				}
+			}
+		}
+		
+		
 		// duong dan den file css moi
 		$login_css = EB_URL_OF_PLUGIN . 'css/login.css?v=' . time();
 		
