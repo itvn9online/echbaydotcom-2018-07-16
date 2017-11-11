@@ -27,14 +27,26 @@ if ( _eb_check_email_type ( $creds['user_login'] ) != 1 ) {
 	_eb_alert( 'Email không đúng định dạng' );
 }
 
-//
-$user = wp_signon( $creds, false );
+// true -> với site có SSL không cần đăng nhập lại
+if ( eb_web_protocol == 'https' ) {
+	$user = wp_signon( $creds, true );
+}
+// false -> với site SSL thì phải đăng nhập lại
+else {
+	$user = wp_signon( $creds, false );
+}
+
 if ( is_wp_error($user) ) {
 	_eb_alert('Tài khoản hoặc mật khẩu không chính xác');
 //	echo $user->get_error_message();
 }
 //print_r($user);
 //___eb_custom_login( $creds );
+
+
+//
+//wp_set_current_user($user_ID);
+//wp_set_auth_cookie($user_ID);
 
 
 
