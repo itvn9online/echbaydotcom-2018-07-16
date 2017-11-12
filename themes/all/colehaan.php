@@ -20,7 +20,7 @@ $eb_all_themes_support["colehaan"]["top"][] = "breadcrumb-top1.php";
 //
 $eb_all_themes_support["colehaan"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["colehaan"]["footer"][] = "colehaan-footer1.php";
-$eb_all_themes_support["colehaan"]["footer"][] = "echbaytwo-footer3.php";
+//$eb_all_themes_support["colehaan"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["colehaan"]["home"][] = "colehaan-home1.php";
 $eb_all_themes_support["colehaan"]["home"][] = "colehaan-home2.php";
