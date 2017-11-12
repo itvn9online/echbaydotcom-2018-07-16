@@ -175,6 +175,20 @@ $___eb_lang[eb_key_for_site_lang . 'bigbanner_num'] = '5';
 $eb_type_lang[eb_key_for_site_lang . 'bigbanner_num'] = 'number';
 
 
+// phần ngôn ngữ riêng, để sử dụng cho các câu từ mà một số website sẽ dùng
+$___eb_lang[eb_key_for_site_lang . 'custom_text'] = 'Custom text';
+$___eb_lang[eb_key_for_site_lang . 'custom_text1'] = 'Custom text 1';
+$___eb_lang[eb_key_for_site_lang . 'custom_text2'] = 'Custom text 2';
+$___eb_lang[eb_key_for_site_lang . 'custom_text3'] = 'Custom text 3';
+$___eb_lang[eb_key_for_site_lang . 'custom_text4'] = 'Custom text 4';
+$___eb_lang[eb_key_for_site_lang . 'custom_text5'] = 'Custom text 5';
+$___eb_lang[eb_key_for_site_lang . 'custom_text6'] = 'Custom text 6';
+$___eb_lang[eb_key_for_site_lang . 'custom_text7'] = 'Custom text 7';
+$___eb_lang[eb_key_for_site_lang . 'custom_text8'] = 'Custom text 8';
+$___eb_lang[eb_key_for_site_lang . 'custom_text9'] = 'Custom text 9';
+
+
+
 
 
 //
