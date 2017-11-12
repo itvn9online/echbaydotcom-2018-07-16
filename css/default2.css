@@ -1246,7 +1246,7 @@ color: #333;
 	margin-bottom: 10px;
 	font-size: 15px;
 }
-.echbay-category-order,
+.echbay-category-order ul,
 .echbay-category-in-js {
 	display: -webkit-flex; /* Safari */
 	display: flex;
