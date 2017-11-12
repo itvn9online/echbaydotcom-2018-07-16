@@ -350,7 +350,9 @@ function add_fb_messages_for_page () {
 	
 	var f = function(lnk, clat) {
 			if (lnk != '') {
-				$('.' + clat + ' div').each(function() {
+				$('.' + clat + ' div').attr({
+					'data-href': lnk
+				}).each(function() {
 					var w = $(this).attr('data-width') || $(this).width() || 0;
 					if ( w == 0 ) {
 						w = 180;
@@ -359,18 +361,22 @@ function add_fb_messages_for_page () {
 					}
 					
 					$(this).attr({
-						'data-width': w,
-						'data-href': lnk
+//						'data-href': lnk,
+						'data-width': w
 					});
 				});
 			}
 		},
 		al = function(lnk, clat) {
 			if (lnk != '') {
-				$('.' + clat).each(function() {
+				$('.' + clat).attr({
+					href: lnk
+					/*
+				}).each(function() {
 					$(this).attr({
 						href: lnk
 					});
+					*/
 				});
 			}
 		};
@@ -380,6 +386,7 @@ function add_fb_messages_for_page () {
 	f(cf_google_plus, 'each-to-gooplus');
 	// href
 	al(cf_facebook_page, 'ahref-to-facebook');
+	al(cf_instagram_page, 'ahref-to-instagram');
 	al(cf_google_plus, 'ahref-to-gooplus');
 	al(cf_youtube_chanel, 'each-to-youtube-chanel');
 	al(cf_twitter_page, 'each-to-twitter-page');

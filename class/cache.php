@@ -430,6 +430,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			
 			'cf_facebook_page' => '\'' . $__cf_row ['cf_facebook_page'] . '\'',
 			'__global_facebook_id' => '\'' . $__cf_row ['cf_facebook_id'] . '\'',
+			'cf_instagram_page' => '\'' . $__cf_row ['cf_instagram_page'] . '\'',
 			'cf_google_plus' => '\'' . $__cf_row ['cf_google_plus'] . '\'',
 			'cf_youtube_chanel' => '\'' . $__cf_row ['cf_youtube_chanel'] . '\'',
 			'cf_twitter_page' => '\'' . $__cf_row ['cf_twitter_page'] . '\'' 

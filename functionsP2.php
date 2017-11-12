@@ -3091,13 +3091,33 @@ function WGR_get_bigbanner () {
 }
 
 function WGR_get_footer_social () {
+	global $__cf_row;
+	
+	$str = '';
+	
+	if ( $__cf_row['cf_facebook_page'] != '' ) {
+		$str .= ' <li class="footer-social-fb"><a href="javascript:;" class="ahref-to-facebook" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>';
+	}
+	
+	if ( $__cf_row['cf_instagram_page'] != '' ) {
+		$str .= ' <li class="footer-social-it"><a href="javascript:;" class="ahref-to-instagram" target="_blank" rel="nofollow"><i class="fa fa-instagram"></i></a></li>';
+	}
+	
+	if ( $__cf_row['cf_twitter_page'] != '' ) {
+		$str .= ' <li class="footer-social-tw"><a href="javascript:;" class="each-to-twitter-page" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>';
+	}
+	
+	if ( $__cf_row['cf_youtube_chanel'] != '' ) {
+		$str .= ' <li class="footer-social-yt"><a href="javascript:;" class="each-to-youtube-chanel" target="_blank" rel="nofollow"><i class="fa fa-youtube"></i></a></li>';
+	}
+	
+	if ( $__cf_row['cf_google_plus'] != '' ) {
+		$str .= ' <li class="footer-social-gg"><a href="javascript:;" class="ahref-to-gooplus" target="_blank" rel="nofollow"><i class="fa fa-google-plus"></i></a></li>';
+	}
+	
+	//
 	return '
-	<ul class="footer-social text-center cf">
-		<li class="footer-social-fb"><a href="javascript:;" class="ahref-to-facebook" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
-		<li class="footer-social-tw"><a href="javascript:;" class="each-to-twitter-page" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i></a></li>
-		<li class="footer-social-yt"><a href="javascript:;" class="each-to-youtube-chanel" target="_blank" rel="nofollow"><i class="fa fa-youtube"></i></a></li>
-		<li class="footer-social-gg"><a href="javascript:;" class="ahref-to-gooplus" target="_blank" rel="nofollow"><i class="fa fa-google-plus"></i></a></li>
-	</ul>';
+	<ul class="footer-social text-center cf">' . $str . '</ul>';
 }
 
 function WGR_get_fb_like_box () {

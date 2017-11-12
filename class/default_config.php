@@ -51,6 +51,7 @@ $__cf_row_default = array(
 	'cf_facebook_page' => '',
 	'cf_facebook_id' => '',
 	'cf_facebook_admin_id' => '',
+	'cf_instagram_page' => '',
 	'cf_google_plus' => '',
 	'cf_youtube_chanel' => '',
 	'cf_twitter_page' => '',

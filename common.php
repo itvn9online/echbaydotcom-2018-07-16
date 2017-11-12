@@ -280,13 +280,36 @@ else {
 //if ( $schema_BreadcrumbList == '' ) {
 if ( count( $schema_BreadcrumbList ) == 0 ) {
 	
+	$json_social_sameAs = '';
+	
+	if ( $__cf_row['cf_facebook_page'] != '' ) {
+		$json_social_sameAs .= ',"' .$__cf_row ['cf_facebook_page']. '"';
+	}
+	
+	if ( $__cf_row['cf_instagram_page'] != '' ) {
+		$json_social_sameAs .= ',"' .$__cf_row ['cf_instagram_page']. '"';
+	}
+	
+	if ( $__cf_row['cf_twitter_page'] != '' ) {
+		$json_social_sameAs .= ',"' .$__cf_row ['cf_twitter_page']. '"';
+	}
+	
+	if ( $__cf_row['cf_youtube_chanel'] != '' ) {
+		$json_social_sameAs .= ',"' .$__cf_row ['cf_youtube_chanel']. '"';
+	}
+	
+	if ( $__cf_row['cf_google_plus'] != '' ) {
+		$json_social_sameAs .= ',"' .$__cf_row ['cf_google_plus']. '"';
+	}
+	
+	
 	$dynamic_meta .= _eb_del_line( '
 <script type="application/ld+json">
 {
     "@context": "http:\/\/schema.org",
     "@type": "Person",
     "url": "' .web_link. '",
-    "sameAs": ["' .$__cf_row ['cf_facebook_page']. '", "' .$__cf_row ['cf_google_plus']. '", "' .$__cf_row ['cf_youtube_chanel']. '", "' .$__cf_row ['cf_twitter_page']. '"],
+    "sameAs": [' . substr( $json_social_sameAs, 1 ) . '],
     "name": "' ._eb_str_block_fix_content ( $web_name ). '"
 }
 </script>', "", "/\t/" );
