@@ -128,7 +128,7 @@ function WGR_widget_home_hot ( $instance ) {
 	echo '<div class="' . $custom_style . '">';
 	
 	$arr_for_template = array(
-//		'tmp.max_width' => $max_width,
+		'tmp.max_width' => $max_width,
 		'tmp.num_post_line' => $num_line,
 		'tmp.home_hot_title' => $title,
 		'tmp.home_hot_more' => $home_hot_more,
@@ -137,9 +137,12 @@ function WGR_widget_home_hot ( $instance ) {
 //	) );
 	);
 	
+	/*
 	if ( $max_width != '' ) {
 		$arr_for_template['custom_blog_css'] = $max_width;
 	}
+	*/
+//	print_r($arr_for_template);
 	
 	
 //	echo EBE_html_template( EBE_get_page_template( $html_template ), array(
