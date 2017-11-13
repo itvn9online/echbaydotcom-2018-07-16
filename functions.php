@@ -47,14 +47,26 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 				$post = $sql[0];
 			}
 		}
-		else if ( $alias_taxonomy > 0 ) {
-		}
 	}
 	
 	
 	// với quảng cáo thì lấy link theo kiểu quảng cáo
 	if ( $post->post_type == 'ads' ) {
-		$post->p_link = _eb_get_post_meta( $post->ID, '_eb_ads_url', true, 'javascript:;' );
+//		echo $alias_taxonomy;
+		
+		// Nếu có link trỏ tới 1 nhóm nào đó -> lấy link và tên nhóm để gán cho post này
+		if ( $alias_taxonomy > 0 ) {
+			$new_name = WGR_get_all_term( $alias_taxonomy );
+			
+			//
+			if ( ! isset($new_name->errors) ) {
+				$post->post_title = $new_name->name;
+				$post->p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
+			}
+		}
+		else {
+			$post->p_link = _eb_get_post_meta( $post->ID, '_eb_ads_url', true, 'javascript:;' );
+		}
 		
 		// đặt ảnh đại diện cho phần q.cáo
 		$post->trv_img = $anh_dai_dien_goc;
@@ -3018,6 +3030,13 @@ function _eb_load_ads (
 				}
 			}
 			else if ( $alias_taxonomy > 0 ) {
+				$new_name = WGR_get_all_term( $alias_taxonomy );
+				
+				//
+				if ( ! isset($new_name->errors) ) {
+					$post->post_title = $new_name->name;
+					$p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
+				}
 			}
 			
 			//
@@ -3202,6 +3221,31 @@ function _eb_load_ads (
 	
 	//
 	return '<!-- ADS status: ' . $type . ' - ' . $arr_eb_ads_status[ $type ] . ' -->' . _eb_supper_del_line( $str );
+}
+
+
+// Dùng để lấy thông tin các term chưa được xác định
+function WGR_get_all_term ( $id ) {
+	$t = get_term( $id, 'category' );
+//	print_r( $t );
+	
+	if ( isset($t->errors) ) {
+		$t = get_term( $id, EB_BLOG_POST_LINK );
+//		print_r( $t );
+		
+		if ( isset($t->errors) ) {
+			$t = get_term( $id, 'post_tag' );
+//			print_r( $t );
+			
+			if ( isset($t->errors) ) {
+				$t = get_term( $id, 'post_options' );
+//				print_r( $t );
+			}
+		}
+	}
+	
+	//
+	return $t;
 }
 
 

@@ -649,7 +649,16 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 		if ( isset($a->errors) || $a == '' ) {
 //			print_r($a);
 			
+			// thử chức năng tìm tất cả các term
+			$a = WGR_get_all_term( $id );
+			
+			// nếu tìm được -> tạo link luôn
+			if ( ! isset($a->errors) ) {
+				$a = get_term_link( $a, $a->taxonomy );
+			}
+			
 			// lấy theo blog
+			/*
 //			if ( $taxx != '' ) {
 //				$a = get_term_link( get_term_by( 'id', $id, $taxx ), $taxx );
 //			}
@@ -657,16 +666,17 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 //				$a = get_term_link( get_term_by( 'id', $id, EB_BLOG_POST_LINK ), EB_BLOG_POST_LINK );
 				$a = get_term_link( get_term( $id, EB_BLOG_POST_LINK ), EB_BLOG_POST_LINK );
 				if ( isset($a->errors) || $a == '' ) {
-//					$a = get_term_link( get_term_by( 'id', $id, 'post_options' ), 'post_options' );
-					$a = get_term_link( get_term( $id, 'post_options' ), 'post_options' );
+//					$a = get_term_link( get_term_by( 'id', $id, 'post_tag' ), 'post_tag' );
+					$a = get_term_link( get_term( $id, 'post_tag' ), 'post_tag' );
 					
 					// lấy theo post_tag
 					if ( isset($a->errors) || $a == '' ) {
-//						$a = get_term_link( get_term_by( 'id', $id, 'post_tag' ), 'post_tag' );
-						$a = get_term_link( get_term( $id, 'post_tag' ), 'post_tag' );
+//						$a = get_term_link( get_term_by( 'id', $id, 'post_options' ), 'post_options' );
+						$a = get_term_link( get_term( $id, 'post_options' ), 'post_options' );
 					}
 				}
 //			}
+			*/
 			
 			//
 			if ( isset($a->errors) || $a == '' ) {
