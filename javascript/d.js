@@ -2287,7 +2287,21 @@ $('.click-show-div-content').click(function () {
 
 // show content like the_content() -> wp nó tự bỏ thẻ P trong nội dung -> dùng cái này để tạo lại
 (function () {
+	
+	//
+	if ( $('.each-to-fix-ptags').length == 0 ) {
+		return false;
+	}
+//	console.log( $('.each-to-fix-ptags').length );
+	
+	//
 	$('.each-to-fix-ptags').each(function() {
+		if ( $('script', this).length > 0 || $('script', this).length > 0 ) {
+			console.log('each-to-fix-ptags has been active! but, SCRIPT or STYLE exist in this content.');
+			return false;
+		}
+		
+		//
 		var a = $(this).html() || '',
 			tag = $(this).attr('data-tag') || 'div';
 		
@@ -2342,6 +2356,7 @@ $('.click-show-div-content').click(function () {
 //			console.log( '<div>' + a.replace( /\r\n|\n|\r/gi, '</div><div>' ).replace( /\<div\>\<\/div\>/gi, '' ) + '</div>' );
 		}
 	});
+	
 })();
 
 
