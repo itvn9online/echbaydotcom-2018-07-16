@@ -127,16 +127,23 @@ function WGR_widget_home_hot ( $instance ) {
 	//
 	echo '<div class="' . $custom_style . '">';
 	
-//	echo EBE_html_template( EBE_get_page_template( $html_template ), array(
-	echo WGR_show_home_hot( array(
-		'tmp.max_width' => $max_width,
+	$arr_for_template = array(
+//		'tmp.max_width' => $max_width,
 		'tmp.num_post_line' => $num_line,
 		'tmp.home_hot_title' => $title,
 		'tmp.home_hot_more' => $home_hot_more,
 		'tmp.description' => $description,
 		'tmp.home_hot' => $str_home_hot,
 //	) );
-	), $html_template );
+	);
+	
+	if ( $max_width != '' ) {
+		$arr_for_template['custom_blog_css'] = $max_width;
+	}
+	
+	
+//	echo EBE_html_template( EBE_get_page_template( $html_template ), array(
+	echo WGR_show_home_hot( $arr_for_template, $html_template );
 	
 	echo '</div>';
 	
