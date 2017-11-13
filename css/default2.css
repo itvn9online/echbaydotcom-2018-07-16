@@ -1462,7 +1462,7 @@ a.search-advanced-btn {
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
 	overflow: hidden;
-	max-height: 250px;
+	/* max-height: 250px; */
 }
 .viewmore-cats-description {
 	display: none;
