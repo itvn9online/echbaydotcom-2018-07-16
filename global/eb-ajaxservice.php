@@ -19,7 +19,22 @@ $action_module = trim( $_GET['set_module'] );
 
 // kiểm tra file này có trên theme của người dùng không
 $echbay_ajax_file = EB_THEME_PHP . $action_module . '.php';
-if ( file_exists( $echbay_ajax_file ) ) {
+
+// tìm trong theme con trước
+$child_theme_ajaxl = '';
+if ( defined('EB_CHILD_THEME_URL') ) {
+	$child_theme_ajaxl = EB_CHILD_THEME_URL . $action_module . '.php';
+}
+
+//
+if ( $child_theme_ajaxl != '' && file_exists( $child_theme_ajaxl ) ) {
+	$echbay_ajax_file = $child_theme_ajaxl;
+	
+	if ( ! isset( $_GET['no_echo'] ) ) {
+		echo '<!-- ajax by child theme (EchBay plugin) -->';
+	}
+}
+else if ( file_exists( $echbay_ajax_file ) ) {
 	echo '<!-- ajax by theme (EchBay plugin) -->';
 }
 else {

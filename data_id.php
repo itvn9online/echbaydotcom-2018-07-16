@@ -43,6 +43,7 @@ $add_data_id = array (
 		// chế độ kiểm thử -> dùng để console lỗi nếu chế độ này đang bật
 		'cf_tester_mode' => $__cf_row['cf_tester_mode'],
 		
+		'cf_gg_api_key' => '\'' . $__cf_row['cf_gg_api_key'] . '\'',
 		'cf_current_sd_price' => '\'' . $__cf_row['cf_current_sd_price'] . '\'',
 		
 		// nút chuyển ảnh trên slider
