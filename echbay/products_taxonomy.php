@@ -1,6 +1,13 @@
 <style type="text/css">
 .click-order-thread[data-val="1"] { color: #F90; }
 </style>
+<div class="text-right">
+	<button class="blue-button cur click-show-quick-add-taxonomy">Thêm nhóm mới [+]</button>
+</div>
+<div class="show-quick-add-taxonomy">
+	<form name="frm_config" method="post" action="<?php echo web_link; ?>process/?set_module=create_taxonomy" target="target_eb_iframe" onsubmit="return check_update_config();">
+	</form>
+</div>
 <?php
 
 
@@ -183,4 +190,4 @@ $('.change-update-new-stt').off('change').change(function () {
 });
 
 
-</script>
+</script> 

@@ -116,7 +116,7 @@ function WGR_admin_quick_edit_select_menu () {
 
 //
 if ( isset( $_GET['by_taxonomy'] ) ) {
-	include ECHBAY_PRI_CODE . 'products_taxnomy.php';
+	include ECHBAY_PRI_CODE . 'products_taxonomy.php';
 }
 else {
 	include ECHBAY_PRI_CODE . 'products_post.php';
