@@ -204,7 +204,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	//
 	$post->pt = 0;
 	if ( $post->trv_giaban > $post->trv_giamoi ) {
-		$post->pt = 100 - ( int ) ( $post->trv_giamoi * 100 / $post->trv_giaban );
+		$post->pt = 100 - _eb_float_only( $post->trv_giamoi * 100 / $post->trv_giaban, 1 );
 	}
 	
 	//
@@ -2340,11 +2340,15 @@ function _eb_number_only( $str = '', $re = '/[^0-9]+/' ) {
 	if ($str == '') {
 		return 0;
 	}
-	return (int) preg_replace ( $re, '', trim( $str ) );
+	return preg_replace ( $re, '', trim( $str ) );
 }
 
-function _eb_float_only( $str = '' ) {
-	return _eb_number_only( $str, '/[^0-9|\.]+/' );
+function _eb_float_only( $str = '', $lam_tron = 0 ) {
+	$a = _eb_number_only( $str, '/[^0-9|\.]+/' );
+	if ( $lam_tron == 1 ) {
+		$a = ceil( $a );
+	}
+	return $a;
 }
 
 function _eb_text_only($str = '') {
