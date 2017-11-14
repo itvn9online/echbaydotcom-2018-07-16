@@ -8,8 +8,8 @@ Text Domain: echbayecom
 Tags: e-commerce
 Requires at least: 3.3
 Tested up to: 4.8
-Stable tag: 1.0.5
-Version: 1.0.5
+Stable tag: 1.0.6
+Version: 1.0.6
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 

@@ -788,6 +788,7 @@ var _global_js_eb = {
 				}
 			}
 			else {
+				// Tính toán chiều cao mới dựa trên chiều rộng
 				if ( new_size != '' ) {
 					if ( new_size.split('x').length > 1 || new_size.split('*').length > 1 ) {
 						new_size.split('x').split('*');
