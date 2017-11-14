@@ -45,6 +45,7 @@ function WGR_config_list_radio_option ( $arr, $key ) {
 
 
 // lấy siteurl và homeurl trong CSDL để fix lại nếu người dùng có nhu cầu
+/*
 $sql = _eb_q("SELECT *
 	FROM
 		`" . $wpdb->options . "`
@@ -66,6 +67,10 @@ foreach ( $sql as $v ) {
 		$current_siteurl = $v->option_value;
 	}
 }
+*/
+$current_homeurl = _eb_get_option('home');
+$current_siteurl = _eb_get_option('siteurl');
+
 
 // tự động cập nhật lại URL cho bản SSL
 if ( eb_web_protocol == 'https' ) {
@@ -87,19 +92,10 @@ if ( eb_web_protocol == 'https' ) {
 		_eb_update_option( 'siteurl', implode( '/', $new_current_siteurl ) );
 	}
 }
-// và host không phải là bản demo -> cập nhật lại url mới luôn và ngay
-else if ( $_SERVER['HTTP_HOST'] != 'demo.webgiare.org' ) {
-	// riêng đối với domain demo của webgiare
-	if ( strstr( $current_homeurl, '/demo.webgiare.org' ) == true
-	|| strstr( $current_homeurl, 'www.demo.webgiare.org' ) == true
-	|| strstr( $current_siteurl, '/demo.webgiare.org' ) == true
-	|| strstr( $current_siteurl, 'www.demo.webgiare.org' ) == true ) {
-		_eb_update_option( 'home', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
-		_eb_update_option( 'siteurl', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
-		
-		wp_redirect( _eb_full_url(), 301 );
-	}
-}
+
+
+//
+WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl );
 
 
 

@@ -5,6 +5,10 @@
 // https://codex.wordpress.org/Function_Reference/wp_signon
 
 
+//
+WGR_auto_update_link_for_demo ( _eb_get_option('home'), _eb_get_option('siteurl') );
+
+
 //print_r($_POST);
 if ( ! isset($_POST['t_email']) || ! isset($_POST['t_matkhau']) ) {
 	_eb_alert('Dữ liệu đầu vào không chính xác');

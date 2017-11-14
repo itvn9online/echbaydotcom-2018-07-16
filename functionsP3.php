@@ -197,3 +197,25 @@ function WGR_parameter_not_found ( $f ) {
 
 
 
+// host không phải là bản demo -> cập nhật lại url mới luôn và ngay
+function WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl ) {
+	if ( $_SERVER['HTTP_HOST'] == 'demo.webgiare.org' ) {
+		return false;
+	}
+	
+	// riêng đối với domain demo của webgiare
+	if ( strstr( $current_homeurl, '/demo.webgiare.org' ) == true
+	|| strstr( $current_homeurl, 'www.demo.webgiare.org' ) == true
+	|| strstr( $current_siteurl, '/demo.webgiare.org' ) == true
+	|| strstr( $current_siteurl, 'www.demo.webgiare.org' ) == true ) {
+		_eb_update_option( 'home', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+		_eb_update_option( 'siteurl', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+		
+		wp_redirect( _eb_full_url(), 301 ); exit();
+	}
+	
+	return true;
+}
+
+
+

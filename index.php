@@ -490,6 +490,7 @@ if ( mtv_id == 0 ) {
 		
 		//
 		if ( function_exists('_eb_q') ) {
+			/*
 			$sql = _eb_q("SELECT *
 			FROM
 				`" . $wpdb->options . "`
@@ -511,20 +512,12 @@ if ( mtv_id == 0 ) {
 					$current_siteurl = $v->option_value;
 				}
 			}
+			*/
+			$current_homeurl = _eb_get_option('home');
+			$current_siteurl = _eb_get_option('siteurl');
 			
-			// và host không phải là bản demo -> cập nhật lại url mới luôn và ngay
-			if ( $_SERVER['HTTP_HOST'] != 'demo.webgiare.org' ) {
-				// riêng đối với domain demo của webgiare
-				if ( strstr( $current_homeurl, '/demo.webgiare.org' ) == true
-				|| strstr( $current_homeurl, 'www.demo.webgiare.org' ) == true
-				|| strstr( $current_siteurl, '/demo.webgiare.org' ) == true
-				|| strstr( $current_siteurl, 'www.demo.webgiare.org' ) == true ) {
-					_eb_update_option( 'home', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
-					_eb_update_option( 'siteurl', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
-					
-					wp_redirect( _eb_full_url(), 301 );
-				}
-			}
+			//
+			WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl );
 		}
 		
 		
