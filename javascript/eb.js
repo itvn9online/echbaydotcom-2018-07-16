@@ -787,17 +787,23 @@ var _global_js_eb = {
 					}).html('<img src="' + img + '" width="' + a + '" />');
 				}
 			}
-			else if ( new_size != '' ) {
-				if ( new_size.split('x').length > 1 || new_size.split('*').length > 1 ) {
-					new_size.split('x').split('*');
-					new_size = new_size[1] + '/' + new_size[0];
+			else {
+				if ( new_size != '' ) {
+					if ( new_size.split('x').length > 1 || new_size.split('*').length > 1 ) {
+						new_size.split('x').split('*');
+						new_size = new_size[1] + '/' + new_size[0];
+					}
+					
+					//
+	//				a *= new_size;
+					a *= eval(new_size);
+					a += 1;
 				}
+				// Mặc định là 1x1 -> chiều cao = chiều rộng
+//				else {
+//				}
 				
 				//
-//				a *= new_size;
-				a *= eval(new_size);
-				a += 1;
-				
 				$(this).css({
 					'line-height': a + 'px',
 					height: a + 'px'
