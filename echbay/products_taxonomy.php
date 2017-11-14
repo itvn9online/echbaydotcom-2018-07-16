@@ -26,6 +26,8 @@
 		</form>
 	</div>
 	<br>
+	<div id="create_taxonomy_result"></div>
+	<br>
 	<hr>
 	<br>
 </div>
@@ -219,6 +221,10 @@ $('.change-update-new-stt').off('change').change(function () {
 eb_drop_menu('oiAnt');
 
 function WGR_check_create_taxonomy () {
+}
+
+function WGR_after_create_taxonomy ( m ) {
+	$('#create_taxonomy_result').append( m + '<br>' );
 }
 
 $('.click-show-quick-add-taxonomy').click(function () {

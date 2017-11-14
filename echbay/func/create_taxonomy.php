@@ -31,7 +31,12 @@ foreach ( $a as $v ) {
 		
 		//
 		if ( isset( $done['errors'] ) ) {
-			print_r( $done );
+//			print_r( $done );
+			
+			echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' (ERROR)");</script>';
+		}
+		else {
+			echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' (OK)");</script>';
 		}
 	}
 }
