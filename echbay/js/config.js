@@ -165,17 +165,22 @@ function create_deault_css () {
 	
 	
 	// chiều cao của big_banner -> chỉ áp dụng cho bản PC
-	a = f.cf_top_banner_size.value.split('/')[0];
-	a -= Math.ceil(a/ 8);
-	str += '.oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;}';
-	
-	// table
-	a = Math.ceil(a/ 2);
-	str += '@media screen and (max-width:775px) { .oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
-	
-	// mobile
-	a = Math.ceil(a/ 2);
-	str += '@media screen and (max-width:350px) { .oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
+	a = f.cf_top_banner_size.value;
+	if ( a != 'auto' ) {
+		a = a.split('/')[0];
+		
+		//
+		a -= Math.ceil(a/ 8);
+		str += '.oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;}';
+		
+		// table
+		a = Math.ceil(a/ 2);
+		str += '@media screen and (max-width:775px) { .oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
+		
+		// mobile
+		a = Math.ceil(a/ 2);
+		str += '@media screen and (max-width:350px) { .oi_big_banner {height: ' + a + 'px;line-height: ' + a + 'px;} }';
+	}
 	
 	
 	// body
