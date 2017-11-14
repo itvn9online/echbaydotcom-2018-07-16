@@ -309,7 +309,7 @@ function config_test_send_mail() {
 /*
 * Định vị vị trí trụ sở chính của website
 */
-function click_get_user_position () {
+function click_get_user_position ( ip_or_gps ) {
 	var f = document.frm_config;
 	
 	//
@@ -319,11 +319,29 @@ function click_get_user_position () {
 //	f.cf_content_language.value = '';
 	
 	//
-	auto_get_user_position();
+//	auto_get_user_position();
+	if ( typeof ip_or_gps != 'undefined' && ip_or_gps == 'ip' ) {
+		_global_js_eb.user_auto_loc( function ( data ) {
+			WGR_after_load_user_location( data );
+		});
+	}
+	else {
+		auto_get_user_position(1);
+	}
 }
 
 //
-auto_get_user_position();
+(function () {
+	var f = document.frm_config;
+	
+	//
+	dog( 'mapholder', create_img_gg_map ( f.cf_position.value ) );
+	
+	//
+	if ( f.cf_region.value == '' || f.cf_placename.value == '' || f.cf_position.value == '' ) {
+		auto_get_user_position();
+	}
+})();
 
 
 

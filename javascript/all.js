@@ -799,7 +799,7 @@ function create_img_gg_map ( latlon ) {
 	}
 	
 	// Bản đồ trực tuyến
-	var site = 'https://www.google.com/maps/@' + latlon + ',15z';
+	var site = 'https://www.google.com/maps/@' + latlon.replace( ';', ',' ) + ',15z';
 //	var site = 'https://maps.google.com/maps?sspn=' + latlon + '&t=h&hnear=London,+United+Kingdom&z=15&output=embed';
 //	console.log(site);
 	
@@ -820,6 +820,29 @@ function create_img_gg_map ( latlon ) {
 
 
 //
+function WGR_after_load_user_location ( data ) {
+	if ( cf_tester_mode == 1 ) console.log(data);
+	
+	//
+	var f = document.frm_config;
+	
+	//
+	if ( f.cf_region.value == '' && typeof data.country != 'undefined' ) {
+		f.cf_region.value = data.country;
+	}
+	
+	if ( f.cf_placename.value == '' && typeof data.region != 'undefined' ) {
+		f.cf_placename.value = data.region;
+	}
+	
+	if ( f.cf_position.value == '' && typeof data.loc != 'undefined' ) {
+		f.cf_position.value = data.loc;
+		
+		//
+		dog( 'mapholder', create_img_gg_map ( f.cf_position.value ) );
+	}
+}
+
 function auto_get_user_position ( current_position ) {
 	if ( typeof document.frm_config == 'undefined' ) {
 		console.log('frm_config not found');
@@ -831,10 +854,23 @@ function auto_get_user_position ( current_position ) {
 		return false;
 	}
 	
-	var f = document.frm_config;
+	
+	// V2
+	_global_js_eb.user_loc( ( typeof current_position == 'number' ) ? current_position : 0, function ( data ) {
+		WGR_after_load_user_location( data );
+	});
+	
+	// TEST
+//	_global_js_eb.user_auto_loc();
+	
+	return false;
+	
+	
+	
+	// V1
 	
 	//
-	dog( 'mapholder', create_img_gg_map ( f.cf_position.value.replace( ';', ',' ) ) );
+	var f = document.frm_config;
 	
 	/*
 	if ( f.cf_content_language.value == '' ) {
@@ -861,6 +897,8 @@ function auto_get_user_position ( current_position ) {
 		}, {
 			timeout : 10000
 		});
+		
+		return false;
 	}
 	
 	
@@ -871,7 +909,7 @@ function auto_get_user_position ( current_position ) {
 		if ( typeof client_ip != 'undefined' && client_ip != '' ) {
 			url_get_ip_info += '/' + client_ip;
 		}
-//		console.log( url_get_ip_info );
+		console.log( url_get_ip_info );
 		
 		//
 		$.getJSON( url_get_ip_info, function(data) {
@@ -889,7 +927,7 @@ function auto_get_user_position ( current_position ) {
 				f.cf_position.value = data['loc'];
 				
 				//
-				dog( 'mapholder', create_img_gg_map ( f.cf_position.value.replace( ';', ',' ) ) );
+				dog( 'mapholder', create_img_gg_map ( f.cf_position.value ) );
 			}
 		});
 	}

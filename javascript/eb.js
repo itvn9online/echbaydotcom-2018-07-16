@@ -1378,12 +1378,16 @@ var _global_js_eb = {
 		return '';
 	},
 	
-	user_loc: function() {
+	user_loc: function( real_time, after_load ) {
 		// TEST
 //		g_func.delck('ipinfo_to_language'); return;
 		
 		// kiểm tra trong cookie xem có ko
 		var a = g_func.getc('ipinfo_to_language');
+		if ( typeof real_time != 'undefined' && real_time == 1 ) {
+			a = null;
+			console.log('clear ipinfo_to_language cookie');
+		}
 //		console.log( a );
 		
 		// nếu có -> trả về luôn
@@ -1420,15 +1424,20 @@ var _global_js_eb = {
 				return {};
 			}
 			
+			//
+			if ( typeof after_load == 'function' ) {
+				after_load( a );
+			}
+			
 //			console.log(a);
 			
 			return a;
 		}
 		
 		// chức năng hỏi tọa độ chỉ hoạt động trên HTTPS -> kiểm tra luôn
-		if ( window.location.href.split('/')[0] != 'https' ) {
+		if ( window.location.protocol != 'https:' ) {
 			console.log('navigator.geolocation only runing in HTTPS');
-			return _global_js_eb.user_auto_loc();
+			return _global_js_eb.user_auto_loc( after_load );
 		}
 		
 		
@@ -1437,19 +1446,29 @@ var _global_js_eb = {
 			// Nếu người dùng tiết lộ -> xin luôn
 			var lat = position.coords.latitude,
 				lon = position.coords.longitude;
+			if ( cf_tester_mode == 1 ) console.log( position );
 //			console.log( lat );
 //			console.log( lon );
 			
 			//
 //			var data = '{"loc":"' +lat+ ',' +lon+ '"}';
 			var data = {
-				loc : lat + ',' + lon
+				loc : lat + ',' + lon,
+				lat : lat,
+				lon : lon
 			};
-//			console.log( data );
+			if ( cf_tester_mode == 1 ) console.log( data );
 			
 			// lưu lại trong cookies
 			g_func.setc('ipinfo_to_language', JSON.stringify( data ), 3600 * 2 );
+			
+			if ( typeof after_load == 'function' ) {
+				after_load( data );
+			}
+			
+			return data;
 		}, function () {
+//			return _global_js_eb.user_auto_loc( after_load );
 			return _global_js_eb.user_auto_loc();
 		}, {
 			timeout : 10000
@@ -1460,17 +1479,37 @@ var _global_js_eb = {
 	},
 	
 	// tự động lấy vị trí tương đối của người dùng mà không cần xin phép
-	user_auto_loc: function() {
+	user_auto_loc: function( after_load ) {
 		console.log( 'AUTO get user Position' );
 		
+		//
+		var url_get_ip_info = window.location.protocol + '//ipinfo.io';
+		if ( typeof client_ip != 'undefined' && client_ip != '' ) {
+			url_get_ip_info += '/' + client_ip;
+		}
+		if ( cf_tester_mode == 1 ) console.log( url_get_ip_info );
+		
 		// Không cho thì lấy gần đúng
-		$.getJSON( '//ipinfo.io', function(data) {
-//			console.log( data );
+		$.getJSON( url_get_ip_info, function(data) {
+			if ( typeof data.lat == 'undefined' ) {
+				data.lat = data.loc.split(',')[0];
+			}
+			if ( typeof data.lon == 'undefined' ) {
+				data.lon = data.loc.split(',')[1];
+			}
+			
+			if ( cf_tester_mode == 1 ) console.log( data );
 			
 			g_func.setc('ipinfo_to_language', JSON.stringify( data ), 3600 * 2 );
 			
+			if ( typeof after_load == 'function' ) {
+				after_load( data );
+			}
+			
 			return data;
 		});
+		
+		return {};
 	},
 	
 	
