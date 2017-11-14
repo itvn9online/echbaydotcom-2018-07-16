@@ -307,47 +307,6 @@ function config_test_send_mail() {
 
 
 /*
-* Định vị vị trí trụ sở chính của website
-*/
-function click_get_user_position ( ip_or_gps ) {
-	var f = document.frm_config;
-	
-	//
-	f.cf_region.value = '';
-	f.cf_placename.value = '';
-	f.cf_position.value = '';
-//	f.cf_content_language.value = '';
-	
-	//
-//	auto_get_user_position();
-	if ( typeof ip_or_gps != 'undefined' && ip_or_gps == 'ip' ) {
-		_global_js_eb.user_auto_loc( function ( data ) {
-			WGR_after_load_user_location( data );
-		});
-	}
-	else {
-		auto_get_user_position(1);
-	}
-}
-
-//
-(function () {
-	var f = document.frm_config;
-	
-	//
-	create_img_gg_map ( f.cf_position.value, 1 );
-	
-	//
-	if ( f.cf_region.value == '' || f.cf_placename.value == '' || f.cf_position.value == '' ) {
-		auto_get_user_position();
-	}
-})();
-
-
-
-
-
-/*
 * Bật tắt chế độ lưu trữ dữ liệu qua JSON
 */
 function click_on_off_eb_cf_json ( key, val ) {
@@ -384,6 +343,34 @@ function show_note_for_checkbox_config ( key ) {
 	}
 	
 	click_on_off_eb_cf_json( key, $('#' + key).val() );
+}
+
+
+
+
+
+/*
+* Định vị vị trí trụ sở chính của website
+*/
+function click_get_user_position ( ip_or_gps ) {
+	var f = document.frm_config;
+	
+	//
+	f.cf_region.value = '';
+	f.cf_placename.value = '';
+	f.cf_position.value = '';
+//	f.cf_content_language.value = '';
+	
+	//
+//	auto_get_user_position();
+	if ( typeof ip_or_gps != 'undefined' && ip_or_gps == 'ip' ) {
+		_global_js_eb.user_auto_loc( function ( data ) {
+			WGR_after_load_user_location( data );
+		});
+	}
+	else {
+		auto_get_user_position(1);
+	}
 }
 
 
@@ -453,6 +440,19 @@ else {
 	show_note_for_checkbox_config( 'cf_details_show_list_thumb' );
 	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
 	show_note_for_checkbox_config( 'cf_details_excerpt' );
+	
+	//
+	(function () {
+		var f = document.frm_config;
+		
+		//
+		create_img_gg_map ( f.cf_position.value, 1 );
+		
+		//
+		if ( f.cf_region.value == '' || f.cf_placename.value == '' || f.cf_position.value == '' ) {
+			auto_get_user_position();
+		}
+	})();
 }
 
 
