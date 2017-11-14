@@ -39,13 +39,13 @@ $trv_giamoi = 0;
 $pt = 0;
 if ( $__post->post_type == 'post' ) {
 	$trv_giaban = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_oldprice', 0 ) );
-	echo $trv_giaban . '<br>';
+//	echo $trv_giaban . '<br>';
 	$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );
-	echo $trv_giamoi . '<br>';
+//	echo $trv_giamoi . '<br>';
 	
 	if ($trv_giaban > $trv_giamoi) {
 		$pt = 100 - _eb_float_only ($trv_giamoi * 100 / $trv_giaban, 1);
-		echo $pt;
+//		echo $pt;
 	}
 }
 $trv_luotxem = 0;
