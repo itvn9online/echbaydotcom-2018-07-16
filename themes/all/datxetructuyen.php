@@ -23,7 +23,7 @@ $eb_all_themes_support["datxetructuyen"]["footer"][] = "datxetructuyen-footer1.p
 $eb_all_themes_support["datxetructuyen"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["datxetructuyen"]["home"][] = "datxetructuyen-home1.php";
-$eb_all_themes_support["datxetructuyen"]["home"][] = "datxetructuyen-home2.php";
+//$eb_all_themes_support["datxetructuyen"]["home"][] = "datxetructuyen-home2.php";
 $eb_all_themes_support["datxetructuyen"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["datxetructuyen"]["threaddetails"][] = "datxetructuyen-threaddetails.html";

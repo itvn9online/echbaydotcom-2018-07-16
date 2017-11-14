@@ -1392,7 +1392,7 @@ var _global_js_eb = {
 //			console.log(typeof a);
 			
 			//
-			g_func.setc('ipinfo_to_language', a, 7 );
+//			g_func.setc('ipinfo_to_language', a, 3600 * 2 );
 			
 			//
 			var json_array = function ( a ) {
@@ -1425,6 +1425,12 @@ var _global_js_eb = {
 			return a;
 		}
 		
+		// chức năng hỏi tọa độ chỉ hoạt động trên HTTPS -> kiểm tra luôn
+		if ( window.location.href.split('/')[0] != 'https' ) {
+			console.log('navigator.geolocation only runing in HTTPS');
+			return _global_js_eb.user_auto_loc();
+		}
+		
 		
 		// Hỏi tọa độ của người dùng
 		navigator.geolocation.getCurrentPosition( function ( position ) {
@@ -1442,18 +1448,9 @@ var _global_js_eb = {
 //			console.log( data );
 			
 			// lưu lại trong cookies
-			g_func.setc('ipinfo_to_language', JSON.stringify( data ), 7 );
+			g_func.setc('ipinfo_to_language', JSON.stringify( data ), 3600 * 2 );
 		}, function () {
-			
-			//
-			console.log( 'Not get user Position' );
-			
-			// Không cho thì lấy gần đúng
-			$.getJSON( '//ipinfo.io', function(data) {
-//				console.log( data );
-				
-				g_func.setc('ipinfo_to_language', JSON.stringify( data ), 7 );
-			});
+			return _global_js_eb.user_auto_loc();
 		}, {
 			timeout : 10000
 		});
@@ -1461,6 +1458,21 @@ var _global_js_eb = {
 		// mặc định là tra về 1 mảng trống
 		return {};
 	},
+	
+	// tự động lấy vị trí tương đối của người dùng mà không cần xin phép
+	user_auto_loc: function() {
+		console.log( 'AUTO get user Position' );
+		
+		// Không cho thì lấy gần đúng
+		$.getJSON( '//ipinfo.io', function(data) {
+//			console.log( data );
+			
+			g_func.setc('ipinfo_to_language', JSON.stringify( data ), 3600 * 2 );
+			
+			return data;
+		});
+	},
+	
 	
 	demo_html : function ( clat, len ) {
 		console.log('Demo html');
