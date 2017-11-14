@@ -15,8 +15,8 @@ $eb_all_themes_support["thietbivesinhtuannam"]["price"] = 2000000;
 //
 $eb_all_themes_support["thietbivesinhtuannam"]["top"][] = "thietbivesinhtuannam-top1.php";
 $eb_all_themes_support["thietbivesinhtuannam"]["top"][] = "top_widget.php";
-$eb_all_themes_support["thietbivesinhtuannam"]["top"][] = "bigbanner-top1.php";
-$eb_all_themes_support["thietbivesinhtuannam"]["top"][] = "breadcrumb-top1.php";
+$eb_all_themes_support["thietbivesinhtuannam"]["top"][] = "bigbannerFixed-top1.php";
+$eb_all_themes_support["thietbivesinhtuannam"]["top"][] = "breadcrumb2-top1.php";
 //
 $eb_all_themes_support["thietbivesinhtuannam"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["thietbivesinhtuannam"]["footer"][] = "thietbivesinhtuannam-footer1.php";

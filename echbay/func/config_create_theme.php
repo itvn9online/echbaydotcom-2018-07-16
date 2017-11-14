@@ -323,8 +323,15 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 			$end_i += 1;
 			
 //			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "breadcrumb-top1.php";' . "\n";
+			$str .= '// Banner tràn màn hình ' . "\n";
 			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "bigbanner-top1.php";' . "\n";
+			$str .= '// Banner bo gọn trong khung ' . "\n";
+			$str .= '//$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "bigbannerFixed-top1.php";' . "\n";
+			
+			$str .= '// breadcrumb tràn màn hình ' . "\n";
 			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "breadcrumb-top1.php";' . "\n";
+			$str .= '// breadcrumb gọn trong khung ' . "\n";
+			$str .= '//$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "breadcrumb2-top1.php";' . "\n";
 		}
 		
 	}

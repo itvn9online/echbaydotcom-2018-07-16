@@ -16,7 +16,7 @@ $eb_all_themes_support["colehaan"]["price"] = 2000000;
 $eb_all_themes_support["colehaan"]["top"][] = "colehaan-top1.php";
 $eb_all_themes_support["colehaan"]["top"][] = "top_widget.php";
 $eb_all_themes_support["colehaan"]["top"][] = "bigbanner-top1.php";
-$eb_all_themes_support["colehaan"]["top"][] = "breadcrumb-top1.php";
+$eb_all_themes_support["colehaan"]["top"][] = "breadcrumb2-top1.php";
 //
 $eb_all_themes_support["colehaan"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["colehaan"]["footer"][] = "colehaan-footer1.php";
