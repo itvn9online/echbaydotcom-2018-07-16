@@ -433,13 +433,6 @@ if ( current_module_config != 'config_theme' ) {
 		$('#cf_current_sd_price_show, #cf_current_sd_price').val( new_a );
 		
 	});
-}
-// config_theme
-else {
-	show_note_for_checkbox_config( 'cf_details_show_list_next' );
-	show_note_for_checkbox_config( 'cf_details_show_list_thumb' );
-	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
-	show_note_for_checkbox_config( 'cf_details_excerpt' );
 	
 	//
 	(function () {
@@ -453,6 +446,13 @@ else {
 			auto_get_user_position();
 		}
 	})();
+}
+// config_theme
+else {
+	show_note_for_checkbox_config( 'cf_details_show_list_next' );
+	show_note_for_checkbox_config( 'cf_details_show_list_thumb' );
+	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
+	show_note_for_checkbox_config( 'cf_details_excerpt' );
 }
 
 
