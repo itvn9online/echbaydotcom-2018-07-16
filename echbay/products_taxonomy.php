@@ -1,12 +1,33 @@
 <style type="text/css">
 .click-order-thread[data-val="1"] { color: #F90; }
+.maxwidth-quick-add-taxonomy { max-width: 600px; }
 </style>
 <div class="text-right">
 	<button class="blue-button cur click-show-quick-add-taxonomy">Thêm nhóm mới [+]</button>
 </div>
-<div class="show-quick-add-taxonomy">
-	<form name="frm_config" method="post" action="<?php echo web_link; ?>process/?set_module=create_taxonomy" target="target_eb_iframe" onsubmit="return check_update_config();">
-	</form>
+<div class="show-quick-add-taxonomy d-none">
+	<div class="maxwidth-quick-add-taxonomy">
+		<form name="frm_config" method="post" action="<?php echo web_link; ?>process/?set_module=create_taxonomy" target="target_eb_iframe" onsubmit="return WGR_check_create_taxonomy();">
+			<div>
+				<input type="hidden" name="t_taxonomy" value="<?php echo $by_taxonomy; ?>">
+			</div>
+			<p class="bold">Nhóm cha:</p>
+			<div id="oiAnt"><?php echo _eb_categories_list_v3( 't_ant', $by_taxonomy ); ?></div>
+			<br>
+			<div>
+				<label for="t_multi_taxonomy" class="l25 bold">Nhập danh sách các nhóm cần thêm:</label>
+				<br>
+				<textarea name="t_multi_taxonomy" id="t_multi_taxonomy" style="width:99%;height:300px;"></textarea>
+				<p>* Có thể nhập nhiều nhóm, mõi nhóm cách nhau bởi dấu xuống dòng!</p>
+			</div>
+			<div>
+				<input type="submit" value="Thêm nhóm mới" class="button button-primary" />
+			</div>
+		</form>
+	</div>
+	<br>
+	<hr>
+	<br>
 </div>
 <?php
 
@@ -187,6 +208,22 @@ $('.change-update-new-stt').off('change').change(function () {
 	
 	//
 	WGR_admin_quick_edit_taxonomy( 'products', $(this).attr('data-ajax') || '', a );
+});
+
+
+
+
+/*
+* Thêm nhiều nhóm 1 lúc
+*/
+eb_drop_menu('oiAnt');
+
+function WGR_check_create_taxonomy () {
+}
+
+$('.click-show-quick-add-taxonomy').click(function () {
+	$('.show-quick-add-taxonomy').toggle('slow');
+	$('#t_multi_taxonomy').focus();
 });
 
 

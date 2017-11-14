@@ -315,7 +315,7 @@ function _eb_checkPostServerClient() {
 //
 function EBE_stripPostServerClient() {
 	foreach ( $_POST as $k => $v ) {
-		$_POST[$K] = trim( strip_tags( $v ) );
+		$_POST[$k] = trim( strip_tags( $v ) );
 	}
 }
 
