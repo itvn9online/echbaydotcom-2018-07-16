@@ -255,10 +255,12 @@ if ( file_exists( $inc_file ) ) {
 	
 }
 // hoặc nếu đây là một page template -> code sẽ nằm trong file template kia
-else if ( file_exists( EB_THEME_URL . 'templates/' . $act . '.php' ) ) {
-	echo '<!-- custom page template -->';
-	
+else if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'templates/' . $act . '.php' ) ) {
 	// Nạp lại header cho page ở mục này để làm SEO
+	include EB_THEME_PLUGIN_INDEX . 'global/page_templates_header.php';
+}
+// page template cho theme
+else if ( file_exists( EB_THEME_URL . 'templates/' . $act . '.php' ) ) {
 	include EB_THEME_PLUGIN_INDEX . 'global/page_templates_header.php';
 }
 // nếu không -> hiển thị trang 404

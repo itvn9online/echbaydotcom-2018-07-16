@@ -1195,6 +1195,15 @@ eb_drop_menu('oiAnt');
 
 
 
+//
+window.scroll(0, 0);
+setTimeout(function () {
+	window.scroll(0, 0);
+}, 600);
+
+
+
+
 // TEST
 /*
 if ( window.location.href.split('localhost').length > 1 ) {

@@ -2,6 +2,10 @@
 
 
 
+echo '<!-- custom page template -->';
+
+
+
 //
 include EB_THEME_PLUGIN_INDEX . 'global/post.php';
 
