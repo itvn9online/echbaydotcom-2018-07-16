@@ -788,7 +788,7 @@ function fix_textarea_height() {
 /*
 * Định vị vị trí trụ sở chính của website
 */
-function create_img_gg_map ( latlon ) {
+function create_img_gg_map ( latlon, inner_now ) {
 	if ( typeof latlon == 'undefined' || latlon == '' ) {
 		return '';
 	}
@@ -797,14 +797,25 @@ function create_img_gg_map ( latlon ) {
 	if ( wit > 640 ) {
 		wit = 640;
 	}
+	latlon = latlon.replace( ';', ',' );
 	
 	// Bản đồ trực tuyến
-	var site = 'https://www.google.com/maps/@' + latlon.replace( ';', ',' ) + ',15z';
+	var site = 'https://www.google.com/maps/@' + latlon + ',15z';
 //	var site = 'https://maps.google.com/maps?sspn=' + latlon + '&t=h&hnear=London,+United+Kingdom&z=15&output=embed';
 //	console.log(site);
 	
 	// URL only
-	return '<a title="' +site+ '" href="' +site+ '" rel="nofollow" target="_blank">' +site+ '</a>';
+	var str = '<a title="' +site+ '" href="' +site+ '" rel="nofollow" target="_blank">' +site+ '</a>';
+	
+//	str += '<br><img src="https://maps.googleapis.com/maps/api/staticmap?center=' + latlon + '&zoom=14&size=' + wit + 'x300" />';
+	
+	//
+	if ( typeof inner_now != 'undefined' && inner_now == 1 && dog('mapholder') != null ) {
+		dog( 'mapholder', str );
+	}
+	
+	//
+	return str;
 	
 	//
 	/*
@@ -839,7 +850,7 @@ function WGR_after_load_user_location ( data ) {
 		f.cf_position.value = data.loc;
 		
 		//
-		dog( 'mapholder', create_img_gg_map ( f.cf_position.value ) );
+		create_img_gg_map ( f.cf_position.value, 1 );
 	}
 }
 
@@ -891,7 +902,7 @@ function auto_get_user_position ( current_position ) {
 			$('input[name=cf_position]').val( lat+ ';' +lon );
 			
 			//
-			dog( 'mapholder', create_img_gg_map ( lat+ ',' +lon ) );
+			create_img_gg_map ( lat+ ',' +lon, 1 );
 		}, function () {
 			console.log( 'Not get user Position' );
 		}, {
@@ -927,7 +938,7 @@ function auto_get_user_position ( current_position ) {
 				f.cf_position.value = data['loc'];
 				
 				//
-				dog( 'mapholder', create_img_gg_map ( f.cf_position.value ) );
+				create_img_gg_map ( f.cf_position.value, 1 );
 			}
 		});
 	}

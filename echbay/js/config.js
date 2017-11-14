@@ -335,7 +335,7 @@ function click_get_user_position ( ip_or_gps ) {
 	var f = document.frm_config;
 	
 	//
-	dog( 'mapholder', create_img_gg_map ( f.cf_position.value ) );
+	create_img_gg_map ( f.cf_position.value, 1 );
 	
 	//
 	if ( f.cf_region.value == '' || f.cf_placename.value == '' || f.cf_position.value == '' ) {
@@ -483,7 +483,7 @@ $('input[name=cf_position]').off('change').change(function () {
 		if ( a.length > 1 ) {
 			a = a[0] + ',' + a[1];
 			
-			dog( 'mapholder', create_img_gg_map ( a ) );
+			create_img_gg_map ( a, 1 );
 		}
 		// dữ liệu sai -> xóa trắng
 		else {
