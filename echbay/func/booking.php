@@ -383,7 +383,15 @@ if (strstr ( $t_email, '@gmail.com' ) == true
 // -> ép buộc sử dụng hàm mail mặc định
 //$__cf_row ['cf_sys_email'] = 0;
 
-_eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email );
+//_eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email );
+
+// lưu nội dung vào cache rồi thực hiện chức năng gửi mail sau
+_eb_create_file( EB_THEME_CACHE . 'booking_mail/' . $hd_id . '.txt', '
+<mail_to_admin>' . $mail_to_admin . '<mail_to_admin/>
+<mail_title>' . $mail_title . '<mail_title/>
+<message>' . $message . '<message/>
+<bcc_email>' . $bcc_email . '<bcc_email/>
+' );
 
 
 

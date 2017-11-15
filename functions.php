@@ -2547,7 +2547,7 @@ function _eb_build_mail_header($from_email, $bcc_email = '') {
 	$headers[] = 'X-Mailer: PHP/ '. phpversion();
 	
 	// trả về header
-	return implode ( "\r\n", $headers );
+	return trim( implode ( "\r\n", $headers ) );
 }
 
 function _eb_lnk_block_email ($em) {
@@ -2679,7 +2679,7 @@ function EBE_configure_smtp( PHPMailer $phpmailer ){
 		return false;
 	}
 	
-	if ( $__cf_row['cf_smtp_port'] == '' || $__cf_row['cf_smtp_port'] == 0 ) {
+	if ( $__cf_row['cf_smtp_port'] == '' || $__cf_row['cf_smtp_port'] == '0' ) {
 		$__cf_row['cf_smtp_port'] == 25;
 	}
 	

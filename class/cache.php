@@ -189,6 +189,8 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		// các thư mục con của cache
 		$arr_create_dir_cache = array(
 			'all',
+			// mail khi người dùng đặt hàng thành công sẽ gửi ở trang hoàn tất
+			'booking_mail',
 			'admin_invoice_product',
 			'tv_mail',
 			'post_meta',
