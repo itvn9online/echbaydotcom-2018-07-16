@@ -24,7 +24,10 @@ $__cf_row_default = array(
 	'cf_gse' => '',
 	'cf_ga_id' => '',
 	
-	'cf_sys_email' => '',
+	// mặc định sử dụng hàm PHP mail
+//	'cf_sys_email' => '',
+	// Mặc định sử dụng wp mail
+	'cf_sys_email' => 'wpmail',
 //	'cf_using_wpmail' => '',
 	
 	'cf_logo' => EB_URL_TUONG_DOI . 'images-global/echbay-wp-logo.png',

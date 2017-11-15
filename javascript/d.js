@@ -2968,7 +2968,11 @@ setTimeout(function () {
 		_global_js_eb.ga_event_track( 'Booking done', 'Dat hang thanh cong' );
 		
 		//
-		ajaxl('hoan-tat-mail&id=' + current_hd_id, 'oi_hoan_tat_mail', 1);
+//		setTimeout(function () {
+			if ( typeof current_hd_id != 'undefined' && current_hd_id != '' ) {
+				ajaxl('hoan-tat-mail&id=' + current_hd_id, 'oi_hoan_tat_mail', 1);
+			}
+//		}, 3000);
 	}
 }, 3000);
 
