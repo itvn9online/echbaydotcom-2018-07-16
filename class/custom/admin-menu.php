@@ -628,6 +628,11 @@ function WGR_backup_post_before_delete ( $postid ) {
 	//
 //	echo $str;
 	
+	//
+	if ( ! get_magic_quotes_gpc () ) {
+		$str = addslashes ( $str );
+	}
+	
 	// lưu dữ liệu
 	_eb_sd( array(
 		'bpx_content' => $str,
