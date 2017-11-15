@@ -74,6 +74,67 @@ if ($check_Cleanup_cache == false) {
 		)
 	) );
 	
+	// Bảng lưu tất cả các thể loại log
+	EBE_create_in_con_voi_table( 'eb_wgr_log', 'l_id', array(
+		'l_id' => array(
+			'type' => 'bigint(20)',
+			'null' => 'no',
+			'key' => 'pri',
+			'default' => '',
+			'extra' => 'auto_increment',
+		),
+		// Nội dung log
+		'l_noidung' => array(
+			'type' => 'text',
+			'null' => 'no',
+			'key' => '',
+			'default' => '',
+			'extra' => '',
+		),
+		'l_agent' => array(
+			'type' => 'varchar(255)',
+			'null' => 'no',
+			'key' => '',
+			'default' => '',
+			'extra' => '',
+		),
+		'l_ip' => array(
+			'type' => 'varchar(191)',
+			'null' => 'no',
+			'key' => 'mul',
+			'default' => '',
+			'extra' => '',
+		),
+		'l_ngay' => array(
+			'type' => 'bigint(20)',
+			'null' => 'no',
+			'key' => '',
+			'default' => '',
+			'extra' => '',
+		),
+		'hd_id' => array(
+			'type' => 'bigint(20)',
+			'null' => 'no',
+			'key' => 'mul',
+			'default' => '',
+			'extra' => '',
+		),
+		'post_id' => array(
+			'type' => 'bigint(20)',
+			'null' => 'no',
+			'key' => 'mul',
+			'default' => '',
+			'extra' => '',
+		),
+		'tv_id' => array(
+			'type' => 'bigint(20)',
+			'null' => 'no',
+			'key' => 'mul',
+			'default' => '',
+			'extra' => '',
+		)
+	) );
+	
 	// ép lưu cache
 	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
 	
