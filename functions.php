@@ -2785,7 +2785,7 @@ function _eb_send_mail_phpmailer( $to, $to_name = '', $subject, $message, $from_
 		
 		'host' => $_SERVER['HTTP_HOST'],
 		
-		// gửi qua smpt riêng (nếu có)
+		// gửi qua smtp riêng (nếu có)
 		'smtp_host' => $__cf_row ['cf_smtp_host'],
 		'smtp_email' => $__cf_row ['cf_smtp_email'],
 		'smtp_pass' => $__cf_row ['cf_smtp_pass'],

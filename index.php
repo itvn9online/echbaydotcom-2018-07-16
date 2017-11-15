@@ -224,7 +224,7 @@ include EB_THEME_CORE . 'database.php';
 
 
 // thiết lập gửi email thông qua STMP
-if ( $__cf_row ['cf_sys_email'] == 'smpt' || $__cf_row ['cf_sys_email'] == 'pepipost' ) {
+if ( $__cf_row ['cf_sys_email'] == 'smtp' || $__cf_row ['cf_sys_email'] == 'pepipost' ) {
 	// v1
 //	return _eb_send_mail_phpmailer ( $to_email, '', $title, $message, '', $bcc_email );
 	
