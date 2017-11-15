@@ -91,10 +91,12 @@ body.ebdesign-no-scroll { overflow: hidden; }
 	cursor: pointer;
 	margin-right: 10px;
 }
+.eb-input-edit-product-size button[data-action="remove"],
 .eb-input-edit-product-size button[data-action="save"] {
 	background: #3366FF;
 	color: #fff;
 }
+.eb-input-edit-product-size button[data-action="remove"] { background-color: #c00; }
 input[id="_eb_category_order"] { width: 90px; }
 .eb-wp-admin-list-img {
 	overflow: hidden;

@@ -1349,10 +1349,21 @@ function eb_func_click_modife_product_size () {
 						var ten = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val() || '',
 							sai = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_size"]').val() || '';
 						
-						eb_global_product_size[ a_parent ][ a_node ] = {
-							name : ten,
-							val : sai
-						};
+						if ( ten == '' || sai == '' ) {
+							eb_global_product_size[ a_parent ][ a_node ] = null;
+						}
+						else {
+							eb_global_product_size[ a_parent ][ a_node ] = {
+								name : ten,
+								val : sai
+							};
+						}
+						
+						//
+						eb_func_global_product_size();
+					}
+					else if ( a == 'remove' ) {
+						eb_global_product_size[ a_parent ][ a_node ] = null;
 						
 						//
 						eb_func_global_product_size();

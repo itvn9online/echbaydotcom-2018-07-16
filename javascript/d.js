@@ -829,48 +829,62 @@ function ___eb_details_product_size () {
 	if ( arr_product_size.length < 1 || $('.oi_product_size').length == 0 ) {
 		return false;
 	}
+	console.log(arr_product_size);
 	
 	// có nhiều size thì tạo list
 	var str = '';
 	
 	for (var i = 0; i < arr_product_size.length; i++) {
-		// conver từ bản code cũ sang
-		if ( typeof arr_product_size[i].name == 'undefined' ) {
-			if ( typeof arr_product_size[i].ten != 'undefined' ) {
-				arr_product_size[i].name = arr_product_size[i].ten;
+		// Giá trị mảng phải khác null -> null = xóa
+		if ( arr_product_size[i].val != null ) {
+			// conver từ bản code cũ sang
+			if ( typeof arr_product_size[i].name == 'undefined' ) {
+				if ( typeof arr_product_size[i].ten != 'undefined' ) {
+					arr_product_size[i].name = arr_product_size[i].ten;
+				}
+				else {
+					arr_product_size[i].name = '';
+				}
 			}
-			else {
-				arr_product_size[i].name = '';
+			
+			if ( typeof arr_product_size[i].val == 'undefined' ) {
+				if ( typeof arr_product_size[i].soluong != 'undefined' ) {
+					arr_product_size[i].val = arr_product_size[i].soluong;
+				}
+				else {
+					arr_product_size[i].val = 0;
+				}
 			}
-		}
-		
-		if ( typeof arr_product_size[i].val == 'undefined' ) {
-			if ( typeof arr_product_size[i].soluong != 'undefined' ) {
-				arr_product_size[i].val = arr_product_size[i].soluong;
-			}
-			else {
+			if ( arr_product_size[i].val == '' ) {
 				arr_product_size[i].val = 0;
 			}
-		}
-		
-		//
-		var str_alert = '',
-			str_title = '';
-		if ( arr_product_size[i].val > 0 ) {
-			if ( arr_product_size[i].val < 5 ) {
-				str_title = 'C\u00f2n ' + arr_product_size[i].val + ' s\u1ea3n ph\u1ea9m';
-				str_alert = '<span class="bluecolor">' + str_title + '</span>';
-			} else {
-				str_title = 'S\u1eb5n h\u00e0ng';
-				str_alert = '<span class="greencolor">' + str_title + '</span>';
+			
+			// Tên và Số lượng phải tồn tại
+//			if ( arr_product_size[i].val != '' && arr_product_size[i].name != '' ) {
+			if ( arr_product_size[i].name != '' ) {
+				var str_alert = '',
+					str_title = '';
+				if ( arr_product_size[i].val > 0 ) {
+					if ( arr_product_size[i].val < 5 ) {
+						str_title = 'C\u00f2n ' + arr_product_size[i].val + ' s\u1ea3n ph\u1ea9m';
+						str_alert = '<span class="bluecolor">' + str_title + '</span>';
+					} else {
+						str_title = 'S\u1eb5n h\u00e0ng';
+						str_alert = '<span class="greencolor">' + str_title + '</span>';
+					}
+				} else {
+					str_title = 'H\u1ebft h\u00e0ng';
+					str_alert = '<span class="redcolor">' + str_title + '</span>';
+				}
+				
+				//
+				str += '<li title="' + str_title + '" data-size-node="' + i + '" data-name="' + arr_product_size[i].name + '" data-quan="' + arr_product_size[i].val + '"><div>' + arr_product_size[i].name + '</div>' + str_alert + '</li>';
 			}
-		} else {
-			str_title = 'H\u1ebft h\u00e0ng';
-			str_alert = '<span class="redcolor">' + str_title + '</span>';
 		}
-		
-		//
-		str += '<li title="' + str_title + '" data-size-node="' + i + '" data-name="' + arr_product_size[i].name + '" data-quan="' + arr_product_size[i].val + '"><div>' + arr_product_size[i].name + '</div>' + str_alert + '</li>';
+	}
+	if ( str == '' ) {
+		arr_product_size = [];
+		return false;
 	}
 	
 	$('.oi_product_size, .show-if-size-exist').show();
