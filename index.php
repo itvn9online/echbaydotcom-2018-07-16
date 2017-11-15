@@ -224,9 +224,7 @@ include EB_THEME_CORE . 'database.php';
 
 
 // thiết lập gửi email thông qua STMP
-if ( $__cf_row ['cf_sys_email'] == 0 || $__cf_row ['cf_sys_email'] == '' ) {
-}
-else {
+if ( $__cf_row ['cf_sys_email'] != '' ) {
 	// v1
 //	return _eb_send_mail_phpmailer ( $to_email, '', $title, $message, '', $bcc_email );
 	

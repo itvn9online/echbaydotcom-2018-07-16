@@ -498,8 +498,8 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	
 	'tmp.cf_sys_email' => WGR_config_list_radio_option( array(
 		'' => 'Sử dụng hàm mail() mặc định của server (nhanh, gọn, nhẹ nhưng hay vào spam)',
-		'ssl' => 'Sử dụng SMTP email (lâu hơn chút, tỉ lệ vào spam phụ thuộc vào server mail)',
-		'tls' => 'Sử dụng Pepipost SMTP (miễn phí và khá tốt, ít vào spam, hay vào mục quảng cáo của Gmail)',
+		'smpt' => 'Sử dụng SMTP email (lâu hơn chút, tỉ lệ vào spam phụ thuộc vào server mail)',
+		'pepipost' => 'Sử dụng Pepipost SMTP (miễn phí và khá tốt, ít vào spam, hay vào mục quảng cáo của Gmail)',
 	), 'cf_sys_email' ),
 	
 //	'tmp.ex_dns_prefetch' => $_SERVER['HTTP_HOST'],

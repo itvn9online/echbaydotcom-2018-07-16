@@ -41,13 +41,11 @@ if ( $_POST ['cf_smtp_host'] != ''
 
 
 
-//
-if ( ! isset( $_POST['cf_sys_email'] ) ) {
-	$_POST['cf_sys_email'] = '';
-}
-
+// Nếu chưa có thì cũng set mặc định
+if ( ! isset( $_POST['cf_sys_email'] )
+|| $_POST['cf_sys_email'] == '0'
 // tắt chế độ gửi email qua SMTP nếu 1 trong các thông số này bị thiếu
-if ( $_POST ['cf_smtp_host'] == ''
+|| $_POST ['cf_smtp_host'] == ''
 || $_POST ['cf_smtp_email'] == ''
 || $_POST ['cf_smtp_pass'] == '' ) {
 	$_POST['cf_sys_email'] = '';

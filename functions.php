@@ -2623,11 +2623,11 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	}
 	
 	//
-	if ( $__cf_row ['cf_sys_email'] == 0 || $__cf_row ['cf_sys_email'] == '' ) {
-		EBE_show_log( 'Send email to: ' . $to_email );
+	if ( $__cf_row ['cf_sys_email'] != '' ) {
+		EBE_show_log( 'Send SMTP to: ' . $to_email );
 	}
 	else {
-		EBE_show_log( 'Send SMTP to: ' . $to_email );
+		EBE_show_log( 'Send email to: ' . $to_email );
 	}
 	return true;
 }
@@ -2767,7 +2767,7 @@ function _eb_send_mail_phpmailer( $to, $to_name = '', $subject, $message, $from_
 	// nếu có lỗi
 	if ( $a != 1 ) {
 		// gửi lại bằng hàm mail thông thường
-		$__cf_row ['cf_sys_email'] = 0;
+		$__cf_row ['cf_sys_email'] = '';
 		
 		_eb_send_email($to, $subject, $message, '', $bcc_email, 0 );
 		
