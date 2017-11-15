@@ -2515,7 +2515,7 @@ function _eb_non_mark($str) {
 
 
 
-function _eb_build_mail_header($from_email) {
+function _eb_build_mail_header($from_email, $bcc_email = '') {
 	$headers = array();
 	
 	$headers[] = 'MIME-Version: 1.0';
@@ -2523,6 +2523,21 @@ function _eb_build_mail_header($from_email) {
 //	$headers[] = 'Date: ' . gmdate('d M Y H:i:s Z', NOW);
 	$headers[] = 'From: ' . web_name .' <'. $from_email . '>';
 	$headers[] = 'Reply-To: <'. $from_email . '>';
+	
+	//
+	$bcc_email = str_replace( ';', ',', str_replace( ' ', '', trim($bcc_email) ) );
+	if ( $bcc_email != '' ) {
+		$bcc_email = explode( ',', $bcc_email );
+		foreach ( $bcc_email as $v ) {
+			$v = trim( $v );
+			
+			if ( $v != '' && _eb_check_email_type( $v ) == 1 ) {
+				$headers[] = 'BCC: '. $v;
+			}
+		}
+	}
+	
+	//
 	$headers[] = 'Auto-Submitted: auto-generated';
 	$headers[] = 'Return-Path: <'. $from_email . '>';
 	$headers[] = 'X-Sender: <'. $from_email . '>'; 
@@ -2564,11 +2579,26 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 			$headers = _eb_build_mail_header ( $__cf_row['cf_email'] );
 		} else {
 			*/
-			$headers = _eb_build_mail_header ( 'noreply@' . $chost );
+			$headers = _eb_build_mail_header ( 'noreply@' . $chost, $bcc_email );
 			/*
 		}
 		*/
 	}
+	/*
+	else {
+		$bcc_email = str_replace( ';', ',', str_replace( ' ', '', trim($bcc_email) ) );
+		if ($bcc_email != '') {
+			$bcc_email = explode( ',', $bcc_email );
+			foreach ( $bcc_email as $v ) {
+				$v = trim( $v );
+				
+				if ( $v != '' && _eb_check_email_type( $v ) == 1 ) {
+					$headers .= "\r\n" . 'BCC: ' . $v;
+				}
+			}
+		}
+	}
+	*/
 	
 	
 	//
@@ -2602,33 +2632,35 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	
 	
 	//
-	if ($bcc_email != '') {
-		$bcc_email = explode( ',', $bcc_email );
-		foreach ( $bcc_email as $v ) {
-			$v = trim( $v );
-			
-			if ( $v != '' && _eb_check_email_type( $v ) == 1 ) {
-				$headers .= "\r\n" . 'BCC: ' . $v;
-			}
+	$ham_gui_mail = 'SMTP';
+	
+	// sử dụng hame mail mặc định
+	if ( $__cf_row ['cf_sys_email'] == '' ) {
+		$mail = mail( $to_email, $title, $message, $headers );
+		$ham_gui_mail = 'PHP mail';
+	}
+	// sử dụng wordpress mail
+//	else if ( $__cf_row ['cf_sys_email'] == 'wpmail' ) {
+	else {
+		$mail = wp_mail( $to_email, $title, $message, $headers );
+		
+		//
+		if ( $__cf_row ['cf_sys_email'] == 'wpmail' ) {
+			$ham_gui_mail = 'WP mail';
 		}
 	}
 	
-	
-	// sử dụng wordpress mail
-//	$mail = wp_mail( $to_email, $title, $message, $headers );
-//	if( ! $mail ) {
-	if( ! wp_mail( $to_email, $title, $message, $headers ) ) {
-		EBE_show_log( 'ERROR send email: ' . $to_email );
+	//
+	if( ! $mail ) {
+//	if( ! wp_mail( $to_email, $title, $message, $headers ) ) {
+		EBE_show_log( 'ERROR send mail: ' . $to_email );
 		return false;
 	}
 	
+	// Thông báo kết quả
+	EBE_show_log( 'Send email to: ' . $to_email . ' (Using: ' . $ham_gui_mail . ')' );
+	
 	//
-	if ( $__cf_row ['cf_sys_email'] != '' ) {
-		EBE_show_log( 'Send SMTP to: ' . $to_email );
-	}
-	else {
-		EBE_show_log( 'Send email to: ' . $to_email );
-	}
 	return true;
 }
 

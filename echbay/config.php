@@ -498,6 +498,7 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	
 	'tmp.cf_sys_email' => WGR_config_list_radio_option( array(
 		'' => 'Sử dụng hàm mail() mặc định của server (nhanh, gọn, nhẹ nhưng hay vào spam)',
+		'wpmail' => 'Sử dụng WordPress Mail (lâu hơn chút, nhưng ổn định hơn hàm mail() mặc định)',
 		'smpt' => 'Sử dụng SMTP email (lâu hơn chút, tỉ lệ vào spam phụ thuộc vào server mail)',
 		'pepipost' => 'Sử dụng Pepipost SMTP (miễn phí và khá tốt, ít vào spam, hay vào mục quảng cáo của Gmail)',
 	), 'cf_sys_email' ),

@@ -25,6 +25,7 @@ $__cf_row_default = array(
 	'cf_ga_id' => '',
 	
 	'cf_sys_email' => '',
+//	'cf_using_wpmail' => '',
 	
 	'cf_logo' => EB_URL_TUONG_DOI . 'images-global/echbay-wp-logo.png',
 	'cf_size_logo' => 'auto', // 1/2
