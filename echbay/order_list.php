@@ -82,6 +82,7 @@ function WGR_cereate_order_filter($o) {
 
 
 // tạo bảng hóa đơn nếu chưa có
+/*
 $strCacheFilter = 'update_order_table';
 $check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 6 * 3600 );
 if ($check_Cleanup_cache == false) {
@@ -92,6 +93,7 @@ if ($check_Cleanup_cache == false) {
 	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
 	
 }
+*/
 //exit();
 
 

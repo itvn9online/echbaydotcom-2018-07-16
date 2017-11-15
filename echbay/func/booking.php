@@ -213,7 +213,7 @@ $arr = array(
 
 $hd_id = EBE_set_order( $arr );
 if ( $hd_id == 0 ) {
-	EBE_tao_bang_hoa_don_cho_echbay_wp();
+//	EBE_tao_bang_hoa_don_cho_echbay_wp();
 	
 	_eb_alert('Lỗi gửi chi tiết đơn hàng');
 }

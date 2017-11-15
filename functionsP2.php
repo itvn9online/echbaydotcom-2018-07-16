@@ -2716,7 +2716,7 @@ function EBE_tao_bang_hoa_don_cho_echbay_wp () {
 			'key' => 'mul',
 			'default' => '',
 			'extra' => '',
-		),
+		)
 	) );
 	
 	EBE_create_in_con_voi_table( 'eb_details_in_con_voi', 'dorder_id', array(
@@ -2747,7 +2747,7 @@ function EBE_tao_bang_hoa_don_cho_echbay_wp () {
 			'key' => 'mul',
 			'default' => '',
 			'extra' => '',
-		),
+		)
 	) );
 	
 }

@@ -191,9 +191,9 @@ function echbay_admin_styles() {
 		$sql = _eb_q("SELECT menu_order
 		FROM
 			`" . $wpdb->posts . "`
-			WHERE
-				post_type = '" . $order_by_post_type . "'
-				AND menu_order > 0
+		WHERE
+			post_type = '" . $order_by_post_type . "'
+			AND menu_order > 0
 		ORDER BY
 			menu_order DESC
 		LIMIT 0, 1");
@@ -567,6 +567,90 @@ if ( $__cf_row['cf_remove_category_base'] == 1 ) {
 
 
 
+
+// Backup bài viết dưới dạng xml trước khi xóa hẳn
+// https://codex.wordpress.org/Plugin_API/Action_Reference/before_delete_post
+add_filter( 'before_delete_post', 'WGR_backup_post_before_delete' );
+function WGR_backup_post_before_delete ( $postid ) {
+	global $wpdb;
+	global $client_ip;
+	
+	//
+	$str = '';
+	
+	// Lấy toàn bộ dữ liệu của post
+	$sql = _eb_q("SELECT *
+	FROM
+		`" . $wpdb->posts . "`
+	WHERE
+		ID = " . $postid);
+//	print_r( $sql );
+	if ( ! empty( $sql ) ) {
+		foreach ( $sql[0] as $k => $v ) {
+			$str .= '<' . $k . '><![CDATA[' . $v . ']]></' . $k . '>' . "\n";
+		}
+	}
+	
+	
+	//
+	$a = get_post_taxonomies( $postid );
+//	print_r($a);
+	foreach ( $a as $v ) {
+		$post_taxonomy = get_the_terms( $postid, $v );
+//		print_r($post_taxonomy);
+		
+		if ( ! empty( $post_taxonomy ) ) {
+			foreach ( $post_taxonomy as $v2 ) {
+				$str .= '<category domain="' . $v . '" nicename="' . $v2->slug . '"><![CDATA[' . $v2->name . ']]></category>' . "\n";
+			}
+		}
+	}
+	
+	
+	// Lấy toàn bộ post meta của post
+	$sql = _eb_q("SELECT *
+	FROM
+		`" . $wpdb->postmeta . "`
+	WHERE
+		post_id = " . $postid);
+//	print_r( $sql );
+	if ( ! empty( $sql ) ) {
+		foreach ( $sql as $v ) {
+			$str .= trim( '
+<wp:postmeta>
+	<wp:meta_key><![CDATA[' . $v->meta_key . ']]></wp:meta_key>
+	<wp:meta_value><![CDATA[' . $v->meta_value . ']]></wp:meta_value>
+</wp:postmeta>
+			' ) . "\n";
+		}
+	}
+	
+	//
+//	echo $str;
+	
+	// lưu dữ liệu
+	_eb_sd( array(
+		'bpx_content' => $str,
+		'bpx_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '',
+		'bpx_ip' => $client_ip,
+		'bpx_time' => date_time,
+		'bpx_date' => date( 'YmdH', date_time ),
+		'post_id' => $postid,
+		'tv_id' => mtv_id,
+	), 'eb_backup_post_xml' );
+	
+	//
+//	exit();
+	
+	//
+	return true;
+	
+}
+
+
+
+//
+include EB_THEME_CORE . 'custom/admin-create-echbay-table.php';
 
 
 
