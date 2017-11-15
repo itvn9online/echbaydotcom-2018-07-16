@@ -1143,7 +1143,7 @@ function eb_func_show_product_size () {
 		}
 		
 	}
-//	console.log( eb_global_product_size );
+	console.log( eb_global_product_size );
 //	console.log( eb_global_product_size.length );
 	
 	var str_size = '';
@@ -1158,27 +1158,33 @@ function eb_func_show_product_size () {
 				
 				if ( typeof arr == 'object' ) {
 					for ( var j = 0; j < arr.length; j++ ) {
-						// conver từ bản code cũ sang
-						if ( typeof arr[j].name == 'undefined' ) {
-							if ( typeof arr[j].ten != 'undefined' ) {
-								arr[j].name = arr[j].ten;
-							}
-							else {
-								arr[j].name = '';
-							}
+						/*
+						if ( arr[j] == null ) {
 						}
-						
-						if ( typeof arr[j].val == 'undefined' ) {
-							if ( typeof arr[j].soluong != 'undefined' ) {
-								arr[j].val = arr[j].soluong;
+						else {
+							*/
+							// conver từ bản code cũ sang
+							if ( typeof arr[j].name == 'undefined' ) {
+								if ( typeof arr[j].ten != 'undefined' ) {
+									arr[j].name = arr[j].ten;
+								}
+								else {
+									arr[j].name = '';
+								}
 							}
-							else {
-								arr[j].val = 0;
+							
+							if ( typeof arr[j].val == 'undefined' ) {
+								if ( typeof arr[j].soluong != 'undefined' ) {
+									arr[j].val = arr[j].soluong;
+								}
+								else {
+									arr[j].val = 0;
+								}
 							}
-						}
-						
-						//
-						str += '<li data-parent="' + i + '" data-node="' + j + '" data-size="' + arr[j].name + '" data-quan="' + arr[j].val + '" title="Size: ' + arr[j].name + '/ Số lượng: ' + arr[j].val + '">' + arr[j].name + '/ ' + arr[j].val + '</li>';
+							
+							//
+							str += '<li data-parent="' + i + '" data-node="' + j + '" data-size="' + arr[j].name + '" data-quan="' + arr[j].val + '" title="Size: ' + arr[j].name + '/ Số lượng: ' + arr[j].val + '">' + arr[j].name + '/ ' + arr[j].val + '</li>';
+//						}
 					}
 				}
 				
@@ -1217,7 +1223,7 @@ function eb_func_show_product_size () {
 }
 
 function check_eb_input_edit_product_size () {
-	$('.eb-input-edit-product-size button').click();
+	$('.eb-input-edit-product-size button[data-action="save"]').click();
 	return false;
 }
 
@@ -1349,25 +1355,29 @@ function eb_func_click_modife_product_size () {
 						var ten = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val() || '',
 							sai = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_size"]').val() || '';
 						
+						/*
 						if ( ten == '' || sai == '' ) {
 							eb_global_product_size[ a_parent ][ a_node ] = null;
 						}
 						else {
+							*/
 							eb_global_product_size[ a_parent ][ a_node ] = {
 								name : ten,
 								val : sai
 							};
-						}
+//						}
 						
 						//
 						eb_func_global_product_size();
 					}
+					/*
 					else if ( a == 'remove' ) {
 						eb_global_product_size[ a_parent ][ a_node ] = null;
 						
 						//
 						eb_func_global_product_size();
 					}
+					*/
 					
 					//
 					$('.eb-input-edit-product-size').hide();
