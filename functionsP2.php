@@ -257,8 +257,8 @@ function _eb_checkPostServerClient() {
 	
 	$checkPostServer = $_SERVER ['HTTP_HOST'];
 	$checkPostServer = str_replace ( 'www.', '', $checkPostServer );
-//		$checkPostServer = explode ( '/', $checkPostServer );
-//		$checkPostServer = $checkPostServer [0];
+//	$checkPostServer = explode ( '/', $checkPostServer );
+//	$checkPostServer = $checkPostServer [0];
 	
 	$checkPostClient = isset ( $_SERVER ['HTTP_REFERER'] ) ? $_SERVER ['HTTP_REFERER'] : '';
 	$checkPostClient = explode( '//', $checkPostClient );
@@ -288,6 +288,7 @@ function _eb_checkPostServerClient() {
 	
 	//
 	foreach ( $_POST as $k => $v ) {
+//		if ( $v != '' && gettype( $v ) == 'string' ) {
 		if ( gettype( $v ) == 'string' ) {
 			// nếu Magic_quotes_gpc đang tắt -> loại bỏ ký tự đặc biệt
 //				if ( $magic_quotes == 1 ) {
@@ -300,12 +301,13 @@ function _eb_checkPostServerClient() {
 				$v = addslashes ( $v );
 				
 				// mysqli_real_escape_string tương tự như addslashes, nhưng công việc sẽ do mysql xử lý
-//					$str = mysqli_real_escape_string ( $str );
+//				$str = mysqli_real_escape_string ( $str );
+				
+				$_POST [$k] = $v;
 			}
-			
-			$_POST [$k] = $v;
 		}
 	}
+//	print_r( $_POST );
 	
 	
 	//
@@ -314,9 +316,17 @@ function _eb_checkPostServerClient() {
 
 //
 function EBE_stripPostServerClient() {
+//	global $_POST;
+	
+//	print_r( $_POST );
 	foreach ( $_POST as $k => $v ) {
-		$_POST[$k] = trim( strip_tags( $v ) );
+		if ( gettype( $v ) == 'string' ) {
+			$v = trim( $v );
+			$v = strip_tags( $v );
+			$_POST[$k] = $v;
+		}
 	}
+	return $_POST;
 }
 
 

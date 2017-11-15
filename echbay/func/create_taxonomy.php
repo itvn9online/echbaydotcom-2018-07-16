@@ -8,7 +8,7 @@
 //print_r( $_POST );
 //print_r( $_GET );
 //exit();
-EBE_stripPostServerClient ();
+$_POST = EBE_stripPostServerClient ();
 
 
 $a = trim( $_POST['t_multi_taxonomy'] );
