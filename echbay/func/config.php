@@ -43,12 +43,16 @@ if ( $_POST ['cf_smtp_host'] != ''
 
 // Nếu chưa có thì cũng set mặc định
 if ( ! isset( $_POST['cf_sys_email'] )
-|| $_POST['cf_sys_email'] == '0'
-// tắt chế độ gửi email qua SMTP nếu 1 trong các thông số này bị thiếu
-|| $_POST ['cf_smtp_host'] == ''
-|| $_POST ['cf_smtp_email'] == ''
-|| $_POST ['cf_smtp_pass'] == '' ) {
-	$_POST['cf_sys_email'] = '';
+|| $_POST['cf_sys_email'] == '0' ) {
+	$_POST['cf_sys_email'] = $__cf_row_default['cf_sys_email'];
+}
+else if ( $_POST['cf_sys_email'] != '' && $_POST['cf_sys_email'] != 'wpmail' ) {
+	// tắt chế độ gửi email qua SMTP nếu 1 trong các thông số này bị thiếu
+	if ( $_POST ['cf_smtp_host'] == ''
+	|| $_POST ['cf_smtp_email'] == ''
+	|| $_POST ['cf_smtp_pass'] == '' ) {
+		$_POST['cf_sys_email'] = $__cf_row_default['cf_sys_email'];
+	}
 }
 
 

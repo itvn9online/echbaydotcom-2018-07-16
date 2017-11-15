@@ -2632,7 +2632,7 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	
 	
 	//
-	$ham_gui_mail = 'SMTP';
+	$ham_gui_mail = 'WP mail';
 	
 	// sử dụng hame mail mặc định
 	if ( $__cf_row ['cf_sys_email'] == '' ) {
@@ -2645,8 +2645,8 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 		$mail = wp_mail( $to_email, $title, $message, $headers );
 		
 		//
-		if ( $__cf_row ['cf_sys_email'] == 'wpmail' ) {
-			$ham_gui_mail = 'WP mail';
+		if ( $__cf_row ['cf_sys_email'] != 'wpmail' ) {
+			$ham_gui_mail = 'SMTP';
 		}
 	}
 	
@@ -2748,6 +2748,7 @@ function EBE_configure_smtp( PHPMailer $phpmailer ){
 function _eb_send_mail_phpmailer( $to, $to_name = '', $subject, $message, $from_reply = '', $bcc_email = '' ) {
 //	global $dir_index;
 	global $__cf_row;
+	global $__cf_row_default;
 	
 	//
 //	set_time_limit( 10 );
@@ -2799,7 +2800,7 @@ function _eb_send_mail_phpmailer( $to, $to_name = '', $subject, $message, $from_
 	// nếu có lỗi
 	if ( $a != 1 ) {
 		// gửi lại bằng hàm mail thông thường
-		$__cf_row ['cf_sys_email'] = '';
+		$__cf_row ['cf_sys_email'] = $__cf_row_default['cf_sys_email'];
 		
 		_eb_send_email($to, $subject, $message, '', $bcc_email, 0 );
 		
