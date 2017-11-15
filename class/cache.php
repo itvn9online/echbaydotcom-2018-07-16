@@ -508,12 +508,11 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		/*
 		* Tự động dọn dẹp log sau một khoảng thời gian
 		*/
+		/*
 		$strCacheFilter = 'auto_clean_up_log';
 		$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 24 * 3600 );
 		if ( $check_Cleanup_cache == false ) {
-			/*
-			* user log
-			*/
+			// user log
 			$a = _eb_get_log_user( " LIMIT 2000, 1 " );
 //			print_r($a);
 //			echo count($a);
@@ -535,9 +534,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			
 			
 			
-			/*
-			* admin log
-			*/
+			// admin log
 			$a = _eb_get_log_admin( " LIMIT 2000, 1 " );
 //			print_r($a);
 //			echo count($a);
@@ -562,6 +559,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			// Lưu thời gian dọn log
 			_eb_get_static_html ( $strCacheFilter, date( 'r', $date_time ), '', 60 );
 		}
+		*/
 		
 		
 		

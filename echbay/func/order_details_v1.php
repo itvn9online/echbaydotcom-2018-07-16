@@ -41,7 +41,7 @@ if ( is_wp_error($post_id) ) {
 
 
 //
-_eb_log_admin( 'Cập nhật đơn hàng #' . $order_id );
+_eb_log_admin_order( 'Cập nhật đơn hàng #' . $order_id, $order_id );
 
 //
 _eb_alert('Cập nhật thông tin đơn hàng thành công');

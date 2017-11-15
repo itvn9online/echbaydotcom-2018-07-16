@@ -1782,6 +1782,8 @@ function _eb_sd($arr, $tbl) {
 	( " . $str0 . " )
 	VALUES
 	( " . $str1 . " )" );
+	
+	return true;
 }
 function _eb_set_data($arr, $tbl) {
 	return _eb_sd ( $arr, $tbl );
@@ -2246,11 +2248,21 @@ function EBE_get_lang_list() {
 
 
 function _eb_log_click($m) {
-	return false;
+//	return false;
 	
+	// v2
+	return _eb_set_log( array(
+		'l_noidung' => $m
+	), 3 );
+	
+	// v1
 	_eb_postmeta( eb_log_click_id_postmeta, '__eb_log_click', $m );
 }
 function _eb_get_log_click( $limit = '' ) {
+	// v2
+	return _eb_get_log(3);
+	
+	// v1
 	return _eb_q("SELECT *
 	FROM
 		" . wp_postmeta . "
@@ -2263,13 +2275,23 @@ function _eb_get_log_click( $limit = '' ) {
 }
 
 function _eb_log_user($m) {
-	return false;
+//	return false;
 	
+	// v2
+	return _eb_set_log( array(
+		'l_noidung' => $m
+	), 4 );
+	
+	// v1
 	$m .= ' (at ' . date( 'r', date_time ) . ')';
 	
 	_eb_postmeta( eb_log_user_id_postmeta, '__eb_log_user', $m );
 }
 function _eb_get_log_user( $limit = '' ) {
+	// v2
+	return _eb_get_log(4);
+	
+	// v1
 	return _eb_q("SELECT *
 	FROM
 		" . wp_postmeta . "
@@ -2281,15 +2303,26 @@ function _eb_get_log_user( $limit = '' ) {
 	" . $limit);
 }
 
-function _eb_log_admin($m) {
-	return false;
+function _eb_log_admin($m, $post_id = 0) {
+//	return false;
 	
+	// v2
+	return _eb_set_log( array(
+		'post_id' => $post_id,
+		'l_noidung' => $m
+	), 1 );
+	
+	// v1
 	$m .= ' (by ' . mtv_email . ' at ' . date( 'r', date_time ) . ')';
 //		echo $m . "\n";
 	
 	_eb_postmeta( eb_log_user_id_postmeta, '__eb_log_admin', $m );
 }
 function _eb_get_log_admin( $limit = '' ) {
+	// v2
+	return _eb_get_log(1);
+	
+	// v1
 	return _eb_q("SELECT *
 	FROM
 		" . wp_postmeta . "
@@ -2302,11 +2335,22 @@ function _eb_get_log_admin( $limit = '' ) {
 }
 
 function _eb_log_admin_order($m, $order_id) {
-	return false;
+//	return false;
 	
+	// v2
+	return _eb_set_log( array(
+		'hd_id' => $order_id,
+		'l_noidung' => $m
+	), 2 );
+	
+	// v1
 	_eb_postmeta( eb_log_user_id_postmeta, '__eb_log_invoice' . $order_id, $m );
 }
 function _eb_get_log_admin_order( $order_id, $limit = '' ) {
+	// v2
+	return _eb_get_log(2);
+	
+	// v1
 	return _eb_q("SELECT *
 	FROM
 		" . wp_postmeta . "
@@ -2319,11 +2363,21 @@ function _eb_get_log_admin_order( $order_id, $limit = '' ) {
 }
 
 function _eb_log_search($m) {
-	return false;
+//	return false;
 	
+	// v2
+	return _eb_set_log( array(
+		'l_noidung' => $m
+	), 5 );
+	
+	// v1
 	_eb_postmeta( eb_log_search_id_postmeta, '__eb_log_search', $m );
 }
 function _eb_get_log_search( $limit = '' ) {
+	// v2
+	return _eb_get_log(5);
+	
+	// v1
 	return _eb_q("SELECT *
 	FROM
 		" . wp_postmeta . "
@@ -2333,6 +2387,31 @@ function _eb_get_log_search( $limit = '' ) {
 	ORDER BY
 		meta_id DESC
 	" . $limit);
+}
+
+function _eb_set_log ( $arr, $log_type = 0 ) {
+	global $client_ip;
+	
+	$arr['l_agent'] = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+	$arr['l_ip'] = $client_ip;
+	$arr['l_ngay'] = date_time;
+	$arr['l_type'] = $log_type;
+//	$arr['hd_id'] = $hd_id;
+//	$arr['post_id'] = $post_id;
+	$arr['tv_id'] = mtv_id;
+	
+	return _eb_sd( $arr, 'eb_wgr_log' );
+}
+
+function _eb_get_log ( $log_type = 0, $limit = 500 ) {
+	return _eb_q("SELECT *
+	FROM
+		`eb_wgr_log`
+	WHERE
+		l_type = " . $log_type . "
+	ORDER BY
+		l_id DESC
+	LIMIT 0, " . $limit);
 }
 
 

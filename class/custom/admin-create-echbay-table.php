@@ -6,7 +6,7 @@
 * Tạo các bảng riêng cho plugin của echbay
 */
 
-$strCacheFilter = 'admin-create-echbay-table';
+$strCacheFilter = 'admin-create-echbay-table-v2';
 $check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 6 * 3600 );
 if ($check_Cleanup_cache == false) {
 	
@@ -112,6 +112,13 @@ if ($check_Cleanup_cache == false) {
 			'default' => '',
 			'extra' => '',
 		),
+		'l_type' => array(
+			'type' => 'bigint(20)',
+			'null' => 'no',
+			'key' => 'mul',
+			'default' => '',
+			'extra' => '',
+		),
 		'hd_id' => array(
 			'type' => 'bigint(20)',
 			'null' => 'no',
@@ -134,6 +141,8 @@ if ($check_Cleanup_cache == false) {
 			'extra' => '',
 		)
 	) );
+	
+	
 	
 	// ép lưu cache
 	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
