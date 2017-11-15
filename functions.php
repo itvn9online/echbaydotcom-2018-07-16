@@ -2615,15 +2615,21 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	
 	
 	// sử dụng wordpress mail
-	$mail = wp_mail( $to_email, $title, $message, $headers );
-	if( $mail ) {
-		EBE_show_log( 'Send email to: ' . $to_email );
-		return true;
+//	$mail = wp_mail( $to_email, $title, $message, $headers );
+//	if( ! $mail ) {
+	if( ! wp_mail( $to_email, $title, $message, $headers ) ) {
+		EBE_show_log( 'ERROR send email: ' . $to_email );
+		return false;
 	}
 	
 	//
-	EBE_show_log( 'ERROR send email: ' . $to_email );
-	return false;
+	if ( $__cf_row ['cf_sys_email'] == 0 || $__cf_row ['cf_sys_email'] == '' ) {
+		EBE_show_log( 'Send email to: ' . $to_email );
+	}
+	else {
+		EBE_show_log( 'Send SMTP to: ' . $to_email );
+	}
+	return true;
 }
 
 function EBE_show_log ($m) {
