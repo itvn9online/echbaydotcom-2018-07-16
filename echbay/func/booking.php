@@ -387,10 +387,10 @@ if (strstr ( $t_email, '@gmail.com' ) == true
 
 // lưu nội dung vào cache rồi thực hiện chức năng gửi mail sau
 _eb_create_file( EB_THEME_CACHE . 'booking_mail/' . $hd_id . '.txt', '
-<mail_to_admin>' . $mail_to_admin . '<mail_to_admin/>
-<mail_title>' . $mail_title . '<mail_title/>
-<message>' . $message . '<message/>
-<bcc_email>' . $bcc_email . '<bcc_email/>
+<mail_to_admin>' . $mail_to_admin . '</mail_to_admin>
+<mail_title>' . $mail_title . '</mail_title>
+<message>' . $message . '</message>
+<bcc_email>' . $bcc_email . '</bcc_email>
 ' );
 
 

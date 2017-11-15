@@ -373,7 +373,7 @@ function ajaxl(url, id, bg, callBack) {
 	}
 	else if ( dog(id) == null ) {
 		if ( typeof bg == 'number' && bg == 1 ) {
-			$('body').append('<div id="' + id + '"></div>');
+			$('body').append('<div id="' + id + '" class="d-none"></div>');
 		}
 		else {
 			console.log('"' + id + '" not found. Set bg = 1 for auto create div[id="' + id + '"].');

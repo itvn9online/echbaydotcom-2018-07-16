@@ -219,3 +219,17 @@ function WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl ) {
 
 
 
+
+// Lấy DOM content của file xml
+function WGR_get_dom_xml ( $a, $tag ) {
+	$a = explode( '</' . $tag . '>', $a );
+	$a = explode( '<' . $tag . '>', $a[0] );
+	if ( count($a) > 1 ) {
+		return $a[1];
+	}
+	
+	return '';
+}
+
+
+
