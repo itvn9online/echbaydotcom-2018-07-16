@@ -1069,6 +1069,7 @@ function WGR_remove_css_multi_comment ( $a ) {
 	// thay url ảnh của child theme thành url tuyệt đối
 	if ( defined('EB_CHILD_THEME_URL') ) {
 		$str = str_replace( '../images-child/', str_replace( '\\', '/', str_replace( ABSPATH, web_link, EB_CHILD_THEME_URL ) ) . 'images-child/', $str );
+		$str = str_replace( '../image-child/', str_replace( '\\', '/', str_replace( ABSPATH, web_link, EB_CHILD_THEME_URL ) ) . 'image-child/', $str );
 	}
 	
 	return $str;

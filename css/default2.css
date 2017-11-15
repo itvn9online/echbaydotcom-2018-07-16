@@ -34,7 +34,8 @@ label,
 }
 .echbay-blog-avt {
 	background: #fff center no-repeat url(../images-global/noavatar.png);
-	background-size: auto 100%;
+	/* background-size: auto 100%; */
+	background-size: contain;
 	height: 150px;
 	border: 1px #f2f2f2 solid;
 }
