@@ -729,8 +729,12 @@ input[id="_eb_category_order"] { width: 90px; }
 #menu-posts-ads .dashicons-admin-post:before,
 #menu-posts-blog .dashicons-admin-post:before {
 	font-family: FontAwesome;
+	/*
 	text-shadow: 0 0 10px #fff;
 	color: #FF9800 !important;
+	*/
+	text-shadow: 0 0 30px #fff;
+	color: #fff !important;
 }
 #toplevel_page_eb-order .dashicons-admin-generic:before { content: "\f06c"; }
 #menu-posts-ads .dashicons-admin-post:before { content: "\f03e"; }
