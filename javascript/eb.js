@@ -936,7 +936,7 @@ var _global_js_eb = {
 //			if ( cf_tester_mode != 1 ) {
 				s = a.split('//')[1].split('/')[0];
 				s2 = click_url.split('//')[1].split('/')[0];
-				if ( s.split(s2).length > 1 || s2.split(s).length ) {
+				if ( s.split(s2).length > 1 || s2.split(s).length > 1 ) {
 					return false;
 				}
 //			}
@@ -1017,7 +1017,7 @@ var _global_js_eb = {
 			setTimeout(function() {
 				ajaxl('log_click', jd, 1);
 				console.log('Log referrer');
-			}, 600);
+			}, 1200);
 			
 			//
 			return false;
