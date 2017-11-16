@@ -500,19 +500,21 @@ function _eb_echo_widget_name ( $name, $before_widget ) {
 }
 
 function _eb_get_echo_widget_title ( $title, $clat = '', $before_title = '', $dynamic_tag = 'div', $after_title = '' ) {
-	if ( $title != '' ) {
-		if ( $dynamic_tag == '' ) {
-			$dynamic_tag = 'div';
-		}
-		
-		//
-//		echo '<div class="echbay-widget-title">' . $before_title . $title . $after_title . '</div>';
-		return '
-		<div class="echbay-widget-title ' . $clat . '">
-			<' . $dynamic_tag . ' title="' . strip_tags( $title ) . '" class="' . $before_title . '">' . $title . '</' . $dynamic_tag . '>
-		</div>';
+	if ( $title == '' ) {
+		return '';
 	}
-	return '';
+	
+	//
+	if ( $dynamic_tag == '' ) {
+		$dynamic_tag = 'div';
+	}
+	
+	//
+//	echo '<div class="echbay-widget-title">' . $before_title . $title . $after_title . '</div>';
+	return '
+	<div class="echbay-widget-title ' . $clat . '">
+		<' . $dynamic_tag . ' title="' . strip_tags( $title ) . '" class="' . $before_title . '">' . $title . '</' . $dynamic_tag . '>
+	</div>';
 }
 
 function _eb_echo_widget_title ( $title = '', $clat = '', $before_title = '', $dynamic_tag = 'div', $after_title = '' ) {

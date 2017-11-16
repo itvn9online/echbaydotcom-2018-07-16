@@ -71,7 +71,7 @@ class ___echbay_widget_add_search_form extends WP_Widget {
 		echo '<div class="' . str_replace( '  ', ' ', trim( 'top-footer-css ' . $width . ' ' . $custom_style ) ) . '">';
 		
 		//
-//		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
+		_eb_echo_widget_title( $title, 'echbay-widget-search-title', $before_title );
 		
 		//
 		echo EBE_get_html_search();

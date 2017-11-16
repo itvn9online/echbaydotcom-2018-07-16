@@ -3,6 +3,8 @@
 	border-bottom: 2px #ccc solid;
 	margin-bottom: 15px;
 	line-height: 34px;
+	height: 34px;
+	overflow: hidden;
 }
 .thread-home-c2:before {
 	content: "";
