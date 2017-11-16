@@ -3,7 +3,7 @@
 
 
 $a = _eb_getCucki('eb_wgr_log_click');
-echo $a;
+//echo $a;
 
 
 if ( $a != '' ) {
