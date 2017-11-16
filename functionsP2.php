@@ -632,6 +632,7 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 //	$a = false;
 //	$a = _eb_get_static_html ( $strCacheFilter, '', '', 5 );
 	if ($a == false) {
+		$a = '';
 		
 		//
 //		echo $taxx . '<br>' . "\n";
@@ -642,7 +643,26 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 		
 		//
 		$term = get_term( $id, $taxx );
+//		echo $id . '<br>' . "\n";
+//		echo $taxx . '<br>' . "\n";
 //		print_r( $term );
+		if ( gettype($term) == 'object' && ! isset($term->errors) ) {
+			$a = get_term_link( $term, $taxx );
+			
+			/*
+			echo '<!-- ';
+			echo $id . '<br>' . "\n";
+			echo $taxx . '<br>' . "\n";
+			print_r( $term );
+			echo ' -->';
+			*/
+		}
+		/*
+		else {
+			$term = WGR_get_all_term( $id );
+		}
+		echo 'aaaaaaaaa';
+		*/
 		
 		/*
 		if ( $taxx == '' || $taxx == 'category' ) {
@@ -651,7 +671,7 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 		else {
 			*/
 //			$a = get_term_link( get_term_by( 'id', $id, $taxx ), $taxx );
-			$a = get_term_link( $term, $taxx );
+//			$a = get_term_link( $term, $taxx );
 //		}
 //		echo $a . '<br>' . "\n";
 		
@@ -661,6 +681,7 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 			
 			// thử chức năng tìm tất cả các term
 			$a = WGR_get_all_term( $id );
+//			print_r($a);
 			
 			// nếu tìm được -> tạo link luôn
 			if ( ! isset($a->errors) ) {

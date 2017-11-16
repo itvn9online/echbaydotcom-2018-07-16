@@ -86,7 +86,32 @@ function WGR_widget_home_hot ( $instance ) {
 	
 	// nếu có phân nhóm -> lấy theo phân nhóm
 	if ( $cat_ids > 0 ) {
-		$args['cat'] = $cat_ids;
+		
+		// các sản phẩm trong nhóm con
+		/*
+		$arr_in = array();
+		
+		$sub_cat = get_categories( array(
+			'parent' => $cat_ids
+		) );
+//		print_r( $sub_cat );
+		if ( ! empty( $sub_cat ) ) {
+			foreach ( $sub_cat as $k => $v ) {
+				$arr_in[] = $v->term_id;
+			}
+		}
+		
+		if ( ! empty( $arr_in ) ) {
+			$arr_in[] = $cat_ids;
+			
+			$args['category__in'] = $arr_in;
+		}
+		else {
+			*/
+			$args['cat'] = $cat_ids;
+//		}
+		
+		//
 		$home_hot_lnk = _eb_c_link( $cat_ids, $cat_type );
 		
 		// lấy thông tin phân nhóm luôn
@@ -115,6 +140,10 @@ function WGR_widget_home_hot ( $instance ) {
 	
 	//
 	if ( $str_home_hot == '' ) {
+		echo '<!-- ';
+		print_r( $args );
+		echo ' -->';
+		
 		$str_home_hot = '<li class="text-center"><em>post not found</em></li>';
 	}
 	

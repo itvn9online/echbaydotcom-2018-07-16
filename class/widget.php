@@ -662,15 +662,23 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	
 	
 	// v2 -> tự động thay đổi taxonomy khi chọn nhóm
-	echo '<p style="display:none;">Kiểu dữ liệu: <input type="text" class="widefat ' . $animate_id . '" name="' . $cat_type_name . '" value="' . $cat_type . '"/></p>';
+	echo '<p style="display:none2;">Kiểu dữ liệu: <input type="text" class="widefat ' . $animate_id . '" name="' . $cat_type_name . '" value="' . $cat_type . '"/></p>';
 	
 	//
 	echo '<script type="text/javascript">
-	jQuery("#' . $animate_id . '").off("change").change(function () {
-		var a = jQuery("#' . $animate_id . ' option:selected").attr("data-taxonomy") || "";
+//	jQuery("#' . $animate_id . '").off("change").change(function () {
+	jQuery(".eb-get-widget-category").off("change").change(function () {
+//		var a = jQuery("#' . $animate_id . ' option:selected").attr("data-taxonomy") || "";
+		var a = jQuery("option:selected", this).attr("data-taxonomy") || "",
+			b = $(this).attr("id") || "";
+		if ( b == "" ) {
+			console.log("ID for set taxonomy not found!");
+			return false;
+		}
 		if ( a == "" ) a = "category";
-		console.log("Auto set taxonomy #" + a);
-		jQuery(".' . $animate_id . '").val( a );
+		console.log("Auto set taxonomy #" + a + " for: " + b);
+//		jQuery(".' . $animate_id . '").val( a );
+		jQuery("." + b).val( a );
 	});
 	</script>';
 	

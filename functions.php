@@ -3414,7 +3414,38 @@ function _eb_load_ads (
 
 
 // Dùng để lấy thông tin các term chưa được xác định
+function WGR_get_taxonomy_name ( $id ) {
+	global $wpdb;
+	
+	//
+	$sql = _eb_q("SELECT *
+	FROM
+		`" . $wpdb->term_taxonomy . "`
+	WHERE
+		term_id = " . $id . "
+		OR term_taxonomy_id = " . $id . "
+	LIMIT 0, 1");
+//	print_r( $sql );
+	if ( ! empty( $sql ) ) {
+		return $sql[0]->taxonomy;
+	}
+	
+	return '';
+}
+
 function WGR_get_all_term ( $id ) {
+	$taxonomy = WGR_get_taxonomy_name($id);
+	
+	$t = get_term( $id, $taxonomy );
+//	print_r( $t );
+//	echo gettype($t);
+	
+	//
+	if ( gettype($t) == 'object' && ! isset($t->errors) ) {
+		return $t;
+	}
+	
+	//
 	$t = get_term( $id, 'category' );
 //	print_r( $t );
 	
