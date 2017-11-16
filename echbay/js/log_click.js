@@ -241,3 +241,9 @@ _time_date();
 
 
 
+// nạp lại trang sau 1 khoảng thời gian
+setTimeout(function () {
+	window.location = window.location.href;
+}, 120 * 1000);
+
+
