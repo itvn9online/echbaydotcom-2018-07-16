@@ -98,16 +98,16 @@ $log_type = 3;
 	<div class="lf f75">
 		<ul class="cf thongke-log-click">
 			<li>
-				<div><font>Ngay bây giờ</font><span id="oi_show_5_phut">0</span></div>
+				<div><font>Ngay bây giờ</font><span><?php echo number_format( _eb_count_log( $log_type, 300 ) ); ?></span></div>
 			</li>
 			<li>
-				<div><font>Khoảng 30 phút qua</font><span><?php echo _eb_count_log( $log_type, 1800 ); ?></span></div>
+				<div><font>Khoảng 30 phút qua</font><span><?php echo number_format( _eb_count_log( $log_type, 1800 ) ); ?></span></div>
 			</li>
 			<li>
-				<div><font>24 giờ qua</font><span><?php echo _eb_count_log( $log_type ); ?></span></div>
+				<div><font>24 giờ qua</font><span><?php echo number_format( _eb_count_log( $log_type, 1 ) ); ?></span></div>
 			</li>
 			<li>
-				<div><font>30 ngày qua</font><span><?php echo _eb_count_log( $log_type, 30 ); ?></span></div>
+				<div><font>30 ngày qua</font><span><?php echo number_format( _eb_count_log( $log_type, 30 ) ); ?></span></div>
 			</li>
 		</ul>
 	</div>
@@ -211,6 +211,7 @@ function add_content_for_log_click(a, op) {
 //	console.log(a);
 	
 	//
+	/*
 	if ( date_time - a.ngay < 1800 ) {
 		if ( date_time - a.ngay < 300 ) {
 			total_5phut++;
@@ -218,6 +219,7 @@ function add_content_for_log_click(a, op) {
 		
 		total_30phut++;
 	}
+	*/
 	
 	//
 	arr_click_list.push(a);
@@ -243,7 +245,7 @@ foreach ( $a as $v ) {
 
 
 //
-$('#oi_show_5_phut').html( total_5phut );
+//$('#oi_show_5_phut').html( total_5phut );
 //$('#oi_show_5_phut').html( total_30phut );
 
 </script> 

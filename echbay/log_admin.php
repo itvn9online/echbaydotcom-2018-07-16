@@ -1,4 +1,4 @@
-<div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Admin log</a></div>
+<div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Admin log (<?php echo number_format( _eb_count_log( 1 ) ); ?>)</a></div>
 <br>
 <?php
 
@@ -32,8 +32,3 @@ foreach ( $a as $v ) {
 }
 ?>
 </table>
-<?
-
-
-
-

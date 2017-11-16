@@ -2414,35 +2414,55 @@ function _eb_get_log ( $log_type = 0, $limit = 100 ) {
 	LIMIT 0, " . $limit);
 }
 
-function _eb_count_log ( $log_type = 0, $limit_time = 1 ) {
+// Tính số lượng log theo khoảng thời gian
+function _eb_count_log ( $log_type = 0, $limit_time = 61 ) {
 	/*
-	* limit_day < 365 -> lấy theo giây
+	* limit_day < 182 -> lấy theo giây
 	*/
-	if ( $limit_time < 365 ) {
+	if ( $limit_time < 182 ) {
 		$limit_time = $limit_time * 24 * 3600;
 	}
 	// mặc định thì tính theo số giây
+//	echo $log_type . '<br>' . "\n";
 	
-	return count( _eb_q("SELECT *
+	//
+	$sql = _eb_q("SELECT count(l_id) as c
 	FROM
 		`eb_wgr_log`
 	WHERE
 		l_type = " . $log_type . "
 		AND l_ngay > " . ( date_time - $limit_time ) . "
 	ORDER BY
-		l_id DESC") );
+		l_id DESC");
+//	print_r( $sql );
+	
+	if ( ! empty ( $sql ) ) {
+		return $sql[0]->c;
+	}
+	return 0;
 }
 
 function _eb_clear_log ( $log_type = 0, $limit_day = 30 ) {
-	return _eb_q("SELECT *
+	$limit_day = date_time - $limit_day * 24 * 3600;
+	
+	//
+	_eb_q("DELETE
 	FROM
 		`eb_wgr_log`
 	WHERE
 		l_type = " . $log_type . "
-	ORDER BY
-		l_id DESC
-	LIMIT 0, " . $limit);
+		AND l_ngay < " . $limit_day);
+	
+	return true;
 }
+
+// làm 1 vòng lặp, xóa toàn bộ cac loại log theo type
+function _eb_clear_all_log () {
+	for ( $i = 0; $i < 10; $i++ ) {
+		_eb_clear_log( $i );
+	}
+}
+
 
 
 

@@ -659,6 +659,7 @@ function WGR_backup_post_before_delete ( $postid ) {
 //
 include EB_THEME_CORE . 'custom/admin/create-echbay-table.php';
 include EB_THEME_CORE . 'custom/admin/disable-update.php';
+include EB_THEME_CORE . 'custom/admin/clean-log.php';
 
 
 
