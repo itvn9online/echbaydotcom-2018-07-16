@@ -205,7 +205,8 @@ var g_func = {
 		
 		if ( typeof days == 'number' && days > 0 ) {
 			// giá trị truyền vào nhỏ hơn 60 -> tính theo ngày
-			if ( days < 60 ) {
+//			if ( days < 60 ) {
+			if ( days < 30 ) {
 				days = days * 24 * 3600;
 			}
 			// chuyển sang dạng timestamp
@@ -870,96 +871,130 @@ var _global_js_eb = {
 			var a = document.referrer || '',
 				click_url = window.location.href,
 				s = '',
+				s2 = '',
 				uri = '',
 				staff_id = '',
 				check_staff_id = '',
 				jd = 'process_referrer_data_click';
-			if (a != '') {
-				s = a.replace('www.', '').split('//')[1].split('/')[0];
-				if (s.replace('m.', '') == click_url.replace('www.', '').replace('m.', '').split('//')[1].split('/')[0]) {
-					return false;
-				}
-				if (dog(jd) == null) {
-					$('<div id="' + jd + '" style="display:none;"></div>').appendTo('body');
-				}
-				check_staff_id = click_url.split('utm_source=');
-				if (check_staff_id.length > 1) {
-					staff_id = check_staff_id[1].split('&')[0].split('/')[0].split('?')[0].split('#')[0];
-					if (staff_id != '') {
-						staff_id = staff_id.toLowerCase().split('ctv');
-						if (staff_id.length > 1) {
-							staff_id = staff_id[1].split('eb')[0];
-							staff_id = parseInt(staff_id, 10);
-							if (isNaN(staff_id) || staff_id <= 0) {
-								staff_id = '';
-							}
-						} else {
+			
+			//
+			if ( a == '' ) {
+				return false;
+			}
+			
+			// Nếu cùng trong domain thì thôi
+			s = a.split('//')[1].split('/')[0];
+			s2 = click_url.split('//')[1].split('/')[0];
+			if ( s.split(s2).length > 1 || s2.split(s).length ) {
+//				return false;
+			}
+			
+			/*
+			if (dog(jd) == null) {
+				$('<div id="' + jd + '" style="display:none;"></div>').appendTo('body');
+			}
+			*/
+			
+			//
+			var pad = function(number, length) {
+					var str = "" + number;
+					while (str.length < length) {
+						str = '0' + str;
+					}
+					return str;
+				},
+				offset = new Date().getTimezoneOffset();
+			offset = ((offset < 0 ? '+' : '-') + pad(parseInt(Math.abs(offset / 60)), 2) + pad(Math.abs(offset % 60), 2));
+			
+			//
+			var arr = {
+				ref: encodeURIComponent(a),
+				url: encodeURIComponent(click_url),
+				iframe: (function() {
+					return (top != self) ? 1 : 0;
+				})(),
+				title: (function() {
+					var str = document.title || '';
+					if (str != '') {
+						str = encodeURIComponent(str);
+					}
+					return str;
+				})(),
+				timezone: encodeURIComponent(offset),
+				lang: (function() {
+					var str = navigator.userLanguage || navigator.language || '';
+					return str;
+				})(),
+				usertime: (function() {
+					var t = new Date().getTime();
+					t = parseInt(t / 1000, 10);
+					return t;
+				})(),
+				window: $(window).width() + 'x' + $(window).height(),
+				document: $(document).width() + 'x' + $(document).height(),
+				screen: screen.width + 'x' + screen.height,
+				/*
+				agent: (function() {
+					var str = navigator.userAgent || navigator.vendor || window.opera || '';
+					str = str.replace(/\s/g, '+');
+					return str;
+				})(),
+				*/
+				staff_id: staff_id
+			};
+			/*
+			uri = '';
+			for (var x in arr) {
+				uri += '&' + x + '=' + arr[x];
+			}
+			*/
+			uri = JSON.stringify( arr );
+			if ( cf_tester_mode == 1 ) {
+				console.log(arr);
+				console.log(uri);
+			}
+			
+			// lưu dưới dạng cookie
+			g_func.setc('eb_wgr_log_click', escape(uri), 60);
+			
+			//
+			setTimeout(function() {
+				ajaxl('log_click', jd, 1);
+				console.log('Log referrer');
+			}, 200);
+			
+			//
+			return false;
+			
+			
+			//
+			check_staff_id = click_url.split('utm_source=');
+			if (check_staff_id.length > 1) {
+				staff_id = check_staff_id[1].split('&')[0].split('/')[0].split('?')[0].split('#')[0];
+				if (staff_id != '') {
+					staff_id = staff_id.toLowerCase().split('ctv');
+					if (staff_id.length > 1) {
+						staff_id = staff_id[1].split('eb')[0];
+						staff_id = parseInt(staff_id, 10);
+						if (isNaN(staff_id) || staff_id <= 0) {
 							staff_id = '';
 						}
+					} else {
+						staff_id = '';
 					}
 				}
-				if (staff_id == '') {
-					staff_id = 0;
-				}
-				if (staff_id > 0) {
-					g_func.setc('ss_staff_id', staff_id, 30);
-				}
-				if (g_func.getc('ss_ads_referre') != null) {
-					console.log('user return');
-					return false;
-				}
-				g_func.setc('ss_ads_referre', encodeURIComponent(a), 3600 * 6);
-				var pad = function(number, length) {
-						var str = "" + number;
-						while (str.length < length) {
-							str = '0' + str;
-						}
-						return str;
-					},
-					offset = new Date().getTimezoneOffset();
-				offset = ((offset < 0 ? '+' : '-') + pad(parseInt(Math.abs(offset / 60)), 2) + pad(Math.abs(offset % 60), 2));
-				var arr = {
-					click_ref: encodeURIComponent(a),
-					click_url: encodeURIComponent(click_url),
-					click_iframe: (function() {
-						return (top != self) ? 1 : 0;
-					})(),
-					click_title: (function() {
-						var str = document.title || '';
-						if (str != '') {
-							str = encodeURIComponent(str);
-						}
-						return str;
-					})(),
-					click_timezone: encodeURIComponent(offset),
-					click_lang: (function() {
-						var str = navigator.userLanguage || navigator.language || '';
-						return str;
-					})(),
-					click_usertime: (function() {
-						var t = new Date().getTime();
-						t = parseInt(t / 1000, 10);
-						return t;
-					})(),
-					click_window: $(window).width() + 'x' + $(window).height(),
-					click_document: $(document).width() + 'x' + $(document).height(),
-					click_screen: screen.width + 'x' + screen.height,
-					click_agent: (function() {
-						var str = navigator.userAgent || navigator.vendor || window.opera || '';
-						str = str.replace(/\s/g, '+');
-						return str;
-					})(),
-					click_staff_id: staff_id
-				};
-				uri = 'guest.php?act=log_click';
-				for (var x in arr) {
-					uri += '&' + x + '=' + arr[x];
-				}
-				setTimeout(function() {
-					ajaxl(uri, jd, 9);
-					console.log('Log referrer');
-				}, 200);
 			}
+			if (staff_id == '') {
+				staff_id = 0;
+			}
+			if (staff_id > 0) {
+				g_func.setc('ss_staff_id', staff_id, 30);
+			}
+			if (g_func.getc('ss_ads_referre') != null) {
+				console.log('user return');
+				return false;
+			}
+			g_func.setc('ss_ads_referre', encodeURIComponent(a), 3600 * 6);
 		}, 600);
 	},
 	
