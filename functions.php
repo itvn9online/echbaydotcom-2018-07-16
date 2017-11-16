@@ -2403,7 +2403,37 @@ function _eb_set_log ( $arr, $log_type = 0 ) {
 	return _eb_sd( $arr, 'eb_wgr_log' );
 }
 
-function _eb_get_log ( $log_type = 0, $limit = 500 ) {
+function _eb_get_log ( $log_type = 0, $limit = 100 ) {
+	return _eb_q("SELECT *
+	FROM
+		`eb_wgr_log`
+	WHERE
+		l_type = " . $log_type . "
+	ORDER BY
+		l_id DESC
+	LIMIT 0, " . $limit);
+}
+
+function _eb_count_log ( $log_type = 0, $limit_time = 1 ) {
+	/*
+	* limit_day < 365 -> lấy theo giây
+	*/
+	if ( $limit_time < 365 ) {
+		$limit_time = $limit_time * 24 * 3600;
+	}
+	// mặc định thì tính theo số giây
+	
+	return count( _eb_q("SELECT *
+	FROM
+		`eb_wgr_log`
+	WHERE
+		l_type = " . $log_type . "
+		AND l_ngay > " . ( date_time - $limit_time ) . "
+	ORDER BY
+		l_id DESC") );
+}
+
+function _eb_clear_log ( $log_type = 0, $limit_day = 30 ) {
 	return _eb_q("SELECT *
 	FROM
 		`eb_wgr_log`

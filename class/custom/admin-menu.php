@@ -206,6 +206,8 @@ function echbay_admin_styles() {
 	//
 	echo '<script type="text/javascript">
 var web_link = "' . web_link . '",
+	date_time = ' . date_time . ',
+	lang_date_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
 	client_ip = "' . $client_ip . '",
 	cf_old_domain = "' . $__cf_row['cf_old_domain'] . '",
 	order_max_post_new = ' . $order_max_post_new . ',

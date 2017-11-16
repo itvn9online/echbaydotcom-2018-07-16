@@ -104,16 +104,16 @@ else {
 define( 'eb_config_id_postmeta', 100000000 );
 
 // log click
-define( 'eb_log_click_id_postmeta', 100000010 );
+//define( 'eb_log_click_id_postmeta', 100000010 );
 
 // log user và log admin phân biệt bởi tên
-define( 'eb_log_user_id_postmeta', 100000020 );
+//define( 'eb_log_user_id_postmeta', 100000020 );
 
 // log tìm kiếm
-define( 'eb_log_search_id_postmeta', 100000030 );
+//define( 'eb_log_search_id_postmeta', 100000030 );
 
 // chức năng thay đổi ngôn ngữ trên website
-define( 'eb_languages_id_postmeta', 100000099 );
+//define( 'eb_languages_id_postmeta', 100000099 );
 
 // 404 monitor
 define( 'eb_log_404_id_postmeta', 100000404 );
@@ -122,7 +122,7 @@ define( 'eb_log_404_id_postmeta', 100000404 );
 * sử dụng bảng wp_comments
 */
 // đơn hàng
-define( 'eb_order_id_comments', 200000000 );
+//define( 'eb_order_id_comments', 200000000 );
 
 // cho chức năng liên hệ
 define( 'eb_contact_id_comments', 200000090 );

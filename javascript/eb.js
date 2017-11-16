@@ -149,6 +149,56 @@ function _date(phomat, t) {
 	}
 	return result;
 }
+
+
+
+
+function _time_date() {
+	var _1_ngay_truoc = date_time - (24 * 3600);
+	$('.number-to-time').each(function() {
+		var a = $(this).attr('title') || $(this).html() || '',
+			a_cache = a;
+		if (a != '') {
+			a = parseInt(a, 10);
+			if (!isNaN(a)) {
+				if (a > date_time) {
+					$(this).html(_date(lang_date_format, a))
+				} else if (a > _1_ngay_truoc) {
+					var str_truoc_sau = 'tr\u01b0\u1edbc';
+					if (a > date_time) {
+						a = a - date_time;
+						str_truoc_sau = 'sau'
+					} else {
+						a = date_time - a
+					}
+					var str = '',
+						gio = 0,
+						sodu = 0,
+						phut = 0;
+					if (a < 60) {
+						str = a + ' gi\u00e2y ' + str_truoc_sau
+					} else if (a < 3600) {
+						str = ((a - (a % 60)) / 60) + ' ph\u00fat ' + str_truoc_sau
+					} else {
+						sodu = a % 3600;
+						gio = (a - sodu) / 3600;
+						phut = (sodu - (sodu % 60)) / 60;
+						str = gio + ((phut > 5) ? ',' + phut : '') + ' gi\u1edd ' + str_truoc_sau;
+						$(this).attr({
+							title: _date(lang_date_format, a_cache)
+						})
+					}
+					$(this).html(str)
+				} else {
+					$(this).html(_date(lang_date_format, a))
+				}
+			}
+		}
+	}).removeClass('number-to-time')
+}
+
+
+
 var g_func = {
 	non_mark: function(str) {
 		str = str.toLowerCase();
@@ -883,13 +933,13 @@ var _global_js_eb = {
 			}
 			
 			// Nếu không phải chế độ TEST -> bỏ qua khi cùng là domain
-			if ( cf_tester_mode != 1 ) {
+//			if ( cf_tester_mode != 1 ) {
 				s = a.split('//')[1].split('/')[0];
 				s2 = click_url.split('//')[1].split('/')[0];
 				if ( s.split(s2).length > 1 || s2.split(s).length ) {
 					return false;
 				}
-			}
+//			}
 			
 			/*
 			if (dog(jd) == null) {
@@ -935,6 +985,7 @@ var _global_js_eb = {
 				window: $(window).width() + 'x' + $(window).height(),
 				document: $(document).width() + 'x' + $(document).height(),
 				screen: screen.width + 'x' + screen.height,
+				quaylai: ( g_func.getc('eb_wgr_quaylai_log_click') != null ) ? 1 : 0,
 				/*
 				agent: (function() {
 					var str = navigator.userAgent || navigator.vendor || window.opera || '';
@@ -958,6 +1009,9 @@ var _global_js_eb = {
 			
 			// lưu dưới dạng cookie
 			g_func.setc('eb_wgr_log_click', escape(uri), 60);
+			
+			// xem là khách cũ hay mới
+			g_func.setc('eb_wgr_quaylai_log_click', 1, 3600 * 6);
 			
 			//
 			setTimeout(function() {
