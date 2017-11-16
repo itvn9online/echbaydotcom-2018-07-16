@@ -406,6 +406,10 @@ if ( ! defined('WP_ADMIN_DIR') ) {
 	define( 'WP_ADMIN_DIR', 'wp-admin' );
 }
 
+//
+define( 'admin_link', web_link . WP_ADMIN_DIR . '/' );
+
+
 /*
 * Mặc định là ẩn các menu quan trọng với tài khoản administrator
 */

@@ -727,7 +727,10 @@ input[id="_eb_category_order"] { width: 90px; }
 #toplevel_page_eb-order .dashicons-admin-generic:before,
 /* #toplevel_page_echbay-plugins-menu .dashicons-admin-generic:before, */
 #menu-posts-ads .dashicons-admin-post:before,
-#menu-posts-blog .dashicons-admin-post:before { font-family: FontAwesome; }
+#menu-posts-blog .dashicons-admin-post:before {
+	font-family: FontAwesome;
+	color: #d54e21 !important;
+}
 #toplevel_page_eb-order .dashicons-admin-generic:before { content: "\f06c"; }
 #menu-posts-ads .dashicons-admin-post:before { content: "\f03e"; }
 #menu-posts-blog .dashicons-admin-post:before { content: "\f1ea"; }

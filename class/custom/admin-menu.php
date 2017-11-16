@@ -38,12 +38,6 @@ $function: hàm hiển thị nội dung của menu. Khi lựa chọn menu thì s
 
 
 
-
-//
-define( 'admin_link', web_link . WP_ADMIN_DIR . '/' );
-
-
-
 //
 function func_include_eb_private_code () {
 	include ECHBAY_PRI_CODE . 'index.php';
