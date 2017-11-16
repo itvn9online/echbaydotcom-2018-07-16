@@ -146,7 +146,7 @@ $log_type = 3;
 </div>
 --> 
 <br />
-<table border="0" cellpadding="6" cellspacing="0" class="table-list table-log-click animate-log-click small" style="opacity:.2;background-color:#fff;">
+<table border="0" cellpadding="6" cellspacing="0" width="100%" class="table-list table-log-click animate-log-click small" style="opacity:.2;background-color:#fff;">
 	<tr class="table-list-title">
 		<td title="IP và số nhấp chuột đến từ IP đó">IP</td>
 		<td>Từ khóa</td>

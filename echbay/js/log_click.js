@@ -21,9 +21,7 @@ $('.animate-log-click').css({
 	
 	// tăng chiều rộng table xem cho dễ
 	if (arr.length > 0) {
-		$('.animate-log-click').attr({
-			width: '200%'
-		})
+		$('.animate-log-click').width('200%');
 	}
 	
 	//
