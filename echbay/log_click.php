@@ -1,90 +1,16 @@
 <?php
+
 $log_type = 3;
+
+//
+_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
+	EB_URL_OF_PLUGIN . 'css/log_click.css'
+) ), 'link' );
+
 ?>
 
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Click log</a></div>
 <br>
-<style type="text/css">
-.table-log-click a {
-	color: #00F;
-}
-.table-list .table-list-title {
-	background: #f5f5f5 !important;
-}
-.tr-log-click td:first-child a {
-	color: #fff;
-}
-.ul-chu-thich li {
-	margin: 5px 0;
-	line-height: 20px;
-}
-.ul-chu-thich span {
-	display: block;
-}
-.ul-chu-thich span em {
-	font-style: normal;
-}
-.ul-chu-thich font {
-	display: inline-block;
-	width: 50px;
-	height: 20px;
-	margin-right: 10px;
-}
-.ul-chu-thich font, .tr-log-click td:first-child {
-	background: #058dc7;
-}
-.ul-chu-thich font.font-quay-lai, .tr-log-click1 td:first-child {
-	background-color: #52b332;
-}
-.ul-chu-thich font.font-iframe, .tr-log-iframe1 td:first-child {
-	background-color: #ff3202;
-}
-.ul-chu-thich font.font-pc-version {
-	background-color: #000;
-}
-.ul-chu-thich font.font-mobile-version {
-	background-color: #666;
-}
-.thongke-log-click li {
-	float: left;
-	width: 25%;
-	font-size: 18px;
-}
-.thongke-log-click span {
-	display: block;
-	font-size: 40pt;
-	margin: 6px 0;
-	line-height:60px;
-}
-.top-mod-table {
-	font-size: 11px;
-}
-.top-mod-table table {
-	width: 95%;
-	border-top: 1px #ccc solid;
-	border-right: 1px #ccc solid;
-}
-.top-mod-table td {
-	padding: 6px;
-	border-bottom: 1px #ccc solid;
-	border-left: 1px #ccc solid;
-}
-.top-mod-table tr:hover {
-	background: #f2f2f2;
-}
-.fa-mobile, .fa-laptop {
-	text-align: center;
-}
-.fa-mobile:before {
-	content: "\f10b";
-	font-size: 16px;
-	color: #090;
-}
-.fa-laptop:before {
-	content: "\f109";
-	font-size: 14px;
-}
-</style>
 <div align="center" class="small">* Hệ thống phân tích lượt truy cập thông qua giới thiệu (không bao gồm các truy cập trực tiếp)</div>
 <br />
 <div class="cf">
@@ -248,6 +174,13 @@ foreach ( $a as $v ) {
 //$('#oi_show_5_phut').html( total_5phut );
 //$('#oi_show_5_phut').html( total_30phut );
 
-</script> 
-<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/'; ?>log_click.js?v=<?php echo date_time; ?>"></script> 
-<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/'; ?>invoice_agent.js?v=<?php echo date_time; ?>"></script> 
+</script>
+<?php
+
+//
+_eb_add_full_js( EBE_admin_set_realtime_for_file ( array(
+	EB_URL_OF_PLUGIN . 'echbay/js/log_click.js',
+	EB_URL_OF_PLUGIN . 'echbay/js/invoice_agent.js'
+) ), 'add' );
+
+

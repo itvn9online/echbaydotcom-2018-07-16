@@ -33,7 +33,13 @@ $date_format = _eb_get_option('date_format');
 $time_format = _eb_get_option('time_format');
 
 
+//
+$log_type = 0;
+$log_name = 'Default log';
 
+
+
+//
 include_once $include_tab;
 
 

@@ -2247,6 +2247,22 @@ function EBE_get_lang_list() {
 
 
 
+// Log mặc định
+function _eb_log_default($m) {
+	return _eb_set_log( array(
+		'l_noidung' => $m
+	) );
+}
+
+// Log LỖI, cho vào log đồng thời báo lỗi luôn
+function _eb_log_error($m) {
+	echo $m;
+	
+	return _eb_set_log( array(
+		'l_noidung' => $m
+	), 6 );
+}
+
 function _eb_log_click($m) {
 //	return false;
 	
