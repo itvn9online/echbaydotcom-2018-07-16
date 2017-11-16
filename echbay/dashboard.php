@@ -1,6 +1,6 @@
 <br>
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Trang tổng quan</a></div>
-<p>* Các cài đặt được chúng tôi khuyên dùng sẽ được đưa ra tại đây, bao gồm: các cài đặt liên quan đến bảo mật website, tối ưu tốc độ web... Và các cài đặt này thường đường thay đổi trong file wp-config.php hoặc <a href="<?php echo web_link . WP_ADMIN_DIR; ?> '/admin.php?page=eb-config&tab=permalinks" target="_blank">thay đổi tại đây</a>.</p>
+<p>* Các cài đặt được chúng tôi khuyên dùng sẽ được đưa ra tại đây, bao gồm: các cài đặt liên quan đến bảo mật website, tối ưu tốc độ web... Và các cài đặt này thường đường thay đổi trong file wp-config.php hoặc <a href="<?php echo admin_link; ?> 'admin.php?page=eb-config&tab=permalinks" target="_blank">thay đổi tại đây</a>.</p>
 <?php
 
 //
@@ -67,7 +67,7 @@ if ( isset( $sql[0]->option_value ) && $sql[0]->option_value == 0 ) {
 	*/
 if ( get_option( 'blog_public' ) == 0 ) {
 	$str_eb_warning .= '
-	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Thiết lập website của bạn đang chặn không cho các công cụ tìm kiếm index website này. Nếu bạn muốn thay đổi ý định này, <a href="' . web_link . WP_ADMIN_DIR . '/options-reading.php" target="_blank" class="bluecolor"><u>có thể thay đổi tại đây</u></a>.</div>';
+	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Thiết lập website của bạn đang chặn không cho các công cụ tìm kiếm index website này. Nếu bạn muốn thay đổi ý định này, <a href="' . admin_link . 'options-reading.php" target="_blank" class="bluecolor"><u>có thể thay đổi tại đây</u></a>.</div>';
 }
 
 
@@ -137,12 +137,12 @@ $dir_robots_txt = ABSPATH . 'robots.txt';
 // nếu file không tồn tại -> cảnh báo
 if ( ! file_exists( $dir_robots_txt ) ) {
 	$str_eb_warning .= '
-	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Bạn chưa tạo file robots.txt cho website, hãy <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab=robots" target="_blank"><u>nhấn vào đây</u></a> để tạo.</div>';
+	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Bạn chưa tạo file robots.txt cho website, hãy <a href="' . admin_link . 'admin.php?page=eb-coder&tab=robots" target="_blank"><u>nhấn vào đây</u></a> để tạo.</div>';
 }
 // nếu có nhưng link sitemap bị sai -> cảnh báo luôn
 else if ( strstr( file_get_contents( $dir_robots_txt, 1 ), web_link . 'sitemap' ) == false ) {
 	$str_eb_warning .= '
-	<div class="orgcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: file robots.txt đã được tạo, nhưng nội dung file đang thiếu hoặc bị sai tham số khá quan trọng là chỉ định sitemap chính xác của website, hãy <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab=robots" target="_blank"><u>nhấn vào đây</u></a> để xem và cập nhật lại.</div>';
+	<div class="orgcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: file robots.txt đã được tạo, nhưng nội dung file đang thiếu hoặc bị sai tham số khá quan trọng là chỉ định sitemap chính xác của website, hãy <a href="' . admin_link . 'admin.php?page=eb-coder&tab=robots" target="_blank"><u>nhấn vào đây</u></a> để xem và cập nhật lại.</div>';
 }
 
 
@@ -170,12 +170,12 @@ if ( ( defined('DISALLOW_FILE_EDIT') && DISALLOW_FILE_EDIT == true )
 // kiểm tra quyền đọc ghi qua FTP
 if ( ( defined('WP_AUTO_UPDATE_CORE') && WP_AUTO_UPDATE_CORE == true ) ) {
 	$str_eb_warning .= '
-	<div class="greencolor"><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang được BẬT, điều này chỉ nên áp dụng cho các website không quan trọng (site vệ tinh). Với các site chính, ưu tiên việc update thủ công để còn kiểm tra lỗi sau mỗi lần update. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_auto_update_wp" target="_blank">Cấu hình website</a>:
+	<div class="greencolor"><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang được BẬT, điều này chỉ nên áp dụng cho các website không quan trọng (site vệ tinh). Với các site chính, ưu tiên việc update thủ công để còn kiểm tra lỗi sau mỗi lần update. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_auto_update_wp" target="_blank">Cấu hình website</a>:
 		<pre><code>define( \'WP_AUTO_UPDATE_CORE\', false );</code></pre>
 	</div>';
 } else {
 	$str_eb_warning .= '
-	<div><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang bị TẮT, nếu đây là site vệ tinh hoặc bạn không có nhiều thời gian chăm sóc cho nó, chúng tôi khuyên bạn hãy bật nó lên. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_auto_update_wp" target="_blank">Cấu hình website</a>:
+	<div><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang bị TẮT, nếu đây là site vệ tinh hoặc bạn không có nhiều thời gian chăm sóc cho nó, chúng tôi khuyên bạn hãy bật nó lên. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_auto_update_wp" target="_blank">Cấu hình website</a>:
 		<pre><code>define( \'WP_AUTO_UPDATE_CORE\', true );</code></pre>
 	</div>';
 }
@@ -205,14 +205,14 @@ if ( webgiare_dot_org_install == true ) {
 WGR_deny_or_accept_vist_php_file( ABSPATH . 'xmlrpc.php', $__cf_row['cf_on_off_xmlrpc'], 'XML-RPC' );
 if ( $__cf_row['cf_on_off_xmlrpc'] != 0 ) {
 	$str_eb_warning .= '
-	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: chức năng <strong>Chia sẻ dữ liệu qua XML-RPC</strong> đang được bật, điều này có thể gây tốn tài nguyên không cần thiết cho website của bạn. Nếu bạn không sử dụng nó hoặc không biết XML-RPC là gì thì hãy tắt nó đi <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_xmlrpc" target="_blank">tại đây</a>.</div>';
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: chức năng <strong>Chia sẻ dữ liệu qua XML-RPC</strong> đang được bật, điều này có thể gây tốn tài nguyên không cần thiết cho website của bạn. Nếu bạn không sử dụng nó hoặc không biết XML-RPC là gì thì hãy tắt nó đi <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_xmlrpc" target="_blank">tại đây</a>.</div>';
 }
 
 // chặn file wp-cron.php, không cho thực thi trên file này
 WGR_deny_or_accept_vist_php_file( ABSPATH . 'wp-cron.php', $__cf_row['cf_on_off_wpcron'], 'WP Cron' );
 if ( $__cf_row['cf_on_off_wpcron'] != 0 ) {
 	$str_eb_warning .= '
-	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: chức năng <strong>Cron Job</strong> của wordpress đang được bật, điều này có thể gây tốn tài nguyên không cần thiết cho website của bạn. Nếu bạn không sử dụng nó hoặc không biết đây là tính năng gì thì hãy tắt nó đi <a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_wpcron" target="_blank">tại đây</a>.</div>';
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: chức năng <strong>Cron Job</strong> của wordpress đang được bật, điều này có thể gây tốn tài nguyên không cần thiết cho website của bạn. Nếu bạn không sử dụng nó hoặc không biết đây là tính năng gì thì hãy tắt nó đi <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_wpcron" target="_blank">tại đây</a>.</div>';
 }
 
 

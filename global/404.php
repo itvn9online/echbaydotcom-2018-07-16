@@ -80,7 +80,7 @@ $__cf_row ["cf_blog_public"] = 0;
 /*
 if ( $act == '9999' ) {
 	if ( mtv_id > 0 ) {
-		wp_redirect( web_link . WP_ADMIN_DIR . '/', 301 );
+		wp_redirect( admin_link, 301 );
 	} else {
 		wp_redirect( web_link . 'wp-login.php', 301 );
 	}

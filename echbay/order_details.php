@@ -34,7 +34,7 @@ include ECHBAY_PRI_CODE . 'order_details_load.php';
 		</tr>
 		<tr>
 			<td class="t">Email</td>
-			<td class="i"><a href="<?php echo web_link . WP_ADMIN_DIR; ?>/user-edit.php?user_id=<?php echo $post->tv_id; ?>" target="_blank"><?php echo _eb_lay_email_tu_cache( $post->tv_id ); ?></a></td>
+			<td class="i"><a href="<?php echo admin_link; ?>user-edit.php?user_id=<?php echo $post->tv_id; ?>" target="_blank"><?php echo _eb_lay_email_tu_cache( $post->tv_id ); ?></a></td>
 		</tr>
 	</table>
 	<br>

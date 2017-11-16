@@ -10,7 +10,7 @@ global $wpdb;
 $threadInPage = 68;
 $totalThread = 0;
 $totalPage = 0;
-$strLinkPager = web_link . WP_ADMIN_DIR . '/admin.php?page=eb-products';
+$strLinkPager = admin_link . 'admin.php?page=eb-products';
 
 $status_by = '';
 $strLinkAjaxl = '';

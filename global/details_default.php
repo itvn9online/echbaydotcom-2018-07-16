@@ -818,7 +818,7 @@ if ( $admin_edit != '' ) {
 $admin_edit = '';
 //if ( current_user_can('editor') || current_user_can('administrator') ) {
 if ( current_user_can('delete_posts') ) {
-	$admin_edit = '<a title="Edit" href="' . web_link . WP_ADMIN_DIR . '/post.php?post=' . $pid . '&action=edit" class="fa fa-edit"></a>';
+	$admin_edit = '<a title="Edit" href="' . admin_link . 'post.php?post=' . $pid . '&action=edit" class="fa fa-edit"></a>';
 }
 $main_content = str_replace ( '{tmp.admin_edit}', $admin_edit, $main_content );
 

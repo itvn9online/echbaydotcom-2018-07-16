@@ -28,7 +28,46 @@ if ( ! file_exists( $include_tab ) ) {
 
 
 
+//
+$date_format = _eb_get_option('date_format');
+$time_format = _eb_get_option('time_format');
+
+
+
 include_once $include_tab;
 
 
 
+?>
+<script type="text/javascript">
+
+
+
+//
+$('.content-to-short').each(function() {
+	var len = 110,
+		a = $(this).html() || '',
+		str_len = g_func.strip_tags(a),
+		str = '';
+	if (a != '' && str_len.length > len + 10) {
+		$(this).attr({
+			title: str_len
+		});
+		a = a.split(' ');
+		for (var i = 0; i < a.length; i++) {
+			str += a[i] + ' ';
+			if (str.length > len) {
+				break;
+			}
+		}
+		if (str.length > len + 10) {
+			str = str.substr(0, len);
+		}
+		str += '...';
+		$(this).html(str);
+	}
+});
+
+
+
+</script> 

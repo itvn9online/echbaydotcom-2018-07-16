@@ -1761,6 +1761,10 @@ function _eb_supper_del_line ( $str, $add_line = '' ) {
 	return $str;
 }
 
+function WGR_get_user_email ( $id ) {
+	return _eb_lay_email_tu_cache( $id );
+}
+
 function _eb_lay_email_tu_cache ( $id ) {
 	if ( $id <= 0 ) {
 		return 'NULL';
@@ -1812,7 +1816,7 @@ function _eb_categories_list_v3 ( $select_name = 't_ant', $taxx = 'category' ) {
 	
 	$str .= _eb_categories_list_list_v3( $taxx );
 	
-	$str .= '<option data-show="1" data-href="' . web_link . WP_ADMIN_DIR . '/edit-tags.php?taxonomy=category">[+] Thêm phân nhóm mới</option>';
+	$str .= '<option data-show="1" data-href="' . admin_link . 'edit-tags.php?taxonomy=category">[+] Thêm phân nhóm mới</option>';
 	
 	return '<select name="' . $select_name . '">' . $str . '</select>';
 }

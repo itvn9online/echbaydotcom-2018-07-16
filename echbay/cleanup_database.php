@@ -5,7 +5,7 @@
 global $wpdb;
 
 //
-$url_for_home_clean_up = web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab=cleanup_database';
+$url_for_home_clean_up = admin_link . 'admin.php?page=eb-coder&tab=cleanup_database';
 
 
 

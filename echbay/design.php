@@ -71,7 +71,7 @@ foreach ( $arr as $k => $v ) {
 		$cl = 'bold redcolor';
 	}
 	
-	$str_file_list .= '<li><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-coder&tab=design&file=' . $v . '" class="' . $cl . '">' . $v . '</a></li>';
+	$str_file_list .= '<li><a href="' . admin_link . 'admin.php?page=eb-coder&tab=design&file=' . $v . '" class="' . $cl . '">' . $v . '</a></li>';
 }
 //print_r($arr);
 

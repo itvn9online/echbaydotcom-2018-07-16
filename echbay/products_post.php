@@ -103,7 +103,7 @@ foreach ( $arrs_cats as $v ) {
 	}
 	
 	//
-	echo '<li><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . '</a></li>';
+	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . '</a></li>';
 }
 echo '</ul>';
 
@@ -236,7 +236,7 @@ if ( $totalThread > 0 ) {
 	<td><a href="' . $trv_link . '" target="_blank">' . $trv_id . ' <i class="fa fa-eye"></i></a></td>
 	<td><a href="' . $trv_link . '" target="_blank" class="d-block admin-thread-avt" style="background-image:url(\'' . $trv_img . '\');">&nbsp;</a></td>
 	<td>
-		<div><a title="' . $trv_tieude . '" href="' . web_link . WP_ADMIN_DIR . '/post.php?post=' . $trv_id . '&action=edit" target="_blank"><strong>' . $trv_tieude . '</strong> <i title="Sửa" class="fa fa-edit greencolor"></i></a></div>
+		<div><a title="' . $trv_tieude . '" href="' . admin_link . 'post.php?post=' . $trv_id . '&action=edit" target="_blank"><strong>' . $trv_tieude . '</strong> <i title="Sửa" class="fa fa-edit greencolor"></i></a></div>
 		<div>' . number_format ( $trv_giaban ) . '/ <strong>' . number_format ( $trv_giamoi ) . '</strong></div>
 		<div>' . $view_by_group . '</div>
 	</td>

@@ -103,7 +103,7 @@ $threadInPage = 68;
 $strFilter = "";
 $totalThread = 0;
 $totalPage = 0;
-$strLinkPager = web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order';
+$strLinkPager = admin_link . 'admin.php?page=eb-order';
 $status_by = '';
 
 
@@ -260,7 +260,7 @@ $offset = ($trang - 1) * $threadInPage;
 		echo '
 		<tr class="eb-set-order-list-info hd_status' . $hd_trangthai . '">
 			<td class="text-center">
-				<div><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order&id=' . $o->order_id . '">
+				<div><a href="' . admin_link . 'admin.php?page=eb-order&id=' . $o->order_id . '">
 					' . $o->order_sku . ' <i class="fa fa-edit bluecolor"></i>
 					<span class="time-for-send-bill d-block">(' . $ngay_gui_don . ')</span>
 				</a></div>
@@ -295,7 +295,7 @@ $offset = ($trang - 1) * $threadInPage;
 		echo '
 		<tr class="hd_status' . $hd_trangthai . '">
 			<td>
-				<div><a href="' . web_link . WP_ADMIN_DIR . '/admin.php?page=eb-order&id=' . $o->ID . '&order_old_type=1" class="order-a-of-v1">' . $o->post_title . '</a></div>
+				<div><a href="' . admin_link . 'admin.php?page=eb-order&id=' . $o->ID . '&order_old_type=1" class="order-a-of-v1">' . $o->post_title . '</a></div>
 				<div class="small">' . $o->post_date . '</div>
 			</td>
 			<td>' . ( isset( $arr_hd_trangthai[ $hd_trangthai ] ) ? $arr_hd_trangthai[ $hd_trangthai ] : '<em>NULL</em>' ) . '</td>

@@ -1060,7 +1060,7 @@ class EchBayCommerce {
 		
 		$str .= $this->categories_list_list_v3( $taxx );
 		
-		$str .= '<option data-show="1" data-href="' . web_link . WP_ADMIN_DIR . '/edit-tags.php?taxonomy=category">[+] Thêm phân nhóm mới</option>';
+		$str .= '<option data-show="1" data-href="' . admin_link . 'edit-tags.php?taxonomy=category">[+] Thêm phân nhóm mới</option>';
 		
 		return '<select name="' . $select_name . '">' . $str . '</select>';
 	}
