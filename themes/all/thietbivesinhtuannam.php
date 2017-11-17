@@ -22,8 +22,10 @@ $eb_all_themes_support["thietbivesinhtuannam"]["footer"][] = "footer_widget.php"
 $eb_all_themes_support["thietbivesinhtuannam"]["footer"][] = "thietbivesinhtuannam-footer1.php";
 $eb_all_themes_support["thietbivesinhtuannam"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["thietbivesinhtuannam"]["home"][] = "thietbivesinhtuannam-home1.php";
-$eb_all_themes_support["thietbivesinhtuannam"]["home"][] = "thietbivesinhtuannam-home2.php";
+//$eb_all_themes_support["thietbivesinhtuannam"]["home"][] = "thietbivesinhtuannam-home1.php";
+//$eb_all_themes_support["thietbivesinhtuannam"]["home"][] = "thietbivesinhtuannam-home2.php";
+$eb_all_themes_support["thietbivesinhtuannam"]["home"][] = "echbaytwo-home1.php";
+$eb_all_themes_support["thietbivesinhtuannam"]["home"][] = "echbaytwo-home3.php";
 $eb_all_themes_support["thietbivesinhtuannam"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["thietbivesinhtuannam"]["threaddetails"][] = "thietbivesinhtuannam-threaddetails.html";
