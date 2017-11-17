@@ -30,6 +30,7 @@ while ( $sql->have_posts() ) {
 	
 	//
 	include EB_THEME_PLUGIN_INDEX . 'global/details.php';
+	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 	
 	// nạp css
 //	print_r( $arr_for_add_css );
