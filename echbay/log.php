@@ -77,9 +77,18 @@ $('.content-to-short').each(function() {
 
 
 // nạp lại trang sau 1 khoảng thời gian
+if ( typeof eb_reload_this_page != 'number' ) {
+	var eb_reload_this_page = 1;
+}
 setTimeout(function () {
-//	window.location = window.location.href;
-	ajaxl('log&tab=<?php echo $eb_ajax_get_tab; ?>', 'rAdminME');
+	eb_reload_this_page ++;
+	console.log(eb_reload_this_page);
+	if ( eb_reload_this_page > 10 ) {
+		window.location = window.location.href;
+	}
+	else {
+		ajaxl('log&tab=<?php echo $eb_ajax_get_tab; ?>', 'rAdminME');
+	}
 }, 61 * 1000);
 
 
