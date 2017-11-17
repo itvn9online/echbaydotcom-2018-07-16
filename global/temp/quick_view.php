@@ -32,7 +32,7 @@ while ( $sql->have_posts() ) {
 	include EB_THEME_PLUGIN_INDEX . 'global/details.php';
 	
 	// nạp css
-	print_r( $arr_for_add_css );
+//	print_r( $arr_for_add_css );
 	_eb_add_compiler_css( $arr_for_add_css );
 	
 	

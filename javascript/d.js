@@ -2994,7 +2994,7 @@ function close_ebe_quick_view () {
 			h = $(this).attr('href') || '';
 		
 		//
-		a = g_func.number_only( new_cart_id );
+		a = g_func.number_only( a );
 		
 		if ( a == 0 || h == '' ) {
 			return false;
