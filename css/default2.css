@@ -1897,11 +1897,11 @@ iframe[name="google_conversion_frame"] {
 	max-width: 550px;
 	margin: 0 auto;
 }
+/* quick view */
+/*
 .ebe-quick-view,
-.ebe-quick-view .quick-view-padding {
-	background: #fff;
-	padding: 25px;
-}
+.ebe-quick-view .quick-view-padding { }
+*/
 .ebe-quick-view {
 	position: fixed;
 	top: 0;
@@ -1915,6 +1915,13 @@ iframe[name="google_conversion_frame"] {
 .ebe-quick-view .quick-view-padding {
 	border: 1px #f2f2f2 solid;
 	box-shadow: 0 0 20px #333;
+	/* width: 90%; */
+	max-width: 1366px;
+	margin: 0 auto;
+	padding: 25px;
+	background: #fff;
 }
 .ebe-quick-view .thread-list,
 .ebe-quick-view .hide-if-quickview { display: none; }
+.style-for-mobile .ebe-quick-view { padding: 10px 0; }
+.style-for-mobile .ebe-quick-view .quick-view-padding { }

@@ -2989,6 +2989,11 @@ function close_ebe_quick_view () {
 }
 
 (function () {
+	if ( cf_post_class_style == '' && cf_blog_class_style != '' ) {
+		cf_post_class_style = cf_blog_class_style;
+	}
+	
+	//
 	$('.thread-list-wgr-quickview').click(function () {
 		var a = $(this).attr('data-id') || '',
 			h = $(this).attr('href') || '';
@@ -3003,7 +3008,7 @@ function close_ebe_quick_view () {
 		
 		//
 		if ( dog('oi_ebe_quick_view') == null ) {
-			$('body').append('<div id="oi_ebe_quick_view" class="ebe-quick-view"><div id="ui_ebe_quick_view" class="quick-view-padding"></div></div>');
+			$('body').append('<div id="oi_ebe_quick_view" class="ebe-quick-view"><div class="' + cf_post_class_style + '"><div id="ui_ebe_quick_view" class="quick-view-padding"></div></div></div>');
 		}
 		
 		//
@@ -3015,8 +3020,7 @@ function close_ebe_quick_view () {
 		window.history.pushState("", '', h);
 		
 		//
-		ajaxl('quick_view&id=' + a, 'ui_ebe_quick_view', 1, function () {
-		});
+		ajaxl('quick_view&id=' + a, 'ui_ebe_quick_view');
 		
 		//
 		return false;
