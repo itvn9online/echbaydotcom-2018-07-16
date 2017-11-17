@@ -1217,7 +1217,7 @@ var press_esc_to_quickvideo_close = false,
 	current_ls_url = window.location.href;
 
 function close_img_quick_video_details () {
-	console.log('close');
+	if ( cf_tester_mode == 1 ) console.log('close');
 	
 	// ẩn video
 	$('.quick-video').hide().height('auto');
@@ -2978,6 +2978,54 @@ setTimeout(function () {
 
 
 
+
+//
+var current_pid_quicview = pid;
+function close_ebe_quick_view () {
+	$('#oi_ebe_quick_view').hide();
+	$('body').removeClass('body-no-scroll');
+	window.history.pushState("", '', current_ls_url);
+	pid = current_pid_quicview;
+}
+
+(function () {
+	$('.thread-list-wgr-quickview').click(function () {
+		var a = $(this).attr('data-id') || '',
+			h = $(this).attr('href') || '';
+		
+		//
+		a = g_func.number_only( new_cart_id );
+		
+		if ( a == 0 || h == '' ) {
+			return false;
+		}
+		pid = a;
+		
+		//
+		if ( dog('oi_ebe_quick_view') == null ) {
+			$('body').append('<div id="oi_ebe_quick_view" class="ebe-quick-view"><div id="ui_ebe_quick_view" class="quick-view-padding"></div></div>');
+		}
+		
+		//
+		$('body').addClass('body-no-scroll');
+		$('#oi_ebe_quick_view').show();
+		$('#ui_ebe_quick_view').html('Đang tải...');
+		
+		//
+		window.history.pushState("", '', h);
+		
+		//
+		ajaxl('quick_view&id=' + a, 'ui_ebe_quick_view', 1, function () {
+		});
+		
+		//
+		return false;
+		
+	});
+})();
+
+
+
 //
 if (press_esc_to_quickvideo_close == false) {
 	press_esc_to_quickvideo_close = true;
@@ -2991,6 +3039,7 @@ if (press_esc_to_quickvideo_close == false) {
 			//
 			close_img_quick_video_details();
 			g_func.opopup();
+			close_ebe_quick_view();
 			
 		}
 	});
@@ -3053,6 +3102,12 @@ if ( typeof document.frm_search != 'undefined' ) {
 
 
 
+//
+_global_js_eb._log_click_ref();
+
+
+
+
 
 // báo lỗi nếu có thẻ dynamic_title_tag chưa được chuyển đổi
 if ( $('dynamic_title_tag').length > 0 ) {
@@ -3066,12 +3121,6 @@ if ( $('dynamic_title_tag').length > 0 ) {
 // TEST
 //g_func.opopup('login');
 //g_func.opopup('register');
-
-
-
-
-//
-_global_js_eb._log_click_ref();
 
 
 

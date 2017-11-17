@@ -1462,8 +1462,7 @@ a.search-advanced-btn {
 	-o-transition: all 0.5s ease;
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
-	overflow: hidden;
-	/* max-height: 250px; */
+	overflow: hidden;/* max-height: 250px; */
 }
 .viewmore-cats-description {
 	display: none;
@@ -1898,3 +1897,24 @@ iframe[name="google_conversion_frame"] {
 	max-width: 550px;
 	margin: 0 auto;
 }
+.ebe-quick-view,
+.ebe-quick-view .quick-view-padding {
+	background: #fff;
+	padding: 25px;
+}
+.ebe-quick-view {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(255,255,255,.6);
+	z-index: 999;
+	overflow: auto;
+}
+.ebe-quick-view .quick-view-padding {
+	border: 1px #f2f2f2 solid;
+	box-shadow: 0 0 20px #333;
+}
+.ebe-quick-view .thread-list,
+.ebe-quick-view .hide-if-quickview { display: none; }

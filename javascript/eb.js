@@ -318,7 +318,7 @@ var g_func = {
 			return 0;
 		}
 		
-		return str;
+		return parseInt( str, 10 );
 	},
 	only_number: function(str) {
 		return g_func.number_only(str);
@@ -437,7 +437,7 @@ function ajaxl(url, id, bg, callBack) {
 	if ( url.split( '//' ).length == 1 ) {
 		url = web_link + 'eb-ajaxservice?set_module=' + url;
 	}
-	console.log(url);
+	if ( cf_tester_mode == 1 ) console.log(url);
 	
 	//
 	$.ajax({
