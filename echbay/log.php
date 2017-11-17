@@ -79,7 +79,7 @@ $('.content-to-short').each(function() {
 // nạp lại trang sau 1 khoảng thời gian
 setTimeout(function () {
 	window.location = window.location.href;
-}, 120 * 1000);
+}, 61 * 1000);
 
 
 
