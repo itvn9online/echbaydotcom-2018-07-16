@@ -11,8 +11,8 @@
 
 
 
-$eb_get_tab = isset($_GET['tab']) ? trim($_GET['tab']) : 'click';
-$eb_get_tab = 'log_' . $eb_get_tab;
+$eb_ajax_get_tab = isset($_GET['tab']) ? trim($_GET['tab']) : 'click';
+$eb_get_tab = 'log_' . $eb_ajax_get_tab;
 //echo $eb_get_tab . '<br>';
 
 //
@@ -78,7 +78,8 @@ $('.content-to-short').each(function() {
 
 // nạp lại trang sau 1 khoảng thời gian
 setTimeout(function () {
-	window.location = window.location.href;
+//	window.location = window.location.href;
+	ajaxl('log&tab=<?php echo $eb_ajax_get_tab; ?>', 'rAdminME');
 }, 61 * 1000);
 
 
