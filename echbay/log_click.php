@@ -77,9 +77,9 @@ _eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 		<td title="IP và số nhấp chuột đến từ IP đó">IP</td>
 		<td>Từ khóa</td>
 		<td>Nguồn</td>
+		<td>Chiến dịch</td>
 		<td title="Xác định đích của session sẽ được tạo ss_ads_referre">Host</td>
 		<td>Tiêu đề/ Đích</td>
-		<td>Chiến dịch</td>
 		<td>Giờ máy trạm</td>
 		<td>Giờ máy chủ</td>
 		<td>Múi giờ</td>
@@ -97,9 +97,9 @@ _eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 		<td><a href="<?php echo admin_link; ?>admin.php?page=eb-log&tab=click&ip={jmp.ip}">{jmp.ip}{jmp.total_ip}</a></td>
 		<td class="title-by-rel ref-to-keyword">-</td>
 		<td class="title-by-rel"><span class="title-by-rel ref-to-source"></span> <a href="#" target="_blank" rel="nofollow" target="_blank" class="link-by-rel greencolor click-open-new-link"> &rArr; </a></td>
+		<td title="{jmp.url}" class="url-to-campaign">-</td>
 		<td title="{jmp.url}" class="host-to-short">-</td>
 		<td><a href="{jmp.url}" target="_blank" rel="nofollow" class="title-to-short small">{jmp.title}</a></td>
-		<td title="{jmp.url}" class="url-to-campaign">-</td>
 		<td class="number-to-time">{jmp.usertime}</td>
 		<td class="number-to-time">{jmp.ngay}</td>
 		<td>{jmp.timezone}</td>
