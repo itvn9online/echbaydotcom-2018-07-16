@@ -1,4 +1,4 @@
-<div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url"><?php echo $log_name; ?> (<?php echo number_format( _eb_count_log( $log_type ) ); ?>)</a></div>
+<div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url"><?php echo $log_name; ?> (<?php echo number_format( _eb_count_log( $log_type, 0, 61 ) ); ?>)</a></div>
 <br>
 <table border="0" cellpadding="6" cellspacing="0" width="100%" class="table-list">
 	<tr class="table-list-title">

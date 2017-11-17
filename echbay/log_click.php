@@ -24,16 +24,16 @@ _eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 	<div class="lf f75">
 		<ul class="cf thongke-log-click">
 			<li>
-				<div><font>Ngay bây giờ</font><span><?php echo number_format( _eb_count_log( $log_type, 300 ) ); ?></span></div>
+				<div><font>Ngay bây giờ</font><span><?php echo number_format( _eb_count_log( $log_type, 60 ) ); ?></span></div>
 			</li>
 			<li>
 				<div><font>Khoảng 30 phút qua</font><span><?php echo number_format( _eb_count_log( $log_type, 1800 ) ); ?></span></div>
 			</li>
 			<li>
-				<div><font>24 giờ qua</font><span><?php echo number_format( _eb_count_log( $log_type, 1 ) ); ?></span></div>
+				<div><font>24 giờ qua</font><span><?php echo number_format( _eb_count_log( $log_type, 0, 1 ) ); ?></span></div>
 			</li>
 			<li>
-				<div><font>30 ngày qua</font><span><?php echo number_format( _eb_count_log( $log_type, 30 ) ); ?></span></div>
+				<div><font>30 ngày qua</font><span><?php echo number_format( _eb_count_log( $log_type, 0, 30 ) ); ?></span></div>
 			</li>
 		</ul>
 	</div>
@@ -94,7 +94,7 @@ _eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 </table>
 <table class="d-none jmp-for-tr">
 	<tr data-rel="{jmp.ref}" data-time="{jmp.ngay}" data-ip="{jmp.ip}" data-return="{jmp.quaylai}" data-iframe="{jmp.iframe}" class="tr-log-click tr-log-click{jmp.quaylai} tr-log-iframe{jmp.iframe}">
-		<td><a href="<?php echo admin_link; ?>admin.php?page=eb-log&tab=click&ip={jmp.ip}">{jmp.ip}</a></td>
+		<td><a href="<?php echo admin_link; ?>admin.php?page=eb-log&tab=click&ip={jmp.ip}">{jmp.ip}{jmp.total_ip}</a></td>
 		<td class="title-by-rel ref-to-keyword">-</td>
 		<td class="title-by-rel"><span class="title-by-rel ref-to-source"></span> <a href="#" target="_blank" rel="nofollow" target="_blank" class="link-by-rel greencolor click-open-new-link"> &rArr; </a></td>
 		<td title="{jmp.url}" class="host-to-short">-</td>
@@ -115,9 +115,7 @@ _eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 <script type="text/javascript">
 
 var arr_click_list = [],
-	current_admin_link = '<?php echo admin_link; ?>admin.php?page=eb-log&tab=click',
-	total_5phut = 0,
-	total_30phut = 0;
+	current_admin_link = '<?php echo admin_link; ?>admin.php?page=eb-log&tab=click';
 
 function add_content_for_log_click(a, op) {
 	
@@ -135,17 +133,6 @@ function add_content_for_log_click(a, op) {
 		a[x] = op[x];
 	}
 //	console.log(a);
-	
-	//
-	/*
-	if ( date_time - a.ngay < 1800 ) {
-		if ( date_time - a.ngay < 300 ) {
-			total_5phut++;
-		}
-		
-		total_30phut++;
-	}
-	*/
 	
 	//
 	arr_click_list.push(a);
@@ -168,11 +155,6 @@ foreach ( $a as $v ) {
 }
 
 ?>
-
-
-//
-//$('#oi_show_5_phut').html( total_5phut );
-//$('#oi_show_5_phut').html( total_30phut );
 
 </script>
 <?php

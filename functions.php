@@ -2431,13 +2431,16 @@ function _eb_get_log ( $log_type = 0, $limit = 100 ) {
 }
 
 // Tính số lượng log theo khoảng thời gian
-function _eb_count_log ( $log_type = 0, $limit_time = 61 ) {
+function _eb_count_log ( $log_type = 0, $limit_time = 3600, $limit_day = 0 ) {
 	/*
 	* limit_day < 182 -> lấy theo giây
 	*/
+	/*
 	if ( $limit_time < 182 ) {
 		$limit_time = $limit_time * 24 * 3600;
 	}
+	*/
+	$limit_time += $limit_day * 24 * 3600;
 	// mặc định thì tính theo số giây
 //	echo $log_type . '<br>' . "\n";
 	
