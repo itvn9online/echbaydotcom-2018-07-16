@@ -4,6 +4,11 @@
 var jEBE_slider_cache_option = {},
 	jEBE_slider_dang_scroll = false;
 
+/*
+* jd: ID hoặc class của thẻ HTML cần tạo slider. Ví dụ: .slider1, #slider2
+* conf: cấu hình riêng cho slider, các cấu hình mặc định sẽ được thiết lập nếu không có cấu hình cụ thể
+* callBack: function sẽ được chạy sau khi tạo slider xong, thường dùng để xử lý các chức năng riêng ngoài việc tạo slider mặc định
+*/
 function jEBE_slider ( jd, conf, callBack ) {
 	
 	//

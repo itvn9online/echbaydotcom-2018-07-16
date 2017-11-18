@@ -228,7 +228,7 @@ function WGR_run_for_admin_edit_post () {
 				a = 0;
 			}
 			
-//				console.log(a);
+//			console.log(a);
 			$(this).val(a);
 		}).change();
 		

@@ -312,7 +312,7 @@ var g_func = {
 		if (typeof str == 'undefined' || str == '') {
 			return 0;
 		}
-		str = str.toString().replace(/[^0-9]/g, '');
+		str = str.toString().replace(/[^0-9\-\+]/g, '');
 		
 		if (str == '') {
 			return 0;
@@ -1883,7 +1883,7 @@ var _global_js_eb = {
 	cart_add_item_v2 : function ( new_cart_id, action_obj ) {
 		
 		//
-		if ( typeof g_func.number_only( new_cart_id ) == 'number' ) {
+		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
 			alert('Không xác định được sản phẩm');
 			return false;
 		}
@@ -2056,7 +2056,7 @@ var _global_js_eb = {
 	cart_add_item : function ( new_cart_id, action_obj ) {
 		
 		//
-		if ( typeof g_func.number_only( new_cart_id ) == 'number' ) {
+		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
 			alert('Không xác định được sản phẩm');
 			return false;
 		}
