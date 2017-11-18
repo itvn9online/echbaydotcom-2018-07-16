@@ -24,6 +24,8 @@ size: "width/height"
 lineHeight: ""
 // ẩn (true|false) nếu không có LI nào được tìm thấy trong slider (mặc định false)
 hide_if_null: true
+// mặc định là điều khiển các thẻ LI làm slider, nếu muốn thẻ khác hãy đặt theo class hoặc ID. Ví dụ: .node1, #node2
+for_class: li
 // Nút bấm chuyển ảnh trên slider (true|false) (mặc định false)
 sliderArrow: true
 // Icon cho nút bấm, sử dụng Font Awesome: http://fontawesome.io/icons/
@@ -121,6 +123,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// mặc định là ẩn nếu không có LI nào
 	set_default_conf( 'hide_if_null', true );
+	set_default_conf( 'for_class', 'li' );
 	
 	// kích thước
 	set_default_conf( 'width', 1 );
@@ -167,7 +170,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	
 	// kiểm tra có li nào ở trong không
-	var len = $(jd + ' li').length || 0;
+	var len = $(jd + ' ' + conf['for_class']).length || 0;
 //	console.log( len );
 	if ( len == 0 ) {
 		if ( conf['hide_if_null'] == true ) {
