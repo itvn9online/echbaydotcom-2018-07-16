@@ -104,7 +104,13 @@ _eb_add_full_js( array(
 */
 
 // TEST
+/*
+echo '<script>';
+echo 'console.log(' . _eb_get_full_category_v2 ( 0, 'category', 1 ) . ');';
+echo '<script>';
+*/
 //echo _eb_get_full_category_v2 ( 0, 'category', 1 );
+//exit();
 
 $cat_js_file_name = 'cat.js';
 $strCacheFilter = 'cat_js';

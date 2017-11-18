@@ -16,14 +16,34 @@ $sql = _eb_load_post_obj( 1, array(
 	'p' => $quick_view_id
 ) );
 //print_r( $sql );
+//$GLOBALS['wp_query'] = $sql;
+//print_r( $GLOBALS );
+
+//
+/*
+$post = _eb_q("SELECT *
+	FROM
+		`" . $wpdb->posts . "`
+	WHERE
+		ID = " . $quick_view_id);
+//print_r( $post );
+$post = $post[0];
+$posts = $post;
+*/
 
 //
 while ( $sql->have_posts() ) {
 	$sql->the_post();
 	
 	//
-//	$post = $sql->post;
 //	print_r( $post );
+	$post = $sql->post;
+//	print_r( $post );
+	
+	//
+//	print_r( $posts );
+	$posts = $sql->posts;
+//	print_r( $posts );
 	
 	// reset lại mảng css -> chỉ nạp cho trang chi tiết thôi
 	$arr_for_add_css = array();

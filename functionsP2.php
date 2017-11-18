@@ -2319,6 +2319,7 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_li
 //		$c_link = _eb_c_link( $v->term_id, web_link . '?cat=' . $v->term_id );
 		if ( $get_full_link == 1 ) {
 			$c_link = _eb_c_link( $v->term_id, $taxx );
+//			echo $c_link . '<br>' . "\n";
 		}
 		else {
 			$c_link = web_link . '?' . $link_for_taxonomy . 'cat=' . $v->term_id;
@@ -2331,7 +2332,7 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_li
 		}
 		
 		//
-		$str .= ',{id:' . $v->term_id . ',ten:"' . _eb_str_block_fix_content ( $v->name ) . '",lnk:"' . $c_link . '",order:' . $cat_order . ',arr:[' . _eb_get_full_category_v2 ( $v->term_id, $taxx ) . ']}';
+		$str .= ',{id:' . $v->term_id . ',ten:"' . _eb_str_block_fix_content ( $v->name ) . '",lnk:"' . $c_link . '",order:' . $cat_order . ',arr:[' . _eb_get_full_category_v2 ( $v->term_id, $taxx, $get_full_link ) . ']}';
 	}
 	$str = substr ( $str, 1 );
 	
