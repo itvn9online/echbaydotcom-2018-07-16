@@ -1816,7 +1816,7 @@ var _global_js_eb = {
 		//
 		var check_phone_number = g_func.number_only( f.t_dienthoai.value );
 		
-		if (check_phone_number.toString().length < 10) {
+		if (check_phone_number.toString().length < 9) {
 			alert('Vui lòng nhập ít nhất một số điện thoại bạn đang sử dụng');
 			f.t_dienthoai.focus();
 			return false;
