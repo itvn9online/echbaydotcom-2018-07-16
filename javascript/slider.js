@@ -6,7 +6,45 @@ var jEBE_slider_cache_option = {},
 
 /*
 * jd: ID hoặc class của thẻ HTML cần tạo slider. Ví dụ: .slider1, #slider2
+*
+*
 * conf: cấu hình riêng cho slider, các cấu hình mặc định sẽ được thiết lập nếu không có cấu hình cụ thể
+* Danh sách các cấu hình:
+*
+// tự động chạy (true|false) nếu được set là true (mặc định false)
+autoplay: true
+// hiển thị nút bấm chuyển ảnh (true|false) nếu được set là true (mặc định true)
+buttonListNext: true
+// kích thước cố định (mặc định là tự động tính theo tham số size bên dưới)
+width: 1
+height: 1
+// tỷ lệ giữa chiều cao và chiều rộng, thiets lập dưới dạng: height/width (thay height và width bằng các con số cụ thể)
+size: "width/height"
+// thiết lập chiều cao dòng cho phần slider (ít khi sử dụng vì nó sẽ được tự động tính toán)
+lineHeight: ""
+// ẩn (true|false) nếu không có LI nào được tìm thấy trong slider (mặc định false)
+hide_if_null: true
+// Nút bấm chuyển ảnh trên slider (true|false) (mặc định false)
+sliderArrow: true
+// Icon cho nút bấm, sử dụng Font Awesome: http://fontawesome.io/icons/
+sliderArrowLeft: "fa-angle-left"
+sliderArrowRight: "fa-angle-right"
+// Kích thước cho nút bấm (font-size), tính theo pixel (px)
+sliderArrowSize: 30
+// Chiều rộng cố định cho nút bấm (mặc định là tự động thiết lập)
+sliderArrowWidthLeft: "auto"
+sliderArrowWidthRight: "auto"
+speed: 0
+speedNext: 5000
+thumbnail: false
+thumbnailHeight: 90
+thumbnailSlider: true
+thumbnailWidth: 90
+// Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider
+visible: 1
+*
+*
+*
 * callBack: function sẽ được chạy sau khi tạo slider xong, thường dùng để xử lý các chức năng riêng ngoài việc tạo slider mặc định
 */
 function jEBE_slider ( jd, conf, callBack ) {
