@@ -17,9 +17,9 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 	function form($instance) {
 		$default = array (
 			'title' => 'EchBay view history',
-			'post_number' => 5,
-			'custom_style' => '',
-			'num_line' => '',
+			'post_number' => 10,
+			'custom_style' => 'eb-view-history',
+			'num_line' => 'thread-list20',
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
