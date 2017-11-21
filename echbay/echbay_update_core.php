@@ -667,6 +667,9 @@ function EBE_get_text_version ( $str ) {
 					//
 					echo '<div id="eb_core_update_all_done"></div>';
 					
+					// cho website vào chế độ chờ
+					sleep(15);
+					
 				}
 				
 				// tắt chế độ bảo trì
