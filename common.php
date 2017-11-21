@@ -377,6 +377,7 @@ if ( $__cf_row[ 'cf_current_theme_using' ] != '' ) {
 //	$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
 //	$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
 	$arr_for_add_css[ WGR_check_add_add_css_themes_or_plugin ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
+	$arr_for_add_css[ WGR_check_add_add_css_themes_or_plugin ( 'd' ) ] = 1;
 }
 //print_r( $arr_for_add_css );
 
