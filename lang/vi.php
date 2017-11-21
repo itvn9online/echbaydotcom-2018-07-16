@@ -46,6 +46,7 @@ $___eb_lang[eb_key_for_site_lang . 'order_za'] = 'Tên sản phẩm ( từ Z đ�
 //
 $___eb_lang[eb_key_for_site_lang . 'post_giacu'] = 'Giá cũ';
 $___eb_lang[eb_key_for_site_lang . 'post_giamoi'] = 'Giá mới';
+$___eb_lang[eb_key_for_site_lang . 'post_zero'] = '<em>Liên hệ</em>';
 $___eb_lang[eb_key_for_site_lang . 'post_luotmua'] = 'Lượt mua';
 $___eb_lang[eb_key_for_site_lang . 'post_soluong'] = 'Số lượng';
 $___eb_lang[eb_key_for_site_lang . 'post_time_discount'] = 'Thời gian khuyến mại còn lại:';
