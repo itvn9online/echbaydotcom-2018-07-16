@@ -158,5 +158,6 @@ $main_content = EBE_html_template( EBE_get_page_template( $act ), array(
 	
 	'tmp.cart_list' => $cart_list,
 	'tmp.cart_total' => EBE_add_ebe_currency_class ( $cart_total ),
+	'tmp.chinhsach' => EBE_get_lang('chinhsach'),
 ) );
 
