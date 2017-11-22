@@ -662,7 +662,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	
 	
 	// v2 -> tự động thay đổi taxonomy khi chọn nhóm
-	echo '<p style="display:none2;">Kiểu dữ liệu: <input type="text" class="widefat ' . $animate_id . '" name="' . $cat_type_name . '" value="' . $cat_type . '"/></p>';
+	echo '<p style="display:none;">Kiểu dữ liệu: <input type="text" class="widefat ' . $animate_id . '" name="' . $cat_type_name . '" value="' . $cat_type . '"/></p>';
 	
 	//
 	echo '<script type="text/javascript">

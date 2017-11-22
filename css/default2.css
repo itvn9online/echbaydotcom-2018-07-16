@@ -1670,6 +1670,7 @@ li.footer-social-gg { background-color: #DE4B39; }
 	display: block;
 }
 .footer-social a:hover { opacity: .6; }
+.footer-social a span { display: none; }
 .show_count_cart { font-style: normal; }
 .show_count_cart:before,
 .show_count_cart:after { }
