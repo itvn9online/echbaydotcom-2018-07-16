@@ -80,6 +80,28 @@ class ___xe_url {
 		if ($this->proxy != '') {
 			curl_setopt ( $process, CURLOPT_PROXY, $this->proxy );
 		}
+		
+		// chuyển data từ chuỗi sang mảng
+		/*
+		if ( gettype($data) != 'object' ) {
+			$a = explode( '&', $data );
+			$data = array();
+			foreach ( $a as $v ) {
+				$v = explode('=', $v);
+				if ( count( $v ) == 2 ) {
+					$data[ $v[0] ] = $v[1];
+				}
+			}
+		}
+		*/
+		// chuyển từ mảng sang chuỗi
+		if ( gettype($data) == 'object' ) {
+			$data = http_build_query( $data );
+		}
+//		print_r( $data );
+//		echo $data . '<br>' . "\n";
+		
+		//
 		curl_setopt ( $process, CURLOPT_POSTFIELDS, $data );
 		curl_setopt ( $process, CURLOPT_RETURNTRANSFER, 1 );
 		curl_setopt ( $process, CURLOPT_FOLLOWLOCATION, 1 );
