@@ -46,21 +46,72 @@ while ( $sql->have_posts() ) {
 //	print_r( $posts );
 	
 	// reset lại mảng css -> chỉ nạp cho trang chi tiết thôi
-	$arr_for_add_css = array();
+	$view_type = '';
+	if ( isset($_GET['view_type']) ) {
+		$view_type = $_GET['view_type'];
+	}
+	
+	// nếu không phải xem qua quick view -> reset lại đống css cho đỡ phải load lại
+	if ( $view_type != 'iframe' ) {
+		$arr_for_add_css = array();
+	}
 	
 	//
 	include EB_THEME_PLUGIN_INDEX . 'global/details.php';
 	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 	
-	// nạp css
+	// nạp css trực tiếp nếu xem qua ajax
 //	print_r( $arr_for_add_css );
-	_eb_add_compiler_css( $arr_for_add_css );
+	if ( $view_type != 'iframe' ) {
+		_eb_add_compiler_css( $arr_for_add_css );
+	}
+	// nạp như bình thường nếu xem qua iframe
+	else {
+		// không index
+		$__cf_row ["cf_blog_public"] = 0;
+		
+		//
+//		include EB_THEME_PLUGIN_INDEX . 'common.php';
+		include EB_THEME_PLUGIN_INDEX . 'header.php';
+	}
 	
 	
 	//
+	echo '<div class="css-for-quickview">';
+	
 	echo $main_content;
 	
+	echo '</div>';
+	
+	//
+	if ( $view_type == 'iframe' ) {
+?>
+<style>
+.height-for-mobile,
+.menu-for-mobile,
+.not-using-navcart { display: none !important; }
+</style>
+<script type="text/javascript">
+// ép chuyển về trang chính nếu không phải xem trogn iframe
+if ( top == self ) {
+	setTimeout(function () {
+//		window.location = web_link + '?p=' + pid;
+		window.location = '<?php echo _eb_p_link( $quick_view_id ); ?>';
+	}, 2000);
 }
+</script>
+<?php
+		// không cần include footer
+		$arr_includes_footer_file = array();
+		
+		//
+//		include EB_THEME_PLUGIN_INDEX . 'footer.php';
+		include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
+	}
+	
+}
+
+
 
 
 

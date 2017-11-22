@@ -2782,6 +2782,13 @@ function WGR_show_or_scroll_to_quick_cart () {
 // nút thêm sản phẩm vào giỏ hàng
 setTimeout(function () {
 	$('.click-jquery-add-to-cart').click(function() {
+		/*
+		if ( pid == 0 ) {
+			return false;
+		}
+		*/
+		
+		//
 		var product_price = $(this).attr('data-gia') || $(this).attr('data-price') || '',
 			product_object = {};
 		
@@ -2814,8 +2821,19 @@ setTimeout(function () {
 	
 	//
 	$('.click-jquery-show-quick-cart').click(function() {
+		if ( pid == 0 ) {
+			return false;
+		}
+		
 		// Hiển thị quick cart dạng popup nếu quick cart không hiển thị sẵn
 		if ( WGR_show_or_scroll_to_quick_cart() == false ) {
+			// nếu đang xem trong iframe -> mở ra giỏ hàng luôn
+			if ( top != self ) {
+				parent.window.location = web_link + 'cart/?id=' + pid;
+				return false;
+			}
+			
+			// Hiển thị bình thường
 			$('#click_show_cpa').show();
 			$('body').addClass('body-no-scroll');
 			
@@ -2994,6 +3012,12 @@ function close_ebe_quick_view () {
 	}
 	
 	//
+	if ( top != self ) {
+		console.log('quick view not active in iframe');
+		return false;
+	}
+	
+	//
 	$('.thread-list-wgr-quickview').click(function () {
 		var a = $(this).attr('data-id') || '',
 			h = $(this).attr('href') || '';
@@ -3008,19 +3032,36 @@ function close_ebe_quick_view () {
 		
 		//
 		if ( dog('oi_ebe_quick_view') == null ) {
-			$('body').append('<div id="oi_ebe_quick_view" class="ebe-quick-view"><div class="' + cf_post_class_style + '"><div id="ui_ebe_quick_view" class="quick-view-padding"></div></div></div>');
+			return false;
 		}
 		
 		//
 		$('body').addClass('body-no-scroll');
 		$('#oi_ebe_quick_view').show();
-		$('#ui_ebe_quick_view').html('Đang tải...');
+		if ( $('div#ui_ebe_quick_view').length > 0 ) {
+			$('#ui_ebe_quick_view').html('Đang tải...');
+		}
 		
 		//
 		window.history.pushState("", '', h);
 		
-		//
-		ajaxl('quick_view&id=' + a, 'ui_ebe_quick_view');
+		// sử dụng ajax
+//		ajaxl('quick_view&id=' + a, 'ui_ebe_quick_view');
+		
+		// sử dụng iframe
+		dog('ui_ebe_quick_view').src = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&view_type=iframe';
+		$('#ui_ebe_quick_view').on('load', function () {
+			var h = $( '#ui_ebe_quick_view' ).contents().find( 'body' ).height() || 0;
+//			console.log(h);
+			if ( h == 0 ) {
+				h = 600;
+			}
+			else {
+				h -= -200;
+			}
+//			console.log(h);
+			$('#ui_ebe_quick_view').height( h );
+		});
 		
 		//
 		return false;

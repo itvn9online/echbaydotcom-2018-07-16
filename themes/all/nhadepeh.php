@@ -35,3 +35,11 @@ $eb_all_themes_support["nhadepeh"]["home"][] = "home_widget.php";
 $eb_all_themes_support["nhadepeh"]["threaddetails"][] = "nhadepeh-threaddetails.html";
 //
 $eb_all_themes_support["nhadepeh"]["threadnode"][] = "nhadepeh-threadnode.html";
+
+/*
+* Danh sách các widget
+== HOME ==
+- Khách hàng nói về chúng tôi: home-review
+*
+*/
+

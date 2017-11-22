@@ -2209,8 +2209,15 @@ var _global_js_eb = {
 		
 		//
 		setTimeout(function () {
-			window.location = web_link + 'cart/';
-//			window.location = web_link + 'cart/?id=' + new_cart_id;
+			//
+			if ( top != self ) {
+				parent.window.location = web_link + 'cart/';
+			}
+			// Hiển thị bình thường
+			else {
+				window.location = web_link + 'cart/';
+//				window.location = web_link + 'cart/?id=' + new_cart_id;
+			}
 		}, time_to_cart );
 		
 		/*

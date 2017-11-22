@@ -82,3 +82,13 @@
 		</div>
 	</div>
 </div>
+<!-- quick view -->
+<div id="oi_ebe_quick_view" class="ebe-quick-view">
+	<div class="quick-view-margin <?php echo $__cf_row['cf_post_class_style']; ?>">
+		<div class="quick-view-close"><i onclick="close_ebe_quick_view();" class="fa fa-close cur"></i></div>
+		<div class="quick-view-padding"> 
+			<!-- <div id="ui_ebe_quick_view"></div> -->
+			<iframe id="ui_ebe_quick_view" name="ui_ebe_quick_view" src="about:blank" width="100%" height="600" frameborder="0">AJAX form</iframe>
+		</div>
+	</div>
+</div>

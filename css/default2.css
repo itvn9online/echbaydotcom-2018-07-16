@@ -1904,6 +1904,7 @@ iframe[name="google_conversion_frame"] {
 .ebe-quick-view,
 .ebe-quick-view .quick-view-padding { }
 */
+/* css for ajax quick view */
 .ebe-quick-view {
 	position: fixed;
 	top: 0;
@@ -1913,17 +1914,49 @@ iframe[name="google_conversion_frame"] {
 	background: rgba(255,255,255,.6);
 	z-index: 999;
 	overflow: auto;
+	display: none;
+}
+.ebe-quick-view .quick-view-margin {
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 .ebe-quick-view .quick-view-padding {
 	border: 1px #f2f2f2 solid;
 	box-shadow: 0 0 20px #333;
-	/* width: 90%; */
 	max-width: 1366px;
 	margin: 0 auto;
 	padding: 25px;
 	background: #fff;
 }
+.css-for-quickview .thread-list,
+.css-for-quickview .hide-if-quickview,
 .ebe-quick-view .thread-list,
 .ebe-quick-view .hide-if-quickview { display: none; }
+.ebe-quick-view .quick-view-close { position: relative; }
+.ebe-quick-view .quick-view-close i {
+	position: absolute;
+	background: #111;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 50%;
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	right: -15px;
+	top: -15px;
+	box-shadow: 0 0 10px #000;
+}
 .style-for-mobile .ebe-quick-view { padding: 10px 0; }
 .style-for-mobile .ebe-quick-view .quick-view-padding { }
+/* css for iframe quick view */
+/*
+#oi_ebe_quick_view {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+*/
