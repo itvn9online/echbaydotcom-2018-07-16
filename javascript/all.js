@@ -52,7 +52,7 @@ function eb_drop_menu(fix_id, select_id) {
 			lnk = '<a href="' + lnk + '">' + b + '</a>';
 		}
 		
-		list += '<li title="' + b + '" data-show="' + al_show + '" data-level="' + level + '" data-value="' + a + '" data-key="' + c.replace(/-/g, '') + '" class="fa">' + lnk + '</li>';
+		list += '<li title="' + b + '" data-show="' + al_show + '" data-level="' + level + '" data-value="' + a + '" data-key="' + c.replace(/-/g, '') + '">' + lnk + '</li>';
 	});
 	
 	list = '<div><ul>' + list + '</ul></div>';

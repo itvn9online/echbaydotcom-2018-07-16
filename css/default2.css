@@ -825,6 +825,7 @@ span.hd_status9 { background: #F00; }
 	font-weight: normal;
 	color: #090;
 	margin-left: 5px;
+	font-family: FontAwesome;
 }
 .search-select-option li:hover,
 .search-select-option li:hover a {

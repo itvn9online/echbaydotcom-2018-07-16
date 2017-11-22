@@ -1,6 +1,17 @@
 <style type="text/css">
 .click-order-thread[data-val="1"] { color: #F90; }
 .maxwidth-quick-add-taxonomy { max-width: 600px; }
+.list-edit-taxonomy blockquote {
+	font-size: 18px;
+	padding-left: 15px;
+	margin-left: 0;
+	border-left: 1px #999 solid;
+}
+.list-edit-taxonomy blockquote blockquote {
+	font-size: 85%;
+	padding-left: 30px;
+	border-left: 0;
+}
 </style>
 <div class="text-right">
 	<button class="blue-button cur click-show-quick-add-taxonomy">Thêm nhóm mới [+]</button>
@@ -138,7 +149,7 @@ function WGR_get_and_oders_taxonomy_category (
 
 
 //
-echo WGR_get_and_oders_taxonomy_category( $by_taxonomy );
+echo '<div class="list-edit-taxonomy">' . WGR_get_and_oders_taxonomy_category( $by_taxonomy ) . '</div>';
 
 
 

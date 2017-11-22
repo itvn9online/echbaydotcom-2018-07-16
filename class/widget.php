@@ -146,11 +146,11 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p>Description: <textarea class="widefat" name="' . $field_name['description'] . '">' . $description . '</textarea></p>';
+	echo '<p>Mô tả: <textarea class="widefat" name="' . $field_name['description'] . '">' . $description . '</textarea></p>';
 	
 	
 	//
-	echo '<p>Post type: ';
+	echo '<p>Định dạng bài viết: ';
 	
 	__eb_widget_load_select(
 		array(
@@ -196,7 +196,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p class="ebe-post-status">Post status by: ';
+	echo '<p class="ebe-post-status">Trạng thái bài viết: ';
 	
 	__eb_widget_load_select(
 		$arr_eb_product_status,
@@ -208,7 +208,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p class="ebe-ads-status">Ads status by: ';
+	echo '<p class="ebe-ads-status">Trạng thái quảng cáo: ';
 	
 	__eb_widget_load_select(
 		$arr_eb_ads_status,
@@ -232,15 +232,15 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	_eb_widget_list_html_file_plugin_theme( $field_name['html_node'], $html_node, 'node' );
+	_eb_widget_list_html_file_plugin_theme( $field_name['html_node'], $html_node, 'Tệp HTML con' );
 	
 	
 	//
-	echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng.</p>';
+	echo '<p>Tùy chỉnh CSS: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng.</p>';
 	
 	
 	//
-	echo '<p>Custom Size: <input type="text" class="widefat fixed-size-for-config" name="' . $field_name['custom_size'] . '" value="' . $custom_size . '"/> * Điều chỉnh size ảnh theo kích thước riêng (nếu có), có thể đặt <strong>auto</strong> để lấy kích thước tự động của ảnh!</p>';
+	echo '<p>Tùy chỉnh size ảnh: <input type="text" class="widefat fixed-size-for-config" name="' . $field_name['custom_size'] . '" value="' . $custom_size . '"/> * Điều chỉnh size ảnh theo kích thước riêng (nếu có), có thể đặt <strong>auto</strong> để lấy kích thước tự động của ảnh!</p>';
 	
 	
 	
@@ -315,7 +315,7 @@ function _eb_widget_echo_widget_input_title (
 ) {
 	
 	if ( $menu_name == '' ) {
-		$menu_name = 'Title:';
+		$menu_name = 'Tiêu đề:';
 	}
 	if ( $pla == '' ) {
 		$pla = $menu_name;
@@ -328,14 +328,14 @@ function _eb_widget_echo_widget_input_title (
 
 
 function _eb_widget_echo_number_of_posts_to_show ( $select_name, $select_val ) {
-	echo '<p>Number of posts to show: <input type="number" class="tiny-text" name="' . $select_name . '" value="' . $select_val . '" min="1" max="30" size="3" /></p>';
+	echo '<p>Số lượng bài để hiển thị: <input type="number" class="tiny-text" name="' . $select_name . '" value="' . $select_val . '" min="1" max="30" size="3" /></p>';
 }
 
 
 
 
 function _eb_widget_set_sortby_field ( $select_name, $select_val ) {
-	echo '<p>Sort by: ';
+	echo '<p>Sắp xếp bởi: ';
 	
 	__eb_widget_load_select(
 		array (
@@ -355,7 +355,7 @@ function _eb_widget_set_sortby_field ( $select_name, $select_val ) {
 
 
 function _eb_widget_style_for_post_cloumn ( $select_name, $select_val ) {
-	echo '<p>Post cloumn: ';
+	echo '<p>Bố cục bài viết: ';
 	
 	__eb_widget_load_select(
 		array(
@@ -393,7 +393,7 @@ function _eb_widget_number_of_posts_inline ( $select_name, $select_val, $default
 	'echbay-blog20' => 'Năm'
 	*/
 ) ) {
-	echo '<p>Number of posts inline: ';
+	echo '<p>Số bài viết trên mỗi dòng: ';
 	
 	__eb_widget_load_select(
 		$default_arr_select,
@@ -408,7 +408,7 @@ function _eb_widget_number_of_posts_inline ( $select_name, $select_val, $default
 
 
 function _eb_widget_max_width_for_module ( $select_name, $select_val ) {
-	echo '<p>Max-width module: ';
+	echo '<p>Chiều rộng tối đa: ';
 	
 	__eb_widget_load_select(
 		array(
@@ -426,7 +426,7 @@ function _eb_widget_max_width_for_module ( $select_name, $select_val ) {
 
 
 
-function _eb_widget_list_html_file_plugin_theme ( $select_name, $select_val, $html_show = 'module' ) {
+function _eb_widget_list_html_file_plugin_theme ( $select_name, $select_val, $html_show = '' ) {
 	
 	
 	// các file mặc định -> có độ ưu tiên cao
@@ -435,8 +435,8 @@ function _eb_widget_list_html_file_plugin_theme ( $select_name, $select_val, $ht
 	);
 	
 	// node
-	if ( $html_show == 'node' ) {
-		echo '<p>HTML node template: ';
+	if ( $html_show != '' ) {
+		echo '<p>' . $html_show . ': ';
 		
 		$arr['thread_node.html'] = 'thread_node (*)';
 		$arr['blogs_node.html'] = 'blogs_node (*)';
@@ -444,7 +444,7 @@ function _eb_widget_list_html_file_plugin_theme ( $select_name, $select_val, $ht
 	}
 	// module
 	else {
-		echo '<p>HTML module template: ';
+		echo '<p>Tệp HTML cha: ';
 		
 		$arr['home_hot.html'] = 'home_hot (*)';
 		$arr['home_node.html'] = 'home_node (*)';
@@ -624,7 +624,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	
 	
 	//
-	echo '<p>Categories: <select name="' . $select_name . '" id="' . $animate_id . '" class="widefat eb-get-widget-category">
+	echo '<p>Chuyên mục: <select name="' . $select_name . '" id="' . $animate_id . '" class="widefat eb-get-widget-category">
 	<option value="0">[ Select category ]</option>';
 	
 	foreach ( $categories as $v ) {
