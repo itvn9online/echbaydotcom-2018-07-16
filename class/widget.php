@@ -815,6 +815,7 @@ include EB_THEME_CORE . 'widget/product_small.php';
 include EB_THEME_CORE . 'widget/blog.php';
 include EB_THEME_CORE . 'widget/home_product.php';
 include EB_THEME_CORE . 'widget/home_hot.php';
+include EB_THEME_CORE . 'widget/home_list.php';
 //include EB_THEME_CORE . 'widget/search_advanced.php';
 include EB_THEME_CORE . 'widget/categories.php';
 include EB_THEME_CORE . 'widget/price.php';
