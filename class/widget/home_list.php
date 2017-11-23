@@ -22,9 +22,18 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 	function widget($args, $instance) {
 		global $__cf_row;
 		
+		$arr_for_add_css = array();
+		
+		echo '<div class="widget-echbay-home-list">';
 		include EB_THEME_PLUGIN_INDEX . 'themes/home/echbaytwo-home3.php';
+		echo '</div>';
+		
+		//
 //		$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/echbaytwo-home3.css' ] = 1;
 		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/echbaytwo-home3.css' ] = 1;
+		
+		_eb_add_compiler_css( $arr_for_add_css );
+		
 	}
 }
 

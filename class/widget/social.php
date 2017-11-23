@@ -69,6 +69,9 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 		}
 		
 		//
+		echo WGR_get_footer_social();
+		
+		/*
 		echo '
 		<ul class="footer-social text-center cf">
 			<li class="footer-social-fb"><a href="javascript:;" class="ahref-to-facebook" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i></a></li>
@@ -76,6 +79,7 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 			<li class="footer-social-yt"><a href="javascript:;" class="each-to-youtube-chanel" target="_blank" rel="nofollow"><i class="fa fa-youtube"></i></a></li>
 			<li class="footer-social-gg"><a href="javascript:;" class="ahref-to-gooplus" target="_blank" rel="nofollow"><i class="fa fa-google-plus"></i></a></li>
 		</ul>';
+		*/
 		
 		//
 //		echo $after_widget;

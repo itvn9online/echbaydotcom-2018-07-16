@@ -9,6 +9,33 @@
 
 
 
+//
+include EB_THEME_CORE . 'widget/product_small.php';
+include EB_THEME_CORE . 'widget/blog.php';
+include EB_THEME_CORE . 'widget/home_product.php';
+include EB_THEME_CORE . 'widget/home_hot.php';
+include EB_THEME_CORE . 'widget/home_list.php';
+//include EB_THEME_CORE . 'widget/search_advanced.php';
+include EB_THEME_CORE . 'widget/categories.php';
+include EB_THEME_CORE . 'widget/price.php';
+
+//
+include EB_THEME_CORE . 'widget/menu.php';
+include EB_THEME_CORE . 'widget/logo.php';
+include EB_THEME_CORE . 'widget/copyright.php';
+include EB_THEME_CORE . 'widget/tags_open.php';
+include EB_THEME_CORE . 'widget/tags_close.php';
+include EB_THEME_CORE . 'widget/social.php';
+include EB_THEME_CORE . 'widget/contact.php';
+include EB_THEME_CORE . 'widget/search.php';
+include EB_THEME_CORE . 'widget/banner_big.php';
+include EB_THEME_CORE . 'widget/go_to.php';
+include EB_THEME_CORE . 'widget/same_price.php';
+include EB_THEME_CORE . 'widget/view_history.php';
+
+
+
+
 
 add_filter ( 'widgets_init', '___add_echbay_widget' );
 function ___add_echbay_widget() {
@@ -31,6 +58,7 @@ function ___add_echbay_widget() {
 	register_widget ( '___echbay_widget_home_category_content' );
 	
 	register_widget ( '___echbay_widget_home_hot_content' );
+	register_widget ( '___echbay_widget_home_list_content' );
 	
 	//
 	register_widget ( '___echbay_widget_get_menu' );
@@ -806,33 +834,6 @@ class ___echbay_widget_youtube_video extends WP_Widget {
 		echo $after_widget;
 	}
 }
-
-
-
-
-//
-include EB_THEME_CORE . 'widget/product_small.php';
-include EB_THEME_CORE . 'widget/blog.php';
-include EB_THEME_CORE . 'widget/home_product.php';
-include EB_THEME_CORE . 'widget/home_hot.php';
-include EB_THEME_CORE . 'widget/home_list.php';
-//include EB_THEME_CORE . 'widget/search_advanced.php';
-include EB_THEME_CORE . 'widget/categories.php';
-include EB_THEME_CORE . 'widget/price.php';
-
-//
-include EB_THEME_CORE . 'widget/menu.php';
-include EB_THEME_CORE . 'widget/logo.php';
-include EB_THEME_CORE . 'widget/copyright.php';
-include EB_THEME_CORE . 'widget/tags_open.php';
-include EB_THEME_CORE . 'widget/tags_close.php';
-include EB_THEME_CORE . 'widget/social.php';
-include EB_THEME_CORE . 'widget/contact.php';
-include EB_THEME_CORE . 'widget/search.php';
-include EB_THEME_CORE . 'widget/banner_big.php';
-include EB_THEME_CORE . 'widget/go_to.php';
-include EB_THEME_CORE . 'widget/same_price.php';
-include EB_THEME_CORE . 'widget/view_history.php';
 
 
 

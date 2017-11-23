@@ -2685,11 +2685,9 @@ function WGR_get_js_sub_category_to_menu ( arr ) {
 		return '';
 	}
 	// sắp xếp mảng từ to đến bé
-	/*
 	arr.sort( function ( a, b ) {
 		return parseFloat(b.order) - parseFloat(a.order);
 	} );
-	*/
 //	console.log( arr );
 	
 	//
