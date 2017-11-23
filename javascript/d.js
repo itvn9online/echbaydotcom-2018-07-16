@@ -2740,6 +2740,7 @@ function WGR_check_load_js_category ( i ) {
 		
 		return false;
 	}
+//	return false;
 	
 	//
 //	console.log( eb_site_group );
@@ -2760,12 +2761,14 @@ function WGR_check_load_js_category ( i ) {
 	// SUB-MENU -> bổ sung nội dung vào thẻ LI hiện tại
 	// nhớ add thêm class echbay-category-order để order cho phần li
 	// sub catgory
-	if ( eb_site_group.length > 0 && $('.wgr-load-js-sub-category').length > 0 ) {
+//	if ( eb_site_group.length > 0 && $('.wgr-load-js-sub-category').length > 0 ) {
+	if ( $('.wgr-load-js-sub-category').length > 0 ) {
 		$('.wgr-load-js-sub-category').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_site_group ) );
 	}
 	
 	// sub blog group
-	if ( eb_blog_group.length > 0 &&  $('.wgr-load-js-sub-blogs').length > 0 ) {
+//	if ( eb_blog_group.length > 0 && $('.wgr-load-js-sub-blogs').length > 0 ) {
+	if ( $('.wgr-load-js-sub-blogs').length > 0 ) {
 		$('.wgr-load-js-sub-blogs').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_blog_group ) );
 	}
 	

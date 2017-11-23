@@ -228,17 +228,51 @@ var eb_global_product_size = '',
 		
 		// khi người dùng bấm thêm vào menu
 		$('.click-to-add-custom-link').click(function () {
-			$('#custom-menu-item-url').val( $(this).attr('data-link') || '#' );
-			$('#custom-menu-item-name').val( $(this).attr('data-text') || 'Home' );
+			var lnk = $(this).attr('data-link') || '#',
+				nem = $(this).attr('data-text') || 'Home';
+			$('#custom-menu-item-url').val( lnk );
+			$('#custom-menu-item-name').val( nem );
 			$('#submit-customlinkdiv').click();
 //			$('#menu-to-edit li:last').click();
 			
 			// nếu có class CSS riêng
 			var a = $(this).attr('data-css') || '';
 			if ( a != '' ) {
-				setTimeout(function () {
-					$('#menu-to-edit li:last .edit-menu-item-classes').val( a );
-				}, 600);
+				WGR_add_class_for_custom_link_menu( lnk, nem, a );
+				function WGR_add_class_for_custom_link_menu ( lnk, nem, a, i ) {
+					if ( typeof i != 'number' ) {
+						i = 50;
+						
+						// ẩn tạm body đi, xong mới hiển thị lại
+						$('body').css({
+							opacity: .1
+						});
+					}
+					else if ( i < 0 ) {
+						$('body').css({
+							opacity: 1
+						});
+					}
+					
+					// lấy các dữ liệu của thẻ LI cuối cùng
+					var check_lnk = $('#menu-to-edit li:last .edit-menu-item-url').val() || '',
+						check_nem = $('#menu-to-edit li:last .edit-menu-item-title').val() || '',
+						check_a = $('#menu-to-edit li:last .edit-menu-item-classes').val() || '';
+					
+					// Kiểm tra xem có đúng với dữ liệu định gán không
+					if ( check_lnk == lnk && check_nem == nem ) {
+						$('#menu-to-edit li:last .edit-menu-item-classes').val( a );
+						$('body').css({
+							opacity: 1
+						});
+					}
+					// đợi và chạy tiếp
+					else {
+						setTimeout(function () {
+							WGR_add_class_for_custom_link_menu( lnk, nem, a, i - 1 );
+						}, 600);
+					}
+				}
 			}
 		});
 		
