@@ -2684,9 +2684,16 @@ function WGR_get_js_sub_category_to_menu ( arr ) {
 	if ( arr.length == 0 ) {
 		return '';
 	}
+	// sắp xếp mảng từ to đến bé
+	/*
+	arr.sort( function ( a, b ) {
+		return parseFloat(b.order) - parseFloat(a.order);
+	} );
+	*/
+//	console.log( arr );
 	
 	//
-	var str = '';
+	var str = '<!-- JS for sub-category menu -->';
 	
 	str += '<ul class="sub-menu cf">';
 	for ( var i = 0; i < arr.length; i++ ) {
@@ -2701,12 +2708,17 @@ function WGR_get_js_category_to_menu ( arr ) {
 	if ( arr.length == 0 ) {
 		return '';
 	}
+	// sắp xếp mảng từ to đến bé
+	arr.sort( function ( a, b ) {
+		return parseFloat(b.order) - parseFloat(a.order);
+	} );
+//	console.log( arr );
 	
 	//
-	var str = '';
+	var str = '<!-- JS for category menu -->';
 	
 	for ( var i = 0; i < arr.length; i++ ) {
-		str += '<li class="echbay-category-order" style="order:' + arr[i].order + ';"><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
+		str += '<li class="echbay-category-order"><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
 	}
 	
 	return str;
@@ -2734,12 +2746,14 @@ function WGR_check_load_js_category ( i ) {
 	
 	// MENU chính -> xóa LI hiện tại, ghi nội dung mới vào
 	// catgory
-	if ( eb_site_group.length > 0 && $('.wgr-load-js-category').length > 0 ) {
+//	if ( eb_site_group.length > 0 && $('.wgr-load-js-category').length > 0 ) {
+	if ( $('.wgr-load-js-category').length > 0 ) {
 		$('.wgr-load-js-category').after( WGR_get_js_category_to_menu( eb_site_group ) ).remove();
 	}
 	
 	// blog group
-	if ( eb_blog_group.length > 0 &&  $('.wgr-load-js-blogs').length > 0 ) {
+//	if ( eb_blog_group.length > 0 && $('.wgr-load-js-blogs').length > 0 ) {
+	if ( $('.wgr-load-js-blogs').length > 0 ) {
 		$('.wgr-load-js-blogs').after( WGR_get_js_category_to_menu( eb_blog_group ) ).remove();
 	}
 	
