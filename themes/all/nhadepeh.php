@@ -28,8 +28,8 @@ $eb_all_themes_support["nhadepeh"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["nhadepeh"]["footer"][] = "nhadepeh-footer1.php";
 //$eb_all_themes_support["nhadepeh"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["nhadepeh"]["home"][] = "nhadepeh-home1.php";
-$eb_all_themes_support["nhadepeh"]["home"][] = "nhadepeh-home2.php";
+//$eb_all_themes_support["nhadepeh"]["home"][] = "nhadepeh-home1.php";
+//$eb_all_themes_support["nhadepeh"]["home"][] = "nhadepeh-home2.php";
 $eb_all_themes_support["nhadepeh"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["nhadepeh"]["threaddetails"][] = "nhadepeh-threaddetails.html";

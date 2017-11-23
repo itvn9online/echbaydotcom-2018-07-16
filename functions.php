@@ -70,6 +70,20 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		
 		// đặt ảnh đại diện cho phần q.cáo
 		$post->trv_img = $anh_dai_dien_goc;
+		
+		//
+		$youtube_id = _eb_get_youtube_id( _eb_get_post_meta( $post->ID, '_eb_ads_video_url' ) );
+//			$youtube_id = _eb_get_youtube_id( _eb_get_ads_object( $post->ID, '_eb_ads_video_url' ) );
+		$youtube_url = 'about:blank';
+		$youtube_avt = '';
+		if ( $youtube_id != '' ) {
+//			$youtube_url = '//www.youtube.com/watch?v=' . $youtube_id;
+			$youtube_url = '//www.youtube.com/embed/' . $youtube_id;
+			$youtube_avt = '//i.ytimg.com/vi/' . $youtube_id . '/0.jpg';
+		}
+		$post->youtube_id = $youtube_id;
+		$post->youtube_url = $youtube_url;
+		$post->youtube_avt = $youtube_avt;
 	} else {
 		// sử dụng ảnh riêng của q.cáo (nếu có)
 		if ( $anh_dai_dien_goc != '' ) {
@@ -3283,7 +3297,7 @@ function _eb_load_ads (
 			//
 			$youtube_id = _eb_get_youtube_id( _eb_get_post_meta( $post->ID, '_eb_ads_video_url' ) );
 //			$youtube_id = _eb_get_youtube_id( _eb_get_ads_object( $post->ID, '_eb_ads_video_url' ) );
-			$youtube_url = '';
+			$youtube_url = 'about:blank';
 			$youtube_avt = '';
 			if ( $youtube_id != '' ) {
 //				$youtube_url = '//www.youtube.com/watch?v=' . $youtube_id;

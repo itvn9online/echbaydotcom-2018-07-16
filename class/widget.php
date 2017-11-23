@@ -458,19 +458,6 @@ function _eb_widget_list_html_file_plugin_theme ( $select_name, $select_val, $ht
 	$arr_in_plugin = _eb_widget_list_html_file_by_dir( EB_THEME_PLUGIN_INDEX . 'html/' );
 	$arr_in_theme = _eb_widget_list_html_file_by_dir();
 	
-	//
-//	$arr = _eb_parse_args( $arr_in_theme, $arr );
-	foreach ( $arr_in_plugin as $k => $v ) {
-		if ( ! isset( $arr[$k] ) ) {
-			$arr[$k] = $v . ' (plugin)';
-		}
-	}
-	foreach ( $arr_in_theme as $k => $v ) {
-		if ( ! isset( $arr[$k] ) ) {
-			$arr[$k] = $v . ' (theme)';
-		}
-	}
-	
 	// lấy trong child theme
 	if ( defined('EB_CHILD_THEME_URL') ) {
 		$arr_in_child_theme = _eb_widget_list_html_file_by_dir( EB_CHILD_THEME_URL . 'html/' );
@@ -479,6 +466,21 @@ function _eb_widget_list_html_file_plugin_theme ( $select_name, $select_val, $ht
 			if ( ! isset( $arr[$k] ) ) {
 				$arr[$k] = $v . ' (child theme)';
 			}
+		}
+	}
+	
+	//
+//	$arr = _eb_parse_args( $arr_in_theme, $arr );
+	foreach ( $arr_in_theme as $k => $v ) {
+		if ( ! isset( $arr[$k] ) ) {
+			$arr[$k] = $v . ' (theme)';
+		}
+	}
+	
+	//
+	foreach ( $arr_in_plugin as $k => $v ) {
+		if ( ! isset( $arr[$k] ) ) {
+			$arr[$k] = $v . ' (plugin)';
 		}
 	}
 	

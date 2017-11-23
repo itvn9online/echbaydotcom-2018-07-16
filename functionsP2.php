@@ -694,6 +694,11 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 			if ( ! isset($a->errors) ) {
 				$a = get_term_link( $a, $a->taxonomy );
 			}
+			/*
+			else {
+				$a = '';
+			}
+			*/
 			
 			// lấy theo blog
 			/*
