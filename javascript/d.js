@@ -2691,7 +2691,8 @@ function WGR_get_js_sub_category_to_menu ( arr ) {
 //	console.log( arr );
 	
 	//
-	var str = '<!-- JS for sub-category menu -->';
+//	var str = '<!-- JS for sub-category menu -->';
+	var str = '';
 	
 	str += '<ul class="sub-menu cf">';
 	for ( var i = 0; i < arr.length; i++ ) {
