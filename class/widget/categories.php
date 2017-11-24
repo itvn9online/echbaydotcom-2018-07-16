@@ -168,7 +168,22 @@ function WGR_check_post_in_multi_taxonomy ( $a ) {
 	
 }
 
-function WGR_widget_categories_get_by_option () {
+
+function WGR_widget_categories_get_by_option ( $v, $op ) {
+	$hien_thi_sl = '';
+	if ( $op['show_count'] == 'on' ) {
+		$hien_thi_sl = ' (' . $v->count . ')';
+	}
+	
+	//
+	echo '<li class="cat-item cat-item-' . $v->term_id . '" style="order:' . _eb_number_only( _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 ) ) . ';">' . $op['dynamic_tag_begin'] . '<a data-taxonomy="' . $v->taxonomy . '" data-id="' . $v->term_id . '" data-parent="' . $op['cat_ids'] . '" data-node-id="' . $op['widget_id'] . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>' . $op['dynamic_tag_end'];
+	
+	//
+	if ( $op['get_child'] == true ) {
+		EBE_widget_categories_get_child( $v->term_id, $op['cat_type'], $op['show_count'], $op['widget_id'] );
+	}
+	
+	echo '</li>';
 }
 
 
@@ -518,12 +533,26 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		
 		// nếu hiển thị theo status được chỉ định -> dùng vòng lặp riêng
+		$arr_for_get_cat = array();
 		if ( $cat_status > 0 ) {
 			foreach ( $arrs_cats as $v ) {
 				// lấy các nhóm có trạng thái như chỉ định
 				if ( $v != NULL && (int) _eb_get_cat_object( $v->term_id, '_eb_category_status', 0 ) == $cat_status ) {
-					WGR_widget_categories_get_by_option( $v );
+					$arr_for_get_cat[] = $v;
 					
+					/*
+					WGR_widget_categories_get_by_option( $v, array(
+						'show_count' => $show_count,
+						'dynamic_tag_begin' => $dynamic_tag_begin,
+						'dynamic_tag_end' => $dynamic_tag_end,
+						'cat_ids' => $cat_ids,
+						'cat_type' => $cat_type,
+						'get_child' => $get_child,
+						'widget_id' => $this->id
+					) );
+					*/
+					
+					/*
 					$hien_thi_sl = '';
 					if ( $show_count == 'on' ) {
 						$hien_thi_sl = ' (' . $v->count . ')';
@@ -538,6 +567,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 					}
 					
 					echo '</li>';
+					*/
 				}
 			}
 		}
@@ -545,7 +575,19 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			foreach ( $arrs_cats as $v ) {
 				// lấy các nhóm có trạng thái như chỉ định
 				if ( $v != NULL && (int) _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 ) == 1 ) {
-					WGR_widget_categories_get_by_option( $v );
+					$arr_for_get_cat[] = $v;
+					
+					/*
+					WGR_widget_categories_get_by_option( $v, array(
+						'show_count' => $show_count,
+						'dynamic_tag_begin' => $dynamic_tag_begin,
+						'dynamic_tag_end' => $dynamic_tag_end,
+						'cat_ids' => $cat_ids,
+						'cat_type' => $cat_type,
+						'get_child' => $get_child,
+						'widget_id' => $this->id
+					) );
+					*/
 					
 					/*
 					$hien_thi_sl = '';
@@ -570,7 +612,19 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		else {
 			foreach ( $arrs_cats as $v ) {
 				if ( $v != NULL ) {
-					WGR_widget_categories_get_by_option( $v );
+					$arr_for_get_cat[] = $v;
+					
+					/*
+					WGR_widget_categories_get_by_option( $v, array(
+						'show_count' => $show_count,
+						'dynamic_tag_begin' => $dynamic_tag_begin,
+						'dynamic_tag_end' => $dynamic_tag_end,
+						'cat_ids' => $cat_ids,
+						'cat_type' => $cat_type,
+						'get_child' => $get_child,
+						'widget_id' => $this->id
+					) );
+					*/
 					
 					/*
 					$hien_thi_sl = '';
@@ -592,6 +646,25 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			}
 		}
 		
+		//
+		foreach ( $arr_for_get_cat as $v ) {
+			$hien_thi_sl = '';
+			if ( $show_count == 'on' ) {
+				$hien_thi_sl = ' (' . $v->count . ')';
+			}
+			
+			//
+			echo '<li class="cat-item cat-item-' . $v->term_id . '" style="order:' . _eb_number_only( _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 ) ) . ';">' . $dynamic_tag_begin . '<a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
+			
+			//
+			if ( $get_child == true ) {
+				EBE_widget_categories_get_child( $v->term_id, $cat_type, $show_count, $this->id );
+			}
+			
+			echo '</li>';
+		}
+		
+		//
 		echo '</ul>';
 		echo '</div>';
 		
