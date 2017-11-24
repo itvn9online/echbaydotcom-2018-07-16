@@ -168,6 +168,8 @@ function WGR_check_post_in_multi_taxonomy ( $a ) {
 	
 }
 
+function WGR_widget_categories_get_by_option () {
+}
 
 
 /*
@@ -189,6 +191,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			'show_count' => '',
 			'cat_ids' => 0,
 			'cat_status' => 0,
+			'cat_primary' => 0,
 			'cat_type' => 'category',
 			'list_tyle' => '',
 			'get_child' => '',
@@ -263,6 +266,13 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		);
 		
 		echo '</p>';
+		
+		
+		//
+		$input_name = $this->get_field_name ( 'cat_primary' );
+//		echo $instance[ 'cat_primary' ];
+		
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'cat_primary' ], 'Hiện các nhóm được đánh dấu sao' );
 		
 		
 		//
@@ -357,6 +367,9 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		$list_tyle = isset( $instance ['list_tyle'] ) ? $instance ['list_tyle'] : 'off';
 		$list_tyle = ( $list_tyle == 'on' ) ? 'widget-category-selectbox' : '';
 		$list_tyle .= ' widget-category-padding';
+		
+		$cat_primary = isset( $instance ['cat_primary'] ) ? $instance ['cat_primary'] : 'off';
+		$cat_primary = ( $cat_primary == 'on' ) ? true : false;
 		
 		$get_child = isset( $instance ['get_child'] ) ? $instance ['get_child'] : 'off';
 		$get_child = ( $get_child == 'on' ) ? true : false;
@@ -509,6 +522,8 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			foreach ( $arrs_cats as $v ) {
 				// lấy các nhóm có trạng thái như chỉ định
 				if ( $v != NULL && (int) _eb_get_cat_object( $v->term_id, '_eb_category_status', 0 ) == $cat_status ) {
+					WGR_widget_categories_get_by_option( $v );
+					
 					$hien_thi_sl = '';
 					if ( $show_count == 'on' ) {
 						$hien_thi_sl = ' (' . $v->count . ')';
@@ -526,10 +541,38 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 				}
 			}
 		}
+		else if ( $cat_primary == true ) {
+			foreach ( $arrs_cats as $v ) {
+				// lấy các nhóm có trạng thái như chỉ định
+				if ( $v != NULL && (int) _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 ) == 1 ) {
+					WGR_widget_categories_get_by_option( $v );
+					
+					/*
+					$hien_thi_sl = '';
+					if ( $show_count == 'on' ) {
+						$hien_thi_sl = ' (' . $v->count . ')';
+					}
+					
+					//
+					echo '<li class="cat-item cat-item-' . $v->term_id . '" style="order:' . _eb_number_only( _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 ) ) . ';">' . $dynamic_tag_begin . '<a data-taxonomy="' . $v->taxonomy . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
+					
+					//
+					if ( $get_child == true ) {
+						EBE_widget_categories_get_child( $v->term_id, $cat_type, $show_count, $this->id );
+					}
+					
+					echo '</li>';
+					*/
+				}
+			}
+		}
 		//
 		else {
 			foreach ( $arrs_cats as $v ) {
 				if ( $v != NULL ) {
+					WGR_widget_categories_get_by_option( $v );
+					
+					/*
 					$hien_thi_sl = '';
 					if ( $show_count == 'on' ) {
 						$hien_thi_sl = ' (' . $v->count . ')';
@@ -544,6 +587,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 					}
 					
 					echo '</li>';
+					*/
 				}
 			}
 		}

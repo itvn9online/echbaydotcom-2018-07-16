@@ -51,17 +51,25 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
 		
+		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
+		
+		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
+		if ( $width != '' ) $width .= ' lf';
+		
 		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
 //		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
-//		if ( $hide_mobile == 'on' ) $width .= ' hide-if-mobile';
+		if ( $hide_mobile == 'on' ) $width .= ' hide-if-mobile';
 		
 		$full_mobile = isset( $instance ['full_mobile'] ) ? $instance ['full_mobile'] : 'off';
-//		if ( $full_mobile == 'on' ) $width .= ' fullsize-if-mobile';
+		if ( $full_mobile == 'on' ) $width .= ' fullsize-if-mobile';
 		
 		
 		//
 //		_eb_echo_widget_name( $this->name, $before_widget );
 		echo '<!-- ' . $this->name . ' (' . $title . ') -->';
+		
+		//
+		echo '<div class="' . str_replace( '  ', ' ', trim( $width . ' ' . $custom_style ) ) . '">';
 		
 		//
 		if ( $title != '' ) {
@@ -80,6 +88,8 @@ class ___echbay_widget_set_social_menu extends WP_Widget {
 			<li class="footer-social-gg"><a href="javascript:;" class="ahref-to-gooplus" target="_blank" rel="nofollow"><i class="fa fa-google-plus"></i></a></li>
 		</ul>';
 		*/
+		
+		echo '</div>';
 		
 		//
 //		echo $after_widget;

@@ -28,8 +28,8 @@ $eb_all_themes_support["mayxonghoiuot"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["mayxonghoiuot"]["footer"][] = "mayxonghoiuot-footer1.php";
 $eb_all_themes_support["mayxonghoiuot"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["mayxonghoiuot"]["home"][] = "mayxonghoiuot-home1.php";
-$eb_all_themes_support["mayxonghoiuot"]["home"][] = "mayxonghoiuot-home2.php";
+//$eb_all_themes_support["mayxonghoiuot"]["home"][] = "mayxonghoiuot-home1.php";
+//$eb_all_themes_support["mayxonghoiuot"]["home"][] = "mayxonghoiuot-home2.php";
 $eb_all_themes_support["mayxonghoiuot"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["mayxonghoiuot"]["threaddetails"][] = "mayxonghoiuot-threaddetails.html";
