@@ -20,12 +20,11 @@
 		<pre><code>#id_so1 && .class_so2</code></pre>
 		-> Lệnh sẽ được cắt thông qua dấu <strong>&&</strong> sau đó vòng lặp sẽ chạy và xử lý các lớp css được cắt ra.<br>
 		<br>
-		<pre><code>#id_so1 || .class_so2 || #id_so2 || .class_so4</code></pre>
+		<pre><code>#id_so1, .class_so2, #id_so2, .class_so4</code></pre>
 		-> Lấy một trong các ID, class được khai báo! Cái nào khai báo trước sẽ ưu tiên trước.<br>
 		<br>
-		<br>
-		<pre><code>#id_so1:each || .class_so2:each</code></pre>
-		-> Sử dụng vòng lặp để lấy nội dung, vì nội dung có thể sẽ nằm ở nhiều chỗ.<br>
+		<pre><code>#id_so1, .class_so1:each && .class_so2, #id_so2:each</code></pre>
+		-> Chữ <strong>:each</strong> ở cuối -> Sử dụng vòng lặp để lấy nội dung trong tất cả các ID, class đã được khai báo rồi ghép nó lại, vì nội dung có thể sẽ nằm ở nhiều chỗ.<br>
 		<br>
 		<br>
 		Đối với đường link:

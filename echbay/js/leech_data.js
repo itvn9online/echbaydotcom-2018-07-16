@@ -508,7 +508,13 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				var a = '';
 				
 				//
+				arr[x].get = $.trim( arr[x].get );
+				
+				//
 				if ( arr[x].get != '' ) {
+					
+					//
+					arr[x].get = arr[x].get.replace(/\s\s/g, ' ').replace(/\s\s/g, ' ');
 					
 					// nếu là youtube video
 					if ( typeof arr[x].youtube != 'undefined' ) {
@@ -521,7 +527,8 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 					}
 					// nếu là hình ảnh
 					else if ( typeof arr[x].img != 'undefined' ) {
-						$(arr[x].get).each(function() {
+						// thay dấu || thành dấu , để chạy vòng lặp each
+						$( arr[x].get.replace(/\s?\|\|\s?/g, ',') ).each(function() {
 							var str = $(this).attr('data-old-src')
 								|| $(this).attr('data-src')
 								|| $(this).attr('src')
@@ -535,7 +542,9 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 					// mặc định là lấy chữ
 					else {
 						// nếu nội dung nằm ở 2 nơi -> sử dụng && để lấy
-						var a2 = arr[x].get.replace(/\+\+/g, '&&').split( '&&' );
+						var a2 = arr[x].get.replace(/\s?\+\+\s?/g, '&&').split( '&&' );
+						
+						//
 						for ( var i = 0; i < a2.length; i++ ) {
 							a2[i] = g_func.trim( a2[i] );
 							
@@ -555,10 +564,12 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 									tag_begin = '<' + tag_begin + '>';
 								}
 								
-								$( a2[i] ).each(function() {
+								$( a2[i].replace(/\s?\|\|\s?/g, ',') ).each(function() {
 									str += tag_begin + ( $(this).html() || '' ) + tag_end;
 								});
-							} else {
+							}
+							// gọi trực tiếp đến class được nhắc đến
+							else {
 								str = $( a2[i] ).html() || '';
 								str = g_func.trim( str );
 							}
