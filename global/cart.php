@@ -153,11 +153,17 @@ $main_content = EBE_str_template ( 'cart.html', array (
 */
 
 //
+$chinhsach = '';
+if ( EBE_get_lang('url_chinhsach') != '#' ) {
+	$chinhsach = EBE_get_lang('chinhsach');
+}
+
+//
 $main_content = EBE_html_template( EBE_get_page_template( $act ), array(
 	'tmp.js' => 'var new_cart_auto_add_id=' . $new_id . ';',
 	
 	'tmp.cart_list' => $cart_list,
 	'tmp.cart_total' => EBE_add_ebe_currency_class ( $cart_total ),
-	'tmp.chinhsach' => EBE_get_lang('chinhsach'),
+	'tmp.chinhsach' => $chinhsach,
 ) );
 

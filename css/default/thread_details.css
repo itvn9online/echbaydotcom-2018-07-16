@@ -177,7 +177,7 @@
 	display: block;
 }
 .details-mua-ngay {
-	background: #d71921;
+	/* background: #d71921; */
 	border: 0 none;
 	cursor: pointer;
 	margin-right: 10px;

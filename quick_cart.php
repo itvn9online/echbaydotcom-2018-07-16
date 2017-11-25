@@ -70,9 +70,15 @@
 							<textarea name="t_ghichu" placeholder="<?php echo EBE_get_lang('cart_vidu'); ?>"></textarea>
 						</div>
 					</div>
+					<?php
+					if ( EBE_get_lang('url_chinhsach') != '#' ) {
+					?>
 					<p class="l19 small">
 						<input type="checkbox" name="t_dongy" checked>
 						<?php echo EBE_get_lang('chinhsach'); ?></p>
+					<?php
+					}
+					?>
 					<div class="text-center eb-quickcart-submit">
 						<button type="submit" id="sb_submit_cart" class="default-bg cur"><?php echo EBE_get_lang('cart_gui'); ?></button>
 						<button type="button" class="btn-addto-cart default-2bg div-jquery-add-to-cart click-jquery-add-to-cart"><?php echo EBE_get_lang('cart_them'); ?></button>
