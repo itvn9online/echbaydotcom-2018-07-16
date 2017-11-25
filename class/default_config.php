@@ -195,6 +195,9 @@ $__cf_row_default = array(
 	// Với các website nâng cấp từ version 1 lên version, URL có thể sẽ khác nhau -> dùng chức năng này để đồng bộ
 	'cf_echbay_migrate_version' => 0,
 	
+	// Hiển thị nút tìm kiếm nâng cao hoặc nhảy URL luôn
+	'cf_search_advanced_auto_submit' => 0,
+	
 	// Mặc định, banner lớn được load theo từng trang, nếu muốn load cho toàn bộ trang thì kích hoạt nó lên
 	'cf_global_big_banner' => 0,
 	

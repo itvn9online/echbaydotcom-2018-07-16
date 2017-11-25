@@ -411,6 +411,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_alow_edit_theme_plugin' );
 	show_note_for_checkbox_config( 'cf_set_news_version' );
 	show_note_for_checkbox_config( 'cf_echbay_migrate_version' );
+	show_note_for_checkbox_config( 'cf_search_advanced_auto_submit' );
 	show_note_for_checkbox_config( 'cf_global_big_banner' );
 	show_note_for_checkbox_config( 'cf_post_big_banner' );
 	show_note_for_checkbox_config( 'cf_arrow_big_banner' );

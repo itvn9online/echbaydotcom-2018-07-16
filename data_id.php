@@ -43,6 +43,9 @@ $add_data_id = array (
 		// chế độ kiểm thử -> dùng để console lỗi nếu chế độ này đang bật
 		'cf_tester_mode' => $__cf_row['cf_tester_mode'],
 		
+		// tự động submit trong phần tìm kiếm nâng cao
+		'cf_search_advanced_auto_submit' => $__cf_row['cf_search_advanced_auto_submit'],
+		
 		// chiều rộng khung
 		'cf_blog_class_style' => '\'' . $__cf_row['cf_blog_class_style'] . '\'',
 		'cf_post_class_style' => '\'' . $__cf_row['cf_post_class_style'] . '\'',

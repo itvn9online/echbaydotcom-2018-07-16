@@ -91,6 +91,118 @@ function ___eb_set_base_url_for_search_advanced () {
 		}
 		url_for_advanced_search_filter += 'search_advanced=1';
 	}
+	if ( cf_tester_mode == 1 ) console.log( url_for_advanced_search_filter );
+}
+
+
+function ___eb_search_advanced_get_parameter ( a ) {
+	if ( typeof a == 'undefined' ) {
+		return '';
+	}
+	
+	var u = window.location.href.replace(/\?|\#|\&amp\;/g, '&');
+//	console.log( u );
+	
+	u = u.split( '&' + a + '=' );
+	
+	if ( u.length > 1 ) {
+		return u[1].split('&')[0];
+	}
+	
+	return '';
+}
+
+// tạo URL bao gồm các tham số tìm kiếm và chuyển đi
+function ___eb_search_advanced_go_to_url ( op ) {
+	/* option mẫu
+	op = {
+		'price_in': '',
+		'post_options': '',
+		'category': ''
+	}
+	*/
+	
+	//
+	if ( typeof op != 'object' ) {
+		if ( cf_tester_mode == 1 ) console.log( 'option not found in URL search advanced' );
+		return false;
+	}
+	if ( cf_tester_mode == 1 ) console.log(op);
+	
+	// tạo các option khác nếu chưa có
+	if ( typeof op.price_in == 'undefined' ) {
+		// thử lấy khoảng giá trên URL
+		op.price_in = ___eb_search_advanced_get_parameter('price_in');
+		
+		// nếu ko có -> thử tìm theo class có sẵn
+		if ( op.price_in == '' ) {
+			op.price_in = $('.echbay-product-price-between a.selected').attr('data-price');
+		}
+		if ( cf_tester_mode == 1 ) console.log( op.price_in );
+	}
+	if ( typeof op.category == 'undefined' || typeof op.post_options == 'undefined' ) {
+		var filter_category = '',
+			filter_options = '';
+		$('.widget-search-advanced .widget_echbay_category a.selected').each(function() {
+			var tax = $(this).attr('data-taxonomy') || '',
+				j = $(this).attr('data-id') || 0;
+			
+			if ( tax == 'category' ) {
+				filter_category += ',' + j;
+			}
+			else if ( tax == 'post_options' ) {
+				filter_options += ',' + j;
+			}
+//			console.log( filter_category );
+//			console.log( filter_options );
+		});
+		
+		//
+		op.category = filter_category;
+		op.post_options = filter_options;
+	}
+	
+	//
+	var new_url = url_for_advanced_search_filter;
+	
+	if ( typeof op.price_in != 'undefined' && op.price_in != '' ) {
+		new_url += '&price_in=' + op.price_in;
+	}
+	if ( typeof op.category != 'undefined' && op.category != '' ) {
+		if ( op.category.substr( 0, 1 ) == ',' ) {
+			op.category = op.category.substr(1);
+		}
+		
+		new_url += '&filter_cats=' + op.category;
+	}
+	if ( typeof op.post_options != 'undefined' && op.post_options != '' ) {
+		if ( op.post_options.substr( 0, 1 ) == ',' ) {
+			op.post_options = op.post_options.substr(1);
+		}
+		
+		new_url += '&filter=' + op.post_options;
+	}
+	if ( cf_tester_mode == 1 ) console.log( new_url );
+	
+	//
+//	return false;
+	
+	//
+	if ( new_url == '' ) {
+		if ( cf_tester_mode == 1 ) console.log( 'new_url not found in URL search advanced' );
+		return false;
+	}
+	
+	//
+	if ( cf_search_advanced_auto_submit == 0 ) {
+		window.location = new_url;
+	} else {
+		$('.click-to-search-advanced').attr({
+			href : new_url
+		}).css({
+			display : 'inline-block'
+		});
+	}
 }
 
 
@@ -140,23 +252,52 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 	___eb_set_base_url_for_search_advanced();
 	
 	// nếu có -> tìm vào dựng URL choc ác thẻ A
-	$(clat + ' a').each(function() {
-		var a = $(this).attr('data-price') || '';
-		
-		if ( a != '' ) {
-			$(this).attr({
-				href : url_for_advanced_search_filter + '&price_in=' + a
-			});
-		}
-		else {
-			$(this).attr({
-				href : url_for_advanced_search_filter
-			});
-		}
-	});
+	/*
+	if ( cf_search_advanced_auto_submit == 1 ) {
+		$(clat + ' a').each(function() {
+			var a = $(this).attr('data-price') || '';
+			
+			if ( a != '' ) {
+				$(this).attr({
+					href : url_for_advanced_search_filter + '&price_in=' + a
+				});
+			}
+			else {
+				$(this).attr({
+					href : url_for_advanced_search_filter
+				});
+			}
+		});
+	}
+	else {
+		*/
+		$(clat + ' a').click(function() {
+			$(clat + ' a').removeClass('selected');
+			$(this).addClass('selected');
+			
+			//
+			var a = $(this).attr('data-price') || '';
+			
+			//
+			$('.echbay-widget-price-title div').html( $(this).html() );
+			
+			___eb_search_advanced_go_to_url( {
+				'price_in': a
+			} );
+			
+			return false;
+//		}).attr({
+		});
+//	}
 	
 	//
 //	$(clat + ' a:first').before( '<li><a href="' + eb_this_current_url + '">Tất cả khoảng giá</a></li>' );
+	
+	// hiển thị giá đang lọc theo URL
+	var a = ___eb_search_advanced_get_parameter('price_in');
+	if ( a != '' ) {
+		$('.echbay-widget-price-title div').html( $('.echbay-product-price-between a[data-price="' + a + '"]').html() );
+	}
 	
 }
 ___eb_set_url_for_search_price_in_button();
@@ -168,13 +309,21 @@ ___eb_set_url_for_search_price_in_button();
 function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url ) {
 	
 	// hiển thị nút go to nếu go_to_url = false, mặc định là nhảy URL luôn
+	/*
 	if ( typeof go_to_url == 'undefined' ) {
-		go_to_url = true;
+		if ( cf_search_advanced_auto_submit == 0 ) {
+			go_to_url = false;
+		}
+		else {
+			go_to_url = true;
+		}
 	}
+	*/
 	
 	// chỉ tìm ở trang danh sách sản phẩm
 	if ( typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category' ) {
 		if ( cf_tester_mode == 1 ) console.log('search advanced is active, but run only category page -> STOP.');
+		return false;
 	}
 	
 	//
@@ -201,6 +350,20 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 	//
 	___eb_set_base_url_for_search_advanced();
 	
+	// Tạo thẻ xem tất cả sản phẩm
+	$(clat + ' ul').each(function() {
+		var data_node_id = $('li:first a', this).attr('data-node-id') || '',
+			data_parent = $('li:first a', this).attr('data-parent') || 0,
+			text = $('#' + data_node_id + ' .echbay-widget-title div').html() || '';
+		
+		//
+		if ( text != '' ) {
+			text = 'Tất cả ' + text;
+			
+			$('li:first', this).before('<li style="order:9999999999;"><div><a data-parent="' + data_parent + '" data-node-id="' + data_node_id + '" title="' + text + '" href="javascript:;">' + text + '</a></div></li>');
+		}
+	});
+	
 	//
 	$(clat + ' a').each(function() {
 		var tax = $(this).attr('data-taxonomy') || '';
@@ -216,6 +379,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 //		'href' : 'javascript:;'
 	}).off('click').click(function () {
 		var cha = $(this).attr('data-parent') || 0,
+			con = $(this).attr('data-id') || 0,
 			filter_category = '',
 			filter_options = '',
 			node_id = $(this).attr('data-node-id') || '',
@@ -230,7 +394,11 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 		
 		//
 		$(clat + ' a[data-parent="' + cha + '"]').removeClass('selected');
-		$(this).addClass('selected');
+		
+		// Chỉ add class select cho nhóm con, không add cho nhóm tất cả
+		if ( con != 0 ) {
+			$(this).addClass('selected');
+		}
 		
 		
 		// nếu là auto click -> chỉ cần set class selected cho thuộc tính thôi
@@ -239,6 +407,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 		}
 		// nếu là category -> chuyển URL luôn
 		else if ( this_tax == 'category' ) {
+			if ( cf_tester_mode == 1 ) console.log('search advanced not run if taxonomy == category');
 			return true;
 		}
 		
@@ -259,16 +428,22 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 		});
 		
 		//
+		___eb_search_advanced_go_to_url( {
+			'post_options': filter_options,
+			'category': filter_category
+		} );
+		
+		// V1
+		/*
 		var new_url = '';
-		/* category -> chuyển link luôn -> bỏ qua phần search nâng cao ở đây
+		// category -> chuyển link luôn -> bỏ qua phần search nâng cao ở đây
 		if ( filter_category != '' ) {
 			new_url += '&filter_cats=' + filter_category.substr( 1 );
 		}
-		*/
 		if ( filter_options != '' ) {
 			new_url += '&filter=' + filter_options.substr( 1 );
 		}
-//		console.log( url_for_advanced_search_filter + new_url );
+		if ( cf_tester_mode == 1 ) console.log( url_for_advanced_search_filter + new_url );
 		
 		// nếu lệnh chuyển URL chuyển URL
 		if ( go_to_url == true ) {
@@ -280,6 +455,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 				display : 'inline-block'
 			});
 		}
+		*/
 		
 		//
 		return false;
