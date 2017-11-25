@@ -49,7 +49,7 @@ _eb_add_full_js( array(
 /*
 echo '<script>';
 echo 'console.log(' . _eb_get_full_category_v2 ( 0, 'category', 1 ) . ');';
-echo '<script>';
+echo '</script>';
 */
 //echo _eb_get_full_category_v2 ( 0, 'category', 1 );
 //exit();
@@ -81,7 +81,7 @@ if ( $check_Cleanup_cache == false ) {
 //	_eb_get_static_html ( $strCacheFilter, date( 'r', $date_time ), '', 60 );
 }
 
-echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $cat_js_file_name . '" async></script>';
+echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $cat_js_file_name . '?v=' . date( 'ymd-Hi', date_time ) . '" async></script>';
 /*
 echo '<script type="text/javascript" src="' . web_link . 'eb-load-quick-search" async></script>';
 */
