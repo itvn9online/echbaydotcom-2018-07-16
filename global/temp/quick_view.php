@@ -82,7 +82,12 @@ while ( $sql->have_posts() ) {
 	echo $main_content;
 	
 	echo '</div>';
-	
+?>
+<script type="text/javascript">
+// thêm tham số để khẳng định đây là trang quick view -> muốn xử lý code ở đây nó cũng tiện hơn
+var quick_view_page = 1;
+</script>
+<?
 	//
 	if ( $view_type == 'iframe' ) {
 ?>
