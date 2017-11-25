@@ -681,6 +681,7 @@ function echbay_theme_setup() {
 		
 		'eb_z1_custom_site' => 'Sidebar dự phòng cho một số site sử dụng module riêng',
 //		'eb_z2_custom_site' => 'Sidebar dự phòng cho một số site sử dụng module riêng',
+		'eb_z1_recycle_bin' => 'Sidebar này gần như không bao giờ được gọi, nó làm nơi lưu trữ các widget đã được tạo ra, không muốn sử dụng nữa nhưng cũng không muốn xóa hẳn.',
 	);
 	
 	// chạy vòng lặp add sidebat

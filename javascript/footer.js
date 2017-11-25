@@ -194,7 +194,7 @@ function ___eb_search_advanced_go_to_url ( op ) {
 	}
 	
 	//
-	if ( cf_search_advanced_auto_submit == 0 ) {
+	if ( cf_search_advanced_auto_submit == 1 ) {
 		window.location = new_url;
 	} else {
 		$('.click-to-search-advanced').attr({
@@ -311,11 +311,11 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 	// hiển thị nút go to nếu go_to_url = false, mặc định là nhảy URL luôn
 	/*
 	if ( typeof go_to_url == 'undefined' ) {
-		if ( cf_search_advanced_auto_submit == 0 ) {
-			go_to_url = false;
+		if ( cf_search_advanced_auto_submit == 1 ) {
+			go_to_url = true;
 		}
 		else {
-			go_to_url = true;
+			go_to_url = false;
 		}
 	}
 	*/
@@ -344,7 +344,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 		if ( typeof inner_clat == 'undefined' || inner_clat == '' ) {
 			inner_clat = '.widget-search-advanced';
 		}
-		$(inner_clat).append( '<div class="global-button-for-seach-advanced"><a href="javascript:;" class="click-to-search-advanced search-advanced-btn d-none fa fa-search whitecolor"> </a></div>' );
+		$(inner_clat).append( '<div class="global-button-for-seach-advanced"><a href="javascript:;" class="click-to-search-advanced search-advanced-btn d-none whitecolor"><i class="fa fa-search"></i> <span>Lọc sản phẩm</span></a></div>' );
 	}
 	
 	//
