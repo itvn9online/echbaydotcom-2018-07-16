@@ -58,8 +58,10 @@ function WGR_create_themes_default_format (
 	if ( $default_content == '' ) {
 		$default_content = trim( '
 <div id="' . $fname . '">
-	<div class="<?php echo $__cf_row[\'cf_' . $class_for_width . '_class_style\']; ?>">
-		<div class="' . $fname . '">Check and write code for ' . $fname . '</div>
+	<div class="' . $fname . '">
+		<div class="<?php echo $__cf_row[\'cf_' . $class_for_width . '_class_style\']; ?>">
+			<div>Check and write code for ' . $fname . '</div>
+		</div>
 	</div>
 </div>
 <?php
