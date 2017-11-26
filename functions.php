@@ -2444,8 +2444,11 @@ function _eb_get_log ( $log_type = 0, $limit = 100 ) {
 	LIMIT 0, " . $limit);
 }
 
-// Tính số lượng log theo khoảng thời gian
-function _eb_count_log ( $log_type = 0, $limit_time = 3600, $limit_day = 0 ) {
+/*
+* Tính số lượng log theo khoảng thời gian
+* limit_clear_log: số lượng bản ghi tối đa cho mỗi log
+*/
+function _eb_count_log ( $log_type = 0, $limit_time = 3600, $limit_day = 0, $limit_clear_log = 35000 ) {
 	/*
 	* limit_day < 182 -> lấy theo giây
 	*/
@@ -2470,7 +2473,43 @@ function _eb_count_log ( $log_type = 0, $limit_time = 3600, $limit_day = 0 ) {
 //	print_r( $sql );
 	
 	if ( ! empty ( $sql ) ) {
-		return $sql[0]->c;
+		$a = $sql[0]->c;
+		
+		// xóa bớt log cho nhẹ db
+		if ( $a > $limit_clear_log * 1.5 ) {
+			$sql = _eb_q("SELECT l_id
+			FROM
+				`eb_wgr_log`
+			WHERE
+				l_type = " . $log_type . "
+			ORDER BY
+				l_id DESC
+			LIMIT " . $limit_clear_log . ", 1");
+			
+			//
+			if ( ! empty ( $sql ) ) {
+				// lưu cái tổng kia lại đã
+				$strsql = _eb_q("SELECT count(l_id) as c
+				FROM
+					`eb_wgr_log`
+				WHERE
+					l_type = " . $log_type . "
+					AND l_id < " . $sql[0]->l_id);
+//				print_r( $strsql );
+				_eb_set_option( 'WGR_history_for_log' . $log_type, $strsql[0]->c, 'no' );
+				
+				// xóa
+				_eb_q("DELETE
+				FROM
+					`eb_wgr_log`
+				WHERE
+					l_type = " . $log_type . "
+					AND l_id < " . $sql[0]->l_id);
+			}
+		}
+		
+		//
+		return $a;
 	}
 	return 0;
 }

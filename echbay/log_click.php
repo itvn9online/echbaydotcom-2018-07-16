@@ -33,7 +33,7 @@ _eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 				<div><font>24 giờ qua</font><span><?php echo number_format( _eb_count_log( $log_type, 0, 1 ) ); ?></span></div>
 			</li>
 			<li>
-				<div><font>30 ngày qua</font><span><?php echo number_format( _eb_count_log( $log_type, 0, 30 ) ); ?></span></div>
+				<div><font>30 ngày qua</font><span><?php echo number_format( _eb_count_log( $log_type, 0, 30 ) + (int) _eb_get_option('WGR_history_for_log' . $log_type) ); ?></span></div>
 			</li>
 		</ul>
 	</div>

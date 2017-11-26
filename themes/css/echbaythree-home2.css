@@ -12,6 +12,7 @@
 	left: 0;
 	width: 20%;
 	border: 0 none;
+	height: auto;
 }
 #echbaythree-home2 .thread-home-c2:before { display: none; }
 #echbaythree-home2 .thread-home-c2 a {

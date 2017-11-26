@@ -2598,14 +2598,34 @@ function _eb_get_option ( $name ) {
 	return '';
 }
 
-function _eb_update_option ( $name, $value ) {
+function _eb_update_option ( $name, $value, $load = 'yes' ) {
 	global $wpdb;
 	
-	_eb_q("UPDATE `" . $wpdb->options . "`
-	SET
-		option_value = '" . $value . "'
+	// tạo mới nếu chưa có
+	$sql = _eb_q("SELECT option_id
+	FROM
+		`" . $wpdb->options . "`
 	WHERE
 		option_name = '" . $name . "'");
+//	print_r( $sql );
+	
+	// create
+	if ( empty( $sql ) ) {
+		_eb_q ( "INSERT INTO
+		`" . $wpdb->options . "`
+		( option_name, option_value, autoload )
+		VALUES
+		( '" . $name . "', '" . $value . "', '" . $load . "' )" );
+	}
+	// update
+	else {
+		_eb_q("UPDATE `" . $wpdb->options . "`
+		SET
+			option_value = '" . $value . "',
+			autoload = '" . $load . "'
+		WHERE
+			option_name = '" . $name . "'");
+	}
 }
 function _eb_set_option ( $name, $value ) {
 	_eb_update_option( $name, $value );
