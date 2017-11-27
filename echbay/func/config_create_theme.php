@@ -69,6 +69,8 @@ function WGR_create_themes_default_format (
 *
 * List function recommended for you, please remove after code finish.<br>
 *
+<div><?php ?></div>
+*
 * Get logo for website:
 <div><?php echo EBE_get_html_logo(); ?></div>
 *

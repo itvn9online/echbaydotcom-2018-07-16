@@ -250,20 +250,21 @@ var g_func = {
 //		return str.replace(/^\s+|\s+$/g, "");
 	},
 	
-	setc: function (name, value, days) {
+	setc: function (name, value, seconds, days) {
 		var expires = "";
 		
+		// tính theo ngày
 		if ( typeof days == 'number' && days > 0 ) {
-			// giá trị truyền vào nhỏ hơn 60 -> tính theo ngày
-//			if ( days < 60 ) {
-			if ( days < 30 ) {
-				days = days * 24 * 3600;
-			}
+			seconds = days * 24 * 3600;
+		}
+		
+		//
+		if ( typeof seconds == 'number' && seconds > 0 ) {
 			// chuyển sang dạng timestamp
-			days = days * 1000;
+			seconds = seconds * 1000;
 			
 			var date = new Date();
-			date.setTime( date.getTime() + days );
+			date.setTime( date.getTime() + seconds );
 			expires = "; expires=" + date.toGMTString();
 		}
 		
@@ -1044,7 +1045,7 @@ var _global_js_eb = {
 				staff_id = 0;
 			}
 			if (staff_id > 0) {
-				g_func.setc('ss_staff_id', staff_id, 30);
+				g_func.setc('ss_staff_id', staff_id, 0, 30);
 			}
 			if (g_func.getc('ss_ads_referre') != null) {
 				console.log('user return');
@@ -1845,10 +1846,10 @@ var _global_js_eb = {
 //		return false;
 		
 		// lưu thông tin khách hàng
-		g_func.setc( 'eb_cookie_cart_name', f.t_ten.value, 7 );
-		g_func.setc( 'eb_cookie_cart_phone', f.t_dienthoai.value, 7 );
-		g_func.setc( 'eb_cookie_cart_email', f.t_email.value, 7 );
-		g_func.setc( 'eb_cookie_cart_address', f.t_diachi.value, 7 );
+		g_func.setc( 'eb_cookie_cart_name', f.t_ten.value, 0, 7 );
+		g_func.setc( 'eb_cookie_cart_phone', f.t_dienthoai.value, 0, 7 );
+		g_func.setc( 'eb_cookie_cart_email', f.t_email.value, 0, 7 );
+		g_func.setc( 'eb_cookie_cart_address', f.t_diachi.value, 0, 7 );
 		
 		//
 		$('body').css({
@@ -1948,10 +1949,10 @@ var _global_js_eb = {
 				}
 			}
 //			console.log(list_cart_id);
-			g_func.setc( c, list_cart_id, 7 );
+			g_func.setc( c, list_cart_id, 0, 7 );
 			
 //			console.log(list_cart_id);
-			g_func.setc( c_arr, JSON.stringify( cart_arr_in_cookie ), 7 );
+			g_func.setc( c_arr, JSON.stringify( cart_arr_in_cookie ), 0, 7 );
 			
 			//
 			if ( tr_id != '' && dog(tr_id) != null ) {
@@ -1990,8 +1991,8 @@ var _global_js_eb = {
 			//
 			console.log('Save cart (' + new_cart_id + ')');
 			
-			g_func.setc( c, list_cart_id, 7 );
-			g_func.setc( c_arr, JSON.stringify( cart_arr_in_cookie ), 7 );
+			g_func.setc( c, list_cart_id, 0, 7 );
+			g_func.setc( c_arr, JSON.stringify( cart_arr_in_cookie ), 0, 7 );
 		}
 		console.log( list_cart_id );
 		console.log( cart_arr_in_cookie );
@@ -2102,7 +2103,7 @@ var _global_js_eb = {
 				if ( list_cart_id == '' ) {
 					g_func.delck( c );
 				} else {
-					g_func.setc( c, list_cart_id, 7 );
+					g_func.setc( c, list_cart_id, 0, 7 );
 				}
 			}
 			*/
@@ -2134,7 +2135,7 @@ var _global_js_eb = {
 				if ( list_cart_id == '' ) {
 					g_func.delck( c );
 				} else {
-					g_func.setc( c, list_cart_id, 7 );
+					g_func.setc( c, list_cart_id, 0, 7 );
 				}
 //				console.log( g_func.getc( c ) );
 				
@@ -2153,7 +2154,7 @@ var _global_js_eb = {
 		// thêm vào giỏ hàng
 		if ( list_cart_id == '' || list_cart_id.split( add_cart_id ).length == 1 ) {
 			list_cart_id += add_cart_id.toString();
-			g_func.setc( c, list_cart_id, 7 );
+			g_func.setc( c, list_cart_id, 0, 7 );
 			
 			console.log('Save cart (' + new_cart_id + ')');
 		} else {
@@ -2248,8 +2249,8 @@ var _global_js_eb = {
 		}
 		
 		// lưu thông tin đơn hàng để gửi đi
-		g_func.setc( 'eb_cookie_order_id', my_hd_id, 7 );
-//		g_func.setc( 'eb_cookie_order_sku', my_hd_mahoadon, 7 );
+		g_func.setc( 'eb_cookie_order_id', my_hd_id, 0, 7 );
+//		g_func.setc( 'eb_cookie_order_sku', my_hd_mahoadon, 0, 7 );
 		
 		//
 //		if ( typeof my_message != 'undefined' && my_message != '' ) alert( my_message );

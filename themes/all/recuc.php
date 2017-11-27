@@ -16,7 +16,8 @@ $eb_all_themes_support["recuc"]["price"] = 2000000;
 $eb_all_themes_support["recuc"]["top"][] = "recuc-top1.php";
 $eb_all_themes_support["recuc"]["top"][] = "top_widget.php";
 // Banner tràn màn hình 
-$eb_all_themes_support["recuc"]["top"][] = "bigbanner-top1.php";
+//$eb_all_themes_support["recuc"]["top"][] = "bigbanner-top1.php";
+$eb_all_themes_support["recuc"]["top"][] = "bigbannerFixed-top1.php";
 // Banner bo gọn trong khung 
 //$eb_all_themes_support["recuc"]["top"][] = "bigbannerFixed-top1.php";
 // breadcrumb tràn màn hình 

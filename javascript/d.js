@@ -1852,7 +1852,7 @@ function ___wgr_set_product_id_cookie () {
 //	return false;
 	
 	// lưu cookie mới
-	g_func.setc('wgr_product_id_view_history', str_history, 7)
+	g_func.setc('wgr_product_id_view_history', str_history, 0, 7)
 	
 }
 

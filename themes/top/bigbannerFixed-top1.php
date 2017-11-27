@@ -5,5 +5,7 @@ Description: Banner chính, banner lớn của website, có thể sử dụng th
 ?>
 
 <div id="bigbannerFixed-top1">
-	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>"><?php echo WGR_get_bigbanner(); ?></div>
+	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
+		<div class="big-banner-padding"><?php echo WGR_get_bigbanner(); ?></div>
+	</div>
 </div>

@@ -2276,7 +2276,7 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 			}
 			// lưu cookie cho phiên này
 			else {
-				g_func.setc(private_cookie, a, 7 );
+				g_func.setc(private_cookie, a, 0, 7 );
 			}
 			
 			// chuyển đến link cần đến

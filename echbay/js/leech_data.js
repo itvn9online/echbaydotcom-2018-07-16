@@ -317,7 +317,7 @@ function leech_data_save_cookie ( nem, val ) {
 		return false;
 	}
 	
-	g_func.setc( nem, val, 30 );
+	g_func.setc( nem, val, 0, 30 );
 	
 	console.log( 'Save cookies #' +nem+ ' with: ' + val );
 }
@@ -862,7 +862,7 @@ $('#categories_url').off('change').change(function () {
 	//
 	if ( typeof a[0] != 'undefined' && a[0] != '' ) {
 		console.log( a[0] );
-		g_func.setc( 'ck_old_categories_url', a[0], 30 );
+		g_func.setc( 'ck_old_categories_url', a[0], 0, 30 );
 		
 		//
 		set_source_url_leech ( a[0] );
@@ -1087,9 +1087,9 @@ $('.click-submit-url-categories').off('click').click(function () {
 			
 			//
 			if ( dog( a ).checked == true ) {
-				g_func.setc( a, 1, 30 );
+				g_func.setc( a, 1, 0, 30 );
 			} else {
-				g_func.setc( a, 0, 30 );
+				g_func.setc( a, 0, 0, 30 );
 			}
 		});
 		
@@ -1105,7 +1105,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 	$('select[name="post_tai"]').change(function () {
 		var a = 'select_name_post_tai';
 //		console.log(a);
-		g_func.setc( a, $(this).val(), 30 );
+		g_func.setc( a, $(this).val(), 0, 30 );
 	});
 	
 	//
@@ -1122,9 +1122,9 @@ $('.click-submit-url-categories').off('click').click(function () {
 /*
 $('#leech_data_auto_next').off('click').click(function () {
 	if ( dog('leech_data_auto_next').checked == true ) {
-		g_func.setc( 'leech_data_auto_next', 1, 30 );
+		g_func.setc( 'leech_data_auto_next', 1, 0, 30 );
 	} else {
-		g_func.setc( 'leech_data_auto_next', 0, 30 );
+		g_func.setc( 'leech_data_auto_next', 0, 0, 30 );
 	}
 });
 
@@ -1142,30 +1142,47 @@ if ( g_func.getc( 'leech_data_auto_next' ) == 1 ) {
 
 
 // lưu cookies cho phiên làm việc -> lưu và làm dưới dạng mảng cho thống nhất
-var arr_cookie_lamviec = {
-	id_post_begin : '',
-	id_post_end : '',
-	
-	details_noidung : '',
-	details_dieukien : '',
-	details_goithieu : '',
-	details_giacu : '',
-	details_giamoi : '',
-	details_img : '',
-	details_youtube_url : '',
-	details_title : '',
-	details_masanpham : '',
-	details_gallery : '',
-	categories_tags : ''
-};
+var arr_cookie_lamviec = null;
+
+// Kiểm tra nếu có dữ liệu cũ trong cookie -> lấy trong đó ra
+console.log( EBE_current_first_domain );
+if ( typeof arr_for_save_domain_config == 'object' ) {
+	console.log( arr_for_save_domain_config );
+	for ( var x in arr_for_save_domain_config ) {
+		arr_cookie_lamviec = arr_for_save_domain_config[x];
+		break;
+	}
+	console.log( arr_cookie_lamviec );
+}
+
+// Mảng mặc định cho lần đầu tiên
+if ( arr_cookie_lamviec == null ) {
+	arr_cookie_lamviec = {
+		id_post_begin : '',
+		id_post_end : '',
+		
+		details_noidung : '',
+		details_dieukien : '',
+		details_goithieu : '',
+		details_giacu : '',
+		details_giamoi : '',
+		details_img : '',
+		details_youtube_url : '',
+		details_title : '',
+		details_masanpham : '',
+		details_gallery : '',
+		categories_tags : ''
+	};
+}
+
 
 (function () {
 	for ( var x in arr_cookie_lamviec ) {
 		if ( dog( x ) != null ) {
 			var a_name = 'leech_data_' + x,
 				a = g_func.getc( a_name );
-//			console.log( a_name );
-//			console.log( a );
+			console.log( a_name );
+			console.log( a );
 			
 			// nạp dữ liệu từ phiên làm việc cũ
 			if ( a != null ) {
