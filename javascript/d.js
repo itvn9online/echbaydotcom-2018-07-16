@@ -54,7 +54,7 @@ $('.eb-set-menu-selected .sub-menu').addClass('cf');
 	var arr = {
 		time : lang_order_by,
 //		time : 'Mới nhất',
-//		view : 'Xem nhiều',
+		view : lang_order_view,
 		price_down : lang_order_price_down,
 		price_up : lang_order_price_up,
 		az : lang_order_az,

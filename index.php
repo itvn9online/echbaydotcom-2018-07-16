@@ -909,23 +909,34 @@ function eb_change_product_query ( $query ) {
 	*/
 	
 	switch ( $current_order ) {
+		// xem nhiều -> lượt xem giảm dần
+		case "view":
+			$query->set( 'meta_key', '_eb_product_views' );
+			$query->set( 'orderby', 'meta_value_num' );
+//			$query->set( 'order', 'DESC' );
+			break;
+		
+		// giá tăng dần
 		case "price_up":
 			$query->set( 'meta_key', '_eb_product_price' );
 			$query->set( 'orderby', 'meta_value_num' );
 			$query->set( 'order', 'ASC' );
 			break;
 		
+		// giá giảm dần
 		case "price_down":
 			$query->set( 'meta_key', '_eb_product_price' );
 			$query->set( 'orderby', 'meta_value_num' );
 //			$query->set( 'order', 'DESC' );
 			break;
 		
+		// tên sản phẩm từ A-Z
 		case "az":
 			$query->set( 'orderby', 'name' );
 			$query->set( 'order', 'ASC' );
 			break;
 		
+		// Tên sản phẩm từ Z-A
 		case "za":
 			$query->set( 'orderby', 'name' );
 //			$query->set( 'order', 'DESC' );
@@ -936,7 +947,7 @@ function eb_change_product_query ( $query ) {
 		case "date":
 			break;
 		
-		// mặc định sắp xếp theo STT
+		// mặc định sắp xếp theo STT giảm dần
 		default:
 			$query->set( 'orderby', 'menu_order ID' );
 //			$query->set( 'order', 'DESC' );

@@ -38,6 +38,7 @@ $___eb_lang[eb_key_for_site_lang . 'home_hot'] = '<i class="fa fa-dollar"></i> S
 $___eb_lang[eb_key_for_site_lang . 'home_new'] = '<i class="fa fa-star"></i> Sản phẩm MỚI';
 
 $___eb_lang[eb_key_for_site_lang . 'order_by'] = 'Sắp xếp theo';
+$___eb_lang[eb_key_for_site_lang . 'order_view'] = 'Xem nhiều';
 $___eb_lang[eb_key_for_site_lang . 'order_price_down'] = 'Giá giảm dần';
 $___eb_lang[eb_key_for_site_lang . 'order_price_up'] = 'Giá tăng dần';
 $___eb_lang[eb_key_for_site_lang . 'order_az'] = 'Tên sản phẩm ( từ A đến Z )';
