@@ -204,14 +204,15 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		}
 //		print_r( $terms_categories );
 		
-		//
+		// https://codex.wordpress.org/Template_Tags/get_posts#Random_posts
 		$___order = 'DESC';
 		if ( $sortby == '' || $sortby == 'rand' ) {
+			$sortby = 'rand';
 			$___order = '';
 		}
 		
 		
-		//
+		// https://codex.wordpress.org/Template_Tags/get_posts
 		$arr_select_data = array(
 			'orderby' => $sortby,
 			'order' => $___order,

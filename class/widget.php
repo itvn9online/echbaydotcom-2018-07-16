@@ -367,10 +367,10 @@ function _eb_widget_set_sortby_field ( $select_name, $select_val ) {
 	
 	__eb_widget_load_select(
 		array (
-			'rand' => 'Random',
-			'post_title' => 'Post title',
 			'menu_order' => 'Post order',
 			'ID' => 'Post ID',
+			'post_title' => 'Post title',
+			'rand' => 'Random'
 		),
 		$select_name,
 		$select_val
