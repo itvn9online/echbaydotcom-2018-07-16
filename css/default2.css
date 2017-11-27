@@ -1314,6 +1314,10 @@ color: #333;
 	display: none;
 }
 .widget-category-selectbox:hover ul { display: block; }
+.widget-category-selectbox:hover ul.echbay-category-in-js {
+	display: -webkit-flex;
+	display: flex;
+}
 .widget-category-selectbox li {
 	list-style: none;
 	padding: 0;

@@ -455,7 +455,12 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			
 			//
 			foreach ( $arrs_cats as $k => $v ) {
-				if ( WGR_custom_check_post_in_multi_taxonomy( $cid, $v->term_id ) == 0 ) {
+				if ( $v->taxonomy == 'category' ) {
+					if ( $v->count == 0 ) {
+						$arrs_cats[$k] = NULL;
+					}
+				}
+				else if ( WGR_custom_check_post_in_multi_taxonomy( $cid, $v->term_id ) == 0 ) {
 					$arrs_cats[$k] = NULL;
 				}
 			}
