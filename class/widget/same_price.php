@@ -21,7 +21,7 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 			'min_price' => 10,
 			'post_number' => 5,
 			'custom_style' => '',
-			'num_line' => '',
+			'num_line' => 'thread-list20',
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -116,7 +116,7 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 			'meta_query' => array( $price_in )
 		) );
 		if ( $str_same_price != '' ) {
-			echo '<div class="' . $custom_style . '">';
+			echo '<div class="' . trim( 'eb-same-price ' . $custom_style ) . '">';
 			
 			echo WGR_show_home_hot( array(
 				'tmp.num_post_line' => $num_line,

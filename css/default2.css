@@ -1899,6 +1899,8 @@ iframe[name="google_conversion_frame"] {
 	max-width: 550px;
 	margin: 0 auto;
 }
+.eb-view-history .home-hot-title,
+.eb-same-price .home-hot-title { padding-left: 0; }
 /* quick view */
 /*
 .ebe-quick-view,
