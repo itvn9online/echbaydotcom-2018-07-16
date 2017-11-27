@@ -1,6 +1,6 @@
 <style type="text/css">
 .click-order-thread[data-val="1"] { color: #F90; }
-.maxwidth-quick-add-taxonomy { max-width: 600px; }
+/* .maxwidth-quick-add-taxonomy { max-width: 600px; } */
 .list-edit-taxonomy blockquote {
 	font-size: 18px;
 	padding-left: 15px;
@@ -17,27 +17,32 @@
 	<button class="blue-button cur click-show-quick-add-taxonomy">Thêm nhóm mới [+]</button>
 </div>
 <div class="show-quick-add-taxonomy d-none">
-	<div class="maxwidth-quick-add-taxonomy">
-		<form name="frm_config" method="post" action="<?php echo web_link; ?>process/?set_module=create_taxonomy" target="target_eb_iframe" onsubmit="return WGR_check_create_taxonomy();">
-			<div>
-				<input type="hidden" name="t_taxonomy" value="<?php echo $by_taxonomy; ?>">
-			</div>
-			<p class="bold">Nhóm cha:</p>
-			<div id="oiAnt"><?php echo _eb_categories_list_v3( 't_ant', $by_taxonomy ); ?></div>
-			<br>
-			<div>
-				<label for="t_multi_taxonomy" class="l25 bold">Nhập danh sách các nhóm cần thêm:</label>
+	<form name="frm_config" method="post" action="<?php echo web_link; ?>process/?set_module=create_taxonomy" target="target_eb_iframe" onsubmit="return WGR_check_create_taxonomy();">
+		<div class="maxwidth-quick-add-taxonomy cf">
+			<div class="lf f50">
+				<div>
+					<input type="hidden" name="t_taxonomy" value="<?php echo $by_taxonomy; ?>">
+				</div>
+				<p class="bold">Nhóm cha:</p>
+				<div id="oiAnt"><?php echo _eb_categories_list_v3( 't_ant', $by_taxonomy ); ?></div>
 				<br>
-				<textarea name="t_multi_taxonomy" id="t_multi_taxonomy" style="width:99%;height:300px;"></textarea>
-				<p>* Có thể nhập nhiều nhóm, mõi nhóm cách nhau bởi dấu xuống dòng!</p>
+				<div>
+					<label for="t_multi_taxonomy" class="l25 bold">Nhập danh sách các nhóm cần thêm:</label>
+					<br>
+					<textarea name="t_multi_taxonomy" id="t_multi_taxonomy" style="width:99%;height:300px;"></textarea>
+					<p>* Có thể nhập nhiều nhóm, mõi nhóm cách nhau bởi dấu xuống dòng!</p>
+				</div>
+				<br>
 			</div>
-			<div>
-				<input type="submit" value="Thêm nhóm mới" class="button button-primary" />
+			<div class="lf f50">
+				<div>
+					<input type="submit" value="Thêm nhóm mới" class="button button-primary" />
+				</div>
+				<br>
+				<div id="create_taxonomy_result" class="left-menu-space"></div>
 			</div>
-		</form>
-	</div>
-	<br>
-	<div id="create_taxonomy_result"></div>
+		</div>
+	</form>
 	<br>
 	<hr>
 	<br>
