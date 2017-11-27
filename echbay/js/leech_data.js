@@ -875,6 +875,23 @@ $('#categories_url').off('change').change(function () {
 	$('#categories_list_url').append( str );
 	$('#categories_url').val( '' ).focus();
 	
+	// lấy đoạn text cuối của url để cho vào khung soạn chữ tìm kiếm nhóm
+	var a = $('#oiAnt input[type="text"]').val() || '';
+	if ( a == '' ) {
+		var b = $('#categories_list_url li:first').html() || '';
+		if ( b != '' ) {
+			b = b.split('/');
+			if ( b[ b.length - 1 ] == '' ) {
+				b = b[ b.length - 2 ];
+			}
+			else {
+				b = b[ b.length - 1 ];
+			}
+			
+			$('#oiAnt input[type="text"]').val( b.split('.htm')[0].split('.asp')[0].split('.')[0] );
+		}
+	}
+	
 	
 	
 	//
@@ -1056,7 +1073,13 @@ $('.click-submit-url-categories').off('click').click(function () {
 		});
 	}
 	else {
-		console.log('Không tìm thấy danh sách nhóm cần lấy sản phẩm');
+//		console.log('Không tìm thấy danh sách nhóm cần lấy sản phẩm');
+		$('#show_text_after_done').append('<li>Không tìm thấy danh sách nhóm cần lấy sản phẩm</li>');
+		
+		//
+		if ( dog('nap_lai_trang_sau_khi_hoan_thanh').checked == true ) {
+			window.location = window.location.href;
+		}
 	}
 });
 
@@ -1067,6 +1090,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 */
 (function () {
 	var arr = [
+		'nap_lai_trang_sau_khi_hoan_thanh',
 		'loai_bo_url_trong_noi_dung',
 		'bai_viet_nay_duoc_lay_theo_id',
 		'this_id_url_product_detail',

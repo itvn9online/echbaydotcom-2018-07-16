@@ -175,6 +175,7 @@ a {
 	display: none;
 	content: "";
 }
+body.home .thread-details-tohome { display: none; }
 .home-hot-more,
 .widget-products-more,
 .widget-blog-more,
