@@ -155,7 +155,7 @@ $main_content = EBE_str_template ( 'cart.html', array (
 //
 $chinhsach = '';
 if ( EBE_get_lang('url_chinhsach') != '#' ) {
-	$chinhsach = EBE_get_lang('chinhsach');
+	$chinhsach = str_replace( '{tmp.url_chinhsach}', EBE_get_lang('url_chinhsach'), EBE_get_lang('chinhsach') );
 }
 
 //

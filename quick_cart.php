@@ -75,7 +75,7 @@
 					?>
 					<p class="l19 small">
 						<input type="checkbox" name="t_dongy" checked>
-						<?php echo EBE_get_lang('chinhsach'); ?></p>
+						<?php echo str_replace( '{tmp.url_chinhsach}', EBE_get_lang('url_chinhsach'), EBE_get_lang('chinhsach') ); ?></p>
 					<?php
 					}
 					?>

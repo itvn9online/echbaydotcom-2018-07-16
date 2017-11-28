@@ -192,7 +192,7 @@ $___eb_lang[eb_key_for_site_lang . 'custom_text9'] = 'Custom text 9';
 
 // URL của phần chính sách, quy định trong phần đặt hàng
 $___eb_lang[eb_key_for_site_lang . 'url_chinhsach'] = '#';
-$___eb_lang[eb_key_for_site_lang . 'chinhsach'] = 'Quý khách vui lòng tham khảo <a href="' . $___eb_lang[eb_key_for_site_lang . 'url_chinhsach'] . '" target="_blank">chính sách, quy định chung</a> của chúng tôi.';
+$___eb_lang[eb_key_for_site_lang . 'chinhsach'] = 'Quý khách vui lòng tham khảo <a href="{tmp.url_chinhsach}" target="_blank">chính sách, quy định chung</a> của chúng tôi.';
 
 
 
