@@ -2597,6 +2597,9 @@ function _eb_get_option ( $name ) {
 	
 	return '';
 }
+function WGR_get_option ( $name ) {
+	return _eb_get_option( $name );
+}
 
 function _eb_update_option ( $name, $value, $load = 'yes' ) {
 	global $wpdb;
@@ -2626,9 +2629,32 @@ function _eb_update_option ( $name, $value, $load = 'yes' ) {
 		WHERE
 			option_name = '" . $name . "'");
 	}
+	
+	return true;
 }
-function _eb_set_option ( $name, $value ) {
-	_eb_update_option( $name, $value );
+function _eb_set_option ( $name, $value, $load = 'yes' ) {
+	return _eb_update_option( $name, $value, $load );
+}
+function WGR_set_option ( $name, $value, $load = 'yes' ) {
+	return _eb_update_option( $name, $value, $load );
+}
+function WGR_add_option ( $name, $value, $load = 'yes' ) {
+	return _eb_update_option( $name, $value, $load );
+}
+
+function WGR_delete_option ( $name ) {
+	global $wpdb;
+	
+	_eb_q ( "DELETE
+	FROM
+		`" . $wpdb->options . "`
+	WHERE
+		option_name = '" . $name . "'" );
+	
+	return true;
+}
+function WGR_del_option ( $name ) {
+	return WGR_delete_option ( $name );
 }
 
 

@@ -354,6 +354,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		/*
 		* Danh sách bản dịch
 		*/
+		$___eb_lang = $___eb_default_lang;
 		EBE_get_lang_list();
 //		print_r( $___eb_lang );
 		

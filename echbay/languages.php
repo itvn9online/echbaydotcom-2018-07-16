@@ -41,7 +41,10 @@ global $eb_class_css_lang;
 	<?php
 	
 	// nạp lại bảng ngôn ngữ lần nữa
+	$___eb_lang = $___eb_default_lang;
 	EBE_get_lang_list();
+//	print_r( $___eb_lang );
+//	print_r( $___eb_default_lang );
 	
 	//
 	foreach ( $___eb_lang as $k => $v ) {

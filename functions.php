@@ -1960,7 +1960,8 @@ function _eb_set_config($key, $val) {
 	$key = _eb_option_prefix . $key;
 	
 	// xóa option cũ đi cho đỡ lằng nhằng
-	if ( delete_option( $key ) ) {
+//	if ( delete_option( $key ) ) {
+	if ( WGR_delete_option( $key ) ) {
 		echo '<em>Remove</em>: ' . $key . '<br>' . "\n";
 	}
 	
@@ -1976,8 +1977,9 @@ function _eb_set_config($key, $val) {
 		VALUES
 		()";
 		*/
-		add_option( $key, $val, '', 'no' );
+//		add_option( $key, $val, '', 'no' );
 //		add_option( $key, $val );
+		WGR_set_option( $key, $val, 'no' );
 		
 		//
 		echo 'Add: ' . $key . '<br>' . "\n";
@@ -2212,14 +2214,16 @@ function EBE_set_lang($key, $val) {
 //	$key = eb_key_for_site_lang . $key;
 	
 	// xóa option cũ đi cho đỡ lằng nhằng
-	delete_option( $key );
+//	delete_option( $key );
+	WGR_delete_option( $key );
 	
 	// chỉ cập nhật khi có value, nếu không có thì sử dụng của bản default
 	if ( $val != '' ) {
 		$val = stripslashes( stripslashes( stripslashes( $val ) ) );
 		
 		// thêm option mới
-		add_option( $key, $val, '', 'no' );
+//		add_option( $key, $val, '', 'no' );
+		WGR_set_option( $key, $val, 'no' );
 	}
 	
 }
