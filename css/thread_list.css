@@ -38,14 +38,14 @@
 */
 .style-for-mobile .echbay-blog li,
 .style-for-mobile .thread-list li { width: 50%; }
+/*
+.style-for-mobile .thread-small-left,
+.style-for-mobile .thread-small-right,
+*/
 .style-for-mobile .echbay-blog20 li:first-child,
 .style-for-mobile .thread-list20 li:first-child,
 .style-for-mobile .echbay-blog33 li:first-child,
-.style-for-mobile .thread-list33 li:first-child,
-.style-for-mobile .threadnode-small-left,
-.style-for-mobile .threadnode-small-right {
-	width: 100%;
-	/* float: none; */
+.style-for-mobile .thread-list33 li:first-child { width: 100%;/* float: none; */
 }
 .style-for-mobile .echbay-blog100 .echbay-blog-padding,
 .style-for-mobile .echbay-blog100 .thread-list-padding,
@@ -54,7 +54,7 @@
 	margin-left: 3px;
 	margin-right: 3px;
 }
-.style-for-mobile .threadnode-small-right .echbay-blog-marginleft { padding: 10px 0 0 0; }
+/* .style-for-mobile .thread-small-right .echbay-blog-marginleft { padding: 10px 0 0 0; } */
 /*
 .style-for-table .echbay-blog li,
 .style-for-table .thread-list li { width: 33.33%; }

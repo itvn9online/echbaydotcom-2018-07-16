@@ -103,10 +103,16 @@ class ___echbay_widget_random_product extends WP_Widget {
 		}
 		*/
 		
-		$content = _eb_load_post( $post_number, $args,
-//		file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/thread_node.html', 1 ) );
-//		EBE_get_page_template( 'thread_node_small' ) );
-		EBE_get_page_template( $html_node ) );
+		//
+//		$html_node = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/thread_node.html', 1 );
+//		$html_node = EBE_get_page_template( 'thread_node_small' );
+		$html_node = EBE_get_page_template( $html_node );
+		if ( $custom_size != '' ) {
+			$html_node = str_replace( '{tmp.cf_product_size}', $custom_size, $html_node );
+			$html_node = str_replace( '{tmp.cf_blog_size}', $custom_size, $html_node );
+		}
+		
+		$content = _eb_load_post( $post_number, $args, $html_node );
 		
 //		echo '</ul>';
 		
@@ -117,13 +123,23 @@ class ___echbay_widget_random_product extends WP_Widget {
 		
 		
 		//
+		if ( $post_cloumn != '' ) {
+			$post_cloumn = ' blogs_node_' . $post_cloumn;
+		}
+		
+		
+		
+		//
 		echo '<div class="' . $custom_style . '">';
+		
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.widget_title' => _eb_get_echo_widget_title( $title, 'echbay-widget-product-title', $before_title, $dynamic_tag ),
 			'tmp.content' => $content,
-			'tmp.num_line' => $num_line,
+			'tmp.num_line' => trim( $num_line . $post_cloumn ),
 			'tmp.max_width' => $max_width,
+//			'tmp.post_cloumn' => $post_cloumn,
 		) );
+		
 		echo '</div>';
 		
 		//
