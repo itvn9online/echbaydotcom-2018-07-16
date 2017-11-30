@@ -8,23 +8,29 @@
 	margin-bottom: 2px;
 }
 .noithattre-menuleft .echbay-widget-title:before { display: none; }
+.noithattre-ebmenu ul,
 .widget_echbay_category .noithattre-menuleft { margin-bottom: 20px; }
+.noithattre-ebmenu li,
 .widget_echbay_category .noithattre-menuleft li {
 	list-style: none;
 	margin: 0;
 }
+.noithattre-ebmenu li *,
 .widget_echbay_category .noithattre-menuleft li * {
 	font-weight: normal;
 	font-size: 13px;
 }
+.noithattre-ebmenu li a,
 .widget_echbay_category .noithattre-menuleft li a {
 	padding: 10px;
 	background: #eef0ef;
 	display: block;
 	margin: 2px 0;
 }
+.noithattre-ebmenu li a:hover,
 .widget_echbay_category .noithattre-menuleft li a:hover { color: #c00; }
 .widget_echbay_category .noithattre-menuleft .sub-menu { }
+.noithattre-ebmenu .sub-menu { display: none; }
 .noithattre-menuleft { }
 .noithattre-menuleft .echbay-blog-infos,
 .noithattre-menuleft .echbay-blog-gioithieu { display: none; }

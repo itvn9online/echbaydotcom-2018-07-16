@@ -87,9 +87,6 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 //		echo $num_line;
 		
 		//
-		_eb_echo_widget_name( $this->name, $before_widget );
-		
-		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-price-title', $before_title );
 		
 		//
@@ -115,6 +112,11 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 		$str_same_price = _eb_load_post( $post_number, array(
 			'meta_query' => array( $price_in )
 		) );
+		
+		//
+		_eb_echo_widget_name( $this->name, $before_widget );
+		
+		//
 		if ( $str_same_price != '' ) {
 			echo '<div class="' . trim( 'eb-same-price ' . $custom_style ) . '">';
 			
