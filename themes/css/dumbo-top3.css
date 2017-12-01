@@ -26,7 +26,7 @@
 	border-radius: 5px;
 }
 #dumbo-top3 .div-search input[type="search"],
-#dumbo-top3 .div-search button { }
+/* #dumbo-top3 .div-search button { } */
 #dumbo-top3 .div-search input[type="search"] {
 	height: 35px;
 	padding-left: 10px;
@@ -34,14 +34,9 @@
 	border: 0 none;
 }
 #dumbo-top3 .div-search button {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
 	width: 12%;
 	font-size: 20px;
 	background: #35455c;
-	border: 0 none;
 	color: #fff;
 }
 #dumbo-top3 .top-nav-menu { position: relative; }

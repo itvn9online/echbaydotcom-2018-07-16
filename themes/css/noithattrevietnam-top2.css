@@ -68,12 +68,10 @@
 	display: none;
 }
 #noithattrevietnam-top2 .div-search button {
-	position: absolute;
 	top: -8px;
 	right: -1px;
 	bottom: -8px;
 	background-color: #f1f100;
-	border: 0 none;
 	width: 40px;
 	font-size: 16px;
 }

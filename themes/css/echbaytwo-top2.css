@@ -6,18 +6,12 @@
 #echbaytwo-top2 .div-search-margin { margin-top: 20px; }
 #echbaytwo-top2 .div-search { border-width: 2px; }
 #echbaytwo-top2 .div-search form { padding-left: 6px }
-#echbaytwo-top2 .div-search input[type=search],
-#echbaytwo-top2 .div-search button {
-	border: 0 none;
-	outline: none;
-}
 #echbaytwo-top2 .div-search input[type=search] {
 	background: none;
 	height: 36px;
 	width: 85%;
 }
 #echbaytwo-top2 .div-search button {
-	position: absolute;
 	top: -1px;
 	right: -1px;
 	bottom: -1px;

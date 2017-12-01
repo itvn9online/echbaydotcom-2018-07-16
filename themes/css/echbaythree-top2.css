@@ -13,12 +13,8 @@
 	padding-left: 6px;
 }
 #echbaythree-top2 .div-search button {
-	position: absolute;
-	right: 0;
 	width: 16%;
 	border: 0 none;
-	top: 0;
-	bottom: 0;
 	border-radius: 3px;
 	font-size: 18px;
 }

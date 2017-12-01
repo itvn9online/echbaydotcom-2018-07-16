@@ -15,18 +15,12 @@
 	margin: 0 auto;
 }
 #norcaljump-top2 .div-search form { padding-left: 5px; }
-#norcaljump-top2 .div-search input[type=search],
-#norcaljump-top2 .div-search button {
-	border: 0 none;
-	outline: none;
-}
 #norcaljump-top2 .div-search input[type=search] {
 	height: 30px;
 	width: 80%;
 	background: #fff;
 }
 #norcaljump-top2 .div-search button {
-	position: absolute;
 	top: 1px;
 	right: 1px;
 	bottom: 1px;

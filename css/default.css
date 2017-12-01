@@ -190,6 +190,18 @@ body.home .thread-details-tohome { display: none; }
 	position: relative;
 	border-radius: 2px;
 }
+.div-search input[type="search"],
+.div-search button {
+	border: 0 none;
+	outline: none;
+}
+.div-search button {
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
 .jEBE_slider-thumbnail {
 	text-align: center;
 	margin-top: 5px;

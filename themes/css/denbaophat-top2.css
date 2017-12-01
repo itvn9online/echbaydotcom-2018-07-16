@@ -26,10 +26,7 @@
 	color: #fff;
 }
 .div-search {
-	background: #fff;
-	overflow: hidden;
 	border: 2px #493C39 solid !important;
-	position: relative;
 	padding-left: 15px;
 }
 .div-search,
@@ -38,11 +35,6 @@
 	height: 35px;
 	border-radius: 1px;
 }
-.div-search input[type="search"],
-.div-search button {
-	border: 0 none;
-	outline: none;
-}
 .div-search input[type="search"] {
 	background: #fff;
 	font-size: 16px;
@@ -50,13 +42,8 @@
 	width: 90%;
 }
 .div-search button {
-	cursor: pointer;
 	font-size: 18px;
 	border-left: 2px #493C39 solid;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
 	width: 10%;
 }
 .div-search button:hover { color: #333; }

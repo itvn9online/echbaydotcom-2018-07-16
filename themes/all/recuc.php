@@ -29,8 +29,8 @@ $eb_all_themes_support["recuc"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["recuc"]["footer"][] = "recuc-footer1.php";
 $eb_all_themes_support["recuc"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["recuc"]["home"][] = "recuc-home1.php";
-$eb_all_themes_support["recuc"]["home"][] = "recuc-home2.php";
+//$eb_all_themes_support["recuc"]["home"][] = "recuc-home1.php";
+//$eb_all_themes_support["recuc"]["home"][] = "recuc-home2.php";
 $eb_all_themes_support["recuc"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["recuc"]["threaddetails"][] = "recuc-threaddetails.html";
