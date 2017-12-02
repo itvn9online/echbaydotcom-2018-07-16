@@ -1040,7 +1040,12 @@ function convert_size_to_one_format () {
 				if ( a.split('x').length > 1 ) {
 					a = a.split( 'x' );
 					
-					a = a[1] + '/' + a[0];
+					if ( a[0] == a[1] ) {
+						a = 1;
+					}
+					else {
+						a = a[1] + '/' + a[0];
+					}
 				}
 				a = a.toString().replace(/[^0-9\/]/g, '');
 			}
