@@ -253,7 +253,7 @@ var g_func = {
 	setc: function (name, value, seconds, days) {
 		var expires = "";
 		
-		// tính theo ngày
+		// tính theo ngày -> số giây trong ngày luôn
 		if ( typeof days == 'number' && days > 0 ) {
 			seconds = days * 24 * 3600;
 		}

@@ -451,7 +451,7 @@ $('.click-show-no-customize').click(function(e) {
 		
 		//
 		current_cookie_show_hide_admin_menu = encodeURIComponent( window.location.href );
-		g_func.setc( 'ebe_click_show_hidden_menu', current_cookie_show_hide_admin_menu, 4 * 3600 );
+		g_func.setc( 'ebe_click_show_hidden_menu', current_cookie_show_hide_admin_menu, 4 * 3600, 7 );
 	}
 	// đang tắt -> bật
 	else {
