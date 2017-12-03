@@ -55,7 +55,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		
 		//
 		if ( $str_history == '' ) {
-			echo '<p>Widget view history has been active, but IDs not found!</p>';
+			echo '<!-- Widget view history has been active, but IDs not found! -->';
 			return false;
 		}
 //		echo $str_history;

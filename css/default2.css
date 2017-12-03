@@ -1813,7 +1813,7 @@ iframe[name="google_conversion_frame"] {
 }
 /* trang chi tiết dùng chung */
 .details-other-title {
-	border-bottom: 3px #EBEBEB solid;
+	/* border-bottom: 3px #EBEBEB solid; */
 	position: relative;
 	line-height: 45px;
 	font-size: 14pt;
