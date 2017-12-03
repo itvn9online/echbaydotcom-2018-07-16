@@ -29,12 +29,14 @@ else {
 	}
 	// mặc định thì lấy theo config
 	else {
-		$web_link = get_option ( 'siteurl' );
+//		$web_link = get_option ( 'siteurl' );
+		$web_link = _eb_get_option ( 'siteurl' );
 	}
 }
 
 // hỗ trợ link HTTP nếu truy cập vào cổng 443
-if ( eb_web_protocol == 'https' && strstr( $web_link, 'https://' ) == false ) {
+//if ( eb_web_protocol == 'https' && strstr( $web_link, 'https://' ) == false ) {
+if ( eb_web_protocol == 'https' ) {
 	$web_link = str_replace( 'http://', 'https://', $web_link );
 }
 
@@ -322,11 +324,14 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			$__cf_row ["cf_blog_public"] = $sql[0]->option_value;
 		}
 		*/
-		$__cf_row ["cf_blog_public"] = get_option( 'blog_public' );
+//		$__cf_row ["cf_blog_public"] = get_option( 'blog_public' );
+		$__cf_row ["cf_blog_public"] = _eb_get_option( 'blog_public' );
 		
 		// định dạng ngày giờ
-		$__cf_row ["cf_date_format"] = get_option( 'date_format' );
-		$__cf_row ["cf_time_format"] = get_option( 'time_format' );
+//		$__cf_row ["cf_date_format"] = get_option( 'date_format' );
+		$__cf_row ["cf_date_format"] = _eb_get_option( 'date_format' );
+//		$__cf_row ["cf_time_format"] = get_option( 'time_format' );
+		$__cf_row ["cf_time_format"] = _eb_get_option( 'time_format' );
 		
 		// tên thư mục chứa theme theo tiêu chuẩn của echbay
 		$__cf_row ["cf_theme_dir"] = basename( dirname( dirname( EB_THEME_HTML ) ) );

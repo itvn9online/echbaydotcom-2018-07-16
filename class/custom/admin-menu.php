@@ -153,6 +153,7 @@ function echbay_admin_styles() {
 //	$last_update_css = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'css/default.css' ) );
 	
 	//
+	/*
 	_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 //		web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/font-awesome.css',
 		EB_URL_OF_PLUGIN . 'outsource/fonts/font-awesome.css',
@@ -161,9 +162,24 @@ function echbay_admin_styles() {
 		EB_URL_OF_PLUGIN . 'css/admin.css',
 //		EB_URL_OF_PLUGIN . 'css/admin.css',
 	) ), 'link' );
+	*/
+	$a = array(
+		'outsource/fonts/font-awesome.css',
+		'css/default.css',
+		'css/default2.css',
+		'css/admin.css'
+	);
+	foreach ( $a as $v ) {
+		$k = EB_THEME_PLUGIN_INDEX . $v;
+//		echo $k . '<br>' . "\n";
+		if ( file_exists( $k ) ) {
+			echo '<link rel="stylesheet" href="//' . $_SERVER['HTTP_HOST'] . '/' . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '" type="text/css" media="all" />' . "\n";
+		}
+	}
 	
 	
 	//
+	/*
 	_eb_add_full_js( EBE_admin_set_realtime_for_file ( array(
 //		web_link . 'wp-includes/js/jquery/jquery.js',
 //		EB_URL_OF_PLUGIN . 'javascript/eb_wp.js',
@@ -174,6 +190,19 @@ function echbay_admin_styles() {
 //		EB_URL_OF_PLUGIN . 'outsource/javascript/jquery.caret.1.02.min.js',
 //		EB_URL_OF_PLUGIN . 'javascript/a.js',
 	) ), 'add' );
+	*/
+	$a = array(
+		'javascript/eb.js',
+		'javascript/all.js',
+		'javascript/edit_post.js',
+	);
+	foreach ( $a as $v ) {
+		$k = EB_THEME_PLUGIN_INDEX . $v;
+//		echo $k . '<br>' . "\n";
+		if ( file_exists( $k ) ) {
+			echo '<script type="text/javascript" src="//' . $_SERVER['HTTP_HOST'] . '/' . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '"></script>' . "\n";
+		}
+	}
 	
 	//
 	echo '<link href="' . web_link . eb_default_vaficon . '?v=' . EBE_admin_get_realtime_for_file( web_link . eb_default_vaficon ) . '" rel="shortcut icon" type="image/png" />
@@ -307,10 +336,22 @@ function echbay_admin_footer_styles() {
 	echo '<script type="text/javascript">var cf_chu_de_chinh= "' . str_replace( '"', '\"', $__cf_row['cf_chu_de_chinh']  ). '";</script>';
 	
 	//
+	/*
 	_eb_add_full_js( EBE_admin_set_realtime_for_file ( array(
 		EB_URL_OF_PLUGIN . 'javascript/a.js',
 //		EB_URL_OF_PLUGIN . 'javascript/a.js',
 	) ), 'add' );
+	*/
+	$a = array(
+		'javascript/a.js',
+	);
+	foreach ( $a as $v ) {
+		$k = EB_THEME_PLUGIN_INDEX . $v;
+//		echo $k . '<br>' . "\n";
+		if ( file_exists( $k ) ) {
+			echo '<script type="text/javascript" src="//' . $_SERVER['HTTP_HOST'] . '/' . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '"></script>' . "\n";
+		}
+	}
 	
 	
 	

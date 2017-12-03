@@ -346,10 +346,18 @@ if ( ! defined('WP_AUTO_UPDATE_CORE') ) {
 
 // cấu hình URL dạng tĩnh -> khuyên dùng
 if ( ! defined('WP_SITEURL') ) {
-//	define( 'WP_SITEURL', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
-	define( 'WP_SITEURL', get_option ( 'siteurl' ) );
+//	if ( eb_web_protocol == 'https' ) {
+		define( 'WP_SITEURL', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+		/*
+	}
+	else {
+//		define( 'WP_SITEURL', get_option ( 'siteurl' ) );
+		define( 'WP_SITEURL', _eb_get_option ( 'siteurl' ) );
+	}
+	*/
 }
 //echo WP_SITEURL . '<br>';
+
 if ( ! defined('WP_HOME') ) {
 	define( 'WP_HOME', WP_SITEURL );
 }
@@ -520,6 +528,10 @@ if ( mtv_id == 0 ) {
 			
 			//
 			WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl );
+			
+			//
+//			echo $current_homeurl . '<br>' . "\n";
+//			echo $current_siteurl . '<br>' . "\n";
 		}
 		
 		

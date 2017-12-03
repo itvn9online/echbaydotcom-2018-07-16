@@ -66,10 +66,19 @@ include_once $include_file;
 
 
 // một số tham số dùng chung
-$main_content = str_replace( '{tmp.admin_css_uri}', EB_URL_OF_PLUGIN . 'css/', $main_content );
-$main_content = str_replace( '{tmp.admin_js_uri}', EB_URL_OF_PLUGIN . 'echbay/js/', $main_content );
+$admin_dynamic_uri = explode( '/', EB_URL_OF_PLUGIN );
+$admin_dynamic_uri[2] = $_SERVER['HTTP_HOST'];
+$admin_dynamic_uri = implode( '/', $admin_dynamic_uri );
+
+$web_dynamic_url = explode( '/', web_link );
+$web_dynamic_url[2] = $_SERVER['HTTP_HOST'];
+$web_dynamic_url = implode( '/', $web_dynamic_url );
+
+$main_content = str_replace( '{tmp.admin_css_uri}', $admin_dynamic_uri . 'css/', $main_content );
+$main_content = str_replace( '{tmp.admin_js_uri}', $admin_dynamic_uri . 'echbay/js/', $main_content );
 //$main_content = str_replace( '{tmp.web_version}', web_version, $main_content );
 $main_content = str_replace( '{tmp.web_version}', date_time, $main_content );
+$main_content = str_replace( '{tmp.web_link}', $web_dynamic_url, $main_content );
 $main_content = str_replace( '{tmp.web_link}', web_link, $main_content );
 
 //
