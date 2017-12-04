@@ -3482,6 +3482,9 @@ function _eb_load_ads (
 	*/
 	
 	//
+	$str = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $str );
+	
+	//
 	return '<!-- ADS status: ' . $type . ' - ' . $arr_eb_ads_status[ $type ] . ' -->' . _eb_supper_del_line( $str );
 }
 
