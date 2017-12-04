@@ -1377,6 +1377,7 @@ function _eb_echbay_logo() {
 function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name = '', $tag_close_menu_name = '</div>' ) {
 //	global $wpdb;
 	global $menu_cache_locations;
+	global $__cf_row;
 	
 	/*
 	$strCacheFilter = 'menu-' . $slug;
@@ -1475,6 +1476,7 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 		_eb_get_static_html ( $strCacheFilter, $a );
 	}
 	*/
+	$a = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $a );
 	
 	// trả về menu và URL tương đối
 	return '<!-- menu slug: ' . $slug . ' -->' . $menu_name . str_replace( web_link, '', _eb_supper_del_line( $a ) );
@@ -3543,4 +3545,5 @@ function WGR_get_all_term ( $id ) {
 // tách các phiên bản ra cho nhẹ người code
 include EB_THEME_PLUGIN_INDEX . 'functionsP2.php';
 include EB_THEME_PLUGIN_INDEX . 'functionsP3.php';
+include EB_THEME_PLUGIN_INDEX . 'functionsTemplate.php';
 include EB_THEME_PLUGIN_INDEX . 'functionsWidget.php';
