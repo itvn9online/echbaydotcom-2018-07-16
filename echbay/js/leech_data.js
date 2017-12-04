@@ -1063,7 +1063,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 				var check_ant_select = g_func.number_only( $('#oiAnt input[name="t_ant"]').val() || 0 );
 				
 				if ( check_ant_select > 0 ) {
-					$('.click-submit-url-details').click();
+					$('.click-submit-url-details:first').click();
 				} else {
 					console.log('Select categories for auto leech');
 				}
@@ -1075,7 +1075,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 	else {
 //		console.log('Không tìm thấy danh sách nhóm cần lấy sản phẩm');
 		$('#show_text_after_done').append('<li>Không tìm thấy danh sách nhóm cần lấy sản phẩm</li>');
-		window.scroll( $('#show_text_after_done').offset().top - 90, 0 );
+		window.scroll( 0, $('#show_text_after_done').offset().top - 90 );
 		
 		//
 		if ( dog('nap_lai_trang_sau_khi_hoan_thanh').checked == true ) {

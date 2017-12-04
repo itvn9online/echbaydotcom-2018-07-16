@@ -51,9 +51,12 @@ foreach ( $arr_global_main as $k => $v ) {
 
 
 // nếu tồn tại tham số URL cũ -> thay nội dung cũ sang mới
+/*
 if ( $__cf_row['cf_old_domain'] != '' ) {
 	$main_content = str_replace ( '/' . $__cf_row['cf_old_domain'] . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $main_content );
 }
+*/
+$main_content = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $main_content );
 
 
 // chuyển sang dùng CDN (nếu có)

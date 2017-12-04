@@ -238,19 +238,28 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 
 //
 if ( isset( $_POST['cf_old_domain'] )
-	&& $_POST['cf_old_domain'] != ''
-	&& strstr( $_POST['cf_old_domain'], '/' ) == true ) {
-	$a = explode( '//', $_POST['cf_old_domain'] );
-	if ( isset( $a[1] ) ) {
-		$a = $a[1];
-	} else {
-		$a = $a[0];
+//	&& strstr( $_POST['cf_old_domain'], '/' ) == true
+	&& $_POST['cf_old_domain'] != '' ) {
+	
+	$arr = explode( ',', $_POST['cf_old_domain'] );
+	$new_a = array();
+	foreach ( $arr as $v ) {
+		$v = trim( $v );
+		if ( $v != '' ) {
+			$a = explode( '//', $v );
+			if ( isset( $a[1] ) ) {
+				$a = $a[1];
+			} else {
+				$a = $a[0];
+			}
+			
+			$a = explode( '/', $a );
+			$a = trim( $a[0] );
+			
+			$new_a[] = $a;
+		}
 	}
-	
-	$a = explode( '/', $a );
-	$a = $a[0];
-	
-	$_POST['cf_old_domain'] = $a;
+	$_POST['cf_old_domain'] = implode( ',', $new_a );
 }
 
 
