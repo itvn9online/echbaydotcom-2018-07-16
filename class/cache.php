@@ -24,14 +24,16 @@ else {
 	
 //	if ( is_admin() ) {
 	// lấy URL động với site có dùng SSL
+	/*
 	if ( eb_web_protocol == 'https' ) {
 		$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'];
 	}
 	// mặc định thì lấy theo config
 	else {
+		*/
 //		$web_link = get_option ( 'siteurl' );
 		$web_link = _eb_get_option ( 'siteurl' );
-	}
+//	}
 }
 
 // hỗ trợ link HTTP nếu truy cập vào cổng 443
@@ -45,6 +47,7 @@ if ( eb_web_protocol == 'https' ) {
 //if ( substr( $web_link, -1 ) != '/' ) {
 	$web_link .= '/';
 //}
+//echo $web_link;
 
 //
 /*
@@ -54,9 +57,6 @@ if ( $localhost == 1 ) {
 	$web_link = eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] . '/';
 }
 */
-
-define( 'web_link', $web_link );
-//echo web_link;
 
 
 
@@ -76,6 +76,9 @@ if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
 	$web_link = implode( '/', $web_link );
 //	echo $web_link;
 }
+
+define( 'web_link', $web_link );
+//echo web_link;
 
 
 

@@ -13,15 +13,15 @@ $eb_all_themes_support["erawatch"]["price"] = 2500000;
 $eb_all_themes_support["erawatch"]["demo"] = "erawatch.vn";
 //
 $eb_all_themes_support["erawatch"]["top"][] = "erawatch-top1.php";
-$eb_all_themes_support["erawatch"]["top"][] = "erawatch-top2.php";
+//$eb_all_themes_support["erawatch"]["top"][] = "erawatch-top2.php";
 $eb_all_themes_support["erawatch"]["top"][] = "bigbanner-top1.php";
 $eb_all_themes_support["erawatch"]["top"][] = "echbaytwo-top4.php";
 $eb_all_themes_support["erawatch"]["top"][] = "top_widget.php";
 //
 $eb_all_themes_support["erawatch"]["footer"][] = "footer_widget.php";
-$eb_all_themes_support["erawatch"]["footer"][] = "echbayfour-footer1.php";
+//$eb_all_themes_support["erawatch"]["footer"][] = "echbayfour-footer1.php";
 $eb_all_themes_support["erawatch"]["footer"][] = "erawatch-footer1.php";
-$eb_all_themes_support["erawatch"]["footer"][] = "erawatch-footer3.php";
+//$eb_all_themes_support["erawatch"]["footer"][] = "erawatch-footer3.php";
 //
 $eb_all_themes_support["erawatch"]["cf_threaddetails_include_file"] = "erawatch-threaddetails.html";
 //

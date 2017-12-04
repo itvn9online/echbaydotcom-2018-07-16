@@ -147,6 +147,9 @@ function echbay_admin_styles() {
 	global $wpdb;
 	global $client_ip;
 //	global $func;
+//	global $web_link;
+	
+	
 	
 	// lấy thời gian cập nhật cuối của file css -> update lại toàn bộ các file khác
 //	$last_update_js = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/eb.js' ) );
@@ -173,7 +176,7 @@ function echbay_admin_styles() {
 		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
 		if ( file_exists( $k ) ) {
-			echo '<link rel="stylesheet" href="//' . $_SERVER['HTTP_HOST'] . '/' . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '" type="text/css" media="all" />' . "\n";
+			echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '" type="text/css" media="all" />' . "\n";
 		}
 	}
 	
@@ -200,7 +203,7 @@ function echbay_admin_styles() {
 		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
 		if ( file_exists( $k ) ) {
-			echo '<script type="text/javascript" src="//' . $_SERVER['HTTP_HOST'] . '/' . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '"></script>' . "\n";
+			echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '"></script>' . "\n";
 		}
 	}
 	
@@ -349,7 +352,7 @@ function echbay_admin_footer_styles() {
 		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
 		if ( file_exists( $k ) ) {
-			echo '<script type="text/javascript" src="//' . $_SERVER['HTTP_HOST'] . '/' . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '"></script>' . "\n";
+			echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '"></script>' . "\n";
 		}
 	}
 	
