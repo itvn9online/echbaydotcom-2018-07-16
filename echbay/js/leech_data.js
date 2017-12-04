@@ -1075,6 +1075,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 	else {
 //		console.log('Không tìm thấy danh sách nhóm cần lấy sản phẩm');
 		$('#show_text_after_done').append('<li>Không tìm thấy danh sách nhóm cần lấy sản phẩm</li>');
+		window.scroll( $('#show_text_after_done').offset().top - 90, 0 );
 		
 		//
 		if ( dog('nap_lai_trang_sau_khi_hoan_thanh').checked == true ) {

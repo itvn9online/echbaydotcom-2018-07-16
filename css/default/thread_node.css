@@ -93,6 +93,8 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	bottom: 0;
+	line-height: 32px;
 	display: block;
 	width: 30px;
 	background: #333;
