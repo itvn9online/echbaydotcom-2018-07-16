@@ -235,9 +235,11 @@ function WGR_get_dom_xml ( $a, $tag ) {
 
 // đồng bộ URL cũ với mới cho nội dung
 function WGR_sync_old_url_in_content ( $a, $c ) {
+	/*
 	if ( $a == '' ) {
 		return $c;
 	}
+	*/
 	
 	//
 	$a = explode( ',', $a );

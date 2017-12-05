@@ -1487,7 +1487,11 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 	foreach ( $arr as $k => $v ) {
 		$a = str_replace( '{tmp.' . $k . '}' , $v, $a );
 	}
-	$a = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $a );
+	
+	//
+	if ( $__cf_row['cf_old_domain'] != '' ) {
+		$a = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $a );
+	}
 	
 	// trả về menu và URL tương đối
 	return '<!-- menu slug: ' . $slug . ' -->' . $menu_name . str_replace( web_link, '', _eb_supper_del_line( $a ) );
@@ -3482,7 +3486,9 @@ function _eb_load_ads (
 	*/
 	
 	//
-	$str = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $str );
+	if ( $__cf_row['cf_old_domain'] != '' ) {
+		$str = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $str );
+	}
 	
 	//
 	return '<!-- ADS status: ' . $type . ' - ' . $arr_eb_ads_status[ $type ] . ' -->' . _eb_supper_del_line( $str );
