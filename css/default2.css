@@ -1081,7 +1081,7 @@ color: #333;
 }
 .banner-chan-trang .banner-ads-media {
 	margin: 0 14px;
-	background-size: auto 95%;
+	background-size: contain;
 }
 /* search */
 .thread-search { }

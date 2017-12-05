@@ -28,8 +28,8 @@ $eb_all_themes_support["ototaichuyendung"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["ototaichuyendung"]["footer"][] = "ototaichuyendung-footer1.php";
 $eb_all_themes_support["ototaichuyendung"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["ototaichuyendung"]["home"][] = "ototaichuyendung-home1.php";
-$eb_all_themes_support["ototaichuyendung"]["home"][] = "ototaichuyendung-home2.php";
+//$eb_all_themes_support["ototaichuyendung"]["home"][] = "ototaichuyendung-home1.php";
+//$eb_all_themes_support["ototaichuyendung"]["home"][] = "ototaichuyendung-home2.php";
 $eb_all_themes_support["ototaichuyendung"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["ototaichuyendung"]["threaddetails"][] = "ototaichuyendung-threaddetails.html";

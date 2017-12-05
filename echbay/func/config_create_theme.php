@@ -207,7 +207,7 @@ WGR_for_to_create_theme_by_name( 'footer', $create_theme_footer );
 
 
 // mặc định sẽ tạo ra 5 file home
-$create_theme_home = 2;
+$create_theme_home = 1;
 WGR_for_to_create_theme_by_name( 'home', $create_theme_home );
 
 
