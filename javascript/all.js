@@ -1159,7 +1159,9 @@ function eb_func_show_product_size () {
 			var str_node_size = (function ( arr ) {
 //				console.log( arr );
 				
-				var str = '';
+				var str = '',
+					show_text = '',
+					show_title = '';
 				
 				if ( typeof arr == 'object' ) {
 					for ( var j = 0; j < arr.length; j++ ) {
@@ -1187,8 +1189,28 @@ function eb_func_show_product_size () {
 								}
 							}
 							
+							if ( typeof arr[j].sku == 'undefined' ) {
+								arr[j].sku = '';
+							}
+							
+							if ( typeof arr[j].price == 'undefined' ) {
+								arr[j].price = '';
+							}
+							
 							//
-							str += '<li data-parent="' + i + '" data-node="' + j + '" data-size="' + arr[j].name + '" data-quan="' + arr[j].val + '" title="Size: ' + arr[j].name + '/ Số lượng: ' + arr[j].val + '">' + arr[j].name + '/ ' + arr[j].val + '</li>';
+							show_text = arr[j].name + '/ ' + arr[j].val;
+							show_title = 'Size: ' + arr[j].name + '/ Số lượng: ' + arr[j].val;
+							if ( arr[j].sku != '' ) {
+								show_text += '/ ' + arr[j].sku;
+								show_title += '/ Mã sản phẩm: ' + arr[j].sku;
+							}
+							if ( arr[j].price != '' ) {
+								show_text += '/ ' + arr[j].price;
+								show_title += '/ Giá bán: ' + arr[j].price;
+							}
+							
+							//
+							str += '<li data-parent="' + i + '" data-node="' + j + '" data-size="' + arr[j].name + '" data-sku="' + arr[j].sku + '" data-quan="' + arr[j].val + '" data-price="' + arr[j].price + '" title="' + show_title + '">' + show_text + '</li>';
 //						}
 					}
 				}
@@ -1207,7 +1229,7 @@ function eb_func_show_product_size () {
 	
 	//
 //	console.log(eb_inner_html_product_size);
-	$('#' + eb_inner_html_product_size).html( str_size );
+	$('#' + eb_inner_html_product_size).html( str_size + '<div class="small">Chức năng dùng để tạo danh sách Kích thước, dung tích... cho sản phẩm và mức giá riêng (nếu có).</div>' );
 //	$('#' + eb_inner_html_product_size + ' ul:last li:last').after('<li data-add="group" title="Thêm nhóm size mới (một số theme mới hỗ trợ tính năng này)"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i></li>');
 	
 	// chuyển từ object sang string
@@ -1333,9 +1355,11 @@ function eb_func_click_modife_product_size () {
 		//
 		if ( a == '' ) {
 			var current_select = '#' + eb_inner_html_product_size + ' li.selected';
+			console.log(eb_inner_html_product_size);
 			if ( $( current_select ).length > 0 ) {
 				$('.eb-input-edit-product-size').css({
-					top : $(current_select).offset().top + $(current_select).height(),
+//					top : $(current_select).offset().top + $(current_select).height(),
+					top : $(current_select).offset().top + 30,
 					left : $(current_select).offset().left
 				}).show();
 				
@@ -1350,6 +1374,8 @@ function eb_func_click_modife_product_size () {
 					return false;
 				}
 				
+				$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]').val( eb_global_product_size[ a_parent ][ a_node ].sku );
+				$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]').val( eb_global_product_size[ a_parent ][ a_node ].price );
 				$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_size"]').val( eb_global_product_size[ a_parent ][ a_node ].val );
 				$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val( eb_global_product_size[ a_parent ][ a_node ].name ).focus();
 				
@@ -1358,7 +1384,9 @@ function eb_func_click_modife_product_size () {
 					
 					if ( a == 'save' ) {
 						var ten = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val() || '',
-							sai = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_size"]').val() || '';
+							sku = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]').val() || '',
+							sai = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_size"]').val() || '',
+							price = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]').val() || '';
 						
 						/*
 						if ( ten == '' || sai == '' ) {
@@ -1368,8 +1396,11 @@ function eb_func_click_modife_product_size () {
 							*/
 							eb_global_product_size[ a_parent ][ a_node ] = {
 								name : ten,
-								val : sai
+								sku : sku,
+								val : sai,
+								price : price
 							};
+//							console.log(eb_global_product_size);
 //						}
 						
 						//

@@ -213,6 +213,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_ads_for_category' => 'Nhập vào ID của Danh mục Sản phẩm hoặc Danh mục Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Danh mục Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
 	
 	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
+//	'_eb_product_size' => '',
 	'_eb_product_giohethan' => 'Thiết lập giờ hết hạn cụ thể cho phần Ngày hết hạn ở trên. Nếu để trống trường này, giờ hết hạn sẽ là cuối ngày hôm đó (23:59)',
 	'_eb_product_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Bài viết này',
 	'_eb_product_chinhhang' => 'Đánh dấu để hiển thị nhãn Đảm bảo chính hãng',

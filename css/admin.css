@@ -71,10 +71,11 @@ body.ebdesign-no-scroll { overflow: hidden; }
 	left: 0;
 	border: 1px #ccc solid;
 	background: rgba( 255, 255, 255, .9 );
-	padding: 10px;
+	padding: 25px;
 	border-radius: 3px;
 	display: none;
 	z-index: 999;
+	box-shadow: 0 0 20px #999;
 }
 .eb-input-edit-product-size input[type="text"] {
 	width: 200px;
