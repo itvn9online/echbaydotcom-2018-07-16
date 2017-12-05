@@ -1896,6 +1896,9 @@ iframe[name="google_conversion_frame"] {
 	background: center no-repeat;
 	background-size: auto 99%;
 }
+.hide-blogs-title .echbay-blog-title,
+.hide-blogs-description .echbay-blog-gioithieu,
+.hide-blogs-info .echbay-blog-infos,
 .hide-widget-title .echbay-widget-title { display: none; }
 .ti-le-global.auto-size {
 	overflow: hidden;

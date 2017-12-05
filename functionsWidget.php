@@ -6,6 +6,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 	// Giá trị mặc định
 	$arr = array (
 		'title' => 'EchBay Widget for product',
+		'hide_widget_title' => 0,
 		'dynamic_tag' => 'div',
 		'description' => '',
 		'content_only' => 0,
@@ -19,6 +20,9 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'cat_type' => 'category',
 		'get_childs' => 0,
 		'post_cloumn' => '',
+		'hide_title' => 0,
+		'hide_description' => 0,
+		'hide_info' => 0,
 		'post_type' => 'post',
 		'ads_eb_status' => 0,
 		'post_eb_status' => 0,

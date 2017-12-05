@@ -128,6 +128,28 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
 		
+		// ẩn các thuộc tính theo option
+		$hide_widget_title = isset( $instance ['hide_widget_title'] ) ? $instance ['hide_widget_title'] : 'off';
+		if ( $hide_widget_title == 'on' ) {
+			$custom_style .= ' hide-widget-title';
+		}
+		
+		$hide_title = isset( $instance ['hide_title'] ) ? $instance ['hide_title'] : 'off';
+		if ( $hide_title == 'on' ) {
+			$custom_style .= ' hide-blogs-title';
+		}
+		
+		$hide_description = isset( $instance ['hide_description'] ) ? $instance ['hide_description'] : 'off';
+		if ( $hide_description == 'on' ) {
+			$custom_style .= ' hide-blogs-description';
+		}
+		
+		$hide_info = isset( $instance ['hide_info'] ) ? $instance ['hide_info'] : 'off';
+		if ( $hide_info == 'on' ) {
+			$custom_style .= ' hide-blogs-info';
+		}
+		
+		
 		
 		//
 		$cat_link = '';
@@ -335,7 +357,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		
 		//
-		echo '<div class="' . $custom_style . '">';
+		echo '<div class="' . trim( $custom_style ) . '">';
 		
 		// chỉ lấy nội dung bài viết
 		if ( $content_only == 'on' ) {

@@ -150,6 +150,10 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	//
 	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
 	
+	//
+	$input_name = $field_name[ 'hide_widget_title' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_widget_title, 'Ẩn tiêu đề widget.' );
 	
 	//
 	echo '<p>HTML tag cho tiêu đề: ';
@@ -221,6 +225,22 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	//
 	_eb_widget_style_for_post_cloumn( $field_name['post_cloumn'], $post_cloumn );
+	
+	
+	//
+	$input_name = $field_name[ 'hide_title' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_title, 'Ẩn tiêu đề của bài viết.' );
+	
+	//
+	$input_name = $field_name[ 'hide_description' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_description, 'Ẩn tóm tắt của bài viết.' );
+	
+	//
+	$input_name = $field_name[ 'hide_info' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
 	
 	
 	//
