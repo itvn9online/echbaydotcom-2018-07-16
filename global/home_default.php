@@ -2,14 +2,23 @@
 
 
 
-
+// home hot
 $arr_includes_home_file[] = EB_THEME_PLUGIN_INDEX . 'themes/home/echbaytwo-home1.php';
 
+// home new
 $arr_includes_home_file[] = EB_THEME_PLUGIN_INDEX . 'themes/home/echbaytwo-home2.php';
 
+// home list
 $arr_includes_home_file[] = EB_THEME_PLUGIN_INDEX . 'themes/home/echbaytwo-home3.php';
 
+// home h1
 $arr_includes_home_file[] = EB_THEME_PLUGIN_INDEX . 'themes/home/echbaytwo-home4.php';
+
+// home widget
+$arr_includes_home_file[] = EB_THEME_PLUGIN_INDEX . 'themes/home/echbaytwo-home5.php';
+
+// logo đối tác
+//$arr_includes_home_file[] = EB_THEME_PLUGIN_INDEX . 'themes/home/echbaytwo-home6.php';
 
 
 

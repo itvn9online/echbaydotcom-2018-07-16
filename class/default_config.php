@@ -31,6 +31,8 @@ $__cf_row_default = array(
 //	'cf_using_wpmail' => '',
 	
 	'cf_logo' => EB_URL_TUONG_DOI . 'images-global/echbay-wp-logo.png',
+	// tạo H1 cho phần logo
+	'cf_h1_logo' => 0,
 	'cf_size_logo' => 'auto', // 1/2
 	'cf_height_logo' => 50,
 	'cf_favicon' => eb_default_vaficon,

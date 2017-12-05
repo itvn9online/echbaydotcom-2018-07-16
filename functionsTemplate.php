@@ -5,11 +5,21 @@
 /*
 * Các đoạn HTML thường dùng
 */
-function EBE_get_html_logo () {
+function EBE_get_html_logo ( $set_h1 = 0 ) {
 	global $__cf_row;
 	
 	// v2 -> custom height
-	return '<div><a href="./" class="web-logo d-block" style="background-image:url(' . $__cf_row['cf_logo'] . ');">&nbsp;</a></div>';
+	$logo_tag = 'div';
+	if ( $set_h1 == 1 && $__cf_row['cf_h1_logo'] == 1 ) {
+		global $act;
+		
+		if ( $act == '' ) {
+			$logo_tag = 'h1';
+		}
+	}
+	
+	//
+	return '<' . $logo_tag . '><a href="./" class="web-logo d-block" style="background-image:url(' . $__cf_row['cf_logo'] . ');">&nbsp;</a></' . $logo_tag . '>';
 	
 	// v1 -> auto set height
 //	return '<div><a data-size="' . $__cf_row['cf_size_logo'] . '" href="./" class="web-logo ti-le-global d-block" style="background-image:url(' . $__cf_row['cf_logo'] . ');">&nbsp;</a></div>';

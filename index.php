@@ -672,7 +672,8 @@ function echbay_theme_setup() {
 		id_default_for_get_sidebar => 'Sidebar chính của website (dùng cho nhiều trang). Mặc định khi các sidebar khác không có dữ liệu thì side này sẽ được gọi ra để lấp chỗ trống.',
 		
 		'home_sidebar' => 'Sidebar cho trang chủ (home)',
-		'home_content_sidebar' => 'Sidebar cho phần nội dung của trang chủ (home)',
+		'home_content_top_sidebar' => 'Sidebar cho phần top nội dung của trang chủ (home)',
+		'home_content_sidebar' => 'Sidebar cho phần footer nội dung của trang chủ (home)',
 		
 		'category_sidebar' => 'Sidebar cho trang danh sách sản phẩm (category)',
 		'category_content_sidebar' => 'Sidebar cho phần nội dung của trang danh sách sản phẩm (category)',
