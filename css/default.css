@@ -252,4 +252,5 @@ body.home .thread-details-tohome { display: none; }
 .web-logo {
 	line-height: 50px;
 	background: center no-repeat;
+	text-indent: -999px;
 }
