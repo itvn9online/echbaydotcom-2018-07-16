@@ -295,7 +295,7 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 				
 				//
 				$ck = '';
-				if ( $val == $__cf_row[ $label_name ] ) {
+				if ( isset( $__cf_row[ $label_name ] ) && $val == $__cf_row[ $label_name ] ) {
 					$ck = ' checked="checked"';
 				}
 				
