@@ -540,6 +540,7 @@ a.eb-btn {
 .thread-details-mobileAvt li {
 	background: #fff center no-repeat;
 	background-size: 100% auto;
+	background-size: contain;
 }
 /*
 .thread-details-mobileAvt li {
