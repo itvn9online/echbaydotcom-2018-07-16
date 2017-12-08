@@ -518,10 +518,11 @@ else {
 
 //
 $str_tags = '';
-//print_r( $arr_list_tag );
 if ( ! empty ( $arr_list_tag ) ) {
+//	print_r( $arr_list_tag );
 	foreach ( $arr_list_tag as $v ) {
-		$str_tags .= '<a href="' . get_tag_link( $v->term_id ) . '">' . $v->name . '</a> ';
+//		$str_tags .= '<a href="' . get_tag_link( $v->term_id ) . '">' . $v->name . '</a> ';
+		$str_tags .= '<a href="' . _eb_c_link( $v->term_id, $v->taxonomy ) . '">' . $v->name . '</a> ';
 	}
 }
 
