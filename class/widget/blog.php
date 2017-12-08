@@ -106,7 +106,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$sortby = isset( $instance ['sortby'] ) ? $instance ['sortby'] : '';
 		
 		$cat_ids = isset( $instance ['cat_ids'] ) ? $instance ['cat_ids'] : 0;
-		$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : EB_BLOG_POST_LINK;
+//		$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : EB_BLOG_POST_LINK;
 		$get_childs = isset( $instance ['get_childs'] ) ? $instance ['get_childs'] : 'off';
 		
 		$content_only = isset( $instance ['content_only'] ) ? $instance ['content_only'] : 'off';
@@ -153,14 +153,12 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		//
 		$cat_link = '';
-		/*
 		if ( $post_type == EB_BLOG_POST_TYPE ) {
 			$cat_type = EB_BLOG_POST_LINK;
 		}
 		else {
 			$cat_type = 'category';
 		}
-		*/
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
@@ -176,38 +174,46 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		// lấy theo nhóm tin đã được chỉ định
 		if ( $cat_ids > 0 ) {
-			$terms_categories[] = $cat_ids;
-			$cat_link = _eb_c_link( $cat_ids, $cat_type );
-			$more_link = '<div class="widget-blog-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
 			
-			if ( $title == '' ) {
-//				echo $cat_ids;
-				$categories = get_term_by('id', $cat_ids, $cat_type);
-//				print_r($categories);
-				if ( ! empty( $categories ) ) {
-					$title = $categories->name;
-				}
-//				print_r($categories);
+			// lấy lại taxonomy
+			$cat_type = WGR_get_taxonomy_name( $cat_ids );
+			if ( $cat_type == '' ) {
+				echo '<!-- taxonomy for #' . $cat_ids . ' not found! -->';
 			}
-			
-			
-			// danh sách nhóm cấp 2
-			if ( $post_type != 'ads' && $get_childs == 'on' ) {
-				$arr_sub_cat = array(
-					'parent' => $cat_ids,
-					'taxonomy' => $cat_type,
-				);
-				$sub_cat = get_categories($arr_sub_cat);
-	//			print_r( $sub_cat );
+			//
+			else {
+				$terms_categories[] = $cat_ids;
+				$cat_link = _eb_c_link( $cat_ids, $cat_type );
+				$more_link = '<div class="widget-blog-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
 				
-				if ( ! empty( $sub_cat ) ) {
-					foreach ( $sub_cat as $sub_v ) {
-						$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id, $cat_type ) . '">' . $sub_v->name . ' <span class="blog-count-subcat">(' . $sub_v->count . ')</span></a>';
+				if ( $title == '' ) {
+//					echo $cat_ids;
+					$categories = get_term_by('id', $cat_ids, $cat_type);
+//					print_r($categories);
+					if ( ! empty( $categories ) ) {
+						$title = $categories->name;
 					}
-					$str_sub_cat = '<div class="widget-blog-subcat">' . $str_sub_cat . '</div>';
+//					print_r($categories);
+				}
+				
+				
+				// danh sách nhóm cấp 2
+				if ( $post_type != 'ads' && $get_childs == 'on' ) {
+					$arr_sub_cat = array(
+						'parent' => $cat_ids,
+						'taxonomy' => $cat_type,
+					);
+					$sub_cat = get_categories($arr_sub_cat);
+//					print_r( $sub_cat );
+					
+					if ( ! empty( $sub_cat ) ) {
+						foreach ( $sub_cat as $sub_v ) {
+							$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id, $cat_type ) . '">' . $sub_v->name . ' <span class="blog-count-subcat">(' . $sub_v->count . ')</span></a>';
+						}
+						$str_sub_cat = '<div class="widget-blog-subcat">' . $str_sub_cat . '</div>';
+					}
 				}
 			}
-			
 		}
 		// lấy tất cả
 		else {
@@ -328,7 +334,13 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			// nếu không có dữ liệu -> in ra dữ liệu để test
 			if ( $content == '' ) {
 				echo '<!-- ';
+				
+				global $___eb_post__not_in;
+				
+				echo $___eb_post__not_in . '<br>' . "\n";
+				
 				print_r( $arr_select_data );
+				
 				echo ' -->';
 			}
 //		}

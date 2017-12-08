@@ -28,7 +28,7 @@ $eb_all_themes_support["vienthammykorea"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["vienthammykorea"]["footer"][] = "vienthammykorea-footer1.php";
 $eb_all_themes_support["vienthammykorea"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["vienthammykorea"]["home"][] = "vienthammykorea-home1.php";
+//$eb_all_themes_support["vienthammykorea"]["home"][] = "vienthammykorea-home1.php";
 $eb_all_themes_support["vienthammykorea"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["vienthammykorea"]["threaddetails"][] = "vienthammykorea-threaddetails.html";
