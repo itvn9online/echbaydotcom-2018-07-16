@@ -28,7 +28,7 @@ $eb_all_themes_support["okiaglobal"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["okiaglobal"]["footer"][] = "okiaglobal-footer1.php";
 //$eb_all_themes_support["okiaglobal"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["okiaglobal"]["home"][] = "okiaglobal-home1.php";
+//$eb_all_themes_support["okiaglobal"]["home"][] = "okiaglobal-home1.php";
 $eb_all_themes_support["okiaglobal"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["okiaglobal"]["threaddetails"][] = "okiaglobal-threaddetails.html";

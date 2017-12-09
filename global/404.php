@@ -153,6 +153,9 @@ if ( isset( $arr_active_for_404_page[ $act ] ) ) {
 		//
 		include EB_THEME_PLUGIN_INDEX . 'global/' . $act . '.php';
 		
+		//
+		$css_m_css .= ' eb-' . $act;
+		
 		
 }
 else {

@@ -642,7 +642,10 @@ $arr_main_content = array(
 	'tmp.str_for_details_sidebar' => $str_for_details_sidebar,
 	
 	// phom mua ngay
-	'tmp.clone-show-quick-cart' => ( $__cf_row['cf_details_show_quick_cart'] ) == 1 ? '<div class="clone-show-quick-cart"></div>' : '',
+	'tmp.clone-show-quick-cart' => $__cf_row['cf_details_show_quick_cart'] == 1 ? '<div class="clone-show-quick-cart"></div>' : '',
+	
+	// mặt nạ cho nội dung
+	'tmp.thread_content_mask' => $__cf_row['cf_set_mask_for_details'] == 1 ? ' active-content-mask' : '',
 	
 	// tìm và tạo sidebar luôn
 //	'tmp.str_sidebar' => _eb_echbay_sidebar( $id_for_get_sidebar ),

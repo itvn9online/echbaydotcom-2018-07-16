@@ -907,7 +907,7 @@ color: #333;
 }
 .cart-pro-phet {
 	background: #fff;
-	padding: 15px 0;
+	padding: 15px 5px;
 	-moz-border-radius: 6pt;
 	border-radius: 6pt;
 }
@@ -1914,6 +1914,8 @@ iframe[name="google_conversion_frame"] {
 }
 .eb-view-history .home-hot-title,
 .eb-same-price .home-hot-title { padding-left: 0; }
+.eb-view-history .home-hot-bg,
+.eb-same-price .home-hot-bg { background: none; }
 .fb-comments { background: #fff; }
 /* quick view */
 /*

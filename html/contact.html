@@ -1,70 +1,72 @@
 <div class="medium {tmp.custom_blog_css}">
-	<div class="col-main-padding col-contact-padding">
-		<h1 class="text-center medium18 upper">{tmp.lh_lienhe}</h1>
-		<p class="l19">{tmp.lh_luuy}</p>
-		<div class="cf">
-			<div class="lf f62 fullsize-if-mobile">
-				<div class="right-menu-space">
-					<form name="frm_contact" method="post" action="process/?set_module=contact" target="target_eb_iframe" onsubmit="return _global_js_eb.check_contact_frm();">
-						<ul class="cart-ultable">
-							<li class="cf">
-								<div class="lf f25">{tmp.lh_hoten} <span class="redcolor">*</span></div>
-								<div class="lf f75">
-									<input type="text" name="t_ten" id="t_ten" value="" aria-required="true" required />
-								</div>
-							</li>
-							<li class="cf">
-								<div class="lf f25">Email <span class="redcolor">*</span></div>
-								<div class="lf f75">
-									<input type="text" name="t_email" id="t_email" value="" aria-required="true" required />
-								</div>
-							</li>
-							<li class="cf">
-								<div class="lf f25">{tmp.lh_diachi}</div>
-								<div class="lf f75">
-									<input type="text" name="t_diachi" id="t_diachi" value="" />
-								</div>
-							</li>
-							<li class="cf">
-								<div class="lf f25">{tmp.lh_dienthoai} <span class="redcolor">*</span></div>
-								<div class="lf f75">
-									<input type="text" name="t_dienthoai" id="t_dienthoai" value="" />
-								</div>
-							</li>
-							<li class="cf">
-								<div class="lf f25">{tmp.lh_noidung} <span class="redcolor">*</span></div>
-								<div class="lf f75">
-									<textarea name="t_noidung" id="t_noidung" aria-required="true" required></textarea>
-								</div>
-							</li>
-							<li class="cf">
-								<div class="lf f25">&nbsp;</div>
-								<div>
-									<input type="submit" value="{tmp.lh_submit}" class="cart-mua-button upper cur" />
-								</div>
-							</li>
-						</ul>
-					</form>
-					<br>
-					<p class="l25"><span class="redcolor">*</span> {tmp.lh_note}</p>
+	<div class="col-main-content">
+		<div class="col-main-padding col-contact-padding">
+			<h1 class="text-center medium18 upper">{tmp.lh_lienhe}</h1>
+			<p class="l19">{tmp.lh_luuy}</p>
+			<div class="cf">
+				<div class="lf f62 fullsize-if-mobile">
+					<div class="right-menu-space">
+						<form name="frm_contact" method="post" action="process/?set_module=contact" target="target_eb_iframe" onsubmit="return _global_js_eb.check_contact_frm();">
+							<ul class="cart-ultable">
+								<li class="cf">
+									<div class="lf f25">{tmp.lh_hoten} <span class="redcolor">*</span></div>
+									<div class="lf f75">
+										<input type="text" name="t_ten" id="t_ten" value="" aria-required="true" required />
+									</div>
+								</li>
+								<li class="cf">
+									<div class="lf f25">Email <span class="redcolor">*</span></div>
+									<div class="lf f75">
+										<input type="text" name="t_email" id="t_email" value="" aria-required="true" required />
+									</div>
+								</li>
+								<li class="cf">
+									<div class="lf f25">{tmp.lh_diachi}</div>
+									<div class="lf f75">
+										<input type="text" name="t_diachi" id="t_diachi" value="" />
+									</div>
+								</li>
+								<li class="cf">
+									<div class="lf f25">{tmp.lh_dienthoai} <span class="redcolor">*</span></div>
+									<div class="lf f75">
+										<input type="text" name="t_dienthoai" id="t_dienthoai" value="" />
+									</div>
+								</li>
+								<li class="cf">
+									<div class="lf f25">{tmp.lh_noidung} <span class="redcolor">*</span></div>
+									<div class="lf f75">
+										<textarea name="t_noidung" id="t_noidung" aria-required="true" required></textarea>
+									</div>
+								</li>
+								<li class="cf">
+									<div class="lf f25">&nbsp;</div>
+									<div>
+										<input type="submit" value="{tmp.lh_submit}" class="cart-mua-button upper cur" />
+									</div>
+								</li>
+							</ul>
+						</form>
+						<br>
+						<p class="l25"><span class="redcolor">*</span> {tmp.lh_note}</p>
+						<br>
+					</div>
 					<br>
 				</div>
-				<br>
-			</div>
-			<div class="lf f38 fullsize-if-mobile">
-				<div class="upper bold">{tmp.web_name}</div>
-				<br>
-				<div class="l19">
-					<div>{tmp.cf_diachi}</div>
+				<div class="lf f38 fullsize-if-mobile">
+					<div class="upper bold">{tmp.web_name}</div>
 					<br>
-					<div>{tmp.lh_dienthoai}</div>
-					<div class="phone-numbers-inline">{tmp.cf_call_dienthoai}</div>
-					<br>
-					<div>{tmp.cart_hotline}</div>
-					<div class="phone-numbers-inline">{tmp.cf_call_hotline}</div>
-					<br>
-					<div>Email: <a href="mailto:{tmp.cf_email}" rel="nofollow">{tmp.cf_email}</a></div>
-					<br>
+					<div class="l19">
+						<div>{tmp.cf_diachi}</div>
+						<br>
+						<div>{tmp.lh_dienthoai}</div>
+						<div class="phone-numbers-inline">{tmp.cf_call_dienthoai}</div>
+						<br>
+						<div>{tmp.cart_hotline}</div>
+						<div class="phone-numbers-inline">{tmp.cf_call_hotline}</div>
+						<br>
+						<div>Email: <a href="mailto:{tmp.cf_email}" rel="nofollow">{tmp.cf_email}</a></div>
+						<br>
+					</div>
 				</div>
 			</div>
 		</div>
