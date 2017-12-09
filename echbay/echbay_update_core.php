@@ -421,8 +421,11 @@ function EBE_remove_dir_after_update ( $dir, $arr, $dir_to = '' ) {
 
 function EBE_get_text_version ( $str ) {
 	$str = explode( 'Stable tag:', $str );
-	$str = explode( "\n", $str[1] );
-	return trim( $str[0] );
+	if ( isset( $str[1] ) ) {
+		$str = explode( "\n", $str[1] );
+		return trim( $str[0] );
+	}
+	return 'null';
 }
 
 
