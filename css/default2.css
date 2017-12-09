@@ -1668,6 +1668,7 @@ li.footer-social-fb { background-color: #3A589B; }
 li.footer-social-tw { background-color: #25AAE1; }
 li.footer-social-yt { background-color: #CA3737; }
 li.footer-social-gg { background-color: #DE4B39; }
+li.footer-social-it { background-color: #ec4938; }
 */
 .footer-social a {
 	font-size: 20px;
@@ -1913,6 +1914,7 @@ iframe[name="google_conversion_frame"] {
 }
 .eb-view-history .home-hot-title,
 .eb-same-price .home-hot-title { padding-left: 0; }
+.fb-comments { background: #fff; }
 /* quick view */
 /*
 .ebe-quick-view,
