@@ -11,22 +11,22 @@ $eb_all_themes_support["okiaglobal"]["name"] = "okiaglobal";
 $eb_all_themes_support["okiaglobal"]["screenshot"] = "https://img1.webgiare.org/okiaglobal.jpg";
 $eb_all_themes_support["okiaglobal"]["author"] = "";
 $eb_all_themes_support["okiaglobal"]["demo"] = "";
-$eb_all_themes_support["okiaglobal"]["price"] = 2000000;
+$eb_all_themes_support["okiaglobal"]["price"] = 1500000;
 //
 $eb_all_themes_support["okiaglobal"]["top"][] = "okiaglobal-top1.php";
 $eb_all_themes_support["okiaglobal"]["top"][] = "top_widget.php";
-// Banner tràn màn hình 
-$eb_all_themes_support["okiaglobal"]["top"][] = "bigbanner-top1.php";
-// Banner bo gọn trong khung 
-//$eb_all_themes_support["okiaglobal"]["top"][] = "bigbannerFixed-top1.php";
-// breadcrumb tràn màn hình 
-$eb_all_themes_support["okiaglobal"]["top"][] = "breadcrumb-top1.php";
-// breadcrumb gọn trong khung 
+// Banner tràn màn hình
+//$eb_all_themes_support["okiaglobal"]["top"][] = "bigbanner-top1.php";
+// Banner bo gọn trong khung
+$eb_all_themes_support["okiaglobal"]["top"][] = "bigbannerFixed-top1.php";
+// breadcrumb tràn màn hình
+//$eb_all_themes_support["okiaglobal"]["top"][] = "breadcrumb-top1.php";
+// breadcrumb gọn trong khung
 //$eb_all_themes_support["okiaglobal"]["top"][] = "breadcrumb2-top1.php";
 //
 $eb_all_themes_support["okiaglobal"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["okiaglobal"]["footer"][] = "okiaglobal-footer1.php";
-$eb_all_themes_support["okiaglobal"]["footer"][] = "echbaytwo-footer3.php";
+//$eb_all_themes_support["okiaglobal"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["okiaglobal"]["home"][] = "okiaglobal-home1.php";
 $eb_all_themes_support["okiaglobal"]["home"][] = "home_widget.php";
