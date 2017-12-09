@@ -11,7 +11,7 @@ $eb_all_themes_support["mayxonghoiuot"]["name"] = "mayxonghoiuot";
 $eb_all_themes_support["mayxonghoiuot"]["screenshot"] = "https://img1.webgiare.org/mayxonghoiuot.jpg";
 $eb_all_themes_support["mayxonghoiuot"]["author"] = "";
 $eb_all_themes_support["mayxonghoiuot"]["demo"] = "";
-$eb_all_themes_support["mayxonghoiuot"]["price"] = 2000000;
+$eb_all_themes_support["mayxonghoiuot"]["price"] = 1500000;
 //
 $eb_all_themes_support["mayxonghoiuot"]["top"][] = "mayxonghoiuot-top1.php";
 $eb_all_themes_support["mayxonghoiuot"]["top"][] = "top_widget.php";

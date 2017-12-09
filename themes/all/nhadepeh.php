@@ -11,7 +11,7 @@ $eb_all_themes_support["nhadepeh"]["name"] = "nhadepeh";
 $eb_all_themes_support["nhadepeh"]["screenshot"] = "https://img1.webgiare.org/nhadepeh.jpg";
 $eb_all_themes_support["nhadepeh"]["author"] = "";
 $eb_all_themes_support["nhadepeh"]["demo"] = "";
-$eb_all_themes_support["nhadepeh"]["price"] = 2000000;
+$eb_all_themes_support["nhadepeh"]["price"] = 3000000;
 //
 $eb_all_themes_support["nhadepeh"]["top"][] = "nhadepeh-top1.php";
 $eb_all_themes_support["nhadepeh"]["top"][] = "top_widget.php";

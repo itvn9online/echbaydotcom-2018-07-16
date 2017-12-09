@@ -9,7 +9,7 @@
 $eb_all_themes_support["vinhaninterior"] = array();
 $eb_all_themes_support["vinhaninterior"]["name"] = "vinhaninterior";
 $eb_all_themes_support["vinhaninterior"]["screenshot"] = "https://img1.webgiare.org/vinhaninterior.jpg";
-$eb_all_themes_support["vinhaninterior"]["price"] = 1200000;
+$eb_all_themes_support["vinhaninterior"]["price"] = 3000000;
 //
 $eb_all_themes_support["vinhaninterior"]["top"][] = "vinhaninterior-top1.php";
 $eb_all_themes_support["vinhaninterior"]["top"][] = "vinhaninterior-top2.php";

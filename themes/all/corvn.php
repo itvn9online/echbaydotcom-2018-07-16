@@ -11,7 +11,7 @@ $eb_all_themes_support["corvn"]["name"] = "corvn";
 $eb_all_themes_support["corvn"]["screenshot"] = "https://img1.webgiare.org/corvn.jpg";
 $eb_all_themes_support["corvn"]["author"] = "";
 $eb_all_themes_support["corvn"]["demo"] = "";
-$eb_all_themes_support["corvn"]["price"] = 2000000;
+$eb_all_themes_support["corvn"]["price"] = 5000000;
 //
 $eb_all_themes_support["corvn"]["top"][] = "corvn-top1.php";
 $eb_all_themes_support["corvn"]["top"][] = "top_widget.php";

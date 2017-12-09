@@ -8,7 +8,7 @@
 */
 $eb_all_themes_support["softpro"]=array();
 $eb_all_themes_support["softpro"]["screenshot"] = "https://img1.webgiare.org/softpro.jpg";
-$eb_all_themes_support["softpro"]["price"] = 800000;
+$eb_all_themes_support["softpro"]["price"] = 2000000;
 $eb_all_themes_support["softpro"]["demo"] = "softpro.vn";
 //
 $eb_all_themes_support["softpro"]["top"][] = "softpro-top2.php";

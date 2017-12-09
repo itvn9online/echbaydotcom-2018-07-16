@@ -11,7 +11,7 @@ $eb_all_themes_support["kima"]["name"] = "kima";
 $eb_all_themes_support["kima"]["screenshot"] = "https://img1.webgiare.org/kima.jpg";
 $eb_all_themes_support["kima"]["author"] = "";
 $eb_all_themes_support["kima"]["demo"] = "";
-$eb_all_themes_support["kima"]["price"] = 2000000;
+$eb_all_themes_support["kima"]["price"] = 16000000;
 //
 $eb_all_themes_support["kima"]["top"][] = "kima-top1.php";
 $eb_all_themes_support["kima"]["top"][] = "top_widget.php";

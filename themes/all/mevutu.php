@@ -9,7 +9,7 @@
 $eb_all_themes_support["mevutu"] = array();
 $eb_all_themes_support["mevutu"]["name"] = "estyle";
 $eb_all_themes_support["mevutu"]["screenshot"] = "https://img1.webgiare.org/mevutu.jpg";
-$eb_all_themes_support["mevutu"]["price"] = 800000;
+$eb_all_themes_support["mevutu"]["price"] = 2500000;
 $eb_all_themes_support["mevutu"]["demo"] = "mevutu.com";
 //
 $eb_all_themes_support["mevutu"]["top"][] = "mevutu-top1.php";

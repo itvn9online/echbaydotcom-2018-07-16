@@ -11,7 +11,7 @@ $eb_all_themes_support["datxetructuyen"]["name"] = "datxetructuyen";
 $eb_all_themes_support["datxetructuyen"]["screenshot"] = "https://img1.webgiare.org/datxetructuyen.jpg";
 $eb_all_themes_support["datxetructuyen"]["author"] = "";
 $eb_all_themes_support["datxetructuyen"]["demo"] = "";
-$eb_all_themes_support["datxetructuyen"]["price"] = 2000000;
+$eb_all_themes_support["datxetructuyen"]["price"] = 20000000;
 //
 $eb_all_themes_support["datxetructuyen"]["top"][] = "datxetructuyen-top1.php";
 $eb_all_themes_support["datxetructuyen"]["top"][] = "top_widget.php";

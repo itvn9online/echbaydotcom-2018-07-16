@@ -10,8 +10,8 @@ $eb_all_themes_support["vienthammykorea"] = array();
 $eb_all_themes_support["vienthammykorea"]["name"] = "vienthammykorea";
 $eb_all_themes_support["vienthammykorea"]["screenshot"] = "https://img1.webgiare.org/vienthammykorea.jpg";
 $eb_all_themes_support["vienthammykorea"]["author"] = "";
-$eb_all_themes_support["vienthammykorea"]["demo"] = "";
-$eb_all_themes_support["vienthammykorea"]["price"] = 2000000;
+$eb_all_themes_support["vienthammykorea"]["demo"] = "thammyathena.com";
+$eb_all_themes_support["vienthammykorea"]["price"] = 4000000;
 //
 $eb_all_themes_support["vienthammykorea"]["top"][] = "vienthammykorea-top1.php";
 $eb_all_themes_support["vienthammykorea"]["top"][] = "top_widget.php";

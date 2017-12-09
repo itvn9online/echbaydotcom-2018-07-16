@@ -9,7 +9,7 @@
 $eb_all_themes_support["dulichviet"] = array();
 $eb_all_themes_support["dulichviet"]["name"] = "dulichviet";
 $eb_all_themes_support["dulichviet"]["screenshot"] = "https://img1.webgiare.org/dulichviet.jpg";
-$eb_all_themes_support["dulichviet"]["price"] = 1200000;
+$eb_all_themes_support["dulichviet"]["price"] = 7000000;
 //
 $eb_all_themes_support["dulichviet"]["top"][] = "dulichviet-top1.php";
 $eb_all_themes_support["dulichviet"]["top"][] = "dulichviet-top3.php";

@@ -9,7 +9,7 @@
 $eb_all_themes_support["depqua"] = array();
 $eb_all_themes_support["depqua"]["name"] = "depqua";
 $eb_all_themes_support["depqua"]["screenshot"] = "https://img1.webgiare.org/depqua.jpg";
-$eb_all_themes_support["depqua"]["price"] = 1200000;
+$eb_all_themes_support["depqua"]["price"] = 2500000;
 $eb_all_themes_support["depqua"]["demo"] = "depqua.vn";
 //
 $eb_all_themes_support["depqua"]["top"][] = "depqua-top1.php";

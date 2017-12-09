@@ -11,7 +11,7 @@ $eb_all_themes_support["colehaan"]["name"] = "colehaan";
 $eb_all_themes_support["colehaan"]["screenshot"] = "https://img1.webgiare.org/colehaan.jpg";
 $eb_all_themes_support["colehaan"]["author"] = "";
 $eb_all_themes_support["colehaan"]["demo"] = "";
-$eb_all_themes_support["colehaan"]["price"] = 2000000;
+$eb_all_themes_support["colehaan"]["price"] = 3500000;
 //
 $eb_all_themes_support["colehaan"]["top"][] = "colehaan-top1.php";
 $eb_all_themes_support["colehaan"]["top"][] = "top_widget.php";

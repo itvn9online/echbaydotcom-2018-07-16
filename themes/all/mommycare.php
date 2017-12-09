@@ -11,7 +11,7 @@ $eb_all_themes_support["mommycare"]["name"] = "mommycare";
 $eb_all_themes_support["mommycare"]["screenshot"] = "https://img1.webgiare.org/mommycare.jpg";
 $eb_all_themes_support["mommycare"]["author"] = "";
 $eb_all_themes_support["mommycare"]["demo"] = "";
-$eb_all_themes_support["mommycare"]["price"] = 2000000;
+$eb_all_themes_support["mommycare"]["price"] = 2500000;
 //
 $eb_all_themes_support["mommycare"]["top"][] = "mommycare-top1.php";
 $eb_all_themes_support["mommycare"]["top"][] = "mommycare-top2.php";
