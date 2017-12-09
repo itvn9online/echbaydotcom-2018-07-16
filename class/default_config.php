@@ -108,6 +108,8 @@ $__cf_row_default = array(
 	'cf_num_details2_list' => 0,
 	'cf_num_details3_list' => 0,
 	'cf_num_details_blog_list' => 10,
+	// phần này để tạo 1 giá ảo trên trình duyệt cốc cốc, không cho cốc cốc biết được giá thật của sản phẩm
+	'cf_coccoc_discount_price' => 50,
 	
 	// số tin trên mỗi trang của phần bog, mặc định là 0 -> dùng chung với sản phẩm
 	'cf_blogs_per_page' => 0,

@@ -338,7 +338,10 @@ $structured_data_post_title = str_replace( '"', '&quot;', $__post->post_title );
 if ( $trv_giamoi > 0 ) {
 	
 	// giá cho coc coc đỡ hiển thị phần so sánh giá khi người dùng truy cập bằng coc coc
-	$trv_coccoc_giamoi = $trv_giamoi/ 100 * 62;
+	$trv_coccoc_giamoi = $trv_giamoi;
+	if ( $__cf_row['cf_coccoc_discount_price'] > 0 && $__cf_row['cf_coccoc_discount_price'] < 100 ) {
+		$trv_coccoc_giamoi = $trv_coccoc_giamoi/ 100 * $__cf_row['cf_coccoc_discount_price'];
+	}
 	
 	//
 	$structured_data_detail = '
@@ -364,6 +367,7 @@ if ( $trv_giamoi > 0 ) {
 		"@type": "Offer",
 //		"priceCurrency": "VND",
 		"priceCurrency": "' . $__cf_row['cf_current_sd_price'] . '",
+//		"price": "' .$trv_giamoi. '",
 		"price": "' .$trv_coccoc_giamoi. '",
 		"priceValidUntil": "' .date( 'Y-m-d', $schema_priceValidUntil ). '",
 		/*
