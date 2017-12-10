@@ -783,6 +783,13 @@ input[id="_eb_category_order"] { width: 90px; }
 	background: rgba(255,204,152,.33);
 	box-shadow: 0 0 10px 0 #666;
 }
+.category-for-home_list {
+	display: block;
+	margin-bottom: 10px;
+}
+.category-for-home_list strong { }
+.category-for-home_list span { }
+.category-for-home_list em { }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

@@ -2634,4 +2634,40 @@ function WGR_press_for_search_post_page () {
 
 
 
+// lấy danh sách các nhóm sẽ được hiển thị trong widget home list
+function WGR_category_for_home_list ( for_id, set_check ) {
+	// tạo check cho các checkbox tương ứng -> load lần đầu
+	if ( typeof set_check != 'undefined' && set_check == 1 ) {
+		console.log( for_id );
+		
+		var a = $('#' + for_id + ' input[data-name="' + for_id + '"]').val() || '';
+		if ( a != '' ) {
+			a = a.split(',');
+			
+			for ( var i = 0; i < a.length; i++ ) {
+				$('#' + for_id + ' input[data-id="' + a[i] + '"]').prop( 'checked', true );
+			}
+		}
+	}
+	
+	// hiệu ứng cho các lần thay đổi checkbox sau đó
+	$('.click-get-category-id-home_list').off('click').click(function () {
+		var a = $(this).attr('data-class') || '';
+		
+		var str = '';
+		$('#' + a + ' .click-get-category-id-home_list').each(function() {
+			if ( $(this).prop('checked') == true ) {
+				str += ',' + $(this).attr('data-id');
+			}
+		});
+		if ( str != '' && str.substr(0, 1) == ',' ) {
+			str = str.substr(1);
+		}
+		
+		$('#' + a + ' input[data-name="' + a + '"]').val( str );
+	});
+}
+
+
+
 

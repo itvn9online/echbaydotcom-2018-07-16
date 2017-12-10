@@ -8,37 +8,50 @@ Tags: list product by category
 
 //
 if ( $__cf_row['cf_num_home_list'] > 0 ) {
-	// chỉ lấy sản phẩm theo các nhóm cấp 1
-	$args = array(
-		'parent' => 0,
-	);
-	$categories = get_categories($args);
-//	print_r( $categories );
 	
+	//
+//	print_r($widget_select_categories);
+//	$widget_select_categories = array();
 	
-	// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
-	$post_primary_categories = array();
-//	print_r( $post_categories );
-	foreach ( $categories as $v ) {
-		if ( _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 ) > 0 ) {
-			$post_primary_categories[] = $v;
-		}
+	// nếu có nhóm này từ widget home_list -> sử dụng luôn
+	if ( isset( $widget_select_categories ) && count( $widget_select_categories ) > 0 ) {
+		$categories = $widget_select_categories;
 	}
-//	print_r( $post_primary_categories );
-	
-	
-	// nếu có nhóm chính -> tiếp theo chỉ lấy các nhóm chính
-	if ( count( $post_primary_categories ) > 0 ) {
-		$categories = $post_primary_categories;
+	else {
+		// chỉ lấy sản phẩm theo các nhóm cấp 1
+		$args = array(
+			'parent' => 0,
+		);
+		$categories = get_categories($args);
+//		print_r( $categories );
+		
+		
+		// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
+		$post_primary_categories = array();
+//		print_r( $post_categories );
+		foreach ( $categories as $v ) {
+			if ( _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 ) > 0 ) {
+				$post_primary_categories[] = $v;
+			}
+		}
+//		print_r( $post_primary_categories );
+		
+		
+		// nếu có nhóm chính -> tiếp theo chỉ lấy các nhóm chính
+		if ( count( $post_primary_categories ) > 0 ) {
+			$categories = $post_primary_categories;
+		}
 	}
 //	print_r($categories);
 	
 	
 	//
 	$new_cat = array();
+	$new_name_cat = array();
 	// sắp xếp lại thứ tự của cat
 	foreach ( $categories as $v ) {
 		$new_cat[ $v->term_id ] = (int) _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
+		$new_name_cat[ $v->term_id ] = $v;
 	}
 //	print_r( $new_cat );
 	
@@ -55,7 +68,12 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 			$args['cat'] = $k;
 			$cat_ids = $k;
 			
-			$home_detauls_categories = get_term_by('id', $k, 'category');
+			//
+//			$home_detauls_categories = get_term_by('id', $k, 'category');
+//			print_r( $home_detauls_categories );
+//			$home_detauls_categories = get_term($k);
+//			print_r( $home_detauls_categories );
+			$home_detauls_categories = $new_name_cat[ $k ];
 //			print_r( $home_detauls_categories );
 			
 			// nếu nhóm này có sản phẩm
@@ -115,6 +133,11 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 					) );
 					*/
 					
+				}
+				else {
+					echo '<!-- ';
+					print_r( $args );
+					echo ' -->';
 				}
 //			}
 		}
