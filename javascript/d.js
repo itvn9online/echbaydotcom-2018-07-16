@@ -282,7 +282,7 @@ function ___eb_details_slider_v2 () {
 		
 		//
 		sr = ___eb_set_img_to_thumbnail( sr );
-//		console.log( sr );
+		console.log( sr );
 		
 		//
 		str += '<li data-node="' +i+ '" data-src="' + sr + '" style="background-image:url(\'' + sr + '\')">&nbsp;</li>';
@@ -330,10 +330,18 @@ function ___eb_details_slider_v2 () {
 		size : $('.thread-details-mobileAvt').attr('data-size') || ''
 	}, function () {
 		$('.thread-details-mobileAvt li').click(function () {
-			$(this).css({
-				'background-image': 'url("' + ___eb_set_thumb_to_fullsize( $(this).attr('data-src') || '' ) + '")'
-			});
+			var a = $(this).attr('data-src') || '';
+			if ( a != '' ) {
+				a = ___eb_set_thumb_to_fullsize( a );
+				if ( cf_tester_mode == 1 ) console.log(a);
+				
+				$(this).css({
+					'background-image': 'url("' + a + '")'
+				});
+			}
 		});
+		
+		// click vào cái đầu tiên luôn
 		$('.thread-details-mobileAvt li:first').click();
 	});
 	

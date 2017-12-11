@@ -176,6 +176,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		if ( conf['hide_if_null'] == true ) {
 			$(jd).hide();
 		}
+		if ( cf_tester_mode == 1 ) console.log( 'slider has been STOP by LI length it zero' );
 		return false;
 	}
 	
@@ -215,6 +216,15 @@ function jEBE_slider ( jd, conf, callBack ) {
 		}
 		
 		// thoát luôn
+		if ( cf_tester_mode == 1 ) console.log( 'slider has been RETURN size = auto' );
+		
+		//
+		if ( typeof callBack == 'function' ) {
+			if ( cf_tester_mode == 1 ) console.log(' call to callBack function before return');
+			callBack();
+		}
+		
+		//
 		return false;
 	}
 	else {
@@ -232,6 +242,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	// chỉ có 1 ảnh -> thoát
 //	if ( len == 1 ) {
 	if ( len <= conf['visible'] ) {
+		if ( cf_tester_mode == 1 ) console.log( 'slider has been STOP by LI length < config visible' );
 		return false;
 	}
 	
@@ -677,6 +688,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	//
 	if ( typeof callBack == 'function' ) {
+		if ( cf_tester_mode == 1 ) console.log(' call to callBack function');
 		callBack();
 	}
 	
