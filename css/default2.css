@@ -1926,7 +1926,10 @@ iframe[name="google_conversion_frame"] {
 .eb-same-price .home-hot-title { padding-left: 0; }
 .eb-view-history .home-hot-bg,
 .eb-same-price .home-hot-bg { background: none; }
-.fb-comments { background: #fff; }
+.fb-comments {
+	background: #fff;
+	width: 99.8%;
+}
 /* quick view */
 /*
 .ebe-quick-view,
