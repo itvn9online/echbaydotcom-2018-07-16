@@ -502,6 +502,14 @@ a.eb-btn {
 #oi_scroll_top:hover { background: #ff7e00; }
 /* .ebfixed-top-menu #oi_scroll_top, */
 .ebshow-top-scroll #oi_scroll_top { display: block; }
+.ebfixed-top-menu .fixed-top-menu,
+.ebfixed-top-menu .fix-top-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 99;
+}
 /* post details */
 .thread-details-mobileCenter {
 	max-width: 750px;

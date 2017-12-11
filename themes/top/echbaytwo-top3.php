@@ -5,7 +5,7 @@ Tags: dep qua, the thao tien dat
 ?>
 
 <div id="echbaytwo-top3">
-	<div class="top-nav default-bg hide-if-mobile">
+	<div class="top-nav fix-top-menu default-bg hide-if-mobile">
 		<div class="cf <?php echo $__cf_row['cf_top_class_style']; ?>">
 			<div class="lf f25">
 				<div class="nav"><?php echo EBE_echbay_top_menu(); ?></div>

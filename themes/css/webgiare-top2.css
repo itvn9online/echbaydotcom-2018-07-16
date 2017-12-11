@@ -1,11 +1,4 @@
-.ebfixed-top-menu #webgiare-top2 .wm-logo-fixed {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 99;
-	background-color: #262626;
-}
+.ebfixed-top-menu #webgiare-top2 .wm-logo-fixed { background-color: #262626; }
 #webgiare-top2 .nav-menu {
 	line-height: 48px;
 	position: relative;

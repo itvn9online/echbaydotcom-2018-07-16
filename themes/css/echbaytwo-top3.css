@@ -87,7 +87,7 @@
 	font-size: 13px;
 	line-height: 30px;
 }
-#echbaytwo-top3 .nav .sub-menu a { }
+/* #echbaytwo-top3 .nav .sub-menu a { } */
 #echbaytwo-top3 .nav li:hover .sub-menu,
 #echbaytwo-top3 .all-category-hover:hover .all-category-cats { display: block; }
 #echbaytwo-top3 .nav .sub-menu li:hover .sub-menu,
@@ -121,11 +121,5 @@
 }
 #echbaytwo-top3 .nav-about .sub-menu a:hover { background: rgba( 0, 0, 0, .2 ); }
 #echbaytwo-top3 .top-nav { line-height: 40px; }
-.ebfixed-top-menu .top-nav {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 99;
-}
+/* .ebfixed-top-menu .top-nav { } */
 .ebfixed-top-menu .show-if-scroll { display: block; }
