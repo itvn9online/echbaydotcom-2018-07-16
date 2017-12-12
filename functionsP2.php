@@ -2306,21 +2306,25 @@ function _eb_get_private_html ( $f, $f2 = '' ) {
 
 
 //
-function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_link = 0) {
+function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_link = 0, $op = array()) {
 //	global $web_link;
 	
-	$arr = get_categories( array(
-		'taxonomy' => $taxx,
-//		'hide_empty' => 0,
-		'parent' => $this_id
-	) );
+	//
+	$op['taxonomy'] = $taxx;
+//	$op['hide_empty'] = 0;
+	$op['parent'] = $this_id;
+	
+	//
+	$arr = get_categories( $op );
 //	print_r($arr);
 	
 	//
+	/*
 	$link_for_taxonomy = '';
 	if ( $taxx != 'category' ) {
 		$link_for_taxonomy = 'taxonomy=' . $taxx . '&';
 	}
+	*/
 	
 	//
 	$str = '';
@@ -2334,7 +2338,8 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_li
 //			echo $c_link . '<br>' . "\n";
 		}
 		else {
-			$c_link = web_link . '?' . $link_for_taxonomy . 'cat=' . $v->term_id;
+//			$c_link = web_link . '?' . $link_for_taxonomy . 'cat=' . $v->term_id;
+			$c_link = _eb_c_short_link( $v->term_id, $taxx );
 		}
 		
 		//

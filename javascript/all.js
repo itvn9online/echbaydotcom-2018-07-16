@@ -2382,12 +2382,27 @@ function WGR_load_post_page_for_add_menu ( arr, type, post_name, item_type ) {
 	$('#show_all_list_post_page_menu ul').append('<li data-show="1"><h4>' + post_name + '</h4></li>');
 	
 	//
+	WGR_load_post_page_for_append_menu ( arr, type, item_type );
+}
+
+function WGR_load_post_page_for_append_menu ( arr, type, item_type, child_of ) {
+	// Thêm dấu - ở trước tên để phân biệt cha con
+	if ( typeof child_of == 'undefined' ) {
+		child_of = '';
+	}
+	
+	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		var a = g_func.non_mark_seo( arr[i].ten );
 		a = a.replace(/[^0-9a-zA-Z]/g, '');
 		
 		//
-		$('#show_all_list_post_page_menu ul').append('<li data-key="' + a + '" onclick="WGR_custom_search_and_add_menu(' + arr[i].id + ', \'' + type + '\', \'' + item_type + '\');this.style.display=\'none\';" class="cur">' + arr[i].ten + '</li>');
+		$('#show_all_list_post_page_menu ul').append('<li data-key="' + a + '" onclick="WGR_custom_search_and_add_menu(' + arr[i].id + ', \'' + type + '\', \'' + item_type + '\');this.style.display=\'none\';" class="cur">' + child_of + arr[i].ten + '</li>');
+		
+		//
+		if ( typeof arr[i].arr == 'object' && arr[i].arr.length > 0 ) {
+			WGR_load_post_page_for_append_menu ( arr[i].arr, type, item_type, child_of + '- ' );
+		}
 	}
 }
 

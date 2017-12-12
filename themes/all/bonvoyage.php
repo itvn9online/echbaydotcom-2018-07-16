@@ -28,7 +28,7 @@ $eb_all_themes_support["bonvoyage"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["bonvoyage"]["footer"][] = "bonvoyage-footer1.php";
 $eb_all_themes_support["bonvoyage"]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support["bonvoyage"]["home"][] = "bonvoyage-home1.php";
+//$eb_all_themes_support["bonvoyage"]["home"][] = "bonvoyage-home1.php";
 $eb_all_themes_support["bonvoyage"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["bonvoyage"]["threaddetails"][] = "bonvoyage-threaddetails.html";

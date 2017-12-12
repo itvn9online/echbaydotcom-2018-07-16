@@ -47,7 +47,7 @@ header("Content-Type: application/javascript");
 //
 $strCacheFilter = basename( __FILE__, '.php' );
 $quick_search_in_cache = EB_THEME_CACHE . $strCacheFilter . '.txt';
-$get_list_quick_search = _eb_get_static_html ( $strCacheFilter, '', '', 600 );
+$get_list_quick_search = _eb_get_static_html ( $strCacheFilter, '', '', 300 );
 if ( $get_list_quick_search == false || eb_code_tester == true ) {
 	
 	// tạo file mới, với dòng comment đầu tiên -> đỡ lỗi cho JS
@@ -57,13 +57,21 @@ if ( $get_list_quick_search == false || eb_code_tester == true ) {
 	
 	
 	// lấy toàn bộ danh sách các category, tag để phục vụ cho module tìm kiếm nhanh
-	WGR_quick_search_set_content( 'var eb_site_group=[' . _eb_get_full_category_v2 () . '];' );
+	WGR_quick_search_set_content( 'var eb_site_group=[' . _eb_get_full_category_v2 ( 0, 'category', 0, array(
+		'hide_empty' => 0
+	) ) . '];' );
 	
-	WGR_quick_search_set_content( 'var eb_tags_group=[' . _eb_get_full_category_v2 ( 0, 'post_tag' ) . '];' );
+	WGR_quick_search_set_content( 'var eb_tags_group=[' . _eb_get_full_category_v2 ( 0, 'post_tag', 0, array(
+		'hide_empty' => 0
+	) ) . '];' );
 	
-	WGR_quick_search_set_content( 'var eb_options_group=[' . _eb_get_full_category_v2 ( 0, 'post_options' ) . '];' );
+	WGR_quick_search_set_content( 'var eb_options_group=[' . _eb_get_full_category_v2 ( 0, 'post_options', 0, array(
+		'hide_empty' => 0
+	) ) . '];' );
 	
-	WGR_quick_search_set_content( 'var eb_blog_group=[' . _eb_get_full_category_v2 ( 0, EB_BLOG_POST_LINK ) . '];' );
+	WGR_quick_search_set_content( 'var eb_blog_group=[' . _eb_get_full_category_v2 ( 0, EB_BLOG_POST_LINK, 0, array(
+		'hide_empty' => 0
+	) ) . '];' );
 	
 	
 	

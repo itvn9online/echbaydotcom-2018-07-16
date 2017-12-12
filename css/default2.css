@@ -23,7 +23,7 @@ label,
 	overflow: hidden;
 }
 .echbay-blog-title a {
-	font-weight: bold;
+	/* font-weight: bold; */
 	color: #333;
 	font-size: 14px;
 }
@@ -1911,6 +1911,7 @@ iframe[name="google_conversion_frame"] {
 .hide-blogs-title .echbay-blog-title,
 .hide-blogs-description .echbay-blog-gioithieu,
 .hide-blogs-info .echbay-blog-infos,
+.hide-widget-title .thread-home-c2,
 .hide-widget-title .echbay-widget-title { display: none; }
 .ti-le-global.auto-size {
 	overflow: hidden;

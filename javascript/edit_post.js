@@ -151,6 +151,16 @@ function edit_post_load_list_post_for_quick_search ( arr, arr_name, permarklink,
 //	}
 	
 	//
+	return '<h4>' + arr_name + '</h4><ul>' + edit_post_load_list_details_post_for_quick_search ( arr, permarklink, taxonomy ) + '</ul>';
+}
+
+function edit_post_load_list_details_post_for_quick_search ( arr, permarklink, taxonomy, child_of ) {
+	// Thêm dấu - ở trước tên để phân biệt cha con
+	if ( typeof child_of == 'undefined' ) {
+		child_of = '';
+	}
+	
+	//
 	var str = '',
 		key = '',
 		lnk = '';
@@ -172,11 +182,15 @@ function edit_post_load_list_post_for_quick_search ( arr, arr_name, permarklink,
 		}
 		
 		//
-		str += '<li data-id="' + arr[i].id + '" data-key="' + key.replace(/\-/g, '') + '">' + arr[i].ten + ' <a href="' + web_link + '?' + lnk + '" target="_blank"><i class="fa fa-external-link"></i></a></li>';
+		str += '<li data-id="' + arr[i].id + '" data-key="' + key.replace(/\-/g, '') + '">' + child_of + arr[i].ten + ' <a href="' + web_link + '?' + lnk + '" target="_blank"><i class="fa fa-external-link"></i></a></li>';
+		
+		//
+		if ( typeof arr[i].arr == 'object' && arr[i].arr.length > 0 ) {
+			str += edit_post_load_list_details_post_for_quick_search ( arr[i].arr, permarklink, taxonomy, child_of + '- ' );
+		}
 	}
 	
-	//
-	return '<h4>' + arr_name + '</h4><ul>' + str + '</ul>';
+	return str;
 }
 
 function edit_post_load_list_taxonomy_for_quick_search ( arr, arr_name, taxonomy ) {

@@ -685,6 +685,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	height: 250px;
 	overflow-y: scroll;
 	z-index: 99;
+	min-width: 250px;
 }
 .admin-show-quick-search h4 {
 	background: #f2f2f2;
