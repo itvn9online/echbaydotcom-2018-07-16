@@ -179,6 +179,7 @@ $create_theme_name = preg_replace ( '/[^a-zA-Z0-9]+/', '', $create_theme_name );
 if ( $create_theme_name == '' ) {
 	_eb_alert('create_theme_name not found');
 }
+$create_theme_name = strtolower( $create_theme_name );
 
 $create_theme_top = (int) $_POST['create_theme_top'];
 $create_theme_footer = (int) $_POST['create_theme_footer'];
