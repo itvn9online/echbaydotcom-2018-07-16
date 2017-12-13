@@ -643,7 +643,10 @@ a.eb-btn {
 }
 .public-part-page span.dots { border: 0 none; }
 /* chặn hạn chế cho copy nội dung */
-.thread-content-bmask { position: relative; }
+.thread-content-bmask {
+	position: relative;
+	text-align: justify;
+}
 .thread-content-bmask a,
 .thread-content-bmask iframe {
 	position: relative;

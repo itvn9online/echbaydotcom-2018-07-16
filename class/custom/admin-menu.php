@@ -386,6 +386,7 @@ add_filter('admin_footer_text', 'eb_change_footer_admin');
 // kích hoạt các nút soạn thảo ẩn
 function ilc_mce_buttons($buttons){
 	array_push($buttons,
+//		"alignjustify",
 		"backcolor",
 		"anchor",
 		"hr",
@@ -398,7 +399,11 @@ function ilc_mce_buttons($buttons){
 	);
 	return $buttons;
 }
-add_filter("mce_buttons_3", "ilc_mce_buttons");
+
+// muốn ở dòng nào thì add vào dòng đấy: mce_buttons_2, mce_buttons_3, mce_buttons_4
+add_filter("mce_buttons_2", "ilc_mce_buttons");
+//add_filter("mce_buttons_3", "ilc_mce_buttons");
+//add_filter("mce_buttons_4", "ilc_mce_buttons");
 
 
 
