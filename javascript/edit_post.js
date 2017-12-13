@@ -1,7 +1,54 @@
 
 
 
+// kích hoạt chức năng hiển thị tên nhóm hoặc bài viết được chọn
+function WGR_ads_get_current_select_category_or_post_name ( action_id ) {
+	if ( typeof action_id == 'undefined' ) {
+		WGR_ads_get_current_select_category_or_post_name( '_eb_ads_for_post' );
+		WGR_ads_get_current_select_category_or_post_name( '_eb_ads_for_category' );
+		return false;
+	}
+	
+	//
+	var a = $('#' + action_id).val() || '';
+//	console.log(a);
+	if ( a != '' ) {
+		a = g_func.number_only(a);
+		
+		//
+		if ( action_id == '_eb_ads_for_post' ) {
+			WGR_ads_show_current_select_category_or_post_name( a, eb_posts_list, action_id );
+			WGR_ads_show_current_select_category_or_post_name( a, eb_blogs_list, action_id );
+			WGR_ads_show_current_select_category_or_post_name( a, eb_pages_list, action_id );
+		}
+		else {
+			WGR_ads_show_current_select_category_or_post_name( a, eb_site_group, action_id );
+			WGR_ads_show_current_select_category_or_post_name( a, eb_tags_group, action_id );
+			WGR_ads_show_current_select_category_or_post_name( a, eb_options_group, action_id );
+			WGR_ads_show_current_select_category_or_post_name( a, eb_blog_group, action_id );
+		}
+	}
+}
 
+// Tìm và hiển thị tên nhóm hoặc bài viết đang được chọn
+function WGR_ads_show_current_select_category_or_post_name ( a, arr, id ) {
+//	console.log(a);
+	
+	//
+	for ( var i = 0; i < arr.length; i++ ) {
+		if ( a == arr[i].id ) {
+			$('.show-for-' + id).html( arr[i].ten );
+			return true;
+			break;
+		}
+		else if ( typeof arr[i].arr == 'object' && arr[i].arr.length > 0 ) {
+			WGR_ads_show_current_select_category_or_post_name ( a, arr[i].arr, id );
+		}
+	}
+	
+	//
+	return false;
+}
 
 function WGR_run_for_admin_edit_ads_post ( action_id ) {
 	if ( dog(action_id) == null ) {
@@ -12,6 +59,12 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 	WGR_check_if_value_this_is_one('_eb_ads_target');
 	
 	//
+//	console.log(action_id);
+	$('#' + action_id).after('<div><em class="small bluecolor show-for-' + action_id + '"></em></div>');
+	
+	//
+	WGR_ads_get_current_select_category_or_post_name( action_id );
+	
 	// nhập ID blog, product, page mà q.cáo alias tới
 	var jd_for_quick_search_post = 'quick_sreach_for' + action_id,
 		action_for_quick_search_post = '';
@@ -64,6 +117,7 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 				$('#' + action_id).val( $(this).attr('data-id') || '' );
 				$('body').addClass('hide-module-advanced-ads');
 				window.scroll( 0, 0 );
+				WGR_ads_get_current_select_category_or_post_name(action_id);
 			});
 		}
 		
