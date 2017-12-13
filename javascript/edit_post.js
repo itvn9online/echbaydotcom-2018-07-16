@@ -17,15 +17,20 @@ function WGR_ads_get_current_select_category_or_post_name ( action_id ) {
 		
 		//
 		if ( action_id == '_eb_ads_for_post' ) {
-			WGR_ads_show_current_select_category_or_post_name( a, eb_posts_list, action_id );
-			WGR_ads_show_current_select_category_or_post_name( a, eb_blogs_list, action_id );
-			WGR_ads_show_current_select_category_or_post_name( a, eb_pages_list, action_id );
+			if ( WGR_ads_show_current_select_category_or_post_name( a, eb_posts_list, action_id ) == false ) {
+				if ( WGR_ads_show_current_select_category_or_post_name( a, eb_blogs_list, action_id ) == false ) {
+					WGR_ads_show_current_select_category_or_post_name( a, eb_pages_list, action_id );
+				}
+			}
 		}
 		else {
-			WGR_ads_show_current_select_category_or_post_name( a, eb_site_group, action_id );
-			WGR_ads_show_current_select_category_or_post_name( a, eb_tags_group, action_id );
-			WGR_ads_show_current_select_category_or_post_name( a, eb_options_group, action_id );
-			WGR_ads_show_current_select_category_or_post_name( a, eb_blog_group, action_id );
+			if ( WGR_ads_show_current_select_category_or_post_name( a, eb_site_group, action_id ) == false ) {
+				if ( WGR_ads_show_current_select_category_or_post_name( a, eb_blog_group, action_id ) == false ) {
+					if ( WGR_ads_show_current_select_category_or_post_name( a, eb_tags_group, action_id ) == false ) {
+						WGR_ads_show_current_select_category_or_post_name( a, eb_options_group, action_id );
+					}
+				}
+			}
 		}
 	}
 }
@@ -35,19 +40,24 @@ function WGR_ads_show_current_select_category_or_post_name ( a, arr, id ) {
 //	console.log(a);
 	
 	//
+	var r = false;
+	
+	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		if ( a == arr[i].id ) {
 			$('.show-for-' + id).html( arr[i].ten );
-			return true;
+			r = true;
 			break;
 		}
 		else if ( typeof arr[i].arr == 'object' && arr[i].arr.length > 0 ) {
-			WGR_ads_show_current_select_category_or_post_name ( a, arr[i].arr, id );
+			if ( WGR_ads_show_current_select_category_or_post_name ( a, arr[i].arr, id ) == true ) {
+				break;
+			}
 		}
 	}
 	
 	//
-	return false;
+	return r;
 }
 
 function WGR_run_for_admin_edit_ads_post ( action_id ) {
@@ -99,16 +109,16 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 					$('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_site_group, 'Chuyên mục sản phẩm' ) );
 				}
 				
+				if ( eb_blog_group.length > 0 ) {
+					$('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_blog_group, 'Blog/ Tin tức', 'blogs' ) );
+				}
+				
 				if ( eb_tags_group.length > 0 ) {
 					$('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_tags_group, 'Thẻ', 'post_tag' ) );
 				}
 				
 				if ( eb_options_group.length > 0 ) {
 					$('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_options_group, 'Thông số khác', 'post_options' ) );
-				}
-				
-				if ( eb_blog_group.length > 0 ) {
-					$('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_blog_group, 'Blog/ Tin tức', 'blogs' ) );
 				}
 			}
 			
