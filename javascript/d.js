@@ -1895,7 +1895,7 @@ function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history, limi
 //	return false;
 	
 	// lưu cookie mới
-	g_func.setc(cookie_name, str_history, 0, limit_save)
+	g_func.setc(cookie_name, str_history, 0, limit_save);
 	
 	//
 	return str_history;

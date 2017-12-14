@@ -517,7 +517,7 @@ function WGR_click_add_product_to_favorite () {
 			// có thì xóa khỏi cookie luôn
 			b = b.replace('[' + a + ']', '');
 //			console.log(str_favorite);
-			g_func.setc(cookie_name, b, 0, limit_save)
+			g_func.setc(cookie_name, b, 0, limit_save);
 		}
 		// nếu không -> thêm class đánh dấu cho sản phẩm vừa chọn
 		else {
