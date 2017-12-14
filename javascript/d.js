@@ -1805,23 +1805,41 @@ function ___eb_details_post_run ( r ) {
 }
 
 // danh sách sản phẩm đã xem, lưu dưới dạng cookies
-function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history ) {
+function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history, limit_save ) {
 	// tên của cookie lưu trữ
 	if ( typeof cookie_name == 'undefined' || cookie_name == '' ) {
 		cookie_name = 'wgr_product_id_view_history';
 	}
 	
 	// giới hạn lưu trữ
-	if ( typeof limit_history != 'number' || limit_history < 0 ) {
+	if ( typeof limit_history == 'undefined' || limit_history < 0 ) {
 		limit_history = 25;
 	}
+	else {
+		limit_history = parseInt( limit_history, 10 );
+	}
 	
-	// giới hạn lưu trữ
-	if ( typeof add_id != 'number' || add_id == '' || add_id < 0 ) {
+	// thời hạn lưu trữ
+	if ( typeof limit_save == 'undefined' || limit_save < 0 ) {
+		limit_save = 7;
+	}
+	else {
+		limit_save = parseInt( limit_save, 10 );
+	}
+	
+	// ID lưu trữ
+//	console.log(typeof add_id);
+//	console.log(add_id);
+	if ( typeof add_id == 'undefined' || add_id == '' || add_id < 0 ) {
 		add_id = pid;
 	}
+	else {
+		add_id = parseInt( add_id, 10 );
+	}
+//	console.log(typeof add_id);
+//	console.log(add_id);
 	if ( add_id <= 0 ) {
-		if ( cf_tester_mode == 1 ) console.log('new ID for add not found!');
+		if ( cf_tester_mode == 1 ) console.log('new ID for add not found: ' + add_id);
 		return false;
 	}
 	
@@ -1877,7 +1895,7 @@ function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history ) {
 //	return false;
 	
 	// lưu cookie mới
-	g_func.setc(cookie_name, str_history, 0, 7)
+	g_func.setc(cookie_name, str_history, 0, limit_save)
 	
 	//
 	return str_history;

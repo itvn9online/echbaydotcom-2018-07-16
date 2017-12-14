@@ -1934,6 +1934,7 @@ iframe[name="google_conversion_frame"] {
 	background: #fff;
 	width: 99.8%;
 }
+.add-to-favorite.selected i.fa-heart-o:before { content: "\f004"; }
 /* quick view */
 /*
 .ebe-quick-view,

@@ -486,27 +486,70 @@ ___eb_set_url_for_search_advanced_button();
 
 // đánh dấu sản phẩm yêu thích
 function WGR_click_add_product_to_favorite () {
-	var cookie_name = 'wgr_product_id_user_favorite';
-	
-	// Khi người dùng bấm vào lưu sản phẩm yêu thích
-	$('.add-to-favorite').click(function() {
-		// nếu add thành công -> thêm class đánh dấu cho favorite
-		if ( ___wgr_set_product_id_cookie( cookie_name, $(this).attr('data-id') || pid, 50 ) != false ) {
-			$(this).addClass('selected');
-		}
-		// nếu không -> hủy bỏ class đánh dấu
-		else {
-			$(this).removeClass('selected');
-		}
-	});
+	var cookie_name = 'wgr_product_id_user_favorite',
+		limit_save = 30;
 	
 	//
 	var str_favorite = g_func.getc(cookie_name);
 	if ( str_favorite == null || str_favorite == '' ) {
+		str_favorite = '';
+	}
+	
+	// Khi người dùng bấm vào lưu sản phẩm yêu thích
+	$('.add-to-favorite').click(function() {
+		var a = $(this).attr('data-id') || pid;
+		var b = ___wgr_set_product_id_cookie( cookie_name, a, 50, limit_save );
+		
+		// nếu add không thành công -> đã có -> xóa sản phẩm khỏi favorite
+		if ( b == false ) {
+//			$(this).removeClass('selected');
+//			$('.add-to-favorite[data-id="' + a + '"]').removeClass('selected').removeClass('fa-heart').addClass('fa-heart-o');
+			$('.add-to-favorite[data-id="' + a + '"]').removeClass('selected');
+			
+			// lấy lại cookie
+			b = g_func.getc(cookie_name);
+			
+			// không có thì thoát luôn
+			if ( b == null || b == '' ) {
+				return false;
+			}
+			
+			// có thì xóa khỏi cookie luôn
+			b = b.replace('[' + a + ']', '');
+//			console.log(str_favorite);
+			g_func.setc(cookie_name, b, 0, limit_save)
+		}
+		// nếu không -> thêm class đánh dấu cho sản phẩm vừa chọn
+		else {
+//			$(this).addClass('selected');
+//			$('.add-to-favorite[data-id="' + a + '"]').addClass('selected').removeClass('fa-heart-o').addClass('fa-heart');
+			$('.add-to-favorite[data-id="' + a + '"]').addClass('selected');
+		}
+		
+		// nếu người dùng đang đăng nhập
+		if ( isLogin > 0 ) {
+			// lưu cookie vào database cho người dùng
+//			ajaxl('');
+		}
+	});
+	
+	//
+	if ( str_favorite == '' ) {
 		return false;
 	}
 	var check_favorite = str_favorite.split('][');
-	console.log(check_favorite);
+//	console.log(check_favorite);
+	
+	// chạy vòng lặp và tạo hiệu ứng select cho các sản phẩm đã lưu
+	for ( var i = 0; i < check_favorite.length; i++ ) {
+		check_favorite[i] = check_favorite[i].replace(/\[|\]/, '');
+//		check_favorite[i] = parseInt( check_favorite[i], 10 );
+//		console.log(check_favorite[i]);
+		
+		//
+//		$('.add-to-favorite[data-id="' + check_favorite[i] + '"]').addClass('selected').removeClass('fa-heart-o').addClass('fa-heart');
+		$('.add-to-favorite[data-id="' + check_favorite[i] + '"]').addClass('selected');
+	}
 }
 WGR_click_add_product_to_favorite();
 
