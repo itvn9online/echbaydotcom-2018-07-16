@@ -1805,12 +1805,29 @@ function ___eb_details_post_run ( r ) {
 }
 
 // danh sách sản phẩm đã xem, lưu dưới dạng cookies
-function ___wgr_set_product_id_cookie () {
+function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history ) {
+	// tên của cookie lưu trữ
+	if ( typeof cookie_name == 'undefined' || cookie_name == '' ) {
+		cookie_name = 'wgr_product_id_view_history';
+	}
+	
+	// giới hạn lưu trữ
+	if ( typeof limit_history != 'number' || limit_history < 0 ) {
+		limit_history = 25;
+	}
+	
+	// giới hạn lưu trữ
+	if ( typeof add_id != 'number' || add_id == '' || add_id < 0 ) {
+		add_id = pid;
+	}
+	if ( add_id <= 0 ) {
+		if ( cf_tester_mode == 1 ) console.log('new ID for add not found!');
+		return false;
+	}
 	
 	// lấy danh sách trong cookie trước đó
-	var str_history = g_func.getc('wgr_product_id_view_history'),
-		new_id = '[' + pid + ']',
-		limit_history = 25;
+	var str_history = g_func.getc(cookie_name),
+		new_id = '[' + add_id + ']';
 	if ( cf_tester_mode == 1 ) {
 		console.log(str_history);
 		limit_history = 5;
@@ -1822,7 +1839,7 @@ function ___wgr_set_product_id_cookie () {
 	}
 	// nếu có rồi -> kiểm tra có trùng với ID hiện tại không
 	else if ( str_history.split( new_id ).length > 1 ) {
-		if ( cf_tester_mode == 1 ) console.log('product ID exist in hostory cookie');
+		if ( cf_tester_mode == 1 ) console.log('product ID exist in history cookie');
 		return false;
 	}
 	
@@ -1841,7 +1858,7 @@ function ___wgr_set_product_id_cookie () {
 //		check_history[ check_history.length - 1 ] = pid + ']';
 		
 		// thêm vào đầu
-		check_history[ 0 ] = '[' + pid;
+		check_history[ 0 ] = '[' + add_id;
 		
 //		console.log(check_history);
 		
@@ -1860,8 +1877,10 @@ function ___wgr_set_product_id_cookie () {
 //	return false;
 	
 	// lưu cookie mới
-	g_func.setc('wgr_product_id_view_history', str_history, 0, 7)
+	g_func.setc(cookie_name, str_history, 0, 7)
 	
+	//
+	return str_history;
 }
 
 

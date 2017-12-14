@@ -484,6 +484,31 @@ ___eb_set_url_for_search_advanced_button();
 
 
 
+// đánh dấu sản phẩm yêu thích
+function WGR_click_add_product_to_favorite () {
+	var cookie_name = 'wgr_product_id_user_favorite';
+	
+	// Khi người dùng bấm vào lưu sản phẩm yêu thích
+	$('.add-to-favorite').click(function() {
+		// nếu add thành công -> thêm class đánh dấu cho favorite
+		if ( ___wgr_set_product_id_cookie( cookie_name, $(this).attr('data-id') || pid, 50 ) != false ) {
+			$(this).addClass('selected');
+		}
+		// nếu không -> hủy bỏ class đánh dấu
+		else {
+			$(this).removeClass('selected');
+		}
+	});
+	
+	//
+	var str_favorite = g_func.getc(cookie_name);
+	if ( str_favorite == null || str_favorite == '' ) {
+		return false;
+	}
+	var check_favorite = str_favorite.split('][');
+	console.log(check_favorite);
+}
+WGR_click_add_product_to_favorite();
 
 
 
