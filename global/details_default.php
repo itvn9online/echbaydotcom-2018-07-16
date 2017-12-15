@@ -29,6 +29,11 @@ else {
 if ( _eb_get_post_object( $pid, '_eb_product_noindex', 0 ) == 1 ) {
 	$__cf_row ["cf_blog_public"] = 0;
 }
+/*
+if ( mtv_id == 1 ) {
+	print_r($__cf_row);
+}
+*/
 
 
 

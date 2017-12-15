@@ -61,7 +61,8 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			//
 			if ( ! isset($new_name->errors) ) {
 				$post->post_title = $new_name->name;
-				$post->p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
+//				$post->p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
+				$post->p_link = _eb_cs_link( $new_name );
 			}
 		}
 		else {
@@ -126,7 +127,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 						$parent_name = WGR_get_taxonomy_parent( $v );
 						
 						//
-						$ant_option .= '<span>' . $parent_name->name . '</span>: <a href="' . _eb_c_link( $v->term_id, $v->taxonomy ) . '" target="_blank">' . $v->name . '</a> ';
+						$ant_option .= '<span>' . $parent_name->name . '</span>: <a href="' . _eb_cs_link( $v ) . '" target="_blank">' . $v->name . '</a> ';
 					}
 				}
 				$ant_option = '<span class="thread-list-options">' . $ant_option . '</span>';
@@ -158,7 +159,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			foreach ( $ant as $v ) {
 				// ưu tiên lấy nhóm con trước
 				if ( $ant_ten == '' && $v->parent > 0 ) {
-					$ant_ten = '<a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a>';
+					$ant_ten = '<a href="' . _eb_cs_link( $v ) . '">' . $v->name . '</a>';
 					break;
 				}
 			}
@@ -166,13 +167,13 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			// nếu ko tìm được -> lấy luôn nhóm cha đầu tiên
 			if ( $ant_ten == '' ) {
 				foreach ( $ant as $v ) {
-					$ant_ten = '<a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a>';
+					$ant_ten = '<a href="' . _eb_cs_link( $v ) . '">' . $v->name . '</a>';
 					break;
 				}
 			}
 		}
 		
-//		$post->ant_ten = isset ($ant[0]->name ) ? '<a href="' . _eb_c_link( $ant[0]->term_id ) . '">' . $ant[0]->name . '</a>' : '';
+//		$post->ant_ten = isset ($ant[0]->name ) ? '<a href="' . _eb_cs_link( $ant[0] ) . '">' . $ant[0]->name . '</a>' : '';
 		
 	}
 	$post->ant_ten = $ant_ten;
@@ -1638,7 +1639,7 @@ function EBE_echbay_category_menu (
 			}
 			
 			//
-			$str .= '<li>' . $cat_favicon . '<' . $dynamic_tags . '><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
+			$str .= '<li>' . $cat_favicon . '<' . $dynamic_tags . '><a href="' . _eb_cs_link( $v ) . '">' . $v->name . '<span class="eball-category-count"> (' . $v->count . ')</span></a></' . $dynamic_tags . '>' . $str_child . '</li>';
 		}
 		
 	}
@@ -3302,7 +3303,8 @@ function _eb_load_ads (
 				//
 				if ( ! isset($new_name->errors) ) {
 					$post->post_title = $new_name->name;
-					$p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
+//					$p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
+					$p_link = _eb_cs_link( $new_name );
 				}
 			}
 			

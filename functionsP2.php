@@ -625,6 +625,12 @@ function _eb_p_link ($id, $seo = '') {
 $arr_cache_for_get_cat_url = array();
 
 // https://codex.wordpress.org/Function_Reference/get_category_link
+// lấy link nhóm theo object
+function _eb_cs_link($v) {
+	return _eb_c_link( $v->term_id, $v->taxonomy );
+}
+
+// lấy link nhóm 1 cách chi tiết
 function _eb_c_link ( $id, $taxx = 'category' ) {
 	global $arr_cache_for_get_cat_url;
 	
@@ -867,7 +873,7 @@ function _eb_b_link($id, $seo = '') {
 
 // blog group
 function _eb_bs_link($id, $seo = '') {
-	return _eb_c_link( $id );
+	return _eb_c_link( $id, EB_BLOG_POST_LINK );
 }
 
 
@@ -1651,7 +1657,7 @@ function _eb_create_html_breadcrumb ($c) {
 		$css_m_css .= ' ebcat-' . $parent_cat->slug;
 		
 		//
-		$lnk = _eb_c_link($parent_cat->term_id, $c->taxonomy);
+		$lnk = _eb_cs_link($parent_cat);
 		$group_go_to[$lnk] = ' <li><a href="' . $lnk . '">' . $parent_cat->name . '</a></li>';
 		$schema_BreadcrumbList[$lnk] = _eb_create_breadcrumb( $lnk, $parent_cat->name );
 		
@@ -1688,7 +1694,7 @@ function _eb_echbay_category_menu ( $id, $tax = 'category' ) {
 //		print_r( $sub_cat );
 		
 		foreach ( $sub_cat as $k => $v ) {
-			$str .= '<li><a href="' . _eb_c_link( $v->term_id ) . '">' . $v->name . '</a></li>';
+			$str .= '<li><a href="' . _eb_cs_link( $v ) . '">' . $v->name . '</a></li>';
 		}
 		
 		if ( $str != '' ) {
@@ -1696,7 +1702,7 @@ function _eb_echbay_category_menu ( $id, $tax = 'category' ) {
 		}
 		
 		// tổng hợp
-		$str = '<ul><li><a href="' . _eb_c_link( $parent_cat->term_id ) . '">' . $parent_cat->name . '</a>' . $str . '</li></ul>';
+		$str = '<ul><li><a href="' . _eb_cs_link( $parent_cat ) . '">' . $parent_cat->name . '</a>' . $str . '</li></ul>';
 		
 		//
 		_eb_get_static_html ( $strCacheFilter, $str );
@@ -2350,12 +2356,12 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_li
 	//
 	$str = '';
 	foreach ( $arr as $v ) {
-//			print_r($v);
+//		print_r($v);
 		
 		//
-//		$c_link = _eb_c_link( $v->term_id, web_link . '?cat=' . $v->term_id );
+//		$c_link = _eb_cs_link( $v );
 		if ( $get_full_link == 1 ) {
-			$c_link = _eb_c_link( $v->term_id, $taxx );
+			$c_link = _eb_cs_link( $v );
 //			echo $c_link . '<br>' . "\n";
 		}
 		else {
@@ -2475,7 +2481,7 @@ function _eb_get_tax_post_options ( $arr_option = array(), $taxo = 'post_options
 		foreach ( $oder as $k2 => $v2 ) {
 			$v2 = $option[$k2];
 			
-			$op_link = _eb_c_link( $v2->term_id );
+			$op_link = _eb_cs_link( $v2 );
 			
 			$str .= '<li><a data-parent="' . $v->term_id . '" data-id="' . $v2->term_id . '" href="' . $op_link . '">' . $v2->name . '</a></li>';
 			
@@ -2491,7 +2497,7 @@ function _eb_get_tax_post_options ( $arr_option = array(), $taxo = 'post_options
 			$strs .= '
 			<li>
 				<div class="search-advanced-padding click-add-id-to-sa">
-					<div class="search-advanced-name"><a data-parent="0" data-id="' . $v->term_id . '" href="' . _eb_c_link( $v->term_id ) . '" title="' . $v->name . '">' . $v->name . ' <i class="fa fa-caret-down"></i></a></div>
+					<div class="search-advanced-name"><a data-parent="0" data-id="' . $v->term_id . '" href="' . _eb_cs_link( $v ) . '" title="' . $v->name . '">' . $v->name . ' <i class="fa fa-caret-down"></i></a></div>
 					<ul class="sub-menu">
 						' . $str . '
 					</ul>
