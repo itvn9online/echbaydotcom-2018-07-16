@@ -821,7 +821,8 @@ function _eb_c_link_v1 ( $id, $taxx = 'category' ) {
 		if ( isset($a->errors) || $a == '' ) {
 //			print_r($a);
 			
-			$tem = get_term_by( 'id', $id, EB_BLOG_POST_LINK );
+//			$tem = get_term_by( 'id', $id, EB_BLOG_POST_LINK );
+			$tem = get_term( $id, EB_BLOG_POST_LINK );
 			
 			// lấy theo blog
 			$a = get_term_link( $tem, EB_BLOG_POST_LINK );
@@ -1614,6 +1615,7 @@ function _eb_create_breadcrumb ( $url, $tit ) {
 function _eb_create_html_breadcrumb ($c) {
 	global $group_go_to;
 	global $schema_BreadcrumbList;
+	global $css_m_css;
 	
 	//
 //	print_r( $c );
@@ -1622,18 +1624,36 @@ function _eb_create_html_breadcrumb ($c) {
 	$return_id = $c->term_id;
 	
 	//
+	$cat_custom_css = _eb_get_cat_object( $c->term_id, '_eb_category_custom_css' );
+//	echo $cat_custom_css . '<br>' . "\n";
+	if ( $cat_custom_css != '' ) {
+		$css_m_css .= ' ' . $cat_custom_css;
+	}
+	$css_m_css .= ' ebcat-' . $c->slug;
+	
+	//
 	if ( $c->parent > 0 ) {
 		
 		//
 		$return_id = $c->parent;
 		
 		//
-		$parent_cat = get_term_by( 'id', $c->parent, $c->taxonomy );
-//		print_r( $parent_cat );
+		$cat_custom_css = _eb_get_cat_object( $c->parent, '_eb_category_custom_css' );
+//		echo $cat_custom_css . '<br>' . "\n";
+		if ( $cat_custom_css != '' ) {
+			$css_m_css .= ' ' . $cat_custom_css;
+		}
 		
 		//
-		$lnk = _eb_c_link($parent_cat->term_id);
+//		$parent_cat = get_term_by( 'id', $c->parent, $c->taxonomy );
+		$parent_cat = get_term( $c->parent, $c->taxonomy );
+//		print_r( $parent_cat );
+		$css_m_css .= ' ebcat-' . $parent_cat->slug;
+		
+		//
+		$lnk = _eb_c_link($parent_cat->term_id, $c->taxonomy);
 		$group_go_to[$lnk] = ' <li><a href="' . $lnk . '">' . $parent_cat->name . '</a></li>';
+		$schema_BreadcrumbList[$lnk] = _eb_create_breadcrumb( $lnk, $parent_cat->name );
 		
 		// tìm tiếp nhóm cha khác nếu có
 		if ( $parent_cat->parent > 0 ) {
@@ -1655,7 +1675,8 @@ function _eb_echbay_category_menu ( $id, $tax = 'category' ) {
 	if ($str == false) {
 		
 		// parent
-		$parent_cat = get_term_by( 'id', $id, $tax );
+//		$parent_cat = get_term_by( 'id', $id, $tax );
+		$parent_cat = get_term( $id, $tax );
 //		print_r( $parent_cat );
 		
 		// sub

@@ -266,7 +266,8 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 
 
 function WGR_get_taxonomy_parent ( $arr ) {
-	$a = get_term_by( 'id', $arr->parent, $arr->taxonomy );
+//	$a = get_term_by( 'id', $arr->parent, $arr->taxonomy );
+	$a = get_term( $arr->parent, $arr->taxonomy );
 //	print_r( $a );
 	
 	// tìm đến khi lấy được nhóm cấp 1 thì thôi

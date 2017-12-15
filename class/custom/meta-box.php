@@ -202,6 +202,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	
 	'_eb_category_avt' => 'Ảnh đại diện của phân nhóm, kích thước khuyến nghị là 500x400 pixel. Ảnh này sẽ xuất hiện khi chia sẻ nhóm lên các mạng xã hội như: Facebook, Twiter...',
 	'_eb_category_favicon' => 'Favicon là một ảnh nhỏ hơn, kích thước khuyến nghị là 64x64 pixel. Ảnh này thường dùng trong các menu nếu CSS của menu có hỗ trợ chức năng.',
+	'_eb_category_custom_css' => 'Là nơi nhập class CSS riêng để tiện cho việc thay đổi CSS theo từng danh mục cha, con...',
 	'_eb_category_title' => 'Với định dạng màu sắc thì nhập mã màu vào (bao gồm cả dấu #)',
 	'_eb_category_order' => 'Số càng lớn thì độ ưu tiên càng cao, nhóm sẽ được ưu tiên xuất hiện trước',
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
@@ -564,6 +565,7 @@ $arr_category_custom_fields = array();
 //
 $arr_category_custom_fields['_eb_category_avt'] = 'Ảnh đại diện lớn (banner)';
 $arr_category_custom_fields['_eb_category_favicon'] = 'Ảnh đại diện nhỏ (favicon)';
+$arr_category_custom_fields['_eb_category_custom_css'] = 'CSS riêng';
 
 
 // Để tránh xung đột và thừa thãi -> chỉ kích hoạt cột liên quan đến SEO khi người dùng chọn bật nó, ngoài ra thì bỏ qua
