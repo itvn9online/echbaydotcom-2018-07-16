@@ -33,7 +33,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		
 		
 		//
-		echo '<p>Chuyên mục: <select name="' . $select_name . '" id="' . $animate_id . '" class="widefat eb-get-widget-category">';
+		echo '<p>Chuyên mục: <select name="' . $this->get_field_name ( 'cookie_name' ) . '" class="widefat">';
 		
 		echo '<option value="wgr_product_id_view_history"' . _eb_selected( 'wgr_product_id_view_history', $cookie_name ) . '>Sản phẩm Đã xem</option>';
 		echo '<option value="wgr_product_id_user_favorite"' . _eb_selected( 'wgr_product_id_user_favorite', $cookie_name ) . '>Sản phẩm Yêu thích</option>';
