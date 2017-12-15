@@ -10,13 +10,15 @@
 class ___echbay_widget_product_view_history extends WP_Widget {
 	function __construct() {
 		parent::__construct ( 'eb_product_view_history', 'EchBay View History', array (
-				'description' => 'Lấy các sản phẩm đã xem trong trang chi tiết sản phẩm! Module này có thể hiển thị ở bất kỳ đâu trên website.' 
+				'description' => 'Lấy các sản phẩm ĐÃ XEM hoặc sản phẩm ĐÃ THÍCH trong trang chi tiết sản phẩm! Module này có thể hiển thị ở bất kỳ đâu trên website.' 
 		) );
 	}
 	
 	function form($instance) {
 		$default = array (
 			'title' => 'EchBay view history',
+			// mặc định là lịch sử xem
+			'cookie_name' => 'wgr_product_id_view_history',
 			'post_number' => 10,
 			'custom_style' => '',
 			'num_line' => 'thread-list20',
@@ -28,6 +30,15 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		
 		
 		echo '<p>Title: <input type="text" class="widefat" name="' . $this->get_field_name ( 'title' ) . '" value="' . $title . '" /></p>';
+		
+		
+		//
+		echo '<p>Chuyên mục: <select name="' . $select_name . '" id="' . $animate_id . '" class="widefat eb-get-widget-category">';
+		
+		echo '<option value="wgr_product_id_view_history"' . _eb_selected( 'wgr_product_id_view_history', $cookie_name ) . '>Sản phẩm Đã xem</option>';
+		echo '<option value="wgr_product_id_user_favorite"' . _eb_selected( 'wgr_product_id_user_favorite', $cookie_name ) . '>Sản phẩm Yêu thích</option>';
+		
+		echo '</select>';
 		
 		
 		_eb_widget_echo_number_of_posts_to_show( $this->get_field_name ( 'post_number' ), $post_number );
@@ -51,7 +62,11 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 	function widget($args, $instance) {
 		
 		//
-		$str_history = _eb_getCucki('wgr_product_id_view_history');
+		$cookie_name = isset( $instance ['cookie_name'] ) ? $instance ['cookie_name'] : '';
+		
+		//
+//		$str_history = _eb_getCucki('wgr_product_id_view_history');
+		$str_history = _eb_getCucki($cookie_name);
 		
 		//
 		if ( $str_history == '' ) {

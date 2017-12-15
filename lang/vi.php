@@ -62,6 +62,13 @@ $___eb_lang[eb_key_for_site_lang . 'cart_hotline'] = 'Hotline';
 // giờ vàng
 $___eb_lang[eb_key_for_site_lang . 'golden_time'] = 'Giờ vàng';
 $___eb_lang[eb_key_for_site_lang . 'golden_desc_time'] = 'Giờ vàng GIÁ SỐC, khuyến mại tận GỐC';
+$___eb_lang[eb_key_for_site_lang . 'limit_golden_time'] = 50;
+$eb_type_lang[eb_key_for_site_lang . 'limit_golden_time'] = 'number';
+
+//
+$___eb_lang[eb_key_for_site_lang . 'favorite'] = 'Sản phẩm yêu thích';
+$___eb_lang[eb_key_for_site_lang . 'limit_favorite'] = 50;
+$eb_type_lang[eb_key_for_site_lang . 'limit_favorite'] = 'number';
 
 // default status
 $___eb_lang[eb_key_for_site_lang . 'ads_status1'] = 'Banner chính ( 1366 x Auto )';
