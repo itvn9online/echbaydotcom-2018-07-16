@@ -23,7 +23,7 @@ if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 		//echo $protocol;
 //		header( $protocol . ' 404 Not Found' );
 		
-		die('<title>He thong dang duoc bao tri</time><h1>He thong dang duoc bao tri</h1>');
+		die('<title>He thong dang duoc bao tri</title><h1>He thong dang duoc bao tri</h1>');
 		
 	}
 	else {
