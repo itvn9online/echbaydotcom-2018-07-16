@@ -131,7 +131,7 @@ function WGR_get_quick_register () {
 					<input type="text" name="t_hoten" value="" placeholder="Họ tên" />
 				</div>
 				<div class="quick-register-left2 quick-register-email">
-					<input type="email" name="t_email" value="" placeholder="Email" aria-required="true" required />
+					<input type="email" name="t_email" value="" placeholder="Email" autocomplete="off" aria-required="true" required />
 				</div>
 				<div class="quick-register-left3 quick-register-submit">
 					<button type="submit" class="cur">Gửi</button>
