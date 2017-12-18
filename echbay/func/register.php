@@ -3,7 +3,7 @@
 
 
 //print_r($_POST);
-if ( !isset($_POST['t_email']) || !isset($_POST['t_matkhau']) ) {
+if ( ! isset($_POST['t_email']) || ! isset($_POST['t_matkhau']) ) {
 	_eb_alert('Dữ liệu đầu vào không chính xác');
 }
 
@@ -68,10 +68,28 @@ $user_name = $check_user_exist;
 wp_create_user( $user_name, $t_matkhau, $user_email );
 
 
+
+
+// nếu là quick register -> dừng ở đây là được
+if ( isset( $_POST['for_quick_register'] ) ) {
+	die('<script type="text/javascript">
+
+parent.document.frm_dk_nhantin.reset();
+
+alert("Đăng ký nhận bản tin thành công");
+
+</script>');
+	
+	exit();
+}
+
+
+
+
 //
 //exit();
 
-//
+// tự động đăng nhập luôn
 $creds = array();
 $creds['user_login'] = $user_email;
 $creds['user_password'] = $t_matkhau;

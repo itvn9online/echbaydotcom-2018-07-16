@@ -2007,7 +2007,6 @@ function ___eb_custom_login_done () {
 
 
 
-
 // tạo menu cho bản mobile ( nếu chưa có )
 if ( $('#nav_mobile_top li').length == 0 ) {
 	$('#nav_mobile_top').html( '<ul>' + ( $('.nav-menu ul').html() || $('.global-nav ul').html() || '' ) + '</ul>' );

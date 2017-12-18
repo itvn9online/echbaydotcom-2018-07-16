@@ -370,6 +370,7 @@ $arr_active_for_404_page = array(
 	
 	"eb-login" => 1,
 	"eb-register" => 1,
+	"eb-quick-register" => 1,
 	"eb-fogotpassword" => 1,
 	
 	"eb-ajaxservice" => 1,
