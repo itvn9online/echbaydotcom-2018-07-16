@@ -74,7 +74,13 @@ wp_create_user( $user_name, $t_matkhau, $user_email );
 if ( isset( $_POST['for_quick_register'] ) ) {
 	die('<script type="text/javascript">
 
-parent.document.frm_dk_nhantin.reset();
+//
+if ( top != self ) {
+	parent.document.frm_dk_nhantin.reset();
+}
+else {
+	window.opener.document.frm_dk_nhantin.reset();
+}
 
 alert("Đăng ký nhận bản tin thành công");
 

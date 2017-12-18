@@ -555,6 +555,15 @@ WGR_click_add_product_to_favorite();
 
 
 
+//
+if ( $('.quick-register-email').length > 0 ) {
+	$('form[name="frm_dk_nhantin"] input[name="t_email"]').click(function() {
+		_global_js_eb.add_primari_iframe();
+	});
+}
+
+
+
 // social function /////////////////////////////////////////////////////////////////
 
 
