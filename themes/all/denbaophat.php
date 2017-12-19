@@ -8,7 +8,7 @@
 */
 $eb_all_themes_support["denbaophat"]=array();
 $eb_all_themes_support["denbaophat"]["screenshot"] = "https://img1.webgiare.org/denbaophat.jpg";
-$eb_all_themes_support["rongbay"]["price"] = 800000;
+$eb_all_themes_support["denbaophat"]["price"] = 800000;
 $eb_all_themes_support["denbaophat"]["demo"] = "denbaophat.com";
 //
 $eb_all_themes_support["denbaophat"]["top"][] = "denbaophat-top1.php";
