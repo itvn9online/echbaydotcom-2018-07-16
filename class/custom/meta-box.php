@@ -454,7 +454,7 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 			else {
 				if ( $k == '_eb_product_oldprice'
 				|| $k == '_eb_product_price' ) {
-					$val = _eb_float_only( $val );
+					$val = _eb_float_only( $val, 2 );
 				}
 				else {
 					$val = sanitize_text_field( $val );

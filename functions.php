@@ -2570,9 +2570,21 @@ function _eb_number_only( $str = '', $re = '/[^0-9]+/' ) {
 
 function _eb_float_only( $str = '', $lam_tron = 0 ) {
 	$a = _eb_number_only( $str, '/[^0-9|\.]+/' );
+	
+	// làm tròn hết sang số nguyên
 	if ( $lam_tron == 1 ) {
 		$a = ceil( $a );
 	}
+	// làm tròn phần số nguyên, số thập phân giữ nguyên
+	else if ( $lam_tron == 2 ) {
+		$a = explode( '.', $a );
+		if ( isset( $a[1] ) ) {
+			$a = (int) $a[0] . '.' . $a[1];
+		} else {
+			$a = (int) $a[0];
+		}
+	}
+	
 	return $a;
 }
 
