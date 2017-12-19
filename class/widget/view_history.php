@@ -33,7 +33,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		
 		
 		//
-		echo '<p>Chuyên mục: <select name="' . $this->get_field_name ( 'cookie_name' ) . '" class="widefat">';
+		echo '<p>Phân loại: <select name="' . $this->get_field_name ( 'cookie_name' ) . '" class="widefat">';
 		
 		echo '<option value="wgr_product_id_view_history"' . _eb_selected( 'wgr_product_id_view_history', $cookie_name ) . '>Sản phẩm Đã xem</option>';
 		echo '<option value="wgr_product_id_user_favorite"' . _eb_selected( 'wgr_product_id_user_favorite', $cookie_name ) . '>Sản phẩm Yêu thích</option>';
@@ -89,6 +89,15 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		extract ( $args );
 		
 		$title = apply_filters ( 'widget_title', $instance ['title'] );
+		if ( $title == '' ) {
+			if ( $cookie_name == 'wgr_product_id_user_favorite' ) {
+				$title = 'Sản phẩm Yêu thích';
+			}
+			else {
+				$title = 'Sản phẩm Đã xem';
+			}
+		}
+		
 		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 5;
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
