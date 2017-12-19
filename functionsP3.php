@@ -251,4 +251,14 @@ function WGR_sync_old_url_in_content ( $a, $c ) {
 }
 
 
+// thêm thẻ LI theo tiêu chuẩn chung cho thread node
+function WGR_add_li_to_thread_node ( $str ) {
+	if ( strstr( $str, '</li>' ) == false ) {
+		$str = '<li data-id="{tmp.trv_id}" data-ngay="{tmp.trv_ngayhethan}" data-per="{tmp.pt}" data-link="{tmp.p_link}" data-status="{tmp.product_status}" class="hide-if-gia-zero">' . $str . '</li>';
+	}
+	
+	return $str;
+}
+
+
 

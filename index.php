@@ -313,9 +313,7 @@ else {
 }
 
 // nếu chưa có cặp thẻ LI -> bổ sung cặp này vào -> tạo dữ liệu theo thẻ thống nhất
-if ( strstr( $__eb_thread_template, '</li>' ) == false ) {
-	$__eb_thread_template = '<li data-id="{tmp.trv_id}" data-ngay="{tmp.trv_ngayhethan}" data-per="{tmp.pt}" data-link="{tmp.p_link}" data-status="{tmp.product_status}" class="hide-if-gia-zero">' . $__eb_thread_template . '</li>';
-}
+WGR_add_li_to_thread_node( $__eb_thread_template );
 
 //
 define( '__eb_thread_template', $__eb_thread_template );
