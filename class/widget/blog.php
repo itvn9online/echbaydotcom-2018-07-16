@@ -173,6 +173,17 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$more_link = '';
 		$str_sub_cat = '';
 		
+		
+		// chỉ lấy các bài viết cùng nhóm
+		if ( $same_cat == 'on' ) {
+			global $cid;
+			
+			if ( $cid > 0 ) {
+				echo '<!-- auto get same cat -->';
+				$cat_ids = $cid;
+			}
+		}
+		
 		// lấy theo nhóm tin đã được chỉ định
 		if ( $cat_ids > 0 ) {
 			
@@ -278,6 +289,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		else {
 			
 			//
+			/*
 			global $cid;
 			
 			// chỉ lấy các bài viết cùng nhóm
@@ -290,8 +302,17 @@ class ___echbay_widget_random_blog extends WP_Widget {
 						'operator' => 'IN'
 					)
 				);
+				
+				if ( $title == '' ) {
+					$categories = get_term( $cid, $cat_type );
+//					print_r($categories);
+					if ( ! empty( $categories ) ) {
+						$title = $categories->name;
+					}
+				}
 			}
 			else {
+				*/
 				// post -> có thêm phần trạng thái
 				if ( $post_type == 'post' ) {
 					if ( $post_eb_status > 0 ) {
@@ -313,7 +334,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 						)
 					);
 				}
-			}
+//			}
 		}
 		
 		//
