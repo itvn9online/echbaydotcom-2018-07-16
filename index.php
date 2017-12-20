@@ -313,7 +313,7 @@ else {
 }
 
 // nếu chưa có cặp thẻ LI -> bổ sung cặp này vào -> tạo dữ liệu theo thẻ thống nhất
-WGR_add_li_to_thread_node( $__eb_thread_template );
+$__eb_thread_template = WGR_add_li_to_thread_node( $__eb_thread_template );
 
 //
 define( '__eb_thread_template', $__eb_thread_template );
