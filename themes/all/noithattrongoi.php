@@ -20,7 +20,7 @@ $eb_all_themes_support["noithattrongoi"]["top"][] = "breadcrumb-top1.php";
 $eb_all_themes_support["noithattrongoi"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["noithattrongoi"]["footer"][] = "noithattrevietnam-footer1.php";
 $eb_all_themes_support["noithattrongoi"]["footer"][] = "noithattrevietnam-footer2.php";
-$eb_all_themes_support["noithattrongoi"]["footer"][] = "denbaophat-footer3.php";
+//$eb_all_themes_support["noithattrongoi"]["footer"][] = "denbaophat-footer3.php";
 //
 $eb_all_themes_support["noithattrongoi"]["home"][] = "bigbanner-home1.php";
 

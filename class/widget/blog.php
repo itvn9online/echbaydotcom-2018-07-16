@@ -118,6 +118,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$html_template = isset( $instance ['html_template'] ) ? $instance ['html_template'] : '';
 		
 		$post_type = isset( $instance ['post_type'] ) ? $instance ['post_type'] : '';
+		$same_cat = isset( $instance ['same_cat'] ) ? $instance ['same_cat'] : 'off';
 		
 		$html_node = isset( $instance ['html_node'] ) ? $instance ['html_node'] : '';
 		$html_node = _eb_widget_create_html_template( $html_node, 'blogs_node' );
@@ -188,7 +189,8 @@ class ___echbay_widget_random_blog extends WP_Widget {
 				
 				if ( $title == '' ) {
 //					echo $cat_ids;
-					$categories = get_term_by('id', $cat_ids, $cat_type);
+//					$categories = get_term_by('id', $cat_ids, $cat_type);
+					$categories = get_term( $cat_ids, $cat_type );
 //					print_r($categories);
 					if ( ! empty( $categories ) ) {
 						$title = $categories->name;
@@ -274,26 +276,43 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		}
 		// các post type khác
 		else {
-			// post -> có thêm phần trạng thái
-			if ( $post_type == 'post' ) {
-				if ( $post_eb_status > 0 ) {
-					$arr_select_data['meta_key'] = '_eb_product_status';
-					$arr_select_data['meta_value'] = $post_eb_status;
-				}
-			}
 			
-			// với blog, lấy đặc biệt hơn chút
-	//		else if ( count( $terms_categories ) > 0 ) {
-			// -> lấy theo danh mục hoặc post option -> dùng để phân loại widget
-			if ( count( $terms_categories ) > 0 ) {
+			//
+			global $cid;
+			
+			// chỉ lấy các bài viết cùng nhóm
+			if ( $cat_ids == 0 && $cid > 0 && $same_cat == 'on' ) {
 				$arr_select_data['tax_query'] = array(
 					array(
 						'taxonomy' => $cat_type,
 						'field' => 'term_id',
-						'terms' => $terms_categories,
+						'terms' => array( $cid ),
 						'operator' => 'IN'
 					)
 				);
+			}
+			else {
+				// post -> có thêm phần trạng thái
+				if ( $post_type == 'post' ) {
+					if ( $post_eb_status > 0 ) {
+						$arr_select_data['meta_key'] = '_eb_product_status';
+						$arr_select_data['meta_value'] = $post_eb_status;
+					}
+				}
+				
+				// với blog, lấy đặc biệt hơn chút
+		//		else if ( count( $terms_categories ) > 0 ) {
+				// -> lấy theo danh mục hoặc post option -> dùng để phân loại widget
+				if ( count( $terms_categories ) > 0 ) {
+					$arr_select_data['tax_query'] = array(
+						array(
+							'taxonomy' => $cat_type,
+							'field' => 'term_id',
+							'terms' => $terms_categories,
+							'operator' => 'IN'
+						)
+					);
+				}
 			}
 		}
 		

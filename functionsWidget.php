@@ -24,6 +24,8 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'hide_description' => 0,
 		'hide_info' => 0,
 		'post_type' => 'post',
+		// lấy các bài viết cùng nhóm
+		'same_cat' => 0,
 		'ads_eb_status' => 0,
 		'post_eb_status' => 0,
 		'custom_style' => '',

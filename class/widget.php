@@ -199,6 +199,13 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
+	$input_name = $field_name[ 'same_cat' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $same_cat, 'Chỉ lấy các bài viết của nhóm đang xem hoặc bài viết cùng nhóm với bài viết đang xem.' );
+	
+	
+	
+	//
 	__eb_widget_load_cat_select ( array(
 		'cat_ids_name' => $field_name['cat_ids'],
 		'cat_ids' => $cat_ids,
@@ -669,7 +676,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	
 	
 	// ID của phiên làm việc hiện tại
-	$animate_id = 'ebwg_' . md5( time() );
+	$animate_id = 'ebwg_' . md5( time() ) . rand( 1, 5000 ) . rand( 1, 5000 );
 	
 	
 	
@@ -711,11 +718,28 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	echo '</select></p>';
 	
 	
+	// v3 -> thêm option chọn taxonomy thay vì chỉ tự động
+	if ( isset( $option['cat_input_type'] ) && $option['cat_input_type'] == 'select' ) {
+		echo '<p>Kiểu dữ liệu: ';
+		
+		__eb_widget_load_select(
+			array (
+				'category' => 'Danh mục sản phẩm',
+				EB_BLOG_POST_LINK => 'Danh mục tin tức',
+				'post_options' => 'Thuộc tính sản phẩm',
+			),
+			$cat_type_name,
+			$cat_type
+		);
+		
+		echo '</p>';
+	}
 	// v2 -> tự động thay đổi taxonomy khi chọn nhóm
-	echo '<p style="display:none;">Kiểu dữ liệu: <input type="text" class="widefat ' . $animate_id . '" name="' . $cat_type_name . '" value="' . $cat_type . '"/></p>';
-	
-	//
-	echo '<script type="text/javascript">
+	else {
+		echo '<p style="display:none;">Kiểu dữ liệu: <input type="text" class="widefat ' . $animate_id . '" name="' . $cat_type_name . '" value="' . $cat_type . '"/></p>';
+		
+		//
+		echo '<script type="text/javascript">
 //	jQuery("#' . $animate_id . '").off("change").change(function () {
 	jQuery(".eb-get-widget-category").off("change").change(function () {
 //		var a = jQuery("#' . $animate_id . ' option:selected").attr("data-taxonomy") || "";
@@ -731,6 +755,8 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 		jQuery("." + b).val( a );
 	});
 	</script>';
+		
+	}
 	
 	//
 	return $animate_id;

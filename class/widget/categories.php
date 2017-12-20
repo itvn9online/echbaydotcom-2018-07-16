@@ -28,7 +28,8 @@ function EBE_widget_categories_get_child( $term_id, $cat_type, $show_count, $wid
 
 function EBE_widget_get_parent_cat ( $id, $cat_type = 'category' ) {
 	if ( $id > 0 ) {
-		$a = get_term_by( 'id', $id, $cat_type );
+//		$a = get_term_by( 'id', $id, $cat_type );
+		$a = get_term( $id, $cat_type );
 //		print_r( $a );
 		
 		// nếu không có nhóm cha -> nhóm này nhất rồi
@@ -235,6 +236,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			'cat_ids' => $cat_ids,
 			'cat_type_name' => $this->get_field_name ( 'cat_type' ),
 			'cat_type' => $cat_type,
+			'cat_input_type' => 'select',
 		) );
 		
 		
@@ -248,7 +250,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 				EB_BLOG_POST_LINK => 'Danh mục tin tức',
 				'post_options' => 'Thuộc tính sản phẩm',
 			),
-			 $this->get_field_name ( 'cat_type' ),
+			$this->get_field_name ( 'cat_type' ),
 			$cat_type
 		);
 		
@@ -427,12 +429,22 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		}
 		// tìm nhóm cha -> để các nhóm sau sẽ lấy theo nhóm này
 		else if ( $cat_ids > 0 ) {
+			
+			// lấy lại taxonomy
+			$cat_type = WGR_get_taxonomy_name( $cat_ids );
+			if ( $cat_type == '' ) {
+				echo 'taxonomy for #' . $cat_ids . ' not found!';
+				return false;
+			}
+			
+			//
 			$cats_info = EBE_widget_get_parent_cat( $cat_ids, $cat_type );
 			
 			//
 			if ( ! empty ( $cats_info ) ) {
 				$cat_type = $cats_info->taxonomy;
 			}
+			
 		}
 //		print_r( $cats_info );
 //		echo $cat_type . '<br>' . "\n";
@@ -451,6 +463,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		if ( $show_for_search_advanced == true && $cid > 0 && ! empty( $arrs_cats ) ) {
 //			$get_taxonomy_name = get_term_by( 'id', $cid, $eb_wp_taxonomy );
+//			$get_taxonomy_name = get_term( $cid, $eb_wp_taxonomy );
 //			print_r( $get_taxonomy_name );
 			
 			//
