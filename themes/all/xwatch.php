@@ -28,6 +28,6 @@ $eb_all_themes_support["xwatch"]["home"][] = "xwatch-home1.php";
 $eb_all_themes_support["xwatch"]["home"][] = "xwatch-home2.php";
 $eb_all_themes_support["xwatch"]["home"][] = "xwatch-home3.php";
 //
-//$eb_all_themes_support["xwatch"]["cf_threaddetails_include_file"] = "";
+$eb_all_themes_support["xwatch"]["cf_threaddetails_include_file"] = "xwatch-threaddetails.html";
 //
-//$eb_all_themes_support["xwatch"]["cf_threadnode_include_file"] = "xwatch-threadnode.html";
+$eb_all_themes_support["xwatch"]["cf_threadnode_include_file"] = "xwatch-threadnode.html";

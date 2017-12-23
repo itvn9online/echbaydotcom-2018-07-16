@@ -1,12 +1,13 @@
 .noithattre-menuleft .echbay-widget-title {
 	background-color: #f7941e;
-	color: #fff;
 	font-size: 14px;
 	text-transform: uppercase;
 	padding-left: 15px;
 	border: 0 none;
 	margin-bottom: 2px;
 }
+.noithattre-menuleft .echbay-widget-title,
+.noithattre-menuleft .echbay-widget-title a { color: #fff; }
 .noithattre-menuleft .echbay-widget-title:before { display: none; }
 .noithattre-ebmenu ul,
 .widget_echbay_category .noithattre-menuleft { margin-bottom: 20px; }
@@ -40,6 +41,9 @@
 	line-height: 16px;
 }
 .noithattre-menuleft .echbay-blog-marginleft { padding-left: 10px; }
+.noithattre-blogmenu .echbay-blog-marginleft { padding-left: 0; }
+.noithattre-blogmenu .blogs_node_chi_chu .echbay-blog-padding { display: block; }
+.noithattre-blogmenu .echbay-blog-title { margin: 0; }
 .thread-list-order { display: none; }
 .thread-module-name {
 	border-bottom: 0 none !important;
