@@ -72,25 +72,10 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
 		
 		// ẩn các thuộc tính theo option
-		$hide_widget_title = isset( $instance ['hide_widget_title'] ) ? $instance ['hide_widget_title'] : 'off';
-		if ( $hide_widget_title == 'on' ) {
-			$custom_style .= ' hide-widget-title';
-		}
+		$custom_style .= WGR_add_option_class_for_post_widget( $instance );
 		
-		$hide_title = isset( $instance ['hide_title'] ) ? $instance ['hide_title'] : 'off';
-		if ( $hide_title == 'on' ) {
-			$custom_style .= ' hide-blogs-title';
-		}
 		
-		$hide_description = isset( $instance ['hide_description'] ) ? $instance ['hide_description'] : 'off';
-		if ( $hide_description == 'on' ) {
-			$custom_style .= ' hide-blogs-description';
-		}
 		
-		$hide_info = isset( $instance ['hide_info'] ) ? $instance ['hide_info'] : 'off';
-		if ( $hide_info == 'on' ) {
-			$custom_style .= ' hide-blogs-info';
-		}
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );

@@ -66,6 +66,12 @@ class ___echbay_widget_random_product extends WP_Widget {
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
 		
+		// ẩn các thuộc tính theo option
+		$custom_style .= WGR_add_option_class_for_post_widget( $instance );
+		
+		
+		
+		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
 		

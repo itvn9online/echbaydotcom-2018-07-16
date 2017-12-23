@@ -2223,6 +2223,7 @@ $('a.gg-phone-conversion').click(function () {
 
 //
 $('#oi_scroll_top, .oi_scroll_top').click(function() {
+//	$('body,html').animate({
 	$('body,html').animate({
 		scrollTop: 0
 	}, 800);

@@ -72,6 +72,11 @@ function WGR_widget_home_hot ( $instance ) {
 	$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 	$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
 	
+	// ẩn các thuộc tính theo option
+	$custom_style .= WGR_add_option_class_for_post_widget( $instance );
+	
+	
+	
 	//
 	$___order = 'DESC';
 	if ( $sortby == '' || $sortby == 'rand' ) {
@@ -260,6 +265,35 @@ function WGR_get_home_node_ads ( $cat_ids, $tmp = 'ads_node' ) {
 		'cat' => $cat_ids,
 	), 0, EBE_get_page_template( $tmp ) );
 //	), 0, str_replace( 'ti-le-global', '', EBE_get_page_template( 'ads_node' ) ) );
+}
+
+//
+function WGR_add_option_class_for_post_widget ( $a ) {
+	$s = '';
+	
+	//
+	$hide_widget_title = isset( $a ['hide_widget_title'] ) ? $a ['hide_widget_title'] : 'off';
+	if ( $hide_widget_title == 'on' ) {
+		$s .= ' hide-widget-title';
+	}
+	
+	$hide_title = isset( $a ['hide_title'] ) ? $a ['hide_title'] : 'off';
+	if ( $hide_title == 'on' ) {
+		$s .= ' hide-blogs-title';
+	}
+	
+	$hide_description = isset( $a ['hide_description'] ) ? $a ['hide_description'] : 'off';
+	if ( $hide_description == 'on' ) {
+		$s .= ' hide-blogs-description';
+	}
+	
+	$hide_info = isset( $a ['hide_info'] ) ? $a ['hide_info'] : 'off';
+	if ( $hide_info == 'on' ) {
+		$s .= ' hide-blogs-info';
+	}
+	
+	//
+	return $s;
 }
 
 
