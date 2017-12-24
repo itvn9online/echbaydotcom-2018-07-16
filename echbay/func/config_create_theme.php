@@ -257,8 +257,8 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 	if ( $position == 'footer' ) {
 		
 		// thêm widget vào đầu
-//		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $begin_i . '_include_file"] = "' . $position . '_widget.php";' . "\n";
-		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "' . $position . '_widget.php";' . "\n";
+//		$str .= '$eb_all_themes_support[$eb_all_themes_name]["cf_' . $position . $begin_i . '_include_file"] = "' . $position . '_widget.php";' . "\n";
+		$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "' . $position . '_widget.php";' . "\n";
 		
 		// bắt đầu lặp từ node 2 trở đi
 		$begin_i = 2;
@@ -303,8 +303,8 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 			if ( file_exists( $fcheck )
 			|| file_exists( $check_child_theme )
 			|| file_exists( EB_THEME_URL . 'ui/' . $fname ) ) {
-//				$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $check_theme_node . '"] = "' . $fname . '";' . "\n";
-				$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "' . $fname . '";' . "\n";
+//				$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $check_theme_node . '"] = "' . $fname . '";' . "\n";
+				$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "' . $fname . '";' . "\n";
 				
 				$end_i = $j;
 			}
@@ -320,30 +320,30 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 	// thêm widget vào cuối
 	if ( $position == 'top'
 	|| $position == 'home' ) {
-//		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "' . $position . '_widget.php";' . "\n";
-		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "' . $position . '_widget.php";' . "\n";
+//		$str .= '$eb_all_themes_support[$eb_all_themes_name]["cf_' . $position . $end_i . '_include_file"] = "' . $position . '_widget.php";' . "\n";
+		$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "' . $position . '_widget.php";' . "\n";
 		
 		//
 		if ( $position == 'top' ) {
 			$end_i += 1;
 			
-//			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "breadcrumb-top1.php";' . "\n";
+//			$str .= '$eb_all_themes_support[$eb_all_themes_name]["cf_' . $position . $end_i . '_include_file"] = "breadcrumb-top1.php";' . "\n";
 			$str .= '// Banner tràn màn hình' . "\n";
-			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "bigbanner-top1.php";' . "\n";
+			$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "bigbanner-top1.php";' . "\n";
 			$str .= '// Banner bo gọn trong khung' . "\n";
-			$str .= '//$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "bigbannerFixed-top1.php";' . "\n";
+			$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "bigbannerFixed-top1.php";' . "\n";
 			
 			$str .= '// breadcrumb tràn màn hình' . "\n";
-			$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "breadcrumb-top1.php";' . "\n";
+			$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "breadcrumb-top1.php";' . "\n";
 			$str .= '// breadcrumb gọn trong khung' . "\n";
-			$str .= '//$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "breadcrumb2-top1.php";' . "\n";
+			$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "breadcrumb2-top1.php";' . "\n";
 		}
 		
 	}
 	// với footer -> thêm phần copyright vào cuối trang
 	else if ( $position == 'footer' ) {
-//		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["cf_' . $position . $end_i . '_include_file"] = "echbaytwo-footer3.php";' . "\n";
-		$str .= '$eb_all_themes_support["' . $create_theme_name . '"]["' . $position . '"][] = "echbaytwo-footer3.php";' . "\n";
+//		$str .= '$eb_all_themes_support[$eb_all_themes_name]["cf_' . $position . $end_i . '_include_file"] = "echbaytwo-footer3.php";' . "\n";
+		$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "echbaytwo-footer3.php";' . "\n";
 		
 	}
 	
@@ -375,21 +375,23 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 	$conten_for_bo_giao_dien .= '*/' . "\n";
 	
 	//
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"] = array();' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_name = \'' . $create_theme_name . '\';' . "\n";
+	
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name] = array();' . "\n";
 	
 	// tên giao diện
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["name"] = "' . $create_theme_name . '";' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["name"] = $eb_all_themes_name;' . "\n";
 	
 	// hình ảnh sẽ được đưa lên host của webgiare để quản lý cho dễ
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["screenshot"] = "https://img1.webgiare.org/' . $create_theme_name . '.jpg";' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["screenshot"] = "https://img1.webgiare.org/' . $create_theme_name . '.jpg";' . "\n";
 	
 	// khung chờ để nhập thông tin tác giả
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["author"] = "";' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["author"] = "";' . "\n";
 	// link demo
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["demo"] = "";' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["demo"] = "";' . "\n";
 	
 	// đặt giá mặc định cho các theme mới tạo
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support["' . $create_theme_name . '"]["price"] = 2000000;' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["price"] = 2000000;' . "\n";
 	
 	//
 	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'top', '.php' );

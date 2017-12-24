@@ -8,6 +8,7 @@
 */
 $eb_all_themes_support["echbaytwo"]=array();
 $eb_all_themes_support["echbaytwo"]["screenshot"] = "https://img1.webgiare.org/echbaytwo.jpg";
+$eb_all_themes_support["echbaytwo"]["demo"] = "demo.webgiare.org";
 //
 $eb_all_themes_support["echbaytwo"]["top"][] = "echbaytwo-top1.php";
 $eb_all_themes_support["echbaytwo"]["top"][] = "echbaytwo-top2.php";

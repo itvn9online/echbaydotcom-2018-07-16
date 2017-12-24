@@ -157,11 +157,19 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			global $pid;
 			
 			//
+			/*
 			if ( $parent_cid > 0 ) {
 				$cat_ids = $parent_cid;
 			}
 			else if ( $cid > 0 ) {
 				$cat_ids = $cid;
+			}
+			*/
+			if ( $cid > 0 ) {
+				$cat_ids = $cid;
+			}
+			else if ( $parent_cid > 0 ) {
+				$cat_ids = $parent_cid;
 			}
 			
 			// xác định lại post type
