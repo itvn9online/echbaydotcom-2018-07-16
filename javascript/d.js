@@ -282,7 +282,7 @@ function ___eb_details_slider_v2 () {
 		
 		//
 		sr = ___eb_set_img_to_thumbnail( sr );
-		console.log( sr );
+		if ( cf_tester_mode == 1 ) console.log( sr );
 		
 		//
 		str += '<li data-node="' +i+ '" data-src="' + sr + '" style="background-image:url(\'' + sr + '\')">&nbsp;</li>';
