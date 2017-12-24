@@ -224,7 +224,7 @@ if ( isset( $cats[0] ) ) {
 	$cid = $ant_id;
 	
 	// tìm nhóm cha (nếu có)
-	_eb_create_html_breadcrumb( $cats[0] );
+	$parent_cid = _eb_create_html_breadcrumb( $cats[0] );
 } else if ( $bnt_id > 0 ) {
 	$ant_id = $bnt_id;
 	$cid = $bnt_id;

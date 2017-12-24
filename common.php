@@ -65,6 +65,8 @@ $global_dymanic_meta = '';
 $current_search_key = '';
 $str_big_banner = '';
 $current_category_menu = '';
+// nhóm cấp 1 (sẽ xuất hiện trong trường hợp cid là con của nhóm này)
+$parent_cid = 0;
 $cid = 0;
 $eb_wp_taxonomy = '';
 $pid = 0;

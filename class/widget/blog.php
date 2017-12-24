@@ -159,11 +159,15 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		// chỉ lấy các bài viết cùng nhóm
 		if ( $same_cat == 'on' ) {
 			global $cid;
+			global $parent_cid;
 			
-			if ( $cid > 0 ) {
-				echo '<!-- auto get same cat -->';
+			if ( $parent_cid > 0 ) {
 				$cat_ids = $cid;
 			}
+			else if ( $cid > 0 ) {
+				$cat_ids = $cid;
+			}
+			echo '<!-- auto get same cat -->';
 		}
 		
 		// lấy theo nhóm tin đã được chỉ định
