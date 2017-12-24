@@ -123,6 +123,7 @@ if ( $switch_taxonomy != '' ) {
 	
 	// tìm nhóm cha (nếu có)
 	$parent_parent_cat = _eb_create_html_breadcrumb( $__category );
+	$parent_cid = $parent_parent_cat;
 //	echo $parent_parent_cat . '<br>' . "\n";
 	
 	// -> tạo menu từ nhóm cha hiện tại

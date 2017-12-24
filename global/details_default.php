@@ -229,6 +229,7 @@ if ( isset( $cats[0] ) ) {
 	$ant_id = $bnt_id;
 	$cid = $bnt_id;
 }
+//echo $parent_cid . '<br>';
 
 
 

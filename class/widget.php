@@ -201,7 +201,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	//
 	$input_name = $field_name[ 'same_cat' ];
 	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $same_cat, 'Chỉ lấy các bài viết của nhóm đang xem hoặc bài viết cùng nhóm với bài viết đang xem.' );
+	_eb_widget_echo_widget_input_checkbox( $input_name, $same_cat, 'Chỉ lấy các bài viết của nhóm đang xem hoặc bài viết cùng nhóm với bài viết đang xem. * <em>Lựa chọn này sẽ tự động xác định lại post_type và taxonomy của nhóm hoặc bài viết hiện tại</em>.' );
 	
 	
 	

@@ -136,12 +136,6 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		//
 		$cat_link = '';
-		if ( $post_type == EB_BLOG_POST_TYPE ) {
-			$cat_type = EB_BLOG_POST_LINK;
-		}
-		else {
-			$cat_type = 'category';
-		}
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
@@ -156,30 +150,61 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$str_sub_cat = '';
 		
 		
-		// chỉ lấy các bài viết cùng nhóm
+		// chỉ lấy các bài viết cùng nhóm (tự động)
 		if ( $same_cat == 'on' ) {
 			global $cid;
 			global $parent_cid;
+			global $pid;
 			
+			//
 			if ( $parent_cid > 0 ) {
-				$cat_ids = $cid;
+				$cat_ids = $parent_cid;
 			}
 			else if ( $cid > 0 ) {
 				$cat_ids = $cid;
 			}
+			
+			// xác định lại post type
+			if ( $pid > 0 ) {
+				global $__post;
+//				print_r( $__post );
+				
+				if ( isset( $__post->post_type ) ) {
+					$post_type = $__post->post_type;
+				}
+			}
+			/*
+			else if ( $cat_type != EB_BLOG_POST_LINK ) {
+				$post_type = 'post';
+			}
+			echo $cat_type . '<br>' . "\n";
+			*/
+			
+			//
 			echo '<!-- auto get same cat -->';
 		}
 		
 		// lấy theo nhóm tin đã được chỉ định
 		if ( $cat_ids > 0 ) {
 			
-			// lấy lại taxonomy
+			// lấy lại taxonomy dựa theo ID cho nó chuẩn xác
 			$cat_type = WGR_get_taxonomy_name( $cat_ids );
 			if ( $cat_type == '' ) {
 				echo '<!-- taxonomy for #' . $cat_ids . ' not found! -->';
 			}
 			//
 			else {
+				
+				//
+//				echo $cat_type . '<br>' . "\n";
+				
+				// xác định lại post type nếu đang là lấy tin tự động, và nghi ngờ post type với taxonomy không hợp lệ
+				if ( $same_cat == 'on' && $cat_type != EB_BLOG_POST_LINK && $post_type == 'blog' ) {
+					$post_type = 'post';
+				}
+//				echo $post_type . '<br>' . "\n";
+				
+				//
 				$terms_categories[] = $cat_ids;
 				$cat_link = _eb_c_link( $cat_ids, $cat_type );
 				$more_link = '<div class="widget-blog-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
@@ -216,6 +241,15 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		}
 		// lấy tất cả
 		else {
+			// tự xác định lại taxonomy
+			if ( $post_type == EB_BLOG_POST_TYPE ) {
+				$cat_type = EB_BLOG_POST_LINK;
+			}
+			else {
+				$cat_type = 'category';
+			}
+			
+			//
 			$args = array(
 				'taxonomy' => $cat_type,
 			);
