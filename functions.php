@@ -3510,12 +3510,32 @@ function _eb_load_ads (
 }
 
 
+// xác định lại post type của 1 post bất kỳ
+function WGR_get_post_type_name ( $id ) {
+	global $wpdb;
+	
+	//
+	$sql = _eb_q("SELECT post_type
+	FROM
+		`" . $wpdb->posts . "`
+	WHERE
+		ID = " . $id . "
+	LIMIT 0, 1");
+//	print_r( $sql );
+	if ( ! empty( $sql ) ) {
+		return $sql[0]->post_type;
+	}
+	
+	return '';
+}
+
+
 // Dùng để lấy thông tin các term chưa được xác định
 function WGR_get_taxonomy_name ( $id ) {
 	global $wpdb;
 	
 	//
-	$sql = _eb_q("SELECT *
+	$sql = _eb_q("SELECT taxonomy
 	FROM
 		`" . $wpdb->term_taxonomy . "`
 	WHERE

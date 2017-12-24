@@ -172,6 +172,9 @@ class ___echbay_widget_random_blog extends WP_Widget {
 				if ( isset( $__post->post_type ) ) {
 					$post_type = $__post->post_type;
 				}
+				else {
+					$post_type = WGR_get_post_type_name( $pid );
+				}
 			}
 			/*
 			else if ( $cat_type != EB_BLOG_POST_LINK ) {
