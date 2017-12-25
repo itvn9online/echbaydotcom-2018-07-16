@@ -12,6 +12,14 @@ if ( $eb_blog_2content != '' ) {
 $arr_list_tag = wp_get_object_terms( $pid, 'blog_tag' );
 
 
+
+// thêm H2 cho phần blog
+if ( $__post->post_excerpt != '' ) {
+	$__post->post_excerpt = '<h2 class="echbay-tintuc-gioithieu">' . $__post->post_excerpt . '</h2>';
+}
+
+
+
 // bài xem nhiều
 $args = array(
 	'post_type' => EB_BLOG_POST_TYPE,
