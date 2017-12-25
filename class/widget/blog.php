@@ -138,9 +138,6 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$cat_link = '';
 		
 		//
-		_eb_echo_widget_name( $this->name, $before_widget );
-		
-		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
 		
 		//
@@ -155,6 +152,31 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			global $cid;
 			global $parent_cid;
 			global $pid;
+			
+			// xác định lại post type
+			if ( $pid > 0 ) {
+				global $__post;
+//				print_r( $__post );
+				
+				if ( isset( $__post->post_type ) ) {
+					$post_type = $__post->post_type;
+				}
+				else {
+					$post_type = WGR_get_post_type_name( $pid );
+				}
+				
+				// nếu post type là page -> hủy luôn
+				if ( $post_type == 'page' ) {
+					echo '<!-- STOP! auto get same cat not runing in page post type -->';
+					return false;
+				}
+			}
+			/*
+			else if ( $cat_type != EB_BLOG_POST_LINK ) {
+				$post_type = 'post';
+			}
+			echo $cat_type . '<br>' . "\n";
+			*/
 			
 			//
 			/*
@@ -172,28 +194,16 @@ class ___echbay_widget_random_blog extends WP_Widget {
 				$cat_ids = $parent_cid;
 			}
 			
-			// xác định lại post type
-			if ( $pid > 0 ) {
-				global $__post;
-//				print_r( $__post );
-				
-				if ( isset( $__post->post_type ) ) {
-					$post_type = $__post->post_type;
-				}
-				else {
-					$post_type = WGR_get_post_type_name( $pid );
-				}
-			}
-			/*
-			else if ( $cat_type != EB_BLOG_POST_LINK ) {
-				$post_type = 'post';
-			}
-			echo $cat_type . '<br>' . "\n";
-			*/
-			
 			//
 			echo '<!-- auto get same cat -->';
 		}
+		
+		
+		
+		//
+		_eb_echo_widget_name( $this->name, $before_widget );
+		
+		
 		
 		// lấy theo nhóm tin đã được chỉ định
 		if ( $cat_ids > 0 ) {
