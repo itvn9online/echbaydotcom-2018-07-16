@@ -237,6 +237,13 @@ $('.change-update-new-stt').off('change').change(function () {
 eb_drop_menu('oiAnt');
 
 function WGR_check_create_taxonomy () {
+	if ( $.trim( $('#t_multi_taxonomy').val() ) == '' ) {
+		$('#t_multi_taxonomy').focus();
+		alert('Nhập danh sách nhóm cần thêm');
+		return false;
+	}
+	
+	return true;
 }
 
 function WGR_after_create_taxonomy ( m ) {

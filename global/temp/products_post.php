@@ -138,6 +138,35 @@ if ( $post_id > 0 && $type != '' ) {
 		
 		echo '<br>Dat S.Pham chinh hang: ' . $new_status;
 	}
+	// sản phẩm nổi bật
+	else if ( isset( $_GET['current_sticky'] ) ) {
+		
+		$arr_stick = get_option( 'sticky_posts' );
+//		print_r( $arr_stick );
+		
+		//
+		$new_stick = array();
+		
+		// nếu đang được đánh dấu -> xóa đánh dấu
+		if ( in_array( $post_id, $arr_stick ) ) {
+//		if ( (int) $_GET['current_sticky'] == 1 ) {
+			foreach ( $arr_stick as $v ) {
+				if ( $v != $post_id ) {
+					$new_stick[] = $v;
+				}
+			}
+		}
+		// mặc định thì thêm sản phẩm này vào đánh dấu
+		else {
+			$arr_stick[] = $post_id;
+			$new_stick = $arr_stick;
+		}
+//		print_r( $new_stick );
+		
+		//
+		update_option( 'sticky_posts', $new_stick );
+		
+	}
 	else {
 		echo '<br>method not found';
 	}
