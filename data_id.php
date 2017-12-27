@@ -36,6 +36,7 @@ $add_data_id = array (
 		'eb_wp_post_type' => '\'' . $eb_wp_post_type . '\'',
 		'logout_url' => '\'' . ( $mtv_id > 0 ? wp_logout_url( eb_web_protocol . ':' . _eb_full_url() ) : '' ) . '\'',
 //		'cf_categories_url' => $cf_categories_url,
+		'parent_cid' => $parent_cid,
 		'cid' => $cid,
 //		'sid' => $sid,
 //		'fid' => $fid,
