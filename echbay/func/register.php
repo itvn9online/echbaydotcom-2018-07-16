@@ -72,6 +72,9 @@ wp_create_user( $user_name, $t_matkhau, $user_email );
 
 // nếu là quick register -> dừng ở đây là được
 if ( isset( $_POST['for_quick_register'] ) ) {
+	//
+	
+	//
 	die('<script type="text/javascript">
 
 //
