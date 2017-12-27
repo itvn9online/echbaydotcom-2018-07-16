@@ -9,7 +9,7 @@ $html_v2_file = 'page';
 // nếu không tồn tại file thiết kế riêng -> kiểm tra file HTML mẫu
 //	if ( ! file_exists( EB_THEME_HTML . $html_file ) ) {
 	if ( $__cf_row['cf_page_column_style'] != '' ) {
-//			$html_v2_file = $html_v2_file . '_' . $__cf_row['cf_page_column_style'];
+//		$html_v2_file = $html_v2_file . '_' . $__cf_row['cf_page_column_style'];
 		
 		$custom_product_flex_css = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_page_column_style'] );
 	}
