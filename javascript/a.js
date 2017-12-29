@@ -116,7 +116,7 @@ var eb_global_product_size = '',
 		// nếu là post
 		if ( win_href.split('post_type=').length == 1
 		|| win_href.split('post_type=post').length > 1 ) {
-			$('table.wp-list-table').width( '150%' ).addClass('admin-list-product-avt');
+			$('table.wp-list-table').addClass('admin-list-product-avt')/* .width( '150%' ) */;
 		}
 	}
 	// danh sách đơn hàng
