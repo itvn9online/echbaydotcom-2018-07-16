@@ -223,7 +223,8 @@ function WGR_check_quick_edit_price () {
 		b = g_func.only_number( f.t_new_price.value );
 	
 	//
-	if ( a <= b ) {
+//	if ( a <= b ) {
+	if ( a == b ) {
 		a = 0;
 	}
 	
