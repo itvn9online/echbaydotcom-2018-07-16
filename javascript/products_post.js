@@ -152,8 +152,8 @@ $('.click-quick-edit-price').off('click').click(function  () {
 
 //
 $('#quick_edit_new_price').off('change').change(function () {
-	var a = $(this).val() || '';
-	var b = $('#quick_edit_old_price').val() || '';
+	var a = $(this).val() || '',
+		b = $('#quick_edit_old_price').val() || '';
 	
 	//
 	if ( a == '' ) {
@@ -164,7 +164,14 @@ $('#quick_edit_new_price').off('change').change(function () {
 	
 	// tính theo % của giá cũ
 	if ( a.split('%').length > 1 ) {
-		if ( b == '' ) {
+		// nếu giá cũ không có giá trị gì -> lấy theo giá mới, sau đó mới gán lại giá trị cho giá mới
+		if ( b == '' || b == 0 ) {
+			b = $('.click-quick-edit-price[data-id="' + document.frm_quick_edit_price.t_product_id.value + '"]').attr('data-new-price') || '';
+			$('#quick_edit_old_price').val( b );
+		}
+		
+		// Kiểm tra lại, vẫn thế -> hủy luôn
+		if ( b == '' || b == 0 ) {
 			$('#quick_edit_old_price').val( 0 );
 			a = 0;
 		}
