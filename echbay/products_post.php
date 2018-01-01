@@ -1,78 +1,9 @@
-<style type="text/css">
-/* mặc định là ẩn hết các nút quick action */
-.class-for-post-type .fa-icons { display: none; }
-/* hiển thị các nút mà post type nào cũng sẽ dùng */
-.class-for-post-type .fa-refresh,
-.class-for-post-type .fa-arrow-circle-up,
-.class-for-post-type .fa-arrow-circle-down,
-.class-for-post-type .fa-unlock,
-.class-for-post-type .fa-lock { display: inline-block; }
-/*
-.click-order-thread.fa-comments,
-.click-order-thread.fa-link,
-*/
-.click-order-thread.fa-star[data-val="1"] { color: #F90; }
-.click-order-thread.fa-comments[data-val="closed"],
-.click-order-thread.fa-link[data-val="closed"],
-.click-order-thread.fa-paw[data-val="1"],
-.click-order-thread.fa-diamond[data-val="0"],
-.click-order-thread.fa-star { color: #333; }
-.click-order-thread.fa-diamond[data-val="1"] { color: #F90; }
-.quick-show-if-post { display: none !important; }
-/* một số nút chỉ hiển thị với post type cụ thể */
-.class-for-post .quick-show-if-post,
-.class-for-blog .fa-comments,
-.class-for-blog .fa-link,
-.class-for-blog .fa-paw,
-.class-for-post .fa-star,
-.class-for-post .fa-comments,
-.class-for-post .fa-link,
-.class-for-post .fa-paw,
-.class-for-post .fa-diamond { display: inline-block !important; }
-.class-for-post .quick-show2-if-post { display: block !important; }
-/*
-.class-for-post .quick-show-if-paw,
-.class-for-blog .quick-show-if-paw { display: inline-block !important; }
-*/
-.admin-products_post-category { margin-bottom: 15px; }
-.admin-products_post-category li {
-	float: left;
-	margin: 5px 20px 5px 0;
-}
-.admin-products_post-category a:before { content: "- "; }
-.table-list input[type="number"].s { width: 70px; }
-/* multi edit tool */
-
-.thread-edit-tools { padding: 0 0 15px 6px; }
-.thread-edit-tools button {
-	border: #d3d3d3 1px solid;
-	background: #f8f8f8;
-	color: #333;
-	display: inline-block;
-	height: 28px;
-	padding: 0 10px;
-	margin-left: 10px;
-	outline: 0;
-	font-weight: 500;
-	font-size: 11px;
-	text-decoration: none;
-	white-space: nowrap;
-	word-wrap: normal;
-	line-height: normal;
-	vertical-align: middle;
-	cursor: pointer;
-	border-radius: 2px;
-	box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-}
-.thread-multi-checkbox { cursor: pointer; }
-.thread-multi-edit { padding: 20px 0; }
-.thread-multi-input input[type=text] {
-	padding: 6px;
-	width: 250px;
-}
-.thread-multi-edit button:hover { background-color: #f2f2f2; }
-</style>
 <?php
+
+
+
+//
+echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/css/products_post.css?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'css/products_post.css' ) . '" type="text/css" media="all" />' . "\n";
 
 
 
@@ -206,6 +137,7 @@ $strAjaxLink .= '&trang=' . $trang;
 
 
 ?>
+
 <div class="class-for-<?php echo $by_post_type; ?>">
 	<div class="quick-show2-if-post">
 		<div class="thread-edit-tools">
@@ -420,73 +352,11 @@ if ( $totalThread > 0 ) {
 
 	?>
 </table>
-<script type="text/javascript">
-
-//
-WGR_admin_quick_edit_select_menu();
-
-//
-function WGR_admin_quick_edit_products ( connect_to, url_request, parameter ) {
-	
-	// kiểm tra dữ liệu đầu vào
-	if ( typeof connect_to == 'undefined' || connect_to == '' ) {
-		console.log('not set connect to');
-		return false;
-	}
-	if ( typeof url_request == 'undefined' || url_request == '' ) {
-		console.log('URL for request is NULL');
-		return false;
-	}
-	
-	// các tham số khác
-	if ( typeof parameter == 'undefined' ) {
-		parameter = '';
-	}
-	
-	// không cho bấm liên tiếp
-	if ( waiting_for_ajax_running == true ) {
-		console.log('waiting_for_ajax_running');
-		return false;
-	}
-	waiting_for_ajax_running = true;
-	
-	//
-	$('#rAdminME').css({
-		opacity: 0.2
-	});
-	
-	ajaxl( connect_to + url_request + parameter, 'rAdminME', 9, function () {
-		$('#rAdminME').css({
-			opacity: 1
-		});
-		
-		waiting_for_ajax_running = false;
-	});
-}
-
-//
-$('.click-order-thread').off('click').click(function () {
-	WGR_admin_quick_edit_products( 'products', $(this).attr('data-ajax') || '' );
-});
+<?php
 
 
 
-//
-$('.change-update-new-stt').off('change').change(function () {
-	var a = $(this).val() || 0;
-	a = g_func.number_only(a);
-	if ( a < 0 ) {
-		a = 0;
-	}
-//	console.log( a );
-	
-	// giảm đi 1 đơn vị -> vì sử dụng lệnh của chức năng UP
-	a--;
-//	console.log( a );
-	
-	//
-	WGR_admin_quick_edit_products( 'products', $(this).attr('data-ajax') || '', a );
-});
+echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_post.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_post.js' ) . '"></script>' . "\n";
 
 
-</script> 
+

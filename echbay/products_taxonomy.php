@@ -1,18 +1,15 @@
-<style type="text/css">
-.click-order-thread[data-val="1"] { color: #F90; }
-/* .maxwidth-quick-add-taxonomy { max-width: 600px; } */
-.list-edit-taxonomy blockquote {
-	font-size: 18px;
-	padding-left: 15px;
-	margin-left: 0;
-	border-left: 1px #999 solid;
-}
-.list-edit-taxonomy blockquote blockquote {
-	font-size: 85%;
-	padding-left: 30px;
-	border-left: 0;
-}
-</style>
+<?php
+
+
+
+//
+echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/css/products_taxonomy.css?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'css/products_taxonomy.css' ) . '" type="text/css" media="all" />' . "\n";
+
+
+
+
+?>
+
 <div class="text-right">
 	<button class="blue-button cur click-show-quick-add-taxonomy">Thêm nhóm mới [+]</button>
 </div>
@@ -158,102 +155,7 @@ echo '<div class="list-edit-taxonomy">' . WGR_get_and_oders_taxonomy_category( $
 
 
 
-
-?>
-<script type="text/javascript">
-
-//
-WGR_admin_quick_edit_select_menu();
-
-//
-function WGR_admin_quick_edit_taxonomy ( connect_to, url_request, parameter ) {
-	
-	// kiểm tra dữ liệu đầu vào
-	if ( typeof connect_to == 'undefined' || connect_to == '' ) {
-		console.log('not set connect to');
-		return false;
-	}
-	if ( typeof url_request == 'undefined' || url_request == '' ) {
-		console.log('URL for request is NULL');
-		return false;
-	}
-	
-	// các tham số khác
-	if ( typeof parameter == 'undefined' ) {
-		parameter = '';
-	}
-	
-	// không cho bấm liên tiếp
-	if ( waiting_for_ajax_running == true ) {
-		console.log('waiting_for_ajax_running');
-		return false;
-	}
-	waiting_for_ajax_running = true;
-	
-	//
-	$('#rAdminME').css({
-		opacity: 0.2
-	});
-	
-	ajaxl( connect_to + url_request + parameter, 'rAdminME', 9, function () {
-		$('#rAdminME').css({
-			opacity: 1
-		});
-		
-		waiting_for_ajax_running = false;
-	});
-}
-
-//
-$('.click-order-thread').off('click').click(function () {
-	WGR_admin_quick_edit_taxonomy( 'products', $(this).attr('data-ajax') || '' );
-});
+echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_taxonomy.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_taxonomy.js' ) . '"></script>' . "\n";
 
 
 
-//
-$('.change-update-new-stt').off('change').change(function () {
-	var a = $(this).val() || 0;
-	a = g_func.number_only(a);
-	if ( a < 0 ) {
-		a = 0;
-	}
-//	console.log( a );
-	
-	// giảm đi 1 đơn vị -> vì sử dụng lệnh của chức năng UP
-	a--;
-//	console.log( a );
-	
-	//
-	WGR_admin_quick_edit_taxonomy( 'products', $(this).attr('data-ajax') || '', a );
-});
-
-
-
-
-/*
-* Thêm nhiều nhóm 1 lúc
-*/
-eb_drop_menu('oiAnt');
-
-function WGR_check_create_taxonomy () {
-	if ( $.trim( $('#t_multi_taxonomy').val() ) == '' ) {
-		$('#t_multi_taxonomy').focus();
-		alert('Nhập danh sách nhóm cần thêm');
-		return false;
-	}
-	
-	return true;
-}
-
-function WGR_after_create_taxonomy ( m ) {
-	$('#create_taxonomy_result').append( m + '<br>' );
-}
-
-$('.click-show-quick-add-taxonomy').click(function () {
-	$('.show-quick-add-taxonomy').toggle('slow');
-	$('#t_multi_taxonomy').focus();
-});
-
-
-</script> 
