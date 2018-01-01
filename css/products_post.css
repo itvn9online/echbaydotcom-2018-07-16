@@ -70,3 +70,23 @@
 	width: 250px;
 }
 .thread-multi-edit button:hover { background-color: #f2f2f2; }
+.click-quick-edit-price:hover span,
+.click-quick-edit-price:hover strong { text-decoration: underline; }
+#frm_quick_edit_price { display: none; }
+#frm_quick_edit_price .edit-price-padding {
+	box-shadow: 0 0 20px #ccc;
+	position: fixed;
+	top: 10%;
+	left: 35%;
+	background: #fff;
+	padding: 15px 20px;
+	border: 1px #ccc solid;
+	width: 90%;
+	max-width: 470px;
+}
+#frm_quick_edit_price .small { line-height: 14px; }
+#frm_quick_edit_price div.cf { padding: 8px 0; }
+#frm_quick_edit_price input[type="text"] {
+	width: 80%;
+	padding: 4px 6px;
+}

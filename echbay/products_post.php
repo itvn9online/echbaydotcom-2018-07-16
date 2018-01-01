@@ -219,6 +219,39 @@ $strAjaxLink .= '&trang=' . $trang;
 		</div>
 	</div>
 </div>
+<div id="frm_quick_edit_price" class="hide-if-press-esc">
+	<div class="edit-price-padding">
+		<div class="text-right"><i class="fa fa-close cur" onClick="$('#frm_quick_edit_price').fadeOut();"></i></div>
+		<form name="frm_quick_edit_price" action="javascript:;" onSubmit="return WGR_check_quick_edit_price();">
+			<input type="hidden" name="t_product_id" value="0">
+			<div class="cf">
+				<div class="lf f30">Giá cũ</div>
+				<div class="lf f70">
+					<input type="text" name="t_old_price" id="quick_edit_old_price" value="">
+				</div>
+			</div>
+			<div class="cf">
+				<div class="lf f30">Giá mới</div>
+				<div class="lf f70">
+					<input type="text" name="t_new_price" id="quick_edit_new_price" value="">
+				</div>
+			</div>
+			<div class="small">* Mẹo:<br>
+				Ví dụ giá cũ đang là 1,000,000đ, trong ô giá mới ta có các cách nhập như sau:<br>
+				[<strong>70%</strong>] -&gt; hệ thống tự tính toán giá mới bằng 70% giá cũ -&gt; 700,000đ.<br>
+				[<strong>-70%</strong>] -&gt; hệ thống tự tính toán giá mới bằng giá cũ trừ đi 70% -&gt; 300,000đ.<br>
+				[<strong>600k</strong>] -&gt; hệ thống tự tính toán giá mới bằng 600 nhân với 1000 -&gt; 600,000đ.<br>
+				* Giá cũ nhỏ hơn hoặc bằng Giá mới -&gt; Giá cũ sẽ được set bằng 0.</div>
+			<br>
+			<div class="cf">
+				<div class="lf f30">&nbsp;</div>
+				<div class="lf f70">
+					<button type="submit" class="button button-primary">Cập nhật</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list class-for-post-type class-for-<?php echo $by_post_type; ?>">
 	<tr class="table-list-title">
 		<td width="5%">&nbsp;</td>
@@ -318,7 +351,7 @@ if ( $totalThread > 0 ) {
 	<td><a href="' . $trv_link . '" target="_blank" class="d-block admin-thread-avt" style="background-image:url(\'' . $trv_img . '\');">&nbsp;</a></td>
 	<td>
 		<div><a title="' . $trv_tieude . '" href="' . admin_link . 'post.php?post=' . $trv_id . '&action=edit" target="_blank"><strong>' . $trv_tieude . '</strong> <i title="Sửa" class="fa fa-edit greencolor"></i></a></div>
-		<div class="quick-show-if-post">' . number_format ( $trv_giaban ) . '/ <strong>' . number_format ( $trv_giamoi ) . '</strong></div>
+		<div class="quick-show-if-post">Mã sản phẩm: <strong class="upper">' . _eb_get_post_object( $trv_id, '_eb_product_sku' ) . '</strong> | <span data-id="' . $trv_id . '" data-old-price="' . $trv_giaban . '"  data-new-price="' . $trv_giamoi . '" class="click-quick-edit-price">Giá: <span class="cur">' . number_format ( $trv_giaban ) . '</span>/ <strong class="cur">' . number_format ( $trv_giamoi ) . '</strong></span></div>
 		<div>' . $view_by_group . '</div>
 	</td>
 	<td><input type="number" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" class="s change-update-new-stt" /></td>
@@ -357,6 +390,21 @@ if ( $totalThread > 0 ) {
 
 
 echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_post.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_post.js' ) . '"></script>' . "\n";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

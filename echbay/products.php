@@ -7,7 +7,10 @@ global $wpdb;
 
 
 //
-$threadInPage = 68;
+$threadInPage = _eb_getCucki('quick_edit_per_page');
+if ( $threadInPage == '' ) {
+	$threadInPage = 68;
+}
 $totalThread = 0;
 $totalPage = 0;
 $strLinkPager = admin_link . 'admin.php?page=eb-products';
@@ -77,42 +80,23 @@ $arr_for_show_taxonomy = array(
 <script type="text/jscript">
 
 var waiting_for_ajax_running = false,
+	threadInPage = '<?php echo $threadInPage; ?>',
+	strLinkPager = '<?php echo $strLinkPager; ?>',
 	by_post_type = '<?php echo $by_post_type; ?>',
 	by_taxonomy = '<?php echo $by_taxonomy; ?>';
-
-//
-function WGR_admin_quick_edit_select_menu () {
-	
-	//
-	$('.set-url-post-post-type').each(function(index, element) {
-		var a = $(this).attr('data-type') || 'post';
-		
-		$(this).attr({
-			href: window.location.href.split('&by_post_type=')[0].split('&by_taxonomy=')[0] + '&by_post_type=' + a
-		});
-	});
-	
-	//
-	$('.set-url-taxonomy-category').each(function(index, element) {
-		var a = $(this).attr('data-type') || 'post';
-		
-		$(this).attr({
-			href: window.location.href.split('&by_post_type=')[0].split('&by_taxonomy=')[0] + '&by_taxonomy=' + a
-		});
-	});
-	
-	//
-	if ( window.location.href.split('&by_taxonomy=').length > 1 ) {
-		$('.set-url-taxonomy-category[data-type="' + by_taxonomy + '"]').addClass('bold');
-	}
-	else {
-		$('.set-url-post-post-type[data-type="' + by_post_type + '"]').addClass('bold');
-	}
-}
 
 </script> 
 <br>
 <?php
+
+
+
+//
+echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products.js' ) . '"></script>' . "\n";
+
+
+
+
 
 //
 if ( isset( $_GET['by_taxonomy'] ) ) {

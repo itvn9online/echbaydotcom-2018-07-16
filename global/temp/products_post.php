@@ -167,6 +167,18 @@ if ( $post_id > 0 && $type != '' ) {
 		update_option( 'sticky_posts', $new_stick );
 		
 	}
+	// sản phẩm nổi bật
+	else if ( isset( $_GET['new_price'] ) && $type == 'update_price' ) {
+		$old_price = trim( $_GET['old_price'] );
+		$new_price = trim( $_GET['new_price'] );
+		
+		//
+		update_post_meta( $post_id, '_eb_product_oldprice', $old_price );
+		update_post_meta( $post_id, '_eb_product_price', $new_price );
+		
+		//
+		echo '<br>Cập nhật giá cho sản phẩm: ' . $old_price . ' - ' . $new_price;
+	}
 	else {
 		echo '<br>method not found';
 	}
