@@ -177,14 +177,21 @@ $('#quick_edit_new_price').off('change').change(function () {
 		}
 		else {
 			b = g_func.only_number( b );
-			// giảm theo số %
-			if ( a.split('-').length > 1 ) {
-				a = b/ 100 * g_func.only_number( a );
-				a = b + a;
+			
+			// nếu là 0% -> gán bằng giá cũ luôn
+			if ( g_func.only_number( a ) == 0 ) {
+				a = b;
 			}
-			// bằng số %
 			else {
-				a = b/ 100 * g_func.only_number( a );
+				// giảm theo số %
+				if ( a.split('-').length > 1 ) {
+					a = b/ 100 * g_func.only_number( a );
+					a = b + a;
+				}
+				// bằng số %
+				else {
+					a = b/ 100 * g_func.only_number( a );
+				}
 			}
 		}
 		
