@@ -13,6 +13,7 @@ $eb_all_themes_support["datxetructuyen"]["author"] = "";
 $eb_all_themes_support["datxetructuyen"]["demo"] = "";
 $eb_all_themes_support["datxetructuyen"]["price"] = 20000000;
 //
+$eb_all_themes_support["datxetructuyen"]["top"][] = "echbaytwo-top1.php";
 $eb_all_themes_support["datxetructuyen"]["top"][] = "datxetructuyen-top1.php";
 $eb_all_themes_support["datxetructuyen"]["top"][] = "top_widget.php";
 $eb_all_themes_support["datxetructuyen"]["top"][] = "bigbanner-top1.php";
