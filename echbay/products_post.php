@@ -222,7 +222,7 @@ $strAjaxLink .= '&trang=' . $trang;
 <div id="frm_quick_edit_price" class="hide-if-press-esc">
 	<div class="edit-price-padding">
 		<div class="text-right"><i class="fa fa-close cur" onClick="$('#frm_quick_edit_price').fadeOut();"></i></div>
-		<form name="frm_quick_edit_price" action="javascript:;" onSubmit="return WGR_check_quick_edit_price();">
+		<form name="frm_quick_edit_price" method="get" action="javascript:;" onSubmit="return WGR_check_quick_edit_price();">
 			<input type="hidden" name="t_product_id" value="0">
 			<div class="cf">
 				<div class="lf f30">Giá cũ</div>

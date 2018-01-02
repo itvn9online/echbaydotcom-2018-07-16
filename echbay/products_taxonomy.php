@@ -7,9 +7,48 @@ echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotco
 
 
 
+//
+$get_site_select_taxonomy = _eb_categories_list_v3( 't_ant', $by_taxonomy );
+
+
+
 
 ?>
-
+<style>
+#edit_parent_for_category { display: none; }
+.edit-parent-padding {
+	background: #fff;
+	border: 1px #ccc solid;
+	padding: 15px;
+	position: fixed;
+	right: 10px;
+	top: 10%;
+	max-width: 350px;
+	width: 95%;
+}
+</style>
+<div id="edit_parent_for_category" class="hide-if-press-esc">
+	<div class="edit-parent-padding">
+		<form name="frm_quick_edit_parent" method="get" action="javascript:;" onSubmit="return WGR_check_quick_edit_parent();">
+			<input type="hidden" name="t_uri" value="">
+			<div class="cf">
+				<div class="lf f30">Danh mục</div>
+				<div class="lf f70 bold edit_parent_for"></div>
+			</div>
+			<div class="cf">
+				<div class="lf f30">Nhóm cha</div>
+				<div class="lf f70 edit_parent_by"><?php echo $get_site_select_taxonomy; ?></div>
+			</div>
+			<br>
+			<div class="cf">
+				<div class="lf f30">&nbsp;</div>
+				<div class="lf f70">
+					<button type="submit" class="button button-primary">Cập nhật</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 <div class="text-right">
 	<button class="blue-button cur click-show-quick-add-taxonomy">Thêm nhóm mới [+]</button>
 </div>
@@ -21,7 +60,7 @@ echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotco
 					<input type="hidden" name="t_taxonomy" value="<?php echo $by_taxonomy; ?>">
 				</div>
 				<p class="bold">Nhóm cha:</p>
-				<div id="oiAnt"><?php echo _eb_categories_list_v3( 't_ant', $by_taxonomy ); ?></div>
+				<div id="oiAnt"><?php echo $get_site_select_taxonomy; ?></div>
 				<br>
 				<div>
 					<label for="t_multi_taxonomy" class="l25 bold">Nhập danh sách các nhóm cần thêm:</label>
@@ -141,7 +180,9 @@ function WGR_get_and_oders_taxonomy_category (
 					<div><i title="Set primary" data-val="' . $_eb_category_primary . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_primary=' . $_eb_category_primary . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
 				</div>
 			</div>
-			<div class="lf"><a href="' . admin_link . 'term.php?taxonomy=' . $v->taxonomy . '&tag_ID=' . $v->term_id . '&post_type=' . ( $v->taxonomy == EB_BLOG_POST_LINK ? EB_BLOG_POST_TYPE : 'post' ) . '" target="_blank">' . $v->name . ' (' . $v->count . ') <i class="fa fa-edit"></i></a> - <a href="' . $c_link . '" target="_blank" class="small blackcolor">' . $c_link . ' <i class="fa fa-eye"></i></a></a></div>
+			<div class="lf"><a href="' . admin_link . 'term.php?taxonomy=' . $v->taxonomy . '&tag_ID=' . $v->term_id . '&post_type=' . ( $v->taxonomy == EB_BLOG_POST_LINK ? EB_BLOG_POST_TYPE : 'post' ) . '" target="_blank">' . $v->name . ' (' . $v->count . ') <i class="fa fa-edit"></i></a> - <a href="' . $c_link . '" target="_blank" class="small blackcolor">' . $c_link . ' <i class="fa fa-eye"></i></a>
+				<i title="Change parent category" data-name="' . str_replace( '"', '&quot;', $v->name ) . '" data-val="' . $v->parent . '" data-ajax="' . $strLinkAjaxl . '&t=change_parent&current_parent=' . $v->parent . '" class="fa fa-group fa-icons cur click-change-parent-category"></i>
+			</div>
 		</div>' . $str_child;
 	}
 	
@@ -156,6 +197,11 @@ echo '<div class="list-edit-taxonomy">' . WGR_get_and_oders_taxonomy_category( $
 
 
 echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_taxonomy.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_taxonomy.js' ) . '"></script>' . "\n";
+
+
+
+
+
 
 
 

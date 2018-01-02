@@ -68,6 +68,42 @@ $('.change-update-new-stt').off('change').change(function () {
 
 
 
+// chuyển nhóm cha cho 1 nhóm con
+$('.click-change-parent-category').off('click').click(function () {
+	$('#edit_parent_for_category').show();
+	
+	//
+	var uri = $(this).attr('data-ajax') || '',
+		name = $(this).attr('data-name') || '',
+		parent = $(this).attr('data-val') || 0,
+		f = document.frm_quick_edit_parent;
+	
+	//
+	f.t_uri.value = uri;
+	
+	$('.edit_parent_for').html(name);
+	
+	//
+	$('.edit_parent_by select').val(parent);
+	/*
+	$('.edit_parent_by select option').removeAttr('selected');
+	$('.edit_parent_by select option[value="' + parent + '"]').attr({
+		'selected' : 'selected'
+	});
+	*/
+	
+	//
+	f.t_ant.focus();
+});
+
+function WGR_check_quick_edit_parent () {
+	var f = document.frm_quick_edit_parent;
+	
+	WGR_admin_quick_edit_taxonomy( 'products', f.t_uri.value, '&new_parent=' + f.t_ant.value );
+}
+
+
+
 
 /*
 * Thêm nhiều nhóm 1 lúc

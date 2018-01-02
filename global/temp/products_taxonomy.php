@@ -48,7 +48,7 @@ if ( $term_id > 0 && $type != '' ) {
 		
 		echo '<br>set category order: ' . $new_stt;
 	}
-	// dặt làm phân nhóm chính
+	// đặt làm phân nhóm chính
 	else if ( isset( $_GET['current_primary'] ) ) {
 		$new_primary = 0;
 		if ( $_GET['current_primary'] == 0 ) {
@@ -59,6 +59,16 @@ if ( $term_id > 0 && $type != '' ) {
 		update_post_meta( $term_id, '_eb_category_primary', $new_primary );
 		
 		echo '<br>set category primary: ' . $new_primary;
+	}
+	// đổi nhóm cha
+	else if ( isset( $_GET['current_parent'], $_GET['new_parent'] ) ) {
+		if ( $term_id != $_GET['new_parent'] && $_GET['current_parent'] != $_GET['new_parent'] ) {
+			wp_update_term($term_id, $by_taxonomy, array(
+				'parent' => (int) $_GET['new_parent']
+			));
+			
+			echo '<br>set category parent: ' . $_GET['new_parent'];
+		}
 	}
 	else {
 		echo '<br>method not found';
