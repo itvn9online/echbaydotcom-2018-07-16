@@ -273,9 +273,9 @@ else {
 					$redirect_301_link = _eb_p_link( $v->post_id );
 				}
 			}
-			// nếu không -> add vào monitor để add thủ công
-			else {
-				add_post_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
+			// thử đồng bộ từ version cũ sang version wordpress
+			else if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
+				include EB_THEME_PLUGIN_INDEX . 'global/404_v1.php';
 			}
 		}
 		
@@ -295,6 +295,10 @@ else {
 			
 			exit();
 			
+		}
+		// nếu không -> add vào monitor để add thủ công
+		else {
+			add_post_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
 		}
 		
 		

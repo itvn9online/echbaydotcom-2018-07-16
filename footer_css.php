@@ -168,9 +168,11 @@ foreach ( $arr_for_add_outsource_js as $v ) {
 
 
 // thêm JS đồng bộ URL từ code EchBay cũ sang code WebGiaRe (nếu có)
+/* -> chuyển sang sử dụng phiên bản php
 if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
 	$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/eb_migrate_version.js';
 }
+*/
 
 // file js riêng của từng theme
 if ( defined('EB_CHILD_THEME_URL') ) {
