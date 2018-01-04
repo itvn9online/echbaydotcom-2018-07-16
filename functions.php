@@ -2541,6 +2541,12 @@ function _eb_count_log ( $log_type = 0, $limit_time = 3600, $limit_day = 0, $lim
 }
 
 function _eb_clear_log ( $log_type = 0, $limit_day = 30 ) {
+	
+	// tính toán lại log, đồng thời dọn dẹp bớt đi cho nó gọn
+	_eb_count_log( $log_type, 0, $limit_day );
+	
+	//
+	/*
 	$limit_day = date_time - $limit_day * 24 * 3600;
 	
 	//
@@ -2550,6 +2556,7 @@ function _eb_clear_log ( $log_type = 0, $limit_day = 30 ) {
 	WHERE
 		l_type = " . $log_type . "
 		AND l_ngay < " . $limit_day);
+		*/
 	
 	return true;
 }

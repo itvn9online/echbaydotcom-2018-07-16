@@ -7,7 +7,7 @@
 */
 
 $strCacheFilter = 'admin-clean-log';
-$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 24 * 3600 );
+$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 3600 );
 if ($check_Cleanup_cache == false) {
 	
 	//
