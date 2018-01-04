@@ -51,7 +51,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 		/*
 		* den-quat-hien-dai-s57.html
 		*/
-		if ( $b > 0 && preg_match ( '/^(c|s|f|p|n)+([0-9])+$/i', $a0 ) ) {
+		if ( $b > 0 && preg_match ( '/^(c|s|f|p|b|n)+([0-9])+$/i', $a0 ) ) {
 			/*
 		// category
 		if ( substr($a0, 0, 1) == 'c' || substr($a0, 0, 1) == 's' || substr($a0, 0, 1) == 'f'
@@ -62,6 +62,10 @@ function WGR_migrate_v1_to_wordpress_version () {
 			*/
 			if ( substr($a0, 0, 1) == 'p' ) {
 				$post_type = 'post';
+			}
+			else if ( substr($a0, 0, 1) == 'n' ) {
+				$post_type = EB_BLOG_POST_TYPE;
+//				$taxonomy = EB_BLOG_POST_LINK;
 			}
 			/*
 			if ( substr($a0, 0, 1) == 'n' ) {
@@ -92,7 +96,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 //				echo $b . '<br>' . "\n";
 				
 				//
-				if ( $b > 0 && preg_match ( '/^(c|s|f|p|n)+([0-9])+$/i', $a0 ) ) {
+				if ( $b > 0 && preg_match ( '/^(c|s|f|p|b|n)+([0-9])+$/i', $a0 ) ) {
 					$a0 = explode( '/', $a );
 					if ( isset( $a0[2] ) ) {
 						$new_url = $a0[2];
