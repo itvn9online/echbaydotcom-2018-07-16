@@ -902,6 +902,12 @@ function _eb_create_file (
 ) {
 	
 	//
+	if ( $content_ == '' ) {
+		echo 'ERROR put file: content is NULL<br>' . "\n";
+		return false;
+	}
+	
+	//
 	if ( ! file_exists( $file_ ) ) {
 		$filew = fopen( $file_, 'x+' );
 		
@@ -936,7 +942,8 @@ function _eb_create_file (
 	}
 	
 	//
-	if ( ! $aa ) {
+	if ( ! $aa && $ftp == 1 ) {
+//		echo $file_ . '<br>' . "\n";
 		if ( EBE_ftp_create_file( $file_, $content_, $add_line ) != true ) {
 			echo 'ERROR write to file: ' . $file_ . '<br>' . "\n";
 			return false;
@@ -1240,6 +1247,13 @@ function EBE_get_ftp_root_dir ( $content_ = 'test' ) {
 // Tạo file thông qua tài khoản FTP
 function EBE_ftp_create_file ($file_, $content_, $add_line = '', $mod = 0777) {
 	
+	//
+	if ( $content_ == '' ) {
+		echo 'ERROR FTP: content is NULL<br>' . "\n";
+		return false;
+	}
+	
+	//
 	$ftp_dir_root = EBE_get_config_ftp_root_dir( $content_ );
 	
 	
