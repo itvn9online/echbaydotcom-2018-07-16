@@ -17,6 +17,16 @@ if ( $term_id > 0 && $type != '' ) {
 		if ( $type == 'auto' ) {
 			$sql = _eb_q("SELECT *
 			FROM
+				`" . $wpdb->termmeta . "`
+			WHERE
+				meta_key = '_eb_category_order'
+				AND term_id != " . $term_id . "
+			ORDER BY
+				meta_value DESC
+			LIMIT 0, 1");
+			/*
+			$sql = _eb_q("SELECT *
+			FROM
 				" . wp_postmeta . "
 			WHERE
 				meta_key = '_eb_category_order'
@@ -24,6 +34,7 @@ if ( $term_id > 0 && $type != '' ) {
 			ORDER BY
 				meta_value DESC
 			LIMIT 0, 1");
+			*/
 //			print_r( $sql );
 			
 			//
@@ -44,7 +55,8 @@ if ( $term_id > 0 && $type != '' ) {
 //		echo $term_id . '<br>' . "\n";
 		
 		//
-		update_post_meta( $term_id, '_eb_category_order', $new_stt );
+//		update_post_meta( $term_id, '_eb_category_order', $new_stt );
+		update_term_meta( $term_id, '_eb_category_order', $new_stt );
 		
 		echo '<br>set category order: ' . $new_stt;
 	}
@@ -56,7 +68,8 @@ if ( $term_id > 0 && $type != '' ) {
 		}
 		
 		//
-		update_post_meta( $term_id, '_eb_category_primary', $new_primary );
+//		update_post_meta( $term_id, '_eb_category_primary', $new_primary );
+		update_term_meta( $term_id, '_eb_category_primary', $new_primary );
 		
 		echo '<br>set category primary: ' . $new_primary;
 	}
