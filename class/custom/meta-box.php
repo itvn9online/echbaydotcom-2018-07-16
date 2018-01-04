@@ -704,6 +704,10 @@ function EBextra_category_fields( $tag ) {
 
 
 // save extra category extra fields callback function
+/*
+https://developer.wordpress.org/reference/functions/delete_term_meta/
+https://developer.wordpress.org/reference/functions/update_term_meta/
+*/
 function EBsave_extra_category_fileds( $term_id ) {
 	global $arr_category_custom_fields;
 	global $eb_arr_type_custom_meta_box;
@@ -741,10 +745,17 @@ function EBsave_extra_category_fileds( $term_id ) {
 			
 			//
 			if ( $val == '' ) {
+				delete_term_meta( $term_id, $k );
+				
+				// tạm thời sẽ xóa cả trong post meta phần này ======================================
 				delete_post_meta( $term_id, $k );
 			}
 			else {
-				update_post_meta( $term_id, $k, $val );
+//				update_post_meta( $term_id, $k, $val );
+				update_term_meta( $term_id, $k, $val );
+				
+				// tạm thời sẽ xóa cả trong post meta phần này ======================================
+				delete_post_meta( $term_id, $k );
 			}
 			
 			//
@@ -755,8 +766,11 @@ function EBsave_extra_category_fileds( $term_id ) {
 		}
 		// thử kiểm tra với checkbox
 		else if ( $loc_html == 'checkbox' ) {
+			delete_term_meta( $term_id, $k );
+			
 			// không có -> set là 0 luôn
 //			update_post_meta( $term_id, $k, 0 );
+			// tạm thời sẽ xóa cả trong post meta phần này ======================================
 			delete_post_meta( $term_id, $k );
 		}
 		

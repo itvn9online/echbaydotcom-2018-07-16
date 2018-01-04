@@ -2088,9 +2088,95 @@ function _eb_convert_postmeta_to_v2 ( $id, $key = '_eb_product_', $meta_key = eb
 * Gán vào một tham số khác để phân định giữa category với post
 */
 //$arr_object_cat_meta = array();
+$arr_object_term_meta = array();
 
 function _eb_get_cat_object ( $id, $key, $default_value = '' ) {
+	global $arr_object_term_meta;
+	
+	// v3 -> sử dụng term meta
+	$check_id = 'cid' . $id;
+	
+	if ( ! isset( $arr_object_term_meta[$check_id] ) ) {
+		global $wpdb;
+		
+		$sql = _eb_q ("SELECT meta_key, meta_value
+		FROM
+			`" . $wpdb->termmeta . "`
+		WHERE
+			term_id = " . $id);
+//		print_r($sql);
+		
+		// nếu chưa có -> thử tìm trong bảng post meta xem có không
+		if ( empty( $sql ) ) {
+//			echo eb_cat_obj_data . '<br>' . "\n";
+			
+			// thử kiểm tra trong bảng post meta xem có không
+			$sql = _eb_q ("SELECT meta_key, meta_value
+			FROM
+				`" . wp_postmeta . "`
+			WHERE
+				post_id = " . $id);
+//			print_r($sql);
+			
+			// nếu có -> chuyển sang bảng term meta
+			if ( ! empty( $sql ) ) {
+				foreach ( $sql as $v ) {
+					// xác minh đúng là term cho category mới chuyển
+					if ( strstr( $v->meta_key, '_eb_category_' ) == true ) {
+//						print_r( $v );
+						
+						// nếu dữ liệu trống -> cũng hủy luôn
+//						if ( $v->meta_value == '' || $v->meta_value == 0 ) {
+						if ( $v->meta_value == '' ) {
+							delete_post_meta( $id, $v->meta_key );
+						}
+						// chuyển sang bảng term
+						else if ( update_term_meta( $id, $v->meta_key, $v->meta_value ) ) {
+							// xóa post meta
+							delete_post_meta( $id, $v->meta_key );
+						}
+					}
+				}
+			}
+		}
+		
+		// gán dữ liệu để tra về
+		$arr = array();
+		
+		foreach ( $sql as $v ) {
+			$arr[ $v->meta_key ] = $v->meta_value;
+		}
+		
+		// nếu không có kết quả trả về -> trả về dữ liệu mặc định
+		if ( ! isset ( $arr[ $key ] ) || $arr[ $key ] == '' ) {
+			$arr[ $key ] = $default_value;
+			
+			// chuyển về dạng số nếu dữ liệu mặc định cũng là số
+			if ( is_numeric( $default_value ) ) {
+				$arr[ $key ] = (int)$arr[ $key ];
+			}
+		}
+		$arr[ eb_cat_obj_data ] = '';
+		
+		// gán ID để lần sau còn dùng lại
+		$arr_object_term_meta[$check_id] = $arr;
+		
+		//
+//		exit();
+	}
+	else {
+		$arr = $arr_object_term_meta[$check_id];
+	}
+	
+	// xong thì trả về dữ liệu
+	return isset( $arr[ $key ] ) ? $arr[ $key ] : $default_value;
+	
+	
+	
+	// v2 -> sử dụng post meta
 	return _eb_get_post_object ( $id, $key, $default_value, eb_cat_obj_data, '_eb_category_' );
+	
+	
 	
 	/*
 	global $arr_object_cat_meta;
