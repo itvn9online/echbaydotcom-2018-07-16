@@ -248,12 +248,14 @@ else {
 			FROM
 				`" . wp_postmeta . "`
 			WHERE
-				meta_value = '" . $old_404_url . "'
+				( meta_key = '_eb_product_leech_source'
+				OR meta_key = '_eb_product_old_url' )
+				AND ( meta_value = '" . $old_404_url . "'
 				OR meta_value = '" . $old_small_404_url . "'
 				OR meta_value = '" . $old_ssl_www_404_url . "'
 				OR meta_value = '" . $old_ssl_404_url . "'
 				OR meta_value = '" . $current_404_uri . "'
-				OR meta_value = '" . $domain_uri . "'
+				OR meta_value = '" . $domain_uri . "' )
 			ORDER BY
 				meta_id DESC
 			LIMIT 0, 1");
@@ -265,17 +267,44 @@ else {
 				$v = $sql[0];
 				
 				// category
+				/*
 				if ( $v->meta_key == '_eb_category_leech_url' || $v->meta_key == '_eb_category_old_url' ) {
 					$redirect_301_link = _eb_c_link( $v->post_id );
 				}
 				// product
 				else if ( $v->meta_key == '_eb_product_leech_source' || $v->meta_key == '_eb_product_old_url' ) {
+					*/
 					$redirect_301_link = _eb_p_link( $v->post_id );
-				}
+//				}
 			}
-			// thử đồng bộ từ version cũ sang version wordpress
-			else if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
-				include EB_THEME_PLUGIN_INDEX . 'global/404_v1.php';
+			else {
+				$sql = _eb_q("SELECT term_id, meta_key
+				FROM
+					`" . $wpdb->termmeta . "`
+				WHERE
+					( meta_key = '_eb_category_leech_url'
+					OR meta_key = '_eb_category_old_url' )
+					AND ( meta_value = '" . $old_404_url . "'
+					OR meta_value = '" . $old_small_404_url . "'
+					OR meta_value = '" . $old_ssl_www_404_url . "'
+					OR meta_value = '" . $old_ssl_404_url . "'
+					OR meta_value = '" . $current_404_uri . "'
+					OR meta_value = '" . $domain_uri . "' )
+				ORDER BY
+					meta_id DESC
+				LIMIT 0, 1");
+				if ( count($sql) > 0 ) {
+					$v = $sql[0];
+					
+					// category
+//					if ( $v->meta_key == '_eb_category_leech_url' || $v->meta_key == '_eb_category_old_url' ) {
+						$redirect_301_link = _eb_c_link( $v->term_id );
+//					}
+				}
+				// thử đồng bộ từ version cũ sang version wordpress
+				else if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
+					include EB_THEME_PLUGIN_INDEX . 'global/404_v1.php';
+				}
 			}
 		}
 		

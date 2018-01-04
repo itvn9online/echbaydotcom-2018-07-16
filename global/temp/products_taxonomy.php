@@ -15,6 +15,9 @@ if ( $term_id > 0 && $type != '' ) {
 		$new_stt = (int) $_GET['stt'];
 		
 		if ( $type == 'auto' ) {
+//			echo $wpdb->termmeta . '<br>' . "\n";
+			
+			//
 			$sql = _eb_q("SELECT *
 			FROM
 				`" . $wpdb->termmeta . "`

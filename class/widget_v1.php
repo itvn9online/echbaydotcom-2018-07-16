@@ -603,6 +603,7 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
+		global $wpdb;
 //		global $func;
 		
 		extract ( $args );
@@ -621,15 +622,25 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		// lấy khoảng giá
 		$sql = _eb_q("SELECT *
 		FROM
+			`" . $wpdb->termmeta . "`
+		WHERE
+			meta_key = '_eb_category_status'
+			AND meta_value = 8");
+			/*
+		$sql = _eb_q("SELECT *
+		FROM
 			`" . wp_postmeta . "`
 		WHERE
 			meta_key = '_eb_category_status'
 			AND meta_value = 8");
+			*/
 //		print_r($sql);
 		foreach ( $sql as $v ) {
 //			print_r($v);
 			
-			$term_id = $v->post_id;
+			//
+//			$term_id = $v->post_id;
+			$term_id = $v->term_id;
 			$taxonomy_name = 'post_options';
 			$termchildren = get_term_children( $term_id, $taxonomy_name );
 //			print_r($termchildren);

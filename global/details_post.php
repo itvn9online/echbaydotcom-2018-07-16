@@ -31,11 +31,19 @@ $web_og_type = 'product';
 /*
 $sql = _eb_q("SELECT *
 FROM
+	`" . $wpdb->termmeta . "`
+WHERE
+	meta_key = '_eb_category_status'
+	AND meta_value = 7");
+*/
+/*
+$sql = _eb_q("SELECT *
+FROM
 	" . wp_postmeta . "
 WHERE
 	meta_key = '_eb_category_status'
 	AND meta_value = 7");
-//	print_r($sql);
+//print_r($sql);
 
 //
 $arr_post_options = wp_get_object_terms( $pid, 'post_options' );
@@ -48,7 +56,8 @@ foreach ( $sql as $v ) {
 //			print_r($v2);
 		
 		//
-		if ( $v->post_id == $v2->parent ) {
+//		if ( $v->post_id == $v2->parent ) {
+		if ( $v->term_id == $v2->parent ) {
 			$arr_product_color .= ',{ten:"' . $v2->name . '",val:"' . _eb_get_cat_object( $v2->term_id, '_eb_category_title', '#fff' ) . '"}';
 		}
 	}
