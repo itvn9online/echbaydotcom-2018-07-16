@@ -837,36 +837,36 @@ function ___eb_details_product_size () {
 	if ( arr_product_size.length < 1 || $('.oi_product_size').length == 0 ) {
 		return false;
 	}
-	console.log(arr_product_size);
+	if ( cf_tester_mode == 1 ) console.log(arr_product_size);
 	
 	// có nhiều size thì tạo list
 	var str = '';
 	
 	for (var i = 0; i < arr_product_size.length; i++) {
-		// Giá trị mảng phải khác null -> null = xóa
-		if ( arr_product_size[i].val != null ) {
-			// conver từ bản code cũ sang
-			if ( typeof arr_product_size[i].name == 'undefined' ) {
-				if ( typeof arr_product_size[i].ten != 'undefined' ) {
-					arr_product_size[i].name = arr_product_size[i].ten;
-				}
-				else {
-					arr_product_size[i].name = '';
-				}
+		// conver từ bản code cũ sang
+		if ( typeof arr_product_size[i].name == 'undefined' ) {
+			if ( typeof arr_product_size[i].ten != 'undefined' ) {
+				arr_product_size[i].name = arr_product_size[i].ten;
 			}
-			
-			if ( typeof arr_product_size[i].val == 'undefined' ) {
-				if ( typeof arr_product_size[i].soluong != 'undefined' ) {
-					arr_product_size[i].val = arr_product_size[i].soluong;
-				}
-				else {
-					arr_product_size[i].val = 0;
-				}
+			else {
+				arr_product_size[i].name = '';
 			}
-			if ( arr_product_size[i].val == '' ) {
+		}
+		
+		if ( typeof arr_product_size[i].val == 'undefined' ) {
+			if ( typeof arr_product_size[i].soluong != 'undefined' ) {
+				arr_product_size[i].val = arr_product_size[i].soluong;
+			}
+			else {
 				arr_product_size[i].val = 0;
 			}
-			
+		}
+		else if ( arr_product_size[i].val == '' ) {
+			arr_product_size[i].val = 0;
+		}
+		
+		// Giá trị mảng phải khác null -> null = xóa
+		if ( arr_product_size[i].val != null ) {
 			// Tên và Số lượng phải tồn tại
 //			if ( arr_product_size[i].val != '' && arr_product_size[i].name != '' ) {
 			if ( arr_product_size[i].name != '' ) {
