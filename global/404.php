@@ -209,7 +209,8 @@ else {
 //		print_r( $sql );
 		
 		// nếu ko tìm thấy -> thử tìm trong post meta
-		if ( count($sql) == 0 && strlen( $sql[0]->meta_value ) < 10 ) {
+//		if ( count($sql) == 0 && strlen( $sql[0]->meta_value ) < 10 ) {
+		if ( empty($sql) || strlen( $sql[0]->meta_value ) < 10 ) {
 			$sql = _eb_q("SELECT meta_value
 			FROM
 				`" . wp_postmeta . "`
@@ -225,7 +226,8 @@ else {
 		
 		// nếu có trong module 404 monitor -> lấy luôn
 //		if ( isset( $sql[0]->meta_value ) && strlen( $sql[0]->meta_value ) > 10 ) {
-		if ( count($sql) > 0 && strlen( $sql[0]->meta_value ) > 10 ) {
+//		if ( count($sql) > 0 && strlen( $sql[0]->meta_value ) > 10 ) {
+		if ( ! empty($sql) && strlen( $sql[0]->meta_value ) > 10 ) {
 			
 			$redirect_301_link = $sql[0]->meta_value;
 			
