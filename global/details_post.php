@@ -31,7 +31,7 @@ $web_og_type = 'product';
 /*
 $sql = _eb_q("SELECT *
 FROM
-	`" . $wpdb->termmeta . "`
+	`" . wp_termmeta . "`
 WHERE
 	meta_key = '_eb_category_status'
 	AND meta_value = 7");

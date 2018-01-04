@@ -2111,11 +2111,11 @@ function _eb_get_cat_object ( $id, $key, $default_value = '' ) {
 	$check_id = 'cid' . $id;
 	
 	if ( ! isset( $arr_object_term_meta[$check_id] ) ) {
-		global $wpdb;
+//		global $wpdb;
 		
 		$sql = _eb_q ("SELECT meta_key, meta_value
 		FROM
-			`" . $wpdb->termmeta . "`
+			`" . wp_termmeta . "`
 		WHERE
 			term_id = " . $id);
 //		print_r($sql);

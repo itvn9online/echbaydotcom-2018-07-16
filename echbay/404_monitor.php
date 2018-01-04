@@ -26,10 +26,10 @@ $('.url-for-cleanup-404').attr({
 
 
 //
-global $wpdb;
+//global $wpdb;
 
 //
-//echo $wpdb->termmeta . '<br>' . "\n";
+//echo wp_termmeta . '<br>' . "\n";
 
 // dọn dẹp các bản ghi cũ
 /*
@@ -44,7 +44,7 @@ if ( $count_monitor > 500 ) {
 if ( isset( $_GET['cleanup_404'] ) ) {
 	_eb_q("DELETE
 	FROM
-		`" . $wpdb->termmeta . "`
+		`" . wp_termmeta . "`
 	WHERE
 		term_id = " . eb_log_404_id_postmeta . "
 		AND meta_value = 1");
@@ -59,8 +59,7 @@ $sql = _eb_q("SELECT *
 	WHERE
 		post_id = " . eb_log_404_id_postmeta . "
 	ORDER BY
-		meta_id DESC
-	LIMIT 0, 1000");
+		meta_id DESC");
 //print_r($sql);
 if ( count( $sql > 0 ) ) {
 	foreach ( $sql as $v ) {
@@ -72,15 +71,14 @@ if ( count( $sql > 0 ) ) {
 	FROM
 		`" . wp_postmeta . "`
 	WHERE
-		post_id = " . eb_log_404_id_postmeta . "
-		AND meta_value = 1");
+		post_id = " . eb_log_404_id_postmeta);
 }
 
 
 //
 $sql = _eb_q("SELECT *
 	FROM
-		`" . $wpdb->termmeta . "`
+		`" . wp_termmeta . "`
 	WHERE
 		term_id = " . eb_log_404_id_postmeta . "
 	ORDER BY

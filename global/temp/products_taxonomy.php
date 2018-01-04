@@ -15,12 +15,12 @@ if ( $term_id > 0 && $type != '' ) {
 		$new_stt = (int) $_GET['stt'];
 		
 		if ( $type == 'auto' ) {
-//			echo $wpdb->termmeta . '<br>' . "\n";
+//			echo wp_termmeta . '<br>' . "\n";
 			
 			//
 			$sql = _eb_q("SELECT *
 			FROM
-				`" . $wpdb->termmeta . "`
+				`" . wp_termmeta . "`
 			WHERE
 				meta_key = '_eb_category_order'
 				AND term_id != " . $term_id . "

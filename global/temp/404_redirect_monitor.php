@@ -7,7 +7,7 @@
 //print_r( $_GET );
 
 
-//echo $wpdb->termmeta; exit();
+//echo wp_termmeta; exit();
 
 
 //
@@ -21,7 +21,7 @@ if ( $meta_id > 0 ) {
 	}
 	
 	//
-	_eb_q("UPDATE `" . $wpdb->termmeta . "`
+	_eb_q("UPDATE `" . wp_termmeta . "`
 	SET
 		meta_value = '" . $meta_value . "'
 	WHERE

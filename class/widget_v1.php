@@ -603,7 +603,7 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
-		global $wpdb;
+//		global $wpdb;
 //		global $func;
 		
 		extract ( $args );
@@ -622,7 +622,7 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		// lấy khoảng giá
 		$sql = _eb_q("SELECT *
 		FROM
-			`" . $wpdb->termmeta . "`
+			`" . wp_termmeta . "`
 		WHERE
 			meta_key = '_eb_category_status'
 			AND meta_value = 8");

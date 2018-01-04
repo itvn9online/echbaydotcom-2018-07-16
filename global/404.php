@@ -198,7 +198,7 @@ else {
 		// kiểm tra xem URL 404 này đã được EchBay lưu chưa
 		$sql = _eb_q("SELECT meta_value
 		FROM
-			`" . $wpdb->termmeta . "`
+			`" . wp_termmeta . "`
 		WHERE
 			term_id = " . eb_log_404_id_postmeta . "
 			AND meta_value != 1
@@ -295,7 +295,7 @@ else {
 			else {
 				$sql = _eb_q("SELECT term_id, meta_key
 				FROM
-					`" . $wpdb->termmeta . "`
+					`" . wp_termmeta . "`
 				WHERE
 					( meta_key = '_eb_category_leech_url'
 					OR meta_key = '_eb_category_old_url' )

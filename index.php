@@ -36,6 +36,7 @@ get_category_link( $id ) -> dùng function riêng cũng được -> _eb_c_link( 
 //echo $wpdb->postmeta . '<br>';
 define( 'wp_postmeta', $wpdb->postmeta );
 //echo wp_postmeta;
+define( 'wp_termmeta', $wpdb->termmeta );
 
 
 
