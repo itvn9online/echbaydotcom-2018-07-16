@@ -25,6 +25,12 @@ $('.url-for-cleanup-404').attr({
 	<?php
 
 
+//
+global $wpdb;
+
+//
+//echo $wpdb->termmeta . '<br>' . "\n";
+
 // dọn dẹp các bản ghi cũ
 /*
 $count_monitor = _eb_c("SELECT COUNT(meta_id) AS c
@@ -38,15 +44,15 @@ if ( $count_monitor > 500 ) {
 if ( isset( $_GET['cleanup_404'] ) ) {
 	_eb_q("DELETE
 	FROM
-		`" . wp_postmeta . "`
+		`" . $wpdb->termmeta . "`
 	WHERE
-		post_id = " . eb_log_404_id_postmeta . "
+		term_id = " . eb_log_404_id_postmeta . "
 		AND meta_value = 1");
 }
 
 
 
-//
+// chuyển sang sử dụng term meta cho đỡ tập trung vào bảng post
 $sql = _eb_q("SELECT *
 	FROM
 		`" . wp_postmeta . "`
@@ -56,7 +62,31 @@ $sql = _eb_q("SELECT *
 		meta_id DESC
 	LIMIT 0, 1000");
 //print_r($sql);
+if ( count( $sql > 0 ) ) {
+	foreach ( $sql as $v ) {
+		add_term_meta( eb_log_404_id_postmeta, $v->meta_key, $v->meta_value, true );
+	}
+	
+	//
+	_eb_q("DELETE
+	FROM
+		`" . wp_postmeta . "`
+	WHERE
+		post_id = " . eb_log_404_id_postmeta . "
+		AND meta_value = 1");
+}
 
+
+//
+$sql = _eb_q("SELECT *
+	FROM
+		`" . $wpdb->termmeta . "`
+	WHERE
+		term_id = " . eb_log_404_id_postmeta . "
+	ORDER BY
+		meta_id DESC
+	LIMIT 0, 1000");
+//print_r($sql);
 
 foreach ( $sql as $v ) {
 	

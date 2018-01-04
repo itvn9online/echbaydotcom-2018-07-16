@@ -198,15 +198,30 @@ else {
 		// kiểm tra xem URL 404 này đã được EchBay lưu chưa
 		$sql = _eb_q("SELECT meta_value
 		FROM
-			`" . wp_postmeta . "`
+			`" . $wpdb->termmeta . "`
 		WHERE
-			post_id = " . eb_log_404_id_postmeta . "
+			term_id = " . eb_log_404_id_postmeta . "
 			AND meta_value != 1
 			AND ( meta_key = '" . $current_404_uri . "' OR meta_key = '" . $current_small_404_uri . "' )
 		ORDER BY
 			meta_id DESC
 		LIMIT 0, 1");
 //		print_r( $sql );
+		
+		// nếu ko tìm thấy -> thử tìm trong post meta
+		if ( count($sql) == 0 && strlen( $sql[0]->meta_value ) < 10 ) {
+			$sql = _eb_q("SELECT meta_value
+			FROM
+				`" . wp_postmeta . "`
+			WHERE
+				post_id = " . eb_log_404_id_postmeta . "
+				AND meta_value != 1
+				AND ( meta_key = '" . $current_404_uri . "' OR meta_key = '" . $current_small_404_uri . "' )
+			ORDER BY
+				meta_id DESC
+			LIMIT 0, 1");
+//			print_r( $sql );
+		}
 		
 		// nếu có trong module 404 monitor -> lấy luôn
 //		if ( isset( $sql[0]->meta_value ) && strlen( $sql[0]->meta_value ) > 10 ) {
@@ -303,7 +318,7 @@ else {
 				}
 				// thử đồng bộ từ version cũ sang version wordpress
 				else if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
-					include EB_THEME_PLUGIN_INDEX . 'global/404_v1.php';
+					include EB_THEME_PLUGIN_INDEX . 'global/404_convert_echbay_v1.php';
 				}
 			}
 		}
@@ -327,7 +342,8 @@ else {
 		}
 		// nếu không -> add vào monitor để add thủ công
 		else {
-			add_post_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
+//			add_post_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
+			add_term_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
 		}
 		
 		
