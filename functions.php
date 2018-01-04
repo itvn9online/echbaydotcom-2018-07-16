@@ -2540,7 +2540,7 @@ function _eb_count_log ( $log_type = 0, $limit_time = 3600, $limit_day = 0, $lim
 	return 0;
 }
 
-function _eb_clear_log ( $log_type = 0, $limit_day = 30 ) {
+function _eb_clear_log ( $log_type = 0, $limit_day = 61 ) {
 	
 	// tính toán lại log, đồng thời dọn dẹp bớt đi cho nó gọn
 	_eb_count_log( $log_type, 0, $limit_day );
