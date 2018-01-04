@@ -54,6 +54,7 @@ foreach ( $arr_global_main as $k => $v ) {
 if ( $__cf_row['cf_old_domain'] != '' ) {
 //	$main_content = str_replace ( '/' . $__cf_row['cf_old_domain'] . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $main_content );
 	$main_content = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $main_content );
+	$main_content = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $main_content );
 }
 
 

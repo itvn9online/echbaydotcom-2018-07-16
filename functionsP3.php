@@ -244,11 +244,28 @@ function WGR_sync_old_url_in_content ( $a, $c ) {
 	//
 	$a = explode( ',', $a );
 	foreach ( $a as $v ) {
-		$c = str_replace( '/' . $v . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $c );
+//		$v = trim( $v );
+//		if ( $v != '' ) {
+			$c = str_replace( '/' . $v . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $c );
+//		}
 	}
 	
 	return $c;
 }
+
+function WGR_replace_for_all_content ( $a, $c ) {
+	$a = explode( ',', $a );
+	foreach ( $a as $v ) {
+//		$v = trim( $v );
+//		if ( $v != '' ) {
+			$v = explode( '|', $v );
+			$c = str_replace( trim( $v[0] ), trim( $v[1] ), $c );
+//		}
+	}
+	
+	return $c;
+}
+
 
 
 // thêm thẻ LI theo tiêu chuẩn chung cho thread node
