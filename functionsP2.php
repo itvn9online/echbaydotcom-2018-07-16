@@ -2757,6 +2757,11 @@ function _eb_update_option ( $name, $value, $load = 'yes' ) {
 		option_name = '" . $name . "'");
 //	print_r( $sql );
 	
+	// xử lý an toàn cho chuỗi trước khi update
+	if ( ! get_magic_quotes_gpc () ) {
+		$value = addslashes ( $value );
+	}
+	
 	// create
 	if ( empty( $sql ) ) {
 		_eb_q ( "INSERT INTO
