@@ -1,4 +1,9 @@
-.click-order-thread[data-val="1"] { color: #F90; }
+.list-edit-taxonomy .fa-star[data-val="1"] { color: #F90; }
+.list-edit-taxonomy .fa-paw[data-val="1"],
+.list-edit-taxonomy .fa-unlock[data-val="1"],
+.list-edit-taxonomy .fa-unlock-alt[data-val="1"] { color: #000; }
+.list-edit-taxonomy .fa-unlock[data-val="1"]:before,
+.list-edit-taxonomy .fa-unlock-alt[data-val="1"]:before { content: "\f023"; }
 /* .maxwidth-quick-add-taxonomy { max-width: 600px; } */
 .list-edit-taxonomy blockquote {
 	font-size: 18px;

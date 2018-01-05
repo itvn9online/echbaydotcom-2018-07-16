@@ -2248,6 +2248,18 @@ function _eb_get_ads_object ( $id, $key, $default_value = '' ) {
 $arr_object_post_meta = array();
 
 function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_post_obj_data, $meta_convert = '_eb_product_' ) {
+	
+	//
+	/*
+	if ( $meta_convert == '_eb_category_' ) {
+		return _eb_get_cat_object( $id, $key, $default_value );
+	}
+	else {
+		$check_id = 'id' . $id;
+	}
+	*/
+	
+	//
 	global $arr_object_post_meta;
 	
 	//

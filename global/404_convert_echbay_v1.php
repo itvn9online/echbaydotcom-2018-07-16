@@ -83,6 +83,12 @@ function WGR_migrate_v1_to_wordpress_version () {
 //			echo $new_url . '<br>' . "\n";
 			$new_url = str_replace( '-' . $a0, '', $new_url );
 //			echo $new_url . '<br>' . "\n";
+			
+			//
+			$ex = explode( '/', $new_url );
+			if ( count( $ex > 1 ) ) {
+				$new_url = $ex[ count( $ex ) - 1 ];
+			}
 		}
 		else {
 			$a0 = explode( '/', $a );

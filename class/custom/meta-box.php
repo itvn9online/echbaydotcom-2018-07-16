@@ -182,6 +182,7 @@ $eb_arr_type_custom_meta_box = array(
 	'_eb_category_primary' => 'checkbox',
 	'_eb_category_content' => 'textarea',
 	'_eb_category_noindex' => 'checkbox',
+	'_eb_category_hidden' => 'checkbox',
 );
 
 // Một số thuộc tính chỉ hiển thị với admin cấp cao
@@ -208,6 +209,8 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 //	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
 	'_eb_category_primary' => 'Trong các module lấy sản phẩm, tạo menu... nếu có sự xuất hiện của nhóm chính thì sản phẩm trong nhóm đó sẽ được ưu tiên hơn.',
+	'_eb_category_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Danh mục này.',
+	'_eb_category_hidden' => 'Trong một số trường hợp, bạn tạm thời không muốn nhóm này xuất hiện thì sử dụng chức năng này để ẩn nó đi.',
 	
 	'_eb_ads_target' => 'Mặc định, các URL trong quảng cáo sẽ được mở đè lên tab hiện tại, đánh dấu và lưu lại để mở URL trong tab mới.',
 	'_eb_ads_for_post' => 'Nhập vào ID của Sản phẩm hoặc bài Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
@@ -219,7 +222,6 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_product_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Bài viết này',
 	'_eb_product_chinhhang' => 'Đánh dấu để hiển thị nhãn Đảm bảo chính hãng',
 	
-	'_eb_category_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Danh mục này',
 );
 $eb_arr_placeholder_custom_meta_box['_eb_product_leech_source'] = $eb_arr_placeholder_custom_meta_box['_eb_product_old_url'];
 $eb_arr_placeholder_custom_meta_box['_eb_category_leech_url'] = $eb_arr_placeholder_custom_meta_box['_eb_category_old_url'];
@@ -578,6 +580,7 @@ if ( cf_on_off_echbay_seo == 1 ) {
 	$arr_category_custom_fields['_eb_category_keywords'] = 'Keywords';
 	$arr_category_custom_fields['_eb_category_description'] = 'Description';
 	$arr_category_custom_fields['_eb_category_noindex'] = 'Noindex';
+	$arr_category_custom_fields['_eb_category_hidden'] = 'Ẩn nhóm này';
 	
 	$arr_category_custom_fields['_eb_category_old_url'] = 'URL cũ (nếu có)';
 	$arr_category_custom_fields['_eb_category_leech_url'] = 'URL đồng bộ';

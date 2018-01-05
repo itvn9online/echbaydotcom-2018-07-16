@@ -65,16 +65,40 @@ if ( $term_id > 0 && $type != '' ) {
 	}
 	// đặt làm phân nhóm chính
 	else if ( isset( $_GET['current_primary'] ) ) {
-		$new_primary = 0;
+		$new_value = 0;
 		if ( $_GET['current_primary'] == 0 ) {
-			$new_primary = 1;
+			$new_value = 1;
 		}
 		
 		//
-//		update_post_meta( $term_id, '_eb_category_primary', $new_primary );
-		update_term_meta( $term_id, '_eb_category_primary', $new_primary );
+//		update_post_meta( $term_id, '_eb_category_primary', $new_value );
+		update_term_meta( $term_id, '_eb_category_primary', $new_value );
 		
-		echo '<br>set category primary: ' . $new_primary;
+		echo '<br>set category primary: ' . $new_value;
+	}
+	// cho phép bot lập chỉ mục
+	else if ( isset( $_GET['current_index'] ) ) {
+		$new_value = 0;
+		if ( $_GET['current_index'] == 0 ) {
+			$new_value = 1;
+		}
+		
+		//
+		update_term_meta( $term_id, '_eb_category_noindex', $new_value );
+		
+		echo '<br>set category index: ' . $new_value;
+	}
+	// ẩn hoặc hiện nhóm
+	else if ( isset( $_GET['current_hidden'] ) ) {
+		$new_value = 0;
+		if ( $_GET['current_hidden'] == 0 ) {
+			$new_value = 1;
+		}
+		
+		//
+		update_term_meta( $term_id, '_eb_category_hidden', $new_value );
+		
+		echo '<br>set category hidden: ' . $new_value;
 	}
 	// đổi nhóm cha
 	else if ( isset( $_GET['current_parent'], $_GET['new_parent'] ) ) {

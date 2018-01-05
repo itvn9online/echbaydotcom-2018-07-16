@@ -160,6 +160,8 @@ function WGR_get_and_oders_taxonomy_category (
 		//
 		$strLinkAjaxl = '&term_id=' . $v->term_id . '&by_taxonomy=' . $v->taxonomy;
 		$_eb_category_primary = _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 );
+		$_eb_category_noindex = _eb_get_cat_object( $v->term_id, '_eb_category_noindex', 0 );
+		$_eb_category_hidden = _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 );
 		
 		//
 		$c_link = _eb_c_link( $v->term_id );
@@ -178,6 +180,10 @@ function WGR_get_and_oders_taxonomy_category (
 					<div><i title="Down" data-ajax="' . $strLinkAjaxl . '&t=down&stt=' . $cat_stt . '" class="fa fa-arrow-circle-down fa-icons cur click-order-thread"></i></div>
 					
 					<div><i title="Set primary" data-val="' . $_eb_category_primary . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_primary=' . $_eb_category_primary . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
+					
+					<div><i title="Alow for bot" data-val="' . $_eb_category_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_index=' . $_eb_category_noindex . '" class="fa fa-paw fa-icons cur click-order-thread"></i></div>
+					
+					<div><i title="Set primary" data-val="' . $_eb_category_hidden . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_hidden=' . $_eb_category_hidden . '" class="fa fa-unlock fa-icons cur click-order-thread"></i></div>
 					
 					<div><i title="Change parent category" data-name="' . str_replace( '"', '&quot;', $v->name ) . '" data-val="' . $v->parent . '" data-ajax="' . $strLinkAjaxl . '&t=change_parent&current_parent=' . $v->parent . '" class="fa fa-group fa-icons cur click-change-parent-category"></i></div>
 				</div>

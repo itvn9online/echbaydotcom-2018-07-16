@@ -152,6 +152,7 @@ var eb_global_product_size = '',
 	else if ( admin_act == 'cat_details' ) {
 		WGR_check_if_value_this_is_one('_eb_category_primary');
 		WGR_check_if_value_this_is_one('_eb_category_noindex');
+		WGR_check_if_value_this_is_one('_eb_category_hidden');
 	}
 	// thêm tài khoản thành viên
 	else if ( admin_act == 'user-new' ) {
