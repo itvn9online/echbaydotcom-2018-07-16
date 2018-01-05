@@ -58,8 +58,14 @@
 //	if ( $__cf_row ['cf_keywords'] == '' ) $__cf_row ['cf_keywords'] = $__category->name;
 	
 	$__cf_row ['cf_description'] = _eb_get_cat_object( $__category->term_id, '_eb_category_description', $__category->description );
+//	echo 1;
 //	if ( $__cf_row ['cf_description'] == '' ) $__cf_row ['cf_description'] = $__category->description;
-	if ( $__cf_row ['cf_description'] == '' ) $__cf_row ['cf_description'] = $__category->name;
+	if ( $__cf_row ['cf_description'] == '' ) {
+		$__cf_row ['cf_description'] = $__category->name;
+	}
+	else {
+		$__cf_row ['cf_description'] = strip_tags( $__cf_row ['cf_description'] );
+	}
 	
 	
 	
