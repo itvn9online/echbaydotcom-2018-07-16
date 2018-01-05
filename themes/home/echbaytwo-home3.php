@@ -64,7 +64,9 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 	$args = array();
 	foreach ( $new_cat as $k => $v ) {
 		// không lấy nhóm cấp 1 mặc định của wp
-		if ( $k != 1 ) {
+//		if ( $k != 1 ) {
+		// ko lấy các nhóm ẩn
+		if ( _eb_get_cat_object( $k, '_eb_category_hidden', 0 ) != 1 ) {
 			$args['cat'] = $k;
 			$cat_ids = $k;
 			
