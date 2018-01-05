@@ -58,6 +58,9 @@ if ( $switch_taxonomy != '' ) {
 	
 	// nhóm bị ẩn thì ẩn luôn
 	if ( _eb_get_cat_object( $cid, '_eb_category_hidden', 0 ) == 1 ) {
+		$__cf_row ["cf_blog_public"] = 0;
+		
+		//
 		$main_content = '<h4 class="text-center" style="padding:90px 0;">Dữ liệu đang được cập nhật hoặc đã bị xóa...</h4>';
 	}
 	// mặc định sẽ hiển thị danh sách bài viết
