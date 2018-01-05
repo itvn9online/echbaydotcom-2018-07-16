@@ -285,6 +285,7 @@ function _eb_checkPostServerClient() {
 	if ( get_magic_quotes_gpc () ) {
 		$magic_quotes = 1;
 	}
+	echo $magic_quotes . '<br>' . "\n";
 	
 	//
 	foreach ( $_POST as $k => $v ) {

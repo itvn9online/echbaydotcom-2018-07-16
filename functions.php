@@ -1744,14 +1744,18 @@ function _eb_q ( $str, $type = 1 ) {
 //	echo $str . '<br>' . "\n";
 	
 	// Không trả về gì cả -> delete, update, insert
+	/*
 	if ( $type == NULL ) {
 //		$wpdb->query( $wpdb->prepare( $str ) );
 		$wpdb->query( $str );
 	}
 	// có trả về dữ liệu -> select
 	else {
+		*/
 		return $wpdb->get_results( $str, OBJECT );
-	}
+//	}
+	
+	//
 	return false;
 }
 
