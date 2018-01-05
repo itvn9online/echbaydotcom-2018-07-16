@@ -183,7 +183,7 @@ function WGR_get_and_oders_taxonomy_category (
 					
 					<div><i title="Alow for bot" data-val="' . $_eb_category_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_index=' . $_eb_category_noindex . '" class="fa fa-paw fa-icons cur click-order-thread"></i></div>
 					
-					<div><i title="Set primary" data-val="' . $_eb_category_hidden . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_hidden=' . $_eb_category_hidden . '" class="fa fa-unlock fa-icons cur click-order-thread"></i></div>
+					<div><i title="Hidden or show" data-val="' . $_eb_category_hidden . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_hidden=' . $_eb_category_hidden . '" class="fa fa-unlock fa-icons cur click-order-thread"></i></div>
 					
 					<div><i title="Change parent category" data-name="' . str_replace( '"', '&quot;', $v->name ) . '" data-val="' . $v->parent . '" data-ajax="' . $strLinkAjaxl . '&t=change_parent&current_parent=' . $v->parent . '" class="fa fa-group fa-icons cur click-change-parent-category"></i></div>
 				</div>
