@@ -58,15 +58,36 @@ if ( $switch_taxonomy != '' ) {
 	
 	// nhóm bị ẩn thì ẩn luôn
 	if ( _eb_get_cat_object( $cid, '_eb_category_hidden', 0 ) == 1 ) {
+		
 		$__cf_row ["cf_blog_public"] = 0;
+		
+		EBE_set_header(401);
 		
 		//
 		$main_content = '<h4 class="text-center" style="padding:90px 0;">Dữ liệu đang được cập nhật hoặc đã bị xóa...</h4>';
+		
+		$current_order = '';
+		$tim_nang_cao = '';
+		$seach_advanced_by_cats = '';
+		
 	}
 	// mặc định sẽ hiển thị danh sách bài viết
 	else {
 		include EB_THEME_PLUGIN_INDEX . 'global/list_default.php';
 	}
+
+
+
+
+
+// -> thêm đoạn JS dùng để xác định xem khách đang ở đâu trên web
+$main_content .= '<script type="text/javascript">
+var current_order="' . $current_order . '",
+	seach_advanced_value="' . $tim_nang_cao . '",
+	seach_advanced_by_cats="' . $seach_advanced_by_cats . '",
+	cf_cats_description_viewmore=' . $__cf_row['cf_cats_description_viewmore'] . ',
+	switch_taxonomy="' . $switch_taxonomy . '";
+</script>';
 	
 	
 	
