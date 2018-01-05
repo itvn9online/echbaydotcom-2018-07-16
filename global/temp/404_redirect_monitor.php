@@ -25,14 +25,14 @@ if ( $meta_id > 0 ) {
 	SET
 		meta_value = '" . $meta_value . "'
 	WHERE
-		meta_id = " . $meta_id);
+		meta_id = " . $meta_id, 0);
 	
 	/*
 	_eb_q("UPDATE `" . wp_postmeta . "`
 	SET
 		meta_value = '" . $meta_value . "'
 	WHERE
-		meta_id = " . $meta_id);
+		meta_id = " . $meta_id, 0);
 		*/
 	
 	//

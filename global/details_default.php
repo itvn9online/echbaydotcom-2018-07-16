@@ -87,7 +87,7 @@ if ( ! isset( $arr_post_for_check_mysql['_eb_product_price'] ) ) {
 	AFTER
 		`menu_order`";
 //	echo $eb_install_sql . '<br>' . "\n";
-	_eb_q($eb_install_sql);
+	_eb_q($eb_install_sql, 0);
 }
 // nếu có giá mới, mà cột giá mới chưa có update -> update cột giá
 else if ( $arr_post_for_check_mysql['_eb_product_price'] != $trv_giamoi ) {
@@ -95,7 +95,7 @@ else if ( $arr_post_for_check_mysql['_eb_product_price'] != $trv_giamoi ) {
 	SET
 		_eb_product_price = " . $trv_giamoi . "
 	WHERE
-		ID = " . $__post->ID);
+		ID = " . $__post->ID, 0);
 }
 */
 /*

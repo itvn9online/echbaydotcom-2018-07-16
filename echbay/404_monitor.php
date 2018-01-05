@@ -47,7 +47,7 @@ if ( isset( $_GET['cleanup_404'] ) ) {
 		`" . wp_termmeta . "`
 	WHERE
 		term_id = " . eb_log_404_id_postmeta . "
-		AND meta_value = 1");
+		AND meta_value = 1", 0);
 }
 
 
@@ -71,7 +71,7 @@ if ( count( $sql > 0 ) ) {
 	FROM
 		`" . wp_postmeta . "`
 	WHERE
-		post_id = " . eb_log_404_id_postmeta);
+		post_id = " . eb_log_404_id_postmeta, 0);
 }
 
 

@@ -18,9 +18,9 @@
 /*
 _eb_q("DELETE
 	FROM
-		" . wp_postmeta . "
+		`" . wp_postmeta . "`
 	WHERE
-		post_id = " . eb_config_id_postmeta);
+		post_id = " . eb_config_id_postmeta, 0);
 		*/
 
 

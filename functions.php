@@ -1738,12 +1738,21 @@ function _eb_echbay_sidebar( $slug, $css = '', $div = 'div', $in_cache = 1, $loa
 
 
 
-function _eb_q ($str) {
+function _eb_q ( $str, $type = 1 ) {
 	global $wpdb;
 	
 //	echo $str . '<br>' . "\n";
 	
-	return $wpdb->get_results( $str, OBJECT );
+	// Không trả về gì cả -> delete, update, insert
+	if ( $type == NULL ) {
+//		$wpdb->query( $wpdb->prepare( $str ) );
+		$wpdb->query( $str );
+	}
+	// có trả về dữ liệu -> select
+	else {
+		return $wpdb->get_results( $str, OBJECT );
+	}
+	return false;
 }
 
 function _eb_c ($str) {
@@ -1817,7 +1826,7 @@ function _eb_sd($arr, $tbl) {
 	" . $tbl . "
 	( " . $str0 . " )
 	VALUES
-	( " . $str1 . " )" );
+	( " . $str1 . " )", 0 );
 	
 	return true;
 }
@@ -2106,10 +2115,10 @@ function _eb_get_config( $real_time = false ) {
 		
 		// xóa cấu hình cũ
 		_eb_q("DELETE
-			FROM
-				`" . wp_postmeta . "`
-			WHERE
-				post_id = " . eb_config_id_postmeta);
+		FROM
+			`" . wp_postmeta . "`
+		WHERE
+			post_id = " . eb_config_id_postmeta, 0);
 	}
 //	exit();
 	
@@ -2530,7 +2539,7 @@ function _eb_count_log ( $log_type = 0, $limit_time = 3600, $limit_day = 0, $lim
 					`eb_wgr_log`
 				WHERE
 					l_type = " . $log_type . "
-					AND l_id < " . $sql[0]->l_id);
+					AND l_id < " . $sql[0]->l_id, 0);
 			}
 		}
 		
@@ -2555,7 +2564,7 @@ function _eb_clear_log ( $log_type = 0, $limit_day = 61 ) {
 		`eb_wgr_log`
 	WHERE
 		l_type = " . $log_type . "
-		AND l_ngay < " . $limit_day);
+		AND l_ngay < " . $limit_day, 0);
 		*/
 	
 	return true;

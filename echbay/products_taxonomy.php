@@ -178,11 +178,11 @@ function WGR_get_and_oders_taxonomy_category (
 					<div><i title="Down" data-ajax="' . $strLinkAjaxl . '&t=down&stt=' . $cat_stt . '" class="fa fa-arrow-circle-down fa-icons cur click-order-thread"></i></div>
 					
 					<div><i title="Set primary" data-val="' . $_eb_category_primary . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_primary=' . $_eb_category_primary . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
+					
+					<div><i title="Change parent category" data-name="' . str_replace( '"', '&quot;', $v->name ) . '" data-val="' . $v->parent . '" data-ajax="' . $strLinkAjaxl . '&t=change_parent&current_parent=' . $v->parent . '" class="fa fa-group fa-icons cur click-change-parent-category"></i></div>
 				</div>
 			</div>
-			<div class="lf"><a href="' . admin_link . 'term.php?taxonomy=' . $v->taxonomy . '&tag_ID=' . $v->term_id . '&post_type=' . ( $v->taxonomy == EB_BLOG_POST_LINK ? EB_BLOG_POST_TYPE : 'post' ) . '" target="_blank">' . $v->name . ' (' . $v->count . ') <i class="fa fa-edit"></i></a> - <a href="' . $c_link . '" target="_blank" class="small blackcolor">' . $c_link . ' <i class="fa fa-eye"></i></a>
-				<i title="Change parent category" data-name="' . str_replace( '"', '&quot;', $v->name ) . '" data-val="' . $v->parent . '" data-ajax="' . $strLinkAjaxl . '&t=change_parent&current_parent=' . $v->parent . '" class="fa fa-group fa-icons cur click-change-parent-category"></i>
-			</div>
+			<div class="lf"> &nbsp; &nbsp; <a href="' . admin_link . 'term.php?taxonomy=' . $v->taxonomy . '&tag_ID=' . $v->term_id . '&post_type=' . ( $v->taxonomy == EB_BLOG_POST_LINK ? EB_BLOG_POST_TYPE : 'post' ) . '" target="_blank">' . $v->name . ' (' . $v->count . ') <i class="fa fa-edit"></i></a> - <a href="' . $c_link . '" target="_blank" class="small blackcolor">' . $c_link . ' <i class="fa fa-eye"></i></a></div>
 		</div>' . $str_child;
 	}
 	

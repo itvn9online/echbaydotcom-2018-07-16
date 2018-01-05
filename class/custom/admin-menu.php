@@ -710,7 +710,7 @@ include EB_THEME_CORE . 'custom/admin/create-echbay-table.php';
 if ( $__cf_row['cf_on_off_auto_update_wp'] == 0 ) {
 	include EB_THEME_CORE . 'custom/admin/disable-update.php';
 }
-include EB_THEME_CORE . 'custom/admin/clean-log.php';
+include EB_THEME_CORE . 'custom/admin/auto-clean.php';
 
 
 

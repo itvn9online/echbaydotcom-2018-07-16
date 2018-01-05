@@ -84,7 +84,7 @@ function EBE_update_details_order ( $k, $id, $v = '' ) {
 		`eb_details_in_con_voi`
 	WHERE
 		order_id = " . $id . "
-		AND dorder_key = '" . $k . "'" );
+		AND dorder_key = '" . $k . "'", 0 );
 	
 	// nếu có value mới -> add mới luôn
 	if ( $v != '' ) {
@@ -98,7 +98,7 @@ function EBE_set_details_order ( $k, $v, $id ) {
 	`eb_details_in_con_voi`
 	( dorder_key, dorder_name, order_id )
 	VALUES
-	( '" . $k . "', '" . $v . "', " . $id . " )" );
+	( '" . $k . "', '" . $v . "', " . $id . " )", 0 );
 }
 
 // danh sách đơn hàng
@@ -2750,7 +2750,7 @@ function _eb_update_option ( $name, $value, $load = 'yes' ) {
 		`" . $wpdb->options . "`
 		( option_name, option_value, autoload )
 		VALUES
-		( '" . $name . "', '" . $value . "', '" . $load . "' )" );
+		( '" . $name . "', '" . $value . "', '" . $load . "' )", 0 );
 	}
 	// update
 	else {
@@ -2759,7 +2759,7 @@ function _eb_update_option ( $name, $value, $load = 'yes' ) {
 			option_value = '" . $value . "',
 			autoload = '" . $load . "'
 		WHERE
-			option_name = '" . $name . "'");
+			option_name = '" . $name . "'", 0);
 	}
 	
 	return true;
@@ -2781,7 +2781,7 @@ function WGR_delete_option ( $name ) {
 	FROM
 		`" . $wpdb->options . "`
 	WHERE
-		option_name = '" . $name . "'" );
+		option_name = '" . $name . "'", 0 );
 	
 	return true;
 }
