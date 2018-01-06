@@ -532,6 +532,19 @@ function EBE_get_text_version ( $str ) {
 				//
 				echo '<div>Download in: <a href="' . $url_for_download_ebdotcom . '" target="_blank">' . $url_for_download_ebdotcom . '</a></div>'; 
 			}
+			// nếu có file -> thử kiểm tra file size
+			else if ( filesize( $destination_path ) == 0 ) {
+				if ( unlink( $destination_path ) ) {
+					echo '<div>Remove file because file size zero!</div>';
+				}
+				// xóa lại bằng ftp nếu không xóa được theo cách thông thường
+				else if ( EBE_ftp_remove_file( $destination_path ) == true ) {
+					echo '<div>Remove file via FTP because file size zero!</div>';
+				}
+				else {
+					echo '<div>Canot remove file with filesize zero!</div>';
+				}
+			}
 			
 			
 			// dir for content
