@@ -532,8 +532,8 @@ function EBE_get_text_version ( $str ) {
 				//
 				echo '<div>Download in: <a href="' . $url_for_download_ebdotcom . '" target="_blank">' . $url_for_download_ebdotcom . '</a></div>'; 
 			}
-			// nếu có file -> thử kiểm tra file size
-			else if ( filesize( $destination_path ) == 0 ) {
+			// nếu có file -> thử kiểm tra file size chưa đủ đô -> xóa luôn
+			else if ( filesize( $destination_path ) < 1000 ) {
 				if ( unlink( $destination_path ) ) {
 					echo '<div>Remove file because file size zero!</div>';
 				}
