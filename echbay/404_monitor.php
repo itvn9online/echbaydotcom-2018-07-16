@@ -61,7 +61,8 @@ $sql = _eb_q("SELECT *
 	ORDER BY
 		meta_id DESC");
 //print_r($sql);
-if ( count( $sql > 0 ) ) {
+//if ( count( $sql ) > 0 ) {
+if ( ! empty( $sql ) ) {
 	foreach ( $sql as $v ) {
 		add_term_meta( eb_log_404_id_postmeta, $v->meta_key, $v->meta_value, true );
 	}
