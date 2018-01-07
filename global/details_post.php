@@ -69,12 +69,32 @@ foreach ( $sql as $v ) {
 
 // Tạo menu cho post option
 $arr_post_options = wp_get_object_terms( $pid, 'post_options' );
-//	if ( mtv_id == 1 ) print_r($arr_post_options);
+//if ( mtv_id == 1 ) print_r($arr_post_options);
+
+// sắp xếp theo STT
+$sort_post_options = array();
+$new_post_options = array();
 foreach ( $arr_post_options as $v ) {
+//	echo $v->term_id . '<br>' . "\n";
+	
+	// đoạn này sẽ order theo nhóm cha của taxonomy
+	$sort_post_options[ $v->term_id ] = (int) _eb_get_cat_object( $v->parent, '_eb_category_order', 0 );
+	$new_post_options[ $v->term_id ] = $v;
+}
+arsort( $sort_post_options );
+//print_r( $sort_post_options );
+//print_r( $new_post_options );
+
+//
+//foreach ( $arr_post_options as $v ) {
+foreach ( $sort_post_options as $k=> $v ) {
+	$v = $new_post_options[ $k ];
+	
+	//
 	if ( $v->parent > 0 ) {
-//			$parent_name = get_term_by( 'id', $v->parent, $v->taxonomy );
+//		$parent_name = get_term_by( 'id', $v->parent, $v->taxonomy );
 		$parent_name = WGR_get_taxonomy_parent( $v );
-//			if ( mtv_id == 1 ) print_r( $parent_name );
+//		if ( mtv_id == 1 ) print_r( $parent_name );
 		
 		//
 		$other_option_list .= '
