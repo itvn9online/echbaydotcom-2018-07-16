@@ -341,8 +341,8 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			}
 			
 			// lấy theo taxonomy
-//			if ( $cat_ids > 0 ) {
-			if ( ! empty( $terms_categories ) ) {
+			if ( $cat_ids > 0 ) {
+//			if ( ! empty( $terms_categories ) ) {
 				$arr_select_data['tax_query'] = array(
 					array(
 						'taxonomy' => $cat_type,
