@@ -1609,12 +1609,12 @@ function _eb_create_page( $page_url, $page_name, $page_template = '' ) {
 }
 
 
-function _eb_create_breadcrumb ( $url, $tit ) {
+function _eb_create_breadcrumb ( $url, $tit, $id = 0 ) {
 	global $breadcrumb_position;
 	global $group_go_to;
 	
 	//
-	$group_go_to[$url] = ' <li><a href="' . $url . '">' . $tit . '</a></li>';
+	$group_go_to[$url] = ' <li><a data-id="' . $id . '" href="' . $url . '">' . $tit . '</a></li>';
 	
 	//
 //	echo $breadcrumb_position . "\n";
@@ -1634,7 +1634,7 @@ function _eb_create_breadcrumb ( $url, $tit ) {
 }
 
 function _eb_create_html_breadcrumb ($c) {
-	global $group_go_to;
+//	global $group_go_to;
 	global $schema_BreadcrumbList;
 	global $css_m_css;
 	
@@ -1672,9 +1672,11 @@ function _eb_create_html_breadcrumb ($c) {
 		$css_m_css .= ' ebcat-' . $parent_cat->slug;
 		
 		//
-		$lnk = _eb_cs_link($parent_cat);
-		$group_go_to[$lnk] = ' <li><a href="' . $lnk . '">' . $parent_cat->name . '</a></li>';
-		$schema_BreadcrumbList[$lnk] = _eb_create_breadcrumb( $lnk, $parent_cat->name );
+		if ( _eb_get_cat_object( $parent_cat->term_id, '_eb_category_hidden', 0 ) != 1 ) {
+			$lnk = _eb_cs_link($parent_cat);
+//			$group_go_to[$lnk] = ' <li><a data-id="' . $parent_cat->term_id . '" href="' . $lnk . '">' . $parent_cat->name . '</a></li>';
+			$schema_BreadcrumbList[$lnk] = _eb_create_breadcrumb( $lnk, $parent_cat->name, $parent_cat->term_id );
+		}
 		
 		// tìm tiếp nhóm cha khác nếu có
 		if ( $parent_cat->parent > 0 ) {

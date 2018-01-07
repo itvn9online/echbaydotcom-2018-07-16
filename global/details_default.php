@@ -184,33 +184,37 @@ $bnt_id = 0;
 $other_option_list = '';
 
 //
-if ( isset( $post_categories[0] ) ) {
+//if ( isset( $post_categories[0] ) ) {
+if ( ! empty( $post_categories ) ) {
 	
 	// parent
 	foreach($post_categories as $c){
 		$cat = get_term( $c );
-	//	print_r( $cat );
-	//	$cat = get_category( $c );
-	//	print_r( $cat );
+//		print_r( $cat );
+//		$cat = get_category( $c );
+//		print_r( $cat );
 		
-		// parent
-		if ( $cat->parent == 0 ) {
-			$cats[] = $cat;
-			
-			//
-			$ant_link = _eb_c_link($cat->term_id);
-//			echo $ant_link . '<br>';
-			
-			//
-			$schema_BreadcrumbList[$ant_link] = _eb_create_breadcrumb( $ant_link, $cat->name );
-		}
-		// child
-		else {
-			if ( $bnt_id == 0 ) {
-				$bnt_id = $cat->term_id;
+		// chỉ lấy các nhóm không bị khóa bởi EchBay
+		if ( _eb_get_cat_object( $cat->term_id, '_eb_category_hidden', 0 ) != 1 ) {
+			// parent
+			if ( $cat->parent == 0 ) {
+				$cats[] = $cat;
+				
+				//
+				$ant_link = _eb_c_link($cat->term_id);
+//				echo $ant_link . '<br>';
+				
+				//
+				$schema_BreadcrumbList[$ant_link] = _eb_create_breadcrumb( $ant_link, $cat->name, $cat->term_id );
 			}
-			
-			$cats_child[] = $cat;
+			// child
+			else {
+				if ( $bnt_id == 0 ) {
+					$bnt_id = $cat->term_id;
+				}
+				
+				$cats_child[] = $cat;
+			}
 		}
 	}
 	
@@ -220,14 +224,15 @@ if ( isset( $post_categories[0] ) ) {
 //		echo $ant_link . '<br>';
 		
 		//
-		$schema_BreadcrumbList[$ant_link] = _eb_create_breadcrumb( $ant_link, $cat->name );
+		$schema_BreadcrumbList[$ant_link] = _eb_create_breadcrumb( $ant_link, $cat->name, $cat->term_id );
 	}
 	
 }
 //if ( mtv_id == 1 ) print_r( $cats );
 
 //
-if ( isset( $cats[0] ) ) {
+//if ( isset( $cats[0] ) ) {
+if ( ! empty( $cats ) ) {
 	$ant_ten = $cats[0]->name;
 	$ant_id = $cats[0]->term_id;
 	$cid = $ant_id;

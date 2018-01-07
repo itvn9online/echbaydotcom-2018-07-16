@@ -24,8 +24,18 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'hide_description' => 0,
 		'hide_info' => 0,
 		'post_type' => 'post',
+		// dành cho mục quảng cáo -> mở dưới dạng video youtube
+		'open_youtube' => 0,
 		// lấy các bài viết cùng nhóm
 		'same_cat' => 0,
+		// tự động lấy post type mới khi chức năng same_cat được kích hoạt
+		'get_post_type' => 0,
+		
+		// Quan hệ liên kết (XFN) -> rel="nofollow"
+		'rel_xfn' => '',
+		// Mở liên kết trong 1 thẻ mới
+		'open_target' => 0,
+		
 		'ads_eb_status' => 0,
 		'post_eb_status' => 0,
 		'custom_style' => '',

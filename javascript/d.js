@@ -1244,7 +1244,28 @@ function close_img_quick_video_details () {
 }
 
 function ___eb_click_open_video_popup () {
-	$('.click-quick-view-video').click(function () {
+	$('.click-quick-view-video').each(function() {
+		var a = $(this).attr('data-video') || '',
+			lnk = $(this).attr('href') || '',
+			module = $(this).attr('data-module') || '';
+		if ( module == '' ) {
+			$(this).attr({
+				'data-module': 'video_no_group'
+			});
+		}
+		
+		// lấy URL để tạo ID cho youtube nếu không có ID
+		if ( a == '' && lnk != '' ) {
+			a = _global_js_eb.youtube_id( lnk );
+//			if ( cf_tester_mode == 1 ) console.log( lnk );
+			if ( a != '' ) {
+//				if ( cf_tester_mode == 1 ) console.log( a );
+				$(this).attr({
+					'data-video': '//www.youtube.com/embed/' + a
+				});
+			}
+		}
+	}).off('click').click(function () {
 //		alert(1);
 		var a = $(this).attr('data-video') || '',
 			tit = $(this).attr('title') || '',
@@ -1296,8 +1317,11 @@ function ___eb_click_open_video_popup () {
 			// Tạo list video -> Lấy các video khác trên cùng trang
 			var get_other_video = '.click-quick-view-video';
 			if ( module != '' ) {
+				if ( cf_tester_mode == 1 ) console.log(module);
 				get_other_video = '.click-quick-view-video[data-module="' +module+ '"]';
 			}
+			if ( cf_tester_mode == 1 ) console.log(get_other_video);
+			if ( cf_tester_mode == 1 ) console.log($(get_other_video).length);
 			
 			//
 			$(get_other_video).each(function () {

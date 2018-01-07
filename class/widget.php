@@ -199,9 +199,26 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
+	$input_name = $field_name[ 'open_youtube' ];
+	echo '<div class="ebe-widget-ads-show">';
+	_eb_widget_echo_widget_input_checkbox( $input_name, $open_youtube, 'Mở video Youtube' );
+	echo '</div>';
+	
+	
+	//
 	$input_name = $field_name[ 'same_cat' ];
 	
 	_eb_widget_echo_widget_input_checkbox( $input_name, $same_cat, 'Chỉ lấy các bài viết của nhóm đang xem hoặc bài viết cùng nhóm với bài viết đang xem. * <em>Lựa chọn này sẽ tự động xác định lại post_type và taxonomy của nhóm hoặc bài viết hiện tại</em>.' );
+	
+	
+	//
+	echo '<blockquote>';
+	
+	$input_name = $field_name[ 'get_post_type' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $get_post_type, 'Xác định lại post_type của bài viết hiện tại. * <em>Áp dụng cho trường hợp bài viết định lấy cùng kiểu dữ liệu với bài đang xem</em>.' );
+	
+	echo '</blockquote>';
 	
 	
 	
@@ -251,7 +268,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p class="ebe-post-status">Trạng thái bài viết: ';
+	echo '<p class="ebe-widget-post-show">Trạng thái bài viết: ';
 	
 	__eb_widget_load_select(
 		$arr_eb_product_status,
@@ -263,7 +280,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p class="ebe-ads-status">Trạng thái quảng cáo: ';
+	echo '<p class="ebe-widget-ads-show">Trạng thái quảng cáo: ';
 	
 	__eb_widget_load_select(
 		$arr_eb_ads_status,
@@ -291,11 +308,21 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p>Tùy chỉnh CSS: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng.</p>';
+	echo '<p>Tùy chỉnh CSS: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng.</p>';
 	
 	
 	//
-	echo '<p>Tùy chỉnh size ảnh: <input type="text" class="widefat fixed-size-for-config" name="' . $field_name['custom_size'] . '" value="' . $custom_size . '"/> * Điều chỉnh size ảnh theo kích thước riêng (nếu có), có thể đặt <strong>auto</strong> để lấy kích thước tự động của ảnh!</p>';
+	echo '<p>Tùy chỉnh size ảnh: <input type="text" class="widefat fixed-size-for-config" name="' . $field_name['custom_size'] . '" value="' . $custom_size . '" /> * Điều chỉnh size ảnh theo kích thước riêng (nếu có), có thể đặt <strong>auto</strong> để lấy kích thước tự động của ảnh!</p>';
+	
+	
+	//
+	echo '<p>Quan hệ liên kết (XFN): <input type="text" class="widefat" name="' . $field_name['rel_xfn'] . '" value="' . $rel_xfn . '" /> <strong>rel</strong>: noreferrer, nofollow...</p>';
+	
+	
+	//
+	$input_name = $field_name[ 'open_target' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $open_target, 'Mở liên kết trong tab mới' );
 	
 	
 	
@@ -736,7 +763,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	}
 	// v2 -> tự động thay đổi taxonomy khi chọn nhóm
 	else {
-		echo '<p style="display:none;">Kiểu dữ liệu: <input type="text" class="widefat ' . $animate_id . '" name="' . $cat_type_name . '" value="' . $cat_type . '"/></p>';
+		echo '<p style="display:none;">Kiểu dữ liệu: <input type="text" class="widefat ' . $animate_id . '" name="' . $cat_type_name . '" value="' . $cat_type . '" /></p>';
 		
 		//
 		echo '<script type="text/javascript">
@@ -790,9 +817,9 @@ class ___echbay_widget_google_map extends WP_Widget {
 		$url_video = esc_attr ( $instance ['url_video'] );
 		*/
 		
-		echo '<p>Title: <input type="text" class="widefat" name="' . $this->get_field_name ( 'title' ) . '" value="' . $title . '"/></p>';
+		echo '<p>Title: <input type="text" class="widefat" name="' . $this->get_field_name ( 'title' ) . '" value="' . $title . '" /></p>';
 		
-		echo '<p>URL map: <input type="text" class="widefat" name="' . $this->get_field_name ( 'url_video' ) . '" value="' . $url_video . '"/></p>';
+		echo '<p>URL map: <input type="text" class="widefat" name="' . $this->get_field_name ( 'url_video' ) . '" value="' . $url_video . '" /></p>';
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -849,7 +876,7 @@ class ___echbay_widget_youtube_video extends WP_Widget {
 		$url_video = esc_attr ( $instance ['url_video'] );
 		*/
 		
-		echo '<p>Title: <input type="text" class="widefat" name="' . $this->get_field_name ( 'title' ) . '" value="' . $title . '"/></p>';
+		echo '<p>Title: <input type="text" class="widefat" name="' . $this->get_field_name ( 'title' ) . '" value="' . $title . '" /></p>';
 		
 		echo '<p>URL youtube: <textarea class="widefat" name="' . $this->get_field_name ( 'url_video' ) . '" placeholder="//www.youtube.com/embed/FoxruhmPLs4">' . $url_video . '</textarea></p>';
 	}

@@ -784,4 +784,8 @@ setTimeout(function () {
 
 
 
+// xử lý với video youtube
+___eb_click_open_video_popup();
+
+
 

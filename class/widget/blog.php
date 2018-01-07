@@ -119,6 +119,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		$post_type = isset( $instance ['post_type'] ) ? $instance ['post_type'] : '';
 		$same_cat = isset( $instance ['same_cat'] ) ? $instance ['same_cat'] : 'off';
+		$get_post_type = isset( $instance ['get_post_type'] ) ? $instance ['get_post_type'] : 'off';
 		
 		$html_node = isset( $instance ['html_node'] ) ? $instance ['html_node'] : '';
 		$html_node = _eb_widget_create_html_template( $html_node, 'blogs_node' );
@@ -128,6 +129,10 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$post_eb_status = isset( $instance ['post_eb_status'] ) ? $instance ['post_eb_status'] : 0;
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
+		
+		$rel_xfn = isset( $instance ['rel_xfn'] ) ? $instance ['rel_xfn'] : '';
+		$open_target = isset( $instance ['open_target'] ) ? $instance ['open_target'] : 'off';
+		$open_youtube = isset( $instance ['open_youtube'] ) ? $instance ['open_youtube'] : 'off';
 		
 		// ẩn các thuộc tính theo option
 		$custom_style .= WGR_add_option_class_for_post_widget( $instance );
@@ -142,6 +147,8 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		//
 		$terms_categories = array();
+		// lấy lại nhóm của bài viết
+		$re_post_categories = array();
 		$cat_name = '';
 		$more_link = '';
 		$str_sub_cat = '';
@@ -153,22 +160,33 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			global $parent_cid;
 			global $pid;
 			
-			// xác định lại post type
+			// xử lý thêm khi trong trang chi tiết
 			if ( $pid > 0 ) {
-				global $__post;
-//				print_r( $__post );
+				// xác định lại post type
+				if ( $get_post_type == 'on' ) {
+					global $__post;
+//					print_r( $__post );
+					
+					if ( isset( $__post->post_type ) ) {
+						$post_type = $__post->post_type;
+					}
+					else {
+						$post_type = WGR_get_post_type_name( $pid );
+					}
+					
+					// nếu post type là page -> hủy luôn
+					if ( $post_type == 'page' ) {
+						echo '<!-- STOP! auto get same cat not runing in page post type -->';
+						return false;
+					}
+				}
 				
-				if ( isset( $__post->post_type ) ) {
-					$post_type = $__post->post_type;
+				// lấy toàn bộ danh sách nhóm của bài viết này
+				if ( $post_type == EB_BLOG_POST_TYPE ) {
+					$re_post_categories = get_the_terms( $pid, EB_BLOG_POST_LINK );
 				}
 				else {
-					$post_type = WGR_get_post_type_name( $pid );
-				}
-				
-				// nếu post type là page -> hủy luôn
-				if ( $post_type == 'page' ) {
-					echo '<!-- STOP! auto get same cat not runing in page post type -->';
-					return false;
+					$re_post_categories = get_the_terms( $pid, 'category' );
 				}
 			}
 			/*
@@ -220,13 +238,21 @@ class ___echbay_widget_random_blog extends WP_Widget {
 //				echo $cat_type . '<br>' . "\n";
 				
 				// xác định lại post type nếu đang là lấy tin tự động, và nghi ngờ post type với taxonomy không hợp lệ
-				if ( $same_cat == 'on' && $cat_type != EB_BLOG_POST_LINK && $post_type == 'blog' ) {
+				if ( $get_post_type == 'on' && $same_cat == 'on' && $cat_type != EB_BLOG_POST_LINK && $post_type == EB_BLOG_POST_TYPE ) {
 					$post_type = 'post';
 				}
 //				echo $post_type . '<br>' . "\n";
 				
 				//
-				$terms_categories[] = $cat_ids;
+//				print_r( $re_post_categories );
+				if ( ! empty( $re_post_categories ) ) {
+					foreach ( $re_post_categories as $v ) {
+						$terms_categories[] = $v->term_id;
+					}
+				}
+				else {
+					$terms_categories[] = $cat_ids;
+				}
 				$cat_link = _eb_c_link( $cat_ids, $cat_type );
 				$more_link = '<div class="widget-blog-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
 				
@@ -315,11 +341,13 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			}
 			
 			// lấy theo taxonomy
-			if ( $cat_ids > 0 ) {
+//			if ( $cat_ids > 0 ) {
+			if ( ! empty( $terms_categories ) ) {
 				$arr_select_data['tax_query'] = array(
 					array(
 						'taxonomy' => $cat_type,
 						'field' => 'term_id',
+//						'terms' => array( $cat_ids ),
 						'terms' => $terms_categories,
 						'operator' => 'IN'
 					)
@@ -355,17 +383,16 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			else {
 				*/
 				// post -> có thêm phần trạng thái
-				if ( $post_type == 'post' ) {
-					if ( $post_eb_status > 0 ) {
-						$arr_select_data['meta_key'] = '_eb_product_status';
-						$arr_select_data['meta_value'] = $post_eb_status;
-					}
+				if ( $post_type == 'post' && $post_eb_status > 0 ) {
+					$arr_select_data['meta_key'] = '_eb_product_status';
+					$arr_select_data['meta_value'] = $post_eb_status;
 				}
 				
 				// với blog, lấy đặc biệt hơn chút
 		//		else if ( count( $terms_categories ) > 0 ) {
 				// -> lấy theo danh mục hoặc post option -> dùng để phân loại widget
-				if ( count( $terms_categories ) > 0 ) {
+//				if ( count( $terms_categories ) > 0 ) {
+				if ( ! empty( $terms_categories ) ) {
 					$arr_select_data['tax_query'] = array(
 						array(
 							'taxonomy' => $cat_type,
@@ -493,8 +520,25 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		}
 		// mặc định
 		else {
-			echo EBE_dynamic_title_tag( EBE_html_template( EBE_get_page_template( $html_template ), array(
+			// thiết lập rel cho link
+			$blog_link_option = '';
+			if ( $rel_xfn != '' ) {
+				$blog_link_option .= ' rel="' . $rel_xfn . '"';
+			}
+			// mở link trong tab mới
+			if ( $open_target == 'on' ) {
+				$blog_link_option .= ' target="_blank"';
+			}
+			// thêm class để mở dưới dạng video youtube
+			if ( $open_youtube == 'on' ) {
+				$blog_link_option .= ' class="click-quick-view-video"';
+			}
+//			echo $blog_link_option . 'aaaaaaaaaaaaaaa';
+			
+			//
+			echo str_replace( '{tmp.blog_link_option}', $blog_link_option, EBE_dynamic_title_tag( EBE_html_template( EBE_get_page_template( $html_template ), array(
 				'tmp.cat_link' => $cat_link == '' ? 'javascript:;' : $cat_link,
+//				'tmp.blog_link_option' => $blog_link_option,
 				'tmp.more_link' => $more_link,
 				'tmp.num_line' => $num_line,
 				'tmp.max_width' => $max_width,
@@ -503,7 +547,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 				'tmp.widget_title' => $widget_title,
 				'tmp.str_sub_cat' => $str_sub_cat,
 				'tmp.content' => $content
-			) ) );
+			) ) ) );
 		}
 		
 		echo '</div>';

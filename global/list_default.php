@@ -111,7 +111,7 @@
 	$dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
 	$dynamic_meta .= '<link rel="shortlink" href="' . $link_for_fb_comment . '" />';
 	
-	$schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, $__category->name );
+	$schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, $__category->name, $__category->term_id );
 	
 	
 	

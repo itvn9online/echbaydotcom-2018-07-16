@@ -31,6 +31,9 @@ $arr_global_main = array(
 	'tmp.cf_blog_size' => $__cf_row['cf_blog_size'],
 	// css định dạng chiều rộng cho phần danh sách blog
 	'tmp.custom_blog_css' => $__cf_row['cf_blog_class_style'],
+	
+	// phần option cho link của mục blog
+	'tmp.blog_link_option' => '',
 );
 
 // riêng với trang chủ -> nếu có set chiều rộng -> bỏ phần chiệu rọng bên trong các module con đi

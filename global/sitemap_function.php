@@ -181,9 +181,12 @@ function WGR_get_sitemap_taxonomy ( $taxx = 'category', $priority = 0.9, $cat_id
 	
 	//
 	$str = '';
-	if ( count( $categories ) > 0 ) {
+//	if ( count( $categories ) > 0 ) {
+	if ( ! empty( $categories ) ) {
 		foreach ( $categories as $cat ) {
-			$str .= WGR_echo_sitemap_url_node( _eb_c_link( $cat->term_id, $taxx ), $priority, $sitemap_current_time, 'always' ) . WGR_get_sitemap_taxonomy ( $taxx, $priority, $cat->term_id );
+			if ( _eb_get_cat_object( $cat->term_id, '_eb_category_hidden', 0 ) != 1 ) {
+				$str .= WGR_echo_sitemap_url_node( _eb_c_link( $cat->term_id, $taxx ), $priority, $sitemap_current_time, 'always' ) . WGR_get_sitemap_taxonomy ( $taxx, $priority, $cat->term_id );
+			}
 		}
 	}
 	
