@@ -1251,6 +1251,16 @@ color: #333;
 .eb-quickcart-right { float: left; }
 .eb-quickcart-left { width: 30%; }
 .eb-quickcart-right { width: 70%; }
+/* thêm icon open youtube */
+.youtube-quick-view li .echbay-blog-avt { text-align: center; }
+.youtube-quick-view li .echbay-blog-avt:before {
+	font-family: FontAwesome;
+	content: "\f16a";
+	font-size: 30px;
+	margin: 0 auto;
+	color: #CC181E;
+}
+.youtube-quick-view li:hover .echbay-blog-avt:before { color: #fff; }
 /* widget */
 .widget_echbay_youtube,
 .widget_echbay_gg_map { margin-bottom: 19px; }

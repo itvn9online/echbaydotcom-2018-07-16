@@ -2684,5 +2684,25 @@ function WGR_category_for_home_list ( for_id, set_check ) {
 }
 
 
+function WGR_widget_change_class_if_change_category ( animate_id ) {
+	jQuery(".eb-get-widget-category").off("change").change(function () {
+	});
+}
 
+function WGR_widget_change_taxonomy_if_change_category ( animate_id ) {
+//	jQuery('#' + animate_id).off("change").change(function () {
+	jQuery(".eb-get-widget-category").off("change").change(function () {
+//		var a = jQuery('#' + animate_id + ' option:selected').attr("data-taxonomy") || "";
+		var a = jQuery("option:selected", this).attr("data-taxonomy") || "",
+			b = $(this).attr("id") || "";
+		if ( b == "" ) {
+			console.log("ID for set taxonomy not found!");
+			return false;
+		}
+		if ( a == "" ) a = "category";
+		console.log("Auto set taxonomy #" + a + " for: " + b);
+//		jQuery('.' + animate_id).val( a );
+		jQuery("." + b).val( a );
+	});
+}
 

@@ -282,24 +282,24 @@ function WGR_add_option_class_for_post_widget ( $a ) {
 	$s = '';
 	
 	//
-	$hide_widget_title = isset( $a ['hide_widget_title'] ) ? $a ['hide_widget_title'] : 'off';
-	if ( $hide_widget_title == 'on' ) {
+	if ( isset( $a ['hide_widget_title'] ) && $a ['hide_widget_title'] == 'on' ) {
 		$s .= ' hide-widget-title';
 	}
 	
-	$hide_title = isset( $a ['hide_title'] ) ? $a ['hide_title'] : 'off';
-	if ( $hide_title == 'on' ) {
+	if ( isset( $a ['hide_title'] ) && $a ['hide_title'] == 'on' ) {
 		$s .= ' hide-blogs-title';
 	}
 	
-	$hide_description = isset( $a ['hide_description'] ) ? $a ['hide_description'] : 'off';
-	if ( $hide_description == 'on' ) {
+	if ( isset( $a ['hide_description'] ) && $a ['hide_description'] == 'on' ) {
 		$s .= ' hide-blogs-description';
 	}
 	
-	$hide_info = isset( $a ['hide_info'] ) ? $a ['hide_info'] : 'off';
-	if ( $hide_info == 'on' ) {
+	if ( isset( $a ['hide_info'] ) && $a ['hide_info'] == 'on' ) {
 		$s .= ' hide-blogs-info';
+	}
+	
+	if ( isset( $a ['open_youtube'] ) && $a ['open_youtube'] == 'on' ) {
+		$s .= ' youtube-quick-view';
 	}
 	
 	//

@@ -767,21 +767,8 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 		
 		//
 		echo '<script type="text/javascript">
-//	jQuery("#' . $animate_id . '").off("change").change(function () {
-	jQuery(".eb-get-widget-category").off("change").change(function () {
-//		var a = jQuery("#' . $animate_id . ' option:selected").attr("data-taxonomy") || "";
-		var a = jQuery("option:selected", this).attr("data-taxonomy") || "",
-			b = $(this).attr("id") || "";
-		if ( b == "" ) {
-			console.log("ID for set taxonomy not found!");
-			return false;
-		}
-		if ( a == "" ) a = "category";
-		console.log("Auto set taxonomy #" + a + " for: " + b);
-//		jQuery(".' . $animate_id . '").val( a );
-		jQuery("." + b).val( a );
-	});
-	</script>';
+		WGR_widget_change_taxonomy_if_change_category("' . $animate_id . '");
+		</script>';
 		
 	}
 	

@@ -77,8 +77,11 @@ $new_post_options = array();
 foreach ( $arr_post_options as $v ) {
 //	echo $v->term_id . '<br>' . "\n";
 	
-	// đoạn này sẽ order theo nhóm cha của taxonomy
-	$sort_post_options[ $v->term_id ] = (int) _eb_get_cat_object( $v->parent, '_eb_category_order', 0 );
+	// chỉ lấy các nhóm được xác minh là hiển thị
+	if ( _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 ) != 1 ) {
+		// đoạn này sẽ order theo nhóm cha của taxonomy
+		$sort_post_options[ $v->term_id ] = (int) _eb_get_cat_object( $v->parent, '_eb_category_order', 0 );
+	}
 	$new_post_options[ $v->term_id ] = $v;
 }
 arsort( $sort_post_options );
