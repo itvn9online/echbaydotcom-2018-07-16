@@ -1,25 +1,30 @@
 <!--
-Description: phần mô tả danh mục nằm trên cùng (có hỗ trợ nút xem thêm đối với nội dung dài quá) -> tìm kiếm nâng cao nằm ngang -> nội dung trang danh mục -> bình luận facebook -> content sidebar -> menu (sidebar) tùy biến trái - phải.
+Description: Nội dung danh mục -> Tìm kiếm nâng cao -> H1 -> Danh sách sản phẩm -> Bình luận facebook -> Category sidebar -> Menu (sidebar) tùy biến trái - phải.
 -->
 
 <div class="global-category-module cf {tmp.custom_cats_flex_css} {tmp.cf_cats_class_style}">
 	<div class="col-main-content custom-width-cats-main fullsize-if-mobile">
-		<div data-tag="p" class="global-cats-description each-to-fix-ptags">{tmp.cats_description}</div>
-		<div class="text-right viewmore-cats-description d-none"><a href="javascript:;" class="click-viewmore-cats-description">Xem thêm</a></div>
-		<div>{tmp.search_advanced_sidebar}</div>
-		<!-- -->
-		<div class="thread-list-order">
-			<div class="thread-list-orderby"><span id="oi_order_by"></span></div>
+		<div class="col-main-padding col-cats-padding padding-main-content">
+			<div>
+				<div data-tag="p" class="global-cats-description each-to-fix-ptags">{tmp.cats_description}</div>
+				<div class="text-right viewmore-cats-description d-none"><a href="javascript:;" class="click-viewmore-cats-description">Xem thêm</a></div>
+				<div>{tmp.search_advanced_sidebar}</div>
+			</div>
+			<div>
+				<div class="thread-list-order">
+					<div class="thread-list-orderby"><span id="oi_order_by"></span></div>
+				</div>
+				<h1 class="thread-module-name">{tmp.home_cf_title}</h1>
+				<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit thread-list {tmp.custom_cats_li_css} cf">
+					{tmp.list_post}
+				</ul>
+				<br>
+				<div class="public-part-page">{tmp.str_page}</div>
+				<div class="fb-comments" data-href="{tmp.link_for_fb_comment}" data-width="100%" data-numposts="10" data-colorscheme="light"></div>
+				<br>
+				<div class="global-category-widget">{tmp.category_content_sidebar}</div>
+			</div>
 		</div>
-		<h1 class="thread-module-name">{tmp.home_cf_title}</h1>
-		<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit thread-list {tmp.custom_cats_li_css} cf">
-			{tmp.list_post}
-		</ul>
-		<br>
-		<div class="public-part-page">{tmp.str_page}</div>
-		<div class="fb-comments" data-href="{tmp.link_for_fb_comment}" data-width="100%" data-numposts="10" data-colorscheme="light"></div>
-		<br>
-		<div class="global-category-widget">{tmp.category_content_sidebar}</div>
 	</div>
 	<div class="col-sidebar-content custom-width-global-sidebar custom-width-cats-sidebar fullsize-if-mobile">
 		<div class="cats-right-space global-right-space">
