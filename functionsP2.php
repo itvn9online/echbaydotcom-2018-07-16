@@ -2500,7 +2500,7 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_li
 }
 
 
-
+/*
 function WGR_get_arr_taxonomy ( $tax = 'category' ) {
 	$arrs = get_categories( array(
 		'taxonomy' => $tax,
@@ -2526,6 +2526,7 @@ function WGR_get_arr_taxonomy ( $tax = 'category' ) {
 		print_r($v);
 	}
 }
+*/
 
 
 
@@ -2552,6 +2553,8 @@ function _eb_get_tax_post_options ( $arr_option = array(), $taxo = 'post_options
 	) );
 	
 	//
+	$oders = WGR_order_and_hidden_taxonomy( $arrs, 1 );
+	/*
 	$oders = array();
 	$options = array();
 	
@@ -2561,6 +2564,7 @@ function _eb_get_tax_post_options ( $arr_option = array(), $taxo = 'post_options
 		$options[$v->term_id] = $v;
 	}
 	arsort( $oders );
+	*/
 	
 	//
 	$javascripts = '';
@@ -2569,7 +2573,7 @@ function _eb_get_tax_post_options ( $arr_option = array(), $taxo = 'post_options
 	
 	//
 	foreach ( $oders as $k => $v ) {
-		$v = $options[$k];
+//		$v = $options[$k];
 		
 		//
 		$arr = get_categories( array(
@@ -2579,6 +2583,8 @@ function _eb_get_tax_post_options ( $arr_option = array(), $taxo = 'post_options
 		) );
 		
 		//
+		$oder = WGR_order_and_hidden_taxonomy( $arr, 1 );
+		/*
 		$oder = array();
 		$option = array();
 		
@@ -2588,13 +2594,14 @@ function _eb_get_tax_post_options ( $arr_option = array(), $taxo = 'post_options
 			$option[$v2->term_id] = $v2;
 		}
 		arsort( $oder );
+		*/
 		
 		//
 		$javascript = '';
 		$str = '';
 		$select = '';
 		foreach ( $oder as $k2 => $v2 ) {
-			$v2 = $option[$k2];
+//			$v2 = $option[$k2];
 			
 			$op_link = _eb_cs_link( $v2 );
 			

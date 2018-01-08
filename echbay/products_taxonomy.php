@@ -131,6 +131,8 @@ function WGR_get_and_oders_taxonomy_category (
 
 	
 	// sắp xếp mảng theo chủ đích của người dùng
+	$oders = WGR_order_and_hidden_taxonomy( $arrs_cats, 1 );
+	/*
 	$oders = array();
 	$options = array();
 	
@@ -140,13 +142,15 @@ function WGR_get_and_oders_taxonomy_category (
 		$options[$v->term_id] = $v;
 	}
 	arsort( $oders );	
+	*/
 	
 	
 	//
 	$str = '';
 //	foreach ( $arrs_cats as $v ) {
-	foreach ( $oders as $k => $cat_stt ) {
-		$v = $options[$k];
+	foreach ( $oders as $k => $v ) {
+//		$v = $options[$k];
+		$cat_stt = $v->stt;
 		
 		//
 		$str_child = '';

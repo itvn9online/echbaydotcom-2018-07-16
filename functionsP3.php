@@ -279,3 +279,51 @@ function WGR_add_li_to_thread_node ( $str ) {
 
 
 
+
+// sắp xếp lại mảng của taxonomy sau khi select, ẩn các nhóm đang bị khóa
+function WGR_order_and_hidden_taxonomy ( $arr, $order_only = 0 ) {
+	
+	$a = array();
+	$a2 = array();
+	
+	// sắp xếp lại thứ tự của cat
+	if ( $order_only == 1 ) {
+		foreach ( $arr as $v ) {
+			$stt = _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
+			
+			$a[ $v->term_id ] = $stt;
+			
+			$v->stt = $stt;
+			$a2[ $v->term_id ] = $v;
+		}
+	}
+	// thêm cả chức năng bỏ qua các nhóm đã khóa
+	else {
+		foreach ( $arr as $v ) {
+			// không lấy các nhóm đã bị khóa
+			if ( _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 ) != 1 ) {
+				$stt = _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
+				
+				$a[ $v->term_id ] = $stt;
+				
+				$v->stt = $stt;
+				$a2[ $v->term_id ] = $v;
+			}
+		}
+	}
+	
+	// Sắp xếp mảng từ lớn đến bé
+	arsort( $a );
+	
+	// gán lại giá trị cho mảng sa khi order
+	foreach ( $a as $k => $v ) {
+		$a[$k] = $a2[$k];
+	}
+	
+	//
+	return $a;
+	
+}
+
+
+

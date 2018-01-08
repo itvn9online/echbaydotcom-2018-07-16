@@ -46,6 +46,8 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 	
 	
 	//
+	$new_cat = WGR_order_and_hidden_taxonomy( $categories );
+	/*
 	$new_cat = array();
 	$new_name_cat = array();
 	// sắp xếp lại thứ tự của cat
@@ -58,6 +60,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 	// Sắp xếp mảng từ lớn đến bé
 	arsort( $new_cat );
 //	print_r( $new_cat );
+	*/
 	
 	//
 	$i = 0;
@@ -66,7 +69,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 		// không lấy nhóm cấp 1 mặc định của wp
 //		if ( $k != 1 ) {
 		// ko lấy các nhóm ẩn
-		if ( _eb_get_cat_object( $k, '_eb_category_hidden', 0 ) != 1 ) {
+//		if ( _eb_get_cat_object( $k, '_eb_category_hidden', 0 ) != 1 ) {
 			$args['cat'] = $k;
 			$cat_ids = $k;
 			
@@ -75,7 +78,8 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 //			print_r( $home_detauls_categories );
 //			$home_detauls_categories = get_term($k);
 //			print_r( $home_detauls_categories );
-			$home_detauls_categories = $new_name_cat[ $k ];
+//			$home_detauls_categories = $new_name_cat[ $k ];
+			$home_detauls_categories = $v;
 //			print_r( $home_detauls_categories );
 			
 			// nếu nhóm này có sản phẩm
@@ -142,7 +146,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 					echo ' -->';
 				}
 //			}
-		}
+//		}
 	}
 }
 else {

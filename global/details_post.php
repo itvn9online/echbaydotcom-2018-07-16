@@ -72,6 +72,8 @@ $arr_post_options = wp_get_object_terms( $pid, 'post_options' );
 //if ( mtv_id == 1 ) print_r($arr_post_options);
 
 // sắp xếp theo STT
+$sort_post_options = WGR_order_and_hidden_taxonomy( $arr_post_options );
+/*
 $sort_post_options = array();
 $new_post_options = array();
 foreach ( $arr_post_options as $v ) {
@@ -87,11 +89,12 @@ foreach ( $arr_post_options as $v ) {
 arsort( $sort_post_options );
 //print_r( $sort_post_options );
 //print_r( $new_post_options );
+*/
 
 //
 //foreach ( $arr_post_options as $v ) {
 foreach ( $sort_post_options as $k=> $v ) {
-	$v = $new_post_options[ $k ];
+//	$v = $new_post_options[ $k ];
 	
 	//
 	if ( $v->parent > 0 ) {

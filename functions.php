@@ -1601,6 +1601,8 @@ function EBE_echbay_category_menu (
 
 	
 	// sắp xếp mảng theo chủ đích của người dùng
+	$oders = WGR_order_and_hidden_taxonomy( $arrs_cats, 1 );
+	/*
 	$oders = array();
 	$options = array();
 	
@@ -1610,6 +1612,7 @@ function EBE_echbay_category_menu (
 		$options[$v->term_id] = $v;
 	}
 	arsort( $oders );	
+	*/
 	
 	
 	//
@@ -1618,7 +1621,7 @@ function EBE_echbay_category_menu (
 	foreach ( $oders as $k => $v ) {
 		
 		//
-		$v = $options[$k];
+//		$v = $options[$k];
 		
 		// không lấy nhóm có ID là 1
 		if ( $v->term_id != 1 ) {
