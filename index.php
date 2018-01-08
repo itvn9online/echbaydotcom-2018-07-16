@@ -877,36 +877,86 @@ function eb_change_product_query ( $query ) {
 		* Tìm kiếm nâng cao
 		*/
 		$tim_nang_cao = isset ( $_GET ['filter'] ) ? trim ( strtolower( $_GET ['filter'] ) ) : '';
+		$in_nang_cao = isset ( $_GET ['filter_in'] ) ? trim ( strtolower( $_GET ['filter_in'] ) ) : '';
 		
-		if ( $tim_nang_cao != '' ) {
+		if ( $tim_nang_cao != '' || $in_nang_cao != '' ) {
 			$tim_nang_cao = explode( ',', $tim_nang_cao );
+			$arr_ids = array();
+			
+			$in_nang_cao = explode( ',', $in_nang_cao );
+			$arr_in_ids = array();
 			
 			//
 			foreach ( $tim_nang_cao as $k => $v ) {
 				$v = trim( $v );
+				if ( $v != '' && is_numeric( $v ) ) {
+					$arr_ids[] = $v;
+				}
+				/*
 				if ( $v != '' && ! is_numeric( $v ) ) {
 					unset( $tim_nang_cao[$k] );
+				}
+				*/
+			}
+			
+			//
+			foreach ( $in_nang_cao as $k => $v ) {
+				$v = trim( $v );
+				if ( $v != '' && is_numeric( $v ) ) {
+					$arr_in_ids[] = $v;
 				}
 			}
 			
 			//
-			$tim_nang_cao = implode( ',', $tim_nang_cao );
+//			$tim_nang_cao = implode( ',', $tim_nang_cao );
 			
 			//
-			$tim_nang_cao = explode( ',', $tim_nang_cao );
+//			$tim_nang_cao = explode( ',', $tim_nang_cao );
+			
+			// AND
+//			if ( count( $tim_nang_cao ) > 0 ) {
+			if ( ! empty( $arr_ids ) ) {
+				$arr_ids = array(
+					'field' => 'term_id',
+//					'terms' => $tim_nang_cao,
+//					'terms' => $tim_nang_cao[0],
+//					'terms' => $tim_nang_cao,
+					'terms' => $arr_ids,
+//					'operator' => 'IN',
+					'operator' => 'AND',
+					'taxonomy' => 'post_options'
+				);
+			}
+			
+			// IN
+			if ( ! empty( $arr_in_ids ) ) {
+				$arr_in_ids = array(
+					'field' => 'term_id',
+//					'terms' => $tim_nang_cao,
+//					'terms' => $tim_nang_cao[0],
+//					'terms' => $tim_nang_cao,
+					'terms' => $arr_in_ids,
+//					'operator' => 'IN',
+//					'operator' => 'AND',
+					'taxonomy' => 'post_options'
+				);
+			}
 			
 			//
-			if ( count( $tim_nang_cao ) > 0 ) {
+			if ( ! empty( $arr_ids ) && ! empty( $arr_in_ids ) ) {
 				$query->set( 'tax_query', array(
-					array(
-						'taxonomy' => 'post_options',
-						'field' => 'term_id',
-	//					'terms' => $tim_nang_cao,
-	//					'terms' => $tim_nang_cao[0],
-						'terms' => $tim_nang_cao,
-	//					'operator' => 'IN',
-						'operator' => 'AND',
-					)
+					$arr_ids,
+					$arr_in_ids
+				) );
+			}
+			else if ( ! empty( $arr_ids ) ) {
+				$query->set( 'tax_query', array(
+					$arr_ids
+				) );
+			}
+			else if ( ! empty( $arr_in_ids ) ) {
+				$query->set( 'tax_query', array(
+					$arr_in_ids
 				) );
 			}
 		}
