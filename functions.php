@@ -2413,9 +2413,9 @@ function _eb_log_admin_order($m, $order_id) {
 	// v1
 	_eb_postmeta( eb_log_user_id_postmeta, '__eb_log_invoice' . $order_id, $m );
 }
-function _eb_get_log_admin_order( $order_id, $limit = '' ) {
+function _eb_get_log_admin_order( $order_id, $limit = 50 ) {
 	// v2
-	return _eb_get_log(2);
+	return _eb_get_log(2, $limit, $order_id);
 	
 	// v1
 	return _eb_q("SELECT *
@@ -2470,12 +2470,18 @@ function _eb_set_log ( $arr, $log_type = 0 ) {
 	return _eb_sd( $arr, 'eb_wgr_log' );
 }
 
-function _eb_get_log ( $log_type = 0, $limit = 100 ) {
+function _eb_get_log ( $log_type = 0, $limit = 100, $hd_id = 0 ) {
+	$filter = "";
+	if ( $hd_id > 0 ) {
+		$filter = " AND hd_id = " . $hd_id;
+	}
+	
+	//
 	return _eb_q("SELECT *
 	FROM
 		`eb_wgr_log`
 	WHERE
-		l_type = " . $log_type . "
+		l_type = " . $log_type . $filter . "
 	ORDER BY
 		l_id DESC
 	LIMIT 0, " . $limit);

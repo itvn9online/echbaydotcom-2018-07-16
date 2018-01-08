@@ -50,7 +50,7 @@ if ( $order_old_type > 0 ) {
 	WHERE
 		ID = " . $order_id;
 //	echo $sql . "\n";
-	_eb_q( $sql );
+	_eb_q( $sql, 0 );
 	
 	
 	
@@ -112,7 +112,7 @@ $sql = "UPDATE eb_in_con_voi
 	WHERE
 		order_id = " . $order_id;
 //echo $sql . "\n";
-_eb_q( $sql );
+_eb_q( $sql, 0 );
 //exit();
 
 
@@ -132,7 +132,7 @@ foreach ( $arr as $k => $v ) {
 
 
 //
-_eb_log_admin_order( 'Cập nhật đơn hàng #' . $order_id, $order_id );
+_eb_log_admin_order( 'Cập nhật đơn hàng #' . $order_id . ' (' . ( isset( $arr_hd_trangthai[ $order_status ] ) ? $arr_hd_trangthai[ $order_status ] : 'NULL' ) . ')', $order_id );
 
 //
 _eb_alert('Cập nhật thông tin đơn hàng thành công');

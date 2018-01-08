@@ -803,6 +803,15 @@ input[id="_eb_category_order"] { width: 90px; }
 .edit_parent_by option:before { content: "---"; }
 .edit_parent_by option[data-parent="0"]:before { }
 */
+.dang-xac-nhan {
+	text-align: center;
+	width: 600px;
+	padding: 10px;
+	border: 1px #f00 solid;
+	color: #f00;
+	margin: 0 auto;
+	font-weight: bold;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

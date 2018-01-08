@@ -222,6 +222,11 @@ function ___eb_admin_update_order_details () {
 			}
 			
 			//
+			if ( x == 'hd_url' && a != '' ) {
+				a = '<a href="' + a + '" target="_blank" rel="nofollow">' + a + '</a>';
+			}
+			
+			//
 			$('.dulieu-thamkhao').append( '\
 			<tr>\
 				<td class="t">' + arr_dich[x] + '</td>\
