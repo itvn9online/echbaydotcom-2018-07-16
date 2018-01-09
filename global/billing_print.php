@@ -21,6 +21,12 @@ include ECHBAY_PRI_CODE . 'order_details_load.php';
 
 
 
+
+//
+_eb_log_admin_order( 'In đơn hàng', $post->order_id );
+
+
+
 //
 $str_ngay = date ( 'd-m-Y', date_time );
 $str_ngay = explode ( '-', $str_ngay );
