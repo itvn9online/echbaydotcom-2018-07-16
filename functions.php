@@ -2540,8 +2540,8 @@ function _eb_count_log ( $log_type = 0, $limit_time = 3600, $limit_day = 0, $lim
 	if ( ! empty ( $sql ) ) {
 		$a = $sql[0]->c;
 		
-		// xóa bớt log cho nhẹ db
-		if ( $a > $limit_clear_log * 1.5 ) {
+		// nếu không phải log của đơn hàng -> xóa bớt log cho nhẹ db
+		if ( $log_type != 2 && $a > $limit_clear_log * 1.5 ) {
 			$sql = _eb_q("SELECT l_id
 			FROM
 				`eb_wgr_log`
@@ -2569,7 +2569,8 @@ function _eb_count_log ( $log_type = 0, $limit_time = 3600, $limit_day = 0, $lim
 					`eb_wgr_log`
 				WHERE
 					l_type = " . $log_type . "
-					AND l_id < " . $sql[0]->l_id, 0);
+					AND l_id < " . $sql[0]->l_id . "
+					AND hd_id = 0", 0);
 			}
 		}
 		
