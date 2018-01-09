@@ -134,34 +134,47 @@ if ( $post->order_status == 3 ) {
 //	print_r( $list_log_for_order );
 	
 	// xem có update log xem cho đơn này hay không
-	$update_log_view_order = 0;
+	$update_log_view_order = 1;
 	$i = 0;
 	
 	//
+	$show_log_for_supper_admin = 0;
+	if ( current_user_can('manage_options') )  {
+		$show_log_for_supper_admin = 1;
+	}
+	
+	//
+	/*
 	if ( empty( $list_log_for_order ) ) {
 		$update_log_view_order = 1;
 	}
 	else {
+		*/
 		foreach ( $list_log_for_order as $v ) {
 			//
-			if ( $update_log_view_order == 0 && $v->tv_id == mtv_id ) {
-	//			echo date_time - $v->l_ngay . '<br>' . "\n";
-				if ( $i == 0 && date_time - $v->l_ngay > 600 ) {
-					$update_log_view_order = 1;
+//			if ( $update_log_view_order == 0 && $v->tv_id == mtv_id ) {
+			if ( $update_log_view_order == 1 && $v->tv_id == mtv_id ) {
+//				echo date_time - $v->l_ngay . '<br>' . "\n";
+//				if ( $i == 0 && date_time - $v->l_ngay > 600 ) {
+//					$update_log_view_order = 1;
+				if ( $i == 0 && date_time - $v->l_ngay < 600 ) {
+					$update_log_view_order = 0;
 				}
 				$i++;
 			}
 			
 			//
-			echo '
+			if ( $show_log_for_supper_admin == 1 ) {
+				echo '
 <tr>
 	<td><a href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email( $v->tv_id ) . '</a></td>
 	<td>' . date ( 'd/m/Y (H:i)', $v->l_ngay ) . '</td>
 	<td>' . $v->l_ip . '</td>
 	<td>' . $v->l_noidung . '</td>
 </tr>';
+			}
 		}
-	}
+//	}
 	
 	
 	// tự động cập nhật trạng thái đơn mới để người sau nắm được

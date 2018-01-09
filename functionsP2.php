@@ -2956,6 +2956,13 @@ function EBE_tao_bang_hoa_don_cho_echbay_wp () {
 			'default' => '',
 			'extra' => '',
 		),
+		'order_update_time' => array(
+			'type' => 'bigint(20)',
+			'null' => 'no',
+			'key' => '',
+			'default' => '',
+			'extra' => '',
+		),
 		'order_status' => array(
 			'type' => 'bigint(20)',
 			'null' => 'no',
