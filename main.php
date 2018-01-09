@@ -15,6 +15,7 @@ if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 	
 	// Hiển thị chế độ bảo trì trong vòng 2 phút thôi
 	if ( date_time - $time_for_bao_tri < 120 ) {
+//	if ( date_time - $time_for_bao_tri < 300 ) {
 		
 		// Set trạng thái cho trang 404
 		EBE_set_header(404);
