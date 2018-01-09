@@ -563,13 +563,21 @@ function EBE_add_js_compiler_in_cache (
 	
 	//
 	$file_name_cache = '';
+	$full_file_name = '';
 	foreach ( $arr_eb_add_full_js as $v ) {
 		if ( file_exists( $v ) ) {
 //			$file_name_cache .= basename( $v ) . filemtime( $v );
 			
 			// thời gian cập nhật file
-			$file_time = filemtime ( $v );
-			$file_name_cache .= basename( $v, '.js' ) . substr( $file_time, strlen($file_time) - 3 );
+//			$file_time = filemtime ( $v );
+//			$file_name_cache .= basename( $v, '.js' ) . substr( $file_time, strlen($file_time) - 3 );
+			
+			// chỉ lấy mỗi tên file, thời gian cập nhật file thì cho định kỳ cho nhẹ
+			$file_name = basename( $v, '.js' );
+			
+			$full_file_name .= '+' . $file_name;
+			
+			$file_name_cache .= $file_name;
 		}
 	}
 //	echo $file_name_cache . '<br>' . "\n";
@@ -582,88 +590,88 @@ function EBE_add_js_compiler_in_cache (
 	$file_name_cache = 'zjs-' . $file_name_cache . '.js';
 	
 	
-	// nếu file có rồi -> nhung luôn file
+	// nếu file có rồi -> nhúng luôn file
 //	$file_in_cache = ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache;
 	$file_in_cache = EB_THEME_CACHE . $file_name_cache;
-	if ( file_exists( $file_in_cache ) ) {
-		echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
+	// chỉ cập nhật file khi có sự thay đổi
+//	if ( file_exists( $file_in_cache ) ) {
+	// cập nhật file định kỳ
+	if ( ! file_exists( $file_in_cache ) || date_time - filemtime ( $file_in_cache ) + rand( 0, 60 ) > 600 ) {
 		
-		return true;
-	}
-	
-	
-	//
-	$new_content = '';
-	foreach ( $arr_eb_add_full_js as $v ) {
-		// xem file có tồn tại không
-		if ( file_exists( $v ) ) {
-//			echo $v . "\n";
-			
-			// xem trong cache có chưa
-//			$file_name_cache = basename( $v ) . filemtime( $v ) . '.js';
-//			$file_in_cache = ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache;
-			
-			// nếu chưa có -> tạo cache
-//			if ( ! file_exists( $file_in_cache ) ) {
-//				echo $file_in_cache . "\n";
+		//
+		$new_content = '';
+		foreach ( $arr_eb_add_full_js as $v ) {
+			// xem file có tồn tại không
+			if ( file_exists( $v ) ) {
+	//			echo $v . "\n";
 				
-				//
-				$file_content = file_get_contents( $v, 1 );
+				// xem trong cache có chưa
+	//			$file_name_cache = basename( $v ) . filemtime( $v ) . '.js';
+	//			$file_in_cache = ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache;
 				
-				// thu gọn nội dung
-				if ( $optimize == 1 ) {
-					$file_content = WGR_remove_js_multi_comment( $file_content );
-					$file_content = explode( "\n", $file_content );
+				// nếu chưa có -> tạo cache
+	//			if ( ! file_exists( $file_in_cache ) ) {
+	//				echo $file_in_cache . "\n";
 					
+					//
+					$file_content = file_get_contents( $v, 1 );
+					
+					// thu gọn nội dung
+					if ( $optimize == 1 ) {
+						$file_content = WGR_remove_js_multi_comment( $file_content );
+						$file_content = explode( "\n", $file_content );
+						
+						foreach ( $file_content as $v ) {
+							$v = trim( $v );
+							
+							if ( $v == '' || substr( $v, 0, 2 ) == '//' ) {
+							}
+							else {
+								if ( strstr( $v, '//' ) == true ) {
+									$v .= "\n";
+								}
+								$new_content .= $v;
+							}
+						}
+					}
+					// chỉ gộp nội dung thành 1 file
+					else {
+						$new_content .= $file_content . "\n";
+					}
+					
+					//
+					/*
+					$file_content = explode( "\n", $file_content );
 					foreach ( $file_content as $v ) {
 						$v = trim( $v );
 						
+						// tối ưu sơ qua cho nội dung
 						if ( $v == '' || substr( $v, 0, 2 ) == '//' ) {
 						}
-						else {
+						// tối ưu sâu hơn chút
+						else if ( $optimize == 1 ) {
 							if ( strstr( $v, '//' ) == true ) {
 								$v .= "\n";
 							}
 							$new_content .= $v;
 						}
-					}
-				}
-				// chỉ gộp nội dung thành 1 file
-				else {
-					$new_content .= $file_content . "\n";
-				}
-				
-				//
-				/*
-				$file_content = explode( "\n", $file_content );
-				foreach ( $file_content as $v ) {
-					$v = trim( $v );
-					
-					// tối ưu sơ qua cho nội dung
-					if ( $v == '' || substr( $v, 0, 2 ) == '//' ) {
-					}
-					// tối ưu sâu hơn chút
-					else if ( $optimize == 1 ) {
-						if ( strstr( $v, '//' ) == true ) {
-							$v .= "\n";
+						// gần như không làm gì cả
+						else {
+							$new_content .= $v . "\n";
 						}
-						$new_content .= $v;
 					}
-					// gần như không làm gì cả
-					else {
-						$new_content .= $v . "\n";
-					}
-				}
-				*/
-//			}
+					*/
+	//			}
+			}
 		}
+		
+		//
+		_eb_create_file( $file_in_cache, '/* ' . substr( $full_file_name, 1 ) . ' */' . $new_content );
+		
 	}
 	
 	//
-	_eb_create_file( $file_in_cache, $new_content );
-	
-	//
-	echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache . '" ' . $async . '></script>' . "\n";
+	echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache . '?v=' . web_version . '" ' . $async . '></script>' . "\n";
 }
 
 // một số host không dùng được hàm end
@@ -1193,6 +1201,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 	// nhúng link đã qua cache
 	if ( $css_inline != 1 ) {
 		$file_cache = '';
+		$full_file_name = '';
 		$new_arr = array();
 		foreach ( $arr as $v => $k ) {
 			// chỉ add file có trong host
@@ -1201,17 +1210,25 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 				$file_name = basename($v, '.css');
 //				echo $file_name . '<br>' . "\n";
 				
+				//
+				$full_file_name .= '+' . $file_name;
+				
 				// thời gian cập nhật file
+				/*
 				$file_time = filemtime ( $v );
 //				$file_time = '-' . substr( filemtime ( $v ), 6 );
 				$file_time = $file_name . substr( $file_time, strlen($file_time) - 3 );
 				
 //				$file_cache .= $file_name . $file_time;
 				$file_cache .= $file_time;
+				*/
+				$file_cache .= $file_name;
 				
 				$new_arr[$v] = 1;
 			}
 		}
+		
+		//
 //		echo $file_cache . '<br>' . "\n";
 //		if ( strlen( $file_cache ) > 155 ) {
 			$file_cache = md5( $file_cache );
@@ -1226,7 +1243,9 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 //		echo $file_save . "\n";
 		
 		// nếu chưa -> tạo file cache
-		if ( ! file_exists( $file_save ) ) {
+//		if ( ! file_exists( $file_save ) ) {
+		// tạo file cache định kỳ
+		if ( ! file_exists( $file_save ) || date_time - filemtime ( $file_save ) + rand( 0, 60 ) > 600 ) {
 			$cache_content = '';
 			foreach ( $new_arr as $v => $k ) {
 				$file_content = explode( "\n", file_get_contents( $v, 1 ) );
@@ -1241,11 +1260,11 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 			$cache_content = WGR_remove_css_multi_comment ( $cache_content );
 			
 			//
-			_eb_create_file ( $file_save, EBE_replace_link_in_cache_css ( $cache_content ) );
+			_eb_create_file ( $file_save, '/* ' . substr( $full_file_name, 1 ) . ' */' . EBE_replace_link_in_cache_css ( $cache_content ) );
 		}
 		
 		// -> done
-		echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache . '" type="text/css" media="all" />';
+		echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache . '?v=' . web_version . '" type="text/css" media="all" />';
 		
 		//
 		return true;

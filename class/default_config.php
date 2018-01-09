@@ -195,6 +195,7 @@ $__cf_row_default = array(
 	'cf_alow_edit_theme_plugin' => 0,
 	'cf_alow_edit_plugin_theme' => 1,
 	
+	// đặt làm trang tin tức
 	'cf_set_news_version' => 0,
 	
 	// Với các website nâng cấp từ version 1 lên version, URL có thể sẽ khác nhau -> dùng chức năng này để đồng bộ

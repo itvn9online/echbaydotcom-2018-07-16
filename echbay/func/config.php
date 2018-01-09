@@ -401,7 +401,8 @@ _eb_set_config( 'cf_ftp_root_dir', EBE_get_ftp_root_dir() );
 _eb_set_config( 'cf_ngay', date_time );
 //$arr_for_update_eb_config[ 'cf_ngay' ] = date_time;
 
-_eb_set_config( 'cf_web_version', date( 'y.md.Hi', date_time ) );
+//_eb_set_config( 'cf_web_version', date( 'y.md.Hi', date_time ) );
+_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ) );
 //$arr_for_update_eb_config[ 'cf_web_version' ] = date( 'y.md.Hi', date_time );
 
 // xóa config cũ đi -> tránh cache lưu lại

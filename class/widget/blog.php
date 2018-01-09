@@ -468,12 +468,15 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		
 		//
-		$widget_title = _eb_get_echo_widget_title( $cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>', 'echbay-widget-blogs-title', $before_title, $dynamic_tag );
-		
-		if ( $description != '' ) {
-			$widget_title .= '<div class="echbay-widget-blogs-desc">' . $description . '</div>';
+		$widget_title = '';
+		if ( ! isset( $instance ['hide_widget_title'] ) ||  $instance ['hide_widget_title'] == 'off' ) {
+			$widget_title = _eb_get_echo_widget_title( $cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>', 'echbay-widget-blogs-title', $before_title, $dynamic_tag );
+			
+			if ( $description != '' ) {
+				$widget_title .= '<div class="echbay-widget-blogs-desc">' . $description . '</div>';
+			}
+//			echo $description;
 		}
-//		echo $description;
 		
 		
 		//
