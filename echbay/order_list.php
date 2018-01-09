@@ -256,6 +256,14 @@ $offset = ($trang - 1) * $threadInPage;
 			$ngay_gui_don = date( 'd-m-Y H:i', $o->order_time );
 		}
 		
+		// Với các đơn hàng đang là tự động xác nhận
+		// nếu trạng thái này nằm đây lâu quá rồi -> tự ghi nhận là chưa xác nhận
+		/*
+		if ( $hd_trangthai == 3 && isset( $o->order_update_time ) && date_time - $o->order_update_time > 600 ) {
+			$hd_trangthai = 0;
+		}
+		*/
+		
 		//
 		echo '
 		<tr class="eb-set-order-list-info hd_status' . $hd_trangthai . '">

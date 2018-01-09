@@ -13,10 +13,85 @@ include ECHBAY_PRI_CODE . 'order_details_load.php';
 </div>
 <br>
 <?php
-if ( $post->order_status == 3 ) {
+
+// tự chuyển lại trạng thái là chưa xác nhận nếu bấm vào xem mà không làm gì cả
+$auto_reset_status_after_view = 0;
+
+
+
+//
+$list_log_for_order = _eb_get_log_admin_order( $post->order_id );
+//	print_r( $list_log_for_order );
+
+// xem có update log xem cho đơn này hay không
+$show_dang_xac_nhan = '';
+$update_log_view_order = 1;
+$str_log_view_order = '';
+$i = 0;
+
+// chỉ hiện thị log với tài khoản admin
+$show_log_for_supper_admin = 0;
+if ( current_user_can('manage_options') )  {
+	$show_log_for_supper_admin = 1;
+}
+
+//
+/*
+if ( empty( $list_log_for_order ) ) {
+	$update_log_view_order = 1;
+}
+else {
+	*/
+	foreach ( $list_log_for_order as $v ) {
+		//
+//		if ( $update_log_view_order == 0 && $v->tv_id == mtv_id ) {
+		if ( $update_log_view_order == 1 && $v->tv_id == mtv_id ) {
+//			echo date_time - $v->l_ngay . '<br>' . "\n";
+//			if ( $i == 0 && date_time - $v->l_ngay > 600 ) {
+//				$update_log_view_order = 1;
+			if ( $i == 0 && date_time - $v->l_ngay < 600 ) {
+				$update_log_view_order = 0;
+			}
+			$i++;
+		}
+		
+		// với đơn hàng mới hoặc đơn hàng đang xác nhận
+		if ( $post->order_status == 0 || $post->order_status == 3 ) {
+			// kiểm tra thời gian xác nhận lần cuối để thông báo tới người dùng
+			if ( $show_dang_xac_nhan == '' && date_time - $v->l_ngay < 300 ) {
+				$show_dang_xac_nhan = '<a href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email( $v->tv_id ) . '</a>';
+			}
+		}
+		
+		//
+		if ( $show_log_for_supper_admin == 1 ) {
+			$str_log_view_order .= '
+<tr>
+<td><a href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email( $v->tv_id ) . '</a></td>
+<td>' . date ( 'd/m/Y (H:i)', $v->l_ngay ) . '</td>
+<td>' . $v->l_ip . '</td>
+<td>' . $v->l_noidung . '</td>
+</tr>';
+		}
+	}
+//}
+
+
+// tự động cập nhật trạng thái đơn mới để người sau nắm được
+if ( $update_log_view_order == 1 ) {
+	// lưu log mỗi khi có người xem đơn hàng
+	_eb_log_admin_order( 'Xem đơn hàng', $post->order_id );
+}
+
+
+
+
+//
+//if ( $post->order_status == 3 ) {
+if ( $show_dang_xac_nhan != '' ) {
 	// nếu mới cập nhật -> hiển thị thông báo cho người sau được biết
 //	if ( date_time - $post->l_ngay < 300 ) {
-		echo '<div class="dang-xac-nhan">Hóa đơn đang được kiểm duyệt</div>';
+		echo '<div class="dang-xac-nhan">Hóa đơn đang được kiểm duyệt bởi ' . $show_dang_xac_nhan . '</div>';
 	/*
 	}
 	// Nếu không -> reset trạng thái mới
@@ -24,6 +99,7 @@ if ( $post->order_status == 3 ) {
 	}
 	*/
 }
+
 ?>
 <form name="frm_invoice_details" method="post" action="<?php echo web_link; ?>process/?set_module=order_details" target="target_eb_iframe" onSubmit="return ___eb_admin_update_order_details();">
 	<div class="d-none">
@@ -85,6 +161,7 @@ if ( $post->order_status == 3 ) {
 					$hd_trangthai = $post->order_status;
 					
 					//
+					/*
 					if ( $hd_trangthai == 0 ) {
 						$sql = "UPDATE eb_in_con_voi
 						SET
@@ -93,7 +170,11 @@ if ( $post->order_status == 3 ) {
 							order_id = " . $post->order_id;
 //						echo $sql . "\n";
 						_eb_q( $sql, 0 );
+						
+						//
+						$auto_reset_status_after_view = 0;
 					}
+					*/
 					
 					//
 					foreach ( $arr_hd_trangthai as $k => $v ) {
@@ -128,62 +209,7 @@ if ( $post->order_status == 3 ) {
 		<td>IP</td>
 		<td>Nội dung</td>
 	</tr>
-	<?php
-	
-	$list_log_for_order = _eb_get_log_admin_order( $post->order_id );
-//	print_r( $list_log_for_order );
-	
-	// xem có update log xem cho đơn này hay không
-	$update_log_view_order = 1;
-	$i = 0;
-	
-	//
-	$show_log_for_supper_admin = 0;
-	if ( current_user_can('manage_options') )  {
-		$show_log_for_supper_admin = 1;
-	}
-	
-	//
-	/*
-	if ( empty( $list_log_for_order ) ) {
-		$update_log_view_order = 1;
-	}
-	else {
-		*/
-		foreach ( $list_log_for_order as $v ) {
-			//
-//			if ( $update_log_view_order == 0 && $v->tv_id == mtv_id ) {
-			if ( $update_log_view_order == 1 && $v->tv_id == mtv_id ) {
-//				echo date_time - $v->l_ngay . '<br>' . "\n";
-//				if ( $i == 0 && date_time - $v->l_ngay > 600 ) {
-//					$update_log_view_order = 1;
-				if ( $i == 0 && date_time - $v->l_ngay < 600 ) {
-					$update_log_view_order = 0;
-				}
-				$i++;
-			}
-			
-			//
-			if ( $show_log_for_supper_admin == 1 ) {
-				echo '
-<tr>
-	<td><a href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email( $v->tv_id ) . '</a></td>
-	<td>' . date ( 'd/m/Y (H:i)', $v->l_ngay ) . '</td>
-	<td>' . $v->l_ip . '</td>
-	<td>' . $v->l_noidung . '</td>
-</tr>';
-			}
-		}
-//	}
-	
-	
-	// tự động cập nhật trạng thái đơn mới để người sau nắm được
-	if ( $update_log_view_order == 1 ) {
-		// lưu log mỗi khi có người xem đơn hàng
-		_eb_log_admin_order( 'Xem đơn hàng', $post->order_id );
-	}
-	
-	?>
+	<?php echo $str_log_view_order; ?>
 </table>
 <br />
 <div class="medium18 redcolor l30">Dữ liệu tham khảo cho kiểm soát viên</div>
