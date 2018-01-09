@@ -24,3 +24,7 @@ $html_v2_file = 'page';
 
 
 
+$str_for_details_sidebar = _eb_echbay_get_sidebar( 'page_content_sidebar' );
+
+
+

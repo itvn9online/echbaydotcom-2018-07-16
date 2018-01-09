@@ -168,7 +168,7 @@ else if ( $__post->post_type == 'post' ) {
 else if ( $__post->post_type == 'page' ) {
 	// load sidebar -> nếu có
 	if ( $__cf_row['cf_page_column_style'] != '' ) {
-//		$id_for_get_sidebar = 'page_sidebar';
+		$id_for_get_sidebar = 'page_sidebar';
 	}
 }
 //if ( mtv_id == 1 ) print_r( $post_categories );

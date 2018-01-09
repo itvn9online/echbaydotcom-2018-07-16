@@ -686,6 +686,9 @@ function echbay_theme_setup() {
 		'blog_details_sidebar' => 'Sidebar cho trang chi tiết tin (blog details)',
 		'blog_content_details_sidebar' => 'Sidebar cho phần nội dung của trang chi tiết tin (blog details)',
 		
+		'page_sidebar' => 'Sidebar cho trang tĩnh (page)',
+		'page_content_sidebar' => 'Sidebar cho phần nội dung của trang tĩnh (page)',
+		
 		'search_product_options' => 'Options cho phần tìm kiếm nâng cao',
 		
 		'eb_top_global' => 'Sidebar cho phần TOP của website (* Sử dụng zEchBay Open/ zEchBay Close Tag Tag để tạo các bộ thẻ đóng mở cho từng khối HTML).',
