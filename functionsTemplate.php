@@ -127,13 +127,13 @@ function WGR_get_quick_register () {
 	<div class="hpsbnlbx">
 		<form name="frm_dk_nhantin" method="post" action="process/?set_module=quick-register" target="target_eb_iframe">
 			<div class="cf">
-				<div class="quick-register-left1 quick-register-hoten">
+				<div class="quick-register-left quick-register-hoten">
 					<input type="text" name="t_hoten" value="" placeholder="Họ tên" />
 				</div>
-				<div class="quick-register-left2 quick-register-email">
+				<div class="quick-register-left quick-register-email">
 					<input type="email" name="t_email" value="" placeholder="Email" autocomplete="off" aria-required="true" required />
 				</div>
-				<div class="quick-register-left3 quick-register-submit">
+				<div class="quick-register-left quick-register-submit">
 					<button type="submit" class="cur">Gửi</button>
 				</div>
 			</div>

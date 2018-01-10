@@ -414,14 +414,16 @@ function WGR_run_for_admin_edit_post () {
 		
 		//
 		if ( $('#' + iff_id).length > 0 ) {
-//				console.log(iff_id);
+//			console.log(iff_id);
 			$('#' + iff_id).contents().find( 'img' ).each(function() {
 				// current style
 				var cs = $(this).attr('style') || '',
 					// height
 					h = $(this).attr('height') || '',
 					// width
-					w = $(this).attr('width') || default_h;
+					w = $(this).attr('width') || default_h,
+					// ID
+					current_id = $(this).attr('id') || '';
 				
 				if ( cs != '' ) {
 					$(this).removeAttr('style').removeAttr('data-mce-src');
@@ -429,9 +431,9 @@ function WGR_run_for_admin_edit_post () {
 				
 				// nếu không tìm thấy chiều cao
 				if ( h == '' ) {
-					// rết lại toàn bộ size ảnh
+					// reset lại toàn bộ size ảnh
 					$(this).removeAttr('width').removeAttr('height').width('auto').height('auto');
-//						$(this).removeAttr('width').removeAttr('height');
+//					$(this).removeAttr('width').removeAttr('height');
 					
 					// tìm chiều cao mặc định
 					h = $(this).height() || 0;
@@ -448,15 +450,16 @@ function WGR_run_for_admin_edit_post () {
 					}
 				}
 				// có chiều cao -> set thuộc tính mới luôn
-				else if ( h > default_h && fix_height == 1 ) {
+//				else if ( h > default_h && fix_height == 1 ) {
+				else if ( h != default_h && fix_height == 1 ) {
 					var dh = $(this).attr('data-height') || h,
 						dw = $(this).attr('data-width') || w;
 					
 					
 					var nw = dh/ default_h;
-//						console.log(nw);
+//					console.log(nw);
 					nw = dw/ nw;
-//						console.log(nw);
+//					console.log(nw);
 					
 					//
 					$(this).attr({
@@ -466,12 +469,27 @@ function WGR_run_for_admin_edit_post () {
 						'height' : default_h
 					});
 				}
+				
+				// nếu chưa có ID -> set ID để điều khiển cho tiện
+				if ( iff_id == '_eb_product_list_color_ifr' ) {
+					if ( current_id == '' ) {
+						// tạo ID ngẫu nhiên để add cho IMG
+						current_id = $('#post_ID').val() || '';
+						
+						if ( current_id != '' ) {
+							current_id = '_' + current_id + '_' + Math.random(32).toString().replace('.', '_');
+							$(this).attr({
+								'id' : current_id
+							});
+						}
+					}
+				}
 			});
 			
 			
 			// riêng đối với phần list của màu sắc thì chuyển caption sang alt để lấy tên màu cho chuẩn
 			if ( iff_id == '_eb_product_list_color_ifr' ) {
-//					console.log(iff_id);
+//				console.log(iff_id);
 				$('#' + iff_id).contents().find( 'dl' ).each(function() {
 					var a = $('.wp-caption-dd', this).html() || '',
 						b = $('img', this).attr('alt') || '';
@@ -483,6 +501,16 @@ function WGR_run_for_admin_edit_post () {
 						
 						console.log('Convert caption to ALT');
 					}
+				});
+				
+				// hiệu ứng khi click vào
+				$('#' + iff_id).contents().find( 'img' ).off('click').click(function () {
+					var jd = $(this).attr('id') || '';
+					
+					if ( jd == '' ) {
+						return false;
+					}
+					console.log(jd);
 				});
 			}
 		}
@@ -565,12 +593,14 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	// chỉnh lại URL ảnh để tránh bị lỗi
-	if ( cf_old_domain != '' ) {
-		$(window).on('load', function () {
+	var content_id = '#content_ifr, #_eb_product_gallery_ifr, #_eb_product_list_color_ifr',
+		dm = document.domain;
+	
+	//
+	$(window).on('load', function () {
+		if ( cf_old_domain != '' ) {
 			
-			var arr_old_domain = cf_old_domain.replace(/\s/g, '').split(','),
-				content_id = '#content_ifr, #_eb_product_gallery_ifr',
-				dm = document.domain;
+			var arr_old_domain = cf_old_domain.replace(/\s/g, '').split(',');
 			
 			//
 			$( content_id ).contents().find( 'img' ).each(function() {
@@ -578,16 +608,29 @@ function WGR_run_for_admin_edit_post () {
 				var a = $(this).attr('src') || $(this).attr('data-mce-src') || '';
 //				console.log(a);
 				
-				for ( var i = 0; i < arr_old_domain.length; i++ ) {
-					a = a.replace( '//' + arr_old_domain[i] + '/', '//' + dm + '/' );
-				}
-//				console.log(a);
-				
 				//
-				$(this).attr({
-					'data-mce-src' : a,
-					src : a
-				});
+				if ( a != '' ) {
+					for ( var i = 0; i < arr_old_domain.length; i++ ) {
+						a = a.replace( '//' + arr_old_domain[i] + '/', '//' + dm + '/' );
+					}
+//					console.log(a);
+					
+					// nếu đang là URL tương đối -> chuyển sang tuyệt đối ví wp ko hỗ trợ
+					if ( a.split('//').length == 1 ) {
+						if ( a.substr( 0, 1 ) == '/' ) {
+							a = a.substr( 1 );
+						}
+						a = web_link + a;
+//						a = '//' + dm + '/' + a;
+						console.log(a);
+					}
+					
+					//
+					$(this).attr({
+						'data-mce-src' : a,
+						src : a
+					});
+				}
 				
 			});
 			
@@ -601,8 +644,36 @@ function WGR_run_for_admin_edit_post () {
 				$('#_eb_product_avatar').val( a );
 			}
 			
-		});
-	}
+		}
+		// chuyển URL ảnh về url tuyệt đối
+		else {
+			$( content_id ).contents().find( 'img' ).each(function() {
+				var a = $(this).attr('src') || $(this).attr('data-mce-src') || '';
+//				console.log(a);
+				
+				//
+				if ( a != '' ) {
+					
+					// nếu đang là URL tương đối -> chuyển sang tuyệt đối ví wp ko hỗ trợ
+					if ( a.split('//').length == 1 ) {
+						if ( a.substr( 0, 1 ) == '/' ) {
+							a = a.substr( 1 );
+						}
+						a = web_link + a;
+//						a = '//' + dm + '/' + a;
+						console.log(a);
+					}
+					
+					//
+					$(this).attr({
+						'data-mce-src' : a,
+						src : a
+					});
+				}
+			});
+		}
+		
+	});
 	
 	
 }

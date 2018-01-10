@@ -1234,7 +1234,7 @@ color: #333;
 .eb-quickcart-table textarea { height: 45px; }
 .eb-quickcart-table button {
 	width: 95%;
-	max-width: 220px;
+	max-width: 215px;
 	border: 0 none;
 	font-size: 20px;
 	padding: 11px 0;
@@ -1869,6 +1869,11 @@ iframe[name="google_conversion_frame"] {
 .thread-list-filter div {
 	background: #333;
 	padding: 0 20px;
+}
+/* */
+.quick-register-left {
+	float: left;
+	width: 100%;
 }
 /* */
 .thread-details-tab {
