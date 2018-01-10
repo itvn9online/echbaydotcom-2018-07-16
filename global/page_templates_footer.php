@@ -23,5 +23,17 @@ if ( mtv_id == 1 ) {
 
 
 
+// thêm phần sidebar vào chân trang
+$main_content .= _eb_echbay_get_sidebar( 'page_content_sidebar' );
+
+
+
+// giới hạn chiều rộng nếu có
+if ( isset( $__cf_row['cf_custom_page_width_main'] ) ) {
+	$main_content = '<div class="' . $__cf_row['cf_custom_page_width_main'] . '">' . $main_content . '</div>';
+}
+
+
+
 // show content
 include_once EB_THEME_URL . 'index.php';
