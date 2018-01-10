@@ -540,8 +540,8 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		_eb_echo_widget_title( $title, 'echbay-widget-category-title', $before_title );
 		
 		//
-//		echo '<ul class="echbay-category-in-js">';
-		echo '<ul>';
+		echo '<ul class="echbay-category-in-js">';
+//		echo '<ul>';
 		
 		
 		

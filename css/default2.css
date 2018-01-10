@@ -1273,16 +1273,16 @@ color: #333;
 	font-size: 15px;
 }
 .echbay-category-order ul,
-.ul-widget-home_list,
-.echbay-category-in-js {
+/* .echbay-category-in-js, */
+.ul-widget-home_list {
 	display: -webkit-flex; /* Safari */
 	display: flex;
 	flex-direction: column-reverse;
 	flex-wrap: wrap;
 }
 .ul-widget-home_list li,
-.echbay-category-order li,
-.echbay-category-in-js li { order: 0; }
+/* .echbay-category-in-js li, */
+.echbay-category-order li { order: 0; }
 .echbay-category-in-js li,
 .echbay-product-price-between li {
 	line-height: 20px;
@@ -1340,10 +1340,12 @@ color: #333;
 	display: none;
 }
 .widget-category-selectbox:hover ul { display: block; }
+/*
 .widget-category-selectbox:hover ul.echbay-category-in-js {
 	display: -webkit-flex;
 	display: flex;
 }
+*/
 .widget-category-selectbox li {
 	list-style: none;
 	padding: 0;
