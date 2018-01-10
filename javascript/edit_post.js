@@ -511,6 +511,14 @@ function WGR_run_for_admin_edit_post () {
 						return false;
 					}
 					console.log(jd);
+					
+					//
+					$('.eb-input-edit-product-color').css({
+						left : $(this).offset().left + $('#' + iff_id).offset().left
+					}).show();
+					
+					//
+					document.frm_eb_input_edit_product_color.eb_input_edit_product_color_id.value = jd;
 				});
 			}
 		}
@@ -536,6 +544,14 @@ function WGR_run_for_admin_edit_post () {
 				$('#_eb_product_list_color_ifr').height( 250 );
 			}, 2000);
 		}, 2000);
+		
+		
+		//
+		$('.eb-input-edit-product-color button').off('click').click(function () {
+			var a = $(this).attr('data-action') || '';
+			
+			$('.eb-input-edit-product-color').hide();
+		});
 	}, 2000);
 	
 	

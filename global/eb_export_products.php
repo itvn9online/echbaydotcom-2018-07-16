@@ -2,7 +2,9 @@
 
 
 
-if ( ! current_user_can('delete_posts') || ! isset( $_GET['token'] ) || $_GET['token'] != _eb_mdnam( $_SERVER['HTTP_HOST'] ) ) {
+//
+//if ( ! current_user_can('delete_posts') || ! isset( $_GET['token'] ) || $_GET['token'] != _eb_mdnam( $_SERVER['HTTP_HOST'] ) ) {
+if ( ! isset( $_GET['token'] ) || $_GET['token'] != _eb_mdnam( $_SERVER['HTTP_HOST'] ) ) {
 	die('<h1>Permission deny!</h1>');
 }
 

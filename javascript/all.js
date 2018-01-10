@@ -1254,6 +1254,11 @@ function check_eb_input_edit_product_size () {
 	return false;
 }
 
+function check_eb_input_edit_product_color () {
+//	$('.eb-input-edit-product-color button[data-action="save"]').click();
+	return false;
+}
+
 // kiểm tra và tạo size
 function eb_func_global_product_size () {
 	
@@ -1359,7 +1364,7 @@ function eb_func_click_modife_product_size () {
 			if ( $( current_select ).length > 0 ) {
 				$('.eb-input-edit-product-size').css({
 //					top : $(current_select).offset().top + $(current_select).height(),
-					top : $(current_select).offset().top + 30,
+//					top : $(current_select).offset().top + 30,
 					left : $(current_select).offset().left
 				}).show();
 				
