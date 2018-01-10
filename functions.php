@@ -669,7 +669,7 @@ function EBE_add_js_compiler_in_cache (
 		_eb_create_file( $file_in_cache, '/* ' . substr( $full_file_name, 1 ) . ' - ' . date('r', date_time) . ' */' . $new_content );
 		
 		// cập nhật lại version để css mới nhận nhanh hơn
-		_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ) );
+		_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
 		
 	}
 	
@@ -1266,7 +1266,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 			_eb_create_file ( $file_save, '/* ' . substr( $full_file_name, 1 ) . ' - ' . date('r', date_time) . ' */' . EBE_replace_link_in_cache_css ( $cache_content ) );
 			
 			// cập nhật lại version để css mới nhận nhanh hơn
-			_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ) );
+			_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
 		}
 		
 		// -> done
@@ -2010,7 +2010,7 @@ function _eb_postmeta ( $id, $key, $val ) {
 define( '_eb_option_prefix', '_eb_' );
 
 //
-function _eb_set_config($key, $val) {
+function _eb_set_config($key, $val, $etro = 1) {
 	
 //	global $wpdb;
 	
@@ -2022,7 +2022,7 @@ function _eb_set_config($key, $val) {
 	
 	// xóa option cũ đi cho đỡ lằng nhằng
 //	if ( delete_option( $key ) ) {
-	if ( WGR_delete_option( $key ) ) {
+	if ( WGR_delete_option( $key ) == true && $etro == 1 ) {
 		echo '<em>Remove</em>: ' . $key . '<br>' . "\n";
 	}
 	
@@ -2043,9 +2043,11 @@ function _eb_set_config($key, $val) {
 		WGR_set_option( $key, $val, 'no' );
 		
 		//
-		echo 'Add: ' . $key . '<br>' . "\n";
+		if ( $etro == 1 ) {
+			echo 'Add: ' . $key . '<br>' . "\n";
+		}
 	}
-	else {
+	else if ( $etro == 1 ) {
 		echo 'Value: ' . $key . ' is NULL<br>' . "\n";
 	}
 	/*
