@@ -1234,12 +1234,13 @@ color: #333;
 .eb-quickcart-table textarea { height: 45px; }
 .eb-quickcart-table button {
 	width: 95%;
-	max-width: 250px;
+	max-width: 220px;
 	border: 0 none;
 	font-size: 20px;
 	padding: 11px 0;
 	border-radius: 1px;
 	margin: 5px auto;
+	display: inline-block;
 }
 .btn-addto-cart {
 	color: #fff;
