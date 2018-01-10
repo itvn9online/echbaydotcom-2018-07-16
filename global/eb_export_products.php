@@ -33,7 +33,7 @@ function WGR_export_product_to_xml ( $limit, $filter = '', $post_type = 'post' )
 	FROM
 		`" . $wpdb->posts . "`
 	WHERE
-		post_type = 'product'
+		post_type = '" . $post_type . "'
 		" . $filter . "
 		AND ( post_status = 'publish' OR post_status = 'pending' OR post_status = 'draft' )
 	ORDER BY
@@ -45,6 +45,7 @@ function WGR_export_product_to_xml ( $limit, $filter = '', $post_type = 'post' )
 //
 if ( $export_type == 'facebook' ) {
 	$sql = WGR_export_product_to_xml( $limit, " AND post_status = 'publish' " );
+//	print_r( $sql );
 	
 	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_facebook.php';
 }
