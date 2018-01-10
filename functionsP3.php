@@ -327,3 +327,14 @@ function WGR_order_and_hidden_taxonomy ( $arr, $order_only = 0 ) {
 
 
 
+function create_cache_infor_by ( $s ) {
+	return trim( '
+/*
+Served from: ' . $_SERVER ['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . ' on ' . date('r', date_time) . '
+List file: ' . substr( $s, 1 ) . '
+*/
+	' );
+}
+
+
+
