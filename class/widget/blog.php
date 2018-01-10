@@ -96,6 +96,21 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		extract ( $args );
 		
+		//
+		$page_id = isset( $instance ['page_id'] ) ? $instance ['page_id'] : 0;
+		if ( $page_id > 0 ) {
+			global $post;
+//			print_r( $post );
+			
+			// nếu không phải là page -> thông báo lỗi luôn -> thông báo ẩn thôi, để các page khác không thấy là được
+//			if ( ! is_page() || ! isset( $post->post_type ) || $post->post_type != 'page' || $page_id != $post->ID ) {
+			if ( ! isset( $post->post_type ) || $post->post_type != 'page' || $page_id != $post->ID ) {
+				echo '<!-- WARNING!</strong>: widget show only page id: <strong>' . $page_id . '. Current post type: ' . $post->post_type . ', current post ID: ' . $post->ID . ' -->';
+				return false;
+			}
+		}
+		
+		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
 		$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';

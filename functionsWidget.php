@@ -39,7 +39,8 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'ads_eb_status' => 0,
 		'post_eb_status' => 0,
 		'custom_style' => '',
-		'custom_size' => ''
+		'custom_size' => '',
+		'page_id' => 0
 	);
 	
 	// thay thế các giá trị mặc định
