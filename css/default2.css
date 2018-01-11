@@ -1242,7 +1242,7 @@ color: #333;
 	margin: 5px auto;
 	display: inline-block;
 }
-.btn-addto-cart {
+button.btn-addto-cart {
 	color: #fff;
 	cursor: pointer;
 	display: none;
