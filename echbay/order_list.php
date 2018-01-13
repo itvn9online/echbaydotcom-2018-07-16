@@ -258,11 +258,10 @@ $offset = ($trang - 1) * $threadInPage;
 		
 		// Với các đơn hàng đang là tự động xác nhận
 		// nếu trạng thái này nằm đây lâu quá rồi -> tự ghi nhận là chưa xác nhận
-		/*
-		if ( $hd_trangthai == 3 && isset( $o->order_update_time ) && date_time - $o->order_update_time > 600 ) {
-			$hd_trangthai = 0;
+//		if ( $hd_trangthai == 3 && isset( $o->order_update_time ) && date_time - $o->order_update_time > 600 ) {
+		if ( $hd_trangthai == 0 && isset( $o->order_update_time ) && $o->order_update_time > 0 && date_time - $o->order_update_time < 600 ) {
+			$hd_trangthai = 3;
 		}
-		*/
 		
 		//
 		echo '

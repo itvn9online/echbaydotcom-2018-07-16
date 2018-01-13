@@ -161,20 +161,18 @@ if ( $show_dang_xac_nhan != '' ) {
 					$hd_trangthai = $post->order_status;
 					
 					//
-					/*
-					if ( $hd_trangthai == 0 ) {
+					if ( $hd_trangthai == 0 && isset( $o->order_update_time ) ) {
 						$sql = "UPDATE eb_in_con_voi
 						SET
-							order_status = 3
+							order_update_time = " . date_time . "
 						WHERE
 							order_id = " . $post->order_id;
 //						echo $sql . "\n";
 						_eb_q( $sql, 0 );
 						
 						//
-						$auto_reset_status_after_view = 0;
+//						$auto_reset_status_after_view = 0;
 					}
-					*/
 					
 					//
 					foreach ( $arr_hd_trangthai as $k => $v ) {
