@@ -821,6 +821,15 @@ input[id="_eb_category_order"] { width: 90px; }
 	margin: 0 auto;
 	font-weight: bold;
 }
+#oi_invoice_key {
+	width: 80%;
+	height: 35px;
+}
+.oi_invoice_submit {
+	width: 15%;
+	height: 35px;
+	font-size: 16px;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

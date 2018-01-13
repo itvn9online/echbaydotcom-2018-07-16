@@ -108,6 +108,7 @@ $sql = "UPDATE eb_in_con_voi
 	SET
 		order_products = '" . $order_products . "',
 		order_customer = '" . $order_customer . "',
+		order_update_time = " . date_time . ",
 		order_status = " . $order_status . "
 	WHERE
 		order_id = " . $order_id;

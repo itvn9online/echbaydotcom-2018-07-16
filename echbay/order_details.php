@@ -150,6 +150,10 @@ if ( $show_dang_xac_nhan != '' ) {
 			<td data-time="<?php echo $post->order_time; ?>" class="i order-time-server"><?php echo date( 'd-m-Y H:i', $post->order_time ); ?></td>
 		</tr>
 		<tr>
+			<td class="t">Cập nhật cuối</td>
+			<td class="i"><?php if ( isset( $post->order_update_time ) ) { echo date( 'd-m-Y H:i', $post->order_update_time ); } ?></td>
+		</tr>
+		<tr>
 			<td class="t">Ghi chú của CSKH <span class="d-block small">Ví dụ: lý do hủy đơn hàng.</span></td>
 			<td class="i"><textarea id="hd_admin_ghichu"></textarea></td>
 		</tr>

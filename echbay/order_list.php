@@ -104,7 +104,33 @@ $strFilter = "";
 $totalThread = 0;
 $totalPage = 0;
 $strLinkPager = admin_link . 'admin.php?page=eb-order';
-$status_by = '';
+
+$type_search = '';
+$invoice_key = '';
+if( isset ( $_GET ['invoice_key'] ) ) {
+	$invoice_key = $_GET['invoice_key'];
+	
+	if ( $invoice_key != '' ) {
+		if( isset ( $_GET ['type_search'] ) ) {
+			$type_search = $_GET['type_search'];
+		}
+		else {
+			$type_search = _eb_getCucki('eb_admin_order_type_search');
+		}
+//		$invoice_key = urlencode( str_replace( '+', ' ', $invoice_key ) );
+		
+		// cấu trúc thẻ tìm kiếm theo từng hạng mục
+		if ( $type_search == 'sp' ) {
+			$strFilter .= " AND order_products LIKE '%{$invoice_key}%' ";
+		}
+		else if ( $type_search == 'id' ) {
+			$strFilter .= " AND order_sku LIKE '%{$invoice_key}%' OR order_id LIKE '%{$invoice_key}%' ";
+		}
+		else {
+			$strFilter .= " AND order_customer LIKE '%{$invoice_key}%' ";
+		}
+	}
+}
 
 
 //
@@ -114,12 +140,17 @@ $trang = isset( $_GET['trang'] ) ? (int)$_GET['trang'] : 1;
 
 
 //
+$status_by = '';
 if ( isset( $_GET['tab'] ) ) {
-	$status_by = (int) $_GET['tab'];
+	$status_by = $_GET['tab'];
 	
-	$strFilter .= " AND order_status = " . $status_by;
-	
-	$strLinkPager .= '&tab=' . $status_by;
+	if ( $status_by != '' ) {
+		$status_by = (int) $status_by;
+		
+		$strFilter .= " AND order_status = " . $status_by;
+		
+		$strLinkPager .= '&tab=' . $status_by;
+	}
 }
 $jsLinkPager = $strLinkPager;
 
@@ -196,6 +227,20 @@ $offset = ($trang - 1) * $threadInPage;
 		<div class="lf f40 cf">
 			<div id="oi_quick_connect" class="cf"></div>
 		</div>
+	</div>
+</div>
+<div class="cf">
+	<div class="lf f20">&nbsp;</div>
+	<div class="lf f60 cf">
+		<form name="frm_search_invoice" id="frm_search_invoice" method="get" action="<?php echo admin_link; ?>admin.php" onsubmit="return invoice_func_check_search();">
+			<input type="hidden" name="page" value="eb-order">
+			<!-- <input type="hidden" name="ost" value="search"> -->
+			<input type="hidden" name="tab" value="<?php echo $status_by; ?>">
+			<input type="hidden" name="type_search" value="<?php echo $type_search; ?>">
+			<input type="text" name="invoice_key" id="oi_invoice_key" title="Tìm kiếm" value="<?php echo $invoice_key; ?>" placeholder="Mã đơn hàng, Số điện thoại, Email" maxlength="20" />
+			<input type="submit" value="Tìm" class="cur oi_invoice_submit" />
+		</form>
+		<p class="click-search-by-type"><a data-type="dt" href="javascript:;">Số điện thoại</a> | <a data-type="sp" href="javascript:;">Tên sản phẩm</a> | <a data-type="id" href="javascript:;">Mã hóa đơn</a></p>
 	</div>
 </div>
 <br>
@@ -326,4 +371,5 @@ if ($totalPage > 1) {
 <br>
 <script type="text/javascript">
 WGR_view_by_time_line( '<?php echo $jsLinkPager; ?>', '<?php echo $filterDay; ?>', '<?php echo $str_for_order_cookie_name; ?>' );
-</script>
+click_set_search_order_by_type();
+</script> 

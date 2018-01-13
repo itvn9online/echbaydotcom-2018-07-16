@@ -111,3 +111,68 @@ function post_excerpt_to_prodcut_list_v1 (arr) {
 }
 
 
+
+function invoice_func_check_search () {
+	var f = document.frm_search_invoice;
+	
+	if ( f.invoice_key.value == '' ) {
+		f.invoice_key.focus();
+		return false;
+	}
+	
+	// chuyển sang viết HOA nếu là tìm theo mã đơn
+	if ( f.type_search.value == 'id' ) {
+		f.invoice_key.value = f.invoice_key.value.toUpperCase();
+	}
+	
+	// chuẩn định dạng trước khi submit
+	f.invoice_key.value = escape( unescape( f.invoice_key.value ) );
+	
+	//
+	return true;
+}
+
+
+
+function click_set_search_order_by_type () {
+	$('.click-search-by-type a').off('click').click(function () {
+		var a = $(this).attr('data-type') || '';
+		
+		if ( a != '' ) {
+			var f = document.frm_search_invoice;
+			
+			// gán giá trị mới, và lưu cookie để sử dụng lần sau
+			f.type_search.value = a;
+			g_func.setc('eb_admin_order_type_search', a, 0, 7);
+			
+			if ( invoice_func_check_search() == true ) {
+				f.submit();
+			}
+			else {
+				$('.click-search-by-type a').removeClass('bold');
+				$(this).addClass('bold');
+			}
+		}
+	});
+	
+	//
+	var f = document.frm_search_invoice;
+	
+	//
+//	console.log( f.invoice_key.value );
+	if ( f.invoice_key.value != '' ) {
+		// hiển thị định dạng gốc cho người dùng còn nhìn
+		f.invoice_key.value = unescape( f.invoice_key.value );
+	}
+//	console.log( f.invoice_key.value );
+	
+	//
+	if ( f.type_search.value == '' ) {
+		$('.click-search-by-type a:first').addClass('bold');
+	}
+	else {
+		$('.click-search-by-type a[data-type="' + f.type_search.value + '"]').addClass('bold');
+	}
+}
+
+
