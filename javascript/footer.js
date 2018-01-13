@@ -30,6 +30,14 @@ else if ( act == 'archive' ) {
 // for details
 else if ( act == 'single' ) {
 	WGR_for_post_details();
+	
+	//
+	$('.wp-caption-text').each(function() {
+		var a = $(this).html() || '';
+		if ( a != '' ) {
+			$(this).html( a.replace( /\\n/g, '<br>' ) );
+		}
+	});
 }
 // end details
 

@@ -565,11 +565,11 @@ var _global_js_eb = {
 		
 		// tạo attr mặc định để lưu thuộc tính cũ
 		$('.img-max-width').each(function() {
-			var max_width = $(this).width();
+			var max_width = $(this).attr('data-width') || $(this).width() || 0;
 //			console.log(max_width);
 			
-			// chỉnh lại chiều rộng của thẻ DIV trong khung nội dung (trừ đi padding với bỏe của div)
-			$('.wp-caption', this).width( max_width - 5 );
+			// chỉnh lại chiều rộng của thẻ DIV trong khung nội dung (trừ đi padding với border của div)
+//			$('.wp-caption', this).width( max_width - 5 );
 			
 			//
 			$('img', this).each(function() {
@@ -681,7 +681,7 @@ var _global_js_eb = {
 			
 			// treen mobile -> giới hạn kích thước media
 			$('.img-max-width').each(function() {
-				var max_width = $(this).width() || 250,
+				var max_width = $(this).attr('data-width') || $(this).width() || 250,
 					max_sizes_width = max_width + 99;
 				
 				// xử lý với hình ảnh
@@ -753,7 +753,7 @@ var _global_js_eb = {
 			
 			// hình ảnh và clip trên bản pc -> giờ mới xử lý
 			$('.img-max-width').each(function() {
-				var max_width = $(this).width() || 250,
+				var max_width = $(this).attr('data-width') || $(this).width() || 250,
 					max_sizes_width = max_width + 99;
 //				console.log(max_width);
 				

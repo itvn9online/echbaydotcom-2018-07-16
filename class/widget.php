@@ -354,7 +354,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 		}
 	}
 	
-	echo '<p class="ebe-widget-ads-show"><strong>Hiển thị trên trang</strong>: ';
+	echo '<p><strong>Hiển thị trên trang</strong>: ';
 	
 	__eb_widget_load_select(
 		$arr_list_all_page,
