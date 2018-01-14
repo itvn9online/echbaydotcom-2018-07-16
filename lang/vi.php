@@ -25,7 +25,7 @@ $___eb_lang[eb_key_for_site_lang . 'searchp'] = $___eb_lang[eb_key_for_site_lang
 $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_site_lang . 'cart'];
 $___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Liên hệ';
-$___eb_lang[eb_key_for_site_lang . 'mungay'] = 'Mua ngay';
+$___eb_lang[eb_key_for_site_lang . 'muangay'] = 'Mua ngay';
 
 $___eb_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'thoat'] = 'Thoát';
@@ -46,12 +46,16 @@ $___eb_lang[eb_key_for_site_lang . 'order_za'] = 'Tên sản phẩm ( từ Z đ�
 
 //
 $___eb_lang[eb_key_for_site_lang . 'post_giacu'] = 'Giá cũ';
+$___eb_lang[eb_key_for_site_lang . 'post_giamgia'] = 'Giảm<br>giá';
 $___eb_lang[eb_key_for_site_lang . 'post_giamoi'] = 'Giá mới';
 $___eb_lang[eb_key_for_site_lang . 'post_zero'] = '<em>Liên hệ</em>';
 $___eb_lang[eb_key_for_site_lang . 'post_luotmua'] = 'Lượt mua';
 $___eb_lang[eb_key_for_site_lang . 'post_soluong'] = 'Số lượng';
 $___eb_lang[eb_key_for_site_lang . 'post_time_discount'] = 'Thời gian khuyến mại còn lại:';
 $___eb_lang[eb_key_for_site_lang . 'post_time_soldout'] = 'Sản phẩm tạm thời ngừng bán';
+$___eb_lang[eb_key_for_site_lang . 'post_comment'] = 'Bình luận';
+$___eb_lang[eb_key_for_site_lang . 'post_content'] = 'Thông tin sản phẩm';
+$___eb_lang[eb_key_for_site_lang . 'post_other'] = 'Sản phẩm khác';
 
 //
 $___eb_lang[eb_key_for_site_lang . 'cart_diachi'] = 'Địa chỉ';
@@ -119,7 +123,7 @@ $___eb_lang[eb_key_for_site_lang . 'ebslogan3'] = '<i class="fa fa-dollar"></i> 
 $___eb_lang[eb_key_for_site_lang . 'ebslogan4'] = '<i class="fa fa-check-square"></i> Bảo hành VIP<br />12 tháng';
 
 // quick cart
-$___eb_lang[eb_key_for_site_lang . 'cart_muangay'] = $___eb_lang[eb_key_for_site_lang . 'mungay'];
+$___eb_lang[eb_key_for_site_lang . 'cart_muangay'] = $___eb_lang[eb_key_for_site_lang . 'muangay'];
 $___eb_lang[eb_key_for_site_lang . 'cart_mausac'] = 'Màu sắc';
 $___eb_lang[eb_key_for_site_lang . 'cart_kichco'] = 'Kích cỡ';
 $___eb_lang[eb_key_for_site_lang . 'cart_soluong'] = $___eb_lang[eb_key_for_site_lang . 'post_soluong'];

@@ -678,7 +678,13 @@ $arr_main_content = array(
 	'tmp.eb_blog_2content' => $eb_blog_2content,
 	
 	// lang
-	'tmp.lang_btn_muangay' => EBE_get_lang('mungay'),
+	'tmp.lang_btn_giacu' => EBE_get_lang('post_giacu'),
+	'tmp.lang_btn_giamgia' => EBE_get_lang('post_giamgia'),
+	'tmp.lang_btn_giamoi' => EBE_get_lang('post_giamoi'),
+	'tmp.lang_btn_mausac' => EBE_get_lang('cart_mausac'),
+	'tmp.lang_btn_comment' => EBE_get_lang('post_comment'),
+	'tmp.lang_btn_content' => EBE_get_lang('post_content'),
+	'tmp.lang_btn_other' => EBE_get_lang('post_other'),
 	'tmp.lang_chitiet_sanpham' => EBE_get_lang('chitietsp'),
 	'tmp.lang_sanpham_tuongtu' => EBE_get_lang('tuongtu'),
 );
