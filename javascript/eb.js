@@ -619,7 +619,17 @@ var _global_js_eb = {
 		var avt_max_height = 250,
 //			css_m_id = 'css-for-mobile',
 			screen_width = $(window).width(),
+			current_device = '';
+		
+		// nếu có thuộc tính cố định, định dạng cho phiên bản -> lấy theo thuộc tính này
+		if ( window.location.href.split('&set_device=').length > 1 ) {
+			current_device = window.location.href.split('&set_device=')[1].split('&')[0].split('#')[0];
+		}
+		else {
 			current_device = g_func.getc('click_set_device_style');
+		}
+		
+		//
 		if (screen_width < 950 && current_device != 'desktop') {
 			/*
 			(function(d, j) {

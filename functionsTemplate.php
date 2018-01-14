@@ -25,16 +25,21 @@ function EBE_get_html_logo ( $set_h1 = 0 ) {
 //	return '<div><a data-size="' . $__cf_row['cf_size_logo'] . '" href="./" class="web-logo ti-le-global d-block" style="background-image:url(' . $__cf_row['cf_logo'] . ');">&nbsp;</a></div>';
 }
 
-function EBE_get_html_search () {
+function EBE_get_html_search ( $class_for_search = 'div-search-margin' ) {
 	global $current_search_key;
 	
+	/*
+	* class_for_search: tạo class riêng với 1 số trường hợp
+	*/
+	
 	return '
-<div class="div-search-margin">
+<div class="' . $class_for_search . '">
 	<div class="div-search">
 		<form role="search" method="get" action="' . web_link . '">
 			<input type="search" placeholder="' . EBE_get_lang('searchp') . '" value="' . $current_search_key . '" name="s" aria-required="true" required>
 			<input type="hidden" name="post_type" value="post" />
 			<button type="submit" class="default-bg"><i class="fa fa-search"></i><span class="d-none">' . EBE_get_lang('search') . '</span></button>
+			<span data-active="' . $class_for_search . '" class="span-search-icon cur"><i class="fa fa-search"></i></span>
 		</form>
 	</div>
 	<div id="oiSearchAjax"></div>

@@ -1878,6 +1878,8 @@ iframe[name="google_conversion_frame"] {
 	width: 100%;
 }
 /* */
+.div-search.active .span-search-icon .fa-search:before { content: "\f00d"; }
+/* */
 .thread-details-tab {
 	line-height: 35px;
 	border-bottom: 2px #333 solid;

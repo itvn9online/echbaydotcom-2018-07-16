@@ -3037,7 +3037,7 @@ setTimeout(function () {
 		if ( switch_taxonomy == 'category'
 		|| switch_taxonomy == 'post_tag'
 		|| switch_taxonomy == 'post_options' ) {
-			console.log('test track for fb');
+			if ( cf_tester_mode == 1 ) console.log('test track for fb');
 			
 			//
 			var track_arr = {
@@ -3133,8 +3133,14 @@ function close_ebe_quick_view () {
 		// sử dụng ajax
 //		ajaxl('quick_view&id=' + a, 'ui_ebe_quick_view');
 		
+		//
+		var device = 'desktop';
+		if ( $(window).width() < 750 ) {
+			device = 'mobile';
+		}
+		
 		// sử dụng iframe
-		dog('ui_ebe_quick_view').src = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&view_type=iframe';
+		dog('ui_ebe_quick_view').src = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&view_type=iframe&set_device=' + device;
 		$('#ui_ebe_quick_view').on('load', function () {
 			var h = $( '#ui_ebe_quick_view' ).contents().find( 'body' ).height() || 0;
 //			console.log(h);

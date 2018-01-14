@@ -202,6 +202,7 @@ body.home .thread-details-tohome { display: none; }
 	right: 0;
 	bottom: 0;
 }
+.span-search-icon { display: none !important; }
 .jEBE_slider-thumbnail {
 	text-align: center;
 	margin-top: 5px;

@@ -491,6 +491,19 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 ___eb_set_url_for_search_advanced_button();
 
 
+// thuộc tính mở rộng khung tìm kiếm
+(function () {
+	$('.span-search-icon').click(function () {
+		var a = $(this).attr('data-active') || '';
+		
+		if ( a != '' ) {
+			$('.' + a + ' .div-search').toggleClass('active');
+			$('.' + a + ' input[type="search"]').focus();
+		}
+	});
+})();
+
+
 
 // đánh dấu sản phẩm yêu thích
 function WGR_click_add_product_to_favorite () {
