@@ -240,7 +240,7 @@ $offset = ($trang - 1) * $threadInPage;
 			<input type="text" name="invoice_key" id="oi_invoice_key" title="Tìm kiếm" value="<?php echo $invoice_key; ?>" placeholder="Mã đơn hàng, Số điện thoại, Email" maxlength="20" />
 			<input type="submit" value="Tìm" class="cur oi_invoice_submit" />
 		</form>
-		<div class="click-search-by-type"><a data-type="dt" href="javascript:;">Số điện thoại</a> | <a data-type="sp" href="javascript:;">Tên sản phẩm</a> | <a data-type="id" href="javascript:;">Mã hóa đơn</a></div>
+		<div class="click-search-by-type"><a data-type="dt" href="javascript:;">Số điện thoại</a> | <a data-type="sp" href="javascript:;">Tên sản phẩm</a> | <a data-type="id" href="javascript:;">Mã hóa đơn</a> <span class="redcolor small">* Lưu ý: từ khóa tìm kiếm có phân biệt chữ HOA, chữ thường, có dấu và không dấu.</span></div>
 	</div>
 </div>
 <br>
