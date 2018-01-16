@@ -685,6 +685,7 @@ $arr_main_content = array(
 	'tmp.lang_btn_comment' => EBE_get_lang('post_comment'),
 	'tmp.lang_btn_content' => EBE_get_lang('post_content'),
 	'tmp.lang_btn_other' => EBE_get_lang('post_other'),
+	'tmp.lang_btn_muangay' => EBE_get_lang('muangay'),
 	'tmp.lang_chitiet_sanpham' => EBE_get_lang('chitietsp'),
 	'tmp.lang_sanpham_tuongtu' => EBE_get_lang('tuongtu'),
 );
