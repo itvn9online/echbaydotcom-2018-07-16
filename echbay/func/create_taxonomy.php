@@ -14,6 +14,23 @@ $_POST = EBE_stripPostServerClient ();
 $a = trim( $_POST['t_multi_taxonomy'] );
 $a = explode( "\n", $a );
 
+
+
+// với 1 số taxonomy không qua đăng ký -> bỏ qua các khâu kiểm tra để tách ra khỏi lệch của wordpress
+/*
+$taxonomy_switcher = '';
+if ( $_POST['t_taxonomy'] == 'eb_discount_code' ) {
+	// gán giá trị để lát thay đổi lại taxonomy
+	$taxonomy_switcher = $_POST['t_taxonomy'];
+	
+	// giả lập taxonomy mặc định
+	$_POST['t_taxonomy'] = 'category';
+}
+*/
+$check_term_exist = 0;
+
+
+
 //
 foreach ( $a as $v ) {
 	$v = trim( $v );
@@ -21,27 +38,38 @@ foreach ( $a as $v ) {
 	if ( $v != '' ) {
 		echo $v . '<br>' . "\n";
 		
+		// lệnh riêng với các taxonomy không qua đăng ký
+		if ( $_POST['t_taxonomy'] == 'eb_discount_code' ) {
+		}
+		else {
+			$check_term_exist = term_exists( $v, $_POST['t_taxonomy'] );
+//			print_r( $check_term_exist );
+		}
+		
 		//
-		$check_term_exist = term_exists( $v, $_POST['t_taxonomy'] );
-//		print_r( $check_term_exist );
 		if ( $check_term_exist !== 0 && $check_term_exist !== null ) {
 			echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' (<span class=redcolor>EXIST</span>)");</script>';
 		}
 		else {
-			$done = wp_insert_term(
-				$v, // the term 
-				$_POST['t_taxonomy'], // the taxonomy
-				array(
-//					'description'=> 'A yummy apple.',
-//					'slug' => 'apple',
-					'parent'=> (int) $_POST['t_ant']  // get numeric term id
-				)
-			);
+			if ( $_POST['t_taxonomy'] == 'eb_discount_code' ) {
+			}
+			else {
+				$done = wp_insert_term(
+					$v, // the term 
+					$_POST['t_taxonomy'], // the taxonomy
+					array(
+//						'description'=> 'A yummy apple.',
+//						'slug' => 'apple',
+						'parent'=> (int) $_POST['t_ant']  // get numeric term id
+					)
+				);
+//				print_r( $done );
+			}
 			
 			//
-//			print_r( $done );
-			if ( isset( $done['errors'] ) || isset( $done->errors ) ) {
-				echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' (ERROR)");</script>';
+//			if ( isset( $done['errors'] ) || isset( $done->errors ) ) {
+			if ( is_wp_error( $done ) ) {
+				echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' (ERROR: ' . str_replace( '"', '&quot;', $done->get_error_message() ) . ')");</script>';
 			}
 			else {
 				echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' (<span class=greencolor>OK</span>)");</script>';

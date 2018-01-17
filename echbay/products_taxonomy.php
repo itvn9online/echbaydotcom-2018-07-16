@@ -113,7 +113,8 @@ function WGR_get_and_oders_taxonomy_category (
 //	exit();
 	
 	//
-	if ( count($arrs_cats) == 0 ) {
+//	if ( count($arrs_cats) == 0 ) {
+	if ( empty($arrs_cats) ) {
 		return '';
 	}
 	
