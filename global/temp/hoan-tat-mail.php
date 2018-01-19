@@ -40,7 +40,16 @@ $bcc_email = WGR_get_dom_xml($mail_content, 'bcc_email');
 if ( _eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email ) == true ) {
 	// Xóa file
 	_eb_remove_file( $file_for_sendmail );
+	
+	//
+	$m_log = 'Send mail OK!';
 }
+else {
+	$m_log = 'ERROR! mail not send';
+}
+
+//
+_eb_log_admin_order( $m_log . ' (To: ' . $mail_to_admin . '. Bcc: ' . $bcc_email . ')', $hd_id );
 
 
 

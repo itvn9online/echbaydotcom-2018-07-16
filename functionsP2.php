@@ -1971,7 +1971,7 @@ function _eb_get_post_img ( $id, $_size = 'full' ) {
 	return $a;
 }
 
-function EBE_resize_mobile_table_img ( $attachment_id, $_size ) {
+function EBE_resize_mobile_table_img ( $attachment_id, $_size, $new_size = 160 ) {
 	// lấy ảnh full
 	$source_file = wp_get_attachment_image_src ( $attachment_id, 'full' );
 	$source_file = $source_file[0];
@@ -1998,11 +1998,11 @@ function EBE_resize_mobile_table_img ( $attachment_id, $_size ) {
 		
 		// copy và resize theo chiều rộng
 		if ( $arr_parent_size[0] > $arr_parent_size[1] ) {
-			$image->resizeImage(160, 0, Imagick::FILTER_CATROM, 1);
+			$image->resizeImage($new_size, 0, Imagick::FILTER_CATROM, 1);
 		}
 		// theo chiều cao
 		else {
-			$image->resizeImage(0, 160, Imagick::FILTER_CATROM, 1);
+			$image->resizeImage(0, $new_size, Imagick::FILTER_CATROM, 1);
 		}
 		/*
 		if ( $arr_parent_size['mime'] == 'image/jpeg' ) {
