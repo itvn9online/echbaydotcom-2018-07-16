@@ -265,6 +265,29 @@ if ( isset( $_POST['cf_old_domain'] )
 }
 
 
+//
+if ( isset( $_POST['cf_replace_content'] )
+	&& $_POST['cf_replace_content'] != '' ) {
+	
+	$arr = explode( ',', trim( $_POST['cf_replace_content'] ) );
+	$new_a = array();
+	foreach ( $arr as $v ) {
+		$v = trim( $v );
+		if ( $v != '' && strstr( $v, '|' ) == true ) {
+			$new_a[] = $v;
+		}
+	}
+	
+	//
+	if ( empty( $new_a ) ) {
+		$_POST['cf_replace_content'] = '';
+	}
+	else {
+		$_POST['cf_replace_content'] = implode( "\n", $new_a );
+	}
+}
+
+
 
 
 // chỉnh kích thước cho logo theo chuẩn
