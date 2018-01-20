@@ -254,7 +254,8 @@ function WGR_sync_old_url_in_content ( $a, $c ) {
 }
 
 function WGR_replace_for_all_content ( $a, $c ) {
-	$a = explode( "\n", trim( $a ) );
+//	$a = explode( "\n", trim( $a ) );
+	$a = explode( "\n", $a );
 	foreach ( $a as $v ) {
 		$v = trim( $v );
 //		if ( $v != '' ) {
