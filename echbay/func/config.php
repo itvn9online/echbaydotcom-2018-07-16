@@ -300,11 +300,15 @@ if ( isset( $_POST['cf_old_domain'] )
 if ( isset( $_POST['cf_replace_content_full'] )
 	&& $_POST['cf_replace_content_full'] != '' ) {
 	
-	$arr = explode( "\n", trim( $_POST['cf_replace_content_full'] ) );
+	//
+	$_POST['cf_replace_content_full'] = trim( $_POST['cf_replace_content_full'] );
+	
+	//
+	$arr = explode( "\n", $_POST['cf_replace_content_full'] );
 	$new_a = array();
 	foreach ( $arr as $v ) {
 		$v = trim( $v );
-		if ( $v != '' && strstr( $v, '|' ) == true ) {
+		if ( $v != '' && substr( $v, 0, 1 ) != '#' && strstr( $v, '|' ) == true ) {
 			$new_a[] = $v;
 		}
 	}
