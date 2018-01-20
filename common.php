@@ -22,6 +22,7 @@
 // nếu có tham số DNS prefetch -> kiểm tra domain hiện tại có trùng với DNS prefetch không
 if ( $__cf_row['cf_dns_prefetch'] != '' ) {
 	$arr_dns_prefetch = explode( "\n", $__cf_row['cf_dns_prefetch'] );
+//	if ( mtv_id == 1 ) print_r( $arr_dns_prefetch );
 	
 	// trùng thì hủy bỏ truy cập này luôn
 //	if ( $__cf_row['cf_dns_prefetch'] == $_SERVER['HTTP_HOST'] ) {

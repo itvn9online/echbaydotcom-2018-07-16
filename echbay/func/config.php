@@ -230,6 +230,17 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 	foreach ( $arr as $v ) {
 		$v = trim( $v );
 		if ( $v != '' ) {
+			$v = explode( '//', $v );
+			if ( isset( $v[1] ) ) {
+				$v = $v[1];
+			} else {
+				$v = $v[0];
+			}
+			
+			$v = explode( '/', $v );
+			$v = $v[0];
+			
+			//
 			$new_a[] = $v;
 		}
 	}
