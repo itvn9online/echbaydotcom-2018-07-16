@@ -96,13 +96,13 @@ $file_test = ABSPATH . 'test_local_attack.txt';
 $file_cache_test = EB_THEME_CACHE . 'test_local_attack.txt';
 
 //
-$lats_update_file_test = 0;
+$last_update_file_test = 0;
 if ( file_exists( $file_cache_test ) ) {
-	$lats_update_file_test = file_get_contents( $file_cache_test, 1 );
+	$last_update_file_test = file_get_contents( $file_cache_test, 1 );
 }
 
 //
-if ( date_time - $lats_update_file_test > 3600 ) {
+if ( date_time - $last_update_file_test > 3600 ) {
 	
 	// tạo file cache để quá trình này không diễn ra liên tục
 	_eb_create_file( $file_cache_test, date_time );

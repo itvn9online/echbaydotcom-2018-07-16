@@ -669,7 +669,7 @@ function EBE_add_js_compiler_in_cache (
 		_eb_create_file( $file_in_cache, create_cache_infor_by( $full_file_name ) . $new_content );
 		
 		// cập nhật lại version để css mới nhận nhanh hơn
-		_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
+//		_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
 		
 	}
 	
@@ -1266,7 +1266,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 			_eb_create_file ( $file_save, create_cache_infor_by( $full_file_name ) . EBE_replace_link_in_cache_css ( $cache_content ) );
 			
 			// cập nhật lại version để css mới nhận nhanh hơn
-			_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
+//			_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
 		}
 		
 		// -> done

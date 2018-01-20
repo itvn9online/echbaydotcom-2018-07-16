@@ -648,6 +648,25 @@ if ( $__cf_row['cf_blog_class_style'] != '' ) {
 
 
 
+// cập nhật web version định kỳ
+$auto_update_web_version = EB_THEME_CACHE . 'web_version_auto.txt';
+
+//
+$last_update_web_version = 0;
+if ( file_exists( $auto_update_web_version ) ) {
+	$last_update_web_version = filemtime( $auto_update_web_version );
+}
+
+//
+if ( date_time - $last_update_web_version + rand( 0, 60 ) > 600 ) {
+	_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
+	
+	_eb_create_file( $auto_update_web_version, date( 'r', date_time ) . ' - ' . date( 'r', $last_update_web_version ) );
+}
+
+
+
+
 //
 //print_r( $__cf_row );
 //print_r( $___eb_lang );
