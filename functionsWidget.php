@@ -206,11 +206,13 @@ function WGR_widget_home_hot ( $instance ) {
 
 // hiển thị phần home hot theo chuẩn nhất định
 function WGR_show_home_hot ( $arr, $tmp = 'home_hot' ) {
+	global $__cf_row;
+	
 	// nạp html được truyền vào
 	$html = EBE_html_template( EBE_get_page_template( $tmp ), $arr );
 	
 	// các đoạn HTML mặc định cho về trống nếu chưa có
-	return EBE_html_template( $html, array(
+	$html = EBE_html_template( $html, array(
 		'tmp.max_width' => '',
 		'tmp.num_post_line' => '',
 		'tmp.home_hot_title' => '',
@@ -218,6 +220,16 @@ function WGR_show_home_hot ( $arr, $tmp = 'home_hot' ) {
 		'tmp.description' => '',
 		'tmp.home_hot' => '',
 	) );
+	
+	//
+	/*
+	if ( $__cf_row['cf_replace_content'] != '' ) {
+		$html = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $html );
+	}
+	*/
+	
+	//
+	return $html;
 }
 
 

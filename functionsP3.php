@@ -253,18 +253,29 @@ function WGR_sync_old_url_in_content ( $a, $c ) {
 	return $c;
 }
 
-function WGR_replace_for_all_content ( $a, $c ) {
-//	$a = explode( "\n", trim( $a ) );
-	$a = explode( "\n", $a );
-	foreach ( $a as $v ) {
-		$v = trim( $v );
+function WGR_replace_for_all_content ( $list_replace, $content_replace ) {
+//	global $__cf_row;
+//	$list_replace = $__cf_row['cf_replace_content'];
+	
+	//
+//	if ( mtv_id == 1 ) echo $list_replace . '<br>' . "\n";
+	
+//	$list_replace = explode( "\n", trim( $list_replace ) );
+	$list_replace = explode( "\n", $list_replace );
+	
+	//
+//	if ( mtv_id == 1 ) print_r( $list_replace );
+	
+	foreach ( $list_replace as $v ) {
+//		$v = trim( $v );
 //		if ( $v != '' ) {
 			$v = explode( '|', $v );
-			$c = str_replace( trim( $v[0] ), trim( $v[1] ), $c );
+//			if ( mtv_id == 1 ) print_r( $v );
+			$content_replace = str_replace( trim( $v[0] ), trim( $v[1] ), $content_replace );
 //		}
 	}
 	
-	return $c;
+	return $content_replace;
 }
 
 

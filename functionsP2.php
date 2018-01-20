@@ -1827,6 +1827,9 @@ function _eb_del_line ( $str, $re = "", $pe = "/\r\n|\n\r|\n|\t/i" ) {
 }
 
 function _eb_supper_del_line ( $str, $add_line = '' ) {
+	global $__cf_row;
+	
+	//
 	$a = explode( "\n", $str );
 	$str = '';
 	foreach ( $a as $v ) {
@@ -1835,6 +1838,13 @@ function _eb_supper_del_line ( $str, $add_line = '' ) {
 			$str .= $v . $add_line;
 		}
 	}
+	
+	//
+	if ( $__cf_row['cf_replace_content'] != '' ) {
+		$str = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $str );
+	}
+	
+	//
 	return $str;
 }
 

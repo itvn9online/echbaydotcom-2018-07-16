@@ -1516,11 +1516,13 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 	}
 	
 	//
-	if ( $__cf_row['cf_old_domain'] != '' ) {
-		$a = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $a );
-	}
+	/*
 	if ( $__cf_row['cf_replace_content'] != '' ) {
 		$a = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $a );
+	}
+	*/
+	if ( $__cf_row['cf_old_domain'] != '' ) {
+		$a = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $a );
 	}
 	
 	// trả về menu và URL tương đối
@@ -3559,11 +3561,13 @@ function _eb_load_ads (
 	*/
 	
 	//
-	if ( $__cf_row['cf_old_domain'] != '' ) {
-		$str = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $str );
-	}
+	/*
 	if ( $__cf_row['cf_replace_content'] != '' ) {
 		$str = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $str );
+	}
+	*/
+	if ( $__cf_row['cf_old_domain'] != '' ) {
+		$str = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $str );
 	}
 	
 	//

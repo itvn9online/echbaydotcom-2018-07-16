@@ -53,16 +53,6 @@ foreach ( $arr_global_main as $k => $v ) {
 }
 
 
-// nếu tồn tại tham số URL cũ -> thay nội dung cũ sang mới
-if ( $__cf_row['cf_old_domain'] != '' ) {
-//	$main_content = str_replace ( '/' . $__cf_row['cf_old_domain'] . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $main_content );
-	$main_content = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $main_content );
-}
-if ( $__cf_row['cf_replace_content'] != '' ) {
-	$main_content = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $main_content );
-}
-
-
 // chuyển sang dùng CDN (nếu có)
 // URL tương đối
 $main_content = str_replace ( web_link . EB_DIR_CONTENT . '/', EB_DIR_CONTENT . '/', $main_content );
@@ -71,6 +61,17 @@ $main_content = str_replace ( web_link . EB_DIR_CONTENT . '/', EB_DIR_CONTENT . 
 // URL từ thư mục uploads
 //	$main_content = str_replace ( web_link . EB_DIR_CONTENT . '/uploads/', $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/uploads/', $main_content );
 //	$main_content = str_replace ( '"' . EB_DIR_CONTENT . '/uploads/', '"' . $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/uploads/', $main_content );
+
+
+//
+if ( $__cf_row['cf_replace_content'] != '' ) {
+	$main_content = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $main_content );
+}
+// nếu tồn tại tham số URL cũ -> thay nội dung cũ sang mới
+if ( $__cf_row['cf_old_domain'] != '' ) {
+//	$main_content = str_replace ( '/' . $__cf_row['cf_old_domain'] . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $main_content );
+	$main_content = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $main_content );
+}
 
 
 
