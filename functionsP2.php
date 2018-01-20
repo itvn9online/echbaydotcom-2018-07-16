@@ -1839,6 +1839,9 @@ function _eb_supper_del_line ( $str, $add_line = '' ) {
 		}
 	}
 	
+	// chuyển URL sang dạng tương đối
+	$str = str_replace ( web_link . EB_DIR_CONTENT . '/', EB_DIR_CONTENT . '/', $str );
+	
 	//
 	if ( $__cf_row['cf_replace_content'] != '' ) {
 		$str = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $str );
