@@ -596,7 +596,7 @@ function EBE_add_js_compiler_in_cache (
 	// chỉ cập nhật file khi có sự thay đổi
 //	if ( file_exists( $file_in_cache ) ) {
 	// cập nhật file định kỳ
-	if ( ! file_exists( $file_in_cache ) || date_time - filemtime ( $file_in_cache ) + rand( 0, 60 ) > 600 ) {
+	if ( ! file_exists( $file_in_cache ) || date_time - filemtime ( $file_in_cache ) + rand( 0, 60 ) > 1800 ) {
 		
 		//
 		$new_content = '';
@@ -1248,7 +1248,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		// nếu chưa -> tạo file cache
 //		if ( ! file_exists( $file_save ) ) {
 		// tạo file cache định kỳ
-		if ( ! file_exists( $file_save ) || date_time - filemtime ( $file_save ) + rand( 0, 60 ) > 600 ) {
+		if ( ! file_exists( $file_save ) || date_time - filemtime ( $file_save ) + rand( 0, 60 ) > 1800 ) {
 			$cache_content = '';
 			foreach ( $new_arr as $v => $k ) {
 				$file_content = explode( "\n", file_get_contents( $v, 1 ) );
