@@ -116,6 +116,7 @@ function check_update_config() {
 	console.log(str_head);
 	
 	//
+	/*
 	if ( $.trim( f.cf_dns_prefetch.value ) != '' ) {
 		var a = f.cf_dns_prefetch.value.split('//');
 //		console.log( a.length );
@@ -128,6 +129,7 @@ function check_update_config() {
 		
 		f.cf_dns_prefetch.value = a.split('/')[0];
 	}
+	*/
 	
 	
 	//

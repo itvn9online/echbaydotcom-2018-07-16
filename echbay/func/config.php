@@ -222,8 +222,27 @@ if ( $_POST['cf_remove_category_base'] == 1 ) {
 
 //
 if ( isset( $_POST['cf_dns_prefetch'] )
-	&& $_POST['cf_dns_prefetch'] != ''
-	&& strstr( $_POST['cf_dns_prefetch'], '/' ) == true ) {
+	&& $_POST['cf_dns_prefetch'] != '' ) {
+//	&& strstr( $_POST['cf_dns_prefetch'], '/' ) == true ) {
+	
+	$arr = explode( "\n", trim( $_POST['cf_dns_prefetch'] ) );
+	$new_a = array();
+	foreach ( $arr as $v ) {
+		$v = trim( $v );
+		if ( $v != '' ) {
+			$new_a[] = $v;
+		}
+	}
+	
+	//
+	if ( empty( $new_a ) ) {
+		$_POST['cf_dns_prefetch'] = '';
+	}
+	else {
+		$_POST['cf_dns_prefetch'] = implode( "\n", $new_a );
+	}
+	
+	/*
 	$a = explode( '//', $_POST['cf_dns_prefetch'] );
 	if ( isset( $a[1] ) ) {
 		$a = $a[1];
@@ -235,6 +254,7 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 	$a = $a[0];
 	
 	$_POST['cf_dns_prefetch'] = $a;
+	*/
 }
 
 
@@ -266,10 +286,10 @@ if ( isset( $_POST['cf_old_domain'] )
 
 
 //
-if ( isset( $_POST['cf_replace_content'] )
-	&& $_POST['cf_replace_content'] != '' ) {
+if ( isset( $_POST['cf_replace_content_full'] )
+	&& $_POST['cf_replace_content_full'] != '' ) {
 	
-	$arr = explode( "\n", trim( $_POST['cf_replace_content'] ) );
+	$arr = explode( "\n", trim( $_POST['cf_replace_content_full'] ) );
 	$new_a = array();
 	foreach ( $arr as $v ) {
 		$v = trim( $v );

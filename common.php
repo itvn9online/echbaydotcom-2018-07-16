@@ -21,23 +21,28 @@
 
 // nếu có tham số DNS prefetch -> kiểm tra domain hiện tại có trùng với DNS prefetch không
 if ( $__cf_row['cf_dns_prefetch'] != '' ) {
+	$arr_dns_prefetch = explode( "\n", $__cf_row['cf_dns_prefetch'] );
+	
 	// trùng thì hủy bỏ truy cập này luôn
-	if ( $__cf_row['cf_dns_prefetch'] == $_SERVER['HTTP_HOST'] ) {
-		EBE_set_header(403);
-//		$pcol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
-		//echo $pcol;
-//		header( $pcol . ' 403 Forbidden' );
+//	if ( $__cf_row['cf_dns_prefetch'] == $_SERVER['HTTP_HOST'] ) {
+	foreach ( $arr_dns_prefetch as $v ) {
+		if ( trim( $v ) == $_SERVER['HTTP_HOST'] ) {
+			EBE_set_header(403);
+//			$pcol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+			//echo $pcol;
+//			header( $pcol . ' 403 Forbidden' );
+			
+			echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/403.html', 1 );
+			
+			exit();
+		}
 		
-		echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/403.html', 1 );
-		
-		exit();
+		// không trùng -> tạo link cho DNS prefetch
+		$dynamic_meta .= '<link rel="dns-prefetch" href="//' . $v . '" />';
 	}
 	
-	// không trùng -> tạo link cho DNS prefetch
-	$dynamic_meta .= '<link rel="dns-prefetch" href="//' . $__cf_row['cf_dns_prefetch'] . '" />';
-	
 	//
-	$__cf_row['cf_dns_prefetch'] = '//' . $__cf_row['cf_dns_prefetch'] . '/';
+	$__cf_row['cf_dns_prefetch'] = '//' . $arr_dns_prefetch[0] . '/';
 } else {
 //	$__cf_row['cf_dns_prefetch'] = strstr( web_link, '//' );
 	$__cf_row['cf_dns_prefetch'] = '//' . $_SERVER['HTTP_HOST'] . '/';

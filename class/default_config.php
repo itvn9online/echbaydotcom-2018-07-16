@@ -136,6 +136,7 @@ $__cf_row_default = array(
 	// với 1 số website, chuyển từ URL cũ sang -> dùng chức năng này để đồng bộ nội dung từ cũ sang mới (chủ yếu là các link ảnh)
 	'cf_old_domain' => '',
 	'cf_replace_content' => '',
+	'cf_replace_content_full' => '',
 	
 	// cài đặt cho bản AMP
 	'cf_blog_amp' => 1,
