@@ -221,6 +221,21 @@ if ( $_POST['cf_remove_category_base'] == 1 ) {
 
 
 //
+function WGR_config_doman_only ( $v ) {
+	$v = explode( '//', $v );
+	if ( isset( $v[1] ) ) {
+		$v = $v[1];
+	} else {
+		$v = $v[0];
+	}
+	
+	$v = explode( '/', $v );
+	
+	//
+	return $v[0];
+}
+
+//
 if ( isset( $_POST['cf_dns_prefetch'] )
 	&& $_POST['cf_dns_prefetch'] != '' ) {
 //	&& strstr( $_POST['cf_dns_prefetch'], '/' ) == true ) {
@@ -230,18 +245,7 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 	foreach ( $arr as $v ) {
 		$v = trim( $v );
 		if ( $v != '' ) {
-			$v = explode( '//', $v );
-			if ( isset( $v[1] ) ) {
-				$v = $v[1];
-			} else {
-				$v = $v[0];
-			}
-			
-			$v = explode( '/', $v );
-			$v = $v[0];
-			
-			//
-			$new_a[] = $v;
+			$new_a[] = WGR_config_doman_only( $v );
 		}
 	}
 	
@@ -252,20 +256,6 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 	else {
 		$_POST['cf_dns_prefetch'] = implode( "\n", $new_a );
 	}
-	
-	/*
-	$a = explode( '//', $_POST['cf_dns_prefetch'] );
-	if ( isset( $a[1] ) ) {
-		$a = $a[1];
-	} else {
-		$a = $a[0];
-	}
-	
-	$a = explode( '/', $a );
-	$a = $a[0];
-	
-	$_POST['cf_dns_prefetch'] = $a;
-	*/
 }
 
 
@@ -279,20 +269,17 @@ if ( isset( $_POST['cf_old_domain'] )
 	foreach ( $arr as $v ) {
 		$v = trim( $v );
 		if ( $v != '' ) {
-			$a = explode( '//', $v );
-			if ( isset( $a[1] ) ) {
-				$a = $a[1];
-			} else {
-				$a = $a[0];
-			}
-			
-			$a = explode( '/', $a );
-			$a = trim( $a[0] );
-			
-			$new_a[] = $a;
+			$new_a[] = WGR_config_doman_only( $v );
 		}
 	}
-	$_POST['cf_old_domain'] = implode( ',', $new_a );
+	
+	//
+	if ( empty( $new_a ) ) {
+		$_POST['cf_old_domain'] = '';
+	}
+	else {
+		$_POST['cf_old_domain'] = implode( ',', $new_a );
+	}
 }
 
 
@@ -308,6 +295,10 @@ if ( isset( $_POST['cf_replace_content_full'] )
 	$new_a = array();
 	foreach ( $arr as $v ) {
 		$v = trim( $v );
+		
+		// dữ liệu chuẩn phải không trống
+		// không có dấu # ở đầu
+		// có dấu | để chia tách 2 phần dữ liệu
 		if ( $v != '' && substr( $v, 0, 1 ) != '#' && strstr( $v, '|' ) == true ) {
 			$new_a[] = $v;
 		}

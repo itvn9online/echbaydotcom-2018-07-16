@@ -130,37 +130,6 @@ div.gallery-add-to-og_image { display: block; }
 					<label for="cf_current_price_before" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
 					<div class="small">Mặc định, đơn vị tiền tệ sẽ xuất hiện ở phía sau giá tiền (ưu tiên cho web sử dụng Việt Nam đồng), nếu bạn muốn nó xuất hiện ở phía trước, hãy đánh dấu vào đây và lưu lại.</div></td>
 			</tr>
-			<tr>
-				<td class="i bold redcolor bborder" colspan="2">Xử lý dữ liệu cũ</td>
-			</tr>
-			<tr>
-				<td class="t" valign="top">Tên miền cũ</td>
-				<td class="i"><input type="text" name="cf_old_domain" value="{tmp.cf_old_domain}" placeholder="Ví dụ: v1.echbay.com" class="m" />
-					<div class="small">Sử dụng khi bạn có dữ liệu được lấy từ một domain khác, trong bài viết có chứa URL là của domain cũ, và giờ bạn muốn thay đổi tất cả sang domain mới (chủ yếu là URL ảnh).<br>
-						* Lưu ý! chỉ nhập domain, <strong>không bao gồm</strong> http:// hoặc dấu /<br>
-						Ví dụ:
-						<pre><code class="d-block">echbay.com, webgiare.org</code></pre>
-					</div></td>
-			</tr>
-			<tr>
-				<td class="t" valign="top">Thay thế dữ liệu (CDN)</td>
-				<td class="i"><textarea name="cf_replace_content_full" id="cf_replace_content_full" placeholder="Ví dụ: Hello word! | Xin chào Việt Nam!">{tmp.cf_replace_content_full}</textarea>
-					<div class="small">Sử dụng khi bạn muốn thay thế một đoạn văn bản nào đó trong toàn bộ nội dung của website sang một đoạn văn bản mới. Thường dùng khi thay URL ảnh, số điện thoại, địa chỉ trong nội dung bài viết... hoặc thiết lập <strong>CDN</strong> cho nội dung website.<br>
-						* Có thể nhập nhiều biểu mẫu, mỗi biểu mẫu cách nhau bởi dấu xuống dòng.<br>
-						Ví dụ:
-						<pre><code class="d-block">Văn bản cần thay thế 1 | Văn bản thay thế 1</code><code class="d-block">Văn bản cần thay thế 2|Văn bản thay thế 2</code></pre>
-					</div></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr></td>
-			</tr>
-			<tr>
-				<td class="t">DNS prefetch</td>
-				<td class="i"><textarea name="cf_dns_prefetch" id="cf_dns_prefetch" placeholder="Ví dụ: cdn.echbay.com">{tmp.cf_dns_prefetch}</textarea>
-					<div class="small">Khi có khai báo DNS prefetch thì trình duyệt sẽ tự động phân giải tên miền, các tài nguyên css, js sẽ được load mà không cần đợi thời gian xử lí DNS.<br>
-						<span class="redcolor">*</span> Vui lòng không sử dụng nếu bạn chưa rõ DNS prefetch là gì.<br>
-						* Phải nhập URL cả www. nếu CDN chạy chính trên bản www.</div></td>
-			</tr>
 		</tbody>
 		<tbody title="Nâng cao" id="eb-admin-config-advanced" class="eb-admin-config-tab eb-admin-hide-config-tab">
 			<tr>
@@ -299,6 +268,41 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Dọn sạch bộ nhớ đệm</td>
 				<td class="i"><a href="admin.php?page=eb-coder&tab=cleanup_cache" target="target_eb_iframe" class="eb-btn">Dọn ngay</a>
 					<div class="small">Dọn sạch tất cả các thành phần có liên quan đến bộ nhớ đệm, bao gồm tất cả các tập tin khuôn mẫu và lệnh truy xuất dữ liệu đã được tạo bởi bộ nhớ đệm. Sử dụng khi bạn muốn tất cả các dữ liệu được nạp mới trở lại. </div></td>
+			</tr>
+			<tr>
+				<td class="i bold redcolor bborder" colspan="2">Xử lý dữ liệu cũ</td>
+			</tr>
+			<tr>
+				<td class="t" valign="top">Tên miền cũ</td>
+				<td class="i"><input type="text" name="cf_old_domain" value="{tmp.cf_old_domain}" placeholder="Ví dụ: v1.echbay.com" class="m" />
+					<div class="small">Sử dụng khi bạn có dữ liệu được lấy từ một domain khác, trong bài viết có chứa URL là của domain cũ, và giờ bạn muốn thay đổi tất cả sang domain mới (chủ yếu là URL ảnh).<br>
+						* Lưu ý! chỉ nhập domain, <strong>không bao gồm</strong> http:// hoặc dấu /<br>
+						Ví dụ:
+						<pre><code class="d-block">echbay.com, webgiare.org</code></pre>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t" valign="top">Thay thế dữ liệu (CDN)</td>
+				<td class="i"><textarea name="cf_replace_content_full" id="cf_replace_content_full" placeholder="Ví dụ: Hello word! | Xin chào Việt Nam!">{tmp.cf_replace_content_full}</textarea>
+					<div class="small">Sử dụng khi bạn muốn thay thế một đoạn văn bản nào đó trong toàn bộ nội dung của website sang một đoạn văn bản mới. Thường dùng khi thay URL ảnh, số điện thoại, địa chỉ trong nội dung bài viết... hoặc thiết lập <strong>CDN</strong> cho nội dung website.<br>
+						* Có thể nhập nhiều biểu mẫu, mỗi biểu mẫu cách nhau bởi dấu xuống dòng.<br>
+						Ví dụ:
+						<pre><code class="d-block">Văn bản cần thay thế 1 | Văn bản thay thế 1</code><code class="d-block">Văn bản cần thay thế 2|Văn bản thay thế 2</code></pre>
+					</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">DNS prefetch</td>
+				<td class="i"><textarea name="cf_dns_prefetch" id="cf_dns_prefetch" placeholder="Ví dụ: cdn.echbay.com">{tmp.cf_dns_prefetch}</textarea>
+					<div class="small">Khi có khai báo DNS prefetch thì trình duyệt sẽ tự động phân giải tên miền, các tài nguyên css, js sẽ được load mà không cần đợi thời gian xử lí DNS.<br>
+						<span class="redcolor">*</span> Vui lòng không sử dụng nếu bạn chưa rõ DNS prefetch là gì.<br>
+						* Phải nhập URL cả www. nếu CDN chạy chính trên bản www.<br>
+						* DNS prefetch chỉ sử dụng cho các file tĩnh như: Ảnh, JS, CSS nên khi khách hàng truy cập vào website thông qua tên miền này hệ thống sẽ báo lỗi <strong>403</strong>.<br>
+						Ví dụ:
+						<pre><code class="d-block">cdn1.echbay.com</code><code class="d-block">cdn2.echbay.net</code></pre>
+					</div></td>
 			</tr>
 		</tbody>
 		<tbody title="Thông tin liên hệ" id="eb-admin-config-contact" class="eb-admin-config-tab eb-admin-hide-config-tab">
