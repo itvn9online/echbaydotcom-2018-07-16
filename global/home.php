@@ -105,6 +105,7 @@ if ($main_content == false) {
 	* Gắn widget vào trước
 	*/
 	$main_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), array(
+		'tmp.home_content_top_sidebar' => _eb_echbay_get_sidebar( 'home_content_top_sidebar' ),
 		'tmp.home_with_cat' => $home_with_cat,
 //		'tmp.home_content_sidebar' => $home_content_sidebar,
 	) );
