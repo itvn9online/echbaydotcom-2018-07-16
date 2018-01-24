@@ -2032,13 +2032,22 @@ function ___eb_custom_login_done () {
 
 
 // tạo menu cho bản mobile ( nếu chưa có )
+/*
 if ( $('#nav_mobile_top li').length == 0 ) {
 	$('#nav_mobile_top').html( '<ul>' + ( $('.nav-menu ul').html() || $('.global-nav ul').html() || '' ) + '</ul>' );
+	
+	$('#nav_mobile_top li').removeAttr('id');
 }
-$('#nav_mobile_top li').removeAttr('id');
 
 $('#nav_mobile_top li li a').each(function() {
 	$(this).html( '<i class="fa fa-angle-right"></i> ' + $(this).html() );
+});
+*/
+
+//
+$('#nav_mobile_top li').click(function () {
+	$('#nav_mobile_top li').removeClass('active');
+	$(this).addClass('active');
 });
 
 
