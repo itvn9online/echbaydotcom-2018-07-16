@@ -88,6 +88,8 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 		$total_line = $trv_giamoi * $soLuong;
 		$cart_total += $total_line;
 		
+		
+		
 		//
 		$post_categories = wp_get_post_categories( $post->ID );
 //		print_r($post_categories);
@@ -99,6 +101,8 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 		//
 		$c_link = _eb_c_link($cat->term_id);
 		$c_name = $cat->name;
+		
+		
 		
 		//
 		$animate_id = 'tr_cart_' . $post->ID;
@@ -114,6 +118,8 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 		</div>
 		<div class="lf f70 fullsize-if-mobile">
 			<div><a href="' . $p_link . '" class="bold upper medium blackcolor get-product-name-for-cart">' . $post->post_title . '</a></div>
+			<div data-id="' . $post->ID . '" class="show-list-color"></div>
+			<div data-id="' . $post->ID . '" class="show-list-size"></div>
 			<div class="bold big show-if-mobile">' . EBE_add_ebe_currency_class ( $trv_giamoi ) . '</div>
 			<br>
 			<div><a href="' . $c_link . '" class="upper blackcolor">' . $c_name . '</a></div>

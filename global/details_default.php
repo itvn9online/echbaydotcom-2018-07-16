@@ -105,20 +105,6 @@ else {
 */
 
 
-//
-$product_js = '';
-if ( $__post->post_type == 'post' ) {
-	$arr_product_js = array (
-		'tieude' => '\'' . _eb_str_block_fix_content ( $__post->post_title ) . '\'',
-		'gia' => $trv_giaban,
-		'gm' => $trv_giamoi,
-	);
-	foreach ( $arr_product_js as $k => $v ) {
-		$product_js .= ',' . $k . ':' . $v;
-	}
-}
-
-
 
 
 
@@ -273,7 +259,58 @@ $con_hay_het = 1;
 $trv_trangthai = 0;
 $schema_availability = 'http://schema.org/InStock';
 
+//$arr_product_color = '';
+
+$post_modified = strtotime( $__post->post_modified );
+$schema_priceValidUntil = $post_modified + 24 * 3600 * 365;
+
+$trv_rating_value = 0;
+$trv_rating_count = 0;
+$rating_value_img = '5.0';
+
+$product_js = '';
+
+$product_size = '';
+
+$product_color_name = '';
+$_eb_product_chinhhang = 0;
+$_eb_product_video_url = 0;
+
+
+//
 if ( $__post->post_type == 'post' ) {
+	
+	//
+	$product_color_name = _eb_str_block_fix_content ( _eb_get_post_object( $pid, '_eb_product_color' ) );
+	$_eb_product_chinhhang = _eb_get_post_object( $pid, '_eb_product_chinhhang', 0 );
+	$_eb_product_video_url = _eb_get_post_object( $pid, '_eb_product_video_url' );
+	
+	// product size
+	$product_size = _eb_get_post_object( $pid, '_eb_product_size' );
+	if ( $product_size != '' ) {
+		if ( substr( $product_size, 0, 1 ) == ',' ) {
+			$product_size = substr( $product_size, 1 );
+		}
+		$product_size = str_replace( '"', '\"', $product_size );
+	}
+	
+	
+	
+	
+	
+	//
+	$arr_product_js = array (
+		'tieude' => '\'' . _eb_str_block_fix_content ( $__post->post_title ) . '\'',
+		'gia' => $trv_giaban,
+		'gm' => $trv_giamoi,
+	);
+	foreach ( $arr_product_js as $k => $v ) {
+		$product_js .= ',' . $k . ':' . $v;
+	}
+	
+	
+	
+	//
 	$trv_mua = _eb_number_only( _eb_get_post_object( $pid, '_eb_product_buyer', 0 ) );
 	$trv_max_mua = _eb_number_only( _eb_get_post_object( $pid, '_eb_product_quantity', 0 ) );
 	
@@ -289,29 +326,10 @@ if ( $__post->post_type == 'post' ) {
 		// thêm class ẩn nút mua hàng
 		$css_m_css .= ' details-hideif-hethang';
 	}
-}
-
-
-
-//
-//$arr_product_color = '';
-
-
-
-//
-$post_modified = strtotime( $__post->post_modified );
-$schema_priceValidUntil = $post_modified + 24 * 3600 * 365;
-
-
-
-
-
-//
-$trv_rating_value = 0;
-$trv_rating_count = 0;
-$rating_value_img = '5.0';
-
-if ( $__post->post_type == 'post' ) {
+	
+	
+	
+	//
 	$trv_rating_value = _eb_get_post_object( $pid, '_eb_product_rating_value', 0 );
 	if ( $trv_rating_value == '' ) {
 		$trv_rating_value = 0;
@@ -346,6 +364,7 @@ if ( $__post->post_type == 'post' ) {
 	if (strlen ( $rating_value_img ) == 1) {
 		$rating_value_img = $rating_value_img . '.0';
 	}
+	
 }
 	
 	
@@ -738,21 +757,6 @@ $main_content = EBE_html_template( $main_content, $arr_main_content );
 
 
 
-// product size
-$product_size = '';
-if ( $__post->post_type == 'post' ) {
-	$product_size = _eb_get_post_object( $pid, '_eb_product_size' );
-	if ( $product_size != '' ) {
-		if ( substr( $product_size, 0, 1 ) == ',' ) {
-			$product_size = substr( $product_size, 1 );
-		}
-		$product_size = str_replace( '"', '\"', $product_size );
-	}
-}
-
-
-
-
 // If comments are open or we have at least one comment, load up the comment template.
 // load comment bằng ajax -> vì theme mình viết toàn có cache
 $eb_site_comment_open = 0;
@@ -789,8 +793,6 @@ if ( $__post->post_type == 'post' ) {
 }
 
 
-
-
 // -> thêm đoạn JS dùng để xác định xem khách đang ở đâu trên web
 $main_content .= '<script type="text/javascript">
 var switch_taxonomy="' . $__post->post_type . '",
@@ -800,9 +802,9 @@ var switch_taxonomy="' . $__post->post_type . '",
 	product_js={' . substr ( $product_js, 1 ) . '},
 	arr_product_size="' . $product_size . '",
 	arr_product_color=[],
-	product_color_name="' . _eb_str_block_fix_content ( _eb_get_post_object( $pid, '_eb_product_color' ) ) . '",
-	_eb_product_chinhhang="' . _eb_get_post_object( $pid, '_eb_product_chinhhang', 0 ) . '",
-	_eb_product_video_url="' . _eb_get_post_object( $pid, '_eb_product_video_url' ) . '",
+	product_color_name="' . $product_color_name . '",
+	_eb_product_chinhhang="' . $_eb_product_chinhhang . '",
+	_eb_product_video_url="' . $_eb_product_video_url . '",
 	_eb_product_ngayhethan="' . $_eb_product_ngayhethan . '",
 	_eb_product_giohethan="' . $_eb_product_giohethan . '",
 	cf_details_excerpt="' . $__cf_row['cf_details_excerpt'] . '",

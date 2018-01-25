@@ -152,7 +152,7 @@ if ( $limit_other_post > 0 ) {
 		$other_post_right .= _eb_load_post( 1, array(
 			'post__in' => array(
 				$prev_post->ID
-			),
+			)
 		) );
 	}
 	
@@ -165,7 +165,7 @@ if ( $limit_other_post > 0 ) {
 		$other_post_right .= _eb_load_post( 1, array(
 			'post__in' => array(
 				$next_post->ID
-			),
+			)
 		) );
 	}
 	
@@ -177,11 +177,11 @@ if ( $limit_other_post > 0 ) {
 	
 	//
 	$other_post_right .= _eb_load_post( $limit_other_post, array(
-//			'category__in' => wp_get_post_categories( $__post->ID ),
+//		'category__in' => wp_get_post_categories( $__post->ID ),
 		'category__in' => $post_primary_categories,
 		'post__not_in' => array(
 			$__post->ID
-		),
+		)
 	) );
 	
 }
@@ -194,7 +194,7 @@ if ( $__cf_row['cf_num_details2_list'] > 0 ) {
 		'category__in' => $post_primary_categories,
 		'post__not_in' => array(
 			$__post->ID
-		),
+		)
 	) );
 }
 
@@ -206,7 +206,7 @@ if ( $__cf_row['cf_num_details3_list'] > 0 ) {
 		'category__in' => $post_primary_categories,
 		'post__not_in' => array(
 			$__post->ID
-		),
+		)
 	) );
 }
 
