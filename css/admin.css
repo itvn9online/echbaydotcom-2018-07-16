@@ -830,6 +830,25 @@ input[id="_eb_category_order"] { width: 90px; }
 	height: 35px;
 	font-size: 16px;
 }
+/* */
+.click-set-nhanban {
+	position: fixed;
+	bottom: 20px;
+	left: 12%;
+	z-index: 9999;
+}
+.button-redprimary {
+	background: #c00 !important;
+	border-color: #af0000 !important;
+	box-shadow: 0 1px 0 #af0000 !important;
+	text-shadow: 0 -1px 1px #af0000, 1px 0 1px #af0000, 0 1px 1px #af0000, -1px 0 1px #af0000 !important;
+}
+.button-orgprimary {
+	background: #c50 !important;
+	border-color: #b74c00 !important;
+	box-shadow: 0 1px 0 #b74c00 !important;
+	text-shadow: 0 -1px 1px #b74c00, 1px 0 1px #b74c00, 0 1px 1px #b74c00, -1px 0 1px #b74c00 !important;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

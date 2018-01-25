@@ -165,7 +165,7 @@ if ( $show_dang_xac_nhan != '' ) {
 					$hd_trangthai = $post->order_status;
 					
 					//
-					if ( $hd_trangthai == 0 && isset( $o->order_update_time ) ) {
+					if ( $hd_trangthai == 0 && isset( $post->order_update_time ) ) {
 						$sql = "UPDATE eb_in_con_voi
 						SET
 							order_update_time = " . date_time . "

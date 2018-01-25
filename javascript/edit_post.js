@@ -572,6 +572,22 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	
+	// thêm nút nhân bản bài viết
+	$('body').append('<button type="button" title="Hệ thống sẽ copy một sản phẩm tương tự sản phẩm này" class="button button-primary button-orgprimary button-large click-set-nhanban cur"><i class="fa fa-copy"></i> Nhân bản</button>');
+	
+	//
+	$('.click-set-nhanban').click(function () {
+		var a = $('#post_ID').val() || 0;
+		
+		if ( a <= 0 ) {
+			alert('Post ID not found!');
+			return false;
+		}
+		
+	});
+	
+	
+	
 	//
 	$(window).on('load', function () {
 		EBE_set_default_title_for_seo();
