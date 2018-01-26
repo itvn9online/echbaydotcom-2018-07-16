@@ -25,12 +25,17 @@ function WGR_migrate_v1_to_wordpress_version () {
 //	echo $u . '<br>' . "\n";
 //	echo substr($u, 0, 2) . '<br>' . "\n";
 	
+	
+	// ID post từ việc export dữ liệu cũ
+	$post_export_id = 0;
+	
+	
 	//
 	$a = explode('.htm', $u);
 	$a = $a[0];
 //	echo $a . '<br>' . "\n";
 	
-	//
+	// ID nằm ở cuối
 	$a0 = explode('-', $a);
 	$a0 = $a0[ count( $a0 ) - 1 ];
 //	echo $a0 . '<br>' . "\n";
@@ -62,8 +67,10 @@ function WGR_migrate_v1_to_wordpress_version () {
 			*/
 			if ( substr($a0, 0, 1) == 'p' ) {
 				$post_type = 'post';
+				$post_export_id = $b;
 			}
 			else if ( substr($a0, 0, 1) == 'n' ) {
+				$post_export_id = '8888' . $b;
 				$post_type = EB_BLOG_POST_TYPE;
 //				$taxonomy = EB_BLOG_POST_LINK;
 			}
@@ -89,6 +96,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 			if ( count( $ex > 1 ) ) {
 				$new_url = $ex[ count( $ex ) - 1 ];
 			}
+//			echo $new_url;
 		}
 		else {
 			$a0 = explode( '/', $a );
@@ -173,8 +181,8 @@ function WGR_migrate_v1_to_wordpress_version () {
 			FROM
 				`" . $wpdb->posts . "`
 			WHERE
-				post_name = '" . $new_url . "'
-				AND post_type = '" . $post_type . "'
+				post_type = '" . $post_type . "'
+				AND ( post_name = '" . $new_url . "' OR ID = " . $post_export_id . " )
 			ORDER BY
 				ID DESC
 			LIMIT 0, 1");
