@@ -283,7 +283,7 @@ function WGR_replace_for_all_content ( $list_replace, $content_replace ) {
 // thêm thẻ LI theo tiêu chuẩn chung cho thread node
 function WGR_add_li_to_thread_node ( $str ) {
 	if ( strstr( $str, '</li>' ) == false ) {
-		$str = '<li data-id="{tmp.trv_id}" data-ngay="{tmp.trv_ngayhethan}" data-per="{tmp.pt}" data-link="{tmp.p_link}" data-status="{tmp.product_status}" class="hide-if-gia-zero">' . $str . '</li>';
+		$str = '<li data-id="{tmp.trv_id}" data-ngay="{tmp.trv_ngayhethan}" data-gia="{tmp.trv_num_giamoi}" data-per="{tmp.pt}" data-link="{tmp.p_link}" data-status="{tmp.product_status}" class="hide-if-gia-zero">' . $str . '</li>';
 	}
 	
 	return $str;
