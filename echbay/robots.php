@@ -7,8 +7,9 @@ Disallow: /cgi-bin/
 Disallow: /' . WP_ADMIN_DIR . '/
 Disallow: /wp-includes/
 Disallow: /' . EB_DIR_CONTENT . '/plugins/
-Disallow: /' . EB_DIR_CONTENT . '/cache/
 Disallow: /' . EB_DIR_CONTENT . '/themes/
+Disallow: /' . EB_DIR_CONTENT . '/cache/
+Disallow: /' . EB_DIR_CONTENT . '/uploads/ebcache/
 Disallow: /search?q=*
 Disallow: *?replytocom
 Disallow: */attachment/*

@@ -27,9 +27,9 @@ $eb_all_themes_support[$eb_all_themes_name]["top"][] = "breadcrumb-top1.php";
 //
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "footer_widget.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "kutegiagoc-footer1.php";
-$eb_all_themes_support[$eb_all_themes_name]["footer"][] = "echbaytwo-footer3.php";
+//$eb_all_themes_support[$eb_all_themes_name]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support[$eb_all_themes_name]["home"][] = "kutegiagoc-home1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["home"][] = "kutegiagoc-home1.php";
 $eb_all_themes_support[$eb_all_themes_name]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support[$eb_all_themes_name]["threaddetails"][] = "kutegiagoc-threaddetails.html";
