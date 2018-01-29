@@ -923,6 +923,7 @@ color: #333;
 .ul-default-style h1 {
 	-webkit-margin-before: 0.67em;
 	-webkit-margin-after: 0.67em;
+	line-height: 28px;
 }
 .ul-default-style h2 {
 	line-height: 25px;

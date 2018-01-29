@@ -493,11 +493,16 @@ function _eb_widget_style_for_post_cloumn ( $select_name, $select_val ) {
 
 function _eb_widget_number_of_posts_inline ( $select_name, $select_val, $default_arr_select = array (
 	'' => 'Mặc định',
-	'thread-list100' => 'Một',
-	'thread-list50' => 'Hai',
-	'thread-list33' => 'Ba',
-	'thread-list25' => 'Bốn',
-	'thread-list20' => 'Năm'
+	'thread-list100' => 1,
+	'thread-list50' => 2,
+	'thread-list33' => 3,
+	'thread-list25' => 4,
+	'thread-list20' => 5,
+	'thread-list16' => 6,
+	'thread-list14' => 7,
+	'thread-list12' => 8,
+	'thread-list11' => 9,
+	'thread-list10' => 10,
 	/*
 	'' => 'Mặc định',
 	'echbay-blog100' => 'Một',

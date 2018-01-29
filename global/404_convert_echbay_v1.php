@@ -100,6 +100,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 		}
 		else {
 			$a0 = explode( '/', $a );
+//			print_r( $a0 );
 			
 			if ( isset( $a0[1] ) ) {
 				$a0 = $a0[1];
@@ -111,6 +112,12 @@ function WGR_migrate_v1_to_wordpress_version () {
 				
 				//
 				if ( $b > 0 && preg_match ( '/^(c|s|f|p|b|n)+([0-9])+$/i', $a0 ) ) {
+					if ( substr($a0, 0, 1) == 'p' ) {
+						$post_type = 'post';
+						$post_export_id = $b;
+					}
+					
+					//
 					$a0 = explode( '/', $a );
 					if ( isset( $a0[2] ) ) {
 						$new_url = $a0[2];
@@ -162,7 +169,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 	$return_url = '';
 	
 	// xử lý lại url trước khi chuyển đi
-	if ( $new_url != '' ) {
+	if ( $new_url != '' || $post_export_id > 0 ) {
 		if ( substr( $new_url, 0, 1 ) == '/' ) {
 			$new_url = substr( $new_url, 1 );
 		}
@@ -177,12 +184,27 @@ function WGR_migrate_v1_to_wordpress_version () {
 		
 		// post
 		if ( $post_type != '' ) {
+			$strFilter = "";
+			
+			//
+			if ( $new_url != '' && $post_export_id > 0 ) {
+				$strFilter = " AND ( post_name = '" . $new_url . "' OR ID = " . $post_export_id . " ) ";
+			}
+			else if ( $post_export_id > 0 ) {
+				$strFilter = " AND ID = " . $post_export_id;
+			}
+			else if ( $new_url != '' ) {
+				$strFilter = " AND post_name = '" . $new_url . "' ";
+			}
+			echo $strFilter . '<br>' . "\n";
+			
+			//
 			$sql = _eb_q("SELECT ID
 			FROM
 				`" . $wpdb->posts . "`
 			WHERE
 				post_type = '" . $post_type . "'
-				AND ( post_name = '" . $new_url . "' OR ID = " . $post_export_id . " )
+				" . $strFilter . "
 			ORDER BY
 				ID DESC
 			LIMIT 0, 1");
@@ -192,7 +214,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 			}
 		}
 		// taxonomy
-		else {
+		else if ( $new_url != '' ) {
 			$sql = _eb_q("SELECT term_id
 			FROM
 				`" . $wpdb->terms . "`
