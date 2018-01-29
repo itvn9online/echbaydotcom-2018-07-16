@@ -359,18 +359,24 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 	___eb_set_base_url_for_search_advanced();
 	
 	// Tạo thẻ xem tất cả sản phẩm
-	$(clat + ' ul').each(function() {
-		var data_node_id = $('li:first a', this).attr('data-node-id') || '',
-			data_parent = $('li:first a', this).attr('data-parent') || 0,
-			text = $('#' + data_node_id + ' .echbay-widget-title div').html() || '';
-		
-		//
-		if ( text != '' ) {
-			text = 'Tất cả ' + text;
+//	if ( $(clat + ' ul').length > 0 ) {
+		$(clat + ' ul').each(function() {
+			var data_node_id = $('li:first a', this).attr('data-node-id') || '';
 			
-			$('li:first', this).before('<li style="order:9999999999;"><div><a data-parent="' + data_parent + '" data-node-id="' + data_node_id + '" title="' + text + '" href="javascript:;">' + text + '</a></div></li>');
-		}
-	});
+			//
+			if ( data_node_id != '' ) {
+				var data_parent = $('li:first a', this).attr('data-parent') || 0,
+					text = $('#' + data_node_id + ' .echbay-widget-title div').html() || '';
+				
+				//
+				if ( text != '' ) {
+					text = 'Tất cả ' + text;
+					
+					$('li:first', this).before('<li style="order:9999999999;"><div><a data-parent="' + data_parent + '" data-node-id="' + data_node_id + '" title="' + text + '" href="javascript:;">' + text + '</a></div></li>');
+				}
+			}
+		});
+//	}
 	
 	//
 	$(clat + ' a').each(function() {
