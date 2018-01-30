@@ -70,7 +70,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		
 		//
 		if ( $str_history == '' ) {
-			echo '<!-- Widget view history has been active, but IDs not found! -->';
+			echo '<!-- Widget view history has been active, but IDs not found! Check cookie: ' . $cookie_name . ' -->';
 			return false;
 		}
 //		echo $str_history;
