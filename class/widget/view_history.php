@@ -62,7 +62,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 	function widget($args, $instance) {
 		
 		//
-		$cookie_name = isset( $instance ['cookie_name'] ) ? $instance ['cookie_name'] : '';
+		$cookie_name = isset( $instance ['cookie_name'] ) ? $instance ['cookie_name'] : 'wgr_product_id_view_history';
 		
 		//
 //		$str_history = _eb_getCucki('wgr_product_id_view_history');
