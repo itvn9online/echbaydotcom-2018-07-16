@@ -1933,7 +1933,7 @@ iframe[name="google_conversion_frame"] {
 	padding: 0 32px;
 	cursor: pointer;
 	background: #f2f2f2;
-	margin: 0 1px 0 0;
+	margin: 0 1px 1px 0;
 }
 .thread-details-tab li.selected {
 	background-color: #333;
