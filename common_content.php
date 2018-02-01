@@ -15,7 +15,7 @@ $arr_global_main = array(
 //	'tmp.theme_static_url' => EB_URL_OF_THEME,
 	'tmp.web_version' => $web_version,
 	'tmp.web_name' => $web_name,
-	'tmp.web_link' => $web_link,
+	'tmp.web_link' => web_link,
 	
 	// tìm và tạo sidebar luôn (nếu có)
 	'tmp.str_sidebar' => $id_for_get_sidebar == '' ? '' : _eb_echbay_sidebar( $id_for_get_sidebar ),
