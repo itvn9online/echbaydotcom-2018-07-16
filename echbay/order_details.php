@@ -151,7 +151,15 @@ if ( $show_dang_xac_nhan != '' ) {
 		</tr>
 		<tr>
 			<td class="t">Cập nhật cuối</td>
-			<td class="i"><?php if ( isset( $post->order_update_time ) ) { echo date( 'd-m-Y H:i', $post->order_update_time ); } ?></td>
+			<td class="i"><?php
+			if ( isset( $post->order_update_time ) ) {
+				echo date( 'd-m-Y H:i', $post->order_update_time );
+			}
+			// nếu chưa có -> có thể bảng hóa đơn đang thiếu -> bổ sung lại
+			else {
+				EBE_tao_bang_hoa_don_cho_echbay_wp();
+			}
+			?></td>
 		</tr>
 		<tr>
 			<td class="t">Ghi chú của CSKH <span class="d-block small">Ví dụ: lý do hủy đơn hàng.</span></td>
