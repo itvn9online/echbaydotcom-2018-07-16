@@ -517,6 +517,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			
 			// in thẳng
 			if ( isset( $sql->post ) && isset( $sql->post->post_content ) ) {
+				echo '<!-- ' . _eb_p_link( $sql->post->ID ) . ' -->';
 				if ( $sql->post->post_content == '' ) {
 					echo $sql->post->post_excerpt;
 				}

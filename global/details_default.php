@@ -700,7 +700,10 @@ $arr_main_content = array(
 	'tmp.lang_btn_giacu' => EBE_get_lang('post_giacu'),
 	'tmp.lang_btn_giamgia' => EBE_get_lang('post_giamgia'),
 	'tmp.lang_btn_giamoi' => EBE_get_lang('post_giamoi'),
+	
+	'tmp.lang_btn_kichco' => EBE_get_lang('cart_kichco'),
 	'tmp.lang_btn_mausac' => EBE_get_lang('cart_mausac'),
+	
 	'tmp.lang_btn_comment' => EBE_get_lang('post_comment'),
 	'tmp.lang_btn_content' => EBE_get_lang('post_content'),
 	'tmp.lang_btn_other' => EBE_get_lang('post_other'),
