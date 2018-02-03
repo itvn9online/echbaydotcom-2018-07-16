@@ -342,11 +342,6 @@ else {
 			exit();
 			
 		}
-		// nếu không -> add vào monitor để add thủ công
-		else {
-//			add_post_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
-			add_term_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
-		}
 		
 		
 		
@@ -354,6 +349,13 @@ else {
 		// nếu tồn tại function riêng của domain -> chạy luôn
 		if ( function_exists('page_404_for_this_domain') ) {
 			page_404_for_this_domain();
+		}
+		
+		
+		// nếu không -> add vào monitor để add thủ công
+		if ( $redirect_301_link == '' ) {
+//			add_post_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
+			add_term_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
 		}
 		
 		

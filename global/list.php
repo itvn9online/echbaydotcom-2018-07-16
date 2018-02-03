@@ -59,6 +59,18 @@ if ( $switch_taxonomy != '' ) {
 	// nhóm bị ẩn thì ẩn luôn
 	if ( _eb_get_cat_object( $cid, '_eb_category_hidden', 0 ) == 1 ) {
 		
+		// nếu có URL cũ -> chuyển tới đó
+		$old_url_for_redirect = _eb_get_cat_object( $cid, '_eb_category_old_url', '' );
+		if ( $old_url_for_redirect == '' ) {
+			$old_url_for_redirect = _eb_get_cat_object( $cid, '_eb_category_leech_url', '' );
+		}
+		
+		if ( $old_url_for_redirect != '' ) {
+			wp_redirect( $old_url_for_redirect, 301 ); exit();
+		}
+		
+		
+		//
 		$__cf_row ["cf_blog_public"] = 0;
 		
 		EBE_set_header(401);

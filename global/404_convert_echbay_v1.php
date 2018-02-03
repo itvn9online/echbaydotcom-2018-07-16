@@ -230,7 +230,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 					
 					//
 					if ( $t == 'category' || $t == EB_BLOG_POST_LINK ) {
-						$return_url = _eb_c_link( $v->term_id );
+						$return_url = _eb_c_link( $v->term_id, $t );
 						break;
 					}
 				}
