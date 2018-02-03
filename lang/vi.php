@@ -201,6 +201,20 @@ $___eb_lang[eb_key_for_site_lang . 'custom_text8'] = 'Custom text 8';
 $___eb_lang[eb_key_for_site_lang . 'custom_text9'] = 'Custom text 9';
 
 
+// ngôn ngữ riêng trong trang chi tiết sản phẩm, tin tức
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text'] = 'Post custom text';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text1'] = 'Post custom text 1';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text2'] = 'Post custom text 2';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text3'] = 'Post custom text 3';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text4'] = 'Post custom text 4';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text5'] = 'Post custom text 5';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text6'] = 'Post custom text 6';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text7'] = 'Post custom text 7';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text8'] = 'Post custom text 8';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text9'] = 'Post custom text 9';
+$___eb_lang[eb_key_for_site_lang . 'post_custom_text10'] = 'Post custom text 10';
+
+
 // URL của phần chính sách, quy định trong phần đặt hàng
 $___eb_lang[eb_key_for_site_lang . 'url_chinhsach'] = '#';
 $___eb_lang[eb_key_for_site_lang . 'chinhsach'] = 'Quý khách vui lòng tham khảo <a href="{tmp.url_chinhsach}" target="_blank">chính sách, quy định chung</a> của chúng tôi.';

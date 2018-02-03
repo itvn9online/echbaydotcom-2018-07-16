@@ -546,6 +546,7 @@ $other_post_right = '<!-- Chi tiết Sản phẩm -->';
 $other_post_2right = '<!-- Chi tiết Sản phẩm (2) -->';
 $other_post_3right = '<!-- Chi tiết Sản phẩm (3) -->';
 $str_for_details_sidebar = '';
+$str_for_details_top_sidebar = '';
 
 // với blog -> sử dụng giao diện khác post
 if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
@@ -683,6 +684,7 @@ $arr_main_content = array(
 	'tmp.custom_product_flex_css' => $custom_product_flex_css,
 	
 	'tmp.str_for_details_sidebar' => $str_for_details_sidebar,
+	'tmp.str_for_details_top_sidebar' => $str_for_details_top_sidebar,
 	
 	// phom mua ngay
 	'tmp.clone-show-quick-cart' => $__cf_row['cf_details_show_quick_cart'] == 1 ? '<div class="clone-show-quick-cart"></div>' : '',
@@ -710,6 +712,19 @@ $arr_main_content = array(
 	'tmp.lang_btn_muangay' => EBE_get_lang('muangay'),
 	'tmp.lang_chitiet_sanpham' => EBE_get_lang('chitietsp'),
 	'tmp.lang_sanpham_tuongtu' => EBE_get_lang('tuongtu'),
+	
+	//
+	'tmp.lang_post_custom_text' => EBE_get_lang('post_custom_text'),
+	'tmp.lang_post_custom_text1' => EBE_get_lang('post_custom_text1'),
+	'tmp.lang_post_custom_text2' => EBE_get_lang('post_custom_text2'),
+	'tmp.lang_post_custom_text3' => EBE_get_lang('post_custom_text3'),
+	'tmp.lang_post_custom_text4' => EBE_get_lang('post_custom_text4'),
+	'tmp.lang_post_custom_text5' => EBE_get_lang('post_custom_text5'),
+	'tmp.lang_post_custom_text6' => EBE_get_lang('post_custom_text6'),
+	'tmp.lang_post_custom_text7' => EBE_get_lang('post_custom_text7'),
+	'tmp.lang_post_custom_text8' => EBE_get_lang('post_custom_text8'),
+	'tmp.lang_post_custom_text9' => EBE_get_lang('post_custom_text9'),
+	'tmp.lang_post_custom_text10' => EBE_get_lang('post_custom_text10')
 );
 
 

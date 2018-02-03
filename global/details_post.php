@@ -221,5 +221,6 @@ if ( $__cf_row['cf_post_column_style'] != '' ) {
 
 //
 $str_for_details_sidebar = _eb_echbay_get_sidebar( 'post_content_sidebar' );
+$str_for_details_top_sidebar = _eb_echbay_get_sidebar( 'post_top_content_sidebar' );
 
 
