@@ -49,6 +49,8 @@ label,
 .echbay-blog-cat a { color: #666; }
 .echbay-blog-left { width: 40%; }
 .echbay-blog-right { width: 60%; }
+.echbay-blogmain.echbay-blog100 .echbay-blog-left { width: 25%; }
+.echbay-blogmain.echbay-blog100 .echbay-blog-right { width: 75%; }
 .echbay-details-blog .echbay-blog-left { width: 30%; }
 .echbay-details-blog .echbay-blog-right { width: 70%; }
 .echbay-details-blog .echbay-blog-cat { display: none; }
