@@ -15,7 +15,7 @@ $arr_list_tag = wp_get_object_terms( $pid, 'blog_tag' );
 
 // thêm H2 cho phần blog
 if ( $__post->post_excerpt != '' ) {
-	$__post->post_excerpt = '<h2 class="echbay-tintuc-gioithieu">' . nl2br( trim( $__post->post_excerpt ) ) . '</h2>';
+	$__post->post_excerpt = '<' . EBE_get_lang('tag_blog_excerpt') . ' class="echbay-tintuc-gioithieu">' . nl2br( trim( $__post->post_excerpt ) ) . '</' . EBE_get_lang('tag_blog_excerpt') . '>';
 }
 
 

@@ -13,9 +13,9 @@ $eb_all_themes_support["dumbo"]["price"] = 800000;
 $eb_all_themes_support["dumbo"]["demo"] = "dumbo.vn";
 //
 $eb_all_themes_support["dumbo"]["top"][] = "dumbo-top1.php";
-$eb_all_themes_support["dumbo"]["top"][] = "dumbo-top2.php";
-$eb_all_themes_support["dumbo"]["top"][] = "dumbo-top3.php";
-$eb_all_themes_support["dumbo"]["top"][] = "dumbo-top4.php";
+//$eb_all_themes_support["dumbo"]["top"][] = "dumbo-top2.php";
+//$eb_all_themes_support["dumbo"]["top"][] = "dumbo-top3.php";
+//$eb_all_themes_support["dumbo"]["top"][] = "dumbo-top4.php";
 $eb_all_themes_support["dumbo"]["top"][] = "breadcrumb3-top1.php";
 $eb_all_themes_support["dumbo"]["top"][] = "top_widget.php";
 //

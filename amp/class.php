@@ -14,7 +14,7 @@ class EchAMPFunction {
 			'type',
 			'border',
 			'align',
-			'longdesc',
+			'longdesc'
 		);
 		
 		// xóa từng attr đã được chỉ định
@@ -28,7 +28,8 @@ class EchAMPFunction {
 		
 		// xóa các thẻ không còn được hỗ trợ
 		$arr = array(
-			'font',
+			'style',
+			'font'
 		);
 		
 		//
@@ -168,15 +169,43 @@ class EchAMPFunction {
 				}
 				// với hình ảnh, nếu thiếu layout thì bổ sung
 				else if ( $new_tag == 'amp-img' ) {
+					$amp_avt_size = array();
+					
+					// lấy chiều rộng thực của ảnh nếu chưa có
 					if ( strstr( $v2, ' width=' ) == false ) {
-						$v2 .= ' width="400"';
+						$amp_avt_size = $this->get_src_img( $v2 );
+						
+						//
+//						if ( ! empty( $amp_avt_size ) ) {
+							$v2 .= ' width="' . $amp_avt_size[0] . '"';
+							/*
+						}
+						else {
+							$v2 .= ' width="400"';
+						}
+						*/
 					}
+					
+					// chiều cao thì lấy luôn từ mục chiều rộng trước đó rồi
 					if ( strstr( $v2, ' height=' ) == false ) {
-						$v2 .= ' height="400"';
+						if ( empty( $amp_avt_size ) ) {
+							$amp_avt_size = $this->get_src_img( $v2 );
+						}
+						
+						//
+//						if ( ! empty( $amp_avt_size ) ) {
+							$v2 .= ' height="' . $amp_avt_size[1] . '"';
+							/*
+						}
+						else {
+							$v2 .= ' height="400"';
+						}
+						*/
 					}
 					
 					// thêm class để resize ảnh (dựa theo AMP wp)
-					$v2 .= ' class="amp-wp-enforced-sizes" sizes="(min-width: 600px) 600px, 100vw"';
+					$v2 .= ' class="amp-wp-enforced-sizes"';
+//					$v2 .= ' sizes="(min-width: 600px) 600px, 100vw"';
 				}
 				
 				// tổng hợp nội dung lại
@@ -243,12 +272,12 @@ class EchAMPFunction {
 	
 	
 	// tìm kích thước ảnh trên host
-	function img_size ( $img ) {
+	function img_size ( $img, $default_width = 300, $default_height = 300 ) {
 //		echo $img . '<br>' . "\n";
 		
 		//
-		$amp_avt_width = 300;
-		$amp_avt_height = 300;
+		$amp_avt_width = $default_width;
+		$amp_avt_height = $default_height;
 		
 		// lấy domain hiện tại
 		$domain = str_replace ( 'www.', '', $_SERVER['HTTP_HOST'] ) . '/';
@@ -286,6 +315,28 @@ class EchAMPFunction {
 			$amp_avt_width,
 			$amp_avt_height,
 		);
+	}
+	
+	function get_src_img ( $v2 ) {
+		$get_img_src = str_replace( "'", '"', $v2 );
+//		echo $get_img_src . '<br>' . "\n";
+		
+		$get_img_src = explode( 'src="', $get_img_src );
+//		print_r( $get_img_src );
+		
+		if ( isset( $get_img_src[1] ) ) {
+//			echo $get_img_src . '<br>' . "\n";
+			
+			$get_img_src = explode( '"', $get_img_src[1] );
+			$get_img_src = $get_img_src[0];
+//			echo $get_img_src . '<br>' . "\n";
+			
+			//
+			return $this->img_size( $get_img_src, 400, 400 );
+		}
+		
+		//
+		return array();
 	}
 }
 
