@@ -5,6 +5,13 @@
 //get_footer();
 echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/font-awesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 
+//echo '<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">' . "\n";
+/*
+echo '<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" async></script>' . "\n";
+*/
+
+//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome-all.min.css" type="text/css" media="all" />' . "\n";
+
 // add css, js -> sử dụng hàm riêng để tối ưu file tĩnh trước khi in ra
 //_eb_add_full_css( $arr_for_add_link_css, 'link' );
 //_eb_add_compiler_link_css( $arr_for_add_link_css, 'link' );
