@@ -149,6 +149,14 @@ function WGR_widget_home_hot ( $instance ) {
 	else if ( $title == '' ) {
 		$title = EBE_get_lang('home_hot');
 	}
+	else {
+		global $___eb_lang;
+		
+		//
+		if ( isset( $___eb_lang[eb_key_for_site_lang . $title] ) ) {
+			$title = $___eb_lang[eb_key_for_site_lang . $title];
+		}
+	}
 	
 	// tìm theo trạng thái
 	if ( $post_eb_status > 0 ) {
