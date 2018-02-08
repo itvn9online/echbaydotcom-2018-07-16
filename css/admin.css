@@ -849,6 +849,20 @@ input[id="_eb_category_order"] { width: 90px; }
 	box-shadow: 0 1px 0 #b74c00 !important;
 	text-shadow: 0 -1px 1px #b74c00, 1px 0 1px #b74c00, 0 1px 1px #b74c00, -1px 0 1px #b74c00 !important;
 }
+/* */
+.echbay-subsubsub {
+	margin: 10px 0;
+	font-size: 12px;
+}
+.echbay-subsubsub li { display: inline-block; }
+.echbay-subsubsub li:after {
+	content: "|";
+	display: inline-block;
+	margin: 0 8px;
+}
+.echbay-subsubsub li:first-child:after,
+.echbay-subsubsub li:last-child:after { display: none; }
+.echbay-subsubsub li:first-child { margin-right: 10px; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

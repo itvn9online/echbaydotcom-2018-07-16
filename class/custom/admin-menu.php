@@ -237,16 +237,37 @@ function echbay_admin_styles() {
 	}
 	
 	//
+	global $arr_eb_ads_status;
+	global $arr_eb_product_status;
+	
+	//
+	$str_ads_status = '';
+	foreach ( $arr_eb_ads_status as $k => $v ) {
+		$str_ads_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
+	}
+	
+	//
+	$str_product_status = '';
+	foreach ( $arr_eb_product_status as $k => $v ) {
+		$str_product_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
+	}
+	
+	//
 	echo '<script type="text/javascript">
 var web_link = "' . web_link . '",
+	admin_link = "' . admin_link . '",
 	date_time = ' . date_time . ',
 	lang_date_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
 	client_ip = "' . $client_ip . '",
 	cf_old_domain = "' . $__cf_row['cf_old_domain'] . '",
 	order_max_post_new = ' . $order_max_post_new . ',
 	cf_tester_mode = ' . $__cf_row['cf_tester_mode'] . ',
-	cf_hide_supper_admin_menu = ' . $__cf_row['cf_hide_supper_admin_menu'] . ';
-</script>';
+	cf_hide_supper_admin_menu = ' . $__cf_row['cf_hide_supper_admin_menu'] . ',
+	arr_eb_ads_status = [' . substr( $str_ads_status, 1 ) . '],
+	arr_eb_product_status = [' . substr( $str_product_status, 1 ) . '];';
+	
+	//
+	echo '</script>';
 	
 	
 	// nếu là phiên bản web giá rẻ -> ẩn các menu admin quan trọng đi, chỉ hiện thị với supper admin

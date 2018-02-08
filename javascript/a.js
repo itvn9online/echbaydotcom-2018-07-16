@@ -117,6 +117,37 @@ var eb_global_product_size = '',
 		if ( win_href.split('post_type=').length == 1
 		|| win_href.split('post_type=post').length > 1 ) {
 			$('table.wp-list-table').addClass('admin-list-product-avt')/* .width( '150%' ) */;
+			
+			//
+			/*
+			console.log(arr_eb_product_status);
+			
+			var ads_loc = '<li class="bold">Lọc theo trạng thái:</li>';
+			for ( var i = 0; i < arr_eb_product_status.length; i++ ) {
+				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=post&post_filter_status=' + arr_eb_product_status[i].id + '">' + arr_eb_product_status[i].ten + '</a></li>';
+			}
+			console.log(ads_loc);
+			
+			$('#posts-filter').before('<ul class="echbay-subsubsub cf">' + ads_loc + '</ul>');
+			$('ul.subsubsub').addClass('cf').css({
+				float: 'none'
+			});
+			*/
+		}
+		// nếu là ads -> thêm bộ lọc tìm kiếm theo trạng thái
+		else if ( win_href.split('post_type=ads').length > 1 ) {
+			console.log(arr_eb_ads_status);
+			
+			var ads_loc = '<li class="bold">Lọc theo trạng thái:</li>';
+			for ( var i = 0; i < arr_eb_ads_status.length; i++ ) {
+				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=ads&ads_filter_status=' + arr_eb_ads_status[i].id + '">' + arr_eb_ads_status[i].ten + '</a></li>';
+			}
+			console.log(ads_loc);
+			
+			$('#posts-filter').before('<ul class="echbay-subsubsub cf">' + ads_loc + '</ul>');
+			$('ul.subsubsub').addClass('cf').css({
+				float: 'none'
+			});
 		}
 	}
 	// danh sách đơn hàng
