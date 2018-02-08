@@ -818,7 +818,7 @@ ___eb_click_open_video_popup();
 
 
 //
-$('.fa').addClass('fas').removeClass('fa');
+//$('.fa').addClass('fas').removeClass('fa');
 
 
 
