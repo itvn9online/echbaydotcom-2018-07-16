@@ -168,6 +168,7 @@ function echbay_admin_styles() {
 	*/
 	$a = array(
 		'outsource/fonts/font-awesome.css',
+		'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
 		'css/default.css',
 		'css/default2.css',
 		'css/admin.css'
