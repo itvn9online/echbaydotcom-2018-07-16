@@ -144,7 +144,8 @@ function WGR_widget_home_hot ( $instance ) {
 		
 		//
 		$title = '<a href="' . $home_hot_lnk . '">' . $title . '</a>';
-		$home_hot_more = '<' . $dynamic_tag . ' class="home-hot-more"><a href="' . $home_hot_lnk . '">Xem thêm <span>&raquo;</span></a></' . $dynamic_tag . '>';
+//		$home_hot_more = '<' . $dynamic_tag . ' class="home-hot-more"><a href="' . $home_hot_lnk . '">Xem thêm <span>&raquo;</span></a></' . $dynamic_tag . '>';
+		$home_hot_more = '<div class="home-hot-more"><a href="' . $home_hot_lnk . '">Xem thêm <span>&raquo;</span></a></div>';
 	}
 	else if ( $title == '' ) {
 		$title = EBE_get_lang('home_hot');
@@ -187,6 +188,7 @@ function WGR_widget_home_hot ( $instance ) {
 	echo '<div class="' . $custom_style . '">';
 	
 	$arr_for_template = array(
+		'tmp.dynamic_widget_tag' => $dynamic_tag,
 		'tmp.max_width' => $max_width,
 		'tmp.num_post_line' => $num_line,
 		'tmp.home_hot_title' => $title,

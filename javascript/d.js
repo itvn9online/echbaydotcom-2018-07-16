@@ -3169,6 +3169,9 @@ _global_js_eb._log_click_ref();
 if ( $('dynamic_title_tag').length > 0 ) {
 	alert('dynamic_title_tag cần được thay đổi sang DIV hoặc H*');
 }
+else if ( $('dynamic_widget_tag').length > 0 ) {
+	alert('dynamic_widget_tag cần được thay đổi sang DIV hoặc H*');
+}
 
 
 
