@@ -3168,9 +3168,11 @@ _global_js_eb._log_click_ref();
 // báo lỗi nếu có thẻ dynamic_title_tag chưa được chuyển đổi
 if ( $('dynamic_title_tag').length > 0 ) {
 	alert('dynamic_title_tag cần được thay đổi sang DIV hoặc H*');
+	console.log('================= dynamic_title_tag =================');
 }
 else if ( $('dynamic_widget_tag').length > 0 ) {
 	alert('dynamic_widget_tag cần được thay đổi sang DIV hoặc H*');
+	console.log('================= dynamic_widget_tag =================');
 }
 
 

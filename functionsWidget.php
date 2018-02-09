@@ -218,8 +218,16 @@ function WGR_widget_home_hot ( $instance ) {
 function WGR_show_home_hot ( $arr, $tmp = 'home_hot' ) {
 	global $__cf_row;
 	
+	//
+//	print_r($arr);
+	
 	// nạp html được truyền vào
 	$html = EBE_html_template( EBE_get_page_template( $tmp ), $arr );
+	
+	// tạo thẻ đóng
+	$html = str_replace( 'dynamic_widget_tag>', $arr['tmp.dynamic_widget_tag'] . '>', $html );
+	// tạo thẻ mở
+	$html = str_replace( '<dynamic_widget_tag', '<' . $arr['tmp.dynamic_widget_tag'], $html );
 	
 	// các đoạn HTML mặc định cho về trống nếu chưa có
 	$html = EBE_html_template( $html, array(
@@ -228,7 +236,7 @@ function WGR_show_home_hot ( $arr, $tmp = 'home_hot' ) {
 		'tmp.home_hot_title' => '',
 		'tmp.home_hot_more' => '',
 		'tmp.description' => '',
-		'tmp.home_hot' => '',
+		'tmp.home_hot' => ''
 	) );
 	
 	//
