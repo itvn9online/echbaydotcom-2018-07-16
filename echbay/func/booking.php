@@ -336,7 +336,15 @@ foreach ( $arr as $k => $v ) {
 
 
 // Gửi email thông báo
-$message = EBE_str_template ( 'html/mail/booking.html', array (
+$custom_lang_html = EBE_get_lang('booking_mail');
+// mặc định là lấy theo file HTML -> act
+if ( trim( $custom_lang_html ) == 'booking_mail' ) {
+	$custom_lang_html = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/booking.html' );
+}
+
+//
+//$message = EBE_str_template ( 'html/mail/booking.html', array (
+$message = EBE_html_template( $custom_lang_html, array(
 		'tmp.web_link' => web_link,
 		'tmp.t_ten' => $t_ten == '' ? $t_email : $t_ten,
 		
@@ -351,7 +359,8 @@ $message = EBE_str_template ( 'html/mail/booking.html', array (
 		'tmp.t_amount' => number_format ( $tong_tien ),
 		'tmp.web_name' => $web_name,
 		'tmp.product_list' => $product_list 
-), EB_THEME_PLUGIN_INDEX );
+//), EB_THEME_PLUGIN_INDEX );
+) );
 //echo $message . '<br>'; exit();
 
 //

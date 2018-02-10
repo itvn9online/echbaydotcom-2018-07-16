@@ -164,15 +164,18 @@ if ( EBE_get_lang('url_chinhsach') != '#' ) {
 	$chinhsach = str_replace( '{tmp.url_chinhsach}', EBE_get_lang('url_chinhsach'), EBE_get_lang('chinhsach') );
 }
 
+
+
+
 //
-$cart_html = EBE_get_lang('cart_html');
+$custom_lang_html = EBE_get_lang('cart_html');
 // mặc định là lấy theo file HTML -> act
-if ( trim( $cart_html ) == $act ) {
-	$cart_html = EBE_get_page_template( $act );
+if ( trim( $custom_lang_html ) == $act ) {
+	$custom_lang_html = EBE_get_page_template( $act );
 }
 
 //
-$main_content = EBE_html_template( $cart_html, array(
+$main_content = EBE_html_template( $custom_lang_html, array(
 	'tmp.js' => 'var new_cart_auto_add_id=' . $new_id . ';',
 	
 	'tmp.cart_list' => $cart_list,

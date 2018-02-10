@@ -2831,7 +2831,15 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	
 	
 	//
-	$message = _eb_del_line( EBE_str_template ( 'html/mail/mail.html', array (
+	$custom_lang_html = EBE_get_lang('mail_main');
+	// mặc định là lấy theo file HTML -> act
+	if ( trim( $custom_lang_html ) == 'mail_main' ) {
+		$custom_lang_html = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/mail.html' );
+	}
+	
+	//
+//	$message = _eb_del_line( EBE_str_template ( 'html/mail/mail.html', array (
+	$message = _eb_del_line( EBE_html_template( $custom_lang_html, array(
 			'tmp.message' => $message,
 			
 			'tmp.web_name' => web_name,
@@ -2843,8 +2851,9 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 			'tmp.year_curent' => $year_curent,
 			'tmp.cf_ten_cty' => $__cf_row['cf_ten_cty'],
 			'tmp.to_email' => $to_email,
-			'tmp.captcha' => _eb_mdnam ( $to_email ) 
-	), EB_THEME_PLUGIN_INDEX ) );
+			'tmp.captcha' => _eb_mdnam ( $to_email )
+//	), EB_THEME_PLUGIN_INDEX ) );
+	) ) );
 //	echo $to_email.'<hr>'; echo $message; exit();
 	
 	

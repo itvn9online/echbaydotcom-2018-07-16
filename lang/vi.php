@@ -147,21 +147,34 @@ $___eb_lang[eb_key_for_site_lang . 'lh_submit'] = 'Gửi liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'lh_note'] = 'là các trường bắt buộc phải điền.<br>Vui lòng cung đầy đủ thông tin để quá trình trao đổi được diễn ra thuận lợi hơn.';
 $___eb_lang[eb_key_for_site_lang . 'lh_done'] = 'Cảm ơn bạn! thông tin của bạn đã được gửi đi, chúng tôi sẽ phản hồi sớm nhất có thể.';
 
+
+
+
+/*
+* Đối với các phần textarea -> mặc định sẽ là 1 tham số, nếu đúng tham số này -> sẽ dùng file html
+*/
 // HTML cho giỏ hàng
+//$___eb_lang[eb_key_for_site_lang . 'cart_html'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/cart.html' );
 $___eb_lang[eb_key_for_site_lang . 'cart_html'] = 'cart';
 $eb_type_lang[eb_key_for_site_lang . 'cart_html'] = 'textarea';
 
 // booking done
-$___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
+//$___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
+$___eb_lang[eb_key_for_site_lang . 'booking_done'] = 'booking_done';
 $eb_type_lang[eb_key_for_site_lang . 'booking_done'] = 'textarea';
 
 // nội dung email đơn hàng
-$___eb_lang[eb_key_for_site_lang . 'booking_mail'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/booking.html' );
+//$___eb_lang[eb_key_for_site_lang . 'booking_mail'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/booking.html' );
+$___eb_lang[eb_key_for_site_lang . 'booking_mail'] = 'booking_mail';
 $eb_type_lang[eb_key_for_site_lang . 'booking_mail'] = 'textarea';
 
 // file mail mặc định
-$___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/mail.html' );
+//$___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/mail.html' );
+$___eb_lang[eb_key_for_site_lang . 'mail_main'] = 'mail_main';
 $eb_type_lang[eb_key_for_site_lang . 'mail_main'] = 'textarea';
+
+
+
 
 
 /*
