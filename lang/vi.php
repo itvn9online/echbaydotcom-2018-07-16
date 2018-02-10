@@ -147,6 +147,9 @@ $___eb_lang[eb_key_for_site_lang . 'lh_submit'] = 'Gửi liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'lh_note'] = 'là các trường bắt buộc phải điền.<br>Vui lòng cung đầy đủ thông tin để quá trình trao đổi được diễn ra thuận lợi hơn.';
 $___eb_lang[eb_key_for_site_lang . 'lh_done'] = 'Cảm ơn bạn! thông tin của bạn đã được gửi đi, chúng tôi sẽ phản hồi sớm nhất có thể.';
 
+// HTML cho giỏ hàng
+$___eb_lang[eb_key_for_site_lang . 'cart_html'] = 'cart';
+
 // booking done
 $___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
 $eb_type_lang[eb_key_for_site_lang . 'booking_done'] = 'textarea';

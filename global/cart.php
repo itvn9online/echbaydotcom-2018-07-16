@@ -165,7 +165,14 @@ if ( EBE_get_lang('url_chinhsach') != '#' ) {
 }
 
 //
-$main_content = EBE_html_template( EBE_get_page_template( $act ), array(
+$cart_html = EBE_get_lang('cart_html');
+// mặc định là lấy theo file HTML
+if ( $cart_html == 'cart' ) {
+	$cart_html = EBE_get_page_template( $cart_html );
+}
+
+//
+$main_content = EBE_html_template( $cart_html, array(
 	'tmp.js' => 'var new_cart_auto_add_id=' . $new_id . ';',
 	
 	'tmp.cart_list' => $cart_list,
