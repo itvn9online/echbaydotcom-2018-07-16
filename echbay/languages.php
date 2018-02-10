@@ -64,7 +64,7 @@ global $eb_class_css_lang;
 		
 		if ( isset( $eb_type_lang[ $k ] ) ) {
 			if ( $eb_type_lang[ $k ] == 'textarea' ) {
-				echo '<textarea data-min-height="21" data-add-height="1" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '">' . $v . '</textarea>';
+				echo '<textarea data-min-height="21" data-add-height="1" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '">' . htmlentities( $v, ENT_QUOTES, "UTF-8" ) . '</textarea>';
 			}
 			else if ( $eb_type_lang[ $k ] == 'number' ) {
 				echo '<input type="number" value="' . $v . '" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';

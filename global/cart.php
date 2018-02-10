@@ -166,9 +166,9 @@ if ( EBE_get_lang('url_chinhsach') != '#' ) {
 
 //
 $cart_html = EBE_get_lang('cart_html');
-// mặc định là lấy theo file HTML
-if ( $cart_html == 'cart' ) {
-	$cart_html = EBE_get_page_template( $cart_html );
+// mặc định là lấy theo file HTML -> act
+if ( trim( $cart_html ) == $act ) {
+	$cart_html = EBE_get_page_template( $act );
 }
 
 //

@@ -149,6 +149,7 @@ $___eb_lang[eb_key_for_site_lang . 'lh_done'] = 'Cảm ơn bạn! thông tin c�
 
 // HTML cho giỏ hàng
 $___eb_lang[eb_key_for_site_lang . 'cart_html'] = 'cart';
+$eb_type_lang[eb_key_for_site_lang . 'cart_html'] = 'textarea';
 
 // booking done
 $___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
