@@ -91,6 +91,7 @@ global $eb_class_css_lang;
 	?>
 </table>
 <br>
+<p>* Với một số trường hợp, file mẫu bạn xem không đúng với HTML hiển thị bên ngoài, có thể do theme bạn đang sử dụng cũng có file với tên tương tự file mẫu, nên hệ thống sẽ hiển thị file từ theme thay vì file từ plugin (file mẫu).</p>
 <br>
 <script type="text/javascript">
 
