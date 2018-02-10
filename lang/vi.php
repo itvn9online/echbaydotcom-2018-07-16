@@ -7,7 +7,10 @@ $___eb_lang = array();
 // định dạng kiểu dữ liệu
 $eb_type_lang = array();
 
-// class CSS riêng nếu có
+// URL file gốc từ github (nếu có)
+$eb_ex_from_github = array();
+
+// class CSS riêng (nếu có)
 $eb_class_css_lang = array();
 
 //
@@ -157,21 +160,25 @@ $___eb_lang[eb_key_for_site_lang . 'lh_done'] = 'Cảm ơn bạn! thông tin c�
 //$___eb_lang[eb_key_for_site_lang . 'cart_html'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/cart.html' );
 $___eb_lang[eb_key_for_site_lang . 'cart_html'] = 'cart';
 $eb_type_lang[eb_key_for_site_lang . 'cart_html'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'cart_html'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/cart.html';
 
 // booking done
 //$___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
 $___eb_lang[eb_key_for_site_lang . 'booking_done'] = 'booking_done';
 $eb_type_lang[eb_key_for_site_lang . 'booking_done'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'booking_done'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/hoan-tat.html';
 
 // nội dung email đơn hàng
 //$___eb_lang[eb_key_for_site_lang . 'booking_mail'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/booking.html' );
 $___eb_lang[eb_key_for_site_lang . 'booking_mail'] = 'booking_mail';
 $eb_type_lang[eb_key_for_site_lang . 'booking_mail'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'booking_mail'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/mail/booking.html';
 
 // file mail mặc định
 //$___eb_lang[eb_key_for_site_lang . 'mail_main'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/mail.html' );
 $___eb_lang[eb_key_for_site_lang . 'mail_main'] = 'mail_main';
 $eb_type_lang[eb_key_for_site_lang . 'mail_main'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'mail_main'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/mail/mail.html';
 
 
 
