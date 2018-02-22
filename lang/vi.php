@@ -191,15 +191,19 @@ $eb_ex_from_github[eb_key_for_site_lang . 'mail_main'] = 'https://github.com/itv
 $___eb_lang[eb_key_for_site_lang . 'homelist_size'] = 'auto';
 $eb_class_css_lang[eb_key_for_site_lang . 'homelist_size'] = 'fixed-size-for-config';
 
-$___eb_lang[eb_key_for_site_lang . 'homelist_num'] = '1';
+$___eb_lang[eb_key_for_site_lang . 'homelist_num'] = 1;
 $eb_type_lang[eb_key_for_site_lang . 'homelist_num'] = 'number';
 
 
 // tiêu đề của phần logo đối tác
 $___eb_lang[eb_key_for_site_lang . 'doitac_title'] = '';
 
+// số comment facebook mặc định
+$___eb_lang[eb_key_for_site_lang . 'fb_comments'] = 10;
+$eb_type_lang[eb_key_for_site_lang . 'fb_comments'] = 'number';
+
 // số tin trên mỗi dòng
-$___eb_lang[eb_key_for_site_lang . 'doitac_num'] = '5';
+$___eb_lang[eb_key_for_site_lang . 'doitac_num'] = 5;
 $eb_type_lang[eb_key_for_site_lang . 'doitac_num'] = 'number';
 
 // kích thước của banner đối tác: auto || 1/2
@@ -208,7 +212,7 @@ $eb_class_css_lang[eb_key_for_site_lang . 'doitac_size'] = 'fixed-size-for-confi
 
 
 // Số lượng banner lớn sẽ lấy cho mỗi trang
-$___eb_lang[eb_key_for_site_lang . 'bigbanner_num'] = '5';
+$___eb_lang[eb_key_for_site_lang . 'bigbanner_num'] = 5;
 $eb_type_lang[eb_key_for_site_lang . 'bigbanner_num'] = 'number';
 
 // thẻ H2 cho phần chi tiết tin tức

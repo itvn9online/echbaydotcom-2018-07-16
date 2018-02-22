@@ -33,6 +33,9 @@ $arr_global_main = array(
 	// css định dạng chiều rộng cho phần danh sách blog
 	'tmp.custom_blog_css' => $__cf_row['cf_blog_class_style'],
 	
+	//
+	'tmp.fb_num_comments' => EBE_get_lang('fb_comments'),
+	
 	// phần option cho link của mục blog
 	'tmp.blog_link_option' => '',
 );
