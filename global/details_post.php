@@ -224,3 +224,10 @@ $str_for_details_sidebar = _eb_echbay_get_sidebar( 'post_content_sidebar' );
 $str_for_details_top_sidebar = _eb_echbay_get_sidebar( 'post_top_content_sidebar' );
 
 
+
+
+// thêm mã nhúng cho trang chi tiết sản phẩm
+$__cf_row['cf_js_head'] .= EBE_get_lang('cc_head_product');
+$__cf_row['cf_js_allpage'] .= EBE_get_lang('cc_body_product');
+
+

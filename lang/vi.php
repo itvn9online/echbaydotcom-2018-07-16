@@ -183,6 +183,19 @@ $eb_ex_from_github[eb_key_for_site_lang . 'mail_main'] = 'https://github.com/itv
 
 
 
+/*
+* Mã nhúng ngoài của một số trang cụ thể -> custom code -> cc
+*/
+// Trang chi tiết sản phẩm
+$___eb_lang[eb_key_for_site_lang . 'cc_head_product'] = '';
+$eb_type_lang[eb_key_for_site_lang . 'cc_head_product'] = 'textarea';
+
+$___eb_lang[eb_key_for_site_lang . 'cc_body_product'] = '';
+$eb_type_lang[eb_key_for_site_lang . 'cc_body_product'] = 'textarea';
+
+
+
+
 
 /*
 * Phần này không hẳn là phần ngôn ngữ, mà nó là phần config nhanh, đỡ phải chỉnh nhiều
