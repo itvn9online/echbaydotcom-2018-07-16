@@ -16,6 +16,7 @@ if ( ! defined('WP_DEBUG') || WP_DEBUG == true ) {
 	$str_eb_warning .= '
 	<div><i class="fa fa-warning orgcolor"></i> CẢNH BÁO: Nên tắt tính năng kiểm thử lỗi trên wordpress khi chạy chính thức, chỉ bật nó lên khi làm việc trên localhost hoặc cần kiểm tra lỗi khi website đã chạy chính thức. Khuyên dùng:
 		<pre><code>define( \'WP_DEBUG\', false );</code></pre>
+		<div>Hoặc bạn có thể <a href="' . admin_link . 'admin.php?page=eb-config&tab=meta-home&support_tab=cf_tester_mode" target="_blank" rel="nofollow">vào đây</a> để thay đổi trực tiếp cài đặt này.</div>
 	</div>';
 }
 
