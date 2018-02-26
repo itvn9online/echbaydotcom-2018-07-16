@@ -19,7 +19,8 @@ $eb_all_themes_support["saatchiart"]["top"][] = "bigbanner-top1.php";
 $eb_all_themes_support["saatchiart"]["top"][] = "breadcrumb2-top1.php";
 //
 $eb_all_themes_support["saatchiart"]["footer"][] = "footer_widget.php";
-$eb_all_themes_support["saatchiart"]["footer"][] = "saatchiart-footer1.php";
+//$eb_all_themes_support["saatchiart"]["footer"][] = "saatchiart-footer1.php";
+$eb_all_themes_support["saatchiart"]["footer"][] = "saatchiartV2-footer1.php";
 //$eb_all_themes_support["saatchiart"]["footer"][] = "echbaytwo-footer3.php";
 //
 //$eb_all_themes_support["saatchiart"]["home"][] = "saatchiart-home1.php";
