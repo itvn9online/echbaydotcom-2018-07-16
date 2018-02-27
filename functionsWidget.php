@@ -224,6 +224,11 @@ function WGR_show_home_hot ( $arr, $tmp = 'home_hot' ) {
 	// nạp html được truyền vào
 	$html = EBE_html_template( EBE_get_page_template( $tmp ), $arr );
 	
+	//
+	if ( ! isset( $arr['tmp.dynamic_widget_tag'] ) ) {
+		$arr['tmp.dynamic_widget_tag'] = 'div';
+	}
+	
 	// tạo thẻ đóng
 	$html = str_replace( 'dynamic_widget_tag>', $arr['tmp.dynamic_widget_tag'] . '>', $html );
 	// tạo thẻ mở
