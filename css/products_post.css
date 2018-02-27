@@ -17,6 +17,7 @@
 .click-order-thread.fa-diamond[data-val="0"],
 .click-order-thread.fa-star { color: #333; }
 .click-order-thread.fa-diamond[data-val="1"] { color: #F90; }
+.quick-show2-if-post,
 .quick-show-if-post { display: none !important; }
 /* một số nút chỉ hiển thị với post type cụ thể */
 .class-for-post .quick-show-if-post,
