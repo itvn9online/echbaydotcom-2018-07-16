@@ -48,6 +48,8 @@ if ( $__post->post_type == 'post' ) {
 	$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );
 //	echo $trv_giamoi . '<br>';
 	
+	$eb_product_price = $trv_giamoi;
+	
 	if ($trv_giaban > $trv_giamoi) {
 		$pt = 100 - _eb_float_only ($trv_giamoi * 100 / $trv_giaban, 1);
 //		echo $pt;
@@ -302,7 +304,7 @@ if ( $__post->post_type == 'post' ) {
 	$arr_product_js = array (
 		'tieude' => '\'' . _eb_str_block_fix_content ( $__post->post_title ) . '\'',
 		'gia' => $trv_giaban,
-		'gm' => $trv_giamoi,
+		'gm' => $trv_giamoi
 	);
 	foreach ( $arr_product_js as $k => $v ) {
 		$product_js .= ',' . $k . ':' . $v;

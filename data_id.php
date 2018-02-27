@@ -41,6 +41,7 @@ $add_data_id = array (
 //		'sid' => $sid,
 //		'fid' => $fid,
 		'pid' => $pid,
+		'eb_product_price' => $eb_product_price,
 		
 		// chế độ kiểm thử -> dùng để console lỗi nếu chế độ này đang bật
 		'cf_tester_mode' => $__cf_row['cf_tester_mode'],
