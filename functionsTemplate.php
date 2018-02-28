@@ -27,15 +27,23 @@ function EBE_get_html_logo ( $set_h1 = 0 ) {
 
 function EBE_get_html_search ( $class_for_search = 'div-search-margin' ) {
 	global $current_search_key;
+	global $__cf_row;
 	
 	/*
 	* class_for_search: tạo class riêng với 1 số trường hợp
 	*/
 	
+	//
+	$echbay_search = '';
+	if ( $__cf_row['cf_search_by_echbay'] == 1 ) {
+		$echbay_search = 'ebsearch/';
+	}
+	
+	//
 	return '
 <div class="' . $class_for_search . '">
 	<div class="div-search">
-		<form role="search" method="get" action="' . web_link . '">
+		<form role="search" method="get" action="' . web_link . $echbay_search . '">
 			<input type="search" placeholder="' . EBE_get_lang('searchp') . '" value="' . $current_search_key . '" name="s" aria-required="true" required>
 			<input type="hidden" name="post_type" value="post" />
 			<button type="submit" class="default-bg"><i class="fa fa-search"></i><span class="d-none">' . EBE_get_lang('search') . '</span></button>

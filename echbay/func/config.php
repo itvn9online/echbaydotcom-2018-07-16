@@ -123,6 +123,8 @@ $_POST['cf_echbay_migrate_version'] = WGR_default_config('cf_echbay_migrate_vers
 
 $_POST['cf_search_advanced_auto_submit'] = WGR_default_config('cf_search_advanced_auto_submit');
 
+$_POST['cf_search_by_echbay'] = WGR_default_config('cf_search_by_echbay');
+
 $_POST['cf_global_big_banner'] = WGR_default_config('cf_global_big_banner');
 
 $_POST['cf_post_big_banner'] = WGR_default_config('cf_post_big_banner');

@@ -205,6 +205,9 @@ $__cf_row_default = array(
 	// Hiển thị nút tìm kiếm nâng cao hoặc nhảy URL luôn
 	'cf_search_advanced_auto_submit' => 1,
 	
+	// Sử dụng công cụ tìm kiếm của echbay
+	'cf_search_by_echbay' => 0,
+	
 	// Mặc định, banner lớn được load theo từng trang, nếu muốn load cho toàn bộ trang thì kích hoạt nó lên
 	'cf_global_big_banner' => 0,
 	
