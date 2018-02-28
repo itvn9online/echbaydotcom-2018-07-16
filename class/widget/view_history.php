@@ -125,7 +125,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			'post__in' => $arr_history
 		) );
 		if ( $str_view_history != '' ) {
-			echo '<div class="' . trim( 'eb-view-history ' . $custom_style ) . '">';
+			echo '<div class="' . trim( 'eb-view-history hide-if-quickview ' . $custom_style ) . '">';
 			
 			echo WGR_show_home_hot( array(
 				'tmp.num_post_line' => $num_line,

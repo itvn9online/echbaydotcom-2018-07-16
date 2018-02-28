@@ -3043,9 +3043,13 @@ function close_ebe_quick_view () {
 		//
 		$('body').addClass('body-no-scroll');
 		$('#oi_ebe_quick_view').show();
+		
+		// using DIV -> remove
+		/*
 		if ( $('div#ui_ebe_quick_view').length > 0 ) {
 			$('#ui_ebe_quick_view').html('Đang tải...');
 		}
+		*/
 		
 		//
 		window.history.pushState("", '', h);
@@ -3060,6 +3064,7 @@ function close_ebe_quick_view () {
 		}
 		
 		// sử dụng iframe
+		dog('ui_ebe_quick_view').src = 'about:blank';
 		dog('ui_ebe_quick_view').src = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&view_type=iframe&set_device=' + device;
 		$('#ui_ebe_quick_view').on('load', function () {
 			var h = $( '#ui_ebe_quick_view' ).contents().find( 'body' ).height() || 0;

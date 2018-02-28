@@ -118,7 +118,7 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 		
 		//
 		if ( $str_same_price != '' ) {
-			echo '<div class="' . trim( 'eb-same-price ' . $custom_style ) . '">';
+			echo '<div class="' . trim( 'eb-same-price hide-if-quickview ' . $custom_style ) . '">';
 			
 			echo WGR_show_home_hot( array(
 				'tmp.num_post_line' => $num_line,
