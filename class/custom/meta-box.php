@@ -154,6 +154,7 @@ $eb_arr_type_custom_meta_box = array(
 	'_eb_product_chinhhang' => 'checkbox',
 	
 	'_eb_product_size' => 'hidden',
+	'_eb_product_searchkey' => 'hidden',
 	'_eb_product_rating_value' => 'hidden',
 	'_eb_product_rating_count' => 'hidden',
 	
@@ -253,6 +254,7 @@ $eb_arr_custom_meta_box = array(
 	'_eb_product_status' => 'Trạng thái',
 	'_eb_product_color' => 'Màu sắc',
 	'_eb_product_size' => 'Kích thước',
+	'_eb_product_searchkey' => 'EB Search',
 	'_eb_product_sku' => 'Mã sản phẩm',
 	'_eb_product_oldprice' => EBE_get_lang('post_giacu'),
 	'_eb_product_price' => EBE_get_lang('post_giamoi'),

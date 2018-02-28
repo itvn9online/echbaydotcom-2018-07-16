@@ -2096,6 +2096,23 @@ function EBE_set_default_title_for_seo () {
 		$('#post_name').val( new_post_name );
 	}
 	
+	
+	
+	// tạo key tìm kiếm dạng tiêu chuẩn riêng của EchBay
+	if ( $('#_eb_product_searchkey').length > 0 ) {
+		var new_post_title = $('#title').val() || document.post.post_title.value || '';
+		if ( new_post_title != '' ) {
+			new_post_title = g_func.non_mark_seo( new_post_title );
+			if ( new_post_title != '' ) {
+				new_post_title = new_post_title.replace( /\-/gi, '' );
+				
+				//
+				console.log( new_post_title );
+				$('#_eb_product_searchkey').val( new_post_title );
+			}
+		}
+	}
+	
 }
 
 
