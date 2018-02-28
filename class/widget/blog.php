@@ -116,7 +116,6 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';
 		$description = isset( $instance ['description'] ) ? $instance ['description'] : '';
 		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
-		if ( $post_number == 0 ) $post_number = 5;
 		
 		$sortby = isset( $instance ['sortby'] ) ? $instance ['sortby'] : '';
 		
@@ -151,6 +150,15 @@ class ___echbay_widget_random_blog extends WP_Widget {
 		
 		// ẩn các thuộc tính theo option
 		$custom_style .= WGR_add_option_class_for_post_widget( $instance );
+		
+		// nếu chỉ có một bài -> thêm class đánh dấu chỉ một bài viết
+//		echo $post_number;
+		if ( $post_number == 0 ) {
+			$post_number = 5;
+		}
+		else if ( $post_number == 1 ) {
+			$custom_style .= ' echbay-blog-onerow';
+		}
 		
 		
 		

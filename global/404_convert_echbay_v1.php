@@ -196,7 +196,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 			else if ( $new_url != '' ) {
 				$strFilter = " AND post_name = '" . $new_url . "' ";
 			}
-			echo $strFilter . '<br>' . "\n";
+//			echo $strFilter . '<br>' . "\n";
 			
 			//
 			$sql = _eb_q("SELECT ID
