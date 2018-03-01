@@ -599,6 +599,7 @@ function EBE_add_js_compiler_in_cache (
 		$file_show = $file_name_cache . '_';
 	}
 	
+	$file_show = 'zjs-' . $file_show . '.js';
 	$file_name_cache = 'zjs-' . $file_name_cache . '.js';
 	
 	
@@ -1271,6 +1272,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 			$file_show = $file_cache . '_';
 		}
 		
+		$file_show = 'zss-' . $file_show . '.css';
 		$file_cache = 'zss-' . $file_cache . '.css';
 //		echo $file_cache . "\n";
 		
