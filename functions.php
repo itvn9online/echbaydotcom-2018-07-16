@@ -694,7 +694,7 @@ function EBE_add_js_compiler_in_cache (
 	}
 	
 	//
-	echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_show . '?v=' . web_version . '" ' . $async . '></script>' . "\n";
+	echo '<!-- ' . $file_name_cache . ' --><script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_show . '?v=' . web_version . '" ' . $async . '></script>' . "\n";
 }
 
 // một số host không dùng được hàm end
@@ -1311,7 +1311,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		}
 		
 		// -> done
-		echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_show . '?v=' . web_version . '" type="text/css" media="all" />';
+		echo '<!-- ' . $file_cache . ' --><link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_show . '?v=' . web_version . '" type="text/css" media="all" />';
 		
 		//
 		return true;
