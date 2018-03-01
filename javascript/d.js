@@ -3142,15 +3142,18 @@ if ( typeof document.frm_search != 'undefined' ) {
 				return false;
 			}
 	//	}).val( $('input[type="search"]').val() || '' );
-		}).val( document.frm_search.s.value );
+//		}).val( document.frm_search.s.value );
+		}).val( $('form[name="frm_search"] input[type="search"]').val() || '' );
 		
 		
 		//
 		$('#click_add_to_search').off('click').click(function () {
-			document.frm_search.s.value = $('#value_add_to_search').val() || '';
+//			document.frm_search.s.value = $('#value_add_to_search').val() || '';
+			$('form[name="frm_search"] input[type="search"]').val( $('#value_add_to_search').val() || '' );
 			
 			//
-			if ( document.frm_search.s.value.length > 2 ) {
+//			if ( document.frm_search.s.value.length > 2 ) {
+			if ( $('form[name="frm_search"] input[type="search"]').val().length > 2 ) {
 				document.frm_search.submit();
 			}
 			else {

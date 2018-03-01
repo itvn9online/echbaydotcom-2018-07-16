@@ -2099,7 +2099,9 @@ function EBE_set_default_title_for_seo () {
 	
 	
 	// tạo key tìm kiếm dạng tiêu chuẩn riêng của EchBay
-	if ( $('#_eb_product_searchkey').length > 0 ) {
+	if ( typeof pagenow != 'undefined' && pagenow == 'post'
+	&& typeof typenow != 'undefined' && typenow == 'post'
+	&& $('#_eb_product_searchkey').length > 0 ) {
 		var new_post_title = $('#title').val() || document.post.post_title.value || '';
 		if ( new_post_title != '' ) {
 			new_post_title = g_func.non_mark_seo( new_post_title );

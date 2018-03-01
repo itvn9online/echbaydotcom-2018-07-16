@@ -77,8 +77,16 @@ else {
 
 
 
-//
-if ( have_posts() ) {
+// chức năng tìm kiếm riêng của echbay
+if ( $act == 'ebsearch' ) {
+	$posts_per_page = _eb_get_option('posts_per_page');
+	
+	$list_post = _eb_load_post( $posts_per_page, array(
+		'post__in' => explode( ',', substr( $strFilter, 1 ) )
+	) );
+}
+// chức năng tìm kiếm của wordpress
+else if ( have_posts() ) {
 	
 	//
 	if ( paginate_links() != '' ) {
@@ -126,7 +134,7 @@ $main_content = EBE_str_template( 'search.html', array(
 */
 
 //
-$main_content = EBE_html_template( EBE_get_page_template( $act ), array(
+$main_content = EBE_html_template( EBE_get_page_template( $show_html_template ), array(
 	'tmp.list_post' => $list_post,
 	'tmp.str_page' => $str_page,
 	'tmp.class_for_search_page' => $class_for_search_page,
