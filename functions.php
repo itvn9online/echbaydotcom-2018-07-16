@@ -590,7 +590,13 @@ function EBE_add_js_compiler_in_cache (
 	
 	// thêm khoảng thời gian lưu file
 	if ( date( 'i', date_time ) > 30 ) {
+		$file_show = $file_name_cache;
+		
+		// thêm ký tự phân biệt
 		$file_name_cache .= '_';
+	}
+	else {
+		$file_show = $file_name_cache . '_';
 	}
 	
 	$file_name_cache = 'zjs-' . $file_name_cache . '.js';
@@ -674,13 +680,20 @@ function EBE_add_js_compiler_in_cache (
 		//
 		_eb_create_file( $file_in_cache, create_cache_infor_by( $full_file_name ) . $new_content );
 		
+		// chưa có file phụ -> tạo luôn file phụ
+		if ( ! file_exists( EB_THEME_CACHE . $file_show ) ) {
+			if ( copy( $file_in_cache, EB_THEME_CACHE . $file_show ) ) {
+				chmod( EB_THEME_CACHE . $file_show, 0777 );
+			}
+		}
+		
 		// cập nhật lại version để css mới nhận nhanh hơn
 //		_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
 		
 	}
 	
 	//
-	echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache . '?v=' . web_version . '" ' . $async . '></script>' . "\n";
+	echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_show . '?v=' . web_version . '" ' . $async . '></script>' . "\n";
 }
 
 // một số host không dùng được hàm end
@@ -1248,7 +1261,14 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		
 		// thêm khoảng thời gian lưu file
 		if ( date( 'i', date_time ) > 30 ) {
+			$file_show = $file_cache;
+			
+			// thêm ký tự phân biệt
 			$file_cache .= '_';
+		}
+		else {
+			// file show thì ngược lại với file cache -> đỡ bị lỗi nginx cho file mới tạo
+			$file_show = $file_cache . '_';
 		}
 		
 		$file_cache = 'zss-' . $file_cache . '.css';
@@ -1277,12 +1297,19 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 			//
 			_eb_create_file ( $file_save, create_cache_infor_by( $full_file_name ) . EBE_replace_link_in_cache_css ( $cache_content ) );
 			
+			// chưa có file phụ -> tạo luôn file phụ
+			if ( ! file_exists( EB_THEME_CACHE . $file_show ) ) {
+				if ( copy( $file_save, EB_THEME_CACHE . $file_show ) ) {
+					chmod( EB_THEME_CACHE . $file_show, 0777 );
+				}
+			}
+			
 			// cập nhật lại version để css mới nhận nhanh hơn
 //			_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
 		}
 		
 		// -> done
-		echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache . '?v=' . web_version . '" type="text/css" media="all" />';
+		echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_show . '?v=' . web_version . '" type="text/css" media="all" />';
 		
 		//
 		return true;
