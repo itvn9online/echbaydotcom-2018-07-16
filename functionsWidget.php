@@ -166,7 +166,13 @@ function WGR_widget_home_hot ( $instance ) {
 	}
 	
 	//
-	$str_home_hot = _eb_load_post( $post_number, $args );
+	$html_content = __eb_thread_template;
+	// nếu có size riêng -> sử dụng size này
+	if ( $custom_size != '' ) {
+		$html_content = str_replace( '{tmp.cf_product_size}', $custom_size, $html_content );
+	}
+	
+	$str_home_hot = _eb_load_post( $post_number, $args, $html_content );
 	
 	
 	//
