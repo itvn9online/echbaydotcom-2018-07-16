@@ -864,6 +864,10 @@ if ( current_module_config != 'config_theme' ) {
 		EBA_preview_img_logo( dog('cf_logo').value, 'cf_logo' );
 		EBA_preview_img_logo( dog('cf_favicon').value, 'cf_favicon' );
 	}, 600);
+	
+	
+	// Tạo danh sách các file CSS mẫu -> bấm add là được
+//	$('#list_template_css').html('aaaaaaa');
 }
 
 
