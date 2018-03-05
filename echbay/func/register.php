@@ -33,7 +33,12 @@ $user_id = email_exists( $user_email );
 
 // có thì trả về luôn
 if ( $user_id > 0 ) {
-	_eb_alert( 'Email đã được sử dụng' );
+	if ( isset( $_POST['for_quick_register'] ) ) {
+		_eb_alert( 'Cảm ơn bạn đã đăng ký nhận tin!' );
+	}
+	else {
+		_eb_alert( 'Email đã được sử dụng' );
+	}
 }
 //exit();
 
