@@ -395,12 +395,13 @@ if (strstr ( $t_email, '@gmail.com' ) == true
 //_eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email );
 
 // lưu nội dung vào cache rồi thực hiện chức năng gửi mail sau
-_eb_create_file( EB_THEME_CACHE . 'booking_mail/' . $hd_id . '.txt', '
-<mail_to_admin>' . $mail_to_admin . '</mail_to_admin>
+$content_for_cache_mail = '<mail_to_admin>' . $mail_to_admin . '</mail_to_admin>
 <mail_title>' . $mail_title . '</mail_title>
 <message>' . $message . '</message>
-<bcc_email>' . $bcc_email . '</bcc_email>
-' );
+<bcc_email>' . $bcc_email . '</bcc_email>';
+
+_eb_create_file( EB_THEME_CACHE . 'booking_mail/' . $hd_id . '.txt', $content_for_cache_mail );
+_eb_create_file( EB_THEME_CACHE . 'booking_mail_cache/' . $hd_id . '.txt', $content_for_cache_mail );
 
 
 
