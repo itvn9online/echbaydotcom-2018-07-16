@@ -345,6 +345,7 @@ $arr_active_for_404_page = array(
 	"golden_time" => 1,
 	"hoan-tat" => 1,
 	"ebsearch" => 1,
+	"duplicate_post" => 1,
 	
 	// sitemap tổng
 	"sitemap" => 1,

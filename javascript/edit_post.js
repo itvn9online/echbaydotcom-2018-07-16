@@ -584,6 +584,14 @@ function WGR_run_for_admin_edit_post () {
 			return false;
 		}
 		
+		//
+		var uri = web_link + 'duplicate_post?post_id=' + a;
+		console.log(uri);
+		
+		if ( confirm('Xác nhận nhân bản bài viết này') == false ) {
+			return false;
+		}
+		
 	});
 	
 	
