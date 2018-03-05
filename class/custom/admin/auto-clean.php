@@ -36,7 +36,7 @@ if ($check_Cleanup_cache == false) {
 		term_id = " . eb_log_404_id_postmeta . "
 		AND meta_value = 1");
 //	print_r( $count_monitor );
-	if ( $count_monitor > 1000 ) {
+	if ( $count_monitor > 500 ) {
 		_eb_q("DELETE
 		FROM
 			`" . wp_termmeta . "`

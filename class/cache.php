@@ -118,7 +118,7 @@ if ( mtv_id > 0 ) {
 
 
 // kiểm tra thời gian tạo cache
-$__eb_cache_time = $date_time - $__eb_cache_time + rand ( 0, 20 );
+$__eb_cache_time = date_time - $__eb_cache_time + rand ( 0, 20 );
 //$__eb_cache_time += rand ( 0, 60 );
 
 //$time_for_update_cache = $cf_reset_cache;
@@ -134,7 +134,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 //		$last_update = file_get_contents ( $file_last_update );
 		
 		//
-		if ( $date_time - $last_update < $time_for_update_cache / 2 ) {
+		if ( date_time - $last_update < $time_for_update_cache / 2 ) {
 			$__eb_cache_time = 0;
 			include_once $__eb_cache_conf;
 		}
@@ -182,7 +182,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		// không cho tạo cache liên tục
-		_eb_create_file ( $file_last_update, $date_time );
+		_eb_create_file ( $file_last_update, date_time );
 		
 		
 		
@@ -248,7 +248,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		// tham số để lưu cache
-		$__eb_cache_content = '$__eb_cache_time=' . $date_time . ';';
+		$__eb_cache_content = '$__eb_cache_time=' . date_time . ';';
 		
 		
 		
@@ -303,7 +303,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		if ( $localhost != 1
 		&& $__cf_row ["cf_reset_cache"] <= 0 ) {
 			// cho cache 120s mặc định
-			if ( $__cf_row['cf_ngay'] < $date_time - 3 * 3600 ) {
+			if ( $__cf_row['cf_ngay'] < date_time - 3 * 3600 ) {
 				$__cf_row ["cf_reset_cache"] = 120;
 			}
 			// hoặc tối thiểu 10s để còn test cache
@@ -510,7 +510,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 //			_eb_create_page( 'sitemap', 'Sitemap' );
 			
 			// ép lưu cache
-			_eb_get_static_html ( $strCacheFilter, date( 'r', $date_time ), '', 60 );
+			_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
 		}
 		*/
 		
@@ -571,7 +571,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			
 			
 			// Lưu thời gian dọn log
-			_eb_get_static_html ( $strCacheFilter, date( 'r', $date_time ), '', 60 );
+			_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
 		}
 		*/
 		
