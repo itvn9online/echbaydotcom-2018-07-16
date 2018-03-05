@@ -1983,11 +1983,13 @@ iframe[name="google_conversion_frame"] {
 .hide-blogs-info .echbay-blog-infos,
 .hide-widget-title .thread-home-c2,
 .hide-widget-title .echbay-widget-title { display: none; }
+.echbay-blog-avt.auto-size,
 .ti-le-global.auto-size {
 	overflow: hidden;
 	line-height: normal;
 	height: auto;
 }
+.echbay-blog-avt.auto-size { background: none; }
 .echbay-tintuc-gioithieu {
 	margin: 15px 0;
 	font-size: 15px;

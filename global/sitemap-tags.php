@@ -40,7 +40,9 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	
 	// post_options
-	$get_list_sitemap .= WGR_get_sitemap_taxonomy( 'post_options', 0.7 );
+	if ( $__cf_row['cf_alow_post_option_index'] != 0 ) {
+		$get_list_sitemap .= WGR_get_sitemap_taxonomy( 'post_options', 0.7 );
+	}
 	
 	
 	// blog
