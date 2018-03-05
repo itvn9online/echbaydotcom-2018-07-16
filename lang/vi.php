@@ -161,6 +161,12 @@ $___eb_lang[eb_key_for_site_lang . 'reg_email_exist'] = 'Email đã được s�
 $___eb_lang[eb_key_for_site_lang . 'reg_done'] = 'Đăng ký nhận bản tin thành công';
 $___eb_lang[eb_key_for_site_lang . 'reg_error'] = 'Lỗi chưa xác định!';
 
+// quick register
+$___eb_lang[eb_key_for_site_lang . 'qreg_name'] = 'Họ tên';
+$___eb_lang[eb_key_for_site_lang . 'qreg_phone'] = 'Điện thoại';
+$___eb_lang[eb_key_for_site_lang . 'qreg_email'] = 'Email';
+$___eb_lang[eb_key_for_site_lang . 'qreg_submit'] = 'Gửi';
+
 
 
 

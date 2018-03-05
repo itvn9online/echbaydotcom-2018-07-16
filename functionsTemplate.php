@@ -137,22 +137,30 @@ function WGR_get_fb_like_box () {
 	</div>';
 }
 
-function WGR_get_quick_register () {
+function WGR_get_quick_register ( $form_name = 'frm_dk_nhantin' ) {
+	$l = array(
+		'name' => EBE_get_lang('qreg_name'),
+		'phone' => EBE_get_lang('qreg_phone'),
+		'mail' => EBE_get_lang('qreg_email'),
+		'submit' => EBE_get_lang('qreg_submit')
+	);
+	
+	//
 	return '
 	<div class="hpsbnlbx">
-		<form name="frm_dk_nhantin" method="post" action="process/?set_module=quick-register" target="target_eb_iframe">
+		<form name="' . $form_name . '" method="post" action="process/?set_module=quick-register" target="target_eb_iframe" onSubmit="return _global_js_eb.add_primari_iframe();">
 			<div class="cf">
-				<div class="quick-register-left quick-register-hoten"><span class="d-none">Họ tên</span>
-					<input type="text" name="t_hoten" value="" placeholder="Họ tên" />
+				<div class="quick-register-left quick-register-hoten"><span class="d-none">' . $l['name'] . '</span>
+					<input type="text" name="t_hoten" value="" placeholder="' . $l['name'] . '" />
 				</div>
-				<div class="quick-register-left quick-register-phone d-none"><span class="d-none">Điện thoại</span>
-					<input type="text" name="t_dienthoai" value="" placeholder="Điện thoại" />
+				<div class="quick-register-left quick-register-phone d-none"><span class="d-none">' . $l['phone'] . '</span>
+					<input type="text" name="t_dienthoai" value="" placeholder="' . $l['phone'] . '" />
 				</div>
-				<div class="quick-register-left quick-register-email"><span class="d-none">Email</span>
-					<input type="email" name="t_email" value="" placeholder="Email" autocomplete="off" aria-required="true" required />
+				<div class="quick-register-left quick-register-email"><span class="d-none">' . $l['mail'] . '</span>
+					<input type="email" name="t_email" value="" placeholder="' . $l['mail'] . '" autocomplete="off" aria-required="true" required />
 				</div>
 				<div class="quick-register-left quick-register-submit">
-					<button type="submit" class="cur">Gửi</button>
+					<button type="submit" class="cur">' . $l['submit'] . '</button>
 				</div>
 			</div>
 		</form>
