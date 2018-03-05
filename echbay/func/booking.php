@@ -401,7 +401,10 @@ $content_for_cache_mail = '<mail_to_admin>' . $mail_to_admin . '</mail_to_admin>
 <bcc_email>' . $bcc_email . '</bcc_email>';
 
 _eb_create_file( EB_THEME_CACHE . 'booking_mail/' . $hd_id . '.txt', $content_for_cache_mail );
-_eb_create_file( EB_THEME_CACHE . 'booking_mail_cache/' . $hd_id . '.txt', $content_for_cache_mail );
+
+if ( is_dir( EB_THEME_CACHE . 'booking_mail_cache' ) ) {
+	_eb_create_file( EB_THEME_CACHE . 'booking_mail_cache/' . $hd_id . '.txt', $content_for_cache_mail );
+}
 
 
 
