@@ -151,6 +151,17 @@ $___eb_lang[eb_key_for_site_lang . 'lh_note'] = 'là các trường bắt buộc
 $___eb_lang[eb_key_for_site_lang . 'lh_done'] = 'Cảm ơn bạn! thông tin của bạn đã được gửi đi, chúng tôi sẽ phản hồi sớm nhất có thể.';
 
 
+// register
+$___eb_lang[eb_key_for_site_lang . 'reg_no_email'] = 'Dữ liệu đầu vào không chính xác';
+$___eb_lang[eb_key_for_site_lang . 'reg_pass_short'] = 'Mật khẩu tối thiểu phải có 6 ký tự';
+$___eb_lang[eb_key_for_site_lang . 'reg_pass_too'] = 'Mật khẩu xác nhận không chính xác';
+$___eb_lang[eb_key_for_site_lang . 'reg_email_format'] = 'Email không đúng định dạng';
+$___eb_lang[eb_key_for_site_lang . 'reg_thanks'] = 'Cảm ơn bạn đã đăng ký nhận tin!';
+$___eb_lang[eb_key_for_site_lang . 'reg_email_exist'] = 'Email đã được sử dụng';
+$___eb_lang[eb_key_for_site_lang . 'reg_done'] = 'Đăng ký nhận bản tin thành công';
+$___eb_lang[eb_key_for_site_lang . 'reg_error'] = 'Lỗi chưa xác định!';
+
+
 
 
 /*

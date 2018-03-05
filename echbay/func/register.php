@@ -4,7 +4,7 @@
 
 //print_r($_POST);
 if ( ! isset($_POST['t_email']) || ! isset($_POST['t_matkhau']) ) {
-	_eb_alert('Dữ liệu đầu vào không chính xác');
+	_eb_alert( EBE_get_lang('reg_no_email') );
 }
 
 
@@ -16,16 +16,16 @@ $t_matkhau2 = $_POST['t_matkhau2'];
 
 //
 if ( trim( $t_matkhau ) == '' || strlen( $t_matkhau ) < 6 ) {
-	_eb_alert( 'Mật khẩu tối thiểu phải có 6 ký tự' );
+	_eb_alert( EBE_get_lang('reg_pass_short') );
 }
 if ( $t_matkhau != $t_matkhau ) {
-	_eb_alert( 'Mật khẩu xác nhận không chính xác' );
+	_eb_alert( EBE_get_lang('reg_pass_too') );
 }
 
 
 //
 if ( _eb_check_email_type ( $user_email ) != 1 ) {
-	_eb_alert( 'Email không đúng định dạng' );
+	_eb_alert( EBE_get_lang('reg_email_format') );
 }
 
 // tìm theo email
@@ -34,10 +34,10 @@ $user_id = email_exists( $user_email );
 // có thì trả về luôn
 if ( $user_id > 0 ) {
 	if ( isset( $_POST['for_quick_register'] ) ) {
-		_eb_alert( 'Cảm ơn bạn đã đăng ký nhận tin!' );
+		_eb_alert( EBE_get_lang('reg_thanks') );
 	}
 	else {
-		_eb_alert( 'Email đã được sử dụng' );
+		_eb_alert( EBE_get_lang('reg_email_exist') );
 	}
 }
 //exit();
@@ -90,7 +90,7 @@ else {
 	window.opener.document.frm_dk_nhantin.reset();
 }
 
-alert("Đăng ký nhận bản tin thành công");
+alert("' . EBE_get_lang('reg_done') . '");
 
 </script>');
 	
@@ -111,7 +111,7 @@ $creds['user_password'] = $t_matkhau;
 //
 $user = wp_signon( $creds, false );
 if ( is_wp_error($user) ) {
-	_eb_alert('Lỗi chưa xác định!');
+	_eb_alert( EBE_get_lang('reg_error') );
 //	echo $user->get_error_message();
 }
 //print_r($user);
