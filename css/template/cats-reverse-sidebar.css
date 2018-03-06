@@ -1,0 +1,6 @@
+/* lật ngược menu dọc của danh mục sản phẩm */
+.global-cats-reverse-sidebar {
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: column-reverse;
+}
