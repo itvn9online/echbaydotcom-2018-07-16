@@ -137,6 +137,7 @@ if ( $current_search_key != '' ) {
 		}
 	}
 	else {
+		// xem có dùng mã tìm kiếm khác không
 		$search_not_found = EBE_get_lang('search_addon');
 		if ( $search_not_found == '' ) {
 			$search_not_found = '<h4 class="text-center" style="padding:90px 0;">' . EBE_get_lang('search_not_found') . '</h4>';

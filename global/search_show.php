@@ -125,6 +125,7 @@ else if ( have_posts() ) {
 	}
 }
 else {
+	// xem có dùng mã tìm kiếm khác không
 	$search_not_found = EBE_get_lang('search_addon');
 	if ( $search_not_found == '' ) {
 		$search_not_found = '<li class="text-center bold" style="padding:90px 0;

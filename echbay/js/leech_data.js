@@ -90,7 +90,8 @@ function function_rieng_theo_domain () {
 	console.log(source_url);
 	
 	//
-	var f = document.frm_leech_data;
+	var f = document.frm_leech_data,
+		current_img_domain = document.domain;
 	
 	//
 	if ( f.t_giacu.value != '' ) {
@@ -128,8 +129,32 @@ function function_rieng_theo_domain () {
 	
 	//
 	if ( dog('download_img_to_my_host').checked == true ) {
+		f.t_img.value = func_download_img_to_my_host( f.t_img.value, current_img_domain );
 	}
 	
+}
+
+
+function func_download_img_to_my_host ( img, dm ) {
+	console.log( img );
+	console.log( dm );
+	if ( typeof img == 'undefined' || img == '' ) {
+		return '';
+	}
+	
+	// nếu ảnh chưa được download -> download về thôi
+	if ( img.split('/' + dm + '/').length == 1 ) {
+		var download_url = web_link + 'download_img_to_site/?img=' + encodeURIComponent( img );
+		var file_name = decodeURIComponent(img).split('/');
+		file_name = file_name[ file_name.length - 1 ];
+		download_url += '&file_name=' + file_name + '&show_url_img=1';
+		console.log( download_url );
+		
+		//
+		ajaxl(download_url, 'oi_download_img_to_my_host', 1);
+	}
+	
+	return img;
 }
 
 
@@ -973,13 +998,20 @@ $('.click-submit-url-categories').off('click').click(function () {
 		});
 	}
 	else {
-//		console.log('Không tìm thấy danh sách nhóm cần lấy sản phẩm');
-		$('#show_text_after_done').append('<li>Không tìm thấy danh sách nhóm cần lấy sản phẩm</li>');
-		window.scroll( 0, $('#show_text_after_done').offset().top - 90 );
-		
-		//
-		if ( dog('nap_lai_trang_sau_khi_hoan_thanh').checked == true ) {
-			window.location = window.location.href;
+		if ( $('#categories_url').val() != '' ) {
+			$('#categories_url').change();
+			$('#categories_url').val('');
+			$('.click-submit-url-categories').click();
+		}
+		else {
+//			console.log('Không tìm thấy danh sách nhóm cần lấy sản phẩm');
+			$('#show_text_after_done').append('<li>Không tìm thấy danh sách nhóm cần lấy sản phẩm</li>');
+			window.scroll( 0, $('#show_text_after_done').offset().top - 90 );
+			
+			//
+			if ( dog('nap_lai_trang_sau_khi_hoan_thanh').checked == true ) {
+				window.location = window.location.href;
+			}
 		}
 	}
 });
