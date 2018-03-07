@@ -16,6 +16,7 @@ $trv_seo = trim( $_POST['t_seo'] );
 $trv_tags = str_replace( '-', ' ', $trv_seo );
 $trv_img = trim( $_POST['t_img'] );
 $youtube_url = trim( $_POST['t_youtube_url'] );
+$post_date = trim( $_POST['t_ngaydang'] );
 
 $post_excerpt = trim( stripslashes( $_POST['t_goithieu'] ) );
 $trv_noidung = trim( stripslashes( $_POST['t_noidung'] ) );
@@ -272,6 +273,7 @@ if ( $t_size_list != '' ) $arr_meta_box['_eb_product_size'] = $t_size_list;
 
 if ( $youtube_url != '' ) $arr_meta_box['_eb_product_video_url'] = $youtube_url;
 
+
 //
 $arr = array(
 	'ID' => $trv_id,
@@ -290,6 +292,14 @@ $arr = array(
 
 if ( $post_excerpt != '' ) $arr['post_excerpt'] = $post_excerpt;
 if ( $trv_noidung != '' ) $arr['post_content'] = $trv_noidung;
+if ( $post_date != '' ) {
+	$post_date = date( 'Y-m-d H:i:s', strtotime( $post_date ) );
+	
+	$arr['post_date'] = $post_date;
+	$arr['post_date_gmt'] = $post_date;
+	$arr['post_modified'] = $post_date;
+	$arr['post_modified_gmt'] = $post_date;
+}
 
 //print_r($arr);
 

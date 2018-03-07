@@ -22,6 +22,10 @@ $save_to = ABSPATH . 'ebarchive/';
 // tạo thư mục để download ảnh về
 EBE_create_dir( $save_to, 1, 0777 );
 
+// thêm năm vào khu vực lưu trữ
+$save_to .= $year_curent . '/';
+EBE_create_dir( $save_to, 1, 0777 );
+
 // file download
 $file_name = $_GET['file_name'];
 $save_to .= $file_name;
@@ -36,7 +40,7 @@ if ( ! file_exists( $save_to ) ) {
 		die('ERROR copy file');
 	}
 }
-else {
+else if ( ! isset( $_GET['show_url_img'] ) ) {
 	echo 'file exist!';
 }
 

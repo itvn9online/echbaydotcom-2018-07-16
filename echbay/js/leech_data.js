@@ -9,7 +9,9 @@ var EBE_current_first_domain = '',
 	current_url = '',
 	// giãn cách cập nhật tin
 	gian_cach_submit = 2 * 1000,
-	firts_img_in_content = '';
+	firts_img_in_content = '',
+	cache_name_for_download_img = '',
+	download_img_runing = 0;
 
 
 
@@ -113,6 +115,25 @@ function function_rieng_theo_domain () {
 //		console.log($('#leech_data_fix_content img:first').attr('data-src'));
 	}
 	
+	//
+	if ( source_url.split('kenhdulich.org').length > 1 ) {
+		if ( f.t_ngaydang.value != '' ) {
+			var a = $.trim( f.t_ngaydang.value.split(',')[1] ),
+				b = '';
+			a = a.split(' - ');
+			
+			// -> giờ đăng
+			b = a[1];
+			
+			// Ngày đăng
+			a = a[0].split('/');
+			a = a[2] + '/' + a[1] + '/' + a[0];
+			
+			//
+			f.t_ngaydang.value = a + ' ' + b;
+		}
+	}
+	
 	// gallery kiểu mới
 	if ( f.t_gallery.value != '' ) {
 		var a = f.t_gallery.value.split("\n"),
@@ -129,15 +150,102 @@ function function_rieng_theo_domain () {
 	
 	//
 	if ( dog('download_img_to_my_host').checked == true ) {
+		// download ảnh đại diện
 		f.t_img.value = func_download_img_to_my_host( f.t_img.value, current_img_domain );
+		
+		// download ảnh trong nội dung
+		dog( 'leech_data_fix_content', f.t_noidung.value.replace(/\ssrc=/gi, " download-src=") );
+//		console.log( $('#leech_data_fix_content').html() );
+		
+		//
+		if ( $('#leech_data_fix_content img').length > 0 ) {
+			$('#leech_data_fix_content img').addClass('download-img-to-here');
+//			console.log( $('#leech_data_fix_content').html() );
+			
+			func_download_img_content_to_my_host();
+		}
+		else {
+			auto_submit_after_download_img();
+		}
 	}
 	
 }
 
 
+function auto_submit_after_download_img () {
+	if ( dog('leech_data_auto_next').checked == false ) {
+		console.log('Auto submit not tick!');
+		return false;
+	}
+	
+	// Nếu quá trình download đang diễn ra -> chờ
+	if ( download_img_runing == 1 ) {
+		setTimeout(function () {
+			auto_submit_after_download_img();
+		}, 800);
+		
+		return false;
+	}
+	
+	//
+	console.log('Auto submit after download img!');
+	setTimeout(function () {
+		document.frm_leech_data.submit();
+	}, 800);
+}
+
+function func_download_img_content_to_my_host () {
+	if ( download_img_runing == 1 ) {
+		console.log('download is runing...');
+		
+		// hẹn giờ download lại, cho tới khi download xong cái ảnh này mới thôi
+		setTimeout(function () {
+			func_download_img_content_to_my_host();
+		}, 600);
+		
+		return false;
+	}
+	
+	// không có -> có thể là xong rồi -> finish thôi
+	if ( $('#leech_data_fix_content img.download-img-to-here').length == 0 ) {
+		console.log('img for download not found!');
+//		console.log( $('#leech_data_fix_content').html() );
+		
+		var add_content = $('#leech_data_fix_content').html() || '';
+		document.frm_leech_data.t_noidung.value = add_content.replace(/\sdownload-src=/gi, " src=");
+		
+		auto_submit_after_download_img();
+		
+		return false;
+	}
+	var dm = document.domain;
+	
+	// tìm src xem có không
+	var img = $('#leech_data_fix_content img.download-img-to-here:first').attr('download-src') || '';
+	if ( img == '' ) {
+		console.log('src for download not found!');
+		return false;
+	}
+	
+	// lấy tên file sẽ được download
+	var file_name = decodeURIComponent(img).split('/');
+	file_name = file_name[ file_name.length - 1 ];
+	
+	// tạo url file download luôn
+	$('#leech_data_fix_content img.download-img-to-here:first').attr({
+		'download-src': web_link + 'ebarchive/' + year_curent + '/' + file_name
+	}).removeClass('download-img-to-here');
+	
+	// bắt đầu download ảnh về host
+	func_download_img_to_my_host( img, dm );
+	
+	// lấy tiếp ảnh tiếp theo
+	func_download_img_content_to_my_host();
+}
+
 function func_download_img_to_my_host ( img, dm ) {
-	console.log( img );
-	console.log( dm );
+//	console.log( img );
+//	console.log( dm );
 	if ( typeof img == 'undefined' || img == '' ) {
 		return '';
 	}
@@ -148,10 +256,21 @@ function func_download_img_to_my_host ( img, dm ) {
 		var file_name = decodeURIComponent(img).split('/');
 		file_name = file_name[ file_name.length - 1 ];
 		download_url += '&file_name=' + file_name + '&show_url_img=1';
-		console.log( download_url );
+//		console.log( download_url );
 		
 		//
-		ajaxl(download_url, 'oi_download_img_to_my_host', 1);
+		download_img_runing = 1;
+		ajaxl(download_url, 'oi_download_img_to_my_host', 1, function () {
+			var a = $('#oi_download_img_to_my_host').html();
+			console.log( a );
+			
+			//
+//			cache_name_for_download_img = a;
+			download_img_runing = 0;
+		});
+		
+		//
+		return web_link + 'ebarchive/' + year_curent + '/' + file_name;
 	}
 	
 	return img;
@@ -365,6 +484,10 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 					get : $('#details_masanpham').val() || '',
 					set : 't_masanpham'
 				},
+				ngaydang_tags : {
+					get : $('#details_ngaydang').val() || '',
+					set : 't_ngaydang'
+				},
 				img_tags : {
 					get : $('#details_img').val() || '',
 					set : 't_img',
@@ -420,9 +543,9 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 								console.log(get_attr);
 								
 								if ( get_attr.length > 1 ) {
-									console.log(get_attr[0]);
-									console.log(get_attr[1]);
-									console.log(get_attr[1].split(']')[0]);
+//									console.log(get_attr[0]);
+//									console.log(get_attr[1]);
+//									console.log(get_attr[1].split(']')[0]);
 									
 									if ( str == '' ) {
 										str = $( get_attr[0] ).attr( get_attr[1].split(']')[0] ) || '';
@@ -669,7 +792,8 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 //			if ( check_lech_data_submit() == false ) return false;
 			
 			//
-			if ( dog('leech_data_auto_next').checked == true ) {
+			if ( dog('download_img_to_my_host').checked == false
+			&& dog('leech_data_auto_next').checked == true ) {
 				f.submit();
 			}
 		});
@@ -1115,27 +1239,41 @@ if ( typeof arr_for_save_domain_config == 'object' ) {
 }
 
 // Mảng mặc định cho lần đầu tiên
-if ( arr_cookie_lamviec == null ) {
-	arr_cookie_lamviec = {
-		id_post_begin : '',
-		id_post_end : '',
-		
-		details_noidung : '',
-		details_dieukien : '',
-		details_goithieu : '',
-		details_giacu : '',
-		details_giamoi : '',
-		details_img : '',
-		details_youtube_url : '',
-		details_title : '',
-		details_masanpham : '',
-		details_gallery : '',
-		categories_tags : ''
-	};
-}
+var default_arr_cookie_lamviec = {
+	id_post_begin : '',
+	id_post_end : '',
+	
+	details_noidung : '',
+	details_dieukien : '',
+	details_goithieu : '',
+	details_giacu : '',
+	details_giamoi : '',
+	details_img : '',
+	details_youtube_url : '',
+	details_title : '',
+	details_masanpham : '',
+	details_ngaydang : '',
+	details_gallery : '',
+	categories_tags : ''
+};
 
 
 (function () {
+	//
+	if ( arr_cookie_lamviec == null ) {
+		arr_cookie_lamviec = default_arr_cookie_lamviec;
+	}
+	else {
+		// Nạp mảng từ mảng mặc định nếu chưa có
+		for ( var x in default_arr_cookie_lamviec ) {
+			if ( typeof arr_cookie_lamviec[x] == 'undefined' ) {
+				arr_cookie_lamviec[x] = '';
+			}
+		}
+	}
+//	console.log( arr_cookie_lamviec );
+	
+	//
 	for ( var x in arr_cookie_lamviec ) {
 		if ( dog( x ) != null ) {
 			var a_name = 'leech_data_' + x,
