@@ -112,6 +112,156 @@ function function_rieng_theo_domain () {
 //		console.log($('#leech_data_fix_content img:first').attr('data-src'));
 	}
 	
+	//
+	if ( source_url.split('vuonthangdung.vn').length > 1 ) {
+		if ( f.post_tai.value == 'blog' ) {
+			f.t_noidung.value = f.t_noidung.value.split('<div class="clearfix">')[0];
+		}
+	}
+	else if ( source_url.split('thegioibang.com').length > 1 ) {
+		var str_size = '';
+		$('#size-list li').each(function() {
+			var size_price = $('input  ', this).attr('data-price') || '';
+			if ( size_price != '' ) {
+				size_price = g_func.number_only(size_price);
+				
+				str_size += ',{name:"' + ( $('label ', this).html() || '' ) + '",val:"' + size_price + '"}';
+			}
+		});
+		console.log(str_size);
+		
+		f.t_size_list.value = str_size;
+		
+		f.t_goithieu.value = (function ( str ) {
+			if ( str == '' ) {
+				return '';
+			}
+			
+			return str.replace(/\<\/p\>/gi, "\n").replace(/\<p\>/gi, '');
+		})( f.t_goithieu.value );
+	}
+	else if ( source_url.split('luxshopping.vn').length > 1 ) {
+		f.t_masanpham.value = g_func.number_only( f.t_masanpham.value );
+		
+		//
+		f.t_gallery.value = "";
+		$('.thumblist img').each(function() {
+			var a = $(this).attr('alt') || '';
+//			console.log(a);
+			
+			if ( a != '' ) {
+				a = full_url_for_img_src(a);
+				f.t_gallery.value += a + "\n";
+			}
+		});
+		
+		//
+		if ( f.t_goithieu.value != '' ) {
+			f.t_goithieu.value = g_func.strip_tags(f.t_goithieu.value);
+			
+			var a = f.t_goithieu.value.split("\n");
+			f.t_goithieu.value = "";
+			
+			for ( var i = 0; i < a.length; i++ ) {
+				a[i] = g_func.trim(a[i]);
+				
+				if ( a[i] != '' ) {
+					f.t_goithieu.value += a[i] + "\n";
+				}
+			}
+		}
+	}
+	else if ( source_url.split('xwatch.vn').length > 1 ) {
+		// xử lý lại đoạn giới thiệu
+		var a = $('#details_goithieu').val() || '';
+		if ( a != '' ) {
+			console.log(a);
+			
+			// xóa các class linh tinh đi
+			$(a + ' li, ' + a + ' div').removeAttr('class').removeAttr('style');
+			// lấy lại html
+			a = $(a).html() || '';
+			
+			if ( a != '' ) {
+				a = a.replace(/\<\/li\>/gi, '[br]').replace(/\<li\>|\<div\>|\<\/div\>|\t/gi, '').split("\n");
+				
+				var str = '';
+				for ( var i = 0; i < a.length; i++ ) {
+					a[i] = g_func.trim(a[i]);
+					
+					if ( a[i] != '' ) {
+						str += a[i];
+						if ( a[i].slice(-1) == ':' ) {
+							str += ' ';
+						}
+					}
+				}
+				a = str.replace(/\[br\]/gi, "\n");
+			}
+//			console.log(a);
+			f.t_goithieu.value = a;
+		}
+		
+		// gắp cả url (bao gồm ID) để giữ nguyên url cũ
+		if ( f.t_source.value.split('/news/').length > 1
+		|| f.t_source.value.split('/xchanel/').length > 1
+		|| f.t_source.value.split('/blog/').length > 1 ) {
+//		if ( f.t_source.value.split('/blog/').length > 1 ) {
+			f.t_seo.value = (function ( str ) {
+				return str.split('/').pop().split('.html')[0];
+			})( f.t_source.value );
+		}
+		
+		
+		// tìm giá và mã sản phẩm
+		var a = $('#aspnetForm').html() || '';
+		if ( a != '' ) {
+			a = a.split('TÌNH TRẠNG:')[0].split('Thongsokythuat.png')[0].split('</h1>');
+			
+			if ( a.length > 1 ) {
+				a = a[1];
+				
+				//
+//				console.log(a);
+				
+				var gia = a.split('GIÁ:');
+				if ( gia.length > 1 ) {
+//					console.log(gia[1]);
+					
+					try {
+						gia = gia[1].split('</div>')[1].split('>')[1];
+						gia = g_func.trim(gia);
+						gia = g_func.number_only(gia);
+//						console.log(gia);
+						
+						//
+						if ( gia != '' && gia > 0 ) {
+							f.t_giamoi.value = gia;
+						}
+					} catch (e) {
+						console.log('Lỗi lọc giá sản phẩm');
+					}
+				}
+				
+				var msp = a.split('MÃ SẢN PHẨM:');
+				if ( msp.length > 1 ) {
+//					console.log(msp[1]);
+					
+					try {
+						msp = msp[1].split('</div>')[1].split('>')[1];
+						msp = g_func.trim(msp);
+//						console.log(msp);
+						
+						//
+						f.t_masanpham.value = msp;
+					} catch (e) {
+						console.log('Lỗi lọc mã sản phẩm');
+					}
+				}
+			}
+		}
+	}
+	
 	// gallery kiểu mới
 	if ( f.t_gallery.value != '' ) {
 		var a = f.t_gallery.value.split("\n"),
@@ -125,11 +275,6 @@ function function_rieng_theo_domain () {
 		}
 		f.t_gallery.value = str;
 	}
-	
-	//
-	if ( dog('download_img_to_my_host').checked == true ) {
-	}
-	
 }
 
 

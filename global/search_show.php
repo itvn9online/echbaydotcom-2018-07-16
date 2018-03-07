@@ -16,6 +16,7 @@ $list_post = '';
 $str_page = '';
 $class_for_search_page = 'thread-search l19';
 $by_post_type = isset($_GET['post_type']) ? trim($_GET['post_type']) : '';
+$search_not_found = '';
 
 
 
@@ -123,6 +124,15 @@ else if ( have_posts() ) {
 		
 	}
 }
+else {
+	$search_not_found = EBE_get_lang('search_addon');
+	if ( $search_not_found == '' ) {
+		$search_not_found = '<li class="text-center bold" style="padding:90px 0;
+		width: 100%;
+		margin: 0 auto;
+		float: none;">' . EBE_get_lang('search_not_found') . '</li>';
+	}
+}
 
 
 //
@@ -135,6 +145,7 @@ $main_content = EBE_str_template( 'search.html', array(
 
 //
 $main_content = EBE_html_template( EBE_get_page_template( $show_html_template ), array(
+	'tmp.search_not_found' => $search_not_found,
 	'tmp.list_post' => $list_post,
 	'tmp.str_page' => $str_page,
 	'tmp.class_for_search_page' => $class_for_search_page,

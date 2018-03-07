@@ -24,6 +24,11 @@ $___eb_lang[eb_key_for_site_lang . 'home'] = 'Trang chủ';
 $___eb_lang[eb_key_for_site_lang . 'search'] = 'Tìm kiếm';
 // placeholder for search
 $___eb_lang[eb_key_for_site_lang . 'searchp'] = $___eb_lang[eb_key_for_site_lang . 'search'] . ' sản phẩm';
+$___eb_lang[eb_key_for_site_lang . 'search_not_found'] = 'Dữ liệu bạn đang tìm kiếm không tồn tại hoặc đã bị xóa!';
+// nếu phần mã này xuất hiện -> hiển thị mã thay vì search_not_found ở trên
+$___eb_lang[eb_key_for_site_lang . 'search_addon'] = '';
+$eb_type_lang[eb_key_for_site_lang . 'search_addon'] = 'textarea';
+//$___eb_lang[eb_key_for_site_lang . 'search_title_addon'] = '';
 
 $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_site_lang . 'cart'];

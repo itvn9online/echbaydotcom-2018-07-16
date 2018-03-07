@@ -137,7 +137,10 @@ if ( $current_search_key != '' ) {
 		}
 	}
 	else {
-		$main_content = '<h4 class="text-center" style="padding:90px 0;">Dữ liệu bạn đang tìm kiếm không tồn tại hoặc đã bị xóa!</h4>';
+		$search_not_found = EBE_get_lang('search_addon');
+		if ( $search_not_found == '' ) {
+			$search_not_found = '<h4 class="text-center" style="padding:90px 0;">' . EBE_get_lang('search_not_found') . '</h4>';
+		}
 	}
 }
 
