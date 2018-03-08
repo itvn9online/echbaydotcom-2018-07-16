@@ -121,7 +121,6 @@ label,
 */
 /* custom flex blogs-node */
 .blogs_node_chi_chu {
-	list-style: inside;
 	padding: inherit;
 	margin: inherit;
 }
@@ -129,6 +128,32 @@ label,
 .blogs_node_chi_chu .echbay-blog-gioithieu,
 .blogs_node_chi_chu .echbay-blog-ngay { display: none; }
 .blogs_node_chi_chu .echbay-blog-marginleft { padding-left: 0; }
+/*
+.blogs_node_chi_chu .echbay-blog-marginleft {
+	padding-left: 15px;
+	position: relative;
+}
+.blogs_node_chi_chu .echbay-blog-marginleft:before {
+	content: "\f111";
+	font-family: FontAwesome;
+	font-size: 9px;
+	margin-right: 8px;
+	position: absolute;
+	left: 0;
+	top: 35%;
+}
+*/
+.blogs_node_chi_chu .echbay-blog-title {
+	position: relative;
+	padding-left: 15px;
+}
+.blogs_node_chi_chu .echbay-blog-title:before {
+	content: "\f111";
+	font-family: FontAwesome;
+	font-size: 9px;
+	position: absolute;
+	left: 0;
+}
 .blogs_node_chi_chu .echbay-blog-padding {
 	padding: 0;
 	display: inline-block;

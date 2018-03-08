@@ -1354,8 +1354,8 @@ var default_arr_cookie_lamviec = {
 		if ( dog( x ) != null ) {
 			var a_name = 'leech_data_' + x,
 				a = g_func.getc( a_name );
-			console.log( a_name );
-			console.log( a );
+//			console.log( a_name );
+//			console.log( a );
 			
 			// nạp dữ liệu từ phiên làm việc cũ
 			if ( a != null ) {
@@ -1364,6 +1364,10 @@ var default_arr_cookie_lamviec = {
 				
 				// gia hạn lại cookie
 				leech_data_save_cookie( a_name, a );
+			}
+			else if ( arr_cookie_lamviec[x] != '' ) {
+				// gán lại dữ liệu
+				$( '#' + x ).val( arr_cookie_lamviec[x] );
 			}
 			
 			// đặt tên để lưu cookie mỗi khi có sự thay đổi
