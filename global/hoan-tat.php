@@ -43,7 +43,10 @@ $ga_ecom_update = 0;
 
 
 //
-$import_ecommerce_ga = "ga('require', 'ec');";
+$import_ecommerce_ga = "
+if ( typeof ga != 'undefined' ) {
+	ga('require', 'ec');
+}";
 
 
 

@@ -23,6 +23,7 @@ $__cf_row_default = array(
 	
 	'cf_gse' => '',
 	'cf_ga_id' => '',
+	'cf_gtag_id' => 0,
 	
 	// mặc định sử dụng hàm PHP mail
 //	'cf_sys_email' => '',

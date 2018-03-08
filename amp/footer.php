@@ -10,6 +10,9 @@
 </footer>
 <div class="amp-wp-comments-link"><a href="<?php echo $url_og_url; ?>">Xem phiên bản đầy đủ</a></div>
 <br>
+<?php
+if ( $__cf_row['cf_ga_id'] != '' ) {
+?>
 <amp-analytics type="googleanalytics">
 <script type="application/json">
 {
@@ -25,3 +28,5 @@
 }
 </script> 
 </amp-analytics>
+<?php
+}

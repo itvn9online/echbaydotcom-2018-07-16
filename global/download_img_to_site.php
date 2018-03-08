@@ -23,7 +23,14 @@ $save_to = ABSPATH . 'ebarchive/';
 EBE_create_dir( $save_to, 1, 0777 );
 
 // thêm năm vào khu vực lưu trữ
-$save_to .= $year_curent . '/';
+$set_year = $year_curent;
+if ( isset( $_GET['set_year'] ) ) {
+	$set_year = (int) $_GET['set_year'];
+	if ( $set_year < 1970 ) {
+		$set_year = $year_curent;
+	}
+}
+$save_to .= $set_year . '/';
 EBE_create_dir( $save_to, 1, 0777 );
 
 // file download

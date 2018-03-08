@@ -92,6 +92,20 @@ else {
 
 // google analytics
 if ( $__cf_row['cf_ga_id'] != '' ) {
+	// gtag
+	if ( $__cf_row['cf_gtag_id'] == 1 ) {
+?>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $__cf_row['cf_ga_id']; ?>"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '<?php echo $__cf_row['cf_ga_id']; ?>');
+</script>
+<?php
+	}
+	// analytic
+	else {
 ?>
 <script type="text/javascript">
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -104,8 +118,8 @@ ga('require', 'displayfeatures');
 ga('send', 'pageview');
 </script>
 <?php
+	}
 }
-
 
 ?>
 <!-- // EchBay SEO plugin -->
