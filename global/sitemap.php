@@ -27,7 +27,8 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	
 	
-	//
+	// auto
+	/*
 	foreach ( $arr_active_for_404_page as $k => $v ) {
 //		echo $k . '<br>' . "\n";
 		
@@ -37,10 +38,34 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 			$get_list_sitemap .= WGR_echo_sitemap_node( web_link . $k, $sitemap_current_time );
 		}
 	}
+	*/
 	
-	// phân trang cho sitemap (lấy từ trang 2 trở đi)
-	$get_list_sitemap .= WGR_sitemap_part_page();
-	$get_list_sitemap .= WGR_sitemap_part_page( 'blog', 'sitemap-blog', 'sitemap-blog-images' );
+	// manual -> chuẩn hơn trong trường hợp không có bài viết tương ứng thì sitemap không được kích hoạt
+	$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-tags', $sitemap_current_time );
+	
+	if ( WGR_get_sitemap_total_post() > 0 ) {
+		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-post', $sitemap_current_time );
+		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-images', $sitemap_current_time );
+		
+		// phân trang cho sitemap (lấy từ trang 2 trở đi)
+		$get_list_sitemap .= WGR_sitemap_part_page();
+	}
+	
+	if ( WGR_get_sitemap_total_post( 'blog' ) > 0 ) {
+		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-blog', $sitemap_current_time );
+		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-blog-images', $sitemap_current_time );
+		
+		// phân trang cho sitemap (lấy từ trang 2 trở đi)
+		$get_list_sitemap .= WGR_sitemap_part_page( 'blog', 'sitemap-blog', 'sitemap-blog-images' );
+	}
+	
+	if ( WGR_get_sitemap_total_post( 'page' ) > 0 ) {
+		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-page', $sitemap_current_time );
+		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-page-images', $sitemap_current_time );
+		
+		// phân trang cho sitemap (lấy từ trang 2 trở đi)
+		$get_list_sitemap .= WGR_sitemap_part_page( 'page', 'sitemap-page', 'sitemap-page-images' );
+	}
 	
 	
 	
