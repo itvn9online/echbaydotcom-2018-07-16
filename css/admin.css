@@ -863,6 +863,11 @@ input[id="_eb_category_order"] { width: 90px; }
 .echbay-subsubsub li:first-child:after,
 .echbay-subsubsub li:last-child:after { display: none; }
 .echbay-subsubsub li:first-child { margin-right: 10px; }
+.div-widget-home_list {
+	max-height: 300px;
+	overflow: auto;
+	font-size: 12px;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

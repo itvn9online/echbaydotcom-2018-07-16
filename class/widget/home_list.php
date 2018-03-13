@@ -16,8 +16,12 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 		$default = array (
 			'num_line' => '',
 			'post_number' => 0,
-			'cat_ids' => ''
-//			'custom_style' => ''
+			'cat_ids' => '',
+			'post_cloumn' => '',
+			'hide_title' => '',
+			'hide_description' => '',
+			'hide_info' => '',
+			'custom_style' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -36,7 +40,7 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 		
 		$id_for = '_' . md5( rand( 0, 10000 ) );
 		
-		echo '<div id="' . $id_for . '">';
+		echo '<div id="' . $id_for . '" class="div-widget-home_list">';
 		
 		
 		echo '<p class="d-none"><input type="text" class="widefat" data-name="' . $id_for . '" name="' . $this->get_field_name ( 'cat_ids' ) . '" value="' . $cat_ids . '" /></p>';
@@ -87,6 +91,30 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 		//
 		_eb_widget_number_of_posts_inline( $this->get_field_name('num_line'), $num_line );
 		
+		
+		//
+		_eb_widget_style_for_post_cloumn( $this->get_field_name( 'post_cloumn' ), $post_cloumn );
+		
+		
+		//
+		$input_name = $this->get_field_name( 'hide_title' );
+		
+		_eb_widget_echo_widget_input_checkbox( $input_name, $hide_title, 'Ẩn tiêu đề của bài viết.' );
+		
+		//
+		$input_name = $this->get_field_name( 'hide_description' );
+		
+		_eb_widget_echo_widget_input_checkbox( $input_name, $hide_description, 'Ẩn tóm tắt của bài viết.' );
+		
+		//
+		$input_name = $this->get_field_name( 'hide_info' );
+		
+		_eb_widget_echo_widget_input_checkbox( $input_name, $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
+		
+		
+		//
+		echo '<p><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $this->get_field_name('custom_style') . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng.</p>';
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -101,6 +129,14 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 		//
 		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
 		$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
+		
+		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
+		$custom_style .= WGR_add_option_class_for_post_widget( $instance );
+		
+		$post_cloumn = isset( $instance ['post_cloumn'] ) ? $instance ['post_cloumn'] : '';
+		if ( $post_cloumn != '' ) {
+			$custom_style .= ' blogs_node_' . $post_cloumn;
+		}
 		
 		//
 		$widget_select_categories = array();
@@ -122,7 +158,7 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 		//
 		$arr_for_add_css = array();
 		
-		echo '<div class="widget-echbay-home-list">';
+		echo '<div class="' . trim( 'widget-echbay-home-list ' . $custom_style ) . '">';
 		
 		// Số bài viết trên mỗi nhóm
 		$luu_post_number = 0;

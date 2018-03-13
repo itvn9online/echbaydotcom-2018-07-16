@@ -307,6 +307,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 						$str_sub_cat = '<div class="widget-blog-subcat">' . $str_sub_cat . '</div>';
 					}
 				}
+				
 			}
 		}
 		// lấy tất cả
