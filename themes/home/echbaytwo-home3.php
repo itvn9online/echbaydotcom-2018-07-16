@@ -6,6 +6,7 @@ Tags: list product by category
 
 
 
+
 //
 if ( $__cf_row['cf_num_home_list'] > 0 ) {
 	
@@ -84,6 +85,8 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 			
 			// nếu nhóm này có sản phẩm
 //			if ( $home_detauls_categories->count > 0 ) {
+				
+				//
 				$home_node_cat = _eb_load_post( $__cf_row['cf_num_home_list'], $args );
 				
 				//
@@ -128,6 +131,9 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 						
 						//
 						'tmp.more_link' => $more_link,
+						
+						//
+						'tmp.num_post_line' => isset( $_GET['home_list_num_line'] ) ? $_GET['home_list_num_line'] : '',
 					), $__cf_row['cf_home_sub_cat_tag'] );
 					
 					/*

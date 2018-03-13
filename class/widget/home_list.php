@@ -14,6 +14,8 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 		
 		//
 		$default = array (
+			'num_line' => '',
+			'post_number' => 5,
 			'cat_ids' => ''
 //			'custom_style' => ''
 		);
@@ -77,6 +79,14 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 		
 		echo '<script>WGR_category_for_home_list("' . $id_for . '", 1);</script>';
 		
+		
+		//
+		_eb_widget_echo_number_of_posts_to_show( $this->get_field_name('post_number'), $post_number );
+		
+		
+		//
+		_eb_widget_number_of_posts_inline( $this->get_field_name('num_line'), $num_line );
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -87,6 +97,10 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 	
 	function widget($args, $instance) {
 		global $__cf_row;
+		
+		//
+		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
+		$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
 		
 		//
 		$widget_select_categories = array();
@@ -109,7 +123,33 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 		$arr_for_add_css = array();
 		
 		echo '<div class="widget-echbay-home-list">';
+		
+		// Số bài viết trên mỗi nhóm
+		$luu_post_number = 0;
+		if ( $post_number > 0 ) {
+			// lưu giá trị cũ lại để tí còn reset
+			$luu_post_number = $__cf_row['cf_num_home_list'];
+			
+			// gán giá trị mới
+			$__cf_row['cf_num_home_list'] = $post_number;
+		}
+		
+		// Số bài viết trên mỗi dòng
+		$_GET['home_list_num_line'] = $num_line;
+		
+		
+		//
 		include EB_THEME_PLUGIN_INDEX . 'themes/home/echbaytwo-home3.php';
+		
+		
+		// xong thì trả lại giá trị của config
+		if ( $luu_post_number > 0 ) {
+			$__cf_row['cf_num_home_list'] = $luu_post_number;
+		}
+		
+		//
+		unset( $_GET['home_list_num_line'] );
+		
 		echo '</div>';
 		
 		//

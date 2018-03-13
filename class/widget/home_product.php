@@ -202,7 +202,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			'tmp.home_ads_by_cat' => $home_ads_by_cat,
 			
 			//
-			'tmp.num_post_line' => $num_line,
+			'tmp.num_post_line' => $num_line
 		), $__cf_row['cf_home_sub_cat_tag'], $html_template );
 		
 		/*
