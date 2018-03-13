@@ -15,7 +15,7 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 		//
 		$default = array (
 			'num_line' => '',
-			'post_number' => 5,
+			'post_number' => 0,
 			'cat_ids' => ''
 //			'custom_style' => ''
 		);
