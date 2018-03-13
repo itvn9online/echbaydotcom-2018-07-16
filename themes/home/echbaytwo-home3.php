@@ -109,7 +109,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 					
 					//
 					$cat_link = _eb_c_link( $k );
-					$more_link = '<div class="widget-products-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
+					$more_link = '<div class="widget-products-more"><a href="' . $cat_link . '">' . EBE_get_lang('widget_products_more') . '</a></div>';
 					
 					
 					// Lấy theo mẫu của widget #home_product

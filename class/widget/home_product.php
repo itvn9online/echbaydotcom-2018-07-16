@@ -120,7 +120,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			
 			//
 			$cat_link = _eb_c_link( $cat_ids );
-			$more_link = '<div class="widget-products-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
+			$more_link = '<div class="widget-products-more"><a href="' . $cat_link . '">' . EBE_get_lang('widget_products_more') . '</a></div>';
 			
 			// wp nó trả ra cái objec hơi dị -> foreach lấy cho dễ
 			$cat_count = $categories->count;
