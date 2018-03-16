@@ -626,7 +626,7 @@ function ___eb_details_product_color () {
 	
 	$('.oi_product_color li').click(function () {
 		$('.oi_product_color li').removeClass('selected');
-		$(this).addClass('selected');
+//		$(this).addClass('selected');
 		
 		$('.thread-details-mobileAvt li').css({
 			'background-image' : 'url(' + ( $(this).attr('data-img') || '' ) + ')'
@@ -634,7 +634,11 @@ function ___eb_details_product_color () {
 		
 		// Lấy tên màu
 		var color_name = $(this).attr('title') || '',
-			color_img = $(this).attr('data-img') || '';
+			color_img = $(this).attr('data-img') || '',
+			color_node = $(this).attr('data-node') || 0;
+		
+		//
+		$('.oi_product_color li[data-node="' + color_node + '"]').addClass('selected');
 		
 		// Hiển thị ra cho người dùng xem
 //		$('.show-products-color-text').html(color_name);
@@ -666,7 +670,16 @@ function ___eb_details_product_color () {
 	});
 	
 	//
-	$('.oi_product_color li:first').click();
+	$('.oi_product_color:first li:first').click();
+	
+	//
+	/*
+	if ( $('.oi_product_color').length > 1 ) {
+		$('.oi_product_color').each(function() {
+			$('li:first', this).addClass('selected');
+		});
+	}
+	*/
 	
 }
 
