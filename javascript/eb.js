@@ -1774,28 +1774,31 @@ var _global_js_eb = {
 	check_size_color_cart : function () {
 		
 		// size tron trang chi tiết
-		if ( pid > 0 ) {
-			// chọn size
-			if ( arr_product_size.length > 0 && $('#cart_user_agent input[name^=t_size]').val() == '' ) {
-				alert('Vui lòng chọn Kích cỡ sản phẩm bạn muốn mua');
-				
-				$('body,html').animate({
-					scrollTop: $('.oi_product_size').offset().top - 110
-				}, 800);
-				
-				return false;
-			}
+		if ( pid == 0 ) {
+			return true;
+		}
+		
+		
+		// chọn size
+		if ( arr_product_size.length > 0 && $('#cart_user_agent input[name^=t_size]').val() == '' ) {
+			alert('Vui lòng chọn Kích cỡ sản phẩm bạn muốn mua');
 			
-			// chọn màu
-			if ( arr_product_color.length > 0 && $('#cart_user_agent input[name^=t_color]').val() == '' ) {
-				alert('Vui lòng chọn Màu sắc sản phẩm bạn muốn mua');
-				
-				$('body,html').animate({
-					scrollTop: $('.oi_product_color').offset().top - 110
-				}, 800);
-				
-				return false;
-			}
+			$('body,html').animate({
+				scrollTop: $('.oi_product_size').offset().top - 110
+			}, 800);
+			
+			return false;
+		}
+		
+		// chọn màu
+		if ( arr_product_color.length > 0 && $('#cart_user_agent input[name^=t_color]').val() == '' ) {
+			alert('Vui lòng chọn Màu sắc sản phẩm bạn muốn mua');
+			
+			$('body,html').animate({
+				scrollTop: $('.oi_product_color').offset().top - 110
+			}, 800);
+			
+			return false;
 		}
 		
 		//

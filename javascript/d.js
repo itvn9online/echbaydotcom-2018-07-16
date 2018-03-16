@@ -644,6 +644,10 @@ function ___eb_details_product_color () {
 		
 		//
 		if ( typeof document.frm_cart != 'undefined' ) {
+			if ( color_name == '' ) {
+				color_name = 'Unknown';
+			}
+			
 			/*
 			if ( color_img != '' ) {
 				color_img = ' <img src="' + color_img + '" height="50" />';
@@ -660,6 +664,8 @@ function ___eb_details_product_color () {
 			console.log('frm_cart not found');
 		}
 	});
+	
+	//
 	$('.oi_product_color li:first').click();
 	
 }
