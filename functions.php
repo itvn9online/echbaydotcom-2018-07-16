@@ -581,27 +581,20 @@ function EBE_add_js_compiler_in_cache (
 		}
 	}
 //	echo $file_name_cache . '<br>' . "\n";
-//	if ( strlen( $file_name_cache ) > 155 ) {
-		$file_name_cache = md5( $file_name_cache );
-//	} else {
-//		$file_name_cache = str_replace( '.', '-', $file_name_cache );
-//	}
-//	$file_name_cache .= '.js';
+	$file_name_cache = md5( $file_name_cache );
+	$file_show = $file_name_cache;
 	
 	// thêm khoảng thời gian lưu file
 	$current_server_minute = (int) substr( date( 'i', date_time ), 0, 1 );
-	// file dùng để hiển thị
-	$file_show = $file_name_cache;
-	// file để lưu cache
 	$file_name_cache = 'zjs-' . $file_name_cache . '-' . $current_server_minute . '.js';
 	
+	// file hiển thị sẽ hiển thị sớm hơn chút
 	if ( $current_server_minute == 0 ) {
 		$current_server_minute = 5;
 	}
 	else {
 		$current_server_minute = $current_server_minute - 1;
 	}
-	
 	$file_show = 'zjs-' . $file_show . '-' . $current_server_minute . '.js';
 	
 	
@@ -1255,29 +1248,22 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		
 		//
 //		echo $file_cache . '<br>' . "\n";
-//		if ( strlen( $file_cache ) > 155 ) {
-			$file_cache = md5( $file_cache );
-//		} else {
-//			$file_cache = str_replace( '.', '-', $file_cache );
-//		}
-//		$file_cache .= '.css';
+		$file_cache = md5( $file_cache );
+		$file_show = $file_cache;
 		
 		// thêm khoảng thời gian lưu file
 		$current_server_minute = (int) substr( date( 'i', date_time ), 0, 1 );
-		// file dùng để hiển thị
-		$file_show = $file_cache;
-		// file để lưu cache
 		$file_cache = 'zss-' . $file_cache . '-' . $current_server_minute . '.css';
 		
+		// file hiển thị sẽ hiển thị sớm hơn chút
 		if ( $current_server_minute == 0 ) {
 			$current_server_minute = 5;
 		}
 		else {
 			$current_server_minute = $current_server_minute - 1;
 		}
-		
 		$file_show = 'zss-' . $file_show . '-' . $current_server_minute . '.css';
-//		echo $file_cache . "\n";
+		
 		
 		$file_save = EB_THEME_CACHE . $file_cache;
 //		echo $file_save . "\n";
