@@ -73,36 +73,34 @@ echo '</script>';
 //echo _eb_get_full_category_v2 ( 0, 'category', 1 );
 //exit();
 
-// file time
-//echo date( 'r', $date_time ) . "\n";
-$cat_js_file_name = (int) substr( date( 'i', date_time ), 0, 1 );
-
-// nếu phút hiện tại là 0
-if ( $cat_js_file_name == 0 ) {
-	$using_js_file_name = 5;
-}
-else {
-	$using_js_file_name = $cat_js_file_name - 1;
-}
-
-// file name
-$cat_js_file_name = 'cat-' . $cat_js_file_name . '.js';
-$using_js_file_name = 'cat-' . $using_js_file_name . '.js';
-
-
-//
-if ( ! file_exists( EB_THEME_CACHE . $cat_js_file_name ) || date_time - filemtime ( EB_THEME_CACHE . $cat_js_file_name ) > 1800 ) {
+$cat_js_file_name = 'cat.js';
+$strCacheFilter = 'cat_js';
+// giãn cách tạo file này tối thiểu là 120 giây
+$check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', eb_default_cache_time + rand ( 0, 60 ) );
+if ( $check_Cleanup_cache == false ) {
+//	$site_group = get_full_category_v2 ();
+//	echo $site_group;
+	
+	//
+//	echo EB_THEME_CACHE;EB_BLOG_POST_LINK
+//	$cat_js_file_name = 'cat-' . date( 'H.i', $date_time ) . '.js';
+	
 	_eb_create_file ( EB_THEME_CACHE . $cat_js_file_name, 'var eb_site_group=[' . _eb_get_full_category_v2 ( 0, 'category', 1 ) . '],eb_blog_group=[' . _eb_get_full_category_v2 ( 0, EB_BLOG_POST_LINK, 1 ) . '];' );
 	
 	//
-	if ( ! file_exists( EB_THEME_CACHE . $using_js_file_name ) ) {
-		copy( EB_THEME_CACHE . $cat_js_file_name, EB_THEME_CACHE . $using_js_file_name );
-		chmod( EB_THEME_CACHE . $using_js_file_name, 0777 );
-	}
+	/*
+	$args = array(
+		'taxonomy' => EB_BLOG_POST_LINK,
+	);
+	$categories = get_categories($args);
+	print_r( $categories );
+	*/
+	
+	// ép lưu cache
+//	_eb_get_static_html ( $strCacheFilter, date( 'r', $date_time ), '', 60 );
 }
 
-
-echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $using_js_file_name . '?v=' . date( 'ymd-Hi', date_time ) . '" async></script>';
+echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $cat_js_file_name . '?v=' . date( 'ymd-Hi', date_time ) . '" async></script>';
 /*
 echo '<script type="text/javascript" src="' . web_link . 'eb-load-quick-search" async></script>';
 */

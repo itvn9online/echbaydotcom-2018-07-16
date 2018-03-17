@@ -589,18 +589,20 @@ function EBE_add_js_compiler_in_cache (
 //	$file_name_cache .= '.js';
 	
 	// thêm khoảng thời gian lưu file
-	if ( date( 'i', date_time ) > 30 ) {
-		$file_show = $file_name_cache;
-		
-		// thêm ký tự phân biệt
-		$file_name_cache .= '_';
+	$current_server_minute = (int) substr( date( 'i', date_time ), 0, 1 );
+	// file dùng để hiển thị
+	$file_show = $file_name_cache;
+	// file để lưu cache
+	$file_name_cache = 'zjs-' . $file_name_cache . '-' . $current_server_minute . '.js';
+	
+	if ( $current_server_minute == 0 ) {
+		$current_server_minute = 5;
 	}
 	else {
-		$file_show = $file_name_cache . '_';
+		$current_server_minute = $current_server_minute - 1;
 	}
 	
-	$file_show = 'zjs-' . $file_show . '.js';
-	$file_name_cache = 'zjs-' . $file_name_cache . '.js';
+	$file_show = 'zjs-' . $file_show . '-' . $current_server_minute . '.js';
 	
 	
 	// nếu file có rồi -> nhúng luôn file
@@ -1261,19 +1263,20 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 //		$file_cache .= '.css';
 		
 		// thêm khoảng thời gian lưu file
-		if ( date( 'i', date_time ) > 30 ) {
-			$file_show = $file_cache;
-			
-			// thêm ký tự phân biệt
-			$file_cache .= '_';
+		$current_server_minute = (int) substr( date( 'i', date_time ), 0, 1 );
+		// file dùng để hiển thị
+		$file_show = $file_cache;
+		// file để lưu cache
+		$file_cache = 'zss-' . $file_cache . '-' . $current_server_minute . '.css';
+		
+		if ( $current_server_minute == 0 ) {
+			$current_server_minute = 5;
 		}
 		else {
-			// file show thì ngược lại với file cache -> đỡ bị lỗi nginx cho file mới tạo
-			$file_show = $file_cache . '_';
+			$current_server_minute = $current_server_minute - 1;
 		}
 		
-		$file_show = 'zss-' . $file_show . '.css';
-		$file_cache = 'zss-' . $file_cache . '.css';
+		$file_show = 'zss-' . $file_show . '-' . $current_server_minute . '.css';
 //		echo $file_cache . "\n";
 		
 		$file_save = EB_THEME_CACHE . $file_cache;
