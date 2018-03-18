@@ -532,13 +532,14 @@ a.eb-btn {
 	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
 	position: fixed;
 	right: 10px;
-	bottom: 45%;
 	display: none;
 	overflow: hidden;
 	text-align: center;
 	text-decoration: none;
 	z-index: 20;
 	border: 0 none;
+	top: 50%;
+	transform: translate(0, -50%);
 }
 #oi_scroll_top:hover { background: #ff7e00; }
 /* .ebfixed-top-menu #oi_scroll_top, */
@@ -1286,7 +1287,12 @@ color: #333;
 	font-size: 14px;
 	line-height: 28px;
 }
-.eb-quickcart-table select { padding: 3px; }
+.eb-quickcart-table select {
+	padding: 8px;
+	box-shadow: 0 0 8px #999;
+	cursor: pointer;
+	font-size: 15px;
+}
 .eb-quickcart-table input[type=text],
 .eb-quickcart-table textarea {
 	background: #f2f2f2;
@@ -1322,6 +1328,7 @@ button.btn-addto-cart {
 .eb-quickcart-right { float: left; }
 .eb-quickcart-left { width: 30%; }
 .eb-quickcart-right { width: 70%; }
+.eb-quickcart-quan .eb-quickcart-left { line-height: 36px; }
 /* thêm icon open youtube */
 .youtube-quick-view li .echbay-blog-avt { text-align: center; }
 .youtube-quick-view li .echbay-blog-avt:before {
