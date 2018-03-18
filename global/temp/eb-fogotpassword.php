@@ -5,7 +5,7 @@ if ( $mtv_id > 0 ) {
 ?>
 
 <div class="popup-border" style="display:none;">
-	<div class="clearfix opoup-title-bg">
+	<div class="cf opoup-title-bg default-bg">
 		<div class="lf f70 bold">Quên mật khẩu</div>
 		<div align="right" class="lf f30"><a onclick="g_func.opopup();" href="javascript:;">Đóng [x]</a></div>
 	</div>

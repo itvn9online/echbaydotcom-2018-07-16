@@ -1491,14 +1491,16 @@ a.search-advanced-btn {
 	border-radius: 5px;
 }
 #oi_popup_inner .opoup-title-bg {
-	background: #090;
+	/* background: #090; */
 	line-height: 40px;
 	padding: 0 10px;
 	border: 1px #fff solid;
 }
 #oi_popup_inner .opoup-title-bg strong { font-size: 16px; }
+/*
 #oi_popup_inner .opoup-title-bg,
 #oi_popup_inner .opoup-title-bg a { color: #fff; }
+*/
 #oi_popup_inner .popup-padding {
 	background: #fff;
 	padding: 15px 20px 50px 20px;
