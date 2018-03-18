@@ -2896,12 +2896,17 @@ setTimeout(function () {
 // chuyển các URL video thành dạng list video
 (function () {
 	$('.widget_echbay_youtube .img-max-width').each(function() {
-		var a = $(this).html() || '',
-			str = '',
-			wit = $(this).width(),
-			hai = wit * youtube_video_default_size;
+		var a = $(this).html() || ''
 		
 		if ( a != '' ) {
+			$(this).show();
+			
+			//
+		var str = '',
+			wit = $(this).width(),
+			hai = wit * youtube_video_default_size;
+			
+			//
 //			console.log(a);
 			a = a.split("\n");
 //			console.log(a);
@@ -2914,11 +2919,14 @@ setTimeout(function () {
 				}
 				
 				if ( a[i] != '' ) {
+					if ( cf_tester_mode == 1 ) console.log( 'Widget YouTube video: ' + a[i] );
+					
 					str += '<div class="widget_echbay_youtube-node"><iframe src="//www.youtube.com/embed/' + a[i] + '" allowfullscreen="" frameborder="0" height="' + hai + '" width="' + wit + '"></iframe></div>';
 				}
 			}
 			
-			$(this).show().html( str );
+			//
+			$(this).html( str );
 		}
 	});
 })();
