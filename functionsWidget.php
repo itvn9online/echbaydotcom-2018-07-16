@@ -824,7 +824,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		//
 		echo str_replace( '{tmp.blog_link_option}', $blog_link_option, EBE_dynamic_title_tag( EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_link' => $cat_link == '' ? 'javascript:;' : $cat_link,
-//				'tmp.blog_link_option' => $blog_link_option,
+//			'tmp.blog_link_option' => $blog_link_option,
 			'tmp.more_link' => $more_link,
 			'tmp.num_line' => $num_line,
 			'tmp.max_width' => $max_width,
@@ -845,7 +845,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 
 
 
-function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value ) {
+function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $taxonomy ) {
 	
 	//
 	$instance = wp_parse_args ( ( array ) $instance, $default );
@@ -859,7 +859,7 @@ function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value ) {
 
 	$categories = get_categories( array(
 		'hide_empty' => 0,
-		'taxonomy' => EB_BLOG_POST_LINK,
+		'taxonomy' => $taxonomy,
 		'parent' => 0
 	) );
 //	print_r( $categories );

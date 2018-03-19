@@ -11,110 +11,14 @@ class ___echbay_widget_home_list_content extends WP_Widget {
 	}
 	
 	function form($instance) {
+		$default = WGR_default_for_home_list_and_blog ();
 		
-		//
-		$default = array (
-			'num_line' => '',
-			'post_number' => 0,
-			'cat_ids' => '',
-			'post_cloumn' => '',
-			'hide_title' => '',
-			'hide_description' => '',
-			'hide_info' => '',
-			'custom_style' => ''
-		);
-		$instance = wp_parse_args ( ( array ) $instance, $default );
-		foreach ( $instance as $k => $v ) {
-			$$k = esc_attr ( $v );
+		$this_value = array();
+		foreach ( $default as $k => $v ) {
+			$this_value[$k] = $this->get_field_name ( $k );
 		}
 		
-		
-		
-		echo '<p>Mặc định sẽ hiển thị toàn bộ danh sách sản phẩm theo nhóm cấp 1. Nếu muốn chủ động hiển thị nhóm theo ý muốn, hãy chọn ở dưới:</p>';
-
-		$categories = get_categories( array(
-			'hide_empty' => 0,
-			'parent' => 0
-		) );
-//		print_r( $categories );
-		
-		$id_for = '_' . md5( rand( 0, 10000 ) );
-		
-		echo '<div id="' . $id_for . '" class="div-widget-home_list">';
-		
-		
-		echo '<p class="d-none"><input type="text" class="widefat" data-name="' . $id_for . '" name="' . $this->get_field_name ( 'cat_ids' ) . '" value="' . $cat_ids . '" /></p>';
-		
-		
-		//
-		echo '<ul class="ul-widget-home_list">';
-		foreach ( $categories as $v ) {
-			echo '<li style="order:' . (int) _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 ) . '">';
-			
-			echo '<label for="' . $id_for . $v->term_id . '" class="category-for-home_list"><input type="checkbox" id="' . $id_for . $v->term_id . '" data-id="' . $v->term_id . '" data-class="' . $id_for . '" class="click-get-category-id-home_list" /> <strong>' . $v->name . ' (' . $v->count . ')</strong></label>';
-			
-			// lấy nhóm con (nếu có)
-			$sub_cat = get_categories( array(
-				'hide_empty' => 0,
-				'taxonomy' => $v->taxonomy,
-				'parent' => $v->term_id
-			) );
-//			print_r( $sub_cat );
-			foreach ( $sub_cat as $v2 ) {
-				echo '<label for="' . $id_for . $v2->term_id . '" class="category-for-home_list"><input type="checkbox" id="' . $id_for . $v2->term_id . '" data-id="' . $v2->term_id . '" data-class="' . $id_for . '" class="click-get-category-id-home_list" /> <span>' . $v2->name . ' (' . $v2->count . ')</span></label>';
-				
-				//
-				$sub3_cat = get_categories( array(
-					'hide_empty' => 0,
-					'taxonomy' => $v2->taxonomy,
-					'parent' => $v2->term_id
-				) );
-//				print_r( $sub3_cat );
-				foreach ( $sub3_cat as $v3 ) {
-					echo '<label for="' . $id_for . $v3->term_id . '" class="category-for-home_list"><input type="checkbox" id="' . $id_for . $v3->term_id . '" data-id="' . $v3->term_id . '" data-class="' . $id_for . '" class="click-get-category-id-home_list" /> <em>' . $v3->name . ' (' . $v3->count . ')</em></label>';
-				}
-			}
-			
-			echo '</li>';
-		}
-		echo '</ul>';
-		
-		echo '</div>';
-		
-		echo '<script>WGR_category_for_home_list("' . $id_for . '", 1);</script>';
-		
-		
-		//
-		_eb_widget_echo_number_of_posts_to_show( $this->get_field_name('post_number'), $post_number );
-		
-		
-		//
-		_eb_widget_number_of_posts_inline( $this->get_field_name('num_line'), $num_line );
-		
-		
-		//
-		_eb_widget_style_for_post_cloumn( $this->get_field_name( 'post_cloumn' ), $post_cloumn );
-		
-		
-		//
-		$input_name = $this->get_field_name( 'hide_title' );
-		
-		_eb_widget_echo_widget_input_checkbox( $input_name, $hide_title, 'Ẩn tiêu đề của bài viết.' );
-		
-		//
-		$input_name = $this->get_field_name( 'hide_description' );
-		
-		_eb_widget_echo_widget_input_checkbox( $input_name, $hide_description, 'Ẩn tóm tắt của bài viết.' );
-		
-		//
-		$input_name = $this->get_field_name( 'hide_info' );
-		
-		_eb_widget_echo_widget_input_checkbox( $input_name, $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
-		
-		
-		//
-		echo '<p><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $this->get_field_name('custom_style') . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng.</p>';
-		
+		WGR_phom_for_home_list_and_blog( $instance, $default, $this_value );
 	}
 	
 	function update($new_instance, $old_instance) {
