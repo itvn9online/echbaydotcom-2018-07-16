@@ -845,7 +845,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 
 
 
-function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $taxonomy ) {
+function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $taxonomy = 'category' ) {
 	
 	//
 	$instance = wp_parse_args ( ( array ) $instance, $default );
