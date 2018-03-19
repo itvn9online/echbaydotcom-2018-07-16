@@ -6,7 +6,7 @@
 class ___echbay_widget_home_list_content extends WP_Widget {
 	function __construct() {
 		parent::__construct ( 'random_home_list', 'EchBay home list', array (
-				'description' => 'Danh sách Sản phẩm theo toàn bộ Phân nhóm ở trang chủ' 
+				'description' => 'Danh sách sản phẩm cho toàn bộ phân nhóm ở trang chủ' 
 		) );
 	}
 	

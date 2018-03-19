@@ -948,7 +948,7 @@ function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value ) {
 function WGR_default_for_home_list_and_blog () {
 	return array (
 		'num_line' => '',
-		'post_number' => 0,
+		'post_number' => 5,
 		'cat_ids' => '',
 		'post_cloumn' => '',
 		'hide_title' => '',

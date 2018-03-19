@@ -90,6 +90,7 @@ function ___add_echbay_widget() {
 
 
 
+
 // Hiển thị thêm title cho widget để dễ phân biệt
 function WGR_show_widget_name_by_title () {
 	echo '<script type="text/javascript">
