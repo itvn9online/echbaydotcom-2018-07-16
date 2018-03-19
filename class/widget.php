@@ -15,6 +15,7 @@ include EB_THEME_CORE . 'widget/blog.php';
 include EB_THEME_CORE . 'widget/home_product.php';
 include EB_THEME_CORE . 'widget/home_hot.php';
 include EB_THEME_CORE . 'widget/home_list.php';
+include EB_THEME_CORE . 'widget/home_list_blog.php';
 //include EB_THEME_CORE . 'widget/search_advanced.php';
 include EB_THEME_CORE . 'widget/categories.php';
 include EB_THEME_CORE . 'widget/price.php';
@@ -60,6 +61,7 @@ function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_home_hot_content' );
 	register_widget ( '___echbay_widget_home_list_content' );
+	register_widget ( '___echbay_widget_home_list_blog' );
 	
 	//
 	register_widget ( '___echbay_widget_get_menu' );

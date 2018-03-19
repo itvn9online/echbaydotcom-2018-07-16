@@ -1,5 +1,6 @@
 <hr>
 <p>Mọi hướng dẫn cũng như các bản cập nhật mới nhất sẽ được giới thiệu tại liên kết này: <a href="https://github.com/itvn9online/echbaydotcom" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom</a></p>
+<p>Lịch sử chi tiết các cập nhật sẽ được liệt kê tại đây: <a href="https://github.com/itvn9online/echbaydotcom/commits/master" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom/commits/master</a></p>
 <!-- <h1>Cập nhật bộ plugin tổng của EchBay.com (webgiare.org)</h1> -->
 <?php
 
