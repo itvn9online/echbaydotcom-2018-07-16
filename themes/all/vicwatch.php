@@ -23,6 +23,6 @@ $eb_all_themes_support["vicwatch"]["footer"][] = "vicwatch-footer1.php";
 $eb_all_themes_support["vicwatch"]["footer"][] = "vicwatch-footer2.php";
 $eb_all_themes_support["vicwatch"]["footer"][] = "echbaytwo-footer3.php";
 //
-//$eb_all_themes_support["vicwatch"]["cf_threaddetails_include_file"] = "vicwatch-threaddetails.html";
+$eb_all_themes_support["vicwatch"]["cf_threaddetails_include_file"] = "erawatchV1-threaddetails.html";
 //
 $eb_all_themes_support["vicwatch"]["cf_threadnode_include_file"] = "vicwatch-threadnode.html";

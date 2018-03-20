@@ -192,6 +192,10 @@ function create_deault_css () {
 	a = f.cf_default_body_bg.value;
 	str += 'body { background-color: ' + a + '; }';
 	
+	// DIV bg default
+	a = f.cf_default_div_bg.value;
+	str += '.default-div-bg { background-color: ' + a + '; }';
+	
 	// text color
 	a = f.cf_default_color.value;
 	str += '.default-color, .mcb { color: ' + a + '; }';
@@ -208,7 +212,7 @@ function create_deault_css () {
 	
 	// button, menu 2
 	a = f.cf_default_2bg.value;
-	str += '.default-2bg, #oi_scroll_top:hover { background-color: ' + a + '; }';
+	str += '.default-2bg, .default2-bg, #oi_scroll_top:hover { background-color: ' + a + '; }';
 	
 	// text color (button, menu)
 	a = f.cf_default_bg_color.value;

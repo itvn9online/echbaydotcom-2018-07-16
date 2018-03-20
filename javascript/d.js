@@ -2180,6 +2180,50 @@ $('a.gg-phone-conversion').click(function () {
 
 
 
+function WGR_show_or_hide_to_top () {
+	var new_scroll_top = window.scrollY || $(window).scrollTop();
+	
+	//
+	/*
+	if ( didScroll == true ) {
+		didScroll = false;
+		*/
+	if (new_scroll_top > 120) {
+		$('body').addClass('ebfixed-top-menu');
+		
+		//
+		if (new_scroll_top > 500) {
+//		if ( new_scroll_top < old_scroll_top ) {
+			$('body').addClass('ebshow-top-scroll');
+			
+			//
+			_global_js_eb.ebBgLazzyLoad(new_scroll_top);
+		}
+		else {
+			$('body').removeClass('ebshow-top-scroll');
+		}
+	} else {
+		$('body').removeClass('ebfixed-top-menu').removeClass('ebshow-top-scroll');
+	}
+	/*
+	clearTimeout( set_old_scroll_top );
+	set_old_scroll_top = setTimeout(function () {
+//		old_scroll_top = new_scroll_top;
+		didScroll = true;
+	}, 200);
+//	}
+*/
+	
+	/*
+	if (new_scroll_top > 500) {
+//		$('#oi_scroll_top').show();
+		
+		_global_js_eb.ebBgLazzyLoad(new_scroll_top);
+//	} else {
+//		$('#oi_scroll_top').hide();
+	}
+	*/
+}
 
 
 
@@ -2206,9 +2250,11 @@ setTimeout(function () {
 
 
 
+/*
 var old_scroll_top = 0,
 	set_old_scroll_top = null,
 	didScroll = true;
+*/
 $(window).resize(function() {
 	/*
 	if ($(window).width() > 1240) {
@@ -2243,49 +2289,13 @@ $(window).resize(function() {
 		});
 	}).removeAttr('width').removeAttr('height');
 	*/
-});
 //}).scroll(function() {
+//	WGR_show_or_hide_to_top();
+});
+
+//
 setInterval(function () {
-	var new_scroll_top = window.scrollY || $(window).scrollTop();
-	
-	//
-	/*
-	if ( didScroll == true ) {
-		didScroll = false;
-		*/
-	if (new_scroll_top > 120) {
-		$('body').addClass('ebfixed-top-menu');
-		
-		//
-		if (new_scroll_top > 500) {
-//		if ( new_scroll_top < old_scroll_top ) {
-			$('body').addClass('ebshow-top-scroll');
-		}
-		else {
-			$('body').removeClass('ebshow-top-scroll');
-		}
-	} else {
-		$('body').removeClass('ebfixed-top-menu').removeClass('ebshow-top-scroll');
-	}
-	/*
-	clearTimeout( set_old_scroll_top );
-	set_old_scroll_top = setTimeout(function () {
-//		old_scroll_top = new_scroll_top;
-		didScroll = true;
-	}, 200);
-//	}
-*/
-	
-	if (new_scroll_top > 500) {
-//		$('#oi_scroll_top').show();
-		
-		_global_js_eb.ebBgLazzyLoad(new_scroll_top);
-		/*
-	} else {
-		$('#oi_scroll_top').hide();
-		*/
-	}
-//});
+	WGR_show_or_hide_to_top();
 }, 250);
 
 
