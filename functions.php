@@ -4,7 +4,7 @@
 
 
 // lấy sản phẩm theo mẫu chung
-function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_tai = 'category' ) {
+function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_tai = 'category', $other_options = array() ) {
 	global $__cf_row;
 	global $wpdb;
 	global $eb_background_for_post;
@@ -96,14 +96,19 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			$ads_id = $post->ID;
 		}
 		
-		//
-//		if ( $post->post_type == 'blog' && $post->post_excerpt == '' ) {
-		if ( $post->post_excerpt == '' ) {
+		// nếu có lệnh lấy full nội dung -> lấy luôn
+		if ( isset( $other_options['get_full_content'] ) && $other_options['get_full_content'] == 1 ) {
+			$post->post_excerpt = $post->post_content;
+		}
+//		else if ( $post->post_type == 'blog' && $post->post_excerpt == '' ) {
+		else if ( $post->post_excerpt == '' ) {
 			$post->post_excerpt = _eb_short_string( strip_tags ( $post->post_content ), 130 );
 		}
 		
 		//
 		$post->p_link = _eb_p_link( $post->ID );
+		
+		
 		
 		// blog
 		if ( $post->post_type == EB_BLOG_POST_TYPE ) {
@@ -136,6 +141,45 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			
 			// tags
 			$arr_list_tag = get_the_tags( $post->ID );
+			
+			
+			
+			// các thuộc tính chỉ ở sản phẩm mới có
+			$post->trv_masanpham = _eb_get_post_object( $post->ID, '_eb_product_sku', $post->ID );
+			
+			$post->trv_mua = (int) _eb_get_post_object( $post->ID, '_eb_product_buyer', 0 );
+			
+			//
+			$post->trv_giaban = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_oldprice', 0 ) );
+			$post->trv_num_giacu = $post->trv_giaban;
+			
+			$post->trv_giamoi = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_price', 0 ) );
+			$post->trv_num_giamoi = $post->trv_giamoi;
+			
+			//
+			$post->trv_color_count = 1;
+			
+			$post->cf_product_size = $__cf_row['cf_product_size'];
+			$post->cf_blog_size = $__cf_row['cf_blog_size'];
+			
+			$post->trv_trangthai = 1;
+//			$post->trv_ngayhethan = date_time;
+			$post->trv_ngayhethan = '';
+			
+			
+			
+			//
+			$post->pt = 0;
+			if ( $post->trv_giaban > $post->trv_giamoi ) {
+				$post->pt = 100 - _eb_float_only( $post->trv_giamoi * 100 / $post->trv_giaban, 1 );
+			}
+			
+			//
+			$post->trv_giaban = EBE_add_ebe_currency_class( $post->trv_giaban, 1, '&nbsp;' );
+			
+			$post->trv_giamoi = EBE_add_ebe_currency_class( $post->trv_giamoi );
+			
+			$post->product_status = _eb_get_post_object( $post->ID, '_eb_product_status', $post->post_status );
 			
 		}
 		
@@ -185,7 +229,6 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 //	$post->p_link = $post->guid;
 	$post->trv_tieude = $post->post_title;
 	$post->trv_id = $post->ID;
-	$post->trv_masanpham = _eb_get_post_object( $post->ID, '_eb_product_sku', $post->ID );
 	$post->trv_gioithieu = nl2br( $post->post_excerpt );
 	
 	//
@@ -194,72 +237,38 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 //	$post->ngaycapnhat = date( 'd/m/Y', $post_time );
 	$post->ngaycapnhat = date( $__cf_row['cf_date_format'], $post_time );
 	$post->ngaycapnhats = $post->ngaycapnhat . ' ' . date( $__cf_row['cf_time_format'], $post_time );
-	
-	$post->trv_mua = (int) _eb_get_post_object( $post->ID, '_eb_product_buyer', 0 );
-	
-	//
-	$post->trv_giaban = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_oldprice', 0 ) );
-	$post->trv_num_giacu = $post->trv_giaban;
-	
-	$post->trv_giamoi = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_price', 0 ) );
-	$post->trv_num_giamoi = $post->trv_giamoi;
-	
-	//
-	$post->trv_color_count = 1;
-	
-	$post->cf_product_size = $__cf_row['cf_product_size'];
-	$post->cf_blog_size = $__cf_row['cf_blog_size'];
-	
-	$post->trv_trangthai = 1;
-//	$post->trv_ngayhethan = date_time;
-	$post->trv_ngayhethan = '';
-	
-	
-	
-	//
-	$post->pt = 0;
-	if ( $post->trv_giaban > $post->trv_giamoi ) {
-		$post->pt = 100 - _eb_float_only( $post->trv_giamoi * 100 / $post->trv_giaban, 1 );
-	}
-	
-	//
-	$post->trv_giaban = EBE_add_ebe_currency_class( $post->trv_giaban, 1, '&nbsp;' );
-	
-	$post->trv_giamoi = EBE_add_ebe_currency_class( $post->trv_giamoi );
-	
-	$post->product_status = _eb_get_post_object( $post->ID, '_eb_product_status', $post->post_status );
-	
-	
-	// load ảnh đại diện cho phần quảng cáo
-	// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
-	if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
-		$post->trv_table_img = $post->trv_img;
-	} else {
-		$post->trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
-	}
-	
-	if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
-		$post->trv_mobile_img = $post->trv_table_img;
-	} else {
-		$post->trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
-	}
-	
-	
-	//
-//	$html = EBE_dynamic_title_tag( $html );
-	
-	//
-	/*
-	if ( $post->trv_mobile_img != '' ) {
-		$post->trv_mobile_img = 'background-image:url(' . $post->trv_mobile_img . ')!important';
-	}
-	if ( $post->trv_img != '' ) {
-		$post->trv_img = 'background-image:url(' . $post->trv_img . ')!important';
-	}
-	$eb_background_for_post['p' . $post->ID] = '.ebp' . $post->ID . 'm{' . $post->trv_mobile_img . '}.ebp' . $post->ID . '{' . $post->trv_img . '}';
-	$post->trv_img = 'speed';
-	$post->trv_mobile_img = 'ebp' . $post->ID;
-	*/
+			
+			
+			// load ảnh đại diện cho phần quảng cáo
+			// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
+			if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
+				$post->trv_table_img = $post->trv_img;
+			} else {
+				$post->trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
+			}
+			
+			if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
+				$post->trv_mobile_img = $post->trv_table_img;
+			} else {
+				$post->trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
+			}
+			
+			
+			//
+//			$html = EBE_dynamic_title_tag( $html );
+			
+			//
+			/*
+			if ( $post->trv_mobile_img != '' ) {
+				$post->trv_mobile_img = 'background-image:url(' . $post->trv_mobile_img . ')!important';
+			}
+			if ( $post->trv_img != '' ) {
+				$post->trv_img = 'background-image:url(' . $post->trv_img . ')!important';
+			}
+			$eb_background_for_post['p' . $post->ID] = '.ebp' . $post->ID . 'm{' . $post->trv_mobile_img . '}.ebp' . $post->ID . '{' . $post->trv_img . '}';
+			$post->trv_img = 'speed';
+			$post->trv_mobile_img = 'ebp' . $post->ID;
+			*/
 	
 	//
 	return EBE_arr_tmp( $post, $html );

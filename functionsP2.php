@@ -197,7 +197,7 @@ function _eb_load_order_v1 ( $posts_per_page = 68, $_eb_query = array() ) {
 * html: mặc định là sử dụng HTML của theme, file thread_node.html, nếu muốn sử dụng HTML riêng thì truyền giá trị HTML mới vào
 * not_set_not_in: mặc định là lọc các sản phẩm trùng lặp trên mỗi trang, nếu để bằng 1, sẽ bỏ qua chế độ lọc -> chấp nhận lấy trùng
 */
-function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __eb_thread_template, $not_set_not_in = 0 ) {
+function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __eb_thread_template, $not_set_not_in = 0, $other_options = array() ) {
 	global $___eb_post__not_in;
 //	echo 'POST NOT IN: ' . $___eb_post__not_in . '<br>' . "\n";
 	
@@ -217,6 +217,11 @@ function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __e
 //	}
 	
 	//
+	if ( ! isset( $other_options['pot_tai'] ) ) {
+		$other_options['pot_tai'] = 'category';
+	}
+	
+	//
 	$str = '';
 	
 	//
@@ -231,7 +236,7 @@ function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __e
 		}
 		
 		//
-		$str .= EBE_select_thread_list_all( $sql->post, $html );
+		$str .= EBE_select_thread_list_all( $sql->post, $html, $other_options['pot_tai'], $other_options );
 		
 	}
 	

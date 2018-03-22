@@ -736,7 +736,9 @@ a.eb-btn {
 	content: "|";
 	margin: 0 12px;
 }
+.right-space-menu,
 .right-menu-space { padding-right: 25px; }
+.left-space-menu,
 .left-menu-space { padding-left: 25px; }
 .table-list {
 	background: #fff;

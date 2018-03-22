@@ -74,29 +74,31 @@
 					<div class="lf f38 fullsize-if-mobile">
 						<div class="cart-table-title upper bold medium">Hình thức thanh toán</div>
 						<div class="cart-pay-method">
-							<div>
+							<div class="cart-paymethod-tt">
 								<input id="cart_tt_tructiep" type="radio" name="t_thanhtoan" value="tructiep" checked>
 								<label for="cart_tt_tructiep">Thanh toán trực tiếp tại cửa hàng</label>
 							</div>
-							<div>
+							<div class="cart-paymethod-cod">
 								<input id="cart_tt_cod" type="radio" name="t_thanhtoan" value="cod">
 								<label for="cart_tt_cod">Thanh toán khi nhận hàng (COD)</label>
 							</div>
-							<div>
+							<div class="cart-paymethod-ib">
 								<input id="cart_tt_bank" type="radio" name="t_thanhtoan" value="bank">
 								<label for="cart_tt_bank">Thanh toán trực tuyến qua ngân hàng</label>
 							</div>
-							<div class="show-if-pay-baokim d-none">
-								<input id="cart_tt_bk" type="radio" name="t_thanhtoan" value="bk">
-								<label for="cart_tt_bk">Thanh toán trực tuyến qua Bảo Kim</label>
-							</div>
-							<div class="show-if-pay-nganluong d-none">
-								<input id="cart_tt_nl" type="radio" name="t_thanhtoan" value="nl">
-								<label for="cart_tt_nl">Thanh toán trực tuyến qua Ngân Lượng</label>
-							</div>
-							<div class="show-if-pay-paypal d-none">
-								<input id="cart_tt_pp" type="radio" name="t_thanhtoan" value="pp">
-								<label for="cart_tt_pp">Thanh toán trực tuyến qua Paypal</label>
+							<div class="cart-paymethod-paygate d-none">
+								<div class="show-if-pay-baokim d-none">
+									<input id="cart_tt_bk" type="radio" name="t_thanhtoan" value="bk">
+									<label for="cart_tt_bk">Thanh toán trực tuyến qua Bảo Kim</label>
+								</div>
+								<div class="show-if-pay-nganluong d-none">
+									<input id="cart_tt_nl" type="radio" name="t_thanhtoan" value="nl">
+									<label for="cart_tt_nl">Thanh toán trực tuyến qua Ngân Lượng</label>
+								</div>
+								<div class="show-if-pay-paypal d-none">
+									<input id="cart_tt_pp" type="radio" name="t_thanhtoan" value="pp">
+									<label for="cart_tt_pp">Thanh toán trực tuyến qua Paypal</label>
+								</div>
 							</div>
 						</div>
 						<hr>

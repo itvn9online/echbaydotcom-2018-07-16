@@ -185,6 +185,11 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	//
 	echo '<p><strong>Mô tả</strong>: <textarea class="widefat" name="' . $field_name['description'] . '">' . $description . '</textarea></p>';
 	
+	//
+	$input_name = $field_name[ 'get_full_content' ];
+	
+	_eb_widget_echo_widget_input_checkbox( $input_name, $get_full_content, 'Lấy Nội dung bài viết thay vì lấy Mô tả.' );
+	
 	
 	//
 	echo '<p><strong>Định dạng bài viết</strong>: ';

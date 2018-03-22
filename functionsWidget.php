@@ -9,6 +9,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'hide_widget_title' => 0,
 		'dynamic_tag' => 'div',
 		'description' => '',
+		'get_full_content' => 0,
 		'content_only' => 0,
 		'sortby' => 'menu_order',
 		'num_line' => '',
@@ -381,6 +382,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //	$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : EB_BLOG_POST_LINK;
 	$get_childs = isset( $instance ['get_childs'] ) ? $instance ['get_childs'] : 'off';
 	
+	$get_full_content = isset( $instance ['get_full_content'] ) ? $instance ['get_full_content'] : 'off';
 	$content_only = isset( $instance ['content_only'] ) ? $instance ['content_only'] : 'off';
 	
 	$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
@@ -706,35 +708,6 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		}
 	}
 	
-	// load riêng 1 kiểu đối với ads
-	/*
-	if ( $post_type == 'ads' ) {
-		$content = _eb_load_post( $post_number, $arr_select_data,
-		$html_node );
-	}
-	// mặc định thì load theo post
-	else {
-		*/
-		$content = _eb_load_post( $post_number, $arr_select_data,
-//			), file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/blog_node.html', 1 ) );
-//			), EBE_get_page_template( 'blog_node' ) );
-//			), EBE_get_page_template( $html_node ) );
-		$html_node );
-		
-		// nếu không có dữ liệu -> in ra dữ liệu để test
-		if ( $content == '' ) {
-			echo '<!-- ';
-			
-			global $___eb_post__not_in;
-			
-			echo $___eb_post__not_in . '<br>' . "\n";
-			
-			print_r( $arr_select_data );
-			
-			echo ' -->';
-		}
-//		}
-	
 	
 	
 	//
@@ -806,6 +779,41 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	}
 	// mặc định
 	else {
+		
+		// load riêng 1 kiểu đối với ads
+		/*
+		if ( $post_type == 'ads' ) {
+			$content = _eb_load_post( $post_number, $arr_select_data,
+			$html_node );
+		}
+		// mặc định thì load theo post
+		else {
+			*/
+			$content = _eb_load_post( $post_number, $arr_select_data,
+	//			), file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/blog_node.html', 1 ) );
+	//			), EBE_get_page_template( 'blog_node' ) );
+	//			), EBE_get_page_template( $html_node ) );
+			$html_node, 0, array(
+				'pot_tai' => $cat_type,
+				'get_full_content' => $get_full_content == 'on' ? 1 : 0
+			) );
+			
+			// nếu không có dữ liệu -> in ra dữ liệu để test
+			if ( $content == '' ) {
+				echo '<!-- ';
+				
+				global $___eb_post__not_in;
+				
+				echo $___eb_post__not_in . '<br>' . "\n";
+				
+				print_r( $arr_select_data );
+				
+				echo ' -->';
+			}
+	//	}
+		
+		
+		
 		// thiết lập rel cho link
 		$blog_link_option = '';
 		if ( $rel_xfn != '' ) {
