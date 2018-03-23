@@ -1,14 +1,14 @@
 <article class="amp-wp-article">
 	<footer class="amp-wp-article-footer">
-		<div class="amp-wp-meta amp-wp-tax-category"><a href="<?php echo web_link; ?>">Trang chủ</a> <?php echo $amp_str_go_to; ?> </div>
+		<div class="amp-wp-meta amp-wp-tax-category"><a href="<?php echo web_link; ?>"><?php echo EBE_get_lang('home'); ?></a> <?php echo $amp_str_go_to; ?> </div>
 	</footer>
 </article>
 <footer class="amp-wp-footer">
 	<div>
-		<p>&copy; Copyright <?php echo $year_curent; ?> <?php echo web_name; ?>. All rights reserved - <a href="http://echbay.com/" target="_blank" rel="nofollow">AMP by EchBay</a></p>
-		<a href="#top" class="back-to-top">Về đầu trang</a></div>
+		<p>&copy; Copyright <?php echo $year_curent; ?> <?php echo web_name; ?>. <?php echo EBE_get_lang('amp_all_rights'); ?> - <a href="https://echbay.com/" target="_blank" rel="nofollow">AMP by EchBay</a></p>
+		<a href="#top" class="back-to-top"><?php echo EBE_get_lang('amp_to_top'); ?></a></div>
 </footer>
-<div class="amp-wp-comments-link"><a href="<?php echo $url_og_url; ?>">Xem phiên bản đầy đủ</a></div>
+<div class="amp-wp-comments-link"><a href="<?php echo $url_og_url; ?>"><?php echo EBE_get_lang('amp_full_version'); ?></a></div>
 <br>
 <?php
 if ( $__cf_row['cf_ga_id'] != '' ) {

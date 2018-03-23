@@ -174,6 +174,12 @@ $___eb_lang[eb_key_for_site_lang . 'qreg_email'] = 'Email';
 $___eb_lang[eb_key_for_site_lang . 'qreg_submit'] = 'Gửi';
 
 
+// AMP
+$___eb_lang[eb_key_for_site_lang . 'amp_full_version'] = 'Xem phiên bản đầy đủ';
+$___eb_lang[eb_key_for_site_lang . 'amp_to_top'] = 'Về đầu trang';
+$___eb_lang[eb_key_for_site_lang . 'amp_all_rights'] = 'All rights reserved';
+
+
 
 
 /*
