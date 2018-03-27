@@ -296,7 +296,7 @@ function EBE_dynamic_title_tag ( $html ) {
 	// tạo thẻ đóng
 	$html = str_replace( 'dynamic_title_tag>', $__cf_row['cf_threadnode_title_tag'] . '>', $html );
 	// tạo thẻ mở
-	$html = str_replace( '<dynamic_title_tag', '<' . $__cf_row['cf_threadnode_title_tag'], $html );
+	$html = str_replace( '<dynamic_title_tag dynamic-title-tag=""', '<' . $__cf_row['cf_threadnode_title_tag'], $html );
 	
 	return $html;
 }

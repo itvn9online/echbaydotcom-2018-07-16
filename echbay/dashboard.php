@@ -219,6 +219,14 @@ if ( $__cf_row['cf_on_off_wpcron'] != 0 ) {
 
 
 
+// nếu EchBay SEO không được bật -> sẽ kiểm tra các Plugin khác
+if ( $__cf_row['cf_on_off_echbay_seo'] == 0 ) {
+	$str_eb_warning .= '
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: chức năng <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_echbay_seo" target="_blank"><strong>EchBay SEO plugin</strong></a> đang bị tắt. Một website thì không thể thiếu SEO, hãy đảm bảo bạn đã có plugin SEO khác để thay thế. Ví dụ: Yoast SEO, SEO Ultimate...</div>';
+}
+
+
+
 
 //
 if ( $str_eb_warning != '' ) {

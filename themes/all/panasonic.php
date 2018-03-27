@@ -17,9 +17,9 @@ $eb_all_themes_support[$eb_all_themes_name]["price"] = 2000000;
 $eb_all_themes_support[$eb_all_themes_name]["top"][] = "panasonic-top1.php";
 $eb_all_themes_support[$eb_all_themes_name]["top"][] = "top_widget.php";
 // Banner tràn màn hình
-$eb_all_themes_support[$eb_all_themes_name]["top"][] = "bigbanner-top1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["top"][] = "bigbanner-top1.php";
 // Banner bo gọn trong khung
-//$eb_all_themes_support[$eb_all_themes_name]["top"][] = "bigbannerFixed-top1.php";
+$eb_all_themes_support[$eb_all_themes_name]["top"][] = "bigbannerFixed-top1.php";
 // breadcrumb tràn màn hình
 //$eb_all_themes_support[$eb_all_themes_name]["top"][] = "breadcrumb-top1.php";
 // breadcrumb gọn trong khung
