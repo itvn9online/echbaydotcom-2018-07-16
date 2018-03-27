@@ -161,7 +161,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_widget_title, 'Ẩn tiêu đề widget.' );
 	
 	//
-	echo '<p><strong>HTML tag cho tiêu đề</strong>: ';
+	echo '<p><strong>HTML tag cho Tiêu đề</strong>: ';
 	
 	__eb_widget_load_select(
 		array(
@@ -177,6 +177,27 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 		),
 		 $field_name['dynamic_tag'],
 		$dynamic_tag
+	);
+	
+	echo '</p>';
+	
+	//
+	echo '<p><strong>HTML tag cho Tên bài viết</strong>: ';
+	
+	__eb_widget_load_select(
+		array(
+			'' => '[ Trống ]',
+			'div' => 'DIV',
+			'p' => 'P',
+//			'li' => 'LI',
+			'h2' => 'H2',
+			'h3' => 'H3',
+			'h4' => 'H4',
+			'h5' => 'H5',
+			'h6' => 'H6'
+		),
+		 $field_name['dynamic_post_tag'],
+		$dynamic_post_tag
 	);
 	
 	echo '</p>';

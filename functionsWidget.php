@@ -8,6 +8,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'title' => 'EchBay Widget for product',
 		'hide_widget_title' => 0,
 		'dynamic_tag' => 'div',
+		'dynamic_post_tag' => '',
 		'description' => '',
 		'get_full_content' => 0,
 		'content_only' => 0,
@@ -62,6 +63,7 @@ function WGR_widget_home_hot ( $instance ) {
 //	$title = apply_filters ( 'widget_title', $instance ['title'] );
 	$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
 	$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : 'div';
+	$dynamic_post_tag = isset( $instance ['dynamic_post_tag'] ) ? $instance ['dynamic_post_tag'] : '';
 	$description = isset( $instance ['description'] ) ? $instance ['description'] : '';
 	$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
 	if ( $post_number == 0 ) $post_number = 5;
@@ -214,7 +216,11 @@ function WGR_widget_home_hot ( $instance ) {
 	
 	
 //	echo EBE_html_template( EBE_get_page_template( $html_template ), array(
-	echo WGR_show_home_hot( $arr_for_template, $html_template );
+	$show_content = WGR_show_home_hot( $arr_for_template, $html_template );
+	
+	$show_content = EBE_dynamic_title_tag( $show_content, $dynamic_post_tag );
+	
+	echo $show_content;
 	
 	echo '</div>';
 	
@@ -223,7 +229,7 @@ function WGR_widget_home_hot ( $instance ) {
 
 // hiển thị phần home hot theo chuẩn nhất định
 function WGR_show_home_hot ( $arr, $tmp = 'home_hot' ) {
-	global $__cf_row;
+//	global $__cf_row;
 	
 	//
 //	print_r($arr);
@@ -373,6 +379,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //	$title = apply_filters ( 'widget_title', $instance ['title'] );
 	$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
 	$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';
+	$dynamic_post_tag = isset( $instance ['dynamic_post_tag'] ) ? $instance ['dynamic_post_tag'] : '';
 	$description = isset( $instance ['description'] ) ? $instance ['description'] : '';
 	$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 0;
 	
@@ -830,7 +837,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //		echo $blog_link_option . 'aaaaaaaaaaaaaaa';
 		
 		//
-		echo str_replace( '{tmp.blog_link_option}', $blog_link_option, EBE_dynamic_title_tag( EBE_html_template( EBE_get_page_template( $html_template ), array(
+		$show_content = EBE_html_template( EBE_get_page_template( $html_template ), array(
 			'tmp.cat_link' => $cat_link == '' ? 'javascript:;' : $cat_link,
 //			'tmp.blog_link_option' => $blog_link_option,
 			'tmp.more_link' => $more_link,
@@ -841,7 +848,16 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 			'tmp.widget_title' => $widget_title,
 			'tmp.str_sub_cat' => $str_sub_cat,
 			'tmp.content' => $content
-		) ) ) );
+		) );
+		
+		// tạo tag động cho tiêu đề
+		$show_content = EBE_dynamic_title_tag( $show_content, $dynamic_post_tag );
+		
+		// thay thế link
+		$show_content = str_replace( '{tmp.blog_link_option}', $blog_link_option, $show_content );
+		
+		// hiển thị nội dung
+		echo $show_content;
 	}
 	
 	echo '</div>';

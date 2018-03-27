@@ -290,13 +290,18 @@ function WGR_get_taxonomy_parent ( $arr ) {
 
 
 // tạo thẻ động cho phần tiêu đề sản phẩm, blog
-function EBE_dynamic_title_tag ( $html ) {
-	global $__cf_row;
+function EBE_dynamic_title_tag ( $html, $tag = '' ) {
+	// lấy tag mặc định
+	if ( $tag == '' ) {
+		global $__cf_row;
+		
+		$tag = $__cf_row['cf_threadnode_title_tag'];
+	}
 	
 	// tạo thẻ đóng
-	$html = str_replace( 'dynamic_title_tag>', $__cf_row['cf_threadnode_title_tag'] . '>', $html );
+	$html = str_replace( 'dynamic_title_tag>', $tag . '>', $html );
 	// tạo thẻ mở
-	$html = str_replace( '<dynamic_title_tag dynamic-title-tag=""', '<' . $__cf_row['cf_threadnode_title_tag'], $html );
+	$html = str_replace( '<dynamic_title_tag dynamic-title-tag=""', '<' . $tag, $html );
 	
 	return $html;
 }
