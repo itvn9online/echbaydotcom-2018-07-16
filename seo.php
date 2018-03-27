@@ -64,6 +64,12 @@ else {
 	*/
 //}
 
+
+//
+$__cf_row ['cf_description'] = str_replace( '"', '&quot;', $__cf_row ['cf_description'] );
+
+
+
 ?>
 <meta name="title" content="<?php echo $__cf_row ['cf_title']; ?>" />
 <meta name="keywords" content="<?php echo $__cf_row ['cf_keywords']; ?>" />
