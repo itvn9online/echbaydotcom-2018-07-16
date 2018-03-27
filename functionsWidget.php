@@ -218,7 +218,9 @@ function WGR_widget_home_hot ( $instance ) {
 //	echo EBE_html_template( EBE_get_page_template( $html_template ), array(
 	$show_content = WGR_show_home_hot( $arr_for_template, $html_template );
 	
-	$show_content = EBE_dynamic_title_tag( $show_content, $dynamic_post_tag );
+	if ( $dynamic_post_tag != '' ) {
+		$show_content = EBE_dynamic_title_tag( $show_content, $dynamic_post_tag );
+	}
 	
 	echo $show_content;
 	
@@ -851,7 +853,9 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		) );
 		
 		// tạo tag động cho tiêu đề
-		$show_content = EBE_dynamic_title_tag( $show_content, $dynamic_post_tag );
+		if ( $dynamic_post_tag != '' ) {
+			$show_content = EBE_dynamic_title_tag( $show_content, $dynamic_post_tag );
+		}
 		
 		// thay thế link
 		$show_content = str_replace( '{tmp.blog_link_option}', $blog_link_option, $show_content );

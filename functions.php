@@ -297,11 +297,12 @@ function EBE_dynamic_title_tag ( $html, $tag = '' ) {
 		
 		$tag = $__cf_row['cf_threadnode_title_tag'];
 	}
+//	echo '<!-- =========================== ' . $tag . ' =========================== -->';
 	
 	// tạo thẻ đóng
 	$html = str_replace( 'dynamic_title_tag>', $tag . '>', $html );
 	// tạo thẻ mở
-	$html = str_replace( '<dynamic_title_tag dynamic-title-tag=""', '<' . $tag, $html );
+	$html = str_replace( '<dynamic_title_tag', '<' . $tag . ' dynamic-title-tag="1"', $html );
 	
 	return $html;
 }
