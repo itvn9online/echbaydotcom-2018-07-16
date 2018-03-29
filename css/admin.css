@@ -894,6 +894,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	right: 20px;
 	max-width: 350px;
 	z-index: 9999;
+	max-height: 350px;
+	overflow: auto;
 }
 .sidebar-eb_z1_recycle_bin.closed {
 	background: rgba(255,255,255,.5) !important;
