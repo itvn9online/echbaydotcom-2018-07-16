@@ -279,8 +279,19 @@
 	</form>
 </div>
 <form name="frm_leech_data_save" method="post" action="{tmp.web_link}process/?set_module=leech_data_save" target="target_eb_iframe">
-	<div class="fix-textarea-height">
-		<textarea name="t_list" id="oi_save_list_category" style="width:99%;height:150px;">{tmp.str_for_save_list_category}</textarea>
+	<p class="bold">Lưu lại danh sách nhóm, để lần sau đỡ phải nạp lại. Thường dùng khi chạy Affiliate content.</p>
+	<div class="fix-textarea-height2">
+		<textarea name="t_list" id="oi_save_list_category" style="width:99%;height:90px;">{tmp.str_for_save_list_category}</textarea>
+		<div class="text-center">
+			<div>
+				<button type="button" class="add-db-list-post-to-process cur bold">Sử dụng danh sách này</button>
+			</div>
+			<div>
+				<input type="checkbox" id="auto_get_random_category_for_leech" />
+				<label for="auto_get_random_category_for_leech">Tự động lấy nhóm bất kỳ để tiếp tục mỗi khi tải xong</label>
+				<button type="button" id="star_get_random_category_for_leech" class="cur bold">Bắt đầu</button>
+			</div>
+		</div>
 	</div>
 	<div class="d-none">
 		<textarea name="t_noidung" style="width:99%;height:150px;"></textarea>

@@ -9,7 +9,52 @@ set_time_limit(0);
 
 
 //
-if ( isset($_GET['categories_url']) ) {
+if ( isset( $_GET['create_category'], $_GET['category_slug'] )
+&& $_GET['create_category'] != ''
+&& $_GET['category_slug'] != '' ) {
+	if ( ! isset( $_GET['category_taxonomy'] ) ) {
+		$_GET['category_taxonomy'] = 'category';
+	}
+	$_GET['create_category'] = trim( urldecode( $_GET['create_category'] ) );
+	$_GET['category_slug'] = trim( urldecode( $_GET['category_slug'] ) );
+	
+	//
+	$check_term_exist = term_exists( $_GET['category_slug'], $_GET['category_taxonomy'] );
+	
+	//
+	if ( $check_term_exist !== 0 && $check_term_exist !== null ) {
+		echo '<script>console.log("EXIST");</script>';
+	}
+	else {
+		$done = wp_insert_term(
+			// the term 
+			$_GET['create_category'],
+			// the taxonomy
+			$_GET['category_taxonomy'],
+			array(
+//				'description'=> 'A yummy apple.',
+				'slug' => $_GET['category_slug'],
+				// tất cả các nhóm này mặc định cho vào nhóm ID là 1 hết
+				'parent'=> 1
+			)
+		);
+		
+		//
+		if ( is_wp_error( $done ) ) {
+			print_r( $done );
+			echo '<script>console.log("ERROR: ' . str_replace( '"', '&quot;', $done->get_error_message() ) . '");</script>';
+		}
+		else {
+			echo '<script>console.log("OK");</script>';
+		}
+	}
+	echo '<script>console.log("' . $_GET['create_category'] . '");</script>';
+	echo '<script>console.log("' . $_GET['category_slug'] . '");</script>';
+	echo '<script>console.log("' . str_replace( '-', '', $_GET['category_slug'] ) . '");</script>';
+	
+	exit();
+}
+else if ( isset($_GET['categories_url']) ) {
 	$url = str_replace( '&amp;', '&', urldecode( trim( $_GET['categories_url'] ) ) );
 	echo $url . '<br>';
 //	exit();

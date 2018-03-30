@@ -24,6 +24,9 @@ $eb_all_themes_support["lazadahasoffers"]["footer"][] = "echbaytwo-footer1.php";
 $eb_all_themes_support["lazadahasoffers"]["footer"][] = "lazadahasoffers-footer2.php";
 //$eb_all_themes_support["lazadahasoffers"]["footer"][] = "lazadahasoffers-footer3.php";
 //
+
+$eb_all_themes_support['lazadahasoffers']["home"][] = "home_widget.php";
+
 $eb_all_themes_support["lazadahasoffers"]["cf_threaddetails_include_file"] = "lazadahasoffers-threaddetails.html";
 //
 $eb_all_themes_support["lazadahasoffers"]["cf_threadnode_include_file"] = "lazadahasoffers-threadnode.html";

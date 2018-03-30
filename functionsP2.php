@@ -1900,7 +1900,7 @@ function _eb_categories_list_list_v3 ( $taxx = 'category' ) {
 	$str = '';
 	
 	foreach ( $arr as $v ) {
-		$str .= '<option data-parent="' . $v->category_parent . '" value="' . $v->term_id . '">' . $v->name . '</option>';
+		$str .= '<option data-slug="' . $v->slug . '" data-parent="' . $v->category_parent . '" value="' . $v->term_id . '">' . $v->name . '</option>';
 	}
 	
 	return $str;

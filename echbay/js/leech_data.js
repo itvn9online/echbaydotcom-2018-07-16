@@ -352,13 +352,17 @@ function check_category_by_auto_slug ( a, alert_now ) {
 			var tim_thay_category = 0;
 			$('#oiAnt ul li').each(function() {
 				var a = $(this).attr('data-key') || '',
-					b = $(this).attr('data-value') || '';
+					b = $(this).attr('data-value') || '',
+					slug = $(this).attr('data-slug') || '';
 				
 				//
 				if ( b != '' && a != '' ) {
 					a = a.substr( b.toString().length );
 					
-					if ( a == auto_category ) {
+//					if ( a == auto_category ) {
+					// Lấy theo slug cho nó chuẩn chỉ
+					if ( slug == auto_category ) {
+//					if ( a == auto_category || slug == auto_category ) {
 //					if ( a == auto_category || a == auto_category2 ) {
 						document.frm_leech_data.t_ant.value = b;
 						$('#oiAnt input[name="t_ant"]').val( b );
@@ -1073,12 +1077,30 @@ $('#categories_url').off('change').change(function () {
 				if ( a[i].split('|').length > 2 ) {
 					a[i] = a[i].split('|');
 					
-					// chuyển mảng số 2 về chuẩn slug để kiểm tra lại
+					a[i][0] = $.trim( a[i][0] );
+					
+					
+					// Tạo mảng số 3 với tên đầy đủ của nhóm này
 					a[i][3] = g_func.non_mark_seo( a[i][2] );
 					a[i][3] = a[i][3].replace( /\-/g, '' );
 					
+					
+					// Tạo mảng số 4 để tạo nhóm nếu muốn
+					var category_slug = a[i][0];
+					category_slug = category_slug.split('/');
+					if ( category_slug[ category_slug.length - 1 ] == '' ) {
+						category_slug = category_slug[ category_slug.length - 2 ];
+					}
+					else {
+						category_slug = category_slug[ category_slug.length - 1 ];
+					}
+					
+					a[i][4] = '<a href="' + web_link + 'temp/?set_module=leech_data&create_category=' + encodeURIComponent( $.trim( a[i][2] ) ) + '&category_slug=' + encodeURIComponent( $.trim( category_slug ) ) + '&category_parent=' + ( $('#oiAnt input[name="t_ant"]').val() || 0 ) + '&caregory_source=' + encodeURIComponent( a[i][0] ) + '" target="target_eb_iframe">[Tạo nhóm]</a>';
+					
+					
 					a[i][2] = $.trim( a[i][2] );
 					a[i][1] = $.trim( a[i][1] );
+					
 					
 					// gán lại mảng
 					a[i] = a[i].join('|');
@@ -1191,11 +1213,16 @@ function EBE_save_cookie_to_data_base () {
 
 function EBE_auto_save_domain_cookie () {
 	if ( auto_submit_save_domain_cookies == true ) {
-		console.log( 'Auto save, while 60 secondes' );
 		auto_submit_save_domain_cookies = false;
 		
 		//
-		document.frm_leech_data_save.submit();
+		if ( dog('leech_data_auto_next') == false ) {
+			console.log( 'Auto save, while 60 secondes' );
+			document.frm_leech_data_save.submit();
+		}
+		else {
+			console.log( 'Auto next is active, auto save STOP' );
+		}
 	}
 }
 
@@ -1258,16 +1285,6 @@ setInterval(function () {
 }, 60 * 1000);
 
 
-//
-(function () {
-	var a = g_func.getc( 'ck_old_categories_url' );
-	
-	// nạp dữ liệu từ phiên làm việc cũ
-	if ( a != null ) {
-		$('#categories_url').val( a );
-	}
-})();
-
 
 $('.click-submit-url-details').off('click').click(function () {
 	
@@ -1295,8 +1312,148 @@ $('.click-submit-url-details').off('click').click(function () {
 
 //
 $('#oi_save_list_category').off('change').change(function () {
+	var a = $(this).val() || '';
+	if ( a != '' ) {
+		a = a.split("\n");
+		var str = '';
+		
+		for ( var i = 0; i < a.length; i++ ) {
+			a[i] = g_func.trim( a[i] );
+			
+			if ( a[i] != '' && a[i].substr( 0, 1 ) != '#' && a[i].split('//').length > 1 ) {
+				str += a[i] + "\n";
+			}
+		}
+		
+		//
+		if ( str != '' ) {
+			$(this).val( str );
+			
+			document.frm_leech_data_save.submit();
+			console.log('Auto save oi_save_list_category');
+		}
+	}
+	
+	//
 	EBE_auto_save_domain_cookie();
+}).off('click').click(function () {
+	$(this).height(20);
+	
+	var min_height = $(this).attr('data-min-height') || 60,
+		add_height = $(this).attr('data-add-height') || 20;
+	
+	var new_height = $(this).get(0).scrollHeight || 0;
+	new_height -= 0 - add_height;
+	if (new_height < min_height) {
+		new_height = min_height;
+	}
+	
+	//
+	$(this).height(new_height);
 });
+
+
+
+// sử dụng nội dung lưu trong database
+$('.add-db-list-post-to-process').off('click').click(function () {
+	var a = $('#oi_save_list_category').val() || '';
+	if ( a != '' ) {
+		$('#categories_url').val(a);
+//		$('#oi_save_list_category').val('');
+		
+		//
+		setTimeout(function () {
+			$('#categories_url').change();
+//			$('#oi_save_list_category').change();
+		}, 600);
+	}
+});
+
+
+// tự động lấy nhóm bất kỳ rồi tiếp tục
+function func_get_random_category_for_leech ( i ) {
+	if ( typeof i != 'number' ) {
+		i = 0;
+	}
+	if ( i > 50 ) {
+		console.log('max range for i');
+		return false;
+	}
+	
+	//
+	var a = $('#oi_save_list_category').val() || '';
+	a = $.trim( a );
+//	console.log(a);
+	if ( a != '' ) {
+		a = a.split("\n");
+		
+		a = a[Math.floor(Math.random() * a.length)];
+		
+		if ( a != '' && a.split('|').length > 1 ) {
+			console.log(a);
+			$('#categories_url').val( a );
+			
+			//
+			setTimeout(function () {
+				$('#categories_url').change();
+				
+				//
+				setTimeout(function () {
+					$('.click-submit-url-details:first').click();
+				}, 1200);
+			}, 1200);
+			
+			return true;
+		}
+	}
+	
+	return func_get_random_category_for_leech( i + 1 );
+}
+
+//
+setTimeout(function () {
+	if ( dog('auto_get_random_category_for_leech').checked == true ) {
+		dog('leech_data_auto_next').checked = true;
+		
+		$('#star_get_random_category_for_leech').html('Tạm dừng');
+		
+		func_get_random_category_for_leech();
+	}
+	else {
+		(function () {
+			var a = g_func.getc( 'ck_old_categories_url' );
+			
+			// nạp dữ liệu từ phiên làm việc cũ
+			if ( a != null ) {
+				$('#categories_url').val( a );
+			}
+		})();
+	}
+	
+	$('#star_get_random_category_for_leech').off('click').click(function () {
+		// đang chạy thì dừng lại
+		if ( dog('auto_get_random_category_for_leech').checked == true ) {
+//			dog('auto_get_random_category_for_leech').checked = false;
+			
+			dog('leech_data_auto_next').checked = false;
+			
+			$(this).html('Bắt đầu');
+		}
+		// chạy tiếp
+		else {
+//			dog('auto_get_random_category_for_leech').checked = true;
+			
+			dog('leech_data_auto_next').checked = true;
+			
+			func_get_random_category_for_leech();
+			
+			$(this).html('Tạm dừng');
+		}
+		
+		//
+		$('#auto_get_random_category_for_leech').click();
+	});
+}, 2000);
 
 
 
@@ -1400,8 +1557,10 @@ $('.click-submit-url-categories').off('click').click(function () {
 			$('#show_text_after_done').append('<li>Không tìm thấy danh sách nhóm cần lấy sản phẩm</li>');
 			window.scroll( 0, $('#show_text_after_done').offset().top - 90 );
 			
-			//
-			if ( dog('nap_lai_trang_sau_khi_hoan_thanh').checked == true ) {
+			// nạp lại trang sau khi hoàn thành
+			if ( dog('nap_lai_trang_sau_khi_hoan_thanh').checked == true
+			// tự động chuyển trang và lấy category ngẫu nhiên
+			|| dog('auto_get_random_category_for_leech').checked == true ) {
 				window.location = window.location.href;
 			}
 		}
@@ -1423,6 +1582,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 		'post_id_is_numberic',
 		'this_id_url_product_detail',
 		'get_list_post_in_iframe',
+		'auto_get_random_category_for_leech',
 		
 		'leech_data_auto_next'
 	];

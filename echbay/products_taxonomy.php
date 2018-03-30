@@ -64,8 +64,8 @@ $get_site_select_taxonomy = _eb_categories_list_v3( 't_ant', $by_taxonomy );
 				<br>
 				<div>
 					<label for="t_multi_taxonomy" class="l25 bold">Nhập danh sách các nhóm cần thêm:</label>
-					<br>
-					<textarea name="t_multi_taxonomy" id="t_multi_taxonomy" style="width:99%;height:300px;"></textarea>
+					<p>* Nếu không có Category slug -&gt; slug sẽ tự động tạo theo Category name</p>
+					<textarea name="t_multi_taxonomy" id="t_multi_taxonomy" placeholder="Category name [ | category slug ]" style="width:99%;height:300px;"></textarea>
 					<p>* Có thể nhập nhiều nhóm, mõi nhóm cách nhau bởi dấu xuống dòng!</p>
 				</div>
 				<br>

@@ -44,7 +44,8 @@ function eb_drop_menu(fix_id, select_id) {
 			lnk = $(this).attr('data-href') || '',
 			level = $(this).attr('data-level') || '0',
 			al_show = $(this).attr('data-show') || '0',
-			c = g_func.non_mark_seo(a + b);
+			c = g_func.non_mark_seo(a + b),
+			slug = $(this).attr('data-slug') || g_func.non_mark_seo(b);
 		
 		if (lnk == '') {
 			lnk = b;
@@ -52,7 +53,7 @@ function eb_drop_menu(fix_id, select_id) {
 			lnk = '<a href="' + lnk + '">' + b + '</a>';
 		}
 		
-		list += '<li title="' + b + '" data-show="' + al_show + '" data-level="' + level + '" data-value="' + a + '" data-key="' + c.replace(/-/g, '') + '">' + lnk + '</li>';
+		list += '<li title="' + b + '" data-show="' + al_show + '" data-level="' + level + '" data-value="' + a + '" data-key="' + c.replace(/-/g, '') + '" data-slug="' + slug.replace(/-/g, '') + '">' + lnk + '</li>';
 	});
 	
 	list = '<div><ul>' + list + '</ul></div>';
