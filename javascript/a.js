@@ -532,7 +532,10 @@ if ( cf_hide_supper_admin_menu == 1 ) {
 	$('#' + id_echbay_menu + '-top').append( '<div class="ab-sub-wrapper"><ul id="' + id_echbay_menu + '-submenu" class="ab-submenu"></ul></div>' );
 	
 	// thêm menu update nếu có update mới
-	if ( $('.update-plugins .update-count').length > 0 ) {
+	var check_update = $('#menu-dashboard ul a .update-plugins .update-count').html() || 0;
+	if ( parseInt( check_update, 10 ) > 0 ) {
+//		console.log( $('#menu-dashboard ul a .update-plugins .update-count').length );
+		
 		// Hiển thị menu update trên top
 		$('#wp-admin-bar-root-default').append( '<li class="menupop"><a href="update-core.php" class="ab-item orgcolor bold wgr-eb-show-menu-update"><i class="fa fa-download"></i> ' + ( $('#menu-dashboard ul a[href="update-core.php"]').html() || 'Update core' ) + '</a></li>' );
 		
