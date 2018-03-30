@@ -22,10 +22,10 @@ $eb_all_themes_support["thegioidoda"]["top"][] = "breadcrumb-top1.php";
 //
 $eb_all_themes_support["thegioidoda"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["thegioidoda"]["footer"][] = "thegioidoda-footer1.php";
-$eb_all_themes_support["thegioidoda"]["footer"][] = "thegioidoda-footer2.php";
+//$eb_all_themes_support["thegioidoda"]["footer"][] = "thegioidoda-footer2.php";
 //
-$eb_all_themes_support["thegioidoda"]["home"][] = "echbaytwo-home1.php";
-$eb_all_themes_support["thegioidoda"]["home"][] = "echbaytwo-home3.php";
+//$eb_all_themes_support["thegioidoda"]["home"][] = "echbaytwo-home1.php";
+//$eb_all_themes_support["thegioidoda"]["home"][] = "echbaytwo-home3.php";
 $eb_all_themes_support["thegioidoda"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["thegioidoda"]["threaddetails"][] = "thegioidoda-threaddetails.html";

@@ -315,6 +315,82 @@ function func_download_img_to_my_host ( img, dm ) {
 }
 
 
+function check_category_by_auto_slug ( a, alert_now ) {
+	// nếu có lệnh tự xác định nhóm đi kèm -> xác định luôn
+	if ( a.split('|').length > 1 ) {
+		a = a.split('|');
+		
+		var auto_category = $.trim( a[1] ),
+			auto_category2 = '';
+		
+		//
+		/*
+		if ( a.length > 2 ) {
+			auto_category2 = $.trim( a[2] );
+		}
+		*/
+		
+		//
+		if ( auto_category != '' ) {
+//			console.log(auto_category);
+			auto_category = g_func.non_mark_seo( auto_category );
+			auto_category = auto_category.replace( /\-/g, '' );
+//			console.log(auto_category);
+			
+			//
+			/*
+			if ( auto_category2 != '' ) {
+//				console.log(auto_category2);
+				auto_category2 = g_func.non_mark_seo( auto_category2 );
+				auto_category2 = auto_category2.replace( /\-/g, '' );
+//				console.log(auto_category2);
+			}
+			*/
+			
+			//
+			$('#oiAnt input[type="text"]').val( 0 );
+			var tim_thay_category = 0;
+			$('#oiAnt ul li').each(function() {
+				var a = $(this).attr('data-key') || '',
+					b = $(this).attr('data-value') || '';
+				
+				//
+				if ( b != '' && a != '' ) {
+					a = a.substr( b.toString().length );
+					
+					if ( a == auto_category ) {
+//					if ( a == auto_category || a == auto_category2 ) {
+						document.frm_leech_data.t_ant.value = b;
+						$('#oiAnt input[name="t_ant"]').val( b );
+						
+						$('#oiAnt input[type="text"]').val( a );
+						
+						tim_thay_category = 1;
+						
+						return false;
+					}
+				}
+			});
+			
+			//
+			if ( tim_thay_category == 0 ) {
+				if ( typeof alert_now != 'undefined' && alert_now == 1 ) {
+					alert('Không tìm thấy category by slug: ' + auto_category);
+				}
+				
+				console.log('Slug: ' + auto_category);
+				
+				return false;
+			}
+		}
+		
+		a = $.trim( a[0] );
+	}
+	
+	return a;
+}
+
+
 function full_url_for_img_src ( a ) {
 	if ( a.split('//').length == 1 ) {
 		if ( a.substr( 0, 1 ) == '/' ) {
@@ -974,7 +1050,8 @@ $('#categories_url').off('change').change(function () {
 	
 	// lấy URL phân nhóm để làm việc
 	a = a.split("\n");
-	var str = '';
+	var str = '',
+		str_slug_error = '';
 	for ( var i = 0; i < a.length; i++ ) {
 		a[i] = g_func.trim( a[i] );
 		
@@ -982,13 +1059,34 @@ $('#categories_url').off('change').change(function () {
 			a[i] = '';
 		}
 		else if ( a[i] != '' && a[i].split('//').length > 1 ) {
-			if ( EBE_current_first_domain == '' ) {
-//				console.log( a[i] );
-				EBE_current_first_domain = a[i];
+			if ( check_category_by_auto_slug( a[i] ) != false ) {
+				if ( EBE_current_first_domain == '' ) {
+//					console.log( a[i] );
+					EBE_current_first_domain = a[i];
+				}
+				
+				//
+				str += '<li>' + a[i] + '</li>';
 			}
-			
-			//
-			str += '<li>' + a[i] + '</li>';
+			else {
+				// nếu có mảng số 2
+				if ( a[i].split('|').length > 2 ) {
+					a[i] = a[i].split('|');
+					
+					// chuyển mảng số 2 về chuẩn slug để kiểm tra lại
+					a[i][3] = g_func.non_mark_seo( a[i][2] );
+					a[i][3] = a[i][3].replace( /\-/g, '' );
+					
+					a[i][2] = $.trim( a[i][2] );
+					a[i][1] = $.trim( a[i][1] );
+					
+					// gán lại mảng
+					a[i] = a[i].join('|');
+				}
+				
+				//
+				str_slug_error += '<li>' + a[i] + '</li>';
+			}
 		}
 	}
 	
@@ -1008,22 +1106,29 @@ $('#categories_url').off('change').change(function () {
 	$('#categories_list_url').append( str );
 	$('#categories_url').val( '' ).focus();
 	
+	// nếu có URL lỗi -> tìm và triển luôn
+	if ( str_slug_error != '' ) {
+		str_slug_error = '<li class="redcolor">URL có slug auto nhưng bị lỗi không tìm thấy</li>' + str_slug_error;
+		$('#categories_list_finish').append( str_slug_error );
+	}
+	
+	
 	// lấy đoạn text cuối của url để cho vào khung soạn chữ tìm kiếm nhóm
 	var a = $('#oiAnt input[type="text"]').val() || '';
 	if ( a == '' ) {
 		var b = $('#categories_list_url li:first').html() || '';
 		if ( b != '' ) {
 			if ( b.split('|').length > 1 ) {
-				b = $.trim( b.split('|')[0] );
-			}
-			
-			//
-			b = b.split('/');
-			if ( b[ b.length - 1 ] == '' ) {
-				b = b[ b.length - 2 ];
+				b = $.trim( b.split('|')[1] );
 			}
 			else {
-				b = b[ b.length - 1 ];
+				b = b.split('/');
+				if ( b[ b.length - 1 ] == '' ) {
+					b = b[ b.length - 2 ];
+				}
+				else {
+					b = b[ b.length - 1 ];
+				}
 			}
 			
 			$('#oiAnt input[type="text"]').val( b.split('.htm')[0].split('.asp')[0].split('.')[0] );
@@ -1213,50 +1318,9 @@ $('.click-submit-url-categories').off('click').click(function () {
 	
 	// nếu có URL -> tiếp tục
 	if ( a != '' ) {
-		// nếu có lệnh tự xác định nhóm đi kèm -> xác định luôn
-		if ( a.split('|').length > 1 ) {
-			a = a.split('|');
-			
-			var auto_category = $.trim( a[1] );
-			if ( auto_category != '' ) {
-//				console.log(auto_category);
-				auto_category = g_func.non_mark_seo( auto_category );
-				auto_category = auto_category.replace( /\-/g, '' );
-//				console.log(auto_category);
-				
-				//
-				$('#oiAnt input[type="text"]').val( 0 );
-				var tim_thay_category = 0;
-				$('#oiAnt ul li').each(function() {
-					var a = $(this).attr('data-key') || '',
-						b = $(this).attr('data-value') || '';
-					
-					//
-					if ( b != '' && a != '' ) {
-						a = a.substr( b.toString().length );
-						
-						if ( a == auto_category ) {
-							document.frm_leech_data.t_ant.value = b;
-							$('#oiAnt input[name="t_ant"]').val( b );
-							
-							$('#oiAnt input[type="text"]').val( a );
-							
-							tim_thay_category = 1;
-							
-							return false;
-						}
-					}
-				});
-				
-				//
-				if ( tim_thay_category == 0 ) {
-					alert('Không tìm thấy category by slug: ' + auto_category);
-					console.log('Slug: ' + auto_category);
-					return false;
-				}
-			}
-			
-			a = $.trim( a[0] );
+		a = check_category_by_auto_slug( a, 1 );
+		if ( a == false ) {
+			return false;
 		}
 		
 		//
