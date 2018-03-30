@@ -17,7 +17,7 @@ $eb_all_themes_support[$eb_all_themes_name]["price"] = 2000000;
 $eb_all_themes_support[$eb_all_themes_name]["top"][] = "tranh3mien-top1.php";
 $eb_all_themes_support[$eb_all_themes_name]["top"][] = "top_widget.php";
 // Banner tràn màn hình
-$eb_all_themes_support[$eb_all_themes_name]["top"][] = "bigbanner-top1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["top"][] = "bigbanner-top1.php";
 // Banner bo gọn trong khung
 //$eb_all_themes_support[$eb_all_themes_name]["top"][] = "bigbannerFixed-top1.php";
 // breadcrumb tràn màn hình
@@ -29,7 +29,7 @@ $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "footer_widget.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "tranh3mien-footer1.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support[$eb_all_themes_name]["home"][] = "tranh3mien-home1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["home"][] = "tranh3mien-home1.php";
 $eb_all_themes_support[$eb_all_themes_name]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support[$eb_all_themes_name]["threaddetails"][] = "tranh3mien-threaddetails.html";

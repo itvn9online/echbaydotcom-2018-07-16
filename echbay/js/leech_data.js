@@ -11,7 +11,8 @@ var EBE_current_first_domain = '',
 	gian_cach_submit = 2 * 1000,
 	firts_img_in_content = '',
 	cache_name_for_download_img = '',
-	download_img_runing = 0;
+	download_img_runing = 0,
+	arr_check_value_exist = {};
 
 
 
@@ -106,17 +107,36 @@ function function_rieng_theo_domain () {
 	// lấy ảnh mặc định nếu có
 	if ( f.t_img.value == '' ) {
 		f.t_img.value = $('#details_finish_url li:last a').attr('data-img') || '';
-	}
-	
-	// nếu vẫn không có -> thử lấy trong nội dung
-	if ( f.t_img.value == '' ) {
-//		f.t_img.value = $('#leech_data_fix_content img:first').attr('data-src') || '';
-		f.t_img.value = firts_img_in_content;
-//		console.log($('#leech_data_fix_content img:first').attr('data-src'));
+		
+		// nếu vẫn không có -> thử lấy trong nội dung
+		if ( f.t_img.value == '' ) {
+//			f.t_img.value = $('#leech_data_fix_content img:first').attr('data-src') || '';
+			f.t_img.value = firts_img_in_content;
+//			console.log($('#leech_data_fix_content img:first').attr('data-src'));
+		}
 	}
 	
 	//
-	if ( source_url.split('kenhdulich.org').length > 1 ) {
+	if ( source_url.split('lazada.vn').length > 1 ) {
+		if ( f.t_img.value != '' ) {
+			f.t_img.value = f.t_img.value.split('-catalog.jpg_')[0] + '.jpg';
+		}
+		
+		if ( f.t_gallery.value != '' ) {
+			var a = f.t_gallery.value.split("\n"),
+				str = '';
+			for ( var i = 0; i < a.length; i++ ) {
+				a[i] = g_func.trim(a[i]);
+				
+				if ( a[i] != '' ) {
+					str += a[i].split('-catalog.jpg_')[0] + '.jpg' + "\n";
+				}
+			}
+			
+			f.t_gallery.value = str;
+		}
+	}
+	else if ( source_url.split('kenhdulich.org').length > 1 ) {
 		if ( f.t_ngaydang.value != '' ) {
 			var a = $.trim( f.t_ngaydang.value.split(',')[1] ),
 				b = '';
@@ -147,7 +167,12 @@ function function_rieng_theo_domain () {
 			a[i] = g_func.trim(a[i]);
 			
 			if ( a[i] != '' ) {
-				str += '<div><img src="' + a[i] + '"></div>';
+				if ( f.t_img.value == '' ) {
+					f.t_img.value = a[i];
+				}
+				
+				//
+				str += '<div><img src="' + a[i] + '" /></div>';
 			}
 		}
 		f.t_gallery.value = str;
@@ -464,6 +489,11 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 		f.t_id.value = '';
 		if ( dog('bai_viet_nay_duoc_lay_theo_id').checked == true ) {
 			f.t_id.value = get_leech_data_post_id ( f.t_source.value );
+			
+			// ID chỉ là dạng số -> tích vào để loại bỏ các ký tự không phải số
+			if ( dog('post_id_is_numberic').checked == true ) {
+				f.t_id.value = g_func.number_only( f.t_id.value );
+			}
 		}
 		
 		//
@@ -606,25 +636,52 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 						for ( var i = 0; i < a2.length; i++ ) {
 							a2[i] = g_func.trim( a2[i] );
 							
-							var str = '';
+							var str = '',
+								eachn = 0;
 							
 							// nếu là foreach để lấy dữ liệu -> có dấu :each ở cuối chuỗi
-							if ( a2[i].split(':each').length > 1 ) {
+							if ( a2[i].split(':each').length > 1 || a2[i].split(':each').length > 1 ) {
+								eachn = 0;
+								if ( a2[i].split(':eachn').length > 1 ) {
+									eachn = 1;
+								}
 								
 								// xóa chữ each đi
 								a2[i] = a2[i].split(':')[0];
 								
 								// xác định tag của foreach
 								var tag_begin = a2[i].split(' ').pop().split('#')[0].split('.')[0],
-									tag_end = '';
+									tag_end = '',
+									str_each = '';
 								if ( tag_begin != '' ) {
 									tag_end = '</' + tag_begin + '>';
 									tag_begin = '<' + tag_begin + '>';
 								}
 								
+								// bắt đầu vòng lặp
 								$( a2[i].replace(/\s?\|\|\s?/g, ',') ).each(function() {
-									str += tag_begin + ( $(this).html() || '' ) + tag_end;
+									var get_html = $(this).html() || '';
+									
+									// nếu có nội dung
+									if ( get_html != '' ) {
+										// sử dụng \n
+										if ( eachn == 1 ) {
+											str_each += get_html + "\n";
+										}
+										// sử dụng tag
+										else {
+											str_each += tag_begin + get_html + tag_end;
+										}
+									}
 								});
+								
+								// đối với LI -> gán thêm UL vào
+								if ( eachn == 0 && tag_end == '</li>' ) {
+									str += '<ul>' + str_each + '</ul>';
+								}
+								else {
+									str += str_each;
+								}
 							}
 							// gọi trực tiếp đến class được nhắc đến
 							else {
@@ -672,6 +729,10 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			/*
 			* chỉnh lại phần nội dung
 			*/
+			// xóa bỏ các dấu cách
+			// 2 dấu cách -> 1 dấu cách
+			f.t_noidung.value = f.t_noidung.value.replace( /\&nbsp\;/gi, ' ' ).replace(/\s+\s/g, " ");
+			
 			dog( 'leech_data_fix_content', f.t_noidung.value );
 //			console.log($('#leech_data_fix_content').html());
 			
@@ -899,8 +960,7 @@ $('#categories_url').off('change').change(function () {
 			if ( a[i].substr( 0, 1 ) == '#' ) {
 				a[i] = '';
 			}
-			
-			if ( a[i] != '' ) {
+			else if ( a[i] != '' && a[i].split('//').length > 1 ) {
 				str += '<li><a href="' +a[i]+ '" target="_blank" rel="nofollow">' +a[i]+ '</a></li>';
 			}
 		}
@@ -921,8 +981,7 @@ $('#categories_url').off('change').change(function () {
 		if ( a[i].substr( 0, 1 ) == '#' ) {
 			a[i] = '';
 		}
-		
-		if ( a[i] != '' ) {
+		else if ( a[i] != '' && a[i].split('//').length > 1 ) {
 			if ( EBE_current_first_domain == '' ) {
 //				console.log( a[i] );
 				EBE_current_first_domain = a[i];
@@ -1034,6 +1093,56 @@ function EBE_auto_save_domain_cookie () {
 		document.frm_leech_data_save.submit();
 	}
 }
+
+
+
+function create_list_post_for_crawl ( a, img ) {
+	// full url nếu chưa có
+	a = full_url_for_img_src(a);
+	console.log( a );
+	
+	if ( img != '' ) {
+		img = full_url_for_img_src(img);
+	}
+	console.log( img );
+	
+	//
+	if ( typeof arr_check_value_exist[a] == 'undefined' ) {
+		arr_check_value_exist[a] = 1;
+		
+		return '<li><a href="' +a+ '" data-img="' + img + '" target="_blank" rel="nofollow">' +a+ '</a></li>';
+	}
+	
+	console.log('URL exist: ' + a);
+	return '';
+}
+
+
+function after_list_post_for_crawl ( str ) {
+	if ( str == '' ) {
+		console.log('Product list not found!');
+		return false;
+	}
+	
+	// gán d.sách tìm được
+	$('#details_list_url').html( str );
+	
+	//
+	if ( dog('leech_data_auto_next').checked == true ) {
+		var check_ant_select = g_func.number_only( $('#oiAnt input[name="t_ant"]').val() || 0 );
+		
+		if ( check_ant_select > 0 ) {
+			$('.click-submit-url-details:first').click();
+		} else {
+			console.log('Select categories for auto leech');
+		}
+	} else {
+		console.log('Check leech_data_auto_next to auto leech');
+	}
+	
+	return false;
+}
+
 
 
 
@@ -1152,49 +1261,61 @@ $('.click-submit-url-categories').off('click').click(function () {
 		window.scroll( 0, $('#details_list_url').offset().top - 90 );
 		
 		//
-		leech_data_content ('temp/?set_module=leech_data&categories_url=' + encodeURIComponent( a ), '', function () {
+		var uri_for_get_content = 'temp/?set_module=leech_data&categories_url=' + encodeURIComponent( a );
+		
+		//
+		html_tags = html_tags.replace( /\s\|\|\s/, ', ' ).replace( /\|\|/, ', ' );
+		
+		// lấy dữ liệu thông qua iframe
+		if ( dog('get_list_post_in_iframe').checked == true ) {
+			console.log('Get content via iframe');
+			console.log(web_link + uri_for_get_content);
 			
-			var str = '',
-				arr_exist = {};
+			//
+			window.open( web_link + uri_for_get_content, 'crawl_eb_iframe' );
+			
+			//
+			$('#crawl_eb_iframe').on('load', function () {
+				setTimeout(function () {
+					console.log('Load done! get content in crawl_eb_iframe');
+					
+					var str = '';
+					arr_check_value_exist = {};
+					
+					$('#crawl_eb_iframe').contents().find( html_tags ).each(function() {
+						var a = $(this).attr('href') || $('a', this).attr('href') || '',
+							img = $('img', this).attr('data-src') || $('img', this).attr('src') || $(this).attr('data-img') || '';
+						
+						//
+						str += create_list_post_for_crawl( a, img );
+					});
+					
+					//
+					after_list_post_for_crawl( str );
+				}, 1200);
+			});
+			
+			return true;
+		}
+		
+		
+		
+		// lấy dữ liệu theo cách thông thường
+		leech_data_content (uri_for_get_content, '', function () {
+			
+			var str = '';
+			arr_check_value_exist = {};
 			
 			$( html_tags ).each(function() {
 				var a = $(this).attr('href') || $('a', this).attr('href') || '',
 					img = $('img', this).attr('data-src') || $('img', this).attr('src') || $(this).attr('data-img') || '';
 				
-				// full url nếu chưa có
-				a = full_url_for_img_src(a);
-				console.log( a );
-				
-				if ( img != '' ) {
-					img = full_url_for_img_src(img);
-				}
-//				console.log( img );
-				
 				//
-				if ( typeof arr_exist[a] == 'undefined' ) {
-					arr_exist[a] = 1;
-					
-					str += '<li><a href="' +a+ '" data-img="' + img + '" target="_blank" rel="nofollow">' +a+ '</a></li>';
-				} else {
-					console.log('URL exist: ' + a);
-				}
+				str += create_list_post_for_crawl( a, img );
 			});
 			
-			// gán d.sách tìm được
-			$('#details_list_url').html( str );
-			
 			//
-			if ( dog('leech_data_auto_next').checked == true ) {
-				var check_ant_select = g_func.number_only( $('#oiAnt input[name="t_ant"]').val() || 0 );
-				
-				if ( check_ant_select > 0 ) {
-					$('.click-submit-url-details:first').click();
-				} else {
-					console.log('Select categories for auto leech');
-				}
-			} else {
-				console.log('Check leech_data_auto_next to auto leech');
-			}
+			after_list_post_for_crawl( str );
 		});
 	}
 	else {
@@ -1228,7 +1349,10 @@ $('.click-submit-url-categories').off('click').click(function () {
 		'loai_bo_a_trong_noi_dung',
 		'loai_bo_url_trong_noi_dung',
 		'bai_viet_nay_duoc_lay_theo_id',
+		'post_id_is_numberic',
 		'this_id_url_product_detail',
+		'get_list_post_in_iframe',
+		
 		'leech_data_auto_next'
 	];
 	

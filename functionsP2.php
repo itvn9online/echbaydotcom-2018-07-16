@@ -2774,6 +2774,11 @@ function WGR_get_option ( $name ) {
 }
 
 function _eb_update_option ( $name, $value, $load = 'yes' ) {
+	if ( trim( $name ) == '' ) {
+		return WGR_delete_option ( $name );
+	}
+	
+	//
 	global $wpdb;
 	
 	// tạo mới nếu chưa có

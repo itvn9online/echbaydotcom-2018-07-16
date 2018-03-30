@@ -5,22 +5,29 @@
 
 
 
+function WGR_leech_data_save ( $key, $c ) {
+//	_eb_alert($c);
+	
+	delete_option ( $key );
+	
+	$v = stripslashes ( stripslashes ( stripslashes ( trim( $v ) ) ) );
+	
+	//
+	if ( $c == '' ) {
+		return false;
+	}
+	
+	//
+	add_option( $key, $c, '', 'no' );
+}
+
 //
-$noidung = trim( $_POST['t_noidung'] );
-//_eb_alert($noidung);
-
-
-$key = '___eld___cookie_by_domain';
-
-
-delete_option ( $key );
-
-
-$v = stripslashes ( stripslashes ( stripslashes ( trim( $v ) ) ) );
-
+//WGR_leech_data_save( '___eld___list_category', trim( $_POST['t_list'] ) );
+//WGR_leech_data_save( '___eld___cookie_by_domain', trim( $_POST['t_noidung'] ) );
 
 //
-add_option( $key, $noidung, '', 'no' );
+_eb_update_option ( '___eld___list_category', trim( $_POST['t_list'] ), 'no' );
+_eb_update_option ( '___eld___cookie_by_domain', trim( $_POST['t_noidung'] ), 'no' );
 
 
 

@@ -1,12 +1,15 @@
+<style>
+#leech_data_html,
+#leech_data_fix_content,
+#oi_download_img_to_my_host {
+	max-height: 600px;
+	overflow: auto;
+	width: 90%;
+	max-width: 999px;
+}
+#crawl_eb_iframe { max-width: 999px; }
+</style>
 <p><em>* Với công cụ này, chúng tôi sẽ hỗ trợ bạn chuyển dữ liệu từ website cũ sang hệ thống website của Ếch Bay một cách nhanh gọn nhất. Việc của bạn cần làm chỉ đơn giản là kiểm tra và ra soát lại dữ liệu mới sau khi chuyển giao.</em></p>
-<div class="d-none">
-	<form name="frm_leech_data_save" method="post" action="{tmp.web_link}process/?set_module=leech_data_save" target="target_eb_iframe">
-		<textarea name="t_noidung" style="width:99%;height:150px;"></textarea>
-		<div>
-			<input type="submit" value="Cập nhật" />
-		</div>
-	</form>
-</div>
 <div>
 	<div><em>Bạn cần hiểu về cấu trúc HTML của site gốc, từ đó bạn mới có thể đưa ra cấu trúc cụ thể cho phân mềm bóc tách URL chi tiết sản phẩm từ phân nhóm.<br>
 		* Lưu ý: cấu trúc được sử dụng cho bộ mã nguồn mở jQuery.</em><br>
@@ -23,8 +26,9 @@
 		<pre><code>#id_so1, .class_so2, #id_so2, .class_so4</code></pre>
 		-> Lấy một trong các ID, class được khai báo! Cái nào khai báo trước sẽ ưu tiên trước.<br>
 		<br>
-		<pre><code>#id_so1, .class_so1:each && .class_so2, #id_so2:each</code></pre>
+		<pre><code>#id_so1, .class_so1:each && .class_so2, #id_so2:eachn</code></pre>
 		-> Chữ <strong>:each</strong> ở cuối -> Sử dụng vòng lặp để lấy nội dung trong tất cả các ID, class đã được khai báo rồi ghép nó lại, vì nội dung có thể sẽ nằm ở nhiều chỗ.<br>
+		-> Chữ <strong>:eachn</strong> ở cuối -> giống như each, nhưng nội dung sẽ được ghép dưới dạng dấu xuống dòng (<strong>\n</strong>).<br>
 		<br>
 		<br>
 		Đối với đường link:
@@ -58,6 +62,11 @@
 	<div class="ui-sortable-handle">Cấu trúc bóc tách URL sản phẩm</div>
 	<div class="ui-sortable-input">
 		<input type="text" id="categories_tags" value="" placeholder="HTML ID or class for details URL" style="width:99%;" />
+	</div>
+	<br>
+	<div class="ui-sortable-handle">
+		<input type="checkbox" id="get_list_post_in_iframe">
+		<label for="get_list_post_in_iframe">Lấy danh sách sản phẩm trong iframe (Một số website load sản phẩm thông qua ajax, nên phải dùng iframe để chờ web đó load xong nội dung mới lấy được)</label>
 	</div>
 	<br>
 	<br>
@@ -110,6 +119,10 @@
 			</div>
 			<div>
 				<input type="text" id="id_post_end" value="" placeholder="Kết thúc bằng" />
+			</div>
+			<div>
+				<input type="checkbox" id="post_id_is_numberic" />
+				<label for="post_id_is_numberic">ID bài viết là dạng số (với trường hợp lọc ID nhưng vẫn có lẫn cả chữ, tích vào đây để tách luôn cả chữ ra khỏi kết quả lọc)</label>
 			</div>
 		</blockquote>
 	</div>
@@ -225,7 +238,7 @@
 			</tr>
 			<tr>
 				<td class="t">Mô tả ngắn</td>
-				<td class="i"><textarea name="t_goithieu" style="width:99%;height:90px;"></textarea></td>
+				<td class="i"><textarea name="t_goithieu" class="small" style="width:99%;height:90px;"></textarea></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
@@ -233,7 +246,7 @@
 			</tr>
 			<tr>
 				<td class="t">Nội dung</td>
-				<td class="i"><textarea name="t_noidung" style="width:99%;height:300px;"></textarea></td>
+				<td class="i"><textarea name="t_noidung" class="small" style="width:99%;height:300px;"></textarea></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
@@ -241,7 +254,7 @@
 			</tr>
 			<tr>
 				<td class="t">Điều kiện/ Điểm nổi bật</td>
-				<td class="i"><textarea name="t_dieukien" style="width:99%;height:300px;"></textarea></td>
+				<td class="i"><textarea name="t_dieukien" class="small" style="width:99%;height:300px;"></textarea></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
@@ -249,7 +262,7 @@
 			</tr>
 			<tr>
 				<td class="t">Thư viện ảnh</td>
-				<td class="i"><textarea name="t_gallery" style="width:99%;height:90px;"></textarea></td>
+				<td class="i"><textarea name="t_gallery" class="small" style="width:99%;height:90px;"></textarea></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
@@ -257,7 +270,7 @@
 			</tr>
 			<tr>
 				<td class="t">Kích thước</td>
-				<td class="i"><textarea name="t_size_list" placeholder="Sử dụng vòng lặp riêng để tạo ra danh sách size dưới dạng mảng javascript" style="width:99%;height:90px;"></textarea></td>
+				<td class="i"><textarea name="t_size_list" placeholder="Sử dụng vòng lặp riêng để tạo ra danh sách size dưới dạng mảng javascript" class="small" style="width:99%;height:90px;"></textarea></td>
 			</tr>
 		</table>
 		<div class="cf" style="position:fixed;bottom:35px;right:45px;">
@@ -265,6 +278,17 @@
 		</div>
 	</form>
 </div>
+<form name="frm_leech_data_save" method="post" action="{tmp.web_link}process/?set_module=leech_data_save" target="target_eb_iframe">
+	<div class="fix-textarea-height">
+		<textarea name="t_list" style="width:99%;height:150px;">{tmp.str_for_save_list_category}</textarea>
+	</div>
+	<div class="d-none">
+		<textarea name="t_noidung" style="width:99%;height:150px;"></textarea>
+		<div>
+			<input type="submit" value="Cập nhật" />
+		</div>
+	</div>
+</form>
 <br>
 <div class="d-none2">
 	<div id="leech_data_html"></div>
@@ -272,6 +296,8 @@
 	<div id="leech_data_fix_content"></div>
 	<br>
 	<div id="oi_download_img_to_my_host"></div>
+	<br>
+	<iframe id="crawl_eb_iframe" name="crawl_eb_iframe" src="about:blank" width="90%" height="600">AJAX form</iframe>
 </div>
 <script type="text/javascript">
 {tmp.js}
