@@ -533,10 +533,14 @@ if ( cf_hide_supper_admin_menu == 1 ) {
 	
 	// thêm menu update nếu có update mới
 	if ( $('.update-plugins .update-count').length > 0 ) {
-		$('#wp-admin-bar-root-default').append( '<li class="menupop"><a href="update-core.php" class="ab-item"><i class="fa fa-download"></i> ' + ( $('.wp-submenu-head a[href="update-core.php"]').html() || 'Update core' ) + '</a></li>' );
+		// Hiển thị menu update trên top
+		$('#wp-admin-bar-root-default').append( '<li class="menupop"><a href="update-core.php" class="ab-item orgcolor bold wgr-eb-show-menu-update"><i class="fa fa-download"></i> ' + ( $('#menu-dashboard ul a[href="update-core.php"]').html() || 'Update core' ) + '</a></li>' );
 		
-		//
+		// Hiển thị menu chỗ mục update
 		$('#menu-dashboard ul').show();
+		
+		// xóa thẻ span trong menu update
+		$('.wgr-eb-show-menu-update span').remove();
 	}
 	
 	//
