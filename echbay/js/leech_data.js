@@ -1188,6 +1188,13 @@ $('.click-submit-url-details').off('click').click(function () {
 
 
 
+//
+$('#oi_save_list_category').off('change').change(function () {
+	EBE_auto_save_domain_cookie();
+});
+
+
+
 $('.click-submit-url-categories').off('click').click(function () {
 	
 	//
