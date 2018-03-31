@@ -2790,6 +2790,7 @@ function _eb_update_option ( $name, $value, $load = 'yes' ) {
 //	print_r( $sql );
 	
 	// xử lý an toàn cho chuỗi trước khi update
+	$value = stripslashes ( stripslashes ( stripslashes ( trim( $value ) ) ) );
 	if ( ! get_magic_quotes_gpc () ) {
 		$value = addslashes ( $value );
 	}

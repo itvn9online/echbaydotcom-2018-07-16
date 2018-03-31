@@ -13,8 +13,8 @@ $eb_all_themes_support["lazadahasoffers"]["price"] = 2500000;
 $eb_all_themes_support["lazadahasoffers"]["demo"] = "lazadahasoffers.vn";
 //
 $eb_all_themes_support["lazadahasoffers"]["top"][] = "lazadahasoffers-top1.php";
-$eb_all_themes_support["lazadahasoffers"]["top"][] = "echbaytwo-top2.php";
-$eb_all_themes_support["lazadahasoffers"]["top"][] = "echbaytwo-top3.php";
+//$eb_all_themes_support["lazadahasoffers"]["top"][] = "echbaytwo-top2.php";
+//$eb_all_themes_support["lazadahasoffers"]["top"][] = "echbaytwo-top3.php";
 $eb_all_themes_support["lazadahasoffers"]["top"][] = "top_widget.php";
 $eb_all_themes_support["lazadahasoffers"]["top"][] = "bigbanner-top1.php";
 $eb_all_themes_support["lazadahasoffers"]["top"][] = "breadcrumb-top1.php";
