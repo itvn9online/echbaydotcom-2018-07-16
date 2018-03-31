@@ -13,7 +13,7 @@ var EBE_current_first_domain = '',
 	cache_name_for_download_img = '',
 	download_img_runing = 0,
 	arr_check_value_exist = {},
-	tu_dong_load_lai_trang_neu_submit_loi = 120;
+	tu_dong_load_lai_trang_neu_submit_loi = 0;
 
 
 
@@ -1020,6 +1020,10 @@ function ket_thuc_lay_du_lieu ( id, m, lnk ) {
 			func_leech_data_lay_chi_tiet();
 		}
 	}, gian_cach_submit);
+	
+	// reset lại chế độ load toàn trang
+	tu_dong_load_lai_trang_neu_submit_loi = 0;
+	
 }
 
 
@@ -1456,6 +1460,26 @@ setTimeout(function () {
 		$('#auto_get_random_category_for_leech').click();
 	});
 }, 2000);
+
+
+//
+setInterval(function () {
+	// nếu chế độ tự load trang đang được kích hoạt
+	if ( dog('auto_get_random_category_for_leech').checked == true ) {
+		// load lại trang khi quá 120 giây
+		if ( tu_dong_load_lai_trang_neu_submit_loi > 12 ) {
+			window.location = window.location.href;
+		}
+		// nếu không cứ 10 giây thêm 1 đơn vị
+		else {
+			tu_dong_load_lai_trang_neu_submit_loi++;
+		}
+	}
+	// nếu không kích hoạt chế độ load trang -> đặt về 0 luôn
+	else {
+		tu_dong_load_lai_trang_neu_submit_loi = 0;
+	}
+}, 10 * 1000);
 
 
 

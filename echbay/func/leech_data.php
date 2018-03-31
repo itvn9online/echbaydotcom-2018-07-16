@@ -212,8 +212,10 @@ else {
 		}
 		
 		die('<script type="text/javascript">
-		parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "' . $p_link . '");
-		</script>');
+parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "' . $p_link . '");
+</script>');
+		
+		//
 	}
 }
 
