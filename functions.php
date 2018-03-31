@@ -2074,7 +2074,7 @@ function _eb_set_config($key, $val, $etro = 1) {
 	}
 	
 	//
-	$val = stripslashes( stripslashes( stripslashes( $val ) ) );
+//	$val = WGR_stripslashes( $val );
 	
 	// thêm option mới
 //	if ( get_option( $key ) == false ) {
@@ -2147,7 +2147,7 @@ function _eb_get_config_v3( $real_time = false ) {
 				if ( $v == '' ) {
 					$v = $__cf_row_default[ $k ];
 				}
-				$__cf_row[ $k ] = stripslashes( stripslashes( stripslashes( $v ) ) );
+				$__cf_row[ $k ] = WGR_stripslashes( $v );
 			}
 		}
 //		print_r( $__cf_row );
@@ -2238,7 +2238,7 @@ function _eb_get_config( $real_time = false ) {
 			if ( $a->option_value == '' ) {
 				$a->option_value = $__cf_row_default[ $a->option_name ];
 			}
-			$__cf_row[ $a->option_name ] = stripslashes( stripslashes( stripslashes( $a->option_value ) ) );
+			$__cf_row[ $a->option_name ] = WGR_stripslashes( $a->option_value );
 //			$__cf_row[ $a->option_name ] = $a->option_value;
 			
 			//
@@ -2329,7 +2329,7 @@ function EBE_set_lang($key, $val) {
 	
 	// chỉ cập nhật khi có value, nếu không có thì sử dụng của bản default
 	if ( $val != '' ) {
-		$val = stripslashes( stripslashes( stripslashes( $val ) ) );
+//		$val = WGR_stripslashes( $val );
 		
 		// thêm option mới
 //		add_option( $key, $val, '', 'no' );
@@ -2360,7 +2360,7 @@ function EBE_get_lang_list() {
 	foreach ( $row as $k => $a ) {
 		// chỉ hiện thị các lang được hỗ trợ
 //		if ( isset( $___eb_lang[ $a->option_name ] ) ) {
-			$___eb_lang[ $a->option_name ] = stripslashes( stripslashes( stripslashes( $a->option_value ) ) );
+			$___eb_lang[ $a->option_name ] = WGR_stripslashes( $a->option_value );
 //		}
 		// xóa các lang không tồn tại
 //		else {

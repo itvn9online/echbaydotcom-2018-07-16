@@ -2094,7 +2094,7 @@ function _eb_convert_postmeta_to_v2 ( $id, $key = '_eb_product_', $meta_key = eb
 	foreach ( $row as $v ) {
 		
 		// mảng hiển thị thì phải cắt bỏ hết các ký tự không liên quan
-		$arr[ $v->meta_key ] = stripslashes( stripslashes( stripslashes( $v->meta_value ) ) );
+		$arr[ $v->meta_key ] = WGR_stripslashes( $v->meta_value );
 		
 		// còn mảng dùng để update thì bắt buộc phải lắp thêm vào -> nếu không sẽ gây lỗi chuỗi khi convert sang mảng
 		$arr_update[ $v->meta_key ] = addslashes( $arr[ $v->meta_key ] );
@@ -2764,7 +2764,7 @@ function _eb_get_option ( $name ) {
 	//
 //	print_r( $sql );
 	if ( ! empty( $sql ) ) {
-		return $sql[0]->option_value;
+		return WGR_stripslashes( $sql[0]->option_value );
 	}
 	
 	return '';
@@ -2790,7 +2790,7 @@ function _eb_update_option ( $name, $value, $load = 'yes' ) {
 //	print_r( $sql );
 	
 	// xử lý an toàn cho chuỗi trước khi update
-	$value = stripslashes ( stripslashes ( stripslashes ( trim( $value ) ) ) );
+	$value = WGR_stripslashes ( trim( $value ) );
 	if ( ! get_magic_quotes_gpc () ) {
 		$value = addslashes ( $value );
 	}
@@ -3307,6 +3307,11 @@ function EBE_insert_comment ( $data =  array() ) {
 	
 	wp_insert_comment($arr);
 	
+}
+
+
+function WGR_stripslashes ( $v ) {
+	return stripslashes( stripslashes( stripslashes( $v ) ) );
 }
 
 

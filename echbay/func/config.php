@@ -428,7 +428,7 @@ foreach( $_POST as $k => $v ) {
 			//
 			_eb_set_config( $k, $v );
 			
-//			$arr_for_update_eb_config[ $k ] = addslashes( stripslashes ( stripslashes ( stripslashes ( $v ) ) ) );
+//			$arr_for_update_eb_config[ $k ] = addslashes( WGR_stripslashes ( $v ) );
 			
 			//
 //			$v = sanitize_text_field( $v );

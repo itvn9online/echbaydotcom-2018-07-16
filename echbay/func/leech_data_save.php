@@ -10,7 +10,7 @@ function WGR_leech_data_save ( $key, $c ) {
 	
 	delete_option ( $key );
 	
-	$v = stripslashes ( stripslashes ( stripslashes ( trim( $v ) ) ) );
+	$v = WGR_stripslashes ( trim( $v ) );
 	
 	//
 	if ( $c == '' ) {

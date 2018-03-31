@@ -1473,6 +1473,7 @@ setInterval(function () {
 		// nếu không cứ 10 giây thêm 1 đơn vị
 		else {
 			tu_dong_load_lai_trang_neu_submit_loi++;
+			console.log('Repload page after ' + ( tu_dong_load_lai_trang_neu_submit_loi * 10 ) + ' secondes');
 		}
 	}
 	// nếu không kích hoạt chế độ load trang -> đặt về 0 luôn

@@ -466,7 +466,7 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 			}
 			
 			//
-			$val = trim( stripslashes( stripslashes( stripslashes( $val ) ) ) );
+			$val = trim( WGR_stripslashes( $val ) );
 			
 			//
 			if ( $val == '' ) {
@@ -745,7 +745,7 @@ function EBsave_extra_category_fileds( $term_id ) {
 			}
 			
 			//
-			$val = trim( stripslashes( stripslashes( stripslashes( $val ) ) ) );
+			$val = trim( WGR_stripslashes( $val ) );
 //			echo $val;
 			
 			//
