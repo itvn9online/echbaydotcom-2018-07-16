@@ -118,7 +118,36 @@ function function_rieng_theo_domain () {
 	}
 	
 	//
-	if ( source_url.split('lazada.vn').length > 1 ) {
+	if ( source_url.split('vnexpress.net').length > 1 ) {
+		if ( f.t_ngaydang.value != '' ) {
+			try {
+				var a = g_func.strip_tags( f.t_ngaydang.value ),
+					b = '';
+				
+				var a = a.split('|');
+				
+				// -> giờ đăng
+				b = $.trim( a[1] );
+				b = b.split(' ')[0];
+				
+				// ngày đăng
+				a = $.trim( a[0].split('<')[0].split(',')[1] );
+				a = a.split('/');
+				
+				// set ngày đăng ảnh theo bài viết
+				year_curent = a[2];
+				
+				//
+				a = a[2] + '/' + a[1] + '/' + a[0];
+				
+				//
+				f.t_ngaydang.value = a + ' ' + b;
+			} catch ( e ) {
+				f.t_ngaydang.value = '';
+			}
+		}
+	}
+	else if ( source_url.split('lazada.vn').length > 1 ) {
 		if ( f.t_img.value != '' ) {
 			f.t_img.value = f.t_img.value.split('-catalog.jpg_')[0].split('-zoom.jpg_')[0] + '.jpg';
 			f.t_img.value = f.t_img.value.replace(/\.jpg\.jpg/gi, '.jpg');
@@ -789,7 +818,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				
 				//
 				console.log('Không tìm thấy tiêu đề sản phẩm');
-				ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR</span>' );
+				ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR (not title)</span>' );
 				
 				//
 				return false;
@@ -1195,16 +1224,26 @@ function EBE_save_cookie_to_data_base () {
 		console.log( EBE_current_first_domain );
 	}
 	
-	//
+	// gán mặc định nếu chưa có mảng nào
 	if ( typeof arr_for_save_domain_config[EBE_current_first_domain] != 'object' ) {
 		arr_for_save_domain_config[EBE_current_first_domain] = arr_cookie_lamviec;
 	}
 	console.log( arr_for_save_domain_config );
 	
-	//
+	// sau đó là gán giá trị thật
 	for ( var x in arr_cookie_lamviec ) {
 		arr_for_save_domain_config[EBE_current_first_domain][x] = $( '#' + x ).val() || '';
 	}
+	console.log( arr_for_save_domain_config );
+	
+	// gán các checkbox đã được check
+	var a = [];
+	for ( var i = 0; i < arr_save_checkbox_options.length; i++ ) {
+		if ( dog( arr_save_checkbox_options[i] ).checked == true ) {
+			a.push( arr_save_checkbox_options[i] );
+		}
+	}
+	arr_for_save_domain_config[EBE_current_first_domain]['save_checkbox_options'] = a;
 	console.log( arr_for_save_domain_config );
 	
 	
@@ -1222,12 +1261,12 @@ function EBE_auto_save_domain_cookie () {
 		auto_submit_save_domain_cookies = false;
 		
 		//
-		if ( dog('leech_data_auto_next') == false ) {
-			console.log( 'Auto save, while 60 secondes' );
-			document.frm_leech_data_save.submit();
+		if ( dog('leech_data_auto_next').checked == true ) {
+			console.log( 'Auto next is active, auto save STOP' );
 		}
 		else {
-			console.log( 'Auto next is active, auto save STOP' );
+			console.log( 'Auto save, while 60 secondes' );
+			document.frm_leech_data_save.submit();
 		}
 	}
 }
@@ -1599,21 +1638,23 @@ $('.click-submit-url-categories').off('click').click(function () {
 /*
 * Nhớ 1 số thao tác trước đó
 */
-(function () {
-	var arr = [
-		'nap_lai_trang_sau_khi_hoan_thanh',
-		'download_img_to_my_host',
-		'loai_bo_a_trong_noi_dung',
-		'loai_bo_url_trong_noi_dung',
-		'bai_viet_nay_duoc_lay_theo_id',
-		'post_id_is_numberic',
-		'this_id_url_product_detail',
-		'get_list_post_in_iframe',
-		'auto_get_random_category_for_leech',
-		
-		'leech_data_auto_next'
-	];
+var arr_save_checkbox_options = [
+	'nap_lai_trang_sau_khi_hoan_thanh',
+	'download_img_to_my_host',
+	'loai_bo_a_trong_noi_dung',
+	'loai_bo_url_trong_noi_dung',
+	'bai_viet_nay_duoc_lay_theo_id',
+	'post_id_is_numberic',
+	'this_id_url_product_detail',
+	'get_list_post_in_iframe',
+	'auto_get_random_category_for_leech',
 	
+	'leech_data_auto_next'
+];
+
+(function ( arr ) {
+	
+	//
 	for ( var i = 0; i < arr.length; i++ ) {
 //		console.log(arr[i]);
 		
@@ -1632,6 +1673,9 @@ $('.click-submit-url-categories').off('click').click(function () {
 			} else {
 				g_func.setc( a, 0, 0, 30 );
 			}
+			
+			//
+			EBE_save_cookie_to_data_base();
 		});
 		
 		//
@@ -1657,7 +1701,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 		|| $('select[name="post_tai"]').val(a).change()
 		|| $('select[name="post_tai"] option[value="' +a+ '"]').attr('selected','selected');
 	}
-})();
+})( arr_save_checkbox_options );
 
 
 /*
@@ -1733,7 +1777,18 @@ var default_arr_cookie_lamviec = {
 	
 	//
 	for ( var x in arr_cookie_lamviec ) {
-		if ( dog( x ) != null ) {
+		if ( x == 'save_checkbox_options' ) {
+			var arr_check_op = arr_cookie_lamviec[x];
+			
+			for ( var j = 0; j < arr_check_op.length; j++ ) {
+				console.log(arr_check_op[j]);
+				
+				if ( dog( arr_check_op[j] ).checked == false ) {
+					dog( arr_check_op[j] ).checked = true;
+				}
+			}
+		}
+		else if ( dog( x ) != null ) {
 			var a_name = 'leech_data_' + x,
 				a = g_func.getc( a_name );
 //			console.log( a_name );
@@ -1765,6 +1820,7 @@ var default_arr_cookie_lamviec = {
 			});
 		}
 	}
+	
 })();
 
 
