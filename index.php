@@ -1136,6 +1136,7 @@ $arr_tmp_top_menu = array();
 $arr_tmp_footer_menu = array();
 
 //
+//echo using_child_wgr_theme;
 $arr_for_add_js = array(
 	// Đây là file JS có đọ ưu tiên cao nhất, sẽ chạy trước mọi file js
 	using_child_wgr_theme == 1 ? EB_CHILD_THEME_URL . 'ui/_.js' : '',
@@ -1149,6 +1150,7 @@ $arr_for_add_js = array(
 //	EB_THEME_THEME . 'javascript/display.js',
 //	EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
 );
+//print_r( $arr_for_add_js );
 
 // nạp js từ child theme (nếu có)
 //if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'javascript/display.js' ) ) {
