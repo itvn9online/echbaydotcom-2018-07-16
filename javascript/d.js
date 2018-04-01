@@ -370,14 +370,14 @@ function ___eb_details_countdown () {
 function ___eb_details_excerpt_html ( a_before, a_after ) {
 	
 	// tắt chế độ tạo style cho phần excerpt nếu option này đang được tắt
-	if ( cf_details_excerpt == 0 ) {
+	if ( cf_details_excerpt != 1 ) {
 		if ( cf_tester_mode == 1 ) console.log('___eb_details_excerpt_html disable');
 		return false;
 	}
 	if ( cf_tester_mode == 1 ) console.log('___eb_details_excerpt_html is running...');
 	
 	// chặn -> không cho chạy lại lần nữa
-	cf_details_excerpt = 0;
+	cf_details_excerpt = 'off';
 	
 	//
 	var a = $('.thread-details-comment').html() || '',

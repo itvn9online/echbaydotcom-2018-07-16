@@ -380,7 +380,7 @@ if ( ! defined('FTP_HOST') ) {
 * Kích hoạt bằng cách set thủ công trong wp-config.php
 */
 if ( ! defined('DISALLOW_FILE_EDIT') ) {
-	if ( $__cf_row['cf_alow_edit_plugin_theme'] == 0 ) {
+	if ( $__cf_row['cf_alow_edit_plugin_theme'] != 1 ) {
 		define( 'DISALLOW_FILE_EDIT', true );
 	} else {
 		define( 'DISALLOW_FILE_EDIT', false );
@@ -392,7 +392,7 @@ if ( ! defined('DISALLOW_FILE_EDIT') ) {
 * Kích hoạt bằng cách set thủ công trong wp-config.php
 */
 if ( ! defined('DISALLOW_FILE_MODS') ) {
-	if ( $__cf_row['cf_alow_edit_plugin_theme'] == 0 ) {
+	if ( $__cf_row['cf_alow_edit_plugin_theme'] != 1 ) {
 		define( 'DISALLOW_FILE_MODS', true );
 	} else {
 		define( 'DISALLOW_FILE_MODS', false );
@@ -622,7 +622,7 @@ function echbay_theme_setup() {
 	* Thêm chức năng title-tag để tự thêm <title>
 	* Kích hoạt khi người dùng tắt chức năng SEO của EchBay
 	*/
-//	if ( $__cf_row['cf_on_off_echbay_seo'] == 0 && ! is_404() ) {
+//	if ( $__cf_row['cf_on_off_echbay_seo'] != 1 && ! is_404() ) {
 //		add_theme_support( 'title-tag' );
 //	}
 	
@@ -1053,7 +1053,7 @@ else {
 	/*
 	* Không cho đọc nội dung thông qua json
 	*/
-	if ( $__cf_row['cf_on_off_json'] == 0 ) {
+	if ( $__cf_row['cf_on_off_json'] != 1 ) {
 		include EB_THEME_PLUGIN_INDEX . 'plugins/disable-json-api.php';
 	}
 	

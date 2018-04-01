@@ -12,37 +12,21 @@
 //_eb_alert( $wpdb->postmeta );
 //_eb_alert( $wpdb->options );
 
-if ( ! isset( $_POST['cf_using_top_default'] ) || (int) $_POST['cf_using_top_default'] != 1 ) {
-	$_POST['cf_using_top_default'] = 0;
-}
+$_POST['cf_using_top_default'] = WGR_default_config('cf_using_top_default');
 
-if ( ! isset( $_POST['cf_using_footer_default'] ) || (int) $_POST['cf_using_footer_default'] != 1 ) {
-	$_POST['cf_using_footer_default'] = 0;
-}
+$_POST['cf_using_footer_default'] = WGR_default_config('cf_using_footer_default');
 
-if ( ! isset( $_POST['cf_using_home_default'] ) || (int) $_POST['cf_using_home_default'] != 1 ) {
-	$_POST['cf_using_home_default'] = 0;
-}
+$_POST['cf_using_home_default'] = WGR_default_config('cf_using_home_default');
 
-if ( ! isset( $_POST['cf_using_cats_default'] ) || (int) $_POST['cf_using_footer_default'] != 1 ) {
-	$_POST['cf_using_cats_default'] = 0;
-}
+$_POST['cf_using_footer_default'] = WGR_default_config('cf_using_footer_default');
 
-if ( ! isset( $_POST['cf_details_show_list_next'] ) || (int) $_POST['cf_details_show_list_next'] != 1 ) {
-	$_POST['cf_details_show_list_next'] = 0;
-}
+$_POST['cf_details_show_list_next'] = WGR_default_config('cf_details_show_list_next');
 
-if ( ! isset( $_POST['cf_details_show_list_thumb'] ) || (int) $_POST['cf_details_show_list_thumb'] != 1 ) {
-	$_POST['cf_details_show_list_thumb'] = 0;
-}
+$_POST['cf_details_show_list_thumb'] = WGR_default_config('cf_details_show_list_thumb');
 
-if ( ! isset( $_POST['cf_details_show_quick_cart'] ) || (int) $_POST['cf_details_show_quick_cart'] != 1 ) {
-	$_POST['cf_details_show_quick_cart'] = 0;
-}
+$_POST['cf_details_show_quick_cart'] = WGR_default_config('cf_details_show_quick_cart');
 
-if ( ! isset( $_POST['cf_details_excerpt'] ) || (int) $_POST['cf_details_excerpt'] != 1 ) {
-	$_POST['cf_details_excerpt'] = 0;
-}
+$_POST['cf_details_excerpt'] = WGR_default_config('cf_details_excerpt');
 
 
 //

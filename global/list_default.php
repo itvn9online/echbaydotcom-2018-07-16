@@ -5,7 +5,7 @@
 	
 	
 	// không index trong 1 số trường hợp
-	if ( $switch_taxonomy == 'post_options' && $__cf_row['cf_alow_post_option_index'] == 0 ) {
+	if ( $switch_taxonomy == 'post_options' && $__cf_row['cf_alow_post_option_index'] != 1 ) {
 		$__cf_row ["cf_blog_public"] = 0;
 	}
 	else if ( isset( $_GET['search_advanced'] ) || _eb_get_cat_object( $cid, '_eb_category_noindex', 0 ) == 1 ) {
@@ -16,7 +16,7 @@
 	
 	
 	// Chỉ lấy banner riêng khi chế độ global không được kích hoạt
-	if ( $__cf_row['cf_global_big_banner'] == 0 ) {
+	if ( $__cf_row['cf_global_big_banner'] != 1 ) {
 		/*
 		$arr_select_by_taxonomy = array(
 			'taxonomy' => $switch_taxonomy,

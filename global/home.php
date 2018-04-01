@@ -23,7 +23,7 @@ if ( $__cf_row['cf_home_column_style'] == '' ) {
 
 
 // Chỉ lấy banner riêng khi chế độ global không được kích hoạt
-if ( $__cf_row['cf_global_big_banner'] == 0 ) {
+if ( $__cf_row['cf_global_big_banner'] != 1 ) {
 	$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
 		'category__not_in' => ''
 	) );

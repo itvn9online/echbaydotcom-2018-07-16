@@ -14,7 +14,7 @@ function WGR_deny_or_accept_vist_php_file ( $progress_file, $deny_or_accept, $wa
 		$progress_content[0] = trim( $progress_content[0] );
 		
 		// nếu chế độ xem qua xmlrpc đang tắt
-		if ( $deny_or_accept == 0 ) {
+		if ( $deny_or_accept != 1 ) {
 			// kiểm tra có lệnh die chưa -> như này là chưa add -> add thêm thôi
 			if ( $progress_content[0] == '<?php' || $progress_content[0] == '<?' ) {
 				$progress_content[0] = '<?php die("' . $warning_content . ' method has been disable by EchBay.com");';
@@ -346,6 +346,16 @@ Served from: ' . $_SERVER ['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . ' on ' . dat
 List file: ' . substr( $s, 1 ) . '
 */
 	' );
+}
+
+
+
+function WGR_default_config ( $k ) {
+	if ( ! isset( $_POST[ $k ] ) || (int) $_POST[ $k ] != 1 ) {
+//		return 0;
+		return 'off';
+	}
+	return 1;
 }
 
 

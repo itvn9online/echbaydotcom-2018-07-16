@@ -23,7 +23,7 @@ $__cf_row_default = array(
 	
 	'cf_gse' => '',
 	'cf_ga_id' => '',
-	'cf_gtag_id' => 0,
+	'cf_gtag_id' => 'off',
 	
 	// mặc định sử dụng hàm PHP mail
 //	'cf_sys_email' => '',
@@ -33,7 +33,7 @@ $__cf_row_default = array(
 	
 	'cf_logo' => EB_URL_TUONG_DOI . 'images-global/echbay-wp-logo.png',
 	// tạo H1 cho phần logo
-	'cf_h1_logo' => 0,
+	'cf_h1_logo' => 'off',
 	'cf_size_logo' => 'auto', // 1/2
 	'cf_height_logo' => 50,
 	'cf_favicon' => eb_default_vaficon,
@@ -149,16 +149,16 @@ $__cf_row_default = array(
 	
 	
 	// bật/ tắt chia sẻ dữ liệu qua JSON
-	'cf_on_off_json' => 0,
-	'cf_on_off_xmlrpc' => 0,
+	'cf_on_off_json' => 'off',
+	'cf_on_off_xmlrpc' => 'off',
 	
 	// bật tắt cron -> chức năng tiêu tốn nhiều tài nguyên server
-	'cf_on_off_wpcron' => 0,
+	'cf_on_off_wpcron' => 'off',
 	
 	// xóa URL cha của phân nhóm, custom taxonomy
-	'cf_remove_category_base' => 0,
-	'cf_remove_post_option_base' => 0,
-	'cf_alow_post_option_index' => 0,
+	'cf_remove_category_base' => 'off',
+	'cf_remove_post_option_base' => 'off',
+	'cf_alow_post_option_index' => 'off',
 	
 	// plugin SEO của EchBay
 	'cf_on_off_echbay_seo' => 1,
@@ -167,27 +167,27 @@ $__cf_row_default = array(
 	'cf_on_off_echbay_logo' => 1,
 	
 	// on/ off AMP
-	'cf_on_off_amp_logo' => 0,
+	'cf_on_off_amp_logo' => 'off',
 	'cf_on_off_amp_category' => 1,
-	'cf_on_off_amp_product' => 0,
+	'cf_on_off_amp_product' => 'off',
 	'cf_on_off_amp_blogs' => 1,
 	'cf_on_off_amp_blog' => 1,
 	
 	// tự động cập nhật mã nguồn wordpress
-	'cf_on_off_auto_update_wp' => 0,
+	'cf_on_off_auto_update_wp' => 'off',
 	
 	// tự tìm và lấy link thumbnail bằng javascript
-	'cf_disable_auto_get_thumb' => 0,
+	'cf_disable_auto_get_thumb' => 'off',
 	
 	// nhúng URL vào các thẻ H1 ở trang chi tiết sản phẩm, bài viết, danh mục...
 	'cf_set_link_for_h1' => 1,
 	
 	// Tạo mặt nạ bảo vệ copy nội dung theo cách thông thường
-	'cf_set_mask_for_details' => 0,
+	'cf_set_mask_for_details' => 'off',
 	
 	// vị trí của đơn vị tiền tệ
 	'cf_current_price' => '',
-	'cf_current_price_before' => 0,
+	'cf_current_price_before' => 'off',
 	// Đơn vị tiền tệ cho phần structured data
 	'cf_current_sd_price' => 'VND',
 	
@@ -195,23 +195,23 @@ $__cf_row_default = array(
 	'cf_hide_supper_admin_menu' => 1,
 	
 	// cho phép chính sửa theme, plugin
-	'cf_alow_edit_theme_plugin' => 0,
+	'cf_alow_edit_theme_plugin' => 'off',
 	'cf_alow_edit_plugin_theme' => 1,
 	
 	// đặt làm trang tin tức
-	'cf_set_news_version' => 0,
+	'cf_set_news_version' => 'off',
 	
 	// Với các website nâng cấp từ version 1 lên version, URL có thể sẽ khác nhau -> dùng chức năng này để đồng bộ
-	'cf_echbay_migrate_version' => 0,
+	'cf_echbay_migrate_version' => 'off',
 	
 	// Hiển thị nút tìm kiếm nâng cao hoặc nhảy URL luôn
 	'cf_search_advanced_auto_submit' => 1,
 	
 	// Sử dụng công cụ tìm kiếm của echbay
-	'cf_search_by_echbay' => 0,
+	'cf_search_by_echbay' => 'off',
 	
 	// Mặc định, banner lớn được load theo từng trang, nếu muốn load cho toàn bộ trang thì kích hoạt nó lên
-	'cf_global_big_banner' => 0,
+	'cf_global_big_banner' => 'off',
 	
 	// Mặc định, big banner được load cả trong trang chi tiết
 	'cf_post_big_banner' => 1,
@@ -220,13 +220,13 @@ $__cf_row_default = array(
 	'cf_arrow_big_banner' => 1,
 	
 	// tựu động lấy size cho phần quảng cáo theo ảnh đầu tiên trong chuỗi tìm được
-	'cf_auto_get_ads_size' => 0,
+	'cf_auto_get_ads_size' => 'off',
 	
 	/*
 	* Cấu hình slider cho trang chi tiết sản phẩm
 	*/
 	// Ẩn/ Hiện nút nhỏ nhỏ màu đỏ trên silder
-	'cf_details_show_list_next' => 0,
+	'cf_details_show_list_next' => 'off',
 	'cf_details_show_list_thumb' => 1,
 	'cf_details_show_quick_cart' => 1,
 	

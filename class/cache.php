@@ -586,7 +586,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 
 
 // chuyển đơn vị tiền tệ từ sau ra trước
-if ( $__cf_row['cf_current_price_before'] != 0 ) {
+if ( $__cf_row['cf_current_price_before'] == 1 ) {
 	
 	//
 	$__cf_row['cf_default_css'] .= '.ebe-currency:after{display:none}.ebe-currency:before{display:inline-block}';
@@ -606,7 +606,7 @@ else if ( $__cf_row['cf_current_price'] != '' ) {
 
 // tạo mặt nạ cho nội dung
 /*
-if ( $__cf_row['cf_set_mask_for_details'] != 0 ) {
+if ( $__cf_row['cf_set_mask_for_details'] == 1 ) {
 	$__cf_row['cf_default_css'] .= '.thread-content-mask{right:0;bottom:0;display:block}';
 }
 */

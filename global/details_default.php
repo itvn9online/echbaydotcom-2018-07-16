@@ -14,7 +14,7 @@ include EB_THEME_PLUGIN_INDEX . 'global/post.php';
 
 //
 /*
-if ( $__cf_row['cf_set_news_version'] == 0 ) {
+if ( $__cf_row['cf_set_news_version'] != 1 ) {
 	$web_og_type = 'product';
 }
 else {
@@ -237,10 +237,10 @@ if ( ! empty( $cats ) ) {
 
 
 // Chỉ lấy banner riêng khi chế độ global không được kích hoạt
-if ( $__cf_row['cf_post_big_banner'] == 0 ) {
+if ( $__cf_row['cf_post_big_banner'] != 1 ) {
 	$str_big_banner = '<!-- Big banner current set not load in post details -->';
 }
-else if ( $__cf_row['cf_global_big_banner'] == 0 ) {
+else if ( $__cf_row['cf_global_big_banner'] != 1 ) {
 	// Mặc định chỉ lấy cho phần post
 	if ( $cid > 0 ) {
 		$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(

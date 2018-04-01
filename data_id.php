@@ -6,7 +6,7 @@
 
 
 $add_data_id = array (
-		'date_time' => $date_time,
+		'date_time' => date_time,
 //		'check_lazyload' => $check_lazyload,
 //		'web_link' => '\'' . web_link . '\'',
 		'base_url_href' => '\'' . web_link . '\'',
@@ -48,7 +48,7 @@ $add_data_id = array (
 		'cf_tester_mode' => '\'' . $__cf_row['cf_tester_mode'] . '\'',
 		
 		// tự động submit trong phần tìm kiếm nâng cao
-		'cf_search_advanced_auto_submit' => $__cf_row['cf_search_advanced_auto_submit'],
+		'cf_search_advanced_auto_submit' => '\'' . $__cf_row['cf_search_advanced_auto_submit'] . '\'',
 		
 		// chiều rộng khung
 		'cf_blog_class_style' => '\'' . $__cf_row['cf_blog_class_style'] . '\'',
@@ -58,10 +58,10 @@ $add_data_id = array (
 		'cf_current_sd_price' => '\'' . $__cf_row['cf_current_sd_price'] . '\'',
 		
 		// nút chuyển ảnh trên slider
-		'cf_arrow_big_banner' => $__cf_row['cf_arrow_big_banner'],
+		'cf_arrow_big_banner' => '\'' . $__cf_row['cf_arrow_big_banner'] . '\'',
 		
-		'cf_details_show_list_next' => $__cf_row['cf_details_show_list_next'],
-		'cf_details_show_list_thumb' => $__cf_row['cf_details_show_list_thumb'],
+		'cf_details_show_list_next' => '\'' . $__cf_row['cf_details_show_list_next'] . '\'',
+		'cf_details_show_list_thumb' => '\'' . $__cf_row['cf_details_show_list_thumb'] . '\'',
 		
 //		'tid' => $tid,
 //		'url_for_cat_js' => '\'' . $url_for_cat_js . '\'' ,

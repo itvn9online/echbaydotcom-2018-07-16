@@ -263,7 +263,7 @@ var web_link = "' . web_link . '",
 	client_ip = "' . $client_ip . '",
 	cf_old_domain = "' . $__cf_row['cf_old_domain'] . '",
 	order_max_post_new = ' . $order_max_post_new . ',
-	cf_tester_mode = ' . $__cf_row['cf_tester_mode'] . ',
+	cf_tester_mode = "' . $__cf_row['cf_tester_mode'] . '",
 	cf_hide_supper_admin_menu = ' . $__cf_row['cf_hide_supper_admin_menu'] . ',
 	arr_eb_ads_status = [' . substr( $str_ads_status, 1 ) . '],
 	arr_eb_product_status = [' . substr( $str_product_status, 1 ) . '];';
@@ -731,7 +731,7 @@ function WGR_backup_post_before_delete ( $postid ) {
 
 //
 include EB_THEME_CORE . 'custom/admin/create-echbay-table.php';
-if ( $__cf_row['cf_on_off_auto_update_wp'] == 0 ) {
+if ( $__cf_row['cf_on_off_auto_update_wp'] != 1 ) {
 	include EB_THEME_CORE . 'custom/admin/disable-update.php';
 }
 include EB_THEME_CORE . 'custom/admin/auto-clean.php';

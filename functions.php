@@ -3393,7 +3393,7 @@ function _eb_load_ads (
 		$str = '';
 		
 		// lấy size theo dữ liệu truyền vào
-//		if ( $__cf_row['cf_auto_get_ads_size'] == 0 ) {
+//		if ( $__cf_row['cf_auto_get_ads_size'] != 1 ) {
 			$data_size = ( $data_size == '' ) ? 1 : $data_size;
 //		}
 		// lấy size tự động theo ảnh đầu tiên

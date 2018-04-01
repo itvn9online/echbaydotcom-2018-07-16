@@ -61,15 +61,6 @@ else if ( $_POST['cf_sys_email'] != '' && $_POST['cf_sys_email'] != 'wpmail' ) {
 
 
 //
-function WGR_default_config ( $k ) {
-	if ( ! isset( $_POST[ $k ] ) || (int) $_POST[ $k ] != 1 ) {
-//		return 0;
-		return 'off';
-	}
-	return 1;
-}
-
-//
 $_POST['cf_tester_mode'] = WGR_default_config('cf_tester_mode');
 
 $_POST['cf_gtag_id'] = WGR_default_config('cf_gtag_id');
@@ -394,7 +385,7 @@ $_POST['cf_default_css'] = WGR_remove_css_multi_comment( $_POST['cf_default_css'
 
 // chuyển đơn vị tiền tệ từ sau ra trước
 /*
-if ( $_POST['cf_current_price_before'] != 0 ) {
+if ( $_POST['cf_current_price_before'] == 1 ) {
 	
 	//
 	$_POST['cf_default_css'] .= '.ebe-currency:after { display:none; } .ebe-currency:before { display: inline-block; }';
@@ -526,11 +517,11 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 			if ( strstr( $v, "'WP_DEBUG'" ) == true || strstr( $v, '"WP_DEBUG"' ) == true ) {
 //				echo $v . '<br>' . "\n";
 				
-				if ( $_POST['cf_tester_mode'] == 0 ) {
-					$content_of_new_wp_config[$k] = "define('WP_DEBUG', false);";
+				if ( $_POST['cf_tester_mode'] == 1 ) {
+					$content_of_new_wp_config[$k] = "define('WP_DEBUG', true);";
 				}
 				else {
-					$content_of_new_wp_config[$k] = "define('WP_DEBUG', true);";
+					$content_of_new_wp_config[$k] = "define('WP_DEBUG', false);";
 				}
 				
 				$arr_cac_thay_doi['WP_DEBUG'] = 1;
@@ -539,7 +530,7 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 			else if ( strstr( $v, "'WP_AUTO_UPDATE_CORE'" ) == true || strstr( $v, '"WP_AUTO_UPDATE_CORE"' ) == true ) {
 //				echo $v . '<br>' . "\n";
 				
-				if ( $_POST['cf_on_off_auto_update_wp'] == 0 ) {
+				if ( $_POST['cf_on_off_auto_update_wp'] != 1 ) {
 					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', false);";
 				}
 				else {
