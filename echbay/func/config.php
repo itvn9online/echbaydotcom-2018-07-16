@@ -63,7 +63,8 @@ else if ( $_POST['cf_sys_email'] != '' && $_POST['cf_sys_email'] != 'wpmail' ) {
 //
 function WGR_default_config ( $k ) {
 	if ( ! isset( $_POST[ $k ] ) || (int) $_POST[ $k ] != 1 ) {
-		return 0;
+//		return 0;
+		return 'off';
 	}
 	return 1;
 }

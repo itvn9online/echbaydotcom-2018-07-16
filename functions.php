@@ -2078,6 +2078,7 @@ function _eb_set_config($key, $val, $etro = 1) {
 	
 	// thêm option mới
 //	if ( get_option( $key ) == false ) {
+//	if ( $val == 0 || $val != '' ) {
 	if ( $val != '' ) {
 		/*
 		$sql = "INSERT INTO `" . $wpdb->options . "`
@@ -2091,7 +2092,12 @@ function _eb_set_config($key, $val, $etro = 1) {
 		
 		//
 		if ( $etro == 1 ) {
-			echo 'Add: ' . $key . '<br>' . "\n";
+			if ( strlen( $val ) < 50 ) {
+				echo 'Add: ' . $key . ' (' . $val . ')<br>' . "\n";
+			}
+			else {
+				echo 'Add: ' . $key . '<br>' . "\n";
+			}
 		}
 	}
 	else if ( $etro == 1 ) {
@@ -2236,10 +2242,18 @@ function _eb_get_config( $real_time = false ) {
 //		if ( isset( $__cf_row_default[ $a->option_name ] ) && $a->option_value == '' ) {
 		if ( isset( $__cf_row_default[ $a->option_name ] ) ) {
 			if ( $a->option_value == '' ) {
-				$a->option_value = $__cf_row_default[ $a->option_name ];
+//				$a->option_value = $__cf_row_default[ $a->option_name ];
+				$__cf_row[ $a->option_name ] = $__cf_row_default[ $a->option_name ];
 			}
-			$__cf_row[ $a->option_name ] = WGR_stripslashes( $a->option_value );
-//			$__cf_row[ $a->option_name ] = $a->option_value;
+			/*
+			else if ( $a->option_value == 'off' ) {
+				$__cf_row[ $a->option_name ] = 0;
+			}
+			*/
+			else {
+				$__cf_row[ $a->option_name ] = WGR_stripslashes( $a->option_value );
+//				$__cf_row[ $a->option_name ] = $a->option_value;
+			}
 			
 			//
 //			$arr_for_update_eb_config[ $a->option_name ] = addslashes( $__cf_row[ $a->option_name ] );

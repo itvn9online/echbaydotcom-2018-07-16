@@ -44,7 +44,8 @@ $add_data_id = array (
 		'eb_product_price' => $eb_product_price,
 		
 		// chế độ kiểm thử -> dùng để console lỗi nếu chế độ này đang bật
-		'cf_tester_mode' => $__cf_row['cf_tester_mode'],
+//		'cf_tester_mode' => $__cf_row['cf_tester_mode'],
+		'cf_tester_mode' => '\'' . $__cf_row['cf_tester_mode'] . '\'',
 		
 		// tự động submit trong phần tìm kiếm nâng cao
 		'cf_search_advanced_auto_submit' => $__cf_row['cf_search_advanced_auto_submit'],
