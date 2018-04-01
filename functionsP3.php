@@ -116,7 +116,7 @@ function WGR_check_and_load_tmp_theme ( $load_config_temp, $dir_all_theme ) {
 	
 	//
 	$tmp_child_theme = '';
-	if ( defined('EB_CHILD_THEME_URL') ) {
+	if ( using_child_wgr_theme == 1 ) {
 		$tmp_child_theme = EB_CHILD_THEME_URL . 'ui/' . $load_config_temp;
 //		echo $tmp_child_theme . '<br>' . "\n";
 	}

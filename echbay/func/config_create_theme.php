@@ -169,7 +169,7 @@ function WGR_for_to_create_theme_by_name ( $name, $j = 0 ) {
 
 //
 $dir_for_save_theme = EB_THEME_URL . 'ui/';
-if ( defined('EB_CHILD_THEME_URL') ) {
+if ( using_child_wgr_theme == 1 ) {
 	$dir_for_save_theme = EB_CHILD_THEME_URL . 'ui/';
 }
 
@@ -296,7 +296,7 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 			
 			// trong child theme
 			$check_child_theme = $fcheck;
-			if ( defined('EB_CHILD_THEME_URL') ) {
+			if ( using_child_wgr_theme == 1 ) {
 				$check_child_theme = EB_CHILD_THEME_URL . 'ui/' . $fname;
 			}
 			

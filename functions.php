@@ -423,7 +423,7 @@ function EBE_get_page_template ( $page_name = '', $dir = EB_THEME_HTML ) {
 	
 	// kiểm tra trong child theme
 	$tmp_child_theme = '';
-	if ( defined('EB_CHILD_THEME_URL') ) {
+	if ( using_child_wgr_theme == 1 ) {
 		$tmp_child_theme = EB_CHILD_THEME_URL . 'html/' . $page_name . '.html';
 //		echo $tmp_child_theme . '<br>' . "\n";
 	}
@@ -1124,7 +1124,7 @@ function WGR_remove_css_multi_comment ( $a ) {
 	$str = str_replace( '} .', '}.', $str );
 	
 	// thay url ảnh của child theme thành url tuyệt đối
-	if ( defined('EB_CHILD_THEME_URL') ) {
+	if ( using_child_wgr_theme == 1 ) {
 		$str = str_replace( '../images-child/', str_replace( '\\', '/', str_replace( ABSPATH, web_link, EB_CHILD_THEME_URL ) ) . 'images-child/', $str );
 		$str = str_replace( '../image-child/', str_replace( '\\', '/', str_replace( ABSPATH, web_link, EB_CHILD_THEME_URL ) ) . 'image-child/', $str );
 	}

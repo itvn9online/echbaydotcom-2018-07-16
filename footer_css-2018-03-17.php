@@ -194,7 +194,7 @@ if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
 */
 
 // file js riêng của từng theme
-if ( defined('EB_CHILD_THEME_URL') ) {
+if ( using_child_wgr_theme == 1 ) {
 	$arr_for_add_js[] = EB_CHILD_THEME_URL . 'ui/d.js';
 }
 else {

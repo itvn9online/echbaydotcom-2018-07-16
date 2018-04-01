@@ -22,7 +22,7 @@ $echbay_ajax_file = EB_THEME_PHP . $action_module . '.php';
 
 // tìm trong theme con trước
 $child_theme_ajaxl = '';
-if ( defined('EB_CHILD_THEME_URL') ) {
+if ( using_child_wgr_theme == 1 ) {
 	$child_theme_ajaxl = EB_CHILD_THEME_URL . $action_module . '.php';
 }
 

@@ -153,7 +153,7 @@ if ( $act == '' ) {
 }
 //echo $inc_file . '<br>' . "\n";
 $inc_child_file = '';
-if ( defined('EB_CHILD_THEME_URL') ) {
+if ( using_child_wgr_theme == 1 ) {
 	$inc_child_file = EB_CHILD_THEME_URL . 'php/' . $inc_file . '.php';
 //	echo $inc_child_file . '<br>' . "\n";
 }
@@ -195,7 +195,7 @@ if ( file_exists( $inc_file ) ) {
 	
 }
 // hoặc nếu đây là một page template -> code sẽ nằm trong file template kia
-else if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'templates/' . $act . '.php' ) ) {
+else if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'templates/' . $act . '.php' ) ) {
 	// Nạp lại header cho page ở mục này để làm SEO
 	include EB_THEME_PLUGIN_INDEX . 'global/page_templates_header.php';
 }

@@ -3208,7 +3208,7 @@ function WGR_check_add_add_css_themes_or_plugin ( $f ) {
 //	echo EB_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f ) . '<br>' . "\n";
 	
 	// ưu tiên hàng của theme trước
-	if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f ) ) ) {
+	if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f ) ) ) {
 		return EBE_get_css_for_theme_design ( $f, EB_CHILD_THEME_URL );
 	}
 	else if ( file_exists( EB_THEME_URL . 'ui/' . WGR_convert_fiename_to_css( $f ) ) ) {
@@ -3249,7 +3249,7 @@ function WGR_load_module_name_css (
 			}
 			else {
 				// ưu tiên hàng của theme trước
-				if ( defined('EB_CHILD_THEME_URL')
+				if ( using_child_wgr_theme == 1
 				&& file_exists( EB_CHILD_THEME_URL . 'ui/' . $__cf_row[ $j ] ) ) {
 					$arr[] = EB_CHILD_THEME_URL . 'ui/' . $__cf_row[ $j ];
 					

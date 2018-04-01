@@ -608,7 +608,7 @@ function _eb_widget_list_html_file_plugin_theme ( $select_name, $select_val, $ht
 	$arr_in_theme = _eb_widget_list_html_file_by_dir();
 	
 	// lấy trong child theme
-	if ( defined('EB_CHILD_THEME_URL') ) {
+	if ( using_child_wgr_theme == 1 ) {
 		$arr_in_child_theme = _eb_widget_list_html_file_by_dir( EB_CHILD_THEME_URL . 'html/' );
 		
 		foreach ( $arr_in_child_theme as $k => $v ) {

@@ -5,7 +5,7 @@ if ( have_posts() ) {
 //	print_r( $post );
 	
 	if ( $post->post_type == 'post' || $post->post_type == EB_BLOG_POST_TYPE ) {
-		if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'php/content.php' ) ) {
+		if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'php/content.php' ) ) {
 //			echo '<!-- ' . EB_CHILD_THEME_URL . ' -->' . "\n";
 			include EB_CHILD_THEME_URL . 'php/content.php';
 		}
@@ -14,7 +14,7 @@ if ( have_posts() ) {
 		}
 	}
 	else {
-		if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'php/404.php' ) ) {
+		if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'php/404.php' ) ) {
 			include EB_CHILD_THEME_URL . 'php/404.php';
 		}
 		else {

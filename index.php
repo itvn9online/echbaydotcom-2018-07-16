@@ -39,6 +39,15 @@ define( 'wp_postmeta', $wpdb->postmeta );
 define( 'wp_termmeta', $wpdb->termmeta );
 
 
+//
+if ( defined('EB_CHILD_THEME_URL') ) {
+	define( 'using_child_wgr_theme', 1 );
+}
+else {
+	define( 'using_child_wgr_theme', 0 );
+}
+
+
 
 
 
@@ -69,7 +78,7 @@ $arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/guest.css' ] = 1;
 
 //
 //$arr_for_add_theme_css[ EB_THEME_URL . 'css/style.css' ] = 1;
-if ( defined('EB_CHILD_THEME_URL') ) {
+if ( using_child_wgr_theme == 1 ) {
 	$arr_for_add_css[ EB_CHILD_THEME_URL . 'css/style.css' ] = 1;
 	$arr_for_add_css[ EB_CHILD_THEME_URL . 'css/mobile.css' ] = 1;
 }
@@ -1128,6 +1137,10 @@ $arr_tmp_footer_menu = array();
 
 //
 $arr_for_add_js = array(
+	// Đây là file JS có đọ ưu tiên cao nhất, sẽ chạy trước mọi file js
+	using_child_wgr_theme == 1 ? EB_CHILD_THEME_URL . 'ui/_.js' : '',
+	
+	// Tiếp đến là các file JS thông thường
 //	ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/cat.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
@@ -1138,8 +1151,8 @@ $arr_for_add_js = array(
 );
 
 // nạp js từ child theme (nếu có)
-//if ( defined('EB_CHILD_THEME_URL') && file_exists( EB_CHILD_THEME_URL . 'javascript/display.js' ) ) {
-if ( defined('EB_CHILD_THEME_URL') ) {
+//if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'javascript/display.js' ) ) {
+if ( using_child_wgr_theme == 1 ) {
 	$arr_for_add_js[] = EB_CHILD_THEME_URL . 'javascript/display.js';
 }
 // mặc định là nạp từ theme

@@ -122,7 +122,7 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 	// lấy trong theme
 	else {
 //		echo EB_THEME_URL . "\n";
-		if ( defined('EB_CHILD_THEME_URL') ) {
+		if ( using_child_wgr_theme == 1 ) {
 //			echo EB_CHILD_THEME_URL . "\n";
 			$arr_file_name = glob ( EB_CHILD_THEME_URL . 'ui/*.{' . $files_type_support . '}', GLOB_BRACE );
 		}
@@ -536,7 +536,7 @@ $arr_for_set_template['str_list_all_include_file'] = implode( "\n", $str_list_al
 
 // Hiển thị đường dẫn tạo theme
 $arr_for_set_template['dir_for_save_new_theme'] = EB_THEME_URL;
-if ( defined('EB_CHILD_THEME_URL') ) {
+if ( using_child_wgr_theme == 1 ) {
 	$arr_for_set_template['dir_for_save_new_theme'] = EB_CHILD_THEME_URL;
 }
 
