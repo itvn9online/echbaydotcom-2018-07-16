@@ -2309,14 +2309,16 @@ var _global_js_eb = {
 	// https://support.google.com/adwords/answer/6331304?&hl=vi
 	gg_track : function ( url ) {
 		if ( typeof url == 'undefined'
-		|| url == ''
-		|| typeof goog_report_conversion != 'function' ) {
+//		|| typeof goog_report_conversion != 'function'
+		|| url == '' ) {
 			return false;
 		}
 		console.log('Google tracking (' + url + ') by EchBay.com');
 		
 		//
-		goog_report_conversion( url );
+		if ( typeof goog_report_conversion == 'function' ) {
+			goog_report_conversion( url );
+		}
 		
 		//
 		return true;
@@ -2331,9 +2333,12 @@ var _global_js_eb = {
 			return false;
 		}
 		
+		//
+		/*
 		if ( typeof goog_report_conversion == 'undefined' ) {
 			return false;
 		}
+		*/
 		
 		//
 		if ( typeof eventCategory == 'undefined' || eventCategory == '' ) {
