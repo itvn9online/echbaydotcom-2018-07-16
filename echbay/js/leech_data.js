@@ -149,10 +149,16 @@ function function_rieng_theo_domain () {
 	}
 	else if ( source_url.split('lazada.vn').length > 1 ) {
 		if ( f.t_img.value != '' ) {
-			f.t_img.value = f.t_img.value.split('-catalog.jpg_')[0].split('-zoom.jpg_')[0] + '.jpg';
+			f.t_img.value = f.t_img.value
+							.split('-catalog.jpg_')[0]
+							.split('-zoom.jpg_')[0]
+							.split('-catalog_')[0]
+							.split('.jpg')[0]
+							+ '.jpg';
 			f.t_img.value = f.t_img.value.replace(/\.jpg\.jpg/gi, '.jpg');
 		}
 		
+		/*
 		if ( f.t_gallery.value != '' ) {
 			var a = f.t_gallery.value.split("\n"),
 				str = '';
@@ -166,6 +172,7 @@ function function_rieng_theo_domain () {
 			
 			f.t_gallery.value = str.replace(/\.jpg\.jpg/gi, '.jpg');
 		}
+		*/
 	}
 	else if ( source_url.split('kenhdulich.org').length > 1 ) {
 		if ( f.t_ngaydang.value != '' ) {

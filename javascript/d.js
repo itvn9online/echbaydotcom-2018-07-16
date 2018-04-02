@@ -1698,7 +1698,7 @@ function ___eb_details_post_run ( r ) {
 	// hiển thị con dấu hàng chính hãng
 	if ( _eb_product_chinhhang == 1 || _eb_product_chinhhang == "1" ) {
 		if ( cf_tester_mode == 1 ) console.log('Hàng chính hãng');
-		$('#export_img_product').after('<div class="tem-chinh-hang">&nbsp;</div>');
+		$('.pdetail-slider-btn').after('<div class="tem-chinh-hang">&nbsp;</div>');
 	}
 	
 	
