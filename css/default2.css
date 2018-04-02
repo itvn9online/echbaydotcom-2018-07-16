@@ -1610,10 +1610,13 @@ a.search-advanced-btn {
 	color: #333;
 	display: inline-block;
 	border: 1px #ccc solid;
-	line-height: 25px;
-	padding: 0 25px;
+	line-height: 36px;
 	border-radius: 3px;
-	box-shadow: 0 0 10px #ccc;
+	box-shadow: 0 0 10px #999;
+	margin: 15px 0;
+	font-size: 18px;
+	width: 90%;
+	max-width: 250px;
 }
 .click-viewmore-thread-details:after,
 .click-viewmore-cats-description:after {

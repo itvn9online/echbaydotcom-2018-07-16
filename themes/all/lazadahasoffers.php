@@ -20,7 +20,7 @@ $eb_all_themes_support["lazadahasoffers"]["top"][] = "bigbanner-top1.php";
 $eb_all_themes_support["lazadahasoffers"]["top"][] = "breadcrumb-top1.php";
 //
 $eb_all_themes_support["lazadahasoffers"]["footer"][] = "footer_widget.php";
-$eb_all_themes_support["lazadahasoffers"]["footer"][] = "echbaytwo-footer1.php";
+//$eb_all_themes_support["lazadahasoffers"]["footer"][] = "echbaytwo-footer1.php";
 $eb_all_themes_support["lazadahasoffers"]["footer"][] = "lazadahasoffers-footer2.php";
 //$eb_all_themes_support["lazadahasoffers"]["footer"][] = "lazadahasoffers-footer3.php";
 //
