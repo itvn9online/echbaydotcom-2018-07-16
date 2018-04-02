@@ -13,7 +13,9 @@ var EBE_current_first_domain = '',
 	cache_name_for_download_img = '',
 	download_img_runing = 0,
 	arr_check_value_exist = {},
-	tu_dong_load_lai_trang_neu_submit_loi = 0;
+	tu_dong_load_lai_trang_neu_submit_loi = 0,
+	// hẹn mỗi 10 giây load 1 lần, nên số cài đặt ở đây sẽ nhân với 10
+	limit_time_for_reload_this_page = 12;
 
 
 
@@ -1538,13 +1540,13 @@ setInterval(function () {
 //	if ( dog('auto_get_random_category_for_leech').checked == true ) {
 	if ( check_auto_leech_on_off() ) {
 		// load lại trang khi quá 120 giây
-		if ( tu_dong_load_lai_trang_neu_submit_loi > 12 ) {
+		if ( tu_dong_load_lai_trang_neu_submit_loi > limit_time_for_reload_this_page ) {
 			window.location = window.location.href;
 		}
 		// nếu không cứ 10 giây thêm 1 đơn vị
 		else {
 			tu_dong_load_lai_trang_neu_submit_loi++;
-			console.log('Repload page after ' + ( tu_dong_load_lai_trang_neu_submit_loi * 10 ) + ' secondes');
+			console.log('Reload page after ' + ( (limit_time_for_reload_this_page * 10) - (tu_dong_load_lai_trang_neu_submit_loi * 10) ) + ' secondes');
 		}
 	}
 	// nếu không kích hoạt chế độ load trang -> đặt về 0 luôn
