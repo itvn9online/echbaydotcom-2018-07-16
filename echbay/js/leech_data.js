@@ -1372,7 +1372,8 @@ $('#oi_save_list_category').off('change').change(function () {
 		for ( var i = 0; i < a.length; i++ ) {
 			a[i] = g_func.trim( a[i] );
 			
-			if ( a[i] != '' && a[i].substr( 0, 1 ) != '#' && a[i].split('//').length > 1 ) {
+//			if ( a[i] != '' && a[i].substr( 0, 1 ) != '#' && a[i].split('//').length > 1 ) {
+			if ( a[i] != '' && a[i].split('//').length > 1 ) {
 				str += a[i] + "\n";
 			}
 		}
@@ -1441,7 +1442,7 @@ function func_get_random_category_for_leech ( i ) {
 		
 		a = a[Math.floor(Math.random() * a.length)];
 		
-		if ( a != '' && a.split('|').length > 1 ) {
+		if ( a != '' && a.split('|').length > 1 && a.substr( 0, 1 ) != '#' ) {
 			console.log(a);
 			$('#categories_url').val( a );
 			
@@ -1462,9 +1463,29 @@ function func_get_random_category_for_leech ( i ) {
 	return func_get_random_category_for_leech( i + 1 );
 }
 
+function add_parameter_for_auto_leech ( start ) {
+	var u = window.location.href.split('&auto_get_random_category_for_leech=1')[0];
+	
+	if ( typeof start == 'number' && start == 1 ) {
+		u += '&auto_get_random_category_for_leech=1';
+	}
+	
+	window.history.pushState( "", '', u );
+}
+
+function check_auto_leech_on_off () {
+	if ( window.location.href.split('&auto_get_random_category_for_leech=1').length > 1 ) {
+		return true;
+	}
+	return false;
+}
+
 //
 setTimeout(function () {
-	if ( dog('auto_get_random_category_for_leech').checked == true ) {
+//	if ( dog('auto_get_random_category_for_leech').checked == true ) {
+	if ( check_auto_leech_on_off() ) {
+		add_parameter_for_auto_leech(1);
+		
 		dog('leech_data_auto_next').checked = true;
 		
 		$('#star_get_random_category_for_leech').html('Tạm dừng');
@@ -1484,8 +1505,10 @@ setTimeout(function () {
 	
 	$('#star_get_random_category_for_leech').off('click').click(function () {
 		// đang chạy thì dừng lại
-		if ( dog('auto_get_random_category_for_leech').checked == true ) {
+//		if ( dog('auto_get_random_category_for_leech').checked == true ) {
+		if ( check_auto_leech_on_off() ) {
 //			dog('auto_get_random_category_for_leech').checked = false;
+			add_parameter_for_auto_leech();
 			
 			dog('leech_data_auto_next').checked = false;
 			
@@ -1494,6 +1517,7 @@ setTimeout(function () {
 		// chạy tiếp
 		else {
 //			dog('auto_get_random_category_for_leech').checked = true;
+			add_parameter_for_auto_leech(1);
 			
 			dog('leech_data_auto_next').checked = true;
 			
@@ -1503,7 +1527,7 @@ setTimeout(function () {
 		}
 		
 		//
-		$('#auto_get_random_category_for_leech').click();
+//		$('#auto_get_random_category_for_leech').click();
 	});
 }, 2000);
 
@@ -1511,7 +1535,8 @@ setTimeout(function () {
 //
 setInterval(function () {
 	// nếu chế độ tự load trang đang được kích hoạt
-	if ( dog('auto_get_random_category_for_leech').checked == true ) {
+//	if ( dog('auto_get_random_category_for_leech').checked == true ) {
+	if ( check_auto_leech_on_off() ) {
 		// load lại trang khi quá 120 giây
 		if ( tu_dong_load_lai_trang_neu_submit_loi > 12 ) {
 			window.location = window.location.href;
@@ -1633,7 +1658,8 @@ $('.click-submit-url-categories').off('click').click(function () {
 			// nạp lại trang sau khi hoàn thành
 			if ( dog('nap_lai_trang_sau_khi_hoan_thanh').checked == true
 			// tự động chuyển trang và lấy category ngẫu nhiên
-			|| dog('auto_get_random_category_for_leech').checked == true ) {
+//			|| dog('auto_get_random_category_for_leech').checked == true ) {
+			|| check_auto_leech_on_off() ) {
 				window.location = window.location.href;
 			}
 		}
@@ -1654,7 +1680,7 @@ var arr_save_checkbox_options = [
 	'post_id_is_numberic',
 	'this_id_url_product_detail',
 	'get_list_post_in_iframe',
-	'auto_get_random_category_for_leech',
+//	'auto_get_random_category_for_leech',
 	
 	'leech_data_auto_next'
 ];
