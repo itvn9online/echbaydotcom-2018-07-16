@@ -1490,7 +1490,7 @@ setTimeout(function () {
 		
 		dog('leech_data_auto_next').checked = true;
 		
-		$('#star_get_random_category_for_leech').html('Tạm dừng');
+		$('#star_get_random_category_for_leech').html( '<i class="fa fa-pause"></i> ' + $('#star_get_random_category_for_leech').attr('data-stop') );
 		
 		func_get_random_category_for_leech();
 	}
@@ -1505,7 +1505,10 @@ setTimeout(function () {
 		})();
 	}
 	
-	$('#star_get_random_category_for_leech').off('click').click(function () {
+	$('#star_get_random_category_for_leech').attr({
+//		'data-stop': $('#star_get_random_category_for_leech').attr('data-stop') || '',
+		'data-start': $('#star_get_random_category_for_leech').attr('data-start') || $('#star_get_random_category_for_leech').html() || ''
+	}).off('click').click(function () {
 		// đang chạy thì dừng lại
 //		if ( dog('auto_get_random_category_for_leech').checked == true ) {
 		if ( check_auto_leech_on_off() ) {
@@ -1514,7 +1517,7 @@ setTimeout(function () {
 			
 			dog('leech_data_auto_next').checked = false;
 			
-			$(this).html('Bắt đầu');
+			$(this).html( '<i class="fa fa-play"></i> ' + $(this).attr('data-start') );
 		}
 		// chạy tiếp
 		else {
@@ -1525,7 +1528,7 @@ setTimeout(function () {
 			
 			func_get_random_category_for_leech();
 			
-			$(this).html('Tạm dừng');
+			$(this).html( '<i class="fa fa-pause"></i> ' + $(this).attr('data-stop') );
 		}
 		
 		//
