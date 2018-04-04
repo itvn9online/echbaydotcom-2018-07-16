@@ -1466,17 +1466,17 @@ function func_get_random_category_for_leech ( i ) {
 }
 
 function add_parameter_for_auto_leech ( start ) {
-	var u = window.location.href.split('&auto_get_random_category_for_leech=1')[0];
+	var u = window.location.href.split('&auto_leech=1')[0];
 	
 	if ( typeof start == 'number' && start == 1 ) {
-		u += '&auto_get_random_category_for_leech=1';
+		u += '&auto_leech=1';
 	}
 	
 	window.history.pushState( "", '', u );
 }
 
 function check_auto_leech_on_off () {
-	if ( window.location.href.split('&auto_get_random_category_for_leech=1').length > 1 ) {
+	if ( window.location.href.split('&auto_leech=1').length > 1 ) {
 		return true;
 	}
 	return false;
