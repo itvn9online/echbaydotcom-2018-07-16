@@ -159,9 +159,6 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			//
 			$post->trv_color_count = 1;
 			
-			$post->cf_product_size = $__cf_row['cf_product_size'];
-			$post->cf_blog_size = $__cf_row['cf_blog_size'];
-			
 			$post->trv_trangthai = 1;
 //			$post->trv_ngayhethan = date_time;
 			$post->trv_ngayhethan = '';
@@ -237,38 +234,41 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 //	$post->ngaycapnhat = date( 'd/m/Y', $post_time );
 	$post->ngaycapnhat = date( $__cf_row['cf_date_format'], $post_time );
 	$post->ngaycapnhats = $post->ngaycapnhat . ' ' . date( $__cf_row['cf_time_format'], $post_time );
-			
-			
-			// load ảnh đại diện cho phần quảng cáo
-			// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
-			if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
-				$post->trv_table_img = $post->trv_img;
-			} else {
-				$post->trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
-			}
-			
-			if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
-				$post->trv_mobile_img = $post->trv_table_img;
-			} else {
-				$post->trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
-			}
-			
-			
-			//
-//			$html = EBE_dynamic_title_tag( $html );
-			
-			//
-			/*
-			if ( $post->trv_mobile_img != '' ) {
-				$post->trv_mobile_img = 'background-image:url(' . $post->trv_mobile_img . ')!important';
-			}
-			if ( $post->trv_img != '' ) {
-				$post->trv_img = 'background-image:url(' . $post->trv_img . ')!important';
-			}
-			$eb_background_for_post['p' . $post->ID] = '.ebp' . $post->ID . 'm{' . $post->trv_mobile_img . '}.ebp' . $post->ID . '{' . $post->trv_img . '}';
-			$post->trv_img = 'speed';
-			$post->trv_mobile_img = 'ebp' . $post->ID;
-			*/
+	
+	$post->cf_product_size = $__cf_row['cf_product_size'];
+	$post->cf_blog_size = $__cf_row['cf_blog_size'];
+	
+	
+	// load ảnh đại diện cho phần quảng cáo
+	// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
+	if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
+		$post->trv_table_img = $post->trv_img;
+	} else {
+		$post->trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
+	}
+	
+	if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
+		$post->trv_mobile_img = $post->trv_table_img;
+	} else {
+		$post->trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
+	}
+	
+	
+	//
+	$html = EBE_dynamic_title_tag( $html );
+	
+	//
+	/*
+	if ( $post->trv_mobile_img != '' ) {
+		$post->trv_mobile_img = 'background-image:url(' . $post->trv_mobile_img . ')!important';
+	}
+	if ( $post->trv_img != '' ) {
+		$post->trv_img = 'background-image:url(' . $post->trv_img . ')!important';
+	}
+	$eb_background_for_post['p' . $post->ID] = '.ebp' . $post->ID . 'm{' . $post->trv_mobile_img . '}.ebp' . $post->ID . '{' . $post->trv_img . '}';
+	$post->trv_img = 'speed';
+	$post->trv_mobile_img = 'ebp' . $post->ID;
+	*/
 	
 	//
 	return EBE_arr_tmp( $post, $html );
