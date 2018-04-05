@@ -227,6 +227,9 @@ include EB_THEME_PLUGIN_INDEX . 'functions.php';
 // hệ thống config riêng của Ếch Bay
 include EB_THEME_CORE . 'database.php';
 
+//
+//include EB_THEME_PLUGIN_INDEX . 'jquery_load.php';
+
 
 
 

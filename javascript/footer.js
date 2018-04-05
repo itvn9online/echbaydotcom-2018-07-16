@@ -32,10 +32,10 @@ else if ( act == 'single' ) {
 	WGR_for_post_details();
 	
 	//
-	$('.wp-caption-text').each(function() {
-		var a = $(this).html() || '';
+	jQuery('.wp-caption-text').each(function() {
+		var a = jQuery(this).html() || '';
 		if ( a != '' ) {
-			$(this).html( a.replace( /\\n/g, '<br>' ) );
+			jQuery(this).html( a.replace( /\\n/g, '<br>' ) );
 		}
 	});
 }
@@ -144,16 +144,16 @@ function ___eb_search_advanced_go_to_url ( op ) {
 		
 		// nếu ko có -> thử tìm theo class có sẵn
 		if ( op.price_in == '' ) {
-			op.price_in = $('.echbay-product-price-between a.selected').attr('data-price');
+			op.price_in = jQuery('.echbay-product-price-between a.selected').attr('data-price');
 		}
 		if ( cf_tester_mode == 1 ) console.log( op.price_in );
 	}
 	if ( typeof op.category == 'undefined' || typeof op.post_options == 'undefined' ) {
 		var filter_category = '',
 			filter_options = '';
-		$('.widget-search-advanced .widget_echbay_category a.selected').each(function() {
-			var tax = $(this).attr('data-taxonomy') || '',
-				j = $(this).attr('data-id') || 0;
+		jQuery('.widget-search-advanced .widget_echbay_category a.selected').each(function() {
+			var tax = jQuery(this).attr('data-taxonomy') || '',
+				j = jQuery(this).attr('data-id') || 0;
 			
 			if ( tax == 'category' ) {
 				filter_category += ',' + j;
@@ -205,7 +205,7 @@ function ___eb_search_advanced_go_to_url ( op ) {
 	if ( cf_search_advanced_auto_submit == 1 ) {
 		window.location = new_url;
 	} else {
-		$('.click-to-search-advanced').attr({
+		jQuery('.click-to-search-advanced').attr({
 			href : new_url
 		}).css({
 			display : 'inline-block'
@@ -226,10 +226,10 @@ function ___eb_auto_click_for_search_advanced ( clat, a ) {
 		if ( a[i] > 0 ) {
 			
 			// cho thẻ A
-			$(clat + ' a[data-id="' + a[i] + '"]').click();
+			jQuery(clat + ' a[data-id="' + a[i] + '"]').click();
 			
 			// ẩn nút tạo link đi -> vì đây chỉ tự động check
-			$('.click-to-search-advanced').hide();
+			jQuery('.click-to-search-advanced').hide();
 			
 		}
 	}
@@ -251,7 +251,7 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 	}
 	
 	// nếu không có class này thì hủy chức năng luôn
-	if ( $(clat).length == 0 ) {
+	if ( jQuery(clat).length == 0 ) {
 		if ( cf_tester_mode == 1 ) console.log('search price is active, but element ' + clat + ' not found -> STOP.');
 		return false;
 	}
@@ -262,16 +262,16 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 	// nếu có -> tìm vào dựng URL choc ác thẻ A
 	/*
 	if ( cf_search_advanced_auto_submit == 1 ) {
-		$(clat + ' a').each(function() {
-			var a = $(this).attr('data-price') || '';
+		jQuery(clat + ' a').each(function() {
+			var a = jQuery(this).attr('data-price') || '';
 			
 			if ( a != '' ) {
-				$(this).attr({
+				jQuery(this).attr({
 					href : url_for_advanced_search_filter + '&price_in=' + a
 				});
 			}
 			else {
-				$(this).attr({
+				jQuery(this).attr({
 					href : url_for_advanced_search_filter
 				});
 			}
@@ -279,15 +279,15 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 	}
 	else {
 		*/
-		$(clat + ' a').click(function() {
-			$(clat + ' a').removeClass('selected');
-			$(this).addClass('selected');
+		jQuery(clat + ' a').click(function() {
+			jQuery(clat + ' a').removeClass('selected');
+			jQuery(this).addClass('selected');
 			
 			//
-			var a = $(this).attr('data-price') || '';
+			var a = jQuery(this).attr('data-price') || '';
 			
 			//
-			$('.echbay-widget-price-title div').html( $(this).html() );
+			jQuery('.echbay-widget-price-title div').html( jQuery(this).html() );
 			
 			___eb_search_advanced_go_to_url( {
 				'price_in': a
@@ -299,12 +299,12 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 //	}
 	
 	//
-//	$(clat + ' a:first').before( '<li><a href="' + eb_this_current_url + '">Tất cả khoảng giá</a></li>' );
+//	jQuery(clat + ' a:first').before( '<li><a href="' + eb_this_current_url + '">Tất cả khoảng giá</a></li>' );
 	
 	// hiển thị giá đang lọc theo URL
 	var a = ___eb_search_advanced_get_parameter('price_in');
 	if ( a != '' ) {
-		$('.echbay-widget-price-title div').html( $('.echbay-product-price-between a[data-price="' + a + '"]').html() );
+		jQuery('.echbay-widget-price-title div').html( jQuery('.echbay-product-price-between a[data-price="' + a + '"]').html() );
 	}
 	
 }
@@ -340,78 +340,78 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 	}
 	
 	//
-	if ( $(clat).length == 0 ) {
+	if ( jQuery(clat).length == 0 ) {
 		if ( cf_tester_mode == 1 ) console.log('search advanced is active, but element ' + clat + ' not found -> STOP.');
 		return false;
 	}
-//	console.log($(clat).length);
+//	console.log(jQuery(clat).length);
 	console.log('set search advanced multi (v2) for ' + clat);
 	
 	// tạo nút tìm kiếm nếu chưa có
-	if ( $(clat + ' a.click-to-search-advanced').length == 0 ) {
+	if ( jQuery(clat + ' a.click-to-search-advanced').length == 0 ) {
 		if ( typeof inner_clat == 'undefined' || inner_clat == '' ) {
 			inner_clat = '.widget-search-advanced';
 		}
-		$(inner_clat).append( '<div class="global-button-for-seach-advanced"><a href="javascript:;" class="click-to-search-advanced search-advanced-btn d-none whitecolor"><i class="fa fa-search"></i> <span>Lọc sản phẩm</span></a></div>' );
+		jQuery(inner_clat).append( '<div class="global-button-for-seach-advanced"><a href="javascript:;" class="click-to-search-advanced search-advanced-btn d-none whitecolor"><i class="fa fa-search"></i> <span>Lọc sản phẩm</span></a></div>' );
 	}
 	
 	//
 	___eb_set_base_url_for_search_advanced();
 	
 	// Tạo thẻ xem tất cả sản phẩm
-//	if ( $(clat + ' ul').length > 0 ) {
-		$(clat + ' ul').each(function() {
-			var data_node_id = $('li:first a', this).attr('data-node-id') || '';
+//	if ( jQuery(clat + ' ul').length > 0 ) {
+		jQuery(clat + ' ul').each(function() {
+			var data_node_id = jQuery('li:first a', this).attr('data-node-id') || '';
 			
 			//
 			if ( data_node_id != '' ) {
-				var data_parent = $('li:first a', this).attr('data-parent') || 0,
-					text = $('#' + data_node_id + ' .echbay-widget-title div').html() || '';
+				var data_parent = jQuery('li:first a', this).attr('data-parent') || 0,
+					text = jQuery('#' + data_node_id + ' .echbay-widget-title div').html() || '';
 				
 				//
 				if ( text != '' ) {
 					text = 'Tất cả ' + text;
 					
-					$('li:first', this).before('<li style="order:9999999999;"><div><a data-parent="' + data_parent + '" data-node-id="' + data_node_id + '" title="' + text + '" href="javascript:;">' + text + '</a></div></li>');
+					jQuery('li:first', this).before('<li style="order:9999999999;"><div><a data-parent="' + data_parent + '" data-node-id="' + data_node_id + '" title="' + text + '" href="javascript:;">' + text + '</a></div></li>');
 				}
 			}
 		});
 //	}
 	
 	//
-	$(clat + ' a').each(function() {
-		var tax = $(this).attr('data-taxonomy') || '';
+	jQuery(clat + ' a').each(function() {
+		var tax = jQuery(this).attr('data-taxonomy') || '';
 		
 		//
 		if ( tax != 'category' ) {
-			$(this).attr({
-				'data-href' : $(this).attr('data-href') || $(this).attr('href') || 'javascript:;',
+			jQuery(this).attr({
+				'data-href' : jQuery(this).attr('data-href') || jQuery(this).attr('href') || 'javascript:;',
 				'href' : 'javascript:;'
 			});
 		}
 //	}).attr({
 //		'href' : 'javascript:;'
 	}).off('click').click(function () {
-		var cha = $(this).attr('data-parent') || 0,
-			con = $(this).attr('data-id') || 0,
+		var cha = jQuery(this).attr('data-parent') || 0,
+			con = jQuery(this).attr('data-id') || 0,
 			filter_category = '',
 			filter_options = '',
-			node_id = $(this).attr('data-node-id') || '',
-			this_tax = $(this).attr('data-taxonomy') || '';
+			node_id = jQuery(this).attr('data-node-id') || '',
+			this_tax = jQuery(this).attr('data-taxonomy') || '';
 		
 		//
 		if ( node_id != '' ) {
 			node_id = '#' + node_id + ' .echbay-widget-title div';
 			
-			$(node_id).html( $(this).attr('title') || '' );
+			jQuery(node_id).html( jQuery(this).attr('title') || '' );
 		}
 		
 		//
-		$(clat + ' a[data-parent="' + cha + '"]').removeClass('selected');
+		jQuery(clat + ' a[data-parent="' + cha + '"]').removeClass('selected');
 		
 		// Chỉ add class select cho nhóm con, không add cho nhóm tất cả
 		if ( con != 0 ) {
-			$(this).addClass('selected');
+			jQuery(this).addClass('selected');
 		}
 		
 		
@@ -427,9 +427,9 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 		
 		
 		//
-		$(clat + ' a.selected').each(function() {
-			var tax = $(this).attr('data-taxonomy') || '',
-				j = $(this).attr('data-id') || 0;
+		jQuery(clat + ' a.selected').each(function() {
+			var tax = jQuery(this).attr('data-taxonomy') || '',
+				j = jQuery(this).attr('data-id') || 0;
 			
 			if ( tax == 'category' ) {
 				filter_category += ',' + j;
@@ -463,7 +463,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 		if ( go_to_url == true ) {
 			window.location = url_for_advanced_search_filter + new_url;
 		} else {
-			$('.click-to-search-advanced').attr({
+			jQuery('.click-to-search-advanced').attr({
 				href : url_for_advanced_search_filter + new_url
 			}).css({
 				display : 'inline-block'
@@ -499,12 +499,12 @@ ___eb_set_url_for_search_advanced_button();
 
 // thuộc tính mở rộng khung tìm kiếm
 (function () {
-	$('.span-search-icon').click(function () {
-		var a = $(this).attr('data-active') || '';
+	jQuery('.span-search-icon').click(function () {
+		var a = jQuery(this).attr('data-active') || '';
 		
 		if ( a != '' ) {
-			$('.' + a + ' .div-search').toggleClass('active');
-			$('.' + a + ' input[type="search"]').focus();
+			jQuery('.' + a + ' .div-search').toggleClass('active');
+			jQuery('.' + a + ' input[type="search"]').focus();
 		}
 	});
 })();
@@ -523,15 +523,15 @@ function WGR_click_add_product_to_favorite () {
 	}
 	
 	// Khi người dùng bấm vào lưu sản phẩm yêu thích
-	$('.add-to-favorite').click(function() {
-		var a = $(this).attr('data-id') || pid;
+	jQuery('.add-to-favorite').click(function() {
+		var a = jQuery(this).attr('data-id') || pid;
 		var b = ___wgr_set_product_id_cookie( cookie_name, a, 50, limit_save );
 		
 		// nếu add không thành công -> đã có -> xóa sản phẩm khỏi favorite
 		if ( b == false ) {
-//			$(this).removeClass('selected');
-//			$('.add-to-favorite[data-id="' + a + '"]').removeClass('selected').removeClass('fa-heart').addClass('fa-heart-o');
-			$('.add-to-favorite[data-id="' + a + '"]').removeClass('selected');
+//			jQuery(this).removeClass('selected');
+//			jQuery('.add-to-favorite[data-id="' + a + '"]').removeClass('selected').removeClass('fa-heart').addClass('fa-heart-o');
+			jQuery('.add-to-favorite[data-id="' + a + '"]').removeClass('selected');
 			
 			// lấy lại cookie
 			b = g_func.getc(cookie_name);
@@ -548,9 +548,9 @@ function WGR_click_add_product_to_favorite () {
 		}
 		// nếu không -> thêm class đánh dấu cho sản phẩm vừa chọn
 		else {
-//			$(this).addClass('selected');
-//			$('.add-to-favorite[data-id="' + a + '"]').addClass('selected').removeClass('fa-heart-o').addClass('fa-heart');
-			$('.add-to-favorite[data-id="' + a + '"]').addClass('selected');
+//			jQuery(this).addClass('selected');
+//			jQuery('.add-to-favorite[data-id="' + a + '"]').addClass('selected').removeClass('fa-heart-o').addClass('fa-heart');
+			jQuery('.add-to-favorite[data-id="' + a + '"]').addClass('selected');
 		}
 		
 		// nếu người dùng đang đăng nhập
@@ -574,8 +574,8 @@ function WGR_click_add_product_to_favorite () {
 //		console.log(check_favorite[i]);
 		
 		//
-//		$('.add-to-favorite[data-id="' + check_favorite[i] + '"]').addClass('selected').removeClass('fa-heart-o').addClass('fa-heart');
-		$('.add-to-favorite[data-id="' + check_favorite[i] + '"]').addClass('selected');
+//		jQuery('.add-to-favorite[data-id="' + check_favorite[i] + '"]').addClass('selected').removeClass('fa-heart-o').addClass('fa-heart');
+		jQuery('.add-to-favorite[data-id="' + check_favorite[i] + '"]').addClass('selected');
 	}
 }
 WGR_click_add_product_to_favorite();
@@ -584,8 +584,8 @@ WGR_click_add_product_to_favorite();
 
 //
 /*
-if ( $('.quick-register-email').length > 0 ) {
-	$('form[name="frm_dk_nhantin"] input[name="t_email"]').click(function() {
+if ( jQuery('.quick-register-email').length > 0 ) {
+	jQuery('form[name="frm_dk_nhantin"] input[name="t_email"]').click(function() {
 		_global_js_eb.add_primari_iframe();
 	});
 }
@@ -609,7 +609,7 @@ function ___eb_load_social_module () {
 // chức năng thêm khung chat của fb vào web, sử dụng thì bỏ comment hàm gọi function đi là được
 function add_fb_messages_for_page () {
 	// thêm style cho khung chat
-	$('body').append('\
+	jQuery('body').append('\
 	<div id="cfacebook"> <a href="javascript:;" class="chat_fb"><i class="fa fa-facebook-square"></i> Hỗ trợ trực tuyến</a>\
 		<div class="fchat each-to-facebook">\
 			<div class="fb-page" data-tabs="messages" data-href="" data-width="250" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>\
@@ -617,8 +617,8 @@ function add_fb_messages_for_page () {
 	</div>');
 	
 	//
-	$(".chat_fb").click(function() {
-		$('.fchat').toggle('slow');
+	jQuery(".chat_fb").click(function() {
+		jQuery('.fchat').toggle('slow');
 	});
 }
 //add_fb_messages_for_page();
@@ -632,17 +632,17 @@ function add_fb_messages_for_page () {
 	
 	var f = function(lnk, clat) {
 			if (lnk != '') {
-				$('.' + clat + ' div').attr({
+				jQuery('.' + clat + ' div').attr({
 					'data-href': lnk
 				}).each(function() {
-					var w = $(this).attr('data-width') || $(this).width() || 0;
+					var w = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
 					if ( w == 0 ) {
 						w = 180;
 					} else {
 						w = Math.ceil(w) - 1;
 					}
 					
-					$(this).attr({
+					jQuery(this).attr({
 //						'data-href': lnk,
 						'data-width': w
 					});
@@ -651,11 +651,11 @@ function add_fb_messages_for_page () {
 		},
 		al = function(lnk, clat) {
 			if (lnk != '') {
-				$('.' + clat).attr({
+				jQuery('.' + clat).attr({
 					href: lnk
 					/*
 				}).each(function() {
-					$(this).attr({
+					jQuery(this).attr({
 						href: lnk
 					});
 					*/
@@ -682,7 +682,7 @@ function add_fb_messages_for_page () {
 // load các module mạng xã hội
 (function () {
 	
-	$(document).ready(function() {
+	jQuery(document).ready(function() {
 		window.___gcfg = {
 			lang: 'vi'
 		};
@@ -701,14 +701,14 @@ function add_fb_messages_for_page () {
 		/*
 		* G+ Comment
 		*/
-		$('.g-comments').each(function() {
-			$(this).attr({
-				'data-width' : $(this).width()
+		jQuery('.g-comments').each(function() {
+			jQuery(this).attr({
+				'data-width' : jQuery(this).width()
 			});
 		});
 		
 		//
-		if ( $('.g-comments').length > 0 ) {
+		if ( jQuery('.g-comments').length > 0 ) {
 			po = document.createElement('script');
 			po.type = 'text/javascript';
 	//		po.async = true;
@@ -725,16 +725,16 @@ function add_fb_messages_for_page () {
 			if ( cf_tester_mode == 1 ) console.log( 'FB app ID: ' + __global_facebook_id );
 			
 			// căn lại chiều rộng cho fb plugin
-			$('.fb-like, .fb-comments').each(function () {
-				$(this).attr({
-					'data-width' : Math.ceil( $(this).width() || 250 )
+			jQuery('.fb-like, .fb-comments').each(function () {
+				jQuery(this).attr({
+					'data-width' : Math.ceil( jQuery(this).width() || 250 )
 				});
 			});
 			
 			
 			//
 			var fb_src = (function() {
-				var lang = $('html').attr('lang') || navigator.language || navigator.userLanguage || '';
+				var lang = jQuery('html').attr('lang') || navigator.language || navigator.userLanguage || '';
 				if (lang != '') {
 					lang = lang.split('_')[0].split('-')[0].toLowerCase();
 //					console.log( lang );
@@ -796,14 +796,14 @@ function add_fb_messages_for_page () {
 
 
 // Thêm link bản quyền cho theme
-$('.powered-by-echbay a').attr({
+jQuery('.powered-by-echbay a').attr({
 	href: 'https://www.echbay.com/'
 });
 
 // kiểm tra phiên bản HTML mới hay cũ
 setTimeout(function () {
-//	if ( $('title').length != 1 ) {
-	if ( $('head title').length != 1 ) {
+//	if ( jQuery('title').length != 1 ) {
+	if ( jQuery('head title').length != 1 ) {
 		alert('Lỗi HTML! vui lòng kiểm tra lại (HTML ERROR!)');
 		console.log('Reinstall theme or call to +84984533228');
 	}
@@ -820,7 +820,7 @@ ___eb_click_open_video_popup();
 
 
 //
-//$('.fa').addClass('fas').removeClass('fa');
+//jQuery('.fa').addClass('fas').removeClass('fa');
 
 
 

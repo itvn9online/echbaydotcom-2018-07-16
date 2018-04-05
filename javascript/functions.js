@@ -10,7 +10,7 @@ function ___eb_add_conver_string_cart_to_arr_cart ( arr ) {
 	
 	if ( typeof arr != "object" ) {
 		try {
-			arr = $.parseJSON( unescape( arr ) );
+			arr = jQuery.parseJSON( unescape( arr ) );
 		} catch (e) {
 			arr = '';
 		}

@@ -66,7 +66,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	}
 	
 	//
-	if ( typeof jd == 'undefined' || jd == '' || $(jd).length == 0 ) {
+	if ( typeof jd == 'undefined' || jd == '' || jQuery(jd).length == 0 ) {
 		if ( cf_tester_mode == 1 ) console.log( 'jEBE_slider! ' + jd + ' not found' );
 		return false;
 	}
@@ -101,8 +101,8 @@ function jEBE_slider ( jd, conf, callBack ) {
 	/*
 	var inner_css = function ( str ) {
 		if ( document.getElementById('jEBE_slider_css') == null ) {
-//			$('head').append('<style id="jEBE_slider_css"></style>');
-			$('link').after('<style id="jEBE_slider_css"></style>');
+//			jQuery('head').append('<style id="jEBE_slider_css"></style>');
+			jQuery('link').after('<style id="jEBE_slider_css"></style>');
 		}
 		
 		if ( typeof str == 'undefined' || str == '' ) {
@@ -111,13 +111,13 @@ function jEBE_slider ( jd, conf, callBack ) {
 		str = str.split("\n");
 		var new_str = '';
 		for ( var i = 0; i < str.length; i++ ) {
-			str[i] = $.trim( str[i] );
+			str[i] = jQuery.trim( str[i] );
 			if ( str[i] != '' ) {
 				new_str += str[i] + "\n";
 			}
 		}
 		
-		$('#jEBE_slider_css').append( $.trim( new_str ) );
+		jQuery('#jEBE_slider_css').append( jQuery.trim( new_str ) );
 	};
 	*/
 	
@@ -170,11 +170,11 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	
 	// kiểm tra có li nào ở trong không
-	var len = $(jd + ' ' + conf['for_class']).length || 0;
+	var len = jQuery(jd + ' ' + conf['for_class']).length || 0;
 //	console.log( len );
 	if ( len == 0 ) {
 		if ( conf['hide_if_null'] == true ) {
-			$(jd).hide();
+			jQuery(jd).hide();
 		}
 		if ( cf_tester_mode == 1 ) console.log( 'slider has been STOP by LI length it zero' );
 		return false;
@@ -182,33 +182,33 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	
 	// chiều cao cho slide
-	var wit = $(jd).width(),
+	var wit = jQuery(jd).width(),
 		hai = '';
 	
 	// thêm chức năng cho chiều cao tự động (auto)
 	if ( conf['size'] == '' ) {
-		hai = $(jd + ' li:first').height();
+		hai = jQuery(jd + ' li:first').height();
 	}
 	else if ( conf['size'] == 'auto' ) {
 		// Nếu có class auto resize -> trước đó bị hàm khác chặn mất rồi -> add lại class mới để xử lý
-		if ( $(jd + ' .auto-size').length > 1 ) {
-			$(jd + ' .auto-size').addClass('ti-le-global').removeClass('auto-size');
+		if ( jQuery(jd + ' .auto-size').length > 1 ) {
+			jQuery(jd + ' .auto-size').addClass('ti-le-global').removeClass('auto-size');
 		}
 		
 		// Nếu có nhiều hơn 1 ảnh -> tìm size thật
-		if ( $(jd + ' .ti-le-global').length > 1 ) {
+		if ( jQuery(jd + ' .ti-le-global').length > 1 ) {
 			// xóa class để không cho nó còn được resize nữa
-			$(jd + ' .ti-le-global').addClass('ti-le-global-xoa').removeClass('ti-le-global');
+			jQuery(jd + ' .ti-le-global').addClass('ti-le-global-xoa').removeClass('ti-le-global');
 			
 			// lấy ảnh đầu tiên của slider -> ưu tiên ảnh mobile trước -> load cho nhẹ và nhanh
-			var get_img_size = $(jd + ' li:first .ti-le-global').attr('data-mobile-img') || $(jd + ' li:first .ti-le-global').attr('data-table-img') || $(jd + ' li:first .ti-le-global').attr('data-img') || '';
+			var get_img_size = jQuery(jd + ' li:first .ti-le-global').attr('data-mobile-img') || jQuery(jd + ' li:first .ti-le-global').attr('data-table-img') || jQuery(jd + ' li:first .ti-le-global').attr('data-img') || '';
 			console.log(get_img_size);
 			
 			//
 			var new_jd = jd.replace( /\.|\#/g, '_' );
-			$(jd + ' li:first .ti-le-global').html('<img src="' + get_img_size + '" id="' + new_jd + '" width="' + wit + '" data-class="' + jd + '" />');
+			jQuery(jd + ' li:first .ti-le-global').html('<img src="' + get_img_size + '" id="' + new_jd + '" width="' + wit + '" data-class="' + jd + '" />');
 			
-			$('#' + new_jd).on('load', function () {
+			jQuery('#' + new_jd).on('load', function () {
 				console.log('TESTTTTTTTTTTTTTTTTTTTTT! add function for slider');
 			});
 			
@@ -233,7 +233,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	set_default_conf( 'lineHeight', hai + 'px' );
 	
-	$(jd).height( hai ).attr({
+	jQuery(jd).height( hai ).attr({
 		'data-size' : conf['size']
 	}).css({
 		'line-height' : conf['lineHeight']
@@ -248,9 +248,9 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	//
 	/*
-	$(window).resize(function(e) {
+	jQuery(window).resize(function(e) {
 		// chỉnh lại chiều cao cho slide
-		$(jd).height( hai ).css({
+		jQuery(jd).height( hai ).css({
 			'line-height' : conf['lineHeight']
 		});
 	});
@@ -261,8 +261,8 @@ function jEBE_slider ( jd, conf, callBack ) {
 	if ( conf['thumbnail'] != false ) {
 		var str_btn = '',
 			i = 0;
-		$(jd + ' ' + conf['thumbnail']).each(function() {
-			var img = $(this).attr('data-img') || $(this).attr('data-src') || $(this).attr('src') || '';
+		jQuery(jd + ' ' + conf['thumbnail']).each(function() {
+			var img = jQuery(this).attr('data-img') || jQuery(this).attr('data-src') || jQuery(this).attr('src') || '';
 			if ( img != '' ) {
 				img = get_thumbnail( img );
 			}
@@ -271,13 +271,13 @@ function jEBE_slider ( jd, conf, callBack ) {
 			
 			i++;
 		});
-		$(jd).after('<div class="' + jd_class + '"><div class="jEBE_slider-thumbnail"><ul class="cf">' + str_btn + '</ul></div></div>');
+		jQuery(jd).after('<div class="' + jd_class + '"><div class="jEBE_slider-thumbnail"><ul class="cf">' + str_btn + '</ul></div></div>');
 		
 		// Tạo slider cho thumbnail
 		if ( conf['thumbnailSlider'] == true ) {
 			var j_id = '_' + Math.random().toString(32).replace('.', '_');
 			
-			$(jd_to_class + ' .jEBE_slider-thumbnail').attr({
+			jQuery(jd_to_class + ' .jEBE_slider-thumbnail').attr({
 				id: j_id
 			});
 			
@@ -292,7 +292,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 			*/
 			
 			//
-			$('#' + j_id).addClass('jEBE_slider-child-thumbnail').height( conf['thumbnailHeight'] )
+			jQuery('#' + j_id).addClass('jEBE_slider-child-thumbnail').height( conf['thumbnailHeight'] )
 			/*
 			.css({
 				height: conf['thumbnailHeight'] + 'px'
@@ -301,15 +301,15 @@ function jEBE_slider ( jd, conf, callBack ) {
 			;
 			
 			// mặc định là hiển thị 4 ảnh con, nếu nhiều hơn 4 ảnh -> hiển thị dưới dạng slide
-			if ( $('#' + j_id + ' li').length > 4 ) {
+			if ( jQuery('#' + j_id + ' li').length > 4 ) {
 				
 				// set chiều rộng mới cho UL, để tất cả các LI sẽ nằm trên 1 dòng
-				$('#' + j_id + ' ul').attr({
-					'data-width': $('#' + j_id + ' ul').width()
-				}).width( $('#' + j_id + ' li').length * ( $('#' + j_id + ' ul').width()/ 4 ) );
+				jQuery('#' + j_id + ' ul').attr({
+					'data-width': jQuery('#' + j_id + ' ul').width()
+				}).width( jQuery('#' + j_id + ' li').length * ( jQuery('#' + j_id + ' ul').width()/ 4 ) );
 				
 				// tính toán chiều rộng cho các thẻ li
-				$('#' + j_id + ' li').width( ( 100/ $('#' + j_id + ' li').length - 0.1 ) + '%' );
+				jQuery('#' + j_id + ' li').width( ( 100/ jQuery('#' + j_id + ' li').length - 0.1 ) + '%' );
 				
 				//
 				var str_for_thumb_row = '',
@@ -320,33 +320,33 @@ function jEBE_slider ( jd, conf, callBack ) {
 				str_for_thumb_row += '<div id="' + j_id_right + '" class="jEBE_slider-right-thumbnail ' + j_id + '-thumb-right"><i class="fa fa-angle-right"></i></div>';
 				
 				//
-				$('#' + j_id).addClass('jEBE_slider-scroll-thumbnail').before('<div class="jEBE_slider-arrow-thumbnail ' + j_id + '-thumb-arrow">' + str_for_thumb_row + '</div>');
+				jQuery('#' + j_id).addClass('jEBE_slider-scroll-thumbnail').before('<div class="jEBE_slider-arrow-thumbnail ' + j_id + '-thumb-arrow">' + str_for_thumb_row + '</div>');
 				
 				//
-				$('#' + j_id_left + ', #' + j_id_right).height( conf['thumbnailHeight'] ).css({
+				jQuery('#' + j_id_left + ', #' + j_id_right).height( conf['thumbnailHeight'] ).css({
 					'line-height': conf['thumbnailHeight'] + 'px'
 				});
 				
 				//
-				$('#' + j_id_left).click(function () {
-					var a = $('#' + j_id + ' ul').attr('data-scroll') || 0;
+				jQuery('#' + j_id_left).click(function () {
+					var a = jQuery('#' + j_id + ' ul').attr('data-scroll') || 0;
 					a = a - 1;
 					if ( a < 0 ) {
 						a = 0;
 					}
 					
-					$('#' + j_id + ' ul').attr({
+					jQuery('#' + j_id + ' ul').attr({
 						'data-scroll': a
 					}).css({
-//						left: '-' + $('#' + j_id + ' ul').attr('data-width') + 'px'
+//						left: '-' + jQuery('#' + j_id + ' ul').attr('data-width') + 'px'
 						left: '-' + ( a * 100 ) + '%'
 					});
 				});
 				
 				//
-				$('#' + j_id_right).click(function () {
-					var a = $('#' + j_id + ' ul').attr('data-scroll') || 0,
-						max_li = $('#' + j_id + ' li').length/ 4;
+				jQuery('#' + j_id_right).click(function () {
+					var a = jQuery('#' + j_id + ' ul').attr('data-scroll') || 0,
+						max_li = jQuery('#' + j_id + ' li').length/ 4;
 					a = a - (0 - 1);
 					console.log(a);
 					console.log(max_li);
@@ -356,22 +356,22 @@ function jEBE_slider ( jd, conf, callBack ) {
 					}
 //					console.log(a);
 					
-					$('#' + j_id + ' ul').attr({
+					jQuery('#' + j_id + ' ul').attr({
 						'data-scroll': a
 					}).css({
-//						left: '-' + $('#' + j_id + ' ul').attr('data-width') + 'px'
+//						left: '-' + jQuery('#' + j_id + ' ul').attr('data-width') + 'px'
 						left: '-' + ( a * 100 ) + '%'
 					});
 				});
 				
 			}
 			else {
-				$('#' + j_id + ' li').width( '25%' );
+				jQuery('#' + j_id + ' li').width( '25%' );
 			}
 		}
 		
 		// tạo css cho thumbmail
-		$(jd_to_class + ' .jEBE_slider-thumbnail div').width( conf['thumbnailWidth'] ).height( conf['thumbnailHeight'] )
+		jQuery(jd_to_class + ' .jEBE_slider-thumbnail div').width( conf['thumbnailWidth'] ).height( conf['thumbnailHeight'] )
 		/*
 		.css({
 			width: conf['thumbnailWidth'] + 'px',
@@ -389,11 +389,11 @@ function jEBE_slider ( jd, conf, callBack ) {
 		for ( var i = 0; i < listBtnLen; i++ ) {
 			str_btn += '<li data-i="' +i+ '"><i class="fa fa-circle"></i></li>';
 		}
-		$(jd).after('<div class="' + jd_class + '"><div class="big-banner-button"><ul>' + str_btn + '</ul></div></div>');
+		jQuery(jd).after('<div class="' + jd_class + '"><div class="big-banner-button"><ul>' + str_btn + '</ul></div></div>');
 	}
 	
 	// tạo css cho slider
-	$(jd)
+	jQuery(jd)
 	/*
 	.scroll(function(e) {
 		if ( jEBE_slider_dang_scroll == true ) {
@@ -401,9 +401,9 @@ function jEBE_slider ( jd, conf, callBack ) {
 		}
 		jEBE_slider_dang_scroll = true;
 		
-		var a = $(this).attr('data-scroll') || 0,
-			b = $(this).scrollLeft(),
-			i = $(this).attr('data-i') || 0;
+		var a = jQuery(this).attr('data-scroll') || 0,
+			b = jQuery(this).scrollLeft(),
+			i = jQuery(this).attr('data-i') || 0;
 //		console.log( b );
 		if ( a - b > 0 ) {
 			i -= 1;
@@ -413,21 +413,21 @@ function jEBE_slider ( jd, conf, callBack ) {
 			console.log('right');
 		}
 		console.log( i );
-		$(jd + ' li[data-i="' + i + '"]').click();
+		jQuery(jd + ' li[data-i="' + i + '"]').click();
 	})
 	*/
 	.addClass('jEBE_slider-position');
 	
 	/*
-	$(jd).css({
+	jQuery(jd).css({
 		position: 'relative',
 		overflow: 'hidden'
 	});
 	*/
 	
-	$(jd + ' ul').width( ( 100 * len/ conf['visible'] ) + '%' );
+	jQuery(jd + ' ul').width( ( 100 * len/ conf['visible'] ) + '%' );
 	if ( conf['speed'] > 0 ) {
-		$(jd + ' ul').css({
+		jQuery(jd + ' ul').css({
 			'-moz-transition': 'all ' + conf['speed'] + 's ease',
 			'-o-transition': 'all ' + conf['speed'] + 's ease',
 			'-webkit-transition': 'all ' + conf['speed'] + 's ease',
@@ -435,7 +435,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		});
 	}
 	
-	$(jd + ' li').css({
+	jQuery(jd + ' li').css({
 //		width: ( 100/ len/ conf['visible'] ) + '%',
 		width: ( 100/ len ) + '%'
 	});
@@ -443,51 +443,51 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// hiệu ứng khi click vào thẻ LI
 	var  i = 0;
-	$(jd + ' li').each(function() {
-		$(this).attr({
+	jQuery(jd + ' li').each(function() {
+		jQuery(this).attr({
 			'data-i' : i
 		});
 		
 		i += 1;
 	}).click(function () {
-		var i = $(this).attr('data-i') || 0;
-		if ( i * conf['visible'] >= $(jd + ' li').length ) {
+		var i = jQuery(this).attr('data-i') || 0;
+		if ( i * conf['visible'] >= jQuery(jd + ' li').length ) {
 			i = 0;
 		}
 		
-		$(jd + ' ul').css({
+		jQuery(jd + ' ul').css({
 			left: ( 0 - i * 100 ) + '%'
 //			left: ( 0 - i * 100/ conf['visible'] ) + '%'
 		});
 		
-		$(jd)
+		jQuery(jd)
 //		.scrollLeft(0)
 		.attr({
 			'data-i' : i,
-			'data-scroll' : i * $(jd).width()
+			'data-scroll' : i * jQuery(jd).width()
 		});
 		
 		jEBE_slider_dang_scroll = false;
 		
 		//
-		$('.' + jd_class + ' li').removeClass('selected');
-		$('.' + jd_class + ' li[data-i="' + i + '"]').addClass('selected');
+		jQuery('.' + jd_class + ' li').removeClass('selected');
+		jQuery('.' + jd_class + ' li[data-i="' + i + '"]').addClass('selected');
 	});
-	$(jd + ' li[data-i="0"]').click();
+	jQuery(jd + ' li[data-i="0"]').click();
 	
 	
 	//
-	$('.' + jd_class + ' li').click(function () {
-		var i = $(this).attr('data-i') || 0;
+	jQuery('.' + jd_class + ' li').click(function () {
+		var i = jQuery(this).attr('data-i') || 0;
 //		console.log(i);
 //		console.log(jd);
 		
-//		if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
-//		if ( i >= $(jd + ' li').length ) {
+//		if ( jQuery(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+//		if ( i >= jQuery(jd + ' li').length ) {
 //			i = 0;
 //		}
 		
-		$(jd + ' li[data-i="' + i + '"]').click();
+		jQuery(jd + ' li[data-i="' + i + '"]').click();
 		
 		// tắt auto play
 		if ( jEBE_slider_cache_option[jd]['autoplay'] == true ) {
@@ -505,18 +505,18 @@ function jEBE_slider ( jd, conf, callBack ) {
 		
 		setInterval(function () {
 			if ( jEBE_slider_cache_option[jd]['autoplay'] == true ) {
-				var i = $(jd).attr('data-i') || 0;
+				var i = jQuery(jd).attr('data-i') || 0;
 				i -= -1;
 //				i -= 0 - conf['visible'];
 //				console.log(i);
 //				console.log(jd);
 				
-//				if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
-				if ( i >= $(jd + ' li').length ) {
+//				if ( jQuery(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+				if ( i >= jQuery(jd + ' li').length ) {
 					i = 0;
 				}
 				
-				$(jd + ' li[data-i="' + i + '"]').click();
+				jQuery(jd + ' li[data-i="' + i + '"]').click();
 			}
 		}, conf['speedNext']);
 	} else {
@@ -528,41 +528,41 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	//
 	if ( conf['sliderArrow'] == true && len > conf['visible'] ) {
-		$(jd).before('<div class="' + jd_class + '"><div class="jEBE_slider-toCenter"><div class="jEBE_slider-toLeft"><i class="fa ' + conf['sliderArrowLeft'] + '"></i></div> <div class="jEBE_slider-toRight text-right"><i class="fa ' + conf['sliderArrowRight'] + '"></i></div></div></div>');
+		jQuery(jd).before('<div class="' + jd_class + '"><div class="jEBE_slider-toCenter"><div class="jEBE_slider-toLeft"><i class="fa ' + conf['sliderArrowLeft'] + '"></i></div> <div class="jEBE_slider-toRight text-right"><i class="fa ' + conf['sliderArrowRight'] + '"></i></div></div></div>');
 		
 		
 		//
-		$(jd_to_class + ' .jEBE_slider-toLeft').click(function () {
-			var i = $(jd).attr('data-i') || 0;
+		jQuery(jd_to_class + ' .jEBE_slider-toLeft').click(function () {
+			var i = jQuery(jd).attr('data-i') || 0;
 			i -= 1;
 //			i -= conf['visible'];
 //			console.log(i);
 //			console.log(jd);
 			
 			if ( i < 0 ) {
-				i = $(jd + ' li').length - 1;
+				i = jQuery(jd + ' li').length - 1;
 			}
 			
-			$(jd + ' li[data-i="' + i + '"]').click();
+			jQuery(jd + ' li[data-i="' + i + '"]').click();
 		});
 		
-		$(jd_to_class + ' .jEBE_slider-toRight').click(function () {
-			var i = $(jd).attr('data-i') || 0;
+		jQuery(jd_to_class + ' .jEBE_slider-toRight').click(function () {
+			var i = jQuery(jd).attr('data-i') || 0;
 			i -= -1;
 //			i -= 0 - conf['visible'];
 //			console.log(i);
 //			console.log(jd);
 			
-//			if ( $(jd + ' li[data-i="' + i + '"]').length == 0 ) {
-			if ( i >= $(jd + ' li').length ) {
+//			if ( jQuery(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+			if ( i >= jQuery(jd + ' li').length ) {
 				i = 0;
 			}
 			
-			$(jd + ' li[data-i="' + i + '"]').click();
+			jQuery(jd + ' li[data-i="' + i + '"]').click();
 		});
 		
 		// tạo css cho nut next
-		$( jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight' ).css({
+		jQuery( jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight' ).css({
 			'font-size': conf['sliderArrowSize'] + 'px',
 			'line-height' : conf['lineHeight']
 		}).height( hai );
@@ -570,11 +570,11 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// tạo nút bấm chuyển ảnh ngay trên khung ảnh nếu:
 		// người dùng đang xem trên màn ảnh rộng
 		// hiển thì mỗi ảnh 1 cái
-		if ( $(window).width() > 750 || conf['visible'] == 1 ) {
-			$( jd_to_class + ' .jEBE_slider-toLeft' ).css({
+		if ( jQuery(window).width() > 750 || conf['visible'] == 1 ) {
+			jQuery( jd_to_class + ' .jEBE_slider-toLeft' ).css({
 				'width': conf['sliderArrowWidthLeft']
 			});
-			$( jd_to_class + ' .jEBE_slider-toRight' ).css({
+			jQuery( jd_to_class + ' .jEBE_slider-toRight' ).css({
 				'width': conf['sliderArrowWidthRight']
 			});
 		}
@@ -584,14 +584,14 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
 		// http://labs.rampinteractive.co.uk/touchSwipe/demos/Basic_swipe.html
 		/*
-		$(jd).swipe( {
+		jQuery(jd).swipe( {
 			// Generic swipe handler for all directions
 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 				if ( direction == 'left' ) {
-					$(jd_to_class + ' .jEBE_slider-toLeft').click();
+					jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
 				}
 				else if ( direction == 'right' ) {
-					$(jd_to_class + ' .jEBE_slider-toRight').click();
+					jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
 				}
 			},
 			// Default is 75px, set to 0 for demo so any distance triggers swipe
@@ -602,11 +602,11 @@ function jEBE_slider ( jd, conf, callBack ) {
 		
 		// https://www.w3schools.com/jquerymobile/jquerymobile_events_touch.asp
 		/*
-		if ( $(window).width() < 750 ) {
-			$(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').on("swiperight", function() {
-				$(jd_to_class + ' .jEBE_slider-toLeft').click();
+		if ( jQuery(window).width() < 750 ) {
+			jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').on("swiperight", function() {
+				jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
 			}).on("swipeleft",function(){
-				$(jd_to_class + ' .jEBE_slider-toRight').click();
+				jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
 			});
 		}
 		*/
@@ -615,8 +615,8 @@ function jEBE_slider ( jd, conf, callBack ) {
 		
 		// https://coderwall.com/p/bxxjfq/detecting-swipe-using-jquery
 		/*
-		if ( $(window).width() < 750 ) {
-			$(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight')
+		if ( jQuery(window).width() < 750 ) {
+			jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight')
 //			.on('mousedown touchstart', function (e) {
 			.on('touchstart', function (e) {
 //			.on('click', function (e) {
@@ -648,26 +648,26 @@ function jEBE_slider ( jd, conf, callBack ) {
 					if ( xDiff > 0 ) {
 						// left swipe
 //						console.log('left');
-						$(jd_to_class + ' .jEBE_slider-toLeft').click();
+						jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
 					} else {
 						// right swipe
 //						console.log('right');
-						$(jd_to_class + ' .jEBE_slider-toRight').click();
+						jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
 					}
 				} else {
 					if ( yDiff > 0 ) {
 						// up swipe
 						console.log('up');
-						$(jd_to_class + ' .jEBE_slider-toLeft').click();
+						jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
 					} else { 
 						// down swipe
 						console.log('down');
-						$(jd_to_class + ' .jEBE_slider-toRight').click();
+						jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
 					}
 				}
 				
 				//
-//				$(this)
+//				jQuery(this)
 //				.mouseout()
 //				.mousedown()
 //				.mouseover()
