@@ -102,9 +102,8 @@ if ( ! file_exists( EB_THEME_CACHE . $cat_js_file_name ) || date_time - filemtim
 }
 
 
-/*
-<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $using_js_file_name . '?v=' . date( 'ymd-Hi', date_time ) . '" async></script>';
-*/
+echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $using_js_file_name . '?v=' . date( 'ymd-Hi', date_time ) . '" async></script>';
+
 /*
 echo '<script type="text/javascript" src="' . web_link . 'eb-load-quick-search" async></script>';
 */
