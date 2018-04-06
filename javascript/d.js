@@ -3178,12 +3178,10 @@ if (press_esc_to_quickvideo_close == false) {
 				try {
 					if ( cf_tester_mode == 1 ) console.log('Close popup window');
 					
-					window.close();
-					/*
 					top.close_img_quick_video_details();
 					top.g_func.opopup();
 					top.close_ebe_quick_view();
-					*/
+					window.close();
 				} catch ( e ) {}
 			}
 			
