@@ -264,7 +264,7 @@ var web_link = "' . web_link . '",
 	cf_old_domain = "' . $__cf_row['cf_old_domain'] . '",
 	order_max_post_new = ' . $order_max_post_new . ',
 	cf_tester_mode = "' . $__cf_row['cf_tester_mode'] . '",
-	cf_hide_supper_admin_menu = ' . $__cf_row['cf_hide_supper_admin_menu'] . ',
+	cf_hide_supper_admin_menu = "' . $__cf_row['cf_hide_supper_admin_menu'] . '",
 	arr_eb_ads_status = [' . substr( $str_ads_status, 1 ) . '],
 	arr_eb_product_status = [' . substr( $str_product_status, 1 ) . '];';
 	
