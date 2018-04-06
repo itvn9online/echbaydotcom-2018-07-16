@@ -1709,6 +1709,12 @@ function ___eb_details_post_run ( r ) {
 			return false;
 		}
 		
+		// nếu mở trong iframe -> không dùng chức năng thu gọn nội dung
+		if ( top != self ) {
+			if ( cf_tester_mode == 1 ) console.log('Short post content is active! but post open in iframe!');
+			return false;
+		}
+		
 		var a = null;
 		
 		// chỉnh theo phần mặt nạ của nội dung
