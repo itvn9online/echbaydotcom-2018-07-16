@@ -797,7 +797,9 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 								
 								// đối với LI -> gán thêm UL vào
 								if ( eachn == 0 && tag_end == '</li>' ) {
-									str += '<ul>' + str_each + '</ul>';
+									if ( str_each != '' ) {
+										str += '<ul>' + str_each + '</ul>';
+									}
 								}
 								else {
 									str += str_each;
