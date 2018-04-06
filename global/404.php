@@ -60,6 +60,10 @@ if ( $act == '' || $act == '/' ) {
 	die('Template not found');
 }
 
+// lưu lại URL thật trước khi bị chuyển đổi sang thành 404
+$global_404_act = $act;
+
+
 //
 //echo ECHBAY_PRI_CODE . '<br>';
 //echo EB_THEME_URL . '<br>';
