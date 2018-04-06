@@ -3131,7 +3131,7 @@ function close_ebe_quick_view () {
 		// sử dụng iframe
 		dog('ui_ebe_quick_view').src = 'about:blank';
 		dog('ui_ebe_quick_view').src = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&view_type=iframe&set_device=' + device;
-		jQuery('#ui_ebe_quick_view').height( $(window).height() - 90 );
+		jQuery('#ui_ebe_quick_view').height( $(window).height() - 110 );
 		jQuery('#ui_ebe_quick_view').on('load', function () {
 			var h = jQuery( '#ui_ebe_quick_view' ).contents().find( 'body' ).height() || 0;
 //			console.log(h);

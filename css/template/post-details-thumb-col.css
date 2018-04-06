@@ -1,0 +1,26 @@
+/* chuyển thumb ảnh trong trang chi tiết sang dạng đứng */
+.thread-details-mobileCenter {
+	position: relative;
+	padding-right: 18%;
+}
+.thread-details-mobileCenter .jEBE_slider-thumbnail {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 15%;
+	max-width: 90px;
+	height: auto !important;
+	margin: 0;
+}
+.thread-details-mobileCenter .jEBE_slider-scroll-thumbnail ul {
+	width: auto !important;
+	position: relative;
+	position: unset;
+}
+.thread-details-mobileCenter .jEBE_slider-child-thumbnail li {
+	width: auto !important;
+	float: none;
+}
+.thread-details-mobileCenter .jEBE_slider-child-thumbnail li div { background-color: #f2f2f2; }
+.thread-details-mobileCenter .jEBE_slider-arrow-thumbnail { display: none; }
