@@ -34,6 +34,7 @@ include EB_THEME_CORE . 'widget/go_to.php';
 include EB_THEME_CORE . 'widget/same_price.php';
 include EB_THEME_CORE . 'widget/view_history.php';
 include EB_THEME_CORE . 'widget/youtube.php';
+include EB_THEME_CORE . 'widget/adsense.php';
 
 
 
@@ -82,6 +83,8 @@ function ___add_echbay_widget() {
 	register_widget ( '___echbay_widget_banner_big' );
 	
 	register_widget ( '___echbay_widget_go_to' );
+	
+	register_widget ( '___echbay_widget_set_adsense_code' );
 	
 //	register_widget ( '___echbay_widget_search_advanced' );
 	
