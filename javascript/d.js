@@ -1153,8 +1153,6 @@ var press_esc_to_quickvideo_close = false,
 	current_ls_url = window.location.href;
 
 function close_img_quick_video_details () {
-	if ( cf_tester_mode == 1 ) console.log('close');
-	
 	// ẩn video
 	jQuery('.quick-video').hide().height('auto');
 	
@@ -1162,7 +1160,7 @@ function close_img_quick_video_details () {
 	dog( 'quick-video-content', '&nbsp;' );
 	
 	//
-	jQuery('#click_show_cpa').hide();
+	jQuery('#click_show_cpa, .hide-if-esc').hide();
 	
 	//
 	jQuery('body').removeClass('body-no-scroll');
@@ -3144,6 +3142,9 @@ function close_ebe_quick_view () {
 			}
 //			console.log(h);
 			jQuery('#ui_ebe_quick_view').height( h );
+			
+			//
+//			window.scroll( 0, 0 );
 		});
 		
 		//
@@ -3156,6 +3157,9 @@ function close_ebe_quick_view () {
 
 //
 if (press_esc_to_quickvideo_close == false) {
+	if ( cf_tester_mode == 1 ) console.log('close');
+	
+	//
 	press_esc_to_quickvideo_close = true;
 	
 	jQuery(document).keydown(function(e) {
