@@ -99,14 +99,17 @@ function check_update_config() {
 	var f = document.frm_config;
 	
 	var fun = f.cf_js_allpage_full.value,
+		js_gadsense = f.cf_js_gadsense_full.value,
 		js_hoantat = f.cf_js_hoan_tat_full.value,
 		js_head = f.cf_js_head_full.value;
 	
 	var str = xu_ly_du_lieu_js(fun),
+		str_gadsense = xu_ly_du_lieu_js(js_gadsense),
 		str_hoantat = xu_ly_du_lieu_js(js_hoantat),
 		str_head = xu_ly_du_lieu_js(js_head);
 	
 	f.cf_js_allpage.value = str;
+	f.cf_js_gadsense.value = str_gadsense;
 	f.cf_js_hoan_tat.value = str_hoantat;
 	f.cf_js_head.value = str_head;
 	
