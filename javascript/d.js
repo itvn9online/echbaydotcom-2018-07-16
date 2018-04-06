@@ -3168,20 +3168,25 @@ if (press_esc_to_quickvideo_close == false) {
 		
 		//
 		if (e.keyCode == 27) {
-			
+			// trong cùng một cửa sổ
 			if ( top == self ) {
 				close_img_quick_video_details();
 				g_func.opopup();
 				close_ebe_quick_view();
 			}
+			// khác cửa sổ (ví dụ như khi dùng quick view)
 			else {
 				try {
 					if ( cf_tester_mode == 1 ) console.log('Close popup window');
 					
+					// hàm tự viết
 					top.close_img_quick_video_details();
 					top.g_func.opopup();
 					top.close_ebe_quick_view();
+					
+					// hoặc hàm mặc định của trình duyệt
 					window.close();
+					self.close();
 				} catch ( e ) {}
 			}
 			
