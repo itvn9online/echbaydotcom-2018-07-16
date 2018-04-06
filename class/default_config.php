@@ -46,12 +46,12 @@ $__cf_row_default = array(
 	'cf_email' => 'lienhe@echbay.com',
 	'cf_email_note' => '',
 	
-	'cf_dienthoai' => '0984 533 228',
+	'cf_dienthoai' => '',
 	'cf_call_dienthoai' => '',
-	'cf_hotline' => '0984 533 228',
+	'cf_hotline' => '',
 	'cf_call_hotline' => '',
 	
-	'cf_diachi' => 'Văn Khê, Hà Đông, Hà Nội, Việt Nam',
+	'cf_diachi' => '',
 	
 	'cf_bank' => '',
 	

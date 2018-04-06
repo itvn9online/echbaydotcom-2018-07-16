@@ -3131,6 +3131,7 @@ function close_ebe_quick_view () {
 		// sử dụng iframe
 		dog('ui_ebe_quick_view').src = 'about:blank';
 		dog('ui_ebe_quick_view').src = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&view_type=iframe&set_device=' + device;
+		jQuery('#ui_ebe_quick_view').height( 250 );
 		jQuery('#ui_ebe_quick_view').on('load', function () {
 			var h = jQuery( '#ui_ebe_quick_view' ).contents().find( 'body' ).height() || 0;
 //			console.log(h);
@@ -3141,7 +3142,7 @@ function close_ebe_quick_view () {
 				h -= -200;
 			}
 //			console.log(h);
-			jQuery('#ui_ebe_quick_view').height( h );
+			jQuery('#ui_ebe_quick_view').height( h ).scrollTop(0);
 			
 			//
 //			window.scroll( 0, 0 );
@@ -3168,10 +3169,23 @@ if (press_esc_to_quickvideo_close == false) {
 		//
 		if (e.keyCode == 27) {
 			
-			//
-			close_img_quick_video_details();
-			g_func.opopup();
-			close_ebe_quick_view();
+			if ( top == self ) {
+				close_img_quick_video_details();
+				g_func.opopup();
+				close_ebe_quick_view();
+			}
+			else {
+				try {
+					if ( cf_tester_mode == 1 ) console.log('Close popup window');
+					
+					window.close();
+					/*
+					top.close_img_quick_video_details();
+					top.g_func.opopup();
+					top.close_ebe_quick_view();
+					*/
+				} catch ( e ) {}
+			}
 			
 		}
 	});
