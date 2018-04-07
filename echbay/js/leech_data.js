@@ -760,49 +760,67 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 								eachn = 0;
 							
 							// nếu là foreach để lấy dữ liệu -> có dấu :each ở cuối chuỗi
-							if ( a2[i].split(':each').length > 1 || a2[i].split(':each').length > 1 ) {
-								eachn = 0;
-								if ( a2[i].split(':eachn').length > 1 ) {
-									eachn = 1;
-								}
+//							if ( a2[i].split(':each').length > 1 || a2[i].split(':each').length > 1 ) {
+							if ( a2[i].split(':each').length > 1 ) {
+								// cắt chuỗi để xử lý dữ liệu
+								var str_query = a2[i].split(',');
 								
-								// xóa chữ each đi
-								a2[i] = a2[i].split(':')[0];
-								
-								// xác định tag của foreach
-								var tag_begin = a2[i].split(' ').pop().split('#')[0].split('.')[0],
-									tag_end = '',
-									str_each = '';
-								if ( tag_begin != '' ) {
-									tag_end = '</' + tag_begin + '>';
-									tag_begin = '<' + tag_begin + '>';
-								}
-								
-								// bắt đầu vòng lặp
-								$( a2[i].replace(/\s?\|\|\s?/g, ',') ).each(function() {
-									var get_html = $(this).html() || '';
-									
-									// nếu có nội dung
-									if ( get_html != '' ) {
-										// sử dụng \n
-										if ( eachn == 1 ) {
-											str_each += get_html + "\n";
+								// chạy vòng lặp lần nữa, vì ech vẫn có thể đi kèm với multi class (dấy phẩy)
+								for ( var j = 0; j < str_query.length; j++ ) {
+									if ( str_query[j].split(':each').length > 1 ) {
+										eachn = 0;
+										if ( str_query[j].split(':eachn').length > 1 ) {
+											eachn = 1;
 										}
-										// sử dụng tag
-										else {
-											str_each += tag_begin + get_html + tag_end;
+										
+										// xóa chữ each đi
+										str_query[j] = str_query[j].split(':')[0];
+										
+										// xác định tag của foreach
+										var tag_begin = str_query[j].split(' ').pop().split('#')[0].split('.')[0],
+											tag_end = '',
+											str_each = '';
+										if ( tag_begin != '' ) {
+											tag_end = '</' + tag_begin + '>';
+											tag_begin = '<' + tag_begin + '>';
+										}
+										
+										// bắt đầu vòng lặp
+										$( str_query[j].replace(/\s?\|\|\s?/g, ',') ).each(function() {
+											var get_html = $(this).html() || '';
+											
+											// nếu có nội dung
+											if ( get_html != '' ) {
+												// sử dụng \n
+												if ( eachn == 1 ) {
+													str_each += get_html + "\n";
+												}
+												// sử dụng tag
+												else {
+													str_each += tag_begin + get_html + tag_end;
+												}
+											}
+										});
+										
+										// đối với LI -> gán thêm UL vào
+										if ( str_each != '' ) {
+											if ( eachn == 0 && tag_end.toLowerCase() == '</li>' ) {
+												str += '<ul>' + str_each + '</ul>';
+											}
+											else {
+												str += str_each;
+											}
 										}
 									}
-								});
-								
-								// đối với LI -> gán thêm UL vào
-								if ( eachn == 0 && tag_end == '</li>' ) {
-									if ( str_each != '' ) {
-										str += '<ul>' + str_each + '</ul>';
+									else {
+										str = $( str_query[j] ).html() || '';
+										str = g_func.trim( str );
+										
+										// tìm được phát -> thoát luôn
+										if ( str != '' ) {
+											break;
+										}
 									}
-								}
-								else {
-									str += str_each;
 								}
 							}
 							// gọi trực tiếp đến class được nhắc đến
