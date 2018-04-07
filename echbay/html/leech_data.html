@@ -279,6 +279,19 @@
 				<td class="t">Kích thước</td>
 				<td class="i"><textarea name="t_size_list" placeholder="Sử dụng vòng lặp riêng để tạo ra danh sách size dưới dạng mảng javascript" class="small" style="width:99%;height:90px;"></textarea></td>
 			</tr>
+			<tr>
+				<td class="t">Cập nhật dữ liệu</td>
+				<td class="i"><div>
+						<input type="checkbox" name="cap_nhat_stt_cho_bai_viet" id="cap_nhat_stt_cho_bai_viet" value="1" />
+						<label for="cap_nhat_stt_cho_bai_viet">Tạo STT cho bài viết (cả khi update lẫn insert).</label>
+					</div>
+					<br>
+					<div>
+						<input type="checkbox" name="cap_nhat_stt_ngau_nhien" id="cap_nhat_stt_ngau_nhien" value="1" />
+						<label for="cap_nhat_stt_ngau_nhien">Thêm một số ngẫu nhiên vào STT để tạo giãn cách update, tránh các bài viết giống nhau và sát nhau quá.</label>
+					</div>
+					<br></td>
+			</tr>
 		</table>
 		<div class="cf submit-leech-frm">
 			<div class="lf f70">
@@ -300,7 +313,7 @@
 				<button type="button" class="add-db-list-post-to-process cur bold">Sử dụng danh sách này</button>
 			</div>
 			<br>
-			<div>
+			<div> 
 				<!--
 				<input type="checkbox" id="auto_get_random_category_for_leech" />
 				<label for="auto_get_random_category_for_leech">Tự động lấy nhóm bất kỳ để tiếp tục mỗi khi tải xong</label>

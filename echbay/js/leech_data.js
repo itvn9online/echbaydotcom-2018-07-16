@@ -1683,6 +1683,10 @@ var arr_save_checkbox_options = [
 	'download_img_to_my_host',
 	'loai_bo_a_trong_noi_dung',
 	'loai_bo_url_trong_noi_dung',
+	
+	'cap_nhat_stt_cho_bai_viet',
+	'cap_nhat_stt_ngau_nhien',
+	
 	'bai_viet_nay_duoc_lay_theo_id',
 	'post_id_is_numberic',
 	'this_id_url_product_detail',
