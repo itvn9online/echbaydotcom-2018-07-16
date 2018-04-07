@@ -819,6 +819,12 @@ if ( $__post->post_type == 'post' ) {
 	if ( $_eb_product_leech_source != '' ) {
 		$_eb_product_leech_source = str_replace( '/', '\/', $_eb_product_leech_source );
 	}
+	
+	
+	//
+	if ( $__cf_row['cf_details_right_thumbnail'] == 1 ) {
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/post-details-thumb-col.css' ] = 1;
+	}
 }
 
 

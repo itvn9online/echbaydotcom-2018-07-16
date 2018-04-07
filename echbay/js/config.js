@@ -472,6 +472,7 @@ if ( current_module_config != 'config_theme' ) {
 else {
 	show_note_for_checkbox_config( 'cf_details_show_list_next' );
 	show_note_for_checkbox_config( 'cf_details_show_list_thumb' );
+	show_note_for_checkbox_config( 'cf_details_right_thumbnail' );
 	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
 	show_note_for_checkbox_config( 'cf_details_excerpt' );
 	show_note_for_checkbox_config( 'cf_post_big_banner' );

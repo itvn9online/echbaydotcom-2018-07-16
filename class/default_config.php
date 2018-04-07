@@ -233,6 +233,7 @@ $__cf_row_default = array(
 	'cf_details_show_list_next' => 'off',
 	'cf_details_show_list_thumb' => 1,
 	'cf_details_show_quick_cart' => 1,
+	'cf_details_right_thumbnail' => 'off',
 	
 	// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
 	'cf_details_excerpt' => 1,

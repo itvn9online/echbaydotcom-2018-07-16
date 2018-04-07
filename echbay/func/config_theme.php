@@ -24,6 +24,8 @@ $_POST['cf_details_show_list_next'] = WGR_default_config('cf_details_show_list_n
 
 $_POST['cf_details_show_list_thumb'] = WGR_default_config('cf_details_show_list_thumb');
 
+$_POST['cf_details_right_thumbnail'] = WGR_default_config('cf_details_right_thumbnail');
+
 $_POST['cf_details_show_quick_cart'] = WGR_default_config('cf_details_show_quick_cart');
 
 $_POST['cf_details_excerpt'] = WGR_default_config('cf_details_excerpt');

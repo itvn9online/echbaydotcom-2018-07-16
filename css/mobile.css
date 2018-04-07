@@ -240,3 +240,5 @@ body.style-for-mobile {
 }
 .style-for-mobile .echbay-blog33 li { width: 50%; }
 .style-for-mobile .thread-list-order { display: none; }
+.style-for-mobile .text-left-if-mobile { text-align: left; }
+.style-for-mobile .text-right-if-mobile { text-align: right; }
