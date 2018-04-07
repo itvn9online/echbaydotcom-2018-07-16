@@ -3090,6 +3090,20 @@ function close_ebe_quick_view () {
 	//
 	if ( top != self ) {
 		console.log('quick view not active in iframe');
+		
+		// chuyển các thẻ A, chưa có target thành target top
+		setTimeout(function () {
+			jQuery('a').each(function() {
+				var a = $(this).attr('target') || '';
+				if ( a == '' ) {
+					$(this).attr({
+						target: '_top'
+					});
+				}
+			});
+		}, 600);
+		
+		//
 		return false;
 	}
 	

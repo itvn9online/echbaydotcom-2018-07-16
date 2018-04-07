@@ -206,7 +206,7 @@ else {
 				else {
 					$trv_stt += rand( 0, 60 );
 				}
-				$arr_for_update_post['menu_order'] = $trv_stt;
+				$arr_for_update['menu_order'] = $trv_stt;
 			}
 			
 			
