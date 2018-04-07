@@ -75,7 +75,7 @@ if ( $trv_id == 0 ) {
 		FROM
 			" . $wpdb->posts . "
 		WHERE
-			ID = '" . $import_id . "'");
+			ID = " . $import_id);
 	}
 	// tìm theo SEO
 	else {
@@ -114,7 +114,7 @@ else {
 	FROM
 		" . $wpdb->posts . "
 	WHERE
-		ID = '" . $trv_id . "'");
+		ID = " . $trv_id);
 }
 
 //
@@ -175,47 +175,89 @@ if ( $import_id == 0 ) {
 else {
 	
 	// nếu bài viết đã tồn tại và đang được public -> bỏ qua
-	if ( isset( $check_post_exist->post_status ) && $check_post_exist->post_status == 'publish' ) {
-		
-		// cập nhật lại url -> hiện tại đang sai
-		if ( $check_post_exist->post_name != $trv_seo ) {
-			$post_id = wp_update_post( array(
-				'ID' => $check_post_exist->ID,
-				'post_name' => $trv_seo,
-				'post_excerpt' => $post_excerpt,
-			), true );
+	if ( isset( $check_post_exist->post_status ) ) {
+		// nếu bài đang được hiển thị bình thường -> update một số thuộc tính có chọn lọc
+		if ( $check_post_exist->post_status == 'publish' ) {
 			
-			if ( is_wp_error($post_id) ) {
-			//	print_r( $post_id ) . '<br>';
+			//
+			$arr_for_update = array();
+			
+			// cập nhật lại url -> hiện tại đang sai
+			if ( $check_post_exist->post_name != $trv_seo ) {
+				$arr_for_update['post_name'] = $trv_seo;
 				
-				$errors = $post_id->get_error_messages();
-				foreach ($errors as $error) {
-					echo $error . '<br>' . "\n";
+				/*
+				$post_id = wp_update_post( array(
+					'ID' => $check_post_exist->ID,
+					'post_name' => $trv_seo,
+					'post_excerpt' => $post_excerpt,
+				), true );
+				*/
+			}
+			
+			// cập nhật lại STT
+			if ( isset( $_POST['cap_nhat_stt_cho_bai_viet'] ) ) {
+				$trv_stt = date( 'ymdhi', date_time );
+				// thêm số ngẫu nhiên trong khoảng 1 giờ
+				if ( isset( $_POST['cap_nhat_stt_ngau_nhien'] ) ) {
+					$trv_stt += rand( 0, 3660 );
 				}
+				// thêm số ngẫu nhiên trong khoảng 1 phút
+				else {
+					$trv_stt += rand( 0, 60 );
+				}
+				$arr_for_update_post['menu_order'] = $trv_stt;
+			}
+			
+			
+			//
+			if ( ! empty( $arr_for_update ) ) {
+				// gán ID cho post cần edit
+				$arr_for_update['ID'] = $check_post_exist->ID;
 				
 				//
-				_eb_alert('Lỗi khi cập nhật sản phẩm đã tồn tại');
+				$post_id = wp_update_post( $arr_for_update, true );
+				
+				if ( is_wp_error($post_id) ) {
+				//	print_r( $post_id ) . '<br>';
+					
+					$errors = $post_id->get_error_messages();
+					foreach ($errors as $error) {
+						echo $error . '<br>' . "\n";
+					}
+					
+					//
+					_eb_alert('Lỗi khi cập nhật sản phẩm đã tồn tại');
+				}
 			}
-		}
-		
-		
-		//
-		$m = '<span class=redcolor>EXIST</span>';
-		
-		//
-		$p_link = get_permalink( $import_id );
-		//$p_link = web_link . '?p=' . $trv_id;
-		
-		//
-		if ( $p_link == '' ) {
-			_eb_alert( 'Permalink not found' );
-		}
-		
-		die('<script type="text/javascript">
+			
+			
+			//
+			$m = '<span class=redcolor>EXIST</span>';
+			
+			//
+			$p_link = get_permalink( $import_id );
+			//$p_link = web_link . '?p=' . $trv_id;
+			
+			//
+			if ( $p_link == '' ) {
+				_eb_alert( 'Permalink not found' );
+			}
+			
+			die('<script type="text/javascript">
 parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "' . $p_link . '");
 </script>');
-		
-		//
+		}
+		// còn lại thì thôi, không update gì cả
+		else {
+			
+			//
+			$m = '<span class=orgcolor>STATUS</span>';
+			
+			die('<script type="text/javascript">
+parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "' . admin_link . 'post.php?post=' . $import_id . '&action=edit");
+</script>');
+		}
 	}
 }
 
@@ -281,9 +323,11 @@ $arr = array(
 	'ID' => $trv_id,
 	/*
 	'post_parent' => 0,
+	// không cập nhật lại tác giả
 	'post_author' => mtv_id,
-	*/
+	// không cập nhật lại status -> bài viết khóa rồi thì thôi
 	'post_status' => 'publish',
+	*/
 	'post_type' => $post_type,
 	'post_title' => $trv_tieude,
 	'post_name' => $trv_seo,
@@ -301,6 +345,12 @@ if ( $post_date != '' ) {
 	$arr['post_date_gmt'] = $post_date;
 	$arr['post_modified'] = $post_date;
 	$arr['post_modified_gmt'] = $post_date;
+}
+
+// Tạo STT
+if ( isset( $_POST['cap_nhat_stt_cho_bai_viet'] ) ) {
+	// thêm số ngẫu nhiên trong khoảng 1 phút
+	$arr['menu_order'] = date( 'ymdhi', date_time ) + rand( 0, 60 );
 }
 
 //print_r($arr);
