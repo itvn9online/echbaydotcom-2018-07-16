@@ -1272,13 +1272,15 @@ function EBE_auto_save_domain_cookie () {
 		auto_submit_save_domain_cookies = false;
 		
 		//
+		/*
 		if ( dog('leech_data_auto_next').checked == true ) {
 			console.log( 'Auto next is active, auto save STOP' );
 		}
 		else {
+			*/
 			console.log( 'Auto save, while 60 secondes' );
 			document.frm_leech_data_save.submit();
-		}
+//		}
 	}
 }
 

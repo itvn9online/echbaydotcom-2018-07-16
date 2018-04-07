@@ -304,7 +304,7 @@
 		</div>
 	</form>
 </div>
-<form name="frm_leech_data_save" method="post" action="{tmp.web_link}process/?set_module=leech_data_save" target="target_eb_iframe">
+<form name="frm_leech_data_save" method="post" action="{tmp.web_link}process/?set_module=leech_data_save" target="irf_leech_data_save">
 	<p class="bold">Lưu lại danh sách nhóm, để lần sau đỡ phải nạp lại. Thường dùng khi chạy Affiliate content.</p>
 	<div class="fix-textarea-height2">
 		<textarea name="t_list" id="oi_save_list_category" style="width:99%;height:90px;">{tmp.str_for_save_list_category}</textarea>
@@ -338,6 +338,7 @@
 	<div id="oi_download_img_to_my_host"></div>
 	<br>
 	<iframe id="crawl_eb_iframe" name="crawl_eb_iframe" src="about:blank" width="90%" height="600">AJAX form</iframe>
+	<iframe id="irf_leech_data_save" name="irf_leech_data_save" src="about:blank" width="90%" height="90">AJAX form</iframe>
 </div>
 <script type="text/javascript">
 {tmp.js}
