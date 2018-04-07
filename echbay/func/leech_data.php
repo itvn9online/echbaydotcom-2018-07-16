@@ -197,14 +197,14 @@ else {
 			
 			// cập nhật lại STT
 			if ( isset( $_POST['cap_nhat_stt_cho_bai_viet'] ) && $_POST['cap_nhat_stt_cho_bai_viet'] == 1 ) {
-				$trv_stt = date( 'ymdhi', date_time );
+				$trv_stt = date( 'ymdh', date_time );
 				// thêm số ngẫu nhiên trong khoảng 1 giờ
 				if ( isset( $_POST['cap_nhat_stt_ngau_nhien'] ) && $_POST['cap_nhat_stt_ngau_nhien'] == 1 ) {
-					$trv_stt += rand( 0, 3660 );
+					$trv_stt += rand( 0, 7200 );
 				}
 				// thêm số ngẫu nhiên trong khoảng 1 phút
 				else {
-					$trv_stt += rand( 0, 60 );
+					$trv_stt += rand( 0, 3600 );
 				}
 				$arr_for_update['menu_order'] = $trv_stt;
 			}
@@ -350,7 +350,7 @@ if ( $post_date != '' ) {
 // Tạo STT
 if ( isset( $_POST['cap_nhat_stt_cho_bai_viet'] ) && $_POST['cap_nhat_stt_cho_bai_viet'] == 1 ) {
 	// thêm số ngẫu nhiên trong khoảng 1 phút
-	$arr['menu_order'] = date( 'ymdhi', date_time ) + rand( 0, 60 );
+	$arr['menu_order'] = date( 'ymdh', date_time ) + rand( 0, 3600 );
 }
 
 //print_r($arr);
