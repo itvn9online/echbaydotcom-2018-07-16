@@ -19,8 +19,11 @@ body.style-for-mobile {
 	width: 100% !important;
 	margin: 0 0 0 auto;
 	max-width: 999px;
+	float: none;
 }
-.style-for-mobile .fullsize-if-mobile { float: none; }
+/*
+.style-for-mobile .fullsize-if-mobile { }
+*/
 .style-for-mobile .w90,
 /* .style-for-mobile .global-w99, */
 .style-for-mobile .w99 { min-width: 250px; }

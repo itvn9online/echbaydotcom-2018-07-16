@@ -2100,6 +2100,7 @@ iframe[name="google_conversion_frame"] {
 .ebe-quick-view .fullsize-if-quickview {
 	width: auto !important;
 	margin: 0 0 0 auto;
+	float: none;
 }
 .ebe-quick-view .fullsize-if-mobile { float: none; }
 .style-for-mobile .ebe-quick-view { padding: 10px 0; }
