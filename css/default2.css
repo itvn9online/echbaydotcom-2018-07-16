@@ -2062,7 +2062,7 @@ iframe[name="google_conversion_frame"] {
 	right: 0;
 	left: 0;
 	bottom: 0;
-	background: rgba(255,255,255,.6);
+	background: rgba(0,0,0,.3);
 	z-index: 999;
 	overflow: auto;
 	display: none;
@@ -2088,9 +2088,9 @@ iframe[name="google_conversion_frame"] {
 	position: absolute;
 	background: #111;
 	display: inline-block;
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
 	border-radius: 50%;
 	color: #fff;
 	text-align: center;
