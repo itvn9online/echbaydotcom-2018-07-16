@@ -392,6 +392,8 @@ label,
 .home_menu_noidung .w90,
 .home_menu_noidung .w99,
 */
+.css-for-quickview .w99,
+.css-for-quickview .w90,
 .w99 .w99,
 .w99 .w90,
 /* .w90 .w99, */
@@ -2097,15 +2099,17 @@ iframe[name="google_conversion_frame"] {
 	top: -15px;
 	box-shadow: 0 0 10px #000;
 }
-.ebe-quick-view .fullsize-if-quickview {
-	width: auto !important;
-	margin: 0 0 0 auto;
-	float: none;
-}
-.ebe-quick-view .fullsize-if-mobile { float: none; }
 .style-for-mobile .ebe-quick-view { padding: 10px 0; }
 .style-for-mobile .ebe-quick-view .quick-view-padding { }
 /* css for iframe quick view */
+.css-for-quickview .fullsize-if-quickview {
+	width: auto !important;
+	margin: 0 0 0 auto;
+}
+/*
+.css-for-quickview .fullsize-if-mobile,
+*/
+.css-for-quickview .fullsize-if-quickview { float: none; }
 /*
 #oi_ebe_quick_view {
 	position: fixed;
