@@ -248,11 +248,22 @@ else {
 parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "' . $p_link . '");
 </script>');
 		}
+		// nếu gặp phải bản phụ -> xóa luôn
+		else if ( isset( $check_post_exist->post_type ) && $check_post_exist->post_type == 'revision' ) {
+			wp_delete_post( $check_post_exist->ID, true );
+			
+			//
+			$m = '<span class=orgcolor>DELETE: ' . $check_post_exist->post_type . ' (' . $check_post_exist->ID . ')</span>';
+			
+			die('<script type="text/javascript">
+parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "javascript:;");
+</script>');
+		}
 		// còn lại thì thôi, không update gì cả
 		else {
 			
 			//
-			$m = '<span class=orgcolor>STATUS</span>';
+			$m = '<span class=orgcolor>STATUS: ' . $check_post_exist->post_status . ', TYPE: ' . $check_post_exist->post_type . '</span>';
 			
 			die('<script type="text/javascript">
 parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "' . admin_link . 'post.php?post=' . $import_id . '&action=edit");

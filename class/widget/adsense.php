@@ -16,8 +16,9 @@ class ___echbay_widget_set_adsense_code extends WP_Widget {
 		global $arr_to_add_menu;
 		
 		$default = array (
-			'title' => 'Note'
+			'title' => 'Note',
 //			'code' => ''
+			'hide_quick_view' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -31,6 +32,9 @@ class ___echbay_widget_set_adsense_code extends WP_Widget {
 		//
 //		echo '<p><strong>Mã nhúng</strong>: <textarea class="widefat" name="' . $this->get_field_name('code') . '">' . $code . '</textarea></p>';
 		
+		//
+		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('hide_quick_view'), $hide_quick_view, 'Ẩn trong quick view', 'Một số mã không chạy trong iframe hoặc khi thẻ DIV tại đó bị ẩn thì, lúc này cần kích hoạt chức năng ẩn trong quick view để tính năng này tạm dừng' );
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -42,6 +46,16 @@ class ___echbay_widget_set_adsense_code extends WP_Widget {
 		global $__cf_row;
 		
 		extract ( $args );
+		
+		$hide_quick_view = isset( $instance ['hide_quick_view'] ) ? $instance ['hide_quick_view'] : 'off';
+		// nếu tính năng ẩn trong quick view được kích hoạt
+		if ( $hide_quick_view == 'on'
+		// kiểm tra xem có phải đang xem trong quick view không
+		&& isset( $_GET['set_module'] ) && $_GET['set_module'] == 'quick_view' ) {
+			// phải thì thoát luôn
+			echo '<!-- Google adsense disable in Quick view -->';
+			return false;
+		}
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
