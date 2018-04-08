@@ -1,5 +1,10 @@
 <?php
-	
+
+
+
+
+//
+$str_for_category_top_sidebar = '';
 	
 	
 	
@@ -270,6 +275,7 @@ if ( $main_content == false ) {
 			
 			//
 			$arr_main_content = array(
+				'tmp.str_for_category_top_sidebar' => _eb_echbay_get_sidebar( 'category_top_content_sidebar' ),
 //				'tmp.home_cf_title' => $__category->name,
 				'tmp.cats_description' => $cats_description,
 //				'tmp.link_for_fb_comment' => $link_for_fb_comment,
