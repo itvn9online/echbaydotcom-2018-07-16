@@ -60,6 +60,9 @@ while ( $sql->have_posts() ) {
 	include EB_THEME_PLUGIN_INDEX . 'global/details.php';
 	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 	
+	// d.css
+	$arr_for_add_css[ WGR_check_add_add_css_themes_or_plugin ( 'd' ) ] = 1;
+	
 	// nạp css trực tiếp nếu xem qua ajax
 //	print_r( $arr_for_add_css );
 	if ( $view_type != 'iframe' ) {
