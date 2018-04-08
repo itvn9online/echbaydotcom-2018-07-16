@@ -242,3 +242,4 @@ body.style-for-mobile {
 .style-for-mobile .thread-list-order { display: none; }
 .style-for-mobile .text-left-if-mobile { text-align: left; }
 .style-for-mobile .text-right-if-mobile { text-align: right; }
+.style-for-mobile .ebe-quick-view .quick-view-close i { right: 5px; }

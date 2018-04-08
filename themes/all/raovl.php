@@ -18,7 +18,7 @@ $eb_all_themes_support["raovl"]["top"][] = "echbaytwo-top4.php";
 $eb_all_themes_support["raovl"]["top"][] = "top_widget.php";
 //
 $eb_all_themes_support["raovl"]["footer"][] = "footer_widget.php";
-$eb_all_themes_support["raovl"]["footer"][] = "echbaytwo-footer2.php";
+//$eb_all_themes_support["raovl"]["footer"][] = "echbaytwo-footer2.php";
 $eb_all_themes_support["raovl"]["footer"][] = "echbaytwo-footer3.php";
 //
 //$eb_all_themes_support["raovl"]["home"][] = "raovl-home1.php";
