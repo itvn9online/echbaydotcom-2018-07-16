@@ -108,13 +108,14 @@ blockquote p:last-child { margin-bottom: 0; }
 	margin: 1.5em 16px 1.5em;
 }
 .amp-wp-title {
-	color: #353535;
 	display: block;
 	flex: 1 0 100%;
 	font-weight: 900;
 	margin: 0 0 .625em;
 	width: 100%;
 }
+.amp-wp-title,
+.amp-wp-title a { color: #353535; }
 /* Article Meta */
 .amp-wp-meta {
 	color: #696969;

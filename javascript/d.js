@@ -3072,6 +3072,18 @@ setTimeout(function () {
 
 
 
+//
+function WGR_set_a_target_top () {
+	jQuery('a').each(function() {
+		var a = $(this).attr('target') || '';
+		if ( a == '' ) {
+			$(this).attr({
+				target: '_top'
+			});
+		}
+	});
+}
+
 
 //
 var current_pid_quicview = pid;
@@ -3092,15 +3104,14 @@ function close_ebe_quick_view () {
 		console.log('quick view not active in iframe');
 		
 		// chuyển các thẻ A, chưa có target thành target top
+		WGR_set_a_target_top();
 		setTimeout(function () {
-			jQuery('a').each(function() {
-				var a = $(this).attr('target') || '';
-				if ( a == '' ) {
-					$(this).attr({
-						target: '_top'
-					});
-				}
-			});
+			WGR_set_a_target_top();
+			
+			//
+			setTimeout(function () {
+				WGR_set_a_target_top();
+			}, 1200);
 		}, 600);
 		
 		//

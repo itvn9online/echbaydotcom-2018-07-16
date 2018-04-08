@@ -101,8 +101,8 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			$post->post_excerpt = $post->post_content;
 		}
 //		else if ( $post->post_type == 'blog' && $post->post_excerpt == '' ) {
-		else if ( $post->post_excerpt == '' ) {
-			$post->post_excerpt = _eb_short_string( strip_tags ( $post->post_content ), 130 );
+		else if ( $post->post_excerpt == '' && $__cf_row['cf_content_for_excerpt_null'] > 69 ) {
+			$post->post_excerpt = _eb_short_string( strip_tags ( $post->post_content ), $__cf_row['cf_content_for_excerpt_null'] );
 		}
 		
 		//

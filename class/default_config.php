@@ -238,6 +238,9 @@ $__cf_row_default = array(
 	// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
 	'cf_details_excerpt' => 1,
 	
+	// mặc định sẽ cắt nội dung trong phần content nếu excerpt để trống
+	'cf_content_for_excerpt_null' => 130,
+	
 	
 	/*
 	* giao diện HTML mặc định

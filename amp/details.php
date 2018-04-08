@@ -53,11 +53,12 @@ $trv_noidung = $eb_amp->amp_change_tag ( $trv_noidung );
 
 // bài xem nhiều
 $args_other_blog = array(
-	'post_type' => EB_BLOG_POST_TYPE,
+//	'post_type' => EB_BLOG_POST_TYPE,
+	'post_type' => $__post->post_type,
 	'offset' => 0,
 	'tax_query' => array(
 		array(
-			'taxonomy' => EB_BLOG_POST_LINK,
+			'taxonomy' => $__post->post_type == EB_BLOG_POST_TYPE ? EB_BLOG_POST_LINK : 'category',
 			'terms' => $ant_id,
 		)
 	),
@@ -87,7 +88,7 @@ if ( isset( $post_categories[0] ) ) {
 // tổng hợp nội dung
 $amp_content = '
 <header class="amp-wp-article-header">
-	<h1 class="amp-wp-title">' . $__post->post_title . '</h1>
+	<h1 class="amp-wp-title"><a href="' . _eb_p_link( $pid ) . '">' . $__post->post_title . '</a></h1>
 	<div>' . date( 'd/m/Y H:i', strtotime( $__post->post_modified ) ) . '</div>
 </header>
 <div class="amp-wp-article-content">
