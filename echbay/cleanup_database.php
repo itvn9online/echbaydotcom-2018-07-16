@@ -21,14 +21,15 @@ $str_post_type = '';
 foreach ( $sql as $v ) {
 	
 	//
-	$strsql = _eb_q("SELECT ID
+	$strsql = _eb_q("SELECT count(ID) as c
 	FROM
 		`" . $wpdb->posts . "`
 	WHERE
 		post_type = '" . $v->post_type . "'");
+//	print_r( $strsql );
 	
 	//
-	$str_post_type .= '<li>' . $v->post_type . ' (' . count( $strsql ) . ')</li>';
+	$str_post_type .= '<li>' . $v->post_type . ' (' . $strsql[0]->c . ')</li>';
 }
 
 

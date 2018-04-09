@@ -683,5 +683,10 @@ if ( date_time - $last_update_web_version + rand( 0, 60 ) > 600 ) {
 
 // TEST
 //echo _eb_get_full_category_v2 ( 0, 'category', 1 );
+/*
+if ( mtv_id == 1 && is_home() ) {
+	include EB_THEME_PLUGIN_INDEX . 'cronjob/revision_cleanup.php';
+}
+*/
 
 

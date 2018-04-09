@@ -10,14 +10,15 @@ if ( $check_Cleanup_cache == false ) {
 		global $wpdb;
 		
 		// tính tổng số revision đang có
-		$strsql = _eb_q("SELECT ID
+		$strsql = _eb_q("SELECT count(ID) as c
 		FROM
 			`" . $wpdb->posts . "`
 		WHERE
 			post_type = 'revision'");
+//		print_r( $strsql );
 		
 		// nếu lớn hơn số revision được lưu trữ thì mới tiếp tục
-		if ( count( $strsql ) > $__cf_row['cf_max_revision_cleanup'] ) {
+		if ( ! empty( $strsql ) && $strsql[0]->c > $__cf_row['cf_max_revision_cleanup'] + 100 ) {
 			$strsql = _eb_q("SELECT ID
 			FROM
 				`" . $wpdb->posts . "`
@@ -26,6 +27,7 @@ if ( $check_Cleanup_cache == false ) {
 			ORDER BY
 				ID DESC
 			LIMIT " . $__cf_row['cf_max_revision_cleanup'] . ", 1");
+//			print_r( $strsql );
 			
 			//
 			if ( ! empty( $strsql ) && isset( $strsql[0]->ID ) ) {
@@ -47,6 +49,7 @@ if ( $check_Cleanup_cache == false ) {
 	
 	// Lưu thời gian dọn log
 	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
+	
 }
 
 
