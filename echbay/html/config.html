@@ -776,6 +776,14 @@ div.gallery-add-to-og_image { display: block; }
 					<label for="cf_echbay_migrate_version" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
 					<div class="small">Chức năng này dùng để đồng bộ URL của phiên bản 1 với phiên bản hiện tại, chỉ có tác dụng với web nâng cấp, nếu web của bạn là web mới, vui lòng không kích hoạt.</div></td>
 			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_max_revision_cleanup">Dọn dẹp Revision</label></td>
+				<td class="i"><input type="number" name="cf_max_revision_cleanup" id="cf_max_revision_cleanup" value="{tmp.cf_max_revision_cleanup}" placeholder="{aaa.cf_max_revision_cleanup}" class="s" />
+					<div class="small">Nếu đặt số &gt; 1, cứ mỗi 6 tiếng, các post_type = revision sẽ được kiểm tra và xóa một lần, số bạn nhập vào đây chính là số lượng các bản revision mới nhất được giữ lại. Nếu đặt là 1, cứ đến lịch là xóa, không giữ lại gì cả.</div></td>
+			</tr>
 		</tbody>
 	</table>
 	<div>

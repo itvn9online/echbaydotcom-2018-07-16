@@ -241,6 +241,9 @@ $__cf_row_default = array(
 	// mặc định sẽ cắt nội dung trong phần content nếu excerpt để trống
 	'cf_content_for_excerpt_null' => 130,
 	
+	//
+	'cf_max_revision_cleanup' => 1000,
+	
 	
 	/*
 	* giao diện HTML mặc định

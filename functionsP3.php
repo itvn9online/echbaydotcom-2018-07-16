@@ -360,3 +360,49 @@ function WGR_default_config ( $k ) {
 
 
 
+// xóa bài viết theo cách riêng
+function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter = '' ) {
+	// Nếu có ID -> xóa luôn theo ID
+	if ( $ID > 0 ) {
+		wp_delete_post( $ID, true );
+	}
+	// nếu không -> xóa theo post type truyền vào
+	else {
+		global $wpdb;
+		
+		
+		// xóa postmeta trước
+		$wpdb->query( "DELETE FROM
+			`" . wp_postmeta . "`
+		WHERE
+			post_id IN ( select
+							ID
+						from
+							`" . $wpdb->posts . "`
+						where
+							post_type = '" . $post_type . "' " . $strFilter . " )" );
+		
+		// tiếp theo là term_relationships
+	//	echo $wpdb->term_relationships . '<br>' . "\n"; exit();
+		$wpdb->query( "DELETE FROM
+			`" . $wpdb->term_relationships . "`
+		WHERE
+			object_id IN ( select
+							ID
+						from
+							`" . $wpdb->posts . "`
+						where
+							post_type = '" . $post_type . "' " . $strFilter . " )" );
+		
+		// sau đó xóa posts
+		$wpdb->query( "DELETE FROM
+			`" . $wpdb->posts . "`
+		WHERE
+			post_type = '" . $post_type . "' " . $strFilter . " " );
+	}
+	
+	return true;
+}
+
+
+

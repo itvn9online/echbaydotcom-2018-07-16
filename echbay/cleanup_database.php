@@ -136,34 +136,7 @@ if ( isset( $_GET['del_data'] ) ) {
 	* Sử dụng lệnh mysql thuần xóa cho nhanh
 	* Thường thì revision không có postmeta, term_relationships -> nhưng cứ đặt lệnh xóa cho nó xôm
 	*/
-	// xóa postmeta trước
-	$wpdb->query( "DELETE FROM
-		`" . wp_postmeta . "`
-	WHERE
-		post_id IN ( select
-						ID
-					from
-						`" . $wpdb->posts . "`
-					where
-						post_type = 'revision' )" );
-	
-	// tiếp theo là term_relationships
-//	echo $wpdb->term_relationships . '<br>' . "\n"; exit();
-	$wpdb->query( "DELETE FROM
-		`" . $wpdb->term_relationships . "`
-	WHERE
-		object_id IN ( select
-						ID
-					from
-						`" . $wpdb->posts . "`
-					where
-						post_type = 'revision' )" );
-	
-	// sau đó xóa posts
-	$wpdb->query( "DELETE FROM
-		`" . $wpdb->posts . "`
-	WHERE
-		post_type = 'revision'" );
+	WGR_remove_post_by_type();
 	
 	
 	// chạy lại bằng lệnh cung cấp bởi wp -> đề phòng lệnh trên có lỗi

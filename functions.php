@@ -1836,7 +1836,8 @@ function _eb_c ($str) {
 	$sql = _eb_q( $str );
 	
 	// v1 -> chạy 1 vòng lặp rồi trả về kết quả
-	if ( count( $sql ) > 0 ) {
+//	if ( count( $sql ) > 0 ) {
+	if ( ! empty( $sql ) ) {
 //		echo 'aaaaaaaaa';
 //		print_r( $sql );
 		$sql = $sql[0];
