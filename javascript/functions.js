@@ -12,6 +12,7 @@ function ___eb_add_conver_string_cart_to_arr_cart ( arr ) {
 		try {
 			arr = jQuery.parseJSON( unescape( arr ) );
 		} catch (e) {
+			console.log( WGR_show_try_catch_err( e ) );
 			arr = '';
 		}
 		
@@ -100,6 +101,11 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr ) {
 		});
 	}
 	
+}
+
+
+function WGR_show_try_catch_err ( e ) {
+	return 'name: ' + e.name + '; line: ' + (e.lineNumber || e.line) + '; script: ' + (e.fileName || e.sourceURL || e.script) + '; stack: ' + (e.stackTrace || e.stack) + '; message: ' + e.message;
 }
 
 

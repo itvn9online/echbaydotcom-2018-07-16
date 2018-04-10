@@ -39,34 +39,49 @@ console.log( arr_for_save_domain_config );
 
 
 // tùy theo trang web mà url nằm đầu hay cuối
+function num_leech_data_post_id ( i ) {
+	// ID chỉ là dạng số -> tích vào để loại bỏ các ký tự không phải số
+	if ( dog('post_id_is_numberic').checked == true ) {
+		return g_func.number_only( i );
+	}
+	return i;
+}
+
 function get_leech_data_post_id ( str, vitri ) {
 	console.log(str);
 	
 	var b = $('#id_post_begin').val() || '',
-		e = $('#id_post_end').val() || '';
+		e = $('#id_post_end').val() || '',
+		a = null;
 	
 	
 	// nếu điểm bắt đầu chỉ có 1 ký tự
 	if ( b.length == 1 ) {
 		// nếu không có điểm kết thúc -> lấy ngay vị trí cuối cùng
 		if ( e == '' ) {
-			var a = str.split( b )[0];
-			
-			return a[ a.length - 1 ];
+			a = str.split( b )[0];
 		}
-		
 		// nếu có điểm kết thúc -> lấy mảng ngay trước vị trí kết thúc
-		var a = str.split( e )[0].split( b );
-		
-		return a[ a.length - 1 ];
+		else {
+			a = str.split( e )[0].split( b );
+		}
+		return num_leech_data_post_id( a[ a.length - 1 ] );
 	}
 	// nếu có điều kiện để lọc ID
-	else if ( b != '' && e != '' ) {
-		var a = str.split( b );
-		if ( a.length > 1 ) {
-			return a[1].split( e )[0];
+	else if ( b != '' ) {
+		// Tách theo điều kiện nếu có nhiều điều kiện để lấy ID
+		b = b.split( '||' );
+		for ( var i = 0; i < b.length; i++ ) {
+			a = str.split( $.trim( b[i] ) );
+//			console.log(a);
+			if ( a.length > 1 ) {
+				str = a[1];
+				if ( e != '' ) {
+					str = str.split( e )[0];
+				}
+				return num_leech_data_post_id( str );
+			}
 		}
-		return 0;
 	}
 	
 	
@@ -80,10 +95,13 @@ function get_leech_data_post_id ( str, vitri ) {
 	try {
 		// ở cuối
 		if ( vitri == 0 ) {
-			str = g_func.number_only( str.split('-').pop().split('.')[0].split('/')[0] );
+			str = str.split('-').pop().split('.')[0].split('/')[0].split('?')[0].split('&')[0];
+			
+			str = num_leech_data_post_id( str );
 		}
 	} catch ( e ) {
 		console.log('ERROR get post ID: ' + str);
+		console.log( WGR_show_try_catch_err( e ) );
 		str = 0;
 	}
 	
@@ -429,8 +447,21 @@ function leech_data_content ( url, id, callBack ) {
 		url: web_link + url,
 		data: ''
 	}).done(function(msg) {
-		// chỉ lấy nội dung trong body
 		try {
+			// v2 -> đổi các thẻ dùng để tải dữ liệu -> giúp xử lý các thẻ này dễ hơn
+			msg = msg.replace( /\<html/gi, '<eb-html' )
+				.replace( /\<\/html\>/gi, '</eb-html>' )
+				//
+				.replace( /\<head/gi, '<eb-head' )
+				.replace( /\<\/head\>/gi, '</eb-head>' )
+				//
+				.replace( /\<link/gi, '<eb-link' )
+				//
+				.replace( /\<script/gi, '<eb-script' )
+				.replace( /\<\/script\>/gi, '</eb-script>' );
+			
+			// v1 -> chỉ lấy nội dung trong body
+			/*
 			msg = msg.replace( /\<\/head\>/gi, '</head>' ).replace( /\<\/html\>/gi, '</html>' );
 			msg = msg.split('</head>');
 			if ( msg.length > 1 ) {
@@ -439,10 +470,11 @@ function leech_data_content ( url, id, callBack ) {
 				msg = msg[0];
 			}
 			msg = msg.split('</html>')[0];
+			*/
 		} catch ( e ) {
 			console.log(msg);
 			
-			console.log('name: ' + e.name + '; line: ' + (e.lineNumber || e.line) + '; script: ' + (e.fileName || e.sourceURL || e.script) + '; stack: ' + (e.stackTrace || e.stack) + '; message: ' + e.message);
+			console.log( WGR_show_try_catch_err( e ) );
 			
 //			ket_thuc_lay_du_lieu( 0, '<span class=redcolor>ERROR</span>' );
 			ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR</span>' );
@@ -451,10 +483,12 @@ function leech_data_content ( url, id, callBack ) {
 		}
 		
 		// xóa bỏ mã ko liên quan
+		/*
 		msg = msg.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, " ");
 //		msg = msg.replace(/<iframe \b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, " ");
 //		msg = msg.replace(/<link[^>]*>/gi, " ");
 		msg = msg.replace(/<link.*?\/>/gi, " ");
+		*/
 		
 		// đổi iframe -> video youtube
 //		msg = msg.replace(/\sdata-src=/gi, " data-old-src=");
@@ -535,11 +569,6 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 		f.t_id.value = '';
 		if ( dog('bai_viet_nay_duoc_lay_theo_id').checked == true ) {
 			f.t_id.value = get_leech_data_post_id ( f.t_source.value );
-			
-			// ID chỉ là dạng số -> tích vào để loại bỏ các ký tự không phải số
-			if ( dog('post_id_is_numberic').checked == true ) {
-				f.t_id.value = g_func.number_only( f.t_id.value );
-			}
 		}
 		
 		//

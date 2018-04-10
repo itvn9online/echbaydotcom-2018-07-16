@@ -1241,7 +1241,9 @@ var _global_js_eb = {
 					if ( window.location.href.split('//')[1] != fix_url_pid.split('//')[1] ) {
 						new_url = fix_url_pid;
 					}
-				} catch (e) {}
+				} catch (e) {
+					console.log( WGR_show_try_catch_err( e ) );
+				}
 			}
 		}
 		else if (fid > 0) {
@@ -1522,7 +1524,9 @@ var _global_js_eb = {
 				if ( typeof a != 'object' ) {
 					try {
 						return JSON.parse(a);
-					} catch (e) {}
+					} catch (e) {
+						console.log( WGR_show_try_catch_err( e ) );
+					}
 				}
 				
 				return a;
@@ -1850,7 +1854,9 @@ var _global_js_eb = {
 			var new_email = g_func.non_mark_seo(f.t_dienthoai.value);
 			try {
 				new_email += '@' + web_link.split('//')[1].split('/')[0].replace('www.', '').replace(/\:/g, '.');
-			} catch (e) {}
+			} catch (e) {
+				console.log( WGR_show_try_catch_err( e ) );
+			}
 			f.t_email.value = new_email;
 			
 			if (_global_js_eb.check_email(f.t_email.value) == false) {
@@ -1950,6 +1956,7 @@ var _global_js_eb = {
 				cart_arr_in_cookie = jQuery.parseJSON( cart_arr_in_cookie );
 			} catch ( e ) {
 				console.log('ERROR conver cart in cookie');
+				console.log( WGR_show_try_catch_err( e ) );
 				cart_arr_in_cookie = [];
 			}
 		}

@@ -3218,7 +3218,9 @@ if (press_esc_to_quickvideo_close == false) {
 					// hoặc hàm mặc định của trình duyệt
 					window.close();
 					self.close();
-				} catch ( e ) {}
+				} catch ( e ) {
+					console.log( WGR_show_try_catch_err( e ) );
+				}
 			}
 			
 		}

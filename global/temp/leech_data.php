@@ -8,7 +8,7 @@ set_time_limit(0);
 
 
 
-//
+// thêm nhóm trong leech data
 if ( isset( $_GET['create_category'], $_GET['category_slug'] )
 && $_GET['create_category'] != ''
 && $_GET['category_slug'] != '' ) {
@@ -54,6 +54,7 @@ if ( isset( $_GET['create_category'], $_GET['category_slug'] )
 	
 	exit();
 }
+// đọc và lấy thông tin bài viết
 else if ( isset($_GET['categories_url']) ) {
 	$url = str_replace( '&amp;', '&', urldecode( trim( $_GET['categories_url'] ) ) );
 	echo $url . '<br>';
