@@ -449,31 +449,34 @@ function leech_data_content ( url, id, callBack ) {
 	}).done(function(msg) {
 		try {
 			// v2 -> đổi các thẻ dùng để tải dữ liệu -> giúp xử lý các thẻ này dễ hơn
-			msg = msg.replace( /\<html/gi, '<eb-html' )
-				.replace( /\<\/html\>/gi, '</eb-html>' )
-				//
-				.replace( /\<head/gi, '<eb-head' )
-				.replace( /\<\/head\>/gi, '</eb-head>' )
-				//
-				.replace( /\<iframe/gi, '<eb-iframe' )
+			if ( dog('get_full_code_in_head').checked == true ) {
+				msg = msg.replace( /\<html/gi, '<eb-html' )
+					.replace( /\<\/html\>/gi, '</eb-html>' )
+					//
+					.replace( /\<head/gi, '<eb-head' )
+					.replace( /\<\/head\>/gi, '</eb-head>' );
+			}
+			// v1 -> chỉ lấy nội dung trong body
+			else {
+				// đổi về viết thường cho đảm bảo lệnh sẽ chạy luôn đúng
+				msg = msg.replace( /\<\/head\>/gi, '</head>' ).replace( /\<\/html\>/gi, '</html>' );
+				msg = msg.split('</head>');
+				if ( msg.length > 1 ) {
+					msg = msg[1];
+				} else {
+					msg = msg[0];
+				}
+				msg = msg.split('</html>')[0];
+			}
+			
+			//
+			msg = msg.replace( /\<iframe/gi, '<eb-iframe' )
 				.replace( /\<\/iframe\>/gi, '</eb-iframe>' )
 				//
 				.replace( /\<link/gi, '<eb-link' )
 				//
 				.replace( /\<script/gi, '<eb-script' )
 				.replace( /\<\/script\>/gi, '</eb-script>' );
-			
-			// v1 -> chỉ lấy nội dung trong body
-			/*
-			msg = msg.replace( /\<\/head\>/gi, '</head>' ).replace( /\<\/html\>/gi, '</html>' );
-			msg = msg.split('</head>');
-			if ( msg.length > 1 ) {
-				msg = msg[1];
-			} else {
-				msg = msg[0];
-			}
-			msg = msg.split('</html>')[0];
-			*/
 		} catch ( e ) {
 			console.log(msg);
 			
@@ -1669,6 +1672,7 @@ var arr_save_checkbox_options = [
 	'post_id_is_numberic',
 	'this_id_url_product_detail',
 	'get_list_post_in_iframe',
+	'get_full_code_in_head',
 //	'auto_get_random_category_for_leech',
 	
 	'leech_data_auto_next'
