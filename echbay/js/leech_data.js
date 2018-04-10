@@ -455,6 +455,9 @@ function leech_data_content ( url, id, callBack ) {
 				.replace( /\<head/gi, '<eb-head' )
 				.replace( /\<\/head\>/gi, '</eb-head>' )
 				//
+				.replace( /\<iframe/gi, '<eb-iframe' )
+				.replace( /\<\/iframe\>/gi, '</eb-iframe>' )
+				//
 				.replace( /\<link/gi, '<eb-link' )
 				//
 				.replace( /\<script/gi, '<eb-script' )
