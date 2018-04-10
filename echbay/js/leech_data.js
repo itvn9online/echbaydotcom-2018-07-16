@@ -120,83 +120,9 @@ function function_rieng_theo_domain () {
 	}
 	
 	//
-	if ( source_url.split('vnexpress.net').length > 1 ) {
-		if ( f.t_ngaydang.value != '' ) {
-			try {
-				var a = g_func.strip_tags( f.t_ngaydang.value ),
-					b = '';
-				
-				var a = a.split('|');
-				
-				// -> giờ đăng
-				b = $.trim( a[1] );
-				b = b.split(' ')[0];
-				
-				// ngày đăng
-				a = $.trim( a[0].split('<')[0].split(',')[1] );
-				a = a.split('/');
-				
-				// set ngày đăng ảnh theo bài viết
-				year_curent = a[2];
-				
-				//
-				a = a[2] + '/' + a[1] + '/' + a[0];
-				
-				//
-				f.t_ngaydang.value = a + ' ' + b;
-			} catch ( e ) {
-				f.t_ngaydang.value = '';
-			}
-		}
-	}
-	else if ( source_url.split('lazada.vn').length > 1 ) {
-		if ( f.t_img.value != '' ) {
-			f.t_img.value = f.t_img.value
-							.split('-catalog.jpg_')[0]
-							.split('-zoom.jpg_')[0]
-							.split('-catalog_')[0]
-							.split('.jpg')[0]
-							+ '.jpg';
-			f.t_img.value = f.t_img.value.replace(/\.jpg\.jpg/gi, '.jpg');
-		}
-		
-		/*
-		if ( f.t_gallery.value != '' ) {
-			var a = f.t_gallery.value.split("\n"),
-				str = '';
-			for ( var i = 0; i < a.length; i++ ) {
-				a[i] = g_func.trim(a[i]);
-				
-				if ( a[i] != '' ) {
-					str += a[i].split('-catalog.jpg_')[0].split('-zoom.jpg_')[0] + '.jpg' + "\n";
-				}
-			}
-			
-			f.t_gallery.value = str.replace(/\.jpg\.jpg/gi, '.jpg');
-		}
-		*/
-	}
-	else if ( source_url.split('kenhdulich.org').length > 1 ) {
-		if ( f.t_ngaydang.value != '' ) {
-			var a = $.trim( f.t_ngaydang.value.split(',')[1] ),
-				b = '';
-			a = a.split(' - ');
-			
-			// -> giờ đăng
-			b = a[1];
-			
-			// Ngày đăng
-			a = a[0].split('/');
-			
-			// set ngày đăng ảnh theo bài viết
-			year_curent = a[2];
-			
-			//
-			a = a[2] + '/' + a[1] + '/' + a[0];
-			
-			//
-			f.t_ngaydang.value = a + ' ' + b;
-		}
+	if ( typeof custom_func_leech_data_by_theme == 'function' ) {
+		console.log('custom_func_leech_data_by_theme running...');
+		custom_func_leech_data_by_theme( f );
 	}
 	
 	// gallery kiểu mới

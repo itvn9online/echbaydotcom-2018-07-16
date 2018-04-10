@@ -168,17 +168,17 @@ function echbay_admin_styles() {
 	) ), 'link' );
 	*/
 	$a = array(
-		'outsource/fonts/font-awesome.css',
-		'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
-		'css/default.css',
-		'css/default2.css',
-		'css/admin.css'
+		EB_THEME_PLUGIN_INDEX . 'outsource/fonts/font-awesome.css',
+		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
+		EB_THEME_PLUGIN_INDEX . 'css/default.css',
+		EB_THEME_PLUGIN_INDEX . 'css/default2.css',
+		EB_THEME_PLUGIN_INDEX . 'css/admin.css'
 	);
 	foreach ( $a as $v ) {
-		$k = EB_THEME_PLUGIN_INDEX . $v;
+//		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
-		if ( file_exists( $k ) ) {
-			echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '" type="text/css" media="all" />' . "\n";
+		if ( file_exists( $v ) ) {
+			echo '<link rel="stylesheet" href="' . web_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '" type="text/css" media="all" />' . "\n";
 		}
 	}
 	
@@ -197,15 +197,15 @@ function echbay_admin_styles() {
 	) ), 'add' );
 	*/
 	$a = array(
-		'javascript/eb.js',
-		'javascript/all.js',
-		'javascript/edit_post.js',
+		EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
+		EB_THEME_PLUGIN_INDEX . 'javascript/all.js',
+		EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js',
 	);
 	foreach ( $a as $v ) {
-		$k = EB_THEME_PLUGIN_INDEX . $v;
+//		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
-		if ( file_exists( $k ) ) {
-			echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '"></script>' . "\n";
+		if ( file_exists( $v ) ) {
+			echo '<script type="text/javascript" src="' . web_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
 		}
 	}
 	
@@ -370,13 +370,23 @@ function echbay_admin_footer_styles() {
 	) ), 'add' );
 	*/
 	$a = array(
-		'javascript/a.js',
+		EB_THEME_PLUGIN_INDEX . 'javascript/a.js',
 	);
+	
+	// Thêm file admin của child theme nếu có
+	if ( using_child_wgr_theme == 1 ) {
+		$a[] = EB_CHILD_THEME_URL . 'ui/a.js';
+	}
+//	print_r( $a );
+//	echo 'aaaaaaaaaaaaaaaaaaaaaa/' . EB_DIR_CONTENT . "\n";
+	
+	//
 	foreach ( $a as $v ) {
-		$k = EB_THEME_PLUGIN_INDEX . $v;
+//		$k = EB_THEME_PLUGIN_INDEX . $v;
+//		$k =  $v;
 //		echo $k . '<br>' . "\n";
-		if ( file_exists( $k ) ) {
-			echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/' . $v . '?v=' . filemtime( $k ) . '"></script>' . "\n";
+		if ( file_exists( $v ) ) {
+			echo '<script type="text/javascript" src="' . web_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
 		}
 	}
 	
