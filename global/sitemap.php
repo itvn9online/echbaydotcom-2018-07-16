@@ -45,7 +45,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	if ( WGR_get_sitemap_total_post() > 0 ) {
 		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-post', $sitemap_current_time );
-		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-images', $sitemap_current_time );
+//		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-images', $sitemap_current_time );
 		
 		// phân trang cho sitemap (lấy từ trang 2 trở đi)
 		$get_list_sitemap .= WGR_sitemap_part_page();
@@ -53,7 +53,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	if ( WGR_get_sitemap_total_post( 'blog' ) > 0 ) {
 		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-blog', $sitemap_current_time );
-		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-blog-images', $sitemap_current_time );
+//		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-blog-images', $sitemap_current_time );
 		
 		// phân trang cho sitemap (lấy từ trang 2 trở đi)
 		$get_list_sitemap .= WGR_sitemap_part_page( 'blog', 'sitemap-blog', 'sitemap-blog-images' );
@@ -61,10 +61,18 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	if ( WGR_get_sitemap_total_post( 'page' ) > 0 ) {
 		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-page', $sitemap_current_time );
-		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-page-images', $sitemap_current_time );
+//		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-page-images', $sitemap_current_time );
 		
 		// phân trang cho sitemap (lấy từ trang 2 trở đi)
 		$get_list_sitemap .= WGR_sitemap_part_page( 'page', 'sitemap-page', 'sitemap-page-images' );
+	}
+	
+	if ( WGR_get_sitemap_total_post( 'attachment' ) > 0 ) {
+		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-images', $sitemap_current_time );
+//		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-page-images', $sitemap_current_time );
+		
+		// phân trang cho sitemap (lấy từ trang 2 trở đi)
+		$get_list_sitemap .= WGR_sitemap_part_page( 'attachment', 'sitemap-images', 'sitemap-images-images' );
 	}
 	
 	

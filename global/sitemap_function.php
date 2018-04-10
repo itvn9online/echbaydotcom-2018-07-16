@@ -36,7 +36,7 @@ function WGR_sitemap_part_page ( $type = 'post', $file_name = 'sitemap-post', $f
 				$str .= WGR_echo_sitemap_node( web_link . $file_name . '?trang=' . $i, $sitemap_current_time );
 				
 				// cho phần ảnh
-				$str .= WGR_echo_sitemap_node( web_link . $file_2name . '?trang=' . $i, $sitemap_current_time );
+//				$str .= WGR_echo_sitemap_node( web_link . $file_2name . '?trang=' . $i, $sitemap_current_time );
 			}
 		}
 	}
@@ -104,6 +104,11 @@ function WGR_get_sitemap_post ( $type = 'post' ) {
 	global $limit_post_get;
 //	echo $wpdb->posts;
 	
+	$status = 'publish';
+	if ( $type == 'attachment' ) {
+		$status = 'inherit';
+	}
+	
 	// phân trang
 	$trang = isset( $_GET['trang'] ) ? (int)$_GET['trang'] : 1;
 	
@@ -130,7 +135,7 @@ function WGR_get_sitemap_post ( $type = 'post' ) {
 		`" . $wpdb->posts . "`
 	WHERE
 		post_type = '" . $type . "'
-		AND post_status = 'publish'
+		AND post_status = '" . $status . "'
 	ORDER BY
 		ID DESC
 	LIMIT " . $offset . ", " . $threadInPage);
@@ -143,12 +148,17 @@ function WGR_get_sitemap_total_post ( $type = 'post' ) {
 	global $wpdb;
 //	echo $wpdb->posts;
 	
+	$status = 'publish';
+	if ( $type == 'attachment' ) {
+		$status = 'inherit';
+	}
+	
 	return _eb_c("SELECT COUNT(ID) as a
 	FROM
 		`" . $wpdb->posts . "`
 	WHERE
 		post_type = '" . $type . "'
-		AND post_status = 'publish'");
+		AND post_status = '" . $status . "'");
 }
 
 

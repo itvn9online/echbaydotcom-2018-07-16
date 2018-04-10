@@ -30,11 +30,32 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	* media
 	*/
 	
+	// v3
+	$sql = WGR_get_sitemap_post( 'attachment' );
+//	print_r( $sql );
+	foreach ( $sql as $v ) {
+		$img = $v->guid;
+		
+		$name = $v->post_excerpt;
+		if ( $name == '' && $v->post_title != '' ) {
+			$name = str_replace( '-', ' ', $v->post_title );
+		}
+		
+		$url = $img;
+		if ( $v->post_parent > 0 ) {
+			$url = _eb_p_link( $v->post_parent );
+		}
+		
+		$get_list_sitemap .= WGR_echo_sitemap_image_node( $url, $img, $name );
+	}
+	
 	// v2
+	/*
 	$sql = WGR_get_sitemap_post();
 	foreach ( $sql as $v ) {
 		$get_list_sitemap .= WGR_echo_sitemap_image_node( _eb_p_link( $v->ID ), _eb_get_post_img( $v->ID ), $v->post_title );
 	}
+	*/
 	
 	/*
 	// v1
