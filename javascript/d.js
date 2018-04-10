@@ -908,6 +908,7 @@ function ___eb_details_cart_quan () {
 
 // tạo html cho khung đếm số phiếu mua hàng
 function ___eb_details_product_quan () {
+//	if ( cf_tester_mode == 1 ) console.log('___eb_details_product_quan');
 	
 	//
 	if ( jQuery('#oi_mua_max').length == 0 ) {

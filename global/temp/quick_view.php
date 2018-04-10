@@ -9,6 +9,9 @@ if ( ! isset( $_GET['id'] ) ) {
 //
 $quick_view_id = (int) $_GET['id'];
 
+// đặt lại act để còn load các script tương ứng của trang chi tiết
+$act = 'single';
+
 
 
 //
