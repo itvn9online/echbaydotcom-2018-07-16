@@ -44,17 +44,27 @@ class ___echbay_widget_set_adsense_code extends WP_Widget {
 	
 	function widget($args, $instance) {
 		global $__cf_row;
+		global $act;
+		global $arr_active_for_404_page;
 		
 		extract ( $args );
 		
-		$hide_quick_view = isset( $instance ['hide_quick_view'] ) ? $instance ['hide_quick_view'] : 'off';
-		// nếu tính năng ẩn trong quick view được kích hoạt
-		if ( $hide_quick_view == 'on'
-		// kiểm tra xem có phải đang xem trong quick view không
-		&& isset( $_GET['set_module'] ) && $_GET['set_module'] == 'quick_view' ) {
+		// không hiển thị mã google adsense trong các trang 404
+		if ( $act == '404' || isset( $arr_active_for_404_page[ $act ] ) ) {
 			// phải thì thoát luôn
-			echo '<!-- Google adsense disable in Quick view -->';
+			echo '<!-- Google adsense disable in 404 -->';
 			return false;
+		}
+		else {
+			$hide_quick_view = isset( $instance ['hide_quick_view'] ) ? $instance ['hide_quick_view'] : 'off';
+			// nếu tính năng ẩn trong quick view được kích hoạt
+			if ( $hide_quick_view == 'on'
+			// kiểm tra xem có phải đang xem trong quick view không
+			&& isset( $_GET['set_module'] ) && $_GET['set_module'] == 'quick_view' ) {
+				// phải thì thoát luôn
+				echo '<!-- Google adsense disable in Quick view -->';
+				return false;
+			}
 		}
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
