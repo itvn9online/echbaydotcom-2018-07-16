@@ -15,7 +15,9 @@ var EBE_current_first_domain = '',
 	arr_check_value_exist = {},
 	tu_dong_load_lai_trang_neu_submit_loi = 0,
 	// hẹn mỗi 10 giây load 1 lần, nên số cài đặt ở đây sẽ nhân với 10
-	limit_time_for_reload_this_page = 12;
+	limit_time_for_reload_this_page = 12,
+	// Dành để load các tag không trong cùng function
+	current_loading_tags = '';
 
 
 
@@ -118,11 +120,22 @@ function function_rieng_theo_domain () {
 		current_img_domain = document.domain;
 	
 	//
+	var format_price = $('#details_format_price').val() || '';
 	if ( f.t_giacu.value != '' ) {
-		f.t_giacu.value = g_func.number_only( f.t_giacu.value );
+		if ( format_price == '' ) {
+			f.t_giacu.value = g_func.number_only( f.t_giacu.value );
+		}
+		else {
+			f.t_giacu.value = f.t_giacu.value.toString().replace( eval(format_price), '');
+		}
 	}
 	if ( f.t_giamoi.value != '' ) {
-		f.t_giamoi.value = g_func.number_only( f.t_giamoi.value );
+		if ( format_price == '' ) {
+			f.t_giamoi.value = g_func.number_only( f.t_giamoi.value );
+		}
+		else {
+			f.t_giamoi.value = f.t_giamoi.value.toString().replace( eval(format_price), '');
+		}
 	}
 	
 	// lấy ảnh mặc định nếu có
@@ -440,11 +453,17 @@ function leech_data_content ( url, id, callBack ) {
 //		console.log('new_bay not found');
 //		return false;
 //	}
-	console.log( web_link + url );
+	url = web_link + url + '&source_url=' + encodeURIComponent( source_url );
+	console.log( url );
+	
+	//
+	$('body').css({
+		opacity: .5
+	});
 	
 	$.ajax({
 		type: 'POST',
-		url: web_link + url,
+		url: url,
 		data: ''
 	}).done(function(msg) {
 		try {
@@ -477,6 +496,9 @@ function leech_data_content ( url, id, callBack ) {
 				//
 				.replace( /\<script/gi, '<eb-script' )
 				.replace( /\<\/script\>/gi, '</eb-script>' );
+			
+			//
+			msg = msg.split( web_link ).join(source_url);
 		} catch ( e ) {
 			console.log(msg);
 			
@@ -534,6 +556,11 @@ function leech_data_content ( url, id, callBack ) {
 		if (typeof callBack == 'function') {
 			callBack();
 		}
+		
+		//
+		$('body').css({
+			opacity: 1
+		});
 	});
 }
 
@@ -1292,6 +1319,8 @@ function after_list_post_for_crawl ( str ) {
 		console.log('Product list not found!');
 		return false;
 	}
+	// Thay URL chuẩn của tên miền đang lấy tin, do thi thoảng bị lỗi domain (như của amazon)
+	str = str.split( web_link ).join(source_url);
 	
 	// gán d.sách tìm được
 	$('#details_list_url').html( str );
@@ -1310,6 +1339,33 @@ function after_list_post_for_crawl ( str ) {
 	}
 	
 	return false;
+}
+
+
+
+function WGR_leech_data_after_load_iframe () {
+	setTimeout(function () {
+		console.log('Load done! get content in crawl_eb_iframe');
+		
+		var str = '';
+		arr_check_value_exist = {};
+		
+		$('#crawl_eb_iframe').contents().find( current_loading_tags ).each(function() {
+			var a = $(this).attr('href') || $('a', this).attr('href') || '',
+				img = $('img', this).attr('data-src') || $('img', this).attr('src') || $(this).attr('data-img') || '';
+			
+			//
+			str += create_list_post_for_crawl( a, img );
+		});
+		
+		//
+		after_list_post_for_crawl( str );
+		
+		//
+		$('body').css({
+			opacity: 1
+		});
+	}, 1200);
 }
 
 
@@ -1542,7 +1598,6 @@ setInterval(function () {
 }, 10 * 1000);
 
 
-
 $('.click-submit-url-categories').off('click').click(function () {
 	
 	//
@@ -1554,6 +1609,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 		$('#categories_tags').focus();
 		return false;
 	}
+	current_loading_tags = html_tags;
 	
 	//
 	a = $('#categories_list_url li:first').html() || '',
@@ -1583,31 +1639,23 @@ $('.click-submit-url-categories').off('click').click(function () {
 		// lấy dữ liệu thông qua iframe
 		if ( dog('get_list_post_in_iframe').checked == true ) {
 			console.log('Get content via iframe');
-			console.log(web_link + uri_for_get_content);
+			uri_for_get_content = web_link + uri_for_get_content + '&load_in_iframe=1&source_url=' + encodeURIComponent( source_url );
+			console.log(uri_for_get_content);
 			
 			//
-			window.open( web_link + uri_for_get_content, 'crawl_eb_iframe' );
-			
-			//
-			$('#crawl_eb_iframe').on('load', function () {
-				setTimeout(function () {
-					console.log('Load done! get content in crawl_eb_iframe');
-					
-					var str = '';
-					arr_check_value_exist = {};
-					
-					$('#crawl_eb_iframe').contents().find( html_tags ).each(function() {
-						var a = $(this).attr('href') || $('a', this).attr('href') || '',
-							img = $('img', this).attr('data-src') || $('img', this).attr('src') || $(this).attr('data-img') || '';
-						
-						//
-						str += create_list_post_for_crawl( a, img );
-					});
-					
-					//
-					after_list_post_for_crawl( str );
-				}, 1200);
+			$('body').css({
+				opacity: .5
 			});
+			
+			//
+			window.open( uri_for_get_content, 'crawl_eb_iframe' );
+			
+			//
+			/*
+			$('#crawl_eb_iframe').on('load', function () {
+				WGR_leech_data_after_load_iframe();
+			});
+			*/
 			
 			return true;
 		}
@@ -1776,6 +1824,7 @@ var default_arr_cookie_lamviec = {
 	details_goithieu : '',
 	details_giacu : '',
 	details_giamoi : '',
+	details_format_price : '',
 	details_img : '',
 	details_youtube_url : '',
 	details_title : '',

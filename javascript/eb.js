@@ -315,10 +315,19 @@ var g_func = {
 		
 		return str;
 	},
-	number_only: function(str) {
+	number_only: function(str, format) {
 		if (typeof str == 'undefined' || str == '') {
 			return 0;
 		}
+		// mặc định chỉ lấy số
+		/*
+		if ( typeof format == 'string' && format != '' ) {
+			format = eval(format);
+		}
+		else {
+			format = /[^0-9\-\+]/g;
+		}
+		*/
 		str = str.toString().replace(/[^0-9\-\+]/g, '');
 		
 		if (str == '') {

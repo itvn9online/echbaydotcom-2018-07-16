@@ -71,6 +71,7 @@ else if ( isset($_GET['categories_url']) ) {
 	//
 	$leech_id = isset($_GET['leech_id']) ? trim($_GET['leech_id']) : '';
 	if ( $leech_id == '' ) {
+		/*
 		$a = explode( '//', $url );
 		$a = $a[1];
 //		_eb_alert($a);
@@ -78,10 +79,19 @@ else if ( isset($_GET['categories_url']) ) {
 		$a = explode( '/', $a );
 		$a[0] = '';
 		
-		$a = implode( $a );
-//		_eb_alert($a);
+		$a = implode( '/', $a );
+		_eb_alert($a);
 		
 		$f = $a;
+		*/
+		
+		if ( strlen( $url ) > 200 ) {
+			$f = md5( $url );
+		}
+		else {
+			$f = str_replace( '/', '-', str_replace( ':', '-', str_replace( ' ', '-', $url ) ) );
+		}
+//		_eb_alert($f);
 		
 		/*
 		$f = $a[ count($a) - 1 ];
@@ -114,10 +124,27 @@ else if ( isset($_GET['categories_url']) ) {
 		
 		// nếu có dữ liệu mới lưu lại
 		if ( $c != '' ) {
+			// Thay URL chuẩn của tên miền đang lấy tin, do thi thoảng bị lỗi domain (như của amazon)
+			if ( isset( $_GET['source_url'] ) ) {
+				$c = str_replace( web_link, urldecode( $_GET['source_url'] ), $c );
+				
+				//
+//				$c = explode( web_link, $c );
+//				$c = implode( urldecode( $_GET['source_url'] ), $c );
+			}
+			
 			_eb_create_file ( $f, $c );
 		}
 	}
 	
+	//
+	if ( isset( $_GET['load_in_iframe'] ) ) {
+		$js = '<script>' . file_get_contents( EB_THEME_PLUGIN_INDEX . 'echbay/js/leech_data_after_iframe.js', 1 ) . '</script>';
+		$c = str_replace( '</body>', $js, $c );
+		$c = str_replace( '</BODY>', $js, $c );
+	}
+	
+	//
 	echo $c;
 	
 	

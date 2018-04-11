@@ -26,12 +26,12 @@ if ( $mtv_id > 0 ) {
 			</div>
 			<br />
 			<div>
-				<button type="submit" class="cur">Đăng nhập</button>
+				<input type="checkbox" name="t_remember" id="t_remember" value="1" />
+				<label for="t_remember" style="color:#666">Duy trì trạng thái đăng nhập</label>
 			</div>
 			<br />
 			<div>
-				<input type="checkbox" name="t_remember" id="t_remember" value="1" />
-				<label for="t_remember" style="color:#666">Duy trì trạng thái đăng nhập</label>
+				<button type="submit" class="cur">Đăng nhập</button>
 			</div>
 			<br />
 			<div><a href="#" onClick="g_func.opopup('fogotpassword');">Bạn quên mật khẩu? lấy lại mật khẩu tại đây</a></div>
