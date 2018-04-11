@@ -516,30 +516,48 @@ ___eb_set_url_for_search_advanced_button();
 	jQuery('a').each(function() {
 		var a = jQuery(this).attr('href') || '';
 //		console.log(a);
-		if ( a != '' && a.substr( 0, 1 ) == '#' ) {
-//			console.log(a);
-			a = a.split('#')[1];
-			
-			if ( a != '' ) {
-				jQuery(this).on('click', function () {
-					var goto = 0;
-					if ( jQuery('.' + a).length > 0 ) {
-						goto = jQuery('.' + a).offset().top;
-					}
-					else if ( jQuery('#' + a).length > 0 ) {
-						goto = jQuery('#' + a).offset().top;
-					}
-					else if ( jQuery('a[name="' + a + '"]').length > 0 ) {
-						goto = jQuery('a[name="' + a + '"]').offset().top;
-					}
-					
-					if ( goto > 90 ) {
-						window.scroll( 0, goto - 90 );
-						window.location.hash = a;
-					}
-					
-					return false;
-				});
+		
+		if ( a != '' ) {
+			// Chế độ nhảy đến link
+			if ( a.substr( 0, 1 ) == '#' ) {
+//				console.log(a);
+				a = a.split('#')[1];
+				
+				if ( a != '' ) {
+					jQuery(this).on('click', function () {
+						var goto = 0;
+						if ( jQuery('.' + a).length > 0 ) {
+							goto = jQuery('.' + a).offset().top;
+						}
+						else if ( jQuery('#' + a).length > 0 ) {
+							goto = jQuery('#' + a).offset().top;
+						}
+						else if ( jQuery('a[name="' + a + '"]').length > 0 ) {
+							goto = jQuery('a[name="' + a + '"]').offset().top;
+						}
+						
+						if ( goto > 90 ) {
+//							window.scroll( 0, goto - 110 );
+							jQuery('body,html').animate({
+								scrollTop: goto - 110
+							}, 800);
+							
+							window.location.hash = a;
+							
+							return false;
+						}
+					});
+				}
+			}
+			else if ( a.split('//').length > 1 ) {
+				a = a.split('//')[1].split('/')[0];
+				
+				if ( a != document.domain ) {
+					jQuery(this).attr({
+						target: '_blank',
+						rel: ' nofollow'
+					});
+				}
 			}
 		}
 	});

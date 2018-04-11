@@ -30,6 +30,9 @@ $args = array(
 			'terms' => $ant_id,
 		)
 	),
+	'post__not_in' => array(
+		$__post->ID
+	)
 );
 
 

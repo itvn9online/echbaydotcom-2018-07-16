@@ -41,6 +41,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'ads_eb_status' => 0,
 		'post_eb_status' => 0,
 		'custom_style' => '',
+		'custom_id' => '',
 		'custom_size' => '',
 		'page_id' => 0
 	);
@@ -416,6 +417,12 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	$ads_eb_status = isset( $instance ['ads_eb_status'] ) ? $instance ['ads_eb_status'] : 0;
 	$post_eb_status = isset( $instance ['post_eb_status'] ) ? $instance ['post_eb_status'] : 0;
 	$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
+	
+	$custom_id = isset( $instance ['custom_id'] ) ? $instance ['custom_id'] : '';
+	if ( $custom_id != '' ) {
+		$custom_id = ' id="' . $custom_id . '"';
+	}
+	
 	$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
 	
 	$rel_xfn = isset( $instance ['rel_xfn'] ) ? $instance ['rel_xfn'] : '';
@@ -754,7 +761,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	
 	
 	//
-	echo '<div class="' . trim( $custom_style ) . '">';
+	echo '<div' . $custom_id . ' class="' . trim( $custom_style ) . '">';
 	
 	// chỉ lấy nội dung bài viết
 	if ( $content_only == 'on' ) {

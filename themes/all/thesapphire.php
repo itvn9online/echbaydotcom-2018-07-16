@@ -23,15 +23,15 @@ $eb_all_themes_support[$eb_all_themes_name]["top"][] = "bigbanner-top1.php";
 // breadcrumb tràn màn hình
 //$eb_all_themes_support[$eb_all_themes_name]["top"][] = "breadcrumb-top1.php";
 // breadcrumb gọn trong khung
-$eb_all_themes_support[$eb_all_themes_name]["top"][] = "breadcrumb2-top1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["top"][] = "breadcrumb2-top1.php";
 //
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "footer_widget.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "thesapphire-footer1.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support[$eb_all_themes_name]["home"][] = "thesapphire-home1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["home"][] = "thesapphire-home1.php";
 $eb_all_themes_support[$eb_all_themes_name]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support[$eb_all_themes_name]["threaddetails"][] = "thesapphire-threaddetails.html";
 //
-$eb_all_themes_support[$eb_all_themes_name]["threadnode"][] = "thesapphire-threadnode.html";
+$eb_all_themes_support[$eb_all_themes_name]["threadnode"][] = "news-threadnode.html";

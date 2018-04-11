@@ -346,6 +346,10 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
+	echo '<p><strong>Tùy chỉnh ID</strong>: <input type="text" class="widefat" name="' . $field_name['custom_id'] . '" value="' . $custom_id . '" /> * Tương tự như CSS -&gt; gán ID để xử lý cho tiện.</p>';
+	
+	
+	//
 	echo '<p><strong>Tùy chỉnh size ảnh</strong>: <input type="text" class="widefat fixed-size-for-config" name="' . $field_name['custom_size'] . '" value="' . $custom_size . '" /> * Điều chỉnh size ảnh theo kích thước riêng (nếu có), có thể đặt <strong>auto</strong> để lấy kích thước tự động của ảnh!</p>';
 	
 	

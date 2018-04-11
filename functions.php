@@ -104,6 +104,11 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		else if ( $post->post_excerpt == '' && $__cf_row['cf_content_for_excerpt_null'] > 69 ) {
 			$post->post_excerpt = _eb_short_string( strip_tags ( $post->post_content ), $__cf_row['cf_content_for_excerpt_null'] );
 		}
+		/*
+		else {
+			$post->post_excerpt = nl2br( $post->post_excerpt );
+		}
+		*/
 		
 		//
 		$post->p_link = _eb_p_link( $post->ID );
@@ -227,6 +232,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	$post->trv_tieude = $post->post_title;
 	$post->trv_id = $post->ID;
 	$post->trv_gioithieu = nl2br( $post->post_excerpt );
+//	$post->trv_gioithieu = $post->post_excerpt;
 	
 	//
 //	$post_time = strtotime( $post->post_modified );
