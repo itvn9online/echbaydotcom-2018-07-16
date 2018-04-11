@@ -256,6 +256,7 @@ $eb_arr_custom_meta_box = array(
 	'_eb_product_size' => 'Kích thước',
 	'_eb_product_searchkey' => 'EB Search',
 	'_eb_product_sku' => 'Mã sản phẩm',
+	'_eb_product_leech_sku' => 'SKU',
 	'_eb_product_oldprice' => EBE_get_lang('post_giacu'),
 	'_eb_product_price' => EBE_get_lang('post_giamoi'),
 	'_eb_product_buyer' => EBE_get_lang('post_luotmua'),
