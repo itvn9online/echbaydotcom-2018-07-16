@@ -77,6 +77,10 @@ while ( $sql->have_posts() ) {
 		$__cf_row ["cf_blog_public"] = 0;
 		
 		//
+		$global_dymanic_meta .= '<link rel="canonical" href="' . get_permalink( $quick_view_id ) . '" />
+<link rel="shortlink" href="' . web_link . '?p=' . $quick_view_id . '" />';
+		
+		//
 //		include EB_THEME_PLUGIN_INDEX . 'common.php';
 		include EB_THEME_PLUGIN_INDEX . 'header.php';
 	}
