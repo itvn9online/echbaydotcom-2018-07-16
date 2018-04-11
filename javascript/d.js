@@ -1539,6 +1539,67 @@ function WGR_for_post_details ( function_for_post, function_for_blog ) {
 			___eb_global_blog_details_runing();
 //		}
 	}
+	
+	
+	// tạo mục lục cho trang chi tiết sản phẩm, chi tiết blog
+	(function () {
+		
+		//
+		if ( cf_post_index_content == '' ) {
+			return false;
+		}
+		
+		//
+		var str = '';
+		
+		jQuery('.thread-content-bmask ' + cf_post_index_content).each(function() {
+			var jd = jQuery(this).attr('id') || '',
+				a = jQuery(this).html();
+			
+			if ( jd == '' ) {
+				jd = '_' + Math.random().toString(32).replace(/\./g, '_');
+				
+				jQuery(this).attr({
+					id: jd
+				});
+			}
+			
+			str += '<li data-id="' + jd + '">' + g_func.strip_tags( a ) + '</li>';
+		});
+		
+		//
+		if ( str == '' ) {
+			if ( cf_tester_mode == 1 ) console.log('Post index not found!');
+			return false;
+		}
+		str = '<div class="thread-details-index"><strong>Nội dung chính:</strong><ul>' + str + '</ul></div>';
+		
+		// cho đến thẻ H2 đầu tiên
+		if ( jQuery('.thread-content-bmask p').length > 0 ) {
+			jQuery('.thread-content-bmask p:first').after( str );
+		}
+		else if ( jQuery('.thread-content-bmask .ul-default-style div').length > 0 ) {
+			jQuery('.thread-content-bmask .ul-default-style:first div:first').after( str );
+		}
+		else {
+			jQuery('.thread-content-bmask').before( str );
+//			jQuery('.thread-content-bmask h2:first').before( str );
+		}
+		
+		//
+		jQuery('.thread-details-index li').click(function () {
+			var a = jQuery(this).attr('data-id') || '';
+			
+			if ( a != '' ) {
+//				window.scroll( 0, jQuery('#' + a).offset().top - 90 );
+				jQuery('body,html').animate({
+					scrollTop: jQuery('#' + a).offset().top - 90
+				}, 800);
+			}
+		});
+		
+	})();
+	
 }
 
 //
@@ -3076,9 +3137,9 @@ setTimeout(function () {
 //
 function WGR_set_a_target_top () {
 	jQuery('a').each(function() {
-		var a = $(this).attr('target') || '';
+		var a = jQuery(this).attr('target') || '';
 		if ( a == '' ) {
-			$(this).attr({
+			jQuery(this).attr({
 				target: '_top'
 			});
 		}
@@ -3163,7 +3224,7 @@ function close_ebe_quick_view () {
 		// sử dụng iframe
 		dog('ui_ebe_quick_view').src = 'about:blank';
 		dog('ui_ebe_quick_view').src = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&view_type=iframe&set_device=' + device;
-		jQuery('#ui_ebe_quick_view').height( $(window).height() - 110 );
+		jQuery('#ui_ebe_quick_view').height( jQuery(window).height() - 110 );
 		jQuery('#ui_ebe_quick_view').on('load', function () {
 			var h = jQuery( '#ui_ebe_quick_view' ).contents().find( 'body' ).height() || 0;
 //			console.log(h);

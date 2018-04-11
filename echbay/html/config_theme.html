@@ -350,12 +350,18 @@
 				<td class="t"><label for="cf_product_details_viewmore">Thu gọn nội dung sản phẩm</label></td>
 				<td class="i"><input type="number" name="cf_product_details_viewmore" value="{tmp.cf_product_details_viewmore}" id="cf_product_details_viewmore" class="s" />
 					<div class="small">Khi thông số này được thiết lập lớn hơn 0, chiều cao nội dung sản phẩm sẽ bị thu lại bằng với thông số này. Nút [Xem thêm] sẽ được kích hoạt, và nội dung sẽ mở ra đầy đủ khi người dùng bấm [Xem thêm].</div></td>
-			</tr><tr>
+			</tr>
+			<tr>
 				<td class="t">Banner trang chi tiết S.Phẩm</td>
 				<td class="i"><input type="checkbox" name="cf_post_big_banner" id="cf_post_big_banner" value="{tmp.cf_post_big_banner}" />
 					<label for="cf_post_big_banner" data-on="Đang TẮT bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
 					<div class="small l19">Mặc định, banner chính sẽ được load cho cả trang chi tiết sản phẩm, nếu bạn không muốn nó xuất hiện ở đây, hãy bỏ chọn và lưu lại.</div>
 					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Mục lục cho nội dung</td>
+				<td class="i"><input type="text" name="cf_post_index_content" value="{tmp.cf_post_index_content}" placeholder="h2" class="s" maxlength="2" />
+					<div class="small">Khi chức năng này được kích hoạt, hệ thống sẽ tìm các thẻ H2 trong phần nội dung bài viết và tạo mục lục cho nó. Kích hoạt bằng cách nhập các thẻ HEADING (từ H2-h6).</div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>

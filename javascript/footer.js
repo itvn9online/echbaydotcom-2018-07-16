@@ -511,6 +511,30 @@ ___eb_set_url_for_search_advanced_button();
 
 
 
+// nhảy đến 1 ID đã được xác định (tương tự như thẻ A name)
+(function () {
+	jQuery('a').each(function() {
+		var a = jQuery(this).attr('href') || '';
+		if ( a == '' && a.substr( 0, 1 ) == '#' ) {
+			a = a.split('#')[1];
+			
+			if ( a != '' ) {
+				jQuery(this).on('click', function () {
+					if ( jQuery('.' + a).length > 0 ) {
+						window.scroll( 0, jQuery('.' + a).offset().top );
+					}
+					else if ( jQuery('#' + a).length > 0 ) {
+						window.scroll( 0, jQuery('#' + a).offset().top );
+					}
+					return false;
+				});
+			}
+		}
+	});
+})();
+
+
+
 // đánh dấu sản phẩm yêu thích
 function WGR_click_add_product_to_favorite () {
 	var cookie_name = 'wgr_product_id_user_favorite',
