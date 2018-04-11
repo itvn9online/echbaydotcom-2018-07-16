@@ -515,17 +515,29 @@ ___eb_set_url_for_search_advanced_button();
 (function () {
 	jQuery('a').each(function() {
 		var a = jQuery(this).attr('href') || '';
-		if ( a == '' && a.substr( 0, 1 ) == '#' ) {
+//		console.log(a);
+		if ( a != '' && a.substr( 0, 1 ) == '#' ) {
+//			console.log(a);
 			a = a.split('#')[1];
 			
 			if ( a != '' ) {
 				jQuery(this).on('click', function () {
+					var goto = 0;
 					if ( jQuery('.' + a).length > 0 ) {
-						window.scroll( 0, jQuery('.' + a).offset().top );
+						goto = jQuery('.' + a).offset().top;
 					}
 					else if ( jQuery('#' + a).length > 0 ) {
-						window.scroll( 0, jQuery('#' + a).offset().top );
+						goto = jQuery('#' + a).offset().top;
 					}
+					else if ( jQuery('a[name="' + a + '"]').length > 0 ) {
+						goto = jQuery('a[name="' + a + '"]').offset().top;
+					}
+					
+					if ( goto > 90 ) {
+						window.scroll( 0, goto - 90 );
+						window.location.hash = a;
+					}
+					
 					return false;
 				});
 			}
