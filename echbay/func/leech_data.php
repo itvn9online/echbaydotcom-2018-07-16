@@ -10,7 +10,6 @@ $post_type = trim( $_POST['post_tai'] );
 //_eb_alert($post_type);
 
 $trv_source = trim( $_POST['t_source'] );
-$trv_sku = md5( $trv_source );
 $trv_tieude = trim( stripslashes( $_POST['t_tieude'] ) );
 $trv_seo = trim( $_POST['t_seo'] );
 $trv_tags = str_replace( '-', ' ', $trv_seo );
@@ -21,12 +20,50 @@ $post_date = trim( $_POST['t_ngaydang'] );
 $post_excerpt = trim( stripslashes( $_POST['t_goithieu'] ) );
 $trv_noidung = trim( stripslashes( $_POST['t_noidung'] ) );
 
-// size
-$trv_giaban = _eb_number_only( $_POST['t_giacu'] );
-$trv_giamoi = _eb_number_only( $_POST['t_giamoi'] );
+// price
+$trv_giaban = _eb_float_only( $_POST['t_giacu'] );
+$trv_giamoi = _eb_float_only( $_POST['t_giamoi'] );
 
 //
 $ant_id = _eb_number_only( $_POST['t_ant'] );
+
+if ( $ant_id == 0 ) {
+	$ant_auto = trim( $_POST['t_new_category'] );
+	if ( $ant_auto != '' ) {
+		$slug = _eb_non_mark_seo( $ant_auto );
+		
+		$t_taxonomy = 'category';
+		if ( $post_type == EB_BLOG_POST_TYPE ) {
+			$t_taxonomy = EB_BLOG_POST_LINK;
+		}
+		
+		// https://codex.wordpress.org/Function_Reference/term_exists
+		$check_term_exist = term_exists( $slug, $t_taxonomy );
+		if ( $check_term_exist == 0 && $check_term_exist == null ) {
+			$done = wp_insert_term(
+				// the term 
+				$ant_auto,
+				// the taxonomy
+				$t_taxonomy,
+				array(
+					'slug' => $slug
+				)
+			);
+			
+			$check_term_exist = term_exists( $slug, $t_taxonomy );
+			if ( $check_term_exist == 0 && $check_term_exist == null ) {
+				$check_term_exist = array();
+			}
+		}
+		
+		if ( ! empty( $check_term_exist ) && isset( $check_term_exist['term_id'] ) ) {
+			$ant_id = $check_term_exist['term_id'];
+		}
+		
+		//
+//		print_r( $check_term_exist ); exit();
+	}
+}
 //_eb_alert($ant_id);
 
 
@@ -35,8 +72,9 @@ $ant_id = _eb_number_only( $_POST['t_ant'] );
 $m = '<span class=bluecolor>UPDATE</span>';
 
 $trv_id = trim( $_POST['t_id'] );
-$trv_id = (int)$trv_id;
+//$trv_id = (int)$trv_id;
 //echo $trv_id . '<br>';
+$trv_sku = $trv_id;
 
 // dùng để kiểm tra ID bài viết đa tồn tại, mà tồn tại dưới dạng bản nháp
 $check_post_exist = array();
@@ -45,8 +83,31 @@ $check_post_exist = array();
 $import_id = 0;
 
 // tìm theo name
-if ( $trv_id == 0 ) {
+//if ( $trv_id == 0 ) {
+if ( $trv_id != '' && is_numeric( $trv_id ) && $trv_id > 0 ) {
+	/*
+	$import_id = $wpdb->get_var("SELECT ID
+	FROM
+		" . $wpdb->posts . "
+	WHERE
+		ID = '" . $trv_id . "'");
+	*/
+	
+	//
+	$check_post_exist = _eb_q("SELECT *
+	FROM
+		" . $wpdb->posts . "
+	WHERE
+		ID = " . $trv_id);
+}
+// nếu có ID -> tìm theo ID
+else {
 //	_eb_alert('Không xác định được ID dữ liệu');
+	
+	// tạo SKU nếu chưa có
+	if ( $trv_sku == '' ) {
+		$trv_sku = md5( $trv_source );
+	}
 	
 	// tìm xem có bài POST nào như vậy không
 	$sql = _eb_load_post_obj( 1, array(
@@ -98,23 +159,6 @@ if ( $trv_id == 0 ) {
 	
 	//
 //	$trv_id = (int)$import_id;
-}
-// nếu có ID -> tìm theo ID
-else {
-	/*
-	$import_id = $wpdb->get_var("SELECT ID
-	FROM
-		" . $wpdb->posts . "
-	WHERE
-		ID = '" . $trv_id . "'");
-	*/
-	
-	//
-	$check_post_exist = _eb_q("SELECT *
-	FROM
-		" . $wpdb->posts . "
-	WHERE
-		ID = " . $trv_id);
 }
 
 //
@@ -207,6 +251,14 @@ else {
 					$trv_stt += rand( 0, 3600 );
 				}
 				$arr_for_update['menu_order'] = $trv_stt;
+			}
+			
+			// update meta
+			$arr_meta_box = array();
+			if ( $trv_giaban > 0 ) $arr_meta_box['_eb_product_oldprice'] = $trv_giaban;
+			if ( $trv_giamoi > 0 ) $arr_meta_box['_eb_product_price'] = $trv_giamoi;
+			if ( ! empty( $arr_meta_box ) ) {
+				$arr_for_update['meta_input'] = $arr_meta_box;
 			}
 			
 			

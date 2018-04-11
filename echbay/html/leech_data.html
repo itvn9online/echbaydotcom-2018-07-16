@@ -256,7 +256,8 @@
 			</tr>
 			<tr>
 				<td class="t">Định dạng tiền tệ</td>
-				<td class="i"><input type="text" id="details_format_price" value="" placeholder="/[^0-9\-\+]/ hoặc /[^0-9\-\+\.]/" class="m" /><div class="small">Mặc định, tiền tệ sau khi lấy sẽ bị lọc hết các dữ liệu khác, chỉ giữ lại số, dấu - với dấu +</div></td>
+				<td class="i"><input type="text" id="details_format_price" value="" placeholder="/[^0-9\-\+]/ hoặc /[^0-9\-\+\.]/" class="m" />
+					<div class="small">Mặc định, tiền tệ sau khi lấy sẽ bị lọc hết các dữ liệu khác, chỉ giữ lại số, dấu - với dấu +</div></td>
 			</tr>
 			<tr>
 				<td class="t">Mô tả ngắn</td>
@@ -293,6 +294,15 @@
 			<tr>
 				<td class="t">Kích thước</td>
 				<td class="i"><textarea name="t_size_list" placeholder="Sử dụng vòng lặp riêng để tạo ra danh sách size dưới dạng mảng javascript" class="small" style="width:99%;height:90px;"></textarea></td>
+			</tr>
+			<tr>
+				<td class="t">Tự tìm nhóm</td>
+				<td class="i"><input type="text" name="t_new_category" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><input type="text" id="details_category" value="" placeholder="HTML tags" class="m" />
+					<div class="small">Khi chế độ Tự động tìm và thêm nhóm được thiết lập, nếu tìm thấy nhóm, nhóm mới sẽ được thêm vào hệ thống và add sản phẩm này vào nhóm đó luôn.</div></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Cập nhật dữ liệu</td>

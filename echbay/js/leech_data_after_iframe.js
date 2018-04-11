@@ -7,8 +7,10 @@ function WGR_leech_data_run_in_iframe ( i ) {
 	}
 	else if ( i < 0 ) {
 		top.WGR_leech_data_after_load_iframe();
+		
+		return true;
 	}
-	console.log('Scroll to bottom iframe');
+	console.log('Scroll to bottom iframe: ' + i);
 	
 	jQuery('body,html').animate({
 		scrollTop: jQuery(document).height()
@@ -16,7 +18,9 @@ function WGR_leech_data_run_in_iframe ( i ) {
 	
 	setTimeout(function () {
 		WGR_leech_data_run_in_iframe( i - 1 );
-	}, 600);
+	}, 1200);
+	
+	return false;
 }
 
 

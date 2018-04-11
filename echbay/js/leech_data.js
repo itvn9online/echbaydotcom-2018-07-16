@@ -17,7 +17,9 @@ var EBE_current_first_domain = '',
 	// hẹn mỗi 10 giây load 1 lần, nên số cài đặt ở đây sẽ nhân với 10
 	limit_time_for_reload_this_page = 12,
 	// Dành để load các tag không trong cùng function
-	current_loading_tags = '';
+	current_loading_tags = '',
+	// với trường hợp lấy theo ID, mà bị trùng ID -> bỏ qua luôn
+	before_post_id_for_leech = '';
 
 
 
@@ -136,6 +138,12 @@ function function_rieng_theo_domain () {
 		else {
 			f.t_giamoi.value = f.t_giamoi.value.toString().replace( eval(format_price), '');
 		}
+	}
+	
+	//
+	f.t_tieude.value = f.t_tieude.value.replace( /\&amp\;/g, '&' );
+	if ( f.t_new_category.value != '' ) {
+		f.t_new_category.value = f.t_new_category.value.replace( /\&amp\;/g, '&' );
 	}
 	
 	// lấy ảnh mặc định nếu có
@@ -602,6 +610,15 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 		f.t_id.value = '';
 		if ( dog('bai_viet_nay_duoc_lay_theo_id').checked == true ) {
 			f.t_id.value = get_leech_data_post_id ( f.t_source.value );
+			
+			// kiểm tra ID post trùng nhau
+			if ( f.t_id.value != '' && f.t_id.value == before_post_id_for_leech ) {
+				ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">WARNING (ID too)</span>' );
+				
+				//
+				return false;
+			}
+			before_post_id_for_leech = f.t_id.value;
 		}
 		
 		//
@@ -630,6 +647,10 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				giamoi_tags : {
 					get : $('#details_giamoi').val() || '',
 					set : 't_giamoi'
+				},
+				new_category_tags : {
+					get : $('#details_category').val() || '',
+					set : 't_new_category'
 				},
 				tit_tags : {
 					get : $('#details_title').val() || '',
@@ -1018,7 +1039,9 @@ function check_lech_data_submit ( _alert ) {
 	
 	// ID phân nhóm
 	f.t_ant.value = g_func.number_only( $('#oiAnt input[name="t_ant"]').val() || 0 );
-	if ( f.t_ant.value.toString() == '0' ) {
+	
+	// nếu chưa chọn ID nhóm và không có lệnh tự động tìm nhóm
+	if ( f.t_ant.value.toString() == '0' && $.trim( $('#details_category').val() || '' ) == '' ) {
 //		console.log( f.t_ant.value );
 		
 		if ( typeof _alert != 'undefined' && _alert == 'no' ) {
@@ -1329,7 +1352,7 @@ function after_list_post_for_crawl ( str ) {
 	if ( dog('leech_data_auto_next').checked == true ) {
 		var check_ant_select = g_func.number_only( $('#oiAnt input[name="t_ant"]').val() || 0 );
 		
-		if ( check_ant_select > 0 ) {
+		if ( check_ant_select > 0 || $.trim( $('#details_category').val() || '' ) != '' ) {
 			$('.click-submit-url-details:first').click();
 		} else {
 			console.log('Select categories for auto leech');
@@ -1483,21 +1506,23 @@ function func_get_random_category_for_leech ( i ) {
 		
 		a = a[Math.floor(Math.random() * a.length)];
 		
-		if ( a != '' && a.split('|').length > 1 && a.substr( 0, 1 ) != '#' ) {
-			console.log(a);
-			$('#categories_url').val( a );
-			
-			//
-			setTimeout(function () {
-				$('#categories_url').change();
+		if ( a != '' && a.substr( 0, 1 ) != '#' ) {
+			if ( a.split('|').length > 1 || $.trim( $().val('#details_category') || '' ) != '' ) {
+				console.log(a);
+				$('#categories_url').val( a );
 				
 				//
 				setTimeout(function () {
-					$('.click-submit-url-details:first').click();
+					$('#categories_url').change();
+					
+					//
+					setTimeout(function () {
+						$('.click-submit-url-details:first').click();
+					}, 1200);
 				}, 1200);
-			}, 1200);
-			
-			return true;
+				
+				return true;
+			}
 		}
 	}
 	
@@ -1831,6 +1856,7 @@ var default_arr_cookie_lamviec = {
 	details_masanpham : '',
 	details_ngaydang : '',
 	details_gallery : '',
+	details_category : '',
 	categories_tags : ''
 };
 

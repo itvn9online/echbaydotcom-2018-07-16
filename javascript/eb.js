@@ -320,24 +320,31 @@ var g_func = {
 			return 0;
 		}
 		// mặc định chỉ lấy số
-		/*
 		if ( typeof format == 'string' && format != '' ) {
-			format = eval(format);
+			console.log(format);
+			str = str.toString().replace(eval(format), '');
+			
+			if (str == '') {
+				return 0;
+			}
+			
+			return str;
 		}
 		else {
-			format = /[^0-9\-\+]/g;
+			str = str.toString().replace(/[^0-9\-\+]/g, '');
+			
+			if (str == '') {
+				return 0;
+			}
+			
+			return parseInt( str, 10 );
 		}
-		*/
-		str = str.toString().replace(/[^0-9\-\+]/g, '');
-		
-		if (str == '') {
-			return 0;
-		}
-		
-		return parseInt( str, 10 );
 	},
 	only_number: function(str) {
 		return g_func.number_only(str);
+	},
+	float_only: function(str) {
+		return g_func.number_only(str, '/[^0-9\-\+\.]/g');
 	},
 	money_format: function(str) {
 		return g_func.formatCurrency(str);
@@ -347,24 +354,51 @@ var g_func = {
 	},
 	formatCurrency: function(num, dot) {
 		if (typeof num == 'undefined' || num == '') {
-			num = '0';
+			return 0;
 		} else {
 			if (typeof dot == 'undefined' || dot == '') {
 				dot = ',';
 			}
+//			console.log( dot );
+			
 			num = num.toString().replace(/\s/g, '');
-			var str = '',
-				re = /^\d+$/,
-				so_am = '';
+			var str = num,
+//				re = /^\d+$/,
+				so_am = '',
+				so_thap_phan = '';
 			if (num.substr(0, 1) == '-') {
 				so_am = '-';
 			}
+			
+			/*
 			for (var i = 0, t = ''; i < num.length; i++) {
 				t = num.substr(i, 1);
 				if (re.test(t) == true) {
 					str += t;
 				}
 			}
+			*/
+			// Nếu không phải tách số theo dấu chấm -> tìm cả số thập phân
+			if ( dot != '.' ) {
+//				console.log( str );
+				str = g_func.float_only(str);
+//				if ( str != 0 ) {
+//					console.log( str );
+					so_thap_phan = str.toString().split('.');
+					if ( so_thap_phan.length > 1 ) {
+						str = so_thap_phan[0];
+						so_thap_phan = '.' + so_thap_phan[1];
+					}
+					else {
+						so_thap_phan = '';
+					}
+//				}
+			}
+			// Tách theo dấu chấm thì bỏ qua
+			else {
+				str = g_func.number_only(str);
+			}
+			
 			var len = str.length;
 			if (len > 3) {
 				var new_str = str;
@@ -379,7 +413,7 @@ var g_func = {
 					}
 				}
 			}
-			num = so_am + str;
+			num = so_am + str + so_thap_phan;
 		}
 		
 		//
