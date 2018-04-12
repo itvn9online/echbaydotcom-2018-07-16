@@ -257,7 +257,7 @@ else if ( $__cf_row['cf_global_big_banner'] != 1 ) {
 // Hết hoặc Còn hàng
 $trv_mua = 0;
 $trv_max_mua = 0;
-$str_tinh_trang = '<span class="greencolor">Sẵn hàng</span>';
+$str_tinh_trang = '<span class="greencolor">' . EBE_get_lang('post_instock') . '</span>';
 $con_hay_het = 1;
 $trv_trangthai = 0;
 $schema_availability = 'http://schema.org/InStock';
@@ -322,7 +322,7 @@ if ( $__post->post_type == 'post' ) {
 	if ( $trv_trangthai == 7 || $trv_mua > $trv_max_mua ) {
 		$schema_availability = 'http://schema.org/SoldOut';
 		
-		$str_tinh_trang = '<span class="redcolor">Hết hàng</span>';
+		$str_tinh_trang = '<span class="redcolor">' . EBE_get_lang('post_outstock') . '</span>';
 		
 		$con_hay_het = 0;
 		
@@ -551,6 +551,11 @@ $other_post_3right = '<!-- Chi tiết Sản phẩm (3) -->';
 $str_for_details_sidebar = '';
 $str_for_details_top_sidebar = '';
 
+//
+$trv_masanpham = '';
+$product_gallery = '';
+$product_list_color = '';
+
 // với blog -> sử dụng giao diện khác post
 if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
 	include EB_THEME_PLUGIN_INDEX . 'global/details_blog.php';
@@ -560,6 +565,20 @@ else if ( $__post->post_type == 'page' ) {
 }
 // post
 else {
+	$trv_masanpham = _eb_get_post_object( $pid, '_eb_product_sku' );
+	if ( $trv_masanpham == '' ) {
+		$trv_masanpham = $pid;
+	}
+	
+	$product_gallery = _eb_get_post_object( $pid, '_eb_product_gallery' );
+	$product_gallery = str_replace( ' src=', ' data-src=', $product_gallery );
+	$product_gallery = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_gallery );
+	
+	$product_list_color = _eb_get_post_object( $pid, '_eb_product_list_color' );
+	$product_list_color = str_replace( ' src=', ' data-src=', $product_list_color );
+	$product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_list_color );
+	
+	//
 	include EB_THEME_PLUGIN_INDEX . 'global/details_post.php';
 }
 
@@ -595,23 +614,10 @@ ob_end_clean();
 
 
 //
-$trv_masanpham = '';
-$product_gallery = '';
-$product_list_color = '';
+/*
 if ( $__post->post_type == 'post' ) {
-	$trv_masanpham = _eb_get_post_object( $pid, '_eb_product_sku' );
-	if ( $trv_masanpham == '' ) {
-		$trv_masanpham = $pid;
-	}
-	
-	$product_gallery = _eb_get_post_object( $pid, '_eb_product_gallery' );
-	$product_gallery = str_replace( ' src=', ' data-src=', $product_gallery );
-	$product_gallery = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_gallery );
-	
-	$product_list_color = _eb_get_post_object( $pid, '_eb_product_list_color' );
-	$product_list_color = str_replace( ' src=', ' data-src=', $product_list_color );
-	$product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_list_color );
 }
+*/
 
 //
 $trv_h1_tieude = str_replace( '<', '&lt;', str_replace( '>', '&gt;', $__post->post_title ) );

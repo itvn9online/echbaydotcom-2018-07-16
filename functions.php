@@ -329,7 +329,7 @@ function EBE_add_ebe_currency_class ( $gia, $gia_cu = 0, $default_value = '' ) {
 			$str = '<strong data-num="' . $gia . '" class="global-details-giamoi ebe-currency ebe-currency-format">&nbsp;</strong>';
 		}
 		else {
-			$str = '<strong class="global-details-giamoi global-details-gialienhe">' . EBE_get_lang('post_zero') . '</strong>';
+			$str = '<strong class="global-details-giamoi global-details-gialienhe">{tmp.post_zero}</strong>';
 		}
 	}
 	// giá cũ

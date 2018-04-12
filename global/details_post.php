@@ -65,6 +65,18 @@ foreach ( $sql as $v ) {
 */
 
 
+// Thêm phần tình trạng hàng hóa
+$other_option_list .= '
+<tr class="post-details-sku">
+	<td><div>' . EBE_get_lang('post_sku') . '</div></td>
+	<td><div>' . $trv_masanpham . '</div></td>
+</tr>
+<tr class="post-details-stock">
+	<td><div>' . EBE_get_lang('post_stock') . '</div></td>
+	<td><div>' . $str_tinh_trang . '</div></td>
+</tr>';
+
+
 
 
 // Tạo menu cho post option
@@ -103,8 +115,8 @@ foreach ( $sort_post_options as $k=> $v ) {
 		//
 		$other_option_list .= '
 <tr>
-<td><div>' . $parent_name->name . '</div></td>
-<td><div><a href="' . _eb_c_link( $v->term_id, $v->taxonomy ) . '" target="_blank">' . $v->name . '</a></div></td>
+	<td><div>' . $parent_name->name . '</div></td>
+	<td><div><a href="' . _eb_c_link( $v->term_id, $v->taxonomy ) . '" target="_blank">' . $v->name . '</a></div></td>
 </tr>';
 	}
 }

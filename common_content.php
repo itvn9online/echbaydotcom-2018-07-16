@@ -38,6 +38,7 @@ $arr_global_main = array(
 	
 	// phần option cho link của mục blog
 	'tmp.blog_link_option' => '',
+	'tmp.post_zero' => EBE_get_lang('post_zero'),
 );
 
 // riêng với trang chủ -> nếu có set chiều rộng -> bỏ phần chiệu rọng bên trong các module con đi

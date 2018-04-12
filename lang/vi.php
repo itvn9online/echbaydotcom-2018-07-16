@@ -65,6 +65,10 @@ $___eb_lang[eb_key_for_site_lang . 'post_time_soldout'] = 'Sản phẩm tạm th
 $___eb_lang[eb_key_for_site_lang . 'post_comment'] = 'Bình luận';
 $___eb_lang[eb_key_for_site_lang . 'post_content'] = 'Thông tin sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'post_other'] = 'Sản phẩm khác';
+$___eb_lang[eb_key_for_site_lang . 'post_sku'] = 'Mã sản phẩm';
+$___eb_lang[eb_key_for_site_lang . 'post_stock'] = 'Tình trạng';
+$___eb_lang[eb_key_for_site_lang . 'post_instock'] = 'Sẵn hàng';
+$___eb_lang[eb_key_for_site_lang . 'post_outstock'] = 'Hết hàng';
 
 //
 $___eb_lang[eb_key_for_site_lang . 'cart_diachi'] = 'Địa chỉ';
