@@ -8,27 +8,18 @@ var EBE_current_first_domain = '',
 	source_url = '',
 	current_url = '',
 	// giãn cách cập nhật tin
-	gian_cach_submit = jQuery('#time_for_submit').val() || 5,
+	gian_cach_submit = 5,
 	firts_img_in_content = '',
 	cache_name_for_download_img = '',
 	download_img_runing = 0,
 	arr_check_value_exist = {},
 	tu_dong_load_lai_trang_neu_submit_loi = 0,
 	// hẹn mỗi 10 giây load 1 lần, nên số cài đặt ở đây sẽ nhân với 10
-	limit_time_for_reload_this_page = 12,
+	limit_time_for_reload_this_page = 120,
 	// Dành để load các tag không trong cùng function
 	current_loading_tags = '',
 	// với trường hợp lấy theo ID, mà bị trùng ID -> bỏ qua luôn
 	before_post_id_for_leech = '';
-
-// giãn cách mặc định là 5 giây mỗi lần lấy tin
-if ( gian_cach_submit == '' ) {
-	gian_cach_submit = 5;
-}
-
-// thêm thời gian load toàn trang
-limit_time_for_reload_this_page = eval( limit_time_for_reload_this_page + gian_cach_submit );
-//console.log( limit_time_for_reload_this_page );
 
 
 //
@@ -71,7 +62,7 @@ function get_leech_data_post_id ( str, vitri ) {
 	if ( b.length == 1 ) {
 		// nếu không có điểm kết thúc -> lấy ngay vị trí cuối cùng
 		if ( e == '' ) {
-			a = str.split( b )[0];
+			a = str.split( b );
 		}
 		// nếu có điểm kết thúc -> lấy mảng ngay trước vị trí kết thúc
 		else {
@@ -84,16 +75,37 @@ function get_leech_data_post_id ( str, vitri ) {
 		// Tách theo điều kiện nếu có nhiều điều kiện để lấy ID
 		b = b.split( '||' );
 		for ( var i = 0; i < b.length; i++ ) {
-			a = str.split( jQuery.trim( b[i] ) );
-//			console.log(a);
-			if ( a.length > 1 ) {
-				str = a[1];
-				if ( e != '' ) {
-					str = str.split( e )[0];
+			b[i] = jQuery.trim( b[i] );
+			
+			//
+			if ( b[i] != '' ) {
+				if ( b[i].length == 1 ) {
+					// nếu không có điểm kết thúc -> lấy ngay vị trí cuối cùng
+					if ( e == '' ) {
+						a = str.split( b[i] );
+					}
+					// nếu có điểm kết thúc -> lấy mảng ngay trước vị trí kết thúc
+					else {
+						a = str.split( e )[0].split( b[i] );
+					}
+					return num_leech_data_post_id( a[ a.length - 1 ] );
 				}
-				return num_leech_data_post_id( str );
+				else {
+					a = str.split( b[i] );
+//					console.log(a);
+					if ( a.length > 1 ) {
+						str = a[1];
+						if ( e != '' ) {
+							str = str.split( e )[0];
+						}
+						return num_leech_data_post_id( str );
+					}
+				}
 			}
 		}
+		
+		//
+		return '';
 	}
 	
 	
@@ -619,8 +631,16 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 		if ( dog('bai_viet_nay_duoc_lay_theo_id').checked == true ) {
 			f.t_id.value = get_leech_data_post_id ( f.t_source.value );
 			
+			// Nếu đang lấy theo ID, nhưng không tìm được ID -> loại luôn
+			if ( f.t_id.value == '' ) {
+				ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR (not ID)</span>' );
+				
+				//
+				return false;
+			}
+			
 			// kiểm tra ID post trùng nhau
-			if ( f.t_id.value != '' && f.t_id.value == before_post_id_for_leech ) {
+			if ( f.t_id.value == before_post_id_for_leech ) {
 				ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">WARNING (ID too)</span>' );
 				
 				//
@@ -865,11 +885,11 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				//
 				console.log('Không tìm thấy tiêu đề sản phẩm');
 				
-				setTimeout(function () {
-					if ( gian_cach_submit > 1 && dog('leech_data_auto_next').checked == true ) {
+//				setTimeout(function () {
+//					if ( gian_cach_submit > 1 && dog('leech_data_auto_next').checked == true ) {
 						ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR (not title)</span>' );
-					}
-				}, gian_cach_submit * 1000);
+//					}
+//				}, gian_cach_submit * 1000);
 				
 				//
 				return false;
@@ -1097,6 +1117,8 @@ function ket_thuc_lay_du_lieu ( id, m, lnk ) {
 	
 	
 	// tiếp tục lấy link tiếp theo
+	console.log('Next after ' + gian_cach_submit + ' secondes');
+	
 	setTimeout(function () {
 		if ( gian_cach_submit > 1 && dog('leech_data_auto_next').checked == true ) {
 			func_leech_data_lay_chi_tiet();
@@ -1621,12 +1643,28 @@ setInterval(function () {
 	if ( check_auto_leech_on_off() ) {
 		// load lại trang khi quá 120 giây
 		if ( tu_dong_load_lai_trang_neu_submit_loi > limit_time_for_reload_this_page ) {
-			window.location = window.location.href;
+			setTimeout(function () {
+				console.log(5);
+			}, 1000);
+			setTimeout(function () {
+				console.log(4);
+			}, 2000);
+			setTimeout(function () {
+				console.log(3);
+			}, 3000);
+			setTimeout(function () {
+				console.log(2);
+			}, 4000);
+			setTimeout(function () {
+				window.location = window.location.href;
+			}, 5000);
 		}
 		// nếu không cứ 10 giây thêm 1 đơn vị
 		else {
-			tu_dong_load_lai_trang_neu_submit_loi++;
-			console.log('Reload page after ' + ( (limit_time_for_reload_this_page - tu_dong_load_lai_trang_neu_submit_loi) * 10 ) + ' secondes');
+			tu_dong_load_lai_trang_neu_submit_loi += 10;
+			
+			console.log('Reload page after ' + ( limit_time_for_reload_this_page - tu_dong_load_lai_trang_neu_submit_loi ) + ' secondes');
+			console.log('Next after ' + ( gian_cach_submit - tu_dong_load_lai_trang_neu_submit_loi ) + ' secondes');
 		}
 	}
 	// nếu không kích hoạt chế độ load trang -> đặt về 0 luôn
@@ -1938,6 +1976,17 @@ var default_arr_cookie_lamviec = {
 	}
 	
 })();
+
+// giãn cách mặc định là 5 giây mỗi lần lấy tin
+gian_cach_submit = jQuery('#time_for_submit').val() || gian_cach_submit;
+if ( gian_cach_submit == '' ) {
+	gian_cach_submit = 5;
+}
+console.log( 'Time for next: ' + gian_cach_submit );
+
+// thêm thời gian load toàn trang
+limit_time_for_reload_this_page = limit_time_for_reload_this_page - ( 0 - gian_cach_submit );
+console.log( 'Time for reload: ' + limit_time_for_reload_this_page );
 
 
 
