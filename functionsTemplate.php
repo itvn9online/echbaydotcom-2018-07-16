@@ -29,6 +29,24 @@ function EBE_get_html_search ( $class_for_search = 'div-search-margin' ) {
 	global $current_search_key;
 	global $__cf_row;
 	
+	// sử dụng google tìm kiếm tùy chỉnh
+	if ( $__cf_row['cf_gse'] != '' ) {
+		return "
+<script>
+  (function() {
+    var cx = '" . $__cf_row['cf_gse'] . "';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>";
+	}
+	
+	
 	/*
 	* class_for_search: tạo class riêng với 1 số trường hợp
 	*/
