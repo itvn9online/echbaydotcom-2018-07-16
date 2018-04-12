@@ -19,7 +19,8 @@ var EBE_current_first_domain = '',
 	// Dành để load các tag không trong cùng function
 	current_loading_tags = '',
 	// với trường hợp lấy theo ID, mà bị trùng ID -> bỏ qua luôn
-	before_post_id_for_leech = '';
+	before_post_id_for_leech = '',
+	auto_submit_auto_save_config = 0;
 
 
 //
@@ -1332,7 +1333,7 @@ function EBE_save_cookie_to_data_base () {
 
 
 function EBE_auto_save_domain_cookie () {
-	if ( auto_submit_save_domain_cookies == true ) {
+//	if ( auto_submit_save_domain_cookies == true ) {
 		auto_submit_save_domain_cookies = false;
 		
 		//
@@ -1342,10 +1343,9 @@ function EBE_auto_save_domain_cookie () {
 		}
 		else {
 			*/
-			console.log( 'Auto save, while 60 secondes' );
 			document.frm_leech_data_save.submit();
 //		}
-	}
+//	}
 }
 
 
@@ -1430,10 +1430,12 @@ function WGR_leech_data_after_load_iframe () {
 
 
 //
+/*
 setInterval(function () {
 	EBE_auto_save_domain_cookie();
 //}, 5000);
 }, 60 * 1000);
+*/
 
 
 
@@ -1671,6 +1673,27 @@ setInterval(function () {
 	else {
 		tu_dong_load_lai_trang_neu_submit_loi = 0;
 	}
+	
+	//
+//	auto_submit_auto_save_config += 10;
+//	if ( auto_submit_save_domain_cookies == true || auto_submit_auto_save_config > 50 ) {
+	if ( auto_submit_save_domain_cookies == true ) {
+		/*
+		if ( auto_submit_auto_save_config > 50 ) {
+			console.log( 'Auto save leech config, while 60 secondes' );
+		}
+		else {
+			*/
+			console.log( 'Save leech config' );
+//		}
+		
+		//
+		EBE_auto_save_domain_cookie();
+		
+		// reset lại chế độ
+//		auto_submit_auto_save_config = 0;
+	}
+	
 }, 10 * 1000);
 
 
