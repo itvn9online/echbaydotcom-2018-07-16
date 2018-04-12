@@ -864,7 +864,12 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				
 				//
 				console.log('Không tìm thấy tiêu đề sản phẩm');
-				ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR (not title)</span>' );
+				
+				setTimeout(function () {
+					if ( gian_cach_submit > 1 && dog('leech_data_auto_next').checked == true ) {
+						ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR (not title)</span>' );
+					}
+				}, gian_cach_submit * 1000);
 				
 				//
 				return false;
