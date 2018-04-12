@@ -592,21 +592,23 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 
 
 // chuyển đơn vị tiền tệ từ sau ra trước
+$custom_css_for_price = '';
 if ( $__cf_row['cf_current_price_before'] == 1 ) {
 	
 	//
-	$__cf_row['cf_default_css'] .= '.ebe-currency:after{display:none}.ebe-currency:before{display:inline-block}';
+	$custom_css_for_price .= '.ebe-currency:after{display:none}.ebe-currency:before{display:inline-block}';
 	
 	
 	// đổi đơn vị tiền tệ
 	if ( $__cf_row['cf_current_price'] != '' ) {
-		$__cf_row['cf_default_css'] .= '.ebe-currency:before{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
+		$custom_css_for_price .= '.ebe-currency:before{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
 	}
 }
 // đổi đơn vị tiền tệ
 else if ( $__cf_row['cf_current_price'] != '' ) {
-	$__cf_row['cf_default_css'] .= '.ebe-currency:after{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
+	$custom_css_for_price .= '.ebe-currency:after{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
 }
+$__cf_row['cf_default_css'] .= $custom_css_for_price;
 
 
 

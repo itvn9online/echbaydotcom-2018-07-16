@@ -478,11 +478,11 @@ function eb_run_post_column_content($column, $post_id) {
 	// giá bán
 	if ('gia' == $column) {
 //		$a = _eb_get_post_meta ( $post_id, '_eb_product_oldprice', true, 0 );
-		$a = _eb_float_only( _eb_get_post_object ( $post_id, '_eb_product_oldprice', 0 ) );
+		$a = _eb_float_only( _eb_get_post_object ( $post_id, '_eb_product_oldprice' ) );
 //		$b = _eb_get_post_meta ( $post_id, '_eb_product_price', true, 0 );
-		$b = _eb_float_only( _eb_get_post_object ( $post_id, '_eb_product_price', 0 ) );
+		$b = _eb_float_only( _eb_get_post_object ( $post_id, '_eb_product_price' ) );
 		
-		echo number_format( $a ) . '/ ' . number_format( $b );
+		echo $a . '/ ' . $b;
 	}
 	// ảnh đại diện
 	else if ($column == 'img') {

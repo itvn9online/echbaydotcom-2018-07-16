@@ -80,9 +80,9 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 		$trv_img = _eb_get_post_img( $post->ID, 'medium' );
 		
 //		$trv_giamoi = (int) _eb_get_post_meta( $post->ID, '_eb_product_price', true );
-		$trv_giaban = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_oldprice', 0 ) );
+		$trv_giaban = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_oldprice' ) );
 		
-		$trv_giamoi = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_price', 0 ) );
+		$trv_giamoi = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_price' ) );
 		
 		$soLuong = 1;
 		$total_line = $trv_giamoi * $soLuong;

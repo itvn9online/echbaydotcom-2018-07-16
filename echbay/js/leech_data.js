@@ -852,7 +852,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			
 			//
 			if ( f.t_tieude.value == '' ) {
-				console.log( $('#leech_data_html').html() );
+//				console.log( $('#leech_data_html').html() );
 				
 				//
 				console.log('Không tìm thấy tiêu đề sản phẩm');

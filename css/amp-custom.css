@@ -305,7 +305,7 @@ amp-carousel > amp-img > img { object-fit: contain; }
 }
 .amp-wp-blogs-giacu:after,
 .amp-wp-blogs-giamoi:after {
-	content: "đ";
+	content: "\0111";
 	display: inline-block;
 	margin-left: 2px;
 }

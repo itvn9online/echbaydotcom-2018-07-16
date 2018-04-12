@@ -45,17 +45,17 @@ if ( have_posts() ) {
 		
 		
 		//
-		$trv_giaban = _eb_float_only( _eb_get_post_meta( $post->ID, '_eb_product_oldprice', true, 0 ) );
+		$trv_giaban = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_oldprice' ) );
 		if ( $trv_giaban > 0 ) {
-			$trv_giaban = '<div class="amp-wp-blogs-giacu">' . number_format( $trv_giaban ) . '</div>';
+			$trv_giaban = '<div class="amp-wp-blogs-giacu">' . $trv_giaban . '</div>';
 		} else {
 			$trv_giaban = '';
 		}
 		
 		//
-		$trv_giamoi = _eb_float_only( _eb_get_post_meta( $post->ID, '_eb_product_price', true, 0 ) );
+		$trv_giamoi = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_price' ) );
 		if ( $trv_giamoi > 0 ) {
-			$trv_giamoi = '<div class="amp-wp-blogs-giamoi">' . number_format( $trv_giamoi ) . '</div>';
+			$trv_giamoi = '<div class="amp-wp-blogs-giamoi">' . $trv_giamoi . '</div>';
 		} else {
 			$trv_giamoi = '';
 		}
