@@ -1665,8 +1665,7 @@ setInterval(function () {
 		else {
 			tu_dong_load_lai_trang_neu_submit_loi += 10;
 			
-			console.log('Reload page after ' + ( limit_time_for_reload_this_page - tu_dong_load_lai_trang_neu_submit_loi ) + ' secondes');
-			console.log('Next after ' + ( gian_cach_submit - tu_dong_load_lai_trang_neu_submit_loi ) + ' secondes');
+			console.log('Reload page after ' + ( limit_time_for_reload_this_page - tu_dong_load_lai_trang_neu_submit_loi ) + 's. Next after ' + ( gian_cach_submit - tu_dong_load_lai_trang_neu_submit_loi ) + 's');
 		}
 	}
 	// nếu không kích hoạt chế độ load trang -> đặt về 0 luôn
