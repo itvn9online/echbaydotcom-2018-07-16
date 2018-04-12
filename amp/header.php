@@ -89,7 +89,7 @@ echo WGR_remove_css_multi_comment( $eb_amp->add_css ( array(
 ) ) ) . $css_for_amp_logo . '.amp-wp-header{background-color:' . $__cf_row['cf_default_amp_bg'] . '}';
 
 // thêm phần chỉnh đơn vị tiền tệ
-echo $custom_css_for_price;
+echo str_replace( '.ebe-currency:', '.amp-wp-blogs-giamoi:', $custom_css_for_price );
 
 ?>
 </style>
