@@ -3155,12 +3155,38 @@ function WGR_set_a_target_top () {
 
 
 //
-var current_pid_quicview = pid;
+var current_pid_quicview = pid,
+	set_new_height_for_quick_view = true,
+	time_for_new_height_quick_view = 800;
 function close_ebe_quick_view () {
 	jQuery('#oi_ebe_quick_view').hide();
 	jQuery('body').removeClass('body-no-scroll');
 	window.history.pushState("", '', current_ls_url);
 	pid = current_pid_quicview;
+}
+
+function WGR_set_quick_view_height () {
+	if ( set_new_height_for_quick_view == false ) {
+		return false;
+	}
+	setTimeout(function () {
+		WGR_set_quick_view_height();
+	}, time_for_new_height_quick_view);
+	
+	//
+	var h = jQuery( '#ui_ebe_quick_view' ).contents().find( 'body' ).height() || 0;
+//	console.log(h);
+	if ( h == 0 ) {
+		h = 600;
+	}
+	else {
+		h -= -200;
+	}
+//	console.log(h);
+	jQuery('#ui_ebe_quick_view').height( h ).scrollTop(0);
+	
+	//
+//	window.scroll( 0, 0 );
 }
 
 (function () {
@@ -3231,21 +3257,21 @@ function close_ebe_quick_view () {
 		// sử dụng iframe
 		dog('ui_ebe_quick_view').src = 'about:blank';
 		dog('ui_ebe_quick_view').src = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&view_type=iframe&set_device=' + device;
+		
+		// chỉnh chiều cao cho iframe
+		set_new_height_for_quick_view = true;
+		
 		jQuery('#ui_ebe_quick_view').height( jQuery(window).height() - 110 );
+		
+		setTimeout(function () {
+			WGR_set_quick_view_height();
+		}, time_for_new_height_quick_view);
+		
 		jQuery('#ui_ebe_quick_view').on('load', function () {
-			var h = jQuery( '#ui_ebe_quick_view' ).contents().find( 'body' ).height() || 0;
-//			console.log(h);
-			if ( h == 0 ) {
-				h = 600;
-			}
-			else {
-				h -= -200;
-			}
-//			console.log(h);
-			jQuery('#ui_ebe_quick_view').height( h ).scrollTop(0);
-			
-			//
-//			window.scroll( 0, 0 );
+			// sau đó thì không cho set lại chiều cao của quick view nữa
+			setTimeout(function () {
+				set_new_height_for_quick_view = false;
+			}, time_for_new_height_quick_view);
 		});
 		
 		//
