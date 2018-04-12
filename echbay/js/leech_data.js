@@ -8,7 +8,7 @@ var EBE_current_first_domain = '',
 	source_url = '',
 	current_url = '',
 	// giãn cách cập nhật tin
-	gian_cach_submit = 2 * 1000,
+	gian_cach_submit = jQuery('#time_for_submit').val() || 5,
 	firts_img_in_content = '',
 	cache_name_for_download_img = '',
 	download_img_runing = 0,
@@ -21,11 +21,19 @@ var EBE_current_first_domain = '',
 	// với trường hợp lấy theo ID, mà bị trùng ID -> bỏ qua luôn
 	before_post_id_for_leech = '';
 
+// giãn cách mặc định là 5 giây mỗi lần lấy tin
+if ( gian_cach_submit == '' ) {
+	gian_cach_submit = 5;
+}
+
+// thêm thời gian load toàn trang
+limit_time_for_reload_this_page = eval( limit_time_for_reload_this_page + gian_cach_submit );
+//console.log( limit_time_for_reload_this_page );
 
 
 //
 if ( arr_for_save_domain_config != '' ) {
-	arr_for_save_domain_config = $.parseJSON( unescape( arr_for_save_domain_config ) );
+	arr_for_save_domain_config = jQuery.parseJSON( unescape( arr_for_save_domain_config ) );
 	
 	for ( var x in arr_for_save_domain_config ) {
 		if ( EBE_current_first_domain == '' ) {
@@ -54,8 +62,8 @@ function num_leech_data_post_id ( i ) {
 function get_leech_data_post_id ( str, vitri ) {
 	console.log(str);
 	
-	var b = $('#id_post_begin').val() || '',
-		e = $('#id_post_end').val() || '',
+	var b = jQuery('#id_post_begin').val() || '',
+		e = jQuery('#id_post_end').val() || '',
 		a = null;
 	
 	
@@ -76,7 +84,7 @@ function get_leech_data_post_id ( str, vitri ) {
 		// Tách theo điều kiện nếu có nhiều điều kiện để lấy ID
 		b = b.split( '||' );
 		for ( var i = 0; i < b.length; i++ ) {
-			a = str.split( $.trim( b[i] ) );
+			a = str.split( jQuery.trim( b[i] ) );
 //			console.log(a);
 			if ( a.length > 1 ) {
 				str = a[1];
@@ -122,7 +130,7 @@ function function_rieng_theo_domain () {
 		current_img_domain = document.domain;
 	
 	//
-	var format_price = $('#details_format_price').val() || '';
+	var format_price = jQuery('#details_format_price').val() || '';
 	if ( f.t_giacu.value != '' ) {
 		if ( format_price == '' ) {
 			f.t_giacu.value = g_func.number_only( f.t_giacu.value );
@@ -148,13 +156,13 @@ function function_rieng_theo_domain () {
 	
 	// lấy ảnh mặc định nếu có
 	if ( f.t_img.value == '' ) {
-		f.t_img.value = $('#details_finish_url li:last a').attr('data-img') || '';
+		f.t_img.value = jQuery('#details_finish_url li:last a').attr('data-img') || '';
 		
 		// nếu vẫn không có -> thử lấy trong nội dung
 		if ( f.t_img.value == '' ) {
-//			f.t_img.value = $('#leech_data_fix_content img:first').attr('data-src') || '';
+//			f.t_img.value = jQuery('#leech_data_fix_content img:first').attr('data-src') || '';
 			f.t_img.value = firts_img_in_content;
-//			console.log($('#leech_data_fix_content img:first').attr('data-src'));
+//			console.log(jQuery('#leech_data_fix_content img:first').attr('data-src'));
 		}
 	}
 	
@@ -190,12 +198,12 @@ function function_rieng_theo_domain () {
 		
 		// download ảnh trong nội dung
 		dog( 'leech_data_fix_content', f.t_noidung.value.replace(/\ssrc=/gi, " download-src=") );
-//		console.log( $('#leech_data_fix_content').html() );
+//		console.log( jQuery('#leech_data_fix_content').html() );
 		
 		//
-		if ( $('#leech_data_fix_content img').length > 0 ) {
-			$('#leech_data_fix_content img').addClass('download-img-to-here');
-//			console.log( $('#leech_data_fix_content').html() );
+		if ( jQuery('#leech_data_fix_content img').length > 0 ) {
+			jQuery('#leech_data_fix_content img').addClass('download-img-to-here');
+//			console.log( jQuery('#leech_data_fix_content').html() );
 			
 			func_download_img_content_to_my_host();
 		}
@@ -242,11 +250,11 @@ function func_download_img_content_to_my_host () {
 	}
 	
 	// không có -> có thể là xong rồi -> finish thôi
-	if ( $('#leech_data_fix_content img.download-img-to-here').length == 0 ) {
+	if ( jQuery('#leech_data_fix_content img.download-img-to-here').length == 0 ) {
 		console.log('img for download not found!');
-//		console.log( $('#leech_data_fix_content').html() );
+//		console.log( jQuery('#leech_data_fix_content').html() );
 		
-		var add_content = $('#leech_data_fix_content').html() || '';
+		var add_content = jQuery('#leech_data_fix_content').html() || '';
 		document.frm_leech_data.t_noidung.value = add_content.replace(/\sdownload-src=/gi, " src=");
 		
 		auto_submit_after_download_img();
@@ -256,7 +264,7 @@ function func_download_img_content_to_my_host () {
 	var dm = document.domain;
 	
 	// tìm src xem có không
-	var img = $('#leech_data_fix_content img.download-img-to-here:first').attr('download-src') || '';
+	var img = jQuery('#leech_data_fix_content img.download-img-to-here:first').attr('download-src') || '';
 	if ( img == '' ) {
 		console.log('src for download not found!');
 		return false;
@@ -267,7 +275,7 @@ function func_download_img_content_to_my_host () {
 	file_name = file_name[ file_name.length - 1 ];
 	
 	// tạo url file download luôn
-	$('#leech_data_fix_content img.download-img-to-here:first').attr({
+	jQuery('#leech_data_fix_content img.download-img-to-here:first').attr({
 		'download-src': web_link + 'ebarchive/' + year_curent + '/' + file_name
 	}).removeClass('download-img-to-here');
 	
@@ -304,7 +312,7 @@ function func_download_img_to_my_host ( img, dm ) {
 		//
 		download_img_runing = 1;
 		ajaxl(download_url, 'oi_download_img_to_my_host', 1, function () {
-			var a = $('#oi_download_img_to_my_host').html();
+			var a = jQuery('#oi_download_img_to_my_host').html();
 			console.log( a );
 			
 			//
@@ -325,13 +333,13 @@ function check_category_by_auto_slug ( a, alert_now ) {
 	if ( a.split('|').length > 1 ) {
 		a = a.split('|');
 		
-		var auto_category = $.trim( a[1] ),
+		var auto_category = jQuery.trim( a[1] ),
 			auto_category2 = '';
 		
 		//
 		/*
 		if ( a.length > 2 ) {
-			auto_category2 = $.trim( a[2] );
+			auto_category2 = jQuery.trim( a[2] );
 		}
 		*/
 		
@@ -353,12 +361,12 @@ function check_category_by_auto_slug ( a, alert_now ) {
 			*/
 			
 			//
-			$('#oiAnt input[type="text"]').val( 0 );
+			jQuery('#oiAnt input[type="text"]').val( 0 );
 			var tim_thay_category = 0;
-			$('#oiAnt ul li').each(function() {
-				var a = $(this).attr('data-key') || '',
-					b = $(this).attr('data-value') || '',
-					slug = $(this).attr('data-slug') || '';
+			jQuery('#oiAnt ul li').each(function() {
+				var a = jQuery(this).attr('data-key') || '',
+					b = jQuery(this).attr('data-value') || '',
+					slug = jQuery(this).attr('data-slug') || '';
 				
 				//
 				if ( b != '' && a != '' ) {
@@ -370,9 +378,9 @@ function check_category_by_auto_slug ( a, alert_now ) {
 //					if ( a == auto_category || slug == auto_category ) {
 //					if ( a == auto_category || a == auto_category2 ) {
 						document.frm_leech_data.t_ant.value = b;
-						$('#oiAnt input[name="t_ant"]').val( b );
+						jQuery('#oiAnt input[name="t_ant"]').val( b );
 						
-						$('#oiAnt input[type="text"]').val( a );
+						jQuery('#oiAnt input[type="text"]').val( a );
 						
 						tim_thay_category = 1;
 						
@@ -393,7 +401,7 @@ function check_category_by_auto_slug ( a, alert_now ) {
 			}
 		}
 		
-		a = $.trim( a[0] );
+		a = jQuery.trim( a[0] );
 	}
 	
 	return a;
@@ -465,11 +473,11 @@ function leech_data_content ( url, id, callBack ) {
 	console.log( url );
 	
 	//
-	$('body').css({
+	jQuery('body').css({
 		opacity: .5
 	});
 	
-	$.ajax({
+	jQuery.ajax({
 		type: 'POST',
 		url: url,
 		data: ''
@@ -539,23 +547,23 @@ function leech_data_content ( url, id, callBack ) {
 		
 		//
 		if ( dog(id) == null ) {
-			$('body').append('<div id="' +id+ '" class="d-none"></div>');
+			jQuery('body').append('<div id="' +id+ '" class="d-none"></div>');
 		}
 		
 		//
-		var old_bay = $('base').attr('href');
+		var old_bay = jQuery('base').attr('href');
 		
 		//
-//		$('base').attr({
+//		jQuery('base').attr({
 //			href : new_bay
 //		});
 		
 		//
-		$('#' + id).html(msg);
+		jQuery('#' + id).html(msg);
 		
 		//
 //		setTimeout(function () {
-//			$('base').attr({
+//			jQuery('base').attr({
 //				href : old_bay
 //			});
 //		}, 2000);
@@ -566,7 +574,7 @@ function leech_data_content ( url, id, callBack ) {
 		}
 		
 		//
-		$('body').css({
+		jQuery('body').css({
 			opacity: 1
 		});
 	});
@@ -575,7 +583,7 @@ function leech_data_content ( url, id, callBack ) {
 
 function func_leech_data_lay_chi_tiet ( push_url ) {
 	// lấy thông số từ thẻ LI đầu tiên
-	var a = $('#details_list_url li:first a').attr('href') || '',
+	var a = jQuery('#details_list_url li:first a').attr('href') || '',
 		f = document.frm_leech_data;
 	
 	if ( typeof push_url != 'undefined' && push_url != '' ) {
@@ -591,13 +599,13 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 	
 	if ( a != '' ) {
 		// dọn dẹp bớt HTML cho đỡ nhiều quá
-		if ( $('#details_finish_url li').length > 50 ) {
-			$('#details_finish_url').html('');
+		if ( jQuery('#details_finish_url li').length > 50 ) {
+			jQuery('#details_finish_url').html('');
 		}
 		
 		// lấy xong xóa
-		$('#details_finish_url').append('<li>' + $('#details_list_url li:first').html() + '</li>');
-		$('#details_list_url li:first').remove();
+		jQuery('#details_finish_url').append('<li>' + jQuery('#details_list_url li:first').html() + '</li>');
+		jQuery('#details_list_url li:first').remove();
 		
 		//
 //		console.log( a );
@@ -624,58 +632,58 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 		//
 		leech_data_content ('temp/?set_module=leech_data&categories_url=' + encodeURIComponent( a ) + '&leech_id=' + f.t_id.value, '', function () {
 			var f = document.frm_leech_data;
-//			var img_tags = $('#details_img').val() || '';
+//			var img_tags = jQuery('#details_img').val() || '';
 			
 			//
 			var arr = {
 				noidung_tags : {
-					get : $('#details_noidung').val() || '',
+					get : jQuery('#details_noidung').val() || '',
 					set : 't_noidung'
 				},
 				dieukien_tags : {
-					get : $('#details_dieukien').val() || '',
+					get : jQuery('#details_dieukien').val() || '',
 					set : 't_dieukien'
 				},
 				goithieu_tags : {
-					get : $('#details_goithieu').val() || '',
+					get : jQuery('#details_goithieu').val() || '',
 					set : 't_goithieu'
 				},
 				giacu_tags : {
-					get : $('#details_giacu').val() || '',
+					get : jQuery('#details_giacu').val() || '',
 					set : 't_giacu'
 				},
 				giamoi_tags : {
-					get : $('#details_giamoi').val() || '',
+					get : jQuery('#details_giamoi').val() || '',
 					set : 't_giamoi'
 				},
 				new_category_tags : {
-					get : $('#details_category').val() || '',
+					get : jQuery('#details_category').val() || '',
 					set : 't_new_category'
 				},
 				tit_tags : {
-					get : $('#details_title').val() || '',
+					get : jQuery('#details_title').val() || '',
 					set : 't_tieude'
 				},
 				masanpham_tags : {
-					get : $('#details_masanpham').val() || '',
+					get : jQuery('#details_masanpham').val() || '',
 					set : 't_masanpham'
 				},
 				ngaydang_tags : {
-					get : $('#details_ngaydang').val() || '',
+					get : jQuery('#details_ngaydang').val() || '',
 					set : 't_ngaydang'
 				},
 				img_tags : {
-					get : $('#details_img').val() || '',
+					get : jQuery('#details_img').val() || '',
 					set : 't_img',
 					img : true
 				},
 				youtube_url_tags : {
-					get : $('#details_youtube_url').val() || '',
+					get : jQuery('#details_youtube_url').val() || '',
 					set : 't_youtube_url',
 					youtube : true
 				},
 				gallery_tags : {
-					get : $('#details_gallery').val() || '',
+					get : jQuery('#details_gallery').val() || '',
 					set : 't_gallery',
 					img : true
 				}
@@ -687,7 +695,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				var a = '';
 				
 				//
-				arr[x].get = $.trim( arr[x].get );
+				arr[x].get = jQuery.trim( arr[x].get );
 				
 				//
 				if ( arr[x].get != '' ) {
@@ -698,9 +706,9 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 					// nếu là youtube video
 					if ( typeof arr[x].youtube != 'undefined' ) {
 						console.log(arr[x].get);
-						a = $(arr[x].get).attr('data-old-src')
-							|| $(arr[x].get).attr('data-src')
-							|| $(arr[x].get).attr('src')
+						a = jQuery(arr[x].get).attr('data-old-src')
+							|| jQuery(arr[x].get).attr('data-src')
+							|| jQuery(arr[x].get).attr('src')
 							|| '';
 						console.log(a);
 					}
@@ -724,14 +732,14 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 //									console.log(get_attr[1].split(']')[0]);
 									
 									if ( str == '' ) {
-										str = $( get_attr[0] ).attr( get_attr[1].split(']')[0] ) || '';
+										str = jQuery( get_attr[0] ).attr( get_attr[1].split(']')[0] ) || '';
 									}
 								}
 								else {
 									if ( str == '' ) {
-										str = $( get_attr[0] ).attr('data-old-src')
-										|| $( get_attr[0] ).attr('data-src')
-										|| $( get_attr[0] ).attr('src')
+										str = jQuery( get_attr[0] ).attr('data-old-src')
+										|| jQuery( get_attr[0] ).attr('data-src')
+										|| jQuery( get_attr[0] ).attr('src')
 										|| '';
 									}
 								}
@@ -744,10 +752,10 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 						}
 						else {
 							// thay dấu || thành dấu , để chạy vòng lặp each
-							$( arr_get_img ).each(function() {
-								var str = $(this).attr('data-old-src')
-									|| $(this).attr('data-src')
-									|| $(this).attr('src')
+							jQuery( arr_get_img ).each(function() {
+								var str = jQuery(this).attr('data-old-src')
+									|| jQuery(this).attr('data-src')
+									|| jQuery(this).attr('src')
 									|| '';
 								
 								if ( str != '' ) {
@@ -795,8 +803,8 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 										}
 										
 										// bắt đầu vòng lặp
-										$( str_query[j].replace(/\s?\|\|\s?/g, ',') ).each(function() {
-											var get_html = $(this).html() || '';
+										jQuery( str_query[j].replace(/\s?\|\|\s?/g, ',') ).each(function() {
+											var get_html = jQuery(this).html() || '';
 											
 											// nếu có nội dung
 											if ( get_html != '' ) {
@@ -822,7 +830,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 										}
 									}
 									else {
-										str = $( str_query[j] ).html() || '';
+										str = jQuery( str_query[j] ).html() || '';
 										str = g_func.trim( str );
 										
 										// tìm được phát -> thoát luôn
@@ -834,7 +842,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 							}
 							// gọi trực tiếp đến class được nhắc đến
 							else {
-								str = $( a2[i] ).html() || '';
+								str = jQuery( a2[i] ).html() || '';
 								str = g_func.trim( str );
 							}
 							
@@ -847,12 +855,12 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				}
 				
 				//
-				$('form[name=\'frm_leech_data\'] input[name=\'' +arr[x].set+ '\'], form[name=\'frm_leech_data\'] textarea[name=\'' +arr[x].set+ '\']').val( a );
+				jQuery('form[name=\'frm_leech_data\'] input[name=\'' +arr[x].set+ '\'], form[name=\'frm_leech_data\'] textarea[name=\'' +arr[x].set+ '\']').val( a );
 			}
 			
 			//
 			if ( f.t_tieude.value == '' ) {
-//				console.log( $('#leech_data_html').html() );
+//				console.log( jQuery('#leech_data_html').html() );
 				
 				//
 				console.log('Không tìm thấy tiêu đề sản phẩm');
@@ -883,21 +891,21 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			f.t_noidung.value = f.t_noidung.value.replace( /\&nbsp\;/gi, ' ' ).replace(/\s+\s/g, " ");
 			
 			dog( 'leech_data_fix_content', f.t_noidung.value );
-//			console.log($('#leech_data_fix_content').html());
+//			console.log(jQuery('#leech_data_fix_content').html());
 			
 			// URL
 			if ( dog('loai_bo_a_trong_noi_dung').checked == true ) {
-				$('#leech_data_fix_content a').each(function() {
+				jQuery('#leech_data_fix_content a').each(function() {
 					// xóa hẳn thẻ A
-					$(this).after( $(this).html() ).remove();
+					jQuery(this).after( jQuery(this).html() ).remove();
 				});
 			}
 			else if ( dog('loai_bo_url_trong_noi_dung').checked == true ) {
-				$('#leech_data_fix_content a').each(function() {
+				jQuery('#leech_data_fix_content a').each(function() {
 					// xóa URL
-					var a = $(this).attr('href') || '';
+					var a = jQuery(this).attr('href') || '';
 					
-					$(this).attr({
+					jQuery(this).attr({
 						'data-href' : a,
 						rel : 'nofollow',
 						href : 'javascript:;'
@@ -907,8 +915,8 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			
 			// hình ảnh
 			firts_img_in_content = '';
-			$('#leech_data_fix_content img').each(function() {
-				var a = $(this).attr('data-src') || '';
+			jQuery('#leech_data_fix_content img').each(function() {
+				var a = jQuery(this).attr('data-src') || '';
 //				console.log(a);
 				
 				// kiểm tra URL ảnh có link tuyệt đối chưa
@@ -925,20 +933,20 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 					}
 					
 					// chưa có thì gán thêm vào
-					$(this).attr({
+					jQuery(this).attr({
 						'data-src' : a
 					});
 				}
 			});
-//			console.log($('#leech_data_fix_content').html());
+//			console.log(jQuery('#leech_data_fix_content').html());
 			
 			//
-			f.t_noidung.value = $('#leech_data_fix_content').html();
+			f.t_noidung.value = jQuery('#leech_data_fix_content').html();
 			
 			//
 			f.t_noidung.value = f.t_noidung.value.replace(/\n|\r|\t/g, ' ');
 			f.t_noidung.value = f.t_noidung.value.replace(/\sdata-src=/gi, " src=");
-//			$('form[name=\'frm_leech_data\'] textarea[name=\'t_noidung\']').change();
+//			jQuery('form[name=\'frm_leech_data\'] textarea[name=\'t_noidung\']').change();
 //			return false;
 			
 			
@@ -950,15 +958,15 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			* chỉnh lại phần nội dung
 			*/
 			dog( 'leech_data_fix_content', f.t_dieukien.value );
-//			console.log($('#leech_data_fix_content').html());
+//			console.log(jQuery('#leech_data_fix_content').html());
 			
 			// URL
 			/*
 			if ( dog('loai_bo_url_trong_noi_dung').checked == true ) {
-				$('#leech_data_fix_content a').each(function() {
-					var a = $(this).attr('href') || '';
+				jQuery('#leech_data_fix_content a').each(function() {
+					var a = jQuery(this).attr('href') || '';
 					
-					$(this).attr({
+					jQuery(this).attr({
 						'data-href' : a,
 						rel : 'nofollow',
 						href : 'javascript:;'
@@ -967,8 +975,8 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			}
 			
 			// hình ảnh
-			$('#leech_data_fix_content img').each(function() {
-				var a = $(this).attr('data-src') || '';
+			jQuery('#leech_data_fix_content img').each(function() {
+				var a = jQuery(this).attr('data-src') || '';
 //				console.log(a);
 				
 				// kiểm tra URL ảnh có link tuyệt đối chưa
@@ -980,21 +988,21 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 //					console.log(a);
 					
 					// chưa có thì gán thêm vào
-					$(this).attr({
+					jQuery(this).attr({
 						'data-src' : a
 					});
 				}
 			});
 			*/
-//			console.log($('#leech_data_fix_content').html());
+//			console.log(jQuery('#leech_data_fix_content').html());
 			
 			//
-			f.t_dieukien.value = $('#leech_data_fix_content').html();
+			f.t_dieukien.value = jQuery('#leech_data_fix_content').html();
 			
 			//
 			f.t_dieukien.value = f.t_dieukien.value.replace(/\n|\r|\t/g, ' ');
 			f.t_dieukien.value = f.t_dieukien.value.replace(/\sdata-src=/gi, " src=");
-//			$('form[name=\'frm_leech_data\'] textarea[name=\'t_dieukien\']').change();
+//			jQuery('form[name=\'frm_leech_data\'] textarea[name=\'t_dieukien\']').change();
 //			return false;
 			
 			
@@ -1004,7 +1012,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			//
 			/*
 			if ( img_tags != '' ) {
-				var a = $(img_tags).attr('data-old-src') || $(img_tags).attr('data-src') || '';
+				var a = jQuery(img_tags).attr('data-old-src') || jQuery(img_tags).attr('data-src') || '';
 				
 				// full url nếu chưa có
 				a = full_url_for_img_src( a );
@@ -1026,8 +1034,8 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 		});
 	}
 	else {
-		$('.click-submit-url-categories').click();
-//		$('#categories_url').change();
+		jQuery('.click-submit-url-categories').click();
+//		jQuery('#categories_url').change();
 //		alert('Không tìm thấy dữ liệu nguồn');
 	}
 }
@@ -1038,10 +1046,10 @@ function check_lech_data_submit ( _alert ) {
 	var f = document.frm_leech_data;
 	
 	// ID phân nhóm
-	f.t_ant.value = g_func.number_only( $('#oiAnt input[name="t_ant"]').val() || 0 );
+	f.t_ant.value = g_func.number_only( jQuery('#oiAnt input[name="t_ant"]').val() || 0 );
 	
 	// nếu chưa chọn ID nhóm và không có lệnh tự động tìm nhóm
-	if ( f.t_ant.value.toString() == '0' && $.trim( $('#details_category').val() || '' ) == '' ) {
+	if ( f.t_ant.value.toString() == '0' && jQuery.trim( jQuery('#details_category').val() || '' ) == '' ) {
 //		console.log( f.t_ant.value );
 		
 		if ( typeof _alert != 'undefined' && _alert == 'no' ) {
@@ -1049,7 +1057,7 @@ function check_lech_data_submit ( _alert ) {
 		else {
 			alert('Không thấy phân nhóm sản phẩm');
 			
-			window.scroll( 0, $('#oiAnt').offset().top - 90 );
+			window.scroll( 0, jQuery('#oiAnt').offset().top - 90 );
 		}
 		
 		return false;
@@ -1077,18 +1085,18 @@ function ket_thuc_lay_du_lieu ( id, m, lnk ) {
 	if ( typeof id == 'number' && id > 0 ) {
 		console.log(lnk);
 		
-		$('#details_finish_url li:last').append( ' - <a href="' +lnk+ '" target="_blank">' +m+ '</a>' );
+		jQuery('#details_finish_url li:last').append( ' - <a href="' +lnk+ '" target="_blank">' +m+ '</a>' );
 	} else {
-		$('#details_finish_url li:last').append( ' - ' +m );
+		jQuery('#details_finish_url li:last').append( ' - ' +m );
 	}
 	
 	
 	// tiếp tục lấy link tiếp theo
 	setTimeout(function () {
-		if ( gian_cach_submit > 999 && dog('leech_data_auto_next').checked == true ) {
+		if ( gian_cach_submit > 1 && dog('leech_data_auto_next').checked == true ) {
 			func_leech_data_lay_chi_tiet();
 		}
-	}, gian_cach_submit);
+	}, gian_cach_submit * 1000);
 	
 	// reset lại chế độ load toàn trang
 	tu_dong_load_lai_trang_neu_submit_loi = 0;
@@ -1100,8 +1108,8 @@ function ket_thuc_lay_du_lieu ( id, m, lnk ) {
 
 
 
-$('#categories_url').off('change').change(function () {
-	var a = $(this).val() || '';
+jQuery('#categories_url').off('change').change(function () {
+	var a = jQuery(this).val() || '';
 	console.log(a);
 	
 	// nếu là url trang chi tiết -> hiển thị chi tiết luôn
@@ -1121,8 +1129,8 @@ $('#categories_url').off('change').change(function () {
 		}
 		
 		// gán d.sách tìm được
-		$('#details_list_url').html( str );
-		$('#categories_url').val( '' ).focus();
+		jQuery('#details_list_url').html( str );
+		jQuery('#categories_url').val( '' ).focus();
 		
 		return false;
 	}
@@ -1152,7 +1160,7 @@ $('#categories_url').off('change').change(function () {
 				if ( a[i].split('|').length > 2 ) {
 					a[i] = a[i].split('|');
 					
-					a[i][0] = $.trim( a[i][0] );
+					a[i][0] = jQuery.trim( a[i][0] );
 					
 					
 					// Tạo mảng số 3 với tên đầy đủ của nhóm này
@@ -1170,11 +1178,11 @@ $('#categories_url').off('change').change(function () {
 						category_slug = category_slug[ category_slug.length - 1 ];
 					}
 					
-					a[i][4] = '<a href="' + web_link + 'temp/?set_module=leech_data&create_category=' + encodeURIComponent( $.trim( a[i][2] ) ) + '&category_slug=' + encodeURIComponent( $.trim( category_slug ) ) + '&category_parent=' + ( $('#oiAnt input[name="t_ant"]').val() || 0 ) + '&caregory_source=' + encodeURIComponent( a[i][0] ) + '" target="target_eb_iframe">[Tạo nhóm]</a>';
+					a[i][4] = '<a href="' + web_link + 'temp/?set_module=leech_data&create_category=' + encodeURIComponent( jQuery.trim( a[i][2] ) ) + '&category_slug=' + encodeURIComponent( jQuery.trim( category_slug ) ) + '&category_parent=' + ( jQuery('#oiAnt input[name="t_ant"]').val() || 0 ) + '&caregory_source=' + encodeURIComponent( a[i][0] ) + '" target="target_eb_iframe">[Tạo nhóm]</a>';
 					
 					
-					a[i][2] = $.trim( a[i][2] );
-					a[i][1] = $.trim( a[i][1] );
+					a[i][2] = jQuery.trim( a[i][2] );
+					a[i][1] = jQuery.trim( a[i][1] );
 					
 					
 					// gán lại mảng
@@ -1200,23 +1208,23 @@ $('#categories_url').off('change').change(function () {
 //	console.log( str );
 	
 	//
-	$('#categories_list_url').append( str );
-	$('#categories_url').val( '' ).focus();
+	jQuery('#categories_list_url').append( str );
+	jQuery('#categories_url').val( '' ).focus();
 	
 	// nếu có URL lỗi -> tìm và triển luôn
 	if ( str_slug_error != '' ) {
 		str_slug_error = '<li class="redcolor">URL có slug auto nhưng bị lỗi không tìm thấy</li>' + str_slug_error;
-		$('#categories_list_finish').append( str_slug_error );
+		jQuery('#categories_list_finish').append( str_slug_error );
 	}
 	
 	
 	// lấy đoạn text cuối của url để cho vào khung soạn chữ tìm kiếm nhóm
-	var a = $('#oiAnt input[type="text"]').val() || '';
+	var a = jQuery('#oiAnt input[type="text"]').val() || '';
 	if ( a == '' ) {
-		var b = $('#categories_list_url li:first').html() || '';
+		var b = jQuery('#categories_list_url li:first').html() || '';
 		if ( b != '' ) {
 			if ( b.split('|').length > 1 ) {
-				b = $.trim( b.split('|')[1] );
+				b = jQuery.trim( b.split('|')[1] );
 			}
 			else {
 				b = b.split('/');
@@ -1228,7 +1236,7 @@ $('#categories_url').off('change').change(function () {
 				}
 			}
 			
-			$('#oiAnt input[type="text"]').val( b.split('.htm')[0].split('.asp')[0].split('.')[0] );
+			jQuery('#oiAnt input[type="text"]').val( b.split('.htm')[0].split('.asp')[0].split('.')[0] );
 		}
 	}
 	
@@ -1239,8 +1247,8 @@ $('#categories_url').off('change').change(function () {
 	
 	// nạp lại dữ liệu nếu người dùng thay đổi URL
 	for ( var x in arr_cookie_lamviec ) {
-		if ( $( '#' + x ).length > 0 ) {
-			$( '#' + x ).val( arr_for_save_domain_config[EBE_current_first_domain][x] );
+		if ( jQuery( '#' + x ).length > 0 ) {
+			jQuery( '#' + x ).val( arr_for_save_domain_config[EBE_current_first_domain][x] );
 		}
 	}
 	
@@ -1272,7 +1280,7 @@ function EBE_save_cookie_to_data_base () {
 	
 	// sau đó là gán giá trị thật
 	for ( var x in arr_cookie_lamviec ) {
-		arr_for_save_domain_config[EBE_current_first_domain][x] = $( '#' + x ).val() || '';
+		arr_for_save_domain_config[EBE_current_first_domain][x] = jQuery( '#' + x ).val() || '';
 	}
 	console.log( arr_for_save_domain_config );
 	
@@ -1346,14 +1354,14 @@ function after_list_post_for_crawl ( str ) {
 	str = str.split( web_link ).join(source_url);
 	
 	// gán d.sách tìm được
-	$('#details_list_url').html( str );
+	jQuery('#details_list_url').html( str );
 	
 	//
 	if ( dog('leech_data_auto_next').checked == true ) {
-		var check_ant_select = g_func.number_only( $('#oiAnt input[name="t_ant"]').val() || 0 );
+		var check_ant_select = g_func.number_only( jQuery('#oiAnt input[name="t_ant"]').val() || 0 );
 		
-		if ( check_ant_select > 0 || $.trim( $('#details_category').val() || '' ) != '' ) {
-			$('.click-submit-url-details:first').click();
+		if ( check_ant_select > 0 || jQuery.trim( jQuery('#details_category').val() || '' ) != '' ) {
+			jQuery('.click-submit-url-details:first').click();
 		} else {
 			console.log('Select categories for auto leech');
 		}
@@ -1373,9 +1381,9 @@ function WGR_leech_data_after_load_iframe () {
 		var str = '';
 		arr_check_value_exist = {};
 		
-		$('#crawl_eb_iframe').contents().find( current_loading_tags ).each(function() {
-			var a = $(this).attr('href') || $('a', this).attr('href') || '',
-				img = $('img', this).attr('data-src') || $('img', this).attr('src') || $(this).attr('data-img') || '';
+		jQuery('#crawl_eb_iframe').contents().find( current_loading_tags ).each(function() {
+			var a = jQuery(this).attr('href') || jQuery('a', this).attr('href') || '',
+				img = jQuery('img', this).attr('data-src') || jQuery('img', this).attr('src') || jQuery(this).attr('data-img') || '';
 			
 			//
 			str += create_list_post_for_crawl( a, img );
@@ -1385,7 +1393,7 @@ function WGR_leech_data_after_load_iframe () {
 		after_list_post_for_crawl( str );
 		
 		//
-		$('body').css({
+		jQuery('body').css({
 			opacity: 1
 		});
 	}, 1200);
@@ -1402,7 +1410,7 @@ setInterval(function () {
 
 
 
-$('.click-submit-url-details').off('click').click(function () {
+jQuery('.click-submit-url-details').off('click').click(function () {
 	
 	var a = check_lech_data_submit( 'no' );
 	
@@ -1427,8 +1435,8 @@ $('.click-submit-url-details').off('click').click(function () {
 
 
 //
-$('#oi_save_list_category').off('change').change(function () {
-	var a = $(this).val() || '';
+jQuery('#oi_save_list_category').off('change').change(function () {
+	var a = jQuery(this).val() || '';
 	if ( a != '' ) {
 		a = a.split("\n");
 		var str = '';
@@ -1444,7 +1452,7 @@ $('#oi_save_list_category').off('change').change(function () {
 		
 		//
 		if ( str != '' ) {
-			$(this).val( str );
+			jQuery(this).val( str );
 			
 			document.frm_leech_data_save.submit();
 			console.log('Auto save oi_save_list_category');
@@ -1454,34 +1462,34 @@ $('#oi_save_list_category').off('change').change(function () {
 	//
 	EBE_auto_save_domain_cookie();
 }).off('click').click(function () {
-	$(this).height(20);
+	jQuery(this).height(20);
 	
-	var min_height = $(this).attr('data-min-height') || 60,
-		add_height = $(this).attr('data-add-height') || 20;
+	var min_height = jQuery(this).attr('data-min-height') || 60,
+		add_height = jQuery(this).attr('data-add-height') || 20;
 	
-	var new_height = $(this).get(0).scrollHeight || 0;
+	var new_height = jQuery(this).get(0).scrollHeight || 0;
 	new_height -= 0 - add_height;
 	if (new_height < min_height) {
 		new_height = min_height;
 	}
 	
 	//
-	$(this).height(new_height);
+	jQuery(this).height(new_height);
 });
 
 
 
 // sử dụng nội dung lưu trong database
-$('.add-db-list-post-to-process').off('click').click(function () {
-	var a = $('#oi_save_list_category').val() || '';
+jQuery('.add-db-list-post-to-process').off('click').click(function () {
+	var a = jQuery('#oi_save_list_category').val() || '';
 	if ( a != '' ) {
-		$('#categories_url').val(a);
-//		$('#oi_save_list_category').val('');
+		jQuery('#categories_url').val(a);
+//		jQuery('#oi_save_list_category').val('');
 		
 		//
 		setTimeout(function () {
-			$('#categories_url').change();
-//			$('#oi_save_list_category').change();
+			jQuery('#categories_url').change();
+//			jQuery('#oi_save_list_category').change();
 		}, 600);
 	}
 });
@@ -1498,8 +1506,8 @@ function func_get_random_category_for_leech ( i ) {
 	}
 	
 	//
-	var a = $('#oi_save_list_category').val() || '';
-	a = $.trim( a );
+	var a = jQuery('#oi_save_list_category').val() || '';
+	a = jQuery.trim( a );
 //	console.log(a);
 	if ( a != '' ) {
 		a = a.split("\n");
@@ -1507,17 +1515,17 @@ function func_get_random_category_for_leech ( i ) {
 		a = a[Math.floor(Math.random() * a.length)];
 		
 		if ( a != '' && a.substr( 0, 1 ) != '#' ) {
-			if ( a.split('|').length > 1 || $.trim( $().val('#details_category') || '' ) != '' ) {
+			if ( a.split('|').length > 1 || jQuery.trim( jQuery('#details_category').val() || '' ) != '' ) {
 				console.log(a);
-				$('#categories_url').val( a );
+				jQuery('#categories_url').val( a );
 				
 				//
 				setTimeout(function () {
-					$('#categories_url').change();
+					jQuery('#categories_url').change();
 					
 					//
 					setTimeout(function () {
-						$('.click-submit-url-details:first').click();
+						jQuery('.click-submit-url-details:first').click();
 					}, 1200);
 				}, 1200);
 				
@@ -1554,7 +1562,7 @@ setTimeout(function () {
 		
 		dog('leech_data_auto_next').checked = true;
 		
-		$('#star_get_random_category_for_leech').html( '<i class="fa fa-pause"></i> ' + $('#star_get_random_category_for_leech').attr('data-stop') );
+		jQuery('#star_get_random_category_for_leech').html( '<i class="fa fa-pause"></i> ' + jQuery('#star_get_random_category_for_leech').attr('data-stop') );
 		
 		func_get_random_category_for_leech();
 	}
@@ -1564,14 +1572,14 @@ setTimeout(function () {
 			
 			// nạp dữ liệu từ phiên làm việc cũ
 			if ( a != null ) {
-				$('#categories_url').val( a );
+				jQuery('#categories_url').val( a );
 			}
 		})();
 	}
 	
-	$('#star_get_random_category_for_leech').attr({
-//		'data-stop': $('#star_get_random_category_for_leech').attr('data-stop') || '',
-		'data-start': $('#star_get_random_category_for_leech').attr('data-start') || $('#star_get_random_category_for_leech').html() || ''
+	jQuery('#star_get_random_category_for_leech').attr({
+//		'data-stop': jQuery('#star_get_random_category_for_leech').attr('data-stop') || '',
+		'data-start': jQuery('#star_get_random_category_for_leech').attr('data-start') || jQuery('#star_get_random_category_for_leech').html() || ''
 	}).off('click').click(function () {
 		// đang chạy thì dừng lại
 //		if ( dog('auto_get_random_category_for_leech').checked == true ) {
@@ -1581,7 +1589,7 @@ setTimeout(function () {
 			
 			dog('leech_data_auto_next').checked = false;
 			
-			$(this).html( '<i class="fa fa-play"></i> ' + $(this).attr('data-start') );
+			jQuery(this).html( '<i class="fa fa-play"></i> ' + jQuery(this).attr('data-start') );
 		}
 		// chạy tiếp
 		else {
@@ -1592,11 +1600,11 @@ setTimeout(function () {
 			
 			func_get_random_category_for_leech();
 			
-			$(this).html( '<i class="fa fa-pause"></i> ' + $(this).attr('data-stop') );
+			jQuery(this).html( '<i class="fa fa-pause"></i> ' + jQuery(this).attr('data-stop') );
 		}
 		
 		//
-//		$('#auto_get_random_category_for_leech').click();
+//		jQuery('#auto_get_random_category_for_leech').click();
 	});
 }, 2000);
 
@@ -1623,21 +1631,21 @@ setInterval(function () {
 }, 10 * 1000);
 
 
-$('.click-submit-url-categories').off('click').click(function () {
+jQuery('.click-submit-url-categories').off('click').click(function () {
 	
 	//
-	var html_tags = $('#categories_tags').val() || '';
+	var html_tags = jQuery('#categories_tags').val() || '';
 	
 	//
 	if ( html_tags == '' ) {
 		alert('html_tags không được để trống');
-		$('#categories_tags').focus();
+		jQuery('#categories_tags').focus();
 		return false;
 	}
 	current_loading_tags = html_tags;
 	
 	//
-	a = $('#categories_list_url li:first').html() || '',
+	a = jQuery('#categories_list_url li:first').html() || '',
 	a = g_func.trim( a );
 	
 	// nếu có URL -> tiếp tục
@@ -1648,12 +1656,12 @@ $('.click-submit-url-categories').off('click').click(function () {
 		}
 		
 		//
-//		$('#categories_list_finish').append( '<li>' +$('#categories_list_url li:first').html()+ '</li>' );
-		$('#categories_list_finish').append( '<li>' +a+ '</li>' );
-		$('#categories_list_url li:first').remove();
+//		jQuery('#categories_list_finish').append( '<li>' +jQuery('#categories_list_url li:first').html()+ '</li>' );
+		jQuery('#categories_list_finish').append( '<li>' +a+ '</li>' );
+		jQuery('#categories_list_url li:first').remove();
 		
 		//
-		window.scroll( 0, $('#details_list_url').offset().top - 90 );
+		window.scroll( 0, jQuery('#details_list_url').offset().top - 90 );
 		
 		//
 		var uri_for_get_content = 'temp/?set_module=leech_data&categories_url=' + encodeURIComponent( a );
@@ -1668,7 +1676,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 			console.log(uri_for_get_content);
 			
 			//
-			$('body').css({
+			jQuery('body').css({
 				opacity: .5
 			});
 			
@@ -1677,7 +1685,7 @@ $('.click-submit-url-categories').off('click').click(function () {
 			
 			//
 			/*
-			$('#crawl_eb_iframe').on('load', function () {
+			jQuery('#crawl_eb_iframe').on('load', function () {
 				WGR_leech_data_after_load_iframe();
 			});
 			*/
@@ -1693,9 +1701,9 @@ $('.click-submit-url-categories').off('click').click(function () {
 			var str = '';
 			arr_check_value_exist = {};
 			
-			$( html_tags ).each(function() {
-				var a = $(this).attr('href') || $('a', this).attr('href') || '',
-					img = $('img', this).attr('data-src') || $('img', this).attr('src') || $(this).attr('data-img') || '';
+			jQuery( html_tags ).each(function() {
+				var a = jQuery(this).attr('href') || jQuery('a', this).attr('href') || '',
+					img = jQuery('img', this).attr('data-src') || jQuery('img', this).attr('src') || jQuery(this).attr('data-img') || '';
 				
 				//
 				str += create_list_post_for_crawl( a, img );
@@ -1706,15 +1714,15 @@ $('.click-submit-url-categories').off('click').click(function () {
 		});
 	}
 	else {
-		if ( $('#categories_url').val() != '' ) {
-			$('#categories_url').change();
-			$('#categories_url').val('');
-			$('.click-submit-url-categories').click();
+		if ( jQuery('#categories_url').val() != '' ) {
+			jQuery('#categories_url').change();
+			jQuery('#categories_url').val('');
+			jQuery('.click-submit-url-categories').click();
 		}
 		else {
 //			console.log('Không tìm thấy danh sách nhóm cần lấy sản phẩm');
-			$('#show_text_after_done').append('<li>Không tìm thấy danh sách nhóm cần lấy sản phẩm</li>');
-			window.scroll( 0, $('#show_text_after_done').offset().top - 90 );
+			jQuery('#show_text_after_done').append('<li>Không tìm thấy danh sách nhóm cần lấy sản phẩm</li>');
+			window.scroll( 0, jQuery('#show_text_after_done').offset().top - 90 );
 			
 			// nạp lại trang sau khi hoàn thành
 			if ( dog('nap_lai_trang_sau_khi_hoan_thanh').checked == true
@@ -1758,8 +1766,8 @@ var arr_save_checkbox_options = [
 //		console.log(arr[i]);
 		
 		//
-		$( '#' + arr[i] ).off('click').click(function () {
-			var a = $(this).attr('id') || '';
+		jQuery( '#' + arr[i] ).off('click').click(function () {
+			var a = jQuery(this).attr('id') || '';
 			
 			if ( a == '' ) {
 				console.log('ID cookie not found');
@@ -1786,25 +1794,25 @@ var arr_save_checkbox_options = [
 	
 	//
 	var a = 'select_name_post_tai';
-	$('select[name="post_tai"]').change(function () {
+	jQuery('select[name="post_tai"]').change(function () {
 		var a = 'select_name_post_tai';
 //		console.log(a);
-		g_func.setc( a, $(this).val(), 0, 30 );
+		g_func.setc( a, jQuery(this).val(), 0, 30 );
 	});
 	
 	//
 	a = g_func.getc( a );
 //	console.log( a );
 	if ( a != null && typeof a == 'string' ) {
-		$('select[name="post_tai"]').val(a)
-		|| $('select[name="post_tai"]').val(a).change()
-		|| $('select[name="post_tai"] option[value="' +a+ '"]').attr('selected','selected');
+		jQuery('select[name="post_tai"]').val(a)
+		|| jQuery('select[name="post_tai"]').val(a).change()
+		|| jQuery('select[name="post_tai"] option[value="' +a+ '"]').attr('selected','selected');
 	}
 })( arr_save_checkbox_options );
 
 
 /*
-$('#leech_data_auto_next').off('click').click(function () {
+jQuery('#leech_data_auto_next').off('click').click(function () {
 	if ( dog('leech_data_auto_next').checked == true ) {
 		g_func.setc( 'leech_data_auto_next', 1, 0, 30 );
 	} else {
@@ -1843,6 +1851,8 @@ if ( typeof arr_for_save_domain_config == 'object' ) {
 var default_arr_cookie_lamviec = {
 	id_post_begin : '',
 	id_post_end : '',
+	
+	time_for_submit : '',
 	
 	details_noidung : '',
 	details_dieukien : '',
@@ -1898,24 +1908,24 @@ var default_arr_cookie_lamviec = {
 			// nạp dữ liệu từ phiên làm việc cũ
 			if ( a != null ) {
 				// gán lại dữ liệu
-				$( '#' + x ).val( a );
+				jQuery( '#' + x ).val( a );
 				
 				// gia hạn lại cookie
 				leech_data_save_cookie( a_name, a );
 			}
 			else if ( arr_cookie_lamviec[x] != '' ) {
 				// gán lại dữ liệu
-				$( '#' + x ).val( arr_cookie_lamviec[x] );
+				jQuery( '#' + x ).val( arr_cookie_lamviec[x] );
 			}
 			
 			// đặt tên để lưu cookie mỗi khi có sự thay đổi
-			$( '#' + x ).attr({
+			jQuery( '#' + x ).attr({
 				cname : a_name
 			});
 			
 			// lưu cookies mới khi có sự thay đổi
-			$( '#' + x ).off('change').change(function () {
-				leech_data_save_cookie( $(this).attr('cname'), $(this).val() || '' );
+			jQuery( '#' + x ).off('change').change(function () {
+				leech_data_save_cookie( jQuery(this).attr('cname'), jQuery(this).val() || '' );
 				
 				EBE_save_cookie_to_data_base();
 			});
@@ -1930,8 +1940,8 @@ var default_arr_cookie_lamviec = {
 //categories_list_v3();
 
 // chèn thêm phân nhóm của blog/ tin tức
-$('#oiBlogAnt option[data-show="1"], #oiBlogAnt option[value="0"]').remove();
-$('#oiAnt option:last').before( $('#oiBlogAnt select').html() );
+jQuery('#oiBlogAnt option[data-show="1"], #oiBlogAnt option[value="0"]').remove();
+jQuery('#oiAnt option:last').before( jQuery('#oiBlogAnt select').html() );
 
 //
 eb_drop_menu('oiAnt');
@@ -1951,8 +1961,8 @@ setTimeout(function () {
 // TEST
 /*
 if ( window.location.href.split('localhost').length > 1 ) {
-	$('#categories_url').val( 'https://xwatchluxury.vn/dong-ho-nam/' ).change();
-	$('.click-submit-url-categories').click();
+	jQuery('#categories_url').val( 'https://xwatchluxury.vn/dong-ho-nam/' ).change();
+	jQuery('.click-submit-url-categories').click();
 }
 /**/
 

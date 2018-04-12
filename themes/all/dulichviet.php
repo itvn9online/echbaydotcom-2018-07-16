@@ -18,7 +18,7 @@ $eb_all_themes_support["dulichviet"]["top"][] = "echbaytwo-top4.php";
 $eb_all_themes_support["dulichviet"]["top"][] = "top_widget.php";
 //
 $eb_all_themes_support["dulichviet"]["footer"][] = "footer_widget.php";
-$eb_all_themes_support["dulichviet"]["footer"][] = "echbaytwo-footer2.php";
+//$eb_all_themes_support["dulichviet"]["footer"][] = "echbaytwo-footer2.php";
 $eb_all_themes_support["dulichviet"]["footer"][] = "echbaytwo-footer3.php";
 //
 //$eb_all_themes_support["dulichviet"]["home"][] = "dulichviet-home1.php";
