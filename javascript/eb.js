@@ -321,7 +321,7 @@ var g_func = {
 		}
 		// mặc định chỉ lấy số
 		if ( typeof format == 'string' && format != '' ) {
-			console.log(format);
+//			console.log(format);
 			str = str.toString().replace(eval(format), '');
 			
 			if (str == '') {
@@ -347,12 +347,12 @@ var g_func = {
 		return g_func.number_only(str, '/[^0-9\-\+\.]/g');
 	},
 	money_format: function(str) {
-		return g_func.formatCurrency(str);
+		return g_func.formatCurrency(str, ',', 2);
 	},
 	number_format: function(str) {
 		return g_func.formatCurrency(str);
 	},
-	formatCurrency: function(num, dot) {
+	formatCurrency: function(num, dot, num_thap_phan) {
 		if (typeof num == 'undefined' || num == '') {
 			return 0;
 		} else {
@@ -387,7 +387,12 @@ var g_func = {
 					so_thap_phan = str.toString().split('.');
 					if ( so_thap_phan.length > 1 ) {
 						str = so_thap_phan[0];
-						so_thap_phan = '.' + so_thap_phan[1];
+						if ( typeof num_thap_phan == 'number' ) {
+							so_thap_phan = '.' + so_thap_phan[1].toString().substr( 0, num_thap_phan );
+						}
+						else {
+							so_thap_phan = '.' + so_thap_phan[1];
+						}
 					}
 					else {
 						so_thap_phan = '';

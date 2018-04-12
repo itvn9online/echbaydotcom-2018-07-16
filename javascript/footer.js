@@ -561,6 +561,15 @@ ___eb_set_url_for_search_advanced_button();
 			}
 		}
 	});
+	
+	
+	jQuery('.ebe-currency-format').each(function() {
+		var a = $(this).attr('data-num') || '';
+		
+		if ( a != '' ) {
+			$(this).html( g_func.money_format( a ) );
+		}
+	});
 })();
 
 

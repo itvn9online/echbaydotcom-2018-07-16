@@ -38,7 +38,7 @@
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-price cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_thanhtien'); ?></div>
-						<div id="oi_change_tongtien" class="eb-quickcart-right bold redcolor"></div>
+						<div class="eb-quickcart-right redcolor"><span id="oi_change_tongtien" class="ebe-currency bold"></span></div>
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-fullname cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_hoten'); ?></div>

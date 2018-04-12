@@ -43,10 +43,11 @@ $trv_giaban = 0;
 $trv_giamoi = 0;
 $pt = 0;
 if ( $__post->post_type == 'post' ) {
-	$trv_giaban = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_oldprice', 0 ) );
+	$trv_giaban = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_oldprice' ) );
 //	echo $trv_giaban . '<br>';
-	$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price', 0 ) );
+	$trv_giamoi = _eb_float_only( _eb_get_post_object( $pid, '_eb_product_price' ) );
 //	echo $trv_giamoi . '<br>';
+//	echo _eb_get_post_object( $pid, '_eb_product_price' ) . '<br>';
 	
 	$eb_product_price = $trv_giamoi;
 	

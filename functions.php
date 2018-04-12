@@ -155,10 +155,10 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			$post->trv_mua = (int) _eb_get_post_object( $post->ID, '_eb_product_buyer', 0 );
 			
 			//
-			$post->trv_giaban = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_oldprice', 0 ) );
+			$post->trv_giaban = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_oldprice' ) );
 			$post->trv_num_giacu = $post->trv_giaban;
 			
-			$post->trv_giamoi = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_price', 0 ) );
+			$post->trv_giamoi = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_price' ) );
 			$post->trv_num_giamoi = $post->trv_giamoi;
 			
 			//
@@ -314,6 +314,10 @@ function EBE_dynamic_title_tag ( $html, $tag = '' ) {
 }
 
 
+function WGR_money_format ( $n ) {
+	return number_format( $n );
+}
+
 function EBE_add_ebe_currency_class ( $gia, $gia_cu = 0, $default_value = '' ) {
 	
 	//
@@ -322,7 +326,7 @@ function EBE_add_ebe_currency_class ( $gia, $gia_cu = 0, $default_value = '' ) {
 	// giá mới
 	if ( $gia_cu == 0 ) {
 		if ( $gia > 0 ) {
-			$str = '<strong class="global-details-giamoi ebe-currency">' . number_format( $gia ) . '</strong>';
+			$str = '<strong data-num="' . $gia . '" class="global-details-giamoi ebe-currency ebe-currency-format">&nbsp;</strong>';
 		}
 		else {
 			$str = '<strong class="global-details-giamoi global-details-gialienhe">' . EBE_get_lang('post_zero') . '</strong>';
@@ -330,7 +334,7 @@ function EBE_add_ebe_currency_class ( $gia, $gia_cu = 0, $default_value = '' ) {
 	}
 	// giá cũ
 	else if ( $gia > 0 ) {
-		$str = '<span class="global-details-giacu old-price ebe-currency">' . number_format( $gia ) . '</span>';
+		$str = '<span data-num="' . $gia . '" class="global-details-giacu old-price ebe-currency ebe-currency-format">&nbsp;</span>';
 	}
 	
 	// Giá trị mặc định

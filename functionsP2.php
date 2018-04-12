@@ -2331,9 +2331,11 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 			$arr[ $key ] = $default_value;
 			
 			// chuyển về dạng số nếu dữ liệu mặc định cũng là số
+			/*
 			if ( is_numeric( $default_value ) ) {
 				$arr[ $key ] = (int)$arr[ $key ];
 			}
+			*/
 		}
 		$arr[ $meta_key ] = '';
 		

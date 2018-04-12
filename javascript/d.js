@@ -897,7 +897,14 @@ function ___eb_details_cart_quan () {
 	jQuery('#oi_change_soluong select').change(function () {
 		var a = jQuery(this).val() || 0;
 		
-		jQuery('#oi_change_tongtien').html( g_func.money_format( a * product_js.gm ) + 'đ' );
+		/* TEST
+		a = 3;
+		console.log( a );
+		console.log( product_js.gm );
+		console.log( a * product_js.gm );
+		console.log( g_func.money_format( a * product_js.gm ) );
+		*/
+		jQuery('#oi_change_tongtien').html( g_func.money_format( a * product_js.gm ) );
 		
 		_global_js_eb.cart_create_arr_poruduct();
 	});
