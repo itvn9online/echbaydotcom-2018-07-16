@@ -24,7 +24,9 @@ var EBE_current_first_domain = '',
 	before_post_id_for_leech = '',
 	auto_submit_auto_save_config = 0,
 	// vị trí đang lấy dữ liệu tự động -> mặc định là null -> chưa được lấy
-	cache_node_for_au_leech = null;
+	cache_node_for_au_leech = null,
+	// đếm số tin đã lấy, cứ vài tin thì nhảy đến chỗ tin đang lấy 1 lần,
+	go_to_current_process = 0;
 
 
 //
@@ -1146,6 +1148,14 @@ function ket_thuc_lay_du_lieu ( id, m, lnk ) {
 	// reset lại chế độ load toàn trang
 	tu_dong_load_lai_trang_neu_submit_loi = 0;
 	
+	
+	//
+	go_to_current_process++;
+	if ( go_to_current_process > 5 && check_auto_leech_on_off() ) {
+		window.scroll( 0, $('#details_list_url').offset().top - 220 );
+		go_to_current_process = 0;
+	}
+	
 }
 
 
@@ -1672,7 +1682,7 @@ function check_value_of_auto_leech ( a ) {
 					// hiển thị lên trình duyệt để mình còn xem
 //					window.location.hash = cache_node_for_au_leech;
 					window.history.pushState( "", '', window.location.href.split('&get_node=')[0] + '&get_node=' + cache_node_for_au_leech );
-					$('#show_next_page_leech').html( cache_node_for_au_leech );
+					$('#show_next_page_leech').html( cache_node_for_au_leech + '/ ' + $('#oi_save_list_category').val().split("\n").length );
 					
 					// set lại URL luôn
 					// thêm vị trí mới, để tí nữa sẽ tiếp tục từ vị trí này luôn
@@ -1769,13 +1779,6 @@ setTimeout(function () {
 //		jQuery('#auto_get_random_category_for_leech').click();
 	});
 }, 2000);
-
-//
-setInterval(function () {
-	if ( check_auto_leech_on_off() ) {
-		window.scroll( 0, $('#details_list_url').offset().top - 220 );
-	}
-}, 50 * 1000);
 
 
 //
