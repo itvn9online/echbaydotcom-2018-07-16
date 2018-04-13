@@ -1548,9 +1548,25 @@ function func_get_node_for_auto_leech () {
 		return cache_node_for_au_leech;
 	}
 	
+	
+	// v2 -> lấy trong cookie
+	cache_node_for_au_leech = g_func.getc('cache_node_for_au_leech');
+	if ( cache_node_for_au_leech == null ) {
+		cache_node_for_au_leech = 0;
+	}
+	else {
+		cache_node_for_au_leech = g_func.number_only( cache_node_for_au_leech );
+	}
+	console.log( 'cache_node_for_au_leech: ' + cache_node_for_au_leech );
+	
+	return cache_node_for_au_leech;
+	
+	
+	
+	// v1
 	// lấy vị trí hiện tại để xử lý
 	var a = window.location.href.split('&get_node=');
-//	console.log( a );
+	console.log( a );
 	
 	// thử tìm vị trí đang lấy dữ liệu xem có không
 	if ( a.length > 1 ) {
@@ -1595,11 +1611,12 @@ function func_get_random_category_for_leech ( i ) {
 		}
 		
 		// tăng cache lên 1 đơn vị
-		cache_node_for_au_leech++;
+		cache_node_for_au_leech = cache_node_for_au_leech - ( 0 - 1 );
 		
 		// gọi lại hàm kiểm tra và bắt đầu lấy dữ liệu
 		return func_get_random_category_for_leech();
 	}
+//	console.log('TEST'); return false;
 	
 	
 	// lấy ngẫu nhiên
@@ -1632,7 +1649,7 @@ function func_get_random_category_for_leech ( i ) {
 
 // kiểm tra giá trị của phần lấy tin tự động xem có hợp lệ không
 function check_value_of_auto_leech ( a ) {
-	console.log( a );
+//	console.log( a );
 	
 	if ( a != '' && a.substr( 0, 1 ) != '#' ) {
 		// Hợp lệ thì mới tiếp tục
@@ -1648,10 +1665,19 @@ function check_value_of_auto_leech ( a ) {
 				setTimeout(function () {
 					jQuery('.click-submit-url-details:first').click();
 					
+					//
+					cache_node_for_au_leech = cache_node_for_au_leech - ( 0 - 1 );
+					leech_data_save_cookie( 'cache_node_for_au_leech', cache_node_for_au_leech );
+					
+					// hiển thị lên trình duyệt để mình còn xem
+//					window.location.hash = cache_node_for_au_leech;
+					window.history.pushState( "", '', window.location.href.split('&get_node=')[0] + '&get_node=' + cache_node_for_au_leech );
+					
 					// set lại URL luôn
 					// thêm vị trí mới, để tí nữa sẽ tiếp tục từ vị trí này luôn
 //					console.log( 'cache_node_for_au_leech' );
 //					console.log( cache_node_for_au_leech );
+					/*
 					if ( cache_node_for_au_leech != null && cache_node_for_au_leech > 0 ) {
 						var u = window.location.href.split('&get_node=')[0];
 						
@@ -1659,6 +1685,7 @@ function check_value_of_auto_leech ( a ) {
 						
 						window.history.pushState( "", '', u );
 					}
+					*/
 				}, 1200);
 			}, 1200);
 			
