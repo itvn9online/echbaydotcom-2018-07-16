@@ -8,7 +8,9 @@ var EBE_current_first_domain = '',
 	source_url = '',
 	current_url = '',
 	// giãn cách cập nhật tin
-	gian_cach_submit = 5,
+	// giãn cách mặc định là 5 giây mỗi lần lấy tin
+	gian_cach_submit_recommend = 30,
+	gian_cach_submit = gian_cach_submit_recommend,
 	firts_img_in_content = '',
 	cache_name_for_download_img = '',
 	download_img_runing = 0,
@@ -225,6 +227,19 @@ function function_rieng_theo_domain () {
 		}
 	}
 	
+}
+
+
+function add_and_edit_time_get_post () {
+	gian_cach_submit = jQuery('#time_for_submit').val() || '';
+	if ( gian_cach_submit == '' ) {
+		gian_cach_submit = gian_cach_submit_recommend;
+	}
+	console.log( 'Time for next: ' + gian_cach_submit );
+	
+	// thêm thời gian load toàn trang
+	limit_time_for_reload_this_page = limit_time_for_reload_this_page - ( 0 - gian_cach_submit );
+	console.log( 'Time for reload: ' + limit_time_for_reload_this_page );
 }
 
 
@@ -641,7 +656,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			}
 			
 			// kiểm tra ID post trùng nhau
-			if ( f.t_id.value == before_post_id_for_leech ) {
+			if ( before_post_id_for_leech != '' && f.t_id.value == before_post_id_for_leech ) {
 				ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">WARNING (ID too)</span>' );
 				
 				//
@@ -1689,6 +1704,9 @@ setInterval(function () {
 		//
 		EBE_auto_save_domain_cookie();
 		
+		//
+		add_and_edit_time_get_post();
+		
 		// reset lại chế độ
 //		auto_submit_auto_save_config = 0;
 	}
@@ -1999,16 +2017,9 @@ var default_arr_cookie_lamviec = {
 	
 })();
 
-// giãn cách mặc định là 5 giây mỗi lần lấy tin
-gian_cach_submit = jQuery('#time_for_submit').val() || gian_cach_submit;
-if ( gian_cach_submit == '' ) {
-	gian_cach_submit = 5;
-}
-console.log( 'Time for next: ' + gian_cach_submit );
 
-// thêm thời gian load toàn trang
-limit_time_for_reload_this_page = limit_time_for_reload_this_page - ( 0 - gian_cach_submit );
-console.log( 'Time for reload: ' + limit_time_for_reload_this_page );
+//
+add_and_edit_time_get_post();
 
 
 
