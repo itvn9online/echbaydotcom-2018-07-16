@@ -9,7 +9,7 @@ var EBE_current_first_domain = '',
 	current_url = '',
 	// giãn cách cập nhật tin
 	// giãn cách mặc định là 5 giây mỗi lần lấy tin
-	gian_cach_submit_recommend = 30,
+	gian_cach_submit_recommend = 50,
 	gian_cach_submit = gian_cach_submit_recommend,
 	firts_img_in_content = '',
 	cache_name_for_download_img = '',
