@@ -22,7 +22,9 @@ var EBE_current_first_domain = '',
 	current_loading_tags = '',
 	// với trường hợp lấy theo ID, mà bị trùng ID -> bỏ qua luôn
 	before_post_id_for_leech = '',
-	auto_submit_auto_save_config = 0;
+	auto_submit_auto_save_config = 0,
+	// vị trí đang lấy dữ liệu tự động -> mặc định là null -> chưa được lấy
+	cache_node_for_au_leech = null;
 
 
 //
@@ -1539,8 +1541,68 @@ jQuery('.add-db-list-post-to-process').off('click').click(function () {
 });
 
 
+// lấy một mảng đã được chỉ định
+function func_get_node_for_auto_leech () {
+	// nếu cache_node_for_au_leech chưa từng được lấy thì mới kiểm tra, lấy rồi thì thôi
+	if ( cache_node_for_au_leech != null && cache_node_for_au_leech > 0 ) {
+		return cache_node_for_au_leech;
+	}
+	
+	// lấy vị trí hiện tại để xử lý
+	var a = window.location.href.split('&get_node=');
+//	console.log( a );
+	
+	// thử tìm vị trí đang lấy dữ liệu xem có không
+	if ( a.length > 1 ) {
+		// có thì lưu lại để xử lý
+		cache_node_for_au_leech = g_func.number_only( a[1].split('&')[0] );
+		
+		return cache_node_for_au_leech;
+	}
+	
+	// mặc định là không có
+	return 0;
+}
+
 // tự động lấy nhóm bất kỳ rồi tiếp tục
 function func_get_random_category_for_leech ( i ) {
+	
+	//
+	var a = jQuery('#oi_save_list_category').val() || '';
+	a = jQuery.trim( a );
+//	console.log(a);
+	
+	//
+	if ( a == '' ) {
+		console.log('oi_save_list_category is NULL');
+		return false;
+	}
+	a = a.split("\n");
+	
+	// lấy vị trí đã được chỉ định
+	if ( func_get_node_for_auto_leech() > 0 ) {
+		// kiểm tra xem tại vị trí này có dữ liệu không -> vượt quá -> hết vị trí -> trờ về không luôn
+		if ( typeof a[ cache_node_for_au_leech ] == 'undefined' ) {
+			a = a[0];
+		}
+		else {
+			a = a[ cache_node_for_au_leech ];
+		}
+		
+		//
+		if ( check_value_of_auto_leech( a ) == true ) {
+			return true;
+		}
+		
+		// tăng cache lên 1 đơn vị
+		cache_node_for_au_leech++;
+		
+		// gọi lại hàm kiểm tra và bắt đầu lấy dữ liệu
+		return func_get_random_category_for_leech();
+	}
+	
+	
+	// lấy ngẫu nhiên
 	if ( typeof i != 'number' ) {
 		i = 0;
 	}
@@ -1549,36 +1611,62 @@ function func_get_random_category_for_leech ( i ) {
 		return false;
 	}
 	
+	// lấy một vị trí ngẫu nhiên
+	var j = Math.floor(Math.random() * a.length);
+//	console.log( j );
+	
+	// lưu vị trí này lại
+	cache_node_for_au_leech = j;
+	
+	// -> sử dụng vị trí
+	a = a[ j ];
+	
+	// kiểm tra giá trị của vị trí này xem có hợp lệ không
+	if ( check_value_of_auto_leech( a ) == true ) {
+		return true;
+	}
+	
 	//
-	var a = jQuery('#oi_save_list_category').val() || '';
-	a = jQuery.trim( a );
-//	console.log(a);
-	if ( a != '' ) {
-		a = a.split("\n");
-		
-		a = a[Math.floor(Math.random() * a.length)];
-		
-		if ( a != '' && a.substr( 0, 1 ) != '#' ) {
-			if ( a.split('|').length > 1 || jQuery.trim( jQuery('#details_category').val() || '' ) != '' ) {
-				console.log(a);
-				jQuery('#categories_url').val( a );
+	return func_get_random_category_for_leech( i + 1 );
+}
+
+// kiểm tra giá trị của phần lấy tin tự động xem có hợp lệ không
+function check_value_of_auto_leech ( a ) {
+	console.log( a );
+	
+	if ( a != '' && a.substr( 0, 1 ) != '#' ) {
+		// Hợp lệ thì mới tiếp tục
+		if ( a.split('|').length > 1 || jQuery.trim( jQuery('#details_category').val() || '' ) != '' ) {
+			console.log(a);
+			jQuery('#categories_url').val( a );
+			
+			// hẹn giờ gán dữ liệu
+			setTimeout(function () {
+				jQuery('#categories_url').change();
 				
-				//
+				// bắt đầu lấy dữ liệu
 				setTimeout(function () {
-					jQuery('#categories_url').change();
+					jQuery('.click-submit-url-details:first').click();
 					
-					//
-					setTimeout(function () {
-						jQuery('.click-submit-url-details:first').click();
-					}, 1200);
+					// set lại URL luôn
+					// thêm vị trí mới, để tí nữa sẽ tiếp tục từ vị trí này luôn
+//					console.log( 'cache_node_for_au_leech' );
+//					console.log( cache_node_for_au_leech );
+					if ( cache_node_for_au_leech != null && cache_node_for_au_leech > 0 ) {
+						var u = window.location.href.split('&get_node=')[0];
+						
+						u += '&get_node=' + ( cache_node_for_au_leech - ( 0 - 1 ) );
+						
+						window.history.pushState( "", '', u );
+					}
 				}, 1200);
-				
-				return true;
-			}
+			}, 1200);
+			
+			return true;
 		}
 	}
 	
-	return func_get_random_category_for_leech( i + 1 );
+	return false;
 }
 
 function add_parameter_for_auto_leech ( start ) {
@@ -1600,6 +1688,7 @@ function check_auto_leech_on_off () {
 
 //
 setTimeout(function () {
+	// nếu chế độ tự động lấy tin được kích hoạt -> lấy thôi
 //	if ( dog('auto_get_random_category_for_leech').checked == true ) {
 	if ( check_auto_leech_on_off() ) {
 		add_parameter_for_auto_leech(1);
@@ -1610,6 +1699,7 @@ setTimeout(function () {
 		
 		func_get_random_category_for_leech();
 	}
+	// nếu không, chỉ tìm cache và xử lý bình thường
 	else {
 		(function () {
 			var a = g_func.getc( 'ck_old_categories_url' );
