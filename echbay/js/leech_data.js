@@ -1672,6 +1672,7 @@ function check_value_of_auto_leech ( a ) {
 					// hiển thị lên trình duyệt để mình còn xem
 //					window.location.hash = cache_node_for_au_leech;
 					window.history.pushState( "", '', window.location.href.split('&get_node=')[0] + '&get_node=' + cache_node_for_au_leech );
+					$('#show_next_page_leech').html( cache_node_for_au_leech );
 					
 					// set lại URL luôn
 					// thêm vị trí mới, để tí nữa sẽ tiếp tục từ vị trí này luôn
@@ -1769,6 +1770,13 @@ setTimeout(function () {
 	});
 }, 2000);
 
+//
+setInterval(function () {
+	if ( check_auto_leech_on_off() ) {
+		window.scroll( 0, $('#details_list_url').offset().top - 220 );
+	}
+}, 50 * 1000);
+
 
 //
 setInterval(function () {
@@ -1829,6 +1837,8 @@ setInterval(function () {
 	}
 	
 }, 10 * 1000);
+
+	
 
 
 jQuery('.click-submit-url-categories').off('click').click(function () {
