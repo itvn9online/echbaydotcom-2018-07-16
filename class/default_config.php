@@ -78,6 +78,10 @@ $__cf_row_default = array(
 	'cf_js_gadsense' => '',
 	'cf_js_gadsense_full' => '',
 	
+	// mã GA cho trang AMP
+	'cf_gadsense_client_amp' => '',
+	'cf_gadsense_slot_amp' => '',
+	
 	// màu cơ bản
 	'cf_default_css' => '',
 	'cf_default_themes_css' => '',

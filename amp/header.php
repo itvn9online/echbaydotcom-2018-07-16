@@ -15,8 +15,12 @@ if ( strstr( $url_for_amp_favicon, '//' ) == false ) {
 <link rel="canonical" href="<?php echo $url_og_url; ?>" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
 <script src="https://cdn.ampproject.org/v0.js" async></script>
+<?php
+if ( $__cf_row['cf_ga_id'] != '' ) {
+?>
 <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 <?php
+}
 
 //
 if ( isset( $other_amp_cdn['youtube'] ) ) {
@@ -79,6 +83,23 @@ if ( $__cf_row['cf_default_amp_bg'] == '' ) {
 	$__cf_row['cf_default_amp_bg'] = $__cf_row['cf_default_bg'];
 }
 
+
+// tạo mã google adsense cho bản AMP
+$code_adsense_top = '';
+$code_adsense_content = '';
+if ( $__cf_row['cf_gadsense_client_amp'] != '' && $__cf_row['cf_gadsense_slot_amp'] != '' ) {
+	$__cf_row['cf_gadsense_client_amp'] = 'ca-pub-' . $__cf_row['cf_gadsense_client_amp'];
+	
+	//
+    $code_adsense_end = ' type="adsense" data-ad-client="' . $__cf_row['cf_gadsense_client_amp'] . '" data-ad-slot="' . $__cf_row['cf_gadsense_slot_amp'] . '"></amp-ad></div><br>';
+ 
+    $code_adsense_top = '<br><div><amp-ad layout="fixed-height" height="100"' . $code_adsense_end;
+ 
+    $code_adsense_content = '<br><div><amp-ad layout="responsive" width="300" height="250"' . $code_adsense_end;
+?>
+<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+<?php
+}
 
 ?>
 <style amp-custom>

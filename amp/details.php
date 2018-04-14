@@ -48,6 +48,36 @@ $trv_noidung = $eb_amp->amp_remove_attr ( $trv_noidung );
 // thay thế các tag cũ bằng tag mới
 $trv_noidung = $eb_amp->amp_change_tag ( $trv_noidung );
 
+// thêm quảng cáo vào khung nội dung
+if ( $code_adsense_content != '' ) {
+	$trv_noidung = explode( '</p>', $trv_noidung );
+	$str = '';
+	$add_ad_code = 0;
+	foreach ( $trv_noidung as $k => $v ) {
+		$str .= trim( strip_tags( $v ) );
+		
+		// căn số ký tự để add qc vào
+		if ( strlen( $str ) > 500 ) {
+			if ( isset( $trv_noidung[ $k + 1 ] ) ) {
+				// xác nhận đã add qc
+				$add_ad_code = 1;
+				
+				// thêm qc vào trước p
+				$trv_noidung[ $k + 1 ] = $code_adsense_content . $trv_noidung[ $k + 1 ];
+			}
+			break;
+		}
+	}
+	
+	// gộp chuỗi lại
+	$trv_noidung = implode( '</p>', $trv_noidung );
+	
+	// nếu qc chưa được add -> add vào cuối bài
+	if ( $add_ad_code == 0 ) {
+		$trv_noidung .= $code_adsense_content;
+	}
+}
+
 
 
 
@@ -91,10 +121,12 @@ $amp_content = '
 	<h1 class="amp-wp-title"><a href="' . _eb_p_link( $pid ) . '">' . $__post->post_title . '</a></h1>
 	<div>' . date( 'd/m/Y H:i', strtotime( $__post->post_modified ) ) . '</div>
 </header>
+' . $code_adsense_top . '
 <div class="amp-wp-article-content">
 	' . $trv_noidung . '
 </div>
 <br>
+' . $code_adsense_top . '
 <h2>Bài cùng chuyên mục</h2>
 <ul class="amp-related-posts">
 	' . _eb_load_post( 10, $args_other_blog, '<li><a href="{tmp.p_link}">{tmp.trv_tieude}</a></li>' ) . '

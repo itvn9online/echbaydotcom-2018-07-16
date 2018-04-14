@@ -16,8 +16,14 @@ $amp_str_go_to .= ' &raquo; <a href="' . $url_og_url . '">' . $__category->name 
 
 
 
+//
+$amp_content .= $code_adsense_top;
+
+
+
 
 //
+$add_ads = 0;
 if ( have_posts() ) {
 	while ( have_posts() ) {
 		
@@ -73,10 +79,22 @@ if ( have_posts() ) {
 	</div>
 </div>';
 		
+		
+		// ad qc vào vị trí thứ 3
+		if ( $add_ads == 3 ) {
+			$amp_content .= $code_adsense_content;
+		}
+		$add_ads++;
+		
 	}
 	
 	
 	
+	
+	// nếu có hơn 6 bài viết -> add thêm qc vào cuối danh sách
+	if ( $add_ads > 6 ) {
+		$amp_content .= $code_adsense_top;
+	}
 	
 	//
 	if ( $str_page != '' ) {
