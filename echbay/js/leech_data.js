@@ -24,7 +24,7 @@ var EBE_current_first_domain = '',
 	before_post_id_for_leech = '',
 	auto_submit_auto_save_config = 0,
 	// vị trí đang lấy dữ liệu tự động -> mặc định là null -> chưa được lấy
-	cache_node_for_au_leech = null,
+	cache_node_for_auto_leech = null,
 	// đếm số tin đã lấy, cứ vài tin thì nhảy đến chỗ tin đang lấy 1 lần,
 	go_to_current_process = 0;
 
@@ -1556,41 +1556,23 @@ jQuery('.add-db-list-post-to-process').off('click').click(function () {
 
 // lấy một mảng đã được chỉ định
 function func_get_node_for_auto_leech () {
-	// nếu cache_node_for_au_leech chưa từng được lấy thì mới kiểm tra, lấy rồi thì thôi
-	if ( cache_node_for_au_leech != null && cache_node_for_au_leech > 0 ) {
-		return cache_node_for_au_leech;
+	// nếu cache_node_for_auto_leech chưa từng được lấy thì mới kiểm tra, lấy rồi thì thôi
+	if ( cache_node_for_auto_leech != null && cache_node_for_auto_leech > 0 ) {
+		return cache_node_for_auto_leech;
 	}
 	
 	
-	// v2 -> lấy trong cookie
-	cache_node_for_au_leech = g_func.getc('cache_node_for_au_leech');
-	if ( cache_node_for_au_leech == null ) {
-		cache_node_for_au_leech = 0;
+	// lấy trong cookie
+	cache_node_for_auto_leech = g_func.getc('cache_node_for_au_leech');
+	if ( cache_node_for_auto_leech == null ) {
+		return 0;
 	}
 	else {
-		cache_node_for_au_leech = g_func.number_only( cache_node_for_au_leech );
+		cache_node_for_auto_leech = g_func.number_only( cache_node_for_auto_leech );
 	}
-	console.log( 'cache_node_for_au_leech: ' + cache_node_for_au_leech );
+	console.log( 'cache_node_for_au_leech: ' + cache_node_for_auto_leech );
 	
-	return cache_node_for_au_leech;
-	
-	
-	
-	// v1
-	// lấy vị trí hiện tại để xử lý
-	var a = window.location.href.split('&get_node=');
-	console.log( a );
-	
-	// thử tìm vị trí đang lấy dữ liệu xem có không
-	if ( a.length > 1 ) {
-		// có thì lưu lại để xử lý
-		cache_node_for_au_leech = g_func.number_only( a[1].split('&')[0] );
-		
-		return cache_node_for_au_leech;
-	}
-	
-	// mặc định là không có
-	return 0;
+	return cache_node_for_auto_leech;
 }
 
 // tự động lấy nhóm bất kỳ rồi tiếp tục
@@ -1611,11 +1593,11 @@ function func_get_random_category_for_leech ( i ) {
 	// lấy vị trí đã được chỉ định
 	if ( func_get_node_for_auto_leech() > 0 ) {
 		// kiểm tra xem tại vị trí này có dữ liệu không -> vượt quá -> hết vị trí -> trờ về không luôn
-		if ( typeof a[ cache_node_for_au_leech ] == 'undefined' ) {
+		if ( typeof a[ cache_node_for_auto_leech ] == 'undefined' ) {
 			a = a[0];
 		}
 		else {
-			a = a[ cache_node_for_au_leech ];
+			a = a[ cache_node_for_auto_leech ];
 		}
 		
 		//
@@ -1624,7 +1606,7 @@ function func_get_random_category_for_leech ( i ) {
 		}
 		
 		// tăng cache lên 1 đơn vị
-		cache_node_for_au_leech = cache_node_for_au_leech - ( 0 - 1 );
+		cache_node_for_auto_leech = cache_node_for_auto_leech - ( 0 - 1 );
 		
 		// gọi lại hàm kiểm tra và bắt đầu lấy dữ liệu
 		return func_get_random_category_for_leech();
@@ -1646,7 +1628,7 @@ function func_get_random_category_for_leech ( i ) {
 //	console.log( j );
 	
 	// lưu vị trí này lại
-	cache_node_for_au_leech = j;
+	cache_node_for_auto_leech = j;
 	
 	// -> sử dụng vị trí
 	a = a[ j ];
@@ -1678,28 +1660,12 @@ function check_value_of_auto_leech ( a ) {
 				setTimeout(function () {
 					jQuery('.click-submit-url-details:first').click();
 					
-					//
-					cache_node_for_au_leech = cache_node_for_au_leech - ( 0 - 1 );
-					leech_data_save_cookie( 'cache_node_for_au_leech', cache_node_for_au_leech );
+					// tăng cache lên 1 đơn vị rồi lưu lại -> lần nạp trang tới sẽ sử dụng cái này
+					cache_node_for_auto_leech = cache_node_for_auto_leech - ( 0 - 1 );
+					leech_data_save_cookie( 'cache_node_for_au_leech', cache_node_for_auto_leech );
 					
 					// hiển thị lên trình duyệt để mình còn xem
-//					window.location.hash = cache_node_for_au_leech;
-					window.history.pushState( "", '', window.location.href.split('&get_node=')[0] + '&get_node=' + cache_node_for_au_leech );
-					$('#show_next_page_leech').html( cache_node_for_au_leech + '/ ' + $('#oi_save_list_category').val().split("\n").length );
-					
-					// set lại URL luôn
-					// thêm vị trí mới, để tí nữa sẽ tiếp tục từ vị trí này luôn
-//					console.log( 'cache_node_for_au_leech' );
-//					console.log( cache_node_for_au_leech );
-					/*
-					if ( cache_node_for_au_leech != null && cache_node_for_au_leech > 0 ) {
-						var u = window.location.href.split('&get_node=')[0];
-						
-						u += '&get_node=' + ( cache_node_for_au_leech - ( 0 - 1 ) );
-						
-						window.history.pushState( "", '', u );
-					}
-					*/
+					$('#show_next_page_leech').html( cache_node_for_auto_leech + '/ ' + $('#oi_save_list_category').val().split("\n").length );
 				}, 1200);
 			}, 1200);
 			
