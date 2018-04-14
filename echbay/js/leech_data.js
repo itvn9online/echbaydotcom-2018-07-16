@@ -1165,7 +1165,7 @@ function ket_thuc_lay_du_lieu ( id, m, lnk ) {
 
 jQuery('#categories_url').off('change').change(function () {
 	var a = jQuery(this).val() || '';
-	console.log(a);
+//	console.log(a);
 	
 	// nếu là url trang chi tiết -> hiển thị chi tiết luôn
 	if ( dog('this_id_url_product_detail').checked == true ) {
@@ -1252,7 +1252,7 @@ jQuery('#categories_url').off('change').change(function () {
 	
 	//
 	if ( typeof a[0] != 'undefined' && a[0] != '' ) {
-		console.log( a[0] );
+//		console.log( a[0] );
 		g_func.setc( 'ck_old_categories_url', a[0], 0, 30 );
 		
 		//
@@ -1380,12 +1380,12 @@ function EBE_auto_save_domain_cookie () {
 function create_list_post_for_crawl ( a, img ) {
 	// full url nếu chưa có
 	a = full_url_for_img_src(a);
-	console.log( a );
+//	console.log( a );
 	
 	if ( img != '' ) {
 		img = full_url_for_img_src(img);
 	}
-	console.log( img );
+//	console.log( img );
 	
 	//
 	if ( typeof arr_check_value_exist[a] == 'undefined' ) {
@@ -1394,7 +1394,10 @@ function create_list_post_for_crawl ( a, img ) {
 		return '<li><a href="' +a+ '" data-img="' + img + '" target="_blank" rel="nofollow">' +a+ '</a></li>';
 	}
 	
-	console.log('URL exist: ' + a);
+	//
+//	console.log('URL exist: ' + a);
+	$('#remove_list_url').append( '<li>' + a + '</li>' );
+	
 	return '';
 }
 
@@ -1664,7 +1667,7 @@ function check_value_of_auto_leech ( a ) {
 	if ( a != '' && a.substr( 0, 1 ) != '#' ) {
 		// Hợp lệ thì mới tiếp tục
 		if ( a.split('|').length > 1 || jQuery.trim( jQuery('#details_category').val() || '' ) != '' ) {
-			console.log(a);
+//			console.log(a);
 			jQuery('#categories_url').val( a );
 			
 			// hẹn giờ gán dữ liệu
