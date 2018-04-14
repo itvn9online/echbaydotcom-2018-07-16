@@ -1724,7 +1724,71 @@ function click_convert_table_tags_of_content () {
 
 
 // xóa thẻ TABLE trong nội dung bài viết
-function click_remove_table_tags_of_content () {
+function click_remove_custom_tags_of_content () {
+	
+	//
+	if ( $('#click_remove_custom_tags').length == 0 ) {
+		console.log('click_remove_custom_tags not found');
+		return false;
+	}
+	
+	//
+	$('#click_remove_custom_tags').click(function () {
+		
+		// hủy check ngay và luôn
+		dog('click_remove_custom_tags').checked = false;
+		
+		//
+		var content_id = $(this).attr('data-editer') || 'content_ifr';
+		
+		// tên đầy đủ của text editter
+//		content_id += 'wysiwyg';
+		
+		//
+		if ( dog( content_id ) == null ) {
+			alert('Text editer #' +content_id+ ' not found');
+			return false;
+		}
+		
+		// ID cho jQuery
+		content_id = '#' + content_id;
+		
+		//
+		var remove_tag = prompt('Enter tag for remove', '');
+		if ( remove_tag == null || remove_tag == '' ) {
+			return false;
+		}
+		
+		//
+		if ( confirm('Confirm remove all ' + remove_tag + ' tags in this content!') == false ) {
+			return false;
+		}
+		console.log('Remove tags:');
+		console.log(remove_tag);
+		
+		//
+		$( content_id ).contents().find( remove_tag ).each(function() {
+			$(this).before( $(this).html() ).remove();
+		});
+		
+	});
+	
+}
+
+// xóa thẻ TABLE trong nội dung bài viết
+function click_remove_table_tags_of_content ( arr_for_remove ) {
+	//
+	if ( typeof arr_for_remove != 'object' || arr_for_remove.length == 0 ) {
+		arr_for_remove = [
+			'table',
+			'thead',
+			'tbody',
+			'tfoot',
+			'tr',
+			'th',
+			'td'
+		];
+	}
 	
 	//
 	if ( $('#click_remove_table_tags').length == 0 ) {
@@ -1769,15 +1833,7 @@ function click_remove_table_tags_of_content () {
 			max_for++;
 			
 			//
-			var arr = [
-				'table',
-				'thead',
-				'tbody',
-				'tfoot',
-				'tr',
-				'th',
-				'td'
-			];
+			var arr = arr_for_remove;
 			console.log('Remove tags:');
 			console.log(arr);
 			

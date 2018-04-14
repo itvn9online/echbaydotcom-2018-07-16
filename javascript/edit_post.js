@@ -370,6 +370,10 @@ function WGR_run_for_admin_edit_post () {
 			<input type="checkbox" id="click_remove_table_tags" />\
 			<label for="click_remove_table_tags">Loại bỏ toàn bộ các thẻ TABLE để nội dung có thể chạy trên nhiều thiết bị khác như mobile, table... (<em>điều này có thể làm vỡ khối nên không khuyên dùng</em>)</label>\
 		</div>\
+		<div class="ebe-fixed-content-style graycolor small">\
+			<input type="checkbox" id="click_remove_custom_tags" />\
+			<label for="click_remove_custom_tags">Loại bỏ toàn bộ các thẻ bất kỳ trong nội dung, phòng trường hợp thẻ nào đó gây lỗi HTML hoặc AMP.</label>\
+		</div>\
 		<div class="ebe-fixed-content-style">\
 			<input type="checkbox" id="click_fixed_a_tags_redirect" />\
 			<label for="click_fixed_a_tags_redirect">Xử lý các URL thuộc dạng redirect về non-redirect (thường áp dụng cho web chết, bị lưu trữ trên web.archive.org).</label>\
