@@ -1152,7 +1152,7 @@ function ket_thuc_lay_du_lieu ( id, m, lnk ) {
 	//
 	go_to_current_process++;
 	if ( go_to_current_process > 5 && check_auto_leech_on_off() ) {
-		window.scroll( 0, $('#details_list_url').offset().top - 220 );
+		window.scroll( 0, jQuery('#details_list_url').offset().top - 220 );
 		go_to_current_process = 0;
 	}
 	
@@ -1396,7 +1396,7 @@ function create_list_post_for_crawl ( a, img ) {
 	
 	//
 //	console.log('URL exist: ' + a);
-	$('#remove_list_url').append( '<li>' + a + '</li>' );
+	jQuery('#remove_list_url').append( '<li>' + a + '</li>' );
 	
 	return '';
 }
@@ -1665,7 +1665,7 @@ function check_value_of_auto_leech ( a ) {
 					leech_data_save_cookie( 'cache_node_for_au_leech', cache_node_for_auto_leech );
 					
 					// hiển thị lên trình duyệt để mình còn xem
-					$('#show_next_page_leech').html( cache_node_for_auto_leech + '/ ' + $('#oi_save_list_category').val().split("\n").length );
+					jQuery('#show_next_page_leech').html( cache_node_for_auto_leech + '/ ' + jQuery('#oi_save_list_category').val().split("\n").length );
 				}, 1200);
 			}, 1200);
 			
@@ -2088,7 +2088,7 @@ var default_arr_cookie_lamviec = {
 //			console.log( a );
 			
 			// nạp dữ liệu từ phiên làm việc cũ
-			if ( a != null ) {
+			if ( a != null && a != '' ) {
 				// gán lại dữ liệu
 				jQuery( '#' + x ).val( a );
 				
