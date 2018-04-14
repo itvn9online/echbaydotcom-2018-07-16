@@ -97,7 +97,7 @@ if ( $__cf_row['cf_gadsense_client_amp'] != '' && $__cf_row['cf_gadsense_slot_am
  
     $code_adsense_content = '<br><div><amp-ad layout="responsive" width="300" height="250"' . $code_adsense_end;
 ?>
-<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 <?php
 }
 
