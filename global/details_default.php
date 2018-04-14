@@ -55,6 +55,9 @@ if ( $__post->post_type == 'post' ) {
 		$pt = 100 - _eb_float_only ($trv_giamoi * 100 / $trv_giaban, 1);
 //		echo $pt;
 	}
+	else {
+		$trv_giaban = 0;
+	}
 }
 $trv_luotxem = 0;
 $trv_luotthich = 0;

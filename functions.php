@@ -159,7 +159,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			
 			$post->trv_giamoi = _eb_float_only( _eb_get_post_object( $post->ID, '_eb_product_price' ) );
 			
-			if ( $post->trv_giaban == $post->trv_giamoi ) {
+			if ( $post->trv_giaban <= $post->trv_giamoi ) {
 				$post->trv_giaban = 0;
 			}
 			
