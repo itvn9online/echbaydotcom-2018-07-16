@@ -1776,19 +1776,7 @@ function click_remove_custom_tags_of_content () {
 }
 
 // xóa thẻ TABLE trong nội dung bài viết
-function click_remove_table_tags_of_content ( arr_for_remove ) {
-	//
-	if ( typeof arr_for_remove != 'object' || arr_for_remove.length == 0 ) {
-		arr_for_remove = [
-			'table',
-			'thead',
-			'tbody',
-			'tfoot',
-			'tr',
-			'th',
-			'td'
-		];
-	}
+function click_remove_table_tags_of_content () {
 	
 	//
 	if ( $('#click_remove_table_tags').length == 0 ) {
@@ -1833,7 +1821,15 @@ function click_remove_table_tags_of_content ( arr_for_remove ) {
 			max_for++;
 			
 			//
-			var arr = arr_for_remove;
+			var arr = [
+				'table',
+				'thead',
+				'tbody',
+				'tfoot',
+				'tr',
+				'th',
+				'td'
+			];
 			console.log('Remove tags:');
 			console.log(arr);
 			

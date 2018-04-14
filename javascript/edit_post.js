@@ -395,6 +395,7 @@ function WGR_run_for_admin_edit_post () {
 		
 		// xóa thẻ table khỏi nội dung -> làm cho nội dung chuẩn hơn trên mobile
 		click_remove_table_tags_of_content();
+		click_remove_custom_tags_of_content();
 		
 		// xóa URL dạng redirect
 		click_fixed_a_tags_redirect_of_content();
