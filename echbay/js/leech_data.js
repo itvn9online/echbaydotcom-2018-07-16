@@ -58,7 +58,8 @@ function num_leech_data_post_id ( i ) {
 }
 
 function get_leech_data_post_id ( str, vitri ) {
-	console.log(str);
+	//
+//	console.log(str);
 	
 	var b = jQuery('#id_post_begin').val() || '',
 		e = jQuery('#id_post_end').val() || '',
@@ -1388,9 +1389,16 @@ function create_list_post_for_crawl ( a, img ) {
 	}
 //	console.log( img );
 	
+	// mặc định là check theo URL
+	var check_id = a;
+	// nếu có check theo ID -> check theo ID cho chuẩn luôn
+	if ( dog('bai_viet_nay_duoc_lay_theo_id').checked == true ) {
+		check_id = get_leech_data_post_id ( a );
+	}
+	
 	//
-	if ( typeof arr_check_value_exist[a] == 'undefined' ) {
-		arr_check_value_exist[a] = 1;
+	if ( typeof arr_check_value_exist[check_id] == 'undefined' ) {
+		arr_check_value_exist[check_id] = 1;
 		
 		return '<li><a href="' +a+ '" data-img="' + img + '" target="_blank" rel="nofollow">' +a+ '</a></li>';
 	}
