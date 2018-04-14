@@ -62,11 +62,12 @@ if ( $__cf_row['cf_gadsense_client_amp'] != '' && $__cf_row['cf_gadsense_slot_am
 	$__cf_row['cf_gadsense_client_amp'] = 'ca-pub-' . $__cf_row['cf_gadsense_client_amp'];
 	
 	//
-    $code_adsense_end = ' type="adsense" data-ad-client="' . $__cf_row['cf_gadsense_client_amp'] . '" data-ad-slot="' . $__cf_row['cf_gadsense_slot_amp'] . '"></amp-ad></div><br>';
- 
-    $code_adsense_top = '<br><div><amp-ad layout="fixed-height" height="100"' . $code_adsense_end;
- 
-    $code_adsense_content = '<br><div><amp-ad layout="responsive" width="300" height="250"' . $code_adsense_end;
+	$code_adsense_end = ' type="adsense" data-ad-client="' . $__cf_row['cf_gadsense_client_amp'] . '" data-ad-slot="' . $__cf_row['cf_gadsense_slot_amp'] . '"></amp-ad></div><br>';
+	
+	$code_adsense_top = '<br><div><amp-ad layout="fixed-height" height="100"' . $code_adsense_end;
+	
+//	$code_adsense_content = '<br><div><amp-ad layout="responsive" width="300" height="250"' . $code_adsense_end;
+	$code_adsense_content = '<br><div><amp-ad layout="fixed-height" height="300"' . $code_adsense_end;
 	
 	$code_adsense_script = '<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>';
 	
