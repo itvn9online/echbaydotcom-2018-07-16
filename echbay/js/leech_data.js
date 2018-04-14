@@ -24,7 +24,7 @@ var EBE_current_first_domain = '',
 	before_post_id_for_leech = '',
 	auto_submit_auto_save_config = 0,
 	// vị trí đang lấy dữ liệu tự động -> mặc định là null -> chưa được lấy
-	cache_node_for_auto_leech = null,
+	cache_node_for_auto_leech = g_func.getc('cache_node_for_au_leech'),
 	// đếm số tin đã lấy, cứ vài tin thì nhảy đến chỗ tin đang lấy 1 lần,
 	go_to_current_process = 0;
 
@@ -239,11 +239,12 @@ function add_and_edit_time_get_post () {
 	if ( gian_cach_submit == '' ) {
 		gian_cach_submit = gian_cach_submit_recommend;
 	}
-	console.log( 'Time for next: ' + gian_cach_submit );
 	
 	// thêm thời gian load toàn trang
 	limit_time_for_reload_this_page = limit_time_for_reload_this_page - ( 0 - gian_cach_submit );
-	console.log( 'Time for reload: ' + limit_time_for_reload_this_page );
+	
+	//
+	console.log( 'Time for next: ' + gian_cach_submit + '; Time for reload: ' + limit_time_for_reload_this_page );
 }
 
 
@@ -1563,13 +1564,10 @@ function func_get_node_for_auto_leech () {
 	
 	
 	// lấy trong cookie
-	cache_node_for_auto_leech = g_func.getc('cache_node_for_au_leech');
 	if ( cache_node_for_auto_leech == null ) {
 		return 0;
 	}
-	else {
-		cache_node_for_auto_leech = g_func.number_only( cache_node_for_auto_leech );
-	}
+	cache_node_for_auto_leech = g_func.number_only( cache_node_for_auto_leech );
 	console.log( 'cache_node_for_au_leech: ' + cache_node_for_auto_leech );
 	
 	return cache_node_for_auto_leech;
@@ -1594,11 +1592,9 @@ function func_get_random_category_for_leech ( i ) {
 	if ( func_get_node_for_auto_leech() > 0 ) {
 		// kiểm tra xem tại vị trí này có dữ liệu không -> vượt quá -> hết vị trí -> trờ về không luôn
 		if ( typeof a[ cache_node_for_auto_leech ] == 'undefined' ) {
-			a = a[0];
+			cache_node_for_auto_leech = 0;
 		}
-		else {
-			a = a[ cache_node_for_auto_leech ];
-		}
+		a = a[ cache_node_for_auto_leech ];
 		
 		//
 		if ( check_value_of_auto_leech( a ) == true ) {
@@ -1660,12 +1656,12 @@ function check_value_of_auto_leech ( a ) {
 				setTimeout(function () {
 					jQuery('.click-submit-url-details:first').click();
 					
+					// hiển thị lên trình duyệt để mình còn xem
+					jQuery('#show_next_page_leech').html( cache_node_for_auto_leech + '/ ' + ( jQuery('#oi_save_list_category').val().split("\n").length - 1 ) );
+					
 					// tăng cache lên 1 đơn vị rồi lưu lại -> lần nạp trang tới sẽ sử dụng cái này
 					cache_node_for_auto_leech = cache_node_for_auto_leech - ( 0 - 1 );
 					leech_data_save_cookie( 'cache_node_for_au_leech', cache_node_for_auto_leech );
-					
-					// hiển thị lên trình duyệt để mình còn xem
-					jQuery('#show_next_page_leech').html( cache_node_for_auto_leech + '/ ' + jQuery('#oi_save_list_category').val().split("\n").length );
 				}, 1200);
 			}, 1200);
 			
