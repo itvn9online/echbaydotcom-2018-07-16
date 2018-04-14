@@ -1760,9 +1760,11 @@ function click_remove_custom_tags_of_content () {
 		}
 		
 		//
+		/*
 		if ( confirm('Confirm remove all ' + remove_tag + ' tags in this content!') == false ) {
 			return false;
 		}
+		*/
 		console.log('Remove tags:');
 		console.log(remove_tag);
 		
