@@ -27,9 +27,9 @@ $eb_all_themes_support[$eb_all_themes_name]["top"][] = "breadcrumb2-top1.php";
 //
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "footer_widget.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "phuhuyetkhang-footer1.php";
-$eb_all_themes_support[$eb_all_themes_name]["footer"][] = "echbaytwo-footer3.php";
+//$eb_all_themes_support[$eb_all_themes_name]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support[$eb_all_themes_name]["home"][] = "phuhuyetkhang-home1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["home"][] = "phuhuyetkhang-home1.php";
 $eb_all_themes_support[$eb_all_themes_name]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support[$eb_all_themes_name]["threaddetails"][] = "phuhuyetkhang-threaddetails.html";
