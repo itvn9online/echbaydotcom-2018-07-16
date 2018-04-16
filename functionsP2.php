@@ -1771,7 +1771,7 @@ function _eb_tieu_de_chuan_seo( $str ) {
 	global $__cf_row;
 	
 	// nếu sử dụng module SEO của EchBay
-	if ( $__cf_row['cf_on_off_echbay_seo'] == 1 || is_404() ) {
+	if ( cf_on_off_echbay_seo == 1 || is_404() ) {
 		$str = trim( $str );
 		
 		// hoặc tự bổ sung nếu có dữ liệu đầu vào

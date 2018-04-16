@@ -23,22 +23,24 @@ $eb_wp_post_type = $__post->post_type;
 
 
 // SEO
-$__cf_row ['cf_title'] = _eb_get_post_object( $pid, '_eb_product_title' );
-if ( $__cf_row ['cf_title'] == '' ) $__cf_row ['cf_title'] = $__post->post_title;
-
-$__cf_row ['cf_keywords'] = _eb_get_post_object( $pid, '_eb_product_keywords' );
-if ( $__cf_row ['cf_keywords'] == '' ) $__cf_row ['cf_keywords'] = $__post->post_title;
-
-$__cf_row ['cf_description'] = _eb_get_post_object( $pid, '_eb_product_description' );
-if ( $__cf_row ['cf_description'] == '' ) {
-	if ( $__post->post_excerpt != '' ) {
-		$__cf_row ['cf_description'] = _eb_del_line( strip_tags( $__post->post_excerpt ), ' ' );
-	} else {
-		$__cf_row ['cf_description'] = $__post->post_title;
+if ( cf_on_off_echbay_seo == 1 ) {
+	$__cf_row ['cf_title'] = _eb_get_post_object( $pid, '_eb_product_title' );
+	if ( $__cf_row ['cf_title'] == '' ) $__cf_row ['cf_title'] = $__post->post_title;
+	
+	$__cf_row ['cf_keywords'] = _eb_get_post_object( $pid, '_eb_product_keywords' );
+	if ( $__cf_row ['cf_keywords'] == '' ) $__cf_row ['cf_keywords'] = $__post->post_title;
+	
+	$__cf_row ['cf_description'] = _eb_get_post_object( $pid, '_eb_product_description' );
+	if ( $__cf_row ['cf_description'] == '' ) {
+		if ( $__post->post_excerpt != '' ) {
+			$__cf_row ['cf_description'] = _eb_del_line( strip_tags( $__post->post_excerpt ), ' ' );
+		} else {
+			$__cf_row ['cf_description'] = $__post->post_title;
+		}
 	}
+//	$__cf_row['cf_description'] = htmlentities( $__cf_row['cf_description'], ENT_QUOTES, "UTF-8" );
+	$__cf_row['cf_description'] = str_replace( '"', '&quot;', $__cf_row['cf_description'] );
 }
-//$__cf_row['cf_description'] = htmlentities( $__cf_row['cf_description'], ENT_QUOTES, "UTF-8" );
-$__cf_row['cf_description'] = str_replace( '"', '&quot;', $__cf_row['cf_description'] );
 
 
 // meta cho thẻ amp -> hiện chỉ hỗ trợ trang chi tiết dạng đơn giản

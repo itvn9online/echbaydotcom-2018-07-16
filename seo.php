@@ -23,7 +23,7 @@ echo $global_dymanic_meta;
 
 
 // trường hợp khách hàng không sử dụng plugin SEO khác thì mới dùng plugin SEO của EchBay
-if ( $__cf_row['cf_on_off_echbay_seo'] == 1 ) {
+if ( cf_on_off_echbay_seo == 1 ) {
 
 
 //

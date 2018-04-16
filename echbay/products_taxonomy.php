@@ -168,6 +168,47 @@ function WGR_get_and_oders_taxonomy_category (
 		$_eb_category_noindex = _eb_get_cat_object( $v->term_id, '_eb_category_noindex', 0 );
 		$_eb_category_hidden = _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 );
 		
+		// tính điểm SEO nếu đang dùng công cụ SEO của EchBay
+		$seo_color = '';
+//		echo cf_on_off_echbay_seo;
+		if ( cf_on_off_echbay_seo == 1 ) {
+			$seo_score = 0;
+			
+			// check title
+			$a = strlen( _eb_get_cat_object( $v->term_id, '_eb_category_title', $v->name ) );
+			if ( $a > 10 && $a < 70 ) {
+				$seo_score++;
+			}
+			
+			// check description
+			$a = strlen( strip_tags( _eb_get_cat_object( $v->term_id, '_eb_category_description', $v->description ) ) );
+			if ( $a > 160 && $a < 300 ) {
+				$seo_score++;
+			}
+			
+			// check content
+			$a = strlen( strip_tags( _eb_get_cat_object( $v->term_id, '_eb_category_content', '' ) ) );
+			if ( $a > 500 ) {
+				$seo_score++;
+			}
+			
+			// mặc định thì báo đỏ
+			$seo_color = 'redcolor';
+			//
+			if ( $seo_score > 2 ) {
+				$seo_color = 'greencolor';
+			}
+			//
+			else if ( $seo_score > 1 ) {
+				$seo_color = 'bluecolor';
+			}
+			//
+			else if ( $seo_score > 0 ) {
+				$seo_color = 'orgcolor';
+			}
+			$seo_color = '<i class="fa fa-dot-circle fa-icons cur ' . $seo_color . '"></i>';
+		}
+		
 		//
 		$c_link = _eb_c_link( $v->term_id );
 		
@@ -191,9 +232,11 @@ function WGR_get_and_oders_taxonomy_category (
 					<div><i title="Hidden or show" data-val="' . $_eb_category_hidden . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_hidden=' . $_eb_category_hidden . '" class="fa fa-unlock fa-icons cur click-order-thread"></i></div>
 					
 					<div><i title="Change parent category" data-name="' . str_replace( '"', '&quot;', $v->name ) . '" data-val="' . $v->parent . '" data-ajax="' . $strLinkAjaxl . '&t=change_parent&current_parent=' . $v->parent . '" class="fa fa-group fa-icons cur click-change-parent-category"></i></div>
+					
+					<div>' . $seo_color . '</div>
 				</div>
 			</div>
-			<div class="lf"> &nbsp; &nbsp; <a href="' . admin_link . 'term.php?taxonomy=' . $v->taxonomy . '&tag_ID=' . $v->term_id . '&post_type=' . ( $v->taxonomy == EB_BLOG_POST_LINK ? EB_BLOG_POST_TYPE : 'post' ) . '" target="_blank">' . $v->name . ' (' . $v->count . ') <i class="fa fa-edit"></i></a> - <a href="' . $c_link . '" target="_blank" class="small blackcolor">' . $c_link . ' <i class="fa fa-eye"></i></a></div>
+			<div class="lf"> &nbsp; &nbsp; <a href="' . admin_link . 'term.php?taxonomy=' . $v->taxonomy . '&tag_ID=' . $v->term_id . '&post_type=' . ( $v->taxonomy == EB_BLOG_POST_LINK ? EB_BLOG_POST_TYPE : 'post' ) . '" target="_blank">' . $v->name . ' (' . $v->count . ') <i class="fa fa-edit"></i></a> - <a href="' . $c_link . '" target="_blank" class="small blackcolor">' . str_replace( web_link, '', $c_link ) . ' <i class="fa fa-eye"></i></a></div>
 		</div>' . $str_child;
 	}
 	
@@ -207,7 +250,33 @@ echo '<div class="list-edit-taxonomy">' . WGR_get_and_oders_taxonomy_category( $
 
 
 
+
+
+?>
+<br>
+<br>
+<div><i class="fa fa-dot-circle fa-icons cur orgcolor"></i> Là thang điểm SEO của Danh mục! <strong class="redcolor">Màu đỏ</strong>: 0 điểm, <strong class="orgcolor">màu cam</strong>: 1 điểm, <strong class="bluecolor">màu xanh lục</strong>: 2 điểm, <strong class="greencolor">màu xanh lá</strong>: 3 điểm.<br>
+	<blockquote> Điều kiện chấm điểm (dựa theo SEO Quake):
+		<ol>
+			<li>TITLE dài từ 10-70 ký tự.</li>
+			<li>DESCRIPTION dài từ 160-300 ký tự.</li>
+			<li>Nội dung từ 500 ký tự trở lên.</li>
+		</ol>
+	</blockquote>
+</div>
+<?php
+
+
 echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_taxonomy.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_taxonomy.js' ) . '"></script>' . "\n";
+
+
+
+
+
+
+
+
+
 
 
 
