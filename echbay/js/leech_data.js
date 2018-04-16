@@ -1393,7 +1393,7 @@ function create_list_post_for_crawl ( a, img ) {
 	var check_id = a;
 	// nếu có check theo ID -> check theo ID cho chuẩn luôn
 	if ( dog('bai_viet_nay_duoc_lay_theo_id').checked == true ) {
-		check_id = get_leech_data_post_id ( a );
+		check_id = '_' + get_leech_data_post_id ( a );
 	}
 	
 	//
