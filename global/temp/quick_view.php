@@ -120,11 +120,14 @@ if ( top == self ) {
 		$arr_includes_footer_file = array();
 		
 		//
+		include EB_THEME_PLUGIN_INDEX . 'quick_cart.php';
+		
+		//
 //		include EB_THEME_PLUGIN_INDEX . 'footer.php';
 		include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
-	}
+	} // end if
 	
-}
+} // end while
 
 
 
