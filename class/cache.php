@@ -623,7 +623,11 @@ if ( $__cf_row['cf_set_mask_for_details'] == 1 ) {
 
 // chỉnh lại CSS cho phần thread-home-c2
 if ( $__cf_row['cf_home_sub_cat_tag'] != '' ) {
-	$__cf_row['cf_default_css'] .= '.thread-home-c2 ' . $__cf_row['cf_home_sub_cat_tag'] . ':first-child{background-color:' . $__cf_row['cf_default_bg'] . '}.thread-home-c2 a:first-child {background:none !important}';
+	//
+//	$__cf_row['cf_default_css'] .= '.thread-home-c2 a{color:' . $__cf_row['cf_default_color'] . '}.thread-home-c2 ' . $__cf_row['cf_home_sub_cat_tag'] . ':first-child{background-color:' . $__cf_row['cf_default_bg'] . '}.thread-home-c2 a:first-child {background:none !important}';
+	
+	//
+	$__cf_row['cf_default_css'] = str_replace( '.thread-home-c2 a:first-child', '.thread-home-c2 ' . $__cf_row['cf_home_sub_cat_tag'] . ':first-child', $__cf_row['cf_default_css'] );
 }
 
 

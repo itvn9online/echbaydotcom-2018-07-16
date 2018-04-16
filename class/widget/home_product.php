@@ -133,6 +133,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 				
 				// lấy danh sách nhóm con
 				$str_sub_cat = WGR_get_home_node_sub_cat( $cat_ids, $__cf_row['cf_home_sub_cat_tag'] );
+//				$str_sub_cat = WGR_get_home_node_sub_cat( $cat_ids, $dynamic_tag );
 				
 				
 				
@@ -204,6 +205,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			//
 			'tmp.num_post_line' => $num_line
 		), $__cf_row['cf_home_sub_cat_tag'], $html_template );
+//		), $dynamic_tag, $html_template );
 		
 		/*
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(

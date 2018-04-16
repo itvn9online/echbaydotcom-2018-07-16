@@ -24,6 +24,14 @@
 	color: #333;
 	font-size: 14px;
 }
+.thread-home-c2 div:first-child,
+.thread-home-c2 li:first-child,
+.thread-home-c2 p:first-child,
+.thread-home-c2 h2:first-child,
+.thread-home-c2 h3:first-child,
+.thread-home-c2 h4:first-child,
+.thread-home-c2 h5:first-child,
+.thread-home-c2 h6:first-child,
 .thread-home-c2 a:first-child {
 	margin: 0;
 	border: 0 none;
@@ -37,4 +45,43 @@
 	height: 34px;
 }
 /* .thread-home-c2 a:last-child { } */
+.thread-home-c2 div,
+.thread-home-c2 li,
+.thread-home-c2 p,
+.thread-home-c2 h2,
+.thread-home-c2 h3,
+.thread-home-c2 h4,
+.thread-home-c2 h5,
+.thread-home-c2 h6 { display: inline-block; }
+.thread-home-c2 div a:first-child,
+.thread-home-c2 li a:first-child,
+.thread-home-c2 p a:first-child,
+.thread-home-c2 h2 a:first-child,
+.thread-home-c2 h3 a:first-child,
+.thread-home-c2 h4 a:first-child,
+.thread-home-c2 h5 a:first-child,
+.thread-home-c2 h6 a:first-child {
+	color: #333;
+	font-weight: normal;
+	background: none;
+	font-size: 14px;
+	border-right: 1px #ccc solid;
+	line-height: 20px;
+	height: 20px;
+	margin: 6px 0;
+}
+.thread-home-c2 div:first-child a:first-child,
+.thread-home-c2 li:first-child a:first-child,
+.thread-home-c2 p:first-child a:first-child,
+.thread-home-c2 h2:first-child a:first-child,
+.thread-home-c2 h3:first-child a:first-child,
+.thread-home-c2 h4:first-child a:first-child,
+.thread-home-c2 h5:first-child a:first-child,
+.thread-home-c2 h6:first-child a:first-child {
+	padding: 0;
+	margin: 0;
+	border: 0 none;
+	color: #fff;
+	font-size: 16px;
+}
 .home-count-cat { display: none; }

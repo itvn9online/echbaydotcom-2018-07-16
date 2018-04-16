@@ -294,7 +294,7 @@ $__cf_row_default = array(
 	'cf_threaddetails_include_file' => '',
 	
 	// thẻ bao ngoài cho phần thẻ A của thread-home-c2
-	'cf_home_sub_cat_tag' => '',
+	'cf_home_sub_cat_tag' => 'h2',
 	
 	
 	// Chiều rộng chung của toàn website -> nếu chiều rộng này được set, cả website sẽ sử dụng nó
