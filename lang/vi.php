@@ -142,7 +142,7 @@ $___eb_lang[eb_key_for_site_lang . 'cart_kichco'] = 'Kích cỡ';
 $___eb_lang[eb_key_for_site_lang . 'cart_soluong'] = $___eb_lang[eb_key_for_site_lang . 'post_soluong'];
 $___eb_lang[eb_key_for_site_lang . 'cart_thanhtien'] = 'Thành tiền';
 $___eb_lang[eb_key_for_site_lang . 'cart_hoten'] = 'Họ và tên';
-$___eb_lang[eb_key_for_site_lang . 'cart_diachi2'] = 'Địa chỉ nhận hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_diachi2'] = 'Địa chỉ nhận hàng. Vui lòng nhập chính xác! trong trường hợp vận chuyển.';
 $___eb_lang[eb_key_for_site_lang . 'cart_ghichu'] = 'Ghi chú';
 $___eb_lang[eb_key_for_site_lang . 'cart_vidu'] = 'Ví dụ: Giao hàng trong giờ hành chính, gọi điện trước khi giao...';
 $___eb_lang[eb_key_for_site_lang . 'cart_gui'] = '<i class="fa fa-shopping-cart"></i> Gửi đơn hàng';

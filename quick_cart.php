@@ -1,5 +1,4 @@
 <!-- quick cart -->
-
 <div id="click_show_cpa">
 	<div class="cart-quick">
 		<div class="cart-quick-close">
@@ -43,25 +42,25 @@
 					<div class="eb-quickcart-node eb-quickcart-fullname cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_hoten'); ?></div>
 						<div class="eb-quickcart-right">
-							<input type="text" name="t_ten" value="" placeholder="<?php echo EBE_get_lang('cart_hoten'); ?>" />
+							<input type="text" name="t_ten" value="" placeholder="<?php echo EBE_get_lang('cart_hoten'); ?>"<?php if ( $__cf_row['cf_required_name_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?> />
 						</div>
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-tel cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_dienthoai'); ?> <span class="redcolor">*</span></div>
 						<div class="eb-quickcart-right">
-							<input type="text" name="t_dienthoai" value="" placeholder="<?php echo EBE_get_lang('cart_pla_dienthoai'); ?>" />
+							<input type="text" name="t_dienthoai" value="" placeholder="<?php echo EBE_get_lang('cart_pla_dienthoai'); ?>" aria-required="true" required />
 						</div>
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-email cf">
 						<div class="eb-quickcart-left">Email</div>
 						<div class="eb-quickcart-right">
-							<input type="text" name="t_email" value="" placeholder="Email" />
+							<input type="email" name="t_email" value="" placeholder="Email"<?php if ( $__cf_row['cf_required_email_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?> />
 						</div>
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-address cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_diachi'); ?></div>
 						<div class="eb-quickcart-right">
-							<textarea name="t_diachi" placeholder="<?php echo EBE_get_lang('cart_diachi2'); ?>"></textarea>
+							<textarea name="t_diachi" placeholder="<?php echo EBE_get_lang('cart_diachi2'); ?>"<?php if ( $__cf_row['cf_required_address_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?>></textarea>
 						</div>
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-note cf">

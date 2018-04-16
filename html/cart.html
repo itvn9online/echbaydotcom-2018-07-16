@@ -35,31 +35,31 @@
 									<li class="cf">
 										<div class="lf f25">Họ và tên</div>
 										<div class="lf f75">
-											<input type="text" name="t_ten" id="t_ten" value="" />
+											<input type="text" name="t_ten" id="t_ten" value="" placeholder="{tmp.cart_hoten}"{tmp.cf_required_name_cart} />
 										</div>
 									</li>
 									<li class="cf">
 										<div class="lf f25">Điện thoại <span class="redcolor">*</span></div>
 										<div class="lf f75">
-											<input type="text" name="t_dienthoai" id="t_dienthoai" value="" aria-required="true" required />
+											<input type="text" name="t_dienthoai" id="t_dienthoai" value="" placeholder="{tmp.cart_pla_dienthoai}" aria-required="true" required />
 										</div>
 									</li>
 									<li class="cf eb-global-cart-email">
 										<div class="lf f25">Email</div>
 										<div class="lf f75">
-											<input type="text" name="t_email" id="t_email" value="" />
+											<input type="email" name="t_email" id="t_email" value="" placeholder="Email"{tmp.cf_required_email_cart} />
 										</div>
 									</li>
 									<li class="cf">
 										<div class="lf f25">Địa chỉ</div>
 										<div class="lf f75">
-											<input type="text" name="t_diachi" id="t_diachi" value="" placeholder="Địa chỉ nhận hàng." />
+											<input type="text" name="t_diachi" id="t_diachi" value="" placeholder="{tmp.cart_diachi2}"{tmp.cf_required_address_cart} />
 										</div>
 									</li>
 									<li class="cf eb-global-cart-ghichu">
 										<div class="lf f25">Ghi chú</div>
 										<div class="lf f75">
-											<textarea name="t_ghichu" id="t_ghichu"></textarea>
+											<textarea name="t_ghichu" id="t_ghichu" placeholder="{tmp.cart_vidu}"></textarea>
 										</div>
 									</li>
 									{tmp.chinhsach}

@@ -242,6 +242,11 @@ $__cf_row_default = array(
 	'cf_details_show_quick_cart' => 1,
 	'cf_details_right_thumbnail' => 'off',
 	
+	// các chức năng bắt buộc ở giỏ hàng
+	'cf_required_name_cart' => 'off',
+	'cf_required_email_cart' => 'off',
+	'cf_required_address_cart' => 'off',
+	
 	// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
 	'cf_details_excerpt' => 1,
 	

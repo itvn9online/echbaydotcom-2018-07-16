@@ -188,6 +188,16 @@ $main_content = EBE_html_template( $custom_lang_html, array(
 	
 	'tmp.cart_list' => $cart_list,
 	'tmp.cart_total' => EBE_add_ebe_currency_class ( $cart_total ),
-	'tmp.chinhsach' => $chinhsach,
+	
+	'tmp.cart_hoten' => EBE_get_lang('cart_hoten'),
+	'tmp.cart_pla_dienthoai' => EBE_get_lang('cart_pla_dienthoai'),
+	'tmp.cart_diachi2' => EBE_get_lang('cart_diachi2'),
+	'tmp.cart_vidu' => EBE_get_lang('cart_vidu'),
+	
+	'tmp.cf_required_name_cart' => ( $__cf_row['cf_required_name_cart'] == 1 ) ? ' aria-required="true" required' : '',
+	'tmp.cf_required_email_cart' => ( $__cf_row['cf_required_email_cart'] == 1 ) ? ' aria-required="true" required' : '',
+	'tmp.cf_required_address_cart' => ( $__cf_row['cf_required_address_cart'] == 1 ) ? ' aria-required="true" required' : '',
+	
+	'tmp.chinhsach' => $chinhsach
 ) );
 
