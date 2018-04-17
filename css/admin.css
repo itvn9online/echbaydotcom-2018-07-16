@@ -878,23 +878,11 @@ input[id="_eb_category_order"] { width: 90px; }
 	background: #fff;
 	box-shadow: 0 0 20px #ccc;
 	width: 50%;
-	max-width: 650px;
+	max-width: 750px;
 	padding: 20px;
 	display: none;
+	overflow-y: auto;
 }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
-#oi_eb_products { }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

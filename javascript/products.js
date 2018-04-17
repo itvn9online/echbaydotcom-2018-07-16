@@ -63,7 +63,8 @@ function WGR_click_open_quick_edit_seo () {
 		$('#rAdminME').css({
 			opacity: 0.2
 		});
-		$('#oi_eb_products').fadeIn();
+		$('#oi_eb_products').show();
+		$('body').addClass('ebdesign-no-scroll');
 		
 		//
 		ajaxl( 'products_seo&id=' + a + '&type=' + js_for_tax_or_post, 'oi_eb_products', 1, function () {

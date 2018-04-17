@@ -84,7 +84,7 @@ var waiting_for_ajax_running = false,
 	strLinkPager = '<?php echo $strLinkPager; ?>',
 	by_post_type = '<?php echo $by_post_type; ?>',
 	by_taxonomy = '<?php echo $by_taxonomy; ?>',
-	js_for_tax_or_post = '<?php echo isset( $_GET['by_taxonomy'] ) ? 'tax' : 'post'; ?>';
+	js_for_tax_or_post = '<?php echo isset( $_GET['by_taxonomy'] ) ? $by_taxonomy : $by_post_type; ?>';
 
 </script> 
 <br>
