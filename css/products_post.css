@@ -20,6 +20,8 @@
 .quick-show2-if-post,
 .quick-show-if-post { display: none !important; }
 /* một số nút chỉ hiển thị với post type cụ thể */
+.class-for-post .fa-dot-circle,
+.class-for-blog .fa-dot-circle,
 .class-for-post .quick-show-if-post,
 .class-for-blog .fa-comments,
 .class-for-blog .fa-link,

@@ -257,3 +257,9 @@ function WGR_check_quick_edit_price () {
 
 
 
+// Chỉnh sửa SEO nhanh
+WGR_click_open_quick_edit_seo();
+
+
+
+

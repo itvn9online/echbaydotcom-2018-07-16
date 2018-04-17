@@ -32,3 +32,50 @@ function WGR_admin_quick_edit_select_menu () {
 
 
 
+
+//
+function WGR_click_open_quick_edit_seo () {
+	
+	//
+	if ( dog('oi_eb_products') == null ) {
+		$('#rAdminME').after('<div id="oi_eb_products" class="hide-if-press-esc"></div>');
+	}
+	
+	//
+	$('.click-open-quick-edit-seo').off('click').click(function () {
+		
+		// không cho bấm liên tiếp
+		if ( waiting_for_ajax_running == true ) {
+			console.log('waiting_for_ajax_running');
+			return false;
+		}
+		waiting_for_ajax_running = true;
+		
+		//
+		var a = $(this).attr('data-id') || '';
+		
+		if ( a == '' ) {
+			return false;
+		}
+//		console.log(a);
+		
+		//
+		$('#rAdminME').css({
+			opacity: 0.2
+		});
+		$('#oi_eb_products').fadeIn();
+		
+		//
+		ajaxl( 'products_seo&id=' + a + '&type=' + js_for_tax_or_post, 'oi_eb_products', 1, function () {
+			$('#rAdminME').css({
+				opacity: 1
+			});
+			
+			waiting_for_ajax_running = false;
+		});
+	});
+	
+}
+
+
+

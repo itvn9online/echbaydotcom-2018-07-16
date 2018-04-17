@@ -349,9 +349,70 @@ if ( $totalThread > 0 ) {
 			}
 		}
 		
+		
+		// tính điểm SEO nếu đang dùng công cụ SEO của EchBay
+		$seo_color = '';
+		
 		// các tính năng chỉ có ở post hoặc blog
 		if ( $o->post_type == 'post' || $o->post_type == 'blog' ) {
 			$set_noindex = _eb_get_post_object( $o->ID, '_eb_product_noindex', 0 );
+			
+//			echo cf_on_off_echbay_seo;
+			if ( cf_on_off_echbay_seo == 1 ) {
+				$seo_score = 0;
+				$seo_class_score = '';
+				
+				//
+//				echo _eb_get_post_object( $o->ID, '_eb_product_title', $o->post_title ) . '<br>';
+				
+				// check title
+				$a = strlen( _eb_get_post_object( $o->ID, '_eb_product_title', $o->post_title ) );
+				if ( $a > 10 && $a < 70 ) {
+					$seo_score++;
+					$seo_class_score .= '1';
+				}
+				else {
+					$seo_class_score .= '0';
+				}
+				
+				// check description
+				$a = strlen( strip_tags( _eb_get_post_object( $o->ID, '_eb_product_description', $o->post_excerpt ) ) );
+				if ( $a > 160 && $a < 300 ) {
+					$seo_score++;
+					$seo_class_score .= '1';
+				}
+				else {
+					$seo_class_score .= '0';
+				}
+				
+				// check content
+				$a = strlen( strip_tags( $o->post_content ) );
+				if ( $a > 500 ) {
+					$seo_score++;
+					$seo_class_score .= '1';
+				}
+				else {
+					$seo_class_score .= '0';
+				}
+				
+				// mặc định thì báo đỏ
+				$seo_color = 'redcolor';
+				//
+				if ( $seo_score > 2 ) {
+					$seo_color = 'greencolor';
+				}
+				//
+				else if ( $seo_score > 1 ) {
+					$seo_color = 'bluecolor';
+				}
+				//
+				else if ( $seo_score > 0 ) {
+					$seo_color = 'orgcolor';
+				}
+				$seo_color = '<i data-id="' . $o->ID . '" class="fa fa-dot-circle fa-icons cur click-open-quick-edit-seo _' . $seo_class_score . ' ' . $seo_color . '"></i>';
+				
+//				echo $seo_color . '<br>';
+			}
 		}
 		
 		//
@@ -385,6 +446,8 @@ if ( $totalThread > 0 ) {
 			<i title="Set noindex" data-val="' . $set_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=set_noindex&set_noindex=' . $set_noindex . '" class="fa fa-paw fa-icons cur click-order-thread"></i>
 			
 			<i title="Hàng chính hãng" data-val="' . $chinh_hang . '" data-ajax="' . $strLinkAjaxl . '&t=chinh_hang&chinh_hang=' . $chinh_hang . '" class="fa fa-diamond fa-icons cur click-order-thread"></i>
+			
+			' . $seo_color . '
 		</div>
 	</td>
 	<td class="text-center">' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_date ) ) . '<br>' . date( $__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime( $o->post_modified ) ) . '</td>
@@ -401,23 +464,6 @@ if ( $totalThread > 0 ) {
 
 
 echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_post.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_post.js' ) . '"></script>' . "\n";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

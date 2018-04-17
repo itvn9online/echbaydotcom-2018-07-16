@@ -398,7 +398,7 @@ foreach ( $arr_cf_product_thumbnail_mobile_size as $k => $v ) {
 //
 foreach ( $__cf_row as $k => $v ) {
 	if ( trim( $v != '' ) && ! is_numeric($v) ) {
-		$__cf_row[$k] = htmlentities( $__cf_row[$k], ENT_QUOTES, "UTF-8" );
+		$__cf_row[$k] = esc_html( $__cf_row[$k] );
 	}
 }
 //print_r($__cf_row);

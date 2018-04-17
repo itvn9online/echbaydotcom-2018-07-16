@@ -2201,10 +2201,16 @@ function _eb_get_cat_object ( $id, $key, $default_value = '' ) {
 	}
 	else {
 		$arr = $arr_object_term_meta[$check_id];
+		
+		//
+		if ( ! isset ( $arr[ $key ] ) || $arr[ $key ] == '' ) {
+			$arr[ $key ] = $default_value;
+		}
 	}
 	
 	// xong thì trả về dữ liệu
-	return isset( $arr[ $key ] ) ? $arr[ $key ] : $default_value;
+//	return isset( $arr[ $key ] ) ? $arr[ $key ] : $default_value;
+	return $arr[ $key ];
 	
 	
 	
@@ -2349,6 +2355,11 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 	else {
 //		echo $key . ' --------1<br>' . "\n";
 		$arr = $arr_object_post_meta[$check_id];
+		
+		//
+		if ( ! isset ( $arr[ $key ] ) || $arr[ $key ] == '' ) {
+			$arr[ $key ] = $default_value;
+		}
 	}
 //	echo '=====================<br>' . "\n";
 	
@@ -2366,7 +2377,10 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 		return '';
 	}
 	*/
-	return isset( $arr[ $key ] ) ? $arr[ $key ] : $default_value;
+//	if ( isset( $arr[ $key ] ) && $arr[ $key ] != '' ) {
+		return $arr[ $key ];
+//	}
+//	return $default_value;
 }
 
 function _eb_get_post_meta ( $id, $key, $sing = true, $default_value = '' ) {

@@ -105,6 +105,12 @@ function WGR_check_quick_edit_parent () {
 
 
 
+// Chỉnh sửa SEO nhanh
+WGR_click_open_quick_edit_seo();
+
+
+
+
 /*
 * Thêm nhiều nhóm 1 lúc
 */
@@ -124,7 +130,7 @@ function WGR_after_create_taxonomy ( m ) {
 	$('#create_taxonomy_result').append( m + '<br>' );
 }
 
-$('.click-show-quick-add-taxonomy').click(function () {
+$('.click-show-quick-add-taxonomy').off('click').click(function () {
 	$('.show-quick-add-taxonomy').toggle('slow');
 	$('#t_multi_taxonomy').focus();
 });

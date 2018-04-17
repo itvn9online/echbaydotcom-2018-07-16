@@ -173,23 +173,36 @@ function WGR_get_and_oders_taxonomy_category (
 //		echo cf_on_off_echbay_seo;
 		if ( cf_on_off_echbay_seo == 1 ) {
 			$seo_score = 0;
+			$seo_class_score = '';
 			
 			// check title
 			$a = strlen( _eb_get_cat_object( $v->term_id, '_eb_category_title', $v->name ) );
 			if ( $a > 10 && $a < 70 ) {
 				$seo_score++;
+				$seo_class_score .= '1';
+			}
+			else {
+				$seo_class_score .= '0';
 			}
 			
 			// check description
 			$a = strlen( strip_tags( _eb_get_cat_object( $v->term_id, '_eb_category_description', $v->description ) ) );
 			if ( $a > 160 && $a < 300 ) {
 				$seo_score++;
+				$seo_class_score .= '1';
+			}
+			else {
+				$seo_class_score .= '0';
 			}
 			
 			// check content
 			$a = strlen( strip_tags( _eb_get_cat_object( $v->term_id, '_eb_category_content', '' ) ) );
 			if ( $a > 500 ) {
 				$seo_score++;
+				$seo_class_score .= '1';
+			}
+			else {
+				$seo_class_score .= '0';
 			}
 			
 			// mặc định thì báo đỏ
@@ -206,7 +219,7 @@ function WGR_get_and_oders_taxonomy_category (
 			else if ( $seo_score > 0 ) {
 				$seo_color = 'orgcolor';
 			}
-			$seo_color = '<i class="fa fa-dot-circle fa-icons cur ' . $seo_color . '"></i>';
+			$seo_color = '<i data-id="' . $v->term_id . '" class="fa fa-dot-circle fa-icons cur click-open-quick-edit-seo _' . $seo_class_score . ' ' . $seo_color . '"></i>';
 		}
 		
 		//
