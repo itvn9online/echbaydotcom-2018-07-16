@@ -354,15 +354,15 @@ if ( $__post->post_type == 'post' ) {
 		$trv_rating_count = rand ( 1, 5 );
 		
 		// dùng update_post_meta thay cho add_post_meta
-		update_post_meta( $pid, '_eb_product_rating_value', $trv_rating_value );
-		update_post_meta( $pid, '_eb_product_rating_count', $trv_rating_count );
+		WGR_update_meta_post( $pid, '_eb_product_rating_value', $trv_rating_value );
+		WGR_update_meta_post( $pid, '_eb_product_rating_count', $trv_rating_count );
 		
 		//
 		/*
 		$arr_object_post_meta['_eb_product_rating_value'] = $trv_rating_value;
 		$arr_object_post_meta['_eb_product_rating_count'] = $trv_rating_count;
 		
-		update_post_meta( $pid, eb_post_obj_data, $arr_object_post_meta );
+		WGR_update_meta_post( $pid, eb_post_obj_data, $arr_object_post_meta );
 		*/
 	}
 	

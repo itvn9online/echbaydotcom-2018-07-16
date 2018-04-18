@@ -58,7 +58,7 @@ if ( $term_id > 0 && $type != '' ) {
 //		echo $term_id . '<br>' . "\n";
 		
 		//
-//		update_post_meta( $term_id, '_eb_category_order', $new_stt );
+//		WGR_update_meta_post( $term_id, '_eb_category_order', $new_stt );
 		update_term_meta( $term_id, '_eb_category_order', $new_stt );
 		
 		echo '<br>set category order: ' . $new_stt;
@@ -71,7 +71,7 @@ if ( $term_id > 0 && $type != '' ) {
 		}
 		
 		//
-//		update_post_meta( $term_id, '_eb_category_primary', $new_value );
+//		WGR_update_meta_post( $term_id, '_eb_category_primary', $new_value );
 		update_term_meta( $term_id, '_eb_category_primary', $new_value );
 		
 		echo '<br>set category primary: ' . $new_value;

@@ -13,7 +13,7 @@ if ( $str_history == '' || strstr( $str_history, '[' . $pid . ']' ) == false ) {
 	$trv_luotxem += rand( 8, 12 );
 	
 	// cập nhật lượt view mới
-	update_post_meta( $pid, '_eb_product_views', $trv_luotxem );
+	WGR_update_meta_post( $pid, '_eb_product_views', $trv_luotxem );
 }
 
 

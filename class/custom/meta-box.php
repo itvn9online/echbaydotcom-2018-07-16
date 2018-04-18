@@ -470,11 +470,9 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 			$val = trim( WGR_stripslashes( $val ) );
 			
 			//
+			WGR_update_meta_post( $post_id, $k, $val );
 			if ( $val == '' ) {
 				delete_post_meta( $post_id, $k );
-			}
-			else {
-				update_post_meta( $post_id, $k, $val );
 			}
 			
 			//
@@ -486,14 +484,14 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 		// thử kiểm tra với checkbox
 		else if ( $loc_html == 'checkbox' ) {
 			// không có -> set là 0 luôn
-//			update_post_meta( $post_id, $k, 0 );
+//			WGR_update_meta_post( $post_id, $k, 0 );
 			delete_post_meta( $post_id, $k );
 		}
 		
 	}
 	
 	//
-//	update_post_meta( $post_id, eb_post_obj_data, $arr_save );
+//	WGR_update_meta_post( $post_id, eb_post_obj_data, $arr_save );
 	
 //	print_r( $arr_save ); exit();
 	
@@ -757,7 +755,7 @@ function EBsave_extra_category_fileds( $term_id ) {
 				delete_post_meta( $term_id, $k );
 			}
 			else {
-//				update_post_meta( $term_id, $k, $val );
+//				WGR_update_meta_post( $term_id, $k, $val );
 				update_term_meta( $term_id, $k, $val );
 				
 				// tạm thời sẽ xóa cả trong post meta phần này ======================================
@@ -775,7 +773,7 @@ function EBsave_extra_category_fileds( $term_id ) {
 			delete_term_meta( $term_id, $k );
 			
 			// không có -> set là 0 luôn
-//			update_post_meta( $term_id, $k, 0 );
+//			WGR_update_meta_post( $term_id, $k, 0 );
 			// tạm thời sẽ xóa cả trong post meta phần này ======================================
 			delete_post_meta( $term_id, $k );
 		}
@@ -784,7 +782,7 @@ function EBsave_extra_category_fileds( $term_id ) {
 //	exit();
 	
 	//
-//	update_post_meta( $term_id, eb_cat_obj_data, $arr_save );
+//	WGR_update_meta_post( $term_id, eb_cat_obj_data, $arr_save );
 	
 //	print_r( $arr_save ); exit();
 	

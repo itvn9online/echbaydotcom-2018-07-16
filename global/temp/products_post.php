@@ -116,7 +116,7 @@ if ( $post_id > 0 && $type != '' ) {
 		}
 		
 		//
-		update_post_meta( $post_id, '_eb_product_noindex', $new_status );
+		WGR_update_meta_post( $post_id, '_eb_product_noindex', $new_status );
 		
 		echo '<br>set index status: ' . $new_status;
 	}
@@ -134,7 +134,7 @@ if ( $post_id > 0 && $type != '' ) {
 		}
 		
 		//
-		update_post_meta( $post_id, '_eb_product_chinhhang', $new_status );
+		WGR_update_meta_post( $post_id, '_eb_product_chinhhang', $new_status );
 		
 		echo '<br>Dat S.Pham chinh hang: ' . $new_status;
 	}
@@ -173,18 +173,14 @@ if ( $post_id > 0 && $type != '' ) {
 		$new_price = trim( $_GET['new_price'] );
 		
 		//
-		if ( $old_price > 0 ) {
-			update_post_meta( $post_id, '_eb_product_oldprice', $old_price );
-		}
-		else {
+		WGR_update_meta_post( $post_id, '_eb_product_oldprice', $old_price );
+		if ( $old_price <= 0 ) {
 			delete_post_meta( $post_id, '_eb_product_oldprice' );
 		}
 		
 		//
-		if ( $new_price > 0 ) {
-			update_post_meta( $post_id, '_eb_product_price', $new_price );
-		}
-		else {
+		WGR_update_meta_post( $post_id, '_eb_product_price', $new_price );
+		if ( $new_price <= 0 ) {
 			delete_post_meta( $post_id, '_eb_product_price' );
 		}
 		

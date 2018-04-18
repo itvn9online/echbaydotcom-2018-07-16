@@ -372,7 +372,7 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 		
 		
 		// xóa postmeta trước
-		$wpdb->query( "DELETE FROM
+		_eb_q( "DELETE FROM
 			`" . wp_postmeta . "`
 		WHERE
 			post_id IN ( select
@@ -380,11 +380,11 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 						from
 							`" . $wpdb->posts . "`
 						where
-							post_type = '" . $post_type . "' " . $strFilter . " )" );
+							post_type = '" . $post_type . "' " . $strFilter . " )", 0 );
 		
 		// tiếp theo là term_relationships
 	//	echo $wpdb->term_relationships . '<br>' . "\n"; exit();
-		$wpdb->query( "DELETE FROM
+		_eb_q( "DELETE FROM
 			`" . $wpdb->term_relationships . "`
 		WHERE
 			object_id IN ( select
@@ -392,17 +392,76 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 						from
 							`" . $wpdb->posts . "`
 						where
-							post_type = '" . $post_type . "' " . $strFilter . " )" );
+							post_type = '" . $post_type . "' " . $strFilter . " )", 0 );
 		
 		// sau đó xóa posts
-		$wpdb->query( "DELETE FROM
+		_eb_q( "DELETE FROM
 			`" . $wpdb->posts . "`
 		WHERE
-			post_type = '" . $post_type . "' " . $strFilter . " " );
+			post_type = '" . $post_type . "' " . $strFilter . " ", 0 );
 	}
 	
 	return true;
 }
 
+
+
+// lệnh sử dụng dữ liệu chung với bảng post thay vì meta post của wp, phù hợp với các trang sử dụng wordpress để làm trang rao vặt
+function WGR_update_meta_post ( $id, $k, $v ) {
+	
+	// sử dụng phương thức mặc định của wp
+	if ( cf_set_raovat_version != 1 || strstr( $k, '_eb_' ) == false ) {
+		return update_post_meta( $id, $k, $v );
+	}
+	
+	
+	// xử dụng phương thức riêng để lấy dữ liệu
+	global $arr_posts_structure;
+	
+	// lấy cấu trúc của bảng post (nếu chưa có) -> bắt buộc phải có ít nhất một dữ liệu trong post
+	if ( $arr_posts_structure == NULL || ! array_key_exists( $k, $arr_posts_structure ) ) {
+		$sql = _eb_q("SELECT *
+		FROM
+			`" . wp_posts . "`
+		LIMIT 0, 1");
+		if ( empty( $sql ) ) {
+			return false;
+		}
+		
+		//
+		$sql = (array) $sql[0];
+//		print_r( $sql );
+//		echo $k . '<br>' . "\n";
+//		echo $sql[ $k ] . '<br>' . "\n";
+		
+		// nếu vẫn chưa có -> thêm cột luôn
+		if ( ! array_key_exists( $k, $sql ) ) {
+			$strsql = 'ALTER TABLE `' . wp_posts . '` ADD `' . $k . '` LONGTEXT NOT NULL AFTER `ID`';
+//			echo $strsql . '<br>' . "\n";
+			
+			// chạy lệnh thêm cột
+			_eb_q( $strsql, 0 );
+			
+			// gán giá trị cho bảng, để lần tới sẽ không bị lặp lại
+			$sql[ $k ] = '';
+		}
+		$arr_posts_structure = $sql;
+	}
+//	print_r( $arr_posts_structure );
+	
+	// update dữ liệu vào bảng posts
+	_eb_q( "UPDATE `" . wp_posts . "`
+	SET
+		" . $k . " = '" . $v . "'
+	WHERE
+		ID = " . $id, 0 );
+	
+	//
+//	delete_post_meta( $id, $k );
+	
+	//
+	return true;
+	
+}
 
 

@@ -113,6 +113,8 @@ $_POST['cf_alow_edit_plugin_theme'] = WGR_default_config('cf_alow_edit_plugin_th
 
 $_POST['cf_set_news_version'] = WGR_default_config('cf_set_news_version');
 
+$_POST['cf_set_raovat_version'] = WGR_default_config('cf_set_raovat_version');
+
 $_POST['cf_echbay_migrate_version'] = WGR_default_config('cf_echbay_migrate_version');
 
 $_POST['cf_search_advanced_auto_submit'] = WGR_default_config('cf_search_advanced_auto_submit');

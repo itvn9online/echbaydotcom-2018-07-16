@@ -37,6 +37,7 @@ get_category_link( $id ) -> dùng function riêng cũng được -> _eb_c_link( 
 define( 'wp_postmeta', $wpdb->postmeta );
 //echo wp_postmeta;
 define( 'wp_termmeta', $wpdb->termmeta );
+define( 'wp_posts', $wpdb->posts );
 
 
 //
@@ -53,6 +54,9 @@ else {
 
 // danh sách toàn bộ các theme được hỗ trợ
 $eb_all_themes_support = array();
+
+//
+$arr_posts_structure = NULL;
 
 
 

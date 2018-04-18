@@ -22,8 +22,8 @@ if ( $type == 'category' ) {
 	update_term_meta( $id, '_eb_category_content', trim( $_POST['_eb_category_content'] ) );
 }
 else if ( $type == 'post' ) {
-	update_post_meta( $id, '_eb_product_title', trim( $_POST['_eb_product_title'] ) );
-	update_post_meta( $id, '_eb_product_description', trim( $_POST['_eb_product_description'] ) );
+	WGR_update_meta_post( $id, '_eb_product_title', trim( $_POST['_eb_product_title'] ) );
+	WGR_update_meta_post( $id, '_eb_product_description', trim( $_POST['_eb_product_description'] ) );
 }
 else {
 	_eb_alert('type "' . $type . '" not support!');

@@ -2063,15 +2063,15 @@ function _eb_code64 ($str, $code) {
 
 
 function _eb_postmeta ( $id, $key, $val ) {
-//		echo $id . "<br>\n";
-//		echo $key . "<br>\n";
-//		echo $val . "<br>\n";
+//	echo $id . "<br>\n";
+//	echo $key . "<br>\n";
+//	echo $val . "<br>\n";
 	
 	// kiểm tra trùng lặp
-//		add_post_meta( $id, $key, $val, true );
+//	WGR_update_meta_post( $id, $key, $val, true );
 	
 	// bỏ qua kiểm tra
-	add_post_meta( $id, $key, $val );
+	WGR_update_meta_post( $id, $key, $val );
 }
 
 
@@ -2086,7 +2086,7 @@ function _eb_set_config($key, $val, $etro = 1) {
 //	global $wpdb;
 	
 //	_eb_postmeta( eb_config_id_postmeta, $key, $val );
-//	update_post_meta( eb_config_id_postmeta, $key, $val );
+//	WGR_update_meta_post( eb_config_id_postmeta, $key, $val );
 	
 	// sử dụng option thay cho meta_post -> load nhanh hơn nhiều
 	$key = _eb_option_prefix . $key;

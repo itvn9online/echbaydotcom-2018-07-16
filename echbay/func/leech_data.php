@@ -453,7 +453,7 @@ if ( is_wp_error($post_id) ) {
 //
 /*
 foreach ( $arr_meta_box as $k => $v ) {
-	update_post_meta( $trv_id, $k, $v );
+	WGR_update_meta_post( $trv_id, $k, $v );
 }
 */
 

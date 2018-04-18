@@ -341,7 +341,8 @@ $offset = ($trang - 1) * $threadInPage;
 //		print_r( $o );
 		
 		//
-		$hd_trangthai = get_post_meta( $o->ID, '__eb_hd_trangthai', true );
+//		$hd_trangthai = get_post_meta( $o->ID, '__eb_hd_trangthai', true );
+		$hd_trangthai = _eb_get_post_object( $o->ID, '__eb_hd_trangthai' );
 		
 		//
 		echo '

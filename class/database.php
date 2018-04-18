@@ -223,12 +223,15 @@ include EB_THEME_CORE . 'cache.php';
 
 
 
-//
+// chế độ kiểm thử
 if ( $__cf_row['cf_tester_mode'] == 1 ) {
 	define( 'eb_code_tester', true );
 } else {
 	define( 'eb_code_tester', false );
 }
+
+// chế độ riêng của trang rao vặt
+define( 'cf_set_raovat_version', $__cf_row['cf_set_raovat_version'] );
 
 
 

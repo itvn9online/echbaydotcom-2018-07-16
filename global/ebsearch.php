@@ -26,7 +26,7 @@ if ( isset($_GET['update_key_version']) && mtv_id > 0 ) {
 			$v->post_title = str_replace ( '-', '', $v->post_title );
 			
 			//
-			update_post_meta( $v->ID, '_eb_product_searchkey', $v->post_title );
+			WGR_update_meta_post( $v->ID, '_eb_product_searchkey', $v->post_title );
 		}
 //		print_r( $sql );
 	}

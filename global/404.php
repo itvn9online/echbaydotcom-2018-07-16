@@ -358,7 +358,7 @@ else {
 		
 		// nếu không -> add vào monitor để add thủ công
 		if ( $redirect_301_link == '' ) {
-//			add_post_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
+//			WGR_update_meta_post( eb_log_404_id_postmeta, $current_404_uri, 1, true );
 			add_term_meta( eb_log_404_id_postmeta, $current_404_uri, 1, true );
 		}
 		

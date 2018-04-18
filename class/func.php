@@ -873,7 +873,7 @@ class EchBayCommerce {
 				$page_template = 'templates/index.php';
 			}
 			
-			add_post_meta( $pageid, '_wp_page_template', $page_template, true );
+			WGR_update_meta_post( $pageid, '_wp_page_template', $page_template, true );
 		}
 	}
 	

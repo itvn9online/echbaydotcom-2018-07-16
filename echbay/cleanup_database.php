@@ -34,6 +34,27 @@ foreach ( $sql as $v ) {
 
 
 
+function WGR_clean_post_meta_by_eb ( $key, $val = '', $tbl = wp_postmeta ) {
+	/*
+	$sql = _eb_q( "SELECT *
+	FROM
+		`" . $tbl . "`
+	WHERE
+		meta_key LIKE '%{$key}%'
+		AND meta_value = '" . $val . "'
+	LIMIT 0, 100" );
+	print_r( $sql );
+		*/
+	
+	_eb_q( "DELETE FROM
+		`" . $tbl . "`
+	WHERE
+		meta_key LIKE '%{$key}%'
+		AND meta_value = '" . $val . "'", 0 );
+}
+
+
+
 
 //
 $str_count_meta_key = '';
@@ -50,6 +71,28 @@ if ( isset( $_GET['filter_post_meta'] ) ) {
 	
 	// xóa các post_meta sinh ra bởi echbay
 	if ( $s_meta_key == 'echbay_post_meta' ) {
+		
+		//
+		WGR_clean_post_meta_by_eb( '_eb_product_' );
+		WGR_clean_post_meta_by_eb( '_eb_blog_' );
+		WGR_clean_post_meta_by_eb( '_eb_ads_' );
+		WGR_clean_post_meta_by_eb( '_eb_category_' );
+		
+		WGR_clean_post_meta_by_eb( '_eb_product_', 0 );
+		WGR_clean_post_meta_by_eb( '_eb_blog_', 0 );
+		WGR_clean_post_meta_by_eb( '_eb_ads_', 0 );
+		WGR_clean_post_meta_by_eb( '_eb_category_', 0 );
+		
+		//
+		WGR_clean_post_meta_by_eb( '_eb_product_', '', wp_termmeta );
+		WGR_clean_post_meta_by_eb( '_eb_blog_', '', wp_termmeta );
+		WGR_clean_post_meta_by_eb( '_eb_ads_', '', wp_termmeta );
+		WGR_clean_post_meta_by_eb( '_eb_category_', '', wp_termmeta );
+		
+		WGR_clean_post_meta_by_eb( '_eb_product_', 0, wp_termmeta );
+		WGR_clean_post_meta_by_eb( '_eb_blog_', 0, wp_termmeta );
+		WGR_clean_post_meta_by_eb( '_eb_ads_', 0, wp_termmeta );
+		WGR_clean_post_meta_by_eb( '_eb_category_', 0, wp_termmeta );
 	}
 	// xóa các post_meta theo lựa chọn của người dùng
 	else if ( $s_meta_key != '' ) {
@@ -71,21 +114,21 @@ if ( isset( $_GET['filter_post_meta'] ) ) {
 			$str_remove_meta = '';
 			// xóa meta trống
 			if ( $remove_meta == 'null' && $v->meta_value == '' ) {
-				$wpdb->query( "DELETE FROM
+				_eb_q( "DELETE FROM
 					`" . wp_postmeta . "`
 				WHERE
 					meta_id = " . $v->meta_id . "
-					AND meta_value = ''" );
+					AND meta_value = ''", 0 );
 				
 				$str_remove_meta = ' <span class="redcolor">Remove</span>';
 			}
 			// xóa meta bằng 0
 			else if ( $remove_meta == 'zero' && $v->meta_value == '0' ) {
-				$wpdb->query( "DELETE FROM
+				_eb_q( "DELETE FROM
 					`" . wp_postmeta . "`
 				WHERE
 					meta_id = " . $v->meta_id . "
-					AND meta_value = '0'" );
+					AND meta_value = '0'", 0 );
 				
 				$str_remove_meta = ' <span class="redcolor">Remove</span>';
 			}
@@ -164,11 +207,11 @@ if ( isset( $_GET['del_data'] ) ) {
 	
 	// Xóa các log sinh ra bởi EchBay
 	echo '<h2>- Xóa các log sinh ra bởi EchBay:</h2>';
-	$wpdb->query( "DELETE FROM
+	_eb_q( "DELETE FROM
 		`" . wp_postmeta . "`
 	WHERE
 		meta_key = '__eb_log_user'
-		OR meta_key = '__eb_log_admin'" );
+		OR meta_key = '__eb_log_admin'", 0 );
 	
 	//
 	echo '<br><br>';

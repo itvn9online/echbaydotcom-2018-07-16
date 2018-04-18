@@ -75,11 +75,11 @@ function __eb_instal_demo_data ( $title, $type = 'post', $data = array(), $post_
 		
 		// post meta
 		foreach ( $post_meta as $k => $v ) {
-			add_post_meta( $pageid, $k, $v, true );
+			WGR_update_meta_post( $pageid, $k, $v, true );
 		}
 		
 		//
-		update_post_meta( $pageid, eb_post_obj_data, $post_meta );
+		WGR_update_meta_post( $pageid, eb_post_obj_data, $post_meta );
 		
 		//
 //		echo _eb_get_post_object( $pageid, '_eb_product_avatar' );

@@ -1608,7 +1608,7 @@ function _eb_create_page( $page_url, $page_name, $page_template = '' ) {
 			$page_template = 'templates/index.php';
 		}
 		
-		add_post_meta( $pageid, '_wp_page_template', $page_template, true );
+		WGR_update_meta_post( $pageid, '_wp_page_template', $page_template, true );
 		*/
 	}
 }
@@ -2110,7 +2110,7 @@ function _eb_convert_postmeta_to_v2 ( $id, $key = '_eb_product_', $meta_key = eb
 //	print_r($arr_update);
 	
 	// cập nhật theo chức năng mới luôn
-	update_post_meta( $id, $meta_key, $arr_update );
+	WGR_update_meta_post( $id, $meta_key, $arr_update );
 	
 //	exit();
 	
@@ -2290,9 +2290,15 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 	global $arr_object_post_meta;
 	
 	//
-	$check_id = ( $meta_convert == '_eb_category_' ) ? 'cid' : 'id';
+	$check_id = 'id';
+	if ( $meta_convert == '_eb_category_' ) {
+		$check_id = 'cid';
+	}
 	$check_id .= $id;
 	
+	//
+//	echo $key . '<br>' . "\n";
+
 	//
 //	echo $check_id . ' -------<br>' . "\n";
 //	echo $meta_convert . ' -------<br>' . "\n";
@@ -2304,21 +2310,91 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 	*/
 //	if ( ! isset( $arr_object_post_meta[$check_id] ) || $arr_object_post_meta[$check_id] != $id ) {
 	if ( ! isset( $arr_object_post_meta[$check_id] ) ) {
-		// v2
-		$sql = _eb_q ("SELECT meta_key, meta_value
-		FROM
-			`" . wp_postmeta . "`
-		WHERE
-			post_id = " . $id);
-//		print_r($sql); exit();
 		
 		//
 		$arr = array();
-//		if ( count($sql) > 0 ) {
-			foreach ( $sql as $v ) {
-				$arr[ $v->meta_key ] = $v->meta_value;
+		
+		// v3 -> chỉ dành cho post -> ưu tiên lấy trong bảng posts trước
+		if ( cf_set_raovat_version == 1
+//		&& strstr( $key, '_eb_' ) == true
+		&& $meta_convert != '_eb_category_' ) {
+			$sql = _eb_q("SELECT *
+			FROM
+				`" . wp_posts . "`
+			WHERE
+				ID = " . $id);
+			
+			// nếu có giá trị trả về -> dùng luôn thôi
+			if ( ! empty( $sql ) ) {
+				$sql = $sql[0];
+//				echo $key . '<br>' . "\n";
+				
+				// nếu mảng trả về -> có thể sẽ có dữ liệu -> dùng luôn
+				if ( isset( $sql->$key ) ) {
+//					echo $key . '<br>' . "\n";
+					
+					//
+					foreach ( $sql as $k => $v ) {
+						// kiểm tra đúng key của EchBay thì mới tiếp tục
+						if ( strstr( $k, '_eb_' ) == true ) {
+							// nếu không có giá trị -> thử lấy theo post meta mặc định
+							if ( $v == '' ) {
+								$v = get_post_meta( $id, $k, true );
+								
+								// nếu có -> cập nhật post meta sang bảng post luôn
+								if ( $v != '' ) {
+									WGR_update_meta_post( $id, $k, $v );
+								}
+							}
+							
+							// gán mảng
+							$arr[ $k ] = $v;
+						}
+					}
+					
+					// chạy hết vòng lặp mà không có key -> chưa được tạo
+					if ( ! array_key_exists ( $key, $arr ) ) {
+						$arr[ $key ] = get_post_meta( $id, $key, true );
+						
+						WGR_update_meta_post( $id, $key, $arr[ $key ] );
+					}
+				}
+				// nếu không có -> tìm trong bảng postmeta rồi chuyển sang
+				else {
+					$arr[ $key ] = get_post_meta( $id, $key, true );
+					
+					WGR_update_meta_post( $id, $key, $arr[ $key ] );
+				}
+				
+				// gán giá trị để lần sau còn dùng lại
+				$arr_object_post_meta[$check_id] = $arr;
 			}
-//		}
+			
+			//
+//			print_r( $arr ); print_r( $sql ); exit();
+			
+			// trả về dữ liệu tìm được
+			return $arr[ $key ];
+		}
+		
+		
+		
+		
+		// v2
+		if ( empty( $arr ) ) {
+			$sql = _eb_q ("SELECT meta_key, meta_value
+			FROM
+				`" . wp_postmeta . "`
+			WHERE
+				post_id = " . $id);
+//			print_r($sql); exit();
+			
+//			if ( count($sql) > 0 ) {
+				foreach ( $sql as $v ) {
+					$arr[ $v->meta_key ] = $v->meta_value;
+				}
+//			}
+		}
 		
 		
 		
@@ -2333,7 +2409,7 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 		*/
 		
 		// nếu không có kết quả trả về -> trả về dữ liệu mặc định
-		if ( ! isset ( $arr[ $key ] ) || $arr[ $key ] == '' ) {
+		if ( ! array_key_exists ( $key, $arr ) || $arr[ $key ] == '' ) {
 			$arr[ $key ] = $default_value;
 			
 			// chuyển về dạng số nếu dữ liệu mặc định cũng là số
@@ -2357,7 +2433,7 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 		$arr = $arr_object_post_meta[$check_id];
 		
 		//
-		if ( ! isset ( $arr[ $key ] ) || $arr[ $key ] == '' ) {
+		if ( ! array_key_exists ( $key, $arr ) || $arr[ $key ] == '' ) {
 			$arr[ $key ] = $default_value;
 		}
 	}
@@ -2878,15 +2954,15 @@ function EBE_create_in_con_voi_table ( $table, $pri_key, $arr ) {
 			`' . $pri_key . '` ' . strtoupper( $arr[ $pri_key ]['type'] ) . ' NOT NULL
 		) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 		');
-		_eb_q($sql);
+		_eb_q($sql, 0);
 		
 		// tạo khóa chính
 		$sql = trim('ALTER TABLE `' . $table . '` ADD PRIMARY KEY(`' . $pri_key . '`)');
-		_eb_q($sql);
+		_eb_q($sql, 0);
 		
 		// sửa lại cột
 		$sql = trim('ALTER TABLE `' . $table . '` CHANGE `' . $pri_key . '` `' . $pri_key . '` ' . strtoupper( $arr[ $pri_key ]['type'] ) . ' NOT NULL AUTO_INCREMENT' );
-		_eb_q($sql);
+		_eb_q($sql, 0);
 		
 		// lấy lại danh sách cột sau khi tạo mới
 		$arr_check = _eb_q( "SHOW TABLES LIKE '" . $table . "'" );
@@ -2918,19 +2994,19 @@ function EBE_create_in_con_voi_table ( $table, $pri_key, $arr ) {
 			//
 			$sql = 'ALTER TABLE `' . $table . '` ADD `' . $k . '` ' . strtoupper( $v['type'] ) . ' ' . ( $v['null'] == 'no' ? 'NOT NULL' : 'NULL' ) . ' AFTER `' . $first_cloumn . '`;';
 //			echo $sql . "\n";
-			_eb_q( $sql );
+			_eb_q( $sql, 0 );
 			
 			// UNIQUE
 			if ( $v['key'] == 'uni' ) {
 				$sql = 'ALTER TABLE `' . $table . '` ADD UNIQUE(`' .$k. '`)';
 //				echo $sql . "\n";
-				_eb_q( $sql );
+				_eb_q( $sql, 0 );
 			}
 			// INDEX
 			else if ( $v['key'] == 'mul' ) {
 				$sql = 'ALTER TABLE `' . $table . '` ADD INDEX(`' .$k. '`);';
 //				echo $sql . "\n";
-				_eb_q( $sql );
+				_eb_q( $sql, 0 );
 			}
 //			echo $sql . "\n";
 //			_eb_q( $sql );

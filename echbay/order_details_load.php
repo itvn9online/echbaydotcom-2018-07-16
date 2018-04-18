@@ -43,7 +43,8 @@ if ( count($sql) > 0 ) {
 		$sql->tv_id = $sql->post_author;
 		$sql->order_sku = $sql->post_title;
 		$sql->order_time = strtotime( $sql->post_date );
-		$sql->order_status = get_post_meta( $sql->ID, '__eb_hd_trangthai', true );
+//		$sql->order_status = get_post_meta( $sql->ID, '__eb_hd_trangthai', true );
+		$sql->order_status = _eb_get_post_object( $sql->ID, '__eb_hd_trangthai' );
 		$sql->order_ip = '';
 //		print_r( $sql );
 		

@@ -208,6 +208,7 @@ $__cf_row_default = array(
 	
 	// đặt làm trang tin tức
 	'cf_set_news_version' => 'off',
+	'cf_set_raovat_version' => 'off',
 	
 	// Với các website nâng cấp từ version 1 lên version, URL có thể sẽ khác nhau -> dùng chức năng này để đồng bộ
 	'cf_echbay_migrate_version' => 'off',

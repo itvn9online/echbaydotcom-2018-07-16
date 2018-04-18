@@ -253,8 +253,10 @@ while ( $sql->have_posts() ) {
 	EBE_set_details_order( 'product_id', $chitiet->ID, $hd_id );
 	
 	//
-	$trv_giaban = _eb_float_only( _eb_get_post_meta( $chitiet->ID, '_eb_product_oldprice', true ) );
-	$trv_giamoi = _eb_float_only( _eb_get_post_meta( $chitiet->ID, '_eb_product_price', true ) );
+//	$trv_giaban = _eb_float_only( _eb_get_post_meta( $chitiet->ID, '_eb_product_oldprice', true ) );
+	$trv_giaban = _eb_float_only( _eb_get_post_object( $chitiet->ID, '_eb_product_oldprice' ) );
+//	$trv_giamoi = _eb_float_only( _eb_get_post_meta( $chitiet->ID, '_eb_product_price', true ) );
+	$trv_giamoi = _eb_float_only( _eb_get_post_object( $chitiet->ID, '_eb_product_price' ) );
 	$cthd_soluong = $arr_shop_cart [$chitiet->ID];
 	
 	//
@@ -269,11 +271,13 @@ while ( $sql->have_posts() ) {
 	}
 	
 	//
-	$masanpham = _eb_get_post_meta( $chitiet->ID, '_eb_product_sku', true );
+//	$masanpham = _eb_get_post_meta( $chitiet->ID, '_eb_product_sku', true );
+	$masanpham = _eb_get_post_object( $chitiet->ID, '_eb_product_sku' );
 	if ( $masanpham == '' ) {
 		$masanpham = $chitiet->ID;
 	}
-	$trv_color = _eb_get_post_meta( $chitiet->ID, '_eb_product_color', true );
+//	$trv_color = _eb_get_post_meta( $chitiet->ID, '_eb_product_color', true );
+	$trv_color = _eb_get_post_object( $chitiet->ID, '_eb_product_color' );
 	
 	//
 	$product_list .= 'Mã sản phẩm: <strong>' . $masanpham . '</strong><br>
