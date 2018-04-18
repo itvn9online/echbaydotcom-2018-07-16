@@ -402,7 +402,11 @@ $arr = array(
 if ( $post_excerpt != '' ) $arr['post_excerpt'] = $post_excerpt;
 if ( $trv_noidung != '' ) $arr['post_content'] = $trv_noidung;
 if ( $post_date != '' ) {
-	$post_date = date( 'Y-m-d H:i:s', strtotime( $post_date ) );
+	$post_date = strtotime( $post_date );
+	if ( $post_date > date_time ) {
+		$post_date = date_time;
+	}
+	$post_date = date( 'Y-m-d H:i:s', $post_date );
 	
 	$arr['post_date'] = $post_date;
 	$arr['post_date_gmt'] = $post_date;
