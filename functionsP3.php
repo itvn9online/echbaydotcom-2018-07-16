@@ -409,9 +409,12 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 // lệnh sử dụng dữ liệu chung với bảng post thay vì meta post của wp, phù hợp với các trang sử dụng wordpress để làm trang rao vặt
 function WGR_update_meta_post ( $id, $k, $v ) {
 	
-	// sử dụng phương thức mặc định của wp
+	// sử dụng phương thức mặc định của wp (sử dụng song song)
+	update_post_meta( $id, $k, $v );
+	
+	// nếu không phải key của echbay hoặc tính năng không bật -> bỏ qua luôn
 	if ( cf_set_raovat_version != 1 || strstr( $k, '_eb_' ) == false ) {
-		return update_post_meta( $id, $k, $v );
+		return true;
 	}
 	
 	
