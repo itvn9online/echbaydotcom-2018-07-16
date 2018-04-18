@@ -251,6 +251,7 @@ amp-carousel > amp-img > img { object-fit: contain; }
 	line-height: 2em;
 	position: absolute;
 	right: 16px;
+	margin: 0;
 }
 /* Inline styles */
 /*
@@ -326,5 +327,31 @@ amp-carousel > amp-img > img { object-fit: contain; }
 .amp-wp-blogs-part span.current {
 	background: #333;
 	color: #fff;
+	font-weight: bold;
+}
+.amp-wp-buynow {
+	position: relative;
+	border: 1pt #f2f2f2 solid;
+	padding: 15px 25% 15px 25px;
+	margin: 15px 0;
+}
+.amp-wp-buynow h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+}
+.amp-wp-btn-buynow {
+	position: absolute;
+	right: 25px;
+	top: 45%;
+	background: #f00;
+	line-height: 35px;
+	padding: 0 15px;
+	border-radius: 5px;
+}
+.amp-wp-btn-buynow a {
+	text-transform: uppercase;
+	color: #fff;
+	text-decoration: none;
 	font-weight: bold;
 }

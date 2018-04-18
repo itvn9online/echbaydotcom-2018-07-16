@@ -320,7 +320,15 @@ function EBE_dynamic_title_tag ( $html, $tag = '' ) {
 
 
 function WGR_money_format ( $n ) {
-	return number_format( $n );
+	$n = explode( '.', $n );
+	
+	// định dạng tiền USD
+	if ( isset( $n[1] ) ) {
+		return number_format( $n[0] ) . '.' . $n[1];
+	}
+	
+	// Tiền Việt
+	return number_format( $n[0] );
 }
 
 function EBE_add_ebe_currency_class ( $gia, $gia_cu = 0, $default_value = '' ) {

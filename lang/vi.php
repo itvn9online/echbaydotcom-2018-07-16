@@ -7,6 +7,9 @@ $___eb_lang = array();
 // định dạng kiểu dữ liệu
 $eb_type_lang = array();
 
+// ghi chú
+$eb_note_lang = array();
+
 // URL file gốc từ github (nếu có)
 $eb_ex_from_github = array();
 
@@ -181,7 +184,11 @@ $___eb_lang[eb_key_for_site_lang . 'qreg_submit'] = 'Gửi';
 // AMP
 $___eb_lang[eb_key_for_site_lang . 'amp_full_version'] = 'Xem phiên bản đầy đủ';
 $___eb_lang[eb_key_for_site_lang . 'amp_to_top'] = 'Về đầu trang';
-$___eb_lang[eb_key_for_site_lang . 'amp_all_rights'] = 'All rights reserved';
+$___eb_lang[eb_key_for_site_lang . 'amp_development'] = 'Nhà phát triển';
+$___eb_lang[eb_key_for_site_lang . 'amp_copyright'] = 'Bản quyền';
+$___eb_lang[eb_key_for_site_lang . 'amp_all_rights'] = 'Toàn bộ phiên bản';
+$___eb_lang[eb_key_for_site_lang . 'amp_buy_now'] = '{tmp.web_link}cart?id={tmp.id}';
+$eb_note_lang[eb_key_for_site_lang . 'amp_buy_now'] = 'Nhập đầy đủ cấu trúc URL dẫn tới giỏ hàng, nhập <strong>null</strong> để tắt tính năng này.';
 
 
 

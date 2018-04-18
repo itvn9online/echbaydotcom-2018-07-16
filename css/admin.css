@@ -883,6 +883,8 @@ input[id="_eb_category_order"] { width: 90px; }
 	display: none;
 	overflow-y: auto;
 }
+.no-border-left { border-left: 0 none !important; }
+.no-border-right { border-right: 0 none !important; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
