@@ -2267,7 +2267,7 @@ function _eb_get_config( $real_time = false ) {
 		if ( isset( $__cf_row_default[ $a->option_name ] ) ) {
 			if ( $a->option_value == '' ) {
 //				$a->option_value = $__cf_row_default[ $a->option_name ];
-				$__cf_row[ $a->option_name ] = $__cf_row_default[ $a->option_name ];
+				$a->option_value = $__cf_row_default[ $a->option_name ];
 			}
 			/*
 			else if ( $a->option_value == 'off' ) {
@@ -2275,9 +2275,12 @@ function _eb_get_config( $real_time = false ) {
 			}
 			*/
 			else {
-				$__cf_row[ $a->option_name ] = WGR_stripslashes( $a->option_value );
+				$a->option_value = WGR_stripslashes( $a->option_value );
 //				$__cf_row[ $a->option_name ] = $a->option_value;
 			}
+			
+			//
+			$__cf_row[ $a->option_name ] = $a->option_value;
 			
 			//
 //			$arr_for_update_eb_config[ $a->option_name ] = addslashes( $__cf_row[ $a->option_name ] );
