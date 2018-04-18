@@ -59,9 +59,10 @@ if ( $__post->post_type == 'post' ) {
 			$trv_giamoi = '';
 		}
 		
-		//
+		// không hiển thị nút mua khi không có giá
 		if ( $trv_giaban == '' && $trv_giamoi == '' ) {
 		}
+		// còn lại sẽ hiển thị giá
 		else {
 			
 			//
