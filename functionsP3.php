@@ -445,6 +445,8 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 			// gán giá trị cho bảng, để lần tới sẽ không bị lặp lại
 			$sql[ $k ] = '';
 		}
+		
+		// gán cấu trúc bảng để lần sau không bị select lại
 		$arr_posts_structure = $sql;
 	}
 //	print_r( $arr_posts_structure );
@@ -452,7 +454,7 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 	// update dữ liệu vào bảng posts
 	_eb_q( "UPDATE `" . wp_posts . "`
 	SET
-		" . $k . " = '" . $v . "'
+		`" . $k . "` = '" . $v . "'
 	WHERE
 		ID = " . $id, 0 );
 	

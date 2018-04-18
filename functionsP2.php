@@ -2371,7 +2371,9 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 			}
 			
 			//
-//			print_r( $arr ); print_r( $sql ); exit();
+//			echo $id . '<br>' . "\n";
+//			print_r( $arr );
+//			print_r( $sql ); exit();
 			
 			// trả về dữ liệu tìm được
 			return $arr[ $key ];
