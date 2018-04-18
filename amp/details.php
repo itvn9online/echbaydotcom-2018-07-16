@@ -42,8 +42,6 @@ if ( $__post->post_type == 'post' ) {
 	
 	// chỉ nhận giá trị nếu khoog phải là null
 	if ( $btn_buy_now != 'null' ) {
-		$btn_buy_now = str_replace( '{tmp.id}', $__post->ID, $btn_buy_now );
-		$btn_buy_now = str_replace( '{tmp.web_link}', web_link, $btn_buy_now );
 		
 		//
 		$trv_giaban = _eb_float_only( _eb_get_post_object( $__post->ID, '_eb_product_oldprice' ) );
@@ -62,16 +60,27 @@ if ( $__post->post_type == 'post' ) {
 		}
 		
 		//
-		$btn_buy_now = '
+		if ( $trv_giaban == '' && $trv_giamoi == '' ) {
+		}
+		else {
+			
+			//
+			$btn_buy_now = str_replace( '{tmp.id}', $__post->ID, $btn_buy_now );
+			$btn_buy_now = str_replace( '{tmp.web_link}', web_link, $btn_buy_now );
+			
+			//
+			$btn_buy_now = '
 <div class="amp-wp-buynow">
 	<div class="amp-wp-btn-buynow"><a href="' . $btn_buy_now . '" target="_blank" rel="nofollow">' . strip_tags( EBE_get_lang('muangay') ) . '</a></div>
 	<h2>' . $__post->post_title . '</h2>
 	' . $trv_giamoi . '
 	' . $trv_giaban . '
 </div>';
-		
-		// ghép với phần nội dung
-		$code_adsense_content = $btn_buy_now . $code_adsense_content;
+			
+			// ghép với phần nội dung
+			$code_adsense_content = $btn_buy_now . $code_adsense_content;
+			
+		}
 	}
 }
 
