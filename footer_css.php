@@ -176,7 +176,3 @@ _eb_add_css_js_file( array(
 
 
 
-
-?>
-</body>
-</html>
