@@ -440,7 +440,11 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 		
 		// nếu vẫn chưa có -> thêm cột luôn
 		if ( ! array_key_exists( $k, $sql ) ) {
-			$strsql = 'ALTER TABLE `' . wp_posts . '` ADD `' . $k . '` LONGTEXT NOT NULL AFTER `ID`';
+//			$add_type = 'LONGTEXT';
+			$add_type = 'TEXT';
+			
+			//
+			$strsql = 'ALTER TABLE `' . wp_posts . '` ADD `' . $k . '` ' . $add_type . ' NOT NULL AFTER `ID`';
 //			echo $strsql . '<br>' . "\n";
 			
 			// chạy lệnh thêm cột
