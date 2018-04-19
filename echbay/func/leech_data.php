@@ -201,16 +201,7 @@ if ( $import_id == 0 ) {
 	);
 	
 	//
-	$import_id = wp_insert_post ( $arr, true );
-	if ( is_wp_error($import_id) ) {
-		$errors = $import_id->get_error_messages();
-		foreach ($errors as $error) {
-			echo $error . '<br>' . "\n";
-		}
-		
-		//
-		_eb_alert('Lỗi khi import sản phẩm');
-	}
+	$import_id = WGR_insert_post ( $arr, 'Lỗi khi import sản phẩm' );
 	
 	//
 	$m = '<span class=greencolor>INSERT</span>';
@@ -231,11 +222,11 @@ else {
 				$arr_for_update['post_name'] = $trv_seo;
 				
 				/*
-				$post_id = wp_update_post( array(
+				$post_id = WGR_update_post( array(
 					'ID' => $check_post_exist->ID,
 					'post_name' => $trv_seo,
-					'post_excerpt' => $post_excerpt,
-				), true );
+					'post_excerpt' => $post_excerpt
+				) );
 				*/
 			}
 			
@@ -268,19 +259,7 @@ else {
 				$arr_for_update['ID'] = $check_post_exist->ID;
 				
 				//
-				$post_id = wp_update_post( $arr_for_update, true );
-				
-				if ( is_wp_error($post_id) ) {
-				//	print_r( $post_id ) . '<br>';
-					
-					$errors = $post_id->get_error_messages();
-					foreach ($errors as $error) {
-						echo $error . '<br>' . "\n";
-					}
-					
-					//
-					_eb_alert('Lỗi khi cập nhật sản phẩm đã tồn tại');
-				}
+				$post_id = WGR_update_post( $arr_for_update, 'Lỗi khi cập nhật! Sản phẩm đã tồn tại' );
 			}
 			
 			
@@ -396,7 +375,7 @@ $arr = array(
 	'post_name' => $trv_seo,
 	
 	'post_category' => array( $ant_id ),
-	'meta_input' => $arr_meta_box,
+	'meta_input' => $arr_meta_box
 );
 
 if ( $post_excerpt != '' ) $arr['post_excerpt'] = $post_excerpt;
@@ -436,19 +415,7 @@ if ( $post_type != 'post' ) {
 }
 
 //
-$post_id = wp_update_post( $arr, true );
-//echo $post_id . '<br>';
-if ( is_wp_error($post_id) ) {
-//	print_r( $post_id ) . '<br>';
-	
-	$errors = $post_id->get_error_messages();
-	foreach ($errors as $error) {
-		echo $error . '<br>' . "\n";
-	}
-	
-	//
-	_eb_alert('Lỗi khi cập nhật sản phẩm');
-}
+$post_id = WGR_update_post( $arr, 'Lỗi khi cập nhật sản phẩm' );
 
 //
 /*

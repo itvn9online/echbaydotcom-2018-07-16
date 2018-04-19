@@ -71,7 +71,7 @@ function __eb_instal_demo_data ( $title, $type = 'post', $data = array(), $post_
 		$data['post_status'] = 'publish';
 		
 		//
-		$pageid = wp_insert_post ($data);
+		$pageid = WGR_insert_post ($data);
 		
 		// post meta
 		foreach ( $post_meta as $k => $v ) {

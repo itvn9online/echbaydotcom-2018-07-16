@@ -197,15 +197,7 @@ if ( $post_id > 0 && $type != '' ) {
 //		print_r( $arr_for_update_post );
 		
 		// chạy lệnh cập nhật
-		$update_id = wp_update_post( $arr_for_update_post, true );
-		
-		// nếu có lỗi thì trả về lỗi
-		if ( is_wp_error($update_id) ) {
-			$errors = $update_id->get_error_messages();
-			foreach ($errors as $error) {
-				echo $error . '<br>' . "\n";
-			}
-		}
+		$update_id = WGR_update_post( $arr_for_update_post, 'ERROR!' );
 	}
 	
 }

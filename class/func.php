@@ -862,7 +862,7 @@ class EchBayCommerce {
 			
 			// tạo page mới
 //			$page = apply_filters('yourplugin_add_new_page', $page, 'teams');
-			$pageid = wp_insert_post ($page);
+			$pageid = WGR_insert_post ($page);
 			
 			
 			/*

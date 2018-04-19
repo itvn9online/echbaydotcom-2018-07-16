@@ -1556,7 +1556,7 @@ function WGR_create_page( $page_url, $page_name = '' ) {
 			'post_status' => 'publish',
 			'post_name' => $page_url,
 		);
-		$pageid = wp_insert_post ($page);
+		$pageid = WGR_insert_post ($page);
 		
 		//
 		if( ! is_wp_error($pageid) ){
@@ -1596,7 +1596,7 @@ function _eb_create_page( $page_url, $page_name, $page_template = '' ) {
 		
 		// tạo page mới
 //		$page = apply_filters('yourplugin_add_new_page', $page, 'teams');
-		$pageid = wp_insert_post ($page);
+		$pageid = WGR_insert_post ($page);
 		
 		
 		/*

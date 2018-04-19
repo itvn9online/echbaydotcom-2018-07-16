@@ -410,10 +410,9 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 function WGR_update_meta_post ( $id, $k, $v ) {
 	
 	// sử dụng phương thức mặc định của wp (sử dụng song song)
-	update_post_meta( $id, $k, $v );
-	
 	// nếu không phải key của echbay hoặc tính năng không bật -> bỏ qua luôn
 	if ( cf_set_raovat_version != 1 || strstr( $k, '_eb_' ) == false ) {
+		update_post_meta( $id, $k, $v );
 		return true;
 	}
 	
@@ -467,6 +466,130 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 	//
 	return true;
 	
+}
+
+
+function WGR_update_post ( $arr, $_alert = '', $wp_error = true, $using_default = 0 ) {
+	
+	// phiên bản mặc định
+	if ( cf_set_raovat_version != 1 ) {
+		$post_id = wp_update_post( $arr, $wp_error );
+//		echo $post_id . '<br>';
+		if ( is_wp_error($post_id) ) {
+//			print_r( $post_id ) . '<br>';
+			
+			$errors = $post_id->get_error_messages();
+			foreach ($errors as $error) {
+				echo $error . '<br>' . "\n";
+			}
+			
+			//
+			if ( $_alert != '' ) {
+				_eb_alert($_alert);
+			}
+			
+			//
+			return false;
+		}
+		
+		//
+		return $post_id;
+	}
+	
+	
+	// phiên bản nâng cao -> update post meta riêng
+	$arr_meta_box = array();
+	if ( array_key_exists( 'meta_input', $arr ) ) {
+		$arr_meta_box = $arr['meta_input'];
+		
+		// xong xóa cái mảng kia đi
+		$arr['meta_input'] = array();
+		unset( $arr['meta_input'] );
+	}
+	
+	// chạy lại lệnh update -> ép buộc dùng phiên bản cũ -> update luôn
+	$post_id = WGR_update_post ( $arr, $_alert, $wp_error, 1 );
+	
+	// sau đó mới cập nhật meta
+	if ( array_key_exists( 'ID', $arr ) ) {
+		WGR_after_update_post( $arr['ID'], $arr_meta_box );
+	}
+	else if ( array_key_exists( 'import_id', $arr ) ) {
+		WGR_after_update_post( $arr['import_id'], $arr_meta_box );
+	}
+	
+	//
+	return $post_id;
+	
+}
+
+
+function WGR_insert_post ( $arr, $_alert = '', $wp_error = true, $using_default = 0 ) {
+	
+	// phiên bản mặc định
+	if ( cf_set_raovat_version != 1 ) {
+		$post_id = wp_insert_post( $arr, $wp_error );
+//		echo $post_id . '<br>';
+		if ( is_wp_error($post_id) ) {
+//			print_r( $post_id ) . '<br>';
+			
+			$errors = $post_id->get_error_messages();
+			foreach ($errors as $error) {
+				echo $error . '<br>' . "\n";
+			}
+			
+			//
+			if ( $_alert != '' ) {
+				_eb_alert($_alert);
+			}
+			
+			//
+			return false;
+		}
+		
+		//
+		return $post_id;
+	}
+	
+	
+	// phiên bản nâng cao -> update post meta riêng
+	$arr_meta_box = array();
+	if ( array_key_exists( 'meta_input', $arr ) ) {
+		$arr_meta_box = $arr['meta_input'];
+		
+		// xong xóa cái mảng kia đi
+		$arr['meta_input'] = array();
+		unset( $arr['meta_input'] );
+	}
+	
+	// chạy lại lệnh update -> ép buộc dùng phiên bản cũ -> update luôn
+	$post_id = WGR_insert_post ( $arr, $_alert, $wp_error, 1 );
+	
+	// sau đó mới cập nhật meta
+	if ( array_key_exists( 'ID', $arr ) ) {
+		WGR_after_update_post( $arr['ID'], $arr_meta_box );
+	}
+	else if ( array_key_exists( 'import_id', $arr ) ) {
+		WGR_after_update_post( $arr['import_id'], $arr_meta_box );
+	}
+	
+	//
+	return $post_id;
+	
+}
+
+
+function WGR_after_update_post ( $id, $arr ) {
+	if ( empty( $arr ) ) {
+		return false;
+	}
+	
+	//
+	foreach ( $arr as $k => $v ) {
+		WGR_update_meta_post( $id, $k, $v );
+	}
+	
+	return true;
 }
 
 
