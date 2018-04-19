@@ -2143,6 +2143,9 @@ eb_drop_menu('oiAnt');
 window.scroll(0, 0);
 setTimeout(function () {
 	window.scroll(0, 0);
+	
+	//
+	$('.click-show-eb-target').click();
 }, 600);
 
 

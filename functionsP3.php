@@ -479,7 +479,7 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 function WGR_update_post ( $arr, $_alert = '', $wp_error = true, $using_default = 0 ) {
 	
 	// phiên bản mặc định
-	if ( cf_set_raovat_version != 1 ) {
+	if ( cf_set_raovat_version != 1 || $using_default == 1 ) {
 		$post_id = wp_update_post( $arr, $wp_error );
 //		echo $post_id . '<br>';
 		if ( is_wp_error($post_id) ) {
@@ -506,7 +506,8 @@ function WGR_update_post ( $arr, $_alert = '', $wp_error = true, $using_default 
 	
 	// phiên bản nâng cao -> update post meta riêng
 	$arr_meta_box = array();
-	if ( array_key_exists( 'meta_input', $arr ) ) {
+//	if ( array_key_exists( 'meta_input', $arr ) ) {
+	if ( isset( $arr['meta_input'] ) ) {
 		$arr_meta_box = $arr['meta_input'];
 		
 		// xong xóa cái mảng kia đi
@@ -518,10 +519,12 @@ function WGR_update_post ( $arr, $_alert = '', $wp_error = true, $using_default 
 	$post_id = WGR_update_post ( $arr, $_alert, $wp_error, 1 );
 	
 	// sau đó mới cập nhật meta
-	if ( array_key_exists( 'ID', $arr ) ) {
+//	if ( array_key_exists( 'ID', $arr ) ) {
+	if ( isset( $arr['ID'] ) ) {
 		WGR_after_update_post( $arr['ID'], $arr_meta_box );
 	}
-	else if ( array_key_exists( 'import_id', $arr ) ) {
+//	else if ( array_key_exists( 'import_id', $arr ) ) {
+	else if ( isset( $arr['import_id'] ) ) {
 		WGR_after_update_post( $arr['import_id'], $arr_meta_box );
 	}
 	
@@ -534,7 +537,7 @@ function WGR_update_post ( $arr, $_alert = '', $wp_error = true, $using_default 
 function WGR_insert_post ( $arr, $_alert = '', $wp_error = true, $using_default = 0 ) {
 	
 	// phiên bản mặc định
-	if ( cf_set_raovat_version != 1 ) {
+	if ( cf_set_raovat_version != 1 || $using_default == 1 ) {
 		$post_id = wp_insert_post( $arr, $wp_error );
 //		echo $post_id . '<br>';
 		if ( is_wp_error($post_id) ) {
@@ -561,7 +564,8 @@ function WGR_insert_post ( $arr, $_alert = '', $wp_error = true, $using_default 
 	
 	// phiên bản nâng cao -> update post meta riêng
 	$arr_meta_box = array();
-	if ( array_key_exists( 'meta_input', $arr ) ) {
+//	if ( array_key_exists( 'meta_input', $arr ) ) {
+	if ( isset( $arr['meta_input'] ) ) {
 		$arr_meta_box = $arr['meta_input'];
 		
 		// xong xóa cái mảng kia đi
@@ -573,10 +577,12 @@ function WGR_insert_post ( $arr, $_alert = '', $wp_error = true, $using_default 
 	$post_id = WGR_insert_post ( $arr, $_alert, $wp_error, 1 );
 	
 	// sau đó mới cập nhật meta
-	if ( array_key_exists( 'ID', $arr ) ) {
+//	if ( array_key_exists( 'ID', $arr ) ) {
+	if ( isset( $arr['ID'] ) ) {
 		WGR_after_update_post( $arr['ID'], $arr_meta_box );
 	}
-	else if ( array_key_exists( 'import_id', $arr ) ) {
+//	else if ( array_key_exists( 'import_id', $arr ) ) {
+	else if ( isset( $arr['import_id'] ) ) {
 		WGR_after_update_post( $arr['import_id'], $arr_meta_box );
 	}
 	
