@@ -2309,7 +2309,8 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 	* Trường hợp không tìm thấy hoặc ID truyền vào khác ID trước đó -> sẽ tiền hành lấy mới trong CSDL
 	*/
 //	if ( ! isset( $arr_object_post_meta[$check_id] ) || $arr_object_post_meta[$check_id] != $id ) {
-	if ( ! isset( $arr_object_post_meta[$check_id] ) ) {
+//	if ( ! isset( $arr_object_post_meta[$check_id] ) ) {
+	if ( ! array_key_exists ( $check_id, $arr_object_post_meta ) ) {
 		
 		//
 		$arr = array();

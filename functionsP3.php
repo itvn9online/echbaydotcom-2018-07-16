@@ -410,9 +410,10 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 function WGR_update_meta_post ( $id, $k, $v ) {
 	
 	// sử dụng phương thức mặc định của wp (sử dụng song song)
+	update_post_meta( $id, $k, $v );
+	
 	// nếu không phải key của echbay hoặc tính năng không bật -> bỏ qua luôn
 	if ( cf_set_raovat_version != 1 || strstr( $k, '_eb_' ) == false ) {
-		update_post_meta( $id, $k, $v );
 		return true;
 	}
 	
@@ -429,6 +430,7 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 		if ( empty( $sql ) ) {
 			return false;
 		}
+		echo '<!-- SELECT new posts structure -->' . "\n";
 		
 		//
 		$sql = (array) $sql[0];
@@ -446,6 +448,9 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 			
 			// gán giá trị cho bảng, để lần tới sẽ không bị lặp lại
 			$sql[ $k ] = '';
+			
+			//
+			echo '<!-- ADD new posts structure (' . $k . ') -->' . "\n";
 		}
 		
 		// gán cấu trúc bảng để lần sau không bị select lại
