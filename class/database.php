@@ -232,6 +232,7 @@ if ( $__cf_row['cf_tester_mode'] == 1 ) {
 
 // chế độ riêng của trang rao vặt
 define( 'cf_set_raovat_version', $__cf_row['cf_set_raovat_version'] );
+define( 'cf_remove_raovat_meta', $__cf_row['cf_remove_raovat_meta'] );
 
 
 

@@ -466,7 +466,9 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 		ID = " . $id, 0 );
 	
 	//
-//	delete_post_meta( $id, $k );
+	if ( cf_remove_raovat_meta == 1 ) {
+		delete_post_meta( $id, $k );
+	}
 	
 	//
 	return true;
