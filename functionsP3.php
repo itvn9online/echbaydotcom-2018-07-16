@@ -517,6 +517,9 @@ function WGR_update_post ( $arr, $_alert = '', $wp_error = true, $using_default 
 	
 	// chạy lại lệnh update -> ép buộc dùng phiên bản cũ -> update luôn
 	$post_id = WGR_update_post ( $arr, $_alert, $wp_error, 1 );
+	if ( $post_id == false ) {
+		return false;
+	}
 	
 	// sau đó mới cập nhật meta
 //	if ( array_key_exists( 'ID', $arr ) ) {
@@ -575,6 +578,9 @@ function WGR_insert_post ( $arr, $_alert = '', $wp_error = true, $using_default 
 	
 	// chạy lại lệnh update -> ép buộc dùng phiên bản cũ -> update luôn
 	$post_id = WGR_insert_post ( $arr, $_alert, $wp_error, 1 );
+	if ( $post_id == false ) {
+		return false;
+	}
 	
 	// sau đó mới cập nhật meta
 //	if ( array_key_exists( 'ID', $arr ) ) {
