@@ -410,10 +410,9 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 function WGR_update_meta_post ( $id, $k, $v ) {
 	
 	// sử dụng phương thức mặc định của wp (sử dụng song song)
-	update_post_meta( $id, $k, $v );
-	
 	// nếu không phải key của echbay hoặc tính năng không bật -> bỏ qua luôn
 	if ( cf_set_raovat_version != 1 || strstr( $k, '_eb_' ) == false ) {
+		update_post_meta( $id, $k, $v );
 		return true;
 	}
 	
