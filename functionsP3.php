@@ -622,6 +622,10 @@ function WGR_after_update_post ( $id, $arr ) {
 }
 
 
+/*
+* Tạo header theo tiêu chuẩn chung cho cả mobile
+* https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android
+*/
 function WGR_show_header_favicon ( $icon = '' ) {
 	global $__cf_row;
 	
@@ -648,6 +652,7 @@ function WGR_show_header_favicon ( $icon = '' ) {
 <meta name="msapplication-navbutton-color" content="' . $__cf_row['cf_default_bg'] . '">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="' . $__cf_row['cf_default_bg'] . '">
+<!-- <link rel="icon" sizes="192x192" href="' . $icon . '"> -->
 <link href="' . $icon . '" rel="shortcut icon" type="image/png" />';
 	
 }
