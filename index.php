@@ -554,8 +554,7 @@ if ( mtv_id == 0 ) {
 		$login_css = EB_URL_OF_PLUGIN . 'css/login.css?v=' . time();
 		
 //		wp_enqueue_style( 'login_css', $login_css );
-		echo '
-<link href="' . web_link . eb_default_vaficon . '" rel="shortcut icon" type="image/png" />
+		echo WGR_show_header_favicon( web_link . eb_default_vaficon ) . '
 <link rel="stylesheet" href="' . $login_css . '" type="text/css" />
 <script type="text/javascript">
 setTimeout(function () {

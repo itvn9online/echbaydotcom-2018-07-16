@@ -55,8 +55,7 @@ var order_details_arr_cart_product_list = "' . $post->order_products . '",
 	order_id = "' . $id . '";
 	' ),
 	
-	'tmp.head' => trim( '
-<link href="' . web_link . eb_default_vaficon . '?v=' . date_time . '" rel="shortcut icon" type="image/png" />
+	'tmp.head' => WGR_show_header_favicon( web_link . eb_default_vaficon . '?v=' . date_time ) . trim( '
 <link rel="stylesheet" href="' . EB_URL_OF_PLUGIN . 'css/default.css?v=' . date_time . '" type="text/css">
 <link rel="stylesheet" href="' . EB_URL_OF_PLUGIN . 'css/default2.css?v=' . date_time . '" type="text/css">
 <script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'javascript/eb.js?v=' . date_time . '"></script>

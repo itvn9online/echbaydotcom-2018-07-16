@@ -622,3 +622,34 @@ function WGR_after_update_post ( $id, $arr ) {
 }
 
 
+function WGR_show_header_favicon ( $icon = '' ) {
+	global $__cf_row;
+	
+	//
+	if ( $icon == '' ) {
+		$icon = $__cf_row['cf_favicon'];
+		
+		//
+		if ( strstr( '//', $icon ) == false ) {
+			if ( substr( $icon, 0, 1 ) == '/' ) {
+				$icon = substr( $icon, 1 );
+			}
+			
+			//
+			$icon = web_link . $icon;
+		}
+	}
+	
+	//
+	return '<meta http-equiv="Cache-control" content="public">
+<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<meta name="theme-color" content="' . $__cf_row['cf_default_bg'] . '">
+<meta name="msapplication-navbutton-color" content="' . $__cf_row['cf_default_bg'] . '">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="' . $__cf_row['cf_default_bg'] . '">
+<link href="' . $icon . '" rel="shortcut icon" type="image/png" />';
+	
+}
+
+

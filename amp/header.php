@@ -1,4 +1,11 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 <?php
+
+echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] );
+
+/*
 $url_for_amp_favicon = $__cf_row ['cf_favicon'];
 if ( strstr( $url_for_amp_favicon, '//' ) == false ) {
 	if ( substr( $url_for_amp_favicon, 0, 1 ) == '/' ) {
@@ -6,12 +13,10 @@ if ( strstr( $url_for_amp_favicon, '//' ) == false ) {
 	}
 	$url_for_amp_favicon = web_link . $url_for_amp_favicon;
 }
+*/
+echo WGR_show_header_favicon();
+
 ?>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-<?php echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] ); ?>
-<link href="<?php echo $url_for_amp_favicon; ?>" rel="shortcut icon" type="image/png" />
 <link rel="canonical" href="<?php echo $url_og_url; ?>" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
 <script src="https://cdn.ampproject.org/v0.js" async></script>

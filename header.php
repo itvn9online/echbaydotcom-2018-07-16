@@ -8,15 +8,17 @@
 <?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php endif; ?>
-<?php echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] ); ?>
-<link href="<?php echo $__cf_row ['cf_favicon']; ?>" rel="shortcut icon" type="image/png" />
+<?php
+
+echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] );
+echo WGR_show_header_favicon();
+
+?>
 <meta http-equiv="x-dns-prefetch-control" content="on">
 <link rel="dns-prefetch" href="//www.google-analytics.com" />
 <link rel="dns-prefetch" href="//connect.facebook.net" />
 <!-- META for design by EchBay - http://echbay.com/ -->
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="RESOURCE-TYPE" content="DOCUMENT" />
 <meta name="DISTRIBUTION" content="GLOBAL" />
 <meta name="CODE AUTHOR" content="EchBay.Com" />
