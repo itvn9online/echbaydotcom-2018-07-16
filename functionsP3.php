@@ -470,7 +470,14 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 	
 	//
 	if ( cf_remove_raovat_meta == 1 ) {
-		delete_post_meta( $id, $k );
+		_eb_q( "DELETE FROM
+			`" . wp_postmeta . "`
+		WHERE
+			post_id = " . $id . "
+			AND meta_key = '" . $k . "'", 0 );
+		
+		//
+//		delete_post_meta( $id, $k );
 	}
 	
 	//
