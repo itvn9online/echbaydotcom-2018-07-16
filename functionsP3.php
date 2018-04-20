@@ -634,7 +634,7 @@ function WGR_show_header_favicon ( $icon = '' ) {
 		$icon = $__cf_row['cf_favicon'];
 		
 		//
-		if ( strstr( '//', $icon ) == false ) {
+		if ( strstr( $icon, '//' ) == false ) {
 			if ( substr( $icon, 0, 1 ) == '/' ) {
 				$icon = substr( $icon, 1 );
 			}
