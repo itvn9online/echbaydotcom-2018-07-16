@@ -2357,14 +2357,16 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 					
 					// chạy hết vòng lặp mà không có key -> chưa được tạo
 					if ( ! array_key_exists ( $key, $arr ) ) {
-						$arr[ $key ] = get_post_meta( $id, $key, true );
+//						$arr[ $key ] = get_post_meta( $id, $key, true );
+						$arr[ $key ] = '';
 						
 						WGR_update_meta_post( $id, $key, $arr[ $key ] );
 					}
 				}
 				// nếu không có -> tìm trong bảng postmeta rồi chuyển sang
 				else {
-					$arr[ $key ] = get_post_meta( $id, $key, true );
+//					$arr[ $key ] = get_post_meta( $id, $key, true );
+					$arr[ $key ] = '';
 					
 					WGR_update_meta_post( $id, $key, $arr[ $key ] );
 				}
