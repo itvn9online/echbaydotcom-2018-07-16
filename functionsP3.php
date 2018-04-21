@@ -443,7 +443,11 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 			$add_type = 'TEXT';
 			
 			//
-			$strsql = 'ALTER TABLE `' . wp_posts . '` ADD `' . $k . '` ' . $add_type . ' NOT NULL AFTER `ID`';
+//			$add_after = 'ID';
+			$add_after = 'post_type';
+			
+			//
+			$strsql = 'ALTER TABLE `' . wp_posts . '` ADD `' . $k . '` ' . $add_type . ' NOT NULL AFTER `' . $add_after . '`';
 //			echo $strsql . '<br>' . "\n";
 			
 			// chạy lệnh thêm cột

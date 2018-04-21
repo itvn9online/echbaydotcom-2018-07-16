@@ -54,7 +54,7 @@ function num_leech_data_post_id ( i ) {
 	if ( dog('post_id_is_numberic').checked == true ) {
 		return g_func.number_only( i );
 	}
-	return i;
+	return i.replace( /\//g, '-' );
 }
 
 function get_leech_data_post_id ( str, vitri ) {
