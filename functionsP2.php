@@ -2339,6 +2339,7 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 						// kiểm tra đúng key của EchBay thì mới tiếp tục
 						if ( strstr( $k, '_eb_' ) == true ) {
 							// nếu không có giá trị -> thử lấy theo post meta mặc định
+							/*
 							if ( $v == '' ) {
 								$v = get_post_meta( $id, $k, true );
 								
@@ -2347,6 +2348,7 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 									WGR_update_meta_post( $id, $k, $v );
 								}
 							}
+							*/
 							
 							// gán mảng
 							$arr[ $k ] = $v;

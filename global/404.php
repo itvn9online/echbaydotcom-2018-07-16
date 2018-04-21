@@ -9,6 +9,53 @@
 
 
 
+// chuyển cấu trúc DB sang kiểu mới
+if ( isset($_GET['update_db_struct']) ) {
+	
+	// đây là trang rao vặt thì mới tiếp tục lệnh này
+	if ( cf_set_raovat_version != 1 ) {
+		die('cf_set_raovat_version OFF');
+	}
+	
+	//
+	$old_key = '_eb_product_';
+	
+	$sql = _eb_q("SELECT *
+	FROM
+		" . wp_postmeta . "
+	WHERE
+		meta_key LIKE '{$old_key}%'
+	ORDER BY
+		post_id DESC
+	LIMIT 0, 500");
+//	print_r( $sql );
+	
+	//
+	if ( empty( $sql ) ) {
+		die('empty');
+	}
+	
+	//
+	foreach ( $sql as $v ) {
+		$v->meta_value = trim($v->meta_value);
+		
+		WGR_update_meta_post( $v->post_id, $v->meta_key, $v->meta_value );
+		
+		echo $v->post_id . ' | ' . $v->meta_key . ' | ' . strip_tags( $v->meta_value ) . '<br>' . "\n";
+	}
+	
+	//
+	die( '<script>
+setTimeout(function () {
+	window.location = window.location.href;
+}, 5000);
+</script>' );
+	
+}
+
+
+
+
 //
 //print_r( $_GET ); exit();
 
