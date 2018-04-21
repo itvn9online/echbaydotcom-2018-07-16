@@ -142,6 +142,14 @@ else if ( isset($_GET['categories_url']) ) {
 		$js = '<script>' . file_get_contents( EB_THEME_PLUGIN_INDEX . 'echbay/js/leech_data_after_iframe.js', 1 ) . '</script>';
 		$c = str_replace( '</body>', $js, $c );
 		$c = str_replace( '</BODY>', $js, $c );
+		
+		// xóa các thẻ không sử dụng
+		$c = str_replace( '<iframe', '<eb-iframe', $c );
+		$c = str_replace( '</iframe>', '</eb-iframe>', $c );
+		
+		$c = str_replace( '<link', '<eb-link', $c );
+		$c = str_replace( '<style', '<eb-style', $c );
+		$c = str_replace( '</style>', '</eb-style>', $c );
 	}
 	
 	//

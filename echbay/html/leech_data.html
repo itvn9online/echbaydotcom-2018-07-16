@@ -44,10 +44,17 @@
 		<br>
 		<br>
 		Đối với đường link:
-		<pre><code>$('#products li a.thumb').attr('href') hoặc $('#products li a.thumb').attr('data-href')</code></pre>
+		<pre><code>$('#products li a.thumb').attr('href')</code></pre>
+		<pre><code>$('#products li a.thumb').attr('data-href')</code></pre>
 		<br>
 		Đối với hình ảnh:
-		<pre><code>$('#products li a.thumb').attr('data-old-src') hoặc $('#products li a.thumb').attr('data-src') hoặc $('#products li a.thumb').attr('src')</code></pre>
+		<pre><code>$('#products li a.thumb').attr('data-original')</code></pre>
+		<pre><code>hoặc $('#products li a.thumb').attr('data-old-src')</code></pre>
+		<pre><code>hoặc $('#products li a.thumb').attr('data-src')</code></pre>
+		<pre><code>hoặc $('#products li a.thumb').attr('src')</code></pre>
+		<br>
+		Nếu muốn chỉ định lấy ATTR cụ thể (một số website sử dụng attr khác với các attr đã liệt kê ở trên):
+		<pre><code>#products li a.thumb img[other-attr]</code></pre>
 		<br>
 		Mặc định:
 		<pre><code>$('#products li a.thumb').html()</code></pre>

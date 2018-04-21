@@ -142,14 +142,7 @@ function get_leech_data_post_id ( str, vitri ) {
 
 
 // mỗi trang sẽ có một function được viết riêng vào đây
-function function_rieng_theo_domain () {
-	console.log(source_url);
-	
-	//
-	var f = document.frm_leech_data,
-		current_img_domain = document.domain;
-	
-	//
+function leech_data_format_price ( f ) {
 	var format_price = jQuery('#details_format_price').val() || '';
 	if ( f.t_giacu.value != '' ) {
 		if ( format_price == '' ) {
@@ -167,6 +160,17 @@ function function_rieng_theo_domain () {
 			f.t_giamoi.value = f.t_giamoi.value.toString().replace( eval(format_price), '');
 		}
 	}
+}
+
+function function_rieng_theo_domain () {
+	console.log(source_url);
+	
+	//
+	var f = document.frm_leech_data,
+		current_img_domain = document.domain;
+	
+	//
+	leech_data_format_price(f);
 	
 	//
 	f.t_tieude.value = f.t_tieude.value.replace( /\&amp\;/g, '&' );
@@ -543,6 +547,8 @@ function leech_data_content ( url, id, callBack ) {
 				.replace( /\<\/iframe\>/gi, '</eb-iframe>' )
 				//
 				.replace( /\<link/gi, '<eb-link' )
+				.replace( /\<style/gi, '<eb-style' )
+				.replace( /\<\/style\>/gi, '</eb-style>' )
 				//
 				.replace( /\<script/gi, '<eb-script' )
 				.replace( /\<\/script\>/gi, '</eb-script>' );
@@ -594,6 +600,9 @@ function leech_data_content ( url, id, callBack ) {
 		
 		//
 		jQuery('#' + id).html(msg);
+		
+		// xóa các thẻ chắc chắn không sử dụng đi luôn và ngay
+		jQuery('#' + id + ' eb-style, #' + id + ' style').remove();
 		
 		//
 //		setTimeout(function () {
@@ -747,15 +756,18 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 					
 					// nếu là youtube video
 					if ( typeof arr[x].youtube != 'undefined' ) {
-						console.log(arr[x].get);
+						console.log('GET youtube: ' + arr[x].get);
+						
 						a = jQuery(arr[x].get).attr('data-old-src')
 							|| jQuery(arr[x].get).attr('data-src')
 							|| jQuery(arr[x].get).attr('src')
 							|| '';
-						console.log(a);
+//						console.log(a);
 					}
 					// nếu là hình ảnh
 					else if ( typeof arr[x].img != 'undefined' && arr[x].img != '' ) {
+						console.log('GET img: ' + arr[x].get);
+						
 						var arr_get_img = arr[x].get.replace(/\s?\|\|\s?/g, ',');
 						
 						// nếu là chuyển đổi theo attr cụ thể
@@ -779,7 +791,8 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 								}
 								else {
 									if ( str == '' ) {
-										str = jQuery( get_attr[0] ).attr('data-old-src')
+										str = jQuery( get_attr[0] ).attr('data-original')
+										|| jQuery( get_attr[0] ).attr('data-old-src')
 										|| jQuery( get_attr[0] ).attr('data-src')
 										|| jQuery( get_attr[0] ).attr('src')
 										|| '';
@@ -795,7 +808,8 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 						else {
 							// thay dấu || thành dấu , để chạy vòng lặp each
 							jQuery( arr_get_img ).each(function() {
-								var str = jQuery(this).attr('data-old-src')
+								var str = jQuery(this).attr('data-original')
+									|| jQuery(this).attr('data-old-src')
 									|| jQuery(this).attr('data-src')
 									|| jQuery(this).attr('src')
 									|| '';
@@ -884,7 +898,12 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 							}
 							// gọi trực tiếp đến class được nhắc đến
 							else {
-								str = jQuery( a2[i] ).html() || '';
+								if ( a2[i].split(':next').length > 1 ) {
+									str = jQuery( a2[i] + ':first' ).remove();
+								}
+//								else {
+									str = jQuery( a2[i] ).html() || '';
+//								}
 								str = g_func.trim( str );
 							}
 							
@@ -1449,7 +1468,11 @@ function WGR_leech_data_after_load_iframe () {
 		
 		jQuery('#crawl_eb_iframe').contents().find( current_loading_tags ).each(function() {
 			var a = jQuery(this).attr('href') || jQuery('a', this).attr('href') || '',
-				img = jQuery('img', this).attr('data-src') || jQuery('img', this).attr('src') || jQuery(this).attr('data-img') || '';
+				img = jQuery('img', this).attr('data-original')
+					|| jQuery('img', this).attr('data-src')
+					|| jQuery('img', this).attr('src')
+					|| jQuery(this).attr('data-img')
+					|| '';
 			
 			//
 			str += create_list_post_for_crawl( a, img );
@@ -1889,7 +1912,11 @@ jQuery('.click-submit-url-categories').off('click').click(function () {
 			
 			jQuery( html_tags ).each(function() {
 				var a = jQuery(this).attr('href') || jQuery('a', this).attr('href') || '',
-					img = jQuery('img', this).attr('data-src') || jQuery('img', this).attr('src') || jQuery(this).attr('data-img') || '';
+					img = jQuery('img', this).attr('data-original')
+						|| jQuery('img', this).attr('data-src')
+						|| jQuery('img', this).attr('src')
+						|| jQuery(this).attr('data-img')
+						|| '';
 				
 				//
 				str += create_list_post_for_crawl( a, img );
