@@ -19,12 +19,14 @@ if ( isset($_GET['update_db_struct']) ) {
 	
 	//
 	$old_key = '_eb_product_';
+	$old_key2 = '_eb_blog_';
+	$old_key3 = '_ads_';
 	
 	$sql = _eb_q("SELECT *
 	FROM
 		" . wp_postmeta . "
 	WHERE
-		meta_key LIKE '{$old_key}%'
+		meta_key LIKE '{$old_key}%' OR meta_key LIKE '{$old_key2}%' OR meta_key LIKE '{$old_key3}%'
 	ORDER BY
 		post_id DESC
 	LIMIT 0, 500");
