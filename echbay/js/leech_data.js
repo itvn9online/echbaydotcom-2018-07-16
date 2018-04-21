@@ -682,8 +682,17 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 		
 		//
 		leech_data_content ('temp/?set_module=leech_data&categories_url=' + encodeURIComponent( a ) + '&leech_id=' + f.t_id.value, '', function () {
+			
+			
+			//
 			var f = document.frm_leech_data;
 //			var img_tags = jQuery('#details_img').val() || '';
+			
+			
+			// chức năng riêng của mỗi domain, chạy trước khi xử lý dữ liệu
+			if ( typeof before_func_leech_data_by_theme == 'function' ) {
+				before_func_leech_data_by_theme( f );
+			}
 			
 			//
 			var arr = {
