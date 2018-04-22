@@ -7,6 +7,13 @@
 */
 
 
+// tạo URL động trong admin, hạn chế lỗi URL
+$web_ad_link = explode( '/', web_link );
+$web_ad_link[0] = eb_web_protocol . ':';
+$web_ad_link[2] = $_SERVER['HTTP_HOST'];
+$web_ad_link = implode( '/', $web_ad_link );
+
+
 
 
 /*
@@ -147,7 +154,7 @@ function echbay_admin_styles() {
 	global $wpdb;
 	global $client_ip;
 	global $year_curent;
-//	global $func;
+	global $web_ad_link;
 //	global $web_link;
 	
 	
@@ -159,7 +166,7 @@ function echbay_admin_styles() {
 	//
 	/*
 	_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
-//		web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/font-awesome.css',
+//		$web_ad_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/font-awesome.css',
 		EB_URL_OF_PLUGIN . 'outsource/fonts/font-awesome.css',
 		EB_URL_OF_PLUGIN . 'css/default.css',
 		EB_URL_OF_PLUGIN . 'css/default2.css',
@@ -178,7 +185,7 @@ function echbay_admin_styles() {
 //		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
 		if ( file_exists( $v ) ) {
-			echo '<link rel="stylesheet" href="' . web_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '" type="text/css" media="all" />' . "\n";
+			echo '<link rel="stylesheet" href="' . $web_ad_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '" type="text/css" media="all" />' . "\n";
 		}
 	}
 	
@@ -186,7 +193,7 @@ function echbay_admin_styles() {
 	//
 	/*
 	_eb_add_full_js( EBE_admin_set_realtime_for_file ( array(
-//		web_link . 'wp-includes/js/jquery/jquery.js',
+//		$web_ad_link . 'wp-includes/js/jquery/jquery.js',
 //		EB_URL_OF_PLUGIN . 'javascript/eb_wp.js',
 		EB_URL_OF_PLUGIN . 'javascript/eb.js',
 //		EB_URL_OF_THEME . 'javascript/eb.js',
@@ -206,15 +213,15 @@ function echbay_admin_styles() {
 //		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
 		if ( file_exists( $v ) ) {
-			echo '<script type="text/javascript" src="' . web_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
+			echo '<script type="text/javascript" src="' . $web_ad_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
 		}
 	}
 	
 	//
-	echo WGR_show_header_favicon( web_link . eb_default_vaficon . '?v=' . EBE_admin_get_realtime_for_file( web_link . eb_default_vaficon ) ) . '
+	echo WGR_show_header_favicon( $web_ad_link . eb_default_vaficon . '?v=' . EBE_admin_get_realtime_for_file( $web_ad_link . eb_default_vaficon ) ) . '
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>,
-<script src="' . web_link . 'eb-load-quick-search"></script>';
+<script src="' . $web_ad_link . 'eb-load-quick-search"></script>';
 	
 	// lấy số STT lớn nhất của bài viết/ sản phẩm -> gán cho nó sản phẩm mới thêm sẽ luôn được lên đầu
 	$order_max_post_new = 0;
@@ -256,8 +263,8 @@ function echbay_admin_styles() {
 	
 	//
 	echo '<script type="text/javascript">
-var web_link = "' . web_link . '",
-	admin_link = "' . admin_link . '",
+var web_link = "' . $web_ad_link . '",
+	admin_link = "' . $web_ad_link . WP_ADMIN_DIR . '/",
 	date_time = ' . date_time . ',
 	lang_date_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
 	year_curent = ' . $year_curent . ',
@@ -331,7 +338,7 @@ function wpse_enqueue_datepicker() {
 //
 function echbay_admin_footer_styles() {
 	
-//	global $func;
+	global $web_ad_link;
 	global $__cf_row;
 	
 	
@@ -387,7 +394,7 @@ function echbay_admin_footer_styles() {
 //		$k =  $v;
 //		echo $k . '<br>' . "\n";
 		if ( file_exists( $v ) ) {
-			echo '<script type="text/javascript" src="' . web_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
+			echo '<script type="text/javascript" src="' . $web_ad_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
 		}
 	}
 	
@@ -473,7 +480,7 @@ function eb_add_ads_column_head($columns) {
 
 // hàm xử lý nội dung và tạo cột
 function eb_run_post_column_content($column, $post_id) {
-//	global $func;
+	global $web_ad_link;
 	
 	// giá bán
 	if ('gia' == $column) {
@@ -504,7 +511,7 @@ function eb_run_post_column_content($column, $post_id) {
 		
 		//
 		if ( isset( $arr_eb_ads_status[$a] ) ) {
-			echo '<span class="small"><a href="' . admin_link . 'edit.php?post_type=ads&ads_filter_status=' . $a . '">' . $arr_eb_ads_status[$a] . '</a></span>';
+			echo '<span class="small"><a href="' . $web_ad_link . WP_ADMIN_DIR . 'edit.php?post_type=ads&ads_filter_status=' . $a . '">' . $arr_eb_ads_status[$a] . '</a></span>';
 		} else {
 			echo '<em>NULL</em>';
 		}
