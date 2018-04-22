@@ -5,7 +5,7 @@
 
 echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] );
 
-/*
+
 $url_for_amp_favicon = $__cf_row ['cf_favicon'];
 if ( strstr( $url_for_amp_favicon, '//' ) == false ) {
 	if ( substr( $url_for_amp_favicon, 0, 1 ) == '/' ) {
@@ -13,8 +13,14 @@ if ( strstr( $url_for_amp_favicon, '//' ) == false ) {
 	}
 	$url_for_amp_favicon = web_link . $url_for_amp_favicon;
 }
-*/
-echo WGR_show_header_favicon();
+echo '<meta name="theme-color" content="' . $__cf_row['cf_default_bg'] . '">
+<meta name="msapplication-navbutton-color" content="' . $__cf_row['cf_default_bg'] . '">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="' . $__cf_row['cf_default_bg'] . '">
+<link href="' . $url_for_amp_favicon . '" rel="shortcut icon" type="image/png" />';
+
+// có một số lệnh không hợp với amp
+//echo WGR_show_header_favicon();
 
 ?>
 <link rel="canonical" href="<?php echo $url_og_url; ?>" />
