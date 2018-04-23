@@ -620,10 +620,26 @@ var _global_js_eb = {
 		// tạo attr mặc định để lưu thuộc tính cũ
 		jQuery('.img-max-width').each(function() {
 			var max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
+			max_width = Math.ceil( max_width ) - 1;
 //			console.log(max_width);
 			
 			// chỉnh lại chiều rộng của thẻ DIV trong khung nội dung (trừ đi padding với border của div)
 //			jQuery('.wp-caption', this).width( max_width - 5 );
+			jQuery('.wp-caption', this).css({
+				'max-width' : max_width + 'px'
+			});
+			/*
+			jQuery('.wp-caption', this).each(function() {
+				var wit = jQuery(this).attr('data-width') || jQuery(this).width() || max_width;
+				
+				//
+				jQuery(this).attr({
+					'data-width' : wit
+				}).css({
+					'max-width' : wit + 'px'
+				}).width('auto');
+			});
+			*/
 			
 			//
 			jQuery('img', this).each(function() {
@@ -666,6 +682,13 @@ var _global_js_eb = {
 					});
 				}
 			});
+			
+			
+			// thẻ TABLE
+			jQuery('table', this).css({
+				'max-width' : max_width + 'px'
+			});
+			
 		});
 		
 		
