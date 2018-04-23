@@ -1475,6 +1475,8 @@ function ___eb_list_post_run ( r ) {
 	khong_chay_function_o_theme_nua = 1;
 	
 	if ( typeof Child_eb_list_post_run == 'function' ) {
+		if ( cf_tester_mode == 1 ) console.log('Child_eb_list_post_run');
+		
 		Child_eb_list_post_run();
 	}
 	

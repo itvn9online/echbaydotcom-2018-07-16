@@ -2114,7 +2114,7 @@ var _global_js_eb = {
 		*/
 		setTimeout(function () {
 			//
-//				_global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id );
+//			_global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id );
 			
 			//
 			_global_js_eb.ga_event_track( 'Add to cart', 'Product ' + new_cart_id );
