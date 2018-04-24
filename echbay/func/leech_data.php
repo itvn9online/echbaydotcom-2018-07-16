@@ -26,7 +26,7 @@ $trv_tieude = trim( stripslashes( $_POST['t_tieude'] ) );
 $trv_seo = trim( $_POST['t_seo'] );
 
 //
-$get_post_name = _eb_q("SELECT ID
+$get_post_name = _eb_q("SELECT *
 	FROM
 		`" . wp_posts . "`
 	WHERE
