@@ -214,7 +214,7 @@ if ( $import_id == 0 ) {
 	// nếu có bài trùng post_name rồi thì thôi
 	if ( ! empty( $get_post_name ) ) {
 		die('<script type="text/javascript">
-parent.ket_thuc_lay_du_lieu(' .$import_id. ', "post_name");
+parent.ket_thuc_lay_du_lieu(' .$import_id. ', "<span class=greencolor>post_name</span>");
 </script>');
 	}
 	else {
