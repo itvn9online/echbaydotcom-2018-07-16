@@ -35,6 +35,13 @@ if ( isset( $_GET['remove_now'] ) ) {
 }
 
 //
+$cao = _eb_c("SELECT COUNT(ID) as a
+	FROM
+		`" . $wpdb->posts . "`
+	WHERE
+		`post_name` LIKE '%{$check_post_name}'");
+
+//
 $sql = _eb_q("SELECT ID, post_title, post_name
 	FROM
 		`" . $wpdb->posts . "`
@@ -55,10 +62,13 @@ $sql = _eb_q("SELECT ID, post_title, post_name
 		<td>ID</td>
 		<td>Name</td>
 		<td>Slug</td>
-		<td>&nbsp;</td>
+		<td><?php echo number_format( $cao ); ?></td>
 	</tr>
 	<?php
 
+
+//
+$auto_reload_page = false;
 if ( ! empty( $sql ) ) {
 	
 	//
@@ -94,6 +104,11 @@ if ( ! empty( $sql ) ) {
 			wp_delete_post( $o->ID, true );
 			
 			echo '<td class="orgcolor">Remove</td>';
+			
+			//
+			if ( $auto_reload_page == false ) {
+				$auto_reload_page = true;
+			}
 		}
 	}
 	else {
@@ -113,7 +128,7 @@ echo '</tr>';
 <br>
 <script>
 <?php
-if ( $ok_cho_remove == true && ! empty( $sql ) ) {
+if ( $auto_reload_page == true ) {
 	?>
 setTimeout(function () {
 	window.location = window.location.href;
