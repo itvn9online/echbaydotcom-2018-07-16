@@ -4,7 +4,7 @@
 
 function WGR_leech_data_submit_ket_thuc_lay_du_lieu ( $id, $text, $lnk = '' ) {
 	die('<script type="text/javascript">
-parent.ket_thuc_lay_du_lieu(' .$id. ', "' . $text . '");
+parent.ket_thuc_lay_du_lieu(' .$id. ', "' . $text . '", "' . $lnk . '");
 </script>');
 }
 
@@ -296,7 +296,8 @@ else {
 			//
 			if ( ! empty( $arr_for_update ) ) {
 				// gán ID cho post cần edit
-				$arr_for_update['ID'] = $check_post_exist->ID;
+//				$arr_for_update['ID'] = $check_post_exist->ID;
+				$arr_for_update['ID'] = $import_id;
 				
 				//
 				$post_id = WGR_update_post( $arr_for_update, 'Lỗi khi cập nhật! Sản phẩm đã tồn tại' );
