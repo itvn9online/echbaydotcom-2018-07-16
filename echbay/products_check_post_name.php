@@ -9,29 +9,38 @@ echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotco
 
 
 //
-$check_post_name = trim( $_GET['check_post_name'] );
 $ok_cho_remove = false;
+$check_post_name = _eb_number_only( $_GET['check_post_name'] );
+$save_post_name = $check_post_name;
+$check_post_name = '-' . $check_post_name;
+$check_by_text = $check_post_name;
 
 // kiểm tra tham số đầu vào, phải chuẩn cấu trúc
-if ( substr( $check_post_name, 0, 2 ) != '-2' ) {
-	$check_post_name = '-2';
+/*
+if ( substr( $check_post_name, 0, 2 ) != $check_by_text ) {
+	$check_post_name = $check_by_text;
 }
+*/
 
 //
 if ( isset( $_GET['remove_now'] ) ) {
 	// kiểm tra độ chuẩn xác của URL -> chỉ có thể là chuỗi -2
-	$str = '-2';
-	$str2 = $str;
+	/*
+	$str = $check_by_text;
+	$str2 = $check_by_text;
 	for ( $i = 0; $i < 100; $i++ ) {
 //		echo $str . '<br>';
 		if ( $check_post_name == $str ) {
+			*/
 			$ok_cho_remove = true;
+			/*
 			break;
 		}
 		
 		// thêm chuỗi vào để kiểm tra tiếp
 		$str .= $str2;
 	}
+	*/
 }
 
 //
@@ -42,7 +51,7 @@ $cao = _eb_c("SELECT COUNT(ID) as a
 		`post_name` LIKE '%{$check_post_name}'");
 
 //
-$limit_select = 200;
+$limit_select = 100;
 if ( isset( $_GET['total_no_remove'] ) ) {
 	$limit_select += (int) $_GET['total_no_remove'];
 }
@@ -59,11 +68,36 @@ $sql = _eb_q("SELECT ID, post_title, post_name
 //
 //print_r( $sql );
 
+echo '<div>';
+for ( $i = 1; $i < 10; $i++ ) {
+	$cl = '';
+	if ( $save_post_name == $i ) {
+		$cl = ' bold';
+	}
+	
+	//
+	echo '<a href="' . admin_link . 'admin.php?page=eb-products&check_post_name=' . $i . '" class="check-post-name' . $cl . '">Check (' . $i . ')</a> | ';
+}
+echo '</div><br>';
+
+echo '<div>';
+for ( $i = 1; $i < 20; $i++ ) {
+	$cl = '';
+	if ( $save_post_name == $i ) {
+		$cl = ' bold';
+	}
+	
+	//
+	echo '<a href="' . admin_link . 'admin.php?page=eb-products&check_post_name=' . $i . '&remove_now=1" class="check-post-name' . $cl . '">Remove (' . $i . ')</a> | ';
+}
+echo '</div>';
 
 ?>
 
 <br>
-<div class="text-right"><a href="<?php echo admin_link; ?>admin.php?page=eb-products&check_post_name=<?php echo $check_post_name; ?>&remove_now=1" class="d-iblock blue-button whitecolor">Xóa các bài viết này</a></div>
+<div class="orgcolor small">* Menu chỉ hiển thị từ 1-9, các số khác có thể chủ động thay tham số <strong>check_post_name</strong> trên URL. Khi số cần check &gt; 9 -> lệnh sẽ tự động chạy cho đến 99 sẽ dừng.</div>
+<br>
+<div class="text-right"><a href="<?php echo admin_link; ?>admin.php?page=eb-products&check_post_name=<?php echo $save_post_name; ?>&remove_now=1" class="d-iblock blue-button whitecolor">Xóa các bài viết này</a></div>
 <br>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list class-for-post-type class-for-<?php echo $by_post_type; ?>">
 	<tr class="table-list-title">
@@ -90,15 +124,15 @@ if ( ! empty( $sql ) ) {
 <tr>
 	<td data-id="' . $o->ID . '" class="each-to-get-id">' . $o->ID . '</td>
 	<td class="small"><a href="' . admin_link . 'post.php?post=' . $o->ID . '&action=edit" target="_blank"><strong>' . $o->post_title . '</strong> <i title="Sửa" class="fa fa-edit greencolor"></i></a></td>
-	<td><a href="' . web_link . '?p=' . $o->ID . '" target="_blank">' . $o->post_name . ' <i class="fa fa-eye"></i></a></td>';
+	<td class="small"><a href="' . web_link . '?p=' . $o->ID . '" target="_blank">' . $o->post_name . ' <i class="fa fa-eye"></i></a></td>';
 	
 	if ( $ok_cho_remove == true ) {
 		// thử kiểm tra lại URL tử title xem có đúng không
 		$check_post_title = _eb_non_mark_seo( $o->post_title );
 		$check_post_title = substr( $check_post_title, strlen( $check_post_title ) - 2 );
 		
-		if ( $check_post_title == '-2' ) {
-			echo '<td class="bluecolor bold">No no</td>';
+		if ( $check_post_title == $check_by_text ) {
+			echo '<td class="bluecolor bold">Nonoo</td>';
 			$count_no_remove++;
 		}
 		else {
@@ -135,12 +169,21 @@ echo '</tr>';
 </table>
 <script>
 <?php
+
 if ( $auto_reload_page == true ) {
 	?>
 setTimeout(function () {
 	window.location = window.location.href.split('&total_no_remove=')[0] + '&total_no_remove=<?php echo $count_no_remove; ?>';
-}, 10000);
+}, 5000);
 	<?php
 }
+else if ( $save_post_name > 9 && $save_post_name< 100 ) {
+	?>
+setTimeout(function () {
+	window.location = window.location.href.split('&check_post_name=')[0] + '&check_post_name=<?php echo $save_post_name + 1; ?>&remove_now=1';
+}, 5000);
+	<?php
+}
+
 ?>
 </script> 

@@ -2708,6 +2708,7 @@ function _eb_clear_all_log () {
 
 
 function _eb_number_only( $str = '', $re = '/[^0-9]+/' ) {
+	$str = trim( $str );
 	if ($str == '') {
 		return 0;
 	}

@@ -71,12 +71,31 @@ class ___echbay_widget_set_adsense_code extends WP_Widget {
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
 		
 //		$code = isset( $instance ['code'] ) ? $instance ['code'] : '';
-		$code = $__cf_row['cf_js_gadsense'];
+		$code = trim( $__cf_row['cf_js_gadsense'] );
 		
-		//
+		// nếu không có mã cho phần này
 		if ( $code == '' ) {
-			echo '<!-- ' . $this->name . ' (CODE is NULL) -->';
-			return false;
+			// thử xem có ID không -> có thì gán luôn
+			if ( $__cf_row['cf_gadsense_client_amp'] != '' && $__cf_row['cf_gadsense_slot_amp'] != '' ) {
+				$code = '<br>
+<div class="w99">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-' . $__cf_row['cf_gadsense_client_amp'] . '"
+     data-ad-slot="' . $__cf_row['cf_gadsense_slot_amp'] . '"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<br>';
+			}
+			// không thì trả về lỗi
+			else {
+				echo '<!-- ' . $this->name . ' (cf_js_gadsense is NULL) -->';
+				return false;
+			}
 		}
 		
 		

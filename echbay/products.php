@@ -75,7 +75,7 @@ $arr_for_show_taxonomy = array(
 	}
 	
 	// Lệnh tìm các bài trùng post_name
-	echo '<a href="' . admin_link . 'admin.php?page=eb-products&check_post_name=-2" class="check-post-name">Kiểm tra trùng lặp</a> | ';
+	echo '<a href="' . admin_link . 'admin.php?page=eb-products&check_post_name=2" class="check-post-name">Kiểm tra trùng lặp</a> | ';
 	
 	?>
 	</div>
