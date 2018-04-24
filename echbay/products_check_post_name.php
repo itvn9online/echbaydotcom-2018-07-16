@@ -14,6 +14,7 @@ $check_post_name = _eb_number_only( $_GET['check_post_name'] );
 $save_post_name = $check_post_name;
 $check_post_name = '-' . $check_post_name;
 $check_by_text = $check_post_name;
+$len_by_text = strlen( $check_by_text );
 
 // kiểm tra tham số đầu vào, phải chuẩn cấu trúc
 /*
@@ -129,7 +130,7 @@ if ( ! empty( $sql ) ) {
 	if ( $ok_cho_remove == true ) {
 		// thử kiểm tra lại URL tử title xem có đúng không
 		$check_post_title = _eb_non_mark_seo( $o->post_title );
-		$check_post_title = substr( $check_post_title, strlen( $check_post_title ) - 2 );
+		$check_post_title = substr( $check_post_title, strlen( $check_post_title ) - $len_by_text );
 		
 		if ( $check_post_title == $check_by_text ) {
 			echo '<td class="bluecolor bold">Nonoo</td>';
