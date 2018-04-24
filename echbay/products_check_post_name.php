@@ -96,7 +96,7 @@ echo '</div>';
 ?>
 
 <br>
-<div class="orgcolor small">* Menu chỉ hiển thị từ 1-9, các số khác có thể chủ động thay tham số <strong>check_post_name</strong> trên URL. Khi số cần check &gt; 2 -> lệnh sẽ tự động chạy cho đến 99 sẽ dừng.</div>
+<div class="orgcolor small">* Menu chỉ hiển thị từ 1-9, các số khác có thể chủ động thay tham số <strong>check_post_name</strong> trên URL. Khi số cần check &gt; 2 -> lệnh sẽ tự động chạy cho đến 499 sẽ dừng.</div>
 <br>
 <div class="text-right"><a href="<?php echo admin_link; ?>admin.php?page=eb-products&check_post_name=<?php echo $save_post_name; ?>&remove_now=1" class="d-iblock blue-button whitecolor">Xóa các bài viết này</a></div>
 <br>
@@ -180,7 +180,7 @@ setTimeout(function () {
 	<?php
 }
 // tự động chạy khi check từ 3 trở lên
-else if ( $save_post_name > 2 && $save_post_name < 100 ) {
+else if ( $save_post_name > 2 && $save_post_name < 500 ) {
 	?>
 setTimeout(function () {
 	window.location = window.location.href.split('&check_post_name=')[0] + '&check_post_name=<?php echo $save_post_name + 1; ?>&remove_now=1';
