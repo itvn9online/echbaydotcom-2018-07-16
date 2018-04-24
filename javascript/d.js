@@ -3159,12 +3159,14 @@ function WGR_set_a_target_top () {
 //
 var current_pid_quicview = pid,
 	set_new_height_for_quick_view = true,
-	time_for_new_height_quick_view = 800;
+	time_for_new_height_quick_view = 800,
+	cache_for_quick_view_title = document.title;
 function close_ebe_quick_view () {
 	jQuery('#oi_ebe_quick_view').hide();
 	jQuery('body').removeClass('body-no-scroll');
 	window.history.pushState("", '', current_ls_url);
 	pid = current_pid_quicview;
+	document.title = cache_for_quick_view_title;
 }
 
 function WGR_set_quick_view_height () {
@@ -3191,6 +3193,8 @@ function WGR_set_quick_view_height () {
 //	window.scroll( 0, 0 );
 }
 
+
+//
 (function () {
 	if ( cf_post_class_style == '' && cf_blog_class_style != '' ) {
 		cf_post_class_style = cf_blog_class_style;
@@ -3246,6 +3250,7 @@ function WGR_set_quick_view_height () {
 		
 		//
 		window.history.pushState("", '', h);
+		document.title = $(this).attr('title') || cache_for_quick_view_title;
 		
 		// sử dụng ajax
 //		ajaxl('quick_view&id=' + a, 'ui_ebe_quick_view');
