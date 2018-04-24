@@ -123,6 +123,7 @@ a {
 	max-width: 1366px;
 }
 .d-block { display: block }
+.d-iblock { display: inline-block }
 /* ads banner */
 .banner-ads-media {
 	background: center no-repeat;

@@ -4,7 +4,7 @@
 function WGR_admin_quick_edit_select_menu () {
 	
 	//
-	$('.set-url-post-post-type').each(function(index, element) {
+	$('.set-url-post-post-type').each(function() {
 		var a = $(this).attr('data-type') || 'post';
 		
 		$(this).attr({
@@ -24,6 +24,9 @@ function WGR_admin_quick_edit_select_menu () {
 	//
 	if ( window.location.href.split('&by_taxonomy=').length > 1 ) {
 		$('.set-url-taxonomy-category[data-type="' + by_taxonomy + '"]').addClass('bold');
+	}
+	else if ( window.location.href.split('&check_post_name=').length > 1 ) {
+		$('.check-post-name').addClass('bold');
 	}
 	else {
 		$('.set-url-post-post-type[data-type="' + by_post_type + '"]').addClass('bold');

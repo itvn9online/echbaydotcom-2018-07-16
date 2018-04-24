@@ -74,6 +74,9 @@ $arr_for_show_taxonomy = array(
 		echo '<a data-type="' . $k . '" href="#" class="set-url-taxonomy-category">' . $v . '</a> | ';
 	}
 	
+	// Lệnh tìm các bài trùng post_name
+	echo '<a href="' . admin_link . 'admin.php?page=eb-products&check_post_name=-2" class="check-post-name">Kiểm tra trùng lặp</a> | ';
+	
 	?>
 	</div>
 </div>
@@ -102,6 +105,9 @@ echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echb
 //
 if ( isset( $_GET['by_taxonomy'] ) ) {
 	include ECHBAY_PRI_CODE . 'products_taxonomy.php';
+}
+else if ( isset( $_GET['check_post_name'] ) ) {
+	include ECHBAY_PRI_CODE . 'products_check_post_name.php';
 }
 else {
 	include ECHBAY_PRI_CODE . 'products_post.php';

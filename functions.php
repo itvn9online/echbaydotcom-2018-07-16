@@ -2751,7 +2751,7 @@ function _eb_un_money_format($str) {
 function _eb_non_mark_seo($str) {
 	
 	//
-	$str = _eb_non_mark ( $str );
+	$str = _eb_non_mark ( trim( $str ) );
 	
 	//
 	$unicode = array(
