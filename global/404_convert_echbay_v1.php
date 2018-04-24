@@ -201,7 +201,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 			//
 			$sql = _eb_q("SELECT ID
 			FROM
-				`" . $wpdb->posts . "`
+				`" . wp_posts . "`
 			WHERE
 				post_type = '" . $post_type . "'
 				" . $strFilter . "

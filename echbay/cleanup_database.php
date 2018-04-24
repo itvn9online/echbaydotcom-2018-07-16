@@ -13,7 +13,7 @@ $url_for_home_clean_up = admin_link . 'admin.php?page=eb-coder&tab=cleanup_datab
 // tính tổng các post_type đang có
 $sql = _eb_q("SELECT post_type
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	GROUP BY
 		post_type");
 //print_r( $sql );
@@ -23,7 +23,7 @@ foreach ( $sql as $v ) {
 	//
 	$strsql = _eb_q("SELECT count(ID) as c
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_type = '" . $v->post_type . "'");
 //	print_r( $strsql );
@@ -186,7 +186,7 @@ if ( isset( $_GET['del_data'] ) ) {
 	// chạy lại bằng lệnh cung cấp bởi wp -> đề phòng lệnh trên có lỗi
 	$sql = _eb_q("SELECT ID, post_title, post_name
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_type = 'revision'
 	ORDER BY

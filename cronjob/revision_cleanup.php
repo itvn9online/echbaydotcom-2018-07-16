@@ -12,7 +12,7 @@ if ( $check_Cleanup_cache == false ) {
 		// tính tổng số revision đang có
 		$strsql = _eb_q("SELECT count(ID) as c
 		FROM
-			`" . $wpdb->posts . "`
+			`" . wp_posts . "`
 		WHERE
 			post_type = 'revision'");
 //		print_r( $strsql );
@@ -21,7 +21,7 @@ if ( $check_Cleanup_cache == false ) {
 		if ( ! empty( $strsql ) && $strsql[0]->c > $__cf_row['cf_max_revision_cleanup'] + 100 ) {
 			$strsql = _eb_q("SELECT ID
 			FROM
-				`" . $wpdb->posts . "`
+				`" . wp_posts . "`
 			WHERE
 				post_type = 'revision'
 			ORDER BY

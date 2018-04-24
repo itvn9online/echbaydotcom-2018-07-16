@@ -102,7 +102,7 @@ function WGR_create_sitemap_image_default_node () {
 function WGR_get_sitemap_post ( $type = 'post' ) {
 	global $wpdb;
 	global $limit_post_get;
-//	echo $wpdb->posts;
+//	echo wp_posts;
 	
 	$status = 'publish';
 	if ( $type == 'attachment' ) {
@@ -132,7 +132,7 @@ function WGR_get_sitemap_post ( $type = 'post' ) {
 	//
 	$sql = _eb_q("SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_type = '" . $type . "'
 		AND post_status = '" . $status . "'
@@ -146,7 +146,7 @@ function WGR_get_sitemap_post ( $type = 'post' ) {
 
 function WGR_get_sitemap_total_post ( $type = 'post' ) {
 	global $wpdb;
-//	echo $wpdb->posts;
+//	echo wp_posts;
 	
 	$status = 'publish';
 	if ( $type == 'attachment' ) {
@@ -155,7 +155,7 @@ function WGR_get_sitemap_total_post ( $type = 'post' ) {
 	
 	return _eb_c("SELECT COUNT(ID) as a
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_type = '" . $type . "'
 		AND post_status = '" . $status . "'");

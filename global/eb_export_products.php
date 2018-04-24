@@ -33,7 +33,7 @@ function WGR_export_product_to_xml ( $limit, $filter = '', $post_type = 'post' )
 	//
 	return _eb_q( "SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_type = '" . $post_type . "'
 		" . $filter . "

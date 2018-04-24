@@ -166,7 +166,7 @@ function _eb_load_order_v1 ( $posts_per_page = 68, $_eb_query = array() ) {
 	//
 	$sql = _eb_q( "SELECT *
 	FROM
-		" . $wpdb->posts . "
+		" . wp_posts . "
 	WHERE
 		post_type = 'shop_order'
 		AND post_status = 'private'
@@ -1537,7 +1537,7 @@ function WGR_create_page( $page_url, $page_name = '' ) {
 	
 	$sql = _eb_q( "SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_name = '" . $page_url . "'" );
 //	print_r( $sql );
@@ -1578,7 +1578,7 @@ function _eb_create_page( $page_url, $page_name, $page_template = '' ) {
 	
 	$name = $wpdb->get_var("SELECT ID
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_name = '" . $page_url . "'");
 	

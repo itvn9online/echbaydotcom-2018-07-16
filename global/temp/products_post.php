@@ -18,7 +18,7 @@ if ( $post_id > 0 && $type != '' ) {
 		if ( $type == 'auto' ) {
 			$sql = _eb_q ( "SELECT menu_order
 			FROM
-				`" . $wpdb->posts . "`
+				`" . wp_posts . "`
 			WHERE
 				post_type = '" . $by_post_type . "'
 				AND ID != " . $post_id . "

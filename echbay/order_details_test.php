@@ -8,7 +8,7 @@ print_r( $sql );
 /*
 $strsql = _eb_q("SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_author = " . $sql->post_author . "
 	ORDER BY

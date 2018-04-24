@@ -24,7 +24,7 @@ print_r( $all_sizes );
 //
 $total_post = _eb_c( "SELECT COUNT(ID) AS c
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_type = 'attachment'" );
 $post_per_page = 50;
@@ -42,7 +42,7 @@ $offset = ($trang - 1) * $post_per_page;
 //
 $sql = $wpdb->get_results( "SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_type = 'attachment'
 	ORDER BY

@@ -37,7 +37,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		if ( $alias_post > 0 ) {
 			$sql = _eb_q("SELECT *
 			FROM
-				`" . $wpdb->posts . "`
+				`" . wp_posts . "`
 			WHERE
 				ID = " . $alias_post . "
 				AND post_status = 'publish'");
@@ -404,7 +404,7 @@ function EBE_get_page_custom_options ( $page_name ) {
 	// lấy page trong CSDL xem có không? chỉ lấy page dưới dạng Private
 	$sql = _eb_q("SELECT ID, post_title, post_excerpt
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_name = '" . $page_name . "'
 		AND post_type = 'eb_page'
@@ -3455,7 +3455,7 @@ function _eb_load_ads (
 			if ( $alias_post > 0 ) {
 				$strsql = _eb_q("SELECT *
 				FROM
-					`" . $wpdb->posts . "`
+					`" . wp_posts . "`
 				WHERE
 					ID = " . $alias_post . "
 					AND post_status = 'publish'");
@@ -3678,7 +3678,7 @@ function WGR_get_post_type_name ( $id ) {
 	//
 	$sql = _eb_q("SELECT post_type
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		ID = " . $id . "
 	LIMIT 0, 1");

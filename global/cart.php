@@ -40,7 +40,7 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 	// v2 -> lấy theo lệnh mysql ví wordpres nó lấy cả sản phẩm sticky vào
 	$sql = _eb_q("SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		ID IN (" . substr( $cart_list_id, 1 ) . ")
 		AND post_status = 'publish'

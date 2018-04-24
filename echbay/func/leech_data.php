@@ -16,7 +16,7 @@ $trv_seo = trim( $_POST['t_seo'] );
 //
 $get_post_name = _eb_q("SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_name = '" . $trv_seo . "'");
 
@@ -114,7 +114,7 @@ if ( $trv_id != '' && is_numeric( $trv_id ) && $trv_id > 0 ) {
 	/*
 	$import_id = $wpdb->get_var("SELECT ID
 	FROM
-		" . $wpdb->posts . "
+		" . wp_posts . "
 	WHERE
 		ID = '" . $trv_id . "'");
 	*/
@@ -122,7 +122,7 @@ if ( $trv_id != '' && is_numeric( $trv_id ) && $trv_id > 0 ) {
 	//
 	$check_post_exist = _eb_q("SELECT *
 	FROM
-		" . $wpdb->posts . "
+		" . wp_posts . "
 	WHERE
 		ID = " . $trv_id);
 }
@@ -160,7 +160,7 @@ else {
 		//
 		$check_post_exist = _eb_q("SELECT *
 		FROM
-			" . $wpdb->posts . "
+			" . wp_posts . "
 		WHERE
 			ID = " . $import_id);
 	}
@@ -169,7 +169,7 @@ else {
 		/*
 		$import_id = $wpdb->get_var("SELECT ID
 		FROM
-			" . $wpdb->posts . "
+			" . wp_posts . "
 		WHERE
 			post_name = '" . $trv_seo . "'");
 		*/

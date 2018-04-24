@@ -378,7 +378,7 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 			post_id IN ( select
 							ID
 						from
-							`" . $wpdb->posts . "`
+							`" . wp_posts . "`
 						where
 							post_type = '" . $post_type . "' " . $strFilter . " )", 0 );
 		
@@ -390,13 +390,13 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 			object_id IN ( select
 							ID
 						from
-							`" . $wpdb->posts . "`
+							`" . wp_posts . "`
 						where
 							post_type = '" . $post_type . "' " . $strFilter . " )", 0 );
 		
 		// sau đó xóa posts
 		_eb_q( "DELETE FROM
-			`" . $wpdb->posts . "`
+			`" . wp_posts . "`
 		WHERE
 			post_type = '" . $post_type . "' " . $strFilter . " ", 0 );
 	}

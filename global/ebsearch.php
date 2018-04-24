@@ -9,7 +9,7 @@
 if ( isset($_GET['update_key_version']) && mtv_id > 0 ) {
 	$sql = _eb_q("SELECT ID, post_title
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_title != ''
 		AND post_type = 'post'

@@ -232,7 +232,7 @@ function echbay_admin_styles() {
 		}
 		$sql = _eb_q("SELECT menu_order
 		FROM
-			`" . $wpdb->posts . "`
+			`" . wp_posts . "`
 		WHERE
 			post_type = '" . $order_by_post_type . "'
 			AND menu_order > 0
@@ -674,7 +674,7 @@ function WGR_backup_post_before_delete ( $postid ) {
 	// Lấy toàn bộ dữ liệu của post
 	$sql = _eb_q("SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		ID = " . $postid);
 //	print_r( $sql );

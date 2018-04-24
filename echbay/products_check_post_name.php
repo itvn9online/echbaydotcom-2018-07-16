@@ -47,7 +47,7 @@ if ( isset( $_GET['remove_now'] ) ) {
 //
 $cao = _eb_c("SELECT COUNT(ID) as a
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		`post_name` LIKE '%{$check_post_name}'");
 
@@ -59,7 +59,7 @@ if ( isset( $_GET['total_no_remove'] ) ) {
 
 $sql = _eb_q("SELECT ID, post_title, post_name
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		`post_name` LIKE '%{$check_post_name}'
 	ORDER BY
@@ -140,7 +140,7 @@ if ( ! empty( $sql ) ) {
 			/*
 			_eb_q("DELETE
 			FROM
-				`" . $wpdb->posts . "`
+				`" . wp_posts . "`
 			WHERE
 				`ID` = " . $o->ID, 0);
 				*/

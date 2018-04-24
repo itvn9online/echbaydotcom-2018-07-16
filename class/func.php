@@ -307,7 +307,7 @@ class EchBayCommerce {
 		//
 		$sql = $this->q( "SELECT *
 		FROM
-			" . $wpdb->posts . "
+			" . wp_posts . "
 		WHERE
 			post_type = 'shop_order'
 			AND post_status = 'private'
@@ -845,7 +845,7 @@ class EchBayCommerce {
 		
 		$name = $wpdb->get_var("SELECT ID
 		FROM
-			" . $wpdb->posts . "
+			" . wp_posts . "
 		WHERE
 			post_name = '" . $page_url . "'");
 		

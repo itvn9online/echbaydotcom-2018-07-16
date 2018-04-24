@@ -44,7 +44,7 @@ if ( $order_old_type > 0 ) {
 	
 	
 	// xóa đơn hàng ở định dạng cũ đi
-	$sql = "UPDATE `" . $wpdb->posts . "`
+	$sql = "UPDATE `" . wp_posts . "`
 	SET
 		post_type = 'shop_order_xoa'
 	WHERE

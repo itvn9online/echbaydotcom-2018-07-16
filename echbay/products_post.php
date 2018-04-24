@@ -14,8 +14,8 @@ $by_cat_id = isset( $_GET['by_cat_id'] ) ? (int) $_GET['by_cat_id'] : 0;
 // tham khảo custom query: https://codex.wordpress.org/Displaying_Posts_Using_a_Custom_Select_Query
 
 //
-$strFilter = " `" . $wpdb->posts . "`.post_type = '" . $by_post_type . "'
-	AND ( `" . $wpdb->posts . "`.post_status = 'publish' OR `" . $wpdb->posts . "`.post_status = 'pending' OR `" . $wpdb->posts . "`.post_status = 'draft' ) ";
+$strFilter = " `" . wp_posts . "`.post_type = '" . $by_post_type . "'
+	AND ( `" . wp_posts . "`.post_status = 'publish' OR `" . wp_posts . "`.post_status = 'pending' OR `" . wp_posts . "`.post_status = 'draft' ) ";
 	
 $joinFilter = "";
 $strAjaxLink = '';
@@ -52,7 +52,7 @@ if ( $by_cat_id > 0 ) {
 	$strFilter .= " AND `" . $wpdb->term_taxonomy . "`.taxonomy = '" . $cats_type . "'
 		AND `" . $wpdb->term_taxonomy . "`.term_id IN (" . $by_cat_id . $by_child_cat_id . ") ";
 	
-	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . $wpdb->posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id)
+	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . wp_posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id)
 		LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
 //	$joinFilter = ", `" . $wpdb->term_taxonomy . "`, `" . $wpdb->term_relationships . "` ";
 	
@@ -106,7 +106,7 @@ if ( isset( $_GET['tab'] ) ) {
 // tổng số đơn hàng
 $totalThread = _eb_c ( "SELECT COUNT(ID) AS c
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 		" . $joinFilter . "
 	WHERE
 		" . $strFilter );
@@ -275,12 +275,12 @@ if ( $totalThread > 0 ) {
 	//
 	$sql = "SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 		" . $joinFilter . "
 	WHERE
 		" . $strFilter . "
 	ORDER BY
-		`" . $wpdb->posts . "`.menu_order DESC
+		`" . wp_posts . "`.menu_order DESC
 	LIMIT " . $offset . ", " . $threadInPage;
 //	echo $sql; 
 	$sql = _eb_q ( $sql );

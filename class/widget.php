@@ -377,7 +377,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	$sql = _eb_q( "SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_type = 'page'
 		AND post_status = 'publish'

@@ -69,24 +69,24 @@ function WGR_custom_check_post_in_multi_taxonomy_v1 ( $cat1, $cat2 ) {
 	//
 //	$strFilter = " AND `" . $wpdb->term_taxonomy . "`.term_id IN (" . $cat1 . ',' . $cat2 . ") ";
 //	$strFilter = " AND `" . $wpdb->term_relationships . "`.term_id IN (" . $cat1 . ',' . $cat2 . ") ";
-	$strFilter = " AND `" . $wpdb->posts . "`.ID IN ( select object_id from `" . $wpdb->term_relationships . "` " . $cat1 . ',' . $cat2 . ") ";
+	$strFilter = " AND `" . wp_posts . "`.ID IN ( select object_id from `" . $wpdb->term_relationships . "` " . $cat1 . ',' . $cat2 . ") ";
 	
 	//
-	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . $wpdb->posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id) ";
+	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . wp_posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id) ";
 //	$joinFilter .= " LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
 	$joinFilter = "";
 	
 	//
 	$sql = "SELECT ID
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 		" . $joinFilter . "
 	WHERE
-		`" . $wpdb->posts . "`.post_type = 'post'
-		AND `" . $wpdb->posts . "`.post_status = 'publish'
+		`" . wp_posts . "`.post_type = 'post'
+		AND `" . wp_posts . "`.post_status = 'publish'
 		" . $strFilter . "
 	ORDER BY
-		`" . $wpdb->posts . "`.ID DESC
+		`" . wp_posts . "`.ID DESC
 	LIMIT 0, 1";
 	echo $sql . '<br>' . "\n";
 	$sql = _eb_q( $sql );
@@ -111,14 +111,14 @@ function WGR_custom_check_post_in_multi_taxonomy_v2 ( $cat1, $cat2 ) {
 	$strFilter = " AND ID IN ( select object_id from `" . $wpdb->term_relationships . "` where term_taxonomy_id in (" . $cat1 . ',' . $cat2 . ") ) ";
 	
 	//
-//	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . $wpdb->posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id) ";
+//	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . wp_posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id) ";
 //	$joinFilter .= " LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
 	$joinFilter = "";
 	
 	//
 	$sql = "SELECT ID
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 		" . $joinFilter . "
 	WHERE
 		post_type = 'post'

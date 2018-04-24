@@ -40,7 +40,7 @@ function __eb_instal_demo_data ( $title, $type = 'post', $data = array(), $post_
 	// kiểm tra nếu chưa có mới cài đặt
 	$post_id = $wpdb->get_var("SELECT ID
 	FROM
-		" . $wpdb->posts . "
+		" . wp_posts . "
 	WHERE
 		post_name = '" . $uri . "'");
 	

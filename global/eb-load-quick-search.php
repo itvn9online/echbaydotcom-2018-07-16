@@ -9,7 +9,7 @@ function WGR_quick_search_get_js_post ( $type = 'post', $limit_post_get = 1000 )
 	//
 	$sql = _eb_q("SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		post_type = '" . $type . "'
 		AND post_status = 'publish'

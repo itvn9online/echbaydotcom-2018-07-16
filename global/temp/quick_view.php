@@ -26,7 +26,7 @@ $sql = _eb_load_post_obj( 1, array(
 /*
 $post = _eb_q("SELECT *
 	FROM
-		`" . $wpdb->posts . "`
+		`" . wp_posts . "`
 	WHERE
 		ID = " . $quick_view_id);
 //print_r( $post );

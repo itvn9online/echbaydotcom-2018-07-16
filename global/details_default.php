@@ -87,7 +87,7 @@ $arr_post_for_check_mysql = (array) $__post;
 
 // nếu chưa có cột giá mới -> add thêm cột giá mới
 if ( ! isset( $arr_post_for_check_mysql['_eb_product_price'] ) ) {
-	$eb_install_sql = "ALTER TABLE `" . $wpdb->posts . "`
+	$eb_install_sql = "ALTER TABLE `" . wp_posts . "`
 	ADD
 		`_eb_product_price` INT(11) NOT NULL
 	AFTER
@@ -97,7 +97,7 @@ if ( ! isset( $arr_post_for_check_mysql['_eb_product_price'] ) ) {
 }
 // nếu có giá mới, mà cột giá mới chưa có update -> update cột giá
 else if ( $arr_post_for_check_mysql['_eb_product_price'] != $trv_giamoi ) {
-	_eb_q("UPDATE `" . $wpdb->posts . "`
+	_eb_q("UPDATE `" . wp_posts . "`
 	SET
 		_eb_product_price = " . $trv_giamoi . "
 	WHERE

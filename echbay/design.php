@@ -39,7 +39,7 @@ if ( $curent_file != '' && file_exists( EB_THEME_HTML . $curent_file ) ) {
 	// kiểm tra xem trong CSDL có nội dung cho file này không
 	$sql = _eb_q("SELECT ID, post_title, post_excerpt
 	FROM
-		" . $wpdb->posts . "
+		" . wp_posts . "
 	WHERE
 		post_name = '" . $curent_page_name . "'
 		AND post_type = 'eb_page'

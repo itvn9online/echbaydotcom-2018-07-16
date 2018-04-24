@@ -108,7 +108,7 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 				meta_key = '_eb_product_price'
 				AND post_id IN ( select ID
 								from
-									`" . $wpdb->posts . "`
+									`" . wp_posts . "`
 								where
 									post_type = 'post'
 									and post_status = 'publish'
