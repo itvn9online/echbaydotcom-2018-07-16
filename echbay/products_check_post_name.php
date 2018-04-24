@@ -62,6 +62,9 @@ $sql = _eb_q("SELECT ID, post_title, post_name
 
 ?>
 
+<br>
+<div class="text-right"><a href="<?php echo admin_link; ?>admin.php?page=eb-products&check_post_name=<?php echo $check_post_name; ?>&remove_now=1" class="d-iblock blue-button whitecolor">Xóa các bài viết này</a></div>
+<br>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list class-for-post-type class-for-<?php echo $by_post_type; ?>">
 	<tr class="table-list-title">
 		<td>ID</td>
@@ -130,9 +133,6 @@ echo '</tr>';
 
 	?>
 </table>
-<br>
-<div><a href="<?php echo admin_link; ?>admin.php?page=eb-products&check_post_name=<?php echo $check_post_name; ?>&remove_now=1" class="d-iblock blue-button whitecolor">Xóa các bài viết này</a></div>
-<br>
 <script>
 <?php
 if ( $auto_reload_page == true ) {
