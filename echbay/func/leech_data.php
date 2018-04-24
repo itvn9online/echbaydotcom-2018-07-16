@@ -1,6 +1,14 @@
 <?php
 
 
+
+function WGR_leech_data_submit_ket_thuc_lay_du_lieu ( $id, $text, $lnk = '' ) {
+	die('<script type="text/javascript">
+parent.ket_thuc_lay_du_lieu(' .$id. ', "' . $text . '");
+</script>');
+}
+
+
 //print_r( $_POST ); exit();
 
 
@@ -10,11 +18,15 @@ $post_type = trim( $_POST['post_tai'] );
 //_eb_alert($post_type);
 
 $trv_source = trim( $_POST['t_source'] );
+if ( $trv_source == '' ) {
+	WGR_leech_data_submit_ket_thuc_lay_du_lieu( 0, '<span class=redcolor>Not source</span>' );
+}
+
 $trv_tieude = trim( stripslashes( $_POST['t_tieude'] ) );
 $trv_seo = trim( $_POST['t_seo'] );
 
 //
-$get_post_name = _eb_q("SELECT *
+$get_post_name = _eb_q("SELECT ID
 	FROM
 		`" . wp_posts . "`
 	WHERE
@@ -213,9 +225,7 @@ $import_id = (int)$import_id;
 if ( $import_id == 0 ) {
 	// nếu có bài trùng post_name rồi thì thôi
 	if ( ! empty( $get_post_name ) ) {
-		die('<script type="text/javascript">
-parent.ket_thuc_lay_du_lieu(' .$import_id. ', "<span class=orgcolor>post_name</span>");
-</script>');
+		WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, '<span class=orgcolor>POST NAME</span>' );
 	}
 	else {
 		$arr = array(
@@ -305,9 +315,9 @@ else {
 				_eb_alert( 'Permalink not found' );
 			}
 			
-			die('<script type="text/javascript">
-parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "' . $p_link . '");
-</script>');
+			//
+			WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, $p_link );
+			
 		}
 		// nếu gặp phải bản phụ -> xóa luôn
 		else if ( isset( $check_post_exist->post_type ) && $check_post_exist->post_type == 'revision' ) {
@@ -316,9 +326,9 @@ parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "' . $p_link . '");
 			//
 			$m = '<span class=orgcolor>DELETE: ' . $check_post_exist->post_type . ' (' . $check_post_exist->ID . ')</span>';
 			
-			die('<script type="text/javascript">
-parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "javascript:;");
-</script>');
+			//
+			WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, 'javascript:;' );
+			
 		}
 		// còn lại thì thôi, không update gì cả
 		else {
@@ -326,9 +336,8 @@ parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "javascript:;");
 			//
 			$m = '<span class=orgcolor>STATUS: ' . $check_post_exist->post_status . ', TYPE: ' . $check_post_exist->post_type . '</span>';
 			
-			die('<script type="text/javascript">
-parent.ket_thuc_lay_du_lieu(' .$import_id. ', "' .$m. '", "' . admin_link . 'post.php?post=' . $import_id . '&action=edit");
-</script>');
+			//
+			WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, admin_link . 'post.php?post=' . $import_id . '&action=edit' );
 		}
 	}
 }
@@ -472,9 +481,8 @@ if ( $p_link == '' ) {
 
 
 
-die('<script type="text/javascript">
-parent.ket_thuc_lay_du_lieu(' .$trv_id. ', "' .$m. '", "' . $p_link . '");
-</script>');
+//
+WGR_leech_data_submit_ket_thuc_lay_du_lieu( $trv_id, $m, $p_link );
 
 
 
