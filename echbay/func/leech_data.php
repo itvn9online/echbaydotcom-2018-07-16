@@ -12,6 +12,15 @@ $post_type = trim( $_POST['post_tai'] );
 $trv_source = trim( $_POST['t_source'] );
 $trv_tieude = trim( stripslashes( $_POST['t_tieude'] ) );
 $trv_seo = trim( $_POST['t_seo'] );
+
+//
+$get_post_name = _eb_q("SELECT *
+	FROM
+		`" . $wpdb->posts . "`
+	WHERE
+		post_name = '" . $trv_seo . "'");
+
+//
 $trv_tags = str_replace( '-', ' ', $trv_seo );
 $trv_img = trim( $_POST['t_img'] );
 $youtube_url = trim( $_POST['t_youtube_url'] );
@@ -166,11 +175,7 @@ else {
 		*/
 		
 		//
-		$check_post_exist = _eb_q("SELECT *
-		FROM
-			`" . $wpdb->posts . "`
-		WHERE
-			post_name = '" . $trv_seo . "'");
+		$check_post_exist = $get_post_name;
 	}
 //	echo $import_id . '<br>'; exit();
 	
@@ -206,22 +211,30 @@ $import_id = (int)$import_id;
 
 // insert
 if ( $import_id == 0 ) {
-	$arr = array(
-		'import_id' => $trv_id,
+	// nếu có bài trùng post_name rồi thì thôi
+	if ( ! empty( $get_post_name ) ) {
+		die('<script type="text/javascript">
+parent.ket_thuc_lay_du_lieu(' .$import_id. ', "post_name");
+</script>');
+	}
+	else {
+		$arr = array(
+			'import_id' => $trv_id,
+			
+			'post_title' => $trv_tieude,
+			'post_type' => $post_type,
+			'post_parent' => 0,
+			'post_author' => mtv_id,
+			'post_status' => 'publish',
+			'post_name' => $trv_seo,
+		);
 		
-		'post_title' => $trv_tieude,
-		'post_type' => $post_type,
-		'post_parent' => 0,
-		'post_author' => mtv_id,
-		'post_status' => 'publish',
-		'post_name' => $trv_seo,
-	);
-	
-	//
-	$import_id = WGR_insert_post ( $arr, 'Lỗi khi import sản phẩm' );
-	
-	//
-	$m = '<span class=greencolor>INSERT</span>';
+		//
+		$import_id = WGR_insert_post ( $arr, 'Lỗi khi import sản phẩm' );
+		
+		//
+		$m = '<span class=greencolor>INSERT</span>';
+	}
 }
 // nếu có rồi -> kiểm tra trạng thái
 else {
