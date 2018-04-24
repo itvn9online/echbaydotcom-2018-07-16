@@ -49,7 +49,7 @@ $sql = _eb_q("SELECT ID, post_title, post_name
 		`post_name` LIKE '%{$check_post_name}'
 	ORDER BY
 		ID DESC
-	LIMIT 0, 100");
+	LIMIT 0, 200");
 
 //
 //print_r( $sql );
