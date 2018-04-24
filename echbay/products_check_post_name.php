@@ -42,6 +42,11 @@ $cao = _eb_c("SELECT COUNT(ID) as a
 		`post_name` LIKE '%{$check_post_name}'");
 
 //
+$limit_select = 200;
+if ( isset( $_GET['total_no_remove'] ) ) {
+	$limit_select += (int) $_GET['total_no_remove'];
+}
+
 $sql = _eb_q("SELECT ID, post_title, post_name
 	FROM
 		`" . $wpdb->posts . "`
@@ -49,7 +54,7 @@ $sql = _eb_q("SELECT ID, post_title, post_name
 		`post_name` LIKE '%{$check_post_name}'
 	ORDER BY
 		ID DESC
-	LIMIT 0, 200");
+	LIMIT 0, " . $limit_select);
 
 //
 //print_r( $sql );
@@ -69,6 +74,7 @@ $sql = _eb_q("SELECT ID, post_title, post_name
 
 //
 $auto_reload_page = false;
+$count_no_remove = 0;
 if ( ! empty( $sql ) ) {
 	
 	//
@@ -90,6 +96,7 @@ if ( ! empty( $sql ) ) {
 		
 		if ( $check_post_title == '-2' ) {
 			echo '<td class="bluecolor bold">No no</td>';
+			$count_no_remove++;
 		}
 		else {
 			/*
@@ -131,7 +138,7 @@ echo '</tr>';
 if ( $auto_reload_page == true ) {
 	?>
 setTimeout(function () {
-	window.location = window.location.href;
+	window.location = window.location.href.split('&total_no_remove=')[0] + '&total_no_remove=<?php echo $count_no_remove; ?>';
 }, 10000);
 	<?php
 }
