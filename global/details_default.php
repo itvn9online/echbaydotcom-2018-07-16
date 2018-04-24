@@ -287,6 +287,25 @@ $_eb_product_video_url = 0;
 if ( $__post->post_type == 'post' ) {
 	
 	//
+	$trv_masanpham = _eb_get_post_object( $pid, '_eb_product_sku' );
+	if ( $trv_masanpham == '' ) {
+		$trv_masanpham = $pid;
+		$d_none_sku = ' d-none';
+	}
+	else {
+		$d_none_sku = '';
+	}
+	
+	// thêm mã sản phẩm
+	$other_option_list .= '
+<tr class="post-details-sku' . $d_none_sku . '">
+	<td><div>' . EBE_get_lang('post_sku') . '</div></td>
+	<td><div>' . $trv_masanpham . '</div></td>
+</tr>';
+	
+	
+	
+	//
 	$product_color_name = _eb_str_block_fix_content ( _eb_get_post_object( $pid, '_eb_product_color' ) );
 	$_eb_product_chinhhang = _eb_get_post_object( $pid, '_eb_product_chinhhang', 0 );
 	$_eb_product_video_url = _eb_get_post_object( $pid, '_eb_product_video_url' );
@@ -326,6 +345,21 @@ if ( $__post->post_type == 'post' ) {
 		$schema_availability = 'http://schema.org/SoldOut';
 		
 		$str_tinh_trang = '<span class="redcolor">' . EBE_get_lang('post_outstock') . '</span>';
+		
+		// Thêm phần tình trạng hàng hóa nếu người dùng có thiết lập số lượng
+		if ( $trv_max_mua > 0 && $trv_mua > $trv_max_mua ) {
+			$d_none_stock = '';
+		}
+		else {
+			$d_none_stock = ' d-none';
+		}
+		
+		//
+		$other_option_list .= '
+<tr class="post-details-stock' . $d_none_stock . '">
+	<td><div>' . EBE_get_lang('post_stock') . '</div></td>
+	<td><div>' . $str_tinh_trang . '</div></td>
+</tr>';
 		
 		$con_hay_het = 0;
 		
@@ -568,11 +602,7 @@ else if ( $__post->post_type == 'page' ) {
 }
 // post
 else {
-	$trv_masanpham = _eb_get_post_object( $pid, '_eb_product_sku' );
-	if ( $trv_masanpham == '' ) {
-		$trv_masanpham = $pid;
-	}
-	
+	//
 	$product_gallery = _eb_get_post_object( $pid, '_eb_product_gallery' );
 	$product_gallery = str_replace( ' src=', ' data-src=', $product_gallery );
 	$product_gallery = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_gallery );

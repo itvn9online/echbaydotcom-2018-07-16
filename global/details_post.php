@@ -65,18 +65,6 @@ foreach ( $sql as $v ) {
 */
 
 
-// Thêm phần tình trạng hàng hóa
-$other_option_list .= '
-<tr class="post-details-sku d-none">
-	<td><div>' . EBE_get_lang('post_sku') . '</div></td>
-	<td><div>' . $trv_masanpham . '</div></td>
-</tr>
-<tr class="post-details-stock d-none">
-	<td><div>' . EBE_get_lang('post_stock') . '</div></td>
-	<td><div>' . $str_tinh_trang . '</div></td>
-</tr>';
-
-
 
 
 // Tạo menu cho post option

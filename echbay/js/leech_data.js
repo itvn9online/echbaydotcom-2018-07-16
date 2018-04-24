@@ -547,6 +547,7 @@ function leech_data_content ( url, id, callBack ) {
 				.replace( /\<\/iframe\>/gi, '</eb-iframe>' )
 				//
 				.replace( /\<link/gi, '<eb-link' )
+				.replace( /\<\/link\>/gi, '</eb-link>' )
 				.replace( /\<style/gi, '<eb-style' )
 				.replace( /\<\/style\>/gi, '</eb-style>' )
 				//
@@ -663,7 +664,9 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			f.t_id.value = get_leech_data_post_id ( f.t_source.value );
 			
 			// Nếu đang lấy theo ID, nhưng không tìm được ID -> loại luôn
-			if ( f.t_id.value == '' ) {
+			if ( f.t_id.value == ''
+			|| f.t_id.value == '0'
+			|| f.t_id.value == 0 ) {
 				ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR (not ID)</span>' );
 				
 				//
@@ -719,6 +722,10 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				new_category_tags : {
 					get : jQuery('#details_category').val() || '',
 					set : 't_new_category'
+				},
+				new_2category_tags : {
+					get : jQuery('#details_2category').val() || '',
+					set : 't_new_2category'
 				},
 				tit_tags : {
 					get : jQuery('#details_title').val() || '',
@@ -1421,7 +1428,14 @@ function create_list_post_for_crawl ( a, img ) {
 	var check_id = a;
 	// nếu có check theo ID -> check theo ID cho chuẩn luôn
 	if ( dog('bai_viet_nay_duoc_lay_theo_id').checked == true ) {
-		check_id = '_' + get_leech_data_post_id ( a );
+		var get_id = get_leech_data_post_id ( a );
+		
+		if ( get_id == '' || get_id == '0' || get_id == 0 ) {
+			jQuery('#remove_list_url').append( '<li>' + a + '</li>' );
+			return '';
+		}
+		
+		check_id = '_' + get_id;
 	}
 	
 	//
@@ -1912,6 +1926,8 @@ jQuery('.click-submit-url-categories').off('click').click(function () {
 		}
 		
 		
+		//
+		html_tags = '#leech_data_html ' + jQuery.trim( html_tags );
 		
 		// lấy dữ liệu theo cách thông thường
 		leech_data_content (uri_for_get_content, '', function () {
@@ -1920,7 +1936,10 @@ jQuery('.click-submit-url-categories').off('click').click(function () {
 			arr_check_value_exist = {};
 			
 			jQuery( html_tags ).each(function() {
-				var a = jQuery(this).attr('href') || jQuery('a', this).attr('href') || '',
+				var a = jQuery(this).attr('href')
+						|| jQuery('a', this).attr('href')
+						|| jQuery(this).html()
+						|| '',
 					img = jQuery('img', this).attr('data-original')
 						|| jQuery('img', this).attr('data-src')
 						|| jQuery('img', this).attr('src')
@@ -2089,6 +2108,7 @@ var default_arr_cookie_lamviec = {
 	details_ngaydang : '',
 	details_gallery : '',
 	details_category : '',
+	details_2category : '',
 	categories_tags : ''
 };
 

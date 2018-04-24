@@ -27,8 +27,8 @@ $trv_giamoi = _eb_float_only( $_POST['t_giamoi'] );
 //
 $ant_id = _eb_number_only( $_POST['t_ant'] );
 
-if ( $ant_id == 0 ) {
-	$ant_auto = trim( $_POST['t_new_category'] );
+
+function WGR_leech_data_auto_create_category ( $ant_auto, $post_type, $cat_parent = 0 ) {
 	if ( $ant_auto != '' ) {
 		$slug = _eb_non_mark_seo( $ant_auto );
 		
@@ -46,7 +46,8 @@ if ( $ant_id == 0 ) {
 				// the taxonomy
 				$t_taxonomy,
 				array(
-					'slug' => $slug
+					'slug' => $slug,
+					'parent'=> $cat_parent
 				)
 			);
 			
@@ -57,11 +58,27 @@ if ( $ant_id == 0 ) {
 		}
 		
 		if ( ! empty( $check_term_exist ) && isset( $check_term_exist['term_id'] ) ) {
-			$ant_id = $check_term_exist['term_id'];
+			return $check_term_exist['term_id'];
 		}
 		
 		//
 //		print_r( $check_term_exist ); exit();
+	}
+	
+	return 0;
+}
+
+
+if ( $ant_id == 0 ) {
+	// thêm nhóm cấp 1
+	$ant_id = WGR_leech_data_auto_create_category( trim( $_POST['t_new_category'] ), $post_type );
+	
+	// thêm nhóm cấp 2
+	$bnt_id = WGR_leech_data_auto_create_category( trim( $_POST['t_new_2category'] ), $post_type, $ant_id );
+	
+	// nếu có nhóm cấp 2
+	if ( $bnt_id > 0 ) {
+		$ant_id = $bnt_id;
 	}
 }
 //_eb_alert($ant_id);
