@@ -346,26 +346,26 @@ if ( $__post->post_type == 'post' ) {
 		
 		$str_tinh_trang = '<span class="redcolor">' . EBE_get_lang('post_outstock') . '</span>';
 		
-		// Thêm phần tình trạng hàng hóa nếu người dùng có thiết lập số lượng
-		if ( $trv_max_mua > 0 && $trv_mua > $trv_max_mua ) {
-			$d_none_stock = '';
-		}
-		else {
-			$d_none_stock = ' d-none';
-		}
-		
-		//
-		$other_option_list .= '
-<tr class="post-details-stock' . $d_none_stock . '">
-	<td><div>' . EBE_get_lang('post_stock') . '</div></td>
-	<td><div>' . $str_tinh_trang . '</div></td>
-</tr>';
-		
 		$con_hay_het = 0;
 		
 		// thêm class ẩn nút mua hàng
 		$css_m_css .= ' details-hideif-hethang';
 	}
+	
+	// Thêm phần tình trạng hàng hóa nếu người dùng có thiết lập số lượng
+	if ( $trv_max_mua > 0 && $trv_mua < $trv_max_mua ) {
+		$d_none_stock = '';
+	}
+	else {
+		$d_none_stock = ' d-none';
+	}
+	
+	//
+	$other_option_list .= '
+<tr class="post-details-stock' . $d_none_stock . '">
+	<td><div>' . EBE_get_lang('post_stock') . '</div></td>
+	<td><div>' . $str_tinh_trang . '</div></td>
+</tr>';
 	
 	
 	
