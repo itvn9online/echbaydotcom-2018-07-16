@@ -170,14 +170,14 @@ echo '</tr>';
 <script>
 <?php
 
-if ( $auto_reload_page == true ) {
+if ( $auto_reload_page == true && $cao > $limit_select ) {
 	?>
 setTimeout(function () {
 	window.location = window.location.href.split('&total_no_remove=')[0] + '&total_no_remove=<?php echo $count_no_remove; ?>';
 }, 5000);
 	<?php
 }
-else if ( $save_post_name > 9 && $save_post_name< 100 ) {
+else if ( $save_post_name > 2 && $save_post_name < 100 ) {
 	?>
 setTimeout(function () {
 	window.location = window.location.href.split('&check_post_name=')[0] + '&check_post_name=<?php echo $save_post_name + 1; ?>&remove_now=1';
