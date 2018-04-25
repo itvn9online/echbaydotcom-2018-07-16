@@ -2908,7 +2908,9 @@ function WGR_show_or_scroll_to_quick_cart () {
 //		window.scroll( 0, jQuery('.clone-show-quick-cart').offset().top - 90 );
 		jQuery('body,html').animate({
 			scrollTop: jQuery('.clone-show-quick-cart').offset().top - 90
-		}, 800);
+		}, 800, function () {
+			jQuery('.clone-show-quick-cart input[name="t_dienthoai"]').focus();
+		});
 		
 		return true;
 	}
@@ -2975,6 +2977,7 @@ setTimeout(function () {
 			// Hiển thị bình thường
 			jQuery('#click_show_cpa').show();
 			jQuery('body').addClass('body-no-scroll');
+			jQuery('#click_show_cpa input[name="t_dienthoai"]').focus();
 			
 			//
 			var a = jQuery(window).height() - jQuery('.cart-quick').height();

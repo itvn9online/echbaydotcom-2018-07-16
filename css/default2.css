@@ -2136,6 +2136,3 @@ iframe[name="google_conversion_frame"] {
 	cursor: pointer;
 }
 .thread-details-index li:hover { text-decoration: underline; }
-/* for coc coc */
-.coccoc-css-body .hide-if-coccoc { display: none; }
-.coccoc-css-body .show-if-coccoc { display: block; }

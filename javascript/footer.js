@@ -62,34 +62,6 @@ else if ( act == '404' ) {
 
 
 
-// thêm class cho việc điều khiển Coc Coc
-(function ( a ) {
-	// check if user using CocCoc
-	if ( a == '' || a.split('coc_coc_browser').length == 1 ) {
-		return false;
-	}
-	
-	//
-	var cl = 'coccoc-css-body';
-//	console.log(typeof jQuery);
-	
-	// using jQuery
-	if ( typeof jQuery == 'function' ) {
-		jQuery('body').addClass(cl);
-		return false;
-	}
-	
-	// using javascript
-	try {
-		document.body.classList.add(cl);
-	} catch ( e ) {
-		document.body.className += ' ' + cl;
-	}
-})( navigator.userAgent || '' );
-
-
-
-
 
 // hệ thống banner quảng cáo
 //___eb_logo_doitac_chantrang(6);
