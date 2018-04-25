@@ -938,7 +938,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			//
 			var min_title = jQuery('#min_title_length').val() || '';
 			if ( min_title == '' ) {
-				jQuery('#min_title_length').attr('placeholder');
+				min_title = jQuery('#min_title_length').attr('placeholder') || 16;
 			}
 			min_title = 1 * min_title;
 			
