@@ -24,6 +24,21 @@ if ( $trv_source == '' ) {
 
 $trv_tieude = trim( stripslashes( $_POST['t_tieude'] ) );
 $trv_seo = trim( $_POST['t_seo'] );
+
+//
+$get_post_name = _eb_q("SELECT *
+	FROM
+		`" . wp_posts . "`
+	WHERE
+		post_name = '" . $trv_seo . "'
+	ORDER BY
+		ID
+	LIMIT 0, 1");
+if ( ! empty( $get_post_name ) ) {
+	$get_post_name = $get_post_name[0];
+}
+
+//
 $trv_tags = str_replace( '-', ' ', $trv_seo );
 $trv_img = trim( $_POST['t_img'] );
 $youtube_url = trim( $_POST['t_youtube_url'] );
@@ -101,6 +116,7 @@ if ( $ant_id == 0 ) {
 $m = '<span class=bluecolor>UPDATE</span>';
 
 $trv_id = trim( $_POST['t_id'] );
+//$trv_id = (int)$trv_id;
 //echo $trv_id . '<br>';
 $trv_sku = $trv_id;
 
@@ -109,12 +125,19 @@ $check_post_exist = array();
 
 //
 $import_id = 0;
-$insert_id = 0;
 
 // nếu có ID -> tìm theo ID
+//if ( $trv_id == 0 ) {
 if ( $trv_id != '' && is_numeric( $trv_id ) && $trv_id > 0 ) {
-	$insert_id = (int) $trv_id;
+	/*
+	$import_id = $wpdb->get_var("SELECT ID
+	FROM
+		" . wp_posts . "
+	WHERE
+		ID = '" . $trv_id . "'");
+	*/
 	
+	//
 	$check_post_exist = _eb_q("SELECT *
 	FROM
 		" . wp_posts . "
@@ -125,79 +148,78 @@ if ( $trv_id != '' && is_numeric( $trv_id ) && $trv_id > 0 ) {
 		$check_post_exist = $check_post_exist[0];
 	}
 }
+// tìm theo name
 else {
-	// tìm theo name
-	$check_post_exist = _eb_q("SELECT *
-	FROM
-		`" . wp_posts . "`
-	WHERE
-		post_type = '" . $post_type . "'
-		AND post_name = '" . $trv_seo . "'
-	ORDER BY
-		ID
-	LIMIT 0, 1");
-	if ( ! empty( $check_post_exist ) ) {
-		$check_post_exist = $check_post_exist[0];
+//	_eb_alert('Không xác định được ID dữ liệu');
+	
+	// tạo SKU nếu chưa có
+	if ( $trv_sku == '' ) {
+		$trv_sku = md5( $trv_source );
 	}
-	// tìm theo SKU
-	else {
-		// tạo SKU nếu chưa có
-		if ( $trv_sku == '' ) {
-			$trv_sku = md5( $trv_source );
-		}
+	
+	// tìm xem có bài POST nào như vậy không
+	$sql = _eb_load_post_obj( 1, array(
+		'post_type' => $post_type,
+		'orderby' => 'ID',
+		'meta_key' => '_eb_product_leech_sku',
+		'meta_value' => $trv_sku,
+		/*
+		'meta_query' => array(
+			'key' => '_eb_product_leech_sku',
+			'value' => $trv_sku,
+			array(
+				'key' => '_eb_product_leech_sku',
+				'value' => $trv_sku,
+			),
+		),
+		*/
+	) );
+//	print_r($sql);
+	
+	if ( isset( $sql->post->ID ) ) {
+		$import_id = $sql->post->ID;
 		
 		//
-		$check_post_exist = _eb_q("SELECT post_id
+		$check_post_exist = _eb_q("SELECT *
 		FROM
-			`" . wp_postmeta . "`
+			" . wp_posts . "
 		WHERE
-			meta_key = '_eb_product_leech_sku'
-			AND meta_value = '" . $trv_sku . "'
-		ORDER BY
-			post_id
-		LIMIT 0, 1");
-		
-		// với phiên bản rao vặt -> tìm theo cách khác
-		if ( cf_set_raovat_version == 1 && empty( $check_post_exist ) ) {
-			$check_post_exist = _eb_q("SELECT ID
-			FROM
-				`" . wp_posts . "`
-			WHERE
-				post_type = '" . $post_type . "'
-				AND _eb_product_leech_sku = '" . $trv_sku . "'
-			ORDER BY
-				ID
-			LIMIT 0, 1");
-			
-			// gán giá trị cho post_id, do select bảng khác
-			if ( ! empty( $check_post_exist ) ) {
-				$check_post_exist[0]->post_id = $check_post_exist[0]->ID;
-			}
-		}
+			ID = " . $import_id);
+	}
+	// tìm theo SEO
+	else {
+		/*
+		$import_id = $wpdb->get_var("SELECT ID
+		FROM
+			" . wp_posts . "
+		WHERE
+			post_name = '" . $trv_seo . "'");
+		*/
 		
 		//
-		if ( ! empty( $check_post_exist ) ) {
-			$check_post_exist = $check_post_exist[0];
-			
-			//
-			$check_post_exist = _eb_q("SELECT *
-			FROM
-				" . wp_posts . "
-			WHERE
-				ID = " . $check_post_exist->post_id);
-			
-			if ( ! empty( $check_post_exist ) ) {
-				$check_post_exist = $check_post_exist[0];
-			}
-		}
+		$check_post_exist = $get_post_name;
 	}
+//	echo $import_id . '<br>'; exit();
+	
+	//
+//	$trv_id = (int)$import_id;
 }
-//print_r($check_post_exist); exit();
 
 //
-if ( ! empty( $check_post_exist ) ) {
-	$import_id = $check_post_exist->ID;
+//print_r($check_post_exist);
+if ( ! empty( $check_post_exist ) && isset( $check_post_exist[0] ) ) {
+	$check_post_exist = $check_post_exist[0];
+	
+	//
+	if ( isset( $check_post_exist->ID ) ) {
+		$import_id = $check_post_exist->ID;
+	}
 }
+//echo $import_id . '<br>' . "\r\n";
+//print_r($check_post_exist);
+
+//
+$import_id = (int)$import_id;
 
 //
 //exit();
@@ -211,125 +233,145 @@ if ( ! empty( $check_post_exist ) ) {
 
 // insert
 if ( $import_id == 0 ) {
-	$arr = array(
-//		'import_id' => $insert_id,
-		
-		'post_title' => $trv_tieude,
-		'post_type' => $post_type,
-		'post_parent' => 0,
-		'post_author' => mtv_id,
-		'post_status' => 'publish',
-		'post_name' => $trv_seo,
-	);
-	if ( $insert_id > 0 ) {
-		$arr['import_id'] = $insert_id;
+	// nếu có bài trùng post_name rồi thì thôi
+	if ( ! empty( $get_post_name ) ) {
+		WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, '<span class=orgcolor>POST NAME</span>' );
 	}
-	
-	//
-	$import_id = WGR_insert_post ( $arr, 'Lỗi khi import sản phẩm' );
-	
-	//
-	$m = '<span class=greencolor>INSERT</span>';
+	else {
+		$arr = array(
+			'import_id' => $trv_id,
+			
+			'post_title' => $trv_tieude,
+			'post_type' => $post_type,
+			'post_parent' => 0,
+			'post_author' => mtv_id,
+			'post_status' => 'publish',
+			'post_name' => $trv_seo,
+		);
+		
+		//
+		$import_id = WGR_insert_post ( $arr, 'Lỗi khi import sản phẩm' );
+		
+		//
+		$m = '<span class=greencolor>INSERT</span>';
+	}
 }
-// nếu bài viết đã tồn tại và đang được public -> bỏ qua
-//else if ( isset( $check_post_exist->post_status ) ) {
-else if ( ! empty( $check_post_exist ) ) {
-	// nếu bài đang được hiển thị bình thường -> update một số thuộc tính có chọn lọc
-	if ( $check_post_exist->post_status == 'publish' ) {
-		
-		//
-		$arr_for_update = array();
-		
-		// cập nhật lại url -> hiện tại đang sai
-		if ( $check_post_exist->post_name != $trv_seo ) {
-			$arr_for_update['post_name'] = $trv_seo;
-		}
-		
-		// cập nhật lại STT
-		if ( isset( $_POST['cap_nhat_stt_cho_bai_viet'] ) && $_POST['cap_nhat_stt_cho_bai_viet'] == 1 ) {
-			$trv_stt = date( 'ymdh', date_time );
-			// thêm số ngẫu nhiên trong khoảng 1 giờ
-			if ( isset( $_POST['cap_nhat_stt_ngau_nhien'] ) && $_POST['cap_nhat_stt_ngau_nhien'] == 1 ) {
-				$trv_stt += rand( 0, 7200 );
-			}
-			// thêm số ngẫu nhiên trong khoảng 1 phút
-			else {
-				$trv_stt += rand( 0, 3600 );
-			}
-			$arr_for_update['menu_order'] = $trv_stt;
-		}
-		
-		// update meta
-		$arr_meta_box = array();
-		if ( $trv_giaban > 0 ) $arr_meta_box['_eb_product_oldprice'] = $trv_giaban;
-		if ( $trv_giamoi > 0 ) $arr_meta_box['_eb_product_price'] = $trv_giamoi;
-		if ( ! empty( $arr_meta_box ) ) {
-			$arr_for_update['meta_input'] = $arr_meta_box;
-		}
-		
-		
-		//
-		if ( ! empty( $arr_for_update ) ) {
-			// gán ID cho post cần edit
-//			$arr_for_update['ID'] = $check_post_exist->ID;
-			$arr_for_update['ID'] = $import_id;
+// nếu có rồi -> kiểm tra trạng thái
+else {
+	
+	// nếu bài viết đã tồn tại và đang được public -> bỏ qua
+	if ( isset( $check_post_exist->post_status ) ) {
+		// nếu bài đang được hiển thị bình thường -> update một số thuộc tính có chọn lọc
+		if ( $check_post_exist->post_status == 'publish' ) {
 			
 			//
-			$post_id = WGR_update_post( $arr_for_update, 'Lỗi khi cập nhật! Sản phẩm đã tồn tại' );
+			$arr_for_update = array();
+			
+			// cập nhật lại url -> hiện tại đang sai
+			if ( $check_post_exist->post_name != $trv_seo ) {
+//				$arr_for_update['post_name'] = $trv_seo;
+				
+				/*
+				$post_id = WGR_update_post( array(
+//					'ID' => $check_post_exist->ID,
+					'ID' => $import_id,
+					'post_name' => $trv_seo,
+					'post_excerpt' => $post_excerpt
+				) );
+				*/
+			}
+			
+			// cập nhật lại STT
+			if ( isset( $_POST['cap_nhat_stt_cho_bai_viet'] ) && $_POST['cap_nhat_stt_cho_bai_viet'] == 1 ) {
+				$trv_stt = date( 'ymdh', date_time );
+				// thêm số ngẫu nhiên trong khoảng 1 giờ
+				if ( isset( $_POST['cap_nhat_stt_ngau_nhien'] ) && $_POST['cap_nhat_stt_ngau_nhien'] == 1 ) {
+					$trv_stt += rand( 0, 7200 );
+				}
+				// thêm số ngẫu nhiên trong khoảng 1 phút
+				else {
+					$trv_stt += rand( 0, 3600 );
+				}
+				$arr_for_update['menu_order'] = $trv_stt;
+			}
+			
+			// update meta
+			$arr_meta_box = array();
+			if ( $trv_giaban > 0 ) $arr_meta_box['_eb_product_oldprice'] = $trv_giaban;
+			if ( $trv_giamoi > 0 ) $arr_meta_box['_eb_product_price'] = $trv_giamoi;
+			if ( ! empty( $arr_meta_box ) ) {
+				$arr_for_update['meta_input'] = $arr_meta_box;
+			}
+			
+			
+			//
+			if ( ! empty( $arr_for_update ) ) {
+				// gán ID cho post cần edit
+//				$arr_for_update['ID'] = $check_post_exist->ID;
+				$arr_for_update['ID'] = $import_id;
+				
+				//
+				$post_id = WGR_update_post( $arr_for_update, 'Lỗi khi cập nhật! Sản phẩm đã tồn tại' );
+			}
+			
+			
+			//
+			$m = '<span class=redcolor>EXIST</span>';
+			
+			//
+			$p_link = get_permalink( $import_id );
+			//$p_link = web_link . '?p=' . $trv_id;
+			
+			//
+			if ( $p_link == '' ) {
+				_eb_alert( 'Permalink not found' );
+			}
+			
+			//
+			WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, $p_link );
+			
 		}
-		
-		
-		//
-		$m = '<span class=redcolor>EXIST</span>';
-		
-		//
-		$p_link = _eb_p_link( $import_id );
-//		$p_link = web_link . '?p=' . $import_id;
-		
-		//
-		if ( $p_link == '' ) {
-			_eb_alert( 'Permalink not found' );
+		// nếu gặp phải bản phụ -> xóa luôn
+		else if ( isset( $check_post_exist->post_type ) && $check_post_exist->post_type == 'revision' ) {
+//			wp_delete_post( $check_post_exist->ID, true );
+			wp_delete_post( $import_id, true );
+			
+			//
+			$m = '<span class=orgcolor>DELETE: ' . $check_post_exist->post_type . ' (' . $check_post_exist->ID . ')</span>';
+			
+			//
+			WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, 'javascript:;' );
+			
 		}
-		
-		//
-		WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, $p_link );
-		
-	}
-	// nếu gặp phải bản phụ -> xóa luôn
-	else if ( isset( $check_post_exist->post_type ) && $check_post_exist->post_type == 'revision' ) {
-//		wp_delete_post( $check_post_exist->ID, true );
-		wp_delete_post( $import_id, true );
-		
-		//
-		$m = '<span class=orgcolor>DELETE: ' . $check_post_exist->post_type . ' (' . $check_post_exist->ID . ')</span>';
-		
-		//
-		WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, 'javascript:;' );
-		
-	}
-	// còn lại thì thôi, không update gì cả
-	else {
-		
-		//
-		$m = '<span class=orgcolor>STATUS: ' . $check_post_exist->post_status . ', TYPE: ' . $check_post_exist->post_type . '</span>';
-		
-		//
-		WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, admin_link . 'post.php?post=' . $import_id . '&action=edit' );
-		
+		// còn lại thì thôi, không update gì cả
+		else {
+			
+			//
+			$m = '<span class=orgcolor>STATUS: ' . $check_post_exist->post_status . ', TYPE: ' . $check_post_exist->post_type . '</span>';
+			
+			//
+			WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, admin_link . 'post.php?post=' . $import_id . '&action=edit' );
+		}
 	}
 }
-
-
-
 
 //
-if ( $import_id == false || $import_id == 0 ) {
+$import_id = (int)$import_id;
+//echo $import_id . '<br>';
+//_eb_alert($import_id);
+
+//
+if ( $import_id == 0 ) {
 	_eb_alert('ID bài viết không hợp lệ');
 }
-
-if ( $insert_id > 0 && $import_id != $insert_id ) {
-	_eb_alert('ID bài viết không hợp lệ (' . $import_id . ' != ' . $insert_id . ')');
+if ( $trv_id > 0 && $import_id != $trv_id ) {
+	_eb_alert('ID bài viết không hợp lệ (' . $import_id . ' != ' . $trv_id . ')');
 }
+
+// gán lại ID bài viết -> có trường hợp ở trên không tìm theo ID
+$trv_id = $import_id;
+
+
 
 
 // update
@@ -372,7 +414,7 @@ if ( $youtube_url != '' ) $arr_meta_box['_eb_product_video_url'] = $youtube_url;
 
 //
 $arr = array(
-	'ID' => $import_id,
+	'ID' => $trv_id,
 	/*
 	'post_parent' => 0,
 	// không cập nhật lại tác giả
@@ -417,7 +459,7 @@ if ( $post_type != 'post' ) {
 	$arr['post_category'] = array();
 	
 	// tạo nhóm theo cách khác
-	$update_id = wp_set_post_terms( $import_id, array( $ant_id ), EB_BLOG_POST_LINK );
+	$update_id = wp_set_post_terms( $trv_id, array( $ant_id ), EB_BLOG_POST_LINK );
 //	_eb_alert('aaaa');
 	
 	//
@@ -430,19 +472,19 @@ $post_id = WGR_update_post( $arr, 'Lỗi khi cập nhật sản phẩm' );
 //
 /*
 foreach ( $arr_meta_box as $k => $v ) {
-	WGR_update_meta_post( $import_id, $k, $v );
+	WGR_update_meta_post( $trv_id, $k, $v );
 }
 */
 
 //
-//echo $import_id . "\n";
+//echo $trv_id . "\n";
 
 
 
 
 //
-$p_link = _eb_p_link( $import_id );
-//$p_link = web_link . '?p=' . $import_id;
+$p_link = get_permalink( $trv_id );
+//$p_link = web_link . '?p=' . $trv_id;
 
 //
 if ( $p_link == '' ) {
@@ -453,7 +495,7 @@ if ( $p_link == '' ) {
 
 
 //
-WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, $p_link );
+WGR_leech_data_submit_ket_thuc_lay_du_lieu( $trv_id, $m, $p_link );
 
 
 
