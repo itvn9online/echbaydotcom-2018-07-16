@@ -936,7 +936,14 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			}
 			
 			//
-			if ( f.t_tieude.value == '' ) {
+			var min_title = jQuery('#min_title_length').val() || '';
+			if ( min_title == '' ) {
+				jQuery('#min_title_length').attr('placeholder');
+			}
+			min_title = 1 * min_title;
+			
+			//
+			if ( f.t_tieude.value == '' || f.t_tieude.value.length < min_title ) {
 //				console.log( jQuery('#leech_data_html').html() );
 				
 				//
@@ -2094,6 +2101,7 @@ var default_arr_cookie_lamviec = {
 	id_post_end : '',
 	
 	time_for_submit : '',
+	min_title_length : '',
 	
 	details_noidung : '',
 	details_dieukien : '',
