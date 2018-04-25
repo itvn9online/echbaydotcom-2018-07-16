@@ -3159,16 +3159,23 @@ function WGR_set_a_target_top () {
 }
 
 
-//
+	// ID của pid -> để tạo giỏ hàng cho chuẩn
 var current_pid_quicview = pid,
 	set_new_height_for_quick_view = true,
 	time_for_new_height_quick_view = 800,
-	cache_for_quick_view_title = document.title;
+	// lưu title hiện tại của trang
+	cache_for_quick_view_title = document.title,
+	// lưu lại ID hiện tại của quick view
+	cache_for_quick_view_id = 0;
+
 function close_ebe_quick_view () {
 	jQuery('#oi_ebe_quick_view').hide();
 	jQuery('body').removeClass('body-no-scroll');
+	
 	window.history.pushState("", '', current_ls_url);
+	
 	pid = current_pid_quicview;
+	
 	document.title = cache_for_quick_view_title;
 }
 
@@ -3254,6 +3261,26 @@ function WGR_set_quick_view_height () {
 		//
 		window.history.pushState("", '', h);
 		document.title = $(this).attr('title') || cache_for_quick_view_title;
+		
+		// nếu ID mới này giống với ID cũ -> không load lại
+		if ( a == cache_for_quick_view_id ) {
+			set_new_height_for_quick_view = true;
+			
+			//
+			setTimeout(function () {
+				WGR_set_quick_view_height();
+				
+				//
+				setTimeout(function () {
+					set_new_height_for_quick_view = false;
+				}, time_for_new_height_quick_view);
+			}, time_for_new_height_quick_view);
+			
+			return false;
+		}
+		
+		// lưu lại phiên của cache
+		cache_for_quick_view_id = a;
 		
 		// sử dụng ajax
 //		ajaxl('quick_view&id=' + a, 'ui_ebe_quick_view');
