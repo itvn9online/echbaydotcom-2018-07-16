@@ -180,7 +180,7 @@ setTimeout(function () {
 	<?php
 }
 // tự động chạy khi check từ 3 trở lên
-else if ( $save_post_name > 2 && $save_post_name < 500 ) {
+else if ( $save_post_name > 2 && $save_post_name < 500 && $ok_cho_remove == true ) {
 	?>
 setTimeout(function () {
 	window.location = window.location.href.split('&check_post_name=')[0] + '&check_post_name=<?php echo $save_post_name + 1; ?>&remove_now=1';
