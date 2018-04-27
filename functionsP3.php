@@ -500,13 +500,15 @@ function WGR_insert_post ( $arr, $_alert = '', $wp_error = true, $using_default 
 //			print_r( $post_id ) . '<br>';
 			
 			$errors = $post_id->get_error_messages();
+			$m = '';
 			foreach ($errors as $error) {
 				echo $error . '<br>' . "\n";
+				$m .= trim( $error ) . '; ';
 			}
 			
 			//
 			if ( $_alert != '' ) {
-				_eb_alert($_alert);
+				_eb_alert($_alert . ' (' . $m . ')');
 			}
 			
 			//
@@ -561,13 +563,15 @@ function WGR_update_post ( $arr, $_alert = '', $wp_error = true, $using_default 
 //			print_r( $post_id ) . '<br>';
 			
 			$errors = $post_id->get_error_messages();
+			$m = '';
 			foreach ($errors as $error) {
 				echo $error . '<br>' . "\n";
+				$m .= trim( $error ) . '; ';
 			}
 			
 			//
 			if ( $_alert != '' ) {
-				_eb_alert($_alert);
+				_eb_alert($_alert . ' (' . $m . ')');
 			}
 			
 			//

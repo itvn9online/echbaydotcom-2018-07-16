@@ -9,14 +9,14 @@
 
 class ___echbay_widget_product_view_history extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'eb_product_view_history', 'EchBay View History', array (
-				'description' => 'Lấy các sản phẩm ĐÃ XEM hoặc sản phẩm ĐÃ THÍCH trong trang chi tiết sản phẩm! Module này có thể hiển thị ở bất kỳ đâu trên website.' 
+		parent::__construct ( 'eb_product_view_history', 'EchBay Other Products', array (
+				'description' => 'Lấy các sản phẩm ĐÃ XEM hoặc sản phẩm ĐÃ THÍCH trong trang chi tiết sản phẩm! Module này có thể hiển thị ở bất kỳ đâu trên website. Hoặc sản phẩm CÙNG NHÓM với sản phẩm đang xem (Mobule này chỉ hoạt động trong trang chi tiết sản phẩm)' 
 		) );
 	}
 	
 	function form($instance) {
 		$default = array (
-			'title' => 'EchBay view history',
+			'title' => 'EchBay Other Products',
 			// mặc định là lịch sử xem
 			'cookie_name' => 'wgr_product_id_view_history',
 			'post_number' => 10,
@@ -36,7 +36,10 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		echo '<p>Phân loại: <select name="' . $this->get_field_name ( 'cookie_name' ) . '" class="widefat">';
 		
 		echo '<option value="wgr_product_id_view_history"' . _eb_selected( 'wgr_product_id_view_history', $cookie_name ) . '>Sản phẩm Đã xem</option>';
+		
 		echo '<option value="wgr_product_id_user_favorite"' . _eb_selected( 'wgr_product_id_user_favorite', $cookie_name ) . '>Sản phẩm Yêu thích</option>';
+		
+		echo '<option value="wgr_product_same_category"' . _eb_selected( 'wgr_product_same_category', $cookie_name ) . '>Sản phẩm Cùng nhóm</option>';
 		
 		echo '</select>';
 		
@@ -65,33 +68,80 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		$cookie_name = isset( $instance ['cookie_name'] ) ? $instance ['cookie_name'] : 'wgr_product_id_view_history';
 		
 		//
-//		$str_history = _eb_getCucki('wgr_product_id_view_history');
-		$str_history = _eb_getCucki($cookie_name);
+		if ( $cookie_name == 'wgr_product_same_category' ) {
+			
+			global $pid;
+			
+			if ( $pid == 0 ) {
+				echo '<!-- Widget Same category has been active, but run only post details -->';
+				return false;
+			}
+			
+			//
+			$str_css_class = 'eb-same-category';
+			
+			//
+			$str_view_history = '';
+			
+		}
+		else {
+			
+			//
+//			$str_history = _eb_getCucki('wgr_product_id_view_history');
+			$str_history = _eb_getCucki($cookie_name);
+			
+			//
+			if ( $str_history == '' ) {
+				echo '<!-- Widget view history has been active, but IDs not found! Check cookie: ' . $cookie_name . ' -->';
+				return false;
+			}
+//			echo $str_history;
+			
+			// chuyển đổi sang dấu khác để còn tạo mảng giá trị
+			$str_history = str_replace('][', ',', $str_history);
+			$str_history = str_replace(']', '', $str_history);
+			$str_history = str_replace('[', '', $str_history);
+//			echo $str_history;
+			
+			// -> tạo mảng
+			$str_history = explode(',', $str_history);
+//			print_r($str_history);
+//			exit();
+			
+			
+			// limit số lượng bài viết -> ưu tiên bài mới xem nhất trước
+			$arr_history = array();
+			foreach ( $str_history as $k => $v ) {
+				if ( $k >= $post_number ) {
+					break;
+				}
+				
+				$arr_history[] = $v;
+			}
+//			print_r( $arr_history );
+			
+			//
+			$str_view_history = _eb_load_post( $post_number, array(
+				'post__in' => $arr_history
+			) );
+			
+			//
+			$str_css_class = 'eb-view-history';
+			
+		}
+		
+		
 		
 		//
-		if ( $str_history == '' ) {
-			echo '<!-- Widget view history has been active, but IDs not found! Check cookie: ' . $cookie_name . ' -->';
-			return false;
-		}
-//		echo $str_history;
-		
-		// chuyển đổi sang dấu khác để còn tạo mảng giá trị
-		$str_history = str_replace('][', ',', $str_history);
-		$str_history = str_replace(']', '', $str_history);
-		$str_history = str_replace('[', '', $str_history);
-//		echo $str_history;
-		
-		// -> tạo mảng
-		$str_history = explode(',', $str_history);
-//		print_r($str_history);
-//		exit();
-		
 		extract ( $args );
 		
 		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		if ( $title == '' ) {
 			if ( $cookie_name == 'wgr_product_id_user_favorite' ) {
 				$title = 'Sản phẩm Yêu thích';
+			}
+			else if ( $cookie_name == 'wgr_product_same_category' ) {
+				$title = EBE_get_lang('post_other');
 			}
 			else {
 				$title = 'Sản phẩm Đã xem';
@@ -109,23 +159,10 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-price-title', $before_title );
 		
-		// limit số lượng bài viết -> ưu tiên bài mới xem nhất trước
-		$arr_history = array();
-		foreach ( $str_history as $k => $v ) {
-			if ( $k >= $post_number ) {
-				break;
-			}
-			
-			$arr_history[] = $v;
-		}
-//		print_r( $arr_history );
 		
 		//
-		$str_view_history = _eb_load_post( $post_number, array(
-			'post__in' => $arr_history
-		) );
 		if ( $str_view_history != '' ) {
-			echo '<div class="' . trim( 'eb-view-history hide-if-quickview ' . $custom_style ) . '">';
+			echo '<div class="' . trim( $str_css_class . ' hide-if-quickview ' . $custom_style ) . '">';
 			
 			echo WGR_show_home_hot( array(
 				'tmp.num_post_line' => $num_line,

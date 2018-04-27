@@ -1400,7 +1400,7 @@ function _eb_getCucki ( $c_name, $default_value = '' ) {
 
 
 function _eb_alert($m) {
-	die ( '<script type="text/javascript">alert("' . $m . '");</script>' );
+	die ( '<script type="text/javascript">alert("' . str_replace( '"', '\'', $m ) . '");</script>' );
 }
 
 
