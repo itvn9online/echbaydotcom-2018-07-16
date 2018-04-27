@@ -393,7 +393,7 @@ if ( $trv_noidung != '' ) $arr['post_content'] = $trv_noidung;
 if ( $post_date != '' ) {
 	$post_date = strtotime( $post_date );
 	if ( $post_date > date_time ) {
-		$post_date = date_time;
+		$post_date = date_time - 3600;
 	}
 	$post_date = date( 'Y-m-d H:i:s', $post_date );
 	
