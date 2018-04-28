@@ -212,18 +212,18 @@ function ___eb_admin_update_order_details () {
 	for ( var x in arr_dich ) {
 		if ( typeof cus[x] != 'undefined' ) {
 			var a = cus[x];
+			
+			//
 			if ( x == 'hd_usertime' ) {
 //				if ( typeof cus[x] == 'string' ) {
 				if ( cus[x].toString().split('1970').length > 1 ) {
-					console.log(  typeof cus[x] );
+					console.log( typeof cus[x] );
 					cus[x] = $('.order-time-server').attr('data-time') || 0;
 				}
 				
 				a = _date( 'd-m-Y H:i', cus[x] );
 			}
-			
-			//
-			if ( x == 'hd_url' && a != '' ) {
+			else if ( ( x == 'hd_url' || x == 'hd_referrer' ) && a != '' ) {
 				a = '<a href="' + a + '" target="_blank" rel="nofollow">' + a + '</a>';
 			}
 			
