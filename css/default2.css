@@ -2102,7 +2102,7 @@ iframe[name="google_conversion_frame"] {
 	box-shadow: 0 0 10px #000;
 }
 .style-for-mobile .ebe-quick-view { padding: 10px 0; }
-.style-for-mobile .ebe-quick-view .quick-view-padding { }
+.style-for-mobile .ebe-quick-view .quick-view-padding { padding: 1px; }
 /* css for iframe quick view */
 .css-for-quickview .fullsize-if-quickview {
 	width: auto !important;

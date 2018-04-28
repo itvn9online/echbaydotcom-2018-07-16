@@ -848,7 +848,8 @@ var _global_js_eb = {
 				jQuery('img', this).each(function() {
 					
 					var current_wit = jQuery(this).attr('data-width') || '';
-					if ( current_wit != '' ) {
+//					console.log(current_wit);
+					if ( current_wit != '' && current_wit != 'auto' ) {
 						if ( current_wit > max_width ) {
 							current_wit = max_width;
 						}
