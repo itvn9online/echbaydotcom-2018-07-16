@@ -198,6 +198,7 @@ function ___eb_admin_update_order_details () {
 	//
 	var arr_dich = {
 		'hd_url' : 'URL',
+		'hd_referrer' : 'Nguồn',
 		'hd_title' : 'Tiêu đề',
 		'hd_timezone' : 'Múi giờ',
 		'hd_lang' : 'Ngôn ngữ',
