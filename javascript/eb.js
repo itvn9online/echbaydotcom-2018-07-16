@@ -1033,6 +1033,10 @@ var _global_js_eb = {
 				}
 //			}
 			
+			// lưu cookie của referrer để còn cho vào đơn hàng tiện theo dõi
+			g_func.setc('eb_document_referrer', escape(a), 0, 7);
+			
+			
 			/*
 			if (dog(jd) == null) {
 				jQuery('<div id="' + jd + '" style="display:none;"></div>').appendTo('body');
@@ -1393,6 +1397,15 @@ var _global_js_eb = {
 		offset = ((offset < 0 ? '+' : '-') + pad(parseInt(Math.abs(offset / 60)), 2) + pad(Math.abs(offset % 60), 2));
 		
 		//
+		var eb_referrer = g_func.getc('eb_document_referrer');
+		if ( eb_referrer == null ) {
+			eb_referrer = '';
+		}
+		else {
+			eb_referrer = unescape( eb_referrer );
+		}
+		
+		//
 		var arr = {
 			// user info
 			hd_ten: '',
@@ -1419,7 +1432,8 @@ var _global_js_eb = {
 			hd_window: jQuery(window).width() + 'x' + jQuery(window).height(),
 			hd_document: jQuery(document).width() + 'x' + jQuery(document).height(),
 			hd_screen: screen.width + 'x' + screen.height,
-			hd_agent: navigator.userAgent
+			hd_agent: navigator.userAgent,
+			hd_referrer: eb_referrer
 		};
 		
 		// user info
