@@ -295,6 +295,21 @@ else if ( ! empty( $check_post_exist ) ) {
 		WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, $p_link );
 		
 	}
+	//
+	else if ( $check_post_exist->post_status == 'future' ) {
+		
+		$post_id = WGR_update_post( array(
+			'ID' => $import_id,
+			'post_status' => 'publish'
+		), 'Lỗi khi cập nhật sản phẩm' );
+		
+		//
+		$m = '<span class=orgcolor>STATUS: ' . $check_post_exist->post_status . ' to publish</span>';
+		
+		//
+		WGR_leech_data_submit_ket_thuc_lay_du_lieu( $import_id, $m, _eb_p_link( $import_id ) );
+		
+	}
 	// nếu gặp phải bản phụ -> xóa luôn
 	else if ( isset( $check_post_exist->post_type ) && $check_post_exist->post_type == 'revision' ) {
 //		wp_delete_post( $check_post_exist->ID, true );

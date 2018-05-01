@@ -493,6 +493,8 @@ label,
 .aorgcolor,
 .aorgcolor a { color: #F90 !important; }
 .small { font-size: 11px; }
+.small2,
+.small12 { font-size: 12px; }
 .medium { font-size: 15px; }
 .medium18 { font-size: 18px; }
 .big { font-size: 23px; }
