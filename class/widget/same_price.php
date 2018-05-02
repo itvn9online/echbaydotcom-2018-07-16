@@ -109,9 +109,15 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 //		print_r( $price_in );
 		
 		//
-		$str_same_price = _eb_load_post( $post_number, array(
-			'meta_query' => array( $price_in )
-		) );
+		$str_same_price = _eb_load_post(
+			$post_number,
+			array(
+				'meta_query' => array( $price_in )
+			),
+			__eb_thread_template,
+			// lấy hết, bỏ qua bộ lọc post__not_in
+			1
+		);
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );

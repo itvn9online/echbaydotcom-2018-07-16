@@ -146,9 +146,15 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 //			print_r( $arr_history );
 			
 			//
-			$str_view_history = _eb_load_post( $post_number, array(
-				'post__in' => $arr_history
-			) );
+			$str_view_history = _eb_load_post(
+				$post_number,
+				array(
+					'post__in' => $arr_history
+				),
+				__eb_thread_template,
+				// lấy hết, bỏ qua bộ lọc post__not_in
+				1
+			);
 			
 			//
 			$str_css_class = 'eb-view-history';

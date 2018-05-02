@@ -197,7 +197,13 @@ function _eb_load_order_v1 ( $posts_per_page = 68, $_eb_query = array() ) {
 * html: mặc định là sử dụng HTML của theme, file thread_node.html, nếu muốn sử dụng HTML riêng thì truyền giá trị HTML mới vào
 * not_set_not_in: mặc định là lọc các sản phẩm trùng lặp trên mỗi trang, nếu để bằng 1, sẽ bỏ qua chế độ lọc -> chấp nhận lấy trùng
 */
-function _eb_load_post ( $posts_per_page = 20, $_eb_query = array(), $html = __eb_thread_template, $not_set_not_in = 0, $other_options = array() ) {
+function _eb_load_post (
+	$posts_per_page = 20,
+	$_eb_query = array(),
+	$html = __eb_thread_template,
+	$not_set_not_in = 0,
+	$other_options = array()
+) {
 	global $___eb_post__not_in;
 //	echo 'POST NOT IN: ' . $___eb_post__not_in . '<br>' . "\n";
 	
