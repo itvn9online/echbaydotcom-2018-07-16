@@ -65,6 +65,14 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 	function widget($args, $instance) {
 		
 		//
+		extract ( $args );
+		
+		//
+		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 5;
+		
+		
+		
+		//
 		$cookie_name = isset( $instance ['cookie_name'] ) ? $instance ['cookie_name'] : 'wgr_product_id_view_history';
 		
 		//
@@ -133,8 +141,6 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		
 		
 		//
-		extract ( $args );
-		
 		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		if ( $title == '' ) {
 			if ( $cookie_name == 'wgr_product_id_user_favorite' ) {
@@ -148,7 +154,6 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			}
 		}
 		
-		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 5;
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
 //		echo $num_line;

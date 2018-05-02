@@ -1,4 +1,4 @@
-/* chuyển thumb ảnh trong trang chi tiết sang dạng đứng */
+/* chuyển thumb ảnh trong trang chi tiết sang dạng đứng (nằm bên phải) */
 .thread-details-mobileCenter {
 	position: relative;
 	padding-right: 18%;
@@ -24,6 +24,17 @@
 }
 .thread-details-mobileCenter .jEBE_slider-child-thumbnail li div { background-color: #f2f2f2; }
 .thread-details-mobileCenter .jEBE_slider-arrow-thumbnail { display: none; }
+/* khi muốn cột này sang bên trái -> copy đoạn dưới đây cho vào css config */
+/*
+.thread-details-mobileCenter {
+	padding-left: 18%;
+	padding-right: 0;
+}
+.thread-details-mobileCenter .jEBE_slider-thumbnail {
+	right: auto;
+	left: 0;
+}
+*/
 /* */
 .style-for-mobile .thread-details-mobileCenter { padding-right: 0; }
 .style-for-mobile .thread-details-mobileCenter .jEBE_slider-child-thumbnail li {
