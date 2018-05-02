@@ -8,19 +8,59 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
-	width: 15%;
 	max-width: 90px;
 	height: auto !important;
 	margin: 0;
 }
 .thread-details-mobileCenter .jEBE_slider-scroll-thumbnail ul {
 	width: auto !important;
+	/*
 	position: relative;
 	position: unset;
+	*/
+	left: 0;
+	right: 0;
 }
 .thread-details-mobileCenter .jEBE_slider-child-thumbnail li {
 	width: auto !important;
 	float: none;
 }
 .thread-details-mobileCenter .jEBE_slider-child-thumbnail li div { background-color: #f2f2f2; }
+/*
 .thread-details-mobileCenter .jEBE_slider-arrow-thumbnail { display: none; }
+*/
+.thread-details-mobileCenter .jEBE_slider-thumbnail,
+.thread-details-mobileCenter .jEBE_slider-arrow-thumbnail { width: 18%; }
+.thread-details-mobileCenter .jEBE_slider-arrow-thumbnail {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+.thread-details-mobileCenter .jEBE_slider-left-thumbnail,
+.thread-details-mobileCenter .jEBE_slider-right-thumbnail {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	height: 26px !important;
+	line-height: 26px !important;
+	z-index: 99;
+}
+.thread-details-mobileCenter .jEBE_slider-left-thumbnail {
+	top: -15px;
+	display: none;
+}
+.thread-details-mobileCenter .jEBE_slider-right-thumbnail { top: 95%; }
+.thread-details-mobileCenter .jEBE_slider-left-thumbnail i,
+.thread-details-mobileCenter .jEBE_slider-right-thumbnail i {
+	line-height: 28px;
+	display: inline-block;
+	background: rgba( 0, 0, 0, .7 );
+	color: #fff;
+	padding: 0 15px;
+	font-size: 25px;
+}
+.thread-details-mobileCenter .jEBE_slider-left-thumbnail i { border-radius: 6px 6px 0 0; }
+.thread-details-mobileCenter .jEBE_slider-left-thumbnail i:before { content: "\f106"; }
+.thread-details-mobileCenter .jEBE_slider-right-thumbnail i { border-radius: 0 0 6px 6px; }
+.thread-details-mobileCenter .jEBE_slider-right-thumbnail i:before { content: "\f107"; }

@@ -343,6 +343,56 @@ function ___eb_details_slider_v2 () {
 		
 		// click vào cái đầu tiên luôn
 		jQuery('.thread-details-mobileAvt li:first').click();
+		
+		// thay đổi kiểu tải thumb nếu thumb được chuyển sang chiều dọc
+		if ( cf_details_right_thumbnail == 1 ) {
+			
+			//
+			var effect_for_post_slider = '.child-thread-details-mobileAvt .jEBE_slider-thumbnail ul';
+			
+			//
+			$('.child-thread-details-mobileAvt .jEBE_slider-right-thumbnail').off('click').click(function () {
+//				var a = $('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
+				var a = $(effect_for_post_slider).attr('data-scroll') || 1,
+					len = $('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li').length - 1;
+//				console.log(a);
+				a = a - ( 0 - 1 );
+				if ( a >= len ) {
+					a = len - 1;
+				}
+//				console.log(a);
+				
+				//
+				$(effect_for_post_slider).css({
+					top: ( 0 - a * $('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
+				}).attr({
+					'data-scroll' : a
+				});
+				
+				//
+				$('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').show();
+			});
+			
+			$('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').off('click').click(function () {
+//				var a = $('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
+				var a = $(effect_for_post_slider).attr('data-scroll') || 1;
+//				console.log(a);
+				a = a - 1;
+				if ( a < 0 ) {
+					a = 0;
+				}
+//				console.log(a);
+				
+				//
+				$(effect_for_post_slider).css({
+					top: ( 0 - a * $('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
+				}).attr({
+					'data-scroll' : a
+				});
+			});
+			
+		}
+		
 	});
 	
 }

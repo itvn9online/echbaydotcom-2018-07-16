@@ -1,4 +1,4 @@
-\.style-for-mobile .thread-details-mobileCenter {
+.style-for-mobile .thread-details-mobileCenter {
 	padding-right: 0;
 	padding-left: 0;
 }
@@ -14,4 +14,12 @@
 	position: unset;
 	margin: 15px 0;
 }
-.style-for-mobile .thread-details-mobileCenter .jEBE_slider-scroll-thumbnail ul { width: 100% !important; }
+.style-for-mobile .thread-details-mobileCenter .jEBE_slider-scroll-thumbnail ul {
+	width: 100% !important;
+	position: relative;
+	position: unset;
+	left: auto;
+	right: auto;
+}
+.style-for-mobile .thread-details-mobileCenter .jEBE_slider-left-thumbnail,
+.style-for-mobile .thread-details-mobileCenter .jEBE_slider-right-thumbnail { display: none; }
