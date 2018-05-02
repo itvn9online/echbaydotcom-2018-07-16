@@ -861,9 +861,16 @@ if ( $__post->post_type == 'post' ) {
 	}
 	
 	
-	//
+	// chuyển thumb về bên phải
 	if ( $__cf_row['cf_details_right_thumbnail'] == 1 ) {
-		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/post-details-thumb-col.css' ] = 1;
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col.css' ] = 1;
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col-mobile.css' ] = 1;
+	}
+	// chuyển thumb về bên trái
+	else if ( $__cf_row['cf_details_left_thumbnail'] == 1 ) {
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col.css' ] = 1;
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col-left.css' ] = 1;
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col-mobile.css' ] = 1;
 	}
 }
 

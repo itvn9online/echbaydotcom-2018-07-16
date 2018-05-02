@@ -1,0 +1,9 @@
+/* khi muốn cột này sang bên trái -> copy đoạn dưới đây cho vào css config */
+.thread-details-mobileCenter {
+	padding-left: 18%;
+	padding-right: 0;
+}
+.thread-details-mobileCenter .jEBE_slider-thumbnail {
+	right: auto;
+	left: 0;
+}

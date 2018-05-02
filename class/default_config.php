@@ -243,6 +243,7 @@ $__cf_row_default = array(
 	'cf_details_show_list_thumb' => 1,
 	'cf_details_show_quick_cart' => 1,
 	'cf_details_right_thumbnail' => 'off',
+	'cf_details_left_thumbnail' => 'off',
 	
 	// các chức năng bắt buộc ở giỏ hàng
 	'cf_required_name_cart' => 'off',
