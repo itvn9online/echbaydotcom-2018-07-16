@@ -84,8 +84,25 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			}
 			
 			//
+//			$post_categories = get_the_terms( $pid, EB_BLOG_POST_LINK );
+			$post_categories = wp_get_post_categories( $pid );
+			
+			// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
+			$post_primary_categories = array();
+			foreach ( $post_categories as $v ) {
+				if ( _eb_get_cat_object( $v, '_eb_category_primary', 0 ) > 0 ) {
+					$post_primary_categories[] = $v;
+				}
+			}
+			
+			// nếu không tìm được -> lấy tất
+			if ( empty( $post_primary_categories ) ) {
+				$post_primary_categories = $post_categories;
+			}
+			
+			//
 			$str_view_history = _eb_load_post( $post_number, array(
-//				'post__in' => $arr_history
+				'category__in' => $post_primary_categories,
 			) );
 			
 			//
