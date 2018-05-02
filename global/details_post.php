@@ -145,14 +145,14 @@ if ( empty( $post_primary_categories ) ) {
 if ( $limit_other_post > 0 ) {
 	
 	//
-	$arr_post_not_in = array();
+//	$arr_post_not_in = array();
 	
 	//
 	$prev_post = get_previous_post();
 //	print_r($prev_post);
 	if ( isset($prev_post->ID) ) {
 		$limit_other_post--;
-		$arr_post_not_in[] = $prev_post->ID;
+//		$arr_post_not_in[] = $prev_post->ID;
 		
 		$other_post_right .= _eb_load_post( 1, array(
 			'p' => $prev_post->ID
@@ -169,7 +169,7 @@ if ( $limit_other_post > 0 ) {
 //	print_r($next_post);
 	if ( isset($next_post->ID) ) {
 		$limit_other_post--;
-		$arr_post_not_in[] = $next_post->ID;
+//		$arr_post_not_in[] = $next_post->ID;
 		
 		$other_post_right .= _eb_load_post( 1, array(
 			'p' => $next_post->ID
@@ -191,7 +191,7 @@ if ( $limit_other_post > 0 ) {
 //	echo $limit_other_post;
 	
 	//
-	$arr_post_not_in[] = $__post->ID;
+//	$arr_post_not_in[] = $__post->ID;
 	
 	//
 	$other_post_right .= _eb_load_post( $limit_other_post, array(
