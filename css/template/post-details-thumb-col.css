@@ -36,7 +36,10 @@
 }
 */
 /* */
-.style-for-mobile .thread-details-mobileCenter { padding-right: 0; }
+.style-for-mobile .thread-details-mobileCenter {
+	padding-right: 0;
+	padding-left: 0;
+}
 .style-for-mobile .thread-details-mobileCenter .jEBE_slider-child-thumbnail li {
 	float: left;
 	width: 25% !important;

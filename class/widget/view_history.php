@@ -67,13 +67,11 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		//
 		extract ( $args );
 		
+		
 		//
 		$post_number = isset( $instance ['post_number'] ) ? $instance ['post_number'] : 5;
-		
-		
-		
-		//
 		$cookie_name = isset( $instance ['cookie_name'] ) ? $instance ['cookie_name'] : 'wgr_product_id_view_history';
+		
 		
 		//
 		if ( $cookie_name == 'wgr_product_same_category' ) {
@@ -86,10 +84,12 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			}
 			
 			//
-			$str_css_class = 'eb-same-category';
+			$str_view_history = _eb_load_post( $post_number, array(
+//				'post__in' => $arr_history
+			) );
 			
 			//
-			$str_view_history = '';
+			$str_css_class = 'eb-same-category';
 			
 		}
 		else {

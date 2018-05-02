@@ -399,7 +399,8 @@ label,
 /* .w90 .w99, */
 .w90 .w90 {
 	width: auto;
-	min-width: 250px;
+	/* min-width: 250px; */
+	min-width: 180px;
 }
 .home_noidung_menu .home-hot-bg,
 .home_menu_noidung .home-hot-bg { background: none; }
