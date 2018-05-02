@@ -94,7 +94,17 @@ function get_leech_data_post_id ( str, vitri ) {
 					}
 					// nếu có điểm kết thúc -> lấy mảng ngay trước vị trí kết thúc
 					else {
-						a = str.split( e )[0].split( b[i] );
+						// v1
+//						a = str.split( e )[0].split( b[i] );
+						
+						// v2
+						var arr_e = e.split( '||' );
+						for ( var ie = 0; ie < arr_e.length; ie++ ) {
+							arr_e[ie] = jQuery.trim( arr_e[ie] );
+							
+							a = a.split( arr_e[ie] )[0];
+						}
+						a = a.split( b[i] );
 					}
 					return num_leech_data_post_id( a[ a.length - 1 ] );
 				}
@@ -104,7 +114,16 @@ function get_leech_data_post_id ( str, vitri ) {
 					if ( a.length > 1 ) {
 						str = a[1];
 						if ( e != '' ) {
-							str = str.split( e )[0];
+							// v1
+//							str = str.split( e )[0];
+							
+							// v2
+							var arr_e = e.split( '||' );
+							for ( var ie = 0; ie < arr_e.length; ie++ ) {
+								arr_e[ie] = jQuery.trim( arr_e[ie] );
+								
+								str = str.split( arr_e[ie] )[0];
+							}
 						}
 						return num_leech_data_post_id( str );
 					}
@@ -943,19 +962,14 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			min_title = 1 * min_title;
 			
 			//
-			if ( f.t_tieude.value == '' || f.t_tieude.value.length < min_title ) {
-//				console.log( jQuery('#leech_data_html').html() );
+			if ( f.t_tieude.value == '' ) {
+				ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR (not title)</span>' );
 				
-				//
-				console.log('Không tìm thấy tiêu đề sản phẩm');
+				return false;
+			}
+			else if ( f.t_tieude.value.length < min_title ) {
+				ket_thuc_lay_du_lieu( 0, '<span class="orgcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR (short title)</span>' );
 				
-//				setTimeout(function () {
-//					if ( gian_cach_submit > 1 && dog('leech_data_auto_next').checked == true ) {
-						ket_thuc_lay_du_lieu( 0, '<span class="redcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">ERROR (not title)</span>' );
-//					}
-//				}, gian_cach_submit * 1000);
-				
-				//
 				return false;
 			}
 			
@@ -966,6 +980,11 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			
 			// Tạo URL SEO
 			f.t_seo.value = g_func.non_mark_seo( f.t_tieude.value );
+			
+			
+			//
+			f.t_new_category.value = $.trim( g_func.strip_tags( f.t_new_category.value ) );
+			f.t_new_2category.value = $.trim( g_func.strip_tags( f.t_new_2category.value ) );
 			
 			
 			
