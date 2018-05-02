@@ -386,6 +386,7 @@ function func_download_img_to_my_host ( img, dm ) {
 
 
 function check_category_by_auto_slug ( a, alert_now ) {
+	
 	// nếu có lệnh tự xác định nhóm đi kèm -> xác định luôn
 	if ( a.split('|').length > 1 ) {
 		a = a.split('|');
@@ -454,6 +455,14 @@ function check_category_by_auto_slug ( a, alert_now ) {
 				
 				console.log('Slug: ' + auto_category);
 				
+				// nếu có lấy nhóm tự động -> lấy theo phần này luôn
+				/*
+				if ( jQuery.trim( jQuery('#details_category').val() || '' ) == '' ) {
+					return true;
+				}
+				*/
+				
+				// mặc định thì trả về false
 				return false;
 			}
 		}
@@ -462,6 +471,7 @@ function check_category_by_auto_slug ( a, alert_now ) {
 	}
 	
 	return a;
+	
 }
 
 
@@ -1331,8 +1341,10 @@ jQuery('#categories_url').off('change').change(function () {
 	
 	// nếu có URL lỗi -> tìm và triển luôn
 	if ( str_slug_error != '' ) {
-		str_slug_error = '<li class="redcolor">URL có slug auto nhưng bị lỗi không tìm thấy</li>' + str_slug_error;
-		jQuery('#categories_list_finish').append( str_slug_error );
+//		if ( jQuery.trim( jQuery('#details_category').val() || '' ) == '' ) {
+			str_slug_error = '<li class="redcolor">URL có slug auto nhưng bị lỗi không tìm thấy</li>' + str_slug_error;
+			jQuery('#categories_list_finish').append( str_slug_error );
+//		}
 	}
 	
 	
