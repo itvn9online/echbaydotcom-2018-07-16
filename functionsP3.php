@@ -288,8 +288,8 @@ function WGR_add_li_to_thread_node ( $str ) {
 	
 	//
 	return EBE_arr_tmp( array(
-		'tmp.thread_list_mua' => EBE_get_lang('thread_list_mua'),
-		'tmp.thread_list_more' => EBE_get_lang('thread_list_more')
+		'thread_list_mua' => EBE_get_lang('thread_list_mua'),
+		'thread_list_more' => EBE_get_lang('thread_list_more')
 	), $str );
 }
 
