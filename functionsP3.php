@@ -286,7 +286,11 @@ function WGR_add_li_to_thread_node ( $str ) {
 		$str = '<li data-id="{tmp.trv_id}" data-ngay="{tmp.trv_ngayhethan}" data-price="{tmp.trv_num_giamoi}" data-per="{tmp.pt}" data-link="{tmp.p_link}" data-status="{tmp.product_status}" class="hide-if-gia-zero">' . $str . '</li>';
 	}
 	
-	return $str;
+	//
+	return EBE_arr_tmp( array(
+		'tmp.thread_list_mua' => EBE_get_lang('thread_list_mua'),
+		'tmp.thread_list_more' => EBE_get_lang('thread_list_more')
+	), $str );
 }
 
 

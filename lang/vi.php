@@ -74,6 +74,10 @@ $___eb_lang[eb_key_for_site_lang . 'post_instock'] = 'Sẵn hàng';
 $___eb_lang[eb_key_for_site_lang . 'post_outstock'] = 'Hết hàng';
 
 //
+$___eb_lang[eb_key_for_site_lang . 'thread_list_mua'] = '<i class="fa fa-shopping-cart"></i> Mua ngay';
+$___eb_lang[eb_key_for_site_lang . 'thread_list_more'] = '<i class="fa fa-eye"></i> Xem';
+
+//
 $___eb_lang[eb_key_for_site_lang . 'cart_diachi'] = 'Địa chỉ';
 $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'cart_pla_dienthoai'] = $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'];
