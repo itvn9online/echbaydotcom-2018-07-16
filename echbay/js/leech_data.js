@@ -993,8 +993,8 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			
 			
 			//
-			f.t_new_category.value = $.trim( g_func.strip_tags( f.t_new_category.value ) );
-			f.t_new_2category.value = $.trim( g_func.strip_tags( f.t_new_2category.value ) );
+			f.t_new_category.value = jQuery.trim( g_func.strip_tags( f.t_new_category.value ) );
+			f.t_new_2category.value = jQuery.trim( g_func.strip_tags( f.t_new_2category.value ) );
 			
 			
 			
@@ -1445,7 +1445,15 @@ function EBE_auto_save_domain_cookie () {
 		}
 		else {
 			*/
-			document.frm_leech_data_save.submit();
+			var f = document.frm_leech_data_save;
+			
+			if ( jQuery.trim( f.t_noidung.value ) == '' ) {
+				console.log( 'Auto save not run because content is NULL' );
+				return false;
+			}
+			
+			//
+			f.submit();
 //		}
 //	}
 }
@@ -2240,7 +2248,7 @@ setTimeout(function () {
 	window.scroll(0, 0);
 	
 	//
-	$('.click-show-eb-target').click();
+	jQuery('.click-show-eb-target').click();
 }, 600);
 
 
