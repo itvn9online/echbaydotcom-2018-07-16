@@ -48,16 +48,20 @@
 	font-size: 14px;
 	color: #5d5c5c;
 }
+/*
 .thread-list-gia,
 .thread-list-giamoi { }
+*/
 .thread-list-gia {
 	font-size: 15px;
 	color: #999;
 }
 .thread-list-giamoi {
-	color: #ff9104;
 	font-size: 20px;
-	/* font-weight: bold; */
+	/*
+	color: #ff9104;
+	font-weight: bold;
+	*/
 	padding: 5px 0 11px 0;
 }
 .thread-list-mobilebg { }
