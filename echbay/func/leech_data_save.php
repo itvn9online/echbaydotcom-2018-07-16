@@ -6,6 +6,12 @@
 
 
 function WGR_leech_data_save ( $key, $c ) {
+	// cái này bắt buộc phải có nội dung thì mới update
+	if ( $c != '' ) {
+		return false;
+	}
+	
+	//
 //	_eb_alert($c);
 	
 	delete_option ( $key );
@@ -19,6 +25,9 @@ function WGR_leech_data_save ( $key, $c ) {
 	
 	//
 	add_option( $key, $c, '', 'no' );
+	
+	//
+	return true;
 }
 
 //
