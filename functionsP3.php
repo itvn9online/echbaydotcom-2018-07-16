@@ -416,11 +416,14 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 	// sử dụng phương thức mặc định của wp (sử dụng song song)
 	// nếu không phải key của echbay hoặc tính năng không bật -> bỏ qua luôn
 	if ( cf_set_raovat_version != 1
-	// một số key sẽ dùng post meta -> để tìm theo khoảng giá
-	|| $k == '_eb_product_price'
 	|| strstr( $k, '_eb_' ) == false ) {
 		update_post_meta( $id, $k, $v );
 		return true;
+	}
+	
+	// một số key sẽ dùng post meta -> để tìm theo khoảng giá
+	if ( $k == '_eb_product_price' ) {
+		update_post_meta( $id, $k, $v );
 	}
 	
 	

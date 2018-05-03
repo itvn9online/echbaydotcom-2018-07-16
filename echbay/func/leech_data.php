@@ -226,7 +226,7 @@ if ( $import_id == 0 ) {
 	}
 	
 	//
-	$import_id = WGR_insert_post ( $arr, 'Lỗi khi import sản phẩm' );
+	$import_id = WGR_insert_post ( $arr, 'Lỗi khi import!' );
 	
 	//
 	$m = '<span class=greencolor>INSERT</span>';
@@ -275,7 +275,7 @@ else if ( ! empty( $check_post_exist ) ) {
 			$arr_for_update['ID'] = $import_id;
 			
 			//
-			$post_id = WGR_update_post( $arr_for_update, 'Lỗi khi cập nhật! Sản phẩm đã tồn tại' );
+			$post_id = WGR_update_post( $arr_for_update, 'Lỗi khi update (publish)' );
 		}
 		
 		
@@ -301,7 +301,7 @@ else if ( ! empty( $check_post_exist ) ) {
 		$post_id = WGR_update_post( array(
 			'ID' => $import_id,
 			'post_status' => 'publish'
-		), 'Lỗi khi cập nhật sản phẩm' );
+		), 'Lỗi khi update (future)' );
 		
 		//
 		$m = '<span class=orgcolor>STATUS: ' . $check_post_exist->post_status . ' to publish</span>';
@@ -440,7 +440,7 @@ if ( $post_type != 'post' ) {
 }
 
 //
-$post_id = WGR_update_post( $arr, 'Lỗi khi cập nhật sản phẩm' );
+$post_id = WGR_update_post( $arr, 'Lỗi khi update!' );
 
 //
 /*
