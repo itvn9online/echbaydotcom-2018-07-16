@@ -128,4 +128,7 @@ $post_get_cc->loat();
 /*
 $post_get_cc->get ( 'http://www.example.com' );
 $post_get_cc->post ( 'http://www.example.com', 'foo=bar' );
+$post_get_cc->post ( 'http://www.example.com', array(
+	'foo' => 'bar'
+) );
 */

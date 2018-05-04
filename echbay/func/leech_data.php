@@ -211,6 +211,8 @@ if ( ! empty( $check_post_exist ) ) {
 
 // insert
 if ( $import_id == 0 ) {
+	$last_update = date( 'Y-m-d H:i:s', date_time );
+	
 	$arr = array(
 //		'import_id' => $insert_id,
 		
@@ -220,6 +222,8 @@ if ( $import_id == 0 ) {
 		'post_author' => mtv_id,
 		'post_status' => 'publish',
 		'post_name' => $trv_seo,
+		'post_date' => $last_update,
+		'post_date_gmt' => $last_update
 	);
 	if ( $insert_id > 0 ) {
 		$arr['import_id'] = $insert_id;
@@ -273,6 +277,10 @@ else if ( ! empty( $check_post_exist ) ) {
 			// gán ID cho post cần edit
 //			$arr_for_update['ID'] = $check_post_exist->ID;
 			$arr_for_update['ID'] = $import_id;
+		
+			$last_update = date( 'Y-m-d H:i:s', date_time );
+			$arr_for_update['post_modified'] = $last_update;
+			$arr_for_update['post_modified_gmt'] = $last_update;
 			
 			//
 			$post_id = WGR_update_post( $arr_for_update, 'Lỗi khi update (publish)' );
@@ -298,9 +306,13 @@ else if ( ! empty( $check_post_exist ) ) {
 	//
 	else if ( $check_post_exist->post_status == 'future' ) {
 		
+		$last_update = date( 'Y-m-d H:i:s', date_time );
+		
 		$post_id = WGR_update_post( array(
 			'ID' => $import_id,
-			'post_status' => 'publish'
+			'post_status' => 'publish',
+			'post_modified' => $last_update,
+			'post_modified_gmt' => $last_update
 		), 'Lỗi khi update (future)' );
 		
 		//
@@ -408,15 +420,18 @@ if ( $trv_noidung != '' ) $arr['post_content'] = $trv_noidung;
 if ( $post_date != '' ) {
 	$post_date = strtotime( $post_date );
 	if ( $post_date > date_time ) {
-		$post_date = date_time - 3600;
+		$post_date = date_time - 600;
 	}
 	$post_date = date( 'Y-m-d H:i:s', $post_date );
 	
 	$arr['post_date'] = $post_date;
 	$arr['post_date_gmt'] = $post_date;
-	$arr['post_modified'] = $post_date;
-	$arr['post_modified_gmt'] = $post_date;
 }
+else {
+	$post_date = date( 'Y-m-d H:i:s', date_time );
+}
+$arr['post_modified'] = $post_date;
+$arr['post_modified_gmt'] = $post_date;
 
 // Tạo STT
 if ( isset( $_POST['cap_nhat_stt_cho_bai_viet'] ) && $_POST['cap_nhat_stt_cho_bai_viet'] == 1 ) {
