@@ -112,6 +112,17 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 	}
 	
 	
+	
+	// gửi email cho admin
+	$mail_to_admin = $__cf_row ['cf_email'];
+	if ($__cf_row ['cf_email_note'] != '') {
+		$mail_to_admin = $__cf_row ['cf_email_note'];
+	}
+	
+	//
+	$mail_title = 'Dang ky nhan tin tu ' . $user_email;
+	
+	
 	// Gửi email thông báo
 	$custom_lang_html = EBE_get_lang('quick_register_mail');
 	// mặc định là lấy theo file HTML -> act
