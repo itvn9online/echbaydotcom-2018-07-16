@@ -70,13 +70,15 @@ $user_name = $check_user_exist;
 
 
 // tạo tài khoản
-wp_create_user( $user_name, $t_matkhau, $user_email );
+$user_id = wp_create_user( $user_name, $t_matkhau, $user_email );
 
 
 
 
 // nếu là quick register -> dừng ở đây là được
 if ( isset( $_POST['for_quick_register'] ) ) {
+	echo $user_id . '<br>';
+	
 	// cho vào nhóm đăng ký nhận tin
 	$user_id_role = new WP_User($user_id);
 	$user_id_role->set_role('quickregister');
@@ -93,6 +95,7 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 			)
 		);
 	}
+	echo $t_ten . '<br>';
 	
 	$t_dienthoai = '';
 	if ( isset( $_POST['t_dienthoai'] ) ) {
@@ -100,6 +103,7 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 		
 		update_user_meta( $user_id, 'phone', $t_dienthoai );
 	}
+	echo $t_dienthoai . '<br>';
 	
 	
 	
@@ -145,7 +149,11 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 	
 	
 	//
-	_eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email );
+	if ( _eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email ) ) {
+		echo '<script>
+console.log("Send mail to: ' . $mail_to_admin . ', BCC: ' . $bcc_email . '");
+</script>';
+	}
 	
 	
 	
