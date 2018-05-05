@@ -573,6 +573,7 @@ setTimeout(function () {
 include EB_THEME_CORE . 'custom/taxonomy.php';
 include EB_THEME_CORE . 'custom/post-type.php';
 include EB_THEME_CORE . 'custom/meta-box.php';
+include EB_THEME_CORE . 'custom/user-meta.php';
 
 
 

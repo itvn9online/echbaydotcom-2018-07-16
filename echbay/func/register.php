@@ -77,7 +77,64 @@ wp_create_user( $user_name, $t_matkhau, $user_email );
 
 // nếu là quick register -> dừng ở đây là được
 if ( isset( $_POST['for_quick_register'] ) ) {
+	// cho vào nhóm đăng ký nhận tin
+	$user_id_role = new WP_User($user_id);
+	$user_id_role->set_role('quickregister');
+	
+	// thêm thông tin
+	$t_ten = '';
+	if ( isset( $_POST['t_hoten'] ) ) {
+		$t_ten = trim( $_POST['t_hoten'] );
+		
+		wp_update_user(
+			array(
+				'ID' => $user_id,
+				'first_name' => $t_ten
+			)
+		);
+	}
+	
+	$t_dienthoai = '';
+	if ( isset( $_POST['t_dienthoai'] ) ) {
+		$t_dienthoai = trim( $_POST['t_dienthoai'] );
+		
+		update_usermeta( $user_id, 'phone', $t_dienthoai );
+	}
+	
+	
+	
+	// gửi mail thông báo
+	$bcc_email = '';
+	if (strstr ( $user_email, '@gmail.com' ) == true
+	|| strstr ( $user_email, '@yahoo.' ) == true
+	|| strstr ( $user_email, '@hotmail.com' ) == true) {
+		$bcc_email = $user_email;
+	}
+	
+	
+	// Gửi email thông báo
+	$custom_lang_html = EBE_get_lang('quick_register_mail');
+	// mặc định là lấy theo file HTML -> act
+	if ( trim( $custom_lang_html ) == 'quick_register_mail' ) {
+		$custom_lang_html = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/qregister.html' );
+	}
+	
 	//
+	$message = EBE_html_template( $custom_lang_html, array(
+			'tmp.web_link' => web_link,
+			'tmp.web_name' => $web_name,
+			'tmp.t_ten' => $t_ten == '' ? $user_email : $t_ten,
+			'tmp.t_dienthoai' => $t_dienthoai,
+			'tmp.user_email' => $user_email
+	) );
+//	echo $message . '<br>'; exit();
+	
+	
+	//
+	_eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email );
+	
+	
+	
 	
 	//
 	die('<script type="text/javascript">
