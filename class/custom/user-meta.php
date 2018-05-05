@@ -37,8 +37,8 @@ function eb_save_extra_profile_fields( $user_id ) {
 		return false;
 	}
 	
-	update_usermeta( $user_id, 'address', $_POST['address'] );
-	update_usermeta( $user_id, 'phone', $_POST['phone'] );
+	update_user_meta( $user_id, 'address', $_POST['address'] );
+	update_user_meta( $user_id, 'phone', $_POST['phone'] );
 } 
 
 

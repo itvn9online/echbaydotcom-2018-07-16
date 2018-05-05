@@ -224,6 +224,12 @@ $___eb_lang[eb_key_for_site_lang . 'mail_main'] = 'mail_main';
 $eb_type_lang[eb_key_for_site_lang . 'mail_main'] = 'textarea';
 $eb_ex_from_github[eb_key_for_site_lang . 'mail_main'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/mail/mail.html';
 
+// mail khi đăng ký nhận tin
+//$___eb_lang[eb_key_for_site_lang . 'quick_register_mail'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/qregister.html' );
+$___eb_lang[eb_key_for_site_lang . 'quick_register_mail'] = 'quick_register_mail';
+$eb_type_lang[eb_key_for_site_lang . 'quick_register_mail'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'quick_register_mail'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/mail/qregister.html';
+
 
 
 

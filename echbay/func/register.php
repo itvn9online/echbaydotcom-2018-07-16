@@ -98,8 +98,11 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 	if ( isset( $_POST['t_dienthoai'] ) ) {
 		$t_dienthoai = trim( $_POST['t_dienthoai'] );
 		
-		update_usermeta( $user_id, 'phone', $t_dienthoai );
+		update_user_meta( $user_id, 'phone', $t_dienthoai );
 	}
+	
+	
+	
 	
 	
 	
@@ -143,6 +146,8 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 	
 	//
 	_eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email );
+	
+	
 	
 	
 	
