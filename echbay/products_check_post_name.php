@@ -189,10 +189,9 @@ setTimeout(function () {
 	<?php
 }
 
-
+?>
 
 //
 WGR_admin_quick_edit_select_menu();
 
-?>
 </script>
