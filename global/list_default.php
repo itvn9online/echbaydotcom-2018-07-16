@@ -267,10 +267,6 @@ if ( $main_content == false ) {
 			// kiểm tra và gắn HTML riêng cho khách hàng
 //			$html_v2_file = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_cats_column_style'] );
 			$custom_cats_flex_css = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_cats_column_style'] );
-
-			
-			
-			//
 			
 			
 			

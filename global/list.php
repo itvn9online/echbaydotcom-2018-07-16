@@ -111,8 +111,13 @@ else if ( file_exists( EB_THEME_PHP . 'archive-' . $switch_taxonomy . '.php' ) )
 	include EB_THEME_PHP . 'archive-' . $switch_taxonomy . '.php';
 	
 }
+else if ( $act == 'archive' ) {
+	include EB_THEME_PHP . 'archive.php';
+}
 // không thì in ra file 404 thôi
 else {
+	echo '<!-- ' .$act . ' --> <br>' . "\n";
+	
 	include EB_THEME_PHP . '404.php';
 }
 
