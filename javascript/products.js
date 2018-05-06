@@ -1,7 +1,7 @@
 
 
 
-function () {
+function WGR_admin_quick_edit_select_menu () {
 	
 	//
 	$('.set-url-post-post-type').each(function() {
