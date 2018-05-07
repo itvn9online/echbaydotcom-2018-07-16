@@ -515,15 +515,22 @@ function WGR_run_for_admin_edit_post () {
 					if ( jd == '' ) {
 						return false;
 					}
-					console.log(jd);
+					console.log('Edit color #' + jd);
 					
 					//
-					$('.eb-input-edit-product-color').css({
+					$('.eb-input-edit-product-color') /* .css({
 						left : $(this).offset().left + $('#' + iff_id).offset().left
-					}).show();
+					}) */ .show();
 					
 					//
 					document.frm_eb_input_edit_product_color.eb_input_edit_product_color_id.value = jd;
+					
+					
+					// các thông số của màu sắc đang chỉnh sửa
+					var ten = $(this).attr('alt') || '',
+						sku = $(this).attr('data-sku') || '',
+						quan = $(this).attr('data-quan') || '',
+						price = $(this).attr('data-price') || '';
 				});
 			}
 		}

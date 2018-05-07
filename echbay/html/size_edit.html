@@ -11,14 +11,40 @@
 	</form>
 </div>
 <div class="edit-product-sizecolor eb-input-edit-product-color hide-if-press-esc">
+	<h2>Chỉnh sửa màu sắc sản phẩm:</h2>
+	<br>
 	<form name="frm_eb_input_edit_product_color" method="get" action="javascript:;" target="_blank" onsubmit="return check_eb_input_edit_product_color();">
 		<input type="hidden" value="" name="eb_input_edit_product_color_id" placeholder="ID để thay đổi data">
-		<input type="text" value="" name="eb_input_edit_product_color_name" placeholder="Tên màu">
-		<input type="text" value="" name="eb_input_edit_product_color_sku" placeholder="Mã màu (nếu có)">
-		<input type="text" value="" name="eb_input_edit_product_color_size" placeholder="Số lượng">
-		<input type="text" value="" name="eb_input_edit_product_color_price" placeholder="Giá bán (nếu có)">
-		<button data-action="save">Save</button>
-		<!-- <button data-action="remove" type="button" class="d-none">Remove</button> -->
-		<button type="button">Cancel</button>
+		<table class="eb-public-table eb-editer-table">
+			<tr>
+				<td class="t"><label for="eb_input_edit_product_color_name"><strong>Màu sắc</strong></label></td>
+				<td class="i"><input type="text" id="eb_input_edit_product_color_name" name="eb_input_edit_product_color_name" placeholder="Tên màu" class="m">
+					<p class="description">Tên của màu sẽ được hiển thị khi người dùng chọn mua hàng. Ví dụ: Màu đỏ, xanh, đen...</p></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="eb_input_edit_product_color_sku"><strong>Mã màu (nếu có)</strong></label></td>
+				<td class="i"><input type="text" id="eb_input_edit_product_color_sku" name="eb_input_edit_product_color_sku" placeholder="Mã màu (nếu có)" class="m">
+					<p class="description">Ít khi sử dụng, thường sẽ sử dụng <strong>Tên màu</strong> ở trên.</p></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="eb_input_edit_product_color_quan"><strong>Số lượng</strong></label></td>
+				<td class="i"><input type="text" id="eb_input_edit_product_color_quan" name="eb_input_edit_product_color_quan" placeholder="Số lượng" class="m">
+					<p class="description">Mặc định sẽ lấy theo <strong>Số lượng</strong> của sản phẩm chính hoặc hiển thị hết hàng nếu để là <strong>0</strong>.</p></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="eb_input_edit_product_color_price"><strong>Giá bán (nếu có)</strong></label></td>
+				<td class="i"><input type="text" id="eb_input_edit_product_color_price" name="eb_input_edit_product_color_price" placeholder="Giá bán (nếu có)" class="m">
+					<p class="description">Mặc định sẽ lấy theo <strong>Giá mới</strong> của sản phẩm chính, nếu có giá bán riêng, hãy nhập vào đây.</p></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="eb_input_edit_product_color_size"><strong>Kích cỡ/ Số lượng</strong></label></td>
+				<td class="i">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td height="90" class="i"><button data-action="save">Save</button>
+					<button type="button">Cancel</button></td>
+			</tr>
+		</table>
 	</form>
 </div>

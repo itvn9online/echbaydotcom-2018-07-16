@@ -462,6 +462,13 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 		a[i] = g_func.trim( a[i] );
 		
 		if ( a[i] != '' ) {
+			if ( cf_details_bold_excerpt == 1 ) {
+				var a_bold = a[i].split(':');
+				a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
+				
+				a[i] = a_bold.join(':');
+			}
+			
 			str += '<li>' + a_before + a[i] + a_after + '</li>';
 		}
 	}

@@ -38,6 +38,8 @@ $_POST['cf_required_address_cart'] = WGR_default_config('cf_required_address_car
 
 $_POST['cf_details_excerpt'] = WGR_default_config('cf_details_excerpt');
 
+$_POST['cf_details_excerpt'] = WGR_default_config('cf_details_bold_excerpt');
+
 
 //
 $_POST['posts_per_page'] = (int)$_POST['posts_per_page'];
