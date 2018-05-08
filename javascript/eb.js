@@ -256,7 +256,7 @@ var g_func = {
 //		return str.replace(/^\s+|\s+$/g, "");
 	},
 	
-	setc: function (name, value, seconds, days) {
+	setc: function (name, value, seconds, days, set_domain) {
 		var expires = "";
 		
 		// tính theo ngày -> số giây trong ngày luôn
@@ -274,8 +274,42 @@ var g_func = {
 			expires = "; expires=" + date.toGMTString();
 		}
 		
+		
 		//
-		document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+		var cdomain = '';
+		if ( typeof set_domain != 'undefined' ) {
+			if ( set_domain.split('.').length == 1 ) {
+				cdomain = window.location.host || document.domain || '';
+			}
+			else {
+				cdomain = set_domain;
+			}
+		}
+		if ( cdomain != '' ) {
+			cdomain = cdomain.split('.');
+//			console.log(cdomain);
+			// bỏ www đi -> áp dụng cho tất cả các domain
+			if ( cdomain[0] == 'www' ) {
+				cdomain[0] = '';
+				cdomain = cdomain.join('.');
+			}
+			else {
+				cdomain = '.' + cdomain.join('.');
+			}
+//			console.log(cdomain);
+		}
+		
+		//
+		if ( cdomain != '' ) {
+			document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + ";domain=." + cdomain + ";path=/";
+		}
+		else {
+			document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + ";path=/";
+		}
+		
+		
+		//
+		console.log( 'Set cookie: ' + name + ' with value: ' + value + ' for domain: ' + cdomain );
 	},
 	getc: function (name) {
 		var nameEQ = encodeURIComponent(name) + "=",
