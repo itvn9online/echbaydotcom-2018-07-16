@@ -275,33 +275,37 @@ var g_func = {
 		}
 		
 		
-		//
+		// set cookie theo domain
 		var cdomain = '';
 		if ( typeof set_domain != 'undefined' ) {
-			if ( set_domain.split('.').length == 1 ) {
+			if ( set_domain.toString().split('.').length == 1 ) {
 				cdomain = window.location.host || document.domain || '';
 			}
 			else {
 				cdomain = set_domain;
 			}
-		}
-		if ( cdomain != '' ) {
+			
+			//
 			cdomain = cdomain.split('.');
 //			console.log(cdomain);
+			
 			// bỏ www đi -> áp dụng cho tất cả các domain
 			if ( cdomain[0] == 'www' ) {
 				cdomain[0] = '';
 				cdomain = cdomain.join('.');
 			}
-			else {
+			// thêm dấu . vào đầu domain
+			else if ( cdomain[0] != '' ) {
 				cdomain = '.' + cdomain.join('.');
 			}
+			// có dấu . ở đầu rồi thì thôi
+			else {
+				cdomain = cdomain.join('.');
+			}
 //			console.log(cdomain);
-		}
-		
-		//
-		if ( cdomain != '' ) {
-			document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + ";domain=." + cdomain + ";path=/";
+			
+			//
+			document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + ";domain=" + cdomain + ";path=/";
 		}
 		else {
 			document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + ";path=/";
@@ -309,7 +313,7 @@ var g_func = {
 		
 		
 		//
-		console.log( 'Set cookie: ' + name + ' with value: ' + value + ' for domain: ' + cdomain );
+		if ( cf_tester_mode == 1 ) console.log( 'Set cookie: ' + name + ' with value: ' + value + ' for domain: ' + cdomain );
 	},
 	getc: function (name) {
 		var nameEQ = encodeURIComponent(name) + "=",
