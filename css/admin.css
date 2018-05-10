@@ -68,10 +68,9 @@ body.ebdesign-no-scroll { overflow: hidden; }
 /* .eb-input-edit-product-size, */
 .edit-product-sizecolor {
 	position: fixed;
-	top: 35px;
-	left: 12%;
-	bottom: 35px;
-	right: 35px;
+	/* top: 30%; */
+	left: 5%;
+	bottom: 10%;
 	border: 1px #ccc solid;
 	background: rgba( 255, 255, 255, .9 );
 	padding: 25px;
@@ -79,12 +78,20 @@ body.ebdesign-no-scroll { overflow: hidden; }
 	display: none;
 	z-index: 999999;
 	box-shadow: 0 0 20px #999;
+}
+.eb-input-edit-product-color {
+	top: 35px;
+	left: 12%;
+	bottom: 35px;
+	right: 35px;
 	overflow: auto;
+	z-index: 999998;
 }
 /* .eb-input-edit-product-size input[type="text"], */
+.edit-product-sizecolor input[type="number"],
 .edit-product-sizecolor input[type="text"] {
 	width: 200px;
-	display: block;
+	display: inline-block;
 	margin-bottom: 15px;
 }
 /* .eb-input-edit-product-size button, */
@@ -109,6 +116,7 @@ body.ebdesign-no-scroll { overflow: hidden; }
 }
 /* .eb-input-edit-product-size button[data-action="remove"], */
 .edit-product-sizecolor button[data-action="remove"] { background-color: #c00; }
+/* */
 input[id="_eb_category_order"] { width: 90px; }
 .eb-wp-admin-list-img {
 	overflow: hidden;

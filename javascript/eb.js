@@ -385,7 +385,12 @@ var g_func = {
 		return g_func.number_only(str, '/[^0-9\-\+\.]/g');
 	},
 	money_format: function(str) {
-		return g_func.formatCurrency(str, ',', 2);
+		// loại bỏ số 0 ở đầu chuỗi số
+		str = str.toString().replace(/\,/g, '').split('.');
+		str[0] = parseInt( str[0], 10 );
+		
+		// chuyển sang định dạng tiền tệ
+		return g_func.formatCurrency(str.join('.'), ',', 2);
 	},
 	number_format: function(str) {
 		return g_func.formatCurrency(str);
@@ -1811,9 +1816,14 @@ var _global_js_eb = {
 				"color" : color_name + color_img,
 				"old_price" : product_js.gia,
 				"price" : product_js.gm,
+				// thêm phần giá riêng theo màu hoặc size
+				"child_price" : price_for_quick_cart,
 				"quan" : jQuery('#oi_change_soluong select').val() || 1,
 				"sku" : ''
 			} );
+			
+			//
+			jQuery('.eb-global-frm-cart input[name^=t_new_price]').val( price_for_quick_cart );
 		}
 		// nếu đang là xem trong giỏ hàng
 		else {

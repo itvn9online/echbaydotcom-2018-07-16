@@ -290,7 +290,7 @@ function check_eb_input_edit_product_color () {
 		'alt' : ten,
 		'data-sku' : sku,
 		'data-quan' : quan,
-		'data-price' : price.replace( /\,/g, '' )
+		'data-price' : price
 	});
 	
 	return false;
@@ -429,8 +429,8 @@ function eb_func_show_product_size () {
 								show_title += '/ Mã sản phẩm: ' + arr[j].sku;
 							}
 							if ( arr[j].price != '' ) {
-								show_text += '/ ' + g_func.money_format( arr[j].price );
-								show_title += '/ Giá bán: ' + g_func.money_format( arr[j].price );
+								show_text += '/ ' + arr[j].price;
+								show_title += '/ Giá bán: ' + arr[j].price;
 							}
 							
 							//
@@ -446,12 +446,6 @@ function eb_func_show_product_size () {
 			if ( str_node_size != '' ) {
 				str_size += eb_func_add_nut_product_size( str_node_size, i );
 			}
-			
-			//
-			if ( eb_global_product_size.length > 1 ) {
-				console.log('Chỉ sử dụng một mảng để tạo size!');
-			}
-			break;
 		}
 	} else {
 		str_size += eb_func_add_nut_product_size();
@@ -459,7 +453,7 @@ function eb_func_show_product_size () {
 	
 	//
 //	console.log(eb_inner_html_product_size);
-	$('#' + eb_inner_html_product_size).html( str_size + '<div class="small">Chức năng dùng để tạo danh sách Kích thước, dung tích... cho sản phẩm và mức giá riêng (nếu có). Nếu phần giá riêng này được thiết lập, nó sẽ được sử dụng để thay thế giá mặc định của sản phẩm.</div>' );
+	$('#' + eb_inner_html_product_size).html( str_size + '<div class="small">Chức năng dùng để tạo danh sách Kích thước, dung tích... cho sản phẩm và mức giá riêng (nếu có).</div>' );
 //	$('#' + eb_inner_html_product_size + ' ul:last li:last').after('<li data-add="group" title="Thêm nhóm size mới (một số theme mới hỗ trợ tính năng này)"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i></li>');
 	
 	// chuyển từ object sang string
@@ -481,59 +475,33 @@ function eb_func_show_product_size () {
 
 function check_eb_input_edit_product_size () {
 	
-	// nếu là thay đổi size riêng của màu -> chơi function riêng và mới cho nó ổn định
-	if ( $('#eb_input_edit_color_size_node').val() != '' ) {
-		console.log('size for color!');
-		return false;
-	}
-	
-	
-	
 	//
-	/*
 	var current_select = '#' + eb_inner_html_product_size + ' li.selected';
-	console.log(current_select);
-	if ( $( current_select ).length == 0 ) {
-		console.log('current_select(2) not found!');
-		return false;
+	console.log(eb_inner_html_product_size);
+	if ( $( current_select ).length > 0 ) {
+		$('.eb-input-edit-product-size').css({
+//			top : $(current_select).offset().top + $(current_select).height(),
+//			top : $(current_select).offset().top + 30,
+			left : $(current_select).offset().left
+		}).show();
+		
+		//
+		var a_parent = $(current_select).attr('data-parent') || 0,
+			a_node = $(current_select).attr('data-node') || 0;
+//		console.log( a_parent );
+//		console.log( a_node );
+		
+		if ( typeof eb_global_product_size[ a_parent ][ a_node ] == 'undefined' ) {
+			alert('Object value (node) not found');
+			return false;
+		}
+		
+		$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]').val( eb_global_product_size[ a_parent ][ a_node ].sku );
+		$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]').val( eb_global_product_size[ a_parent ][ a_node ].price );
+		$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_quan"]').val( eb_global_product_size[ a_parent ][ a_node ].val );
+		$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val( eb_global_product_size[ a_parent ][ a_node ].name ).focus();
+		
 	}
-	*/
-	
-	//
-//	var a_parent = $(current_select).attr('data-parent') || 0,
-//		a_node = $(current_select).attr('data-node') || 0;
-	var a_parent = 0,
-		a_node = $('#eb_input_edit_product_size_node').val() || 0;
-	console.log( a_parent );
-	console.log( a_node );
-	
-	//
-	eb_global_product_size[ a_parent ][ a_node ] = {
-		name : $('#eb_input_edit_product_size_name').val(),
-		sku : $('#eb_input_edit_product_size_sku').val(),
-		val : $('#eb_input_edit_product_size_quan').val(),
-		price : $('#eb_input_edit_product_size_price').val().replace( /\,/g, '' )
-	};
-	
-	//
-	eb_func_global_product_size();
-	
-	return false;
-	
-	
-	
-	
-	// v1
-	if ( typeof eb_global_product_size[ a_parent ][ a_node ] == 'undefined' ) {
-		alert('Object value (node) not found');
-		return false;
-	}
-	
-	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]').val( eb_global_product_size[ a_parent ][ a_node ].sku );
-	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]').val( eb_global_product_size[ a_parent ][ a_node ].price );
-	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_quan"]').val( eb_global_product_size[ a_parent ][ a_node ].val );
-	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val( eb_global_product_size[ a_parent ][ a_node ].name );
-	
 	
 	
 	//
@@ -577,45 +545,11 @@ function eb_func_click_modife_product_size () {
 		
 		// nếu không có thông số add -> sửa size
 		if ( a == '' ) {
-			
-			//
 			$(this).addClass('redcolor').addClass('selected');
-			
-			//
-			var a_node = $(this).attr('data-node') || 0;
-			
-			// lưu vị trí cấn chỉnh sửa dữ liệu
-			$('#eb_input_edit_product_size_node').val( a_node );
-			// Bỏ phần lưu theo màu
-			$('#eb_input_edit_color_size_node').val('');
-			
-			//
-			var current_select = '#' + eb_inner_html_product_size + ' li.selected';
-			console.log(eb_inner_html_product_size);
-			if ( $( current_select ).length == 0 ) {
-				console.log('current_select not found!');
-			}
-			
-			//
-			$('#eb_input_edit_product_size_name').val( eb_global_product_size[ 0 ][ a_node ].name );
-			$('#eb_input_edit_product_size_sku').val( eb_global_product_size[ 0 ][ a_node ].sku );
-			$('#eb_input_edit_product_size_quan').val( eb_global_product_size[ 0 ][ a_node ].val );
-			$('#eb_input_edit_product_size_price').val( g_func.money_format( eb_global_product_size[ 0 ][ a_node ].price ) );
-			
-			//
-			$('.eb-input-edit-product-size').css({
-//				top : $(current_select).offset().top + $(current_select).height(),
-//				top : $(current_select).offset().top + 30,
-				left : $(current_select).offset().left
-			}).show();
-			
-			//
-			$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').focus();
 			
 			//
 			$('.eb-input-edit-product-size button').off('click').click(function () {
 				var a = $(this).attr('data-action') || '';
-				console.log(a);
 				
 				if ( a == 'save' ) {
 					check_eb_input_edit_product_size();
@@ -661,19 +595,16 @@ function eb_func_click_modife_product_size () {
 					val : ""
 				});
 //				console.log( eb_global_product_size[ size_parent ] );
+				
+//				$(this).prev().addClass('redcolor').addClass('selected');
+				setTimeout(function () {
+					$('.eb-admin-product-size li[data-add="1"]').prev().addClass('redcolor').addClass('selected').click();
+				}, 200);
+				
 			}
 			
 			//
 			eb_func_global_product_size();
-			
-			// tạo select cho LI để tiếp tục
-			if ( a != 'group' ) {
-//				$(this).prev().addClass('redcolor').addClass('selected');
-				setTimeout(function () {
-//					$('.eb-admin-product-size li[data-add="1"]').prev().addClass('redcolor').addClass('selected').click();
-					$('.eb-admin-product-size li[data-add="1"]').prev().click();
-				}, 200);
-			}
 		}
 		
 		//
@@ -995,13 +926,10 @@ function WGR_run_for_admin_edit_post () {
 					
 					//
 					f.eb_input_edit_product_color_id.value = jd;
-					$('#eb_input_edit_color_size_node').val(jd);
 					f.eb_input_edit_product_color_name.value = ten;
 					f.eb_input_edit_product_color_sku.value = sku;
 					f.eb_input_edit_product_color_quan.value = quan;
-//					f.eb_input_edit_product_color_price.value = price;
-					f.eb_input_edit_product_color_price.value = g_func.money_format( price );
-//					$('#oi_input_edit_product_color_price').html( g_func.money_format( price ) );
+					f.eb_input_edit_product_color_price.value = price;
 				});
 			}
 		}

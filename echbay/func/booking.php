@@ -44,13 +44,15 @@ $strFilter = "";
 $arr = $_POST['t_muangay'];
 $arr_shop_cart = array();
 $arr_shop_cart_size = array();
+$arr_shop_cart_price = array();
 foreach ( $arr as $k => $v ) {
 	// nếu có số lượng
-	if ( isset( $_POST['t_soluong'][$v] )  > 0 ) {
+	if ( isset( $_POST['t_soluong'][$v] ) > 0 ) {
 		$strFilter .= "," . $v;
 		
 		$arr_shop_cart[$v] = (int) $_POST['t_soluong'][$v];
 		$arr_shop_cart_size[$v] = isset( $_POST['t_size'][$v] ) ? $_POST['t_size'][$v] : '';
+		$arr_shop_cart_price[$v] = isset( $_POST['t_new_price'][$v] ) ? $_POST['t_new_price'][$v] : 0;
 	}
 }
 //echo $strFilter . "\n";
@@ -286,6 +288,7 @@ Size: ' . $arr_shop_cart_size [$chitiet->ID] . '<br>
 Màu sắc: ' . $trv_color . '<br>
 Giá cũ: ' . number_format ( $trv_giaban ) . 'đ<br>
 Giá mới: ' . number_format ( $trv_giamoi ) . 'đ<br>
+Giá đặc biệt: ' . $arr_shop_cart_price [$chitiet->ID] . 'đ<br>
 GIẢM: ' . $trv_khuyenmai . '% (' . number_format ( $trv_tietkiem ) . 'đ)<br>
 Số lượng: ' . $cthd_soluong . '<br>
 Cộng: ' . number_format ( $total_line ) . 'đ<br>
