@@ -348,7 +348,8 @@ function show_note_for_checkbox_config ( key ) {
 			$(this).val( 1 );
 		} else {
 //			$(this).val( 0 );
-			$(this).val( 'on' );
+//			$(this).val( 'on' );
+			$(this).val( 'off' );
 		}
 		
 		//
