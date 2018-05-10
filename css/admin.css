@@ -79,6 +79,7 @@ body.ebdesign-no-scroll { overflow: hidden; }
 	display: none;
 	z-index: 999999;
 	box-shadow: 0 0 20px #999;
+	overflow: auto;
 }
 /* .eb-input-edit-product-size input[type="text"], */
 .edit-product-sizecolor input[type="text"] {
@@ -908,8 +909,8 @@ input[id="_eb_category_order"] { width: 90px; }
 }
 .sidebar-eb_z1_recycle_bin {
 	position: fixed;
-	bottom: 20px;
-	right: 20px;
+	bottom: 5px;
+	left: 30%;
 	max-width: 350px;
 	z-index: 9999;
 	max-height: 350px;

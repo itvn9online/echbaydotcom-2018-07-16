@@ -5,8 +5,8 @@
 		<input type="text" value="" name="eb_input_edit_product_size_sku" placeholder="Mã size (nếu có)">
 		<input type="text" value="" name="eb_input_edit_product_size_size" placeholder="Số lượng">
 		<input type="text" value="" name="eb_input_edit_product_size_price" placeholder="Giá bán (nếu có)">
-		<button data-action="save">Save</button>
-		<button data-action="remove" type="button" class="d-none">Remove</button>
+		<button type="button" data-action="save">Save</button>
+		<button type="button" data-action="remove" class="d-none">Remove</button>
 		<button type="button">Cancel</button>
 	</form>
 </div>
@@ -14,7 +14,7 @@
 	<h2>Chỉnh sửa màu sắc sản phẩm:</h2>
 	<br>
 	<form name="frm_eb_input_edit_product_color" method="get" action="javascript:;" target="_blank" onsubmit="return check_eb_input_edit_product_color();">
-		<input type="hidden" value="" name="eb_input_edit_product_color_id" placeholder="ID để thay đổi data">
+		<input type="text" value="" name="eb_input_edit_product_color_id" placeholder="ID để thay đổi data">
 		<table class="eb-public-table eb-editer-table">
 			<tr>
 				<td class="t"><label for="eb_input_edit_product_color_name"><strong>Màu sắc</strong></label></td>
@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<td class="t"><label for="eb_input_edit_product_color_quan"><strong>Số lượng</strong></label></td>
-				<td class="i"><input type="text" id="eb_input_edit_product_color_quan" name="eb_input_edit_product_color_quan" placeholder="Số lượng" class="m">
+				<td class="i"><input type="number" id="eb_input_edit_product_color_quan" name="eb_input_edit_product_color_quan" placeholder="Số lượng" class="m">
 					<p class="description">Mặc định sẽ lấy theo <strong>Số lượng</strong> của sản phẩm chính hoặc hiển thị hết hàng nếu để là <strong>0</strong>.</p></td>
 			</tr>
 			<tr>
@@ -38,11 +38,11 @@
 			</tr>
 			<tr>
 				<td class="t"><label for="eb_input_edit_product_color_size"><strong>Kích cỡ/ Số lượng</strong></label></td>
-				<td class="i"><p class="description">Mỗi màu bạn có thể thiết lập size riêng nếu muốn, hoặc sử dụng size mặc định của sản phẩm chính bằng các xóa hết các size riêng này đi.</p></td>
+				<td class="i"><p class="description">Mỗi màu bạn có thể thiết lập <strong>size</strong> riêng và <strong>số lượng</strong> riêng cho từng size nếu muốn, nếu không có size riêng nào được thiết lập, size từ sản phẩm chính sẽ được sử dụng.</p></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td height="90" class="i"><button data-action="save">Save</button>
+				<td height="90" class="i"><button type="button" data-action="save">Save</button>
 					<button type="button">Cancel</button></td>
 			</tr>
 		</table>

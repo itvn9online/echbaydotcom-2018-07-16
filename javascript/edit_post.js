@@ -524,14 +524,20 @@ function WGR_run_for_admin_edit_post () {
 					$('#eb_input_edit_product_color_name').focus();
 					
 					//
-					document.frm_eb_input_edit_product_color.eb_input_edit_product_color_id.value = jd;
-					
+					var f = document.frm_eb_input_edit_product_color;
 					
 					// các thông số của màu sắc đang chỉnh sửa
 					var ten = $(this).attr('alt') || '',
 						sku = $(this).attr('data-sku') || '',
 						quan = $(this).attr('data-quan') || '',
 						price = $(this).attr('data-price') || '';
+					
+					//
+					f.eb_input_edit_product_color_id.value = jd;
+					f.eb_input_edit_product_color_name.value = ten;
+					f.eb_input_edit_product_color_sku.value = sku;
+					f.eb_input_edit_product_color_quan.value = quan;
+					f.eb_input_edit_product_color_price.value = price;
 				});
 			}
 		}
@@ -562,6 +568,26 @@ function WGR_run_for_admin_edit_post () {
 		//
 		$('.eb-input-edit-product-color button').off('click').click(function () {
 			var a = $(this).attr('data-action') || '';
+			
+			if ( a == 'save' ) {
+				var f = document.frm_eb_input_edit_product_color;
+				
+				jd = f.eb_input_edit_product_color_id.value;
+				ten = f.eb_input_edit_product_color_name.value;
+				sku = f.eb_input_edit_product_color_sku.value;
+				quan = f.eb_input_edit_product_color_quan.value;
+				price = f.eb_input_edit_product_color_price.value;
+				
+				//
+				var iff_id = '_eb_product_list_color_ifr';
+				
+				$('#' + iff_id).contents().find( 'img#' + jd ).attr({
+					'alt' : ten,
+					'data-sku' : sku,
+					'data-quan' : quan,
+					'data-price' : price
+				});
+			}
 			
 			$('.eb-input-edit-product-color').hide();
 		});
