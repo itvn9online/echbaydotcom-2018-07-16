@@ -521,6 +521,7 @@ function WGR_run_for_admin_edit_post () {
 					$('.eb-input-edit-product-color') /* .css({
 						left : $(this).offset().left + $('#' + iff_id).offset().left
 					}) */ .show();
+					$('#eb_input_edit_product_color_name').focus();
 					
 					//
 					document.frm_eb_input_edit_product_color.eb_input_edit_product_color_id.value = jd;

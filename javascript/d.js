@@ -462,14 +462,34 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 		a[i] = g_func.trim( a[i] );
 		
 		if ( a[i] != '' ) {
-			if ( cf_details_bold_excerpt == 1 ) {
+			if ( cf_options_excerpt == 1 ) {
 				var a_bold = a[i].split(':');
-				a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
 				
-				a[i] = a_bold.join(':');
+				if ( cf_details_bold_excerpt == 1 ) {
+					a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
+				}
+				a_bold[0] = '<td><div>' + a_bold[0] + '</div></td>';
+				
+				if ( a_bold.length == 1 ) {
+					a_bold[1] = '&nbsp;';
+				}
+				else {
+					a_bold[1] = '<td><div>:' + a_bold[1] + '</div></td>';
+				}
+				
+				//
+				a[i] = '<tr>' + a_bold.join('') + '</tr>';
 			}
-			
-			str += '<li>' + a_before + a[i] + a_after + '</li>';
+			else {
+				if ( cf_details_bold_excerpt == 1 ) {
+					var a_bold = a[i].split(':');
+					a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
+					
+					a[i] = a_bold.join(':');
+				}
+				
+				str += '<li>' + a_before + a[i] + a_after + '</li>';
+			}
 		}
 	}
 	

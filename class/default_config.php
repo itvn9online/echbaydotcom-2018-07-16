@@ -253,6 +253,7 @@ $__cf_row_default = array(
 	// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
 	'cf_details_excerpt' => 1,
 	'cf_details_bold_excerpt' => 'off',
+	'cf_options_excerpt' => 'off',
 	
 	// mặc định sẽ cắt nội dung trong phần content nếu excerpt để trống
 	'cf_content_for_excerpt_null' => 130,
