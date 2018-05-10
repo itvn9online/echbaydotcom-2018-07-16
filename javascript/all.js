@@ -1056,6 +1056,30 @@ function convert_size_to_one_format () {
 	}).off('blur').blur(function () {
 		$(this).change();
 	});
+	
+	
+	$('.fixed-width-for-config').off('change').change(function () {
+		var a = $(this).val() || '';
+		if ( a != '' ) {
+			a = a.replace( /\s/g, '' );
+			
+			if ( a != '' ) {
+				a = a * 1;
+				
+				// nếu giá trị nhập vào nhỏ hơn 10 -> tính toán tự động số sản phẩm trên hàng theo kích thước tiêu chuẩn
+				if ( a < 10 ) {
+					// lấy kích thước tiêu chuẩn
+					var b = $(this).attr('data-width') || '';
+					if ( b != '' ) {
+						// tính toán
+						$(this).val( Math.ceil( b/ a ) - 5 );
+					}
+				}
+			}
+		}
+	}).off('blur').blur(function () {
+		$(this).change();
+	});
 }
 
 function WGR_widget_show_option_by_post_type ( select_id ) {
