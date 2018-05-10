@@ -91,6 +91,14 @@ function ___eb_list_product_order () {
 }
 
 
+function WGR_check_option_on ( a ) {
+	if ( a == 1 || a == "1" ) {
+		return true;
+	}
+	return false;
+}
+
+
 
 // end list function /////////////////////////////////////////////////////////////////
 
@@ -420,7 +428,7 @@ function ___eb_details_countdown () {
 function ___eb_details_excerpt_html ( a_before, a_after ) {
 	
 	// tắt chế độ tạo style cho phần excerpt nếu option này đang được tắt
-	if ( cf_details_excerpt != 1 ) {
+	if ( ! WGR_check_option_on( cf_details_excerpt ) ) {
 		if ( cf_tester_mode == 1 ) console.log('___eb_details_excerpt_html disable');
 		return false;
 	}
@@ -462,26 +470,28 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 		a[i] = g_func.trim( a[i] );
 		
 		if ( a[i] != '' ) {
-			if ( cf_options_excerpt == 1 ) {
+			// tạo dưới dạng bảng -> cho vào bảng post options luôn
+			if ( WGR_check_option_on( cf_options_excerpt ) ) {
 				var a_bold = a[i].split(':');
 				
-				if ( cf_details_bold_excerpt == 1 ) {
+				// in đậm đề mục
+				if ( WGR_check_option_on( cf_details_bold_excerpt ) ) {
 					a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
 				}
-				a_bold[0] = '<td><div>' + a_bold[0] + '</div></td>';
 				
-				if ( a_bold.length == 1 ) {
-					a_bold[1] = '&nbsp;';
-				}
-				else {
-					a_bold[1] = '<td><div>:' + a_bold[1] + '</div></td>';
+				for ( var  j = 0; j < a_bold.length; j++ ) {
+					if ( jQuery.trim( a_bold[j] ) != '' ) {
+						a_bold[j] = '<td><div>' + a_bold[j] + '</div></td>';
+					}
 				}
 				
 				//
-				a[i] = '<tr>' + a_bold.join('') + '</tr>';
+				jQuery('.thread-details-options').append( '<tr>' + a_bold.join('') + '</tr>' );
 			}
+			// Tạo LI thông thường
 			else {
-				if ( cf_details_bold_excerpt == 1 ) {
+				// in đậm đề mục
+				if ( WGR_check_option_on( cf_details_bold_excerpt ) ) {
 					var a_bold = a[i].split(':');
 					a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
 					
@@ -1840,12 +1850,18 @@ function ___eb_details_post_run ( r ) {
 		})();
 	}
 	
-	
 	// hiển thị con dấu hàng chính hãng
-	if ( _eb_product_chinhhang == 1 || _eb_product_chinhhang == "1" ) {
+	if ( WGR_check_option_on( _eb_product_chinhhang ) ) {
 		if ( cf_tester_mode == 1 ) console.log('Hàng chính hãng');
-//		jQuery('.pdetail-slider-btn').after('<div class="tem-chinh-hang">&nbsp;</div>');
-		jQuery('.thread-details-mobileCenter').after('<div class="tem-chinh-hang">&nbsp;</div>');
+		
+		//
+		if ( jQuery('.show-tem-chinh-hang').length > 0 ) {
+			jQuery('.show-tem-chinh-hang').addClass('tem-chinh-hang').html('&nbsp;');
+		}
+		else {
+//			jQuery('.pdetail-slider-btn').after('<div class="tem-chinh-hang">&nbsp;</div>');
+			jQuery('.thread-details-mobileCenter').after('<div class="tem-chinh-hang">&nbsp;</div>');
+		}
 	}
 	
 	

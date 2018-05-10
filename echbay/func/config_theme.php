@@ -110,7 +110,7 @@ if ( $cf_global_width_sidebar > 0 ) {
 	$cf_cats_width_sidebar = ( $cf_cats_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_cats_width_sidebar;
 	$cf_post_width_sidebar = ( $cf_post_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_post_width_sidebar;
 	$cf_blogs_width_sidebar = ( $cf_blogs_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_blogs_width_sidebar;
-	$cf_blog_width_sidebar = ( $$cf_blog_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_blog_width_sidebar;
+	$cf_blog_width_sidebar = ( $cf_blog_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_blog_width_sidebar;
 }
 $_POST['cf_default_themes_css'] = '';
 
