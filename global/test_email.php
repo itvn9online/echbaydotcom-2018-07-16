@@ -35,6 +35,9 @@ User: #' . mtv_id . '
 ' ) );
 
 
+// test thì bật chế độ test lên để còn xem lỗi
+$__cf_row['cf_tester_mode'] = 1;
+
 //
 if ( _eb_send_email( $email, 'Test email via EchBay e-commerce plugin', $mesage ) == true ) {
 	echo 'Send to ' . $email;
