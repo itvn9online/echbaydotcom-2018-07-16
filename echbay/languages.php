@@ -110,18 +110,26 @@ global $eb_class_css_lang;
 
 //
 var cache_for_current_lang_edit = '',
-	cache_for_current_lang_id = '';
+	cache_for_current_lang_id = '',
+	auto_submit_save_lang = false;
 
 
 function check_update_languages () {
+//	console.log( auto_submit_save_lang );
+	
 	if ( cache_for_current_lang_id == '' ) {
 		alert('Không xác định được KEY');
 		return false;
 	}
+	console.log( 'Save lang: ' + cache_for_current_lang_id );
 	
+	// lấy nội dung cần cập nhật
 	$('#languages_content_edit').val( $('#' + cache_for_current_lang_id).val() );
 	
+	// thay đổi trạng thái submit
 	$('.eb-admin-lang-submit').val('Chờ...');
+	
+	auto_submit_save_lang = false;
 	
 	return true;
 }
@@ -161,10 +169,10 @@ function EBE_click_to_update_site_lang () {
 //			window.history.pushState( "", '', window.location.href.split('&edit_key=')[0] + '&edit_key=' + b );
 			
 			//
-			cache_for_current_lang_id = b;
+//			cache_for_current_lang_id = b;
 			
 			//
-			$('#languages_key_edit').val( b );
+//			$('#languages_key_edit').val( b );
 //			$('#languages_content_edit').val( a );
 			
 			//
@@ -213,6 +221,33 @@ function EBE_click_to_update_site_lang () {
 				document.frm_languages.submit();
 				$(this).val( $(this).attr('placeholder') || '' );
 				return false
+			}
+		}
+	}).on('change', function () {
+		if ( auto_submit_save_lang == false ) {
+			auto_submit_save_lang = true;
+			
+			var b = $(this).attr('id') || '';
+			
+			cache_for_current_lang_id = b;
+			
+			$('#languages_key_edit').val( b );
+		}
+	}).on('blur', function () {
+		if ( auto_submit_save_lang == true ) {
+//			auto_submit_save_lang = false;
+			
+			//
+//			console.log( cache_for_current_lang_id );
+			
+			if ( check_update_languages() == true ) {
+				document.frm_languages.submit();
+				
+//				$('#target_eb_iframe').on('load', function () {
+				setTimeout(function () {
+					$('.eb-admin-lang-submit').val('Cập nhật');
+				}, 600);
+//				});
 			}
 		}
 	});

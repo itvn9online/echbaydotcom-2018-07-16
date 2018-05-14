@@ -437,9 +437,14 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	if ( $post_number == 0 ) {
 		$post_number = 5;
 	}
+	/*
 	else if ( $post_number == 1 ) {
 		$custom_style .= ' echbay-blog-onerow';
 	}
+	*/
+//	echo $post_number . '<br>';
+	$custom_style .= ' echbay-blog-number' . $post_number;
+//	echo $custom_style . '<br>';
 	
 	
 	

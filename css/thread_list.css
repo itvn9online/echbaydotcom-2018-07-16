@@ -27,6 +27,8 @@
 }
 .echbay-blog100 li,
 .thread-list100 li { width: 100%; }
+/* tùy chỉnh một số kích thước khác */
+.echbay-blog-number1 li { margin: 0; }
 /* trên mobile thì chỉnh cái đống này về kích thước mới */
 /*
 .style-for-mobile .echbay-blog100 li,
@@ -49,8 +51,8 @@
 .style-for-mobile .thread-small-right,
 */
 /* nếu chỉ có 1 cột -> cùng chỉnh về 100% */
-.style-for-mobile .echbay-blog-onerow .echbay-blog li,
-.style-for-mobile .echbay-blog-onerow .thread-list li,
+.style-for-mobile .echbay-blog-number1 .echbay-blog li,
+.style-for-mobile .echbay-blog-number1 .thread-list li,
 /*
 .style-for-mobile .echbay-blog100 li,
 .style-for-mobile .thread-list100 li,
@@ -60,8 +62,8 @@
 .style-for-mobile .thread-list20 li:first-child,
 .style-for-mobile .echbay-blog33 li:first-child,
 .style-for-mobile .thread-list33 li:first-child { width: 100%; }
-.style-for-mobile .echbay-blog-onerow .echbay-blog li,
-.style-for-mobile .echbay-blog-onerow .thread-list li { float: none; }
+.style-for-mobile .echbay-blog-number1 .echbay-blog li,
+.style-for-mobile .echbay-blog-number1 .thread-list li { float: none; }
 .style-for-mobile .echbay-blog100 .echbay-blog-padding,
 .style-for-mobile .echbay-blog100 .thread-list-padding,
 .style-for-mobile .thread-list100 .echbay-blog-padding,
