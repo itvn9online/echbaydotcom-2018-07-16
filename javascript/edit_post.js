@@ -881,13 +881,16 @@ function WGR_run_for_admin_edit_post () {
 		//
 		if ( $('#' + iff_id).length > 0 ) {
 //			console.log(iff_id);
+			
+			// xử lý hình ảnh trong nội dung
 			$('#' + iff_id).contents().find( 'img' ).each(function() {
 				// current style
 				var cs = $(this).attr('style') || '',
 					// height
 					h = $(this).attr('height') || '',
 					// width
-					w = $(this).attr('width') || default_h,
+//					w = $(this).attr('width') || default_h,
+					w = $(this).attr('width') || '',
 					// ID
 					current_id = $(this).attr('id') || '';
 				
@@ -896,22 +899,22 @@ function WGR_run_for_admin_edit_post () {
 				}
 				
 				// nếu không tìm thấy chiều cao
-				if ( h == '' ) {
+				if ( h == '' || w == '' ) {
 					// reset lại toàn bộ size ảnh
 					$(this).removeAttr('width').removeAttr('height').width('auto').height('auto');
 //					$(this).removeAttr('width').removeAttr('height');
 					
 					// tìm chiều cao mặc định
 					h = $(this).height() || 0;
+					w = $(this).width() || 0;
 					
 					// khi nào tìm được mới thôi
-					if ( h > 0 ) {
-						w = $(this).width() || 0;
-						
-						//
+					if ( h > 0 && w > 0 ) {
 						$(this).attr({
-							'width' : Math.ceil( w ),
-							'height' : h
+//							'width' : Math.ceil( w ) - 1,
+							'width' : w.toString().split('.')[0],
+//							'height' : Math.ceil( h ) - 1
+							'height' : h.toString().split('.')[0]
 						});
 					}
 				}
@@ -931,12 +934,21 @@ function WGR_run_for_admin_edit_post () {
 					$(this).attr({
 						'data-width' : dw,
 						'data-height' : dh,
-						'width' : Math.ceil( nw ),
+//						'width' : Math.ceil( nw ),
+						'width' : nw.toString().split('.')[0],
 						'height' : default_h
 					});
 				}
+				// nếu có chiều cao -> set data mới
+				else {
+					$(this).attr({
+						'data-width' : w,
+						'data-height' : h
+					});
+				}
 				
-				// nếu chưa có ID -> set ID để điều khiển cho tiện
+				
+				// với phần màu sắc -> nếu chưa có ID -> set ID để điều khiển cho tiện
 				if ( iff_id == '_eb_product_list_color_ifr' ) {
 					if ( current_id == '' ) {
 						// tạo ID ngẫu nhiên để add cho IMG
@@ -1148,7 +1160,7 @@ function WGR_run_for_admin_edit_post () {
 					}
 //					console.log(a);
 					
-					// nếu đang là URL tương đối -> chuyển sang tuyệt đối ví wp ko hỗ trợ
+					// nếu đang là URL tương đối -> chuyển sang tuyệt đối vì wp ko hỗ trợ
 					if ( a.split('//').length == 1 ) {
 						if ( a.substr( 0, 1 ) == '/' ) {
 							a = a.substr( 1 );

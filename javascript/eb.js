@@ -902,7 +902,7 @@ var _global_js_eb = {
 				
 				// xử lý riêng với chiều rộng
 				// loại bỏ bo chiều rộng của ảnh đi, nếu config có set như thế
-				if ( cf_post_rm_img_width == 1 ) {
+				if ( WGR_check_option_on( cf_post_rm_img_width ) ) {
 					jQuery('img', this).removeAttr('width');
 				}
 				else {
