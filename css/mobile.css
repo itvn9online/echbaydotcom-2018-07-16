@@ -254,3 +254,7 @@ body.style-for-mobile {
 	height: 30px;
 	line-height: 30px;
 }
+.style-for-mobile .thread-list-status6 {
+	width: 60px;
+	height: 60px;
+}
