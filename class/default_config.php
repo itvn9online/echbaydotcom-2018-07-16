@@ -226,6 +226,9 @@ $__cf_row_default = array(
 	// Mặc định, big banner được load cả trong trang chi tiết
 	'cf_post_big_banner' => 1,
 	
+	// mặc định thì sử dụng max-width thay cho width, trường hợp khách muốn tự custom size ảnh trong nội dung thì tắt chức năng này đi
+	'cf_post_rm_img_width' => 1,
+	
 	// Tạo mục lục cho trang chi tiết -> nhập thẻ muốn lấy -> JS sẽ chạy vòng lặp cho thẻ đó
 	'cf_post_index_content' => '',
 	

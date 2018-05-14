@@ -893,6 +893,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	cf_details_excerpt="' . $__cf_row['cf_details_excerpt'] . '",
 	cf_details_bold_excerpt="' . $__cf_row['cf_details_bold_excerpt'] . '",
 	cf_options_excerpt="' . $__cf_row['cf_options_excerpt'] . '",
+	cf_post_rm_img_width="' . $__cf_row['cf_post_rm_img_width'] . '",
 	cf_product_details_viewmore=' . $__cf_row['cf_product_details_viewmore'] . ',
 	trv_ngayhethan=' . $trv_ngayhethan . ';
 </script>';

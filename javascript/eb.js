@@ -749,7 +749,7 @@ var _global_js_eb = {
 			current_device = g_func.getc('click_set_device_style');
 		}
 		
-		//
+		// for mobile
 		if (screen_width < 950 && current_device != 'desktop') {
 			/*
 			(function(d, j) {
@@ -809,10 +809,12 @@ var _global_js_eb = {
 			
 			
 			
-			// treen mobile -> giới hạn kích thước media
+			// trên mobile -> giới hạn kích thước media
 			jQuery('.img-max-width').each(function() {
-				var max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250,
-					max_sizes_width = max_width + 99;
+				var max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
+//				console.log(max_width);
+				max_width = Math.ceil( max_width ) - 1;
+				var max_sizes_width = max_width + 99;
 				
 				// xử lý với hình ảnh
 				jQuery('img', this).each(function() {
@@ -868,7 +870,9 @@ var _global_js_eb = {
 					}
 				});
 			});
-		} else {
+		}
+		// for PC
+		else {
 //			jQuery('#' + css_m_id).remove();
 			jQuery('body').removeClass('style-for-mobile').removeClass('style-for-table');
 			
@@ -883,39 +887,50 @@ var _global_js_eb = {
 			
 			// hình ảnh và clip trên bản pc -> giờ mới xử lý
 			jQuery('.img-max-width').each(function() {
-				var max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250,
-					max_sizes_width = max_width + 99;
+				var max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
+				max_width = Math.ceil( max_width ) - 1;
 //				console.log(max_width);
+				var max_sizes_width = max_width + 99;
 				
 				// xử lý với hình ảnh
-				jQuery('img', this).each(function() {
-					
-					var current_wit = jQuery(this).attr('data-width') || '';
-//					console.log(current_wit);
-					if ( current_wit != '' && current_wit != 'auto' ) {
-						if ( current_wit > max_width ) {
-							current_wit = max_width;
-						}
-						current_wit -= 5;
-					}
-//					console.log(current_wit);
-					
-					//
-					jQuery(this).css({
-//						'max-width' : max_width + 'px',
-						'width' : '',
-						'height' : ''
-					}).attr({
-						'width' : current_wit,
-//						'height' : jQuery(this).attr('data-height') || '',
-//					}).removeAttr('width').removeAttr('height');
-					});
-//					}).removeAttr('height');
-				}).css({
+				jQuery('img', this).css({
 					'max-width' : max_width + 'px'
 				}).attr({
 					sizes : '(max-width: ' + max_sizes_width + 'px) 100vw, ' + max_sizes_width + 'px'
 				}).removeAttr('height');
+				
+				
+				// xử lý riêng với chiều rộng
+				// loại bỏ bo chiều rộng của ảnh đi, nếu config có set như thế
+				if ( cf_post_rm_img_width == 1 ) {
+					jQuery('img', this).removeAttr('width');
+				}
+				else {
+					jQuery('img', this).each(function() {
+						
+						var current_wit = jQuery(this).attr('data-width') || '';
+//						console.log(current_wit);
+						if ( current_wit != '' && current_wit != 'auto' ) {
+							if ( current_wit > max_width ) {
+								current_wit = max_width;
+							}
+							current_wit -= 5;
+						}
+//						console.log(current_wit);
+						
+						//
+						jQuery(this).css({
+//							'max-width' : max_width + 'px',
+							'width' : '',
+							'height' : ''
+						}).attr({
+							'width' : current_wit,
+//							'height' : jQuery(this).attr('data-height') || '',
+//						}).removeAttr('width').removeAttr('height');
+						});
+//						}).removeAttr('height');
+					});
+				}
 			});
 			
 			jQuery('.img-max-width iframe').each(function() {

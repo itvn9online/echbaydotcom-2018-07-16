@@ -485,6 +485,7 @@ else {
 	show_note_for_checkbox_config( 'cf_details_bold_excerpt' );
 	show_note_for_checkbox_config( 'cf_options_excerpt' );
 	show_note_for_checkbox_config( 'cf_post_big_banner' );
+	show_note_for_checkbox_config( 'cf_post_rm_img_width' );
 }
 
 

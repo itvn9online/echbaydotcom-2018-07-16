@@ -127,6 +127,8 @@ $_POST['cf_global_big_banner'] = WGR_default_config('cf_global_big_banner');
 
 $_POST['cf_post_big_banner'] = WGR_default_config('cf_post_big_banner');
 
+$_POST['cf_post_rm_img_width'] = WGR_default_config('cf_post_rm_img_width');
+
 $_POST['cf_arrow_big_banner'] = WGR_default_config('cf_arrow_big_banner');
 
 $_POST['cf_auto_get_ads_size'] = WGR_default_config('cf_auto_get_ads_size');
