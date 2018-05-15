@@ -360,49 +360,58 @@ function ___eb_details_slider_v2 () {
 		// thay đổi kiểu tải thumb nếu thumb được chuyển sang chiều dọc
 		if ( cf_details_right_thumbnail == 1 ) {
 			
-			//
-			var effect_for_post_slider = '.child-thread-details-mobileAvt .jEBE_slider-thumbnail ul';
-			
-			//
-			jQuery('.child-thread-details-mobileAvt .jEBE_slider-right-thumbnail').off('click').click(function () {
-//				var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
-				var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1,
-					len = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li').length - 1;
-//				console.log(a);
-				a = a - ( 0 - 1 );
-				if ( a >= len ) {
-					a = len - 1;
-				}
-//				console.log(a);
+			// trên mobile thì để 1 chế độ xem thôi
+			if ( jQuery(window).width() < 775 ) {
+//				jQuery('link#thumb-col, link#thumb-col-left, link#thumb-col-mobile').remove();
+				jQuery('link#thumb-col, link#thumb-col-left').remove();
+			}
+			else {
 				
 				//
-				jQuery(effect_for_post_slider).css({
-					top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
-				}).attr({
-					'data-scroll' : a
+				var effect_for_post_slider = '.child-thread-details-mobileAvt .jEBE_slider-thumbnail ul';
+				
+				//
+				jQuery('.child-thread-details-mobileAvt .jEBE_slider-right-thumbnail').off('click').click(function () {
+	//				var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
+					var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1,
+						len = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li').length - 1;
+//					console.log(a);
+					a = a - ( 0 - 1 );
+					if ( a >= len ) {
+						a = len - 1;
+					}
+//					console.log(a);
+					
+					//
+					jQuery(effect_for_post_slider).css({
+						top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
+					}).attr({
+						'data-scroll' : a
+					});
+					
+					//
+					jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').show();
 				});
 				
-				//
-				jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').show();
-			});
-			
-			jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').off('click').click(function () {
-//				var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
-				var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1;
-//				console.log(a);
-				a = a - 1;
-				if ( a < 0 ) {
-					a = 0;
-				}
-//				console.log(a);
-				
-				//
-				jQuery(effect_for_post_slider).css({
-					top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
-				}).attr({
-					'data-scroll' : a
+				jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').off('click').click(function () {
+//					var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
+					var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1;
+//					console.log(a);
+					a = a - 1;
+					if ( a < 0 ) {
+						a = 0;
+					}
+//					console.log(a);
+					
+					//
+					jQuery(effect_for_post_slider).css({
+						top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
+					}).attr({
+						'data-scroll' : a
+					});
 				});
-			});
+				
+			}
 			
 		}
 		

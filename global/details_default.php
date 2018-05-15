@@ -863,14 +863,31 @@ if ( $__post->post_type == 'post' ) {
 	
 	// chuyển thumb về bên phải
 	if ( $__cf_row['cf_details_right_thumbnail'] == 1 ) {
+		
+		// v1
+		/*
 		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col.css' ] = 1;
 		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col-mobile.css' ] = 1;
+		*/
+		
+		// v2 -> thêm vào dưới dạng LINK để còn remove được trên mobile
+		$__cf_row['cf_js_head'] .= '<link rel="stylesheet" id="thumb-col" href="' . EB_DIR_CONTENT . '/echbaydotcom/css/template/thumb-col.css" type="text/css" media="all" />';
+
 	}
 	// chuyển thumb về bên trái
 	else if ( $__cf_row['cf_details_left_thumbnail'] == 1 ) {
+		
+		// v1
+		/*
 		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col.css' ] = 1;
 		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col-left.css' ] = 1;
 		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thumb-col-mobile.css' ] = 1;
+		*/
+		
+		// v2 -> thêm vào dưới dạng LINK để còn remove được trên mobile
+		$__cf_row['cf_js_head'] .= '<link rel="stylesheet" id="thumb-col" href="' . EB_DIR_CONTENT . '/echbaydotcom/css/template/thumb-col.css" type="text/css" media="all" />
+<link rel="stylesheet" id="thumb-col-left" href="' . EB_DIR_CONTENT . '/echbaydotcom/css/template/thumb-col-left.css" type="text/css" media="all" />';
+
 	}
 }
 
