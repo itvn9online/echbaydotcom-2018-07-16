@@ -206,6 +206,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_category_favicon' => 'Favicon là một ảnh nhỏ hơn, kích thước khuyến nghị là 64x64 pixel. Ảnh này thường dùng trong các menu nếu CSS của menu có hỗ trợ chức năng.',
 	'_eb_category_custom_css' => 'Là nơi nhập class CSS riêng để tiện cho việc thay đổi CSS theo từng danh mục cha, con...',
 	'_eb_category_title' => 'Với định dạng màu sắc thì nhập mã màu vào (bao gồm cả dấu #)',
+	'_eb_category_google_product' => 'Tạo nhóm sản phẩm theo tiêu chuẩn của Google. <a href="https://support.google.com/merchants/answer/6324436?hl=vi" target="_blank" rel="nofollow">Tìm hiểu thêm...</a>',
 	'_eb_category_order' => 'Số càng lớn thì độ ưu tiên càng cao, nhóm sẽ được ưu tiên xuất hiện trước',
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 //	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
@@ -580,6 +581,7 @@ if ( cf_on_off_echbay_seo == 1 ) {
 	$arr_category_custom_fields['_eb_category_title'] = 'Title';
 	$arr_category_custom_fields['_eb_category_keywords'] = 'Keywords';
 	$arr_category_custom_fields['_eb_category_description'] = 'Description';
+	$arr_category_custom_fields['_eb_category_google_product'] = 'Google product category';
 	$arr_category_custom_fields['_eb_category_noindex'] = 'Noindex';
 	$arr_category_custom_fields['_eb_category_hidden'] = 'Ẩn nhóm này';
 	

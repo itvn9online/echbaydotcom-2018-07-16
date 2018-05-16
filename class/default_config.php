@@ -21,6 +21,7 @@ $__cf_row_default = array(
 	'cf_description' => 'Một website sử dụng plugin thương mại điện tử của EchBay.com',
 	'cf_abstract' => '',
 	
+	'cf_google_product_category' => '',
 	'cf_gse' => '',
 	'cf_ga_id' => '',
 	'cf_gtag_id' => 'off',
