@@ -71,6 +71,7 @@ $__cf_row ['cf_description'] = str_replace( '"', '&quot;', $__cf_row ['cf_descri
 
 
 ?>
+<meta name="revisit-after" content="1 days" />
 <meta name="title" content="<?php echo $__cf_row ['cf_title']; ?>" />
 <meta name="keywords" content="<?php echo $__cf_row ['cf_keywords']; ?>" />
 <meta name="news_keywords" content="<?php echo $__cf_row ['cf_keywords']; ?>" />
