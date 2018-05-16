@@ -56,6 +56,19 @@ if ( is_amp_endpoint() ) {
 
 
 //
+/*
+$test_sql = _eb_q("SELECT *
+FROM
+	`" . wp_postmeta . "`
+WHERE
+	post_id = " . $__post->ID);
+print_r( $test_sql );
+*/
+
+
+
+
+//
 $trv_img = _eb_get_post_img( $__post->ID );
 if ( $trv_img != '' ) {
 	$image_og_image = $trv_img;

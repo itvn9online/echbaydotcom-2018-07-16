@@ -219,6 +219,8 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_ads_for_category' => 'Nhập vào ID của Danh mục Sản phẩm hoặc Danh mục Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Danh mục Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
 	
 	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
+	'_eb_product_leech_sku' => 'Chức năng dùng để kiểm soát các tin đã tồn tại từ phiê bản cũ hơn (thường sử dụng khi chuyển đổi code khác sang wordpress).',
+	
 //	'_eb_product_size' => '',
 	'_eb_product_giohethan' => 'Thiết lập giờ hết hạn cụ thể cho phần Ngày hết hạn ở trên. Nếu để trống trường này, giờ hết hạn sẽ là cuối ngày hôm đó (23:59)',
 	'_eb_product_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Bài viết này',
@@ -257,7 +259,7 @@ $eb_arr_custom_meta_box = array(
 	'_eb_product_size' => 'Kích thước',
 	'_eb_product_searchkey' => 'EB Search',
 	'_eb_product_sku' => 'Mã sản phẩm',
-	'_eb_product_leech_sku' => 'SKU',
+	'_eb_product_leech_sku' => 'SKU (leech data)',
 	'_eb_product_oldprice' => EBE_get_lang('post_giacu'),
 	'_eb_product_price' => EBE_get_lang('post_giamoi'),
 	'_eb_product_buyer' => EBE_get_lang('post_luotmua'),

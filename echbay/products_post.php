@@ -334,12 +334,14 @@ if ( $totalThread > 0 ) {
 			}
 			*/
 			$trv_giamoi = _eb_float_only( _eb_get_post_object( $o->ID, '_eb_product_price' ) );
+			/*
 			if ( $trv_giamoi == 0 ) {
 				$trv_giamoi = _eb_float_only( _eb_get_post_object( $o->ID, '_price', 0 ) );
 				
 				// cập nhật giá mới từ giá của woo
 				WGR_update_meta_post( $o->ID, '_eb_product_price', $trv_giamoi );
 			}
+			*/
 			
 			//
 			if ( $trv_giaban > 0 && $trv_giaban == $trv_giamoi ) {
