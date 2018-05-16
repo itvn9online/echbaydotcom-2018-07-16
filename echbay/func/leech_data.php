@@ -211,7 +211,7 @@ if ( ! empty( $check_post_exist ) ) {
 
 // insert
 if ( $import_id == 0 ) {
-	$last_update = date( 'Y-m-d H:i:s', date_time );
+//	$last_update = date( 'Y-m-d H:i:s', date_time );
 	
 	$arr = array(
 //		'import_id' => $insert_id,
@@ -220,10 +220,10 @@ if ( $import_id == 0 ) {
 		'post_type' => $post_type,
 		'post_parent' => 0,
 		'post_author' => mtv_id,
-		'post_status' => 'publish',
 		'post_name' => $trv_seo,
-		'post_date' => $last_update,
-		'post_date_gmt' => $last_update
+//		'post_date' => $last_update,
+//		'post_date_gmt' => $last_update,
+		'post_status' => 'publish'
 	);
 	if ( $insert_id > 0 ) {
 		$arr['import_id'] = $insert_id;
@@ -428,7 +428,7 @@ if ( $post_date != '' ) {
 	$arr['post_date_gmt'] = $post_date;
 }
 else {
-	$post_date = date( 'Y-m-d H:i:s', date_time );
+	$post_date = date( 'Y-m-d H:i:s', date_time - 60 );
 }
 $arr['post_modified'] = $post_date;
 $arr['post_modified_gmt'] = $post_date;
