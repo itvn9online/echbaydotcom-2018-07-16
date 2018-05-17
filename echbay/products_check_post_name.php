@@ -52,7 +52,7 @@ $cao = _eb_c("SELECT COUNT(ID) as a
 		`post_name` LIKE '%{$check_post_name}'");
 
 //
-$limit_select = 100;
+$limit_select = 500;
 if ( isset( $_GET['total_no_remove'] ) ) {
 	$limit_select += (int) $_GET['total_no_remove'];
 }

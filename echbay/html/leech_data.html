@@ -151,7 +151,11 @@
 			</div>
 			<div>
 				<input type="checkbox" id="post_id_is_numberic" />
-				<label for="post_id_is_numberic">ID bài viết là dạng số (với trường hợp lọc ID nhưng vẫn có lẫn cả chữ, tích vào đây để tách luôn cả chữ ra khỏi kết quả lọc)</label>
+				<label for="post_id_is_numberic">ID bài viết là dạng số (với trường hợp lọc ID nhưng vẫn có lẫn cả chữ, tích vào đây để tách luôn cả chữ ra khỏi kết quả lọc).</label>
+			</div>
+			<div>
+				<input type="checkbox" id="set_this_post_id" />
+				<label for="set_this_post_id">Khi tính năng được được thiết lập, ID của web nguồn sẽ được insert vào web đích luôn (thường dùng khi chuyển đổi mã nguồn khác sang mã nguồn này).</label>
 			</div>
 		</blockquote>
 	</div>
@@ -236,6 +240,11 @@
 			<tr>
 				<td class="t">&nbsp;</td>
 				<td class="i"><input type="text" id="details_masanpham" value="" placeholder="HTML tags" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">SKU (leech data)</td>
+				<td class="i"><input type="text" name="t_sku_leech_data" value="" class="m" />
+					<div class="small">Tự tạo một SKU theo tên miền dùng để xác định bài viết được lấy rồi hay chưa.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Ngày đăng</td>
@@ -346,6 +355,11 @@
 					<div>
 						<input type="checkbox" name="cap_nhat_stt_ngau_nhien" id="cap_nhat_stt_ngau_nhien" value="1" />
 						<label for="cap_nhat_stt_ngau_nhien">Thêm một số ngẫu nhiên vào STT để tạo giãn cách update, tránh các bài viết giống nhau và sát nhau quá.</label>
+					</div>
+					<br>
+					<div>
+						<input type="checkbox" name="get_old_id_to_new" id="get_old_id_to_new" value="1" />
+						<label for="get_old_id_to_new">Lấy ID từ phiên bản cũ (chỉ hoạt động khi ID được xác định là dạng <strong>số</strong>).</label>
 					</div>
 					<br></td>
 			</tr>

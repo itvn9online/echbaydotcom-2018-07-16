@@ -671,6 +671,16 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 	a = g_func.trim(a);
 	
 	if ( a != '' ) {
+		
+		// xác định bài viết được lấy theo ID hay SKU dạng chữ
+		if ( dog('post_id_is_numberic').checked == true
+		&& dog('set_this_post_id').checked == true ) {
+			dog('get_old_id_to_new').checked = true;
+		}
+		else {
+			dog('get_old_id_to_new').checked = false;
+		}
+
 		// dọn dẹp bớt HTML cho đỡ nhiều quá
 		if ( jQuery('#details_finish_url li').length > 50 ) {
 			jQuery('#details_finish_url').html('');
@@ -711,6 +721,23 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			}
 			before_post_id_for_leech = f.t_id.value;
 		}
+		
+		// tạo SKU
+		var leech_data_sku = '';
+		
+		// nếu không có ID
+		if ( f.t_id.value == '' ) {
+			// -> cắt bỏ phần tên miền đi
+			leech_data_sku = a.split('//')[1].split('/');
+			leech_data_sku[0] = '';
+			// nhóm nó lại
+			leech_data_sku = g_func.non_mark_seo( leech_data_sku.join('-') );
+		}
+		else {
+			leech_data_sku = f.t_id.value;
+		}
+		// Tạo SKU bằng cách lấy mỗi tên miền + thêm ID của bài viết từ site nguồn
+		f.t_sku_leech_data.value = a.split('//')[1].split('/')[0] + '-' + leech_data_sku;
 		
 		//
 		leech_data_content ('temp/?set_module=leech_data&categories_url=' + encodeURIComponent( a ) + '&leech_id=' + f.t_id.value, '', function () {
@@ -2038,6 +2065,7 @@ var arr_save_checkbox_options = [
 	
 	'bai_viet_nay_duoc_lay_theo_id',
 	'post_id_is_numberic',
+	'set_this_post_id',
 	'this_id_url_product_detail',
 	'get_list_post_in_iframe',
 	'get_full_code_in_head',

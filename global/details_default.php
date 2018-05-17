@@ -280,7 +280,7 @@ $product_size = '';
 
 $product_color_name = '';
 $_eb_product_chinhhang = 0;
-$_eb_product_video_url = 0;
+$_eb_product_video_url = '';
 
 
 //
@@ -308,7 +308,6 @@ if ( $__post->post_type == 'post' ) {
 	//
 	$product_color_name = _eb_str_block_fix_content ( _eb_get_post_object( $pid, '_eb_product_color' ) );
 	$_eb_product_chinhhang = _eb_get_post_object( $pid, '_eb_product_chinhhang', 0 );
-	$_eb_product_video_url = _eb_get_post_object( $pid, '_eb_product_video_url' );
 	
 	// product size
 	$product_size = _eb_get_post_object( $pid, '_eb_product_size' );
@@ -890,6 +889,11 @@ if ( $__post->post_type == 'post' ) {
 
 	}
 }
+
+
+
+//
+$_eb_product_video_url = _eb_get_post_object( $pid, '_eb_product_video_url' );
 
 
 // -> thêm đoạn JS dùng để xác định xem khách đang ở đâu trên web
