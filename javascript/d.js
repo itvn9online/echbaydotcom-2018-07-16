@@ -232,6 +232,12 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 
 function ___eb_details_slider_v2 () {
 	
+	// trên mobile thì để 1 chế độ xem thôi -> xóa CSS điều khiển định dạng slider trước khi lệnh JS chạy để không bị vỡ khung
+	if ( cf_details_right_thumbnail == 1 && jQuery(window).width() < 775 ) {
+//		jQuery('link#thumb-col, link#thumb-col-left, link#thumb-col-mobile').remove();
+		jQuery('link#thumb-col, link#thumb-col-left').remove();
+	}
+	
 	// thời gian chuyển slider, nếu có thì phải hợp lệ (kiểu số nguyên, tối thiểu 1 giây)
 //	if ( typeof auto_next_details_slider != 'number' || auto_next_details_slider < 1000 ) {
 //		auto_next_details_slider = 0;
@@ -358,60 +364,52 @@ function ___eb_details_slider_v2 () {
 		jQuery('.thread-details-mobileAvt li:first').click();
 		
 		// thay đổi kiểu tải thumb nếu thumb được chuyển sang chiều dọc
-		if ( cf_details_right_thumbnail == 1 ) {
+		// trên mobile thì để 1 chế độ xem thôi
+		if ( cf_details_right_thumbnail == 1 && jQuery(window).width() >= 775 ) {
 			
-			// trên mobile thì để 1 chế độ xem thôi
-			if ( jQuery(window).width() < 775 ) {
-//				jQuery('link#thumb-col, link#thumb-col-left, link#thumb-col-mobile').remove();
-				jQuery('link#thumb-col, link#thumb-col-left').remove();
-			}
-			else {
+			//
+			var effect_for_post_slider = '.child-thread-details-mobileAvt .jEBE_slider-thumbnail ul';
+			
+			//
+			jQuery('.child-thread-details-mobileAvt .jEBE_slider-right-thumbnail').off('click').click(function () {
+//				var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
+				var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1,
+					len = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li').length - 1;
+//					console.log(a);
+				a = a - ( 0 - 1 );
+				if ( a >= len ) {
+					a = len - 1;
+				}
+//					console.log(a);
 				
 				//
-				var effect_for_post_slider = '.child-thread-details-mobileAvt .jEBE_slider-thumbnail ul';
-				
-				//
-				jQuery('.child-thread-details-mobileAvt .jEBE_slider-right-thumbnail').off('click').click(function () {
-	//				var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
-					var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1,
-						len = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li').length - 1;
-//					console.log(a);
-					a = a - ( 0 - 1 );
-					if ( a >= len ) {
-						a = len - 1;
-					}
-//					console.log(a);
-					
-					//
-					jQuery(effect_for_post_slider).css({
-						top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
-					}).attr({
-						'data-scroll' : a
-					});
-					
-					//
-					jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').show();
+				jQuery(effect_for_post_slider).css({
+					top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
+				}).attr({
+					'data-scroll' : a
 				});
 				
-				jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').off('click').click(function () {
+				//
+				jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').show();
+			});
+			
+			jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').off('click').click(function () {
 //					var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
-					var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1;
+				var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1;
 //					console.log(a);
-					a = a - 1;
-					if ( a < 0 ) {
-						a = 0;
-					}
+				a = a - 1;
+				if ( a < 0 ) {
+					a = 0;
+				}
 //					console.log(a);
-					
-					//
-					jQuery(effect_for_post_slider).css({
-						top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
-					}).attr({
-						'data-scroll' : a
-					});
-				});
 				
-			}
+				//
+				jQuery(effect_for_post_slider).css({
+					top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
+				}).attr({
+					'data-scroll' : a
+				});
+			});
 			
 		}
 		

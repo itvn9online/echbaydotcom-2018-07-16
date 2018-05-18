@@ -9,37 +9,6 @@ parent.ket_thuc_lay_du_lieu(' .$id. ', "' . $text . '", "' . $lnk . '");
 }
 
 
-//print_r( $_POST ); exit();
-
-
-
-//
-$post_type = trim( $_POST['post_tai'] );
-//_eb_alert($post_type);
-
-$trv_source = trim( $_POST['t_source'] );
-if ( $trv_source == '' ) {
-	WGR_leech_data_submit_ket_thuc_lay_du_lieu( 0, '<span class=redcolor>Not source</span>' );
-}
-
-$trv_tieude = trim( stripslashes( $_POST['t_tieude'] ) );
-$trv_seo = trim( $_POST['t_seo'] );
-$trv_tags = str_replace( '-', ' ', $trv_seo );
-$trv_img = trim( $_POST['t_img'] );
-$youtube_url = trim( $_POST['t_youtube_url'] );
-$post_date = trim( $_POST['t_ngaydang'] );
-
-$post_excerpt = trim( stripslashes( $_POST['t_goithieu'] ) );
-$trv_noidung = trim( stripslashes( $_POST['t_noidung'] ) );
-
-// price
-$trv_giaban = _eb_float_only( $_POST['t_giacu'] );
-$trv_giamoi = _eb_float_only( $_POST['t_giamoi'] );
-
-//
-$ant_id = _eb_number_only( $_POST['t_ant'] );
-
-
 function WGR_leech_data_auto_create_category ( $ant_auto, $post_type, $cat_parent = 0 ) {
 	if ( $ant_auto != '' ) {
 		$slug = _eb_non_mark_seo( $ant_auto );
@@ -81,6 +50,37 @@ function WGR_leech_data_auto_create_category ( $ant_auto, $post_type, $cat_paren
 }
 
 
+//print_r( $_POST ); exit();
+
+
+
+//
+$post_type = trim( $_POST['post_tai'] );
+//_eb_alert($post_type);
+
+$trv_source = trim( $_POST['t_source'] );
+if ( $trv_source == '' ) {
+	WGR_leech_data_submit_ket_thuc_lay_du_lieu( 0, '<span class=redcolor>Not source</span>' );
+}
+
+$trv_tieude = trim( stripslashes( $_POST['t_tieude'] ) );
+$trv_seo = trim( $_POST['t_seo'] );
+$trv_tags = str_replace( '-', ' ', $trv_seo );
+$trv_img = trim( $_POST['t_img'] );
+$youtube_url = trim( $_POST['t_youtube_url'] );
+$post_date = trim( $_POST['t_ngaydang'] );
+
+$post_excerpt = trim( stripslashes( $_POST['t_goithieu'] ) );
+$trv_noidung = trim( stripslashes( $_POST['t_noidung'] ) );
+
+// price
+$trv_giaban = _eb_float_only( $_POST['t_giacu'] );
+$trv_giamoi = _eb_float_only( $_POST['t_giamoi'] );
+
+//
+$ant_id = _eb_number_only( $_POST['t_ant'] );
+
+
 if ( $ant_id == 0 ) {
 	// thêm nhóm cấp 1
 	$ant_id = WGR_leech_data_auto_create_category( trim( $_POST['t_new_category'] ), $post_type );
@@ -101,6 +101,12 @@ if ( $ant_id == 0 ) {
 $m = '<span class=bluecolor>UPDATE</span>';
 
 $trv_id = trim( $_POST['t_id'] );
+
+$t_sku_leech_data = trim( $_POST['t_sku_leech_data'] );
+if ( $t_sku_leech_data == '' ) {
+	WGR_leech_data_submit_ket_thuc_lay_du_lieu( 0, '<span class=redcolor>Not SKU</span>' );
+}
+
 //echo $trv_id . '<br>';
 $trv_sku = $trv_id;
 
@@ -111,35 +117,134 @@ $check_post_exist = array();
 $import_id = 0;
 $insert_id = 0;
 
-// nếu có ID -> tìm theo ID
-if ( $trv_id != '' && is_numeric( $trv_id ) && $trv_id > 0 ) {
-	$insert_id = (int) $trv_id;
-	
-	$check_post_exist = _eb_q("SELECT *
-	FROM
-		" . wp_posts . "
-	WHERE
-		ID = " . $trv_id);
-	
-	if ( ! empty( $check_post_exist ) ) {
-		$check_post_exist = $check_post_exist[0];
+
+
+/*
+* v2
+*/
+// tìm theo SKU đã được tạo ra ở trên
+// với phiên bản rao vặt -> tìm theo cách khác
+if ( cf_set_raovat_version == 1 ) {
+	$strFilter = "";
+	if ( $trv_sku != '' ) {
+		$strFilter = " OR _eb_product_leech_sku = '" . $trv_sku . "' ";
 	}
-}
-else {
-	// tìm theo name
+	
+	//
 	$check_post_exist = _eb_q("SELECT *
 	FROM
 		`" . wp_posts . "`
 	WHERE
 		post_type = '" . $post_type . "'
-		AND post_name = '" . $trv_seo . "'
+		AND (
+			_eb_product_leech_sku = '" . $t_sku_leech_data . "'
+			OR post_name = '" . $trv_seo . "'
+			)
 	ORDER BY
 		ID
 	LIMIT 0, 1");
-	if ( ! empty( $check_post_exist ) ) {
+	
+	//
+	if ( empty( $check_post_exist ) ) {
+		$check_post_exist = _eb_q("SELECT *
+		FROM
+			`" . wp_posts . "`
+		WHERE
+			post_type = '" . $post_type . "'
+			AND _eb_product_leech_sku = '" . $trv_sku . "'
+		ORDER BY
+			ID
+		LIMIT 0, 1");
+		
+		if ( ! empty( $check_post_exist ) ) {
+			$check_post_exist = $check_post_exist[0];
+			
+			// cập nhật lại sku luôn nếu chưa đúng với v2
+//			if ( $check_post_exist->_eb_product_leech_sku != $t_sku_leech_data ) {
+				WGR_update_meta_post( $check_post_exist->ID, '_eb_product_leech_sku', $t_sku_leech_data );
+				echo 'Update new _eb_product_leech_sku<br>';
+//			}
+		}
+	}
+	// gán giá trị cho post_id, do select bảng khác
+	else {
 		$check_post_exist = $check_post_exist[0];
 	}
-	// tìm theo SKU
+}
+// tìm theo post meta
+else {
+	$strFilter = "";
+	if ( $trv_sku != '' ) {
+		$strFilter = " OR meta_value = '" . $trv_sku . "' ";
+	}
+	
+	//
+	$check_post_exist = _eb_q("SELECT *
+	FROM
+		`" . wp_postmeta . "`
+	WHERE
+		meta_key = '_eb_product_leech_sku'
+		AND (
+			meta_value = '" . $t_sku_leech_data . "'
+			" . $strFilter . "
+			)
+	ORDER BY
+		post_id
+	LIMIT 0, 1");
+	
+	// tìm được thì xử lý luôn
+	if ( ! empty( $check_post_exist ) ) {
+		$check_post_exist = $check_post_exist[0];
+		
+		// cập nhật lại sku luôn nếu chưa đúng với v2
+		if ( $check_post_exist->meta_value != $t_sku_leech_data ) {
+			WGR_update_meta_post( $check_post_exist->post_id, '_eb_product_leech_sku', $t_sku_leech_data );
+			echo 'Update new _eb_product_leech_sku<br>';
+		}
+//		$check_post_exist->ID = $check_post_exist->post_id;
+	}
+	// thử tìm theo name
+	else {
+		$check_post_exist = _eb_q("SELECT *
+		FROM
+			`" . wp_posts . "`
+		WHERE
+			post_type = '" . $post_type . "'
+			AND post_name = '" . $trv_seo . "'
+		ORDER BY
+			ID
+		LIMIT 0, 1");
+		
+		// gán giá trị cho post_id, do select bảng khác
+		if ( ! empty( $check_post_exist ) ) {
+			$check_post_exist = $check_post_exist[0];
+		}
+	}
+}
+
+
+
+/*
+* v1 -> tìm theo cách cũ
+*/
+if ( empty( $check_post_exist ) ) {
+	// nếu có ID -> tìm theo ID
+	if ( $trv_id != '' && is_numeric( $trv_id ) && $trv_id > 0 ) {
+		if ( isset( $_POST['get_old_id_to_new'] ) && $_POST['get_old_id_to_new'] == 1 ) {
+			$insert_id = (int) $trv_id;
+		}
+		
+		//
+		$check_post_exist = _eb_q("SELECT *
+		FROM
+			" . wp_posts . "
+		WHERE
+			ID = " . $trv_id);
+		
+		if ( ! empty( $check_post_exist ) ) {
+			$check_post_exist = $check_post_exist[0];
+		}
+	}
 	else {
 		// tạo SKU nếu chưa có
 		if ( $trv_sku == '' ) {
@@ -147,18 +252,7 @@ else {
 		}
 		
 		//
-		$check_post_exist = _eb_q("SELECT post_id
-		FROM
-			`" . wp_postmeta . "`
-		WHERE
-			meta_key = '_eb_product_leech_sku'
-			AND meta_value = '" . $trv_sku . "'
-		ORDER BY
-			post_id
-		LIMIT 0, 1");
-		
-		// với phiên bản rao vặt -> tìm theo cách khác
-		if ( cf_set_raovat_version == 1 && empty( $check_post_exist ) ) {
+		if ( cf_set_raovat_version == 1 ) {
 			$check_post_exist = _eb_q("SELECT ID
 			FROM
 				`" . wp_posts . "`
@@ -171,33 +265,66 @@ else {
 			
 			// gán giá trị cho post_id, do select bảng khác
 			if ( ! empty( $check_post_exist ) ) {
-				$check_post_exist[0]->post_id = $check_post_exist[0]->ID;
+				$check_post_exist = $check_post_exist[0];
 			}
 		}
-		
-		//
-		if ( ! empty( $check_post_exist ) ) {
-			$check_post_exist = $check_post_exist[0];
+		else {
+			$check_post_exist = _eb_q("SELECT post_id
+			FROM
+				`" . wp_postmeta . "`
+			WHERE
+				meta_key = '_eb_product_leech_sku'
+				AND meta_value = '" . $trv_sku . "'
+			ORDER BY
+				post_id
+			LIMIT 0, 1");
 			
 			//
-			$check_post_exist = _eb_q("SELECT *
-			FROM
-				" . wp_posts . "
-			WHERE
-				ID = " . $check_post_exist->post_id);
-			
 			if ( ! empty( $check_post_exist ) ) {
 				$check_post_exist = $check_post_exist[0];
+//				$check_post_exist->ID = $check_post_exist->post_id;
 			}
 		}
 	}
 }
-//print_r($check_post_exist); exit();
+
+
+
+//
+//echo 'aaaaaaaaaa'; exit();
+
+
+
 
 //
 if ( ! empty( $check_post_exist ) ) {
-	$import_id = $check_post_exist->ID;
+	if ( ! isset( $check_post_exist->ID ) && isset( $check_post_exist->post_id ) ) {
+		$check_post_exist = _eb_q("SELECT *
+		FROM
+			`" . wp_posts . "`
+		WHERE
+			ID = " . $check_post_exist->post_id);
+		
+		// gán giá trị cho post_id, do select bảng khác
+		if ( ! empty( $check_post_exist ) ) {
+			$check_post_exist = $check_post_exist[0];
+			$import_id = $check_post_exist->ID;
+		}
+	}
+	else {
+		$import_id = $check_post_exist->ID;
+	}
 }
+
+
+
+// TEST
+$check_post_exist->post_content = '';
+$check_post_exist->_eb_product_gallery = '';
+$check_post_exist->post_excerpt = '';
+$check_post_exist->_eb_product_noibat = '';
+print_r($check_post_exist);
+exit();
 
 //
 //exit();
@@ -369,7 +496,8 @@ $arr_meta_box = array(
 //	'_eb_product_buyer' => '',
 //	'_eb_product_quantity' => '',
 	'_eb_product_leech_source' => $trv_source,
-	'_eb_product_leech_sku' => $trv_sku,
+//	'_eb_product_leech_sku' => $trv_sku,
+	'_eb_product_leech_sku' => $t_sku_leech_data,
 //	'_eb_product_avatar' => $trv_img,
 //	'_eb_product_video_url' => $youtube_url,
 //	'_eb_product_gallery' => trim( stripslashes($_POST['t_gallery']) ),
