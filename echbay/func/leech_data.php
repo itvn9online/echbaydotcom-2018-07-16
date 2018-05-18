@@ -169,6 +169,12 @@ if ( cf_set_raovat_version == 1 ) {
 	// gán giá trị cho post_id, do select bảng khác
 	else {
 		$check_post_exist = $check_post_exist[0];
+		
+		// cập nhật lại sku luôn nếu chưa đúng với v2
+		if ( $check_post_exist->_eb_product_leech_sku != $t_sku_leech_data ) {
+			WGR_update_meta_post( $check_post_exist->ID, '_eb_product_leech_sku', $t_sku_leech_data );
+			echo 'Update new _eb_product_leech_sku<br>';
+		}
 	}
 }
 // tìm theo post meta
@@ -319,12 +325,14 @@ if ( ! empty( $check_post_exist ) ) {
 
 
 // TEST
+/*
 $check_post_exist->post_content = '';
 $check_post_exist->_eb_product_gallery = '';
 $check_post_exist->post_excerpt = '';
 $check_post_exist->_eb_product_noibat = '';
 print_r($check_post_exist);
 exit();
+*/
 
 //
 //exit();
