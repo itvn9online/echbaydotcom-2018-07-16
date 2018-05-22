@@ -12,7 +12,7 @@ $eb_all_themes_support[$eb_all_themes_name]["name"] = $eb_all_themes_name;
 $eb_all_themes_support[$eb_all_themes_name]["screenshot"] = "https://img1.webgiare.org/apsofa.jpg";
 $eb_all_themes_support[$eb_all_themes_name]["author"] = "";
 $eb_all_themes_support[$eb_all_themes_name]["demo"] = "";
-$eb_all_themes_support[$eb_all_themes_name]["price"] = 2000000;
+$eb_all_themes_support[$eb_all_themes_name]["price"] = 4500000;
 //
 $eb_all_themes_support[$eb_all_themes_name]["top"][] = "apsofa-top1.php";
 $eb_all_themes_support[$eb_all_themes_name]["top"][] = "top_widget.php";
