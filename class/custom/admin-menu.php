@@ -511,7 +511,7 @@ function eb_run_post_column_content($column, $post_id) {
 		
 		//
 		if ( isset( $arr_eb_ads_status[$a] ) ) {
-			echo '<span class="small"><a href="' . $web_ad_link . WP_ADMIN_DIR . 'edit.php?post_type=ads&ads_filter_status=' . $a . '">' . $arr_eb_ads_status[$a] . '</a></span>';
+			echo '<span class="small"><a href="' . $web_ad_link . WP_ADMIN_DIR . '/edit.php?post_type=ads&ads_filter_status=' . $a . '">' . $arr_eb_ads_status[$a] . '</a></span>';
 		} else {
 			echo '<em>NULL</em>';
 		}
