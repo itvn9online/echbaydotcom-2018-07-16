@@ -227,6 +227,7 @@ else {
 		// lưu log 404 vào CSDL để tiện tra cứu
 		$current_404_uri = $_SERVER['REQUEST_URI'];
 //		echo $current_404_uri . '<br>' . "\n";
+//		echo web_link . substr( $current_404_uri, 1 ) . '<br>' . "\n";
 		
 		
 		
@@ -246,6 +247,7 @@ else {
 		$current_small_404_uri = explode( '?', $current_404_uri );
 		$current_small_404_uri = $current_small_404_uri[0];
 //		echo $current_small_404_uri . '<br>' . "\n";
+//		echo web_link . substr( $current_small_404_uri, 1 ) . '<br>' . "\n";
 //		exit();
 		
 		// kiểm tra xem URL 404 này đã được EchBay lưu chưa
@@ -255,13 +257,19 @@ else {
 		WHERE
 			term_id = " . eb_log_404_id_postmeta . "
 			AND meta_value != 1
-			AND ( meta_key = '" . $current_404_uri . "' OR meta_key = '" . $current_small_404_uri . "' )
+			AND (
+				meta_key = '" . $current_404_uri . "'
+				OR meta_key = '" . $current_small_404_uri . "'
+				)
 		ORDER BY
 			meta_id DESC
 		LIMIT 0, 1");
-//		print_r( $sql );
+//		print_r( $sql ); exit();
 		
-		// nếu ko tìm thấy -> thử tìm trong post meta
+		
+		
+		
+		// nếu ko tìm thấy -> thử tìm trong post meta -> bản cũ
 //		if ( count($sql) == 0 && strlen( $sql[0]->meta_value ) < 10 ) {
 		if ( empty($sql) || strlen( $sql[0]->meta_value ) < 10 ) {
 			$sql = _eb_q("SELECT meta_value
@@ -270,7 +278,10 @@ else {
 			WHERE
 				post_id = " . eb_log_404_id_postmeta . "
 				AND meta_value != 1
-				AND ( meta_key = '" . $current_404_uri . "' OR meta_key = '" . $current_small_404_uri . "' )
+				AND (
+					meta_key = '" . $current_404_uri . "'
+					OR meta_key = '" . $current_small_404_uri . "'
+				)
 			ORDER BY
 				meta_id DESC
 			LIMIT 0, 1");
@@ -291,6 +302,7 @@ else {
 			/*
 			* Thử mọi phien bản, SSL, www.
 			*/
+			$strFilter = "";
 			
 			//
 			$domain_non_www = str_replace( 'www.', '', $_SERVER['HTTP_HOST'] );
@@ -314,26 +326,60 @@ else {
 //			echo $old_ssl_404_url . '<br>' . "\n";
 			
 			//
+			$strFilter = " meta_value = '" . $old_404_url . "'
+					OR meta_value = '" . $old_small_404_url . "'
+					OR meta_value = '" . $old_ssl_www_404_url . "'
+					OR meta_value = '" . $old_ssl_404_url . "'
+					OR meta_value = '" . $current_404_uri . "'
+					OR meta_value = '" . $domain_uri . "'";
+			
+			// cắt bỏ dấu ? nếu có
+			if ( strstr( $domain_uri, '?' ) == true ) {
+				$domain_hoicham_uri = explode('?', $domain_uri);
+				$domain_hoicham_uri = $domain_hoicham_uri[0];
+				
+				//
+				$old_hoicham_404_url = 'http://' . $domain_non_www . '/' . $domain_hoicham_uri;
+//				echo $old_hoicham_404_url . '<br>' . "\n";
+				
+				$old_hoicham_small_404_url = 'http://www.' . $domain_non_www . '/' . $domain_hoicham_uri;
+//				echo $old_hoicham_small_404_url . '<br>' . "\n";
+//				exit();
+				
+				$old_hoicham_ssl_www_404_url = 'https://www.' . $domain_non_www . '/' . $domain_hoicham_uri;
+//				echo $old_hoicham_ssl_www_404_url . '<br>' . "\n";
+				
+				$old_hoicham_ssl_404_url = 'https://' . $domain_non_www . '/' . $domain_hoicham_uri;
+//				echo $old_hoicham_ssl_404_url . '<br>' . "\n";
+				
+				//
+				$strFilter .= " OR meta_value = '" . $old_hoicham_404_url . "'
+					OR meta_value = '" . $old_hoicham_small_404_url . "'
+					OR meta_value = '" . $old_hoicham_ssl_www_404_url . "'
+					OR meta_value = '" . $old_hoicham_ssl_404_url . "'
+					OR meta_value = '" . $domain_hoicham_uri . "' ";
+			}
+			
+			//
 			$sql = _eb_q("SELECT post_id, meta_key
 			FROM
 				`" . wp_postmeta . "`
 			WHERE
-				( meta_key = '_eb_product_leech_source'
-				OR meta_key = '_eb_product_old_url' )
-				AND ( meta_value = '" . $old_404_url . "'
-				OR meta_value = '" . $old_small_404_url . "'
-				OR meta_value = '" . $old_ssl_www_404_url . "'
-				OR meta_value = '" . $old_ssl_404_url . "'
-				OR meta_value = '" . $current_404_uri . "'
-				OR meta_value = '" . $domain_uri . "' )
+				(
+				meta_key = '_eb_product_leech_source'
+				OR meta_key = '_eb_product_old_url'
+				)
+				AND (
+					" . $strFilter . "
+				)
 			ORDER BY
 				meta_id DESC
 			LIMIT 0, 1");
-//			print_r( $sql );
-//			exit();
+//			print_r( $sql ); exit();
 			
 			// nếu tìm được -> xác định URL cũ luôn
-			if ( count($sql) > 0 ) {
+//			if ( count($sql) > 0 ) {
+			if ( ! empty($sql) ) {
 				$v = $sql[0];
 				
 				// category
@@ -352,14 +398,13 @@ else {
 				FROM
 					`" . wp_termmeta . "`
 				WHERE
-					( meta_key = '_eb_category_leech_url'
-					OR meta_key = '_eb_category_old_url' )
-					AND ( meta_value = '" . $old_404_url . "'
-					OR meta_value = '" . $old_small_404_url . "'
-					OR meta_value = '" . $old_ssl_www_404_url . "'
-					OR meta_value = '" . $old_ssl_404_url . "'
-					OR meta_value = '" . $current_404_uri . "'
-					OR meta_value = '" . $domain_uri . "' )
+					(
+					meta_key = '_eb_category_leech_url'
+					OR meta_key = '_eb_category_old_url'
+					)
+					AND (
+						" . $strFilter . "
+					)
 				ORDER BY
 					meta_id DESC
 				LIMIT 0, 1");
