@@ -918,7 +918,10 @@ input[id="_eb_category_order"] { width: 90px; }
 .sidebar-eb_z1_recycle_bin {
 	position: fixed;
 	bottom: 5px;
+	/*
 	left: 30%;
+	*/
+	right: auto;
 	max-width: 350px;
 	z-index: 9999;
 	max-height: 350px;
