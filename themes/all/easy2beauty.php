@@ -29,7 +29,7 @@ $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "footer_widget.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "easy2beauty-footer1.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support[$eb_all_themes_name]["home"][] = "easy2beauty-home1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["home"][] = "easy2beauty-home1.php";
 $eb_all_themes_support[$eb_all_themes_name]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support[$eb_all_themes_name]["threaddetails"][] = "easy2beauty-threaddetails.html";
