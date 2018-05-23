@@ -391,7 +391,7 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["demo"] = "";' . "\n";
 	
 	// đặt giá mặc định cho các theme mới tạo
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["price"] = 2000000;' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["price"] = 4500000;' . "\n";
 	
 	//
 	$conten_for_bo_giao_dien .= WGR_add_for_arr_all_themes( 'top', '.php' );
