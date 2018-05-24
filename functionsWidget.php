@@ -134,7 +134,20 @@ function WGR_widget_home_hot ( $instance ) {
 		}
 		else {
 			*/
-			$args['cat'] = $cat_ids;
+			if ( $cat_type == 'category' ) {
+				$args['cat'] = $cat_ids;
+			}
+			else {
+				$args['tax_query'] = array(
+					array(
+						'taxonomy' => $cat_type,
+						'field' => 'term_id',
+						'operator' => 'IN',
+						'terms' => array( $cat_ids )
+//						'terms' => $terms_categories,
+					)
+				);
+			}
 //		}
 		
 		//
@@ -657,7 +670,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 				array(
 					'taxonomy' => $cat_type,
 					'field' => 'term_id',
-//						'terms' => array( $cat_ids ),
+//					'terms' => array( $cat_ids ),
 					'terms' => $terms_categories,
 					'operator' => 'IN'
 				)

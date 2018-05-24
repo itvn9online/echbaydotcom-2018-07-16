@@ -199,9 +199,9 @@ body.home .thread-details-tohome { display: none; }
 .div-search button {
 	cursor: pointer;
 	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
+	top: -1px;
+	right: -1px;
+	bottom: -1px;
 }
 .span-search-icon { display: none !important; }
 .jEBE_slider-thumbnail {

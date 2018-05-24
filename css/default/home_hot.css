@@ -19,12 +19,16 @@
 .home-hot-title:before {
 	width: 50%;
 	max-width: 250px;
-	height: 2px;
 	content: "";
-	background: #f00;
 	position: absolute;
 	bottom: -2px;
 	left: 0;
+	/*
+	height: 2px;
+	background: #f00;
+	*/
+	height: 1px;
+	border-bottom: 2px #f00 solid;
 }
 .home-hot-title,
 .home-hot-title a { color: #333; }

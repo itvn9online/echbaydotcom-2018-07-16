@@ -760,6 +760,19 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 		foreach ( $categories3 as $v ) {
 			$categories[] = $v;
 		}
+		
+		//
+		/*
+		$categories4 = get_categories( array(
+			'taxonomy' => 'post_tag',
+			'hide_empty' => 0,
+			'parent' => 0
+		) );
+		$categories[] = '[ Thẻ ]';
+		foreach ( $categories4 as $v ) {
+			$categories[] = $v;
+		}
+		*/
 	}
 	// chỉ lấy 1 taxonomy theo chỉ định
 	else {
