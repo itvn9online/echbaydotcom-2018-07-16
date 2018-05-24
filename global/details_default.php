@@ -916,6 +916,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	cf_options_excerpt="' . $__cf_row['cf_options_excerpt'] . '",
 	cf_post_rm_img_width="' . $__cf_row['cf_post_rm_img_width'] . '",
 	cf_product_details_viewmore=' . $__cf_row['cf_product_details_viewmore'] . ',
+	cf_img_details_maxwidth=' . $__cf_row['cf_img_details_maxwidth'] . ',
 	trv_ngayhethan=' . $trv_ngayhethan . ';
 </script>';
 //	arr_product_color=[' . substr( $arr_product_color, 1 ) . '],

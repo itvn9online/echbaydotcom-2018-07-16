@@ -103,6 +103,7 @@ $__cf_row_default = array(
 	'cf_product_table_size' => '200',
 	'cf_product_details_size' => '1',
 	'cf_product_details_viewmore' => 0,
+	'cf_img_details_maxwidth' => 0,
 	'cf_blog_size' => '2/3',
 	'cf_top_banner_size' => 'auto', // 400/1366
 	'cf_other_banner_size' => '2/3',
