@@ -42,6 +42,10 @@ $_POST['cf_details_bold_excerpt'] = WGR_default_config('cf_details_bold_excerpt'
 
 $_POST['cf_options_excerpt'] = WGR_default_config('cf_options_excerpt');
 
+$_POST['cf_post_big_banner'] = WGR_default_config('cf_post_big_banner');
+
+$_POST['cf_post_rm_img_width'] = WGR_default_config('cf_post_rm_img_width');
+
 
 //
 $_POST['posts_per_page'] = (int)$_POST['posts_per_page'];
