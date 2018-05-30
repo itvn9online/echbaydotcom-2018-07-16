@@ -63,7 +63,7 @@ FROM
 WHERE
 	post_id = " . $__post->ID);
 print_r( $test_sql );
-*/
+/* */
 
 
 

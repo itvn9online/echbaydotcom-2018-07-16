@@ -265,6 +265,7 @@ $__cf_row_default = array(
 	
 	//
 	'cf_max_revision_cleanup' => 1000,
+	'cf_max_post_cleanup' => 10000,
 	
 	
 	/*

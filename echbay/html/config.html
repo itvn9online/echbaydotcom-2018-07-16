@@ -811,6 +811,11 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="i"><input type="number" name="cf_max_revision_cleanup" id="cf_max_revision_cleanup" value="{tmp.cf_max_revision_cleanup}" placeholder="{aaa.cf_max_revision_cleanup}" class="s" />
 					<div class="small">Nếu đặt số &gt; 1, cứ mỗi 6 tiếng, các post_type = revision sẽ được kiểm tra và xóa một lần, số bạn nhập vào đây chính là số lượng các bản revision mới nhất được giữ lại. Nếu đặt là 1, cứ đến lịch là xóa, không giữ lại gì cả.</div></td>
 			</tr>
+			<tr>
+				<td class="t"><label for="cf_max_post_cleanup">Giới hạn số bài viết</label></td>
+				<td class="i"><input type="number" name="cf_max_post_cleanup" id="cf_max_post_cleanup" value="{tmp.cf_max_post_cleanup}" placeholder="{aaa.cf_max_post_cleanup}" class="s" />
+					<div class="small">Để hiệu suất web luôn được đảm bảo, chúng tôi sẽ đặt mặc định ngưỡng bài viết tối đa cho mỗi code là <strong>{aaa.cf_max_post_cleanup}</strong>, khi website đạt ngưỡng này, các bài cũ hơn sẽ được chuyển sang dạng lưu trữ XML. Để tắt tính năng này, hãy nhập vào số nhỏ hơn 10, hoặc nếu muốn tăng ngưỡng thì cũng không nên để quá 50,000 bài viết.</div></td>
+			</tr>
 		</tbody>
 	</table>
 	<div>
