@@ -37,7 +37,7 @@ function WGR_save_max_post_to_xml ( $type ) {
 			WGR_save_post_xml( $v->ID, 'eb_post_xml' );
 			
 			// xóa bài viết này đi
-			WGR_remove_post_by_type( $strsql[0]->post_type, $v->ID );
+			WGR_remove_post_by_type( $v->post_type, $v->ID );
 		}
 		
 		//
