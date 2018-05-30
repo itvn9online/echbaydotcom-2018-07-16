@@ -2037,6 +2037,12 @@ function ___eb_details_post_run ( r ) {
 	
 	
 	// thêm chiều rộng tuyệt đối cho khung nội dung
+	var a = $('#content_img_product').attr('data-max-width') || '';
+	if ( a == '' ) {
+		$('#content_img_product').attr({
+			'data-max-width': cf_img_details_maxwidth
+		});
+	}
 	
 }
 
