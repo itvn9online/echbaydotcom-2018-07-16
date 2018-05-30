@@ -581,14 +581,14 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		// Xóa revision
 		include EB_THEME_PLUGIN_INDEX . 'cronjob/revision_cleanup.php';
 		
+		// số bài viết tối đa trên web
+		include EB_THEME_PLUGIN_INDEX . 'cronjob/max_post_cleanup.php';
+		
 		
 		
 		
 	}
 }
-		
-		// số bài viết tối đa trên web
-		include EB_THEME_PLUGIN_INDEX . 'cronjob/max_post_cleanup.php';
 
 
 
