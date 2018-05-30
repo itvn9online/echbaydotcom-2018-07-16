@@ -14,7 +14,7 @@ if ($check_Cleanup_cache == false) {
 	EBE_tao_bang_hoa_don_cho_echbay_wp();
 	
 	// tạo bảng lưu trữ các bài viết sẽ xóa vĩnh viễn
-	EBE_create_in_con_voi_table( 'eb_backup_post_xml', 'bpx_id', array(
+	$arr_post_xml = array(
 		'bpx_id' => array(
 			'type' => 'bigint(20)',
 			'null' => 'no',
@@ -72,7 +72,15 @@ if ($check_Cleanup_cache == false) {
 			'default' => '',
 			'extra' => '',
 		)
-	) );
+	);
+	
+	// bảng lưu trữ post trước khi xóa
+	EBE_create_in_con_voi_table( 'eb_backup_post_xml', 'bpx_id', $arr_post_xml );
+	
+	// bảng post dưới dạng XML (max post -> không xóa)
+	EBE_create_in_con_voi_table( 'eb_post_xml', 'bpx_id', $arr_post_xml );
+	
+	
 	
 	// Bảng lưu tất cả các thể loại log
 	EBE_create_in_con_voi_table( 'eb_wgr_log', 'l_id', array(

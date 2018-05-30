@@ -4,6 +4,7 @@
 
 $strCacheFilter = 'max_post_cleanup';
 $check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 6 * 3600 );
+$check_Cleanup_cache = false;
 if ( $check_Cleanup_cache == false ) {
 	// Nếu có số lượng cụ thể -> xóa theo số lượng này (tối thiểu là 1)
 	if ( $__cf_row['cf_max_post_cleanup'] > 10 ) {
@@ -20,7 +21,11 @@ if ( $check_Cleanup_cache == false ) {
 		
 		// nếu lớn hơn số post được lưu trữ thì mới tiếp tục
 		if ( ! empty( $strsql ) && $strsql[0]->c > $__cf_row['cf_max_post_cleanup'] + 100 ) {
-			$strsql = _eb_q("SELECT ID
+			//
+			$count_post = $strsql[0]->c;
+			
+			//
+			$strsql = _eb_q("SELECT *
 			FROM
 				`" . wp_posts . "`
 			WHERE
@@ -28,17 +33,20 @@ if ( $check_Cleanup_cache == false ) {
 				OR post_type = '" . EB_BLOG_POST_TYPE . "'
 			ORDER BY
 				ID ASC
-			LIMIT 0, 100");
+			LIMIT 0, 10");
 			print_r( $strsql ); exit();
 			
 			//
-			if ( ! empty( $strsql ) && isset( $strsql[0]->ID ) ) {
-				// xóa
-				WGR_remove_post_by_type( $strsql[0]->post_type, 0, ' and ID < ' . $strsql[0]->ID . ' ' );
+			foreach ( $strsql as $v ) {
+				// lưu trữ bài viết
+				WGR_save_post_xml( $v->ID, 'eb_post_xml' );
 				
-				//
-				_eb_log_user ( 'Max post cleanup (' . $strsql[0]->ID . '): ' . $_SERVER ['REQUEST_URI'] );
+				// xóa bài viết này đi
+				WGR_remove_post_by_type( $strsql[0]->post_type, $v->ID );
 			}
+			
+			//
+			_eb_log_user ( 'Max post cleanup (' . $count_post . '): ' . $_SERVER ['REQUEST_URI'] );
 		}
 	}
 	
