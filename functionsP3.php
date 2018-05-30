@@ -734,6 +734,13 @@ function WGR_save_post_xml ( $postid, $save_table = 'eb_backup_post_xml' ) {
 		$str = addslashes ( $str );
 	}
 	
+	//
+	_eb_q("DELETE
+	FROM
+		`" . $save_table . "`
+	WHERE
+		post_id = " . $postid, 0);
+	
 	// lưu dữ liệu
 	_eb_sd( array(
 		'bpx_content' => $str,

@@ -1844,11 +1844,11 @@ function _eb_q ( $str, $type = 1 ) {
 	// Không trả về gì cả -> delete, update, insert
 	if ( $type == 0 ) {
 //		$wpdb->query( $wpdb->prepare( $str ) );
-		$wpdb->query( $str );
+		$wpdb->query( trim( $str ) );
 	}
 	// có trả về dữ liệu -> select
 	else {
-		return $wpdb->get_results( $str, OBJECT );
+		return $wpdb->get_results( trim( $str ), OBJECT );
 	}
 	
 	//
