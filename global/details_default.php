@@ -738,6 +738,8 @@ $arr_main_content = array(
 	// tìm và tạo sidebar luôn
 //	'tmp.str_sidebar' => _eb_echbay_sidebar( $id_for_get_sidebar ),
 	
+	'tmp.cf_img_details_maxwidth' => $__cf_row['cf_img_details_maxwidth'],
+	
 	//
 	'tmp.eb_blog_2content' => $eb_blog_2content,
 	

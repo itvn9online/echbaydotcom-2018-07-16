@@ -2035,6 +2035,9 @@ function ___eb_details_post_run ( r ) {
 	//
 	___wgr_set_product_id_cookie();
 	
+	
+	// thêm chiều rộng tuyệt đối cho khung nội dung
+	
 }
 
 // danh sách sản phẩm đã xem, lưu dưới dạng cookies

@@ -662,7 +662,10 @@ var _global_js_eb = {
 		
 		// tạo attr mặc định để lưu thuộc tính cũ
 		jQuery('.img-max-width').each(function() {
-			var max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
+			var max_width = jQuery(this).attr('data-max-width') || '';
+			if ( max_width == '' ) {
+				max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
+			}
 			max_width = Math.ceil( max_width ) - 1;
 //			console.log(max_width);
 			
@@ -811,7 +814,10 @@ var _global_js_eb = {
 			
 			// trên mobile -> giới hạn kích thước media
 			jQuery('.img-max-width').each(function() {
-				var max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
+				var max_width = jQuery(this).attr('data-max-width') || '';
+				if ( max_width == '' ) {
+					max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
+				}
 //				console.log(max_width);
 				max_width = Math.ceil( max_width ) - 1;
 				var max_sizes_width = max_width + 99;
@@ -887,7 +893,10 @@ var _global_js_eb = {
 			
 			// hình ảnh và clip trên bản pc -> giờ mới xử lý
 			jQuery('.img-max-width').each(function() {
-				var max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
+				var max_width = jQuery(this).attr('data-max-width') || '';
+				if ( max_width == '' ) {
+					max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
+				}
 				max_width = Math.ceil( max_width ) - 1;
 //				console.log(max_width);
 				var max_sizes_width = max_width + 99;
