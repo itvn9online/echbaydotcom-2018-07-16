@@ -94,16 +94,40 @@ function EBE_get_html_profile () {
 function EBE_get_html_address () {
 	global $__cf_row;
 	
+	//
+//	$dc = nl2br( $__cf_row['cf_diachi'] );
+	$a = explode("\n", trim( $__cf_row['cf_diachi'] ) );
+	if ( count( $a ) > 1 ) {
+		$dc = '';
+		foreach ( $a as $k => $v ) {
+			$v = trim( $v );
+			
+			if ( $k == 0 ) {
+				$v = EBE_get_lang('fd_diachi') . ' ' . $v;
+			}
+			
+			if ( $v == '' ) {
+				$v = '&nbsp;';
+			}
+			
+			$dc .= '<p>' . $v . '</p>';
+		}
+	}
+	else {
+		$dc = EBE_get_lang('fd_diachi') . ' ' . trim( $__cf_row['cf_diachi'] );
+	}
+	
+	//
 	return '
 	<div class="footer-address">
 		<div class="footer-address-company bold">' . $__cf_row['cf_ten_cty'] . '</div>
 		<div class="footer-address-info l19">
-			<div class="footer-address-address"><strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i> ' . nl2br( $__cf_row['cf_diachi'] ) . '</div>
+			<div class="footer-address-address">' . $dc . '</div>
 			<div class="footer-address-phone">
-				<div class="footer-address-hotline"><strong>Hotline:</strong> <i class="fa fa-phone"></i> <span class="phone-numbers-inline">' . $__cf_row['cf_call_hotline'] . '</span></div>
-				<div class="footer-address-cell"><strong>Điện thoại:</strong> <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></div>
+				<div class="footer-address-hotline">' . EBE_get_lang('fd_hotline') . ' <span class="phone-numbers-inline">' . $__cf_row['cf_call_hotline'] . '</span></div>
+				<div class="footer-address-cell">' . EBE_get_lang('fd_dienthoai') . ' <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></div>
 			</div>
-			<div class="footer-address-email"><strong>Email:</strong> <i class="fa fa-envelope-o"></i> <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
+			<div class="footer-address-email">' . EBE_get_lang('fd_email') . ' <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
 		</div>
 	</div>';
 }

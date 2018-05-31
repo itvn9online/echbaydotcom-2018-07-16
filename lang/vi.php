@@ -194,6 +194,12 @@ $___eb_lang[eb_key_for_site_lang . 'amp_all_rights'] = 'Toàn bộ phiên bản'
 $___eb_lang[eb_key_for_site_lang . 'amp_buy_now'] = '{tmp.web_link}cart?id={tmp.id}';
 $eb_note_lang[eb_key_for_site_lang . 'amp_buy_now'] = 'Nhập đầy đủ cấu trúc URL dẫn tới giỏ hàng, nhập <strong>null</strong> để tắt tính năng này.';
 
+// footer address
+$___eb_lang[eb_key_for_site_lang . 'fd_diachi'] = '<strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i>';
+$___eb_lang[eb_key_for_site_lang . 'fd_hotline'] = '<strong>Hotline:</strong> <i class="fa fa-phone"></i>';
+$___eb_lang[eb_key_for_site_lang . 'fd_dienthoai'] = '<strong>Điện thoại:</strong>';
+$___eb_lang[eb_key_for_site_lang . 'fd_email'] = '<strong>Email:</strong> <i class="fa fa-envelope-o"></i>';
+
 
 
 
