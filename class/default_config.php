@@ -90,6 +90,7 @@ $__cf_row_default = array(
 	'cf_default_body_bg' => '#ffffff',
 	'cf_default_div_bg' => '#ffffff',
 	'cf_default_color' => '#000000',
+	'cf_default_size' => 10,
 	'cf_default_link_color' => '#1264aa',
 	
 	'cf_default_bg' => '#ff4400',

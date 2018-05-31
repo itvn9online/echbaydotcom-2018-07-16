@@ -193,7 +193,22 @@ function create_deault_css () {
 	
 	// body
 	a = f.cf_default_body_bg.value;
-	str += 'body { background-color: ' + a + '; }';
+	var new_css = '';
+	
+	if ( a == '#ffffff' || a == '#fff' ) { }
+	else {
+		new_css += 'background-color: ' + a + ';';
+	}
+	
+	a = f.cf_default_size.value;
+	if ( a != '' && a > 0 && a != 10 ) {
+		new_css += 'font-size: ' + a + 'pt;';
+	}
+	
+	if ( new_css != '' ) {
+		str += 'body {' + new_css + '}';
+	}
+	
 	
 	// DIV bg default
 	a = f.cf_default_div_bg.value;
