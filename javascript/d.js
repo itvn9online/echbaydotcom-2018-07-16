@@ -2037,9 +2037,9 @@ function ___eb_details_post_run ( r ) {
 	
 	
 	// thêm chiều rộng tuyệt đối cho khung nội dung
-	var a = $('#content_img_product').attr('data-max-width') || '';
+	var a = jQuery('#content_img_product').attr('data-max-width') || '';
 	if ( a == '' ) {
-		$('#content_img_product').attr({
+		jQuery('#content_img_product').attr({
 			'data-max-width': cf_img_details_maxwidth
 		});
 	}
@@ -2416,7 +2416,7 @@ if ( arr_detect_browser == 'safari' ) {
 					
 					//
 //					str += '<a href="' + str_for_click_call + ':' + a[i].toString().replace(/[^0-9|\+]/g, '') + '" rel="nofollow" class="gg-phone-conversion">' + a[i] + '</a>';
-					str += '<a title="' + a[i] + '" class="phone-to-cell">' + a[i] + '</a>';
+					str += '<a title="' + jQuery.trim( g_func.strip_tags( a[i] ) ) + '" class="phone-to-cell">' + a[i] + '</a>';
 				}
 			}
 			
