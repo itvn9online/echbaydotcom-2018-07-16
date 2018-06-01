@@ -148,6 +148,30 @@ function check_update_config() {
 	
 	
 	
+	// tạo HTML cho địa chỉ
+	var a = $.trim( f.cf_diachi.value );
+	f.cf_p_diachi.value = '';
+	if ( a != '' ) {
+		a = a.split( "\n" );
+		for ( var i = 0; i < a.length; i++ ) {
+			a[i] = $.trim( a[i] );
+			
+			// thêm chữ địa chỉ cho dòng đầu tiên
+			if ( i == 0 ) {
+				a[i] = '%tmp.fd_diachi% ' + a[i];
+			}
+			// nếu trống -> tạo cách dòng
+			else if ( a[i] == '' ) {
+				a[i] = '&nbsp;';
+			}
+			
+			// tổng hợp lại
+			f.cf_p_diachi.value += '<p>' + a[i] + '</p>';
+		}
+	}
+	
+	
+	
 	//
 	khong_update_lien_tuc();
 	

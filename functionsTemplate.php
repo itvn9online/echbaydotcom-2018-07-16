@@ -95,26 +95,11 @@ function EBE_get_html_address () {
 	global $__cf_row;
 	
 	//
-//	$dc = nl2br( $__cf_row['cf_diachi'] );
-	$a = explode("\n", trim( $__cf_row['cf_diachi'] ) );
-	if ( count( $a ) > 1 ) {
-		$dc = '';
-		foreach ( $a as $k => $v ) {
-			$v = trim( $v );
-			
-			if ( $k == 0 ) {
-				$v = EBE_get_lang('fd_diachi') . ' ' . $v;
-			}
-			
-			if ( $v == '' ) {
-				$v = '&nbsp;';
-			}
-			
-			$dc .= '<p>' . $v . '</p>';
-		}
+	if ( $__cf_row['cf_p_diachi'] == '' ) {
+		$dc = EBE_get_lang('fd_diachi') . ' ' . nl2br( trim( $__cf_row['cf_diachi'] ) );
 	}
 	else {
-		$dc = EBE_get_lang('fd_diachi') . ' ' . trim( $__cf_row['cf_diachi'] );
+		$dc = str_replace( '%tmp.fd_diachi%', EBE_get_lang('fd_diachi'), $__cf_row['cf_p_diachi'] );
 	}
 	
 	//

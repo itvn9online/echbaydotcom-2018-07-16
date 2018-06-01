@@ -53,6 +53,7 @@ $__cf_row_default = array(
 	'cf_call_hotline' => '',
 	
 	'cf_diachi' => '',
+	'cf_p_diachi' => '',
 	
 	'cf_bank' => '',
 	

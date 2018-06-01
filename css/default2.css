@@ -2139,3 +2139,4 @@ iframe[name="google_conversion_frame"] {
 	cursor: pointer;
 }
 .thread-details-index li:hover { text-decoration: underline; }
+.footer-address-address p { margin: 0; }
