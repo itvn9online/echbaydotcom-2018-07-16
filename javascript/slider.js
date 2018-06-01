@@ -49,6 +49,25 @@ visible: 1
 *
 * callBack: function sẽ được chạy sau khi tạo slider xong, thường dùng để xử lý các chức năng riêng ngoài việc tạo slider mặc định
 */
+function jEBE_multi_slider ( jd, conf, callBack ) {
+	
+	if ( typeof conf != 'object' ) {
+		conf = {};
+	}
+	
+	//
+	if ( typeof callBack != 'function' ) {
+		callBack = null;
+	}
+	
+	jd = jd.split( ',' );
+	
+	for ( var i = 0; i < jd.length; i++ ) {
+		jEBE_slider ( jQuery.trim( jd[i] ), conf, callBack );
+	}
+	
+}
+
 function jEBE_slider ( jd, conf, callBack ) {
 	
 	//

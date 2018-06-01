@@ -57,12 +57,16 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		// Nếu có link trỏ tới 1 nhóm nào đó -> lấy link và tên nhóm để gán cho post này
 		if ( $alias_taxonomy > 0 ) {
 			$new_name = WGR_get_all_term( $alias_taxonomy );
+//			print_r( $new_name );
 			
 			//
 			if ( ! isset($new_name->errors) ) {
 				$post->post_title = $new_name->name;
 //				$post->p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
 				$post->p_link = _eb_cs_link( $new_name );
+				
+				//
+				$post->post_excerpt = $new_name->description;
 			}
 		}
 		else {
