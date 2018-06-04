@@ -1684,8 +1684,15 @@ function ___eb_list_post_run ( r ) {
 		if ( a != '' ) {
 			
 			// chỉ xử lý khi nội dung đủ lớn
-//			if ( cf_cats_description_viewmore > 0 && jQuery('.global-cats-description').height() < cf_cats_description_viewmore * 1.5 ) {
-			if ( cf_cats_description_viewmore == 0 || jQuery('.global-cats-description').height() < cf_cats_description_viewmore * 1.5 ) {
+			if ( cf_cats_description_viewmore < 0 ) {
+				if ( cf_tester_mode == 1 ) console.log('View more category disable!');
+				
+				jQuery('.global-cats-description').hide();
+				
+				return false;
+			}
+//			else if ( cf_cats_description_viewmore > 0 && jQuery('.global-cats-description').height() < cf_cats_description_viewmore * 1.5 ) {
+			else if ( cf_cats_description_viewmore == 0 || jQuery('.global-cats-description').height() < cf_cats_description_viewmore * 1.5 ) {
 //				console.log( jQuery('.global-cats-description').height() );
 				jQuery('.global-cats-description').addClass('global-cats-description-active');
 				return false;
