@@ -59,6 +59,7 @@ $add_data_id = array (
 		
 		// nút chuyển ảnh trên slider
 		'cf_arrow_big_banner' => '\'' . $__cf_row['cf_arrow_big_banner'] . '\'',
+		'cf_slider_big_play' => $__cf_row['cf_slider_big_play'],
 		
 		// chế độ chuyển slider cho trang chi tiết
 		'cf_details_right_thumbnail' => ( $__cf_row['cf_details_right_thumbnail'] == 1 || $__cf_row['cf_details_left_thumbnail'] ) ? 1 : 0,

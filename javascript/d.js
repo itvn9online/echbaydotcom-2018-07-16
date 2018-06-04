@@ -336,7 +336,10 @@ function ___eb_details_slider_v2 () {
 	// tải slider theo code mới
 	jEBE_slider( '.thread-details-mobileAvt', {
 		buttonListNext: cf_details_show_list_next == 1 ? true : false,
-//		autoplay : true,
+		
+		// tự động chạy slider theo thời gian mà người dùng chỉ định
+		autoplay : cf_slider_details_play > 0 ? true : false,
+		speedNext : cf_slider_details_play,
 		
 		sliderArrow: true,
 		sliderArrowWidthLeft : '40%',
@@ -1167,7 +1170,8 @@ var big_banner_timeout1 = null;
 	
 	// tải slider theo code mới
 	jEBE_slider( '.oi_big_banner', {
-		autoplay : true,
+		autoplay : cf_slider_big_play > 0 ? true : false,
+		speedNext: cf_slider_big_play,
 		
 		sliderArrow: ( cf_arrow_big_banner == 1 ) ? true : false,
 		

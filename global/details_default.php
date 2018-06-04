@@ -918,6 +918,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	cf_options_excerpt="' . $__cf_row['cf_options_excerpt'] . '",
 	cf_post_rm_img_width="' . $__cf_row['cf_post_rm_img_width'] . '",
 	cf_product_details_viewmore=' . $__cf_row['cf_product_details_viewmore'] . ',
+	cf_slider_details_play=' . $__cf_row['cf_slider_details_play'] . ',
 	cf_img_details_maxwidth=' . $__cf_row['cf_img_details_maxwidth'] . ',
 	trv_ngayhethan=' . $trv_ngayhethan . ';
 </script>';
