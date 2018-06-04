@@ -10,6 +10,8 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	global $eb_background_for_post;
 //	global $eb_background_for_mobile_post;
 	
+//	print_r( $other_options );
+	
 	//
 	$ant_ten = '';
 	$ant_option = '';
@@ -107,6 +109,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 //		else if ( $post->post_type == 'blog' && $post->post_excerpt == '' ) {
 		else if ( $post->post_excerpt == '' && $__cf_row['cf_content_for_excerpt_null'] > 69 ) {
 			$post->post_excerpt = _eb_short_string( strip_tags ( $post->post_content ), $__cf_row['cf_content_for_excerpt_null'] );
+//			$post->post_excerpt = 'bbbbbbbb';
 		}
 		/*
 		else {

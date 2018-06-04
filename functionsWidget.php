@@ -380,6 +380,8 @@ function WGR_add_option_class_for_post_widget ( $a ) {
 function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //	global $__cf_row;
 	
+//	print_r( $instance );
+	
 	extract ( $args );
 	
 	//
@@ -411,6 +413,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	$get_childs = isset( $instance ['get_childs'] ) ? $instance ['get_childs'] : 'off';
 	
 	$get_full_content = isset( $instance ['get_full_content'] ) ? $instance ['get_full_content'] : 'off';
+//	echo $get_full_content . '<br>' . "\n";
 	$content_only = isset( $instance ['content_only'] ) ? $instance ['content_only'] : 'off';
 	
 	$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
@@ -833,13 +836,26 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		// mặc định thì load theo post
 		else {
 			*/
+			/*
+			if ( $get_full_content == 0 ) {
+				$get_full_content = 'off';
+			}
+			echo $get_full_content . '<br>' . "\n";
+			*/
+			/*
+			print_r( array(
+				'pot_tai' => $cat_type,
+				'get_full_content' => ( $get_full_content === 'on' ) ? 1 : 0
+			) );
+			*/
+			
 			$content = _eb_load_post( $post_number, $arr_select_data,
 	//			), file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/blog_node.html', 1 ) );
 	//			), EBE_get_page_template( 'blog_node' ) );
 	//			), EBE_get_page_template( $html_node ) );
 			$html_node, 0, array(
 				'pot_tai' => $cat_type,
-				'get_full_content' => $get_full_content == 'on' ? 1 : 0
+				'get_full_content' => $get_full_content === 'on' ? 1 : 0
 			) );
 			
 			// nếu không có dữ liệu -> in ra dữ liệu để test
