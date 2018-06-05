@@ -63,6 +63,8 @@ else if ( $_POST['cf_sys_email'] != '' && $_POST['cf_sys_email'] != 'wpmail' ) {
 //
 $_POST['cf_tester_mode'] = WGR_default_config('cf_tester_mode');
 
+$_POST['cf_debug_mode'] = WGR_default_config('cf_debug_mode');
+
 $_POST['cf_gtag_id'] = WGR_default_config('cf_gtag_id');
 
 $_POST['cf_on_off_json'] = WGR_default_config('cf_on_off_json');
@@ -519,7 +521,9 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 			if ( strstr( $v, "'WP_DEBUG'" ) == true || strstr( $v, '"WP_DEBUG"' ) == true ) {
 //				echo $v . '<br>' . "\n";
 				
-				if ( $_POST['cf_tester_mode'] == 1 ) {
+				//
+//				if ( $_POST['cf_tester_mode'] == 1 ) {
+				if ( $_POST['cf_debug_mode'] == 1 ) {
 					$content_of_new_wp_config[$k] = "define('WP_DEBUG', true);";
 				}
 				else {
