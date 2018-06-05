@@ -81,7 +81,7 @@ foreach ( $sql as $v ) {
 			$google_product_category = $cache_ant_id[ $ant_id ];
 		}
 		else {
-			$google_product_category = _eb_get_cat_object( $id, '_eb_category_google_product' );
+			$google_product_category = _eb_get_cat_object( $ant_id, '_eb_category_google_product' );
 			
 			// lấy nhóm mặc định nếu chưa có
 			if ( $google_product_category == '' ) {

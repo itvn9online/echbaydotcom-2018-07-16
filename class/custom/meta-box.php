@@ -206,7 +206,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_category_favicon' => 'Favicon là một ảnh nhỏ hơn, kích thước khuyến nghị là 64x64 pixel. Ảnh này thường dùng trong các menu nếu CSS của menu có hỗ trợ chức năng.',
 	'_eb_category_custom_css' => 'Là nơi nhập class CSS riêng để tiện cho việc thay đổi CSS theo từng danh mục cha, con...',
 	'_eb_category_title' => 'Với định dạng màu sắc thì nhập mã màu vào (bao gồm cả dấu #)',
-	'_eb_category_google_product' => 'Tạo nhóm sản phẩm theo tiêu chuẩn của Google. <a href="https://support.google.com/merchants/answer/6324436?hl=vi" target="_blank" rel="nofollow">Tìm hiểu thêm...</a> Nên sử dụng nhóm sản phẩm dạng ID (số) theo <a href="https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt" target="_blank" rel="nofollow">danh sách này</a>, và chỉ sử dụng nhóm cấp 1 thay vì các nhóm con chi tiết.',
+	'_eb_category_google_product' => 'Tạo nhóm sản phẩm theo tiêu chuẩn của Google. <a href="https://support.google.com/merchants/answer/6324436?hl=vi" target="_blank" rel="nofollow">Tìm hiểu thêm...</a> Nên sử dụng nhóm sản phẩm dạng ID (số) theo <a href="https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt" target="_blank" rel="nofollow">danh sách này</a>, và chỉ sử dụng <strong>nhóm cấp 1</strong> thay vì các nhóm con chi tiết.',
 	'_eb_category_order' => 'Số càng lớn thì độ ưu tiên càng cao, nhóm sẽ được ưu tiên xuất hiện trước',
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 //	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
