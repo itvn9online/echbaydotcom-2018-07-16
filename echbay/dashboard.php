@@ -12,11 +12,12 @@ $str_eb_warning = '';
 
 
 // Nên bật WP_DEBUG = true
-if ( ! defined('WP_DEBUG') || WP_DEBUG == true ) {
+//if ( ! defined('WP_DEBUG') || WP_DEBUG == true ) {
+if ( $__cf_row['cf_tester_mode'] == 1 ) {
 	$str_eb_warning .= '
 	<div><i class="fa fa-warning orgcolor"></i> CẢNH BÁO: Nên tắt tính năng kiểm thử lỗi trên wordpress khi chạy chính thức, chỉ bật nó lên khi làm việc trên localhost hoặc cần kiểm tra lỗi khi website đã chạy chính thức. Khuyên dùng:
-		<pre><code>define( \'WP_DEBUG\', false );</code></pre>
-		<div>Hoặc bạn có thể <a href="' . admin_link . 'admin.php?page=eb-config&tab=meta-home&support_tab=cf_tester_mode" target="_blank" rel="nofollow">vào đây</a> để thay đổi trực tiếp cài đặt này.</div>
+		<pre class="d-none"><code>define( \'WP_DEBUG\', false );</code></pre>
+		<div>Bạn có thể <a href="' . admin_link . 'admin.php?page=eb-config&tab=meta-home&support_tab=cf_tester_mode" target="_blank" rel="nofollow">vào đây</a> để thay đổi trực tiếp cài đặt này.</div>
 	</div>';
 }
 
