@@ -185,7 +185,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 	set_default_conf( 'sliderArrowWidthRight', 'auto' );
 	
 	// conf['sliderArrow']
-	if ( cf_tester_mode == 1 ) console.log( conf );
+	if ( cf_tester_mode == 1 ) {
+		console.log( jd );
+		console.log( conf );
+	}
 	
 	
 	// kiểm tra có li nào ở trong không

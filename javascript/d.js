@@ -1243,6 +1243,11 @@ function ___eb_big_banner () {
 	global_chantrang_len = Math.ceil( global_chantrang_len ) - 1;
 //	console.log( global_chantrang_len );
 	
+	// hiển thị 2 đối với bản mobile
+	if ( global_chantrang_len == 1 && jQuery(window).width() < 400 ) {
+		global_chantrang_len = 2;
+	}
+	
 	// nếu nhiều hơn so với số LI thật -> gán lại giá trị mới
 	/*
 	if ( global_chantrang_len > len ) {
@@ -1269,8 +1274,8 @@ function ___eb_big_banner () {
 	}
 	
 	// đủ thì hiển thị và tạo hiệu ứng
-	var li_fo_scroll = jQuery('.banner-chan-trang:first').attr('data-scroll') || global_chantrang_len;
 	/*
+	var li_fo_scroll = jQuery('.banner-chan-trang:first').attr('data-scroll') || global_chantrang_len;
 	if ( typeof li_fo_scroll != 'number' ) {
 		li_fo_scroll = global_chantrang_len;
 	}
