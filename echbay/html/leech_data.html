@@ -248,7 +248,7 @@
 			</tr>
 			<tr>
 				<td class="t">Ngày đăng</td>
-				<td class="i"><input type="text" name="t_ngaydang" value="" class="m" /></td>
+				<td class="i"><input type="text" name="t_ngaydang" value="" class="n" /></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
@@ -272,7 +272,7 @@
 			</tr>
 			<tr>
 				<td class="t">Giá cũ</td>
-				<td class="i"><input type="text" name="t_giacu" value="" class="m" /></td>
+				<td class="i"><input type="text" name="t_giacu" value="" class="n" /></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
@@ -280,7 +280,7 @@
 			</tr>
 			<tr>
 				<td class="t">Giá mới</td>
-				<td class="i"><input type="text" name="t_giamoi" value="" class="m" /></td>
+				<td class="i"><input type="text" name="t_giamoi" value="" class="n" /></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
@@ -290,6 +290,11 @@
 				<td class="t">Định dạng tiền tệ</td>
 				<td class="i"><input type="text" id="details_format_price" value="" placeholder="/[^0-9\-\+]/g hoặc /[^0-9\-\+\.]/g" class="m" />
 					<div class="small">Mặc định, tiền tệ sau khi lấy sẽ bị lọc hết các dữ liệu khác, chỉ giữ lại số, dấu - với dấu +</div></td>
+			</tr>
+			<tr>
+				<td class="t">Giá tối thiểu</td>
+				<td class="i"><input type="number" id="details_min_price" value="" class="n" />
+					<div class="small">Khi giá này được thiết lập, các sản phẩm có giá thấp hơn sẽ bị bỏ qua. Ví dụ bạn chỉ muốn lấy sản phẩm có giá từ 200,000đ trở lên, hãy nhập: 200000</div></td>
 			</tr>
 			<tr>
 				<td class="t">Mô tả ngắn</td>

@@ -170,7 +170,15 @@ function leech_data_format_price ( f ) {
 		else {
 			f.t_giacu.value = f.t_giacu.value.toString().replace( eval(format_price), '');
 		}
+		
+		// chuyển giá cũ sang giá mới
+		if ( f.t_giamoi.value == '' ) {
+			f.t_giamoi.value = f.t_giacu.value;
+			f.t_giacu.value = '';
+		}
 	}
+	
+	//
 	if ( f.t_giamoi.value != '' ) {
 		if ( format_price == '' ) {
 			f.t_giamoi.value = g_func.number_only( f.t_giamoi.value );
@@ -178,7 +186,18 @@ function leech_data_format_price ( f ) {
 		else {
 			f.t_giamoi.value = f.t_giamoi.value.toString().replace( eval(format_price), '');
 		}
+		
+		// nếu có giá thấp nhất -> so sánh xong mới lấy
+		var min_price = jQuery('#details_min_price').val() || '';
+		if ( min_price != '' && parseInt( f.t_giamoi.value.split('.')[0], 10 ) < parseInt( min_price, 10 ) ) {
+			ket_thuc_lay_du_lieu( 0, '<span class="orgcolor cur" onclick="func_leech_data_lay_chi_tiet(\'' +current_url+ '\');">Min price</span>' );
+			
+			return false;
+		}
 	}
+	
+	//
+	return true;
 }
 
 function function_rieng_theo_domain () {
@@ -189,7 +208,9 @@ function function_rieng_theo_domain () {
 		current_img_domain = document.domain;
 	
 	//
-	leech_data_format_price(f);
+	if ( leech_data_format_price(f) == false ) {
+		return false;
+	}
 	
 	//
 	f.t_tieude.value = f.t_tieude.value.replace( /\&amp\;/g, '&' );
@@ -255,6 +276,8 @@ function function_rieng_theo_domain () {
 		}
 	}
 	
+	//
+	return true;
 }
 
 
@@ -1167,7 +1190,9 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 			*/
 			
 			//
-			function_rieng_theo_domain();
+			if ( function_rieng_theo_domain() == false ) {
+				return false;
+			}
 			
 //			if ( check_lech_data_submit() == false ) return false;
 			
@@ -2176,6 +2201,7 @@ var default_arr_cookie_lamviec = {
 	details_giacu : '',
 	details_giamoi : '',
 	details_format_price : '',
+	details_min_price : '',
 	details_img : '',
 	details_youtube_url : '',
 	details_title : '',
