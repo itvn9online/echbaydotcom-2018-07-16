@@ -264,6 +264,7 @@ $__cf_row_default = array(
 	'cf_details_excerpt' => 1,
 	'cf_details_bold_excerpt' => 'off',
 	'cf_options_excerpt' => 'off',
+	'cf_details_ul_options' => 'off',
 	
 	// mặc định sẽ cắt nội dung trong phần content nếu excerpt để trống
 	'cf_content_for_excerpt_null' => 130,

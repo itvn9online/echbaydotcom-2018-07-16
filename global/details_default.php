@@ -890,6 +890,11 @@ if ( $__post->post_type == 'post' ) {
 <link rel="stylesheet" id="thumb-col-left" href="' . EB_DIR_CONTENT . '/echbaydotcom/css/template/thumb-col-left.css" type="text/css" media="all" />';
 
 	}
+	
+	//
+	if ( $__cf_row['cf_details_ul_options'] == 1 ) {
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thread-details2-options.css' ] = 1;
+	}
 }
 
 
@@ -916,6 +921,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	cf_details_excerpt="' . $__cf_row['cf_details_excerpt'] . '",
 	cf_details_bold_excerpt="' . $__cf_row['cf_details_bold_excerpt'] . '",
 	cf_options_excerpt="' . $__cf_row['cf_options_excerpt'] . '",
+	cf_details_ul_options="' . $__cf_row['cf_details_ul_options'] . '",
 	cf_post_rm_img_width="' . $__cf_row['cf_post_rm_img_width'] . '",
 	cf_product_details_viewmore=' . $__cf_row['cf_product_details_viewmore'] . ',
 	cf_slider_details_play=' . $__cf_row['cf_slider_details_play'] . ',
