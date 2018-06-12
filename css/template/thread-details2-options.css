@@ -1,4 +1,5 @@
 /* tạo style cho phần option theo dạng UL LI */
+.thread-details-options { display: none; }
 .thread-details2-options {
 	padding: 10px 20px;
 	list-style: disc;
