@@ -6,11 +6,9 @@
 	color: #c00;
 }
 .thread-details2-options li { padding: 5px 0; }
-.thread-details2-options div {
-	color: #333;
-	display: inline-block;
-}
+.thread-details2-options div { display: inline-block; }
 .thread-details2-options li div:first-child { font-weight: bold; }
 .thread-details2-options li div:first-child:after { content: ":"; }
 .thread-details2-options li div:last-child { }
+.thread-details2-options div,
 .thread-details2-options a { color: #333; }

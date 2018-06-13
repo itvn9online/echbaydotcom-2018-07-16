@@ -287,6 +287,10 @@ $eb_type_lang[eb_key_for_site_lang . 'bigbanner_num'] = 'number';
 // thẻ H2 cho phần chi tiết tin tức
 $___eb_lang[eb_key_for_site_lang . 'tag_blog_excerpt'] = 'h2';
 
+//
+$___eb_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'off';
+$eb_note_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'on/ off';
+
 
 // phần ngôn ngữ riêng, để sử dụng cho các câu từ mà một số website sẽ dùng
 $___eb_lang[eb_key_for_site_lang . 'custom_text'] = 'Custom text';
