@@ -62,6 +62,32 @@ else if ( act == '404' ) {
 
 
 
+// tạo slider cho widget
+(function () {
+	var i = 0;
+	
+	jQuery('.ebwidget-run-slider').each(function() {
+		var c = 'ebwidget-run-slider' + i;
+		console.log(c);
+		
+		jQuery(this).addClass( c );
+		
+		c = '.' + c;
+		
+		jEBE_slider( c, {
+			size : jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '',
+//			buttonListNext: false,
+			autoplay: true
+//		}, function () {
+		} );
+		
+		i++;
+	});
+})();
+
+
+
+
 
 // hệ thống banner quảng cáo
 //___eb_logo_doitac_chantrang(6);

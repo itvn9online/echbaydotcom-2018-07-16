@@ -25,6 +25,8 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'hide_title' => 0,
 		'hide_description' => 0,
 		'hide_info' => 0,
+		// khi thuộc tính này kích hoạt -> ảnh sẽ được đặt làm slider
+		'run_slider' => 0,
 		'post_type' => 'post',
 		// dành cho mục quảng cáo -> mở dưới dạng video youtube
 		'open_youtube' => 0,
@@ -366,6 +368,10 @@ function WGR_add_option_class_for_post_widget ( $a ) {
 	
 	if ( isset( $a ['hide_info'] ) && $a ['hide_info'] == 'on' ) {
 		$s .= ' hide-blogs-info';
+	}
+	
+	if ( isset( $a ['run_slider'] ) && $a ['run_slider'] == 'on' ) {
+		$s .= ' ebwidget-run-slider';
 	}
 	
 	if ( isset( $a ['open_youtube'] ) && $a ['open_youtube'] == 'on' ) {
