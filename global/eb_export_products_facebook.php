@@ -2,6 +2,13 @@
 
 
 
+/*
+* Cấu trúc dữ liệu sản phẩm theo tiêu chuẩn của google
+* https://support.google.com/merchants/topic/6324338?hl=vi&ref_topic=7294998
+*/
+
+
+
 // lấy nhóm cấp 1 của sản phẩm này
 function WGR_rss_get_parent_cat ( $id ) {
 	$cat = get_term( $id );
@@ -94,6 +101,18 @@ foreach ( $sql as $v ) {
 	
 	
 	//
+	$price = _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_oldprice', 0 ) );
+	$sale_price = _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_price', 0 ) );
+	
+	// chỉnh lại giá về 1 thông số
+	if ( $price == 0 && $sale_price > 0 ) {
+		$price = $sale_price;
+		$sale_price = 0;
+	}
+	
+	
+	
+	//
 echo '<item>
 	<g:id>' . $v->ID . '</g:id>
 	<g:availability>' . ( _eb_get_post_object( $v->ID, '_eb_product_buyer', 0 ) < _eb_get_post_object( $v->ID, '_eb_product_quantity', 0 ) ? 'in stock' : 'out of stock' ) . '</g:availability>
@@ -102,7 +121,8 @@ echo '<item>
 	<g:image_link>' . _eb_get_post_img( $v->ID ) . '</g:image_link>
 	<g:link>' . $p_link . '</g:link>
 	<g:title><![CDATA[' . $v->post_title . ']]></g:title>
-	<g:price>' . $before_price . _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_price', 0 ) ) . $after_price . '</g:price>
+	<g:price>' . $before_price . $price . $after_price . '</g:price>
+	<g:sale_price>' . $before_price . $sale_price . $after_price . '</g:sale_price>
 	<g:brand>' . $rss_brand . '</g:brand>
 	<g:google_product_category>' . $google_product_category . '</g:google_product_category>
 	<g:item_group_id>' . $ant_id . '</g:item_group_id>
