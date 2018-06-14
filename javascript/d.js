@@ -1776,7 +1776,7 @@ function WGR_for_post_details ( function_for_post, function_for_blog ) {
 		return false;
 	}
 	
-	//
+	// post
 	if ( switch_taxonomy == 'post' ) {
 		/*
 		if ( typeof function_for_post == 'function' ) {
@@ -1787,6 +1787,7 @@ function WGR_for_post_details ( function_for_post, function_for_blog ) {
 			___eb_details_post_run();
 //		}
 	}
+	// blog, page...
 	else {
 		/*
 		if ( typeof function_for_blog == 'function' ) {
@@ -2266,6 +2267,22 @@ function ___eb_global_blog_details_runing ( r ) {
 	
 	if ( typeof Child_eb_global_blog_details_runing == 'function' ) {
 		Child_eb_global_blog_details_runing();
+	}
+	
+	
+	// lưu cookie tạo view cho blog, page
+	if ( pid > 0 ) {
+		var check_update_views = g_func.getc('wgr_post_id_view_history'),
+			new_id = '[' + pid + ']';
+		if ( cf_tester_mode == 1 ) {
+			console.log(check_update_views);
+		}
+		
+		if ( check_update_views == null || check_update_views == '' ) {
+			check_update_views = '';
+		}
+		
+		g_func.setc('wgr_post_id_view_history', check_update_views.replace( new_id, '' ) + new_id, 0, 7);
 	}
 }
 
