@@ -29,7 +29,7 @@ if ( typeof $ != 'function' ) {
 //	console.log(ok);
 	
 	// khoảng thời gian để chuyển URL cuối cùng
-	g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 900 );
+	g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
 //	return false;
 	
 	//
