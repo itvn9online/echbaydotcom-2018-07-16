@@ -606,8 +606,6 @@ function EBE_get_text_version ( $str ) {
 						}
 					}
 					
-					// xóa file htacess mẫu, file này chỉ để xem trên github
-					
 					// v1
 					/*
 					if ( file_exists( $dir . '.gitattributes' ) ) {

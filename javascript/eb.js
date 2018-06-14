@@ -313,7 +313,7 @@ var g_func = {
 		
 		
 		//
-		if ( cf_tester_mode == 1 ) console.log( 'Set cookie: ' + name + ' with value: ' + value + ' for domain: ' + cdomain );
+		if ( cf_tester_mode == 1 ) console.log( 'Set cookie: ' + name + ' with value: ' + value + ' for domain: ' + cdomain + ', time: ' + seconds );
 	},
 	getc: function (name) {
 		var nameEQ = encodeURIComponent(name) + "=",
