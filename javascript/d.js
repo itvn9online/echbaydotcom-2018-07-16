@@ -2171,13 +2171,22 @@ function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history, limi
 		// thêm vào cuối
 //		check_history[ check_history.length - 1 ] = pid + ']';
 		
-		// thêm vào đầu
-		check_history[ 0 ] = '[' + add_id;
-		
-//		console.log(check_history);
-		
-		// sau đó ghép chuỗi lại
-		str_history = check_history.join('][');
+		// sau đó ghép chuỗi lại -> trong giới hạn cho phép thì ghép luôn là được
+		if ( check_history.length < limit_history * 2 ) {
+			// thêm vào đầu
+			check_history[ 0 ] = '[' + add_id;
+			
+			str_history = check_history.join('][');
+		}
+		else {
+			str_history = '';
+			for ( var i = 0; i < limit_history + 1; i++ ) {
+				str_history += check_history[i] + '][';
+			}
+			// thêm vào cuối
+			str_history += add_id + ']';
+		}
+		if ( cf_tester_mode == 1 ) console.log('Split history: ' + str_history);
 	}
 	// thêm mới
 	else {
@@ -2278,11 +2287,15 @@ function ___eb_global_blog_details_runing ( r ) {
 			console.log(check_update_views);
 		}
 		
-		if ( check_update_views == null || check_update_views == '' ) {
+		// nếu không có dữ liệu hoặc xem nhiều tin quá -> xóa bớt đi thôi
+		if ( check_update_views == null || check_update_views.split('][').length > 30 ) {
 			check_update_views = '';
 		}
 		
-		g_func.setc('wgr_post_id_view_history', check_update_views.replace( new_id, '' ) + new_id, 0, 7);
+		//
+		if ( check_update_views.split( new_id ).length == 1 ) {
+			g_func.setc('wgr_post_id_view_history', new_id + check_update_views, 0, 7);
+		}
 	}
 }
 
