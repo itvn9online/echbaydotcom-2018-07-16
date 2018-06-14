@@ -594,9 +594,11 @@ $product_list_color = '';
 
 // với blog -> sử dụng giao diện khác post
 if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
+	include EB_THEME_PLUGIN_INDEX . 'global/details_count_view.php';
 	include EB_THEME_PLUGIN_INDEX . 'global/details_blog.php';
 }
 else if ( $__post->post_type == 'page' ) {
+	include EB_THEME_PLUGIN_INDEX . 'global/details_count_view.php';
 	include EB_THEME_PLUGIN_INDEX . 'global/details_page.php';
 }
 // post

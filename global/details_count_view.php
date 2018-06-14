@@ -2,6 +2,12 @@
 
 
 
+/*
+* Cập nhật lượt xem cho phần tin tức, page
+*/
+
+
+
 
 // lấy lượt xem sản phẩm
 $trv_luotxem = _eb_number_only( _eb_get_post_object( $pid, '_eb_product_views', 0 ) );
