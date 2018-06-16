@@ -9,7 +9,7 @@
 $eb_all_themes_support["motocenter"] = array();
 $eb_all_themes_support["motocenter"]["name"] = "motocenter";
 $eb_all_themes_support["motocenter"]["screenshot"] = "https://img1.webgiare.org/motocenter.jpg";
-$eb_all_themes_support["motocenter"]["price"] = 1200000;
+$eb_all_themes_support["motocenter"]["price"] = 4500000;
 $eb_all_themes_support["motocenter"]["demo"] = "motocenter.vn";
 //
 $eb_all_themes_support["motocenter"]["top"][] = "echbaytwo-top1.php";
