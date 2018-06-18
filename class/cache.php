@@ -390,31 +390,41 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			$arr_meta[] = '<link rel="publisher" href="' .$__cf_row ['cf_google_plus']. '" />';
 		}
 		
+		// https://developers.facebook.com/docs/plugins/comments/#settings
 		if ( $__cf_row ['cf_facebook_id'] != '' ) {
-			$arr_meta[] = '<meta property="fb:app_id" content="' .$__cf_row ['cf_facebook_id']. '" />';
+			$arr_meta[] = '<meta property="fb:app_id" content="' . $__cf_row ['cf_facebook_id'] . '" />';
 		}
-		
-		if ( $__cf_row ['cf_facebook_admin_id'] != '' ) {
-			$arr_meta[] = '<meta property="fb:admins" content="' .$__cf_row ['cf_facebook_admin_id']. '" />';
+		else if ( $__cf_row ['cf_facebook_admin_id'] != '' ) {
+			// v2 -> fb có ghi chú, chỉ sử dụng 1 trong 2 (fb:app_id hoặc fb:admins)
+			$fb_admins = explode( ',', $__cf_row ['cf_facebook_admin_id'] );
+			foreach ( $fb_admins as $v ) {
+				$v = trim( $v );
+				if ( $v != '' ) {
+					$arr_meta[] = '<meta property="fb:admins" content="' . $v . '" />';
+				}
+			}
+			
+			// v1
+//			$arr_meta[] = '<meta property="fb:admins" content="' .$__cf_row ['cf_facebook_admin_id']. '" />';
 		}
 		
 		if ( $__cf_row ['cf_facebook_page'] != '' ) {
-			$arr_meta[] = '<meta property="article:publisher" content="' .$__cf_row ['cf_facebook_page']. '" />';
-			$arr_meta[] = '<meta property="article:author" content="' .$__cf_row ['cf_facebook_page']. '" />';
+			$arr_meta[] = '<meta property="article:publisher" content="' . $__cf_row ['cf_facebook_page'] . '" />';
+			$arr_meta[] = '<meta property="article:author" content="' . $__cf_row ['cf_facebook_page'] . '" />';
 		}
 		
 		// seo local
 		if ( $__cf_row ['cf_region'] != '' ) {
-			$arr_meta[] = '<meta name="geo.region" content="' .$__cf_row ['cf_region']. '" />';
+			$arr_meta[] = '<meta name="geo.region" content="' . $__cf_row ['cf_region'] . '" />';
 		}
 		
 		if ( $__cf_row ['cf_placename'] != '' ) {
-			$arr_meta[] = '<meta name="geo.placename" content="' .$__cf_row ['cf_placename']. '" />';
+			$arr_meta[] = '<meta name="geo.placename" content="' . $__cf_row ['cf_placename'] . '" />';
 		}
 		
 		if ( $__cf_row ['cf_position'] != '' ) {
-			$arr_meta[] = '<meta name="geo.position" content="' .$__cf_row ['cf_position']. '" />';
-			$arr_meta[] = '<meta name="ICBM" content="' .$__cf_row ['cf_position']. '" />';
+			$arr_meta[] = '<meta name="geo.position" content="' . $__cf_row ['cf_position'] . '" />';
+			$arr_meta[] = '<meta name="ICBM" content="' . $__cf_row ['cf_position'] . '" />';
 		}
 		
 		//
