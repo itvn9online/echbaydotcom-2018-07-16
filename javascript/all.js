@@ -2461,9 +2461,9 @@ function WGR_widget_change_taxonomy_if_change_category ( animate_id ) {
 // thêm custom menu cho code của echbay
 var WGR_done_add_class_for_custom_link_menu = false;
 function WGR_add_class_for_custom_link_menu ( lnk, nem, a, i ) {
-	console.log( lnk );
-	console.log( nem );
-	console.log( a );
+//	console.log( lnk );
+//	console.log( nem );
+//	console.log( a );
 	
 	//
 	if ( typeof i != 'number' ) {
