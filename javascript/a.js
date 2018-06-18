@@ -626,3 +626,10 @@ if ( $('.each-to-bgimg').length > 0 ) {
 
 
 
+// Hủy lưu URL mỗi khi người dùng bấm vào link
+$('a').click(function () {
+	g_func.setc( 'wgr_last_url_user_visit', '', 60 );
+});
+
+
+
