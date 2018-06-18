@@ -2457,3 +2457,82 @@ function WGR_widget_change_taxonomy_if_change_category ( animate_id ) {
 	});
 }
 
+
+// thêm custom menu cho code của echbay
+var WGR_done_add_class_for_custom_link_menu = false;
+function WGR_add_class_for_custom_link_menu ( lnk, nem, a, i ) {
+	console.log( lnk );
+	console.log( nem );
+	console.log( a );
+	
+	//
+	if ( typeof i != 'number' ) {
+		i = 50;
+		
+		// ẩn tạm body đi, xong mới hiển thị lại
+		$('body').css({
+			opacity: .1
+		});
+	}
+	else if ( i < 0 ) {
+		$('body').css({
+			opacity: 1
+		});
+	}
+	
+	// v2
+	$('#menu-to-edit li').each(function() {
+		var check_lnk = $('.edit-menu-item-url', this).val() || '',
+			check_nem = $('.edit-menu-item-title', this).val() || '',
+			check_a = $('.edit-menu-item-classes', this).val() || '';
+		
+		// Kiểm tra xem có đúng với dữ liệu định gán không
+		if ( check_a == '' && check_lnk == lnk && check_nem == nem ) {
+			// thêm class
+			$('.edit-menu-item-classes', this).val( a );
+			
+			// hiển thị luôn cái LI này ra
+			$(this).removeClass('menu-item-edit-inactive').addClass('menu-item-edit-active');
+			
+			//
+			$('body').css({
+				opacity: 1
+			});
+			
+			// xác nhận add thành công
+			WGR_done_add_class_for_custom_link_menu = true;
+		}
+	});
+	
+	//
+	if ( WGR_done_add_class_for_custom_link_menu == false ) {
+		setTimeout(function () {
+			WGR_add_class_for_custom_link_menu( lnk, nem, a, i - 1 );
+		}, 600);
+	}
+	
+	//
+	return false;
+	
+	
+	// v1
+	// lấy các dữ liệu của thẻ LI cuối cùng
+	var check_lnk = $('#menu-to-edit li:last .edit-menu-item-url').val() || '',
+		check_nem = $('#menu-to-edit li:last .edit-menu-item-title').val() || '',
+		check_a = $('#menu-to-edit li:last .edit-menu-item-classes').val() || '';
+	
+	// Kiểm tra xem có đúng với dữ liệu định gán không
+	if ( check_lnk == lnk && check_nem == nem ) {
+		$('#menu-to-edit li:last .edit-menu-item-classes').val( a );
+		$('body').css({
+			opacity: 1
+		});
+	}
+	// đợi và chạy tiếp
+	else {
+		setTimeout(function () {
+			WGR_add_class_for_custom_link_menu( lnk, nem, a, i - 1 );
+		}, 600);
+	}
+}
+
