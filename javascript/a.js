@@ -18,26 +18,28 @@ if ( typeof $ != 'function' ) {
 
 // lưu URL cuối cùng mà người dùng đã xem, để lần sau truy cập luôn vào URL này cho tiện
 (function () {
-	var l = g_func.getc('wgr_last_url_user_visit'),
-		ok = g_func.getc('wgr_check_last_user_visit');
+	var l = g_func.getc('wgr_last_url_user_visit');
 	
 	//
 	if ( l == null ) {
 		l = '';
 	}
 //	console.log(l);
-//	console.log(ok);
-	
-	// khoảng thời gian để chuyển URL cuối cùng
-	g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
-//	return false;
 	
 	//
-	if ( ok == null && l != '' ) {
-		setTimeout(function () {
-			window.location = unescape( l );
-		}, 200);
-		return false;
+	if ( g_func.getc('wgr_check_last_user_visit') == null ) {
+		
+		// khoảng thời gian để chuyển URL cuối cùng
+		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
+//		return false;
+		
+		if ( l != '' ) {
+			setTimeout(function () {
+				window.location = unescape( l );
+			}, 200);
+			return false;
+		}
+		
 	}
 	
 	// sau 5 giây thì lưu URL hiện tại lại
@@ -599,8 +601,7 @@ if ( $('.each-to-bgimg').length > 0 ) {
 // Hủy lưu URL mỗi khi người dùng bấm vào link
 $('#adminmenu a').click(function () {
 	// Nếu phiên lưu URL đã hết hạn
-	var ok = g_func.getc('wgr_check_last_user_visit');
-	if ( ok == null ) {
+	if ( g_func.getc('wgr_check_last_user_visit') == null ) {
 		// -> lưu phiên mới luôn
 		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
 //		g_func.setc( 'wgr_last_url_user_visit', '', 60 );
