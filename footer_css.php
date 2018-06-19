@@ -19,7 +19,9 @@ echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource
 echo '<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" async></script>' . "\n";
 */
 
-echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fontawesome-free-5.0.6/css/fontawesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+//
+//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fontawesome-free-5.0.6/css/fontawesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fontawesome-free-5.0.13/web-fonts-with-css/css/fa.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 
 
 

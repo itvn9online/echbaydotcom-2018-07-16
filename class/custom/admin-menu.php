@@ -176,7 +176,8 @@ function echbay_admin_styles() {
 	*/
 	$a = array(
 		EB_THEME_PLUGIN_INDEX . 'outsource/fonts/font-awesome.css',
-		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
+//		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
+		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.13/web-fonts-with-css/css/fa.css',
 		EB_THEME_PLUGIN_INDEX . 'css/default.css',
 		EB_THEME_PLUGIN_INDEX . 'css/default2.css',
 		EB_THEME_PLUGIN_INDEX . 'css/admin.css'
