@@ -161,15 +161,15 @@ function echbay_admin_styles() {
 	
 	// lấy thời gian cập nhật cuối của file css -> update lại toàn bộ các file khác
 //	$last_update_js = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/eb.js' ) );
-//	$last_update_css = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'css/default.css' ) );
+//	$last_update_css = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'css/d.css' ) );
 	
 	//
 	/*
 	_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
 //		$web_ad_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/font-awesome.css',
 		EB_URL_OF_PLUGIN . 'outsource/fonts/font-awesome.css',
-		EB_URL_OF_PLUGIN . 'css/default.css',
-		EB_URL_OF_PLUGIN . 'css/default2.css',
+		EB_URL_OF_PLUGIN . 'css/d.css',
+		EB_URL_OF_PLUGIN . 'css/d2.css',
 		EB_URL_OF_PLUGIN . 'css/admin.css',
 //		EB_URL_OF_PLUGIN . 'css/admin.css',
 	) ), 'link' );
@@ -178,8 +178,8 @@ function echbay_admin_styles() {
 		EB_THEME_PLUGIN_INDEX . 'outsource/fonts/font-awesome.css',
 //		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
 		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.13/web-fonts-with-css/css/fa.css',
-		EB_THEME_PLUGIN_INDEX . 'css/default.css',
-		EB_THEME_PLUGIN_INDEX . 'css/default2.css',
+		EB_THEME_PLUGIN_INDEX . 'css/d.css',
+		EB_THEME_PLUGIN_INDEX . 'css/d2.css',
 		EB_THEME_PLUGIN_INDEX . 'css/admin.css'
 	);
 	foreach ( $a as $v ) {
@@ -364,7 +364,7 @@ function echbay_admin_footer_styles() {
 	
 	// lấy thời gian cập nhật cuối của file css -> update lại toàn bộ các file khác
 //	$last_update_js = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/eb.js' ) );
-//	$last_update_css = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'css/default.css' ) );
+//	$last_update_css = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'css/d.css' ) );
 //	$last_update_js = date_time;
 	
 	

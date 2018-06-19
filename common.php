@@ -125,7 +125,7 @@ $arr_for_add_js = array(
 $arr_for_add_link_css = array(
 //	EB_THEME_THEME . 'css/style.css',
 //	EB_THEME_PLUGIN_INDEX . 'outsource/fonts/font-awesome.css',
-//	EB_THEME_PLUGIN_INDEX . 'css/default.css',
+//	EB_THEME_PLUGIN_INDEX . 'css/d.css',
 );
 
 
