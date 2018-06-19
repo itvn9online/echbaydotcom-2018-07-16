@@ -1,0 +1,22 @@
+#aabbcc .hpsbnlbx { }
+#aabbcc .quick-register-left { }
+#aabbcc .quick-register-hoten { }
+#aabbcc .quick-register-hoten input[type="text"] { }
+#aabbcc .quick-register-phone { }
+#aabbcc .quick-register-phone input[type="text"] { }
+#aabbcc .quick-register-email { }
+#aabbcc .quick-register-email input[type="email"] { }
+#aabbcc .quick-register-submit { }
+#aabbcc .quick-register-submit button { }
+#aabbcc input::placeholder {
+}
+ #aabbcc input::-ms-input-placeholder {
+}
+ #aabbcc input:-ms-input-placeholder {
+}
+#aabbcc ::-webkit-input-placeholder {
+}
+#aabbcc ::-moz-placeholder {
+}
+#aabbcc :-moz-placeholder {
+}

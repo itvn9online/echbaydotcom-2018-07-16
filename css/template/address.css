@@ -1,6 +1,7 @@
 #aabbcc .footer-address { }
 #aabbcc .footer-address-company { }
 #aabbcc .footer-address-info { }
+#aabbcc .footer-address-info strong { }
 #aabbcc .footer-address-info i { }
 #aabbcc .footer-address-info div { margin-top: 6px; }
 #aabbcc div.footer-address-phone { margin: 0; }

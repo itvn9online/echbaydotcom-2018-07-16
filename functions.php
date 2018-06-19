@@ -242,6 +242,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	
 //	$post->p_link = $post->guid;
 	$post->trv_tieude = $post->post_title;
+	$post->trv_title = str_replace( '"', '&quot;', $post->post_title );
 	$post->trv_id = $post->ID;
 	$post->trv_gioithieu = nl2br( $post->post_excerpt );
 //	$post->trv_gioithieu = $post->post_excerpt;
@@ -3626,6 +3627,7 @@ function _eb_load_ads (
 			
 			//
 			$post->trv_tieude = $post->post_title;
+			$post->trv_title = str_replace( '"', '&quot;', $post->post_title );
 			
 			// mặc định là sử dụng post_excerpt, nếu không có -> sẽ sử dụng post_content
 //			$post->trv_gioithieu = ( $post->post_excerpt == '' ) ? '<div class="each-to-fix-ptags">' . trim( $post->post_content ) . '</div>' : nl2br( $post->post_excerpt );
