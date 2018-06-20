@@ -106,6 +106,7 @@ class ___echbay_widget_home_list_blog extends WP_Widget {
 				$default_array['hide_title'] = isset( $instance ['hide_title'] ) ? $instance ['hide_title'] : 'off';
 				$default_array['hide_description'] = isset( $instance ['hide_description'] ) ? $instance ['hide_description'] : 'off';
 				$default_array['hide_info'] = isset( $instance ['hide_info'] ) ? $instance ['hide_info'] : 'off';
+				$default_array['run_slider'] = isset( $instance ['run_slider'] ) ? $instance ['run_slider'] : 'off';
 				
 				// off hết đống này đi
 				$default_array['content_only'] = 'off';
@@ -115,6 +116,7 @@ class ___echbay_widget_home_list_blog extends WP_Widget {
 				$default_array['get_post_type'] = 'off';
 				$default_array['open_target'] = 'off';
 				$default_array['ads_eb_status'] = 'off';
+				$default_array['post_eb_status'] = 'off';
 				$default_array['post_eb_status'] = 'off';
 //				print_r( $default_array );
 				

@@ -159,9 +159,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
 	
 	//
-	$input_name = $field_name[ 'hide_widget_title' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_widget_title, 'Ẩn tiêu đề widget.' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'hide_widget_title' ], $hide_widget_title, 'Ẩn tiêu đề widget.' );
 	
 	//
 	echo '<p><strong>HTML tag cho Tiêu đề</strong>: ';
@@ -210,9 +208,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	echo '<p><strong>Mô tả</strong>: <textarea class="widefat" name="' . $field_name['description'] . '">' . $description . '</textarea></p>';
 	
 	//
-	$input_name = $field_name[ 'get_full_content' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $get_full_content, 'Lấy Nội dung bài viết thay vì lấy Mô tả.' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'get_full_content' ], $get_full_content, 'Lấy Nội dung bài viết thay vì lấy Mô tả.' );
 	
 	
 	//
@@ -233,24 +229,19 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	$input_name = $field_name[ 'open_youtube' ];
 	echo '<div class="ebe-widget-ads-show">';
-	_eb_widget_echo_widget_input_checkbox( $input_name, $open_youtube, 'Mở video Youtube' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'open_youtube' ], $open_youtube, 'Mở video Youtube' );
 	echo '</div>';
 	
 	
 	//
-	$input_name = $field_name[ 'same_cat' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $same_cat, 'Chỉ lấy các bài viết của nhóm đang xem hoặc bài viết cùng nhóm với bài viết đang xem. * <em>Lựa chọn này sẽ tự động xác định lại post_type và taxonomy của nhóm hoặc bài viết hiện tại</em>.' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'same_cat' ], $same_cat, 'Chỉ lấy các bài viết của nhóm đang xem hoặc bài viết cùng nhóm với bài viết đang xem. * <em>Lựa chọn này sẽ tự động xác định lại post_type và taxonomy của nhóm hoặc bài viết hiện tại</em>.' );
 	
 	
 	//
 	echo '<blockquote>';
 	
-	$input_name = $field_name[ 'get_post_type' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $get_post_type, 'Xác định lại post_type của bài viết hiện tại. * <em>Áp dụng cho trường hợp bài viết định lấy cùng kiểu dữ liệu với bài đang xem</em>.' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'get_post_type' ], $get_post_type, 'Xác định lại post_type của bài viết hiện tại. * <em>Áp dụng cho trường hợp bài viết định lấy cùng kiểu dữ liệu với bài đang xem</em>.' );
 	
 	echo '</blockquote>';
 	
@@ -267,10 +258,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	$input_name = $field_name[ 'get_childs' ];
-//	echo $instance[ 'get_childs' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $get_childs, 'Lấy danh sách nhóm con' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'get_childs' ], $get_childs, 'Lấy danh sách nhóm con' );
 	
 	
 	//
@@ -286,24 +274,16 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	$input_name = $field_name[ 'hide_title' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_title, 'Ẩn tiêu đề của bài viết.' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'hide_title' ], $hide_title, 'Ẩn tiêu đề của bài viết.' );
 	
 	//
-	$input_name = $field_name[ 'hide_description' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_description, 'Ẩn tóm tắt của bài viết.' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'hide_description' ], $hide_description, 'Ẩn tóm tắt của bài viết.' );
 	
 	//
-	$input_name = $field_name[ 'hide_info' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'hide_info' ], $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
 	
 	//
-	$input_name = $field_name[ 'run_slider' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $run_slider, 'Chạy slider.' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'run_slider' ], $run_slider, 'Chạy slider.' );
 	
 	
 	//
@@ -363,16 +343,12 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	$input_name = $field_name[ 'open_target' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $open_target, '<strong>Mở liên kết trong tab mới</strong>' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'open_target' ], $open_target, '<strong>Mở liên kết trong tab mới</strong>' );
 	
 	
 	
 	//
-	$input_name = $field_name[ 'content_only' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $content_only, '<strong>Chỉ lấy nội dung bài viết</strong>! với lựa chọn này, nội dung bài viết có số order lớn nhất sẽ được lấy ra và hiển thị. Thường dùng khi cần nhúng một nội dung bài viết vào một nội dung khác.' );
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'content_only' ], $content_only, '<strong>Chỉ lấy nội dung bài viết</strong>! với lựa chọn này, nội dung bài viết có số order lớn nhất sẽ được lấy ra và hiển thị. Thường dùng khi cần nhúng một nội dung bài viết vào một nội dung khác.' );
 	
 	
 	

@@ -1012,19 +1012,16 @@ function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $ta
 	
 	
 	//
-	$input_name = $this_value[ 'hide_title' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_title, 'Ẩn tiêu đề của bài viết.' );
+	_eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_title' ], $hide_title, 'Ẩn tiêu đề của bài viết.' );
 	
 	//
-	$input_name = $this_value[ 'hide_description' ];
-	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_description, 'Ẩn tóm tắt của bài viết.' );
+	_eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_description' ], $hide_description, 'Ẩn tóm tắt của bài viết.' );
 	
 	//
-	$input_name = $this_value[ 'hide_info' ];
+	_eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_info' ], $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
 	
-	_eb_widget_echo_widget_input_checkbox( $input_name, $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
+	//
+	_eb_widget_echo_widget_input_checkbox( $this_value[ 'run_slider' ], $run_slider, 'Ẩn ngày tháng, danh mục của bài viết.' );
 	
 	
 	//
