@@ -1038,6 +1038,7 @@ function WGR_default_for_home_list_and_blog () {
 		'hide_title' => '',
 		'hide_description' => '',
 		'hide_info' => '',
+		'run_slider' => '',
 		'custom_style' => ''
 	);
 }
