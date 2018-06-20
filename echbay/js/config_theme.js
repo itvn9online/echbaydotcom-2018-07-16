@@ -529,6 +529,13 @@ if ( cf_current_theme_using != '' ) {
 
 // hiển thị ảnh của theme khi người dùng cuộn chuột
 function WGR_show_bg_for_skins_adminedit () {
+	
+	//
+	if ( window.location.href.split('&tab=theme-themes').length == 1 ) {
+		return false;
+	}
+	
+	//
 	$('.each-to-adminbg').slice( 0, 3 ).each(function() {
 		var a = $(this).attr('data-img') || '';
 //		console.log(a);
@@ -544,10 +551,12 @@ function WGR_show_bg_for_skins_adminedit () {
 	if ( $('.each-to-adminbg').length > 0 ) {
 		setTimeout(function () {
 			WGR_show_bg_for_skins_adminedit();
-		}, 1200);
+		}, 600);
 	}
+	
 }
 WGR_show_bg_for_skins_adminedit();
+
 
 //
 $('.skins-adminedit-bg').on('hover', function () {
