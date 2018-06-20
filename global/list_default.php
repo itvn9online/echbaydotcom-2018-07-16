@@ -401,7 +401,7 @@ if ( $main_content == false ) {
 //				$cats_description = '';
 				
 				// lật ngược nội dung trong mục blog
-				$__cf_row['cf_default_css'] .= '.private-blogs-reverse-content{display: -webkit-flex;display: flex;flex-direction: row-reverse}';
+				$__cf_row['cf_default_css'] .= '.private-blogs-reverse-content{display: -webkit-flex;display: flex;flex-direction: column-reverse}';
 			}
 			
 			//
