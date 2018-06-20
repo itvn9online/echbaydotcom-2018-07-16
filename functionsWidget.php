@@ -1021,7 +1021,7 @@ function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $ta
 	_eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_info' ], $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
 	
 	//
-	_eb_widget_echo_widget_input_checkbox( $this_value[ 'run_slider' ], $run_slider, 'Ẩn ngày tháng, danh mục của bài viết.' );
+	_eb_widget_echo_widget_input_checkbox( $this_value[ 'run_slider' ], $run_slider, 'Chạy slider.' );
 	
 	
 	//
