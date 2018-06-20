@@ -43,9 +43,11 @@ if ( typeof $ != 'function' ) {
 	}
 	
 	// sau 5 giây thì lưu URL hiện tại lại
+	/*
 	setTimeout(function () {
 		g_func.setc( 'wgr_last_url_user_visit', escape( window.location.href ), 0, 7 );
 	}, 5000);
+	*/
 })();
 
 
@@ -605,6 +607,12 @@ $('#adminmenu a').click(function () {
 		// -> lưu phiên mới luôn
 		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
 //		g_func.setc( 'wgr_last_url_user_visit', '', 60 );
+	}
+	
+	// chỉ lưu các URL nằm trong menu chính
+	var a = $(this).attr('href') || '';
+	if ( a != '' ) {
+		g_func.setc( 'wgr_last_url_user_visit', escape( a ), 0, 7 );
 	}
 });
 

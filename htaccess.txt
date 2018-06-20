@@ -1,10 +1,16 @@
 # doi ten file nay thanh .htaccess roi su dung
-# su dung https -> dung thi bo comments o 2 dong duoi day di
+
+# Redirect to new domain
+#RewriteCond %{HTTP_HOST} ^old-domain\.com$ [NC]
+#RewriteRule ^(.*)$ http://new-domain.vn/%{REQUEST_URI} [R=301,L]
+
+
+# HTTPS redirect
 #RewriteCond %{HTTPS} off
 #RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
 
 
-# khong su dung www -> khuyen dung
+# Using non-www (Recommendations)
 RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
 #RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,L]
