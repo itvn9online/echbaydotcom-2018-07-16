@@ -555,7 +555,9 @@ function WGR_show_bg_for_skins_adminedit () {
 	}
 	
 }
-WGR_show_bg_for_skins_adminedit();
+setTimeout(function () {
+	WGR_show_bg_for_skins_adminedit();
+}, 2000);
 
 
 //
