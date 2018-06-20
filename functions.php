@@ -3722,9 +3722,15 @@ function WGR_get_taxonomy_name ( $id ) {
 
 function WGR_get_all_term ( $id ) {
 	$taxonomy = WGR_get_taxonomy_name($id);
+//	echo $id . '<br>';
+//	echo $taxonomy . '<br>';
+	if ( $taxonomy == '' ) {
+		return (object) array( 'errors' => 'Taxonomy not found!' );
+	}
 	
 	$t = get_term( $id, $taxonomy );
 //	print_r( $t );
+//	echo 'bbbbbbbbbbb<br>';
 //	echo gettype($t);
 	
 	//

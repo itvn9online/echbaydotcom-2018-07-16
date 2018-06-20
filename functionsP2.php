@@ -707,6 +707,7 @@ function _eb_c_link ( $id, $taxx = 'category' ) {
 			// thử chức năng tìm tất cả các term
 			$a = WGR_get_all_term( $id );
 //			print_r($a);
+//			echo 'aaaaaaaaaa<br>';
 			
 			// nếu tìm được -> tạo link luôn
 			if ( ! isset($a->errors) ) {

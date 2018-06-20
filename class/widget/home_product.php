@@ -117,6 +117,11 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 //			$categories = get_term($cat_ids, 'category');
 			$categories = get_term_by('id', $cat_ids, 'category');
 //			print_r( $categories );
+//			echo 'aaaaaaaaaaa<br>';
+			if ( $categories == false ) {
+				echo '<!-- term not found in ' . strstr( __FILE__, 'echbaydotcom' ) . '! -->';
+				return false;
+			}
 			
 			//
 			$cat_link = _eb_c_link( $cat_ids );
