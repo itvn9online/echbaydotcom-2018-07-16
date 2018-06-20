@@ -5,11 +5,20 @@
 				<div class="global-blogs-reverse-content">
 					<div>
 						<h1 class="blogs-module-name">{tmp.home_cf_title}</h1>
-						<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit echbay-blog echbay-blogmain cf {tmp.custom_blogs_node_flex_css} {tmp.custom_blog_li_css}">
-							{tmp.list_post}
-						</ul>
-						<br>
-						<div class="public-part-page">{tmp.str_page}</div>
+						<div class="private-blogs-reverse-content">
+							<div>
+								<div data-tag="p" class="global-cats-description each-to-fix-ptags">{tmp.cats_description}</div>
+								<div class="text-right viewmore-cats-description d-none"><a href="javascript:;" class="click-viewmore-cats-description">Xem thêm</a></div>
+							</div>
+							<div>
+								<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit echbay-blog echbay-blogmain cf {tmp.custom_blogs_node_flex_css} {tmp.custom_blog_li_css}">
+									{tmp.list_post}
+								</ul>
+								<br>
+								<div class="public-part-page">{tmp.str_page}</div>
+							</div>
+						</div>
+						<!-- bình luận fb --> 
 						{tmp.html_for_fb_comment}<br>
 					</div>
 					<div>

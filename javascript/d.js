@@ -2727,6 +2727,10 @@ jQuery('.click-show-div-content').click(function () {
 	}
 //	console.log( jQuery('.each-to-fix-ptags').length );
 	
+	// xử lý lỗi nếu bị 2 lần fix ptag -> chưa xác định nguyên nhân cụ thể
+	jQuery('.each-to-fix-ptags .each-to-fix-ptags').removeClass('each-to-fix-ptags');
+	jQuery('.each-to-fix-ptags .each-to-fix-ptags').removeClass('each-to-fix-ptags');
+	
 	//
 	jQuery('.each-to-fix-ptags').each(function() {
 		if ( jQuery('script', this).length > 0 || jQuery('script', this).length > 0 ) {
@@ -2789,6 +2793,9 @@ jQuery('.click-show-div-content').click(function () {
 //			console.log( '<div>' + a.replace( /\r\n|\n|\r/gi, '</div><div>' ).replace( /\<div\>\<\/div\>/gi, '' ) + '</div>' );
 		}
 	});
+	
+	// xong việc thì xóa class này đi, để đỡ bị lặp lại -> phòng lỗi
+	jQuery('.each-to-fix-ptags').removeClass('each-to-fix-ptags');
 	
 })();
 

@@ -216,6 +216,37 @@ if ( $main_content == false ) {
 		
 		
 		
+		// Lấy nội dung danh mục -> sử dụng module SEO của EchBay
+		if ( cf_on_off_echbay_seo == 1 ) {
+			$cats_description = _eb_get_cat_object( $__category->term_id, '_eb_category_content' );
+			if ( $cats_description == '' ) {
+//				$cats_description = $__category->description;
+				// mặc định thì EchBay không hỗ trợ HTML -> thêm BR vào description
+				$cats_description = nl2br( $__category->description );
+			}
+			else {
+				$cats_description = '<div class="each-to-fix-ptags">' . $cats_description . '</div>';
+			}
+		}
+		// các ứng dụng seo khác -> ưu tiên sử dụng description mặc định
+		else if ( $__category->description != '' ) {
+			// Với plugin khác như Yoast SEO, description được hỗ trợ HTML sẵn -> dùng luôn thôi
+			$cats_description = '<div class="each-to-fix-ptags">' . $__category->description . '</div>';
+//			$cats_description = nl2br( $__category->description );
+		}
+		// còn lại, thử kiểm tra xem trước có dùng plugin seo của EchBay không
+		else {
+			$cats_description = _eb_get_cat_object( $__category->term_id, '_eb_category_content' );
+			
+			// cập nhật description -> có thể trước đó khách chuyển từ plugin SEO mặc định sang Yoast SEO
+			if ( $cats_description != '' ) {
+			}
+		}
+		
+		
+		
+		
+		
 		
 		
 		
@@ -245,22 +276,6 @@ if ( $main_content == false ) {
 				//
 				$list_post .= EBE_select_thread_list_all( $post );
 				
-			}
-			
-			
-			
-			// sử dung module SEO của EchBay
-			if ( cf_on_off_echbay_seo == 1 ) {
-				$cats_description = _eb_get_cat_object( $__category->term_id, '_eb_category_content' );
-				if ( $cats_description == '' ) {
-					$cats_description = nl2br( $__category->description );
-				}
-				else {
-					$cats_description = '<div class="each-to-fix-ptags">' . $cats_description . '</div>';
-				}
-			}
-			else {
-				$cats_description = $__category->description;
 			}
 			
 			
@@ -379,11 +394,22 @@ if ( $main_content == false ) {
 //			echo $__cf_row['cf_blogs_column_style'] . '<br>' . "\n";
 //			echo $html_v2_file . '<br>' . "\n";
 			
+			//
+//			$cats_bottom_description = '';
+			if ( $__cf_row['cf_blogs_content_bottom'] == 1 ) {
+//				$cats_bottom_description = $cats_description;
+//				$cats_description = '';
+				
+				// lật ngược nội dung trong mục blog
+				$__cf_row['cf_default_css'] .= '.private-blogs-reverse-content{display: -webkit-flex;display: flex;flex-direction: row-reverse}';
+			}
 			
 			//
 			$arr_main_content = array(
 //				'tmp.home_cf_title' => $__category->name,
-				'tmp.cats_description' => $__category->description,
+//				'tmp.cats_description' => $__category->description,
+				'tmp.cats_description' => $cats_description,
+//				'tmp.cats_bottom_description' => $cats_bottom_description,
 //				'tmp.link_for_fb_comment' => $link_for_fb_comment,
 //				'tmp.list_post' => EBE_check_list_post_null( $list_post ),
 //				'tmp.str_page' => $str_page,

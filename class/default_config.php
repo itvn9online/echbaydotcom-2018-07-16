@@ -128,6 +128,7 @@ $__cf_row_default = array(
 	
 	// số tin trên mỗi trang của phần bog, mặc định là 0 -> dùng chung với sản phẩm
 	'cf_blogs_per_page' => 0,
+	'cf_blogs_content_bottom' => 'off',
 	
 	// kích thước mặc định của ảnh đại diện
 	'cf_product_thumbnail_size' => 'medium',

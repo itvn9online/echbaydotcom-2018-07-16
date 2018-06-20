@@ -2499,7 +2499,7 @@ var _global_js_eb = {
 	// https://developers.google.com/analytics/devguides/collection/analyticsjs/events
 	ga_event_track : function ( eventCategory, eventAction, eventLabel ) {
 		
-		if ( typeof ga == 'undefined' ) {
+		if ( typeof ga != 'function' ) {
 			console.log('ga not found');
 			return false;
 		}

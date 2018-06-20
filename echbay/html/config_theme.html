@@ -339,7 +339,8 @@
 			</tr>
 			<tr>
 				<td class="t"><label for="cf_slider_details_play">Tự động chạy slider</label></td>
-				<td class="i"><input type="number" name="cf_slider_details_play" value="{tmp.cf_slider_details_play}" id="cf_slider_details_play" class="s" /> (mini giây)
+				<td class="i"><input type="number" name="cf_slider_details_play" value="{tmp.cf_slider_details_play}" id="cf_slider_details_play" class="s" />
+					(mini giây)
 					<div class="small">Khi thông số này được thiết lập lớn hơn 0, slider trang chi tiết sẽ được kích hoạt tự động chạy theo số mini giây đã được thiết lập (1 giây = 1000 mini giây).</div></td>
 			</tr>
 			<tr>
@@ -418,8 +419,7 @@
 				<td class="t">Tự chỉnh size ảnh</td>
 				<td class="i"><input type="checkbox" name="cf_post_rm_img_width" id="cf_post_rm_img_width" value="{tmp.cf_post_rm_img_width}" />
 					<label for="cf_post_rm_img_width" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Trong nội dung của bài viết, size ảnh sẽ được chỉnh tự động dựa theo kích thước khung đang hiển thị. Nếu bạn muốn tự điều chỉnh size ảnh, hãy tắt chức năng này đi.</div>
-					</div></td>
+					<div class="small l19">Trong nội dung của bài viết, size ảnh sẽ được chỉnh tự động dựa theo kích thước khung đang hiển thị. Nếu bạn muốn tự điều chỉnh size ảnh, hãy tắt chức năng này đi.</div></td>
 			</tr>
 			<tr>
 				<td class="t"><label for="cf_img_details_maxwidth">Chiều rộng ảnh tối đa</label></td>
@@ -493,6 +493,12 @@
 				<td class="t">Số tin trên mỗi trang</td>
 				<td class="i"><input type="number" name="cf_blogs_per_page" value="{tmp.cf_blogs_per_page}" class="s" />
 					<p class="small">* Nếu để bằng <strong>0</strong>, số tin sẽ được hiển thị theo cấu hình mặc định chung của toàn hệ thống là <strong>{tmp.posts_per_page}</strong>.</p></td>
+			</tr>
+			<tr>
+				<td class="t">Chuyển nội dung về cuối</td>
+				<td class="i"><input type="checkbox" name="cf_blogs_content_bottom" id="cf_blogs_content_bottom" value="{tmp.cf_blogs_content_bottom}" />
+					<label for="cf_blogs_content_bottom" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Trong danh mục Tin tức, nội dung danh mục (nếu có) được đặt mặc định ở trên cùng, nếu muốn chuyển nó xuống dưới thì hãy bật chức năng này lên rồi lưu lại.</div></td>
 			</tr>
 		</tbody>
 		<tbody title="Chi tiết Blog/ Tin tức" id="eb-admin-config-theme-blog-detais" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
