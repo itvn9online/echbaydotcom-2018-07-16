@@ -603,7 +603,7 @@ foreach ( $eb_all_themes_support as $k => $v ) {
 	//
 	$str_all_themes_support .= '
 <li data-price="' . $v['price'] . '" data-key="' . $theme_name . '" data-author="' . $tac_gia_giao_dien . '" style="' . $li_order . '">
-	<div class="skins-adminedit-bg" style="background-image:url(\'' . $theme_avt . '\');">
+	<div class="skins-adminedit-bg each-to-adminbg" data-img="' . $theme_avt . '">
 		<p>&nbsp;</p>
 		<h3>' . $theme_name . '</h3>
 		<button type="button" data-theme="' . $theme_name . '" class="blue-button cur click-active-eb-themes">Kích hoạt</button>
