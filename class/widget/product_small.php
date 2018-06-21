@@ -94,12 +94,36 @@ class ___echbay_widget_random_product extends WP_Widget {
 		);
 		
 		if ( $cat_ids > 0 ) {
-			$args['cat'] = $cat_ids;
 			
-			if ( $title == '' ) {
-				$categories = get_term_by('id', $cat_ids, 'category');
-				$title = $categories->name;
+			// lấy lại taxonomy dựa theo ID cho nó chuẩn xác
+			$cat_type = WGR_get_taxonomy_name( $cat_ids );
+			if ( $cat_type == '' ) {
+				echo '<!-- taxonomy for #' . $cat_ids . ' not found! -->';
 			}
+			//
+			else {
+				// mặc định thì lấy theo category
+				if ( $cat_type == 'category' ) {
+					$args['cat'] = $cat_ids;
+				}
+				// với các taxonomy khác thì lấy theo cách khác
+				else {
+					$args['tax_query'] = array(
+						array(
+							'taxonomy' => $cat_type,
+							'field' => 'term_id',
+							'terms' => array( $cat_ids ),
+							'operator' => 'IN'
+						)
+					);
+				}
+				
+				if ( $title == '' ) {
+					$categories = get_term_by('id', $cat_ids, $cat_type);
+					$title = $categories->name;
+				}
+			}
+			
 		}
 		// tự động lấy theo nhóm hiện tại
 		/*
@@ -119,6 +143,19 @@ class ___echbay_widget_random_product extends WP_Widget {
 		}
 		
 		$content = _eb_load_post( $post_number, $args, $html_node );
+		
+		// nếu không có dữ liệu -> in ra dữ liệu để test
+		if ( $content == '' ) {
+			echo '<!-- ';
+			
+			global $___eb_post__not_in;
+			
+			echo $___eb_post__not_in . '<br>' . "\n";
+			
+			print_r( $args );
+			
+			echo ' -->';
+		}
 		
 //		echo '</ul>';
 		

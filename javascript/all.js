@@ -2454,6 +2454,7 @@ function WGR_widget_change_taxonomy_if_change_category ( animate_id ) {
 		console.log("Auto set taxonomy #" + a + " for: " + b);
 //		jQuery('.' + animate_id).val( a );
 		jQuery("." + b).val( a );
+		jQuery("." + b + '_span').html( '(' + a + ')' );
 	});
 }
 

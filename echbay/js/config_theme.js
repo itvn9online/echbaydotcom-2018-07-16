@@ -555,10 +555,6 @@ function WGR_show_bg_for_skins_adminedit () {
 	}
 	
 }
-setTimeout(function () {
-	WGR_show_bg_for_skins_adminedit();
-}, 2000);
-
 
 //
 $('.skins-adminedit-bg').on('hover', function () {
@@ -572,6 +568,12 @@ $('.skins-adminedit-bg').on('hover', function () {
 		$(this).removeAttr('data-img').removeClass('each-to-adminbg');
 	}
 });
+
+//
+setTimeout(function () {
+	WGR_show_bg_for_skins_adminedit();
+	$('.skins-admin-edit li.selected .skins-adminedit-bg').hover();
+}, 2000);
 
 
 

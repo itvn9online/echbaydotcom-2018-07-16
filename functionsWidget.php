@@ -575,7 +575,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //			echo $post_type . '<br>' . "\n";
 			
 			//
-//				print_r( $re_post_categories );
+//			print_r( $re_post_categories );
 			if ( ! empty( $re_post_categories ) ) {
 				foreach ( $re_post_categories as $v ) {
 					$terms_categories[] = $v->term_id;
@@ -591,7 +591,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //				echo $cat_ids;
 //				$categories = get_term_by('id', $cat_ids, $cat_type);
 				$categories = get_term( $cat_ids, $cat_type );
-//					print_r($categories);
+//				print_r($categories);
 				if ( ! empty( $categories ) ) {
 					$title = $categories->name;
 				}

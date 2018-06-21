@@ -776,7 +776,7 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	
 	
 	//
-	echo '<p><strong>Chuyên mục</strong>: <select name="' . $select_name . '" id="' . $animate_id . '" class="widefat eb-get-widget-category">
+	echo '<p><strong>Chuyên mục</strong>: <em class="' . $animate_id . '_span"></em> <select name="' . $select_name . '" id="' . $animate_id . '" class="widefat eb-get-widget-category">
 	<option value="0">[ Select category ]</option>';
 	
 	foreach ( $categories as $v ) {
