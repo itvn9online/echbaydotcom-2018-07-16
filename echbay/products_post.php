@@ -423,7 +423,7 @@ if ( $totalThread > 0 ) {
 	<td><a href="' . $trv_link . '" target="_blank" class="d-block admin-thread-avt" style="background-image:url(\'' . $trv_img . '\');">&nbsp;</a></td>
 	<td>
 		<div><a title="' . $trv_tieude . '" href="' . admin_link . 'post.php?post=' . $trv_id . '&action=edit" target="_blank"><strong>' . $trv_tieude . '</strong> <i title="Sửa" class="fa fa-edit greencolor"></i></a></div>
-		<div class="quick-show-if-post">Mã sản phẩm: <strong class="upper">' . _eb_get_post_object( $trv_id, '_eb_product_sku' ) . '</strong> | <span data-id="' . $trv_id . '" data-old-price="' . $trv_giaban . '"  data-new-price="' . $trv_giamoi . '" class="click-quick-edit-price">Giá: <span class="cur graycolor">' . $trv_giaban . '</span>/ <strong class="cur">' . $trv_giamoi . '</strong></span></div>
+		<div class="quick-show-if-post">Mã sản phẩm: <strong class="upper">' . _eb_get_post_object( $trv_id, '_eb_product_sku' ) . '</strong> | <span data-id="' . $trv_id . '" data-old-price="' . $trv_giaban . '"  data-new-price="' . $trv_giamoi . '" class="click-quick-edit-price cur">Giá: <span class="graycolor ebe-currency ebe-currency-format">' . $trv_giaban . '</span>/ <strong class="ebe-currency ebe-currency-format">' . $trv_giamoi . '</strong> <i title="Sửa" class="fa fa-edit greencolor"></i></span></div>
 		<div>' . $view_by_group . '</div>
 	</td>
 	<td><input type="number" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" class="s change-update-new-stt" /></td>

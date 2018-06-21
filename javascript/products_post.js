@@ -132,6 +132,12 @@ $('.click-quick-edit-price').off('click').click(function  () {
 	if ( new_price == '' ) {
 		new_price = 0;
 	}
+	
+	if ( old_price == 0 && new_price > 0 ) {
+		old_price = new_price;
+	}
+	
+	//
 //	console.log( id );
 //	console.log( old_price );
 //	console.log( new_price );
@@ -259,6 +265,15 @@ function WGR_check_quick_edit_price () {
 
 // Chỉnh sửa SEO nhanh
 WGR_click_open_quick_edit_seo();
+
+
+jQuery('.ebe-currency-format').each(function() {
+	var a = jQuery(this).html() || '';
+	
+	if ( a != '' && a != '0' ) {
+		jQuery(this).html( g_func.money_format( a ) );
+	}
+});
 
 
 
