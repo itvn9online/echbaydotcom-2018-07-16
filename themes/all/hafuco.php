@@ -1,10 +1,10 @@
 <?php 
 /*
-* Save from Mon, 04 Jun 2018 23:21:20 +0700
+* Save from Thu, 21 Jun 2018 17:53:50 +0700
 * By itvn9online@yahoo.com #1
 * From IP: 127.0.0.1
 * On domain: localhost:8888
-* User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
+* User agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
 */
 $eb_all_themes_name = 'hafuco';
 $eb_all_themes_support[$eb_all_themes_name] = array();
