@@ -16,42 +16,6 @@ if ( typeof $ != 'function' ) {
 
 
 
-// lưu URL cuối cùng mà người dùng đã xem, để lần sau truy cập luôn vào URL này cho tiện
-(function () {
-	var l = g_func.getc('wgr_last_url_user_visit');
-	
-	//
-	if ( l == null ) {
-		l = '';
-	}
-//	console.log(l);
-	
-	//
-	if ( g_func.getc('wgr_check_last_user_visit') == null ) {
-		
-		// khoảng thời gian để chuyển URL cuối cùng
-		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
-//		return false;
-		
-		if ( l != '' ) {
-			setTimeout(function () {
-				window.location = unescape( l );
-			}, 200);
-			return false;
-		}
-		
-	}
-	
-	// sau 5 giây thì lưu URL hiện tại lại
-	/*
-	setTimeout(function () {
-		g_func.setc( 'wgr_last_url_user_visit', escape( window.location.href ), 0, 7 );
-	}, 5000);
-	*/
-})();
-
-
-
 
 //
 if ( cf_chu_de_chinh != '' ) {
