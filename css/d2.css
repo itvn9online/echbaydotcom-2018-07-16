@@ -1175,6 +1175,10 @@ color: #333;
 	margin: 0 14px;
 	background-size: contain;
 }
+.banner-video-media {
+	background-color: #000;
+	background-image: none !important;
+}
 /* search */
 .thread-search { }
 .thread-search li {

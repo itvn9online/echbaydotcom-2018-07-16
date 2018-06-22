@@ -3534,14 +3534,19 @@ function _eb_load_ads (
 			}
 			
 			//
-			$youtube_id = _eb_get_youtube_id( _eb_get_post_meta( $post->ID, '_eb_ads_video_url' ) );
-//			$youtube_id = _eb_get_youtube_id( _eb_get_ads_object( $post->ID, '_eb_ads_video_url' ) );
-			$youtube_url = 'about:blank';
 			$youtube_avt = '';
-			if ( $youtube_id != '' ) {
-//				$youtube_url = '//www.youtube.com/watch?v=' . $youtube_id;
-				$youtube_url = '//www.youtube.com/embed/' . $youtube_id;
-				$youtube_avt = '//i.ytimg.com/vi/' . $youtube_id . '/0.jpg';
+			$youtube_url = _eb_get_post_meta( $post->ID, '_eb_ads_video_url' );
+			if ( strstr( $youtube_url, '.mp4' ) == false ) {
+				$youtube_id = _eb_get_youtube_id( $youtube_url );
+//				$youtube_id = _eb_get_youtube_id( _eb_get_ads_object( $post->ID, '_eb_ads_video_url' ) );
+				if ( $youtube_id != '' ) {
+//					$youtube_url = '//www.youtube.com/watch?v=' . $youtube_id;
+					$youtube_url = '//www.youtube.com/embed/' . $youtube_id;
+					$youtube_avt = '//i.ytimg.com/vi/' . $youtube_id . '/0.jpg';
+				}
+				else {
+					$youtube_url = 'about:blank';
+				}
 			}
 			
 			

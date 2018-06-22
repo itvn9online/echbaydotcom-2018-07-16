@@ -1082,7 +1082,9 @@ function convert_size_to_one_format () {
 			a = a.replace( /\s/g, '' );
 			
 			// kích thước tự động thì cũng bỏ qua luôn
-			if ( a != 'auto' ) {
+			if ( a == 'auto' || a == 'full' ) {
+			}
+			else {
 				// nếu có dấu x -> chuyển về định dạng của Cao/ Rộng
 				if ( a.split('x').length > 1 ) {
 					a = a.split( 'x' );

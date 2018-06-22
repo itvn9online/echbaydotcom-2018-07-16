@@ -998,6 +998,15 @@ var _global_js_eb = {
 					*/
 				}
 			}
+			else if ( new_size == 'full' ) {
+				a = jQuery(window).height();
+				
+				//
+				jQuery(this).css({
+					'line-height': a + 'px',
+					height: a + 'px'
+				});
+			}
 			else {
 				// Tính toán chiều cao mới dựa trên chiều rộng
 				if ( new_size != '' ) {

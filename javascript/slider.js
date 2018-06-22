@@ -494,6 +494,49 @@ function jEBE_slider ( jd, conf, callBack ) {
 		//
 		jQuery('.' + jd_class + ' li').removeClass('selected');
 		jQuery('.' + jd_class + ' li[data-i="' + i + '"]').addClass('selected');
+		
+		
+		
+		// kiểm tra xem có video không -> có thì tự phát video thôi
+		var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
+//		console.log(vd);
+		
+		// xóa các video trong cùng slide
+		jQuery(jd + ' .banner-video-media').html('&nbsp;');
+		
+		//
+		if ( vd.split('youtube.com').length > 1 ) {
+			// xóa thẻ a
+			jQuery('a', this).hide();
+			
+			// tính toán chiều rộng để tạo video
+			var h = jQuery('div.banner-ads-media', this).height(),
+//				w = h / youtube_video_default_size;
+				w = '100%';
+//			console.log(w);
+			
+			//
+			jQuery('div.banner-ads-media', this)
+			.addClass('banner-video-media')
+			.html('<iframe width="' + w + '" height="' + h + '" src="' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+		}
+		else if ( vd.split('.mp4').length > 1 ) {
+			// xóa thẻ a
+//			jQuery('a', this).hide();
+			
+			// tính toán chiều rộng để tạo video
+			var h = jQuery('div.banner-ads-media', this).height(),
+				w = '100%';
+			
+			// tạo video
+			// https://www.w3schools.com/howto/howto_css_fullscreen_video.asp
+			jQuery('div.banner-ads-media', this)
+			.addClass('banner-video-media')
+			.html('<video width="' + w + '" height="' + h + '" autoplay muted loop>\
+				<source src="' + vd + '" type="video/mp4">\
+			</video>');
+		}
+		
 	});
 	jQuery(jd + ' li[data-i="0"]').click();
 	

@@ -13,7 +13,7 @@ function EBE_get_big_banner ( $limit = 5, $option = array () ) {
 		0,
 		'
 <li class="global-a-posi"><a href="{tmp.p_link}" title="{tmp.post_title}"{tmp.target_blank}>&nbsp;</a>
-	<div data-size="{tmp.data_size}" data-img="{tmp.trv_img}" data-table-img="{tmp.trv_table_img}" data-mobile-img="{tmp.trv_mobile_img}" class="ti-le-global banner-ads-media" style="background-image:url({tmp.trv_img});">&nbsp;</div>
+	<div data-size="{tmp.data_size}" data-img="{tmp.trv_img}" data-table-img="{tmp.trv_table_img}" data-mobile-img="{tmp.trv_mobile_img}" data-video="{tmp.youtube_url}" class="ti-le-global banner-ads-media text-center" style="background-image:url({tmp.trv_img});">&nbsp;</div>
 </li>',
 		array(
 			'default_value' => ''
