@@ -249,6 +249,13 @@ function jEBE_slider ( jd, conf, callBack ) {
 		//
 		return false;
 	}
+	// lấy theo kích thước màn hình
+	else if ( conf['size'] == 'full' ) {
+		hai = jQuery(window).height();
+		
+		// thêm class khẳng định full size theo màn hình
+		jQuery(jd).addClass('slider-window-size');
+	}
 	else {
 		hai = wit * eval( conf['size'] )/ conf['visible'] - 1;
 	}
