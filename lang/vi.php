@@ -291,6 +291,13 @@ $___eb_lang[eb_key_for_site_lang . 'tag_blog_excerpt'] = 'h2';
 $___eb_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'off';
 $eb_note_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'on/ off';
 
+// icon cho khối mạng xã hội
+$___eb_lang[eb_key_for_site_lang . 'social_facebook'] = 'fa fa-facebook';
+$___eb_lang[eb_key_for_site_lang . 'social_instagram'] = 'fa fa-instagram';
+$___eb_lang[eb_key_for_site_lang . 'social_twitter'] = 'fa fa-twitter';
+$___eb_lang[eb_key_for_site_lang . 'social_youtube'] = 'fa fa-youtube';
+$___eb_lang[eb_key_for_site_lang . 'social_google_plus'] = 'fa fa-google-plus';
+
 
 // phần ngôn ngữ riêng, để sử dụng cho các câu từ mà một số website sẽ dùng
 $___eb_lang[eb_key_for_site_lang . 'custom_text'] = 'Custom text';
