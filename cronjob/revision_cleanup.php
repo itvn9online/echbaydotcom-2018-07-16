@@ -19,7 +19,7 @@ if ( $check_Cleanup_cache == false ) {
 		
 		// nếu lớn hơn số revision được lưu trữ thì mới tiếp tục
 		if ( ! empty( $strsql ) && $strsql[0]->c > $__cf_row['cf_max_revision_cleanup'] + 100 ) {
-			$strsql = _eb_q("SELECT ID
+			$strsql = _eb_q("SELECT ID, post_type
 			FROM
 				`" . wp_posts . "`
 			WHERE
