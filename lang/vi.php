@@ -293,10 +293,11 @@ $eb_note_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'on/ off';
 
 // icon cho khối mạng xã hội
 $___eb_lang[eb_key_for_site_lang . 'social_facebook'] = 'fa fa-facebook';
-$___eb_lang[eb_key_for_site_lang . 'social_instagram'] = 'fa fa-instagram';
+$___eb_lang[eb_key_for_site_lang . 'social_instagram'] = 'fab fa-instagram';
 $___eb_lang[eb_key_for_site_lang . 'social_twitter'] = 'fa fa-twitter';
-$___eb_lang[eb_key_for_site_lang . 'social_youtube'] = 'fa fa-youtube';
-$___eb_lang[eb_key_for_site_lang . 'social_google_plus'] = 'fa fa-google-plus';
+$___eb_lang[eb_key_for_site_lang . 'social_youtube'] = 'fab fa-youtube';
+$___eb_lang[eb_key_for_site_lang . 'social_google_plus'] = 'fab fa-google-plus';
+$___eb_lang[eb_key_for_site_lang . 'social_pinterest'] = 'fab fa-pinterest';
 
 
 // phần ngôn ngữ riêng, để sử dụng cho các câu từ mà một số website sẽ dùng
