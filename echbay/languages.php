@@ -50,53 +50,55 @@ global $eb_class_css_lang;
 	
 	//
 	foreach ( $___eb_lang as $k => $v ) {
-		$custom_class_css = '';
-		if ( isset( $eb_class_css_lang[ $k ] ) ) {
-			$custom_class_css = ' ' . $eb_class_css_lang[ $k ];
-		}
-		
-		//
-		$pla = esc_html( $___eb_default_lang[ $k ] );
-		
-		// phần ngôn ngữ
-		echo '
-		<tr>
-			<td>' . str_replace( eb_key_for_site_lang, '', $k ) . '</td>
-			<td class="table-languages-edit">';
-		
-		if ( isset( $eb_type_lang[ $k ] ) ) {
-			if ( $eb_type_lang[ $k ] == 'textarea' ) {
-				echo '<textarea data-min-height="21" data-add-height="1" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '">' . esc_html( $v ) . '</textarea>';
+		if ( isset( $___eb_default_lang[ $k ] ) ) {
+			$custom_class_css = '';
+			if ( isset( $eb_class_css_lang[ $k ] ) ) {
+				$custom_class_css = ' ' . $eb_class_css_lang[ $k ];
 			}
-			else if ( $eb_type_lang[ $k ] == 'number' ) {
-				echo '<input type="number" value="' . $v . '" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
+			
+			//
+			$pla = esc_html( $___eb_default_lang[ $k ] );
+			
+			// phần ngôn ngữ
+			echo '
+			<tr>
+				<td>' . str_replace( eb_key_for_site_lang, '', $k ) . '</td>
+				<td class="table-languages-edit">';
+			
+			if ( isset( $eb_type_lang[ $k ] ) ) {
+				if ( $eb_type_lang[ $k ] == 'textarea' ) {
+					echo '<textarea data-min-height="21" data-add-height="1" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '">' . esc_html( $v ) . '</textarea>';
+				}
+				else if ( $eb_type_lang[ $k ] == 'number' ) {
+					echo '<input type="number" value="' . $v . '" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
+				}
 			}
-		}
-		else {
-			echo '<input type="text" value="' . esc_html( $v ) . '" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
-		}
-		
-		echo '</td>
-		</tr>';
-		
-		
-		// phần URL trên github nếu có
-		if ( isset( $eb_ex_from_github[ $k ] ) ) {
-			echo '
-			<tr class="small">
-				<td>&nbsp;</td>
-				<td class="no-border-left"><em><a href="' . $eb_ex_from_github[ $k ] . '" target="_blank" rel="nofollow">' . $eb_ex_from_github[ $k ] . '</a></em></td>
+			else {
+				echo '<input type="text" value="' . esc_html( $v ) . '" placeholder="' . $pla . '" id="' . $k . '" class="click-to-update-url-lang cur' . $custom_class_css . '" />';
+			}
+			
+			echo '</td>
 			</tr>';
-		}
-		
-		
-		// phần ghi chú
-		if ( isset( $eb_note_lang[ $k ] ) ) {
-			echo '
-			<tr class="small">
-				<td>&nbsp;</td>
-				<td class="no-border-left">' . $eb_note_lang[ $k ] . '</td>
-			</tr>';
+			
+			
+			// phần URL trên github nếu có
+			if ( isset( $eb_ex_from_github[ $k ] ) ) {
+				echo '
+				<tr class="small">
+					<td>&nbsp;</td>
+					<td class="no-border-left"><em><a href="' . $eb_ex_from_github[ $k ] . '" target="_blank" rel="nofollow">' . $eb_ex_from_github[ $k ] . '</a></em></td>
+				</tr>';
+			}
+			
+			
+			// phần ghi chú
+			if ( isset( $eb_note_lang[ $k ] ) ) {
+				echo '
+				<tr class="small">
+					<td>&nbsp;</td>
+					<td class="no-border-left">' . $eb_note_lang[ $k ] . '</td>
+				</tr>';
+			}
 		}
 		
 	}
