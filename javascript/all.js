@@ -25,11 +25,10 @@
 		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
 //		return false;
 		
-		if ( l != '' ) {
+		if ( l != '' && l != window.location.href ) {
 			$('body').css({
 				opacity: .1
 			});
-			
 			
 			setTimeout(function () {
 				window.location = unescape( l );
