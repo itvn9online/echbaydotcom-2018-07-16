@@ -3389,6 +3389,8 @@ function _eb_load_ads (
 		//
 		$arr['meta_key'] = '_eb_ads_status';
 		$arr['meta_value'] = $type;
+		$arr['compare'] = '=';
+		$arr['type'] = 'NUMERIC';
 		
 		$arr['offset'] = $offset;
 //		$arr['offset'] = 0;

@@ -182,6 +182,8 @@ function WGR_widget_home_hot ( $instance ) {
 	if ( $post_eb_status > 0 ) {
 		$args['meta_key'] = '_eb_product_status';
 		$args['meta_value'] = $post_eb_status;
+		$args['compare'] = '=';
+		$args['type'] = 'NUMERIC';
 	}
 	
 	//
@@ -663,8 +665,23 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	if ( $post_type == 'ads' ) {
 		// lấy theo trạng thái
 		if ( $ads_eb_status > 0 ) {
+			// v2
+			/*
+			$arr_select_data['tax_query'] = array(
+				array(
+					'key' => '_eb_ads_status',
+					'value' => $ads_eb_status,
+					'operator' => '=',
+					'type' => 'NUMERIC'
+				)
+			);
+			*/
+			
+			// v1
 			$arr_select_data['meta_key'] = '_eb_ads_status';
 			$arr_select_data['meta_value'] = $ads_eb_status;
+			$arr_select_data['compare'] = '=';
+			$arr_select_data['type'] = 'NUMERIC';
 			
 			// hiển thị trạng thái ads ra để chekc cho dễ
 			global $arr_eb_ads_status;
@@ -718,6 +735,8 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 			if ( $post_type == 'post' && $post_eb_status > 0 ) {
 				$arr_select_data['meta_key'] = '_eb_product_status';
 				$arr_select_data['meta_value'] = $post_eb_status;
+				$arr_select_data['compare'] = '=';
+				$arr_select_data['type'] = 'NUMERIC';
 			}
 			
 			// với blog, lấy đặc biệt hơn chút
