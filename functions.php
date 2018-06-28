@@ -3538,6 +3538,7 @@ function _eb_load_ads (
 			//
 			$youtube_avt = '';
 			$youtube_url = _eb_get_post_meta( $post->ID, '_eb_ads_video_url' );
+			$youtube_id = '';
 			if ( strstr( $youtube_url, '.mp4' ) == false ) {
 				$youtube_id = _eb_get_youtube_id( $youtube_url );
 //				$youtube_id = _eb_get_youtube_id( _eb_get_ads_object( $post->ID, '_eb_ads_video_url' ) );

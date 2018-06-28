@@ -519,13 +519,29 @@ function jEBE_slider ( jd, conf, callBack ) {
 			// tính toán chiều rộng để tạo video
 			var h = jQuery('div.banner-ads-media', this).height(),
 //				w = h / youtube_video_default_size;
-				w = '100%';
-//			console.log(w);
+				w = '100%',
+				w_video = jQuery(this).width(),
+				h_video = '',
+				t = 0;
+//			console.log('W Video: ' + w_video);
+			
+			//
+			h_video = w_video * youtube_video_default_size;
+//			console.log('H Video: ' + h_video);
+			
+			//
+			// chiều cao thực sự đang trình chiếu -> để điều chỉnh lại top cho slider -> làm cân slider
+			if ( h_video > h ) {
+				t = parseInt( ( h - h_video ) / 2, 10 );
+			}
+//			console.log('Top: ' + t);
 			
 			//
 			jQuery('div.banner-ads-media', this)
 			.addClass('banner-video-media')
-			.html('<iframe width="' + w + '" height="' + h + '" src="' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+			.html('<div style="top: ' + t + 'px">\
+				<iframe width="' + w + '" height="' + h_video + '" src="' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\
+			</div>');
 		}
 		else if ( vd.split('.mp4').length > 1 ) {
 			// xóa thẻ a
@@ -533,13 +549,29 @@ function jEBE_slider ( jd, conf, callBack ) {
 			
 			// tính toán chiều rộng để tạo video
 			var h = jQuery('div.banner-ads-media', this).height(),
-				w = '100%';
+//			var h = '',
+				w = '100%',
+				w_video = jQuery(this).width(),
+				h_video = '',
+				t = 0;
+//			console.log('W Video: ' + w_video);
+//			console.log('H Slider: ' + h);
+			
+			// tính chiều cao của video dựa theo chiều rộng, tỉ lệ 16:9
+			h_video = parseInt( w_video/ 16 * 9, 10 );
+//			console.log('H Video: ' + h_video);
+			
+			// chiều cao thực sự đang trình chiếu -> để điều chỉnh lại top cho slider -> làm cân slider
+			if ( h_video > h ) {
+				t = parseInt( ( h - h_video ) / 2, 10 );
+			}
+//			console.log('Top: ' + t);
 			
 			// tạo video
 			// https://www.w3schools.com/howto/howto_css_fullscreen_video.asp
 			jQuery('div.banner-ads-media', this)
 			.addClass('banner-video-media')
-			.html('<video width="' + w + '" height="' + h + '" autoplay muted loop>\
+			.html('<video width="' + w + '" height="' + h_video + '" autoplay muted loop preload="auto" style="top: ' + t + 'px">\
 				<source src="' + vd + '" type="video/mp4">\
 			</video>');
 		}
