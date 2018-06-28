@@ -217,6 +217,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_ads_target' => 'Mặc định, các URL trong quảng cáo sẽ được mở đè lên tab hiện tại, đánh dấu và lưu lại để mở URL trong tab mới.',
 	'_eb_ads_for_post' => 'Nhập vào ID của Sản phẩm hoặc bài Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
 	'_eb_ads_for_category' => 'Nhập vào ID của Danh mục Sản phẩm hoặc Danh mục Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Danh mục Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
+	'_eb_ads_video_url' => 'Bạn có thể nhập vào URL video trên Youtube (Ví dụ: <strong>https://youtu.be/{ID}</strong>) hoặc URL video MP4, các định dạng khác hiện chưa được hỗ trợ.',
 	
 	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
 	'_eb_product_leech_sku' => 'Chức năng dùng để kiểm soát các tin đã tồn tại từ phiê bản cũ hơn (thường sử dụng khi chuyển đổi code khác sang wordpress).',
@@ -375,7 +376,7 @@ $eb_ads_custom_meta_box = array(
 	'_eb_ads_for_category' => 'Chuyên mục/ Danh mục',
 	'_eb_ads_url' => 'Đường dẫn',
 	'_eb_ads_target' => 'Mở trong tab mới',
-	'_eb_ads_video_url' => 'URL Video YouTube',
+	'_eb_ads_video_url' => 'URL Video',
 	'_eb_ads_status' => 'Khu vực hiển thị',
 	'_eb_product_avatar' => 'Ảnh đại diện',
 );
