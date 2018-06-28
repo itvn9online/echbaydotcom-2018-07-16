@@ -34,11 +34,24 @@ function WGR_rss_get_parent_cat ( $id ) {
 
 
 //
-echo '<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+$rssCacheFilter = 'rss-fb';
+$rss_content = _eb_get_static_html ( $rssCacheFilter, '', '', 3600 );
+//$rss_content = false;
+if ($rss_content == false) {
+	
+	
+	
+	//
+$rss_content = '';
+
+$rss_content .= '<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
 	<channel>
 		<title>' . web_name . '</title>
 		<link>' . web_link . '</link>
-		<description>' . $__cf_row['cf_description'] . '</description>';
+		<description>' . $__cf_row['cf_description'] . '</description>
+		<last_update>' . date( 'r', date_time ) . '</last_update>
+		<code_copyright>Cache by EchBay.com - WebGiaRe.org</code_copyright>';
 
 
 //
@@ -113,7 +126,7 @@ foreach ( $sql as $v ) {
 	
 	
 	//
-echo '<item>
+$rss_content .= '<item>
 	<g:id>' . $v->ID . '</g:id>
 	<g:availability>' . ( _eb_get_post_object( $v->ID, '_eb_product_buyer', 0 ) < _eb_get_post_object( $v->ID, '_eb_product_quantity', 0 ) ? 'in stock' : 'out of stock' ) . '</g:availability>
 	<g:condition>new</g:condition>
@@ -133,8 +146,20 @@ echo '<item>
 
 
 
-echo '</channel>
+$rss_content .= '</channel>
 </rss>';
+	
+	
+	
+	
+	// ép lưu cache
+	_eb_get_static_html ( $rssCacheFilter, $rss_content, '', 60 );
+	
+}
+
+
+//
+echo $rss_content;
 
 
 
