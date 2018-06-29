@@ -741,6 +741,8 @@ $arr_main_content = array(
 //	'tmp.str_sidebar' => _eb_echbay_sidebar( $id_for_get_sidebar ),
 	
 	'tmp.cf_img_details_maxwidth' => $__cf_row['cf_img_details_maxwidth'],
+	'tmp.cf_num_details_list' => $__cf_row['cf_num_details_list'],
+	'tmp.cf_num_details_blog_list' => $__cf_row['cf_num_details_blog_list'],
 	
 	//
 	'tmp.eb_blog_2content' => $eb_blog_2content,

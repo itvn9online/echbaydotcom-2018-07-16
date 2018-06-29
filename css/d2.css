@@ -2,6 +2,7 @@ body.body-no-scroll { overflow: hidden; }
 label,
 .cur { cursor: pointer; }
 /* global blogs */
+.hide-if-zero-other[data-other-post="0"],
 .custom-width-blogs-sidebar { display: none; }
 /* Global css (thread_node) */
 .echbay-blog { margin: 0 -10px; }

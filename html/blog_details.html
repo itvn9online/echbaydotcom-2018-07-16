@@ -16,13 +16,15 @@
 				<br>
 				{tmp.html_for_fb_comment}<br>
 				<br>
-				<div class="echbay-blog-module">Bài xem nhiều</div>
-				<hr class="hr-line-before">
-				<br>
-				<ul class="echbay-blog cf echbay-details-blog {tmp.cf_blog_num_line} {tmp.custom_blog_node_flex_css}">
-					{tmp.blog_list_medium}
-				</ul>
-				<br />
+				<div data-other-post="{tmp.cf_num_details_blog_list}" class="hide-if-zero-other">
+					<div class="echbay-blog-module">Bài xem nhiều</div>
+					<hr class="hr-line-before">
+					<br>
+					<ul class="echbay-blog cf echbay-details-blog {tmp.cf_blog_num_line} {tmp.custom_blog_node_flex_css}">
+						{tmp.blog_list_medium}
+					</ul>
+					<br />
+				</div>
 				<div class="global-blog-widget">{tmp.str_for_details_sidebar}</div>
 			</div>
 		</div>
