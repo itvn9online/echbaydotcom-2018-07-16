@@ -421,7 +421,7 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 		return true;
 	}
 	
-	// một số key sẽ dùng post meta -> để tìm theo khoảng giá
+	// một số key sẽ dùng post meta -> để tìm theo khoảng giá, lọc quảng cáo...
 	$remove_in_postmeta = true;
 	if ( $k == '_eb_product_price'
 	|| $k == '_eb_ads_status' ) {
