@@ -1367,8 +1367,10 @@ button.btn-addto-cart {
 }
 .youtube-quick-view li:hover .echbay-blog-avt:before { color: #fff; }
 /* widget */
+.echbay-widget-youtube-padding,
 .widget_echbay_youtube,
 .widget_echbay_gg_map { margin-bottom: 19px; }
+.widget_echbay_youtube .echbay-widget-youtube-padding { margin-bottom: 0; }
 .widget_random_blog { padding-bottom: 12px; }
 .widget_random_blog li { margin: 6px 0; }
 .echbay-category-in-js,

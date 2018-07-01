@@ -3315,7 +3315,7 @@ setTimeout(function () {
 
 // chuyển các URL video thành dạng list video
 (function () {
-	jQuery('.widget_echbay_youtube .img-max-width').each(function() {
+	jQuery('.echbay-widget-youtube-padding .img-max-width').each(function() {
 		var a = jQuery(this).html() || '';
 		
 		if ( a != '' ) {
