@@ -422,8 +422,11 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 	}
 	
 	// một số key sẽ dùng post meta -> để tìm theo khoảng giá
-	if ( $k == '_eb_product_price' ) {
+	$remove_in_postmeta = true;
+	if ( $k == '_eb_product_price'
+	|| $k == '_eb_ads_status' ) {
 		update_post_meta( $id, $k, $v );
+		$remove_in_postmeta = false;
 	}
 	
 	
@@ -483,7 +486,7 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 		ID = " . $id, 0 );
 	
 	//
-	if ( cf_remove_raovat_meta == 1 ) {
+	if ( cf_remove_raovat_meta == 1 && $remove_in_postmeta == true ) {
 		_eb_q( "DELETE FROM
 			`" . wp_postmeta . "`
 		WHERE
