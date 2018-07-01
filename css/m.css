@@ -29,8 +29,12 @@ body.style-for-mobile {
 .style-for-mobile .w99 { min-width: 250px; }
 .style-for-mobile .hide-if-mobile { display: none !important; }
 .style-for-mobile .show-if-mobile { display: block !important; }
+.style-for-mobile .right-padding-menu,
+.style-for-mobile .padding-right-menu,
 .style-for-mobile .right-space-menu,
 .style-for-mobile .right-menu-space { padding-right: 0; }
+.style-for-mobile .left-padding-menu,
+.style-for-mobile .padding-left-menu,
 .style-for-mobile .left-space-menu,
 .style-for-mobile .left-menu-space { padding-left: 0; }
 .style-for-mobile .mobile-zero-margin,

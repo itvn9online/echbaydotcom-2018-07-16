@@ -742,8 +742,12 @@ a.eb-btn {
 	content: "|";
 	margin: 0 12px;
 }
+.right-padding-menu,
+.padding-right-menu,
 .right-space-menu,
 .right-menu-space { padding-right: 25px; }
+.left-padding-menu,
+.padding-left-menu,
 .left-space-menu,
 .left-menu-space { padding-left: 25px; }
 .table-list {
