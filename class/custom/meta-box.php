@@ -198,6 +198,7 @@ if ( mtv_id == 1 ) {
 
 // Hiển thị câu ghi chú đối với meta box
 $eb_arr_placeholder_custom_meta_box = array(
+	'_eb_product_css' => 'Bạn có thể thêm một class class CSS vào đây, class này sẽ xuất hiện trong thẻ BODY, dùng để tùy chỉnh CSS cho các post, page... cụ thể',
 	'_eb_product_avatar' => 'Ảnh đại diện dự phòng (nhiều trường hợp chuyển dữ liệu hoặc làm demo sẽ tiện)',
 	'_eb_product_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_product_video_url' => 'Một số giao diện hỗ trợ video youtube (nếu có)',
@@ -245,6 +246,7 @@ $eb_meta_custom_meta_box = array(
 	
 	//
 	'_eb_product_avatar' => 'Ảnh đại diện',
+	'_eb_product_css' => 'Tùy chỉnh CSS',
 //	'_eb_product_leech_source' => 'URL đồng bộ',
 );
 
