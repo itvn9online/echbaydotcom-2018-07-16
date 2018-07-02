@@ -455,7 +455,7 @@ function ___eb_details_ul_options () {
 	
 	
 	//
-	var a = $('.thread-details-options tbody').html() || $('.thread-details-options').html() || '';
+	var a = jQuery('.thread-details-options tbody').html() || jQuery('.thread-details-options').html() || '';
 	//console.log(a);
 	if ( a != '' ) {
 		// thay TR -> LI
@@ -465,12 +465,12 @@ function ___eb_details_ul_options () {
 	//	a = a.replace( /\<td\s/gi, '<div ' ).replace( /\<td\>/gi, '<div>' ).replace( /\<\/td\>/gi, '</div>' );
 		
 		//
-	//	console.log(a);
-		$('.thread-details-options').hide().after( '<ul class="thread-details2-options">' + a + '</ul>' );
+//		console.log(a);
+		jQuery('.thread-details-options').hide().after( '<ul class="thread-details2-options">' + a + '</ul>' );
 		
 		// xóa bỏ TD -> chỉ giữ lại DIV
-		$('.thread-details2-options td').each(function() {
-			$(this).after( $(this).html() );
+		jQuery('.thread-details2-options td').each(function() {
+			jQuery(this).after( jQuery(this).html() );
 		}).remove();
 	}
 	
@@ -2611,6 +2611,8 @@ jQuery('#oi_scroll_top, .oi_scroll_top').click(function() {
 
 
 
+// thêm class định hình cho hình ảnh của elementor
+jQuery('.elementor-image').addClass('img-max-width');
 
 //_global_js_eb.ebBgLazzyLoadOffset();
 _global_js_eb.ebBgLazzyLoad();
