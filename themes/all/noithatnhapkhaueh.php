@@ -9,7 +9,7 @@
 $eb_all_themes_support["noithatnhapkhaueh"] = array();
 $eb_all_themes_support["noithatnhapkhaueh"]["name"] = "noithatnhapkhaueh";
 $eb_all_themes_support["noithatnhapkhaueh"]["screenshot"] = "https://img1.webgiare.org/noithatnhapkhaueh.jpg";
-$eb_all_themes_support["noithatnhapkhaueh"]["price"] = 2500000;
+$eb_all_themes_support["noithatnhapkhaueh"]["price"] = 4500000;
 $eb_all_themes_support["noithatnhapkhaueh"]["demo"] = "noithatnhapkhaueh.com";
 //
 $eb_all_themes_support["noithatnhapkhaueh"]["top"][] = "noithatnhapkhaueh-top1.php";

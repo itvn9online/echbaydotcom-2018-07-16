@@ -9,7 +9,7 @@
 $eb_all_themes_support["estyle"] = array();
 $eb_all_themes_support["estyle"]["name"] = "estyle";
 $eb_all_themes_support["estyle"]["screenshot"] = "https://img1.webgiare.org/estyle.jpg";
-$eb_all_themes_support["estyle"]["price"] = 3000000;
+$eb_all_themes_support["estyle"]["price"] = 6000000;
 $eb_all_themes_support["estyle"]["demo"] = "estyle.vn";
 //
 $eb_all_themes_support["estyle"]["top"][] = "estyle-top1.php";

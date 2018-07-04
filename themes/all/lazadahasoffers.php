@@ -9,7 +9,7 @@
 $eb_all_themes_support["lazadahasoffers"] = array();
 $eb_all_themes_support["lazadahasoffers"]["name"] = "lazadahasoffers";
 $eb_all_themes_support["lazadahasoffers"]["screenshot"] = "https://img1.webgiare.org/lazadahasoffers.jpg";
-$eb_all_themes_support["lazadahasoffers"]["price"] = 2500000;
+$eb_all_themes_support["lazadahasoffers"]["price"] = 5000000;
 $eb_all_themes_support["lazadahasoffers"]["demo"] = "lazadahasoffers.vn";
 //
 $eb_all_themes_support["lazadahasoffers"]["top"][] = "lazadahasoffers-top1.php";
