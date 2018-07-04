@@ -8,7 +8,7 @@
 */
 $eb_all_themes_support["viettourist"]=array();
 $eb_all_themes_support["viettourist"]["screenshot"] = "https://img1.webgiare.org/viettourist.jpg";
-$eb_all_themes_support["viettourist"]["price"] = 1500000;
+$eb_all_themes_support["viettourist"]["price"] = 4500000;
 $eb_all_themes_support["viettourist"]["demo"] = "viettourist.vn";
 //
 $eb_all_themes_support["viettourist"]["top"][] = "viettourist-top1.php";

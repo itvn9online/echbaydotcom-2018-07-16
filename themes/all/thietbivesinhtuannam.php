@@ -11,7 +11,7 @@ $eb_all_themes_support["thietbivesinhtuannam"]["name"] = "thietbivesinhtuannam";
 $eb_all_themes_support["thietbivesinhtuannam"]["screenshot"] = "https://img1.webgiare.org/thietbivesinhtuannam.jpg";
 $eb_all_themes_support["thietbivesinhtuannam"]["author"] = "";
 $eb_all_themes_support["thietbivesinhtuannam"]["demo"] = "";
-$eb_all_themes_support["thietbivesinhtuannam"]["price"] = 1500000;
+$eb_all_themes_support["thietbivesinhtuannam"]["price"] = 3500000;
 //
 $eb_all_themes_support["thietbivesinhtuannam"]["top"][] = "thietbivesinhtuannam-top1.php";
 $eb_all_themes_support["thietbivesinhtuannam"]["top"][] = "top_widget.php";

@@ -11,7 +11,7 @@ $eb_all_themes_support["ototaichuyendung"]["name"] = "ototaichuyendung";
 $eb_all_themes_support["ototaichuyendung"]["screenshot"] = "https://img1.webgiare.org/ototaichuyendung.jpg";
 $eb_all_themes_support["ototaichuyendung"]["author"] = "";
 $eb_all_themes_support["ototaichuyendung"]["demo"] = "";
-$eb_all_themes_support["ototaichuyendung"]["price"] = 2000000;
+$eb_all_themes_support["ototaichuyendung"]["price"] = 4000000;
 //
 $eb_all_themes_support["ototaichuyendung"]["top"][] = "ototaichuyendung-top1.php";
 $eb_all_themes_support["ototaichuyendung"]["top"][] = "top_widget.php";

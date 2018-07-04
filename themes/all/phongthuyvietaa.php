@@ -11,7 +11,7 @@ $eb_all_themes_support["phongthuyvietaa"]["name"] = "phongthuyvietaa";
 $eb_all_themes_support["phongthuyvietaa"]["screenshot"] = "https://img1.webgiare.org/phongthuyvietaa.jpg";
 $eb_all_themes_support["phongthuyvietaa"]["author"] = "";
 $eb_all_themes_support["phongthuyvietaa"]["demo"] = "";
-$eb_all_themes_support["phongthuyvietaa"]["price"] = 2000000;
+$eb_all_themes_support["phongthuyvietaa"]["price"] = 3500000;
 //
 $eb_all_themes_support["phongthuyvietaa"]["top"][] = "phongthuyvietaa-top1.php";
 $eb_all_themes_support["phongthuyvietaa"]["top"][] = "top_widget.php";

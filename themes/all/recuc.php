@@ -11,7 +11,7 @@ $eb_all_themes_support["recuc"]["name"] = "recuc";
 $eb_all_themes_support["recuc"]["screenshot"] = "https://img1.webgiare.org/recuc.jpg";
 $eb_all_themes_support["recuc"]["author"] = "";
 $eb_all_themes_support["recuc"]["demo"] = "";
-$eb_all_themes_support["recuc"]["price"] = 2000000;
+$eb_all_themes_support["recuc"]["price"] = 6000000;
 //
 $eb_all_themes_support["recuc"]["top"][] = "recuc-top1.php";
 $eb_all_themes_support["recuc"]["top"][] = "top_widget.php";

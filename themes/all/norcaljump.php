@@ -10,7 +10,7 @@ $eb_all_themes_support["norcaljump"] = array();
 $eb_all_themes_support["norcaljump"]["name"] = "norcaljump";
 $eb_all_themes_support["norcaljump"]["screenshot"] = "https://img1.webgiare.org/norcaljump.jpg";
 $eb_all_themes_support["norcaljump"]["demo"] = "norcaljump.com";
-$eb_all_themes_support["norcaljump"]["price"] = 1100000;
+$eb_all_themes_support["norcaljump"]["price"] = 4500000;
 //
 $eb_all_themes_support["norcaljump"]["top"][] = "norcaljump-top1.php";
 $eb_all_themes_support["norcaljump"]["top"][] = "norcaljump-top2.php";

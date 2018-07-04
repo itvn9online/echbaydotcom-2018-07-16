@@ -11,7 +11,7 @@ $eb_all_themes_support["hoangnam"]["name"] = "hoangnam";
 $eb_all_themes_support["hoangnam"]["screenshot"] = "https://img1.webgiare.org/hoangnam.jpg";
 $eb_all_themes_support["hoangnam"]["author"] = "";
 $eb_all_themes_support["hoangnam"]["demo"] = "";
-$eb_all_themes_support["hoangnam"]["price"] = 600000;
+$eb_all_themes_support["hoangnam"]["price"] = 1200000;
 //
 $eb_all_themes_support["hoangnam"]["top"][] = "hoangnam-top1.php";
 $eb_all_themes_support["hoangnam"]["top"][] = "hoangnam-top2.php";
