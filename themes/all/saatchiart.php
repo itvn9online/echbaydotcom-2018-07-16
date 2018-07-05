@@ -11,7 +11,7 @@ $eb_all_themes_support["saatchiart"]["name"] = "saatchiart";
 $eb_all_themes_support["saatchiart"]["screenshot"] = "https://img1.webgiare.org/saatchiart.jpg";
 $eb_all_themes_support["saatchiart"]["author"] = "";
 $eb_all_themes_support["saatchiart"]["demo"] = "";
-$eb_all_themes_support["saatchiart"]["price"] = 3000000;
+$eb_all_themes_support["saatchiart"]["price"] = 6000000;
 //
 $eb_all_themes_support["saatchiart"]["top"][] = "saatchiart-top1.php";
 $eb_all_themes_support["saatchiart"]["top"][] = "top_widget.php";

@@ -9,7 +9,7 @@
 $eb_all_themes_support["pickupvietnamclub"] = array();
 $eb_all_themes_support["pickupvietnamclub"]["name"] = "pickupvietnamclub";
 $eb_all_themes_support["pickupvietnamclub"]["screenshot"] = "https://img1.webgiare.org/pickupvietnamclub.jpg";
-$eb_all_themes_support["pickupvietnamclub"]["price"] = 3000000;
+$eb_all_themes_support["pickupvietnamclub"]["price"] = 4500000;
 //
 $eb_all_themes_support["pickupvietnamclub"]["top"][] = "pickupvietnamclub-top1.php";
 $eb_all_themes_support["pickupvietnamclub"]["top"][] = "";
