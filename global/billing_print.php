@@ -67,11 +67,13 @@ var order_details_arr_cart_product_list = "' . $post->order_products . '",
 	
 	// thông tin đơn
 	'tmp.hd_mahoadon' => $post->order_sku,
+	/*
 	'tmp.aaaaaaaaa' => $post->order_time,
 	'tmp.aaaaaaaaa' => $post->order_time,
 	'tmp.aaaaaaaaa' => $post->order_time,
 	'tmp.aaaaaaaaa' => $post->order_time,
 	'tmp.aaaaaaaaa' => $post->order_time,
+	*/
 	
 	// ngày hiện tại
 	'tmp.dd' => $str_ngay [0],

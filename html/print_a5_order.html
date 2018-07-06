@@ -192,10 +192,29 @@ a { color: #000 !important }
 		tong_tien1 += total_line;
 		
 		//
+		if ( order_details_arr_cart_product_list[i].color != '' ) {
+			order_details_arr_cart_product_list[i].color = $.trim( order_details_arr_cart_product_list[i].color );
+			if ( order_details_arr_cart_product_list[i].color.substr( 0, 1 ) != '-' ) {
+				order_details_arr_cart_product_list[i].color = '- ' + order_details_arr_cart_product_list[i].color;
+			}
+			
+			order_details_arr_cart_product_list[i].color = ' ' + order_details_arr_cart_product_list[i].color;
+		}
+		
+		if ( order_details_arr_cart_product_list[i].size != '' ) {
+			order_details_arr_cart_product_list[i].size = $.trim( order_details_arr_cart_product_list[i].size );
+			if ( order_details_arr_cart_product_list[i].size.substr( 0, 1 ) != '(' ) {
+				order_details_arr_cart_product_list[i].size = '(Size: ' + order_details_arr_cart_product_list[i].size + ')';
+			}
+			
+			order_details_arr_cart_product_list[i].size = ' ' + order_details_arr_cart_product_list[i].size;
+		}
+		
+		//
 		str += '\
 <tr>\
 	<td>' + ( i + 1 ) + '</td>\
-	<td>' + order_details_arr_cart_product_list[i].name + '</td>\
+	<td>' + order_details_arr_cart_product_list[i].name + order_details_arr_cart_product_list[i].color + order_details_arr_cart_product_list[i].size + '</td>\
 	<td>&nbsp;</td>\
 	<td><span class="ebe-currency">' + g_func.money_format( order_details_arr_cart_product_list[i].price ) + '</span></td>\
 	<td>' + order_details_arr_cart_product_list[i].quan + '</td>\
