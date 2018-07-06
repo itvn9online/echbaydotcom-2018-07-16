@@ -470,14 +470,25 @@ label,
 .bold { font-weight: bold !important }
 .normal { font-weight: normal !important }
 /* background color */
+.black-bg,
 .blackbg { background-color: #000; }
+.white-bg,
 .whitebg { background-color: #fff; }
+.gray-bg,
 .graybg { background-color: #ccc; }
+.gray2-bg,
 .gray2bg { background-color: #f2f2f2; }
+.red-bg,
 .redbg { background-color: #f00; }
+.red2-bg,
 .red2bg { background-color: #c00; }
+.blue-bg,
 .bluebg { background-color: #00f; }
+.green-bg,
 .greenbg { background-color: #0f0; }
+.orange-bg,
+.orangebg,
+.org-bg,
 .orgbg { background-color: #f90; }
 /* color */
 .blackcolor { color: #333 !important }
