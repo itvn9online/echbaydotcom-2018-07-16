@@ -158,6 +158,68 @@ function echbay_admin_styles() {
 //	global $web_link;
 	
 	
+	//
+	$vdate_time = date( 'Ym-dh', date_time );
+	
+	
+	
+	// lấy số STT lớn nhất của bài viết/ sản phẩm -> gán cho nó sản phẩm mới thêm sẽ luôn được lên đầu
+	$order_max_post_new = 0;
+	if ( strstr( $_SERVER['REQUEST_URI'], '/post-new.php' ) == true ) {
+		$order_by_post_type = 'post';
+		if ( isset( $_GET['post_type'] ) ) {
+			$order_by_post_type = $_GET['post_type'];
+		}
+		$sql = _eb_q("SELECT menu_order
+		FROM
+			`" . wp_posts . "`
+		WHERE
+			post_type = '" . $order_by_post_type . "'
+			AND menu_order > 0
+		ORDER BY
+			menu_order DESC
+		LIMIT 0, 1");
+//		print_r( $sql );
+		if ( ! empty( $sql ) ) {
+			$order_max_post_new = $sql[0]->menu_order;
+		}
+	}
+	
+	//
+	global $arr_eb_ads_status;
+	global $arr_eb_product_status;
+	
+	//
+	$str_ads_status = '';
+	foreach ( $arr_eb_ads_status as $k => $v ) {
+		$str_ads_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
+	}
+	
+	//
+	$str_product_status = '';
+	foreach ( $arr_eb_product_status as $k => $v ) {
+		$str_product_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
+	}
+	
+	//
+	echo '<script type="text/javascript">
+var web_link = "' . $web_ad_link . '",
+	admin_link = "' . $web_ad_link . WP_ADMIN_DIR . '/",
+	date_time = ' . date_time . ',
+	lang_date_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
+	year_curent = ' . $year_curent . ',
+	client_ip = "' . $client_ip . '",
+	cf_old_domain = "' . $__cf_row['cf_old_domain'] . '",
+	order_max_post_new = ' . $order_max_post_new . ',
+	cf_tester_mode = "' . $__cf_row['cf_tester_mode'] . '",
+	cf_hide_supper_admin_menu = "' . $__cf_row['cf_hide_supper_admin_menu'] . '",
+	arr_eb_ads_status = [' . substr( $str_ads_status, 1 ) . '],
+	arr_eb_product_status = [' . substr( $str_product_status, 1 ) . '];';
+	
+	//
+	echo '</script>';
+	
+	
 	
 	// lấy thời gian cập nhật cuối của file css -> update lại toàn bộ các file khác
 //	$last_update_js = date( 'Y-m-d.H-i', filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/eb.js' ) );
@@ -219,66 +281,13 @@ function echbay_admin_styles() {
 	}
 	
 	//
-	echo WGR_show_header_favicon( $web_ad_link . eb_default_vaficon . '?v=' . EBE_admin_get_realtime_for_file( $web_ad_link . eb_default_vaficon ) ) . '
+//	echo WGR_show_header_favicon( $web_ad_link . eb_default_vaficon . '?v=' . EBE_admin_get_realtime_for_file( $web_ad_link . eb_default_vaficon ) ) . '
+	echo WGR_show_header_favicon( $web_ad_link . eb_default_vaficon . '?v=' . $vdate_time ) . '
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>,
 <script src="' . $web_ad_link . 'eb-load-quick-search"></script>';
 	
-	// lấy số STT lớn nhất của bài viết/ sản phẩm -> gán cho nó sản phẩm mới thêm sẽ luôn được lên đầu
-	$order_max_post_new = 0;
-	if ( strstr( $_SERVER['REQUEST_URI'], '/post-new.php' ) == true ) {
-		$order_by_post_type = 'post';
-		if ( isset( $_GET['post_type'] ) ) {
-			$order_by_post_type = $_GET['post_type'];
-		}
-		$sql = _eb_q("SELECT menu_order
-		FROM
-			`" . wp_posts . "`
-		WHERE
-			post_type = '" . $order_by_post_type . "'
-			AND menu_order > 0
-		ORDER BY
-			menu_order DESC
-		LIMIT 0, 1");
-//		print_r( $sql );
-		if ( ! empty( $sql ) ) {
-			$order_max_post_new = $sql[0]->menu_order;
-		}
-	}
 	
-	//
-	global $arr_eb_ads_status;
-	global $arr_eb_product_status;
-	
-	//
-	$str_ads_status = '';
-	foreach ( $arr_eb_ads_status as $k => $v ) {
-		$str_ads_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
-	}
-	
-	//
-	$str_product_status = '';
-	foreach ( $arr_eb_product_status as $k => $v ) {
-		$str_product_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
-	}
-	
-	//
-	echo '<script type="text/javascript">
-var web_link = "' . $web_ad_link . '",
-	admin_link = "' . $web_ad_link . WP_ADMIN_DIR . '/",
-	date_time = ' . date_time . ',
-	lang_date_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
-	year_curent = ' . $year_curent . ',
-	client_ip = "' . $client_ip . '",
-	cf_old_domain = "' . $__cf_row['cf_old_domain'] . '",
-	order_max_post_new = ' . $order_max_post_new . ',
-	cf_tester_mode = "' . $__cf_row['cf_tester_mode'] . '",
-	cf_hide_supper_admin_menu = "' . $__cf_row['cf_hide_supper_admin_menu'] . '",
-	arr_eb_ads_status = [' . substr( $str_ads_status, 1 ) . '],
-	arr_eb_product_status = [' . substr( $str_product_status, 1 ) . '];';
-	
-	//
-	echo '</script>';
 	
 	
 	// nếu là phiên bản web giá rẻ -> ẩn các menu admin quan trọng đi, chỉ hiện thị với supper admin

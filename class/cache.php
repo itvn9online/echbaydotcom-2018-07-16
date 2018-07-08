@@ -36,11 +36,13 @@ else {
 //	}
 }
 
-// hỗ trợ link HTTP nếu truy cập vào cổng 443
+// hỗ trợ link HTTP nếu truy cập vào cổng 443 -> cloudflare
 //if ( eb_web_protocol == 'https' && strstr( $web_link, 'https://' ) == false ) {
+	/*
 if ( eb_web_protocol == 'https' ) {
 	$web_link = str_replace( 'http://', 'https://', $web_link );
 }
+*/
 
 
 // thêm dấu chéo vào cuối nếu chưa có
@@ -63,7 +65,9 @@ if ( $localhost == 1 ) {
 
 /*
 * chỉnh lại đường dẫn tĩnh nếu sai thông số
+/////////////////////////// tạm thời tắt chức năng hỗ trợ nhiều tên miền -> tốt cho google
 */
+/*
 if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
 	// tách mảng để tạo URL cố định
 	$web_link = explode('/', $web_link);
@@ -76,6 +80,7 @@ if ( strstr( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
 	$web_link = implode( '/', $web_link );
 //	echo $web_link;
 }
+*/
 
 define( 'web_link', $web_link );
 //echo web_link;
