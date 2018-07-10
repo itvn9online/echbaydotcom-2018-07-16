@@ -40,6 +40,7 @@ label,
 	height: 150px;
 	border: 1px #f2f2f2 solid;
 }
+.bgtrans .echbay-blog-avt { background-color: transparent; }
 .echbay-blog-gioithieu,
 .echbay-blog-ngay { color: #666; }
 .echbay-blog-gioithieu {
