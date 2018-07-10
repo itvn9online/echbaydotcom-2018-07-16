@@ -66,6 +66,23 @@ else if ( act == '404' ) {
 (function () {
 	var i = 0;
 	
+	// Tạo số lượng chạy slider dựa theo kích cỡ ảnh đã được chỉ định
+	if ( jQuery(window).width() > 768 ) {
+		jQuery('.ebwidget-run-slider .thread-list50').attr({
+			'data-visible': 2
+		});
+		jQuery('.ebwidget-run-slider .thread-list33').attr({
+			'data-visible': 3
+		});
+		jQuery('.ebwidget-run-slider .thread-list25').attr({
+			'data-visible': 4
+		});
+		jQuery('.ebwidget-run-slider .thread-list20').attr({
+			'data-visible': 5
+		});
+	}
+	
+	//
 	jQuery('.ebwidget-run-slider').each(function() {
 		var c = 'ebwidget-run-slider' + i;
 		console.log(c);
@@ -76,6 +93,7 @@ else if ( act == '404' ) {
 		
 		jEBE_slider( c, {
 			size : jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '',
+			visible: jQuery( c + ' ul').attr('data-visible') || 1,
 //			buttonListNext: false,
 			autoplay: true
 //		}, function () {
