@@ -1587,10 +1587,7 @@ a.search-advanced-btn {
 	padding: 25px 0;
 	border-bottom: 1px #666 solid;
 }
-.quick-video-width {
-	margin: 0 auto;
-	max-width: 600px;
-}
+.quick-video-width { margin: 0 auto;/* max-width: 600px; */ }
 .quick-video-title {
 	font-size: 16px;
 	margin-bottom: 10px;

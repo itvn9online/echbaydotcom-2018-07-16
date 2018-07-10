@@ -70,9 +70,11 @@ class ___echbay_widget_get_menu extends WP_Widget {
 		
 		$tag_menu = isset( $instance ['tag_menu'] ) ? trim( $instance ['tag_menu'] ) : '';
 		$tag_end_menu = '';
-		$tag_menu = str_replace( '<', '', $tag_menu );
-		$tag_menu = str_replace( '>', '', $tag_menu );
 		if ( $tag_menu != '' ) {
+			$tag_menu = str_replace( '<', '', $tag_menu );
+			$tag_menu = str_replace( '>', '', $tag_menu );
+			
+			//
 			$tag_end_menu = explode( ' ', $tag_menu );
 			$tag_end_menu = '</' . $tag_end_menu[0] . '>';
 			

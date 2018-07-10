@@ -72,12 +72,14 @@ echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
 /* data_id */
 <?php include EB_THEME_PLUGIN_INDEX . 'data_id.php'; ?>
 var web_link = '<?php echo web_link; ?>';
+/*
 if ( document.domain != 'localhost' ) {
 	web_link = window.location.protocol + '//' + document.domain + '/';
 	if ( web_link != base_url_href ) {
 		document.getElementsByTagName("base")[0].setAttribute("href", web_link);
 	}
 }
+*/
 </script>
 <?php echo $__cf_row['cf_js_head']; ?>
 <!-- // Global site format by EchBay -->

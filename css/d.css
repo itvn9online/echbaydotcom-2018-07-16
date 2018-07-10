@@ -111,6 +111,12 @@ a {
 .l25 { line-height: 25px; }
 .l30 { line-height: 30px; }
 .l35 { line-height: 35px; }
+.l40 { line-height: 40px; }
+.l50 { line-height: 50px; }
+.l60 { line-height: 60px; }
+.l70 { line-height: 70px; }
+.l80 { line-height: 80px; }
+.l90 { line-height: 90px; }
 .w99,
 .w90 {
 	float: none;

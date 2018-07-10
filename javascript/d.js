@@ -1459,12 +1459,39 @@ function ___eb_click_open_video_popup () {
 //			jQuery('body').addClass('body-scroll-disable');
 			
 			//
-			var hai = jQuery('#quick-video-content').width();
+			var wit = jQuery('#quick-video-content').width(),
+				hai = jQuery(window).height(),
+				wit_hai = 0;
+			
+			// xem đang là màn ngang hay dọc
+			if ( hai > wit ) {
+				wit_hai = wit;
+				wit = hai;
+				hai = wit_hai;
+			}
+//			console.log( wit );
+//			console.log( hai );
+			
+			// chiều cao video -> không để hết màn hình là đẹp
+			hai = Math.ceil( hai/ 100 * 90 );
+//			console.log( hai );
+			
+			//
+			wit = Math.ceil( hai/ youtube_video_default_size );
+//			console.log( wit );
+			
+			if ( wit > 1024 ) {
+				wit = 1024;
+				hai = Math.ceil( wit * youtube_video_default_size );
+			}
+			
+			/*
 			if ( hai > 600 ) {
 				hai = 400;
 			} else {
 				hai = hai / 3 * 2;
 			}
+			*/
 			
 			//
 			a = _global_js_eb.youtube_id( a );
@@ -1482,9 +1509,9 @@ function ___eb_click_open_video_popup () {
 			//
 			str += '\
 			<div class="quick-video-node">\
-				<div class="quick-video-width">\
+				<div class="quick-video-width" style="width:' + wit + 'px">\
 					<div class="quick-video-title bold">' +tit+ '</div>\
-					<iframe width="100%" height="' +hai+ '" src="//www.youtube.com/embed/' +a+ '?autoplay=1" frameborder="0" allowfullscreen></iframe>\
+					<iframe width="' + wit + '" height="' +hai+ '" src="//www.youtube.com/embed/' +a+ '?autoplay=1" frameborder="0" allowfullscreen></iframe>\
 				</div>\
 			</div>';
 			
@@ -1522,9 +1549,9 @@ function ___eb_click_open_video_popup () {
 				//
 				str += '\
 				<div class="quick-video-node">\
-					<div class="quick-video-width">\
+					<div class="quick-video-width" style="width:' + wit + 'px">\
 						<div class="quick-video-title bold">' +arr_list_video[x]+ '</div>\
-						<iframe width="100%" height="' +hai+ '" src="//www.youtube.com/embed/' +x+ '" frameborder="0" allowfullscreen></iframe>\
+						<iframe width="' + wit + '" height="' +hai+ '" src="//www.youtube.com/embed/' +x+ '" frameborder="0" allowfullscreen></iframe>\
 					</div>\
 				</div>';
 				
