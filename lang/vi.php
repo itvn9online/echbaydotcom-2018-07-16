@@ -194,8 +194,11 @@ $___eb_lang[eb_key_for_site_lang . 'pr_hoten'] = 'Họ và tên';
 $___eb_lang[eb_key_for_site_lang . 'pr_dienthoai'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'pr_diachi'] = 'Địa chỉ';
 $___eb_lang[eb_key_for_site_lang . 'pr_ngaydangky'] = 'Ngày đăng ký';
+$___eb_lang[eb_key_for_site_lang . 'pr_capnhat'] = 'Cập nhật';
 $___eb_lang[eb_key_for_site_lang . 'pr_no_id'] = 'Không xác định được ID tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'pr_done'] = 'Cập nhật thông tin tài khoản thành công!';
+
+$___eb_lang[eb_key_for_site_lang . 'pr_short_matkhau'] = 'Mật khẩu tối thiểu phải có 6 ký tự!';
 
 
 // AMP

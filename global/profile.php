@@ -54,6 +54,8 @@ if ( mtv_id > 0 ) {
 	
 	//
 	$main_content = EBE_str_template( 'profile.html', array(
+		'tmp.css_link' => str_replace( ABSPATH, web_link, EB_THEME_PLUGIN_INDEX ),
+		
 		'tmp.tv_email' => mtv_email,
 		'tmp.connect_admin' => $connect_admin,
 		'tmp.mtv_id' => mtv_id,
@@ -71,7 +73,8 @@ if ( mtv_id > 0 ) {
 		'tmp.pr_hoten' => EBE_get_lang('pr_hoten'),
 		'tmp.pr_dienthoai' => EBE_get_lang('pr_dienthoai'),
 		'tmp.pr_diachi' => EBE_get_lang('pr_diachi'),
-		'tmp.pr_ngaydangky' => EBE_get_lang('pr_ngaydangky')
+		'tmp.pr_ngaydangky' => EBE_get_lang('pr_ngaydangky'),
+		'tmp.pr_capnhat' => EBE_get_lang('pr_capnhat')
 	), EB_THEME_PLUGIN_INDEX . 'html/' );
 }
 else {

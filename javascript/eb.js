@@ -646,6 +646,24 @@ var _global_js_eb = {
 		return true;
 	},
 	
+	check_pasword_frm : function () {
+		_global_js_eb.add_primari_iframe();
+		
+		//
+		var f = document.frm_canhan;
+		
+		if ( jQuery.trim( f.t_matkhau.value ).length < 6 ) {
+			jQuery('.show-if-pass-short').fadeIn();
+			
+			f.t_matkhau.focus();
+			
+			return false;
+		}
+		
+		//
+		return true;
+	},
+	
 	contact_func : function () {
 		_global_js_eb.cart_customer_cache( document.frm_contact );
 	},

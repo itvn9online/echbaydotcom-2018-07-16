@@ -1,0 +1,25 @@
+.eb-user-main {
+	background: #fff;
+	padding: 20px;
+	margin: 20px 0;
+	border: 1px #ccc solid;
+	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	-moz-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	border-radius: 3px;
+}
+.eb-profile-table {
+	padding: 0;
+	border: 0 none;
+}
+.eb-profile-table input[type=text] { padding: 5px; }
+.eb-profile-table li { padding: 10px 0; }
+.eb-profile-table div.t,
+.eb-profile-table div.i { float: left; }
+.style-for-mobile .eb-profile-table { min-width: 200px; }
+.style-for-mobile .eb-profile-table div.t,
+.style-for-mobile .eb-profile-table div.i {
+	float: none;
+	width: 100%;
+}
+.style-for-mobile .eb-profile-table input[type=text] { width: 90%; }

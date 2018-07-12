@@ -372,6 +372,7 @@ $arr_active_for_404_page = array(
 	"temp" => 1,
 	
 	"profile" => 1,
+	"password" => 1,
 	"process" => 1,
 	
 	"eb-login" => 1,

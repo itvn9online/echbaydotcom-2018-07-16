@@ -383,7 +383,7 @@ function EBE_str_template( $f, $arr = array(), $dir = EB_THEME_HTML ) {
 	}
 	
 	//
-	return 'File "' .$template. '" not found.';
+	return 'File "' .$f. '" not found.';
 }
 
 // thay thế các văn bản trong html tìm được
