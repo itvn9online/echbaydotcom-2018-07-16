@@ -184,6 +184,19 @@ $___eb_lang[eb_key_for_site_lang . 'qreg_phone'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'qreg_email'] = 'Email';
 $___eb_lang[eb_key_for_site_lang . 'qreg_submit'] = 'Gửi';
 
+// profile
+$___eb_lang[eb_key_for_site_lang . 'pr_tonquan'] = 'Tổng quan về tài khoản';
+$___eb_lang[eb_key_for_site_lang . 'pr_email'] = 'E-mail';
+$___eb_lang[eb_key_for_site_lang . 'pr_id'] = 'Mã tài khoản';
+$___eb_lang[eb_key_for_site_lang . 'pr_matkhau'] = 'Mật khẩu';
+$___eb_lang[eb_key_for_site_lang . 'pr_doimatkhau'] = 'Thay đổi mật khẩu';
+$___eb_lang[eb_key_for_site_lang . 'pr_hoten'] = 'Họ và tên';
+$___eb_lang[eb_key_for_site_lang . 'pr_dienthoai'] = 'Điện thoại';
+$___eb_lang[eb_key_for_site_lang . 'pr_diachi'] = 'Địa chỉ';
+$___eb_lang[eb_key_for_site_lang . 'pr_ngaydangky'] = 'Ngày đăng ký';
+$___eb_lang[eb_key_for_site_lang . 'pr_no_id'] = 'Không xác định được ID tài khoản';
+$___eb_lang[eb_key_for_site_lang . 'pr_done'] = 'Cập nhật thông tin tài khoản thành công!';
+
 
 // AMP
 $___eb_lang[eb_key_for_site_lang . 'amp_full_version'] = 'Xem phiên bản đầy đủ';

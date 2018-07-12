@@ -803,78 +803,14 @@ class EchBayCommerce {
 	
 	
 	function create_account_auto ( $arr = array() ) {
-		if ( count( $arr ) == 0 ) {
-			return 0;
-		}
-		
-		
-		//
-		$user_email = $this->non_mark( strtolower( $arr['tv_email'] ) );
-		
-		// tìm theo email
-		$user_id = email_exists( $user_email );
-		
-		// có thì trả về luôn
-		if ( $user_id > 0 ) {
-			return $user_id;
-		}
-		
-		
-		// tạo username từ email
-		$user_name = str_replace( '.', '_', str_replace( '@', '', $user_email ) );
-		
-		// Kiểm tra user có chưa
-		$user_id = username_exists( $user_name );
-//		echo $user_id; exit();
-		
-		// có thì trả về luôn
-		if ( $user_id > 0 ) {
-			return $user_id;
-		}
-		
-		
-		// chưa có -> tạo mới ->  mật khẩu mặc định ;))
-		return wp_create_user( $user_name, 'echbay.com', $user_email );
+		return _eb_create_account_auto( $arr );
 	}
 	
 	/*
 	* Tự động tạo trang nếu chưa có
 	*/
 	function create_page( $page_url, $page_name, $page_template = '' ) {
-		global $wpdb;
-		
-		$name = $wpdb->get_var("SELECT ID
-		FROM
-			" . wp_posts . "
-		WHERE
-			post_name = '" . $page_url . "'");
-		
-		if ($name == '') {
-			$page = array(
-				'post_title' => $page_name,
-				'post_type' => 'page',
-				'post_content' => 'Vui lòng không xóa hoặc thay đổi bất kỳ điều gì trong trang này.',
-				'post_parent' => 0,
-				'post_author' => mtv_id,
-				'post_status' => 'publish',
-				'post_name' => $page_url,
-			);
-			
-			// tạo page mới
-//			$page = apply_filters('yourplugin_add_new_page', $page, 'teams');
-			$pageid = WGR_insert_post ($page);
-			
-			
-			/*
-			* add template tương ứng
-			*/
-			if ( $page_template == '' ) {
-//				$page_template = 'templates/' . $page_url . '.php';
-				$page_template = 'templates/index.php';
-			}
-			
-			WGR_update_meta_post( $pageid, '_wp_page_template', $page_template, true );
-		}
+		_eb_create_page( $page_url, $page_name, $page_template );
 	}
 	
 	

@@ -77,7 +77,7 @@ $user_id = wp_create_user( $user_name, $t_matkhau, $user_email );
 
 // nếu là quick register -> dừng ở đây là được
 if ( isset( $_POST['for_quick_register'] ) ) {
-	echo $user_id . '<br>';
+//	echo $user_id . '<br>';
 	
 	// cho vào nhóm đăng ký nhận tin
 	$user_id_role = new WP_User($user_id);
@@ -95,7 +95,7 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 			)
 		);
 	}
-	echo $t_ten . '<br>';
+//	echo $t_ten . '<br>';
 	
 	$t_dienthoai = '';
 	if ( isset( $_POST['t_dienthoai'] ) ) {
@@ -103,7 +103,7 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 		
 		update_user_meta( $user_id, 'phone', $t_dienthoai );
 	}
-	echo $t_dienthoai . '<br>';
+//	echo $t_dienthoai . '<br>';
 	
 	
 	
