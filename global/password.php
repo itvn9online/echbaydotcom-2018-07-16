@@ -5,8 +5,8 @@
 //
 if ( mtv_id > 0 ) {
 	$__cf_row ['cf_title'] = EBE_get_lang('pr_doimatkhau');
-	$group_go_to[] = ' <li><a href="./profile">' . EBE_get_lang('taikhoan') . '</a></li>';
-	$group_go_to[] = ' <li><a href="./password">' . $__cf_row ['cf_title'] . '</a></li>';
+	$group_go_to[] = ' <li><a href="./profile" rel="nofollow">' . EBE_get_lang('taikhoan') . '</a></li>';
+	$group_go_to[] = ' <li><a href="./password" rel="nofollow">' . $__cf_row ['cf_title'] . '</a></li>';
 	
 	
 	//

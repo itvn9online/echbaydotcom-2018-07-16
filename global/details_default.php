@@ -668,7 +668,7 @@ $arr_main_content = array(
 	'tmp.html_for_fb_comment' => '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div> <!-- <div class="d-none"><div class="fb-comments-count check-new-fb-comment" data-href="' . $link_for_fb_comment . '">0</div></div> -->',
 	
 	'tmp.trv_tieude' => $trv_h1_tieude,
-	'tmp.trv_h1_tieude' => ( $__cf_row['cf_set_link_for_h1'] == 1 ) ? '<a href="' . $url_og_url . '">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
+	'tmp.trv_h1_tieude' => ( $__cf_row['cf_set_link_for_h1'] == 1 ) ? '<a href="' . $url_og_url . '" rel="nofollow">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
 	
 	'tmp.trv_luotxem' => $trv_luotxem,
 	'tmp.trv_luotthich' => $trv_luotthich,

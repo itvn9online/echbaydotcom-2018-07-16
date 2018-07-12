@@ -76,7 +76,7 @@ class ___echbay_widget_go_to extends WP_Widget {
 		<div class="' . str_replace( '  ', ' ', trim( 'top-footer-css thread-details-tohome ' . $width ) ) . '">
 			<div class="' . $custom_style . '">
 				<ul class="cf">
-					<li><a href="./"><i class="fa fa-home"></i> Trang chủ</a></li>
+					<li><a href="./" rel="nofollow"><i class="fa fa-home"></i> Trang chủ</a></li>
 					' . $group_go_to . '
 				</ul>
 			</div>

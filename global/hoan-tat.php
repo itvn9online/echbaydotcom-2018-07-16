@@ -10,7 +10,7 @@
 
 
 $__cf_row ['cf_title'] = 'Đặt hàng thành công';
-$group_go_to[] = ' <li><a href="./hoan-tat">' . $__cf_row ['cf_title'] . '</a></li>';
+$group_go_to[] = ' <li><a href="./hoan-tat" rel="nofollow">' . $__cf_row ['cf_title'] . '</a></li>';
 
 
 

@@ -1626,7 +1626,7 @@ function _eb_create_breadcrumb ( $url, $tit, $id = 0 ) {
 	global $group_go_to;
 	
 	//
-	$group_go_to[$url] = ' <li><a data-id="' . $id . '" href="' . $url . '">' . $tit . '</a></li>';
+	$group_go_to[$url] = ' <li><a data-id="' . $id . '" href="' . $url . '" rel="nofollow">' . $tit . '</a></li>';
 	
 	//
 //	echo $breadcrumb_position . "\n";

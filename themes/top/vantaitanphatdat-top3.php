@@ -9,7 +9,7 @@ Tags: breadcrumb
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 		<div class="thread-details-tohome">
 			<ul class="cf">
-				<li><a href="./"><i class="fa fa-home"></i> <?php echo EBE_get_lang('home'); ?></a></li>
+				<li><a href="./" rel="nofollow"><i class="fa fa-home"></i> <?php echo EBE_get_lang('home'); ?></a></li>
 				<?php echo $group_go_to; ?>
 			</ul>
 		</div>

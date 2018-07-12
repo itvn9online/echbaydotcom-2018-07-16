@@ -5,7 +5,7 @@
 //
 if ( mtv_id > 0 ) {
 	$__cf_row ['cf_title'] = EBE_get_lang('taikhoan');
-	$group_go_to[] = ' <li><a href="./profile">' . $__cf_row ['cf_title'] . '</a></li>';
+	$group_go_to[] = ' <li><a href="./profile" rel="nofollow">' . $__cf_row ['cf_title'] . '</a></li>';
 	
 	
 	//

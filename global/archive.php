@@ -72,7 +72,7 @@ $arr_main_content['tmp.html_for_fb_comment'] = '';
 $arr_main_content['tmp.str_page'] = $str_page;
 
 $archive_title = 'aaaaaaaaaa';
-$arr_main_content['tmp.home_cf_title'] = $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '">' . $archive_title . '</a>' : $archive_title;
+$arr_main_content['tmp.home_cf_title'] = $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '" rel="nofollow">' . $archive_title . '</a>' : $archive_title;
 
 //
 $main_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), $arr_main_content );
