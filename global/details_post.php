@@ -196,6 +196,7 @@ if ( $limit_other_post > 0 ) {
 	//
 	$other_post_right .= _eb_load_post( $limit_other_post, array(
 //		'post__not_in' => $arr_post_not_in,
+		'post__not_in' => array( $pid ),
 //		'category__in' => wp_get_post_categories( $__post->ID )
 		'category__in' => $post_primary_categories
 	) );

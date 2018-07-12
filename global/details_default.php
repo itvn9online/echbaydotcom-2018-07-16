@@ -2,8 +2,6 @@
 
 
 
-
-
 //
 $custom_product_flex_css = '';
 $custom_blog_node_flex_css = '';
@@ -11,6 +9,17 @@ $custom_blog_node_flex_css = '';
 
 //
 include EB_THEME_PLUGIN_INDEX . 'global/post.php';
+
+
+
+
+//
+//echo '<!-- POST NOT IN: ' . $___eb_post__not_in . ' -->' . "\n";
+$___eb_post__not_in .= ',' . $pid;
+//echo '<!-- POST NOT IN: ' . $___eb_post__not_in . ' -->' . "\n";
+
+
+
 
 //
 /*

@@ -44,8 +44,12 @@ function _eb_load_post_obj ( $posts_per_page, $_eb_query ) {
 	foreach ( $_eb_query as $k => $v ) {
 		$arr[$k] = $v;
 	}
+	/*
+	echo '<!-- _eb_load_post_obj ' . "\n";
 //	print_r( $_eb_query );
-//	print_r( $arr );
+	print_r( $arr );
+	echo ' -->' . "\n";
+	*/
 	
 	// https://codex.wordpress.org/Class_Reference/WP_Query
 	return new WP_Query( $arr );
@@ -205,12 +209,17 @@ function _eb_load_post (
 	$other_options = array()
 ) {
 	global $___eb_post__not_in;
-//	echo 'POST NOT IN: ' . $___eb_post__not_in . '<br>' . "\n";
+//	echo '<!-- POST NOT IN: ' . $___eb_post__not_in . ' -->' . "\n";
 	
 	// lọc các sản phẩm trùng nhau
 	if ( $___eb_post__not_in != '' && $not_set_not_in == 0 ) {
 		$_eb_query['post__not_in'] = explode( ',', substr( $___eb_post__not_in, 1 ) );
 	}
+	/*
+	echo '<!-- ';
+	print_r( $_eb_query );
+	echo ' -->';
+	*/
 	
 	//
 	$sql = _eb_load_post_obj( $posts_per_page, $_eb_query );

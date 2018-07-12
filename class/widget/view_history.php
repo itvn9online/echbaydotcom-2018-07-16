@@ -64,6 +64,8 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 	
 	function widget($args, $instance) {
 		
+		global $pid;
+		
 		//
 		extract ( $args );
 		
@@ -75,8 +77,6 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		
 		//
 		if ( $cookie_name == 'wgr_product_same_category' ) {
-			
-			global $pid;
 			
 			if ( $pid == 0 ) {
 				echo '<!-- Widget Same category has been active, but run only post details -->';
@@ -102,7 +102,8 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			
 			//
 			$str_view_history = _eb_load_post( $post_number, array(
-				'category__in' => $post_primary_categories,
+				'post__not_in' => array( $pid ),
+				'category__in' => $post_primary_categories
 			) );
 			
 			//
@@ -137,11 +138,13 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			// limit số lượng bài viết -> ưu tiên bài mới xem nhất trước
 			$arr_history = array();
 			foreach ( $str_history as $k => $v ) {
-				if ( $k >= $post_number ) {
-					break;
+				if ( $v != $pid ) {
+					if ( $k >= $post_number ) {
+						break;
+					}
+					
+					$arr_history[] = $v;
 				}
-				
-				$arr_history[] = $v;
 			}
 //			print_r( $arr_history );
 			
@@ -149,6 +152,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			$str_view_history = _eb_load_post(
 				$post_number,
 				array(
+//					'post__not_in' => array( $pid ),
 					'post__in' => $arr_history
 				),
 				__eb_thread_template,
