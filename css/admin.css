@@ -895,6 +895,23 @@ input[id="_eb_category_order"] { width: 90px; }
 }
 .no-border-left { border-left: 0 none !important; }
 .no-border-right { border-right: 0 none !important; }
+/* */
+.show-if-duplicator-null {
+	position: fixed;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.show-if-duplicator-null div {
+	width: 60%;
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 10px;
+	background: rgba(255, 193, 7, .8);
+	border-radius: 5px;
+	cursor: pointer;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

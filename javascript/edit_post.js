@@ -1078,10 +1078,41 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	// thêm nút nhân bản bài viết
-	$('body').append('<button type="button" title="Hệ thống sẽ copy một sản phẩm tương tự sản phẩm này" class="button button-primary button-orgprimary button-large click-set-nhanban cur"><i class="fa fa-copy"></i> Nhân bản</button>');
+//	$('body').append('');
+	$('#wgr-for-duplicator').show();
+	$('.show-if-duplicator-null div').click(function () {
+		$('.show-if-duplicator-null').fadeOut();
+	});
 	
 	//
 	$('.click-set-nhanban').click(function () {
+		// sử dụng plugin Post duplicator
+		if ( dog('duplicator') == null ) {
+			$('.show-if-duplicator-null').fadeIn();
+			
+			setTimeout(function () {
+				$('.show-if-duplicator-null').fadeOut();
+			}, 5000);
+			
+			return false;
+		}
+		
+		//
+		if ( confirm('Xác nhận nhân bản bài viết này') == false ) {
+			return false;
+		}
+		
+		//
+		$('#duplicator a').click();
+		
+		//
+		return true;
+		
+		
+		
+		
+		
+		//
 		var a = $('#post_ID').val() || 0;
 		
 		if ( a <= 0 ) {
