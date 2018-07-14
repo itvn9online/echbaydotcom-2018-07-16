@@ -527,6 +527,7 @@ else {
 	show_note_for_checkbox_config( 'cf_details_ul_options' );
 	show_note_for_checkbox_config( 'cf_post_big_banner' );
 	show_note_for_checkbox_config( 'cf_post_rm_img_width' );
+	show_note_for_checkbox_config( 'cf_blog_rm_img_width' );
 	show_note_for_checkbox_config( 'cf_blogs_content_bottom' );
 }
 
