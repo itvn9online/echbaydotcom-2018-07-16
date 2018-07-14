@@ -55,13 +55,20 @@ if ( isset( $_GET['f'] ) && $_GET['f'] != '' ) {
 
 
 
+//
+$main_content = str_replace( '{tmp.print_content}', EBE_get_page_template( $print_type ), EBE_get_page_template( 'print_order' ) );
+
+
+
 
 // tham số theo hóa đơn
-$main_content = EBE_html_template( EBE_get_page_template( $print_type ), array(
+//$main_content = EBE_html_template( EBE_get_page_template( $print_type ), array(
+$main_content = EBE_html_template( $main_content, array(
 	'tmp.js' => trim( '
 var order_details_arr_cart_product_list = "' . $post->order_products . '",
 	order_details_arr_cart_customer_info = "' . $post->order_customer . '",
-	order_id = "' . $id . '";
+	order_id = "' . $id . '",
+	print_type = "' . $print_type . '";
 	' ),
 	
 	'tmp.head' => WGR_show_header_favicon( web_link . eb_default_vaficon . '?v=' . date_time ) . trim( '

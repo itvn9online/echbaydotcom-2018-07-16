@@ -1,236 +1,45 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Phiếu thu</title>
-{tmp.head}
 <style type="text/css">
-a { color: #000 !important }
-.public-table-print {
-	border-top: 1px #000 solid;
-	border-right: 1px #000 solid;
-}
-.public-table-print td {
-	padding: 7px 1px 7px 6px;
-	border-bottom: 1px #000 solid;
-	border-left: 1px #000 solid;
-}
-/* .public-table-print .tr-title { font-weight: bold } */
-.public-table-print .tong-gia1 { width: 70% }
-.public-table-print .tong-gia2 { width: 30% }
-.tem-bao-hanh { padding: 3px 0 3px 4px !important }
-.aaaaa {
-	font-size: 11px;
-	border-top: 1px #000 solid;
-	border-right: 1px #000 solid
-}
-.aaaaa td {
-	padding: 0 1px;
-	width: 10px;
-	border-bottom: 1px #000 solid;
-	border-left: 1px #000 solid
-}
-.print-order-left { padding-right: 20px; }
-.print-logo {
-	background: #fff left no-repeat;
-	background-size: contain;
-	-webkit-filter: grayscale(1); /* Old WebKit */
-	filter: grayscale(1);
-	height: 68px;
-	margin-right: 15px;
-}
-.size-for-a5-print {
-	background: #fff;
-	width: 793px;
-	height: 559px;
-	overflow: hidden;
-	position: relative;
-}
-.size-for-a5-padding { padding: 10px; }
+.public-table-print,
+.public-table-print td { border-color: #ccc; }
+.size-for-a5-print { height: auto; }
+.size-for-a5-padding { padding: 2px; }
 </style>
-{tmp.billing_custom_style}
-<script type="text/javascript">
-{tmp.js}
-</script>
-</head>
-<body style="background:#f2f2f2;">
 <div class="size-for-a5-print">
 	<div class="size-for-a5-padding">
-		<div class="clearfix" style="line-height:20px;border-bottom:1px #000 solid;">
-			<div class="lf" style="width:32%">
-				<div class="print-logo" style="background-image:url({tmp.cf_logo});">&nbsp;</div>
+		<div style="border:1px #333 solid;padding:5px;">
+			<div style="position:relative;">
+				<div style="position:absolute;top:0;right:0;"><img src="{tmp.echbaydotcom_url}echbay/barcode.php?codetype=Code128&size=60&text={tmp.hd_mahoadon}&print=true" /></div>
 			</div>
-			<div class="lf" style="width:68%">
-				<div style="font-size:12pt;text-transform:uppercase;font-weight:bold">{tmp.cf_ten_cty}</div>
-				<ul>
-					<li class="clearfix">
-						<div class="lf f20">Địa chỉ</div>
-						<div class="lf f80">: {tmp.cf_diachi}</div>
-					</li>
-					<li class="clearfix">
-						<div class="lf f20">Điện thoại</div>
-						<div class="lf f80">: {tmp.cf_dienthoai}</div>
-					</li>
-					<li class="clearfix">
-						<div class="lf f20">E-mail</div>
-						<div class="lf f80">: {tmp.str_email}</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div align="center" style="text-transform:uppercase;font-weight:bold;padding:3px 0;font-size:18px;">Phiếu giao nhận hàng</div>
-		<div class="clearfix" style="border-bottom:1px #000 dotted;padding:0 0 10px 0">
-			<div align="center" class="lf" style="width:70%">
-				<div>Mẫu số: <em>0A5/XKNB3/001</em></div>
-				<div contenteditable="true">Ngày <em>{tmp.ngaygui}</em> tháng <em>{tmp.thanggui}</em> năm <em>{tmp.namgui}</em></div>
-			</div>
-			<div class="lf" style="width:30%">
-				<div class="clearfix">
-					<div class="lf" style="width:40%">
-						<div>Vận đơn</div>
-						<div>Mã hóa đơn</div>
-					</div>
-					<div class="lf" style="width:60%">
-						<div>: {tmp.id}</div>
-						<div>: <strong>{tmp.hd_mahoadon}</strong></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="clearfix" style="line-height:22px;padding:5px 0;">
-			<div style="position:relative;font-size:11px;">
-				<div style="position:absolute;right:0;text-transform:uppercase;border:1px #666 solid;padding:0 3px;">Gọi điện trước khi giao hàng</div>
-			</div>
-			<ul>
-				<li class="clearfix">
-					<div class="lf f20">Tên liên hệ</div>
-					<div class="lf f80">: <span class="hd_ten"></span></div>
-				</li>
-				<li class="clearfix">
-					<div class="lf f20">Địa chỉ</div>
-					<div class="lf f80">: <span class="hd_diachi"></span></div>
-				</li>
-				<li class="clearfix">
-					<div class="lf f20">Điện thoại</div>
-					<div class="lf f80">: <span class="hd_dienthoai"></span></div>
-				</li>
-			</ul>
-		</div>
-		<table cellpadding="0" cellspacing="0" width="100%" border="0" class="public-table-print">
-			<tr class="tr-title bold">
-				<td width="5%">STT</td>
-				<td width="50%">Sản phẩm</td>
-				<td width="8%" class="text-center small">Bảo hành <span class="d-block" style="font-weight:normal;">(tháng)</span></td>
-				<td width="14%">Giá bán</td>
-				<td width="8%" class="small">Số lượng</td>
-				<td width="15%">Tổng</td>
-			</tr>
-			<tr>
-				<td colspan="4" class="tong-gia1 text-right"><div class="print-order-left">Thành tiền</div></td>
-				<td colspan="2" class="tong-gia2"><span id="tong_tien1" class="ebe-currency">NaN</span></td>
-			</tr>
-			<tr>
-				<td colspan="4" class="text-right"><div class="print-order-left">Phí vận chuyển</div></td>
-				<td colspan="2"><span id="phi_van_chuyen"><em>Tính toán sau</em></span></td>
-			</tr>
-			<tr>
-				<td colspan="4" class="text-right"><div class="print-order-left">Tổng</div></td>
-				<td colspan="2"><strong id="tinh_tong_tien" class="ebe-currency">NaN</strong></td>
-			</tr>
-		</table>
-		<div class="bold small" style="padding:5px 0 3px 0;">Phiếu giao nhận hàng được sử dụng làm chứng từ trong các trường hợp bảo hành, đổi trả sản phẩm.</div>
-		<div contenteditable="true"><em style="font-size:18px">* Ghi chú: </em>&nbsp;</div>
-		<div style="position:absolute;bottom:5px;;right:15px;"><img src="{tmp.echbaydotcom_url}echbay/barcode.php?codetype=Code128&size=60&text={tmp.hd_mahoadon}&print=true" /> 
-			<!-- <img src="//chart.googleapis.com/chart?chs=150x150&cht=qr&chl={tmp.hd_mahoadon}&choe=UTF-8" width="150" height="150" /> --> 
-		</div>
-		<div class="clearfix" align="center" style="height:90px">
-			<div class="lf" style="width:25%">
-				<div><strong>Người nhận</strong></div>
-				<div><em>(Ký, ghi rõ họ tên)</em></div>
-			</div>
-			<div class="lf" style="width:25%;margin-right:2%">
-				<div><strong>Người giao</strong></div>
-				<div class="small" style="padding:0 0 20px 0">Ngày <em style="margin:0 8px">&nbsp;</em> tháng <em style="margin:0 8px">&nbsp;</em> năm <em>20&nbsp;&nbsp;&nbsp;&nbsp;</em></div>
-			</div>
-			<div class="lf" style="width:25%">
-				<div><strong>Xác nhận đơn</strong></div>
-				<div contenteditable="true" class="small">Ngày <em>{tmp.dd}</em> tháng <em>{tmp.mm}</em> năm <em>{tmp.yy}</em></div>
-				<div style="padding:40px 0 0 0"><strong>{tmp.tv_hoten}</strong></div>
-			</div>
-			<!--
-			<div class="lf" style="width:33%;margin-left:2%">
-				<div align="right"><img title="Code name" alt="Code name" src="code_name.php?act=code_name&code={tmp.id}&module_id=create_code_name&captcha={tmp.captcha}&display=default" /></div>
-			</div>
-			--> 
+			<table cellpadding="0" cellspacing="0" width="100%" border="0" class="public-table-print">
+				<tr>
+					<td width="30%"><div class="print-logo" style="background-image:url({tmp.cf_logo});">&nbsp;</div></td>
+					<td width="70%"><div style="font-size:23px;text-transform:uppercase;font-weight:bold;line-height:38px;">PHIẾU GỬI HÀNG</div></td>
+				</tr>
+				<tr>
+					<td>TÊN NGƯỜI NHẬN</td>
+					<td><span class="hd_ten upper"></span>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>ĐIỆN THOẠI</td>
+					<td><span class="hd_dienthoai"></span>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>ĐỊA CHỈ</td>
+					<td><span class="hd_diachi"></span>&nbsp;</td>
+				</tr>
+				<tr>
+					<td valign="top">SẢN PHẨM</td>
+					<td class="product_vandon_list"></td>
+				</tr>
+				<tr>
+					<td>TỔNG TIỀN THU HỘ</td>
+					<td><div contenteditable="true" id="tinh_tong_tien" class="ebe-currency medium18 bold" style="height:15px">NaN</div></td>
+				</tr>
+				<tr>
+					<td>GHI CHÚ</td>
+					<td><div contenteditable="true" style="height:15px">&nbsp;</div></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-(function () {
-	
-	// thông tin khách hàng
-	order_details_arr_cart_customer_info = $.parseJSON( unescape( order_details_arr_cart_customer_info ) );
-	console.log( order_details_arr_cart_customer_info );
-	
-	$('.hd_ten').html( order_details_arr_cart_customer_info.hd_ten );
-	$('.hd_diachi').html( order_details_arr_cart_customer_info.hd_diachi );
-	$('.hd_dienthoai').html( order_details_arr_cart_customer_info.hd_dienthoai );
-	
-	// phí vận chuyển
-	if ( typeof order_details_arr_cart_customer_info.hd_phivanchuyen == 'number' && order_details_arr_cart_customer_info.hd_phivanchuyen > 0 ) {
-		$('#phi_van_chuyen').addClass('ebe-currency').html( g_func.money_format( order_details_arr_cart_customer_info.hd_phivanchuyen ) );
-	}
-	
-	
-	
-	// thông tin hóa đơn
-	order_details_arr_cart_product_list = $.parseJSON( unescape( order_details_arr_cart_product_list ) );
-	console.log( order_details_arr_cart_product_list );
-	
-	//
-	var str = '',
-		tong_tien1 = 0;
-	for ( var i = 0; i < order_details_arr_cart_product_list.length; i++ ) {
-		var total_line = order_details_arr_cart_product_list[i].price * order_details_arr_cart_product_list[i].quan;
-		tong_tien1 += total_line;
-		
-		//
-		if ( order_details_arr_cart_product_list[i].color != '' ) {
-			order_details_arr_cart_product_list[i].color = $.trim( order_details_arr_cart_product_list[i].color );
-			if ( order_details_arr_cart_product_list[i].color.substr( 0, 1 ) != '-' ) {
-				order_details_arr_cart_product_list[i].color = '- ' + order_details_arr_cart_product_list[i].color;
-			}
-			
-			order_details_arr_cart_product_list[i].color = ' ' + order_details_arr_cart_product_list[i].color;
-		}
-		
-		if ( order_details_arr_cart_product_list[i].size != '' ) {
-			order_details_arr_cart_product_list[i].size = $.trim( order_details_arr_cart_product_list[i].size );
-			if ( order_details_arr_cart_product_list[i].size.substr( 0, 1 ) != '(' ) {
-				order_details_arr_cart_product_list[i].size = '(Size: ' + order_details_arr_cart_product_list[i].size + ')';
-			}
-			
-			order_details_arr_cart_product_list[i].size = ' ' + order_details_arr_cart_product_list[i].size;
-		}
-		
-		//
-		str += '\
-<tr>\
-	<td>' + ( i + 1 ) + '</td>\
-	<td>' + order_details_arr_cart_product_list[i].name + order_details_arr_cart_product_list[i].color + order_details_arr_cart_product_list[i].size + '</td>\
-	<td>&nbsp;</td>\
-	<td><span class="ebe-currency">' + g_func.money_format( order_details_arr_cart_product_list[i].price ) + '</span></td>\
-	<td>' + order_details_arr_cart_product_list[i].quan + '</td>\
-	<td><span class="ebe-currency">' + g_func.money_format( total_line ) + '</span></td>\
-</tr>';
-	}
-	
-	//
-	$('.public-table-print .tr-title').after( str );
-	$('#tong_tien1').html( g_func.money_format( tong_tien1 ) );
-	$('#tinh_tong_tien').html( g_func.money_format( tong_tien1 ) );
-	
-})();
-</script>
-</body>
-</html>
