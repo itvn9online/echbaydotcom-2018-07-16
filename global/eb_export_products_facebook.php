@@ -137,10 +137,12 @@ $rss_content .= '<item>
 	<g:price>' . $before_price . $price . $after_price . '</g:price>
 	<g:sale_price>' . $before_price . $sale_price . $after_price . '</g:sale_price>
 	<g:brand>' . $rss_brand . '</g:brand>
+</item>';
+	
+	/*
 	<g:google_product_category>' . $google_product_category . '</g:google_product_category>
 	<g:item_group_id>' . $ant_id . '</g:item_group_id>
-</item>';
-
+	*/
 
 }
 
