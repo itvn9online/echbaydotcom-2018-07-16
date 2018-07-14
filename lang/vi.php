@@ -155,6 +155,7 @@ $___eb_lang[eb_key_for_site_lang . 'cart_vidu'] = 'Ví dụ: Giao hàng trong gi
 $___eb_lang[eb_key_for_site_lang . 'cart_gui'] = '<i class="fa fa-shopping-cart"></i> Gửi đơn hàng';
 $___eb_lang[eb_key_for_site_lang . 'cart_them'] = 'Cho vào giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'cart_emailformat'] = 'Email không đúng định dạng';
+$___eb_lang[eb_key_for_site_lang . 'billing_custom_style'] = '/* Thêm custom CSS cho trang in đơn hàng */';
 
 // contact
 $___eb_lang[eb_key_for_site_lang . 'lh_lienhe'] = 'Liên hệ với chúng tôi';

@@ -242,12 +242,17 @@ function ___eb_admin_update_order_details () {
 
 
 //
+$('.show-if-js-enable').show();
 dog('eb_cart_submit').disabled = false;
-$('#eb_cart_submit').show();
 
 dog('eb_cart_print').disabled = false;
-$('#eb_cart_print').show().click(function () {
+$('#eb_cart_print').click(function () {
 	window.open( web_link + 'billing_print?order_id=' + order_id, '_blank' );
+});
+
+dog('eb_vandon_print').disabled = false;
+$('#eb_vandon_print').click(function () {
+	window.open( web_link + 'billing_print?order_id=' + order_id + '&f=print_van_don', '_blank' );
 });
 
 

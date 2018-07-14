@@ -204,9 +204,10 @@ if ( $show_dang_xac_nhan != '' ) {
 		</tr>
 	</table>
 	<br>
-	<div style="position:fixed;bottom:25px;right:25px;">
-		<input type="submit" id="eb_cart_submit" value="Lưu thay đổi" class="blue-button cur d-none" disabled />
-		<input type="button" id="eb_cart_print" value="In phiếu thu" class="red-button cur d-none" disabled />
+	<div class="show-if-js-enable d-none" style="position:fixed;bottom:25px;right:25px;">
+		<button type="submit" id="eb_cart_submit" class="blue-button cur" disabled>Lưu thay đổi</button>
+		<button type="button" id="eb_cart_print" class="red-button cur" disabled>In Phiếu thu</button>
+		<button type="button" id="eb_vandon_print" class="org-button cur" disabled>In Vận đơn</button>
 	</div>
 </form>
 <br>

@@ -47,8 +47,17 @@ echo get_the_author_meta( 'first_name', mtv_id );
 
 
 
+//
+$print_type = 'print_a5_order';
+if ( isset( $_GET['f'] ) && $_GET['f'] != '' ) {
+	$print_type = trim( $_GET['f'] );
+}
+
+
+
+
 // tham số theo hóa đơn
-$main_content = EBE_html_template( EBE_get_page_template( 'print_a5_order' ), array(
+$main_content = EBE_html_template( EBE_get_page_template( $print_type ), array(
 	'tmp.js' => trim( '
 var order_details_arr_cart_product_list = "' . $post->order_products . '",
 	order_details_arr_cart_customer_info = "' . $post->order_customer . '",
@@ -67,13 +76,6 @@ var order_details_arr_cart_product_list = "' . $post->order_products . '",
 	
 	// thông tin đơn
 	'tmp.hd_mahoadon' => $post->order_sku,
-	/*
-	'tmp.aaaaaaaaa' => $post->order_time,
-	'tmp.aaaaaaaaa' => $post->order_time,
-	'tmp.aaaaaaaaa' => $post->order_time,
-	'tmp.aaaaaaaaa' => $post->order_time,
-	'tmp.aaaaaaaaa' => $post->order_time,
-	*/
 	
 	// ngày hiện tại
 	'tmp.dd' => $str_ngay [0],
@@ -89,6 +91,7 @@ var order_details_arr_cart_product_list = "' . $post->order_products . '",
 	'tmp.str_email' => $__cf_row['cf_email'] . ' <span style="margin:0 12px">-</span> Website: ' . str_replace ( '/', '', str_replace ( 'www.', '', $_SERVER['HTTP_HOST'] ) ),
 	'tmp.captcha' => _eb_mdnam( $id ),
 	'tmp.echbaydotcom_url' => EB_URL_OF_PLUGIN,
+	'tmp.billing_custom_style' => '<style>' . EBE_get_lang('billing_custom_style') . '</style>',
 	
 	//
 //	'tmp.tv_hoten' => get_the_author_meta( 'first_name', mtv_id ) . ' ' . get_the_author_meta( 'last_name', mtv_id ),

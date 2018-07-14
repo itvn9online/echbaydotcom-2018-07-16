@@ -487,6 +487,7 @@ label,
 .bluebg { background-color: #00f; }
 .green-bg,
 .greenbg { background-color: #0f0; }
+.org-button,
 .orange-bg,
 .orangebg,
 .org-bg,
@@ -1662,9 +1663,11 @@ a.search-advanced-btn {
 }
 .thread-content-viewmore { overflow: hidden; }
 /* */
+.org-button,
 .blue-button,
 .red-button,
 .w-button { padding: 3pt 10pt; }
+.org-button,
 .blue-button,
 .red-button,
 .w-button,
@@ -1682,6 +1685,7 @@ a.search-advanced-btn {
 	background: #d14836;
 	border: 1px transparent solid;
 }
+.org-button { border: 1px transparent solid; }
 .order-danhsach-sanpham,
 .eb-public-table {
 	border: 1px #ccc solid;
