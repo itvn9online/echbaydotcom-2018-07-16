@@ -243,3 +243,6 @@ else {
 
 ?>
 <p class="greencolor medium"><i class="fa fa-lightbulb-o orgcolor"></i> Thường xuyên xem và cải thiện tốc độ cho website bằng công cụ <a href="https://developers.google.com/speed/pagespeed/insights/?url=<?php echo urlencode( web_link ); ?>&tab=mobile" target="_blank" rel="nofollow">PageSpeed Insights</a> của Google để tối ưu tốc độ tải trang cho website của bạn.</p>
+<div class="text-center">
+	<iframe width="569" height="320" src="https://www.youtube.com/embed/L45U7ChIMto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
