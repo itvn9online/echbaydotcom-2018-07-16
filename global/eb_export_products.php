@@ -45,7 +45,8 @@ function WGR_export_product_to_xml ( $limit, $filter = '', $post_type = 'post' )
 
 
 //
-if ( $export_type == 'facebook' ) {
+if ( $export_type == 'facebook'
+|| $export_type == 'google' ) {
 	$sql = WGR_export_product_to_xml( $limit, " AND post_status = 'publish' " );
 //	print_r( $sql );
 	

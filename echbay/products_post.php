@@ -141,9 +141,10 @@ $strAjaxLink .= '&trang=' . $trang;
 <div class="class-for-<?php echo $by_post_type; ?>">
 	<div class="quick-show2-if-post">
 		<div class="text-right cf div-inline-block">
-			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=facebook&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">Export for Facebook</a></div>
-			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=echbaydotcom&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">Export from Echbaydotcom</a></div>
-			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=woo&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">Export from Woocommerce</a></div>
+			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=google&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">for Google</a></div>
+			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=facebook&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">for Facebook</a></div>
+			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=echbaydotcom&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">from Echbaydotcom</a></div>
+			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=woo&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">from Woocommerce</a></div>
 		</div>
 		<br>
 		<div class="thread-edit-tools">
@@ -464,6 +465,8 @@ if ( $totalThread > 0 ) {
 
 
 echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_post.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_post.js' ) . '"></script>' . "\n";
+
+
 
 
 
