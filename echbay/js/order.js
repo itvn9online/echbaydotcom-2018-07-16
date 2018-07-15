@@ -173,3 +173,13 @@ function click_set_search_order_by_type () {
 }
 
 
+//
+setTimeout(function () {
+	$('.each-to-count-tab').each(function() {
+		var a = $(this).attr('data-id') || '',
+			c = $(this).html();
+		$('#show_count_order_by' + a).html( c );
+	});
+}, 200);
+
+
