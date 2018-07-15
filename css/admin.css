@@ -203,7 +203,6 @@ input[id="_eb_category_order"] { width: 90px; }
 .hd_status12 a { color: #9e9e9e; }
 .hd_status12 td:first-child { border-left-color: #9e9e9e; }
 /* */
-.eb-order-filter-tab a.selected { color: #fff !important; }
 .eb-order-filter-tab {
 	display: -webkit-flex;
 	display: flex;
@@ -212,6 +211,8 @@ input[id="_eb_category_order"] { width: 90px; }
 }
 .eb-order-filter-tab li { order: 9; }
 .eb-order-filter-tab li[data-tab="4"] { order: 99; }
+.eb-order-filter-tab a { position: relative; }
+.eb-order-filter-tab a.selected { color: #fff !important; }
 .eb-order-filter-tab sup {
 	background: #900;
 	color: #fff;
@@ -223,7 +224,11 @@ input[id="_eb_category_order"] { width: 90px; }
 	border-radius: 10px;
 	font-weight: normal;
 	box-shadow: 0 0 10px #f2f2f2;
+	position: absolute;
+	top: -3px;
+	right: -3px;
 }
+.eb-order-filter-tab sup[data-value="0"] { display: none; }
 /* */
 .disable-edit-thumb-small { position: relative; }
 .div-edit-thumb-small {

@@ -178,7 +178,11 @@ setTimeout(function () {
 	$('.each-to-count-tab').each(function() {
 		var a = $(this).attr('data-id') || '',
 			c = $(this).html();
-		$('#show_count_order_by' + a).html( c );
+		if ( c != '0') {
+			$('#show_count_order_by' + a).html( c ).attr({
+				'data-value' : c
+			});
+		}
 	});
 }, 200);
 

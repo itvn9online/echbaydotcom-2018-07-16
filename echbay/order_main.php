@@ -8,7 +8,7 @@
 	//
 	foreach ( $arr_hd_trangthai as $k => $v ) {
 		if ( $k >= 0 ) {
-			echo '<li data-tab="' . $k . '"><a href="admin.php?page=eb-order&tab=' . $k . '">' . $v . ' <sup id="show_count_order_by' . $k . '">0</sup></a></li>';
+			echo '<li data-tab="' . $k . '"><a href="admin.php?page=eb-order&tab=' . $k . '">' . $v . ' <sup id="show_count_order_by' . $k . '" data-value="0">0</sup></a></li>';
 		}
 	}
 	?>
