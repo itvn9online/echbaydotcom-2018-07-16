@@ -2038,6 +2038,13 @@ var _global_js_eb = {
 			return false;
 		}
 		
+		// loại bỏ mã HTML có trong nội dung -> tránh mọi người nhập liệu vớ vẩn
+		f.t_ten.value = g_func.strip_tags( f.t_ten.value );
+		f.t_dienthoai.value = g_func.strip_tags( f.t_dienthoai.value );
+		f.t_email.value = g_func.strip_tags( f.t_email.value );
+		f.t_diachi.value = g_func.strip_tags( f.t_diachi.value );
+		f.t_ghichu.value = g_func.strip_tags( f.t_ghichu.value );
+		
 		//
 		var check_phone_number = g_func.number_only( f.t_dienthoai.value );
 		
