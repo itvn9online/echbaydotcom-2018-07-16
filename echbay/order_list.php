@@ -371,6 +371,13 @@ if ($totalPage > 1) {
 </div>
 <br>
 <script type="text/javascript">
+
+// ẩn bớt menu khi người dùng xem danh sách đơn
+$('body').addClass('folded');
+
+
 WGR_view_by_time_line( '<?php echo $jsLinkPager; ?>', '<?php echo $filterDay; ?>', '<?php echo $str_for_order_cookie_name; ?>' );
+
 click_set_search_order_by_type();
+
 </script> 

@@ -1,9 +1,6 @@
 //console.log( typeof $ );
 
 
-$('body').addClass('folded');
-
-
 //
 function post_excerpt_to_prodcut_list (arr, cus) {
 //	console.log( typeof $ );

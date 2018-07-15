@@ -205,9 +205,9 @@ if ( $show_dang_xac_nhan != '' ) {
 	</table>
 	<br>
 	<div class="show-if-js-enable d-none" style="position:fixed;bottom:25px;right:25px;">
-		<button type="submit" id="eb_cart_submit" class="blue-button cur" disabled>Lưu thay đổi</button>
-		<button type="button" id="eb_cart_print" class="red-button cur" disabled>In Phiếu thu</button>
-		<button type="button" id="eb_vandon_print" class="org-button cur" disabled>In Vận đơn</button>
+		<button type="submit" id="eb_cart_submit" class="blue-button cur"><i class="fa fa-save"></i> Lưu thay đổi</button>
+		<button type="button" id="eb_cart_print" class="red-button cur"><i class="fa fa-print"></i> In Phiếu thu</button>
+		<button type="button" id="eb_vandon_print" class="org-button cur"><i class="fa fa-truck"></i> In Vận đơn</button>
 	</div>
 </form>
 <br>
@@ -233,6 +233,7 @@ if ( $show_dang_xac_nhan != '' ) {
 <br>
 <br>
 <script type="text/javascript">
+
 // v1
 var order_details_arr_cart_product_list_v1 = (function ( arr ) {
 	if ( typeof arr == 'undefined' ) {
@@ -245,5 +246,6 @@ var order_details_arr_cart_product_list_v1 = (function ( arr ) {
 var order_details_arr_cart_product_list = "<?php echo $post->order_products; ?>",
 	order_details_arr_cart_customer_info = "<?php echo $post->order_customer; ?>",
 	order_id = "<?php echo $id; ?>";
+
 </script> 
 <script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . date_time; ?>"></script> 
