@@ -9,7 +9,7 @@ body.ebdesign-no-scroll { overflow: hidden; }
 .eb-admin-tab li {
 	float: left;
 	padding: 0;
-	margin: 5px 10px 0 0;
+	margin: 5px 10px 8px 0;
 }
 .eb-admin-tab a {
 	display: block;
@@ -225,9 +225,10 @@ input[id="_eb_category_order"] { width: 90px; }
 	font-weight: normal;
 	box-shadow: 0 0 10px #f2f2f2;
 	position: absolute;
-	top: -5px;
-	right: -3px;
+	top: -12px;
+	right: -8px;
 	padding: 0 5px;
+	z-index: 9;
 }
 .eb-order-filter-tab sup[data-value="0"] { display: none; }
 /* */

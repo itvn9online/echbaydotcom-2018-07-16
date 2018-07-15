@@ -2039,11 +2039,20 @@ var _global_js_eb = {
 		}
 		
 		// loại bỏ mã HTML có trong nội dung -> tránh mọi người nhập liệu vớ vẩn
-		f.t_ten.value = g_func.strip_tags( f.t_ten.value );
-		f.t_dienthoai.value = g_func.strip_tags( f.t_dienthoai.value );
-		f.t_email.value = g_func.strip_tags( f.t_email.value );
-		f.t_diachi.value = g_func.strip_tags( f.t_diachi.value );
-		f.t_ghichu.value = g_func.strip_tags( f.t_ghichu.value );
+		if ( f.t_ten.value != '' ) f.t_ten.value = g_func.strip_tags( f.t_ten.value );
+		if ( f.t_dienthoai.value != '' ) f.t_dienthoai.value = g_func.strip_tags( f.t_dienthoai.value );
+		if ( f.t_email.value != '' ) f.t_email.value = g_func.strip_tags( f.t_email.value );
+		if ( f.t_diachi.value != '' ) f.t_diachi.value = g_func.strip_tags( f.t_diachi.value );
+		if ( f.t_ghichu.value != '' ) f.t_ghichu.value = g_func.strip_tags( f.t_ghichu.value );
+		
+		// -> sử dụng form động để loại bỏ mã HTML
+		/*
+		jQuery('form[name="frm_cart"] input[type="text"], form[name="frm_cart"] textarea').each(function() {
+			if ( jQuery(this).val() != '' ) {
+				jQuery(this).val() = g_func.strip_tags( jQuery(this).val() );
+			}
+		});
+		*/
 		
 		//
 		var check_phone_number = g_func.number_only( f.t_dienthoai.value );
@@ -2685,6 +2694,28 @@ var _global_js_eb = {
 		window.history.pushState( "", '', str );
 		
 		return true;
+	},
+	
+	
+	check_quick_register : function ( f ) {
+		// form mặc địch, thủ công nhưng cũng có tí chuẩn
+		if ( f == 'frm_dk_nhantin' ) {
+			f = document.frm_dk_nhantin;
+			
+			if ( f.t_hoten.value != '' ) f.t_hoten.value = g_func.strip_tags( f.t_hoten.value );
+			if ( f.t_dienthoai.value != '' ) f.t_dienthoai.value = g_func.strip_tags( f.t_dienthoai.value );
+			if ( f.t_email.value != '' ) f.t_email.value = g_func.strip_tags( f.t_email.value );
+		}
+		// với các form tên khác -> sử dụng form động luôn
+		else {
+			jQuery('form[name="' + form_name + '"] input[type="text"], form[name="' + form_name + '"] textarea').each(function() {
+				if ( jQuery(this).val() != '' ) {
+					jQuery(this).val() = g_func.strip_tags( jQuery(this).val() );
+				}
+			});
+		}
+		
+		return _global_js_eb.add_primari_iframe();
 	}
 	
 };

@@ -177,7 +177,7 @@ function WGR_get_quick_register ( $form_name = 'frm_dk_nhantin' ) {
 	//
 	return '
 	<div class="hpsbnlbx">
-		<form name="' . $form_name . '" method="post" action="process/?set_module=quick-register" target="target_eb_iframe" onSubmit="return _global_js_eb.add_primari_iframe();">
+		<form name="' . $form_name . '" method="post" action="process/?set_module=quick-register" target="target_eb_iframe" onSubmit="return _global_js_eb.check_quick_register(\'' . $form_name . '\');">
 			<div class="cf">
 				<div class="quick-register-left quick-register-hoten"><span class="d-none">' . $l['name'] . '</span>
 					<input type="text" name="t_hoten" value="" placeholder="' . $l['name'] . '" />

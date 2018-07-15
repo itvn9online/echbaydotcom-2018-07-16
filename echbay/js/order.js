@@ -179,6 +179,11 @@ setTimeout(function () {
 		var a = $(this).attr('data-id') || '',
 			c = $(this).html();
 		if ( c != '0') {
+			if ( c.toString().length > 3 ) {
+				c = g_func.number_format(c);
+			}
+			
+			//
 			$('#show_count_order_by' + a).html( c ).attr({
 				'data-value' : c
 			});
