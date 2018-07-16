@@ -262,7 +262,8 @@ div.gallery-add-to-og_image { display: block; }
 			</tr>
 			<tr>
 				<td class="t"><label for="cf_slider_big_play">Tự động chạy slider</label></td>
-				<td class="i"><input type="number" name="cf_slider_big_play" value="{tmp.cf_slider_big_play}" id="cf_slider_big_play" class="s" /> (mini giây)
+				<td class="i"><input type="number" name="cf_slider_big_play" value="{tmp.cf_slider_big_play}" id="cf_slider_big_play" class="s" />
+					(mini giây)
 					<div class="small">Khi thông số này được thiết lập lớn hơn 0, slider chính sẽ được kích hoạt tự động chạy theo số mini giây đã được thiết lập (1 giây = 1000 mini giây).</div></td>
 			</tr>
 			<tr>
@@ -634,11 +635,20 @@ div.gallery-add-to-og_image { display: block; }
 					</div></td>
 			</tr>
 			<tr>
-				<td class="t">Bật/ Tắt chức năng cron job</td>
+				<td class="t">Bật/ Tắt chức năng Cron Job</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_wpcron" id="cf_on_off_wpcron" value="{tmp.cf_on_off_wpcron}" />
 					<label for="cf_on_off_wpcron" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
 					<div class="small l19">WordPress sử dụng file wp-cron.php để thiết lập chế độ auto post bài viết theo thời gian định trước! Nếu bạn không sử dụng chức năng này, hãy tắt nó đi để tiết kiệm tài nguyên cho website. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
 						<div>- <a href="{tmp.web_link}wp-cron.php" target="_blank">{tmp.web_link}wp-cron.php</a></div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Bật/ Tắt Feed (RSS)</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_feed" id="cf_on_off_feed" value="{tmp.cf_on_off_feed}" />
+					<label for="cf_on_off_feed" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Chức năng Feed (RSS) sẽ giúp cho việc chia sẻ dữ liệu trên website của bạn được thuận lợi hơn, đa dạng hơn. Về cơ bản là nên bật nó, trường hợp bạn không muốn chia sẻ dữ liệu này thì hãy tắt nó đi.<br>
+						<div>- <a href="{tmp.web_link}feed" target="_blank">{tmp.web_link}feed</a><br>
+							- <a href="{tmp.web_link}blog/feed" target="_blank">{tmp.web_link}blog/feed</a></div>
 					</div></td>
 			</tr>
 			<tr>

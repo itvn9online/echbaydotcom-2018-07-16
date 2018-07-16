@@ -440,6 +440,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_on_off_json' );
 	show_note_for_checkbox_config( 'cf_on_off_xmlrpc' );
 	show_note_for_checkbox_config( 'cf_on_off_wpcron' );
+	show_note_for_checkbox_config( 'cf_on_off_feed' );
 	
 	show_note_for_checkbox_config( 'cf_remove_category_base' );
 	show_note_for_checkbox_config( 'cf_remove_post_option_base' );

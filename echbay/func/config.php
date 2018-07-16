@@ -75,6 +75,8 @@ WGR_deny_or_accept_vist_php_file( ABSPATH . 'xmlrpc.php', $_POST['cf_on_off_xmlr
 $_POST['cf_on_off_wpcron'] = WGR_default_config('cf_on_off_wpcron');
 WGR_deny_or_accept_vist_php_file( ABSPATH . 'wp-cron.php', $_POST['cf_on_off_wpcron'], 'WP Cron' );
 
+$_POST['cf_on_off_feed'] = WGR_default_config('cf_on_off_feed');
+
 $_POST['cf_remove_category_base'] = WGR_default_config('cf_remove_category_base');
 
 $_POST['cf_remove_post_option_base'] = WGR_default_config('cf_remove_post_option_base');

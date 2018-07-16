@@ -607,6 +607,7 @@ define( 'id_default_for_get_sidebar', 'main_sidebar' );
 function echbay_theme_setup() {
 	
 	global $arr_to_add_menu;
+	global $__cf_row;
 	
 	/*
 	* Thiết lập theme có thể dịch được
@@ -618,7 +619,9 @@ function echbay_theme_setup() {
 	/*
 	* Tự chèn RSS Feed links trong <head>
 	*/
-	add_theme_support( 'automatic-feed-links' );
+	if ( $__cf_row['cf_on_off_feed'] == 1 ) {
+		add_theme_support( 'automatic-feed-links' );
+	}
 	
 	
 	/*
@@ -1070,6 +1073,12 @@ else {
 	*/
 	if ( $__cf_row['cf_on_off_json'] != 1 ) {
 		include EB_THEME_PLUGIN_INDEX . 'plugins/disable-json-api.php';
+	}
+	
+	
+	//
+	if ( $__cf_row['cf_on_off_feed'] != 1 ) {
+		include EB_THEME_PLUGIN_INDEX . 'plugins/disable-rss-feed.php';
 	}
 	
 	

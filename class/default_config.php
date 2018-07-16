@@ -170,6 +170,9 @@ $__cf_row_default = array(
 	// bật tắt cron -> chức năng tiêu tốn nhiều tài nguyên server
 	'cf_on_off_wpcron' => 'off',
 	
+	// bật tắt RSS
+	'cf_on_off_feed' => 1,
+	
 	// xóa URL cha của phân nhóm, custom taxonomy
 	'cf_remove_category_base' => 'off',
 	'cf_remove_post_option_base' => 'off',
