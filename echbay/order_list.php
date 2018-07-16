@@ -122,6 +122,9 @@ else if ( $trang < 1 ) {
 $offset = ($trang - 1) * $threadInPage;
 //echo $offset . '<br>' . "\n";
 
+//
+$str_hom_nay = date( 'md', date_time );
+
 
 
 ?>
@@ -193,12 +196,14 @@ $offset = ($trang - 1) * $threadInPage;
 		*/
 //		print_r( $o );
 	
+	//
 	foreach ( $sql as $o ) {
 		
 		//
 		$hd_trangthai = $o->order_status;
 		
 		//
+		/*
 		$ngay_gui_don = date_time - $o->order_time;
 		if ( $ngay_gui_don < 10 * 60 ) {
 			$ngay_gui_don = 'Vài phút trước';
@@ -215,6 +220,16 @@ $offset = ($trang - 1) * $threadInPage;
 		else {
 			$ngay_gui_don = date( 'd-m-Y H:i', $o->order_time );
 		}
+		*/
+		
+		// nếu là ngày hoome nay -> chỉ hiển thị giờ
+		$check_hom_nay = date( 'md', $o->order_time );
+		if ( $check_hom_nay == $str_hom_nay ) {
+			$ngay_gui_don = date( 'H:i', $o->order_time );
+		}
+		else {
+			$ngay_gui_don = date( 'd-m-Y H:i', $o->order_time );
+		}
 		
 		// Với các đơn hàng đang là tự động xác nhận
 		// nếu trạng thái này nằm đây lâu quá rồi -> tự ghi nhận là chưa xác nhận
@@ -225,7 +240,7 @@ $offset = ($trang - 1) * $threadInPage;
 		
 		//
 		echo '
-		<tr class="eb-set-order-list-info hd_status' . $hd_trangthai . '">
+		<tr class="eb-set-order-list-info check_hom_nay' . $check_hom_nay . ' hd_status' . $hd_trangthai . '">
 			<td class="text-center">
 				<div><a href="' . admin_link . 'admin.php?page=eb-order&id=' . $o->order_id . '">
 					' . $o->order_sku . ' <i class="fa fa-edit bluecolor"></i>
@@ -287,6 +302,9 @@ if ($totalPage > 1) {
 <br>
 <script type="text/javascript">
 
+var str_hom_nay = "<?php echo $str_hom_nay; ?>";
+$('.check_hom_nay' + str_hom_nay + ':last').after('<tr><td colspan="' + $('.check_hom_nay' + str_hom_nay + ' td').length + '">&nbsp;</td></tr>');
+
 // ẩn bớt menu khi người dùng xem danh sách đơn
 $('body').addClass('folded');
 
@@ -295,4 +313,4 @@ WGR_view_by_time_line( '<?php echo $jsLinkPager; ?>', '<?php echo $filterDay; ?>
 
 click_set_search_order_by_type();
 
-</script> 
+</script>
