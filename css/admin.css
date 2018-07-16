@@ -86,6 +86,12 @@ body.ebdesign-no-scroll { overflow: hidden; }
 	display: inline-block;
 	margin-bottom: 15px;
 }
+.eb-input-edit-product-size input[type="number"],
+.eb-input-edit-product-size input[type="text"] { width: 150px; }
+.eb-input-edit-product-size {
+	max-width: 350px;
+	width: 90%;
+}
 /* .eb-input-edit-product-size button, */
 .edit-product-sizecolor button {
 	background: #f2f2f2;

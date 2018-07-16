@@ -6,13 +6,44 @@
 			<input type="text" value="" id="eb_input_edit_color_size_node" name="eb_input_edit_color_size_node" placeholder="Node để thay đổi size riêng của màu sắc">
 		</div>
 		<!-- -->
-		<input type="text" value="" name="eb_input_edit_product_size_name" id="eb_input_edit_product_size_name" placeholder="Tên Size">
-		<input type="number" value="" name="eb_input_edit_product_size_quan" id="eb_input_edit_product_size_quan" placeholder="Số lượng">
-		<input type="text" value="" name="eb_input_edit_product_size_sku" id="eb_input_edit_product_size_sku" placeholder="Mã size (nếu có)">
-		<input type="text" value="" name="eb_input_edit_product_size_price" id="eb_input_edit_product_size_price" placeholder="Giá bán (nếu có)">
-		<button type="submit" data-action="save">Save</button>
-		<!-- <button type="button" data-action="remove" class="d-none">Remove</button> -->
-		<button type="button">Cancel</button>
+		<div class="cf">
+			<div class="lf f45">
+				<label for="eb_input_edit_product_size_name">Tên Size</label>
+			</div>
+			<div class="lf f55">
+				<input type="text" value="" name="eb_input_edit_product_size_name" id="eb_input_edit_product_size_name" placeholder="Tên Size">
+			</div>
+		</div>
+		<div class="cf">
+			<div class="lf f45">
+				<label for="eb_input_edit_product_size_quan">Số lượng</label>
+			</div>
+			<div class="lf f55">
+				<input type="number" value="" name="eb_input_edit_product_size_quan" id="eb_input_edit_product_size_quan" placeholder="Số lượng">
+			</div>
+		</div>
+		<div class="redcolor text-center small">* Để ẩn một size, hãy nhập số lượng là: <strong>-1</strong></div>
+		<div class="cf">
+			<div class="lf f45">
+				<label for="eb_input_edit_product_size_sku">Mã size (nếu có)</label>
+			</div>
+			<div class="lf f55">
+				<input type="text" value="" name="eb_input_edit_product_size_sku" id="eb_input_edit_product_size_sku" placeholder="Mã size (nếu có)">
+			</div>
+		</div>
+		<div class="cf">
+			<div class="lf f45">
+				<label for="eb_input_edit_product_size_price">Giá bán (nếu có)</label>
+			</div>
+			<div class="lf f55">
+				<input type="text" value="" name="eb_input_edit_product_size_price" id="eb_input_edit_product_size_price" placeholder="Giá bán (nếu có)">
+			</div>
+		</div>
+		<div class="text-center">
+			<button type="submit" data-action="save">Save</button>
+			<!-- <button type="button" data-action="remove" class="d-none">Remove</button> -->
+			<button type="button">Cancel</button>
+		</div>
 	</form>
 </div>
 <div class="edit-product-sizecolor eb-input-edit-product-color hide-if-press-esc">

@@ -971,7 +971,8 @@ function ___eb_details_product_size () {
 	if ( cf_tester_mode == 1 ) console.log(arr_product_size);
 	
 	// có nhiều size thì tạo list
-	var str = '';
+	var str = '',
+		select_default_size = '';
 	
 	for (var i = 0; i < arr_product_size.length; i++) {
 		// conver từ bản code cũ sang
@@ -1001,7 +1002,11 @@ function ___eb_details_product_size () {
 		}
 		
 		// Giá trị mảng phải khác null -> null = xóa
-		if ( arr_product_size[i].val != null ) {
+		if ( arr_product_size[i].val != null && arr_product_size[i].val >= 0 ) {
+			if ( select_default_size == '' ) {
+				select_default_size = i;
+			}
+			
 			// Tên và Số lượng phải tồn tại
 //			if ( arr_product_size[i].val != '' && arr_product_size[i].name != '' ) {
 			if ( arr_product_size[i].name != '' ) {
@@ -1105,9 +1110,10 @@ function ___eb_details_product_size () {
 	
 	//
 //	jQuery('.oi_product_size li:first').click();
-	jQuery('.oi_product_size:first li[data-size-node="0"]').click();
+	jQuery('.oi_product_size:first li[data-size-node="' + select_default_size + '"]').click();
 	setTimeout(function () {
-		jQuery('.oi_product_size:first li[data-size-node="0"]').click();
+		if ( cf_tester_mode == 1 ) console.log('select_default_size: ' + select_default_size);
+		jQuery('.oi_product_size:first li[data-size-node="' + select_default_size + '"]').click();
 	}, 800);
 	
 }
