@@ -416,7 +416,8 @@ function EBE_remove_dir_after_update ( $dir, $arr, $dir_to = '' ) {
 	
 	
 	// cập nhật lại version trong file cache
-	_eb_get_static_html ( 'github_version', EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) ), '', 60 );
+//	_eb_get_static_html ( 'github_version', EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) ), '', 60 );
+	_eb_get_static_html ( 'github_version', file_get_contents( EB_THEME_PLUGIN_INDEX . 'VERSION', 1 ), '', 60 );
 	
 }
 
@@ -712,15 +713,19 @@ function EBE_get_text_version ( $str ) {
 		$strCacheFilter = 'github_version';
 		$version_in_github = _eb_get_static_html ( $strCacheFilter, '', '', 300 );
 		if ( $version_in_github == false ) {
+			$version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION' );
+			/*
 			$version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/readme.txt' );
 			
 			$version_in_github = EBE_get_text_version( $version_in_github );
+			*/
 			
 			_eb_get_static_html ( $strCacheFilter, $version_in_github, '', 60 );
 		}
 		
 		// Phiên bản hiện tại
-		$version_current = EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) );
+//		$version_current = EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) );
+		$version_current = file_get_contents( EB_THEME_PLUGIN_INDEX . 'VERSION', 1 );
 		
 		//
 		if ( $version_in_github != $version_current ) {
